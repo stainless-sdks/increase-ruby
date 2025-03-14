@@ -6,6 +6,7 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
+      # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
       def cursor
       end
@@ -14,6 +15,8 @@ module Increase
       def cursor=(_)
       end
 
+      # Limit the size of the list that is returned. The default (and maximum) is 100
+      #   objects.
       sig { returns(T.nilable(Integer)) }
       def limit
       end
@@ -22,6 +25,8 @@ module Increase
       def limit=(_)
       end
 
+      # Filter results to only include OAuth Connections for a specific OAuth
+      #   Application.
       sig { returns(T.nilable(String)) }
       def oauth_application_id
       end
@@ -70,6 +75,9 @@ module Increase
       end
 
       class Status < Increase::BaseModel
+        # Filter to OAuth Connections by their status. By default, return only the
+        #   `active` ones. For GET requests, this should be encoded as a comma-delimited
+        #   string, such as `?in=one,two,three`.
         sig { returns(T.nilable(T::Array[Symbol])) }
         def in_
         end

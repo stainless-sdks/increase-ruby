@@ -84,7 +84,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @abstract
-        #
         class In < Increase::Enum
           # The Card Profile has not yet been processed by Increase.
           PENDING_CREATING = :pending_creating

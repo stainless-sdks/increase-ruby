@@ -7,6 +7,8 @@ module Increase
         extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
+        # The reason why the Federal Reserve or destination bank returned this transfer.
+        #   Defaults to `no_account`.
         sig { returns(T.nilable(Symbol)) }
         def reason
         end
@@ -32,6 +34,8 @@ module Increase
         def to_hash
         end
 
+        # The reason why the Federal Reserve or destination bank returned this transfer.
+        #   Defaults to `no_account`.
         class Reason < Increase::Enum
           abstract!
 

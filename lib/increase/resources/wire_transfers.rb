@@ -48,7 +48,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::WireTransfer]
-      #
       def create(params)
         parsed, options = Increase::Models::WireTransferCreateParams.dump_request(params)
         @client.request(
@@ -69,7 +68,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::WireTransfer]
-      #
       def retrieve(wire_transfer_id, params = {})
         @client.request(
           method: :get,
@@ -102,7 +100,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::WireTransfer>]
-      #
       def list(params = {})
         parsed, options = Increase::Models::WireTransferListParams.dump_request(params)
         @client.request(
@@ -124,7 +121,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::WireTransfer]
-      #
       def approve(wire_transfer_id, params = {})
         @client.request(
           method: :post,
@@ -143,7 +139,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::WireTransfer]
-      #
       def cancel(wire_transfer_id, params = {})
         @client.request(
           method: :post,
@@ -154,7 +149,6 @@ module Increase
       end
 
       # @param client [Increase::Client]
-      #
       def initialize(client:)
         @client = client
       end

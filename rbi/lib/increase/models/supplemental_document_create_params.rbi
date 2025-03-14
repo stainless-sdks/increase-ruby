@@ -6,6 +6,7 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
+      # The identifier of the Entity to associate with the supplemental document.
       sig { returns(String) }
       def entity_id
       end
@@ -14,6 +15,7 @@ module Increase
       def entity_id=(_)
       end
 
+      # The identifier of the File containing the document.
       sig { returns(String) }
       def file_id
       end

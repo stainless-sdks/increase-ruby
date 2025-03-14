@@ -18,7 +18,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::BookkeepingAccount]
-      #
       def create(params)
         parsed, options = Increase::Models::BookkeepingAccountCreateParams.dump_request(params)
         @client.request(
@@ -41,7 +40,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::BookkeepingAccount]
-      #
       def update(bookkeeping_account_id, params)
         parsed, options = Increase::Models::BookkeepingAccountUpdateParams.dump_request(params)
         @client.request(
@@ -70,7 +68,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::BookkeepingAccount>]
-      #
       def list(params = {})
         parsed, options = Increase::Models::BookkeepingAccountListParams.dump_request(params)
         @client.request(
@@ -94,7 +91,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::BookkeepingBalanceLookup]
-      #
       def balance(bookkeeping_account_id, params = {})
         parsed, options = Increase::Models::BookkeepingAccountBalanceParams.dump_request(params)
         @client.request(
@@ -107,7 +103,6 @@ module Increase
       end
 
       # @param client [Increase::Client]
-      #
       def initialize(client:)
         @client = client
       end

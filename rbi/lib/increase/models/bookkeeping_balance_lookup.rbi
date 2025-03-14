@@ -3,6 +3,8 @@
 module Increase
   module Models
     class BookkeepingBalanceLookup < Increase::BaseModel
+      # The Bookkeeping Account's current balance, representing the sum of all
+      #   Bookkeeping Entries on the Bookkeeping Account.
       sig { returns(Integer) }
       def balance
       end
@@ -11,6 +13,7 @@ module Increase
       def balance=(_)
       end
 
+      # The identifier for the account for which the balance was queried.
       sig { returns(String) }
       def bookkeeping_account_id
       end
@@ -19,6 +22,8 @@ module Increase
       def bookkeeping_account_id=(_)
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `bookkeeping_balance_lookup`.
       sig { returns(Symbol) }
       def type
       end
@@ -27,6 +32,8 @@ module Increase
       def type=(_)
       end
 
+      # Represents a request to lookup the balance of an Bookkeeping Account at a given
+      #   point in time.
       sig { params(balance: Integer, bookkeeping_account_id: String, type: Symbol).returns(T.attached_class) }
       def self.new(balance:, bookkeeping_account_id:, type:)
       end
@@ -35,6 +42,8 @@ module Increase
       def to_hash
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `bookkeeping_balance_lookup`.
       class Type < Increase::Enum
         abstract!
 

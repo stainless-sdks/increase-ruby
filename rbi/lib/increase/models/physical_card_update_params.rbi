@@ -6,6 +6,7 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
+      # The status to update the Physical Card to.
       sig { returns(Symbol) }
       def status
       end
@@ -25,6 +26,7 @@ module Increase
       def to_hash
       end
 
+      # The status to update the Physical Card to.
       class Status < Increase::Enum
         abstract!
 

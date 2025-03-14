@@ -7,6 +7,7 @@ module Increase
         extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
+        # The identifier of the Account the Interest Payment should be paid to is for.
         sig { returns(String) }
         def account_id
         end
@@ -15,6 +16,7 @@ module Increase
         def account_id=(_)
         end
 
+        # The interest amount in cents. Must be positive.
         sig { returns(Integer) }
         def amount
         end
@@ -23,6 +25,7 @@ module Increase
         def amount=(_)
         end
 
+        # The identifier of the Account the Interest accrued on. Defaults to `account_id`.
         sig { returns(T.nilable(String)) }
         def accrued_on_account_id
         end
@@ -31,6 +34,7 @@ module Increase
         def accrued_on_account_id=(_)
         end
 
+        # The end of the interest period. If not provided, defaults to the current time.
         sig { returns(T.nilable(Time)) }
         def period_end
         end
@@ -39,6 +43,7 @@ module Increase
         def period_end=(_)
         end
 
+        # The start of the interest period. If not provided, defaults to the current time.
         sig { returns(T.nilable(Time)) }
         def period_start
         end

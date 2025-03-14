@@ -3,6 +3,7 @@
 module Increase
   module Models
     class Account < Increase::BaseModel
+      # The Account identifier.
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Increase
       def id=(_)
       end
 
+      # The bank the Account is with.
       sig { returns(Symbol) }
       def bank
       end
@@ -19,6 +21,8 @@ module Increase
       def bank=(_)
       end
 
+      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
+      #   was closed.
       sig { returns(T.nilable(Time)) }
       def closed_at
       end
@@ -27,6 +31,8 @@ module Increase
       def closed_at=(_)
       end
 
+      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
+      #   was created.
       sig { returns(Time) }
       def created_at
       end
@@ -35,6 +41,8 @@ module Increase
       def created_at=(_)
       end
 
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
+      #   currency.
       sig { returns(Symbol) }
       def currency
       end
@@ -43,6 +51,7 @@ module Increase
       def currency=(_)
       end
 
+      # The identifier for the Entity the Account belongs to.
       sig { returns(T.nilable(String)) }
       def entity_id
       end
@@ -51,6 +60,9 @@ module Increase
       def entity_id=(_)
       end
 
+      # The idempotency key you chose for this object. This value is unique across
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       def idempotency_key
       end
@@ -59,6 +71,8 @@ module Increase
       def idempotency_key=(_)
       end
 
+      # The identifier of an Entity that, while not owning the Account, is associated
+      #   with its activity.
       sig { returns(T.nilable(String)) }
       def informational_entity_id
       end
@@ -67,6 +81,8 @@ module Increase
       def informational_entity_id=(_)
       end
 
+      # The interest accrued but not yet paid, expressed as a string containing a
+      #   floating-point value.
       sig { returns(String) }
       def interest_accrued
       end
@@ -75,6 +91,8 @@ module Increase
       def interest_accrued=(_)
       end
 
+      # The latest [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which
+      #   interest was accrued.
       sig { returns(T.nilable(Date)) }
       def interest_accrued_at
       end
@@ -83,6 +101,9 @@ module Increase
       def interest_accrued_at=(_)
       end
 
+      # The Interest Rate currently being earned on the account, as a string containing
+      #   a decimal number. For example, a 1% interest rate would be represented as
+      #   "0.01".
       sig { returns(String) }
       def interest_rate
       end
@@ -91,6 +112,7 @@ module Increase
       def interest_rate=(_)
       end
 
+      # The name you choose for the Account.
       sig { returns(String) }
       def name
       end
@@ -99,6 +121,8 @@ module Increase
       def name=(_)
       end
 
+      # The identifier of the Program determining the compliance and commercial terms of
+      #   this Account.
       sig { returns(String) }
       def program_id
       end
@@ -107,6 +131,7 @@ module Increase
       def program_id=(_)
       end
 
+      # The status of the Account.
       sig { returns(Symbol) }
       def status
       end
@@ -115,6 +140,8 @@ module Increase
       def status=(_)
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `account`.
       sig { returns(Symbol) }
       def type
       end
@@ -123,6 +150,8 @@ module Increase
       def type=(_)
       end
 
+      # Accounts are your bank accounts with Increase. They store money, receive
+      #   transfers, and send payments. They earn interest and have depository insurance.
       sig do
         params(
           id: String,
@@ -187,6 +216,7 @@ module Increase
       def to_hash
       end
 
+      # The bank the Account is with.
       class Bank < Increase::Enum
         abstract!
 
@@ -206,6 +236,8 @@ module Increase
         end
       end
 
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
+      #   currency.
       class Currency < Increase::Enum
         abstract!
 
@@ -234,6 +266,7 @@ module Increase
         end
       end
 
+      # The status of the Account.
       class Status < Increase::Enum
         abstract!
 
@@ -250,6 +283,8 @@ module Increase
         end
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `account`.
       class Type < Increase::Enum
         abstract!
 
