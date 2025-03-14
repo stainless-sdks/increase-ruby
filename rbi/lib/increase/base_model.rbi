@@ -80,9 +80,9 @@ module Increase
 
   # When we don't know what to expect for the value.
   class Unknown
-    extend Increase::Converter
-
     abstract!
+
+    extend Increase::Converter
 
     sig { params(other: T.anything).returns(T::Boolean) }
     def self.===(other)
@@ -116,9 +116,9 @@ module Increase
 
   # Ruby has no Boolean class; this is something for models to refer to.
   class BooleanModel
-    extend Increase::Converter
-
     abstract!
+
+    extend Increase::Converter
 
     sig { params(other: T.anything).returns(T::Boolean) }
     def self.===(other)
@@ -161,9 +161,9 @@ module Increase
   #   We can therefore convert string values to Symbols, but can't convert other
   #   values safely.
   class Enum
-    extend Increase::Converter
-
     abstract!
+
+    extend Increase::Converter
 
     class << self
       # All of the valid Symbol values for this enum.
@@ -210,9 +210,9 @@ module Increase
   end
 
   class Union
-    extend Increase::Converter
-
     abstract!
+
+    extend Increase::Converter
 
     class << self
       # @api private
@@ -295,9 +295,9 @@ module Increase
 
   # Array of items of a given type.
   class ArrayOf
-    include Increase::Converter
-
     abstract!
+
+    include Increase::Converter
 
     sig { params(other: T.anything).returns(T::Boolean) }
     def ===(other)
@@ -357,9 +357,9 @@ module Increase
 
   # Hash of items of a given type.
   class HashOf
-    include Increase::Converter
-
     abstract!
+
+    include Increase::Converter
 
     sig { params(other: T.anything).returns(T::Boolean) }
     def ===(other)
@@ -418,9 +418,9 @@ module Increase
   end
 
   class BaseModel
-    extend Increase::Converter
-
     abstract!
+
+    extend Increase::Converter
 
     KnownFieldShape = T.type_alias { {mode: T.nilable(Symbol), required: T::Boolean} }
 
