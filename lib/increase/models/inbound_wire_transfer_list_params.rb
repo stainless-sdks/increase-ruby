@@ -169,7 +169,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @abstract
-        #
         class In < Increase::Enum
           # The Inbound Wire Transfer is awaiting action, will transition automatically if no action is taken.
           PENDING = :pending

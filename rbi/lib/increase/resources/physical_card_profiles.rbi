@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class PhysicalCardProfiles
+      # Create a Physical Card Profile
       sig do
         params(
           carrier_image_file_id: String,
@@ -14,14 +15,19 @@ module Increase
           .returns(Increase::Models::PhysicalCardProfile)
       end
       def create(
+        # The identifier of the File containing the physical card's carrier image.
         carrier_image_file_id:,
+        # A phone number the user can contact to receive support for their card.
         contact_phone:,
+        # A description you can use to identify the Card Profile.
         description:,
+        # The identifier of the File containing the physical card's front image.
         front_image_file_id:,
         request_options: {}
       )
       end
 
+      # Retrieve a Card Profile
       sig do
         params(
           physical_card_profile_id: String,
@@ -29,9 +35,14 @@ module Increase
         )
           .returns(Increase::Models::PhysicalCardProfile)
       end
-      def retrieve(physical_card_profile_id, request_options: {})
+      def retrieve(
+        # The identifier of the Card Profile.
+        physical_card_profile_id,
+        request_options: {}
+      )
       end
 
+      # List Physical Card Profiles
       sig do
         params(
           cursor: String,
@@ -42,9 +53,23 @@ module Increase
         )
           .returns(Increase::Page[Increase::Models::PhysicalCardProfile])
       end
-      def list(cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
+      def list(
+        # Return the page of entries after this one.
+        cursor: nil,
+        # Filter records to the one with the specified `idempotency_key` you chose for
+        #   that object. This value is unique across Increase and is used to ensure that a
+        #   request is only processed once. Learn more about
+        #   [idempotency](https://increase.com/documentation/idempotency-keys).
+        idempotency_key: nil,
+        # Limit the size of the list that is returned. The default (and maximum) is 100
+        #   objects.
+        limit: nil,
+        status: nil,
+        request_options: {}
+      )
       end
 
+      # Archive a Physical Card Profile
       sig do
         params(
           physical_card_profile_id: String,
@@ -52,9 +77,14 @@ module Increase
         )
           .returns(Increase::Models::PhysicalCardProfile)
       end
-      def archive(physical_card_profile_id, request_options: {})
+      def archive(
+        # The identifier of the Physical Card Profile to archive.
+        physical_card_profile_id,
+        request_options: {}
+      )
       end
 
+      # Clone a Physical Card Profile
       sig do
         params(
           physical_card_profile_id: String,
@@ -68,11 +98,18 @@ module Increase
           .returns(Increase::Models::PhysicalCardProfile)
       end
       def clone_(
+        # The identifier of the Physical Card Profile to clone.
         physical_card_profile_id,
+        # The identifier of the File containing the physical card's carrier image.
         carrier_image_file_id: nil,
+        # A phone number the user can contact to receive support for their card.
         contact_phone: nil,
+        # A description you can use to identify the Card Profile.
         description: nil,
+        # The identifier of the File containing the physical card's front image.
         front_image_file_id: nil,
+        # Text printed on the front of the card. Reach out to
+        #   [support@increase.com](mailto:support@increase.com) for more information.
         front_text: nil,
         request_options: {}
       )

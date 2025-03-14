@@ -29,7 +29,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::CheckTransfer]
-      #
       def create(params)
         parsed, options = Increase::Models::CheckTransferCreateParams.dump_request(params)
         @client.request(
@@ -50,7 +49,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::CheckTransfer]
-      #
       def retrieve(check_transfer_id, params = {})
         @client.request(
           method: :get,
@@ -83,7 +81,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::CheckTransfer>]
-      #
       def list(params = {})
         parsed, options = Increase::Models::CheckTransferListParams.dump_request(params)
         @client.request(
@@ -105,7 +102,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::CheckTransfer]
-      #
       def approve(check_transfer_id, params = {})
         @client.request(
           method: :post,
@@ -124,7 +120,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::CheckTransfer]
-      #
       def cancel(check_transfer_id, params = {})
         @client.request(
           method: :post,
@@ -145,7 +140,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::CheckTransfer]
-      #
       def stop_payment(check_transfer_id, params = {})
         parsed, options = Increase::Models::CheckTransferStopPaymentParams.dump_request(params)
         @client.request(
@@ -158,7 +152,6 @@ module Increase
       end
 
       # @param client [Increase::Client]
-      #
       def initialize(client:)
         @client = client
       end
