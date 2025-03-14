@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class BookkeepingAccounts
+      # Create a Bookkeeping Account
       sig do
         params(
           name: String,
@@ -16,6 +17,7 @@ module Increase
       def create(name:, account_id: nil, compliance_category: nil, entity_id: nil, request_options: {})
       end
 
+      # Update a Bookkeeping Account
       sig do
         params(
           bookkeeping_account_id: String,
@@ -27,6 +29,7 @@ module Increase
       def update(bookkeeping_account_id, name:, request_options: {})
       end
 
+      # List Bookkeeping Accounts
       sig do
         params(
           cursor: String,
@@ -39,6 +42,7 @@ module Increase
       def list(cursor: nil, idempotency_key: nil, limit: nil, request_options: {})
       end
 
+      # Retrieve a Bookkeeping Account Balance
       sig do
         params(
           bookkeeping_account_id: String,

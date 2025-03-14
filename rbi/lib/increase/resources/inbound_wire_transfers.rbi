@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class InboundWireTransfers
+      # Retrieve an Inbound Wire Transfer
       sig do
         params(
           inbound_wire_transfer_id: String,
@@ -13,6 +14,7 @@ module Increase
       def retrieve(inbound_wire_transfer_id, request_options: {})
       end
 
+      # List Inbound Wire Transfers
       sig do
         params(
           account_id: String,

@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class IntrafiBalances
+      # Get IntraFi balances by bank
       sig do
         params(
           account_id: String,

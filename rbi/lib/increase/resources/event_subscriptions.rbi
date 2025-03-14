@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class EventSubscriptions
+      # Create an Event Subscription
       sig do
         params(
           url: String,
@@ -22,6 +23,7 @@ module Increase
       )
       end
 
+      # Retrieve an Event Subscription
       sig do
         params(
           event_subscription_id: String,
@@ -32,6 +34,7 @@ module Increase
       def retrieve(event_subscription_id, request_options: {})
       end
 
+      # Update an Event Subscription
       sig do
         params(
           event_subscription_id: String,
@@ -43,6 +46,7 @@ module Increase
       def update(event_subscription_id, status: nil, request_options: {})
       end
 
+      # List Event Subscriptions
       sig do
         params(
           cursor: String,

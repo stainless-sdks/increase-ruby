@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class Accounts
+      # Create an Account
       sig do
         params(
           name: String,
@@ -16,6 +17,7 @@ module Increase
       def create(name:, entity_id: nil, informational_entity_id: nil, program_id: nil, request_options: {})
       end
 
+      # Retrieve an Account
       sig do
         params(
           account_id: String,
@@ -26,6 +28,7 @@ module Increase
       def retrieve(account_id, request_options: {})
       end
 
+      # Update an Account
       sig do
         params(
           account_id: String,
@@ -37,6 +40,7 @@ module Increase
       def update(account_id, name: nil, request_options: {})
       end
 
+      # List Accounts
       sig do
         params(
           created_at: Increase::Models::AccountListParams::CreatedAt,
@@ -64,6 +68,8 @@ module Increase
       )
       end
 
+      # Retrieve the current and available balances for an account in minor units of the
+      #   account's currency. Learn more about [account balances](/documentation/balance).
       sig do
         params(
           account_id: String,
@@ -75,6 +81,7 @@ module Increase
       def balance(account_id, at_time: nil, request_options: {})
       end
 
+      # Close an Account
       sig do
         params(
           account_id: String,

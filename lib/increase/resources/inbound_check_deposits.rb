@@ -12,7 +12,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::InboundCheckDeposit]
-      #
       def retrieve(inbound_check_deposit_id, params = {})
         @client.request(
           method: :get,
@@ -41,7 +40,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::InboundCheckDeposit>]
-      #
       def list(params = {})
         parsed, options = Increase::Models::InboundCheckDepositListParams.dump_request(params)
         @client.request(
@@ -63,7 +61,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::InboundCheckDeposit]
-      #
       def decline(inbound_check_deposit_id, params = {})
         @client.request(
           method: :post,
@@ -84,7 +81,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::InboundCheckDeposit]
-      #
       def return_(inbound_check_deposit_id, params)
         parsed, options = Increase::Models::InboundCheckDepositReturnParams.dump_request(params)
         @client.request(
@@ -97,7 +93,6 @@ module Increase
       end
 
       # @param client [Increase::Client]
-      #
       def initialize(client:)
         @client = client
       end

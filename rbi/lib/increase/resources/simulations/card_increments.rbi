@@ -4,6 +4,8 @@ module Increase
   module Resources
     class Simulations
       class CardIncrements
+        # Simulates the increment of an authorization by a card acquirer. An authorization
+        #   can be incremented multiple times.
         sig do
           params(
             amount: Integer,

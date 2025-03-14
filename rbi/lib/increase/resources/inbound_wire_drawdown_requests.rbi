@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class InboundWireDrawdownRequests
+      # Retrieve an Inbound Wire Drawdown Request
       sig do
         params(
           inbound_wire_drawdown_request_id: String,
@@ -13,6 +14,7 @@ module Increase
       def retrieve(inbound_wire_drawdown_request_id, request_options: {})
       end
 
+      # List Inbound Wire Drawdown Requests
       sig do
         params(
           cursor: String,

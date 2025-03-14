@@ -7,6 +7,7 @@ module Increase
         extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
+        # The amount of the check to be simulated, in cents.
         sig { returns(Integer) }
         def amount
         end
@@ -15,6 +16,7 @@ module Increase
         def amount=(_)
         end
 
+        # The identifier of the Lockbox to simulate inbound mail to.
         sig { returns(String) }
         def lockbox_id
         end
@@ -23,6 +25,8 @@ module Increase
         def lockbox_id=(_)
         end
 
+        # The file containing the PDF contents. If not present, a default check image file
+        #   will be used.
         sig { returns(T.nilable(String)) }
         def contents_file_id
         end

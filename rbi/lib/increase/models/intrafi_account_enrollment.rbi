@@ -3,6 +3,7 @@
 module Increase
   module Models
     class IntrafiAccountEnrollment < Increase::BaseModel
+      # The identifier of this enrollment at IntraFi.
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Increase
       def id=(_)
       end
 
+      # The identifier of the Increase Account being swept into the network.
       sig { returns(String) }
       def account_id
       end
@@ -19,6 +21,8 @@ module Increase
       def account_id=(_)
       end
 
+      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   the enrollment was created.
       sig { returns(Time) }
       def created_at
       end
@@ -27,6 +31,9 @@ module Increase
       def created_at=(_)
       end
 
+      # The idempotency key you chose for this object. This value is unique across
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       def idempotency_key
       end
@@ -35,6 +42,8 @@ module Increase
       def idempotency_key=(_)
       end
 
+      # The identifier of the account in IntraFi's system. This identifier will be
+      #   printed on any IntraFi statements or documents.
       sig { returns(String) }
       def intrafi_id
       end
@@ -43,6 +52,8 @@ module Increase
       def intrafi_id=(_)
       end
 
+      # The status of the account in the network. An account takes about one business
+      #   day to go from `pending_enrolling` to `enrolled`.
       sig { returns(Symbol) }
       def status
       end
@@ -51,6 +62,8 @@ module Increase
       def status=(_)
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `intrafi_account_enrollment`.
       sig { returns(Symbol) }
       def type
       end
@@ -59,6 +72,13 @@ module Increase
       def type=(_)
       end
 
+      # IntraFi is a
+      #   [network of financial institutions](https://www.intrafi.com/network-banks) that
+      #   allows Increase users to sweep funds to multiple banks, in addition to
+      #   Increase's main bank partners. This enables accounts to become eligible for
+      #   additional Federal Deposit Insurance Corporation (FDIC) insurance. An IntraFi
+      #   Account Enrollment object represents the status of an account in the network.
+      #   Sweeping an account to IntraFi doesn't affect funds availability.
       sig do
         params(
           id: String,
@@ -91,6 +111,8 @@ module Increase
       def to_hash
       end
 
+      # The status of the account in the network. An account takes about one business
+      #   day to go from `pending_enrolling` to `enrolled`.
       class Status < Increase::Enum
         abstract!
 
@@ -116,6 +138,8 @@ module Increase
         end
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `intrafi_account_enrollment`.
       class Type < Increase::Enum
         abstract!
 

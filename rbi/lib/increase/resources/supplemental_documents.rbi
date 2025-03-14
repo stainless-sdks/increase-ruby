@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class SupplementalDocuments
+      # Create a supplemental document for an Entity
       sig do
         params(
           entity_id: String,
@@ -14,6 +15,7 @@ module Increase
       def create(entity_id:, file_id:, request_options: {})
       end
 
+      # List Entity Supplemental Document Submissions
       sig do
         params(
           entity_id: String,

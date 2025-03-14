@@ -4,6 +4,9 @@ module Increase
   module Resources
     class Simulations
       class InboundRealTimePaymentsTransfers
+        # Simulates an
+        #   [Inbound Real-Time Payments Transfer](#inbound-real-time-payments-transfers) to
+        #   your account. Real-Time Payments are a beta feature.
         sig do
           params(
             account_number_id: String,

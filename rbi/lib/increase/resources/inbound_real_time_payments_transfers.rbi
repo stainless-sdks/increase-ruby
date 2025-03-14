@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class InboundRealTimePaymentsTransfers
+      # Retrieve an Inbound Real-Time Payments Transfer
       sig do
         params(
           inbound_real_time_payments_transfer_id: String,
@@ -13,6 +14,7 @@ module Increase
       def retrieve(inbound_real_time_payments_transfer_id, request_options: {})
       end
 
+      # List Inbound Real-Time Payments Transfers
       sig do
         params(
           account_id: String,

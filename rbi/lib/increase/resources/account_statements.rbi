@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class AccountStatements
+      # Retrieve an Account Statement
       sig do
         params(
           account_statement_id: String,
@@ -13,6 +14,7 @@ module Increase
       def retrieve(account_statement_id, request_options: {})
       end
 
+      # List Account Statements
       sig do
         params(
           account_id: String,

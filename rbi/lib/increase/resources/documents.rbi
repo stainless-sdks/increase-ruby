@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class Documents
+      # Retrieve a Document
       sig do
         params(
           document_id: String,
@@ -13,6 +14,7 @@ module Increase
       def retrieve(document_id, request_options: {})
       end
 
+      # List Documents
       sig do
         params(
           category: Increase::Models::DocumentListParams::Category,

@@ -4,6 +4,7 @@ module Increase
   module Resources
     class Simulations
       class InboundWireTransfers
+        # Simulates an [Inbound Wire Transfer](#inbound-wire-transfers) to your account.
         sig do
           params(
             account_number_id: String,

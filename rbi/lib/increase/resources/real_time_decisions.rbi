@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class RealTimeDecisions
+      # Retrieve a Real-Time Decision
       sig do
         params(
           real_time_decision_id: String,
@@ -13,6 +14,7 @@ module Increase
       def retrieve(real_time_decision_id, request_options: {})
       end
 
+      # Action a Real-Time Decision
       sig do
         params(
           real_time_decision_id: String,

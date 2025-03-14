@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class OAuthApplications
+      # Retrieve an OAuth Application
       sig do
         params(
           oauth_application_id: String,
@@ -13,6 +14,7 @@ module Increase
       def retrieve(oauth_application_id, request_options: {})
       end
 
+      # List OAuth Applications
       sig do
         params(
           created_at: Increase::Models::OAuthApplicationListParams::CreatedAt,

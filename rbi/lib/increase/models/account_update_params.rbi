@@ -6,6 +6,7 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
+      # The new name of the Account.
       sig { returns(T.nilable(String)) }
       def name
       end

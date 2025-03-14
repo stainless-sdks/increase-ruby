@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class PhysicalCards
+      # Create a Physical Card
       sig do
         params(
           card_id: String,
@@ -16,6 +17,7 @@ module Increase
       def create(card_id:, cardholder:, shipment:, physical_card_profile_id: nil, request_options: {})
       end
 
+      # Retrieve a Physical Card
       sig do
         params(
           physical_card_id: String,
@@ -26,6 +28,7 @@ module Increase
       def retrieve(physical_card_id, request_options: {})
       end
 
+      # Update a Physical Card
       sig do
         params(
           physical_card_id: String,
@@ -37,6 +40,7 @@ module Increase
       def update(physical_card_id, status:, request_options: {})
       end
 
+      # List Physical Cards
       sig do
         params(
           card_id: String,

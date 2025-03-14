@@ -7,6 +7,7 @@ module Increase
         extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
+        # The status to move the dispute to.
         sig { returns(Symbol) }
         def status
         end
@@ -15,6 +16,7 @@ module Increase
         def status=(_)
         end
 
+        # Why the dispute was rejected. Not required for accepting disputes.
         sig { returns(T.nilable(String)) }
         def explanation
         end
@@ -40,6 +42,7 @@ module Increase
         def to_hash
         end
 
+        # The status to move the dispute to.
         class Status < Increase::Enum
           abstract!
 

@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class InboundCheckDeposits
+      # Retrieve an Inbound Check Deposit
       sig do
         params(
           inbound_check_deposit_id: String,
@@ -13,6 +14,7 @@ module Increase
       def retrieve(inbound_check_deposit_id, request_options: {})
       end
 
+      # List Inbound Check Deposits
       sig do
         params(
           account_id: String,
@@ -34,6 +36,7 @@ module Increase
       )
       end
 
+      # Decline an Inbound Check Deposit
       sig do
         params(
           inbound_check_deposit_id: String,
@@ -44,6 +47,7 @@ module Increase
       def decline(inbound_check_deposit_id, request_options: {})
       end
 
+      # Return an Inbound Check Deposit
       sig do
         params(
           inbound_check_deposit_id: String,
