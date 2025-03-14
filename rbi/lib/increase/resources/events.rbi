@@ -11,7 +11,11 @@ module Increase
         )
           .returns(Increase::Models::Event)
       end
-      def retrieve(event_id, request_options: {})
+      def retrieve(
+        # The identifier of the Event.
+        event_id,
+        request_options: {}
+      )
       end
 
       # List Events
@@ -27,10 +31,14 @@ module Increase
           .returns(Increase::Page[Increase::Models::Event])
       end
       def list(
+        # Filter Events to those belonging to the object with the provided identifier.
         associated_object_id: nil,
         category: nil,
         created_at: nil,
+        # Return the page of entries after this one.
         cursor: nil,
+        # Limit the size of the list that is returned. The default (and maximum) is 100
+        #   objects.
         limit: nil,
         request_options: {}
       )

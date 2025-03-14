@@ -16,10 +16,15 @@ module Increase
           .returns(Increase::Models::CheckDeposit)
       end
       def create(
+        # The identifier for the Account to deposit the check in.
         account_id:,
+        # The deposit amount in USD cents.
         amount:,
+        # The File containing the check's back image.
         back_image_file_id:,
+        # The File containing the check's front image.
         front_image_file_id:,
+        # The description you choose to give the Check Deposit, for display purposes only.
         description: nil,
         request_options: {}
       )
@@ -33,7 +38,11 @@ module Increase
         )
           .returns(Increase::Models::CheckDeposit)
       end
-      def retrieve(check_deposit_id, request_options: {})
+      def retrieve(
+        # The identifier of the Check Deposit to retrieve.
+        check_deposit_id,
+        request_options: {}
+      )
       end
 
       # List Check Deposits
@@ -49,10 +58,18 @@ module Increase
           .returns(Increase::Page[Increase::Models::CheckDeposit])
       end
       def list(
+        # Filter Check Deposits to those belonging to the specified Account.
         account_id: nil,
         created_at: nil,
+        # Return the page of entries after this one.
         cursor: nil,
+        # Filter records to the one with the specified `idempotency_key` you chose for
+        #   that object. This value is unique across Increase and is used to ensure that a
+        #   request is only processed once. Learn more about
+        #   [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key: nil,
+        # Limit the size of the list that is returned. The default (and maximum) is 100
+        #   objects.
         limit: nil,
         request_options: {}
       )

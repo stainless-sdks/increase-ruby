@@ -16,7 +16,16 @@ module Increase
         )
           .returns(Increase::Page[Increase::Models::RoutingNumberListResponse])
       end
-      def list(routing_number:, cursor: nil, limit: nil, request_options: {})
+      def list(
+        # Filter financial institutions by routing number.
+        routing_number:,
+        # Return the page of entries after this one.
+        cursor: nil,
+        # Limit the size of the list that is returned. The default (and maximum) is 100
+        #   objects.
+        limit: nil,
+        request_options: {}
+      )
       end
 
       sig { params(client: Increase::Client).returns(T.attached_class) }

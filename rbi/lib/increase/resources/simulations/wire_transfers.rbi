@@ -15,7 +15,11 @@ module Increase
           )
             .returns(Increase::Models::WireTransfer)
         end
-        def reverse(wire_transfer_id, request_options: {})
+        def reverse(
+          # The identifier of the Wire Transfer you wish to reverse.
+          wire_transfer_id,
+          request_options: {}
+        )
         end
 
         # Simulates the submission of a [Wire Transfer](#wire-transfers) to the Federal
@@ -28,7 +32,11 @@ module Increase
           )
             .returns(Increase::Models::WireTransfer)
         end
-        def submit(wire_transfer_id, request_options: {})
+        def submit(
+          # The identifier of the Wire Transfer you wish to submit.
+          wire_transfer_id,
+          request_options: {}
+        )
         end
 
         sig { params(client: Increase::Client).returns(T.attached_class) }

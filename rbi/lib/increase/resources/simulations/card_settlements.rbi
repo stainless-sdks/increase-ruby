@@ -18,7 +18,17 @@ module Increase
           )
             .returns(Increase::Models::Transaction)
         end
-        def create(card_id:, pending_transaction_id:, amount: nil, request_options: {})
+        def create(
+          # The identifier of the Card to create a settlement on.
+          card_id:,
+          # The identifier of the Pending Transaction for the Card Authorization you wish to
+          #   settle.
+          pending_transaction_id:,
+          # The amount to be settled. This defaults to the amount of the Pending Transaction
+          #   being settled.
+          amount: nil,
+          request_options: {}
+        )
         end
 
         sig { params(client: Increase::Client).returns(T.attached_class) }

@@ -15,7 +15,11 @@ module Increase
           )
             .returns(Increase::Models::AccountTransfer)
         end
-        def complete(account_transfer_id, request_options: {})
+        def complete(
+          # The identifier of the Account Transfer you wish to complete.
+          account_transfer_id,
+          request_options: {}
+        )
         end
 
         sig { params(client: Increase::Client).returns(T.attached_class) }

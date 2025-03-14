@@ -11,7 +11,11 @@ module Increase
         )
           .returns(Increase::Models::PendingTransaction)
       end
-      def retrieve(pending_transaction_id, request_options: {})
+      def retrieve(
+        # The identifier of the Pending Transaction.
+        pending_transaction_id,
+        request_options: {}
+      )
       end
 
       # List Pending Transactions
@@ -29,11 +33,16 @@ module Increase
           .returns(Increase::Page[Increase::Models::PendingTransaction])
       end
       def list(
+        # Filter pending transactions to those belonging to the specified Account.
         account_id: nil,
         category: nil,
         created_at: nil,
+        # Return the page of entries after this one.
         cursor: nil,
+        # Limit the size of the list that is returned. The default (and maximum) is 100
+        #   objects.
         limit: nil,
+        # Filter pending transactions to those belonging to the specified Route.
         route_id: nil,
         status: nil,
         request_options: {}
