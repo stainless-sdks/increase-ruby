@@ -7,8 +7,8 @@ module Increase
         expires_at: Time,
         file_id: String,
         idempotency_key: String?,
-        public_download_url: String,
-        type: Increase::Models::FileLink::type_
+        type: Increase::Models::FileLink::type_,
+        unauthenticated_url: String
       }
 
     class FileLink < Increase::BaseModel
@@ -22,9 +22,9 @@ module Increase
 
       attr_accessor idempotency_key: String?
 
-      attr_accessor public_download_url: String
-
       attr_accessor type: Increase::Models::FileLink::type_
+
+      attr_accessor unauthenticated_url: String
 
       def initialize:
         (
@@ -33,8 +33,8 @@ module Increase
           expires_at: Time,
           file_id: String,
           idempotency_key: String?,
-          public_download_url: String,
-          type: Increase::Models::FileLink::type_
+          type: Increase::Models::FileLink::type_,
+          unauthenticated_url: String
         ) -> void
         | (?Increase::Models::file_link | Increase::BaseModel data) -> void
 
