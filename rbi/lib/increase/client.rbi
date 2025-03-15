@@ -167,6 +167,10 @@ module Increase
     def files
     end
 
+    sig { returns(Increase::Resources::FileLinks) }
+    def file_links
+    end
+
     sig { returns(Increase::Resources::Documents) }
     def documents
     end
