@@ -40,7 +40,9 @@ module Increase
       end
 
       # A URL from where the File can be downloaded at this point in time. The location
-      #   of this URL may change over time.
+      #   of this URL may change over time. This URL requires authentication with your
+      #   Increase API key. If you need a URL that does not require authentication, create
+      #   a File Link instead.
       sig { returns(T.nilable(String)) }
       def download_url
       end

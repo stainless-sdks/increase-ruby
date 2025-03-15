@@ -133,6 +133,9 @@ module Increase
     # @return [Increase::Resources::Files]
     attr_reader :files
 
+    # @return [Increase::Resources::FileLinks]
+    attr_reader :file_links
+
     # @return [Increase::Resources::Documents]
     attr_reader :documents
 
@@ -285,6 +288,7 @@ module Increase
       @proof_of_authorization_request_submissions = Increase::Resources::ProofOfAuthorizationRequestSubmissions.new(client: self)
       @account_statements = Increase::Resources::AccountStatements.new(client: self)
       @files = Increase::Resources::Files.new(client: self)
+      @file_links = Increase::Resources::FileLinks.new(client: self)
       @documents = Increase::Resources::Documents.new(client: self)
       @exports = Increase::Resources::Exports.new(client: self)
       @events = Increase::Resources::Events.new(client: self)

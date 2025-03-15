@@ -29,7 +29,9 @@ module Increase
 
       # @!attribute download_url
       #   A URL from where the File can be downloaded at this point in time. The location
-      #     of this URL may change over time.
+      #     of this URL may change over time. This URL requires authentication with your
+      #     Increase API key. If you need a URL that does not require authentication, create
+      #     a File Link instead.
       #
       #   @return [String, nil]
       required :download_url, String, nil?: true

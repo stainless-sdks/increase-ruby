@@ -1,0 +1,52 @@
+module Increase
+  module Models
+    type file_link =
+      {
+        id: String,
+        created_at: Time,
+        expires_at: Time,
+        file_id: String,
+        idempotency_key: String?,
+        public_download_url: String,
+        type: Increase::Models::FileLink::type_
+      }
+
+    class FileLink < Increase::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor expires_at: Time
+
+      attr_accessor file_id: String
+
+      attr_accessor idempotency_key: String?
+
+      attr_accessor public_download_url: String
+
+      attr_accessor type: Increase::Models::FileLink::type_
+
+      def initialize:
+        (
+          id: String,
+          created_at: Time,
+          expires_at: Time,
+          file_id: String,
+          idempotency_key: String?,
+          public_download_url: String,
+          type: Increase::Models::FileLink::type_
+        ) -> void
+        | (?Increase::Models::file_link | Increase::BaseModel data) -> void
+
+      def to_hash: -> Increase::Models::file_link
+
+      type type_ = :file_link
+
+      class Type < Increase::Enum
+        FILE_LINK: :file_link
+
+        def self.values: -> ::Array[Increase::Models::FileLink::type_]
+      end
+    end
+  end
+end

@@ -89,6 +89,8 @@ module Increase
 
     attr_reader files: Increase::Resources::Files
 
+    attr_reader file_links: Increase::Resources::FileLinks
+
     attr_reader documents: Increase::Resources::Documents
 
     attr_reader exports: Increase::Resources::Exports
