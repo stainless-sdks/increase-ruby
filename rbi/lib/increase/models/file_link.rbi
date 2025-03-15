@@ -52,17 +52,6 @@ module Increase
       def idempotency_key=(_)
       end
 
-      # A URL where the File can be downloaded. The URL will expire after the
-      #   `expires_at` time. This URL is unauthenticated and can be used to download the
-      #   File without an Increase API key.
-      sig { returns(String) }
-      def public_download_url
-      end
-
-      sig { params(_: String).returns(String) }
-      def public_download_url=(_)
-      end
-
       # A constant representing the object's type. For this resource it will always be
       #   `file_link`.
       sig { returns(Symbol) }
@@ -73,9 +62,18 @@ module Increase
       def type=(_)
       end
 
-      # Normally Files can only be downloaded via the API using your Increase API key.
-      #   File Links let you generate signed URLs for Files that can be used to download
-      #   the File without an Increase API key.
+      # A URL where the File can be downloaded. The URL will expire after the
+      #   `expires_at` time. This URL is unauthenticated and can be used to download the
+      #   File without an Increase API key.
+      sig { returns(String) }
+      def unauthenticated_url
+      end
+
+      sig { params(_: String).returns(String) }
+      def unauthenticated_url=(_)
+      end
+
+      # File Links let you generate a URL that can be used to download a File.
       sig do
         params(
           id: String,
@@ -83,12 +81,12 @@ module Increase
           expires_at: Time,
           file_id: String,
           idempotency_key: T.nilable(String),
-          public_download_url: String,
-          type: Symbol
+          type: Symbol,
+          unauthenticated_url: String
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, created_at:, expires_at:, file_id:, idempotency_key:, public_download_url:, type:)
+      def self.new(id:, created_at:, expires_at:, file_id:, idempotency_key:, type:, unauthenticated_url:)
       end
 
       sig do
@@ -100,8 +98,8 @@ module Increase
               expires_at: Time,
               file_id: String,
               idempotency_key: T.nilable(String),
-              public_download_url: String,
-              type: Symbol
+              type: Symbol,
+              unauthenticated_url: String
             }
           )
       end

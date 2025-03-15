@@ -6,7 +6,6 @@ module Increase
         created_at: Time,
         description: String?,
         direction: Increase::Models::File::direction,
-        download_url: String?,
         filename: String?,
         idempotency_key: String?,
         mime_type: String,
@@ -22,8 +21,6 @@ module Increase
       attr_accessor description: String?
 
       attr_accessor direction: Increase::Models::File::direction
-
-      attr_accessor download_url: String?
 
       attr_accessor filename: String?
 
@@ -41,7 +38,6 @@ module Increase
           created_at: Time,
           description: String?,
           direction: Increase::Models::File::direction,
-          download_url: String?,
           filename: String?,
           idempotency_key: String?,
           mime_type: String,

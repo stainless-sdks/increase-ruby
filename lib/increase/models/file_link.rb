@@ -37,14 +37,6 @@ module Increase
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
 
-      # @!attribute public_download_url
-      #   A URL where the File can be downloaded. The URL will expire after the
-      #     `expires_at` time. This URL is unauthenticated and can be used to download the
-      #     File without an Increase API key.
-      #
-      #   @return [String]
-      required :public_download_url, String
-
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
       #     `file_link`.
@@ -52,20 +44,26 @@ module Increase
       #   @return [Symbol, Increase::Models::FileLink::Type]
       required :type, enum: -> { Increase::Models::FileLink::Type }
 
+      # @!attribute unauthenticated_url
+      #   A URL where the File can be downloaded. The URL will expire after the
+      #     `expires_at` time. This URL is unauthenticated and can be used to download the
+      #     File without an Increase API key.
+      #
+      #   @return [String]
+      required :unauthenticated_url, String
+
       # @!parse
-      #   # Normally Files can only be downloaded via the API using your Increase API key.
-      #   #   File Links let you generate signed URLs for Files that can be used to download
-      #   #   the File without an Increase API key.
+      #   # File Links let you generate a URL that can be used to download a File.
       #   #
       #   # @param id [String]
       #   # @param created_at [Time]
       #   # @param expires_at [Time]
       #   # @param file_id [String]
       #   # @param idempotency_key [String, nil]
-      #   # @param public_download_url [String]
       #   # @param type [Symbol, Increase::Models::FileLink::Type]
+      #   # @param unauthenticated_url [String]
       #   #
-      #   def initialize(id:, created_at:, expires_at:, file_id:, idempotency_key:, public_download_url:, type:, **) = super
+      #   def initialize(id:, created_at:, expires_at:, file_id:, idempotency_key:, type:, unauthenticated_url:, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
