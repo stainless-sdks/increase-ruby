@@ -1,9 +1,0 @@
-module Increase
-  class Page[Elem]
-    include Increase::BasePage[Elem]
-
-    attr_accessor data: ::Array[Elem]?
-
-    attr_accessor next_cursor: String?
-  end
-end
