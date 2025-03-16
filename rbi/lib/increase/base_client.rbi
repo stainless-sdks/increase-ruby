@@ -1,6 +1,7 @@
 # typed: strong
 
 module Increase
+  # @api private
   class BaseClient
     abstract!
 
