@@ -117,25 +117,23 @@ module Increase
       class RejectionReason < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # The mail item does not match any lockbox.
-        NO_MATCHING_LOCKBOX = T.let(:no_matching_lockbox, T.nilable(Symbol))
+        NO_MATCHING_LOCKBOX = :no_matching_lockbox
 
         # The mail item does not contain a check.
-        NO_CHECK = T.let(:no_check, T.nilable(Symbol))
+        NO_CHECK = :no_check
 
         # The Lockbox or its associated Account is not active.
-        LOCKBOX_NOT_ACTIVE = T.let(:lockbox_not_active, T.nilable(Symbol))
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        LOCKBOX_NOT_ACTIVE = :lockbox_not_active
       end
 
       # If the mail item has been processed.
       class Status < Increase::Enum
         abstract!
+
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The mail item is pending processing.
         PENDING = :pending
@@ -145,12 +143,6 @@ module Increase
 
         # The mail item has been rejected.
         REJECTED = :rejected
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -158,13 +150,9 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        INBOUND_MAIL_ITEM = :inbound_mail_item
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        INBOUND_MAIL_ITEM = :inbound_mail_item
       end
     end
   end

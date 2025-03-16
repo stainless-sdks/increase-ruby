@@ -180,6 +180,8 @@ module Increase
         class In < Increase::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           # The Inbound ACH Transfer is awaiting action, will transition automatically if no action is taken.
           PENDING = :pending
 
@@ -191,12 +193,6 @@ module Increase
 
           # The Inbound ACH Transfer has been returned.
           RETURNED = :returned
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
     end

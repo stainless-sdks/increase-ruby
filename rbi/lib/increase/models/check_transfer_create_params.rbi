@@ -127,17 +127,13 @@ module Increase
       class FulfillmentMethod < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # Increase will print and mail a physical check.
         PHYSICAL_CHECK = :physical_check
 
         # Increase will not print a check; you are responsible for printing and mailing a check with the provided account number, routing number, check number, and amount.
         THIRD_PARTY = :third_party
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       class PhysicalCheck < Increase::BaseModel

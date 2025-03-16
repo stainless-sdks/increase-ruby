@@ -95,6 +95,8 @@ module Increase
       class Category < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # Internal Revenue Service Form 1099-INT.
         FORM_1099_INT = :form_1099_int
 
@@ -106,12 +108,6 @@ module Increase
 
         # Company information, such a policies or procedures, typically submitted during our due diligence process.
         COMPANY_INFORMATION = :company_information
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -119,13 +115,9 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        DOCUMENT = :document
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        DOCUMENT = :document
       end
     end
   end

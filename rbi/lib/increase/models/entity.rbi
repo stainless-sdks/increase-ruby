@@ -646,6 +646,8 @@ module Increase
               class Method < Increase::Enum
                 abstract!
 
+                Value = type_template(:out) { {fixed: Symbol} }
+
                 # A social security number.
                 SOCIAL_SECURITY_NUMBER = :social_security_number
 
@@ -660,12 +662,6 @@ module Increase
 
                 # Another identifying document.
                 OTHER = :other
-
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
-                end
               end
             end
           end
@@ -674,17 +670,13 @@ module Increase
           class Prong < Increase::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             # A person with 25% or greater direct or indirect ownership of the entity.
             OWNERSHIP = :ownership
 
             # A person who manages, directs, or has significant control of the entity.
             CONTROL = :control
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
       end
@@ -884,14 +876,10 @@ module Increase
         class Category < Increase::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           # The Public Entity is a Municipality.
           MUNICIPALITY = :municipality
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
 
@@ -1101,6 +1089,8 @@ module Increase
             class Method < Increase::Enum
               abstract!
 
+              Value = type_template(:out) { {fixed: Symbol} }
+
               # A social security number.
               SOCIAL_SECURITY_NUMBER = :social_security_number
 
@@ -1115,12 +1105,6 @@ module Increase
 
               # Another identifying document.
               OTHER = :other
-
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
-              end
             end
           end
         end
@@ -1300,6 +1284,8 @@ module Increase
           class Method < Increase::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             # A social security number.
             SOCIAL_SECURITY_NUMBER = :social_security_number
 
@@ -1314,12 +1300,6 @@ module Increase
 
             # Another identifying document.
             OTHER = :other
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
       end
@@ -1327,6 +1307,8 @@ module Increase
       # The status of the entity.
       class Status < Increase::Enum
         abstract!
+
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The entity is active.
         ACTIVE = :active
@@ -1336,17 +1318,13 @@ module Increase
 
         # The entity is temporarily disabled and cannot be used for financial activity.
         DISABLED = :disabled
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # The entity's legal structure.
       class Structure < Increase::Enum
         abstract!
+
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # A corporation.
         CORPORATION = :corporation
@@ -1362,12 +1340,6 @@ module Increase
 
         # A government authority.
         GOVERNMENT_AUTHORITY = :government_authority
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       class ThirdPartyVerification < Increase::BaseModel
@@ -1403,17 +1375,13 @@ module Increase
         class Vendor < Increase::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           # Alloy. See https://alloy.com for more information.
           ALLOY = :alloy
 
           # Middesk. See https://middesk.com for more information.
           MIDDESK = :middesk
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
 
@@ -1615,17 +1583,13 @@ module Increase
         class Category < Increase::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           # The trust is revocable by the grantor.
           REVOCABLE = :revocable
 
           # The trust cannot be revoked.
           IRREVOCABLE = :irrevocable
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class Grantor < Increase::BaseModel
@@ -1801,6 +1765,8 @@ module Increase
             class Method < Increase::Enum
               abstract!
 
+              Value = type_template(:out) { {fixed: Symbol} }
+
               # A social security number.
               SOCIAL_SECURITY_NUMBER = :social_security_number
 
@@ -1815,12 +1781,6 @@ module Increase
 
               # Another identifying document.
               OTHER = :other
-
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
-              end
             end
           end
         end
@@ -2036,6 +1996,8 @@ module Increase
               class Method < Increase::Enum
                 abstract!
 
+                Value = type_template(:out) { {fixed: Symbol} }
+
                 # A social security number.
                 SOCIAL_SECURITY_NUMBER = :social_security_number
 
@@ -2050,12 +2012,6 @@ module Increase
 
                 # Another identifying document.
                 OTHER = :other
-
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
-                end
               end
             end
           end
@@ -2064,14 +2020,10 @@ module Increase
           class Structure < Increase::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             # The trustee is an individual.
             INDIVIDUAL = :individual
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
       end
@@ -2081,13 +2033,9 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        ENTITY = :entity
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        ENTITY = :entity
       end
     end
   end

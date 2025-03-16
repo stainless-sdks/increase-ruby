@@ -30,6 +30,8 @@ module Increase
       class Status < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # The subscription is active and Events will be delivered normally.
         ACTIVE = :active
 
@@ -38,12 +40,6 @@ module Increase
 
         # The subscription is permanently disabled and Events will not be delivered.
         DELETED = :deleted
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
     end
   end

@@ -339,6 +339,8 @@ module Increase
       class Status < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # The Card Dispute is pending review.
         PENDING_REVIEWING = :pending_reviewing
 
@@ -356,12 +358,6 @@ module Increase
 
         # The Card Dispute has been won and no further action can be taken.
         WON = :won
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -369,13 +365,9 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        CARD_DISPUTE = :card_dispute
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        CARD_DISPUTE = :card_dispute
       end
 
       class Win < Increase::BaseModel

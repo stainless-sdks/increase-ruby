@@ -559,6 +559,8 @@ module Increase
         class Category < Increase::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           # An API key. Details will be under the `api_key` object.
           API_KEY = :api_key
 
@@ -567,12 +569,6 @@ module Increase
 
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER = :user
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class OAuthApplication < Increase::BaseModel
@@ -621,6 +617,8 @@ module Increase
       class Currency < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # Canadian Dollar (CAD)
         CAD = :CAD
 
@@ -638,25 +636,15 @@ module Increase
 
         # US Dollar (USD)
         USD = :USD
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # The transfer's network.
       class Network < Increase::Enum
         abstract!
 
-        WIRE = :wire
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        WIRE = :wire
       end
 
       class Reversal < Increase::BaseModel
@@ -894,6 +882,8 @@ module Increase
       class Status < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # The transfer is pending approval.
         PENDING_APPROVAL = :pending_approval
 
@@ -920,12 +910,6 @@ module Increase
 
         # The transfer has been acknowledged by Fedwire and can be considered complete.
         COMPLETE = :complete
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       class Submission < Increase::BaseModel
@@ -965,13 +949,9 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        WIRE_TRANSFER = :wire_transfer
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        WIRE_TRANSFER = :wire_transfer
       end
     end
   end

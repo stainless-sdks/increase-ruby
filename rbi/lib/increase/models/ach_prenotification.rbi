@@ -231,17 +231,13 @@ module Increase
       class CreditDebitIndicator < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # The Prenotification is for an anticipated credit.
-        CREDIT = T.let(:credit, T.nilable(Symbol))
+        CREDIT = :credit
 
         # The Prenotification is for an anticipated debit.
-        DEBIT = T.let(:debit, T.nilable(Symbol))
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        DEBIT = :debit
       end
 
       class NotificationsOfChange < Increase::BaseModel
@@ -292,6 +288,8 @@ module Increase
         #   institution.
         class ChangeCode < Increase::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # The account number was incorrect.
           INCORRECT_ACCOUNT_NUMBER = :incorrect_account_number
@@ -349,12 +347,6 @@ module Increase
 
           # The transaction code was incorrect, initiated by the originating depository financial institution.
           INCORRECT_TRANSACTION_CODE_BY_ORIGINATING_DEPOSITORY_FINANCIAL_INSTITUTION = :incorrect_transaction_code_by_originating_depository_financial_institution
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
 
@@ -390,6 +382,8 @@ module Increase
         # Why the Prenotification was returned.
         class ReturnReasonCode < Increase::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
           INSUFFICIENT_FUND = :insufficient_fund
@@ -600,18 +594,14 @@ module Increase
 
           # Code R68. A rare return reason. The return was sent too late.
           UNTIMELY_RETURN = :untimely_return
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
 
       # The lifecycle status of the ACH Prenotification.
       class Status < Increase::Enum
         abstract!
+
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The Prenotification is pending submission.
         PENDING_SUBMITTING = :pending_submitting
@@ -624,12 +614,6 @@ module Increase
 
         # The Prenotification is complete.
         SUBMITTED = :submitted
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -637,13 +621,9 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        ACH_PRENOTIFICATION = :ach_prenotification
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        ACH_PRENOTIFICATION = :ach_prenotification
       end
     end
   end

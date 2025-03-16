@@ -116,13 +116,9 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        PROOF_OF_AUTHORIZATION_REQUEST = :proof_of_authorization_request
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        PROOF_OF_AUTHORIZATION_REQUEST = :proof_of_authorization_request
       end
     end
   end

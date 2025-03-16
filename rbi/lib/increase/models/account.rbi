@@ -220,6 +220,8 @@ module Increase
       class Bank < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # Core Bank
         CORE_BANK = :core_bank
 
@@ -228,18 +230,14 @@ module Increase
 
         # Grasshopper Bank
         GRASSHOPPER_BANK = :grasshopper_bank
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
       #   currency.
       class Currency < Increase::Enum
         abstract!
+
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # Canadian Dollar (CAD)
         CAD = :CAD
@@ -258,29 +256,19 @@ module Increase
 
         # US Dollar (USD)
         USD = :USD
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # The status of the Account.
       class Status < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # Closed Accounts on which no new activity can occur.
         CLOSED = :closed
 
         # Open Accounts that are ready to use.
         OPEN = :open
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -288,13 +276,9 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        ACCOUNT = :account
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        ACCOUNT = :account
       end
     end
   end

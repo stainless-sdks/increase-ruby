@@ -47,13 +47,9 @@ module Increase
       class TokenType < Increase::Enum
         abstract!
 
-        BEARER = :bearer
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        BEARER = :bearer
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -61,13 +57,9 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        OAUTH_TOKEN = :oauth_token
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        OAUTH_TOKEN = :oauth_token
       end
     end
   end

@@ -333,6 +333,8 @@ module Increase
       class Status < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # The Inbound Wire Transfer is awaiting action, will transition automatically if no action is taken.
         PENDING = :pending
 
@@ -344,12 +346,6 @@ module Increase
 
         # The Inbound Wire Transfer was reversed.
         REVERSED = :reversed
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -357,13 +353,9 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        INBOUND_WIRE_TRANSFER = :inbound_wire_transfer
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        INBOUND_WIRE_TRANSFER = :inbound_wire_transfer
       end
     end
   end

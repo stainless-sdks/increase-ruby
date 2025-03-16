@@ -205,17 +205,13 @@ module Increase
         class In < Increase::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           # Closed Accounts on which no new activity can occur.
           CLOSED = :closed
 
           # Open Accounts that are ready to use.
           OPEN = :open
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
     end

@@ -314,13 +314,9 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        INBOUND_WIRE_DRAWDOWN_REQUEST = :inbound_wire_drawdown_request
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        INBOUND_WIRE_DRAWDOWN_REQUEST = :inbound_wire_drawdown_request
       end
     end
   end

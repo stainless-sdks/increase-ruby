@@ -155,6 +155,8 @@ module Increase
       class Status < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # The exclusion is being added to the IntraFi network.
         PENDING = :pending
 
@@ -163,12 +165,6 @@ module Increase
 
         # The exclusion has been removed from the IntraFi network.
         ARCHIVED = :archived
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -176,13 +172,9 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        INTRAFI_EXCLUSION = :intrafi_exclusion
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        INTRAFI_EXCLUSION = :intrafi_exclusion
       end
     end
   end
