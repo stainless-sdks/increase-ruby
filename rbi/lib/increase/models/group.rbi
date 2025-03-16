@@ -84,26 +84,34 @@ module Increase
       class ACHDebitStatus < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # The Group cannot make ACH debits.
         DISABLED = :disabled
 
         # The Group can make ACH debits.
         ENABLED = :enabled
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # If the Group is activated or not.
       class ActivationStatus < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # The Group is not activated.
         UNACTIVATED = :unactivated
 
         # The Group is activated.
         ACTIVATED = :activated
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -111,9 +119,13 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         GROUP = :group
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

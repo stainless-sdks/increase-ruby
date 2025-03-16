@@ -255,8 +255,6 @@ module Increase
         class Method < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # USPS Post with tracking.
           USPS = :usps
 
@@ -265,6 +263,12 @@ module Increase
 
           # FedEx 2-day.
           FEDEX_2_DAY = :fedex_2_day
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
     end

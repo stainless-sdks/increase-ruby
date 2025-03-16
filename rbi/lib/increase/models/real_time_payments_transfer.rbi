@@ -542,8 +542,6 @@ module Increase
         class Category < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # An API key. Details will be under the `api_key` object.
           API_KEY = :api_key
 
@@ -552,6 +550,12 @@ module Increase
 
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER = :user
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         class OAuthApplication < Increase::BaseModel
@@ -600,8 +604,6 @@ module Increase
       class Currency < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # Canadian Dollar (CAD)
         CAD = :CAD
 
@@ -619,6 +621,12 @@ module Increase
 
         # US Dollar (USD)
         USD = :USD
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       class Rejection < Increase::BaseModel
@@ -683,8 +691,6 @@ module Increase
         class RejectReasonCode < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # The destination account is closed. Corresponds to the Real-Time Payments reason code `AC04`.
           ACCOUNT_CLOSED = :account_closed
 
@@ -747,14 +753,18 @@ module Increase
 
           # Some other error or issue has occurred.
           OTHER = :other
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
       # The lifecycle status of the transfer.
       class Status < Increase::Enum
         abstract!
-
-        Value = type_template(:out) { {fixed: Symbol} }
 
         # The transfer is pending approval.
         PENDING_APPROVAL = :pending_approval
@@ -779,6 +789,12 @@ module Increase
 
         # The transfer has been sent successfully and is complete.
         COMPLETE = :complete
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       class Submission < Increase::BaseModel
@@ -819,9 +835,13 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         REAL_TIME_PAYMENTS_TRANSFER = :real_time_payments_transfer
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

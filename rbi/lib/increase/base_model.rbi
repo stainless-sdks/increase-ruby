@@ -3,6 +3,8 @@
 module Increase
   # @api private
   module Converter
+    abstract!
+
     Input = T.type_alias { T.any(Increase::Converter, T::Class[T.anything]) }
 
     # @api private
@@ -76,8 +78,6 @@ module Increase
     end
   end
 
-  # @api private
-  #
   # When we don't know what to expect for the value.
   class Unknown
     extend Increase::Converter
@@ -115,8 +115,6 @@ module Increase
     end
   end
 
-  # @api private
-  #
   # Ruby has no Boolean class; this is something for models to refer to.
   class BooleanModel
     extend Increase::Converter
@@ -158,8 +156,6 @@ module Increase
     end
   end
 
-  # @api private
-  #
   # A value from among a specified list of options. OpenAPI enum values map to Ruby
   #   values in the SDK as follows:
   #
@@ -175,11 +171,9 @@ module Increase
 
     abstract!
 
-    Value = type_template(:out)
-
     class << self
       # All of the valid Symbol values for this enum.
-      sig { overridable.returns(T::Array[Value]) }
+      sig { overridable.returns(T::Array[T.any(NilClass, T::Boolean, Integer, Float, Symbol)]) }
       def values
       end
 
@@ -221,29 +215,26 @@ module Increase
     end
   end
 
-  # @api private
   class Union
     extend Increase::Converter
 
     abstract!
 
-    Variants = type_template(:out)
-
     class << self
       # @api private
       #
       # All of the specified variant info for this union.
-      sig { returns(T::Array[[T.nilable(Symbol), T.proc.returns(Variants)]]) }
+      sig { returns(T::Array[[T.nilable(Symbol), Proc]]) }
       private def known_variants
       end
 
       # @api private
-      sig { returns(T::Array[[T.nilable(Symbol), Variants]]) }
+      sig { returns(T::Array[[T.nilable(Symbol), T.anything]]) }
       protected def derefed_variants
       end
 
       # All of the specified variants for this union.
-      sig { overridable.returns(T::Array[Variants]) }
+      sig { overridable.returns(T::Array[T.anything]) }
       def variants
       end
 
@@ -255,8 +246,17 @@ module Increase
       # @api private
       sig do
         params(
-          key: T.any(Symbol, T::Hash[Symbol, T.anything], T.proc.returns(Variants), Variants),
-          spec: T.any(T::Hash[Symbol, T.anything], T.proc.returns(Variants), Variants)
+          key: T.any(
+            Symbol,
+            T::Hash[Symbol, T.anything],
+            T.proc.returns(Increase::Converter::Input),
+            Increase::Converter::Input
+          ),
+          spec: T.any(
+            T::Hash[Symbol, T.anything],
+            T.proc.returns(Increase::Converter::Input),
+            Increase::Converter::Input
+          )
         )
           .void
       end
@@ -264,7 +264,7 @@ module Increase
       end
 
       # @api private
-      sig { params(value: T.anything).returns(T.nilable(Variants)) }
+      sig { params(value: T.anything).returns(T.nilable(Increase::Converter::Input)) }
       private def resolve_variant(value)
       end
     end
@@ -299,16 +299,12 @@ module Increase
     end
   end
 
-  # @api private
-  #
   # Array of items of a given type.
   class ArrayOf
     include Increase::Converter
 
     abstract!
     final!
-
-    Elem = type_member(:out)
 
     sig(:final) { params(other: T.anything).returns(T::Boolean) }
     def ===(other)
@@ -346,7 +342,7 @@ module Increase
     end
 
     # @api private
-    sig(:final) { returns(Elem) }
+    sig(:final) { returns(Increase::Converter::Input) }
     protected def item_type
     end
 
@@ -366,16 +362,12 @@ module Increase
     end
   end
 
-  # @api private
-  #
   # Hash of items of a given type.
   class HashOf
     include Increase::Converter
 
     abstract!
     final!
-
-    Elem = type_member(:out)
 
     sig(:final) { params(other: T.anything).returns(T::Boolean) }
     def ===(other)
@@ -413,7 +405,7 @@ module Increase
     end
 
     # @api private
-    sig(:final) { returns(Elem) }
+    sig(:final) { returns(Increase::Converter::Input) }
     protected def item_type
     end
 

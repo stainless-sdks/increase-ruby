@@ -161,8 +161,6 @@ module Increase
         class In < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # The entity is active.
           ACTIVE = :active
 
@@ -171,6 +169,12 @@ module Increase
 
           # The entity is temporarily disabled and cannot be used for financial activity.
           DISABLED = :disabled
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
     end

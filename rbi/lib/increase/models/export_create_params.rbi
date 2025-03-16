@@ -135,8 +135,6 @@ module Increase
       class Category < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # Export an Open Financial Exchange (OFX) file of transactions and balances for a given time range and Account.
         ACCOUNT_STATEMENT_OFX = :account_statement_ofx
 
@@ -154,6 +152,12 @@ module Increase
 
         # Export a CSV of vendors added to the third-party risk management dashboard.
         VENDOR_CSV = :vendor_csv
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       class AccountStatementOfx < Increase::BaseModel
@@ -509,8 +513,6 @@ module Increase
           class In < Increase::Enum
             abstract!
 
-            Value = type_template(:out) { {fixed: Symbol} }
-
             # The entity is active.
             ACTIVE = :active
 
@@ -519,6 +521,12 @@ module Increase
 
             # The entity is temporarily disabled and cannot be used for financial activity.
             DISABLED = :disabled
+
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
+            end
           end
         end
       end

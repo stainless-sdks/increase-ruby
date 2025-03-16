@@ -64,8 +64,6 @@ module Increase
           class RejectReasonCode < Increase::Enum
             abstract!
 
-            Value = type_template(:out) { {fixed: Symbol} }
-
             # The destination account is closed. Corresponds to the Real-Time Payments reason code `AC04`.
             ACCOUNT_CLOSED = :account_closed
 
@@ -128,6 +126,12 @@ module Increase
 
             # Some other error or issue has occurred.
             OTHER = :other
+
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
+            end
           end
         end
       end

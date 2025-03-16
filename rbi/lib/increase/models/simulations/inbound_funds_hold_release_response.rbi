@@ -155,8 +155,6 @@ module Increase
         class Currency < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # Canadian Dollar (CAD)
           CAD = :CAD
 
@@ -174,19 +172,29 @@ module Increase
 
           # US Dollar (USD)
           USD = :USD
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         # The status of the hold.
         class Status < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # Funds are still being held.
           HELD = :held
 
           # Funds have been released.
           COMPLETE = :complete
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         # A constant representing the object's type. For this resource it will always be
@@ -194,9 +202,13 @@ module Increase
         class Type < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           INBOUND_FUNDS_HOLD = :inbound_funds_hold
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
     end

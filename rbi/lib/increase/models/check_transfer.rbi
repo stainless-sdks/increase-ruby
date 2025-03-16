@@ -501,8 +501,6 @@ module Increase
         class Category < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # An API key. Details will be under the `api_key` object.
           API_KEY = :api_key
 
@@ -511,6 +509,12 @@ module Increase
 
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER = :user
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         class OAuthApplication < Increase::BaseModel
@@ -559,8 +563,6 @@ module Increase
       class Currency < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # Canadian Dollar (CAD)
         CAD = :CAD
 
@@ -578,19 +580,29 @@ module Increase
 
         # US Dollar (USD)
         USD = :USD
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # Whether Increase will print and mail the check or if you will do it yourself.
       class FulfillmentMethod < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # Increase will print and mail a physical check.
         PHYSICAL_CHECK = :physical_check
 
         # Increase will not print a check; you are responsible for printing and mailing a check with the provided account number, routing number, check number, and amount.
         THIRD_PARTY = :third_party
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       class Mailing < Increase::BaseModel
@@ -945,13 +957,17 @@ module Increase
         class ShippingMethod < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # USPS First Class
-          USPS_FIRST_CLASS = :usps_first_class
+          USPS_FIRST_CLASS = T.let(:usps_first_class, T.nilable(Symbol))
 
           # FedEx Overnight
-          FEDEX_OVERNIGHT = :fedex_overnight
+          FEDEX_OVERNIGHT = T.let(:fedex_overnight, T.nilable(Symbol))
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         class TrackingUpdate < Increase::BaseModel
@@ -995,8 +1011,6 @@ module Increase
           class Category < Increase::Enum
             abstract!
 
-            Value = type_template(:out) { {fixed: Symbol} }
-
             # The check is in transit.
             IN_TRANSIT = :in_transit
 
@@ -1008,6 +1022,12 @@ module Increase
 
             # Delivery failed and the check was returned to sender.
             RETURNED_TO_SENDER = :returned_to_sender
+
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
+            end
           end
         end
       end
@@ -1015,8 +1035,6 @@ module Increase
       # The lifecycle status of the transfer.
       class Status < Increase::Enum
         abstract!
-
-        Value = type_template(:out) { {fixed: Symbol} }
 
         # The transfer is awaiting approval.
         PENDING_APPROVAL = :pending_approval
@@ -1047,6 +1065,12 @@ module Increase
 
         # The transfer has been returned.
         RETURNED = :returned
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       class StopPaymentRequest < Increase::BaseModel
@@ -1108,8 +1132,6 @@ module Increase
         class Reason < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # The check could not be delivered.
           MAIL_DELIVERY_FAILED = :mail_delivery_failed
 
@@ -1121,6 +1143,12 @@ module Increase
 
           # The check was stopped for another reason.
           UNKNOWN = :unknown
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         # A constant representing the object's type. For this resource it will always be
@@ -1128,9 +1156,13 @@ module Increase
         class Type < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           CHECK_TRANSFER_STOP_PAYMENT_REQUEST = :check_transfer_stop_payment_request
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -1180,9 +1212,13 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         CHECK_TRANSFER = :check_transfer
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

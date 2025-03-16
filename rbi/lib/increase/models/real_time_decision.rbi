@@ -245,16 +245,20 @@ module Increase
         class Decision < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # Approve the authentication attempt without triggering a challenge.
-          APPROVE = :approve
+          APPROVE = T.let(:approve, T.nilable(Symbol))
 
           # Request further validation before approving the authentication attempt.
-          CHALLENGE = :challenge
+          CHALLENGE = T.let(:challenge, T.nilable(Symbol))
 
           # Deny the authentication attempt.
-          DENY = :deny
+          DENY = T.let(:deny, T.nilable(Symbol))
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -338,13 +342,17 @@ module Increase
         class Result < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # Your application successfully delivered the one-time code to the cardholder.
-          SUCCESS = :success
+          SUCCESS = T.let(:success, T.nilable(Symbol))
 
           # Your application was unable to deliver the one-time code to the cardholder.
-          FAILURE = :failure
+          FAILURE = T.let(:failure, T.nilable(Symbol))
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -700,13 +708,17 @@ module Increase
         class Decision < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # Approve the authorization.
-          APPROVE = :approve
+          APPROVE = T.let(:approve, T.nilable(Symbol))
 
           # Decline the authorization.
-          DECLINE = :decline
+          DECLINE = T.let(:decline, T.nilable(Symbol))
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         # The direction describes the direction the funds will move, either from the
@@ -714,13 +726,17 @@ module Increase
         class Direction < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # A regular card authorization where funds are debited from the cardholder.
           SETTLEMENT = :settlement
 
           # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
           REFUND = :refund
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         class NetworkDetails < Increase::BaseModel
@@ -772,10 +788,14 @@ module Increase
           class Category < Increase::Enum
             abstract!
 
-            Value = type_template(:out) { {fixed: Symbol} }
-
             # Visa
             VISA = :visa
+
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
+            end
           end
 
           class Visa < Increase::BaseModel
@@ -841,31 +861,40 @@ module Increase
             class ElectronicCommerceIndicator < Increase::Enum
               abstract!
 
-              Value = type_template(:out) { {fixed: Symbol} }
-
               # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
-              MAIL_PHONE_ORDER = :mail_phone_order
+              MAIL_PHONE_ORDER = T.let(:mail_phone_order, T.nilable(Symbol))
 
               # Recurring transaction: Payment indicator used to indicate a recurring transaction that originates from an acquirer in the US region.
-              RECURRING = :recurring
+              RECURRING = T.let(:recurring, T.nilable(Symbol))
 
               # Installment payment: Payment indicator used to indicate one purchase of goods or services that is billed to the account in multiple charges over a period of time agreed upon by the cardholder and merchant from transactions that originate from an acquirer in the US region.
-              INSTALLMENT = :installment
+              INSTALLMENT = T.let(:installment, T.nilable(Symbol))
 
               # Unknown classification: other mail order: Use to indicate that the type of mail/telephone order is unknown.
-              UNKNOWN_MAIL_PHONE_ORDER = :unknown_mail_phone_order
+              UNKNOWN_MAIL_PHONE_ORDER = T.let(:unknown_mail_phone_order, T.nilable(Symbol))
 
               # Secure electronic commerce transaction: Use to indicate that the electronic commerce transaction has been authenticated using e.g., 3-D Secure
-              SECURE_ELECTRONIC_COMMERCE = :secure_electronic_commerce
+              SECURE_ELECTRONIC_COMMERCE = T.let(:secure_electronic_commerce, T.nilable(Symbol))
 
               # Non-authenticated security transaction at a 3-D Secure-capable merchant, and merchant attempted to authenticate the cardholder using 3-D Secure: Use to identify an electronic commerce transaction where the merchant attempted to authenticate the cardholder using 3-D Secure, but was unable to complete the authentication because the issuer or cardholder does not participate in the 3-D Secure program.
-              NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT = :non_authenticated_security_transaction_at_3ds_capable_merchant
+              NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT = T.let(
+                :non_authenticated_security_transaction_at_3ds_capable_merchant, T.nilable(Symbol)
+              )
 
               # Non-authenticated security transaction: Use to identify an electronic commerce transaction that uses data encryption for security however , cardholder authentication is not performed using 3-D Secure.
-              NON_AUTHENTICATED_SECURITY_TRANSACTION = :non_authenticated_security_transaction
+              NON_AUTHENTICATED_SECURITY_TRANSACTION = T.let(
+                :non_authenticated_security_transaction,
+                T.nilable(Symbol)
+              )
 
               # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
-              NON_SECURE_TRANSACTION = :non_secure_transaction
+              NON_SECURE_TRANSACTION = T.let(:non_secure_transaction, T.nilable(Symbol))
+
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
+              end
             end
 
             # The method used to enter the cardholder's primary account number and card
@@ -873,37 +902,41 @@ module Increase
             class PointOfServiceEntryMode < Increase::Enum
               abstract!
 
-              Value = type_template(:out) { {fixed: Symbol} }
-
               # Unknown
-              UNKNOWN = :unknown
+              UNKNOWN = T.let(:unknown, T.nilable(Symbol))
 
               # Manual key entry
-              MANUAL = :manual
+              MANUAL = T.let(:manual, T.nilable(Symbol))
 
               # Magnetic stripe read, without card verification value
-              MAGNETIC_STRIPE_NO_CVV = :magnetic_stripe_no_cvv
+              MAGNETIC_STRIPE_NO_CVV = T.let(:magnetic_stripe_no_cvv, T.nilable(Symbol))
 
               # Optical code
-              OPTICAL_CODE = :optical_code
+              OPTICAL_CODE = T.let(:optical_code, T.nilable(Symbol))
 
               # Contact chip card
-              INTEGRATED_CIRCUIT_CARD = :integrated_circuit_card
+              INTEGRATED_CIRCUIT_CARD = T.let(:integrated_circuit_card, T.nilable(Symbol))
 
               # Contactless read of chip card
-              CONTACTLESS = :contactless
+              CONTACTLESS = T.let(:contactless, T.nilable(Symbol))
 
               # Transaction initiated using a credential that has previously been stored on file
-              CREDENTIAL_ON_FILE = :credential_on_file
+              CREDENTIAL_ON_FILE = T.let(:credential_on_file, T.nilable(Symbol))
 
               # Magnetic stripe read
-              MAGNETIC_STRIPE = :magnetic_stripe
+              MAGNETIC_STRIPE = T.let(:magnetic_stripe, T.nilable(Symbol))
 
               # Contactless read of magnetic stripe data
-              CONTACTLESS_MAGNETIC_STRIPE = :contactless_magnetic_stripe
+              CONTACTLESS_MAGNETIC_STRIPE = T.let(:contactless_magnetic_stripe, T.nilable(Symbol))
 
               # Contact chip card, without card verification value
-              INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
+              INTEGRATED_CIRCUIT_CARD_NO_CVV = T.let(:integrated_circuit_card_no_cvv, T.nilable(Symbol))
+
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
+              end
             end
 
             # Only present when `actioner: network`. Describes why a card authorization was
@@ -911,28 +944,39 @@ module Increase
             class StandInProcessingReason < Increase::Enum
               abstract!
 
-              Value = type_template(:out) { {fixed: Symbol} }
-
               # Increase failed to process the authorization in a timely manner.
-              ISSUER_ERROR = :issuer_error
+              ISSUER_ERROR = T.let(:issuer_error, T.nilable(Symbol))
 
               # The physical card read had an invalid CVV, dCVV, or authorization request cryptogram.
-              INVALID_PHYSICAL_CARD = :invalid_physical_card
+              INVALID_PHYSICAL_CARD = T.let(:invalid_physical_card, T.nilable(Symbol))
 
               # The 3DS cardholder authentication verification value was invalid.
-              INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE = :invalid_cardholder_authentication_verification_value
+              INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE = T.let(
+                :invalid_cardholder_authentication_verification_value, T.nilable(Symbol)
+              )
 
               # An internal Visa error occurred. Visa uses this reason code for certain expected occurrences as well, such as Application Transaction Counter (ATC) replays.
-              INTERNAL_VISA_ERROR = :internal_visa_error
+              INTERNAL_VISA_ERROR = T.let(:internal_visa_error, T.nilable(Symbol))
 
               # The merchant has enabled Visa's Transaction Advisory Service and requires further authentication to perform the transaction. In practice this is often utilized at fuel pumps to tell the cardholder to see the cashier.
-              MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED = :merchant_transaction_advisory_service_authentication_required
+              MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED = T.let(
+                :merchant_transaction_advisory_service_authentication_required, T.nilable(Symbol)
+              )
 
               # The transaction was blocked by Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior, such as card testing.
-              PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK = :payment_fraud_disruption_acquirer_block
+              PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK = T.let(
+                :payment_fraud_disruption_acquirer_block,
+                T.nilable(Symbol)
+              )
 
               # An unspecific reason for stand-in processing.
-              OTHER = :other
+              OTHER = T.let(:other, T.nilable(Symbol))
+
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
+              end
             end
           end
         end
@@ -1000,8 +1044,6 @@ module Increase
         class ProcessingCategory < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
           ACCOUNT_FUNDING = :account_funding
 
@@ -1019,6 +1061,12 @@ module Increase
 
           # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
           REFUND = :refund
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         class RequestDetails < Increase::BaseModel
@@ -1091,13 +1139,17 @@ module Increase
           class Category < Increase::Enum
             abstract!
 
-            Value = type_template(:out) { {fixed: Symbol} }
-
             # A regular, standalone authorization.
             INITIAL_AUTHORIZATION = :initial_authorization
 
             # An incremental request to increase the amount of an existing authorization.
             INCREMENTAL_AUTHORIZATION = :incremental_authorization
+
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
+            end
           end
 
           class IncrementalAuthorization < Increase::BaseModel
@@ -1210,8 +1262,6 @@ module Increase
             class Result < Increase::Enum
               abstract!
 
-              Value = type_template(:out) { {fixed: Symbol} }
-
               # No card verification code was provided in the authorization request.
               NOT_CHECKED = :not_checked
 
@@ -1220,6 +1270,12 @@ module Increase
 
               # The card verification code did not match the one on file.
               NO_MATCH = :no_match
+
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
+              end
             end
           end
 
@@ -1304,8 +1360,6 @@ module Increase
             class Result < Increase::Enum
               abstract!
 
-              Value = type_template(:out) { {fixed: Symbol} }
-
               # No adress was provided in the authorization request.
               NOT_CHECKED = :not_checked
 
@@ -1323,6 +1377,12 @@ module Increase
 
               # Postal code and street address do not match.
               NO_MATCH = :no_match
+
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
+              end
             end
           end
         end
@@ -1331,8 +1391,6 @@ module Increase
       # The category of the Real-Time Decision.
       class Category < Increase::Enum
         abstract!
-
-        Value = type_template(:out) { {fixed: Symbol} }
 
         # A card is being authorized.
         CARD_AUTHORIZATION_REQUESTED = :card_authorization_requested
@@ -1348,6 +1406,12 @@ module Increase
 
         # A card is being loaded into a digital wallet and requires cardholder authentication.
         DIGITAL_WALLET_AUTHENTICATION_REQUESTED = :digital_wallet_authentication_requested
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       class DigitalWalletAuthentication < Increase::BaseModel
@@ -1452,20 +1516,22 @@ module Increase
         class Channel < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # Send one-time passcodes over SMS.
           SMS = :sms
 
           # Send one-time passcodes over email.
           EMAIL = :email
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         # The digital wallet app being used.
         class DigitalWallet < Increase::Enum
           abstract!
-
-          Value = type_template(:out) { {fixed: Symbol} }
 
           # Apple Pay
           APPLE_PAY = :apple_pay
@@ -1478,19 +1544,29 @@ module Increase
 
           # Unknown
           UNKNOWN = :unknown
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         # Whether your application successfully delivered the one-time passcode.
         class Result < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # Your application successfully delivered the one-time passcode to the cardholder.
-          SUCCESS = :success
+          SUCCESS = T.let(:success, T.nilable(Symbol))
 
           # Your application failed to deliver the one-time passcode to the cardholder.
-          FAILURE = :failure
+          FAILURE = T.let(:failure, T.nilable(Symbol))
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -1566,20 +1642,22 @@ module Increase
         class Decision < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # Approve the provisioning request.
-          APPROVE = :approve
+          APPROVE = T.let(:approve, T.nilable(Symbol))
 
           # Decline the provisioning request.
-          DECLINE = :decline
+          DECLINE = T.let(:decline, T.nilable(Symbol))
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         # The digital wallet app being used.
         class DigitalWallet < Increase::Enum
           abstract!
-
-          Value = type_template(:out) { {fixed: Symbol} }
 
           # Apple Pay
           APPLE_PAY = :apple_pay
@@ -1592,14 +1670,18 @@ module Increase
 
           # Unknown
           UNKNOWN = :unknown
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
       # The status of the Real-Time Decision.
       class Status < Increase::Enum
         abstract!
-
-        Value = type_template(:out) { {fixed: Symbol} }
 
         # The decision is pending action via real-time webhook.
         PENDING = :pending
@@ -1609,6 +1691,12 @@ module Increase
 
         # Your webhook failed to respond to the authorization in time.
         TIMED_OUT = :timed_out
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -1616,9 +1704,13 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         REAL_TIME_DECISION = :real_time_decision
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

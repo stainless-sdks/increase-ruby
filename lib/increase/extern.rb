@@ -2,6 +2,8 @@
 
 module Increase
   # @api private
+  #
+  # @abstract
   module Extern
   end
 end

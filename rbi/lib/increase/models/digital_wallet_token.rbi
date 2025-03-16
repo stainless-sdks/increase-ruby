@@ -110,8 +110,6 @@ module Increase
       class Status < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # The digital wallet token is active.
         ACTIVE = :active
 
@@ -123,13 +121,17 @@ module Increase
 
         # The digital wallet token has been permanently canceled.
         DEACTIVATED = :deactivated
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # The digital wallet app being used.
       class TokenRequestor < Increase::Enum
         abstract!
-
-        Value = type_template(:out) { {fixed: Symbol} }
 
         # Apple Pay
         APPLE_PAY = :apple_pay
@@ -142,6 +144,12 @@ module Increase
 
         # Unknown
         UNKNOWN = :unknown
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -149,9 +157,13 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         DIGITAL_WALLET_TOKEN = :digital_wallet_token
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       class Update < Increase::BaseModel
@@ -186,8 +198,6 @@ module Increase
         class Status < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # The digital wallet token is active.
           ACTIVE = :active
 
@@ -199,6 +209,12 @@ module Increase
 
           # The digital wallet token has been permanently canceled.
           DEACTIVATED = :deactivated
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
     end

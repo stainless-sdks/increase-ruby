@@ -1,7 +1,6 @@
 # typed: strong
 
 module Increase
-  # @api private
   class PooledNetRequester
     RequestShape = T.type_alias do
       {method: Symbol, url: URI::Generic, headers: T::Hash[String, String], body: T.anything, deadline: Float}
@@ -28,14 +27,14 @@ module Increase
     end
 
     # @api private
-    sig { params(url: URI::Generic, deadline: Float, blk: T.proc.params(arg0: Net::HTTP).void).void }
-    private def with_pool(url, deadline:, &blk)
+    sig { params(url: URI::Generic, blk: T.proc.params(arg0: Net::HTTP).void).void }
+    private def with_pool(url, &blk)
     end
 
     # @api private
     sig do
       params(request: Increase::PooledNetRequester::RequestShape)
-        .returns([Integer, Net::HTTPResponse, T::Enumerable[String]])
+        .returns([Net::HTTPResponse, T::Enumerable[String]])
     end
     def execute(request)
     end

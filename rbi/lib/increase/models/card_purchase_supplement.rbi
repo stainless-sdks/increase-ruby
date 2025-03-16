@@ -315,38 +315,51 @@ module Increase
         class DiscountTreatmentCode < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # No invoice level discount provided
-          NO_INVOICE_LEVEL_DISCOUNT_PROVIDED = :no_invoice_level_discount_provided
+          NO_INVOICE_LEVEL_DISCOUNT_PROVIDED = T.let(:no_invoice_level_discount_provided, T.nilable(Symbol))
 
           # Tax calculated on post discount invoice total
-          TAX_CALCULATED_ON_POST_DISCOUNT_INVOICE_TOTAL = :tax_calculated_on_post_discount_invoice_total
+          TAX_CALCULATED_ON_POST_DISCOUNT_INVOICE_TOTAL = T.let(
+            :tax_calculated_on_post_discount_invoice_total, T.nilable(Symbol)
+          )
 
           # Tax calculated on pre discount invoice total
-          TAX_CALCULATED_ON_PRE_DISCOUNT_INVOICE_TOTAL = :tax_calculated_on_pre_discount_invoice_total
+          TAX_CALCULATED_ON_PRE_DISCOUNT_INVOICE_TOTAL = T.let(
+            :tax_calculated_on_pre_discount_invoice_total,
+            T.nilable(Symbol)
+          )
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         # Indicates how the merchant applied taxes.
         class TaxTreatments < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # No tax applies
-          NO_TAX_APPLIES = :no_tax_applies
+          NO_TAX_APPLIES = T.let(:no_tax_applies, T.nilable(Symbol))
 
           # Net price line item level
-          NET_PRICE_LINE_ITEM_LEVEL = :net_price_line_item_level
+          NET_PRICE_LINE_ITEM_LEVEL = T.let(:net_price_line_item_level, T.nilable(Symbol))
 
           # Net price invoice level
-          NET_PRICE_INVOICE_LEVEL = :net_price_invoice_level
+          NET_PRICE_INVOICE_LEVEL = T.let(:net_price_invoice_level, T.nilable(Symbol))
 
           # Gross price line item level
-          GROSS_PRICE_LINE_ITEM_LEVEL = :gross_price_line_item_level
+          GROSS_PRICE_LINE_ITEM_LEVEL = T.let(:gross_price_line_item_level, T.nilable(Symbol))
 
           # Gross price invoice level
-          GROSS_PRICE_INVOICE_LEVEL = :gross_price_invoice_level
+          GROSS_PRICE_INVOICE_LEVEL = T.let(:gross_price_invoice_level, T.nilable(Symbol))
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -580,32 +593,47 @@ module Increase
         class DetailIndicator < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # Normal
-          NORMAL = :normal
+          NORMAL = T.let(:normal, T.nilable(Symbol))
 
           # Credit
-          CREDIT = :credit
+          CREDIT = T.let(:credit, T.nilable(Symbol))
 
           # Purchase
-          PAYMENT = :payment
+          PAYMENT = T.let(:payment, T.nilable(Symbol))
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         # Indicates how the merchant applied the discount for this specific line item.
         class DiscountTreatmentCode < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # No line item level discount provided
-          NO_LINE_ITEM_LEVEL_DISCOUNT_PROVIDED = :no_line_item_level_discount_provided
+          NO_LINE_ITEM_LEVEL_DISCOUNT_PROVIDED = T.let(
+            :no_line_item_level_discount_provided,
+            T.nilable(Symbol)
+          )
 
           # Tax calculated on post discount line item total
-          TAX_CALCULATED_ON_POST_DISCOUNT_LINE_ITEM_TOTAL = :tax_calculated_on_post_discount_line_item_total
+          TAX_CALCULATED_ON_POST_DISCOUNT_LINE_ITEM_TOTAL = T.let(
+            :tax_calculated_on_post_discount_line_item_total, T.nilable(Symbol)
+          )
 
           # Tax calculated on pre discount line item total
-          TAX_CALCULATED_ON_PRE_DISCOUNT_LINE_ITEM_TOTAL = :tax_calculated_on_pre_discount_line_item_total
+          TAX_CALCULATED_ON_PRE_DISCOUNT_LINE_ITEM_TOTAL = T.let(
+            :tax_calculated_on_pre_discount_line_item_total, T.nilable(Symbol)
+          )
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -614,9 +642,13 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         CARD_PURCHASE_SUPPLEMENT = :card_purchase_supplement
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

@@ -168,8 +168,6 @@ module Increase
         class StandardEntryClassCode < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # Corporate Credit and Debit (CCD).
           CORPORATE_CREDIT_OR_DEBIT = :corporate_credit_or_debit
 
@@ -217,6 +215,12 @@ module Increase
 
           # International ACH Transaction (IAT).
           INTERNATIONAL_ACH_TRANSACTION = :international_ach_transaction
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
     end

@@ -99,8 +99,6 @@ module Increase
         class In < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # The Card Profile has not yet been processed by Increase.
           PENDING_CREATING = :pending_creating
 
@@ -118,6 +116,12 @@ module Increase
 
           # The Physical Card Profile has been archived.
           ARCHIVED = :archived
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
     end

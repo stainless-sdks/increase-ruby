@@ -124,20 +124,6 @@ module Increase
 
         request
       end
-
-      # @api private
-      #
-      # @param status [Integer, Increase::APIConnectionError]
-      # @param stream [Enumerable, nil]
-      def reap_connection!(status, stream:)
-        case status
-        in (..199) | (300..499)
-          stream&.each { next }
-        in Increase::APIConnectionError | (500..)
-          Increase::Util.close_fused!(stream)
-        else
-        end
-      end
     end
 
     # @api private
@@ -335,23 +321,28 @@ module Increase
       end
 
       begin
-        status, response, stream = @requester.execute(input)
+        response, stream = @requester.execute(input)
+        status = Integer(response.code)
       rescue Increase::APIConnectionError => e
         status = e
       end
+
+      # normally we want to drain the response body and reuse the HTTP session by clearing the socket buffers
+      # unless we hit a server error
+      srv_fault = (500...).include?(status)
 
       case status
       in ..299
         [status, response, stream]
       in 300..399 if redirect_count >= self.class::MAX_REDIRECTS
-        self.class.reap_connection!(status, stream: stream)
-
         message = "Failed to complete the request within #{self.class::MAX_REDIRECTS} redirects."
+
+        stream.each { next }
         raise Increase::APIConnectionError.new(url: url, message: message)
       in 300..399
-        self.class.reap_connection!(status, stream: stream)
-
         request = self.class.follow_redirect(request, status: status, response_headers: response)
+
+        stream.each { next }
         send_request(
           request,
           redirect_count: redirect_count + 1,
@@ -361,10 +352,12 @@ module Increase
       in Increase::APIConnectionError if retry_count >= max_retries
         raise status
       in (400..) if retry_count >= max_retries || !self.class.should_retry?(status, headers: response)
-        decoded = Kernel.then do
-          Increase::Util.decode_content(response, stream: stream, suppress_error: true)
-        ensure
-          self.class.reap_connection!(status, stream: stream)
+        decoded = Increase::Util.decode_content(response, stream: stream, suppress_error: true)
+
+        if srv_fault
+          Increase::Util.close_fused!(stream)
+        else
+          stream.each { next }
         end
 
         raise Increase::APIStatusError.for(
@@ -375,9 +368,13 @@ module Increase
           response: response
         )
       in (400..) | Increase::APIConnectionError
-        self.class.reap_connection!(status, stream: stream)
-
         delay = retry_delay(response, retry_count: retry_count)
+
+        if srv_fault
+          Increase::Util.close_fused!(stream)
+        else
+          stream&.each { next }
+        end
         sleep(delay)
 
         send_request(

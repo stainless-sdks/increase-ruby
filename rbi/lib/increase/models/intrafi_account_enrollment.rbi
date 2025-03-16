@@ -116,8 +116,6 @@ module Increase
       class Status < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # The account is being added to the IntraFi network.
         PENDING_ENROLLING = :pending_enrolling
 
@@ -132,6 +130,12 @@ module Increase
 
         # Something unexpected happened with this account. Contact Increase support.
         REQUIRES_ATTENTION = :requires_attention
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -139,9 +143,13 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         INTRAFI_ACCOUNT_ENROLLMENT = :intrafi_account_enrollment
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

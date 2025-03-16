@@ -61,7 +61,6 @@ module Increase
 
         case body
         in nil
-          nil
         in String
           req["content-length"] ||= body.bytesize.to_s unless req["transfer-encoding"]
           req.body_stream = Increase::Util::ReadIOAdapter.new(body, &)
@@ -80,11 +79,9 @@ module Increase
     # @api private
     #
     # @param url [URI::Generic]
-    # @param deadline [Float]
     # @param blk [Proc]
-    private def with_pool(url, deadline:, &blk)
+    private def with_pool(url, &)
       origin = Increase::Util.uri_origin(url)
-      timeout = deadline - Increase::Util.monotonic_secs
       pool =
         @mutex.synchronize do
           @pools[origin] ||= ConnectionPool.new(size: @size) do
@@ -92,7 +89,7 @@ module Increase
           end
         end
 
-      pool.with(timeout: timeout, &blk)
+      pool.with(&)
     end
 
     # @api private
@@ -109,14 +106,14 @@ module Increase
     #
     #   @option request [Float] :deadline
     #
-    # @return [Array(Integer, Net::HTTPResponse, Enumerable)]
+    # @return [Array(Net::HTTPResponse, Enumerable)]
     def execute(request)
       url, deadline = request.fetch_values(:url, :deadline)
 
       eof = false
       finished = false
       enum = Enumerator.new do |y|
-        with_pool(url, deadline: deadline) do |conn|
+        with_pool(url) do |conn|
           next if finished
 
           req = self.class.build_request(request) do
@@ -128,7 +125,7 @@ module Increase
 
           self.class.calibrate_socket_timeout(conn, deadline)
           conn.request(req) do |rsp|
-            y << [conn, req, rsp]
+            y << [conn, rsp]
             break if finished
 
             rsp.read_body do |bytes|
@@ -140,11 +137,9 @@ module Increase
             eof = true
           end
         end
-      rescue Timeout::Error
-        raise Increase::APITimeoutError
       end
 
-      conn, _, response = enum.next
+      conn, response = enum.next
       body = Increase::Util.fused_enum(enum, external: true) do
         finished = true
         tap do
@@ -154,7 +149,7 @@ module Increase
         end
         conn.finish if !eof && conn&.started?
       end
-      [Integer(response.code), response, (response.body = body)]
+      [response, (response.body = body)]
     end
 
     # @api private
