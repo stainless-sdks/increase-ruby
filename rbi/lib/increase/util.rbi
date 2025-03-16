@@ -22,7 +22,7 @@ module Increase
 
     class << self
       # @api private
-      sig { params(input: T.anything).returns(T::Boolean) }
+      sig { params(input: T.anything).returns(T.any(T::Boolean, T.anything)) }
       def primitive?(input)
       end
 
@@ -239,8 +239,10 @@ module Increase
 
       # @api private
       sig do
-        params(enum: T.nilable(T::Enumerable[T.anything]), blk: T.proc.params(arg0: Enumerator::Yielder).void)
-          .returns(T::Enumerable[T.anything])
+        params(
+          enum: T.nilable(T::Enumerable[T.anything]),
+          blk: T.proc.params(arg0: Enumerator::Yielder).void
+        ).void
       end
       def chain_fused(enum, &blk)
       end

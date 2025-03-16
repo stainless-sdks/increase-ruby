@@ -30,8 +30,6 @@ module Increase
       class Status < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # The physical card is active.
         ACTIVE = :active
 
@@ -40,6 +38,12 @@ module Increase
 
         # The physical card is permanently canceled.
         CANCELED = :canceled
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

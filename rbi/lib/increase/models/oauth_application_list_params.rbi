@@ -149,13 +149,17 @@ module Increase
         class In < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # The application is active and can be used by your users.
           ACTIVE = :active
 
           # The application is deleted.
           DELETED = :deleted
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
     end

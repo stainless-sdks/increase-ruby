@@ -142,9 +142,13 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         ACCOUNT_STATEMENT = :account_statement
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

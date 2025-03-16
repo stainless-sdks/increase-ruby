@@ -238,8 +238,6 @@ module Increase
         class DeclineReason < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # The account has been closed.
           ACCOUNT_CLOSED = :account_closed
 
@@ -290,6 +288,12 @@ module Increase
 
           # The transaction was suspected to be fraudulent. Please reach out to support@increase.com for more information.
           SUSPECTED_FRAUD = :suspected_fraud
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         # The direction describes the direction the funds will move, either from the
@@ -297,13 +301,17 @@ module Increase
         class Direction < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # A regular card authorization where funds are debited from the cardholder.
           SETTLEMENT = :settlement
 
           # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
           REFUND = :refund
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         class NetworkDetails < Increase::BaseModel
@@ -357,8 +365,6 @@ module Increase
             class StandInProcessingReason < Increase::Enum
               abstract!
 
-              Value = type_template(:out) { {fixed: Symbol} }
-
               # Increase failed to process the authorization in a timely manner.
               ISSUER_ERROR = :issuer_error
 
@@ -379,6 +385,12 @@ module Increase
 
               # An unspecific reason for stand-in processing.
               OTHER = :other
+
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
+              end
             end
           end
         end

@@ -211,8 +211,6 @@ module Increase
       class Currency < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # Canadian Dollar (CAD)
         CAD = :CAD
 
@@ -230,6 +228,12 @@ module Increase
 
         # US Dollar (USD)
         USD = :USD
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -237,9 +241,13 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         INTRAFI_BALANCE = :intrafi_balance
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

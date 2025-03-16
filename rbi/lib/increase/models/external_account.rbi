@@ -164,8 +164,6 @@ module Increase
       class AccountHolder < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # The External Account is owned by a business.
         BUSINESS = :business
 
@@ -174,13 +172,17 @@ module Increase
 
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN = :unknown
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # The type of the account to which the transfer will be sent.
       class Funding < Increase::Enum
         abstract!
-
-        Value = type_template(:out) { {fixed: Symbol} }
 
         # A checking account.
         CHECKING = :checking
@@ -190,19 +192,29 @@ module Increase
 
         # A different type of account.
         OTHER = :other
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # The External Account's status.
       class Status < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # The External Account is active.
         ACTIVE = :active
 
         # The External Account is archived and won't appear in the dashboard.
         ARCHIVED = :archived
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -210,16 +222,18 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         EXTERNAL_ACCOUNT = :external_account
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # If you have verified ownership of the External Account.
       class VerificationStatus < Increase::Enum
         abstract!
-
-        Value = type_template(:out) { {fixed: Symbol} }
 
         # The External Account has not been verified.
         UNVERIFIED = :unverified
@@ -229,6 +243,12 @@ module Increase
 
         # The External Account is verified.
         VERIFIED = :verified
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

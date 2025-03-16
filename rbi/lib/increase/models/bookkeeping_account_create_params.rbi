@@ -74,13 +74,17 @@ module Increase
       class ComplianceCategory < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # A cash in an commingled Increase Account.
         COMMINGLED_CASH = :commingled_cash
 
         # A customer balance.
         CUSTOMER_BALANCE = :customer_balance
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

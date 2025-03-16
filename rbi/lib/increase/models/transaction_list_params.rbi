@@ -128,8 +128,6 @@ module Increase
         class In < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # Account Transfer Intention: details will be under the `account_transfer_intention` object.
           ACCOUNT_TRANSFER_INTENTION = :account_transfer_intention
 
@@ -216,6 +214,12 @@ module Increase
 
           # The Transaction was made for an undocumented or deprecated reason.
           OTHER = :other
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 

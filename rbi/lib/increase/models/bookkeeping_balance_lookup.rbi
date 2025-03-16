@@ -47,9 +47,13 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         BOOKKEEPING_BALANCE_LOOKUP = :bookkeeping_balance_lookup
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

@@ -108,8 +108,6 @@ module Increase
         class In < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # Occurs whenever an Account is created.
           ACCOUNT_CREATED = :"account.created"
 
@@ -373,6 +371,12 @@ module Increase
 
           # Occurs whenever a Wire Transfer is updated.
           WIRE_TRANSFER_UPDATED = :"wire_transfer.updated"
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 

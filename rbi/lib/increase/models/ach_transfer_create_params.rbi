@@ -346,13 +346,17 @@ module Increase
         class Category < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # Unstructured `payment_related_information` passed through with the transfer.
           FREEFORM = :freeform
 
           # Structured ASC X12 820 remittance advice records. Please reach out to [support@increase.com](mailto:support@increase.com) for more information.
           PAYMENT_ORDER_REMITTANCE_ADVICE = :payment_order_remittance_advice
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         class Freeform < Increase::BaseModel
@@ -481,8 +485,6 @@ module Increase
       class DestinationAccountHolder < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # The External Account is owned by a business.
         BUSINESS = :business
 
@@ -491,19 +493,29 @@ module Increase
 
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN = :unknown
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # The type of the account to which the transfer will be sent.
       class Funding < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # A checking account.
         CHECKING = :checking
 
         # A savings account.
         SAVINGS = :savings
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       class PreferredEffectiveDate < Increase::BaseModel
@@ -542,21 +554,23 @@ module Increase
         class SettlementSchedule < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # The chosen effective date will be the same as the ACH processing date on which the transfer is submitted. This is necessary, but not sufficient for the transfer to be settled same-day: it must also be submitted before the last same-day cutoff and be less than or equal to $1,000.000.00.
           SAME_DAY = :same_day
 
           # The chosen effective date will be the business day following the ACH processing date on which the transfer is submitted. The transfer will be settled on that future day.
           FUTURE_DATED = :future_dated
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
       # The Standard Entry Class (SEC) code to use for the transfer.
       class StandardEntryClassCode < Increase::Enum
         abstract!
-
-        Value = type_template(:out) { {fixed: Symbol} }
 
         # Corporate Credit and Debit (CCD).
         CORPORATE_CREDIT_OR_DEBIT = :corporate_credit_or_debit
@@ -569,19 +583,29 @@ module Increase
 
         # Internet Initiated (WEB).
         INTERNET_INITIATED = :internet_initiated
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # The timing of the transaction.
       class TransactionTiming < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # A Transaction will be created immediately.
         SYNCHRONOUS = :synchronous
 
         # A Transaction will be created when the funds settle at the Federal Reserve.
         ASYNCHRONOUS = :asynchronous
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

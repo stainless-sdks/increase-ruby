@@ -372,8 +372,6 @@ module Increase
         class Currency < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # Canadian Dollar (CAD)
           CAD = :CAD
 
@@ -391,6 +389,12 @@ module Increase
 
           # US Dollar (USD)
           USD = :USD
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -489,8 +493,6 @@ module Increase
         class Currency < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # Canadian Dollar (CAD)
           CAD = :CAD
 
@@ -508,13 +510,17 @@ module Increase
 
           # US Dollar (USD)
           USD = :USD
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         # Why the check deposit was rejected.
         class Reason < Increase::Enum
           abstract!
-
-          Value = type_template(:out) { {fixed: Symbol} }
 
           # The check's image is incomplete.
           INCOMPLETE_IMAGE = :incomplete_image
@@ -548,6 +554,12 @@ module Increase
 
           # The check was rejected for an unknown reason.
           UNKNOWN = :unknown
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -647,8 +659,6 @@ module Increase
         class Currency < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # Canadian Dollar (CAD)
           CAD = :CAD
 
@@ -666,14 +676,18 @@ module Increase
 
           # US Dollar (USD)
           USD = :USD
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         # Why this check was returned by the bank holding the account it was drawn
         #   against.
         class ReturnReason < Increase::Enum
           abstract!
-
-          Value = type_template(:out) { {fixed: Symbol} }
 
           # The check doesn't allow ACH conversion.
           ACH_CONVERSION_NOT_SUPPORTED = :ach_conversion_not_supported
@@ -752,6 +766,12 @@ module Increase
 
           # The bank sold this account and no longer services this customer.
           BRANCH_OR_ACCOUNT_SOLD = :branch_or_account_sold
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -952,8 +972,6 @@ module Increase
         class Currency < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # Canadian Dollar (CAD)
           CAD = :CAD
 
@@ -971,19 +989,29 @@ module Increase
 
           # US Dollar (USD)
           USD = :USD
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         # The status of the hold.
         class Status < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # Funds are still being held.
           HELD = :held
 
           # Funds have been released.
           COMPLETE = :complete
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         # A constant representing the object's type. For this resource it will always be
@@ -991,17 +1019,19 @@ module Increase
         class Type < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           INBOUND_FUNDS_HOLD = :inbound_funds_hold
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
       # The status of the Check Deposit.
       class Status < Increase::Enum
         abstract!
-
-        Value = type_template(:out) { {fixed: Symbol} }
 
         # The Check Deposit is pending review.
         PENDING = :pending
@@ -1014,6 +1044,12 @@ module Increase
 
         # The Check Deposit has been returned.
         RETURNED = :returned
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -1021,9 +1057,13 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         CHECK_DEPOSIT = :check_deposit
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

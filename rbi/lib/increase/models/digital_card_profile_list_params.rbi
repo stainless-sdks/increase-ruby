@@ -99,8 +99,6 @@ module Increase
         class In < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # The Card Profile is awaiting review from Increase and/or processing by card networks.
           PENDING = :pending
 
@@ -112,6 +110,12 @@ module Increase
 
           # The Card Profile is no longer in use.
           ARCHIVED = :archived
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
     end

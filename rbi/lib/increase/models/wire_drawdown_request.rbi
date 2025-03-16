@@ -292,8 +292,6 @@ module Increase
       class Status < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # The drawdown request is queued to be submitted to Fedwire.
         PENDING_SUBMISSION = :pending_submission
 
@@ -305,6 +303,12 @@ module Increase
 
         # The drawdown request has been refused by the recipient.
         REFUSED = :refused
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       class Submission < Increase::BaseModel
@@ -334,9 +338,13 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         WIRE_DRAWDOWN_REQUEST = :wire_drawdown_request
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

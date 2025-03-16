@@ -132,8 +132,6 @@ module Increase
         class Decision < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # Approve the authentication attempt without triggering a challenge.
           APPROVE = :approve
 
@@ -142,6 +140,12 @@ module Increase
 
           # Deny the authentication attempt.
           DENY = :deny
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -171,13 +175,17 @@ module Increase
         class Result < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # Your application successfully delivered the one-time code to the cardholder.
           SUCCESS = :success
 
           # Your application was unable to deliver the one-time code to the cardholder.
           FAILURE = :failure
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -215,21 +223,23 @@ module Increase
         class Decision < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # Approve the authorization.
           APPROVE = :approve
 
           # Decline the authorization.
           DECLINE = :decline
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         # The reason the card authorization was declined. This translates to a specific
         #   decline code that is sent to the card network.
         class DeclineReason < Increase::Enum
           abstract!
-
-          Value = type_template(:out) { {fixed: Symbol} }
 
           # The cardholder does not have sufficient funds to cover the transaction. The merchant may attempt to process the transaction again.
           INSUFFICIENT_FUNDS = :insufficient_funds
@@ -248,6 +258,12 @@ module Increase
 
           # The transaction was declined for another reason. The merchant may attempt to process the transaction again. This should be used sparingly.
           OTHER = :other
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -300,13 +316,17 @@ module Increase
         class Result < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # Your application successfully delivered the one-time passcode to the cardholder.
           SUCCESS = :success
 
           # Your application failed to deliver the one-time passcode to the cardholder.
           FAILURE = :failure
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         class Success < Increase::BaseModel

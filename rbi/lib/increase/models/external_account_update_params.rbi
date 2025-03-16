@@ -74,20 +74,22 @@ module Increase
       class AccountHolder < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # The External Account is owned by a business.
         BUSINESS = :business
 
         # The External Account is owned by an individual.
         INDIVIDUAL = :individual
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # The funding type of the External Account.
       class Funding < Increase::Enum
         abstract!
-
-        Value = type_template(:out) { {fixed: Symbol} }
 
         # A checking account.
         CHECKING = :checking
@@ -97,19 +99,29 @@ module Increase
 
         # A different type of account.
         OTHER = :other
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # The status of the External Account.
       class Status < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # The External Account is active.
         ACTIVE = :active
 
         # The External Account is archived and won't appear in the dashboard.
         ARCHIVED = :archived
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

@@ -592,8 +592,6 @@ module Increase
         class Category < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # Unstructured `payment_related_information` passed through with the transfer.
           FREEFORM = :freeform
 
@@ -602,6 +600,12 @@ module Increase
 
           # Unknown addenda type.
           OTHER = :other
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         class Freeform < Increase::BaseModel
@@ -872,8 +876,6 @@ module Increase
         class Category < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # An API key. Details will be under the `api_key` object.
           API_KEY = :api_key
 
@@ -882,6 +884,12 @@ module Increase
 
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER = :user
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         class OAuthApplication < Increase::BaseModel
@@ -930,8 +938,6 @@ module Increase
       class Currency < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # Canadian Dollar (CAD)
         CAD = :CAD
 
@@ -949,14 +955,18 @@ module Increase
 
         # US Dollar (USD)
         USD = :USD
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # The type of entity that owns the account to which the ACH Transfer is being
       #   sent.
       class DestinationAccountHolder < Increase::Enum
         abstract!
-
-        Value = type_template(:out) { {fixed: Symbol} }
 
         # The External Account is owned by a business.
         BUSINESS = :business
@@ -966,19 +976,29 @@ module Increase
 
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN = :unknown
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # The type of the account to which the transfer will be sent.
       class Funding < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # A checking account.
         CHECKING = :checking
 
         # A savings account.
         SAVINGS = :savings
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       class InboundFundsHold < Increase::BaseModel
@@ -1133,8 +1153,6 @@ module Increase
         class Currency < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # Canadian Dollar (CAD)
           CAD = :CAD
 
@@ -1152,19 +1170,29 @@ module Increase
 
           # US Dollar (USD)
           USD = :USD
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         # The status of the hold.
         class Status < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # Funds are still being held.
           HELD = :held
 
           # Funds have been released.
           COMPLETE = :complete
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         # A constant representing the object's type. For this resource it will always be
@@ -1172,9 +1200,13 @@ module Increase
         class Type < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           INBOUND_FUNDS_HOLD = :inbound_funds_hold
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -1182,9 +1214,13 @@ module Increase
       class Network < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         ACH = :ach
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       class NotificationsOfChange < Increase::BaseModel
@@ -1235,8 +1271,6 @@ module Increase
         #   institution.
         class ChangeCode < Increase::Enum
           abstract!
-
-          Value = type_template(:out) { {fixed: Symbol} }
 
           # The account number was incorrect.
           INCORRECT_ACCOUNT_NUMBER = :incorrect_account_number
@@ -1294,6 +1328,12 @@ module Increase
 
           # The transaction code was incorrect, initiated by the originating depository financial institution.
           INCORRECT_TRANSACTION_CODE_BY_ORIGINATING_DEPOSITORY_FINANCIAL_INSTITUTION = :incorrect_transaction_code_by_originating_depository_financial_institution
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -1335,16 +1375,20 @@ module Increase
         class SettlementSchedule < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # The chosen effective date will be the same as the ACH processing date on which the transfer is submitted.
           # This is necessary, but not sufficient for the transfer to be settled same-day:
           # it must also be submitted before the last same-day cutoff
           # and be less than or equal to $1,000.000.00.
-          SAME_DAY = :same_day
+          SAME_DAY = T.let(:same_day, T.nilable(Symbol))
 
           # The chosen effective date will be the business day following the ACH processing date on which the transfer is submitted. The transfer will be settled on that future day.
-          FUTURE_DATED = :future_dated
+          FUTURE_DATED = T.let(:future_dated, T.nilable(Symbol))
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -1443,8 +1487,6 @@ module Increase
         #   bank back to Increase.
         class ReturnReasonCode < Increase::Enum
           abstract!
-
-          Value = type_template(:out) { {fixed: Symbol} }
 
           # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
           INSUFFICIENT_FUND = :insufficient_fund
@@ -1655,6 +1697,12 @@ module Increase
 
           # Code R68. A rare return reason. The return was sent too late.
           UNTIMELY_RETURN = :untimely_return
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -1684,8 +1732,6 @@ module Increase
       class StandardEntryClassCode < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # Corporate Credit and Debit (CCD).
         CORPORATE_CREDIT_OR_DEBIT = :corporate_credit_or_debit
 
@@ -1697,13 +1743,17 @@ module Increase
 
         # Internet Initiated (WEB).
         INTERNET_INITIATED = :internet_initiated
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # The lifecycle status of the transfer.
       class Status < Increase::Enum
         abstract!
-
-        Value = type_template(:out) { {fixed: Symbol} }
 
         # The transfer is pending approval.
         PENDING_APPROVAL = :pending_approval
@@ -1731,6 +1781,12 @@ module Increase
 
         # The transfer has been returned.
         RETURNED = :returned
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       class Submission < Increase::BaseModel
@@ -1836,13 +1892,17 @@ module Increase
         class ExpectedSettlementSchedule < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # The transfer is expected to settle same-day.
           SAME_DAY = :same_day
 
           # The transfer is expected to settle on a future date.
           FUTURE_DATED = :future_dated
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -1851,9 +1911,13 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         ACH_TRANSFER = :ach_transfer
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

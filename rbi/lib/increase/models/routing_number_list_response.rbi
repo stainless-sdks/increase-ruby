@@ -93,26 +93,34 @@ module Increase
       class ACHTransfers < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # The routing number can receive this transfer type.
         SUPPORTED = :supported
 
         # The routing number cannot receive this transfer type.
         NOT_SUPPORTED = :not_supported
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # This routing number's support for Real-Time Payments Transfers.
       class RealTimePaymentsTransfers < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # The routing number can receive this transfer type.
         SUPPORTED = :supported
 
         # The routing number cannot receive this transfer type.
         NOT_SUPPORTED = :not_supported
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -120,22 +128,30 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         ROUTING_NUMBER = :routing_number
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # This routing number's support for Wire Transfers.
       class WireTransfers < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # The routing number can receive this transfer type.
         SUPPORTED = :supported
 
         # The routing number cannot receive this transfer type.
         NOT_SUPPORTED = :not_supported
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

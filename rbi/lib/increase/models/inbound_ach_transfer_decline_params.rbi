@@ -34,8 +34,6 @@ module Increase
       class Reason < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # The customer's account has insufficient funds. This reason is only allowed for debits. The Nacha return code is R01.
         INSUFFICIENT_FUNDS = :insufficient_funds
 
@@ -65,6 +63,12 @@ module Increase
 
         # The corporate customer no longer authorizes this transaction. The Nacha return code is R29.
         CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

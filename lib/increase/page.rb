@@ -68,8 +68,7 @@ module Increase
     # @return [Increase::Page]
     def next_page
       unless next_page?
-        message = "No more pages available. Please check #next_page? before calling ##{__method__}"
-        raise RuntimeError.new(message)
+        raise RuntimeError.new("No more pages available. Please check #next_page? before calling ##{__method__}")
       end
 
       req = Increase::Util.deep_merge(@req, {query: {cursor: next_cursor}})

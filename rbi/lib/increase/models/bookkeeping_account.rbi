@@ -108,13 +108,17 @@ module Increase
       class ComplianceCategory < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # A cash in an commingled Increase Account.
-        COMMINGLED_CASH = :commingled_cash
+        COMMINGLED_CASH = T.let(:commingled_cash, T.nilable(Symbol))
 
         # A customer balance.
-        CUSTOMER_BALANCE = :customer_balance
+        CUSTOMER_BALANCE = T.let(:customer_balance, T.nilable(Symbol))
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -122,9 +126,13 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         BOOKKEEPING_ACCOUNT = :bookkeeping_account
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

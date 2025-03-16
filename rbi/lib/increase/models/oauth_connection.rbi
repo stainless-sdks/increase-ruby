@@ -108,13 +108,17 @@ module Increase
       class Status < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # The OAuth connection is active.
         ACTIVE = :active
 
         # The OAuth connection is permanently deactivated.
         INACTIVE = :inactive
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -122,9 +126,13 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         OAUTH_CONNECTION = :oauth_connection
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

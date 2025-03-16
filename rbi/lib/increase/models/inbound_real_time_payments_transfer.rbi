@@ -259,8 +259,6 @@ module Increase
       class Currency < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # Canadian Dollar (CAD)
         CAD = :CAD
 
@@ -278,6 +276,12 @@ module Increase
 
         # US Dollar (USD)
         USD = :USD
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       class Decline < Increase::BaseModel
@@ -323,8 +327,6 @@ module Increase
         class Reason < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # The account number is canceled.
           ACCOUNT_NUMBER_CANCELED = :account_number_canceled
 
@@ -342,14 +344,18 @@ module Increase
 
           # Your account is not enabled to receive Real-Time Payments transfers.
           REAL_TIME_PAYMENTS_NOT_ENABLED = :real_time_payments_not_enabled
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
       # The lifecycle status of the transfer.
       class Status < Increase::Enum
         abstract!
-
-        Value = type_template(:out) { {fixed: Symbol} }
 
         # The transfer is pending confirmation.
         PENDING_CONFIRMING = :pending_confirming
@@ -362,6 +368,12 @@ module Increase
 
         # The transfer has been declined.
         DECLINED = :declined
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -369,9 +381,13 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         INBOUND_REAL_TIME_PAYMENTS_TRANSFER = :inbound_real_time_payments_transfer
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

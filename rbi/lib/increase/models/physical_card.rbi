@@ -340,8 +340,6 @@ module Increase
         class Method < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # USPS Post with tracking.
           USPS = :usps
 
@@ -350,13 +348,17 @@ module Increase
 
           # FedEx 2-day.
           FEDEX_2_DAY = :fedex_2_day
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         # The status of this shipment.
         class Status < Increase::Enum
           abstract!
-
-          Value = type_template(:out) { {fixed: Symbol} }
 
           # The physical card has not yet been shipped.
           PENDING = :pending
@@ -378,6 +380,12 @@ module Increase
 
           # The physical card shipment was returned to the sender and destroyed by the production facility.
           RETURNED = :returned
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         class Tracking < Increase::BaseModel
@@ -452,8 +460,6 @@ module Increase
       class Status < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # The physical card is active.
         ACTIVE = :active
 
@@ -462,6 +468,12 @@ module Increase
 
         # The physical card is permanently canceled.
         CANCELED = :canceled
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -469,9 +481,13 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         PHYSICAL_CARD = :physical_card
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

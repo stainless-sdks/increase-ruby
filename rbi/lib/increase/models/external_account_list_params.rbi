@@ -110,13 +110,17 @@ module Increase
         class In < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # The External Account is active.
           ACTIVE = :active
 
           # The External Account is archived and won't appear in the dashboard.
           ARCHIVED = :archived
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
     end

@@ -222,13 +222,17 @@ module Increase
       class Status < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # This Lockbox is active. Checks mailed to it will be deposited automatically.
         ACTIVE = :active
 
         # This Lockbox is inactive. Checks mailed to it will not be deposited.
         INACTIVE = :inactive
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -236,9 +240,13 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         LOCKBOX = :lockbox
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end
