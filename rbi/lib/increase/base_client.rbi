@@ -67,6 +67,16 @@ module Increase
       end
       def follow_redirect(request, status:, response_headers:)
       end
+
+      # @api private
+      sig do
+        params(
+          status: T.any(Integer, Increase::APIConnectionError),
+          stream: T.nilable(T::Enumerable[String])
+        ).void
+      end
+      def reap_connection!(status, stream:)
+      end
     end
 
     sig { returns(T.anything) }
