@@ -86,6 +86,8 @@ module Increase
       class AccountHolder < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # The External Account is owned by a business.
         BUSINESS = :business
 
@@ -94,17 +96,13 @@ module Increase
 
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN = :unknown
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # The type of the destination account. Defaults to `checking`.
       class Funding < Increase::Enum
         abstract!
+
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # A checking account.
         CHECKING = :checking
@@ -114,12 +112,6 @@ module Increase
 
         # A different type of account.
         OTHER = :other
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
     end
   end

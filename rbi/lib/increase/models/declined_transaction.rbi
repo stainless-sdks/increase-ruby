@@ -153,6 +153,8 @@ module Increase
       class Currency < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # Canadian Dollar (CAD)
         CAD = :CAD
 
@@ -170,32 +172,22 @@ module Increase
 
         # US Dollar (USD)
         USD = :USD
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # The type of the route this Declined Transaction came through.
       class RouteType < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # An Account Number.
-        ACCOUNT_NUMBER = T.let(:account_number, T.nilable(Symbol))
+        ACCOUNT_NUMBER = :account_number
 
         # A Card.
-        CARD = T.let(:card, T.nilable(Symbol))
+        CARD = :card
 
         # A Lockbox.
-        LOCKBOX = T.let(:lockbox, T.nilable(Symbol))
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        LOCKBOX = :lockbox
       end
 
       class Source < Increase::BaseModel
@@ -519,6 +511,8 @@ module Increase
           class Reason < Increase::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             # The account number is canceled.
             ACH_ROUTE_CANCELED = :ach_route_canceled
 
@@ -569,12 +563,6 @@ module Increase
 
             # The corporate customer no longer authorizes this transaction.
             CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
 
           # A constant representing the object's type. For this resource it will always be
@@ -582,13 +570,9 @@ module Increase
           class Type < Increase::Enum
             abstract!
 
-            ACH_DECLINE = :ach_decline
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
+            ACH_DECLINE = :ach_decline
           end
         end
 
@@ -967,6 +951,8 @@ module Increase
           class Actioner < Increase::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             # This object was actioned by the user through a real-time decision.
             USER = :user
 
@@ -975,18 +961,14 @@ module Increase
 
             # This object was actioned by the network, through stand-in processing.
             NETWORK = :network
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
           #   account currency.
           class Currency < Increase::Enum
             abstract!
+
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -1005,12 +987,6 @@ module Increase
 
             # US Dollar (USD)
             USD = :USD
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
 
           # The direction describes the direction the funds will move, either from the
@@ -1018,17 +994,13 @@ module Increase
           class Direction < Increase::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             # A regular card authorization where funds are debited from the cardholder.
             SETTLEMENT = :settlement
 
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND = :refund
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
 
           class NetworkDetails < Increase::BaseModel
@@ -1080,14 +1052,10 @@ module Increase
             class Category < Increase::Enum
               abstract!
 
+              Value = type_template(:out) { {fixed: Symbol} }
+
               # Visa
               VISA = :visa
-
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
-              end
             end
 
             class Visa < Increase::BaseModel
@@ -1153,40 +1121,31 @@ module Increase
               class ElectronicCommerceIndicator < Increase::Enum
                 abstract!
 
+                Value = type_template(:out) { {fixed: Symbol} }
+
                 # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
-                MAIL_PHONE_ORDER = T.let(:mail_phone_order, T.nilable(Symbol))
+                MAIL_PHONE_ORDER = :mail_phone_order
 
                 # Recurring transaction: Payment indicator used to indicate a recurring transaction that originates from an acquirer in the US region.
-                RECURRING = T.let(:recurring, T.nilable(Symbol))
+                RECURRING = :recurring
 
                 # Installment payment: Payment indicator used to indicate one purchase of goods or services that is billed to the account in multiple charges over a period of time agreed upon by the cardholder and merchant from transactions that originate from an acquirer in the US region.
-                INSTALLMENT = T.let(:installment, T.nilable(Symbol))
+                INSTALLMENT = :installment
 
                 # Unknown classification: other mail order: Use to indicate that the type of mail/telephone order is unknown.
-                UNKNOWN_MAIL_PHONE_ORDER = T.let(:unknown_mail_phone_order, T.nilable(Symbol))
+                UNKNOWN_MAIL_PHONE_ORDER = :unknown_mail_phone_order
 
                 # Secure electronic commerce transaction: Use to indicate that the electronic commerce transaction has been authenticated using e.g., 3-D Secure
-                SECURE_ELECTRONIC_COMMERCE = T.let(:secure_electronic_commerce, T.nilable(Symbol))
+                SECURE_ELECTRONIC_COMMERCE = :secure_electronic_commerce
 
                 # Non-authenticated security transaction at a 3-D Secure-capable merchant, and merchant attempted to authenticate the cardholder using 3-D Secure: Use to identify an electronic commerce transaction where the merchant attempted to authenticate the cardholder using 3-D Secure, but was unable to complete the authentication because the issuer or cardholder does not participate in the 3-D Secure program.
-                NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT = T.let(
-                  :non_authenticated_security_transaction_at_3ds_capable_merchant, T.nilable(Symbol)
-                )
+                NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT = :non_authenticated_security_transaction_at_3ds_capable_merchant
 
                 # Non-authenticated security transaction: Use to identify an electronic commerce transaction that uses data encryption for security however , cardholder authentication is not performed using 3-D Secure.
-                NON_AUTHENTICATED_SECURITY_TRANSACTION = T.let(
-                  :non_authenticated_security_transaction,
-                  T.nilable(Symbol)
-                )
+                NON_AUTHENTICATED_SECURITY_TRANSACTION = :non_authenticated_security_transaction
 
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
-                NON_SECURE_TRANSACTION = T.let(:non_secure_transaction, T.nilable(Symbol))
-
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
-                end
+                NON_SECURE_TRANSACTION = :non_secure_transaction
               end
 
               # The method used to enter the cardholder's primary account number and card
@@ -1194,41 +1153,37 @@ module Increase
               class PointOfServiceEntryMode < Increase::Enum
                 abstract!
 
+                Value = type_template(:out) { {fixed: Symbol} }
+
                 # Unknown
-                UNKNOWN = T.let(:unknown, T.nilable(Symbol))
+                UNKNOWN = :unknown
 
                 # Manual key entry
-                MANUAL = T.let(:manual, T.nilable(Symbol))
+                MANUAL = :manual
 
                 # Magnetic stripe read, without card verification value
-                MAGNETIC_STRIPE_NO_CVV = T.let(:magnetic_stripe_no_cvv, T.nilable(Symbol))
+                MAGNETIC_STRIPE_NO_CVV = :magnetic_stripe_no_cvv
 
                 # Optical code
-                OPTICAL_CODE = T.let(:optical_code, T.nilable(Symbol))
+                OPTICAL_CODE = :optical_code
 
                 # Contact chip card
-                INTEGRATED_CIRCUIT_CARD = T.let(:integrated_circuit_card, T.nilable(Symbol))
+                INTEGRATED_CIRCUIT_CARD = :integrated_circuit_card
 
                 # Contactless read of chip card
-                CONTACTLESS = T.let(:contactless, T.nilable(Symbol))
+                CONTACTLESS = :contactless
 
                 # Transaction initiated using a credential that has previously been stored on file
-                CREDENTIAL_ON_FILE = T.let(:credential_on_file, T.nilable(Symbol))
+                CREDENTIAL_ON_FILE = :credential_on_file
 
                 # Magnetic stripe read
-                MAGNETIC_STRIPE = T.let(:magnetic_stripe, T.nilable(Symbol))
+                MAGNETIC_STRIPE = :magnetic_stripe
 
                 # Contactless read of magnetic stripe data
-                CONTACTLESS_MAGNETIC_STRIPE = T.let(:contactless_magnetic_stripe, T.nilable(Symbol))
+                CONTACTLESS_MAGNETIC_STRIPE = :contactless_magnetic_stripe
 
                 # Contact chip card, without card verification value
-                INTEGRATED_CIRCUIT_CARD_NO_CVV = T.let(:integrated_circuit_card_no_cvv, T.nilable(Symbol))
-
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
-                end
+                INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
               end
 
               # Only present when `actioner: network`. Describes why a card authorization was
@@ -1236,39 +1191,28 @@ module Increase
               class StandInProcessingReason < Increase::Enum
                 abstract!
 
+                Value = type_template(:out) { {fixed: Symbol} }
+
                 # Increase failed to process the authorization in a timely manner.
-                ISSUER_ERROR = T.let(:issuer_error, T.nilable(Symbol))
+                ISSUER_ERROR = :issuer_error
 
                 # The physical card read had an invalid CVV, dCVV, or authorization request cryptogram.
-                INVALID_PHYSICAL_CARD = T.let(:invalid_physical_card, T.nilable(Symbol))
+                INVALID_PHYSICAL_CARD = :invalid_physical_card
 
                 # The 3DS cardholder authentication verification value was invalid.
-                INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE = T.let(
-                  :invalid_cardholder_authentication_verification_value, T.nilable(Symbol)
-                )
+                INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE = :invalid_cardholder_authentication_verification_value
 
                 # An internal Visa error occurred. Visa uses this reason code for certain expected occurrences as well, such as Application Transaction Counter (ATC) replays.
-                INTERNAL_VISA_ERROR = T.let(:internal_visa_error, T.nilable(Symbol))
+                INTERNAL_VISA_ERROR = :internal_visa_error
 
                 # The merchant has enabled Visa's Transaction Advisory Service and requires further authentication to perform the transaction. In practice this is often utilized at fuel pumps to tell the cardholder to see the cashier.
-                MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED = T.let(
-                  :merchant_transaction_advisory_service_authentication_required, T.nilable(Symbol)
-                )
+                MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED = :merchant_transaction_advisory_service_authentication_required
 
                 # The transaction was blocked by Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior, such as card testing.
-                PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK = T.let(
-                  :payment_fraud_disruption_acquirer_block,
-                  T.nilable(Symbol)
-                )
+                PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK = :payment_fraud_disruption_acquirer_block
 
                 # An unspecific reason for stand-in processing.
-                OTHER = T.let(:other, T.nilable(Symbol))
-
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
-                end
+                OTHER = :other
               end
             end
           end
@@ -1336,6 +1280,8 @@ module Increase
           class ProcessingCategory < Increase::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
             ACCOUNT_FUNDING = :account_funding
 
@@ -1353,12 +1299,6 @@ module Increase
 
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND = :refund
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
 
           # This is present if a specific decline reason was given in the real-time
@@ -1366,34 +1306,32 @@ module Increase
           class RealTimeDecisionReason < Increase::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             # The cardholder does not have sufficient funds to cover the transaction. The merchant may attempt to process the transaction again.
-            INSUFFICIENT_FUNDS = T.let(:insufficient_funds, T.nilable(Symbol))
+            INSUFFICIENT_FUNDS = :insufficient_funds
 
             # This type of transaction is not allowed for this card. This transaction should not be retried.
-            TRANSACTION_NEVER_ALLOWED = T.let(:transaction_never_allowed, T.nilable(Symbol))
+            TRANSACTION_NEVER_ALLOWED = :transaction_never_allowed
 
             # The transaction amount exceeds the cardholder's approval limit. The merchant may attempt to process the transaction again.
-            EXCEEDS_APPROVAL_LIMIT = T.let(:exceeds_approval_limit, T.nilable(Symbol))
+            EXCEEDS_APPROVAL_LIMIT = :exceeds_approval_limit
 
             # The card has been temporarily disabled or not yet activated. The merchant may attempt to process the transaction again.
-            CARD_TEMPORARILY_DISABLED = T.let(:card_temporarily_disabled, T.nilable(Symbol))
+            CARD_TEMPORARILY_DISABLED = :card_temporarily_disabled
 
             # The transaction is suspected to be fraudulent. The merchant may attempt to process the transaction again.
-            SUSPECTED_FRAUD = T.let(:suspected_fraud, T.nilable(Symbol))
+            SUSPECTED_FRAUD = :suspected_fraud
 
             # The transaction was declined for another reason. The merchant may attempt to process the transaction again. This should be used sparingly.
-            OTHER = T.let(:other, T.nilable(Symbol))
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
+            OTHER = :other
           end
 
           # Why the transaction was declined.
           class Reason < Increase::Enum
             abstract!
+
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # The account has been closed.
             ACCOUNT_CLOSED = :account_closed
@@ -1445,12 +1383,6 @@ module Increase
 
             # The transaction was suspected to be fraudulent. Please reach out to support@increase.com for more information.
             SUSPECTED_FRAUD = :suspected_fraud
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
 
           class Verification < Increase::BaseModel
@@ -1527,6 +1459,8 @@ module Increase
               class Result < Increase::Enum
                 abstract!
 
+                Value = type_template(:out) { {fixed: Symbol} }
+
                 # No card verification code was provided in the authorization request.
                 NOT_CHECKED = :not_checked
 
@@ -1535,12 +1469,6 @@ module Increase
 
                 # The card verification code did not match the one on file.
                 NO_MATCH = :no_match
-
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
-                end
               end
             end
 
@@ -1625,6 +1553,8 @@ module Increase
               class Result < Increase::Enum
                 abstract!
 
+                Value = type_template(:out) { {fixed: Symbol} }
+
                 # No adress was provided in the authorization request.
                 NOT_CHECKED = :not_checked
 
@@ -1642,12 +1572,6 @@ module Increase
 
                 # Postal code and street address do not match.
                 NO_MATCH = :no_match
-
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
-                end
               end
             end
           end
@@ -1657,6 +1581,8 @@ module Increase
         #   over time; your application should be able to handle such additions gracefully.
         class Category < Increase::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # ACH Decline: details will be under the `ach_decline` object.
           ACH_DECLINE = :ach_decline
@@ -1678,12 +1604,6 @@ module Increase
 
           # The Declined Transaction was made for an undocumented or deprecated reason.
           OTHER = :other
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class CheckDecline < Increase::BaseModel
@@ -1800,6 +1720,8 @@ module Increase
           class Reason < Increase::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             # The account number is disabled.
             ACH_ROUTE_DISABLED = :ach_route_disabled
 
@@ -1850,12 +1772,6 @@ module Increase
 
             # Your integration declined this check via the API.
             USER_INITIATED = :user_initiated
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -1954,6 +1870,8 @@ module Increase
           class Currency < Increase::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -1971,17 +1889,13 @@ module Increase
 
             # US Dollar (USD)
             USD = :USD
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
 
           # Why the check deposit was rejected.
           class Reason < Increase::Enum
             abstract!
+
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # The check's image is incomplete.
             INCOMPLETE_IMAGE = :incomplete_image
@@ -2015,12 +1929,6 @@ module Increase
 
             # The check was rejected for an unknown reason.
             UNKNOWN = :unknown
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -2176,6 +2084,8 @@ module Increase
           class Currency < Increase::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -2193,17 +2103,13 @@ module Increase
 
             # US Dollar (USD)
             USD = :USD
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
 
           # Why the transfer was declined.
           class Reason < Increase::Enum
             abstract!
+
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # The account number is canceled.
             ACCOUNT_NUMBER_CANCELED = :account_number_canceled
@@ -2222,12 +2128,6 @@ module Increase
 
             # Your account is not enabled to receive Real-Time Payments transfers.
             REAL_TIME_PAYMENTS_NOT_ENABLED = :real_time_payments_not_enabled
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
 
@@ -2264,6 +2164,8 @@ module Increase
           class Reason < Increase::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             # The account number is canceled.
             ACCOUNT_NUMBER_CANCELED = :account_number_canceled
 
@@ -2281,12 +2183,6 @@ module Increase
 
             # The transaction is not allowed per Increase's terms.
             TRANSACTION_NOT_ALLOWED = :transaction_not_allowed
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
         end
       end
@@ -2296,13 +2192,9 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        DECLINED_TRANSACTION = :declined_transaction
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        DECLINED_TRANSACTION = :declined_transaction
       end
     end
   end

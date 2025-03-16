@@ -194,17 +194,13 @@ module Increase
         class DebitStatus < Increase::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           # ACH Debits are allowed.
           ALLOWED = :allowed
 
           # ACH Debits are blocked.
           BLOCKED = :blocked
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
 
@@ -232,23 +228,21 @@ module Increase
         class Status < Increase::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           # Checks with this Account Number will be processed even if they are not associated with a Check Transfer.
           ALLOWED = :allowed
 
           # Checks with this Account Number will be processed only if they can be matched to an existing Check Transfer.
           CHECK_TRANSFERS_ONLY = :check_transfers_only
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
 
       # This indicates if payments can be made to the Account Number.
       class Status < Increase::Enum
         abstract!
+
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The account number is active.
         ACTIVE = :active
@@ -258,12 +252,6 @@ module Increase
 
         # The account number is permanently disabled.
         CANCELED = :canceled
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -271,13 +259,9 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        ACCOUNT_NUMBER = :account_number
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        ACCOUNT_NUMBER = :account_number
       end
     end
   end

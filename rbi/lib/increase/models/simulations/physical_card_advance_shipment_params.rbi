@@ -34,6 +34,8 @@ module Increase
         class ShipmentStatus < Increase::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           # The physical card has not yet been shipped.
           PENDING = :pending
 
@@ -54,12 +56,6 @@ module Increase
 
           # The physical card shipment was returned to the sender and destroyed by the production facility.
           RETURNED = :returned
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
     end

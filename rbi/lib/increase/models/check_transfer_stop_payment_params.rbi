@@ -30,6 +30,8 @@ module Increase
       class Reason < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # The check could not be delivered.
         MAIL_DELIVERY_FAILED = :mail_delivery_failed
 
@@ -38,12 +40,6 @@ module Increase
 
         # The check was stopped for another reason.
         UNKNOWN = :unknown
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
     end
   end

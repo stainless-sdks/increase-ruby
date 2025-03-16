@@ -143,6 +143,8 @@ module Increase
       class Bank < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # Core Bank
         CORE_BANK = :core_bank
 
@@ -151,12 +153,6 @@ module Increase
 
         # Grasshopper Bank
         GRASSHOPPER_BANK = :grasshopper_bank
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -164,13 +160,9 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        PROGRAM = :program
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        PROGRAM = :program
       end
     end
   end

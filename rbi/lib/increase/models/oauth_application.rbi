@@ -110,17 +110,13 @@ module Increase
       class Status < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # The application is active and can be used by your users.
         ACTIVE = :active
 
         # The application is deleted.
         DELETED = :deleted
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -128,13 +124,9 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        OAUTH_APPLICATION = :oauth_application
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        OAUTH_APPLICATION = :oauth_application
       end
     end
   end

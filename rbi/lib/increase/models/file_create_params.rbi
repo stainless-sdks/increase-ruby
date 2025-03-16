@@ -65,6 +65,8 @@ module Increase
       class Purpose < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # An image of the front of a check, used for check deposits.
         CHECK_IMAGE_FRONT = :check_image_front
 
@@ -115,12 +117,6 @@ module Increase
 
         # A file containing additional evidence for a Proof of Authorization Request Submission.
         PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION = :proof_of_authorization_request_submission
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
     end
   end

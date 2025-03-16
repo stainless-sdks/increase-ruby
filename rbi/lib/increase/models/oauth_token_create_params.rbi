@@ -92,17 +92,13 @@ module Increase
       class GrantType < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # An OAuth authorization code.
         AUTHORIZATION_CODE = :authorization_code
 
         # An OAuth production token.
         PRODUCTION_TOKEN = :production_token
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
     end
   end

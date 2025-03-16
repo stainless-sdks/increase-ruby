@@ -336,6 +336,8 @@ module Increase
         class Reason < Increase::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           # The return was initiated too late and the receiving institution has responded with a Late Return Claim.
           LATE_RETURN = :late_return
 
@@ -347,18 +349,14 @@ module Increase
 
           # The recipient was not able to process the check. This usually happens for e.g., low quality images.
           NON_CONFORMING_ITEM = :non_conforming_item
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
       class Currency < Increase::Enum
         abstract!
+
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # Canadian Dollar (CAD)
         CAD = :CAD
@@ -377,12 +375,6 @@ module Increase
 
         # US Dollar (USD)
         USD = :USD
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       class DepositReturn < Increase::BaseModel
@@ -427,6 +419,8 @@ module Increase
         class Reason < Increase::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           # The check was altered or fictitious.
           ALTERED_OR_FICTITIOUS = :altered_or_fictitious
 
@@ -441,12 +435,6 @@ module Increase
 
           # The check was not endorsed by the payee.
           ENDORSEMENT_IRREGULAR = :endorsement_irregular
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
 
@@ -454,6 +442,8 @@ module Increase
       #   This is an optional feature, contact sales to enable.
       class PayeeNameAnalysis < Increase::Enum
         abstract!
+
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The details on the check match the recipient name of the check transfer.
         NAME_MATCHES = :name_matches
@@ -463,17 +453,13 @@ module Increase
 
         # The payee name analysis was not evaluated.
         NOT_EVALUATED = :not_evaluated
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # The status of the Inbound Check Deposit.
       class Status < Increase::Enum
         abstract!
+
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The Inbound Check Deposit is pending.
         PENDING = :pending
@@ -489,12 +475,6 @@ module Increase
 
         # The Inbound Check Deposit requires attention from an Increase operator.
         REQUIRES_ATTENTION = :requires_attention
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -502,13 +482,9 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        INBOUND_CHECK_DEPOSIT = :inbound_check_deposit
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        INBOUND_CHECK_DEPOSIT = :inbound_check_deposit
       end
     end
   end

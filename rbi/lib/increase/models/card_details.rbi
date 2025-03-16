@@ -96,13 +96,9 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        CARD_DETAILS = :card_details
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        CARD_DETAILS = :card_details
       end
     end
   end

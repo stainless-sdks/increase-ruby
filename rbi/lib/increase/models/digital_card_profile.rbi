@@ -204,6 +204,8 @@ module Increase
       class Status < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # The Card Profile is awaiting review from Increase and/or processing by card networks.
         PENDING = :pending
 
@@ -215,12 +217,6 @@ module Increase
 
         # The Card Profile is no longer in use.
         ARCHIVED = :archived
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       class TextColor < Increase::BaseModel
@@ -266,13 +262,9 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        DIGITAL_CARD_PROFILE = :digital_card_profile
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        DIGITAL_CARD_PROFILE = :digital_card_profile
       end
     end
   end

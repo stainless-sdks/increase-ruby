@@ -178,22 +178,20 @@ module Increase
       class Creator < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # This Physical Card Profile was created by Increase.
         INCREASE = :increase
 
         # This Physical Card Profile was created by you.
         USER = :user
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # The status of the Physical Card Profile.
       class Status < Increase::Enum
         abstract!
+
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The Card Profile has not yet been processed by Increase.
         PENDING_CREATING = :pending_creating
@@ -212,12 +210,6 @@ module Increase
 
         # The Physical Card Profile has been archived.
         ARCHIVED = :archived
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -225,13 +217,9 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        PHYSICAL_CARD_PROFILE = :physical_card_profile
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        PHYSICAL_CARD_PROFILE = :physical_card_profile
       end
     end
   end

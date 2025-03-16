@@ -30,6 +30,8 @@ module Increase
       class Reason < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # The check was altered or fictitious.
         ALTERED_OR_FICTITIOUS = :altered_or_fictitious
 
@@ -44,12 +46,6 @@ module Increase
 
         # The check was not endorsed by the payee.
         ENDORSEMENT_IRREGULAR = :endorsement_irregular
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
     end
   end

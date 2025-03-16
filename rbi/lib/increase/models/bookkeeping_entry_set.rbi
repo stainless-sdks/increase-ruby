@@ -150,13 +150,9 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        BOOKKEEPING_ENTRY_SET = :bookkeeping_entry_set
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        BOOKKEEPING_ENTRY_SET = :bookkeeping_entry_set
       end
     end
   end

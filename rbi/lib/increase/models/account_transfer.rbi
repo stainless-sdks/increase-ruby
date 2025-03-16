@@ -408,6 +408,8 @@ module Increase
         class Category < Increase::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           # An API key. Details will be under the `api_key` object.
           API_KEY = :api_key
 
@@ -416,12 +418,6 @@ module Increase
 
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER = :user
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class OAuthApplication < Increase::BaseModel
@@ -470,6 +466,8 @@ module Increase
       class Currency < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # Canadian Dollar (CAD)
         CAD = :CAD
 
@@ -487,30 +485,22 @@ module Increase
 
         # US Dollar (USD)
         USD = :USD
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # The transfer's network.
       class Network < Increase::Enum
         abstract!
 
-        ACCOUNT = :account
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        ACCOUNT = :account
       end
 
       # The lifecycle status of the transfer.
       class Status < Increase::Enum
         abstract!
+
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The transfer is pending approval.
         PENDING_APPROVAL = :pending_approval
@@ -520,12 +510,6 @@ module Increase
 
         # The transfer has been completed.
         COMPLETE = :complete
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -533,13 +517,9 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        ACCOUNT_TRANSFER = :account_transfer
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        ACCOUNT_TRANSFER = :account_transfer
       end
     end
   end

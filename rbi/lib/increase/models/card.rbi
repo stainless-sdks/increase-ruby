@@ -328,6 +328,8 @@ module Increase
       class Status < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # The card is active.
         ACTIVE = :active
 
@@ -336,12 +338,6 @@ module Increase
 
         # The card is permanently canceled.
         CANCELED = :canceled
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -349,13 +345,9 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        CARD = :card
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        CARD = :card
       end
     end
   end

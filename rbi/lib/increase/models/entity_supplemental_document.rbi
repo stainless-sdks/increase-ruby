@@ -87,13 +87,9 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        ENTITY_SUPPLEMENTAL_DOCUMENT = :entity_supplemental_document
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        ENTITY_SUPPLEMENTAL_DOCUMENT = :entity_supplemental_document
       end
     end
   end

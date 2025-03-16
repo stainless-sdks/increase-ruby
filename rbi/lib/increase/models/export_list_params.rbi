@@ -130,6 +130,8 @@ module Increase
         class In < Increase::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           # Export an Open Financial Exchange (OFX) file of transactions and balances for a given time range and Account.
           ACCOUNT_STATEMENT_OFX = :account_statement_ofx
 
@@ -150,12 +152,6 @@ module Increase
 
           # Certain dashboard tables are available as CSV exports. This export cannot be created via the API.
           DASHBOARD_TABLE_CSV = :dashboard_table_csv
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
 
@@ -234,6 +230,8 @@ module Increase
         class In < Increase::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           # Increase is generating the export.
           PENDING = :pending
 
@@ -242,12 +240,6 @@ module Increase
 
           # The export failed to generate. Increase will reach out to you to resolve the issue.
           FAILED = :failed
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
     end

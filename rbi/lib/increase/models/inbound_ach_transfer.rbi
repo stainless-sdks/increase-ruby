@@ -445,14 +445,10 @@ module Increase
         class Category < Increase::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           # Unstructured addendum.
           FREEFORM = :freeform
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class Freeform < Increase::BaseModel
@@ -544,6 +540,8 @@ module Increase
         class Reason < Increase::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           # The account number is canceled.
           ACH_ROUTE_CANCELED = :ach_route_canceled
 
@@ -594,12 +592,6 @@ module Increase
 
           # The corporate customer no longer authorizes this transaction.
           CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
 
@@ -607,34 +599,26 @@ module Increase
       class Direction < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # Credit
         CREDIT = :credit
 
         # Debit
         DEBIT = :debit
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # The settlement schedule the transfer is expected to follow.
       class ExpectedSettlementSchedule < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # The transfer is expected to settle same-day.
         SAME_DAY = :same_day
 
         # The transfer is expected to settle on a future date.
         FUTURE_DATED = :future_dated
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       class InternationalAddenda < Increase::BaseModel
@@ -1079,6 +1063,8 @@ module Increase
         class ForeignExchangeIndicator < Increase::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           # The originator chose an amount in their own currency. The settled amount in USD was converted using the exchange rate.
           FIXED_TO_VARIABLE = :fixed_to_variable
 
@@ -1087,18 +1073,14 @@ module Increase
 
           # The amount was originated and settled as a fixed amount in USD. There is no foreign exchange conversion.
           FIXED_TO_FIXED = :fixed_to_fixed
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         # An instruction of how to interpret the `foreign_exchange_reference` field for
         #   this Transaction.
         class ForeignExchangeReferenceIndicator < Increase::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # The ACH file contains a foreign exchange rate.
           FOREIGN_EXCHANGE_RATE = :foreign_exchange_rate
@@ -1108,17 +1090,13 @@ module Increase
 
           # There is no foreign exchange for this transfer, so the `foreign_exchange_reference` field is blank.
           BLANK = :blank
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         # The type of transfer. Set by the originator.
         class InternationalTransactionTypeCode < Increase::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # Sent as `ANN` in the Nacha file.
           ANNUITY = :annuity
@@ -1179,12 +1157,6 @@ module Increase
 
           # Sent as `WEB` in the Nacha file.
           INTERNET_INITIATED = :internet_initiated
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         # An instruction of how to interpret the
@@ -1192,6 +1164,8 @@ module Increase
         class OriginatingDepositoryFinancialInstitutionIDQualifier < Increase::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           # A domestic clearing system number. In the US, for example, this is the American Banking Association (ABA) routing number.
           NATIONAL_CLEARING_SYSTEM_NUMBER = :national_clearing_system_number
 
@@ -1200,12 +1174,6 @@ module Increase
 
           # An International Bank Account Number.
           IBAN = :iban
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         # An instruction of how to interpret the
@@ -1213,6 +1181,8 @@ module Increase
         class ReceivingDepositoryFinancialInstitutionIDQualifier < Increase::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           # A domestic clearing system number. In the US, for example, this is the American Banking Association (ABA) routing number.
           NATIONAL_CLEARING_SYSTEM_NUMBER = :national_clearing_system_number
 
@@ -1221,12 +1191,6 @@ module Increase
 
           # An International Bank Account Number.
           IBAN = :iban
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
 
@@ -1273,6 +1237,8 @@ module Increase
       # The Standard Entry Class (SEC) code of the transfer.
       class StandardEntryClassCode < Increase::Enum
         abstract!
+
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # Corporate Credit and Debit (CCD).
         CORPORATE_CREDIT_OR_DEBIT = :corporate_credit_or_debit
@@ -1321,17 +1287,13 @@ module Increase
 
         # International ACH Transaction (IAT).
         INTERNATIONAL_ACH_TRANSACTION = :international_ach_transaction
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # The status of the transfer.
       class Status < Increase::Enum
         abstract!
+
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The Inbound ACH Transfer is awaiting action, will transition automatically if no action is taken.
         PENDING = :pending
@@ -1344,12 +1306,6 @@ module Increase
 
         # The Inbound ACH Transfer has been returned.
         RETURNED = :returned
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       class TransferReturn < Increase::BaseModel
@@ -1393,6 +1349,8 @@ module Increase
         class Reason < Increase::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           # The customer's account has insufficient funds. This reason is only allowed for debits. The Nacha return code is R01.
           INSUFFICIENT_FUNDS = :insufficient_funds
 
@@ -1422,12 +1380,6 @@ module Increase
 
           # The corporate customer no longer authorizes this transaction. The Nacha return code is R29.
           CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
 
@@ -1436,13 +1388,9 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        INBOUND_ACH_TRANSFER = :inbound_ach_transfer
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        INBOUND_ACH_TRANSFER = :inbound_ach_transfer
       end
     end
   end

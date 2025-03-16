@@ -144,17 +144,13 @@ module Increase
         class In < Increase::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           # ACH Debits are allowed.
           ALLOWED = :allowed
 
           # ACH Debits are blocked.
           BLOCKED = :blocked
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
 
@@ -232,6 +228,8 @@ module Increase
         class In < Increase::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           # The account number is active.
           ACTIVE = :active
 
@@ -240,12 +238,6 @@ module Increase
 
           # The account number is permanently disabled.
           CANCELED = :canceled
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
     end

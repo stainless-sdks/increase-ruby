@@ -191,22 +191,20 @@ module Increase
       class CreditDebitIndicator < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # The Prenotification is for an anticipated credit.
         CREDIT = :credit
 
         # The Prenotification is for an anticipated debit.
         DEBIT = :debit
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
       class StandardEntryClassCode < Increase::Enum
         abstract!
+
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # Corporate Credit and Debit (CCD).
         CORPORATE_CREDIT_OR_DEBIT = :corporate_credit_or_debit
@@ -219,12 +217,6 @@ module Increase
 
         # Internet Initiated (WEB).
         INTERNET_INITIATED = :internet_initiated
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
     end
   end

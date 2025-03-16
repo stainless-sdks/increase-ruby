@@ -127,6 +127,8 @@ module Increase
         class In < Increase::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           # ACH Decline: details will be under the `ach_decline` object.
           ACH_DECLINE = :ach_decline
 
@@ -147,12 +149,6 @@ module Increase
 
           # The Declined Transaction was made for an undocumented or deprecated reason.
           OTHER = :other
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
 

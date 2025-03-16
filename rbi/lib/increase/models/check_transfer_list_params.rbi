@@ -183,6 +183,8 @@ module Increase
         class In < Increase::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           # The transfer is awaiting approval.
           PENDING_APPROVAL = :pending_approval
 
@@ -212,12 +214,6 @@ module Increase
 
           # The transfer has been returned.
           RETURNED = :returned
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
     end

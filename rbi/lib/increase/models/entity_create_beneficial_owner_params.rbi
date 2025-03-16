@@ -375,6 +375,8 @@ module Increase
             class Method < Increase::Enum
               abstract!
 
+              Value = type_template(:out) { {fixed: Symbol} }
+
               # A social security number.
               SOCIAL_SECURITY_NUMBER = :social_security_number
 
@@ -389,12 +391,6 @@ module Increase
 
               # Another identifying document.
               OTHER = :other
-
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
-              end
             end
 
             class DriversLicense < Increase::BaseModel
@@ -582,17 +578,13 @@ module Increase
         class Prong < Increase::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           # A person with 25% or greater direct or indirect ownership of the entity.
           OWNERSHIP = :ownership
 
           # A person who manages, directs, or has significant control of the entity.
           CONTROL = :control
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
     end

@@ -250,6 +250,8 @@ module Increase
       class Status < Increase::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         # The proof of authorization request submission is pending review.
         PENDING_REVIEW = :pending_review
 
@@ -264,12 +266,6 @@ module Increase
 
         # The proof of authorization request submission was sent.
         SENT = :sent
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -277,13 +273,9 @@ module Increase
       class Type < Increase::Enum
         abstract!
 
-        PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION = :proof_of_authorization_request_submission
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION = :proof_of_authorization_request_submission
       end
     end
   end
