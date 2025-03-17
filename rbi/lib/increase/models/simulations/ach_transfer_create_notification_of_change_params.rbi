@@ -7,7 +7,6 @@ module Increase
         extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
-        # The reason for the notification of change.
         sig { returns(Symbol) }
         def change_code
         end
@@ -16,7 +15,6 @@ module Increase
         def change_code=(_)
         end
 
-        # The corrected data for the notification of change (e.g., a new routing number).
         sig { returns(String) }
         def corrected_data
         end
@@ -48,11 +46,8 @@ module Increase
         def to_hash
         end
 
-        # The reason for the notification of change.
         class ChangeCode < Increase::Enum
           abstract!
-
-          Value = type_template(:out) { {fixed: Symbol} }
 
           # The account number was incorrect.
           INCORRECT_ACCOUNT_NUMBER = :incorrect_account_number
@@ -110,6 +105,12 @@ module Increase
 
           # The transaction code was incorrect, initiated by the originating depository financial institution.
           INCORRECT_TRANSACTION_CODE_BY_ORIGINATING_DEPOSITORY_FINANCIAL_INSTITUTION = :incorrect_transaction_code_by_originating_depository_financial_institution
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
     end

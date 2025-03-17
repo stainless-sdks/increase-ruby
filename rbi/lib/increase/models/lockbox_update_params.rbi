@@ -6,7 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # The description you choose for the Lockbox.
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -15,7 +14,6 @@ module Increase
       def description=(_)
       end
 
-      # The recipient name you choose for the Lockbox.
       sig { returns(T.nilable(String)) }
       def recipient_name
       end
@@ -24,7 +22,6 @@ module Increase
       def recipient_name=(_)
       end
 
-      # This indicates if checks can be sent to the Lockbox.
       sig { returns(T.nilable(Symbol)) }
       def status
       end
@@ -59,17 +56,20 @@ module Increase
       def to_hash
       end
 
-      # This indicates if checks can be sent to the Lockbox.
       class Status < Increase::Enum
         abstract!
-
-        Value = type_template(:out) { {fixed: Symbol} }
 
         # This Lockbox is active. Checks mailed to it will be deposited automatically.
         ACTIVE = :active
 
         # This Lockbox is inactive. Checks mailed to it will not be deposited.
         INACTIVE = :inactive
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

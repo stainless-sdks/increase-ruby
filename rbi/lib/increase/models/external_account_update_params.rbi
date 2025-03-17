@@ -6,7 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # The type of entity that owns the External Account.
       sig { returns(T.nilable(Symbol)) }
       def account_holder
       end
@@ -15,7 +14,6 @@ module Increase
       def account_holder=(_)
       end
 
-      # The description you choose to give the external account.
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -24,7 +22,6 @@ module Increase
       def description=(_)
       end
 
-      # The funding type of the External Account.
       sig { returns(T.nilable(Symbol)) }
       def funding
       end
@@ -33,7 +30,6 @@ module Increase
       def funding=(_)
       end
 
-      # The status of the External Account.
       sig { returns(T.nilable(Symbol)) }
       def status
       end
@@ -70,24 +66,24 @@ module Increase
       def to_hash
       end
 
-      # The type of entity that owns the External Account.
       class AccountHolder < Increase::Enum
         abstract!
-
-        Value = type_template(:out) { {fixed: Symbol} }
 
         # The External Account is owned by a business.
         BUSINESS = :business
 
         # The External Account is owned by an individual.
         INDIVIDUAL = :individual
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
-      # The funding type of the External Account.
       class Funding < Increase::Enum
         abstract!
-
-        Value = type_template(:out) { {fixed: Symbol} }
 
         # A checking account.
         CHECKING = :checking
@@ -97,19 +93,28 @@ module Increase
 
         # A different type of account.
         OTHER = :other
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
-      # The status of the External Account.
       class Status < Increase::Enum
         abstract!
-
-        Value = type_template(:out) { {fixed: Symbol} }
 
         # The External Account is active.
         ACTIVE = :active
 
         # The External Account is archived and won't appear in the dashboard.
         ARCHIVED = :archived
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

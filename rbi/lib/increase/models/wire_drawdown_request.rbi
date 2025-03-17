@@ -3,7 +3,6 @@
 module Increase
   module Models
     class WireDrawdownRequest < Increase::BaseModel
-      # The Wire drawdown request identifier.
       sig { returns(String) }
       def id
       end
@@ -12,8 +11,6 @@ module Increase
       def id=(_)
       end
 
-      # The Account Number to which the recipient of this request is being requested to
-      #   send funds.
       sig { returns(String) }
       def account_number_id
       end
@@ -22,7 +19,6 @@ module Increase
       def account_number_id=(_)
       end
 
-      # The amount being requested in cents.
       sig { returns(Integer) }
       def amount
       end
@@ -31,8 +27,6 @@ module Increase
       def amount=(_)
       end
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the wire drawdown request was created.
       sig { returns(Time) }
       def created_at
       end
@@ -41,8 +35,6 @@ module Increase
       def created_at=(_)
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
-      #   requested. Will always be "USD".
       sig { returns(String) }
       def currency
       end
@@ -51,8 +43,6 @@ module Increase
       def currency=(_)
       end
 
-      # If the recipient fulfills the drawdown request by sending funds, then this will
-      #   be the identifier of the corresponding Transaction.
       sig { returns(T.nilable(String)) }
       def fulfillment_inbound_wire_transfer_id
       end
@@ -61,9 +51,6 @@ module Increase
       def fulfillment_inbound_wire_transfer_id=(_)
       end
 
-      # The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       def idempotency_key
       end
@@ -72,7 +59,6 @@ module Increase
       def idempotency_key=(_)
       end
 
-      # The message the recipient will see as part of the drawdown request.
       sig { returns(String) }
       def message_to_recipient
       end
@@ -81,7 +67,6 @@ module Increase
       def message_to_recipient=(_)
       end
 
-      # The originator's address line 1.
       sig { returns(T.nilable(String)) }
       def originator_address_line1
       end
@@ -90,7 +75,6 @@ module Increase
       def originator_address_line1=(_)
       end
 
-      # The originator's address line 2.
       sig { returns(T.nilable(String)) }
       def originator_address_line2
       end
@@ -99,7 +83,6 @@ module Increase
       def originator_address_line2=(_)
       end
 
-      # The originator's address line 3.
       sig { returns(T.nilable(String)) }
       def originator_address_line3
       end
@@ -108,7 +91,6 @@ module Increase
       def originator_address_line3=(_)
       end
 
-      # The originator's name.
       sig { returns(T.nilable(String)) }
       def originator_name
       end
@@ -117,7 +99,6 @@ module Increase
       def originator_name=(_)
       end
 
-      # The drawdown request's recipient's account number.
       sig { returns(String) }
       def recipient_account_number
       end
@@ -126,7 +107,6 @@ module Increase
       def recipient_account_number=(_)
       end
 
-      # Line 1 of the drawdown request's recipient's address.
       sig { returns(T.nilable(String)) }
       def recipient_address_line1
       end
@@ -135,7 +115,6 @@ module Increase
       def recipient_address_line1=(_)
       end
 
-      # Line 2 of the drawdown request's recipient's address.
       sig { returns(T.nilable(String)) }
       def recipient_address_line2
       end
@@ -144,7 +123,6 @@ module Increase
       def recipient_address_line2=(_)
       end
 
-      # Line 3 of the drawdown request's recipient's address.
       sig { returns(T.nilable(String)) }
       def recipient_address_line3
       end
@@ -153,7 +131,6 @@ module Increase
       def recipient_address_line3=(_)
       end
 
-      # The drawdown request's recipient's name.
       sig { returns(T.nilable(String)) }
       def recipient_name
       end
@@ -162,7 +139,6 @@ module Increase
       def recipient_name=(_)
       end
 
-      # The drawdown request's recipient's routing number.
       sig { returns(String) }
       def recipient_routing_number
       end
@@ -171,7 +147,6 @@ module Increase
       def recipient_routing_number=(_)
       end
 
-      # The lifecycle status of the drawdown request.
       sig { returns(Symbol) }
       def status
       end
@@ -180,8 +155,6 @@ module Increase
       def status=(_)
       end
 
-      # After the drawdown request is submitted to Fedwire, this will contain
-      #   supplemental details.
       sig { returns(T.nilable(Increase::Models::WireDrawdownRequest::Submission)) }
       def submission
       end
@@ -193,8 +166,6 @@ module Increase
       def submission=(_)
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `wire_drawdown_request`.
       sig { returns(Symbol) }
       def type
       end
@@ -203,9 +174,6 @@ module Increase
       def type=(_)
       end
 
-      # Wire drawdown requests enable you to request that someone else send you a wire.
-      #   This feature is in beta; reach out to
-      #   [support@increase.com](mailto:support@increase.com) to learn more.
       sig do
         params(
           id: String,
@@ -288,11 +256,8 @@ module Increase
       def to_hash
       end
 
-      # The lifecycle status of the drawdown request.
       class Status < Increase::Enum
         abstract!
-
-        Value = type_template(:out) { {fixed: Symbol} }
 
         # The drawdown request is queued to be submitted to Fedwire.
         PENDING_SUBMISSION = :pending_submission
@@ -305,11 +270,15 @@ module Increase
 
         # The drawdown request has been refused by the recipient.
         REFUSED = :refused
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       class Submission < Increase::BaseModel
-        # The input message accountability data (IMAD) uniquely identifying the submission
-        #   with Fedwire.
         sig { returns(String) }
         def input_message_accountability_data
         end
@@ -318,8 +287,6 @@ module Increase
         def input_message_accountability_data=(_)
         end
 
-        # After the drawdown request is submitted to Fedwire, this will contain
-        #   supplemental details.
         sig { params(input_message_accountability_data: String).returns(T.attached_class) }
         def self.new(input_message_accountability_data:)
         end
@@ -329,14 +296,16 @@ module Increase
         end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `wire_drawdown_request`.
       class Type < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         WIRE_DRAWDOWN_REQUEST = :wire_drawdown_request
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

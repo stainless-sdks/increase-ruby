@@ -3,7 +3,6 @@
 module Increase
   module Models
     class ProofOfAuthorizationRequest < Increase::BaseModel
-      # The Proof of Authorization Request identifier.
       sig { returns(String) }
       def id
       end
@@ -12,7 +11,6 @@ module Increase
       def id=(_)
       end
 
-      # The ACH Transfers associated with the request.
       sig { returns(T::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer]) }
       def ach_transfers
       end
@@ -24,7 +22,6 @@ module Increase
       def ach_transfers=(_)
       end
 
-      # The time the Proof of Authorization Request was created.
       sig { returns(Time) }
       def created_at
       end
@@ -33,7 +30,6 @@ module Increase
       def created_at=(_)
       end
 
-      # The time the Proof of Authorization Request is due.
       sig { returns(Time) }
       def due_on
       end
@@ -42,8 +38,6 @@ module Increase
       def due_on=(_)
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `proof_of_authorization_request`.
       sig { returns(Symbol) }
       def type
       end
@@ -52,7 +46,6 @@ module Increase
       def type=(_)
       end
 
-      # The time the Proof of Authorization Request was last updated.
       sig { returns(Time) }
       def updated_at
       end
@@ -61,7 +54,6 @@ module Increase
       def updated_at=(_)
       end
 
-      # A request for proof of authorization for one or more ACH debit transfers.
       sig do
         params(
           id: String,
@@ -93,7 +85,6 @@ module Increase
       end
 
       class ACHTransfer < Increase::BaseModel
-        # The ACH Transfer identifier.
         sig { returns(String) }
         def id
         end
@@ -111,14 +102,16 @@ module Increase
         end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `proof_of_authorization_request`.
       class Type < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         PROOF_OF_AUTHORIZATION_REQUEST = :proof_of_authorization_request
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

@@ -6,7 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # Terms of authorization.
       sig { returns(String) }
       def authorization_terms
       end
@@ -15,7 +14,6 @@ module Increase
       def authorization_terms=(_)
       end
 
-      # Time of authorization.
       sig { returns(Time) }
       def authorized_at
       end
@@ -24,7 +22,6 @@ module Increase
       def authorized_at=(_)
       end
 
-      # Email of the authorizer.
       sig { returns(String) }
       def authorizer_email
       end
@@ -33,7 +30,6 @@ module Increase
       def authorizer_email=(_)
       end
 
-      # Name of the authorizer.
       sig { returns(String) }
       def authorizer_name
       end
@@ -42,7 +38,6 @@ module Increase
       def authorizer_name=(_)
       end
 
-      # Whether the customer has been offboarded or suspended.
       sig { returns(T::Boolean) }
       def customer_has_been_offboarded
       end
@@ -51,7 +46,6 @@ module Increase
       def customer_has_been_offboarded=(_)
       end
 
-      # ID of the proof of authorization request.
       sig { returns(String) }
       def proof_of_authorization_request_id
       end
@@ -60,7 +54,6 @@ module Increase
       def proof_of_authorization_request_id=(_)
       end
 
-      # Whether the account ownership was validated via credential (e.g. Plaid).
       sig { returns(T::Boolean) }
       def validated_account_ownership_via_credential
       end
@@ -69,7 +62,6 @@ module Increase
       def validated_account_ownership_via_credential=(_)
       end
 
-      # Whether the account ownership was validated with an account statement.
       sig { returns(T::Boolean) }
       def validated_account_ownership_with_account_statement
       end
@@ -78,7 +70,6 @@ module Increase
       def validated_account_ownership_with_account_statement=(_)
       end
 
-      # Whether the account ownership was validated with a microdeposit.
       sig { returns(T::Boolean) }
       def validated_account_ownership_with_microdeposit
       end
@@ -87,7 +78,6 @@ module Increase
       def validated_account_ownership_with_microdeposit=(_)
       end
 
-      # The File containing the check's front image.
       sig { returns(T.nilable(String)) }
       def additional_evidence_file_id
       end
@@ -96,7 +86,6 @@ module Increase
       def additional_evidence_file_id=(_)
       end
 
-      # Company of the authorizer.
       sig { returns(T.nilable(String)) }
       def authorizer_company
       end
@@ -105,7 +94,6 @@ module Increase
       def authorizer_company=(_)
       end
 
-      # IP address of the authorizer.
       sig { returns(T.nilable(String)) }
       def authorizer_ip_address
       end

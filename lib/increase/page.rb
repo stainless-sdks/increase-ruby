@@ -17,33 +17,30 @@ module Increase
   #
   # @example
   # ```ruby
-  # accounts = page
-  #   .to_enum
-  #   .lazy
-  #   .select { _1.object_id.even? }
-  #   .map(&:itself)
-  #   .take(2)
-  #   .to_a
+  # accounts = page.to_enum.take(2)
   #
   # accounts => Array
   # ```
   class Page
     include Increase::BasePage
 
-    # @return [Array<Object>, nil]
+    # @return [Array<Object>]
     attr_accessor :data
 
     # @return [String, nil]
     attr_accessor :next_cursor
 
-    # @api private
+    # rubocop:disable Lint/UnusedMethodArgument
+    # @private
     #
     # @param client [Increase::BaseClient]
     # @param req [Hash{Symbol=>Object}]
     # @param headers [Hash{String=>String}, Net::HTTPHeader]
     # @param page_data [Hash{Symbol=>Object}]
+    #
     def initialize(client:, req:, headers:, page_data:)
-      super
+      @client = client
+      @req = req
       model = req.fetch(:model)
 
       case page_data
@@ -58,18 +55,20 @@ module Increase
       else
       end
     end
+    # rubocop:enable Lint/UnusedMethodArgument
 
     # @return [Boolean]
+    #
     def next_page?
       !next_cursor.nil?
     end
 
     # @raise [Increase::HTTP::Error]
     # @return [Increase::Page]
+    #
     def next_page
       unless next_page?
-        message = "No more pages available. Please check #next_page? before calling ##{__method__}"
-        raise RuntimeError.new(message)
+        raise RuntimeError.new("No more pages available. Please check #next_page? before calling ##{__method__}")
       end
 
       req = Increase::Util.deep_merge(@req, {query: {cursor: next_cursor}})
@@ -77,6 +76,7 @@ module Increase
     end
 
     # @param blk [Proc]
+    #
     def auto_paging_each(&blk)
       unless block_given?
         raise ArgumentError.new("A block must be given to ##{__method__}")
@@ -90,6 +90,7 @@ module Increase
     end
 
     # @return [String]
+    #
     def inspect
       "#<#{self.class}:0x#{object_id.to_s(16)} data=#{data.inspect} next_cursor=#{next_cursor.inspect}>"
     end

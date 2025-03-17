@@ -3,7 +3,6 @@
 module Increase
   module Resources
     class InboundMailItems
-      # Retrieve an Inbound Mail Item
       sig do
         params(
           inbound_mail_item_id: String,
@@ -11,14 +10,9 @@ module Increase
         )
           .returns(Increase::Models::InboundMailItem)
       end
-      def retrieve(
-        # The identifier of the Inbound Mail Item to retrieve.
-        inbound_mail_item_id,
-        request_options: {}
-      )
+      def retrieve(inbound_mail_item_id, request_options: {})
       end
 
-      # List Inbound Mail Items
       sig do
         params(
           created_at: Increase::Models::InboundMailItemListParams::CreatedAt,
@@ -29,17 +23,7 @@ module Increase
         )
           .returns(Increase::Page[Increase::Models::InboundMailItem])
       end
-      def list(
-        created_at: nil,
-        # Return the page of entries after this one.
-        cursor: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        #   objects.
-        limit: nil,
-        # Filter Inbound Mail Items to ones sent to the provided Lockbox.
-        lockbox_id: nil,
-        request_options: {}
-      )
+      def list(created_at: nil, cursor: nil, limit: nil, lockbox_id: nil, request_options: {})
       end
 
       sig { params(client: Increase::Client).returns(T.attached_class) }

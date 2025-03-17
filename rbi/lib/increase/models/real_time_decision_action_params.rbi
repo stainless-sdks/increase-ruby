@@ -6,8 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # If the Real-Time Decision relates to a 3DS card authentication attempt, this
-      #   object contains your response to the authentication.
       sig { returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::CardAuthentication)) }
       def card_authentication
       end
@@ -19,8 +17,6 @@ module Increase
       def card_authentication=(_)
       end
 
-      # If the Real-Time Decision relates to 3DS card authentication challenge delivery,
-      #   this object contains your response.
       sig { returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge)) }
       def card_authentication_challenge
       end
@@ -32,8 +28,6 @@ module Increase
       def card_authentication_challenge=(_)
       end
 
-      # If the Real-Time Decision relates to a card authorization attempt, this object
-      #   contains your response to the authorization.
       sig { returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::CardAuthorization)) }
       def card_authorization
       end
@@ -45,8 +39,6 @@ module Increase
       def card_authorization=(_)
       end
 
-      # If the Real-Time Decision relates to a digital wallet authentication attempt,
-      #   this object contains your response to the authentication.
       sig { returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication)) }
       def digital_wallet_authentication
       end
@@ -58,8 +50,6 @@ module Increase
       def digital_wallet_authentication=(_)
       end
 
-      # If the Real-Time Decision relates to a digital wallet token provisioning
-      #   attempt, this object contains your response to the attempt.
       sig { returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken)) }
       def digital_wallet_token
       end
@@ -109,7 +99,6 @@ module Increase
       end
 
       class CardAuthentication < Increase::BaseModel
-        # Whether the card authentication attempt should be approved or declined.
         sig { returns(Symbol) }
         def decision
         end
@@ -118,8 +107,6 @@ module Increase
         def decision=(_)
         end
 
-        # If the Real-Time Decision relates to a 3DS card authentication attempt, this
-        #   object contains your response to the authentication.
         sig { params(decision: Symbol).returns(T.attached_class) }
         def self.new(decision:)
         end
@@ -128,11 +115,8 @@ module Increase
         def to_hash
         end
 
-        # Whether the card authentication attempt should be approved or declined.
         class Decision < Increase::Enum
           abstract!
-
-          Value = type_template(:out) { {fixed: Symbol} }
 
           # Approve the authentication attempt without triggering a challenge.
           APPROVE = :approve
@@ -142,12 +126,16 @@ module Increase
 
           # Deny the authentication attempt.
           DENY = :deny
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
       class CardAuthenticationChallenge < Increase::BaseModel
-        # Whether the card authentication challenge was successfully delivered to the
-        #   cardholder.
         sig { returns(Symbol) }
         def result
         end
@@ -156,8 +144,6 @@ module Increase
         def result=(_)
         end
 
-        # If the Real-Time Decision relates to 3DS card authentication challenge delivery,
-        #   this object contains your response.
         sig { params(result: Symbol).returns(T.attached_class) }
         def self.new(result:)
         end
@@ -166,23 +152,24 @@ module Increase
         def to_hash
         end
 
-        # Whether the card authentication challenge was successfully delivered to the
-        #   cardholder.
         class Result < Increase::Enum
           abstract!
-
-          Value = type_template(:out) { {fixed: Symbol} }
 
           # Your application successfully delivered the one-time code to the cardholder.
           SUCCESS = :success
 
           # Your application was unable to deliver the one-time code to the cardholder.
           FAILURE = :failure
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
       class CardAuthorization < Increase::BaseModel
-        # Whether the card authorization should be approved or declined.
         sig { returns(Symbol) }
         def decision
         end
@@ -191,8 +178,6 @@ module Increase
         def decision=(_)
         end
 
-        # The reason the card authorization was declined. This translates to a specific
-        #   decline code that is sent to the card network.
         sig { returns(T.nilable(Symbol)) }
         def decline_reason
         end
@@ -201,8 +186,6 @@ module Increase
         def decline_reason=(_)
         end
 
-        # If the Real-Time Decision relates to a card authorization attempt, this object
-        #   contains your response to the authorization.
         sig { params(decision: Symbol, decline_reason: Symbol).returns(T.attached_class) }
         def self.new(decision:, decline_reason: nil)
         end
@@ -211,25 +194,24 @@ module Increase
         def to_hash
         end
 
-        # Whether the card authorization should be approved or declined.
         class Decision < Increase::Enum
           abstract!
-
-          Value = type_template(:out) { {fixed: Symbol} }
 
           # Approve the authorization.
           APPROVE = :approve
 
           # Decline the authorization.
           DECLINE = :decline
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
-        # The reason the card authorization was declined. This translates to a specific
-        #   decline code that is sent to the card network.
         class DeclineReason < Increase::Enum
           abstract!
-
-          Value = type_template(:out) { {fixed: Symbol} }
 
           # The cardholder does not have sufficient funds to cover the transaction. The merchant may attempt to process the transaction again.
           INSUFFICIENT_FUNDS = :insufficient_funds
@@ -248,11 +230,16 @@ module Increase
 
           # The transaction was declined for another reason. The merchant may attempt to process the transaction again. This should be used sparingly.
           OTHER = :other
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
       class DigitalWalletAuthentication < Increase::BaseModel
-        # Whether your application was able to deliver the one-time passcode.
         sig { returns(Symbol) }
         def result
         end
@@ -272,8 +259,6 @@ module Increase
         def success=(_)
         end
 
-        # If the Real-Time Decision relates to a digital wallet authentication attempt,
-        #   this object contains your response to the authentication.
         sig do
           params(
             result: Symbol,
@@ -296,21 +281,23 @@ module Increase
         def to_hash
         end
 
-        # Whether your application was able to deliver the one-time passcode.
         class Result < Increase::Enum
           abstract!
-
-          Value = type_template(:out) { {fixed: Symbol} }
 
           # Your application successfully delivered the one-time passcode to the cardholder.
           SUCCESS = :success
 
           # Your application failed to deliver the one-time passcode to the cardholder.
           FAILURE = :failure
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         class Success < Increase::BaseModel
-          # The email address that was used to verify the cardholder via one-time passcode.
           sig { returns(T.nilable(String)) }
           def email
           end
@@ -319,8 +306,6 @@ module Increase
           def email=(_)
           end
 
-          # The phone number that was used to verify the cardholder via one-time passcode
-          #   over SMS.
           sig { returns(T.nilable(String)) }
           def phone
           end
@@ -340,8 +325,6 @@ module Increase
       end
 
       class DigitalWalletToken < Increase::BaseModel
-        # If your application approves the provisioning attempt, this contains metadata
-        #   about the digital wallet token that will be generated.
         sig { returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval)) }
         def approval
         end
@@ -353,8 +336,6 @@ module Increase
         def approval=(_)
         end
 
-        # If your application declines the provisioning attempt, this contains details
-        #   about the decline.
         sig { returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline)) }
         def decline
         end
@@ -366,8 +347,6 @@ module Increase
         def decline=(_)
         end
 
-        # If the Real-Time Decision relates to a digital wallet token provisioning
-        #   attempt, this object contains your response to the attempt.
         sig do
           params(
             approval: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval,
@@ -391,8 +370,6 @@ module Increase
         end
 
         class Approval < Increase::BaseModel
-          # An email address that can be used to verify the cardholder via one-time
-          #   passcode.
           sig { returns(T.nilable(String)) }
           def email
           end
@@ -401,8 +378,6 @@ module Increase
           def email=(_)
           end
 
-          # A phone number that can be used to verify the cardholder via one-time passcode
-          #   over SMS.
           sig { returns(T.nilable(String)) }
           def phone
           end
@@ -411,8 +386,6 @@ module Increase
           def phone=(_)
           end
 
-          # If your application approves the provisioning attempt, this contains metadata
-          #   about the digital wallet token that will be generated.
           sig { params(email: String, phone: String).returns(T.attached_class) }
           def self.new(email: nil, phone: nil)
           end
@@ -423,8 +396,6 @@ module Increase
         end
 
         class Decline < Increase::BaseModel
-          # Why the tokenization attempt was declined. This is for logging purposes only and
-          #   is not displayed to the end-user.
           sig { returns(T.nilable(String)) }
           def reason
           end
@@ -433,8 +404,6 @@ module Increase
           def reason=(_)
           end
 
-          # If your application declines the provisioning attempt, this contains details
-          #   about the decline.
           sig { params(reason: String).returns(T.attached_class) }
           def self.new(reason: nil)
           end

@@ -126,6 +126,7 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @abstract
+        #
         class In < Increase::Enum
           # ACH Debits are allowed.
           ALLOWED = :allowed
@@ -215,6 +216,7 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @abstract
+        #
         class In < Increase::Enum
           # The account number is active.
           ACTIVE = :active

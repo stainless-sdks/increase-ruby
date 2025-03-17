@@ -6,7 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # Filter IntraFi Account Enrollments to the one belonging to an account.
       sig { returns(T.nilable(String)) }
       def account_id
       end
@@ -15,7 +14,6 @@ module Increase
       def account_id=(_)
       end
 
-      # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
       def cursor
       end
@@ -24,10 +22,6 @@ module Increase
       def cursor=(_)
       end
 
-      # Filter records to the one with the specified `idempotency_key` you chose for
-      #   that object. This value is unique across Increase and is used to ensure that a
-      #   request is only processed once. Learn more about
-      #   [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       def idempotency_key
       end
@@ -36,8 +30,6 @@ module Increase
       def idempotency_key=(_)
       end
 
-      # Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
       sig { returns(T.nilable(Integer)) }
       def limit
       end
@@ -88,9 +80,6 @@ module Increase
       end
 
       class Status < Increase::BaseModel
-        # Filter IntraFi Account Enrollments for those with the specified status or
-        #   statuses. For GET requests, this should be encoded as a comma-delimited string,
-        #   such as `?in=one,two,three`.
         sig { returns(T.nilable(T::Array[Symbol])) }
         def in_
         end
@@ -110,8 +99,6 @@ module Increase
         class In < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # The account is being added to the IntraFi network.
           PENDING_ENROLLING = :pending_enrolling
 
@@ -126,6 +113,12 @@ module Increase
 
           # Something unexpected happened with this account. Contact Increase support.
           REQUIRES_ATTENTION = :requires_attention
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
     end

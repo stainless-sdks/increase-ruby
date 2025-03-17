@@ -3,7 +3,6 @@
 module Increase
   module Resources
     class Programs
-      # Retrieve a Program
       sig do
         params(
           program_id: String,
@@ -11,14 +10,9 @@ module Increase
         )
           .returns(Increase::Models::Program)
       end
-      def retrieve(
-        # The identifier of the Program to retrieve.
-        program_id,
-        request_options: {}
-      )
+      def retrieve(program_id, request_options: {})
       end
 
-      # List Programs
       sig do
         params(
           cursor: String,
@@ -27,14 +21,7 @@ module Increase
         )
           .returns(Increase::Page[Increase::Models::Program])
       end
-      def list(
-        # Return the page of entries after this one.
-        cursor: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        #   objects.
-        limit: nil,
-        request_options: {}
-      )
+      def list(cursor: nil, limit: nil, request_options: {})
       end
 
       sig { params(client: Increase::Client).returns(T.attached_class) }

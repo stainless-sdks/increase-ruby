@@ -6,7 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # Filter pending transactions to those belonging to the specified Account.
       sig { returns(T.nilable(String)) }
       def account_id
       end
@@ -37,7 +36,6 @@ module Increase
       def created_at=(_)
       end
 
-      # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
       def cursor
       end
@@ -46,8 +44,6 @@ module Increase
       def cursor=(_)
       end
 
-      # Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
       sig { returns(T.nilable(Integer)) }
       def limit
       end
@@ -56,7 +52,6 @@ module Increase
       def limit=(_)
       end
 
-      # Filter pending transactions to those belonging to the specified Route.
       sig { returns(T.nilable(String)) }
       def route_id
       end
@@ -120,8 +115,6 @@ module Increase
       end
 
       class Category < Increase::BaseModel
-        # Return results whose value is in the provided list. For GET requests, this
-        #   should be encoded as a comma-delimited string, such as `?in=one,two,three`.
         sig { returns(T.nilable(T::Array[Symbol])) }
         def in_
         end
@@ -140,8 +133,6 @@ module Increase
 
         class In < Increase::Enum
           abstract!
-
-          Value = type_template(:out) { {fixed: Symbol} }
 
           # Account Transfer Instruction: details will be under the `account_transfer_instruction` object.
           ACCOUNT_TRANSFER_INSTRUCTION = :account_transfer_instruction
@@ -172,12 +163,16 @@ module Increase
 
           # The Pending Transaction was made for an undocumented or deprecated reason.
           OTHER = :other
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
       class CreatedAt < Increase::BaseModel
-        # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        #   timestamp.
         sig { returns(T.nilable(Time)) }
         def after
         end
@@ -186,8 +181,6 @@ module Increase
         def after=(_)
         end
 
-        # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        #   timestamp.
         sig { returns(T.nilable(Time)) }
         def before
         end
@@ -196,8 +189,6 @@ module Increase
         def before=(_)
         end
 
-        # Return results on or after this
-        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
         def on_or_after
         end
@@ -206,8 +197,6 @@ module Increase
         def on_or_after=(_)
         end
 
-        # Return results on or before this
-        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
         def on_or_before
         end
@@ -228,10 +217,6 @@ module Increase
       end
 
       class Status < Increase::BaseModel
-        # Filter Pending Transactions for those with the specified status. By default only
-        #   Pending Transactions in with status `pending` will be returned. For GET
-        #   requests, this should be encoded as a comma-delimited string, such as
-        #   `?in=one,two,three`.
         sig { returns(T.nilable(T::Array[Symbol])) }
         def in_
         end
@@ -251,13 +236,17 @@ module Increase
         class In < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # The Pending Transaction is still awaiting confirmation.
           PENDING = :pending
 
           # The Pending Transaction is confirmed. An associated Transaction exists for this object. The Pending Transaction will no longer count against your balance and can generally be hidden from UIs, etc.
           COMPLETE = :complete
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
     end

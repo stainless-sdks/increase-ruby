@@ -6,7 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # The name you choose for the account.
       sig { returns(String) }
       def name
       end

@@ -7,7 +7,6 @@ module Increase
         extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
-        # The status to move the dispute to.
         sig { returns(Symbol) }
         def status
         end
@@ -16,7 +15,6 @@ module Increase
         def status=(_)
         end
 
-        # Why the dispute was rejected. Not required for accepting disputes.
         sig { returns(T.nilable(String)) }
         def explanation
         end
@@ -42,11 +40,8 @@ module Increase
         def to_hash
         end
 
-        # The status to move the dispute to.
         class Status < Increase::Enum
           abstract!
-
-          Value = type_template(:out) { {fixed: Symbol} }
 
           # Increase has requested more information related to the Card Dispute from you.
           PENDING_USER_INFORMATION = :pending_user_information
@@ -62,6 +57,12 @@ module Increase
 
           # The Card Dispute has been won and no further action can be taken.
           WON = :won
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
     end

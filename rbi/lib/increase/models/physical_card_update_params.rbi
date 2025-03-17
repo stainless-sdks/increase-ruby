@@ -6,7 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # The status to update the Physical Card to.
       sig { returns(Symbol) }
       def status
       end
@@ -26,11 +25,8 @@ module Increase
       def to_hash
       end
 
-      # The status to update the Physical Card to.
       class Status < Increase::Enum
         abstract!
-
-        Value = type_template(:out) { {fixed: Symbol} }
 
         # The physical card is active.
         ACTIVE = :active
@@ -40,6 +36,12 @@ module Increase
 
         # The physical card is permanently canceled.
         CANCELED = :canceled
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

@@ -17,7 +17,6 @@ module Increase
       def created_at=(_)
       end
 
-      # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
       def cursor
       end
@@ -26,7 +25,6 @@ module Increase
       def cursor=(_)
       end
 
-      # Filter Accounts for those belonging to the specified Entity.
       sig { returns(T.nilable(String)) }
       def entity_id
       end
@@ -35,10 +33,6 @@ module Increase
       def entity_id=(_)
       end
 
-      # Filter records to the one with the specified `idempotency_key` you chose for
-      #   that object. This value is unique across Increase and is used to ensure that a
-      #   request is only processed once. Learn more about
-      #   [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       def idempotency_key
       end
@@ -47,7 +41,6 @@ module Increase
       def idempotency_key=(_)
       end
 
-      # Filter Accounts for those belonging to the specified Entity as informational.
       sig { returns(T.nilable(String)) }
       def informational_entity_id
       end
@@ -56,8 +49,6 @@ module Increase
       def informational_entity_id=(_)
       end
 
-      # Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
       sig { returns(T.nilable(Integer)) }
       def limit
       end
@@ -66,7 +57,6 @@ module Increase
       def limit=(_)
       end
 
-      # Filter Accounts for those in a specific Program.
       sig { returns(T.nilable(String)) }
       def program_id
       end
@@ -132,8 +122,6 @@ module Increase
       end
 
       class CreatedAt < Increase::BaseModel
-        # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        #   timestamp.
         sig { returns(T.nilable(Time)) }
         def after
         end
@@ -142,8 +130,6 @@ module Increase
         def after=(_)
         end
 
-        # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        #   timestamp.
         sig { returns(T.nilable(Time)) }
         def before
         end
@@ -152,8 +138,6 @@ module Increase
         def before=(_)
         end
 
-        # Return results on or after this
-        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
         def on_or_after
         end
@@ -162,8 +146,6 @@ module Increase
         def on_or_after=(_)
         end
 
-        # Return results on or before this
-        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
         def on_or_before
         end
@@ -184,8 +166,6 @@ module Increase
       end
 
       class Status < Increase::BaseModel
-        # Filter Accounts for those with the specified status. For GET requests, this
-        #   should be encoded as a comma-delimited string, such as `?in=one,two,three`.
         sig { returns(T.nilable(T::Array[Symbol])) }
         def in_
         end
@@ -205,13 +185,17 @@ module Increase
         class In < Increase::Enum
           abstract!
 
-          Value = type_template(:out) { {fixed: Symbol} }
-
           # Closed Accounts on which no new activity can occur.
           CLOSED = :closed
 
           # Open Accounts that are ready to use.
           OPEN = :open
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
     end

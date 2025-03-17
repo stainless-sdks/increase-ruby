@@ -6,7 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # The status to update the Event Subscription with.
       sig { returns(T.nilable(Symbol)) }
       def status
       end
@@ -26,11 +25,8 @@ module Increase
       def to_hash
       end
 
-      # The status to update the Event Subscription with.
       class Status < Increase::Enum
         abstract!
-
-        Value = type_template(:out) { {fixed: Symbol} }
 
         # The subscription is active and Events will be delivered normally.
         ACTIVE = :active
@@ -40,6 +36,12 @@ module Increase
 
         # The subscription is permanently disabled and Events will not be delivered.
         DELETED = :deleted
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

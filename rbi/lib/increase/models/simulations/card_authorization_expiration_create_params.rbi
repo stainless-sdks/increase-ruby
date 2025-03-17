@@ -7,7 +7,6 @@ module Increase
         extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
-        # The identifier of the Card Payment to expire.
         sig { returns(String) }
         def card_payment_id
         end

@@ -1,17 +1,17 @@
 module Increase
   class Error < StandardError
-    attr_accessor cause: StandardError?
+    attr_reader cause: StandardError?
   end
 
   class ConversionError < Increase::Error
   end
 
   class APIError < Increase::Error
-    attr_accessor url: URI::Generic
+    attr_reader url: URI::Generic
 
-    attr_accessor status: Integer?
+    attr_reader status: Integer?
 
-    attr_accessor body: top?
+    attr_reader body: top?
 
     def initialize: (
       url: URI::Generic,

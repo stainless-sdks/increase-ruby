@@ -4,10 +4,6 @@ module Increase
   module Resources
     class Simulations
       class AccountTransfers
-        # If your account is configured to require approval for each transfer, this
-        #   endpoint simulates the approval of an [Account Transfer](#account-transfers).
-        #   You can also approve sandbox Account Transfers in the dashboard. This transfer
-        #   must first have a `status` of `pending_approval`.
         sig do
           params(
             account_transfer_id: String,
@@ -15,11 +11,7 @@ module Increase
           )
             .returns(Increase::Models::AccountTransfer)
         end
-        def complete(
-          # The identifier of the Account Transfer you wish to complete.
-          account_transfer_id,
-          request_options: {}
-        )
+        def complete(account_transfer_id, request_options: {})
         end
 
         sig { params(client: Increase::Client).returns(T.attached_class) }

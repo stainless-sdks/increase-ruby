@@ -6,7 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # The name you choose for the account.
       sig { returns(String) }
       def name
       end
@@ -15,7 +14,6 @@ module Increase
       def name=(_)
       end
 
-      # The entity, if `compliance_category` is `commingled_cash`.
       sig { returns(T.nilable(String)) }
       def account_id
       end
@@ -24,7 +22,6 @@ module Increase
       def account_id=(_)
       end
 
-      # The account compliance category.
       sig { returns(T.nilable(Symbol)) }
       def compliance_category
       end
@@ -33,7 +30,6 @@ module Increase
       def compliance_category=(_)
       end
 
-      # The entity, if `compliance_category` is `customer_balance`.
       sig { returns(T.nilable(String)) }
       def entity_id
       end
@@ -70,17 +66,20 @@ module Increase
       def to_hash
       end
 
-      # The account compliance category.
       class ComplianceCategory < Increase::Enum
         abstract!
-
-        Value = type_template(:out) { {fixed: Symbol} }
 
         # A cash in an commingled Increase Account.
         COMMINGLED_CASH = :commingled_cash
 
         # A customer balance.
         CUSTOMER_BALANCE = :customer_balance
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

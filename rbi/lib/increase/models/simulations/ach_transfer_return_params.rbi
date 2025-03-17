@@ -7,8 +7,6 @@ module Increase
         extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
-        # The reason why the Federal Reserve or destination bank returned this transfer.
-        #   Defaults to `no_account`.
         sig { returns(T.nilable(Symbol)) }
         def reason
         end
@@ -34,12 +32,8 @@ module Increase
         def to_hash
         end
 
-        # The reason why the Federal Reserve or destination bank returned this transfer.
-        #   Defaults to `no_account`.
         class Reason < Increase::Enum
           abstract!
-
-          Value = type_template(:out) { {fixed: Symbol} }
 
           # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
           INSUFFICIENT_FUND = :insufficient_fund
@@ -250,6 +244,12 @@ module Increase
 
           # Code R68. A rare return reason. The return was sent too late.
           UNTIMELY_RETURN = :untimely_return
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
     end

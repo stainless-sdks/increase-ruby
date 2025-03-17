@@ -4,7 +4,7 @@ module Increase
   class Error < StandardError
     # @!parse
     #   # @return [StandardError, nil]
-    #   attr_accessor :cause
+    #   attr_reader :cause
   end
 
   class ConversionError < Increase::Error
@@ -12,15 +12,15 @@ module Increase
 
   class APIError < Increase::Error
     # @return [URI::Generic]
-    attr_accessor :url
+    attr_reader :url
 
     # @return [Integer, nil]
-    attr_accessor :status
+    attr_reader :status
 
     # @return [Object, nil]
-    attr_accessor :body
+    attr_reader :body
 
-    # @api private
+    # @private
     #
     # @param url [URI::Generic]
     # @param status [Integer, nil]
@@ -28,6 +28,7 @@ module Increase
     # @param request [nil]
     # @param response [nil]
     # @param message [String, nil]
+    #
     def initialize(url:, status: nil, body: nil, request: nil, response: nil, message: nil)
       @url = url
       @status = status
@@ -41,13 +42,13 @@ module Increase
   class APIConnectionError < Increase::APIError
     # @!parse
     #   # @return [nil]
-    #   attr_accessor :status
+    #   attr_reader :status
 
     # @!parse
     #   # @return [nil]
-    #   attr_accessor :body
+    #   attr_reader :body
 
-    # @api private
+    # @private
     #
     # @param url [URI::Generic]
     # @param status [nil]
@@ -55,6 +56,7 @@ module Increase
     # @param request [nil]
     # @param response [nil]
     # @param message [String, nil]
+    #
     def initialize(
       url:,
       status: nil,
@@ -68,7 +70,7 @@ module Increase
   end
 
   class APITimeoutError < Increase::APIConnectionError
-    # @api private
+    # @private
     #
     # @param url [URI::Generic]
     # @param status [nil]
@@ -76,6 +78,7 @@ module Increase
     # @param request [nil]
     # @param response [nil]
     # @param message [String, nil]
+    #
     def initialize(
       url:,
       status: nil,
@@ -89,7 +92,7 @@ module Increase
   end
 
   class APIStatusError < Increase::APIError
-    # @api private
+    # @private
     #
     # @param url [URI::Generic]
     # @param status [Integer]
@@ -99,6 +102,7 @@ module Increase
     # @param message [String, nil]
     #
     # @return [Increase::APIStatusError]
+    #
     def self.for(url:, status:, body:, request:, response:, message: nil)
       key = Increase::Util.dig(body, :type)
       kwargs = {url: url, status: status, body: body, request: request, response: response, message: message}
@@ -149,9 +153,9 @@ module Increase
 
     # @!parse
     #   # @return [Integer]
-    #   attr_accessor :status
+    #   attr_reader :status
 
-    # @api private
+    # @private
     #
     # @param url [URI::Generic]
     # @param status [Integer]
@@ -159,6 +163,7 @@ module Increase
     # @param request [nil]
     # @param response [nil]
     # @param message [String, nil]
+    #
     def initialize(url:, status:, body:, request:, response:, message: nil)
       message ||= {url: url.to_s, status: status, body: body}
       super(

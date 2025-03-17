@@ -6,7 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # The Increase identifier for the account that will send the transfer.
       sig { returns(String) }
       def account_id
       end
@@ -15,7 +14,6 @@ module Increase
       def account_id=(_)
       end
 
-      # The account number for the destination account.
       sig { returns(String) }
       def account_number
       end
@@ -24,8 +22,6 @@ module Increase
       def account_number=(_)
       end
 
-      # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      #   destination account.
       sig { returns(String) }
       def routing_number
       end
@@ -34,7 +30,6 @@ module Increase
       def routing_number=(_)
       end
 
-      # Additional information that will be sent to the recipient.
       sig { returns(T.nilable(String)) }
       def addendum
       end
@@ -43,7 +38,6 @@ module Increase
       def addendum=(_)
       end
 
-      # The description of the date of the transfer.
       sig { returns(T.nilable(String)) }
       def company_descriptive_date
       end
@@ -52,7 +46,6 @@ module Increase
       def company_descriptive_date=(_)
       end
 
-      # The data you choose to associate with the transfer.
       sig { returns(T.nilable(String)) }
       def company_discretionary_data
       end
@@ -61,7 +54,6 @@ module Increase
       def company_discretionary_data=(_)
       end
 
-      # The description of the transfer you wish to be shown to the recipient.
       sig { returns(T.nilable(String)) }
       def company_entry_description
       end
@@ -70,7 +62,6 @@ module Increase
       def company_entry_description=(_)
       end
 
-      # The name by which the recipient knows you.
       sig { returns(T.nilable(String)) }
       def company_name
       end
@@ -79,7 +70,6 @@ module Increase
       def company_name=(_)
       end
 
-      # Whether the Prenotification is for a future debit or credit.
       sig { returns(T.nilable(Symbol)) }
       def credit_debit_indicator
       end
@@ -88,8 +78,6 @@ module Increase
       def credit_debit_indicator=(_)
       end
 
-      # The transfer effective date in
-      #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
       sig { returns(T.nilable(Date)) }
       def effective_date
       end
@@ -98,7 +86,6 @@ module Increase
       def effective_date=(_)
       end
 
-      # Your identifier for the transfer recipient.
       sig { returns(T.nilable(String)) }
       def individual_id
       end
@@ -107,8 +94,6 @@ module Increase
       def individual_id=(_)
       end
 
-      # The name of the transfer recipient. This value is information and not verified
-      #   by the recipient's bank.
       sig { returns(T.nilable(String)) }
       def individual_name
       end
@@ -117,7 +102,6 @@ module Increase
       def individual_name=(_)
       end
 
-      # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
       sig { returns(T.nilable(Symbol)) }
       def standard_entry_class_code
       end
@@ -187,24 +171,24 @@ module Increase
       def to_hash
       end
 
-      # Whether the Prenotification is for a future debit or credit.
       class CreditDebitIndicator < Increase::Enum
         abstract!
-
-        Value = type_template(:out) { {fixed: Symbol} }
 
         # The Prenotification is for an anticipated credit.
         CREDIT = :credit
 
         # The Prenotification is for an anticipated debit.
         DEBIT = :debit
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
-      # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
       class StandardEntryClassCode < Increase::Enum
         abstract!
-
-        Value = type_template(:out) { {fixed: Symbol} }
 
         # Corporate Credit and Debit (CCD).
         CORPORATE_CREDIT_OR_DEBIT = :corporate_credit_or_debit
@@ -217,6 +201,12 @@ module Increase
 
         # Internet Initiated (WEB).
         INTERNET_INITIATED = :internet_initiated
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

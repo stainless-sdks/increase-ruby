@@ -6,7 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # The Account checks sent to this Lockbox should be deposited into.
       sig { returns(String) }
       def account_id
       end
@@ -15,7 +14,6 @@ module Increase
       def account_id=(_)
       end
 
-      # The description you choose for the Lockbox, for display purposes.
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -24,7 +22,6 @@ module Increase
       def description=(_)
       end
 
-      # The name of the recipient that will receive mail at this location.
       sig { returns(T.nilable(String)) }
       def recipient_name
       end

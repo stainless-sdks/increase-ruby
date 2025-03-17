@@ -16,6 +16,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Lockbox]
+      #
       def create(params)
         parsed, options = Increase::Models::LockboxCreateParams.dump_request(params)
         @client.request(
@@ -36,6 +37,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Lockbox]
+      #
       def retrieve(lockbox_id, params = {})
         @client.request(
           method: :get,
@@ -60,6 +62,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Lockbox]
+      #
       def update(lockbox_id, params = {})
         parsed, options = Increase::Models::LockboxUpdateParams.dump_request(params)
         @client.request(
@@ -92,6 +95,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::Lockbox>]
+      #
       def list(params = {})
         parsed, options = Increase::Models::LockboxListParams.dump_request(params)
         @client.request(
@@ -105,6 +109,7 @@ module Increase
       end
 
       # @param client [Increase::Client]
+      #
       def initialize(client:)
         @client = client
       end

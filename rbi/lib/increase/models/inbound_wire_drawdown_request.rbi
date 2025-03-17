@@ -3,7 +3,6 @@
 module Increase
   module Models
     class InboundWireDrawdownRequest < Increase::BaseModel
-      # The Wire drawdown request identifier.
       sig { returns(String) }
       def id
       end
@@ -12,7 +11,6 @@ module Increase
       def id=(_)
       end
 
-      # The amount being requested in cents.
       sig { returns(Integer) }
       def amount
       end
@@ -21,7 +19,6 @@ module Increase
       def amount=(_)
       end
 
-      # The drawdown request's beneficiary's account number.
       sig { returns(String) }
       def beneficiary_account_number
       end
@@ -30,7 +27,6 @@ module Increase
       def beneficiary_account_number=(_)
       end
 
-      # Line 1 of the drawdown request's beneficiary's address.
       sig { returns(T.nilable(String)) }
       def beneficiary_address_line1
       end
@@ -39,7 +35,6 @@ module Increase
       def beneficiary_address_line1=(_)
       end
 
-      # Line 2 of the drawdown request's beneficiary's address.
       sig { returns(T.nilable(String)) }
       def beneficiary_address_line2
       end
@@ -48,7 +43,6 @@ module Increase
       def beneficiary_address_line2=(_)
       end
 
-      # Line 3 of the drawdown request's beneficiary's address.
       sig { returns(T.nilable(String)) }
       def beneficiary_address_line3
       end
@@ -57,7 +51,6 @@ module Increase
       def beneficiary_address_line3=(_)
       end
 
-      # The drawdown request's beneficiary's name.
       sig { returns(T.nilable(String)) }
       def beneficiary_name
       end
@@ -66,7 +59,6 @@ module Increase
       def beneficiary_name=(_)
       end
 
-      # The drawdown request's beneficiary's routing number.
       sig { returns(String) }
       def beneficiary_routing_number
       end
@@ -75,8 +67,6 @@ module Increase
       def beneficiary_routing_number=(_)
       end
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the inbound wire drawdown requested was created.
       sig { returns(Time) }
       def created_at
       end
@@ -85,8 +75,6 @@ module Increase
       def created_at=(_)
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
-      #   requested. Will always be "USD".
       sig { returns(String) }
       def currency
       end
@@ -95,7 +83,6 @@ module Increase
       def currency=(_)
       end
 
-      # A message from the drawdown request's originator.
       sig { returns(T.nilable(String)) }
       def message_to_recipient
       end
@@ -104,7 +91,6 @@ module Increase
       def message_to_recipient=(_)
       end
 
-      # The drawdown request's originator's account number.
       sig { returns(String) }
       def originator_account_number
       end
@@ -113,7 +99,6 @@ module Increase
       def originator_account_number=(_)
       end
 
-      # Line 1 of the drawdown request's originator's address.
       sig { returns(T.nilable(String)) }
       def originator_address_line1
       end
@@ -122,7 +107,6 @@ module Increase
       def originator_address_line1=(_)
       end
 
-      # Line 2 of the drawdown request's originator's address.
       sig { returns(T.nilable(String)) }
       def originator_address_line2
       end
@@ -131,7 +115,6 @@ module Increase
       def originator_address_line2=(_)
       end
 
-      # Line 3 of the drawdown request's originator's address.
       sig { returns(T.nilable(String)) }
       def originator_address_line3
       end
@@ -140,7 +123,6 @@ module Increase
       def originator_address_line3=(_)
       end
 
-      # The drawdown request's originator's name.
       sig { returns(T.nilable(String)) }
       def originator_name
       end
@@ -149,7 +131,6 @@ module Increase
       def originator_name=(_)
       end
 
-      # The drawdown request's originator's routing number.
       sig { returns(String) }
       def originator_routing_number
       end
@@ -158,8 +139,6 @@ module Increase
       def originator_routing_number=(_)
       end
 
-      # Line 1 of the information conveyed from the originator of the message to the
-      #   beneficiary.
       sig { returns(T.nilable(String)) }
       def originator_to_beneficiary_information_line1
       end
@@ -168,8 +147,6 @@ module Increase
       def originator_to_beneficiary_information_line1=(_)
       end
 
-      # Line 2 of the information conveyed from the originator of the message to the
-      #   beneficiary.
       sig { returns(T.nilable(String)) }
       def originator_to_beneficiary_information_line2
       end
@@ -178,8 +155,6 @@ module Increase
       def originator_to_beneficiary_information_line2=(_)
       end
 
-      # Line 3 of the information conveyed from the originator of the message to the
-      #   beneficiary.
       sig { returns(T.nilable(String)) }
       def originator_to_beneficiary_information_line3
       end
@@ -188,8 +163,6 @@ module Increase
       def originator_to_beneficiary_information_line3=(_)
       end
 
-      # Line 4 of the information conveyed from the originator of the message to the
-      #   beneficiary.
       sig { returns(T.nilable(String)) }
       def originator_to_beneficiary_information_line4
       end
@@ -198,8 +171,6 @@ module Increase
       def originator_to_beneficiary_information_line4=(_)
       end
 
-      # The Account Number from which the recipient of this request is being requested
-      #   to send funds.
       sig { returns(String) }
       def recipient_account_number_id
       end
@@ -208,8 +179,6 @@ module Increase
       def recipient_account_number_id=(_)
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `inbound_wire_drawdown_request`.
       sig { returns(Symbol) }
       def type
       end
@@ -218,9 +187,6 @@ module Increase
       def type=(_)
       end
 
-      # Inbound wire drawdown requests are requests from someone else to send them a
-      #   wire. This feature is in beta; reach out to
-      #   [support@increase.com](mailto:support@increase.com) to learn more.
       sig do
         params(
           id: String,
@@ -309,14 +275,16 @@ module Increase
       def to_hash
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `inbound_wire_drawdown_request`.
       class Type < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         INBOUND_WIRE_DRAWDOWN_REQUEST = :inbound_wire_drawdown_request
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

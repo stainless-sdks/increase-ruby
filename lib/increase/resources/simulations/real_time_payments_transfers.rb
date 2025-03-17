@@ -18,6 +18,7 @@ module Increase
         #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::RealTimePaymentsTransfer]
+        #
         def complete(real_time_payments_transfer_id, params = {})
           parsed, options = Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams.dump_request(params)
           @client.request(
@@ -30,6 +31,7 @@ module Increase
         end
 
         # @param client [Increase::Client]
+        #
         def initialize(client:)
           @client = client
         end

@@ -1,9 +1,9 @@
 # typed: strong
 
 module Increase
-  # @api private
   module RequestParameters
-    # Options to specify HTTP behaviour for this request.
+    abstract!
+
     sig { returns(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])) }
     def request_options
     end
@@ -15,28 +15,18 @@ module Increase
     def request_options=(_)
     end
 
-    # @api private
     module Converter
-      # @api private
       sig { params(params: T.anything).returns([T.anything, T::Hash[Symbol, T.anything]]) }
       def dump_request(params)
       end
     end
   end
 
-  # Specify HTTP behaviour to use for a specific request. These options supplement
-  #   or override those provided at the client level.
-  #
-  #   When making a request, you can pass an actual {RequestOptions} instance, or
-  #   simply pass a Hash with symbol keys matching the attributes on this class.
   class RequestOptions < Increase::BaseModel
-    # @api private
     sig { params(opts: T.any(T.self_type, T::Hash[Symbol, T.anything])).void }
     def self.validate!(opts)
     end
 
-    # Idempotency key to send with request and all associated retries. Will only be
-    #   sent for write requests.
     sig { returns(T.nilable(String)) }
     def idempotency_key
     end
@@ -45,8 +35,6 @@ module Increase
     def idempotency_key=(_)
     end
 
-    # Extra query params to send with the request. These are `.merge`’d into any
-    #   `query` given at the client level.
     sig { returns(T.nilable(T::Hash[String, T.nilable(T.any(T::Array[String], String))])) }
     def extra_query
     end
@@ -58,8 +46,6 @@ module Increase
     def extra_query=(_)
     end
 
-    # Extra headers to send with the request. These are `.merged`’d into any
-    #   `extra_headers` given at the client level.
     sig { returns(T.nilable(T::Hash[String, T.nilable(String)])) }
     def extra_headers
     end
@@ -71,8 +57,6 @@ module Increase
     def extra_headers=(_)
     end
 
-    # Extra data to send with the request. These are deep merged into any data
-    #   generated as part of the normal request.
     sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
     def extra_body
     end
@@ -81,7 +65,6 @@ module Increase
     def extra_body=(_)
     end
 
-    # Maximum number of retries to attempt after a failed initial request.
     sig { returns(T.nilable(Integer)) }
     def max_retries
     end
@@ -90,7 +73,6 @@ module Increase
     def max_retries=(_)
     end
 
-    # Request timeout in seconds.
     sig { returns(T.nilable(Float)) }
     def timeout
     end
@@ -99,7 +81,6 @@ module Increase
     def timeout=(_)
     end
 
-    # Returns a new instance of RequestOptions.
     sig { params(values: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
     def self.new(values = {})
     end

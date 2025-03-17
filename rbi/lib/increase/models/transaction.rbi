@@ -3,7 +3,6 @@
 module Increase
   module Models
     class Transaction < Increase::BaseModel
-      # The Transaction identifier.
       sig { returns(String) }
       def id
       end
@@ -12,7 +11,6 @@ module Increase
       def id=(_)
       end
 
-      # The identifier for the Account the Transaction belongs to.
       sig { returns(String) }
       def account_id
       end
@@ -21,8 +19,6 @@ module Increase
       def account_id=(_)
       end
 
-      # The Transaction amount in the minor unit of its currency. For dollars, for
-      #   example, this is cents.
       sig { returns(Integer) }
       def amount
       end
@@ -31,8 +27,6 @@ module Increase
       def amount=(_)
       end
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the
-      #   Transaction occurred.
       sig { returns(Time) }
       def created_at
       end
@@ -41,9 +35,6 @@ module Increase
       def created_at=(_)
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-      #   Transaction's currency. This will match the currency on the Transaction's
-      #   Account.
       sig { returns(Symbol) }
       def currency
       end
@@ -52,9 +43,6 @@ module Increase
       def currency=(_)
       end
 
-      # An informational message describing this transaction. Use the fields in `source`
-      #   to get more detailed information. This field appears as the line-item on the
-      #   statement.
       sig { returns(String) }
       def description
       end
@@ -63,8 +51,6 @@ module Increase
       def description=(_)
       end
 
-      # The identifier for the route this Transaction came through. Routes are things
-      #   like cards and ACH details.
       sig { returns(T.nilable(String)) }
       def route_id
       end
@@ -73,7 +59,6 @@ module Increase
       def route_id=(_)
       end
 
-      # The type of the route this Transaction came through.
       sig { returns(T.nilable(Symbol)) }
       def route_type
       end
@@ -82,10 +67,6 @@ module Increase
       def route_type=(_)
       end
 
-      # This is an object giving more details on the network-level event that caused the
-      #   Transaction. Note that for backwards compatibility reasons, additional
-      #   undocumented keys may appear in this object. These should be treated as
-      #   deprecated and will be removed in the future.
       sig { returns(Increase::Models::Transaction::Source) }
       def source
       end
@@ -94,8 +75,6 @@ module Increase
       def source=(_)
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `transaction`.
       sig { returns(Symbol) }
       def type
       end
@@ -104,8 +83,6 @@ module Increase
       def type=(_)
       end
 
-      # Transactions are the immutable additions and removals of money from your bank
-      #   account. They're the equivalent of line items on your bank statement.
       sig do
         params(
           id: String,
@@ -144,13 +121,8 @@ module Increase
       def to_hash
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-      #   Transaction's currency. This will match the currency on the Transaction's
-      #   Account.
       class Currency < Increase::Enum
         abstract!
-
-        Value = type_template(:out) { {fixed: Symbol} }
 
         # Canadian Dollar (CAD)
         CAD = :CAD
@@ -169,29 +141,34 @@ module Increase
 
         # US Dollar (USD)
         USD = :USD
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
-      # The type of the route this Transaction came through.
       class RouteType < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # An Account Number.
-        ACCOUNT_NUMBER = :account_number
+        ACCOUNT_NUMBER = T.let(:account_number, T.nilable(Symbol))
 
         # A Card.
-        CARD = :card
+        CARD = T.let(:card, T.nilable(Symbol))
 
         # A Lockbox.
-        LOCKBOX = :lockbox
+        LOCKBOX = T.let(:lockbox, T.nilable(Symbol))
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
       class Source < Increase::BaseModel
-        # An Account Transfer Intention object. This field will be present in the JSON
-        #   response if and only if `category` is equal to `account_transfer_intention`. Two
-        #   Account Transfer Intentions are created from each Account Transfer. One
-        #   decrements the source account, and the other increments the destination account.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::AccountTransferIntention)) }
         def account_transfer_intention
         end
@@ -203,10 +180,6 @@ module Increase
         def account_transfer_intention=(_)
         end
 
-        # An ACH Transfer Intention object. This field will be present in the JSON
-        #   response if and only if `category` is equal to `ach_transfer_intention`. An ACH
-        #   Transfer Intention is created from an ACH Transfer. It reflects the intention to
-        #   move money into or out of an Increase account via the ACH network.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::ACHTransferIntention)) }
         def ach_transfer_intention
         end
@@ -218,10 +191,6 @@ module Increase
         def ach_transfer_intention=(_)
         end
 
-        # An ACH Transfer Rejection object. This field will be present in the JSON
-        #   response if and only if `category` is equal to `ach_transfer_rejection`. An ACH
-        #   Transfer Rejection is created when an ACH Transfer is rejected by Increase. It
-        #   offsets the ACH Transfer Intention. These rejections are rare.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::ACHTransferRejection)) }
         def ach_transfer_rejection
         end
@@ -233,12 +202,6 @@ module Increase
         def ach_transfer_rejection=(_)
         end
 
-        # An ACH Transfer Return object. This field will be present in the JSON response
-        #   if and only if `category` is equal to `ach_transfer_return`. An ACH Transfer
-        #   Return is created when an ACH Transfer is returned by the receiving bank. It
-        #   offsets the ACH Transfer Intention. ACH Transfer Returns usually occur within
-        #   the first two business days after the transfer is initiated, but can occur much
-        #   later.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::ACHTransferReturn)) }
         def ach_transfer_return
         end
@@ -250,9 +213,6 @@ module Increase
         def ach_transfer_return=(_)
         end
 
-        # A Card Dispute Acceptance object. This field will be present in the JSON
-        #   response if and only if `category` is equal to `card_dispute_acceptance`.
-        #   Contains the details of a successful Card Dispute.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::CardDisputeAcceptance)) }
         def card_dispute_acceptance
         end
@@ -264,9 +224,6 @@ module Increase
         def card_dispute_acceptance=(_)
         end
 
-        # A Card Dispute Loss object. This field will be present in the JSON response if
-        #   and only if `category` is equal to `card_dispute_loss`. Contains the details of
-        #   a lost Card Dispute.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::CardDisputeLoss)) }
         def card_dispute_loss
         end
@@ -278,11 +235,6 @@ module Increase
         def card_dispute_loss=(_)
         end
 
-        # A Card Refund object. This field will be present in the JSON response if and
-        #   only if `category` is equal to `card_refund`. Card Refunds move money back to
-        #   the cardholder. While they are usually connected to a Card Settlement an
-        #   acquirer can also refund money directly to a card without relation to a
-        #   transaction.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::CardRefund)) }
         def card_refund
         end
@@ -294,9 +246,6 @@ module Increase
         def card_refund=(_)
         end
 
-        # A Card Revenue Payment object. This field will be present in the JSON response
-        #   if and only if `category` is equal to `card_revenue_payment`. Card Revenue
-        #   Payments reflect earnings from fees on card transactions.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::CardRevenuePayment)) }
         def card_revenue_payment
         end
@@ -308,11 +257,6 @@ module Increase
         def card_revenue_payment=(_)
         end
 
-        # A Card Settlement object. This field will be present in the JSON response if and
-        #   only if `category` is equal to `card_settlement`. Card Settlements are card
-        #   transactions that have cleared and settled. While a settlement is usually
-        #   preceded by an authorization, an acquirer can also directly clear a transaction
-        #   without first authorizing it.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::CardSettlement)) }
         def card_settlement
         end
@@ -324,10 +268,6 @@ module Increase
         def card_settlement=(_)
         end
 
-        # A Cashback Payment object. This field will be present in the JSON response if
-        #   and only if `category` is equal to `cashback_payment`. A Cashback Payment
-        #   represents the cashback paid to a cardholder for a given period. Cashback is
-        #   usually paid monthly for the prior month's transactions.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::CashbackPayment)) }
         def cashback_payment
         end
@@ -339,8 +279,6 @@ module Increase
         def cashback_payment=(_)
         end
 
-        # The type of the resource. We may add additional possible values for this enum
-        #   over time; your application should be able to handle such additions gracefully.
         sig { returns(Symbol) }
         def category
         end
@@ -349,11 +287,6 @@ module Increase
         def category=(_)
         end
 
-        # A Check Deposit Acceptance object. This field will be present in the JSON
-        #   response if and only if `category` is equal to `check_deposit_acceptance`. A
-        #   Check Deposit Acceptance is created when a Check Deposit is processed and its
-        #   details confirmed. Check Deposits may be returned by the receiving bank, which
-        #   will appear as a Check Deposit Return.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::CheckDepositAcceptance)) }
         def check_deposit_acceptance
         end
@@ -365,12 +298,6 @@ module Increase
         def check_deposit_acceptance=(_)
         end
 
-        # A Check Deposit Return object. This field will be present in the JSON response
-        #   if and only if `category` is equal to `check_deposit_return`. A Check Deposit
-        #   Return is created when a Check Deposit is returned by the bank holding the
-        #   account it was drawn against. Check Deposits may be returned for a variety of
-        #   reasons, including insufficient funds or a mismatched account number. Usually,
-        #   checks are returned within the first 7 days after the deposit is made.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::CheckDepositReturn)) }
         def check_deposit_return
         end
@@ -382,10 +309,6 @@ module Increase
         def check_deposit_return=(_)
         end
 
-        # A Check Transfer Deposit object. This field will be present in the JSON response
-        #   if and only if `category` is equal to `check_transfer_deposit`. An Inbound Check
-        #   is a check drawn on an Increase account that has been deposited by an external
-        #   bank account. These types of checks are not pre-registered.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::CheckTransferDeposit)) }
         def check_transfer_deposit
         end
@@ -397,9 +320,6 @@ module Increase
         def check_transfer_deposit=(_)
         end
 
-        # A Fee Payment object. This field will be present in the JSON response if and
-        #   only if `category` is equal to `fee_payment`. A Fee Payment represents a payment
-        #   made to Increase.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::FeePayment)) }
         def fee_payment
         end
@@ -411,10 +331,6 @@ module Increase
         def fee_payment=(_)
         end
 
-        # An Inbound ACH Transfer Intention object. This field will be present in the JSON
-        #   response if and only if `category` is equal to `inbound_ach_transfer`. An
-        #   Inbound ACH Transfer Intention is created when an ACH transfer is initiated at
-        #   another bank and received by Increase.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::InboundACHTransfer)) }
         def inbound_ach_transfer
         end
@@ -426,11 +342,6 @@ module Increase
         def inbound_ach_transfer=(_)
         end
 
-        # An Inbound ACH Transfer Return Intention object. This field will be present in
-        #   the JSON response if and only if `category` is equal to
-        #   `inbound_ach_transfer_return_intention`. An Inbound ACH Transfer Return
-        #   Intention is created when an ACH transfer is initiated at another bank and
-        #   returned by Increase.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::InboundACHTransferReturnIntention)) }
         def inbound_ach_transfer_return_intention
         end
@@ -442,10 +353,6 @@ module Increase
         def inbound_ach_transfer_return_intention=(_)
         end
 
-        # An Inbound Check Adjustment object. This field will be present in the JSON
-        #   response if and only if `category` is equal to `inbound_check_adjustment`. An
-        #   Inbound Check Adjustment is created when Increase receives an adjustment for a
-        #   check or return deposited through Check21.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::InboundCheckAdjustment)) }
         def inbound_check_adjustment
         end
@@ -457,11 +364,6 @@ module Increase
         def inbound_check_adjustment=(_)
         end
 
-        # An Inbound Check Deposit Return Intention object. This field will be present in
-        #   the JSON response if and only if `category` is equal to
-        #   `inbound_check_deposit_return_intention`. An Inbound Check Deposit Return
-        #   Intention is created when Increase receives an Inbound Check and the User
-        #   requests that it be returned.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::InboundCheckDepositReturnIntention)) }
         def inbound_check_deposit_return_intention
         end
@@ -473,11 +375,6 @@ module Increase
         def inbound_check_deposit_return_intention=(_)
         end
 
-        # An Inbound Real-Time Payments Transfer Confirmation object. This field will be
-        #   present in the JSON response if and only if `category` is equal to
-        #   `inbound_real_time_payments_transfer_confirmation`. An Inbound Real-Time
-        #   Payments Transfer Confirmation is created when a Real-Time Payments transfer is
-        #   initiated at another bank and received by Increase.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation)) }
         def inbound_real_time_payments_transfer_confirmation
         end
@@ -489,9 +386,6 @@ module Increase
         def inbound_real_time_payments_transfer_confirmation=(_)
         end
 
-        # An Inbound Real-Time Payments Transfer Decline object. This field will be
-        #   present in the JSON response if and only if `category` is equal to
-        #   `inbound_real_time_payments_transfer_decline`.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline)) }
         def inbound_real_time_payments_transfer_decline
         end
@@ -503,11 +397,6 @@ module Increase
         def inbound_real_time_payments_transfer_decline=(_)
         end
 
-        # An Inbound Wire Reversal object. This field will be present in the JSON response
-        #   if and only if `category` is equal to `inbound_wire_reversal`. An Inbound Wire
-        #   Reversal represents a reversal of a wire transfer that was initiated via
-        #   Increase. The other bank is sending the money back. This most often happens when
-        #   the original destination account details were incorrect.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::InboundWireReversal)) }
         def inbound_wire_reversal
         end
@@ -519,10 +408,6 @@ module Increase
         def inbound_wire_reversal=(_)
         end
 
-        # An Inbound Wire Transfer Intention object. This field will be present in the
-        #   JSON response if and only if `category` is equal to `inbound_wire_transfer`. An
-        #   Inbound Wire Transfer Intention is created when a wire transfer is initiated at
-        #   another bank and received by Increase.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::InboundWireTransfer)) }
         def inbound_wire_transfer
         end
@@ -534,11 +419,6 @@ module Increase
         def inbound_wire_transfer=(_)
         end
 
-        # An Inbound Wire Transfer Reversal Intention object. This field will be present
-        #   in the JSON response if and only if `category` is equal to
-        #   `inbound_wire_transfer_reversal`. An Inbound Wire Transfer Reversal Intention is
-        #   created when Increase has received a wire and the User requests that it be
-        #   reversed.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::InboundWireTransferReversal)) }
         def inbound_wire_transfer_reversal
         end
@@ -550,10 +430,6 @@ module Increase
         def inbound_wire_transfer_reversal=(_)
         end
 
-        # An Interest Payment object. This field will be present in the JSON response if
-        #   and only if `category` is equal to `interest_payment`. An Interest Payment
-        #   represents a payment of interest on an account. Interest is usually paid
-        #   monthly.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::InterestPayment)) }
         def interest_payment
         end
@@ -565,9 +441,6 @@ module Increase
         def interest_payment=(_)
         end
 
-        # An Internal Source object. This field will be present in the JSON response if
-        #   and only if `category` is equal to `internal_source`. A transaction between the
-        #   user and Increase. See the `reason` attribute for more information.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::InternalSource)) }
         def internal_source
         end
@@ -579,8 +452,6 @@ module Increase
         def internal_source=(_)
         end
 
-        # If the category of this Transaction source is equal to `other`, this field will
-        #   contain an empty object, otherwise it will contain null.
         sig { returns(T.nilable(T.anything)) }
         def other
         end
@@ -589,11 +460,6 @@ module Increase
         def other=(_)
         end
 
-        # A Real-Time Payments Transfer Acknowledgement object. This field will be present
-        #   in the JSON response if and only if `category` is equal to
-        #   `real_time_payments_transfer_acknowledgement`. A Real-Time Payments Transfer
-        #   Acknowledgement is created when a Real-Time Payments Transfer sent from Increase
-        #   is acknowledged by the receiving bank.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::RealTimePaymentsTransferAcknowledgement)) }
         def real_time_payments_transfer_acknowledgement
         end
@@ -605,9 +471,6 @@ module Increase
         def real_time_payments_transfer_acknowledgement=(_)
         end
 
-        # A Sample Funds object. This field will be present in the JSON response if and
-        #   only if `category` is equal to `sample_funds`. Sample funds for testing
-        #   purposes.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::SampleFunds)) }
         def sample_funds
         end
@@ -619,9 +482,6 @@ module Increase
         def sample_funds=(_)
         end
 
-        # A Wire Transfer Intention object. This field will be present in the JSON
-        #   response if and only if `category` is equal to `wire_transfer_intention`. A Wire
-        #   Transfer initiated via Increase and sent to a different bank.
         sig { returns(T.nilable(Increase::Models::Transaction::Source::WireTransferIntention)) }
         def wire_transfer_intention
         end
@@ -633,10 +493,6 @@ module Increase
         def wire_transfer_intention=(_)
         end
 
-        # This is an object giving more details on the network-level event that caused the
-        #   Transaction. Note that for backwards compatibility reasons, additional
-        #   undocumented keys may appear in this object. These should be treated as
-        #   deprecated and will be removed in the future.
         sig do
           params(
             account_transfer_intention: T.nilable(Increase::Models::Transaction::Source::AccountTransferIntention),
@@ -747,8 +603,6 @@ module Increase
         end
 
         class AccountTransferIntention < Increase::BaseModel
-          # The pending amount in the minor unit of the transaction's currency. For dollars,
-          #   for example, this is cents.
           sig { returns(Integer) }
           def amount
           end
@@ -757,8 +611,6 @@ module Increase
           def amount=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-          #   account currency.
           sig { returns(Symbol) }
           def currency
           end
@@ -767,7 +619,6 @@ module Increase
           def currency=(_)
           end
 
-          # The description you chose to give the transfer.
           sig { returns(String) }
           def description
           end
@@ -776,7 +627,6 @@ module Increase
           def description=(_)
           end
 
-          # The identifier of the Account to where the Account Transfer was sent.
           sig { returns(String) }
           def destination_account_id
           end
@@ -785,7 +635,6 @@ module Increase
           def destination_account_id=(_)
           end
 
-          # The identifier of the Account from where the Account Transfer was sent.
           sig { returns(String) }
           def source_account_id
           end
@@ -794,7 +643,6 @@ module Increase
           def source_account_id=(_)
           end
 
-          # The identifier of the Account Transfer that led to this Pending Transaction.
           sig { returns(String) }
           def transfer_id
           end
@@ -803,10 +651,6 @@ module Increase
           def transfer_id=(_)
           end
 
-          # An Account Transfer Intention object. This field will be present in the JSON
-          #   response if and only if `category` is equal to `account_transfer_intention`. Two
-          #   Account Transfer Intentions are created from each Account Transfer. One
-          #   decrements the source account, and the other increments the destination account.
           sig do
             params(
               amount: Integer,
@@ -837,12 +681,8 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-          #   account currency.
           class Currency < Increase::Enum
             abstract!
-
-            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -861,11 +701,16 @@ module Increase
 
             # US Dollar (USD)
             USD = :USD
+
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
+            end
           end
         end
 
         class ACHTransferIntention < Increase::BaseModel
-          # The account number for the destination account.
           sig { returns(String) }
           def account_number
           end
@@ -874,8 +719,6 @@ module Increase
           def account_number=(_)
           end
 
-          # The amount in the minor unit of the transaction's currency. For dollars, for
-          #   example, this is cents.
           sig { returns(Integer) }
           def amount
           end
@@ -884,8 +727,6 @@ module Increase
           def amount=(_)
           end
 
-          # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-          #   destination account.
           sig { returns(String) }
           def routing_number
           end
@@ -894,7 +735,6 @@ module Increase
           def routing_number=(_)
           end
 
-          # A description set when the ACH Transfer was created.
           sig { returns(String) }
           def statement_descriptor
           end
@@ -903,7 +743,6 @@ module Increase
           def statement_descriptor=(_)
           end
 
-          # The identifier of the ACH Transfer that led to this Transaction.
           sig { returns(String) }
           def transfer_id
           end
@@ -912,10 +751,6 @@ module Increase
           def transfer_id=(_)
           end
 
-          # An ACH Transfer Intention object. This field will be present in the JSON
-          #   response if and only if `category` is equal to `ach_transfer_intention`. An ACH
-          #   Transfer Intention is created from an ACH Transfer. It reflects the intention to
-          #   move money into or out of an Increase account via the ACH network.
           sig do
             params(
               account_number: String,
@@ -946,7 +781,6 @@ module Increase
         end
 
         class ACHTransferRejection < Increase::BaseModel
-          # The identifier of the ACH Transfer that led to this Transaction.
           sig { returns(String) }
           def transfer_id
           end
@@ -955,10 +789,6 @@ module Increase
           def transfer_id=(_)
           end
 
-          # An ACH Transfer Rejection object. This field will be present in the JSON
-          #   response if and only if `category` is equal to `ach_transfer_rejection`. An ACH
-          #   Transfer Rejection is created when an ACH Transfer is rejected by Increase. It
-          #   offsets the ACH Transfer Intention. These rejections are rare.
           sig { params(transfer_id: String).returns(T.attached_class) }
           def self.new(transfer_id:)
           end
@@ -969,8 +799,6 @@ module Increase
         end
 
         class ACHTransferReturn < Increase::BaseModel
-          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-          #   the transfer was created.
           sig { returns(Time) }
           def created_at
           end
@@ -979,7 +807,6 @@ module Increase
           def created_at=(_)
           end
 
-          # The three character ACH return code, in the range R01 to R85.
           sig { returns(String) }
           def raw_return_reason_code
           end
@@ -988,8 +815,6 @@ module Increase
           def raw_return_reason_code=(_)
           end
 
-          # Why the ACH Transfer was returned. This reason code is sent by the receiving
-          #   bank back to Increase.
           sig { returns(Symbol) }
           def return_reason_code
           end
@@ -998,10 +823,6 @@ module Increase
           def return_reason_code=(_)
           end
 
-          # A 15 digit number that was generated by the bank that initiated the return. The
-          #   trace number of the return is different than that of the original transfer. ACH
-          #   trace numbers are not unique, but along with the amount and date this number can
-          #   be used to identify the ACH return at the bank that initiated it.
           sig { returns(String) }
           def trace_number
           end
@@ -1010,7 +831,6 @@ module Increase
           def trace_number=(_)
           end
 
-          # The identifier of the Transaction associated with this return.
           sig { returns(String) }
           def transaction_id
           end
@@ -1019,7 +839,6 @@ module Increase
           def transaction_id=(_)
           end
 
-          # The identifier of the ACH Transfer associated with this return.
           sig { returns(String) }
           def transfer_id
           end
@@ -1028,12 +847,6 @@ module Increase
           def transfer_id=(_)
           end
 
-          # An ACH Transfer Return object. This field will be present in the JSON response
-          #   if and only if `category` is equal to `ach_transfer_return`. An ACH Transfer
-          #   Return is created when an ACH Transfer is returned by the receiving bank. It
-          #   offsets the ACH Transfer Intention. ACH Transfer Returns usually occur within
-          #   the first two business days after the transfer is initiated, but can occur much
-          #   later.
           sig do
             params(
               created_at: Time,
@@ -1064,12 +877,8 @@ module Increase
           def to_hash
           end
 
-          # Why the ACH Transfer was returned. This reason code is sent by the receiving
-          #   bank back to Increase.
           class ReturnReasonCode < Increase::Enum
             abstract!
-
-            Value = type_template(:out) { {fixed: Symbol} }
 
             # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
             INSUFFICIENT_FUND = :insufficient_fund
@@ -1280,12 +1089,16 @@ module Increase
 
             # Code R68. A rare return reason. The return was sent too late.
             UNTIMELY_RETURN = :untimely_return
+
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
+            end
           end
         end
 
         class CardDisputeAcceptance < Increase::BaseModel
-          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-          #   the Card Dispute was accepted.
           sig { returns(Time) }
           def accepted_at
           end
@@ -1294,7 +1107,6 @@ module Increase
           def accepted_at=(_)
           end
 
-          # The identifier of the Card Dispute that was accepted.
           sig { returns(String) }
           def card_dispute_id
           end
@@ -1303,8 +1115,6 @@ module Increase
           def card_dispute_id=(_)
           end
 
-          # The identifier of the Transaction that was created to return the disputed funds
-          #   to your account.
           sig { returns(String) }
           def transaction_id
           end
@@ -1313,9 +1123,6 @@ module Increase
           def transaction_id=(_)
           end
 
-          # A Card Dispute Acceptance object. This field will be present in the JSON
-          #   response if and only if `category` is equal to `card_dispute_acceptance`.
-          #   Contains the details of a successful Card Dispute.
           sig do
             params(
               accepted_at: Time,
@@ -1332,7 +1139,6 @@ module Increase
         end
 
         class CardDisputeLoss < Increase::BaseModel
-          # The identifier of the Card Dispute that was lost.
           sig { returns(String) }
           def card_dispute_id
           end
@@ -1341,7 +1147,6 @@ module Increase
           def card_dispute_id=(_)
           end
 
-          # Why the Card Dispute was lost.
           sig { returns(String) }
           def explanation
           end
@@ -1350,8 +1155,6 @@ module Increase
           def explanation=(_)
           end
 
-          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-          #   the Card Dispute was lost.
           sig { returns(Time) }
           def lost_at
           end
@@ -1360,8 +1163,6 @@ module Increase
           def lost_at=(_)
           end
 
-          # The identifier of the Transaction that was created to debit the disputed funds
-          #   from your account.
           sig { returns(String) }
           def transaction_id
           end
@@ -1370,9 +1171,6 @@ module Increase
           def transaction_id=(_)
           end
 
-          # A Card Dispute Loss object. This field will be present in the JSON response if
-          #   and only if `category` is equal to `card_dispute_loss`. Contains the details of
-          #   a lost Card Dispute.
           sig do
             params(card_dispute_id: String, explanation: String, lost_at: Time, transaction_id: String)
               .returns(T.attached_class)
@@ -1395,7 +1193,6 @@ module Increase
         end
 
         class CardRefund < Increase::BaseModel
-          # The Card Refund identifier.
           sig { returns(String) }
           def id
           end
@@ -1404,8 +1201,6 @@ module Increase
           def id=(_)
           end
 
-          # The amount in the minor unit of the transaction's settlement currency. For
-          #   dollars, for example, this is cents.
           sig { returns(Integer) }
           def amount
           end
@@ -1414,7 +1209,6 @@ module Increase
           def amount=(_)
           end
 
-          # The ID of the Card Payment this transaction belongs to.
           sig { returns(String) }
           def card_payment_id
           end
@@ -1423,8 +1217,6 @@ module Increase
           def card_payment_id=(_)
           end
 
-          # Cashback debited for this transaction, if eligible. Cashback is paid out in
-          #   aggregate, monthly.
           sig { returns(T.nilable(Increase::Models::Transaction::Source::CardRefund::Cashback)) }
           def cashback
           end
@@ -1436,8 +1228,6 @@ module Increase
           def cashback=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's settlement currency.
           sig { returns(Symbol) }
           def currency
           end
@@ -1446,7 +1236,6 @@ module Increase
           def currency=(_)
           end
 
-          # Interchange assessed as a part of this transaciton.
           sig { returns(T.nilable(Increase::Models::Transaction::Source::CardRefund::Interchange)) }
           def interchange
           end
@@ -1458,8 +1247,6 @@ module Increase
           def interchange=(_)
           end
 
-          # The merchant identifier (commonly abbreviated as MID) of the merchant the card
-          #   is transacting with.
           sig { returns(String) }
           def merchant_acceptor_id
           end
@@ -1468,7 +1255,6 @@ module Increase
           def merchant_acceptor_id=(_)
           end
 
-          # The 4-digit MCC describing the merchant's business.
           sig { returns(String) }
           def merchant_category_code
           end
@@ -1477,7 +1263,6 @@ module Increase
           def merchant_category_code=(_)
           end
 
-          # The city the merchant resides in.
           sig { returns(String) }
           def merchant_city
           end
@@ -1486,7 +1271,6 @@ module Increase
           def merchant_city=(_)
           end
 
-          # The country the merchant resides in.
           sig { returns(String) }
           def merchant_country
           end
@@ -1495,7 +1279,6 @@ module Increase
           def merchant_country=(_)
           end
 
-          # The name of the merchant.
           sig { returns(String) }
           def merchant_name
           end
@@ -1504,7 +1287,6 @@ module Increase
           def merchant_name=(_)
           end
 
-          # The merchant's postal code. For US merchants this is always a 5-digit ZIP code.
           sig { returns(T.nilable(String)) }
           def merchant_postal_code
           end
@@ -1513,7 +1295,6 @@ module Increase
           def merchant_postal_code=(_)
           end
 
-          # The state the merchant resides in.
           sig { returns(T.nilable(String)) }
           def merchant_state
           end
@@ -1522,7 +1303,6 @@ module Increase
           def merchant_state=(_)
           end
 
-          # Network-specific identifiers for this refund.
           sig { returns(Increase::Models::Transaction::Source::CardRefund::NetworkIdentifiers) }
           def network_identifiers
           end
@@ -1534,7 +1314,6 @@ module Increase
           def network_identifiers=(_)
           end
 
-          # The amount in the minor unit of the transaction's presentment currency.
           sig { returns(Integer) }
           def presentment_amount
           end
@@ -1543,8 +1322,6 @@ module Increase
           def presentment_amount=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's presentment currency.
           sig { returns(String) }
           def presentment_currency
           end
@@ -1553,8 +1330,6 @@ module Increase
           def presentment_currency=(_)
           end
 
-          # Additional details about the card purchase, such as tax and industry-specific
-          #   fields.
           sig { returns(T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails)) }
           def purchase_details
           end
@@ -1566,7 +1341,6 @@ module Increase
           def purchase_details=(_)
           end
 
-          # The identifier of the Transaction associated with this Transaction.
           sig { returns(String) }
           def transaction_id
           end
@@ -1575,8 +1349,6 @@ module Increase
           def transaction_id=(_)
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          #   `card_refund`.
           sig { returns(Symbol) }
           def type
           end
@@ -1585,11 +1357,6 @@ module Increase
           def type=(_)
           end
 
-          # A Card Refund object. This field will be present in the JSON response if and
-          #   only if `category` is equal to `card_refund`. Card Refunds move money back to
-          #   the cardholder. While they are usually connected to a Card Settlement an
-          #   acquirer can also refund money directly to a card without relation to a
-          #   transaction.
           sig do
             params(
               id: String,
@@ -1667,9 +1434,6 @@ module Increase
           end
 
           class Cashback < Increase::BaseModel
-            # The cashback amount given as a string containing a decimal number. The amount is
-            #   a positive number if it will be credited to you (e.g., settlements) and a
-            #   negative number if it will be debited (e.g., refunds).
             sig { returns(String) }
             def amount
             end
@@ -1678,7 +1442,6 @@ module Increase
             def amount=(_)
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             sig { returns(Symbol) }
             def currency
             end
@@ -1687,8 +1450,6 @@ module Increase
             def currency=(_)
             end
 
-            # Cashback debited for this transaction, if eligible. Cashback is paid out in
-            #   aggregate, monthly.
             sig { params(amount: String, currency: Symbol).returns(T.attached_class) }
             def self.new(amount:, currency:)
             end
@@ -1697,11 +1458,8 @@ module Increase
             def to_hash
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             class Currency < Increase::Enum
               abstract!
-
-              Value = type_template(:out) { {fixed: Symbol} }
 
               # Canadian Dollar (CAD)
               CAD = :CAD
@@ -1720,15 +1478,17 @@ module Increase
 
               # US Dollar (USD)
               USD = :USD
+
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
+              end
             end
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's settlement currency.
           class Currency < Increase::Enum
             abstract!
-
-            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -1747,12 +1507,15 @@ module Increase
 
             # US Dollar (USD)
             USD = :USD
+
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
+            end
           end
 
           class Interchange < Increase::BaseModel
-            # The interchange amount given as a string containing a decimal number. The amount
-            #   is a positive number if it is credited to Increase (e.g., settlements) and a
-            #   negative number if it is debited (e.g., refunds).
             sig { returns(String) }
             def amount
             end
@@ -1761,7 +1524,6 @@ module Increase
             def amount=(_)
             end
 
-            # The card network specific interchange code.
             sig { returns(T.nilable(String)) }
             def code
             end
@@ -1770,8 +1532,6 @@ module Increase
             def code=(_)
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            #   reimbursement.
             sig { returns(Symbol) }
             def currency
             end
@@ -1780,7 +1540,6 @@ module Increase
             def currency=(_)
             end
 
-            # Interchange assessed as a part of this transaciton.
             sig do
               params(amount: String, code: T.nilable(String), currency: Symbol).returns(T.attached_class)
             end
@@ -1791,12 +1550,8 @@ module Increase
             def to_hash
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            #   reimbursement.
             class Currency < Increase::Enum
               abstract!
-
-              Value = type_template(:out) { {fixed: Symbol} }
 
               # Canadian Dollar (CAD)
               CAD = :CAD
@@ -1815,12 +1570,16 @@ module Increase
 
               # US Dollar (USD)
               USD = :USD
+
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
+              end
             end
           end
 
           class NetworkIdentifiers < Increase::BaseModel
-            # A network assigned business ID that identifies the acquirer that processed this
-            #   transaction.
             sig { returns(String) }
             def acquirer_business_id
             end
@@ -1829,7 +1588,6 @@ module Increase
             def acquirer_business_id=(_)
             end
 
-            # A globally unique identifier for this settlement.
             sig { returns(String) }
             def acquirer_reference_number
             end
@@ -1838,8 +1596,6 @@ module Increase
             def acquirer_reference_number=(_)
             end
 
-            # A globally unique transaction identifier provided by the card network, used
-            #   across multiple life-cycle requests.
             sig { returns(T.nilable(String)) }
             def transaction_id
             end
@@ -1848,7 +1604,6 @@ module Increase
             def transaction_id=(_)
             end
 
-            # Network-specific identifiers for this refund.
             sig do
               params(
                 acquirer_business_id: String,
@@ -1875,7 +1630,6 @@ module Increase
           end
 
           class PurchaseDetails < Increase::BaseModel
-            # Fields specific to car rentals.
             sig { returns(T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental)) }
             def car_rental
             end
@@ -1887,7 +1641,6 @@ module Increase
             def car_rental=(_)
             end
 
-            # An identifier from the merchant for the customer or consumer.
             sig { returns(T.nilable(String)) }
             def customer_reference_identifier
             end
@@ -1896,7 +1649,6 @@ module Increase
             def customer_reference_identifier=(_)
             end
 
-            # The state or provincial tax amount in minor units.
             sig { returns(T.nilable(Integer)) }
             def local_tax_amount
             end
@@ -1905,8 +1657,6 @@ module Increase
             def local_tax_amount=(_)
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
-            #   assessed.
             sig { returns(T.nilable(String)) }
             def local_tax_currency
             end
@@ -1915,7 +1665,6 @@ module Increase
             def local_tax_currency=(_)
             end
 
-            # Fields specific to lodging.
             sig { returns(T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging)) }
             def lodging
             end
@@ -1927,7 +1676,6 @@ module Increase
             def lodging=(_)
             end
 
-            # The national tax amount in minor units.
             sig { returns(T.nilable(Integer)) }
             def national_tax_amount
             end
@@ -1936,8 +1684,6 @@ module Increase
             def national_tax_amount=(_)
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
-            #   assessed.
             sig { returns(T.nilable(String)) }
             def national_tax_currency
             end
@@ -1946,7 +1692,6 @@ module Increase
             def national_tax_currency=(_)
             end
 
-            # An identifier from the merchant for the purchase to the issuer and cardholder.
             sig { returns(T.nilable(String)) }
             def purchase_identifier
             end
@@ -1955,7 +1700,6 @@ module Increase
             def purchase_identifier=(_)
             end
 
-            # The format of the purchase identifier.
             sig { returns(T.nilable(Symbol)) }
             def purchase_identifier_format
             end
@@ -1964,7 +1708,6 @@ module Increase
             def purchase_identifier_format=(_)
             end
 
-            # Fields specific to travel.
             sig { returns(T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel)) }
             def travel
             end
@@ -1976,8 +1719,6 @@ module Increase
             def travel=(_)
             end
 
-            # Additional details about the card purchase, such as tax and industry-specific
-            #   fields.
             sig do
               params(
                 car_rental: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental),
@@ -2028,7 +1769,6 @@ module Increase
             end
 
             class CarRental < Increase::BaseModel
-              # Code indicating the vehicle's class.
               sig { returns(T.nilable(String)) }
               def car_class_code
               end
@@ -2037,8 +1777,6 @@ module Increase
               def car_class_code=(_)
               end
 
-              # Date the customer picked up the car or, in the case of a no-show or pre-pay
-              #   transaction, the scheduled pick up date.
               sig { returns(T.nilable(Date)) }
               def checkout_date
               end
@@ -2047,7 +1785,6 @@ module Increase
               def checkout_date=(_)
               end
 
-              # Daily rate being charged for the vehicle.
               sig { returns(T.nilable(Integer)) }
               def daily_rental_rate_amount
               end
@@ -2056,8 +1793,6 @@ module Increase
               def daily_rental_rate_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily rental
-              #   rate.
               sig { returns(T.nilable(String)) }
               def daily_rental_rate_currency
               end
@@ -2066,7 +1801,6 @@ module Increase
               def daily_rental_rate_currency=(_)
               end
 
-              # Number of days the vehicle was rented.
               sig { returns(T.nilable(Integer)) }
               def days_rented
               end
@@ -2075,7 +1809,6 @@ module Increase
               def days_rented=(_)
               end
 
-              # Additional charges (gas, late fee, etc.) being billed.
               sig { returns(T.nilable(Symbol)) }
               def extra_charges
               end
@@ -2084,7 +1817,6 @@ module Increase
               def extra_charges=(_)
               end
 
-              # Fuel charges for the vehicle.
               sig { returns(T.nilable(Integer)) }
               def fuel_charges_amount
               end
@@ -2093,8 +1825,6 @@ module Increase
               def fuel_charges_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel charges
-              #   assessed.
               sig { returns(T.nilable(String)) }
               def fuel_charges_currency
               end
@@ -2103,7 +1833,6 @@ module Increase
               def fuel_charges_currency=(_)
               end
 
-              # Any insurance being charged for the vehicle.
               sig { returns(T.nilable(Integer)) }
               def insurance_charges_amount
               end
@@ -2112,8 +1841,6 @@ module Increase
               def insurance_charges_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance
-              #   charges assessed.
               sig { returns(T.nilable(String)) }
               def insurance_charges_currency
               end
@@ -2122,8 +1849,6 @@ module Increase
               def insurance_charges_currency=(_)
               end
 
-              # An indicator that the cardholder is being billed for a reserved vehicle that was
-              #   not actually rented (that is, a "no-show" charge).
               sig { returns(T.nilable(Symbol)) }
               def no_show_indicator
               end
@@ -2132,8 +1857,6 @@ module Increase
               def no_show_indicator=(_)
               end
 
-              # Charges for returning the vehicle at a different location than where it was
-              #   picked up.
               sig { returns(T.nilable(Integer)) }
               def one_way_drop_off_charges_amount
               end
@@ -2142,8 +1865,6 @@ module Increase
               def one_way_drop_off_charges_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the one-way
-              #   drop-off charges assessed.
               sig { returns(T.nilable(String)) }
               def one_way_drop_off_charges_currency
               end
@@ -2152,7 +1873,6 @@ module Increase
               def one_way_drop_off_charges_currency=(_)
               end
 
-              # Name of the person renting the vehicle.
               sig { returns(T.nilable(String)) }
               def renter_name
               end
@@ -2161,7 +1881,6 @@ module Increase
               def renter_name=(_)
               end
 
-              # Weekly rate being charged for the vehicle.
               sig { returns(T.nilable(Integer)) }
               def weekly_rental_rate_amount
               end
@@ -2170,8 +1889,6 @@ module Increase
               def weekly_rental_rate_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly
-              #   rental rate.
               sig { returns(T.nilable(String)) }
               def weekly_rental_rate_currency
               end
@@ -2180,7 +1897,6 @@ module Increase
               def weekly_rental_rate_currency=(_)
               end
 
-              # Fields specific to car rentals.
               sig do
                 params(
                   car_class_code: T.nilable(String),
@@ -2248,48 +1964,52 @@ module Increase
               def to_hash
               end
 
-              # Additional charges (gas, late fee, etc.) being billed.
               class ExtraCharges < Increase::Enum
                 abstract!
 
-                Value = type_template(:out) { {fixed: Symbol} }
-
                 # No extra charge
-                NO_EXTRA_CHARGE = :no_extra_charge
+                NO_EXTRA_CHARGE = T.let(:no_extra_charge, T.nilable(Symbol))
 
                 # Gas
-                GAS = :gas
+                GAS = T.let(:gas, T.nilable(Symbol))
 
                 # Extra mileage
-                EXTRA_MILEAGE = :extra_mileage
+                EXTRA_MILEAGE = T.let(:extra_mileage, T.nilable(Symbol))
 
                 # Late return
-                LATE_RETURN = :late_return
+                LATE_RETURN = T.let(:late_return, T.nilable(Symbol))
 
                 # One way service fee
-                ONE_WAY_SERVICE_FEE = :one_way_service_fee
+                ONE_WAY_SERVICE_FEE = T.let(:one_way_service_fee, T.nilable(Symbol))
 
                 # Parking violation
-                PARKING_VIOLATION = :parking_violation
+                PARKING_VIOLATION = T.let(:parking_violation, T.nilable(Symbol))
+
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
+                end
               end
 
-              # An indicator that the cardholder is being billed for a reserved vehicle that was
-              #   not actually rented (that is, a "no-show" charge).
               class NoShowIndicator < Increase::Enum
                 abstract!
 
-                Value = type_template(:out) { {fixed: Symbol} }
-
                 # Not applicable
-                NOT_APPLICABLE = :not_applicable
+                NOT_APPLICABLE = T.let(:not_applicable, T.nilable(Symbol))
 
                 # No show for specialized vehicle
-                NO_SHOW_FOR_SPECIALIZED_VEHICLE = :no_show_for_specialized_vehicle
+                NO_SHOW_FOR_SPECIALIZED_VEHICLE = T.let(:no_show_for_specialized_vehicle, T.nilable(Symbol))
+
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
+                end
               end
             end
 
             class Lodging < Increase::BaseModel
-              # Date the customer checked in.
               sig { returns(T.nilable(Date)) }
               def check_in_date
               end
@@ -2298,7 +2018,6 @@ module Increase
               def check_in_date=(_)
               end
 
-              # Daily rate being charged for the room.
               sig { returns(T.nilable(Integer)) }
               def daily_room_rate_amount
               end
@@ -2307,8 +2026,6 @@ module Increase
               def daily_room_rate_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room
-              #   rate.
               sig { returns(T.nilable(String)) }
               def daily_room_rate_currency
               end
@@ -2317,7 +2034,6 @@ module Increase
               def daily_room_rate_currency=(_)
               end
 
-              # Additional charges (phone, late check-out, etc.) being billed.
               sig { returns(T.nilable(Symbol)) }
               def extra_charges
               end
@@ -2326,7 +2042,6 @@ module Increase
               def extra_charges=(_)
               end
 
-              # Folio cash advances for the room.
               sig { returns(T.nilable(Integer)) }
               def folio_cash_advances_amount
               end
@@ -2335,8 +2050,6 @@ module Increase
               def folio_cash_advances_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the folio cash
-              #   advances.
               sig { returns(T.nilable(String)) }
               def folio_cash_advances_currency
               end
@@ -2345,7 +2058,6 @@ module Increase
               def folio_cash_advances_currency=(_)
               end
 
-              # Food and beverage charges for the room.
               sig { returns(T.nilable(Integer)) }
               def food_beverage_charges_amount
               end
@@ -2354,8 +2066,6 @@ module Increase
               def food_beverage_charges_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
-              #   beverage charges.
               sig { returns(T.nilable(String)) }
               def food_beverage_charges_currency
               end
@@ -2364,8 +2074,6 @@ module Increase
               def food_beverage_charges_currency=(_)
               end
 
-              # Indicator that the cardholder is being billed for a reserved room that was not
-              #   actually used.
               sig { returns(T.nilable(Symbol)) }
               def no_show_indicator
               end
@@ -2374,7 +2082,6 @@ module Increase
               def no_show_indicator=(_)
               end
 
-              # Prepaid expenses being charged for the room.
               sig { returns(T.nilable(Integer)) }
               def prepaid_expenses_amount
               end
@@ -2383,8 +2090,6 @@ module Increase
               def prepaid_expenses_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the prepaid
-              #   expenses.
               sig { returns(T.nilable(String)) }
               def prepaid_expenses_currency
               end
@@ -2393,7 +2098,6 @@ module Increase
               def prepaid_expenses_currency=(_)
               end
 
-              # Number of nights the room was rented.
               sig { returns(T.nilable(Integer)) }
               def room_nights
               end
@@ -2402,7 +2106,6 @@ module Increase
               def room_nights=(_)
               end
 
-              # Total room tax being charged.
               sig { returns(T.nilable(Integer)) }
               def total_room_tax_amount
               end
@@ -2411,8 +2114,6 @@ module Increase
               def total_room_tax_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total room
-              #   tax.
               sig { returns(T.nilable(String)) }
               def total_room_tax_currency
               end
@@ -2421,7 +2122,6 @@ module Increase
               def total_room_tax_currency=(_)
               end
 
-              # Total tax being charged for the room.
               sig { returns(T.nilable(Integer)) }
               def total_tax_amount
               end
@@ -2430,8 +2130,6 @@ module Increase
               def total_tax_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax
-              #   assessed.
               sig { returns(T.nilable(String)) }
               def total_tax_currency
               end
@@ -2440,7 +2138,6 @@ module Increase
               def total_tax_currency=(_)
               end
 
-              # Fields specific to lodging.
               sig do
                 params(
                   check_in_date: T.nilable(Date),
@@ -2508,73 +2205,80 @@ module Increase
               def to_hash
               end
 
-              # Additional charges (phone, late check-out, etc.) being billed.
               class ExtraCharges < Increase::Enum
                 abstract!
 
-                Value = type_template(:out) { {fixed: Symbol} }
-
                 # No extra charge
-                NO_EXTRA_CHARGE = :no_extra_charge
+                NO_EXTRA_CHARGE = T.let(:no_extra_charge, T.nilable(Symbol))
 
                 # Restaurant
-                RESTAURANT = :restaurant
+                RESTAURANT = T.let(:restaurant, T.nilable(Symbol))
 
                 # Gift shop
-                GIFT_SHOP = :gift_shop
+                GIFT_SHOP = T.let(:gift_shop, T.nilable(Symbol))
 
                 # Mini bar
-                MINI_BAR = :mini_bar
+                MINI_BAR = T.let(:mini_bar, T.nilable(Symbol))
 
                 # Telephone
-                TELEPHONE = :telephone
+                TELEPHONE = T.let(:telephone, T.nilable(Symbol))
 
                 # Other
-                OTHER = :other
+                OTHER = T.let(:other, T.nilable(Symbol))
 
                 # Laundry
-                LAUNDRY = :laundry
+                LAUNDRY = T.let(:laundry, T.nilable(Symbol))
+
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
+                end
               end
 
-              # Indicator that the cardholder is being billed for a reserved room that was not
-              #   actually used.
               class NoShowIndicator < Increase::Enum
                 abstract!
 
-                Value = type_template(:out) { {fixed: Symbol} }
-
                 # Not applicable
-                NOT_APPLICABLE = :not_applicable
+                NOT_APPLICABLE = T.let(:not_applicable, T.nilable(Symbol))
 
                 # No show
-                NO_SHOW = :no_show
+                NO_SHOW = T.let(:no_show, T.nilable(Symbol))
+
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
+                end
               end
             end
 
-            # The format of the purchase identifier.
             class PurchaseIdentifierFormat < Increase::Enum
               abstract!
 
-              Value = type_template(:out) { {fixed: Symbol} }
-
               # Free text
-              FREE_TEXT = :free_text
+              FREE_TEXT = T.let(:free_text, T.nilable(Symbol))
 
               # Order number
-              ORDER_NUMBER = :order_number
+              ORDER_NUMBER = T.let(:order_number, T.nilable(Symbol))
 
               # Rental agreement number
-              RENTAL_AGREEMENT_NUMBER = :rental_agreement_number
+              RENTAL_AGREEMENT_NUMBER = T.let(:rental_agreement_number, T.nilable(Symbol))
 
               # Hotel folio number
-              HOTEL_FOLIO_NUMBER = :hotel_folio_number
+              HOTEL_FOLIO_NUMBER = T.let(:hotel_folio_number, T.nilable(Symbol))
 
               # Invoice number
-              INVOICE_NUMBER = :invoice_number
+              INVOICE_NUMBER = T.let(:invoice_number, T.nilable(Symbol))
+
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
+              end
             end
 
             class Travel < Increase::BaseModel
-              # Ancillary purchases in addition to the airfare.
               sig { returns(T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary)) }
               def ancillary
               end
@@ -2588,7 +2292,6 @@ module Increase
               def ancillary=(_)
               end
 
-              # Indicates the computerized reservation system used to book the ticket.
               sig { returns(T.nilable(String)) }
               def computerized_reservation_system
               end
@@ -2597,7 +2300,6 @@ module Increase
               def computerized_reservation_system=(_)
               end
 
-              # Indicates the reason for a credit to the cardholder.
               sig { returns(T.nilable(Symbol)) }
               def credit_reason_indicator
               end
@@ -2606,7 +2308,6 @@ module Increase
               def credit_reason_indicator=(_)
               end
 
-              # Date of departure.
               sig { returns(T.nilable(Date)) }
               def departure_date
               end
@@ -2615,7 +2316,6 @@ module Increase
               def departure_date=(_)
               end
 
-              # Code for the originating city or airport.
               sig { returns(T.nilable(String)) }
               def origination_city_airport_code
               end
@@ -2624,7 +2324,6 @@ module Increase
               def origination_city_airport_code=(_)
               end
 
-              # Name of the passenger.
               sig { returns(T.nilable(String)) }
               def passenger_name
               end
@@ -2633,7 +2332,6 @@ module Increase
               def passenger_name=(_)
               end
 
-              # Indicates whether this ticket is non-refundable.
               sig { returns(T.nilable(Symbol)) }
               def restricted_ticket_indicator
               end
@@ -2642,7 +2340,6 @@ module Increase
               def restricted_ticket_indicator=(_)
               end
 
-              # Indicates why a ticket was changed.
               sig { returns(T.nilable(Symbol)) }
               def ticket_change_indicator
               end
@@ -2651,7 +2348,6 @@ module Increase
               def ticket_change_indicator=(_)
               end
 
-              # Ticket number.
               sig { returns(T.nilable(String)) }
               def ticket_number
               end
@@ -2660,7 +2356,6 @@ module Increase
               def ticket_number=(_)
               end
 
-              # Code for the travel agency if the ticket was issued by a travel agency.
               sig { returns(T.nilable(String)) }
               def travel_agency_code
               end
@@ -2669,7 +2364,6 @@ module Increase
               def travel_agency_code=(_)
               end
 
-              # Name of the travel agency if the ticket was issued by a travel agency.
               sig { returns(T.nilable(String)) }
               def travel_agency_name
               end
@@ -2678,7 +2372,6 @@ module Increase
               def travel_agency_name=(_)
               end
 
-              # Fields specific to each leg of the journey.
               sig do
                 returns(
                   T.nilable(T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg])
@@ -2698,7 +2391,6 @@ module Increase
               def trip_legs=(_)
               end
 
-              # Fields specific to travel.
               sig do
                 params(
                   ancillary: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary),
@@ -2755,9 +2447,6 @@ module Increase
               end
 
               class Ancillary < Increase::BaseModel
-                # If this purchase has a connection or relationship to another purchase, such as a
-                #   baggage fee for a passenger transport ticket, this field should contain the
-                #   ticket document number for the other purchase.
                 sig { returns(T.nilable(String)) }
                 def connected_ticket_document_number
                 end
@@ -2766,7 +2455,6 @@ module Increase
                 def connected_ticket_document_number=(_)
                 end
 
-                # Indicates the reason for a credit to the cardholder.
                 sig { returns(T.nilable(Symbol)) }
                 def credit_reason_indicator
                 end
@@ -2775,7 +2463,6 @@ module Increase
                 def credit_reason_indicator=(_)
                 end
 
-                # Name of the passenger or description of the ancillary purchase.
                 sig { returns(T.nilable(String)) }
                 def passenger_name_or_description
                 end
@@ -2784,7 +2471,6 @@ module Increase
                 def passenger_name_or_description=(_)
                 end
 
-                # Additional travel charges, such as baggage fees.
                 sig do
                   returns(
                     T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service]
@@ -2804,7 +2490,6 @@ module Increase
                 def services=(_)
                 end
 
-                # Ticket document number.
                 sig { returns(T.nilable(String)) }
                 def ticket_document_number
                 end
@@ -2813,7 +2498,6 @@ module Increase
                 def ticket_document_number=(_)
                 end
 
-                # Ancillary purchases in addition to the airfare.
                 sig do
                   params(
                     connected_ticket_document_number: T.nilable(String),
@@ -2848,27 +2532,33 @@ module Increase
                 def to_hash
                 end
 
-                # Indicates the reason for a credit to the cardholder.
                 class CreditReasonIndicator < Increase::Enum
                   abstract!
 
-                  Value = type_template(:out) { {fixed: Symbol} }
-
                   # No credit
-                  NO_CREDIT = :no_credit
+                  NO_CREDIT = T.let(:no_credit, T.nilable(Symbol))
 
                   # Passenger transport ancillary purchase cancellation
-                  PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :passenger_transport_ancillary_purchase_cancellation
+                  PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(
+                    :passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol)
+                  )
 
                   # Airline ticket and passenger transport ancillary purchase cancellation
-                  AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+                  AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(
+                    :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol)
+                  )
 
                   # Other
-                  OTHER = :other
+                  OTHER = T.let(:other, T.nilable(Symbol))
+
+                  class << self
+                    sig { override.returns(T::Array[Symbol]) }
+                    def values
+                    end
+                  end
                 end
 
                 class Service < Increase::BaseModel
-                  # Category of the ancillary service.
                   sig { returns(T.nilable(Symbol)) }
                   def category
                   end
@@ -2877,7 +2567,6 @@ module Increase
                   def category=(_)
                   end
 
-                  # Sub-category of the ancillary service, free-form.
                   sig { returns(T.nilable(String)) }
                   def sub_category
                   end
@@ -2899,143 +2588,158 @@ module Increase
                   def to_hash
                   end
 
-                  # Category of the ancillary service.
                   class Category < Increase::Enum
                     abstract!
 
-                    Value = type_template(:out) { {fixed: Symbol} }
-
                     # None
-                    NONE = :none
+                    NONE = T.let(:none, T.nilable(Symbol))
 
                     # Bundled service
-                    BUNDLED_SERVICE = :bundled_service
+                    BUNDLED_SERVICE = T.let(:bundled_service, T.nilable(Symbol))
 
                     # Baggage fee
-                    BAGGAGE_FEE = :baggage_fee
+                    BAGGAGE_FEE = T.let(:baggage_fee, T.nilable(Symbol))
 
                     # Change fee
-                    CHANGE_FEE = :change_fee
+                    CHANGE_FEE = T.let(:change_fee, T.nilable(Symbol))
 
                     # Cargo
-                    CARGO = :cargo
+                    CARGO = T.let(:cargo, T.nilable(Symbol))
 
                     # Carbon offset
-                    CARBON_OFFSET = :carbon_offset
+                    CARBON_OFFSET = T.let(:carbon_offset, T.nilable(Symbol))
 
                     # Frequent flyer
-                    FREQUENT_FLYER = :frequent_flyer
+                    FREQUENT_FLYER = T.let(:frequent_flyer, T.nilable(Symbol))
 
                     # Gift card
-                    GIFT_CARD = :gift_card
+                    GIFT_CARD = T.let(:gift_card, T.nilable(Symbol))
 
                     # Ground transport
-                    GROUND_TRANSPORT = :ground_transport
+                    GROUND_TRANSPORT = T.let(:ground_transport, T.nilable(Symbol))
 
                     # In-flight entertainment
-                    IN_FLIGHT_ENTERTAINMENT = :in_flight_entertainment
+                    IN_FLIGHT_ENTERTAINMENT = T.let(:in_flight_entertainment, T.nilable(Symbol))
 
                     # Lounge
-                    LOUNGE = :lounge
+                    LOUNGE = T.let(:lounge, T.nilable(Symbol))
 
                     # Medical
-                    MEDICAL = :medical
+                    MEDICAL = T.let(:medical, T.nilable(Symbol))
 
                     # Meal beverage
-                    MEAL_BEVERAGE = :meal_beverage
+                    MEAL_BEVERAGE = T.let(:meal_beverage, T.nilable(Symbol))
 
                     # Other
-                    OTHER = :other
+                    OTHER = T.let(:other, T.nilable(Symbol))
 
                     # Passenger assist fee
-                    PASSENGER_ASSIST_FEE = :passenger_assist_fee
+                    PASSENGER_ASSIST_FEE = T.let(:passenger_assist_fee, T.nilable(Symbol))
 
                     # Pets
-                    PETS = :pets
+                    PETS = T.let(:pets, T.nilable(Symbol))
 
                     # Seat fees
-                    SEAT_FEES = :seat_fees
+                    SEAT_FEES = T.let(:seat_fees, T.nilable(Symbol))
 
                     # Standby
-                    STANDBY = :standby
+                    STANDBY = T.let(:standby, T.nilable(Symbol))
 
                     # Service fee
-                    SERVICE_FEE = :service_fee
+                    SERVICE_FEE = T.let(:service_fee, T.nilable(Symbol))
 
                     # Store
-                    STORE = :store
+                    STORE = T.let(:store, T.nilable(Symbol))
 
                     # Travel service
-                    TRAVEL_SERVICE = :travel_service
+                    TRAVEL_SERVICE = T.let(:travel_service, T.nilable(Symbol))
 
                     # Unaccompanied travel
-                    UNACCOMPANIED_TRAVEL = :unaccompanied_travel
+                    UNACCOMPANIED_TRAVEL = T.let(:unaccompanied_travel, T.nilable(Symbol))
 
                     # Upgrades
-                    UPGRADES = :upgrades
+                    UPGRADES = T.let(:upgrades, T.nilable(Symbol))
 
                     # Wi-fi
-                    WIFI = :wifi
+                    WIFI = T.let(:wifi, T.nilable(Symbol))
+
+                    class << self
+                      sig { override.returns(T::Array[Symbol]) }
+                      def values
+                      end
+                    end
                   end
                 end
               end
 
-              # Indicates the reason for a credit to the cardholder.
               class CreditReasonIndicator < Increase::Enum
                 abstract!
 
-                Value = type_template(:out) { {fixed: Symbol} }
-
                 # No credit
-                NO_CREDIT = :no_credit
+                NO_CREDIT = T.let(:no_credit, T.nilable(Symbol))
 
                 # Passenger transport ancillary purchase cancellation
-                PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :passenger_transport_ancillary_purchase_cancellation
+                PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(
+                  :passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol)
+                )
 
                 # Airline ticket and passenger transport ancillary purchase cancellation
-                AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+                AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(
+                  :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol)
+                )
 
                 # Airline ticket cancellation
-                AIRLINE_TICKET_CANCELLATION = :airline_ticket_cancellation
+                AIRLINE_TICKET_CANCELLATION = T.let(:airline_ticket_cancellation, T.nilable(Symbol))
 
                 # Other
-                OTHER = :other
+                OTHER = T.let(:other, T.nilable(Symbol))
 
                 # Partial refund of airline ticket
-                PARTIAL_REFUND_OF_AIRLINE_TICKET = :partial_refund_of_airline_ticket
+                PARTIAL_REFUND_OF_AIRLINE_TICKET = T.let(:partial_refund_of_airline_ticket, T.nilable(Symbol))
+
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
+                end
               end
 
-              # Indicates whether this ticket is non-refundable.
               class RestrictedTicketIndicator < Increase::Enum
                 abstract!
 
-                Value = type_template(:out) { {fixed: Symbol} }
-
                 # No restrictions
-                NO_RESTRICTIONS = :no_restrictions
+                NO_RESTRICTIONS = T.let(:no_restrictions, T.nilable(Symbol))
 
                 # Restricted non-refundable ticket
-                RESTRICTED_NON_REFUNDABLE_TICKET = :restricted_non_refundable_ticket
+                RESTRICTED_NON_REFUNDABLE_TICKET = T.let(:restricted_non_refundable_ticket, T.nilable(Symbol))
+
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
+                end
               end
 
-              # Indicates why a ticket was changed.
               class TicketChangeIndicator < Increase::Enum
                 abstract!
 
-                Value = type_template(:out) { {fixed: Symbol} }
-
                 # None
-                NONE = :none
+                NONE = T.let(:none, T.nilable(Symbol))
 
                 # Change to existing ticket
-                CHANGE_TO_EXISTING_TICKET = :change_to_existing_ticket
+                CHANGE_TO_EXISTING_TICKET = T.let(:change_to_existing_ticket, T.nilable(Symbol))
 
                 # New ticket
-                NEW_TICKET = :new_ticket
+                NEW_TICKET = T.let(:new_ticket, T.nilable(Symbol))
+
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
+                end
               end
 
               class TripLeg < Increase::BaseModel
-                # Carrier code (e.g., United Airlines, Jet Blue, etc.).
                 sig { returns(T.nilable(String)) }
                 def carrier_code
                 end
@@ -3044,7 +2748,6 @@ module Increase
                 def carrier_code=(_)
                 end
 
-                # Code for the destination city or airport.
                 sig { returns(T.nilable(String)) }
                 def destination_city_airport_code
                 end
@@ -3053,7 +2756,6 @@ module Increase
                 def destination_city_airport_code=(_)
                 end
 
-                # Fare basis code.
                 sig { returns(T.nilable(String)) }
                 def fare_basis_code
                 end
@@ -3062,7 +2764,6 @@ module Increase
                 def fare_basis_code=(_)
                 end
 
-                # Flight number.
                 sig { returns(T.nilable(String)) }
                 def flight_number
                 end
@@ -3071,7 +2772,6 @@ module Increase
                 def flight_number=(_)
                 end
 
-                # Service class (e.g., first class, business class, etc.).
                 sig { returns(T.nilable(String)) }
                 def service_class
                 end
@@ -3080,7 +2780,6 @@ module Increase
                 def service_class=(_)
                 end
 
-                # Indicates whether a stopover is allowed on this ticket.
                 sig { returns(T.nilable(Symbol)) }
                 def stop_over_code
                 end
@@ -3126,39 +2825,42 @@ module Increase
                 def to_hash
                 end
 
-                # Indicates whether a stopover is allowed on this ticket.
                 class StopOverCode < Increase::Enum
                   abstract!
 
-                  Value = type_template(:out) { {fixed: Symbol} }
-
                   # None
-                  NONE = :none
+                  NONE = T.let(:none, T.nilable(Symbol))
 
                   # Stop over allowed
-                  STOP_OVER_ALLOWED = :stop_over_allowed
+                  STOP_OVER_ALLOWED = T.let(:stop_over_allowed, T.nilable(Symbol))
 
                   # Stop over not allowed
-                  STOP_OVER_NOT_ALLOWED = :stop_over_not_allowed
+                  STOP_OVER_NOT_ALLOWED = T.let(:stop_over_not_allowed, T.nilable(Symbol))
+
+                  class << self
+                    sig { override.returns(T::Array[Symbol]) }
+                    def values
+                    end
+                  end
                 end
               end
             end
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          #   `card_refund`.
           class Type < Increase::Enum
             abstract!
 
-            Value = type_template(:out) { {fixed: Symbol} }
-
             CARD_REFUND = :card_refund
+
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
+            end
           end
         end
 
         class CardRevenuePayment < Increase::BaseModel
-          # The amount in the minor unit of the transaction's currency. For dollars, for
-          #   example, this is cents.
           sig { returns(Integer) }
           def amount
           end
@@ -3167,8 +2869,6 @@ module Increase
           def amount=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          #   currency.
           sig { returns(Symbol) }
           def currency
           end
@@ -3177,7 +2877,6 @@ module Increase
           def currency=(_)
           end
 
-          # The end of the period for which this transaction paid interest.
           sig { returns(Time) }
           def period_end
           end
@@ -3186,7 +2885,6 @@ module Increase
           def period_end=(_)
           end
 
-          # The start of the period for which this transaction paid interest.
           sig { returns(Time) }
           def period_start
           end
@@ -3195,7 +2893,6 @@ module Increase
           def period_start=(_)
           end
 
-          # The account the card belonged to.
           sig { returns(T.nilable(String)) }
           def transacted_on_account_id
           end
@@ -3204,9 +2901,6 @@ module Increase
           def transacted_on_account_id=(_)
           end
 
-          # A Card Revenue Payment object. This field will be present in the JSON response
-          #   if and only if `category` is equal to `card_revenue_payment`. Card Revenue
-          #   Payments reflect earnings from fees on card transactions.
           sig do
             params(
               amount: Integer,
@@ -3235,12 +2929,8 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          #   currency.
           class Currency < Increase::Enum
             abstract!
-
-            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -3259,11 +2949,16 @@ module Increase
 
             # US Dollar (USD)
             USD = :USD
+
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
+            end
           end
         end
 
         class CardSettlement < Increase::BaseModel
-          # The Card Settlement identifier.
           sig { returns(String) }
           def id
           end
@@ -3272,8 +2967,6 @@ module Increase
           def id=(_)
           end
 
-          # The amount in the minor unit of the transaction's settlement currency. For
-          #   dollars, for example, this is cents.
           sig { returns(Integer) }
           def amount
           end
@@ -3282,8 +2975,6 @@ module Increase
           def amount=(_)
           end
 
-          # The Card Authorization that was created prior to this Card Settlement, if one
-          #   exists.
           sig { returns(T.nilable(String)) }
           def card_authorization
           end
@@ -3292,7 +2983,6 @@ module Increase
           def card_authorization=(_)
           end
 
-          # The ID of the Card Payment this transaction belongs to.
           sig { returns(String) }
           def card_payment_id
           end
@@ -3301,8 +2991,6 @@ module Increase
           def card_payment_id=(_)
           end
 
-          # Cashback earned on this transaction, if eligible. Cashback is paid out in
-          #   aggregate, monthly.
           sig { returns(T.nilable(Increase::Models::Transaction::Source::CardSettlement::Cashback)) }
           def cashback
           end
@@ -3314,8 +3002,6 @@ module Increase
           def cashback=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's settlement currency.
           sig { returns(Symbol) }
           def currency
           end
@@ -3324,7 +3010,6 @@ module Increase
           def currency=(_)
           end
 
-          # Interchange assessed as a part of this transaction.
           sig { returns(T.nilable(Increase::Models::Transaction::Source::CardSettlement::Interchange)) }
           def interchange
           end
@@ -3336,8 +3021,6 @@ module Increase
           def interchange=(_)
           end
 
-          # The merchant identifier (commonly abbreviated as MID) of the merchant the card
-          #   is transacting with.
           sig { returns(String) }
           def merchant_acceptor_id
           end
@@ -3346,7 +3029,6 @@ module Increase
           def merchant_acceptor_id=(_)
           end
 
-          # The 4-digit MCC describing the merchant's business.
           sig { returns(String) }
           def merchant_category_code
           end
@@ -3355,7 +3037,6 @@ module Increase
           def merchant_category_code=(_)
           end
 
-          # The city the merchant resides in.
           sig { returns(String) }
           def merchant_city
           end
@@ -3364,7 +3045,6 @@ module Increase
           def merchant_city=(_)
           end
 
-          # The country the merchant resides in.
           sig { returns(String) }
           def merchant_country
           end
@@ -3373,7 +3053,6 @@ module Increase
           def merchant_country=(_)
           end
 
-          # The name of the merchant.
           sig { returns(String) }
           def merchant_name
           end
@@ -3382,7 +3061,6 @@ module Increase
           def merchant_name=(_)
           end
 
-          # The merchant's postal code. For US merchants this is always a 5-digit ZIP code.
           sig { returns(T.nilable(String)) }
           def merchant_postal_code
           end
@@ -3391,7 +3069,6 @@ module Increase
           def merchant_postal_code=(_)
           end
 
-          # The state the merchant resides in.
           sig { returns(T.nilable(String)) }
           def merchant_state
           end
@@ -3400,7 +3077,6 @@ module Increase
           def merchant_state=(_)
           end
 
-          # Network-specific identifiers for this refund.
           sig { returns(Increase::Models::Transaction::Source::CardSettlement::NetworkIdentifiers) }
           def network_identifiers
           end
@@ -3412,7 +3088,6 @@ module Increase
           def network_identifiers=(_)
           end
 
-          # The identifier of the Pending Transaction associated with this Transaction.
           sig { returns(T.nilable(String)) }
           def pending_transaction_id
           end
@@ -3421,7 +3096,6 @@ module Increase
           def pending_transaction_id=(_)
           end
 
-          # The amount in the minor unit of the transaction's presentment currency.
           sig { returns(Integer) }
           def presentment_amount
           end
@@ -3430,8 +3104,6 @@ module Increase
           def presentment_amount=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's presentment currency.
           sig { returns(String) }
           def presentment_currency
           end
@@ -3440,8 +3112,6 @@ module Increase
           def presentment_currency=(_)
           end
 
-          # Additional details about the card purchase, such as tax and industry-specific
-          #   fields.
           sig { returns(T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails)) }
           def purchase_details
           end
@@ -3453,7 +3123,6 @@ module Increase
           def purchase_details=(_)
           end
 
-          # The identifier of the Transaction associated with this Transaction.
           sig { returns(String) }
           def transaction_id
           end
@@ -3462,8 +3131,6 @@ module Increase
           def transaction_id=(_)
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          #   `card_settlement`.
           sig { returns(Symbol) }
           def type
           end
@@ -3472,11 +3139,6 @@ module Increase
           def type=(_)
           end
 
-          # A Card Settlement object. This field will be present in the JSON response if and
-          #   only if `category` is equal to `card_settlement`. Card Settlements are card
-          #   transactions that have cleared and settled. While a settlement is usually
-          #   preceded by an authorization, an acquirer can also directly clear a transaction
-          #   without first authorizing it.
           sig do
             params(
               id: String,
@@ -3560,9 +3222,6 @@ module Increase
           end
 
           class Cashback < Increase::BaseModel
-            # The cashback amount given as a string containing a decimal number. The amount is
-            #   a positive number if it will be credited to you (e.g., settlements) and a
-            #   negative number if it will be debited (e.g., refunds).
             sig { returns(String) }
             def amount
             end
@@ -3571,7 +3230,6 @@ module Increase
             def amount=(_)
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             sig { returns(Symbol) }
             def currency
             end
@@ -3580,8 +3238,6 @@ module Increase
             def currency=(_)
             end
 
-            # Cashback earned on this transaction, if eligible. Cashback is paid out in
-            #   aggregate, monthly.
             sig { params(amount: String, currency: Symbol).returns(T.attached_class) }
             def self.new(amount:, currency:)
             end
@@ -3590,11 +3246,8 @@ module Increase
             def to_hash
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             class Currency < Increase::Enum
               abstract!
-
-              Value = type_template(:out) { {fixed: Symbol} }
 
               # Canadian Dollar (CAD)
               CAD = :CAD
@@ -3613,15 +3266,17 @@ module Increase
 
               # US Dollar (USD)
               USD = :USD
+
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
+              end
             end
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's settlement currency.
           class Currency < Increase::Enum
             abstract!
-
-            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -3640,12 +3295,15 @@ module Increase
 
             # US Dollar (USD)
             USD = :USD
+
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
+            end
           end
 
           class Interchange < Increase::BaseModel
-            # The interchange amount given as a string containing a decimal number. The amount
-            #   is a positive number if it is credited to Increase (e.g., settlements) and a
-            #   negative number if it is debited (e.g., refunds).
             sig { returns(String) }
             def amount
             end
@@ -3654,7 +3312,6 @@ module Increase
             def amount=(_)
             end
 
-            # The card network specific interchange code.
             sig { returns(T.nilable(String)) }
             def code
             end
@@ -3663,8 +3320,6 @@ module Increase
             def code=(_)
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            #   reimbursement.
             sig { returns(Symbol) }
             def currency
             end
@@ -3673,7 +3328,6 @@ module Increase
             def currency=(_)
             end
 
-            # Interchange assessed as a part of this transaction.
             sig do
               params(amount: String, code: T.nilable(String), currency: Symbol).returns(T.attached_class)
             end
@@ -3684,12 +3338,8 @@ module Increase
             def to_hash
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            #   reimbursement.
             class Currency < Increase::Enum
               abstract!
-
-              Value = type_template(:out) { {fixed: Symbol} }
 
               # Canadian Dollar (CAD)
               CAD = :CAD
@@ -3708,12 +3358,16 @@ module Increase
 
               # US Dollar (USD)
               USD = :USD
+
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
+              end
             end
           end
 
           class NetworkIdentifiers < Increase::BaseModel
-            # A network assigned business ID that identifies the acquirer that processed this
-            #   transaction.
             sig { returns(String) }
             def acquirer_business_id
             end
@@ -3722,7 +3376,6 @@ module Increase
             def acquirer_business_id=(_)
             end
 
-            # A globally unique identifier for this settlement.
             sig { returns(String) }
             def acquirer_reference_number
             end
@@ -3731,8 +3384,6 @@ module Increase
             def acquirer_reference_number=(_)
             end
 
-            # A globally unique transaction identifier provided by the card network, used
-            #   across multiple life-cycle requests.
             sig { returns(T.nilable(String)) }
             def transaction_id
             end
@@ -3741,7 +3392,6 @@ module Increase
             def transaction_id=(_)
             end
 
-            # Network-specific identifiers for this refund.
             sig do
               params(
                 acquirer_business_id: String,
@@ -3768,7 +3418,6 @@ module Increase
           end
 
           class PurchaseDetails < Increase::BaseModel
-            # Fields specific to car rentals.
             sig { returns(T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental)) }
             def car_rental
             end
@@ -3780,7 +3429,6 @@ module Increase
             def car_rental=(_)
             end
 
-            # An identifier from the merchant for the customer or consumer.
             sig { returns(T.nilable(String)) }
             def customer_reference_identifier
             end
@@ -3789,7 +3437,6 @@ module Increase
             def customer_reference_identifier=(_)
             end
 
-            # The state or provincial tax amount in minor units.
             sig { returns(T.nilable(Integer)) }
             def local_tax_amount
             end
@@ -3798,8 +3445,6 @@ module Increase
             def local_tax_amount=(_)
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
-            #   assessed.
             sig { returns(T.nilable(String)) }
             def local_tax_currency
             end
@@ -3808,7 +3453,6 @@ module Increase
             def local_tax_currency=(_)
             end
 
-            # Fields specific to lodging.
             sig { returns(T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging)) }
             def lodging
             end
@@ -3820,7 +3464,6 @@ module Increase
             def lodging=(_)
             end
 
-            # The national tax amount in minor units.
             sig { returns(T.nilable(Integer)) }
             def national_tax_amount
             end
@@ -3829,8 +3472,6 @@ module Increase
             def national_tax_amount=(_)
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
-            #   assessed.
             sig { returns(T.nilable(String)) }
             def national_tax_currency
             end
@@ -3839,7 +3480,6 @@ module Increase
             def national_tax_currency=(_)
             end
 
-            # An identifier from the merchant for the purchase to the issuer and cardholder.
             sig { returns(T.nilable(String)) }
             def purchase_identifier
             end
@@ -3848,7 +3488,6 @@ module Increase
             def purchase_identifier=(_)
             end
 
-            # The format of the purchase identifier.
             sig { returns(T.nilable(Symbol)) }
             def purchase_identifier_format
             end
@@ -3857,7 +3496,6 @@ module Increase
             def purchase_identifier_format=(_)
             end
 
-            # Fields specific to travel.
             sig { returns(T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel)) }
             def travel
             end
@@ -3869,8 +3507,6 @@ module Increase
             def travel=(_)
             end
 
-            # Additional details about the card purchase, such as tax and industry-specific
-            #   fields.
             sig do
               params(
                 car_rental: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental),
@@ -3921,7 +3557,6 @@ module Increase
             end
 
             class CarRental < Increase::BaseModel
-              # Code indicating the vehicle's class.
               sig { returns(T.nilable(String)) }
               def car_class_code
               end
@@ -3930,8 +3565,6 @@ module Increase
               def car_class_code=(_)
               end
 
-              # Date the customer picked up the car or, in the case of a no-show or pre-pay
-              #   transaction, the scheduled pick up date.
               sig { returns(T.nilable(Date)) }
               def checkout_date
               end
@@ -3940,7 +3573,6 @@ module Increase
               def checkout_date=(_)
               end
 
-              # Daily rate being charged for the vehicle.
               sig { returns(T.nilable(Integer)) }
               def daily_rental_rate_amount
               end
@@ -3949,8 +3581,6 @@ module Increase
               def daily_rental_rate_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily rental
-              #   rate.
               sig { returns(T.nilable(String)) }
               def daily_rental_rate_currency
               end
@@ -3959,7 +3589,6 @@ module Increase
               def daily_rental_rate_currency=(_)
               end
 
-              # Number of days the vehicle was rented.
               sig { returns(T.nilable(Integer)) }
               def days_rented
               end
@@ -3968,7 +3597,6 @@ module Increase
               def days_rented=(_)
               end
 
-              # Additional charges (gas, late fee, etc.) being billed.
               sig { returns(T.nilable(Symbol)) }
               def extra_charges
               end
@@ -3977,7 +3605,6 @@ module Increase
               def extra_charges=(_)
               end
 
-              # Fuel charges for the vehicle.
               sig { returns(T.nilable(Integer)) }
               def fuel_charges_amount
               end
@@ -3986,8 +3613,6 @@ module Increase
               def fuel_charges_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel charges
-              #   assessed.
               sig { returns(T.nilable(String)) }
               def fuel_charges_currency
               end
@@ -3996,7 +3621,6 @@ module Increase
               def fuel_charges_currency=(_)
               end
 
-              # Any insurance being charged for the vehicle.
               sig { returns(T.nilable(Integer)) }
               def insurance_charges_amount
               end
@@ -4005,8 +3629,6 @@ module Increase
               def insurance_charges_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance
-              #   charges assessed.
               sig { returns(T.nilable(String)) }
               def insurance_charges_currency
               end
@@ -4015,8 +3637,6 @@ module Increase
               def insurance_charges_currency=(_)
               end
 
-              # An indicator that the cardholder is being billed for a reserved vehicle that was
-              #   not actually rented (that is, a "no-show" charge).
               sig { returns(T.nilable(Symbol)) }
               def no_show_indicator
               end
@@ -4025,8 +3645,6 @@ module Increase
               def no_show_indicator=(_)
               end
 
-              # Charges for returning the vehicle at a different location than where it was
-              #   picked up.
               sig { returns(T.nilable(Integer)) }
               def one_way_drop_off_charges_amount
               end
@@ -4035,8 +3653,6 @@ module Increase
               def one_way_drop_off_charges_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the one-way
-              #   drop-off charges assessed.
               sig { returns(T.nilable(String)) }
               def one_way_drop_off_charges_currency
               end
@@ -4045,7 +3661,6 @@ module Increase
               def one_way_drop_off_charges_currency=(_)
               end
 
-              # Name of the person renting the vehicle.
               sig { returns(T.nilable(String)) }
               def renter_name
               end
@@ -4054,7 +3669,6 @@ module Increase
               def renter_name=(_)
               end
 
-              # Weekly rate being charged for the vehicle.
               sig { returns(T.nilable(Integer)) }
               def weekly_rental_rate_amount
               end
@@ -4063,8 +3677,6 @@ module Increase
               def weekly_rental_rate_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly
-              #   rental rate.
               sig { returns(T.nilable(String)) }
               def weekly_rental_rate_currency
               end
@@ -4073,7 +3685,6 @@ module Increase
               def weekly_rental_rate_currency=(_)
               end
 
-              # Fields specific to car rentals.
               sig do
                 params(
                   car_class_code: T.nilable(String),
@@ -4141,48 +3752,52 @@ module Increase
               def to_hash
               end
 
-              # Additional charges (gas, late fee, etc.) being billed.
               class ExtraCharges < Increase::Enum
                 abstract!
 
-                Value = type_template(:out) { {fixed: Symbol} }
-
                 # No extra charge
-                NO_EXTRA_CHARGE = :no_extra_charge
+                NO_EXTRA_CHARGE = T.let(:no_extra_charge, T.nilable(Symbol))
 
                 # Gas
-                GAS = :gas
+                GAS = T.let(:gas, T.nilable(Symbol))
 
                 # Extra mileage
-                EXTRA_MILEAGE = :extra_mileage
+                EXTRA_MILEAGE = T.let(:extra_mileage, T.nilable(Symbol))
 
                 # Late return
-                LATE_RETURN = :late_return
+                LATE_RETURN = T.let(:late_return, T.nilable(Symbol))
 
                 # One way service fee
-                ONE_WAY_SERVICE_FEE = :one_way_service_fee
+                ONE_WAY_SERVICE_FEE = T.let(:one_way_service_fee, T.nilable(Symbol))
 
                 # Parking violation
-                PARKING_VIOLATION = :parking_violation
+                PARKING_VIOLATION = T.let(:parking_violation, T.nilable(Symbol))
+
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
+                end
               end
 
-              # An indicator that the cardholder is being billed for a reserved vehicle that was
-              #   not actually rented (that is, a "no-show" charge).
               class NoShowIndicator < Increase::Enum
                 abstract!
 
-                Value = type_template(:out) { {fixed: Symbol} }
-
                 # Not applicable
-                NOT_APPLICABLE = :not_applicable
+                NOT_APPLICABLE = T.let(:not_applicable, T.nilable(Symbol))
 
                 # No show for specialized vehicle
-                NO_SHOW_FOR_SPECIALIZED_VEHICLE = :no_show_for_specialized_vehicle
+                NO_SHOW_FOR_SPECIALIZED_VEHICLE = T.let(:no_show_for_specialized_vehicle, T.nilable(Symbol))
+
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
+                end
               end
             end
 
             class Lodging < Increase::BaseModel
-              # Date the customer checked in.
               sig { returns(T.nilable(Date)) }
               def check_in_date
               end
@@ -4191,7 +3806,6 @@ module Increase
               def check_in_date=(_)
               end
 
-              # Daily rate being charged for the room.
               sig { returns(T.nilable(Integer)) }
               def daily_room_rate_amount
               end
@@ -4200,8 +3814,6 @@ module Increase
               def daily_room_rate_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room
-              #   rate.
               sig { returns(T.nilable(String)) }
               def daily_room_rate_currency
               end
@@ -4210,7 +3822,6 @@ module Increase
               def daily_room_rate_currency=(_)
               end
 
-              # Additional charges (phone, late check-out, etc.) being billed.
               sig { returns(T.nilable(Symbol)) }
               def extra_charges
               end
@@ -4219,7 +3830,6 @@ module Increase
               def extra_charges=(_)
               end
 
-              # Folio cash advances for the room.
               sig { returns(T.nilable(Integer)) }
               def folio_cash_advances_amount
               end
@@ -4228,8 +3838,6 @@ module Increase
               def folio_cash_advances_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the folio cash
-              #   advances.
               sig { returns(T.nilable(String)) }
               def folio_cash_advances_currency
               end
@@ -4238,7 +3846,6 @@ module Increase
               def folio_cash_advances_currency=(_)
               end
 
-              # Food and beverage charges for the room.
               sig { returns(T.nilable(Integer)) }
               def food_beverage_charges_amount
               end
@@ -4247,8 +3854,6 @@ module Increase
               def food_beverage_charges_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
-              #   beverage charges.
               sig { returns(T.nilable(String)) }
               def food_beverage_charges_currency
               end
@@ -4257,8 +3862,6 @@ module Increase
               def food_beverage_charges_currency=(_)
               end
 
-              # Indicator that the cardholder is being billed for a reserved room that was not
-              #   actually used.
               sig { returns(T.nilable(Symbol)) }
               def no_show_indicator
               end
@@ -4267,7 +3870,6 @@ module Increase
               def no_show_indicator=(_)
               end
 
-              # Prepaid expenses being charged for the room.
               sig { returns(T.nilable(Integer)) }
               def prepaid_expenses_amount
               end
@@ -4276,8 +3878,6 @@ module Increase
               def prepaid_expenses_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the prepaid
-              #   expenses.
               sig { returns(T.nilable(String)) }
               def prepaid_expenses_currency
               end
@@ -4286,7 +3886,6 @@ module Increase
               def prepaid_expenses_currency=(_)
               end
 
-              # Number of nights the room was rented.
               sig { returns(T.nilable(Integer)) }
               def room_nights
               end
@@ -4295,7 +3894,6 @@ module Increase
               def room_nights=(_)
               end
 
-              # Total room tax being charged.
               sig { returns(T.nilable(Integer)) }
               def total_room_tax_amount
               end
@@ -4304,8 +3902,6 @@ module Increase
               def total_room_tax_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total room
-              #   tax.
               sig { returns(T.nilable(String)) }
               def total_room_tax_currency
               end
@@ -4314,7 +3910,6 @@ module Increase
               def total_room_tax_currency=(_)
               end
 
-              # Total tax being charged for the room.
               sig { returns(T.nilable(Integer)) }
               def total_tax_amount
               end
@@ -4323,8 +3918,6 @@ module Increase
               def total_tax_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax
-              #   assessed.
               sig { returns(T.nilable(String)) }
               def total_tax_currency
               end
@@ -4333,7 +3926,6 @@ module Increase
               def total_tax_currency=(_)
               end
 
-              # Fields specific to lodging.
               sig do
                 params(
                   check_in_date: T.nilable(Date),
@@ -4401,73 +3993,80 @@ module Increase
               def to_hash
               end
 
-              # Additional charges (phone, late check-out, etc.) being billed.
               class ExtraCharges < Increase::Enum
                 abstract!
 
-                Value = type_template(:out) { {fixed: Symbol} }
-
                 # No extra charge
-                NO_EXTRA_CHARGE = :no_extra_charge
+                NO_EXTRA_CHARGE = T.let(:no_extra_charge, T.nilable(Symbol))
 
                 # Restaurant
-                RESTAURANT = :restaurant
+                RESTAURANT = T.let(:restaurant, T.nilable(Symbol))
 
                 # Gift shop
-                GIFT_SHOP = :gift_shop
+                GIFT_SHOP = T.let(:gift_shop, T.nilable(Symbol))
 
                 # Mini bar
-                MINI_BAR = :mini_bar
+                MINI_BAR = T.let(:mini_bar, T.nilable(Symbol))
 
                 # Telephone
-                TELEPHONE = :telephone
+                TELEPHONE = T.let(:telephone, T.nilable(Symbol))
 
                 # Other
-                OTHER = :other
+                OTHER = T.let(:other, T.nilable(Symbol))
 
                 # Laundry
-                LAUNDRY = :laundry
+                LAUNDRY = T.let(:laundry, T.nilable(Symbol))
+
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
+                end
               end
 
-              # Indicator that the cardholder is being billed for a reserved room that was not
-              #   actually used.
               class NoShowIndicator < Increase::Enum
                 abstract!
 
-                Value = type_template(:out) { {fixed: Symbol} }
-
                 # Not applicable
-                NOT_APPLICABLE = :not_applicable
+                NOT_APPLICABLE = T.let(:not_applicable, T.nilable(Symbol))
 
                 # No show
-                NO_SHOW = :no_show
+                NO_SHOW = T.let(:no_show, T.nilable(Symbol))
+
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
+                end
               end
             end
 
-            # The format of the purchase identifier.
             class PurchaseIdentifierFormat < Increase::Enum
               abstract!
 
-              Value = type_template(:out) { {fixed: Symbol} }
-
               # Free text
-              FREE_TEXT = :free_text
+              FREE_TEXT = T.let(:free_text, T.nilable(Symbol))
 
               # Order number
-              ORDER_NUMBER = :order_number
+              ORDER_NUMBER = T.let(:order_number, T.nilable(Symbol))
 
               # Rental agreement number
-              RENTAL_AGREEMENT_NUMBER = :rental_agreement_number
+              RENTAL_AGREEMENT_NUMBER = T.let(:rental_agreement_number, T.nilable(Symbol))
 
               # Hotel folio number
-              HOTEL_FOLIO_NUMBER = :hotel_folio_number
+              HOTEL_FOLIO_NUMBER = T.let(:hotel_folio_number, T.nilable(Symbol))
 
               # Invoice number
-              INVOICE_NUMBER = :invoice_number
+              INVOICE_NUMBER = T.let(:invoice_number, T.nilable(Symbol))
+
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
+              end
             end
 
             class Travel < Increase::BaseModel
-              # Ancillary purchases in addition to the airfare.
               sig do
                 returns(
                   T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary)
@@ -4487,7 +4086,6 @@ module Increase
               def ancillary=(_)
               end
 
-              # Indicates the computerized reservation system used to book the ticket.
               sig { returns(T.nilable(String)) }
               def computerized_reservation_system
               end
@@ -4496,7 +4094,6 @@ module Increase
               def computerized_reservation_system=(_)
               end
 
-              # Indicates the reason for a credit to the cardholder.
               sig { returns(T.nilable(Symbol)) }
               def credit_reason_indicator
               end
@@ -4505,7 +4102,6 @@ module Increase
               def credit_reason_indicator=(_)
               end
 
-              # Date of departure.
               sig { returns(T.nilable(Date)) }
               def departure_date
               end
@@ -4514,7 +4110,6 @@ module Increase
               def departure_date=(_)
               end
 
-              # Code for the originating city or airport.
               sig { returns(T.nilable(String)) }
               def origination_city_airport_code
               end
@@ -4523,7 +4118,6 @@ module Increase
               def origination_city_airport_code=(_)
               end
 
-              # Name of the passenger.
               sig { returns(T.nilable(String)) }
               def passenger_name
               end
@@ -4532,7 +4126,6 @@ module Increase
               def passenger_name=(_)
               end
 
-              # Indicates whether this ticket is non-refundable.
               sig { returns(T.nilable(Symbol)) }
               def restricted_ticket_indicator
               end
@@ -4541,7 +4134,6 @@ module Increase
               def restricted_ticket_indicator=(_)
               end
 
-              # Indicates why a ticket was changed.
               sig { returns(T.nilable(Symbol)) }
               def ticket_change_indicator
               end
@@ -4550,7 +4142,6 @@ module Increase
               def ticket_change_indicator=(_)
               end
 
-              # Ticket number.
               sig { returns(T.nilable(String)) }
               def ticket_number
               end
@@ -4559,7 +4150,6 @@ module Increase
               def ticket_number=(_)
               end
 
-              # Code for the travel agency if the ticket was issued by a travel agency.
               sig { returns(T.nilable(String)) }
               def travel_agency_code
               end
@@ -4568,7 +4158,6 @@ module Increase
               def travel_agency_code=(_)
               end
 
-              # Name of the travel agency if the ticket was issued by a travel agency.
               sig { returns(T.nilable(String)) }
               def travel_agency_name
               end
@@ -4577,7 +4166,6 @@ module Increase
               def travel_agency_name=(_)
               end
 
-              # Fields specific to each leg of the journey.
               sig do
                 returns(
                   T.nilable(
@@ -4603,7 +4191,6 @@ module Increase
               def trip_legs=(_)
               end
 
-              # Fields specific to travel.
               sig do
                 params(
                   ancillary: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary),
@@ -4664,9 +4251,6 @@ module Increase
               end
 
               class Ancillary < Increase::BaseModel
-                # If this purchase has a connection or relationship to another purchase, such as a
-                #   baggage fee for a passenger transport ticket, this field should contain the
-                #   ticket document number for the other purchase.
                 sig { returns(T.nilable(String)) }
                 def connected_ticket_document_number
                 end
@@ -4675,7 +4259,6 @@ module Increase
                 def connected_ticket_document_number=(_)
                 end
 
-                # Indicates the reason for a credit to the cardholder.
                 sig { returns(T.nilable(Symbol)) }
                 def credit_reason_indicator
                 end
@@ -4684,7 +4267,6 @@ module Increase
                 def credit_reason_indicator=(_)
                 end
 
-                # Name of the passenger or description of the ancillary purchase.
                 sig { returns(T.nilable(String)) }
                 def passenger_name_or_description
                 end
@@ -4693,7 +4275,6 @@ module Increase
                 def passenger_name_or_description=(_)
                 end
 
-                # Additional travel charges, such as baggage fees.
                 sig do
                   returns(
                     T::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service]
@@ -4713,7 +4294,6 @@ module Increase
                 def services=(_)
                 end
 
-                # Ticket document number.
                 sig { returns(T.nilable(String)) }
                 def ticket_document_number
                 end
@@ -4722,7 +4302,6 @@ module Increase
                 def ticket_document_number=(_)
                 end
 
-                # Ancillary purchases in addition to the airfare.
                 sig do
                   params(
                     connected_ticket_document_number: T.nilable(String),
@@ -4757,27 +4336,33 @@ module Increase
                 def to_hash
                 end
 
-                # Indicates the reason for a credit to the cardholder.
                 class CreditReasonIndicator < Increase::Enum
                   abstract!
 
-                  Value = type_template(:out) { {fixed: Symbol} }
-
                   # No credit
-                  NO_CREDIT = :no_credit
+                  NO_CREDIT = T.let(:no_credit, T.nilable(Symbol))
 
                   # Passenger transport ancillary purchase cancellation
-                  PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :passenger_transport_ancillary_purchase_cancellation
+                  PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(
+                    :passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol)
+                  )
 
                   # Airline ticket and passenger transport ancillary purchase cancellation
-                  AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+                  AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(
+                    :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol)
+                  )
 
                   # Other
-                  OTHER = :other
+                  OTHER = T.let(:other, T.nilable(Symbol))
+
+                  class << self
+                    sig { override.returns(T::Array[Symbol]) }
+                    def values
+                    end
+                  end
                 end
 
                 class Service < Increase::BaseModel
-                  # Category of the ancillary service.
                   sig { returns(T.nilable(Symbol)) }
                   def category
                   end
@@ -4786,7 +4371,6 @@ module Increase
                   def category=(_)
                   end
 
-                  # Sub-category of the ancillary service, free-form.
                   sig { returns(T.nilable(String)) }
                   def sub_category
                   end
@@ -4808,143 +4392,158 @@ module Increase
                   def to_hash
                   end
 
-                  # Category of the ancillary service.
                   class Category < Increase::Enum
                     abstract!
 
-                    Value = type_template(:out) { {fixed: Symbol} }
-
                     # None
-                    NONE = :none
+                    NONE = T.let(:none, T.nilable(Symbol))
 
                     # Bundled service
-                    BUNDLED_SERVICE = :bundled_service
+                    BUNDLED_SERVICE = T.let(:bundled_service, T.nilable(Symbol))
 
                     # Baggage fee
-                    BAGGAGE_FEE = :baggage_fee
+                    BAGGAGE_FEE = T.let(:baggage_fee, T.nilable(Symbol))
 
                     # Change fee
-                    CHANGE_FEE = :change_fee
+                    CHANGE_FEE = T.let(:change_fee, T.nilable(Symbol))
 
                     # Cargo
-                    CARGO = :cargo
+                    CARGO = T.let(:cargo, T.nilable(Symbol))
 
                     # Carbon offset
-                    CARBON_OFFSET = :carbon_offset
+                    CARBON_OFFSET = T.let(:carbon_offset, T.nilable(Symbol))
 
                     # Frequent flyer
-                    FREQUENT_FLYER = :frequent_flyer
+                    FREQUENT_FLYER = T.let(:frequent_flyer, T.nilable(Symbol))
 
                     # Gift card
-                    GIFT_CARD = :gift_card
+                    GIFT_CARD = T.let(:gift_card, T.nilable(Symbol))
 
                     # Ground transport
-                    GROUND_TRANSPORT = :ground_transport
+                    GROUND_TRANSPORT = T.let(:ground_transport, T.nilable(Symbol))
 
                     # In-flight entertainment
-                    IN_FLIGHT_ENTERTAINMENT = :in_flight_entertainment
+                    IN_FLIGHT_ENTERTAINMENT = T.let(:in_flight_entertainment, T.nilable(Symbol))
 
                     # Lounge
-                    LOUNGE = :lounge
+                    LOUNGE = T.let(:lounge, T.nilable(Symbol))
 
                     # Medical
-                    MEDICAL = :medical
+                    MEDICAL = T.let(:medical, T.nilable(Symbol))
 
                     # Meal beverage
-                    MEAL_BEVERAGE = :meal_beverage
+                    MEAL_BEVERAGE = T.let(:meal_beverage, T.nilable(Symbol))
 
                     # Other
-                    OTHER = :other
+                    OTHER = T.let(:other, T.nilable(Symbol))
 
                     # Passenger assist fee
-                    PASSENGER_ASSIST_FEE = :passenger_assist_fee
+                    PASSENGER_ASSIST_FEE = T.let(:passenger_assist_fee, T.nilable(Symbol))
 
                     # Pets
-                    PETS = :pets
+                    PETS = T.let(:pets, T.nilable(Symbol))
 
                     # Seat fees
-                    SEAT_FEES = :seat_fees
+                    SEAT_FEES = T.let(:seat_fees, T.nilable(Symbol))
 
                     # Standby
-                    STANDBY = :standby
+                    STANDBY = T.let(:standby, T.nilable(Symbol))
 
                     # Service fee
-                    SERVICE_FEE = :service_fee
+                    SERVICE_FEE = T.let(:service_fee, T.nilable(Symbol))
 
                     # Store
-                    STORE = :store
+                    STORE = T.let(:store, T.nilable(Symbol))
 
                     # Travel service
-                    TRAVEL_SERVICE = :travel_service
+                    TRAVEL_SERVICE = T.let(:travel_service, T.nilable(Symbol))
 
                     # Unaccompanied travel
-                    UNACCOMPANIED_TRAVEL = :unaccompanied_travel
+                    UNACCOMPANIED_TRAVEL = T.let(:unaccompanied_travel, T.nilable(Symbol))
 
                     # Upgrades
-                    UPGRADES = :upgrades
+                    UPGRADES = T.let(:upgrades, T.nilable(Symbol))
 
                     # Wi-fi
-                    WIFI = :wifi
+                    WIFI = T.let(:wifi, T.nilable(Symbol))
+
+                    class << self
+                      sig { override.returns(T::Array[Symbol]) }
+                      def values
+                      end
+                    end
                   end
                 end
               end
 
-              # Indicates the reason for a credit to the cardholder.
               class CreditReasonIndicator < Increase::Enum
                 abstract!
 
-                Value = type_template(:out) { {fixed: Symbol} }
-
                 # No credit
-                NO_CREDIT = :no_credit
+                NO_CREDIT = T.let(:no_credit, T.nilable(Symbol))
 
                 # Passenger transport ancillary purchase cancellation
-                PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :passenger_transport_ancillary_purchase_cancellation
+                PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(
+                  :passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol)
+                )
 
                 # Airline ticket and passenger transport ancillary purchase cancellation
-                AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+                AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(
+                  :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol)
+                )
 
                 # Airline ticket cancellation
-                AIRLINE_TICKET_CANCELLATION = :airline_ticket_cancellation
+                AIRLINE_TICKET_CANCELLATION = T.let(:airline_ticket_cancellation, T.nilable(Symbol))
 
                 # Other
-                OTHER = :other
+                OTHER = T.let(:other, T.nilable(Symbol))
 
                 # Partial refund of airline ticket
-                PARTIAL_REFUND_OF_AIRLINE_TICKET = :partial_refund_of_airline_ticket
+                PARTIAL_REFUND_OF_AIRLINE_TICKET = T.let(:partial_refund_of_airline_ticket, T.nilable(Symbol))
+
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
+                end
               end
 
-              # Indicates whether this ticket is non-refundable.
               class RestrictedTicketIndicator < Increase::Enum
                 abstract!
 
-                Value = type_template(:out) { {fixed: Symbol} }
-
                 # No restrictions
-                NO_RESTRICTIONS = :no_restrictions
+                NO_RESTRICTIONS = T.let(:no_restrictions, T.nilable(Symbol))
 
                 # Restricted non-refundable ticket
-                RESTRICTED_NON_REFUNDABLE_TICKET = :restricted_non_refundable_ticket
+                RESTRICTED_NON_REFUNDABLE_TICKET = T.let(:restricted_non_refundable_ticket, T.nilable(Symbol))
+
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
+                end
               end
 
-              # Indicates why a ticket was changed.
               class TicketChangeIndicator < Increase::Enum
                 abstract!
 
-                Value = type_template(:out) { {fixed: Symbol} }
-
                 # None
-                NONE = :none
+                NONE = T.let(:none, T.nilable(Symbol))
 
                 # Change to existing ticket
-                CHANGE_TO_EXISTING_TICKET = :change_to_existing_ticket
+                CHANGE_TO_EXISTING_TICKET = T.let(:change_to_existing_ticket, T.nilable(Symbol))
 
                 # New ticket
-                NEW_TICKET = :new_ticket
+                NEW_TICKET = T.let(:new_ticket, T.nilable(Symbol))
+
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
+                end
               end
 
               class TripLeg < Increase::BaseModel
-                # Carrier code (e.g., United Airlines, Jet Blue, etc.).
                 sig { returns(T.nilable(String)) }
                 def carrier_code
                 end
@@ -4953,7 +4552,6 @@ module Increase
                 def carrier_code=(_)
                 end
 
-                # Code for the destination city or airport.
                 sig { returns(T.nilable(String)) }
                 def destination_city_airport_code
                 end
@@ -4962,7 +4560,6 @@ module Increase
                 def destination_city_airport_code=(_)
                 end
 
-                # Fare basis code.
                 sig { returns(T.nilable(String)) }
                 def fare_basis_code
                 end
@@ -4971,7 +4568,6 @@ module Increase
                 def fare_basis_code=(_)
                 end
 
-                # Flight number.
                 sig { returns(T.nilable(String)) }
                 def flight_number
                 end
@@ -4980,7 +4576,6 @@ module Increase
                 def flight_number=(_)
                 end
 
-                # Service class (e.g., first class, business class, etc.).
                 sig { returns(T.nilable(String)) }
                 def service_class
                 end
@@ -4989,7 +4584,6 @@ module Increase
                 def service_class=(_)
                 end
 
-                # Indicates whether a stopover is allowed on this ticket.
                 sig { returns(T.nilable(Symbol)) }
                 def stop_over_code
                 end
@@ -5035,38 +4629,42 @@ module Increase
                 def to_hash
                 end
 
-                # Indicates whether a stopover is allowed on this ticket.
                 class StopOverCode < Increase::Enum
                   abstract!
 
-                  Value = type_template(:out) { {fixed: Symbol} }
-
                   # None
-                  NONE = :none
+                  NONE = T.let(:none, T.nilable(Symbol))
 
                   # Stop over allowed
-                  STOP_OVER_ALLOWED = :stop_over_allowed
+                  STOP_OVER_ALLOWED = T.let(:stop_over_allowed, T.nilable(Symbol))
 
                   # Stop over not allowed
-                  STOP_OVER_NOT_ALLOWED = :stop_over_not_allowed
+                  STOP_OVER_NOT_ALLOWED = T.let(:stop_over_not_allowed, T.nilable(Symbol))
+
+                  class << self
+                    sig { override.returns(T::Array[Symbol]) }
+                    def values
+                    end
+                  end
                 end
               end
             end
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          #   `card_settlement`.
           class Type < Increase::Enum
             abstract!
 
-            Value = type_template(:out) { {fixed: Symbol} }
-
             CARD_SETTLEMENT = :card_settlement
+
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
+            end
           end
         end
 
         class CashbackPayment < Increase::BaseModel
-          # The card on which the cashback was accrued.
           sig { returns(T.nilable(String)) }
           def accrued_on_card_id
           end
@@ -5075,8 +4673,6 @@ module Increase
           def accrued_on_card_id=(_)
           end
 
-          # The amount in the minor unit of the transaction's currency. For dollars, for
-          #   example, this is cents.
           sig { returns(Integer) }
           def amount
           end
@@ -5085,8 +4681,6 @@ module Increase
           def amount=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          #   currency.
           sig { returns(Symbol) }
           def currency
           end
@@ -5095,7 +4689,6 @@ module Increase
           def currency=(_)
           end
 
-          # The end of the period for which this transaction paid cashback.
           sig { returns(Time) }
           def period_end
           end
@@ -5104,7 +4697,6 @@ module Increase
           def period_end=(_)
           end
 
-          # The start of the period for which this transaction paid cashback.
           sig { returns(Time) }
           def period_start
           end
@@ -5113,10 +4705,6 @@ module Increase
           def period_start=(_)
           end
 
-          # A Cashback Payment object. This field will be present in the JSON response if
-          #   and only if `category` is equal to `cashback_payment`. A Cashback Payment
-          #   represents the cashback paid to a cardholder for a given period. Cashback is
-          #   usually paid monthly for the prior month's transactions.
           sig do
             params(
               accrued_on_card_id: T.nilable(String),
@@ -5145,12 +4733,8 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          #   currency.
           class Currency < Increase::Enum
             abstract!
-
-            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -5169,15 +4753,17 @@ module Increase
 
             # US Dollar (USD)
             USD = :USD
+
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
+            end
           end
         end
 
-        # The type of the resource. We may add additional possible values for this enum
-        #   over time; your application should be able to handle such additions gracefully.
         class Category < Increase::Enum
           abstract!
-
-          Value = type_template(:out) { {fixed: Symbol} }
 
           # Account Transfer Intention: details will be under the `account_transfer_intention` object.
           ACCOUNT_TRANSFER_INTENTION = :account_transfer_intention
@@ -5265,10 +4851,15 @@ module Increase
 
           # The Transaction was made for an undocumented or deprecated reason.
           OTHER = :other
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
 
         class CheckDepositAcceptance < Increase::BaseModel
-          # The account number printed on the check.
           sig { returns(String) }
           def account_number
           end
@@ -5277,8 +4868,6 @@ module Increase
           def account_number=(_)
           end
 
-          # The amount to be deposited in the minor unit of the transaction's currency. For
-          #   dollars, for example, this is cents.
           sig { returns(Integer) }
           def amount
           end
@@ -5287,8 +4876,6 @@ module Increase
           def amount=(_)
           end
 
-          # An additional line of metadata printed on the check. This typically includes the
-          #   check number for business checks.
           sig { returns(T.nilable(String)) }
           def auxiliary_on_us
           end
@@ -5297,7 +4884,6 @@ module Increase
           def auxiliary_on_us=(_)
           end
 
-          # The ID of the Check Deposit that was accepted.
           sig { returns(String) }
           def check_deposit_id
           end
@@ -5306,8 +4892,6 @@ module Increase
           def check_deposit_id=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's currency.
           sig { returns(Symbol) }
           def currency
           end
@@ -5316,7 +4900,6 @@ module Increase
           def currency=(_)
           end
 
-          # The routing number printed on the check.
           sig { returns(String) }
           def routing_number
           end
@@ -5325,8 +4908,6 @@ module Increase
           def routing_number=(_)
           end
 
-          # The check serial number, if present, for consumer checks. For business checks,
-          #   the serial number is usually in the `auxiliary_on_us` field.
           sig { returns(T.nilable(String)) }
           def serial_number
           end
@@ -5335,11 +4916,6 @@ module Increase
           def serial_number=(_)
           end
 
-          # A Check Deposit Acceptance object. This field will be present in the JSON
-          #   response if and only if `category` is equal to `check_deposit_acceptance`. A
-          #   Check Deposit Acceptance is created when a Check Deposit is processed and its
-          #   details confirmed. Check Deposits may be returned by the receiving bank, which
-          #   will appear as a Check Deposit Return.
           sig do
             params(
               account_number: String,
@@ -5372,12 +4948,8 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's currency.
           class Currency < Increase::Enum
             abstract!
-
-            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -5396,11 +4968,16 @@ module Increase
 
             # US Dollar (USD)
             USD = :USD
+
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
+            end
           end
         end
 
         class CheckDepositReturn < Increase::BaseModel
-          # The returned amount in USD cents.
           sig { returns(Integer) }
           def amount
           end
@@ -5409,7 +4986,6 @@ module Increase
           def amount=(_)
           end
 
-          # The identifier of the Check Deposit that was returned.
           sig { returns(String) }
           def check_deposit_id
           end
@@ -5418,8 +4994,6 @@ module Increase
           def check_deposit_id=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's currency.
           sig { returns(Symbol) }
           def currency
           end
@@ -5428,8 +5002,6 @@ module Increase
           def currency=(_)
           end
 
-          # Why this check was returned by the bank holding the account it was drawn
-          #   against.
           sig { returns(Symbol) }
           def return_reason
           end
@@ -5438,8 +5010,6 @@ module Increase
           def return_reason=(_)
           end
 
-          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-          #   the check deposit was returned.
           sig { returns(Time) }
           def returned_at
           end
@@ -5448,8 +5018,6 @@ module Increase
           def returned_at=(_)
           end
 
-          # The identifier of the transaction that reversed the original check deposit
-          #   transaction.
           sig { returns(String) }
           def transaction_id
           end
@@ -5458,12 +5026,6 @@ module Increase
           def transaction_id=(_)
           end
 
-          # A Check Deposit Return object. This field will be present in the JSON response
-          #   if and only if `category` is equal to `check_deposit_return`. A Check Deposit
-          #   Return is created when a Check Deposit is returned by the bank holding the
-          #   account it was drawn against. Check Deposits may be returned for a variety of
-          #   reasons, including insufficient funds or a mismatched account number. Usually,
-          #   checks are returned within the first 7 days after the deposit is made.
           sig do
             params(
               amount: Integer,
@@ -5494,12 +5056,8 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's currency.
           class Currency < Increase::Enum
             abstract!
-
-            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -5518,14 +5076,16 @@ module Increase
 
             # US Dollar (USD)
             USD = :USD
+
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
+            end
           end
 
-          # Why this check was returned by the bank holding the account it was drawn
-          #   against.
           class ReturnReason < Increase::Enum
             abstract!
-
-            Value = type_template(:out) { {fixed: Symbol} }
 
             # The check doesn't allow ACH conversion.
             ACH_CONVERSION_NOT_SUPPORTED = :ach_conversion_not_supported
@@ -5604,12 +5164,16 @@ module Increase
 
             # The bank sold this account and no longer services this customer.
             BRANCH_OR_ACCOUNT_SOLD = :branch_or_account_sold
+
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
+            end
           end
         end
 
         class CheckTransferDeposit < Increase::BaseModel
-          # The identifier of the API File object containing an image of the back of the
-          #   deposited check.
           sig { returns(T.nilable(String)) }
           def back_image_file_id
           end
@@ -5618,9 +5182,6 @@ module Increase
           def back_image_file_id=(_)
           end
 
-          # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-          #   bank depositing this check. In some rare cases, this is not transmitted via
-          #   Check21 and the value will be null.
           sig { returns(T.nilable(String)) }
           def bank_of_first_deposit_routing_number
           end
@@ -5629,7 +5190,6 @@ module Increase
           def bank_of_first_deposit_routing_number=(_)
           end
 
-          # When the check was deposited.
           sig { returns(Time) }
           def deposited_at
           end
@@ -5638,8 +5198,6 @@ module Increase
           def deposited_at=(_)
           end
 
-          # The identifier of the API File object containing an image of the front of the
-          #   deposited check.
           sig { returns(T.nilable(String)) }
           def front_image_file_id
           end
@@ -5648,8 +5206,6 @@ module Increase
           def front_image_file_id=(_)
           end
 
-          # The identifier of the Inbound Check Deposit object associated with this
-          #   transaction.
           sig { returns(T.nilable(String)) }
           def inbound_check_deposit_id
           end
@@ -5658,7 +5214,6 @@ module Increase
           def inbound_check_deposit_id=(_)
           end
 
-          # The identifier of the Transaction object created when the check was deposited.
           sig { returns(T.nilable(String)) }
           def transaction_id
           end
@@ -5667,7 +5222,6 @@ module Increase
           def transaction_id=(_)
           end
 
-          # The identifier of the Check Transfer object that was deposited.
           sig { returns(T.nilable(String)) }
           def transfer_id
           end
@@ -5676,8 +5230,6 @@ module Increase
           def transfer_id=(_)
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          #   `check_transfer_deposit`.
           sig { returns(Symbol) }
           def type
           end
@@ -5686,10 +5238,6 @@ module Increase
           def type=(_)
           end
 
-          # A Check Transfer Deposit object. This field will be present in the JSON response
-          #   if and only if `category` is equal to `check_transfer_deposit`. An Inbound Check
-          #   is a check drawn on an Increase account that has been deposited by an external
-          #   bank account. These types of checks are not pre-registered.
           sig do
             params(
               back_image_file_id: T.nilable(String),
@@ -5733,20 +5281,20 @@ module Increase
           def to_hash
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          #   `check_transfer_deposit`.
           class Type < Increase::Enum
             abstract!
 
-            Value = type_template(:out) { {fixed: Symbol} }
-
             CHECK_TRANSFER_DEPOSIT = :check_transfer_deposit
+
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
+            end
           end
         end
 
         class FeePayment < Increase::BaseModel
-          # The amount in the minor unit of the transaction's currency. For dollars, for
-          #   example, this is cents.
           sig { returns(Integer) }
           def amount
           end
@@ -5755,8 +5303,6 @@ module Increase
           def amount=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          #   currency.
           sig { returns(Symbol) }
           def currency
           end
@@ -5765,7 +5311,6 @@ module Increase
           def currency=(_)
           end
 
-          # The start of this payment's fee period, usually the first day of a month.
           sig { returns(Date) }
           def fee_period_start
           end
@@ -5774,7 +5319,6 @@ module Increase
           def fee_period_start=(_)
           end
 
-          # The Program for which this fee was incurred.
           sig { returns(T.nilable(String)) }
           def program_id
           end
@@ -5783,9 +5327,6 @@ module Increase
           def program_id=(_)
           end
 
-          # A Fee Payment object. This field will be present in the JSON response if and
-          #   only if `category` is equal to `fee_payment`. A Fee Payment represents a payment
-          #   made to Increase.
           sig do
             params(amount: Integer, currency: Symbol, fee_period_start: Date, program_id: T.nilable(String))
               .returns(T.attached_class)
@@ -5805,12 +5346,8 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          #   currency.
           class Currency < Increase::Enum
             abstract!
-
-            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -5829,11 +5366,16 @@ module Increase
 
             # US Dollar (USD)
             USD = :USD
+
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
+            end
           end
         end
 
         class InboundACHTransfer < Increase::BaseModel
-          # Additional information sent from the originator.
           sig { returns(T.nilable(Increase::Models::Transaction::Source::InboundACHTransfer::Addenda)) }
           def addenda
           end
@@ -5845,7 +5387,6 @@ module Increase
           def addenda=(_)
           end
 
-          # The transfer amount in USD cents.
           sig { returns(Integer) }
           def amount
           end
@@ -5854,7 +5395,6 @@ module Increase
           def amount=(_)
           end
 
-          # The description of the date of the transfer, usually in the format `YYMMDD`.
           sig { returns(T.nilable(String)) }
           def originator_company_descriptive_date
           end
@@ -5863,7 +5403,6 @@ module Increase
           def originator_company_descriptive_date=(_)
           end
 
-          # Data set by the originator.
           sig { returns(T.nilable(String)) }
           def originator_company_discretionary_data
           end
@@ -5872,7 +5411,6 @@ module Increase
           def originator_company_discretionary_data=(_)
           end
 
-          # An informational description of the transfer.
           sig { returns(String) }
           def originator_company_entry_description
           end
@@ -5881,8 +5419,6 @@ module Increase
           def originator_company_entry_description=(_)
           end
 
-          # An identifier for the originating company. This is generally, but not always, a
-          #   stable identifier across multiple transfers.
           sig { returns(String) }
           def originator_company_id
           end
@@ -5891,7 +5427,6 @@ module Increase
           def originator_company_id=(_)
           end
 
-          # A name set by the originator to identify themselves.
           sig { returns(String) }
           def originator_company_name
           end
@@ -5900,7 +5435,6 @@ module Increase
           def originator_company_name=(_)
           end
 
-          # The originator's identifier for the transfer recipient.
           sig { returns(T.nilable(String)) }
           def receiver_id_number
           end
@@ -5909,8 +5443,6 @@ module Increase
           def receiver_id_number=(_)
           end
 
-          # The name of the transfer recipient. This value is informational and not verified
-          #   by Increase.
           sig { returns(T.nilable(String)) }
           def receiver_name
           end
@@ -5919,11 +5451,6 @@ module Increase
           def receiver_name=(_)
           end
 
-          # A 15 digit number recorded in the Nacha file and available to both the
-          #   originating and receiving bank. Along with the amount, date, and originating
-          #   routing number, this can be used to identify the ACH transfer at either bank.
-          #   ACH trace numbers are not unique, but are
-          #   [used to correlate returns](https://increase.com/documentation/ach-returns#ach-returns).
           sig { returns(String) }
           def trace_number
           end
@@ -5932,7 +5459,6 @@ module Increase
           def trace_number=(_)
           end
 
-          # The Inbound ACH Transfer's identifier.
           sig { returns(String) }
           def transfer_id
           end
@@ -5941,10 +5467,6 @@ module Increase
           def transfer_id=(_)
           end
 
-          # An Inbound ACH Transfer Intention object. This field will be present in the JSON
-          #   response if and only if `category` is equal to `inbound_ach_transfer`. An
-          #   Inbound ACH Transfer Intention is created when an ACH transfer is initiated at
-          #   another bank and received by Increase.
           sig do
             params(
               addenda: T.nilable(Increase::Models::Transaction::Source::InboundACHTransfer::Addenda),
@@ -5998,7 +5520,6 @@ module Increase
           end
 
           class Addenda < Increase::BaseModel
-            # The type of addendum.
             sig { returns(Symbol) }
             def category
             end
@@ -6007,7 +5528,6 @@ module Increase
             def category=(_)
             end
 
-            # Unstructured `payment_related_information` passed through by the originator.
             sig { returns(T.nilable(Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform)) }
             def freeform
             end
@@ -6019,7 +5539,6 @@ module Increase
             def freeform=(_)
             end
 
-            # Additional information sent from the originator.
             sig do
               params(
                 category: Symbol,
@@ -6042,18 +5561,20 @@ module Increase
             def to_hash
             end
 
-            # The type of addendum.
             class Category < Increase::Enum
               abstract!
 
-              Value = type_template(:out) { {fixed: Symbol} }
-
               # Unstructured addendum.
               FREEFORM = :freeform
+
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
+              end
             end
 
             class Freeform < Increase::BaseModel
-              # Each entry represents an addendum received from the originator.
               sig { returns(T::Array[Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry]) }
               def entries
               end
@@ -6065,7 +5586,6 @@ module Increase
               def entries=(_)
               end
 
-              # Unstructured `payment_related_information` passed through by the originator.
               sig do
                 params(
                   entries: T::Array[Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry]
@@ -6085,7 +5605,6 @@ module Increase
               end
 
               class Entry < Increase::BaseModel
-                # The payment related information passed in the addendum.
                 sig { returns(String) }
                 def payment_related_information
                 end
@@ -6107,7 +5626,6 @@ module Increase
         end
 
         class InboundACHTransferReturnIntention < Increase::BaseModel
-          # The ID of the Inbound ACH Transfer that is being returned.
           sig { returns(String) }
           def inbound_ach_transfer_id
           end
@@ -6116,11 +5634,6 @@ module Increase
           def inbound_ach_transfer_id=(_)
           end
 
-          # An Inbound ACH Transfer Return Intention object. This field will be present in
-          #   the JSON response if and only if `category` is equal to
-          #   `inbound_ach_transfer_return_intention`. An Inbound ACH Transfer Return
-          #   Intention is created when an ACH transfer is initiated at another bank and
-          #   returned by Increase.
           sig { params(inbound_ach_transfer_id: String).returns(T.attached_class) }
           def self.new(inbound_ach_transfer_id:)
           end
@@ -6131,7 +5644,6 @@ module Increase
         end
 
         class InboundCheckAdjustment < Increase::BaseModel
-          # The ID of the transaction that was adjusted.
           sig { returns(String) }
           def adjusted_transaction_id
           end
@@ -6140,7 +5652,6 @@ module Increase
           def adjusted_transaction_id=(_)
           end
 
-          # The amount of the check adjustment.
           sig { returns(Integer) }
           def amount
           end
@@ -6149,7 +5660,6 @@ module Increase
           def amount=(_)
           end
 
-          # The reason for the adjustment.
           sig { returns(Symbol) }
           def reason
           end
@@ -6158,10 +5668,6 @@ module Increase
           def reason=(_)
           end
 
-          # An Inbound Check Adjustment object. This field will be present in the JSON
-          #   response if and only if `category` is equal to `inbound_check_adjustment`. An
-          #   Inbound Check Adjustment is created when Increase receives an adjustment for a
-          #   check or return deposited through Check21.
           sig do
             params(adjusted_transaction_id: String, amount: Integer, reason: Symbol).returns(T.attached_class)
           end
@@ -6172,11 +5678,8 @@ module Increase
           def to_hash
           end
 
-          # The reason for the adjustment.
           class Reason < Increase::Enum
             abstract!
-
-            Value = type_template(:out) { {fixed: Symbol} }
 
             # The return was initiated too late and the receiving institution has responded with a Late Return Claim.
             LATE_RETURN = :late_return
@@ -6189,11 +5692,16 @@ module Increase
 
             # The recipient was not able to process the check. This usually happens for e.g., low quality images.
             NON_CONFORMING_ITEM = :non_conforming_item
+
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
+            end
           end
         end
 
         class InboundCheckDepositReturnIntention < Increase::BaseModel
-          # The ID of the Inbound Check Deposit that is being returned.
           sig { returns(String) }
           def inbound_check_deposit_id
           end
@@ -6202,7 +5710,6 @@ module Increase
           def inbound_check_deposit_id=(_)
           end
 
-          # The identifier of the Check Transfer object that was deposited.
           sig { returns(T.nilable(String)) }
           def transfer_id
           end
@@ -6211,11 +5718,6 @@ module Increase
           def transfer_id=(_)
           end
 
-          # An Inbound Check Deposit Return Intention object. This field will be present in
-          #   the JSON response if and only if `category` is equal to
-          #   `inbound_check_deposit_return_intention`. An Inbound Check Deposit Return
-          #   Intention is created when Increase receives an Inbound Check and the User
-          #   requests that it be returned.
           sig do
             params(inbound_check_deposit_id: String, transfer_id: T.nilable(String)).returns(T.attached_class)
           end
@@ -6228,8 +5730,6 @@ module Increase
         end
 
         class InboundRealTimePaymentsTransferConfirmation < Increase::BaseModel
-          # The amount in the minor unit of the transfer's currency. For dollars, for
-          #   example, this is cents.
           sig { returns(Integer) }
           def amount
           end
@@ -6238,7 +5738,6 @@ module Increase
           def amount=(_)
           end
 
-          # The name the sender of the transfer specified as the recipient of the transfer.
           sig { returns(String) }
           def creditor_name
           end
@@ -6247,8 +5746,6 @@ module Increase
           def creditor_name=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
-          #   currency. This will always be "USD" for a Real-Time Payments transfer.
           sig { returns(Symbol) }
           def currency
           end
@@ -6257,7 +5754,6 @@ module Increase
           def currency=(_)
           end
 
-          # The account number of the account that sent the transfer.
           sig { returns(String) }
           def debtor_account_number
           end
@@ -6266,7 +5762,6 @@ module Increase
           def debtor_account_number=(_)
           end
 
-          # The name provided by the sender of the transfer.
           sig { returns(String) }
           def debtor_name
           end
@@ -6275,7 +5770,6 @@ module Increase
           def debtor_name=(_)
           end
 
-          # The routing number of the account that sent the transfer.
           sig { returns(String) }
           def debtor_routing_number
           end
@@ -6284,7 +5778,6 @@ module Increase
           def debtor_routing_number=(_)
           end
 
-          # Additional information included with the transfer.
           sig { returns(T.nilable(String)) }
           def remittance_information
           end
@@ -6293,7 +5786,6 @@ module Increase
           def remittance_information=(_)
           end
 
-          # The Real-Time Payments network identification of the transfer.
           sig { returns(String) }
           def transaction_identification
           end
@@ -6302,7 +5794,6 @@ module Increase
           def transaction_identification=(_)
           end
 
-          # The identifier of the Real-Time Payments Transfer that led to this Transaction.
           sig { returns(String) }
           def transfer_id
           end
@@ -6311,11 +5802,6 @@ module Increase
           def transfer_id=(_)
           end
 
-          # An Inbound Real-Time Payments Transfer Confirmation object. This field will be
-          #   present in the JSON response if and only if `category` is equal to
-          #   `inbound_real_time_payments_transfer_confirmation`. An Inbound Real-Time
-          #   Payments Transfer Confirmation is created when a Real-Time Payments transfer is
-          #   initiated at another bank and received by Increase.
           sig do
             params(
               amount: Integer,
@@ -6362,12 +5848,8 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
-          #   currency. This will always be "USD" for a Real-Time Payments transfer.
           class Currency < Increase::Enum
             abstract!
-
-            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -6386,12 +5868,16 @@ module Increase
 
             # US Dollar (USD)
             USD = :USD
+
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
+            end
           end
         end
 
         class InboundRealTimePaymentsTransferDecline < Increase::BaseModel
-          # The declined amount in the minor unit of the destination account currency. For
-          #   dollars, for example, this is cents.
           sig { returns(Integer) }
           def amount
           end
@@ -6400,7 +5886,6 @@ module Increase
           def amount=(_)
           end
 
-          # The name the sender of the transfer specified as the recipient of the transfer.
           sig { returns(String) }
           def creditor_name
           end
@@ -6409,9 +5894,6 @@ module Increase
           def creditor_name=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
-          #   transfer's currency. This will always be "USD" for a Real-Time Payments
-          #   transfer.
           sig { returns(Symbol) }
           def currency
           end
@@ -6420,7 +5902,6 @@ module Increase
           def currency=(_)
           end
 
-          # The account number of the account that sent the transfer.
           sig { returns(String) }
           def debtor_account_number
           end
@@ -6429,7 +5910,6 @@ module Increase
           def debtor_account_number=(_)
           end
 
-          # The name provided by the sender of the transfer.
           sig { returns(String) }
           def debtor_name
           end
@@ -6438,7 +5918,6 @@ module Increase
           def debtor_name=(_)
           end
 
-          # The routing number of the account that sent the transfer.
           sig { returns(String) }
           def debtor_routing_number
           end
@@ -6447,7 +5926,6 @@ module Increase
           def debtor_routing_number=(_)
           end
 
-          # Why the transfer was declined.
           sig { returns(Symbol) }
           def reason
           end
@@ -6456,7 +5934,6 @@ module Increase
           def reason=(_)
           end
 
-          # Additional information included with the transfer.
           sig { returns(T.nilable(String)) }
           def remittance_information
           end
@@ -6465,7 +5942,6 @@ module Increase
           def remittance_information=(_)
           end
 
-          # The Real-Time Payments network identification of the declined transfer.
           sig { returns(String) }
           def transaction_identification
           end
@@ -6474,7 +5950,6 @@ module Increase
           def transaction_identification=(_)
           end
 
-          # The identifier of the Real-Time Payments Transfer that led to this Transaction.
           sig { returns(String) }
           def transfer_id
           end
@@ -6483,9 +5958,6 @@ module Increase
           def transfer_id=(_)
           end
 
-          # An Inbound Real-Time Payments Transfer Decline object. This field will be
-          #   present in the JSON response if and only if `category` is equal to
-          #   `inbound_real_time_payments_transfer_decline`.
           sig do
             params(
               amount: Integer,
@@ -6535,13 +6007,8 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
-          #   transfer's currency. This will always be "USD" for a Real-Time Payments
-          #   transfer.
           class Currency < Increase::Enum
             abstract!
-
-            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -6560,13 +6027,16 @@ module Increase
 
             # US Dollar (USD)
             USD = :USD
+
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
+            end
           end
 
-          # Why the transfer was declined.
           class Reason < Increase::Enum
             abstract!
-
-            Value = type_template(:out) { {fixed: Symbol} }
 
             # The account number is canceled.
             ACCOUNT_NUMBER_CANCELED = :account_number_canceled
@@ -6585,11 +6055,16 @@ module Increase
 
             # Your account is not enabled to receive Real-Time Payments transfers.
             REAL_TIME_PAYMENTS_NOT_ENABLED = :real_time_payments_not_enabled
+
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
+            end
           end
         end
 
         class InboundWireReversal < Increase::BaseModel
-          # The amount that was reversed in USD cents.
           sig { returns(Integer) }
           def amount
           end
@@ -6598,8 +6073,6 @@ module Increase
           def amount=(_)
           end
 
-          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-          #   the reversal was created.
           sig { returns(Time) }
           def created_at
           end
@@ -6608,7 +6081,6 @@ module Increase
           def created_at=(_)
           end
 
-          # The description on the reversal message from Fedwire, set by the reversing bank.
           sig { returns(String) }
           def description
           end
@@ -6617,7 +6089,6 @@ module Increase
           def description=(_)
           end
 
-          # Additional financial institution information included in the wire reversal.
           sig { returns(T.nilable(String)) }
           def financial_institution_to_financial_institution_information
           end
@@ -6626,8 +6097,6 @@ module Increase
           def financial_institution_to_financial_institution_information=(_)
           end
 
-          # The Fedwire cycle date for the wire reversal. The "Fedwire day" begins at 9:00
-          #   PM Eastern Time on the evening before the `cycle date`.
           sig { returns(Date) }
           def input_cycle_date
           end
@@ -6636,7 +6105,6 @@ module Increase
           def input_cycle_date=(_)
           end
 
-          # The Fedwire transaction identifier.
           sig { returns(String) }
           def input_message_accountability_data
           end
@@ -6645,7 +6113,6 @@ module Increase
           def input_message_accountability_data=(_)
           end
 
-          # The Fedwire sequence number.
           sig { returns(String) }
           def input_sequence_number
           end
@@ -6654,7 +6121,6 @@ module Increase
           def input_sequence_number=(_)
           end
 
-          # The Fedwire input source identifier.
           sig { returns(String) }
           def input_source
           end
@@ -6663,8 +6129,6 @@ module Increase
           def input_source=(_)
           end
 
-          # The American Banking Association (ABA) routing number of the bank originating
-          #   the transfer.
           sig { returns(T.nilable(String)) }
           def originator_routing_number
           end
@@ -6673,8 +6137,6 @@ module Increase
           def originator_routing_number=(_)
           end
 
-          # The Fedwire cycle date for the wire transfer that is being reversed by this
-          #   message.
           sig { returns(Date) }
           def previous_message_input_cycle_date
           end
@@ -6683,7 +6145,6 @@ module Increase
           def previous_message_input_cycle_date=(_)
           end
 
-          # The Fedwire transaction identifier for the wire transfer that was reversed.
           sig { returns(String) }
           def previous_message_input_message_accountability_data
           end
@@ -6692,7 +6153,6 @@ module Increase
           def previous_message_input_message_accountability_data=(_)
           end
 
-          # The Fedwire sequence number for the wire transfer that was reversed.
           sig { returns(String) }
           def previous_message_input_sequence_number
           end
@@ -6701,7 +6161,6 @@ module Increase
           def previous_message_input_sequence_number=(_)
           end
 
-          # The Fedwire input source identifier for the wire transfer that was reversed.
           sig { returns(String) }
           def previous_message_input_source
           end
@@ -6710,8 +6169,6 @@ module Increase
           def previous_message_input_source=(_)
           end
 
-          # Information included in the wire reversal for the receiving financial
-          #   institution.
           sig { returns(T.nilable(String)) }
           def receiver_financial_institution_information
           end
@@ -6720,7 +6177,6 @@ module Increase
           def receiver_financial_institution_information=(_)
           end
 
-          # The sending bank's reference number for the wire reversal.
           sig { returns(T.nilable(String)) }
           def sender_reference
           end
@@ -6729,7 +6185,6 @@ module Increase
           def sender_reference=(_)
           end
 
-          # The ID for the Transaction associated with the transfer reversal.
           sig { returns(String) }
           def transaction_id
           end
@@ -6738,7 +6193,6 @@ module Increase
           def transaction_id=(_)
           end
 
-          # The ID for the Wire Transfer that is being reversed.
           sig { returns(String) }
           def wire_transfer_id
           end
@@ -6747,11 +6201,6 @@ module Increase
           def wire_transfer_id=(_)
           end
 
-          # An Inbound Wire Reversal object. This field will be present in the JSON response
-          #   if and only if `category` is equal to `inbound_wire_reversal`. An Inbound Wire
-          #   Reversal represents a reversal of a wire transfer that was initiated via
-          #   Increase. The other bank is sending the money back. This most often happens when
-          #   the original destination account details were incorrect.
           sig do
             params(
               amount: Integer,
@@ -6824,7 +6273,6 @@ module Increase
         end
 
         class InboundWireTransfer < Increase::BaseModel
-          # The amount in USD cents.
           sig { returns(Integer) }
           def amount
           end
@@ -6833,7 +6281,6 @@ module Increase
           def amount=(_)
           end
 
-          # A free-form address field set by the sender.
           sig { returns(T.nilable(String)) }
           def beneficiary_address_line1
           end
@@ -6842,7 +6289,6 @@ module Increase
           def beneficiary_address_line1=(_)
           end
 
-          # A free-form address field set by the sender.
           sig { returns(T.nilable(String)) }
           def beneficiary_address_line2
           end
@@ -6851,7 +6297,6 @@ module Increase
           def beneficiary_address_line2=(_)
           end
 
-          # A free-form address field set by the sender.
           sig { returns(T.nilable(String)) }
           def beneficiary_address_line3
           end
@@ -6860,7 +6305,6 @@ module Increase
           def beneficiary_address_line3=(_)
           end
 
-          # A name set by the sender.
           sig { returns(T.nilable(String)) }
           def beneficiary_name
           end
@@ -6869,7 +6313,6 @@ module Increase
           def beneficiary_name=(_)
           end
 
-          # A free-form reference string set by the sender, to help identify the transfer.
           sig { returns(T.nilable(String)) }
           def beneficiary_reference
           end
@@ -6878,7 +6321,6 @@ module Increase
           def beneficiary_reference=(_)
           end
 
-          # An Increase-constructed description of the transfer.
           sig { returns(String) }
           def description
           end
@@ -6887,9 +6329,6 @@ module Increase
           def description=(_)
           end
 
-          # A unique identifier available to the originating and receiving banks, commonly
-          #   abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
-          #   service and is helpful when debugging wires with the originating bank.
           sig { returns(T.nilable(String)) }
           def input_message_accountability_data
           end
@@ -6898,7 +6337,6 @@ module Increase
           def input_message_accountability_data=(_)
           end
 
-          # The address of the wire originator, set by the sending bank.
           sig { returns(T.nilable(String)) }
           def originator_address_line1
           end
@@ -6907,7 +6345,6 @@ module Increase
           def originator_address_line1=(_)
           end
 
-          # The address of the wire originator, set by the sending bank.
           sig { returns(T.nilable(String)) }
           def originator_address_line2
           end
@@ -6916,7 +6353,6 @@ module Increase
           def originator_address_line2=(_)
           end
 
-          # The address of the wire originator, set by the sending bank.
           sig { returns(T.nilable(String)) }
           def originator_address_line3
           end
@@ -6925,7 +6361,6 @@ module Increase
           def originator_address_line3=(_)
           end
 
-          # The originator of the wire, set by the sending bank.
           sig { returns(T.nilable(String)) }
           def originator_name
           end
@@ -6934,8 +6369,6 @@ module Increase
           def originator_name=(_)
           end
 
-          # The American Banking Association (ABA) routing number of the bank originating
-          #   the transfer.
           sig { returns(T.nilable(String)) }
           def originator_routing_number
           end
@@ -6944,7 +6377,6 @@ module Increase
           def originator_routing_number=(_)
           end
 
-          # An Increase-created concatenation of the Originator-to-Beneficiary lines.
           sig { returns(T.nilable(String)) }
           def originator_to_beneficiary_information
           end
@@ -6953,7 +6385,6 @@ module Increase
           def originator_to_beneficiary_information=(_)
           end
 
-          # A free-form message set by the wire originator.
           sig { returns(T.nilable(String)) }
           def originator_to_beneficiary_information_line1
           end
@@ -6962,7 +6393,6 @@ module Increase
           def originator_to_beneficiary_information_line1=(_)
           end
 
-          # A free-form message set by the wire originator.
           sig { returns(T.nilable(String)) }
           def originator_to_beneficiary_information_line2
           end
@@ -6971,7 +6401,6 @@ module Increase
           def originator_to_beneficiary_information_line2=(_)
           end
 
-          # A free-form message set by the wire originator.
           sig { returns(T.nilable(String)) }
           def originator_to_beneficiary_information_line3
           end
@@ -6980,7 +6409,6 @@ module Increase
           def originator_to_beneficiary_information_line3=(_)
           end
 
-          # A free-form message set by the wire originator.
           sig { returns(T.nilable(String)) }
           def originator_to_beneficiary_information_line4
           end
@@ -6989,7 +6417,6 @@ module Increase
           def originator_to_beneficiary_information_line4=(_)
           end
 
-          # The ID of the Inbound Wire Transfer object that resulted in this Transaction.
           sig { returns(String) }
           def transfer_id
           end
@@ -6998,10 +6425,6 @@ module Increase
           def transfer_id=(_)
           end
 
-          # An Inbound Wire Transfer Intention object. This field will be present in the
-          #   JSON response if and only if `category` is equal to `inbound_wire_transfer`. An
-          #   Inbound Wire Transfer Intention is created when a wire transfer is initiated at
-          #   another bank and received by Increase.
           sig do
             params(
               amount: Integer,
@@ -7080,7 +6503,6 @@ module Increase
         end
 
         class InboundWireTransferReversal < Increase::BaseModel
-          # The ID of the Inbound Wire Transfer that is being reversed.
           sig { returns(String) }
           def inbound_wire_transfer_id
           end
@@ -7089,11 +6511,6 @@ module Increase
           def inbound_wire_transfer_id=(_)
           end
 
-          # An Inbound Wire Transfer Reversal Intention object. This field will be present
-          #   in the JSON response if and only if `category` is equal to
-          #   `inbound_wire_transfer_reversal`. An Inbound Wire Transfer Reversal Intention is
-          #   created when Increase has received a wire and the User requests that it be
-          #   reversed.
           sig { params(inbound_wire_transfer_id: String).returns(T.attached_class) }
           def self.new(inbound_wire_transfer_id:)
           end
@@ -7104,7 +6521,6 @@ module Increase
         end
 
         class InterestPayment < Increase::BaseModel
-          # The account on which the interest was accrued.
           sig { returns(String) }
           def accrued_on_account_id
           end
@@ -7113,8 +6529,6 @@ module Increase
           def accrued_on_account_id=(_)
           end
 
-          # The amount in the minor unit of the transaction's currency. For dollars, for
-          #   example, this is cents.
           sig { returns(Integer) }
           def amount
           end
@@ -7123,8 +6537,6 @@ module Increase
           def amount=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          #   currency.
           sig { returns(Symbol) }
           def currency
           end
@@ -7133,7 +6545,6 @@ module Increase
           def currency=(_)
           end
 
-          # The end of the period for which this transaction paid interest.
           sig { returns(Time) }
           def period_end
           end
@@ -7142,7 +6553,6 @@ module Increase
           def period_end=(_)
           end
 
-          # The start of the period for which this transaction paid interest.
           sig { returns(Time) }
           def period_start
           end
@@ -7151,10 +6561,6 @@ module Increase
           def period_start=(_)
           end
 
-          # An Interest Payment object. This field will be present in the JSON response if
-          #   and only if `category` is equal to `interest_payment`. An Interest Payment
-          #   represents a payment of interest on an account. Interest is usually paid
-          #   monthly.
           sig do
             params(
               accrued_on_account_id: String,
@@ -7183,12 +6589,8 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          #   currency.
           class Currency < Increase::Enum
             abstract!
-
-            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -7207,12 +6609,16 @@ module Increase
 
             # US Dollar (USD)
             USD = :USD
+
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
+            end
           end
         end
 
         class InternalSource < Increase::BaseModel
-          # The amount in the minor unit of the transaction's currency. For dollars, for
-          #   example, this is cents.
           sig { returns(Integer) }
           def amount
           end
@@ -7221,8 +6627,6 @@ module Increase
           def amount=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          #   currency.
           sig { returns(Symbol) }
           def currency
           end
@@ -7231,8 +6635,6 @@ module Increase
           def currency=(_)
           end
 
-          # An Internal Source is a transaction between you and Increase. This describes the
-          #   reason for the transaction.
           sig { returns(Symbol) }
           def reason
           end
@@ -7241,9 +6643,6 @@ module Increase
           def reason=(_)
           end
 
-          # An Internal Source object. This field will be present in the JSON response if
-          #   and only if `category` is equal to `internal_source`. A transaction between the
-          #   user and Increase. See the `reason` attribute for more information.
           sig { params(amount: Integer, currency: Symbol, reason: Symbol).returns(T.attached_class) }
           def self.new(amount:, currency:, reason:)
           end
@@ -7252,12 +6651,8 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          #   currency.
           class Currency < Increase::Enum
             abstract!
-
-            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -7276,14 +6671,16 @@ module Increase
 
             # US Dollar (USD)
             USD = :USD
+
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
+            end
           end
 
-          # An Internal Source is a transaction between you and Increase. This describes the
-          #   reason for the transaction.
           class Reason < Increase::Enum
             abstract!
-
-            Value = type_template(:out) { {fixed: Symbol} }
 
             # Account closure
             ACCOUNT_CLOSURE = :account_closure
@@ -7329,11 +6726,16 @@ module Increase
 
             # Sample funds return
             SAMPLE_FUNDS_RETURN = :sample_funds_return
+
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
+            end
           end
         end
 
         class RealTimePaymentsTransferAcknowledgement < Increase::BaseModel
-          # The transfer amount in USD cents.
           sig { returns(Integer) }
           def amount
           end
@@ -7342,7 +6744,6 @@ module Increase
           def amount=(_)
           end
 
-          # The destination account number.
           sig { returns(String) }
           def destination_account_number
           end
@@ -7351,7 +6752,6 @@ module Increase
           def destination_account_number=(_)
           end
 
-          # The American Bankers' Association (ABA) Routing Transit Number (RTN).
           sig { returns(String) }
           def destination_routing_number
           end
@@ -7360,7 +6760,6 @@ module Increase
           def destination_routing_number=(_)
           end
 
-          # Unstructured information that will show on the recipient's bank statement.
           sig { returns(String) }
           def remittance_information
           end
@@ -7369,7 +6768,6 @@ module Increase
           def remittance_information=(_)
           end
 
-          # The identifier of the Real-Time Payments Transfer that led to this Transaction.
           sig { returns(String) }
           def transfer_id
           end
@@ -7378,11 +6776,6 @@ module Increase
           def transfer_id=(_)
           end
 
-          # A Real-Time Payments Transfer Acknowledgement object. This field will be present
-          #   in the JSON response if and only if `category` is equal to
-          #   `real_time_payments_transfer_acknowledgement`. A Real-Time Payments Transfer
-          #   Acknowledgement is created when a Real-Time Payments Transfer sent from Increase
-          #   is acknowledged by the receiving bank.
           sig do
             params(
               amount: Integer,
@@ -7413,7 +6806,6 @@ module Increase
         end
 
         class SampleFunds < Increase::BaseModel
-          # Where the sample funds came from.
           sig { returns(String) }
           def originator
           end
@@ -7422,9 +6814,6 @@ module Increase
           def originator=(_)
           end
 
-          # A Sample Funds object. This field will be present in the JSON response if and
-          #   only if `category` is equal to `sample_funds`. Sample funds for testing
-          #   purposes.
           sig { params(originator: String).returns(T.attached_class) }
           def self.new(originator:)
           end
@@ -7435,7 +6824,6 @@ module Increase
         end
 
         class WireTransferIntention < Increase::BaseModel
-          # The destination account number.
           sig { returns(String) }
           def account_number
           end
@@ -7444,7 +6832,6 @@ module Increase
           def account_number=(_)
           end
 
-          # The transfer amount in USD cents.
           sig { returns(Integer) }
           def amount
           end
@@ -7453,7 +6840,6 @@ module Increase
           def amount=(_)
           end
 
-          # The message that will show on the recipient's bank statement.
           sig { returns(String) }
           def message_to_recipient
           end
@@ -7462,7 +6848,6 @@ module Increase
           def message_to_recipient=(_)
           end
 
-          # The American Bankers' Association (ABA) Routing Transit Number (RTN).
           sig { returns(String) }
           def routing_number
           end
@@ -7471,7 +6856,6 @@ module Increase
           def routing_number=(_)
           end
 
-          # The identifier of the Wire Transfer that led to this Transaction.
           sig { returns(String) }
           def transfer_id
           end
@@ -7480,9 +6864,6 @@ module Increase
           def transfer_id=(_)
           end
 
-          # A Wire Transfer Intention object. This field will be present in the JSON
-          #   response if and only if `category` is equal to `wire_transfer_intention`. A Wire
-          #   Transfer initiated via Increase and sent to a different bank.
           sig do
             params(
               account_number: String,
@@ -7513,14 +6894,16 @@ module Increase
         end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `transaction`.
       class Type < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         TRANSACTION = :transaction
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

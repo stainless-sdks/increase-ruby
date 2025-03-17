@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 module Increase
-  # @api private
+  # @private
+  #
+  # @abstract
+  #
   module Extern
   end
 end

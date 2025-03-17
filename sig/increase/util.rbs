@@ -6,7 +6,7 @@ module Increase
 
     def self?.os: -> String
 
-    def self?.primitive?: (top input) -> bool
+    def self?.primitive?: (top input) -> (bool | top)
 
     def self?.coerce_boolean: (top input) -> (bool | top)
 
@@ -120,15 +120,15 @@ module Increase
       Enumerable[top]? enum
     ) {
       (Enumerator::Yielder arg0) -> void
-    } -> Enumerable[top]
+    } -> void
 
-    type server_sent_event =
+    type sse_message =
       { event: String?, data: String?, id: String?, retry: Integer? }
 
     def self?.decode_lines: (Enumerable[String] enum) -> Enumerable[String]
 
     def self?.decode_sse: (
       Enumerable[String] lines
-    ) -> Increase::Util::server_sent_event
+    ) -> Increase::Util::sse_message
   end
 end

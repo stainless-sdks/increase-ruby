@@ -6,7 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # Options related to how this Account Number handles inbound ACH transfers.
       sig { returns(T.nilable(Increase::Models::AccountNumberUpdateParams::InboundACH)) }
       def inbound_ach
       end
@@ -18,8 +17,6 @@ module Increase
       def inbound_ach=(_)
       end
 
-      # Options related to how this Account Number should handle inbound check
-      #   withdrawals.
       sig { returns(T.nilable(Increase::Models::AccountNumberUpdateParams::InboundChecks)) }
       def inbound_checks
       end
@@ -31,7 +28,6 @@ module Increase
       def inbound_checks=(_)
       end
 
-      # The name you choose for the Account Number.
       sig { returns(T.nilable(String)) }
       def name
       end
@@ -40,7 +36,6 @@ module Increase
       def name=(_)
       end
 
-      # This indicates if transfers can be made to the Account Number.
       sig { returns(T.nilable(Symbol)) }
       def status
       end
@@ -78,8 +73,6 @@ module Increase
       end
 
       class InboundACH < Increase::BaseModel
-        # Whether ACH debits are allowed against this Account Number. Note that ACH debits
-        #   will be declined if this is `allowed` but the Account Number is not active.
         sig { returns(T.nilable(Symbol)) }
         def debit_status
         end
@@ -88,7 +81,6 @@ module Increase
         def debit_status=(_)
         end
 
-        # Options related to how this Account Number handles inbound ACH transfers.
         sig { params(debit_status: Symbol).returns(T.attached_class) }
         def self.new(debit_status: nil)
         end
@@ -97,23 +89,24 @@ module Increase
         def to_hash
         end
 
-        # Whether ACH debits are allowed against this Account Number. Note that ACH debits
-        #   will be declined if this is `allowed` but the Account Number is not active.
         class DebitStatus < Increase::Enum
           abstract!
-
-          Value = type_template(:out) { {fixed: Symbol} }
 
           # ACH Debits are allowed.
           ALLOWED = :allowed
 
           # ACH Debits are blocked.
           BLOCKED = :blocked
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
       class InboundChecks < Increase::BaseModel
-        # How Increase should process checks with this account number printed on them.
         sig { returns(Symbol) }
         def status
         end
@@ -122,8 +115,6 @@ module Increase
         def status=(_)
         end
 
-        # Options related to how this Account Number should handle inbound check
-        #   withdrawals.
         sig { params(status: Symbol).returns(T.attached_class) }
         def self.new(status:)
         end
@@ -132,25 +123,25 @@ module Increase
         def to_hash
         end
 
-        # How Increase should process checks with this account number printed on them.
         class Status < Increase::Enum
           abstract!
-
-          Value = type_template(:out) { {fixed: Symbol} }
 
           # Checks with this Account Number will be processed even if they are not associated with a Check Transfer.
           ALLOWED = :allowed
 
           # Checks with this Account Number will be processed only if they can be matched to an existing Check Transfer.
           CHECK_TRANSFERS_ONLY = :check_transfers_only
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
 
-      # This indicates if transfers can be made to the Account Number.
       class Status < Increase::Enum
         abstract!
-
-        Value = type_template(:out) { {fixed: Symbol} }
 
         # The account number is active.
         ACTIVE = :active
@@ -160,6 +151,12 @@ module Increase
 
         # The account number is permanently disabled.
         CANCELED = :canceled
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

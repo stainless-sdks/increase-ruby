@@ -3,7 +3,6 @@
 module Increase
   module Models
     class RoutingNumberListResponse < Increase::BaseModel
-      # This routing number's support for ACH Transfers.
       sig { returns(Symbol) }
       def ach_transfers
       end
@@ -12,7 +11,6 @@ module Increase
       def ach_transfers=(_)
       end
 
-      # The name of the financial institution belonging to a routing number.
       sig { returns(String) }
       def name
       end
@@ -21,7 +19,6 @@ module Increase
       def name=(_)
       end
 
-      # This routing number's support for Real-Time Payments Transfers.
       sig { returns(Symbol) }
       def real_time_payments_transfers
       end
@@ -30,7 +27,6 @@ module Increase
       def real_time_payments_transfers=(_)
       end
 
-      # The nine digit routing number identifier.
       sig { returns(String) }
       def routing_number
       end
@@ -39,8 +35,6 @@ module Increase
       def routing_number=(_)
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `routing_number`.
       sig { returns(Symbol) }
       def type
       end
@@ -49,7 +43,6 @@ module Increase
       def type=(_)
       end
 
-      # This routing number's support for Wire Transfers.
       sig { returns(Symbol) }
       def wire_transfers
       end
@@ -58,7 +51,6 @@ module Increase
       def wire_transfers=(_)
       end
 
-      # Routing numbers are used to identify your bank in a financial transaction.
       sig do
         params(
           ach_transfers: Symbol,
@@ -89,53 +81,64 @@ module Increase
       def to_hash
       end
 
-      # This routing number's support for ACH Transfers.
       class ACHTransfers < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # The routing number can receive this transfer type.
         SUPPORTED = :supported
 
         # The routing number cannot receive this transfer type.
         NOT_SUPPORTED = :not_supported
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
-      # This routing number's support for Real-Time Payments Transfers.
       class RealTimePaymentsTransfers < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         # The routing number can receive this transfer type.
         SUPPORTED = :supported
 
         # The routing number cannot receive this transfer type.
         NOT_SUPPORTED = :not_supported
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `routing_number`.
       class Type < Increase::Enum
         abstract!
 
-        Value = type_template(:out) { {fixed: Symbol} }
-
         ROUTING_NUMBER = :routing_number
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
 
-      # This routing number's support for Wire Transfers.
       class WireTransfers < Increase::Enum
         abstract!
-
-        Value = type_template(:out) { {fixed: Symbol} }
 
         # The routing number can receive this transfer type.
         SUPPORTED = :supported
 
         # The routing number cannot receive this transfer type.
         NOT_SUPPORTED = :not_supported
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

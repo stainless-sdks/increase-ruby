@@ -3,7 +3,6 @@
 module Increase
   module Resources
     class Groups
-      # Returns details for the currently authenticated Group.
       sig do
         params(request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])))
           .returns(Increase::Models::Group)

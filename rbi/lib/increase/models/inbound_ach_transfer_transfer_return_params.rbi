@@ -6,8 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # The reason why this transfer will be returned. The most usual return codes are
-      #   `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
       sig { returns(Symbol) }
       def reason
       end
@@ -27,12 +25,8 @@ module Increase
       def to_hash
       end
 
-      # The reason why this transfer will be returned. The most usual return codes are
-      #   `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
       class Reason < Increase::Enum
         abstract!
-
-        Value = type_template(:out) { {fixed: Symbol} }
 
         # The customer's account has insufficient funds. This reason is only allowed for debits. The Nacha return code is R01.
         INSUFFICIENT_FUNDS = :insufficient_funds
@@ -63,6 +57,12 @@ module Increase
 
         # The corporate customer no longer authorizes this transaction. The Nacha return code is R29.
         CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
+
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
+        end
       end
     end
   end

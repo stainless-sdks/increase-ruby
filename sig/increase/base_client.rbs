@@ -43,12 +43,7 @@ module Increase
       response_headers: ::Hash[String, String]
     ) -> Increase::BaseClient::request_input
 
-    def self.reap_connection!: (
-      Integer | Increase::APIConnectionError status,
-      stream: Enumerable[String]?
-    ) -> void
-
-    # @api private
+    # @private
     attr_accessor requester: top
 
     def initialize: (

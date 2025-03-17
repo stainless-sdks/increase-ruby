@@ -7,7 +7,6 @@ module Increase
         extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
-        # The name of the program being added.
         sig { returns(String) }
         def name
         end

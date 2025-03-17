@@ -12,6 +12,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::BookkeepingEntry]
+      #
       def retrieve(bookkeeping_entry_id, params = {})
         @client.request(
           method: :get,
@@ -35,6 +36,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::BookkeepingEntry>]
+      #
       def list(params = {})
         parsed, options = Increase::Models::BookkeepingEntryListParams.dump_request(params)
         @client.request(
@@ -48,6 +50,7 @@ module Increase
       end
 
       # @param client [Increase::Client]
+      #
       def initialize(client:)
         @client = client
       end

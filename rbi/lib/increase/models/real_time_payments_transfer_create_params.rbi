@@ -6,8 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # The transfer amount in USD cents. For Real-Time Payments transfers, must be
-      #   positive.
       sig { returns(Integer) }
       def amount
       end
@@ -16,7 +14,6 @@ module Increase
       def amount=(_)
       end
 
-      # The name of the transfer's recipient.
       sig { returns(String) }
       def creditor_name
       end
@@ -25,7 +22,6 @@ module Increase
       def creditor_name=(_)
       end
 
-      # Unstructured information that will show on the recipient's bank statement.
       sig { returns(String) }
       def remittance_information
       end
@@ -34,7 +30,6 @@ module Increase
       def remittance_information=(_)
       end
 
-      # The identifier of the Account Number from which to send the transfer.
       sig { returns(String) }
       def source_account_number_id
       end
@@ -43,8 +38,6 @@ module Increase
       def source_account_number_id=(_)
       end
 
-      # The name of the transfer's sender. If not provided, defaults to the name of the
-      #   account's entity.
       sig { returns(T.nilable(String)) }
       def debtor_name
       end
@@ -53,7 +46,6 @@ module Increase
       def debtor_name=(_)
       end
 
-      # The destination account number.
       sig { returns(T.nilable(String)) }
       def destination_account_number
       end
@@ -62,8 +54,6 @@ module Increase
       def destination_account_number=(_)
       end
 
-      # The destination American Bankers' Association (ABA) Routing Transit Number
-      #   (RTN).
       sig { returns(T.nilable(String)) }
       def destination_routing_number
       end
@@ -72,9 +62,6 @@ module Increase
       def destination_routing_number=(_)
       end
 
-      # The ID of an External Account to initiate a transfer to. If this parameter is
-      #   provided, `destination_account_number` and `destination_routing_number` must be
-      #   absent.
       sig { returns(T.nilable(String)) }
       def external_account_id
       end
@@ -83,7 +70,6 @@ module Increase
       def external_account_id=(_)
       end
 
-      # Whether the transfer requires explicit approval via the dashboard or API.
       sig { returns(T.nilable(T::Boolean)) }
       def require_approval
       end
@@ -92,8 +78,6 @@ module Increase
       def require_approval=(_)
       end
 
-      # The name of the ultimate recipient of the transfer. Set this if the creditor is
-      #   an intermediary receiving the payment for someone else.
       sig { returns(T.nilable(String)) }
       def ultimate_creditor_name
       end
@@ -102,8 +86,6 @@ module Increase
       def ultimate_creditor_name=(_)
       end
 
-      # The name of the ultimate sender of the transfer. Set this if the funds are being
-      #   sent on behalf of someone who is not the account holder at Increase.
       sig { returns(T.nilable(String)) }
       def ultimate_debtor_name
       end

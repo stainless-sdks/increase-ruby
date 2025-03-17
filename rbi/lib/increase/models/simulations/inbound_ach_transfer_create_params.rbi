@@ -7,7 +7,6 @@ module Increase
         extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
-        # The identifier of the Account Number the inbound ACH Transfer is for.
         sig { returns(String) }
         def account_number_id
         end
@@ -16,9 +15,6 @@ module Increase
         def account_number_id=(_)
         end
 
-        # The transfer amount in cents. A positive amount originates a credit transfer
-        #   pushing funds to the receiving account. A negative amount originates a debit
-        #   transfer pulling funds from the receiving account.
         sig { returns(Integer) }
         def amount
         end
@@ -27,7 +23,6 @@ module Increase
         def amount=(_)
         end
 
-        # The description of the date of the transfer.
         sig { returns(T.nilable(String)) }
         def company_descriptive_date
         end
@@ -36,7 +31,6 @@ module Increase
         def company_descriptive_date=(_)
         end
 
-        # Data associated with the transfer set by the sender.
         sig { returns(T.nilable(String)) }
         def company_discretionary_data
         end
@@ -45,7 +39,6 @@ module Increase
         def company_discretionary_data=(_)
         end
 
-        # The description of the transfer set by the sender.
         sig { returns(T.nilable(String)) }
         def company_entry_description
         end
@@ -54,7 +47,6 @@ module Increase
         def company_entry_description=(_)
         end
 
-        # The sender's company ID.
         sig { returns(T.nilable(String)) }
         def company_id
         end
@@ -63,7 +55,6 @@ module Increase
         def company_id=(_)
         end
 
-        # The name of the sender.
         sig { returns(T.nilable(String)) }
         def company_name
         end
@@ -72,7 +63,6 @@ module Increase
         def company_name=(_)
         end
 
-        # The ID of the receiver of the transfer.
         sig { returns(T.nilable(String)) }
         def receiver_id_number
         end
@@ -81,7 +71,6 @@ module Increase
         def receiver_id_number=(_)
         end
 
-        # The name of the receiver of the transfer.
         sig { returns(T.nilable(String)) }
         def receiver_name
         end
@@ -90,8 +79,6 @@ module Increase
         def receiver_name=(_)
         end
 
-        # The time at which the transfer should be resolved. If not provided will resolve
-        #   immediately.
         sig { returns(T.nilable(Time)) }
         def resolve_at
         end
@@ -100,7 +87,6 @@ module Increase
         def resolve_at=(_)
         end
 
-        # The standard entry class code for the transfer.
         sig { returns(T.nilable(Symbol)) }
         def standard_entry_class_code
         end
@@ -164,11 +150,8 @@ module Increase
         def to_hash
         end
 
-        # The standard entry class code for the transfer.
         class StandardEntryClassCode < Increase::Enum
           abstract!
-
-          Value = type_template(:out) { {fixed: Symbol} }
 
           # Corporate Credit and Debit (CCD).
           CORPORATE_CREDIT_OR_DEBIT = :corporate_credit_or_debit
@@ -217,6 +200,12 @@ module Increase
 
           # International ACH Transaction (IAT).
           INTERNATIONAL_ACH_TRANSACTION = :international_ach_transaction
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
     end
