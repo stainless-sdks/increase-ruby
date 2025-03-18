@@ -4,12 +4,13 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::WireTransfersTest < Increase::Test::ResourceTest
   def test_create_required_params
-    response = @increase.wire_transfers.create(
-      account_id: "account_in71c4amph0vgo2qllky",
-      amount: 100,
-      beneficiary_name: "Ian Crease",
-      message_to_recipient: "New account transfer"
-    )
+    response =
+      @increase.wire_transfers.create(
+        account_id: "account_in71c4amph0vgo2qllky",
+        amount: 100,
+        beneficiary_name: "Ian Crease",
+        message_to_recipient: "New account transfer"
+      )
 
     assert_pattern do
       response => Increase::Models::WireTransfer

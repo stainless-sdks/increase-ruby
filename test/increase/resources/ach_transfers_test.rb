@@ -4,11 +4,12 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::ACHTransfersTest < Increase::Test::ResourceTest
   def test_create_required_params
-    response = @increase.ach_transfers.create(
-      account_id: "account_in71c4amph0vgo2qllky",
-      amount: 100,
-      statement_descriptor: "New ACH transfer"
-    )
+    response =
+      @increase.ach_transfers.create(
+        account_id: "account_in71c4amph0vgo2qllky",
+        amount: 100,
+        statement_descriptor: "New ACH transfer"
+      )
 
     assert_pattern do
       response => Increase::Models::ACHTransfer

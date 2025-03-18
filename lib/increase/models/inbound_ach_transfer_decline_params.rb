@@ -46,10 +46,12 @@ module Increase
         PAYMENT_STOPPED = :payment_stopped
 
         # The customer advises that the debit was unauthorized. The Nacha return code is R10.
-        CUSTOMER_ADVISED_UNAUTHORIZED_IMPROPER_INELIGIBLE_OR_INCOMPLETE = :customer_advised_unauthorized_improper_ineligible_or_incomplete
+        CUSTOMER_ADVISED_UNAUTHORIZED_IMPROPER_INELIGIBLE_OR_INCOMPLETE =
+          :customer_advised_unauthorized_improper_ineligible_or_incomplete
 
         # The payee is deceased. The Nacha return code is R14.
-        REPRESENTATIVE_PAYEE_DECEASED_OR_UNABLE_TO_CONTINUE_IN_THAT_CAPACITY = :representative_payee_deceased_or_unable_to_continue_in_that_capacity
+        REPRESENTATIVE_PAYEE_DECEASED_OR_UNABLE_TO_CONTINUE_IN_THAT_CAPACITY =
+          :representative_payee_deceased_or_unable_to_continue_in_that_capacity
 
         # The account holder is deceased. The Nacha return code is R15.
         BENEFICIARY_OR_ACCOUNT_HOLDER_DECEASED = :beneficiary_or_account_holder_deceased

@@ -35,7 +35,8 @@ module Increase
       #
       # @return [Increase::Models::ProofOfAuthorizationRequestSubmission]
       def create(params)
-        parsed, options = Increase::Models::ProofOfAuthorizationRequestSubmissionCreateParams.dump_request(params)
+        parsed, options =
+          Increase::Models::ProofOfAuthorizationRequestSubmissionCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "proof_of_authorization_request_submissions",

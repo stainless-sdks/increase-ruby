@@ -10,10 +10,11 @@ module Increase
 
     DEFAULT_MAX_RETRY_DELAY = T.let(8.0, Float)
 
-    ENVIRONMENTS = T.let(
-      {production: "https://api.increase.com", sandbox: "https://sandbox.increase.com"},
-      T::Hash[Symbol, String]
-    )
+    ENVIRONMENTS =
+      T.let(
+        {production: "https://api.increase.com", sandbox: "https://sandbox.increase.com"},
+        T::Hash[Symbol, String]
+      )
 
     sig { returns(String) }
     def api_key

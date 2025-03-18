@@ -1413,7 +1413,8 @@ module Increase
                 SECURE_ELECTRONIC_COMMERCE = :secure_electronic_commerce
 
                 # Non-authenticated security transaction at a 3-D Secure-capable merchant, and merchant attempted to authenticate the cardholder using 3-D Secure: Use to identify an electronic commerce transaction where the merchant attempted to authenticate the cardholder using 3-D Secure, but was unable to complete the authentication because the issuer or cardholder does not participate in the 3-D Secure program.
-                NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT = :non_authenticated_security_transaction_at_3ds_capable_merchant
+                NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT =
+                  :non_authenticated_security_transaction_at_3ds_capable_merchant
 
                 # Non-authenticated security transaction: Use to identify an electronic commerce transaction that uses data encryption for security however , cardholder authentication is not performed using 3-D Secure.
                 NON_AUTHENTICATED_SECURITY_TRANSACTION = :non_authenticated_security_transaction
@@ -1474,13 +1475,15 @@ module Increase
                 INVALID_PHYSICAL_CARD = :invalid_physical_card
 
                 # The 3DS cardholder authentication verification value was invalid.
-                INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE = :invalid_cardholder_authentication_verification_value
+                INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE =
+                  :invalid_cardholder_authentication_verification_value
 
                 # An internal Visa error occurred. Visa uses this reason code for certain expected occurrences as well, such as Application Transaction Counter (ATC) replays.
                 INTERNAL_VISA_ERROR = :internal_visa_error
 
                 # The merchant has enabled Visa's Transaction Advisory Service and requires further authentication to perform the transaction. In practice this is often utilized at fuel pumps to tell the cardholder to see the cashier.
-                MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED = :merchant_transaction_advisory_service_authentication_required
+                MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED =
+                  :merchant_transaction_advisory_service_authentication_required
 
                 # The transaction was blocked by Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior, such as card testing.
                 PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK = :payment_fraud_disruption_acquirer_block
@@ -2476,7 +2479,8 @@ module Increase
                 SECURE_ELECTRONIC_COMMERCE = :secure_electronic_commerce
 
                 # Non-authenticated security transaction at a 3-D Secure-capable merchant, and merchant attempted to authenticate the cardholder using 3-D Secure: Use to identify an electronic commerce transaction where the merchant attempted to authenticate the cardholder using 3-D Secure, but was unable to complete the authentication because the issuer or cardholder does not participate in the 3-D Secure program.
-                NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT = :non_authenticated_security_transaction_at_3ds_capable_merchant
+                NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT =
+                  :non_authenticated_security_transaction_at_3ds_capable_merchant
 
                 # Non-authenticated security transaction: Use to identify an electronic commerce transaction that uses data encryption for security however , cardholder authentication is not performed using 3-D Secure.
                 NON_AUTHENTICATED_SECURITY_TRANSACTION = :non_authenticated_security_transaction
@@ -2537,13 +2541,15 @@ module Increase
                 INVALID_PHYSICAL_CARD = :invalid_physical_card
 
                 # The 3DS cardholder authentication verification value was invalid.
-                INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE = :invalid_cardholder_authentication_verification_value
+                INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE =
+                  :invalid_cardholder_authentication_verification_value
 
                 # An internal Visa error occurred. Visa uses this reason code for certain expected occurrences as well, such as Application Transaction Counter (ATC) replays.
                 INTERNAL_VISA_ERROR = :internal_visa_error
 
                 # The merchant has enabled Visa's Transaction Advisory Service and requires further authentication to perform the transaction. In practice this is often utilized at fuel pumps to tell the cardholder to see the cashier.
-                MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED = :merchant_transaction_advisory_service_authentication_required
+                MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED =
+                  :merchant_transaction_advisory_service_authentication_required
 
                 # The transaction was blocked by Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior, such as card testing.
                 PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK = :payment_fraud_disruption_acquirer_block
@@ -4909,10 +4915,12 @@ module Increase
                   NO_CREDIT = :no_credit
 
                   # Passenger transport ancillary purchase cancellation
-                  PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :passenger_transport_ancillary_purchase_cancellation
+                  PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
+                    :passenger_transport_ancillary_purchase_cancellation
 
                   # Airline ticket and passenger transport ancillary purchase cancellation
-                  AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+                  AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
+                    :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
 
                   # Other
                   OTHER = :other
@@ -5041,10 +5049,12 @@ module Increase
                 NO_CREDIT = :no_credit
 
                 # Passenger transport ancillary purchase cancellation
-                PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :passenger_transport_ancillary_purchase_cancellation
+                PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
+                  :passenger_transport_ancillary_purchase_cancellation
 
                 # Airline ticket and passenger transport ancillary purchase cancellation
-                AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+                AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
+                  :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
 
                 # Airline ticket cancellation
                 AIRLINE_TICKET_CANCELLATION = :airline_ticket_cancellation
@@ -7086,10 +7096,12 @@ module Increase
                   NO_CREDIT = :no_credit
 
                   # Passenger transport ancillary purchase cancellation
-                  PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :passenger_transport_ancillary_purchase_cancellation
+                  PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
+                    :passenger_transport_ancillary_purchase_cancellation
 
                   # Airline ticket and passenger transport ancillary purchase cancellation
-                  AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+                  AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
+                    :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
 
                   # Other
                   OTHER = :other
@@ -7218,10 +7230,12 @@ module Increase
                 NO_CREDIT = :no_credit
 
                 # Passenger transport ancillary purchase cancellation
-                PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :passenger_transport_ancillary_purchase_cancellation
+                PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
+                  :passenger_transport_ancillary_purchase_cancellation
 
                 # Airline ticket and passenger transport ancillary purchase cancellation
-                AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+                AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
+                  :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
 
                 # Airline ticket cancellation
                 AIRLINE_TICKET_CANCELLATION = :airline_ticket_cancellation
@@ -7847,7 +7861,8 @@ module Increase
                 SECURE_ELECTRONIC_COMMERCE = :secure_electronic_commerce
 
                 # Non-authenticated security transaction at a 3-D Secure-capable merchant, and merchant attempted to authenticate the cardholder using 3-D Secure: Use to identify an electronic commerce transaction where the merchant attempted to authenticate the cardholder using 3-D Secure, but was unable to complete the authentication because the issuer or cardholder does not participate in the 3-D Secure program.
-                NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT = :non_authenticated_security_transaction_at_3ds_capable_merchant
+                NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT =
+                  :non_authenticated_security_transaction_at_3ds_capable_merchant
 
                 # Non-authenticated security transaction: Use to identify an electronic commerce transaction that uses data encryption for security however , cardholder authentication is not performed using 3-D Secure.
                 NON_AUTHENTICATED_SECURITY_TRANSACTION = :non_authenticated_security_transaction
@@ -7908,13 +7923,15 @@ module Increase
                 INVALID_PHYSICAL_CARD = :invalid_physical_card
 
                 # The 3DS cardholder authentication verification value was invalid.
-                INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE = :invalid_cardholder_authentication_verification_value
+                INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE =
+                  :invalid_cardholder_authentication_verification_value
 
                 # An internal Visa error occurred. Visa uses this reason code for certain expected occurrences as well, such as Application Transaction Counter (ATC) replays.
                 INTERNAL_VISA_ERROR = :internal_visa_error
 
                 # The merchant has enabled Visa's Transaction Advisory Service and requires further authentication to perform the transaction. In practice this is often utilized at fuel pumps to tell the cardholder to see the cashier.
-                MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED = :merchant_transaction_advisory_service_authentication_required
+                MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED =
+                  :merchant_transaction_advisory_service_authentication_required
 
                 # The transaction was blocked by Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior, such as card testing.
                 PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK = :payment_fraud_disruption_acquirer_block
