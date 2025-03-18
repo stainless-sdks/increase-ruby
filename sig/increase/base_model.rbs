@@ -121,6 +121,13 @@ module Increase
   class ArrayOf[Elem]
     include Increase::Converter
 
+    def self.[]: (
+      ::Hash[Symbol, top]
+      | ^-> Increase::Converter::input
+      | Increase::Converter::input type_info,
+      ?::Hash[Symbol, top] spec
+    ) -> instance
+
     def ===: (top other) -> bool
 
     def ==: (top other) -> bool
@@ -145,6 +152,13 @@ module Increase
 
   class HashOf[Elem]
     include Increase::Converter
+
+    def self.[]: (
+      ::Hash[Symbol, top]
+      | ^-> Increase::Converter::input
+      | Increase::Converter::input type_info,
+      ?::Hash[Symbol, top] spec
+    ) -> instance
 
     def ===: (top other) -> bool
 

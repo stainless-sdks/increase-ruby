@@ -5,5 +5,7 @@ module Increase
     attr_accessor data: ::Array[Elem]?
 
     attr_accessor next_cursor: String?
+
+    def inspect: -> String
   end
 end
