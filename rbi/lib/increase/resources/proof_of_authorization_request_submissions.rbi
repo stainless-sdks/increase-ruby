@@ -41,7 +41,7 @@ module Increase
         validated_account_ownership_with_account_statement:,
         # Whether the account ownership was validated with a microdeposit.
         validated_account_ownership_with_microdeposit:,
-        # The File containing the check's front image.
+        # File containing additional evidence.
         additional_evidence_file_id: nil,
         # Company of the authorizer.
         authorizer_company: nil,
