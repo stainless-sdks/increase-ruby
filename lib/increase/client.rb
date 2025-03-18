@@ -16,6 +16,7 @@ module Increase
     DEFAULT_MAX_RETRY_DELAY = 8.0
 
     # rubocop:disable Style/MutableConstant
+    # @type [Hash{Symbol=>String}]
     ENVIRONMENTS = {production: "https://api.increase.com", sandbox: "https://sandbox.increase.com"}
     # rubocop:enable Style/MutableConstant
 
