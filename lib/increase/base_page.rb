@@ -28,8 +28,6 @@ module Increase
   # accounts => Array
   # ```
   module BasePage
-    # rubocop:disable Lint/UnusedMethodArgument
-
     # @return [Boolean]
     def next_page? = (raise NotImplementedError)
 
@@ -58,7 +56,5 @@ module Increase
       @req = req
       super()
     end
-
-    # rubocop:enable Lint/UnusedMethodArgument
   end
 end

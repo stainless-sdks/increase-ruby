@@ -310,20 +310,6 @@ module Increase
 
     Elem = type_member(:out)
 
-    sig(:final) do
-      params(
-        type_info: T.any(
-          T::Hash[Symbol, T.anything],
-          T.proc.returns(Increase::Converter::Input),
-          Increase::Converter::Input
-        ),
-        spec: T::Hash[Symbol, T.anything]
-      )
-        .returns(T.attached_class)
-    end
-    def self.[](type_info, spec = {})
-    end
-
     sig(:final) { params(other: T.anything).returns(T::Boolean) }
     def ===(other)
     end
@@ -374,9 +360,9 @@ module Increase
         ),
         spec: T::Hash[Symbol, T.anything]
       )
-        .void
+        .returns(T.attached_class)
     end
-    def initialize(type_info, spec = {})
+    def self.new(type_info, spec = {})
     end
   end
 
@@ -391,20 +377,6 @@ module Increase
 
     Elem = type_member(:out)
 
-    sig(:final) do
-      params(
-        type_info: T.any(
-          T::Hash[Symbol, T.anything],
-          T.proc.returns(Increase::Converter::Input),
-          Increase::Converter::Input
-        ),
-        spec: T::Hash[Symbol, T.anything]
-      )
-        .returns(T.attached_class)
-    end
-    def self.[](type_info, spec = {})
-    end
-
     sig(:final) { params(other: T.anything).returns(T::Boolean) }
     def ===(other)
     end
@@ -455,9 +427,9 @@ module Increase
         ),
         spec: T::Hash[Symbol, T.anything]
       )
-        .void
+        .returns(T.attached_class)
     end
-    def initialize(type_info, spec = {})
+    def self.new(type_info, spec = {})
     end
   end
 
@@ -483,11 +455,6 @@ module Increase
         )
       end
       def known_fields
-      end
-
-      # @api private
-      sig { returns(T::Hash[Symbol, Symbol]) }
-      def reverse_map
       end
 
       # @api private

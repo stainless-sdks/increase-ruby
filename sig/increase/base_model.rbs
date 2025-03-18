@@ -121,13 +121,6 @@ module Increase
   class ArrayOf[Elem]
     include Increase::Converter
 
-    def self.[]: (
-      ::Hash[Symbol, top]
-      | ^-> Increase::Converter::input
-      | Increase::Converter::input type_info,
-      ?::Hash[Symbol, top] spec
-    ) -> instance
-
     def ===: (top other) -> bool
 
     def ==: (top other) -> bool
@@ -152,13 +145,6 @@ module Increase
 
   class HashOf[Elem]
     include Increase::Converter
-
-    def self.[]: (
-      ::Hash[Symbol, top]
-      | ^-> Increase::Converter::input
-      | Increase::Converter::input type_info,
-      ?::Hash[Symbol, top] spec
-    ) -> instance
 
     def ===: (top other) -> bool
 
@@ -189,8 +175,6 @@ module Increase
 
     def self.known_fields: -> ::Hash[Symbol, (Increase::BaseModel::known_field
     & { type_fn: (^-> Increase::Converter::input) })]
-
-    def self.reverse_map: -> ::Hash[Symbol, Symbol]
 
     def self.fields: -> ::Hash[Symbol, (Increase::BaseModel::known_field
     & { type: Increase::Converter::input })]
