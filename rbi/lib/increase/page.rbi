@@ -21,5 +21,9 @@ module Increase
     sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
     def next_cursor=(_)
     end
+
+    sig { returns(String) }
+    def inspect
+    end
   end
 end
