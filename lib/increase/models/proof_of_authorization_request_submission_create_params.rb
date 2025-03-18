@@ -62,7 +62,7 @@ module Increase
       required :validated_account_ownership_with_microdeposit, Increase::BooleanModel
 
       # @!attribute [r] additional_evidence_file_id
-      #   The File containing the check's front image.
+      #   File containing additional evidence.
       #
       #   @return [String, nil]
       optional :additional_evidence_file_id, String

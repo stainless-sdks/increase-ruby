@@ -87,7 +87,7 @@ module Increase
       def validated_account_ownership_with_microdeposit=(_)
       end
 
-      # The File containing the check's front image.
+      # File containing additional evidence.
       sig { returns(T.nilable(String)) }
       def additional_evidence_file_id
       end
