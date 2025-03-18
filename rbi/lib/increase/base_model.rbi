@@ -458,11 +458,6 @@ module Increase
       end
 
       # @api private
-      sig { returns(T::Hash[Symbol, Symbol]) }
-      def reverse_map
-      end
-
-      # @api private
       sig do
         returns(
           T::Hash[Symbol,
