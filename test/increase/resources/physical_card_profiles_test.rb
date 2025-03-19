@@ -4,12 +4,13 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::PhysicalCardProfilesTest < Increase::Test::ResourceTest
   def test_create_required_params
-    response = @increase.physical_card_profiles.create(
-      carrier_image_file_id: "file_h6v7mtipe119os47ehlu",
-      contact_phone: "+16505046304",
-      description: "My Card Profile",
-      front_image_file_id: "file_o6aex13wm1jcc36sgcj1"
-    )
+    response =
+      @increase.physical_card_profiles.create(
+        carrier_image_file_id: "file_h6v7mtipe119os47ehlu",
+        contact_phone: "+16505046304",
+        description: "My Card Profile",
+        front_image_file_id: "file_o6aex13wm1jcc36sgcj1"
+      )
 
     assert_pattern do
       response => Increase::Models::PhysicalCardProfile

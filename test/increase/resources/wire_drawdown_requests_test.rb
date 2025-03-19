@@ -4,14 +4,15 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::WireDrawdownRequestsTest < Increase::Test::ResourceTest
   def test_create_required_params
-    response = @increase.wire_drawdown_requests.create(
-      account_number_id: "account_number_v18nkfqm6afpsrvy82b2",
-      amount: 10_000,
-      message_to_recipient: "Invoice 29582",
-      recipient_account_number: "987654321",
-      recipient_name: "Ian Crease",
-      recipient_routing_number: "101050001"
-    )
+    response =
+      @increase.wire_drawdown_requests.create(
+        account_number_id: "account_number_v18nkfqm6afpsrvy82b2",
+        amount: 10_000,
+        message_to_recipient: "Invoice 29582",
+        recipient_account_number: "987654321",
+        recipient_name: "Ian Crease",
+        recipient_routing_number: "101050001"
+      )
 
     assert_pattern do
       response => Increase::Models::WireDrawdownRequest

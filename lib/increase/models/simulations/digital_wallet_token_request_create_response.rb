@@ -63,7 +63,8 @@ module Increase
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_digital_wallet_token_request_simulation_result`.
         class Type < Increase::Enum
-          INBOUND_DIGITAL_WALLET_TOKEN_REQUEST_SIMULATION_RESULT = :inbound_digital_wallet_token_request_simulation_result
+          INBOUND_DIGITAL_WALLET_TOKEN_REQUEST_SIMULATION_RESULT =
+            :inbound_digital_wallet_token_request_simulation_result
 
           finalize!
         end

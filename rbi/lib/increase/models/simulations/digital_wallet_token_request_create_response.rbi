@@ -80,7 +80,8 @@ module Increase
 
           Value = type_template(:out) { {fixed: Symbol} }
 
-          INBOUND_DIGITAL_WALLET_TOKEN_REQUEST_SIMULATION_RESULT = :inbound_digital_wallet_token_request_simulation_result
+          INBOUND_DIGITAL_WALLET_TOKEN_REQUEST_SIMULATION_RESULT =
+            :inbound_digital_wallet_token_request_simulation_result
         end
       end
     end

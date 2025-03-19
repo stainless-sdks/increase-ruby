@@ -121,10 +121,11 @@ class Increase::Test::Resources::EntitiesTest < Increase::Test::ResourceTest
   end
 
   def test_archive_beneficial_owner_required_params
-    response = @increase.entities.archive_beneficial_owner(
-      "entity_id",
-      beneficial_owner_id: "entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7"
-    )
+    response =
+      @increase.entities.archive_beneficial_owner(
+        "entity_id",
+        beneficial_owner_id: "entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7"
+      )
 
     assert_pattern do
       response => Increase::Models::Entity
@@ -180,18 +181,19 @@ class Increase::Test::Resources::EntitiesTest < Increase::Test::ResourceTest
   end
 
   def test_create_beneficial_owner_required_params
-    response = @increase.entities.create_beneficial_owner(
-      "entity_id",
-      beneficial_owner: {
-        individual: {
-          address: {city: "New York", line1: "33 Liberty Street", state: "NY", zip: "10045"},
-          date_of_birth: "1970-01-31",
-          identification: {method: :social_security_number, number: "078051120"},
-          name: "Ian Crease"
-        },
-        prongs: [:ownership]
-      }
-    )
+    response =
+      @increase.entities.create_beneficial_owner(
+        "entity_id",
+        beneficial_owner: {
+          individual: {
+            address: {city: "New York", line1: "33 Liberty Street", state: "NY", zip: "10045"},
+            date_of_birth: "1970-01-31",
+            identification: {method: :social_security_number, number: "078051120"},
+            name: "Ian Crease"
+          },
+          prongs: [:ownership]
+        }
+      )
 
     assert_pattern do
       response => Increase::Models::Entity
@@ -219,10 +221,11 @@ class Increase::Test::Resources::EntitiesTest < Increase::Test::ResourceTest
   end
 
   def test_update_address_required_params
-    response = @increase.entities.update_address(
-      "entity_id",
-      address: {city: "New York", line1: "33 Liberty Street", state: "NY", zip: "10045"}
-    )
+    response =
+      @increase.entities.update_address(
+        "entity_id",
+        address: {city: "New York", line1: "33 Liberty Street", state: "NY", zip: "10045"}
+      )
 
     assert_pattern do
       response => Increase::Models::Entity
@@ -250,11 +253,12 @@ class Increase::Test::Resources::EntitiesTest < Increase::Test::ResourceTest
   end
 
   def test_update_beneficial_owner_address_required_params
-    response = @increase.entities.update_beneficial_owner_address(
-      "entity_id",
-      address: {city: "New York", line1: "33 Liberty Street", state: "NY", zip: "10045"},
-      beneficial_owner_id: "entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7"
-    )
+    response =
+      @increase.entities.update_beneficial_owner_address(
+        "entity_id",
+        address: {city: "New York", line1: "33 Liberty Street", state: "NY", zip: "10045"},
+        beneficial_owner_id: "entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7"
+      )
 
     assert_pattern do
       response => Increase::Models::Entity

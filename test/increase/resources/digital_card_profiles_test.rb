@@ -4,13 +4,14 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::DigitalCardProfilesTest < Increase::Test::ResourceTest
   def test_create_required_params
-    response = @increase.digital_card_profiles.create(
-      app_icon_file_id: "file_8zxqkwlh43wo144u8yec",
-      background_image_file_id: "file_1ai913suu1zfn1pdetru",
-      card_description: "MyBank Signature Card",
-      description: "My Card Profile",
-      issuer_name: "MyBank"
-    )
+    response =
+      @increase.digital_card_profiles.create(
+        app_icon_file_id: "file_8zxqkwlh43wo144u8yec",
+        background_image_file_id: "file_1ai913suu1zfn1pdetru",
+        card_description: "MyBank Signature Card",
+        description: "My Card Profile",
+        issuer_name: "MyBank"
+      )
 
     assert_pattern do
       response => Increase::Models::DigitalCardProfile
