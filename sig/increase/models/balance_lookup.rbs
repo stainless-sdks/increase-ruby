@@ -17,14 +17,12 @@ module Increase
 
       attr_accessor type: Increase::Models::BalanceLookup::type_
 
-      def initialize:
-        (
-          account_id: String,
-          available_balance: Integer,
-          current_balance: Integer,
-          type: Increase::Models::BalanceLookup::type_
-        ) -> void
-        | (?Increase::Models::balance_lookup | Increase::BaseModel data) -> void
+      def initialize: (
+        account_id: String,
+        available_balance: Integer,
+        current_balance: Integer,
+        type: Increase::Models::BalanceLookup::type_
+      ) -> void
 
       def to_hash: -> Increase::Models::balance_lookup
 

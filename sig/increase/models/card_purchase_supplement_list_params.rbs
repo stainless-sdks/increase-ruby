@@ -31,18 +31,13 @@ module Increase
 
       def limit=: (Integer) -> Integer
 
-      def initialize:
-        (
-          card_payment_id: String,
-          created_at: Increase::Models::CardPurchaseSupplementListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::card_purchase_supplement_list_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ?card_payment_id: String,
+        ?created_at: Increase::Models::CardPurchaseSupplementListParams::CreatedAt,
+        ?cursor: String,
+        ?limit: Integer,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::card_purchase_supplement_list_params
 
@@ -66,17 +61,12 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize:
-          (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
-          ) -> void
-          | (
-            ?Increase::Models::CardPurchaseSupplementListParams::created_at
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?after: Time,
+          ?before: Time,
+          ?on_or_after: Time,
+          ?on_or_before: Time
+        ) -> void
 
         def to_hash: -> Increase::Models::CardPurchaseSupplementListParams::created_at
       end

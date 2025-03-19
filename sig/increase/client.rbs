@@ -126,14 +126,14 @@ module Increase
     private def auth_headers: -> ::Hash[String, String]
 
     def initialize: (
-      environment: :production | :sandbox | nil,
-      base_url: String?,
-      api_key: String?,
-      max_retries: Integer,
-      timeout: Float,
-      initial_retry_delay: Float,
-      max_retry_delay: Float,
-      idempotency_header: String
+      ?environment: :production | :sandbox | nil,
+      ?base_url: String?,
+      ?api_key: String?,
+      ?max_retries: Integer,
+      ?timeout: Float,
+      ?initial_retry_delay: Float,
+      ?max_retry_delay: Float,
+      ?idempotency_header: String
     ) -> void
   end
 end

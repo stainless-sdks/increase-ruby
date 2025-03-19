@@ -1,43 +1,28 @@
 module Increase
   module Resources
     class CheckDeposits
-      def create:
-        (
-          Increase::Models::CheckDepositCreateParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::CheckDeposit
-        | (
-          account_id: String,
-          amount: Integer,
-          back_image_file_id: String,
-          front_image_file_id: String,
-          description: String,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::CheckDeposit
+      def create: (
+        account_id: String,
+        amount: Integer,
+        back_image_file_id: String,
+        front_image_file_id: String,
+        ?description: String,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Models::CheckDeposit
 
-      def retrieve:
-        (
-          String check_deposit_id,
-          ?Increase::Models::CheckDepositRetrieveParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::CheckDeposit
-        | (
-          String check_deposit_id,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::CheckDeposit
+      def retrieve: (
+        String check_deposit_id,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Models::CheckDeposit
 
-      def list:
-        (
-          ?Increase::Models::CheckDepositListParams | ::Hash[Symbol, top] params
-        ) -> Increase::Page[Increase::Models::CheckDeposit]
-        | (
-          account_id: String,
-          created_at: Increase::Models::CheckDepositListParams::CreatedAt,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          request_options: Increase::request_opts
-        ) -> Increase::Page[Increase::Models::CheckDeposit]
+      def list: (
+        ?account_id: String,
+        ?created_at: Increase::Models::CheckDepositListParams::CreatedAt,
+        ?cursor: String,
+        ?idempotency_key: String,
+        ?limit: Integer,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Page[Increase::Models::CheckDeposit]
 
       def initialize: (client: Increase::Client) -> void
     end

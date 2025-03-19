@@ -2,17 +2,11 @@ module Increase
   module Resources
     class Simulations
       class PhysicalCards
-        def advance_shipment:
-          (
-            String physical_card_id,
-            Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams
-            | ::Hash[Symbol, top] params
-          ) -> Increase::Models::PhysicalCard
-          | (
-            String physical_card_id,
-            shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status,
-            request_options: Increase::request_opts
-          ) -> Increase::Models::PhysicalCard
+        def advance_shipment: (
+          String physical_card_id,
+          shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status,
+          ?request_options: Increase::request_opts
+        ) -> Increase::Models::PhysicalCard
 
         def initialize: (client: Increase::Client) -> void
       end

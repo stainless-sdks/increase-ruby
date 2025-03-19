@@ -63,25 +63,20 @@ module Increase
           Increase::Models::Simulations::InboundACHTransferCreateParams::standard_entry_class_code
         ) -> Increase::Models::Simulations::InboundACHTransferCreateParams::standard_entry_class_code
 
-        def initialize:
-          (
-            account_number_id: String,
-            amount: Integer,
-            company_descriptive_date: String,
-            company_discretionary_data: String,
-            company_entry_description: String,
-            company_id: String,
-            company_name: String,
-            receiver_id_number: String,
-            receiver_name: String,
-            resolve_at: Time,
-            standard_entry_class_code: Increase::Models::Simulations::InboundACHTransferCreateParams::standard_entry_class_code,
-            request_options: Increase::request_opts
-          ) -> void
-          | (
-            ?Increase::Models::Simulations::inbound_ach_transfer_create_params
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          account_number_id: String,
+          amount: Integer,
+          ?company_descriptive_date: String,
+          ?company_discretionary_data: String,
+          ?company_entry_description: String,
+          ?company_id: String,
+          ?company_name: String,
+          ?receiver_id_number: String,
+          ?receiver_name: String,
+          ?resolve_at: Time,
+          ?standard_entry_class_code: Increase::Models::Simulations::InboundACHTransferCreateParams::standard_entry_class_code,
+          ?request_options: Increase::request_opts
+        ) -> void
 
         def to_hash: -> Increase::Models::Simulations::inbound_ach_transfer_create_params
 

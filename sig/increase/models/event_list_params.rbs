@@ -38,18 +38,14 @@ module Increase
 
       def limit=: (Integer) -> Integer
 
-      def initialize:
-        (
-          associated_object_id: String,
-          category: Increase::Models::EventListParams::Category,
-          created_at: Increase::Models::EventListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::event_list_params | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ?associated_object_id: String,
+        ?category: Increase::Models::EventListParams::Category,
+        ?created_at: Increase::Models::EventListParams::CreatedAt,
+        ?cursor: String,
+        ?limit: Integer,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::event_list_params
 
@@ -63,14 +59,9 @@ module Increase
           ::Array[Increase::Models::EventListParams::Category::in_]
         ) -> ::Array[Increase::Models::EventListParams::Category::in_]
 
-        def initialize:
-          (
-            in_: ::Array[Increase::Models::EventListParams::Category::in_]
-          ) -> void
-          | (
-            ?Increase::Models::EventListParams::category
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?in_: ::Array[Increase::Models::EventListParams::Category::in_]
+        ) -> void
 
         def to_hash: -> Increase::Models::EventListParams::category
 
@@ -453,17 +444,12 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize:
-          (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
-          ) -> void
-          | (
-            ?Increase::Models::EventListParams::created_at
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?after: Time,
+          ?before: Time,
+          ?on_or_after: Time,
+          ?on_or_before: Time
+        ) -> void
 
         def to_hash: -> Increase::Models::EventListParams::created_at
       end

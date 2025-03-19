@@ -38,18 +38,14 @@ module Increase
         Increase::Models::FileListParams::Purpose
       ) -> Increase::Models::FileListParams::Purpose
 
-      def initialize:
-        (
-          created_at: Increase::Models::FileListParams::CreatedAt,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          purpose: Increase::Models::FileListParams::Purpose,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::file_list_params | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ?created_at: Increase::Models::FileListParams::CreatedAt,
+        ?cursor: String,
+        ?idempotency_key: String,
+        ?limit: Integer,
+        ?purpose: Increase::Models::FileListParams::Purpose,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::file_list_params
 
@@ -73,17 +69,12 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize:
-          (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
-          ) -> void
-          | (
-            ?Increase::Models::FileListParams::created_at
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?after: Time,
+          ?before: Time,
+          ?on_or_after: Time,
+          ?on_or_before: Time
+        ) -> void
 
         def to_hash: -> Increase::Models::FileListParams::created_at
       end
@@ -98,12 +89,9 @@ module Increase
           ::Array[Increase::Models::FileListParams::Purpose::in_]
         ) -> ::Array[Increase::Models::FileListParams::Purpose::in_]
 
-        def initialize:
-          (in_: ::Array[Increase::Models::FileListParams::Purpose::in_]) -> void
-          | (
-            ?Increase::Models::FileListParams::purpose
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?in_: ::Array[Increase::Models::FileListParams::Purpose::in_]
+        ) -> void
 
         def to_hash: -> Increase::Models::FileListParams::purpose
 

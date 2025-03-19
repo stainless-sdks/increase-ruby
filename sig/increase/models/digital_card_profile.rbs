@@ -47,26 +47,22 @@ module Increase
 
       attr_accessor type: Increase::Models::DigitalCardProfile::type_
 
-      def initialize:
-        (
-          id: String,
-          app_icon_file_id: String,
-          background_image_file_id: String,
-          card_description: String,
-          contact_email: String?,
-          contact_phone: String?,
-          contact_website: String?,
-          created_at: Time,
-          description: String,
-          idempotency_key: String?,
-          issuer_name: String,
-          status: Increase::Models::DigitalCardProfile::status,
-          text_color: Increase::Models::DigitalCardProfile::TextColor,
-          type: Increase::Models::DigitalCardProfile::type_
-        ) -> void
-        | (
-          ?Increase::Models::digital_card_profile | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        id: String,
+        app_icon_file_id: String,
+        background_image_file_id: String,
+        card_description: String,
+        contact_email: String?,
+        contact_phone: String?,
+        contact_website: String?,
+        created_at: Time,
+        description: String,
+        idempotency_key: String?,
+        issuer_name: String,
+        status: Increase::Models::DigitalCardProfile::status,
+        text_color: Increase::Models::DigitalCardProfile::TextColor,
+        type: Increase::Models::DigitalCardProfile::type_
+      ) -> void
 
       def to_hash: -> Increase::Models::digital_card_profile
 
@@ -97,12 +93,7 @@ module Increase
 
         attr_accessor red: Integer
 
-        def initialize:
-          (blue: Integer, green: Integer, red: Integer) -> void
-          | (
-            ?Increase::Models::DigitalCardProfile::text_color
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (blue: Integer, green: Integer, red: Integer) -> void
 
         def to_hash: -> Increase::Models::DigitalCardProfile::text_color
       end

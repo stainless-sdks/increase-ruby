@@ -66,22 +66,18 @@ module Increase
         Increase::Models::EntityCreateParams::Trust
       ) -> Increase::Models::EntityCreateParams::Trust
 
-      def initialize:
-        (
-          structure: Increase::Models::EntityCreateParams::structure,
-          corporation: Increase::Models::EntityCreateParams::Corporation,
-          description: String,
-          government_authority: Increase::Models::EntityCreateParams::GovernmentAuthority,
-          joint: Increase::Models::EntityCreateParams::Joint,
-          natural_person: Increase::Models::EntityCreateParams::NaturalPerson,
-          supplemental_documents: ::Array[Increase::Models::EntityCreateParams::SupplementalDocument],
-          third_party_verification: Increase::Models::EntityCreateParams::ThirdPartyVerification,
-          trust: Increase::Models::EntityCreateParams::Trust,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::entity_create_params | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        structure: Increase::Models::EntityCreateParams::structure,
+        ?corporation: Increase::Models::EntityCreateParams::Corporation,
+        ?description: String,
+        ?government_authority: Increase::Models::EntityCreateParams::GovernmentAuthority,
+        ?joint: Increase::Models::EntityCreateParams::Joint,
+        ?natural_person: Increase::Models::EntityCreateParams::NaturalPerson,
+        ?supplemental_documents: ::Array[Increase::Models::EntityCreateParams::SupplementalDocument],
+        ?third_party_verification: Increase::Models::EntityCreateParams::ThirdPartyVerification,
+        ?trust: Increase::Models::EntityCreateParams::Trust,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::entity_create_params
 
@@ -139,20 +135,15 @@ module Increase
 
         def website=: (String) -> String
 
-        def initialize:
-          (
-            address: Increase::Models::EntityCreateParams::Corporation::Address,
-            beneficial_owners: ::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner],
-            name: String,
-            tax_identifier: String,
-            incorporation_state: String,
-            industry_code: String,
-            website: String
-          ) -> void
-          | (
-            ?Increase::Models::EntityCreateParams::corporation
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          address: Increase::Models::EntityCreateParams::Corporation::Address,
+          beneficial_owners: ::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner],
+          name: String,
+          tax_identifier: String,
+          ?incorporation_state: String,
+          ?industry_code: String,
+          ?website: String
+        ) -> void
 
         def to_hash: -> Increase::Models::EntityCreateParams::corporation
 
@@ -178,18 +169,13 @@ module Increase
 
           def line2=: (String) -> String
 
-          def initialize:
-            (
-              city: String,
-              line1: String,
-              state: String,
-              zip: String,
-              line2: String
-            ) -> void
-            | (
-              ?Increase::Models::EntityCreateParams::Corporation::address
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            city: String,
+            line1: String,
+            state: String,
+            zip: String,
+            ?line2: String
+          ) -> void
 
           def to_hash: -> Increase::Models::EntityCreateParams::Corporation::address
         end
@@ -210,16 +196,11 @@ module Increase
 
           def company_title=: (String) -> String
 
-          def initialize:
-            (
-              individual: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual,
-              prongs: ::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::prong],
-              company_title: String
-            ) -> void
-            | (
-              ?Increase::Models::EntityCreateParams::Corporation::beneficial_owner
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            individual: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual,
+            prongs: ::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::prong],
+            ?company_title: String
+          ) -> void
 
           def to_hash: -> Increase::Models::EntityCreateParams::Corporation::beneficial_owner
 
@@ -245,18 +226,13 @@ module Increase
 
             def confirmed_no_us_tax_id=: (bool) -> bool
 
-            def initialize:
-              (
-                address: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address,
-                date_of_birth: Date,
-                identification: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification,
-                name: String,
-                confirmed_no_us_tax_id: bool
-              ) -> void
-              | (
-                ?Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::individual
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              address: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address,
+              date_of_birth: Date,
+              identification: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification,
+              name: String,
+              ?confirmed_no_us_tax_id: bool
+            ) -> void
 
             def to_hash: -> Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::individual
 
@@ -282,18 +258,13 @@ module Increase
 
               def line2=: (String) -> String
 
-              def initialize:
-                (
-                  city: String,
-                  line1: String,
-                  state: String,
-                  zip: String,
-                  line2: String
-                ) -> void
-                | (
-                  ?Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::address
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (
+                city: String,
+                line1: String,
+                state: String,
+                zip: String,
+                ?line2: String
+              ) -> void
 
               def to_hash: -> Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::address
             end
@@ -330,18 +301,13 @@ module Increase
                 Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport
               ) -> Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport
 
-              def initialize:
-                (
-                  method_: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::method_,
-                  number: String,
-                  drivers_license: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense,
-                  other: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other,
-                  passport: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport
-                ) -> void
-                | (
-                  ?Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::identification
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (
+                method_: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::method_,
+                number: String,
+                ?drivers_license: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense,
+                ?other: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other,
+                ?passport: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport
+              ) -> void
 
               def to_hash: -> Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::identification
 
@@ -390,17 +356,12 @@ module Increase
 
                 def back_file_id=: (String) -> String
 
-                def initialize:
-                  (
-                    expiration_date: Date,
-                    file_id: String,
-                    state: String,
-                    back_file_id: String
-                  ) -> void
-                  | (
-                    ?Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::drivers_license
-                    | Increase::BaseModel data
-                  ) -> void
+                def initialize: (
+                  expiration_date: Date,
+                  file_id: String,
+                  state: String,
+                  ?back_file_id: String
+                ) -> void
 
                 def to_hash: -> Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::drivers_license
               end
@@ -429,18 +390,13 @@ module Increase
 
                 def expiration_date=: (Date) -> Date
 
-                def initialize:
-                  (
-                    country: String,
-                    description: String,
-                    file_id: String,
-                    back_file_id: String,
-                    expiration_date: Date
-                  ) -> void
-                  | (
-                    ?Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::other
-                    | Increase::BaseModel data
-                  ) -> void
+                def initialize: (
+                  country: String,
+                  description: String,
+                  file_id: String,
+                  ?back_file_id: String,
+                  ?expiration_date: Date
+                ) -> void
 
                 def to_hash: -> Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::other
               end
@@ -455,16 +411,11 @@ module Increase
 
                 attr_accessor file_id: String
 
-                def initialize:
-                  (
-                    country: String,
-                    expiration_date: Date,
-                    file_id: String
-                  ) -> void
-                  | (
-                    ?Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::passport
-                    | Increase::BaseModel data
-                  ) -> void
+                def initialize: (
+                  country: String,
+                  expiration_date: Date,
+                  file_id: String
+                ) -> void
 
                 def to_hash: -> Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::passport
               end
@@ -510,19 +461,14 @@ module Increase
 
         def website=: (String) -> String
 
-        def initialize:
-          (
-            address: Increase::Models::EntityCreateParams::GovernmentAuthority::Address,
-            authorized_persons: ::Array[Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson],
-            category: Increase::Models::EntityCreateParams::GovernmentAuthority::category,
-            name: String,
-            tax_identifier: String,
-            website: String
-          ) -> void
-          | (
-            ?Increase::Models::EntityCreateParams::government_authority
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          address: Increase::Models::EntityCreateParams::GovernmentAuthority::Address,
+          authorized_persons: ::Array[Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson],
+          category: Increase::Models::EntityCreateParams::GovernmentAuthority::category,
+          name: String,
+          tax_identifier: String,
+          ?website: String
+        ) -> void
 
         def to_hash: -> Increase::Models::EntityCreateParams::government_authority
 
@@ -548,18 +494,13 @@ module Increase
 
           def line2=: (String) -> String
 
-          def initialize:
-            (
-              city: String,
-              line1: String,
-              state: String,
-              zip: String,
-              line2: String
-            ) -> void
-            | (
-              ?Increase::Models::EntityCreateParams::GovernmentAuthority::address
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            city: String,
+            line1: String,
+            state: String,
+            zip: String,
+            ?line2: String
+          ) -> void
 
           def to_hash: -> Increase::Models::EntityCreateParams::GovernmentAuthority::address
         end
@@ -569,12 +510,7 @@ module Increase
         class AuthorizedPerson < Increase::BaseModel
           attr_accessor name: String
 
-          def initialize:
-            (name: String) -> void
-            | (
-              ?Increase::Models::EntityCreateParams::GovernmentAuthority::authorized_person
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (name: String) -> void
 
           def to_hash: -> Increase::Models::EntityCreateParams::GovernmentAuthority::authorized_person
         end
@@ -602,15 +538,10 @@ module Increase
 
         def name=: (String) -> String
 
-        def initialize:
-          (
-            individuals: ::Array[Increase::Models::EntityCreateParams::Joint::Individual],
-            name: String
-          ) -> void
-          | (
-            ?Increase::Models::EntityCreateParams::joint
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          individuals: ::Array[Increase::Models::EntityCreateParams::Joint::Individual],
+          ?name: String
+        ) -> void
 
         def to_hash: -> Increase::Models::EntityCreateParams::joint
 
@@ -636,18 +567,13 @@ module Increase
 
           def confirmed_no_us_tax_id=: (bool) -> bool
 
-          def initialize:
-            (
-              address: Increase::Models::EntityCreateParams::Joint::Individual::Address,
-              date_of_birth: Date,
-              identification: Increase::Models::EntityCreateParams::Joint::Individual::Identification,
-              name: String,
-              confirmed_no_us_tax_id: bool
-            ) -> void
-            | (
-              ?Increase::Models::EntityCreateParams::Joint::individual
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            address: Increase::Models::EntityCreateParams::Joint::Individual::Address,
+            date_of_birth: Date,
+            identification: Increase::Models::EntityCreateParams::Joint::Individual::Identification,
+            name: String,
+            ?confirmed_no_us_tax_id: bool
+          ) -> void
 
           def to_hash: -> Increase::Models::EntityCreateParams::Joint::individual
 
@@ -673,18 +599,13 @@ module Increase
 
             def line2=: (String) -> String
 
-            def initialize:
-              (
-                city: String,
-                line1: String,
-                state: String,
-                zip: String,
-                line2: String
-              ) -> void
-              | (
-                ?Increase::Models::EntityCreateParams::Joint::Individual::address
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              city: String,
+              line1: String,
+              state: String,
+              zip: String,
+              ?line2: String
+            ) -> void
 
             def to_hash: -> Increase::Models::EntityCreateParams::Joint::Individual::address
           end
@@ -721,18 +642,13 @@ module Increase
               Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport
             ) -> Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport
 
-            def initialize:
-              (
-                method_: Increase::Models::EntityCreateParams::Joint::Individual::Identification::method_,
-                number: String,
-                drivers_license: Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense,
-                other: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other,
-                passport: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport
-              ) -> void
-              | (
-                ?Increase::Models::EntityCreateParams::Joint::Individual::identification
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              method_: Increase::Models::EntityCreateParams::Joint::Individual::Identification::method_,
+              number: String,
+              ?drivers_license: Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense,
+              ?other: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other,
+              ?passport: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport
+            ) -> void
 
             def to_hash: -> Increase::Models::EntityCreateParams::Joint::Individual::identification
 
@@ -781,17 +697,12 @@ module Increase
 
               def back_file_id=: (String) -> String
 
-              def initialize:
-                (
-                  expiration_date: Date,
-                  file_id: String,
-                  state: String,
-                  back_file_id: String
-                ) -> void
-                | (
-                  ?Increase::Models::EntityCreateParams::Joint::Individual::Identification::drivers_license
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (
+                expiration_date: Date,
+                file_id: String,
+                state: String,
+                ?back_file_id: String
+              ) -> void
 
               def to_hash: -> Increase::Models::EntityCreateParams::Joint::Individual::Identification::drivers_license
             end
@@ -820,18 +731,13 @@ module Increase
 
               def expiration_date=: (Date) -> Date
 
-              def initialize:
-                (
-                  country: String,
-                  description: String,
-                  file_id: String,
-                  back_file_id: String,
-                  expiration_date: Date
-                ) -> void
-                | (
-                  ?Increase::Models::EntityCreateParams::Joint::Individual::Identification::other
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (
+                country: String,
+                description: String,
+                file_id: String,
+                ?back_file_id: String,
+                ?expiration_date: Date
+              ) -> void
 
               def to_hash: -> Increase::Models::EntityCreateParams::Joint::Individual::Identification::other
             end
@@ -846,16 +752,11 @@ module Increase
 
               attr_accessor file_id: String
 
-              def initialize:
-                (
-                  country: String,
-                  expiration_date: Date,
-                  file_id: String
-                ) -> void
-                | (
-                  ?Increase::Models::EntityCreateParams::Joint::Individual::Identification::passport
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (
+                country: String,
+                expiration_date: Date,
+                file_id: String
+              ) -> void
 
               def to_hash: -> Increase::Models::EntityCreateParams::Joint::Individual::Identification::passport
             end
@@ -885,18 +786,13 @@ module Increase
 
         def confirmed_no_us_tax_id=: (bool) -> bool
 
-        def initialize:
-          (
-            address: Increase::Models::EntityCreateParams::NaturalPerson::Address,
-            date_of_birth: Date,
-            identification: Increase::Models::EntityCreateParams::NaturalPerson::Identification,
-            name: String,
-            confirmed_no_us_tax_id: bool
-          ) -> void
-          | (
-            ?Increase::Models::EntityCreateParams::natural_person
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          address: Increase::Models::EntityCreateParams::NaturalPerson::Address,
+          date_of_birth: Date,
+          identification: Increase::Models::EntityCreateParams::NaturalPerson::Identification,
+          name: String,
+          ?confirmed_no_us_tax_id: bool
+        ) -> void
 
         def to_hash: -> Increase::Models::EntityCreateParams::natural_person
 
@@ -922,18 +818,13 @@ module Increase
 
           def line2=: (String) -> String
 
-          def initialize:
-            (
-              city: String,
-              line1: String,
-              state: String,
-              zip: String,
-              line2: String
-            ) -> void
-            | (
-              ?Increase::Models::EntityCreateParams::NaturalPerson::address
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            city: String,
+            line1: String,
+            state: String,
+            zip: String,
+            ?line2: String
+          ) -> void
 
           def to_hash: -> Increase::Models::EntityCreateParams::NaturalPerson::address
         end
@@ -970,18 +861,13 @@ module Increase
             Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport
           ) -> Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport
 
-          def initialize:
-            (
-              method_: Increase::Models::EntityCreateParams::NaturalPerson::Identification::method_,
-              number: String,
-              drivers_license: Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense,
-              other: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other,
-              passport: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport
-            ) -> void
-            | (
-              ?Increase::Models::EntityCreateParams::NaturalPerson::identification
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            method_: Increase::Models::EntityCreateParams::NaturalPerson::Identification::method_,
+            number: String,
+            ?drivers_license: Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense,
+            ?other: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other,
+            ?passport: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport
+          ) -> void
 
           def to_hash: -> Increase::Models::EntityCreateParams::NaturalPerson::identification
 
@@ -1030,17 +916,12 @@ module Increase
 
             def back_file_id=: (String) -> String
 
-            def initialize:
-              (
-                expiration_date: Date,
-                file_id: String,
-                state: String,
-                back_file_id: String
-              ) -> void
-              | (
-                ?Increase::Models::EntityCreateParams::NaturalPerson::Identification::drivers_license
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              expiration_date: Date,
+              file_id: String,
+              state: String,
+              ?back_file_id: String
+            ) -> void
 
             def to_hash: -> Increase::Models::EntityCreateParams::NaturalPerson::Identification::drivers_license
           end
@@ -1069,18 +950,13 @@ module Increase
 
             def expiration_date=: (Date) -> Date
 
-            def initialize:
-              (
-                country: String,
-                description: String,
-                file_id: String,
-                back_file_id: String,
-                expiration_date: Date
-              ) -> void
-              | (
-                ?Increase::Models::EntityCreateParams::NaturalPerson::Identification::other
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              country: String,
+              description: String,
+              file_id: String,
+              ?back_file_id: String,
+              ?expiration_date: Date
+            ) -> void
 
             def to_hash: -> Increase::Models::EntityCreateParams::NaturalPerson::Identification::other
           end
@@ -1095,12 +971,11 @@ module Increase
 
             attr_accessor file_id: String
 
-            def initialize:
-              (country: String, expiration_date: Date, file_id: String) -> void
-              | (
-                ?Increase::Models::EntityCreateParams::NaturalPerson::Identification::passport
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              country: String,
+              expiration_date: Date,
+              file_id: String
+            ) -> void
 
             def to_hash: -> Increase::Models::EntityCreateParams::NaturalPerson::Identification::passport
           end
@@ -1112,12 +987,7 @@ module Increase
       class SupplementalDocument < Increase::BaseModel
         attr_accessor file_id: String
 
-        def initialize:
-          (file_id: String) -> void
-          | (
-            ?Increase::Models::EntityCreateParams::supplemental_document
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (file_id: String) -> void
 
         def to_hash: -> Increase::Models::EntityCreateParams::supplemental_document
       end
@@ -1133,15 +1003,10 @@ module Increase
 
         attr_accessor vendor: Increase::Models::EntityCreateParams::ThirdPartyVerification::vendor
 
-        def initialize:
-          (
-            reference: String,
-            vendor: Increase::Models::EntityCreateParams::ThirdPartyVerification::vendor
-          ) -> void
-          | (
-            ?Increase::Models::EntityCreateParams::third_party_verification
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          reference: String,
+          vendor: Increase::Models::EntityCreateParams::ThirdPartyVerification::vendor
+        ) -> void
 
         def to_hash: -> Increase::Models::EntityCreateParams::third_party_verification
 
@@ -1197,21 +1062,16 @@ module Increase
 
         def tax_identifier=: (String) -> String
 
-        def initialize:
-          (
-            address: Increase::Models::EntityCreateParams::Trust::Address,
-            category: Increase::Models::EntityCreateParams::Trust::category,
-            name: String,
-            trustees: ::Array[Increase::Models::EntityCreateParams::Trust::Trustee],
-            formation_document_file_id: String,
-            formation_state: String,
-            grantor: Increase::Models::EntityCreateParams::Trust::Grantor,
-            tax_identifier: String
-          ) -> void
-          | (
-            ?Increase::Models::EntityCreateParams::trust
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          address: Increase::Models::EntityCreateParams::Trust::Address,
+          category: Increase::Models::EntityCreateParams::Trust::category,
+          name: String,
+          trustees: ::Array[Increase::Models::EntityCreateParams::Trust::Trustee],
+          ?formation_document_file_id: String,
+          ?formation_state: String,
+          ?grantor: Increase::Models::EntityCreateParams::Trust::Grantor,
+          ?tax_identifier: String
+        ) -> void
 
         def to_hash: -> Increase::Models::EntityCreateParams::trust
 
@@ -1237,18 +1097,13 @@ module Increase
 
           def line2=: (String) -> String
 
-          def initialize:
-            (
-              city: String,
-              line1: String,
-              state: String,
-              zip: String,
-              line2: String
-            ) -> void
-            | (
-              ?Increase::Models::EntityCreateParams::Trust::address
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            city: String,
+            line1: String,
+            state: String,
+            zip: String,
+            ?line2: String
+          ) -> void
 
           def to_hash: -> Increase::Models::EntityCreateParams::Trust::address
         end
@@ -1280,15 +1135,10 @@ module Increase
             Increase::Models::EntityCreateParams::Trust::Trustee::Individual
           ) -> Increase::Models::EntityCreateParams::Trust::Trustee::Individual
 
-          def initialize:
-            (
-              structure: Increase::Models::EntityCreateParams::Trust::Trustee::structure,
-              individual: Increase::Models::EntityCreateParams::Trust::Trustee::Individual
-            ) -> void
-            | (
-              ?Increase::Models::EntityCreateParams::Trust::trustee
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            structure: Increase::Models::EntityCreateParams::Trust::Trustee::structure,
+            ?individual: Increase::Models::EntityCreateParams::Trust::Trustee::Individual
+          ) -> void
 
           def to_hash: -> Increase::Models::EntityCreateParams::Trust::trustee
 
@@ -1323,18 +1173,13 @@ module Increase
 
             def confirmed_no_us_tax_id=: (bool) -> bool
 
-            def initialize:
-              (
-                address: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address,
-                date_of_birth: Date,
-                identification: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification,
-                name: String,
-                confirmed_no_us_tax_id: bool
-              ) -> void
-              | (
-                ?Increase::Models::EntityCreateParams::Trust::Trustee::individual
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              address: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address,
+              date_of_birth: Date,
+              identification: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification,
+              name: String,
+              ?confirmed_no_us_tax_id: bool
+            ) -> void
 
             def to_hash: -> Increase::Models::EntityCreateParams::Trust::Trustee::individual
 
@@ -1360,18 +1205,13 @@ module Increase
 
               def line2=: (String) -> String
 
-              def initialize:
-                (
-                  city: String,
-                  line1: String,
-                  state: String,
-                  zip: String,
-                  line2: String
-                ) -> void
-                | (
-                  ?Increase::Models::EntityCreateParams::Trust::Trustee::Individual::address
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (
+                city: String,
+                line1: String,
+                state: String,
+                zip: String,
+                ?line2: String
+              ) -> void
 
               def to_hash: -> Increase::Models::EntityCreateParams::Trust::Trustee::Individual::address
             end
@@ -1408,18 +1248,13 @@ module Increase
                 Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport
               ) -> Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport
 
-              def initialize:
-                (
-                  method_: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::method_,
-                  number: String,
-                  drivers_license: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense,
-                  other: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other,
-                  passport: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport
-                ) -> void
-                | (
-                  ?Increase::Models::EntityCreateParams::Trust::Trustee::Individual::identification
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (
+                method_: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::method_,
+                number: String,
+                ?drivers_license: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense,
+                ?other: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other,
+                ?passport: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport
+              ) -> void
 
               def to_hash: -> Increase::Models::EntityCreateParams::Trust::Trustee::Individual::identification
 
@@ -1468,17 +1303,12 @@ module Increase
 
                 def back_file_id=: (String) -> String
 
-                def initialize:
-                  (
-                    expiration_date: Date,
-                    file_id: String,
-                    state: String,
-                    back_file_id: String
-                  ) -> void
-                  | (
-                    ?Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::drivers_license
-                    | Increase::BaseModel data
-                  ) -> void
+                def initialize: (
+                  expiration_date: Date,
+                  file_id: String,
+                  state: String,
+                  ?back_file_id: String
+                ) -> void
 
                 def to_hash: -> Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::drivers_license
               end
@@ -1507,18 +1337,13 @@ module Increase
 
                 def expiration_date=: (Date) -> Date
 
-                def initialize:
-                  (
-                    country: String,
-                    description: String,
-                    file_id: String,
-                    back_file_id: String,
-                    expiration_date: Date
-                  ) -> void
-                  | (
-                    ?Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::other
-                    | Increase::BaseModel data
-                  ) -> void
+                def initialize: (
+                  country: String,
+                  description: String,
+                  file_id: String,
+                  ?back_file_id: String,
+                  ?expiration_date: Date
+                ) -> void
 
                 def to_hash: -> Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::other
               end
@@ -1533,16 +1358,11 @@ module Increase
 
                 attr_accessor file_id: String
 
-                def initialize:
-                  (
-                    country: String,
-                    expiration_date: Date,
-                    file_id: String
-                  ) -> void
-                  | (
-                    ?Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::passport
-                    | Increase::BaseModel data
-                  ) -> void
+                def initialize: (
+                  country: String,
+                  expiration_date: Date,
+                  file_id: String
+                ) -> void
 
                 def to_hash: -> Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::passport
               end
@@ -1572,18 +1392,13 @@ module Increase
 
           def confirmed_no_us_tax_id=: (bool) -> bool
 
-          def initialize:
-            (
-              address: Increase::Models::EntityCreateParams::Trust::Grantor::Address,
-              date_of_birth: Date,
-              identification: Increase::Models::EntityCreateParams::Trust::Grantor::Identification,
-              name: String,
-              confirmed_no_us_tax_id: bool
-            ) -> void
-            | (
-              ?Increase::Models::EntityCreateParams::Trust::grantor
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            address: Increase::Models::EntityCreateParams::Trust::Grantor::Address,
+            date_of_birth: Date,
+            identification: Increase::Models::EntityCreateParams::Trust::Grantor::Identification,
+            name: String,
+            ?confirmed_no_us_tax_id: bool
+          ) -> void
 
           def to_hash: -> Increase::Models::EntityCreateParams::Trust::grantor
 
@@ -1609,18 +1424,13 @@ module Increase
 
             def line2=: (String) -> String
 
-            def initialize:
-              (
-                city: String,
-                line1: String,
-                state: String,
-                zip: String,
-                line2: String
-              ) -> void
-              | (
-                ?Increase::Models::EntityCreateParams::Trust::Grantor::address
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              city: String,
+              line1: String,
+              state: String,
+              zip: String,
+              ?line2: String
+            ) -> void
 
             def to_hash: -> Increase::Models::EntityCreateParams::Trust::Grantor::address
           end
@@ -1657,18 +1467,13 @@ module Increase
               Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport
             ) -> Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport
 
-            def initialize:
-              (
-                method_: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::method_,
-                number: String,
-                drivers_license: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense,
-                other: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other,
-                passport: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport
-              ) -> void
-              | (
-                ?Increase::Models::EntityCreateParams::Trust::Grantor::identification
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              method_: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::method_,
+              number: String,
+              ?drivers_license: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense,
+              ?other: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other,
+              ?passport: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport
+            ) -> void
 
             def to_hash: -> Increase::Models::EntityCreateParams::Trust::Grantor::identification
 
@@ -1717,17 +1522,12 @@ module Increase
 
               def back_file_id=: (String) -> String
 
-              def initialize:
-                (
-                  expiration_date: Date,
-                  file_id: String,
-                  state: String,
-                  back_file_id: String
-                ) -> void
-                | (
-                  ?Increase::Models::EntityCreateParams::Trust::Grantor::Identification::drivers_license
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (
+                expiration_date: Date,
+                file_id: String,
+                state: String,
+                ?back_file_id: String
+              ) -> void
 
               def to_hash: -> Increase::Models::EntityCreateParams::Trust::Grantor::Identification::drivers_license
             end
@@ -1756,18 +1556,13 @@ module Increase
 
               def expiration_date=: (Date) -> Date
 
-              def initialize:
-                (
-                  country: String,
-                  description: String,
-                  file_id: String,
-                  back_file_id: String,
-                  expiration_date: Date
-                ) -> void
-                | (
-                  ?Increase::Models::EntityCreateParams::Trust::Grantor::Identification::other
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (
+                country: String,
+                description: String,
+                file_id: String,
+                ?back_file_id: String,
+                ?expiration_date: Date
+              ) -> void
 
               def to_hash: -> Increase::Models::EntityCreateParams::Trust::Grantor::Identification::other
             end
@@ -1782,16 +1577,11 @@ module Increase
 
               attr_accessor file_id: String
 
-              def initialize:
-                (
-                  country: String,
-                  expiration_date: Date,
-                  file_id: String
-                ) -> void
-                | (
-                  ?Increase::Models::EntityCreateParams::Trust::Grantor::Identification::passport
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (
+                country: String,
+                expiration_date: Date,
+                file_id: String
+              ) -> void
 
               def to_hash: -> Increase::Models::EntityCreateParams::Trust::Grantor::Identification::passport
             end

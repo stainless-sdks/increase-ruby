@@ -32,19 +32,14 @@ module Increase
         Increase::Models::ExternalAccountCreateParams::funding
       ) -> Increase::Models::ExternalAccountCreateParams::funding
 
-      def initialize:
-        (
-          account_number: String,
-          description: String,
-          routing_number: String,
-          account_holder: Increase::Models::ExternalAccountCreateParams::account_holder,
-          funding: Increase::Models::ExternalAccountCreateParams::funding,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::external_account_create_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        account_number: String,
+        description: String,
+        routing_number: String,
+        ?account_holder: Increase::Models::ExternalAccountCreateParams::account_holder,
+        ?funding: Increase::Models::ExternalAccountCreateParams::funding,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::external_account_create_params
 

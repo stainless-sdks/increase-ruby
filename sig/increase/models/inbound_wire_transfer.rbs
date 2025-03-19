@@ -80,37 +80,33 @@ module Increase
 
       attr_accessor type: Increase::Models::InboundWireTransfer::type_
 
-      def initialize:
-        (
-          id: String,
-          account_id: String,
-          account_number_id: String,
-          amount: Integer,
-          beneficiary_address_line1: String?,
-          beneficiary_address_line2: String?,
-          beneficiary_address_line3: String?,
-          beneficiary_name: String?,
-          beneficiary_reference: String?,
-          created_at: Time,
-          description: String,
-          input_message_accountability_data: String?,
-          originator_address_line1: String?,
-          originator_address_line2: String?,
-          originator_address_line3: String?,
-          originator_name: String?,
-          originator_routing_number: String?,
-          originator_to_beneficiary_information: String?,
-          originator_to_beneficiary_information_line1: String?,
-          originator_to_beneficiary_information_line2: String?,
-          originator_to_beneficiary_information_line3: String?,
-          originator_to_beneficiary_information_line4: String?,
-          sender_reference: String?,
-          status: Increase::Models::InboundWireTransfer::status,
-          type: Increase::Models::InboundWireTransfer::type_
-        ) -> void
-        | (
-          ?Increase::Models::inbound_wire_transfer | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        id: String,
+        account_id: String,
+        account_number_id: String,
+        amount: Integer,
+        beneficiary_address_line1: String?,
+        beneficiary_address_line2: String?,
+        beneficiary_address_line3: String?,
+        beneficiary_name: String?,
+        beneficiary_reference: String?,
+        created_at: Time,
+        description: String,
+        input_message_accountability_data: String?,
+        originator_address_line1: String?,
+        originator_address_line2: String?,
+        originator_address_line3: String?,
+        originator_name: String?,
+        originator_routing_number: String?,
+        originator_to_beneficiary_information: String?,
+        originator_to_beneficiary_information_line1: String?,
+        originator_to_beneficiary_information_line2: String?,
+        originator_to_beneficiary_information_line3: String?,
+        originator_to_beneficiary_information_line4: String?,
+        sender_reference: String?,
+        status: Increase::Models::InboundWireTransfer::status,
+        type: Increase::Models::InboundWireTransfer::type_
+      ) -> void
 
       def to_hash: -> Increase::Models::inbound_wire_transfer
 

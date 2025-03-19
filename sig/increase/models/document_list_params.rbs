@@ -38,18 +38,14 @@ module Increase
 
       def limit=: (Integer) -> Integer
 
-      def initialize:
-        (
-          category: Increase::Models::DocumentListParams::Category,
-          created_at: Increase::Models::DocumentListParams::CreatedAt,
-          cursor: String,
-          entity_id: String,
-          limit: Integer,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::document_list_params | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ?category: Increase::Models::DocumentListParams::Category,
+        ?created_at: Increase::Models::DocumentListParams::CreatedAt,
+        ?cursor: String,
+        ?entity_id: String,
+        ?limit: Integer,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::document_list_params
 
@@ -63,14 +59,9 @@ module Increase
           ::Array[Increase::Models::DocumentListParams::Category::in_]
         ) -> ::Array[Increase::Models::DocumentListParams::Category::in_]
 
-        def initialize:
-          (
-            in_: ::Array[Increase::Models::DocumentListParams::Category::in_]
-          ) -> void
-          | (
-            ?Increase::Models::DocumentListParams::category
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?in_: ::Array[Increase::Models::DocumentListParams::Category::in_]
+        ) -> void
 
         def to_hash: -> Increase::Models::DocumentListParams::category
 
@@ -117,17 +108,12 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize:
-          (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
-          ) -> void
-          | (
-            ?Increase::Models::DocumentListParams::created_at
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?after: Time,
+          ?before: Time,
+          ?on_or_after: Time,
+          ?on_or_before: Time
+        ) -> void
 
         def to_hash: -> Increase::Models::DocumentListParams::created_at
       end

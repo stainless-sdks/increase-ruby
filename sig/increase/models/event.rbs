@@ -23,16 +23,14 @@ module Increase
 
       attr_accessor type: Increase::Models::Event::type_
 
-      def initialize:
-        (
-          id: String,
-          associated_object_id: String,
-          associated_object_type: String,
-          category: Increase::Models::Event::category,
-          created_at: Time,
-          type: Increase::Models::Event::type_
-        ) -> void
-        | (?Increase::Models::event | Increase::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        associated_object_id: String,
+        associated_object_type: String,
+        category: Increase::Models::Event::category,
+        created_at: Time,
+        type: Increase::Models::Event::type_
+      ) -> void
 
       def to_hash: -> Increase::Models::event
 

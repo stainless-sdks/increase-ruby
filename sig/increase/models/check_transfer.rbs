@@ -74,33 +74,31 @@ module Increase
 
       attr_accessor type: Increase::Models::CheckTransfer::type_
 
-      def initialize:
-        (
-          id: String,
-          account_id: String,
-          account_number: String,
-          amount: Integer,
-          approval: Increase::Models::CheckTransfer::Approval?,
-          approved_inbound_check_deposit_id: String?,
-          cancellation: Increase::Models::CheckTransfer::Cancellation?,
-          check_number: String,
-          created_at: Time,
-          created_by: Increase::Models::CheckTransfer::CreatedBy?,
-          currency: Increase::Models::CheckTransfer::currency,
-          fulfillment_method: Increase::Models::CheckTransfer::fulfillment_method,
-          idempotency_key: String?,
-          mailing: Increase::Models::CheckTransfer::Mailing?,
-          pending_transaction_id: String?,
-          physical_check: Increase::Models::CheckTransfer::PhysicalCheck?,
-          routing_number: String,
-          source_account_number_id: String?,
-          status: Increase::Models::CheckTransfer::status,
-          stop_payment_request: Increase::Models::CheckTransfer::StopPaymentRequest?,
-          submission: Increase::Models::CheckTransfer::Submission?,
-          third_party: Increase::Models::CheckTransfer::ThirdParty?,
-          type: Increase::Models::CheckTransfer::type_
-        ) -> void
-        | (?Increase::Models::check_transfer | Increase::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        account_id: String,
+        account_number: String,
+        amount: Integer,
+        approval: Increase::Models::CheckTransfer::Approval?,
+        approved_inbound_check_deposit_id: String?,
+        cancellation: Increase::Models::CheckTransfer::Cancellation?,
+        check_number: String,
+        created_at: Time,
+        created_by: Increase::Models::CheckTransfer::CreatedBy?,
+        currency: Increase::Models::CheckTransfer::currency,
+        fulfillment_method: Increase::Models::CheckTransfer::fulfillment_method,
+        idempotency_key: String?,
+        mailing: Increase::Models::CheckTransfer::Mailing?,
+        pending_transaction_id: String?,
+        physical_check: Increase::Models::CheckTransfer::PhysicalCheck?,
+        routing_number: String,
+        source_account_number_id: String?,
+        status: Increase::Models::CheckTransfer::status,
+        stop_payment_request: Increase::Models::CheckTransfer::StopPaymentRequest?,
+        submission: Increase::Models::CheckTransfer::Submission?,
+        third_party: Increase::Models::CheckTransfer::ThirdParty?,
+        type: Increase::Models::CheckTransfer::type_
+      ) -> void
 
       def to_hash: -> Increase::Models::check_transfer
 
@@ -111,12 +109,7 @@ module Increase
 
         attr_accessor approved_by: String?
 
-        def initialize:
-          (approved_at: Time, approved_by: String?) -> void
-          | (
-            ?Increase::Models::CheckTransfer::approval
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (approved_at: Time, approved_by: String?) -> void
 
         def to_hash: -> Increase::Models::CheckTransfer::approval
       end
@@ -128,12 +121,7 @@ module Increase
 
         attr_accessor canceled_by: String?
 
-        def initialize:
-          (canceled_at: Time, canceled_by: String?) -> void
-          | (
-            ?Increase::Models::CheckTransfer::cancellation
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (canceled_at: Time, canceled_by: String?) -> void
 
         def to_hash: -> Increase::Models::CheckTransfer::cancellation
       end
@@ -155,17 +143,12 @@ module Increase
 
         attr_accessor user: Increase::Models::CheckTransfer::CreatedBy::User?
 
-        def initialize:
-          (
-            api_key: Increase::Models::CheckTransfer::CreatedBy::APIKey?,
-            category: Increase::Models::CheckTransfer::CreatedBy::category,
-            oauth_application: Increase::Models::CheckTransfer::CreatedBy::OAuthApplication?,
-            user: Increase::Models::CheckTransfer::CreatedBy::User?
-          ) -> void
-          | (
-            ?Increase::Models::CheckTransfer::created_by
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          api_key: Increase::Models::CheckTransfer::CreatedBy::APIKey?,
+          category: Increase::Models::CheckTransfer::CreatedBy::category,
+          oauth_application: Increase::Models::CheckTransfer::CreatedBy::OAuthApplication?,
+          user: Increase::Models::CheckTransfer::CreatedBy::User?
+        ) -> void
 
         def to_hash: -> Increase::Models::CheckTransfer::created_by
 
@@ -174,12 +157,7 @@ module Increase
         class APIKey < Increase::BaseModel
           attr_accessor description: String?
 
-          def initialize:
-            (description: String?) -> void
-            | (
-              ?Increase::Models::CheckTransfer::CreatedBy::api_key
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (description: String?) -> void
 
           def to_hash: -> Increase::Models::CheckTransfer::CreatedBy::api_key
         end
@@ -204,12 +182,7 @@ module Increase
         class OAuthApplication < Increase::BaseModel
           attr_accessor name: String
 
-          def initialize:
-            (name: String) -> void
-            | (
-              ?Increase::Models::CheckTransfer::CreatedBy::oauth_application
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (name: String) -> void
 
           def to_hash: -> Increase::Models::CheckTransfer::CreatedBy::oauth_application
         end
@@ -219,12 +192,7 @@ module Increase
         class User < Increase::BaseModel
           attr_accessor email: String
 
-          def initialize:
-            (email: String) -> void
-            | (
-              ?Increase::Models::CheckTransfer::CreatedBy::user
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (email: String) -> void
 
           def to_hash: -> Increase::Models::CheckTransfer::CreatedBy::user
         end
@@ -276,11 +244,11 @@ module Increase
 
         attr_accessor tracking_number: String?
 
-        def initialize:
-          (image_id: String?, mailed_at: Time, tracking_number: String?) -> void
-          | (
-            ?Increase::Models::CheckTransfer::mailing | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          image_id: String?,
+          mailed_at: Time,
+          tracking_number: String?
+        ) -> void
 
         def to_hash: -> Increase::Models::CheckTransfer::mailing
       end
@@ -314,21 +282,16 @@ module Increase
 
         attr_accessor tracking_updates: ::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate]
 
-        def initialize:
-          (
-            mailing_address: Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress,
-            memo: String?,
-            note: String?,
-            recipient_name: String,
-            return_address: Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress?,
-            shipping_method: Increase::Models::CheckTransfer::PhysicalCheck::shipping_method?,
-            signature_text: String?,
-            tracking_updates: ::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate]
-          ) -> void
-          | (
-            ?Increase::Models::CheckTransfer::physical_check
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          mailing_address: Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress,
+          memo: String?,
+          note: String?,
+          recipient_name: String,
+          return_address: Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress?,
+          shipping_method: Increase::Models::CheckTransfer::PhysicalCheck::shipping_method?,
+          signature_text: String?,
+          tracking_updates: ::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate]
+        ) -> void
 
         def to_hash: -> Increase::Models::CheckTransfer::physical_check
 
@@ -355,19 +318,14 @@ module Increase
 
           attr_accessor state: String?
 
-          def initialize:
-            (
-              city: String?,
-              line1: String?,
-              line2: String?,
-              name: String?,
-              postal_code: String?,
-              state: String?
-            ) -> void
-            | (
-              ?Increase::Models::CheckTransfer::PhysicalCheck::mailing_address
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            city: String?,
+            line1: String?,
+            line2: String?,
+            name: String?,
+            postal_code: String?,
+            state: String?
+          ) -> void
 
           def to_hash: -> Increase::Models::CheckTransfer::PhysicalCheck::mailing_address
         end
@@ -395,19 +353,14 @@ module Increase
 
           attr_accessor state: String?
 
-          def initialize:
-            (
-              city: String?,
-              line1: String?,
-              line2: String?,
-              name: String?,
-              postal_code: String?,
-              state: String?
-            ) -> void
-            | (
-              ?Increase::Models::CheckTransfer::PhysicalCheck::return_address
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            city: String?,
+            line1: String?,
+            line2: String?,
+            name: String?,
+            postal_code: String?,
+            state: String?
+          ) -> void
 
           def to_hash: -> Increase::Models::CheckTransfer::PhysicalCheck::return_address
         end
@@ -438,16 +391,11 @@ module Increase
 
           attr_accessor postal_code: String
 
-          def initialize:
-            (
-              category: Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::category,
-              created_at: Time,
-              postal_code: String
-            ) -> void
-            | (
-              ?Increase::Models::CheckTransfer::PhysicalCheck::tracking_update
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            category: Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::category,
+            created_at: Time,
+            postal_code: String
+          ) -> void
 
           def to_hash: -> Increase::Models::CheckTransfer::PhysicalCheck::tracking_update
 
@@ -538,17 +486,12 @@ module Increase
 
         attr_accessor type: Increase::Models::CheckTransfer::StopPaymentRequest::type_
 
-        def initialize:
-          (
-            reason: Increase::Models::CheckTransfer::StopPaymentRequest::reason,
-            requested_at: Time,
-            transfer_id: String,
-            type: Increase::Models::CheckTransfer::StopPaymentRequest::type_
-          ) -> void
-          | (
-            ?Increase::Models::CheckTransfer::stop_payment_request
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          reason: Increase::Models::CheckTransfer::StopPaymentRequest::reason,
+          requested_at: Time,
+          transfer_id: String,
+          type: Increase::Models::CheckTransfer::StopPaymentRequest::type_
+        ) -> void
 
         def to_hash: -> Increase::Models::CheckTransfer::stop_payment_request
 
@@ -588,12 +531,7 @@ module Increase
       class Submission < Increase::BaseModel
         attr_accessor submitted_at: Time
 
-        def initialize:
-          (submitted_at: Time) -> void
-          | (
-            ?Increase::Models::CheckTransfer::submission
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (submitted_at: Time) -> void
 
         def to_hash: -> Increase::Models::CheckTransfer::submission
       end
@@ -603,12 +541,7 @@ module Increase
       class ThirdParty < Increase::BaseModel
         attr_accessor check_number: String?
 
-        def initialize:
-          (check_number: String?) -> void
-          | (
-            ?Increase::Models::CheckTransfer::third_party
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (check_number: String?) -> void
 
         def to_hash: -> Increase::Models::CheckTransfer::third_party
       end

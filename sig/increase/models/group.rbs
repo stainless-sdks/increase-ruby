@@ -20,15 +20,13 @@ module Increase
 
       attr_accessor type: Increase::Models::Group::type_
 
-      def initialize:
-        (
-          id: String,
-          ach_debit_status: Increase::Models::Group::ach_debit_status,
-          activation_status: Increase::Models::Group::activation_status,
-          created_at: Time,
-          type: Increase::Models::Group::type_
-        ) -> void
-        | (?Increase::Models::group | Increase::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        ach_debit_status: Increase::Models::Group::ach_debit_status,
+        activation_status: Increase::Models::Group::activation_status,
+        created_at: Time,
+        type: Increase::Models::Group::type_
+      ) -> void
 
       def to_hash: -> Increase::Models::group
 

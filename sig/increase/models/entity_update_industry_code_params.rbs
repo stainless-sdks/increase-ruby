@@ -9,12 +9,10 @@ module Increase
 
       attr_accessor industry_code: String
 
-      def initialize:
-        (industry_code: String, request_options: Increase::request_opts) -> void
-        | (
-          ?Increase::Models::entity_update_industry_code_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        industry_code: String,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::entity_update_industry_code_params
     end

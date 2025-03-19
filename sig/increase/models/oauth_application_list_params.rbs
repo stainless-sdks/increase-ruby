@@ -33,18 +33,13 @@ module Increase
         Increase::Models::OAuthApplicationListParams::Status
       ) -> Increase::Models::OAuthApplicationListParams::Status
 
-      def initialize:
-        (
-          created_at: Increase::Models::OAuthApplicationListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          status: Increase::Models::OAuthApplicationListParams::Status,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::oauth_application_list_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ?created_at: Increase::Models::OAuthApplicationListParams::CreatedAt,
+        ?cursor: String,
+        ?limit: Integer,
+        ?status: Increase::Models::OAuthApplicationListParams::Status,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::oauth_application_list_params
 
@@ -68,17 +63,12 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize:
-          (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
-          ) -> void
-          | (
-            ?Increase::Models::OAuthApplicationListParams::created_at
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?after: Time,
+          ?before: Time,
+          ?on_or_after: Time,
+          ?on_or_before: Time
+        ) -> void
 
         def to_hash: -> Increase::Models::OAuthApplicationListParams::created_at
       end
@@ -95,14 +85,9 @@ module Increase
           ::Array[Increase::Models::OAuthApplicationListParams::Status::in_]
         ) -> ::Array[Increase::Models::OAuthApplicationListParams::Status::in_]
 
-        def initialize:
-          (
-            in_: ::Array[Increase::Models::OAuthApplicationListParams::Status::in_]
-          ) -> void
-          | (
-            ?Increase::Models::OAuthApplicationListParams::status
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?in_: ::Array[Increase::Models::OAuthApplicationListParams::Status::in_]
+        ) -> void
 
         def to_hash: -> Increase::Models::OAuthApplicationListParams::status
 

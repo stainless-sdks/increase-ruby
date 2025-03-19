@@ -12,16 +12,11 @@ module Increase
 
       attr_accessor email_address: String
 
-      def initialize:
-        (
-          account_id: String,
-          email_address: String,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::intrafi_account_enrollment_create_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        account_id: String,
+        email_address: String,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::intrafi_account_enrollment_create_params
     end

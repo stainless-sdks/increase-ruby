@@ -29,18 +29,13 @@ module Increase
 
       def proof_of_authorization_request_id=: (String) -> String
 
-      def initialize:
-        (
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          proof_of_authorization_request_id: String,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::proof_of_authorization_request_submission_list_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ?cursor: String,
+        ?idempotency_key: String,
+        ?limit: Integer,
+        ?proof_of_authorization_request_id: String,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::proof_of_authorization_request_submission_list_params
     end

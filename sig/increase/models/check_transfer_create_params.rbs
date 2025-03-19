@@ -40,21 +40,16 @@ module Increase
         Increase::Models::CheckTransferCreateParams::ThirdParty
       ) -> Increase::Models::CheckTransferCreateParams::ThirdParty
 
-      def initialize:
-        (
-          account_id: String,
-          amount: Integer,
-          fulfillment_method: Increase::Models::CheckTransferCreateParams::fulfillment_method,
-          source_account_number_id: String,
-          physical_check: Increase::Models::CheckTransferCreateParams::PhysicalCheck,
-          require_approval: bool,
-          third_party: Increase::Models::CheckTransferCreateParams::ThirdParty,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::check_transfer_create_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        account_id: String,
+        amount: Integer,
+        fulfillment_method: Increase::Models::CheckTransferCreateParams::fulfillment_method,
+        source_account_number_id: String,
+        ?physical_check: Increase::Models::CheckTransferCreateParams::PhysicalCheck,
+        ?require_approval: bool,
+        ?third_party: Increase::Models::CheckTransferCreateParams::ThirdParty,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::check_transfer_create_params
 
@@ -106,20 +101,15 @@ module Increase
 
         def signature_text=: (String) -> String
 
-        def initialize:
-          (
-            mailing_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
-            memo: String,
-            recipient_name: String,
-            check_number: String,
-            note: String,
-            return_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
-            signature_text: String
-          ) -> void
-          | (
-            ?Increase::Models::CheckTransferCreateParams::physical_check
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          mailing_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
+          memo: String,
+          recipient_name: String,
+          ?check_number: String,
+          ?note: String,
+          ?return_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
+          ?signature_text: String
+        ) -> void
 
         def to_hash: -> Increase::Models::CheckTransferCreateParams::physical_check
 
@@ -145,18 +135,13 @@ module Increase
 
           def line2=: (String) -> String
 
-          def initialize:
-            (
-              city: String,
-              line1: String,
-              postal_code: String,
-              state: String,
-              line2: String
-            ) -> void
-            | (
-              ?Increase::Models::CheckTransferCreateParams::PhysicalCheck::mailing_address
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            city: String,
+            line1: String,
+            postal_code: String,
+            state: String,
+            ?line2: String
+          ) -> void
 
           def to_hash: -> Increase::Models::CheckTransferCreateParams::PhysicalCheck::mailing_address
         end
@@ -186,19 +171,14 @@ module Increase
 
           def line2=: (String) -> String
 
-          def initialize:
-            (
-              city: String,
-              line1: String,
-              name: String,
-              postal_code: String,
-              state: String,
-              line2: String
-            ) -> void
-            | (
-              ?Increase::Models::CheckTransferCreateParams::PhysicalCheck::return_address
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            city: String,
+            line1: String,
+            name: String,
+            postal_code: String,
+            state: String,
+            ?line2: String
+          ) -> void
 
           def to_hash: -> Increase::Models::CheckTransferCreateParams::PhysicalCheck::return_address
         end
@@ -211,12 +191,7 @@ module Increase
 
         def check_number=: (String) -> String
 
-        def initialize:
-          (check_number: String) -> void
-          | (
-            ?Increase::Models::CheckTransferCreateParams::third_party
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (?check_number: String) -> void
 
         def to_hash: -> Increase::Models::CheckTransferCreateParams::third_party
       end

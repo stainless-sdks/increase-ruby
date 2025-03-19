@@ -36,19 +36,14 @@ module Increase
 
       def limit=: (Integer) -> Integer
 
-      def initialize:
-        (
-          account_id: String,
-          account_number_id: String,
-          created_at: Increase::Models::InboundRealTimePaymentsTransferListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::inbound_real_time_payments_transfer_list_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ?account_id: String,
+        ?account_number_id: String,
+        ?created_at: Increase::Models::InboundRealTimePaymentsTransferListParams::CreatedAt,
+        ?cursor: String,
+        ?limit: Integer,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::inbound_real_time_payments_transfer_list_params
 
@@ -72,17 +67,12 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize:
-          (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
-          ) -> void
-          | (
-            ?Increase::Models::InboundRealTimePaymentsTransferListParams::created_at
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?after: Time,
+          ?before: Time,
+          ?on_or_after: Time,
+          ?on_or_before: Time
+        ) -> void
 
         def to_hash: -> Increase::Models::InboundRealTimePaymentsTransferListParams::created_at
       end

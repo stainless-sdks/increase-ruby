@@ -56,23 +56,18 @@ module Increase
         Increase::Models::DigitalCardProfileCloneParams::TextColor
       ) -> Increase::Models::DigitalCardProfileCloneParams::TextColor
 
-      def initialize:
-        (
-          app_icon_file_id: String,
-          background_image_file_id: String,
-          card_description: String,
-          contact_email: String,
-          contact_phone: String,
-          contact_website: String,
-          description: String,
-          issuer_name: String,
-          text_color: Increase::Models::DigitalCardProfileCloneParams::TextColor,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::digital_card_profile_clone_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ?app_icon_file_id: String,
+        ?background_image_file_id: String,
+        ?card_description: String,
+        ?contact_email: String,
+        ?contact_phone: String,
+        ?contact_website: String,
+        ?description: String,
+        ?issuer_name: String,
+        ?text_color: Increase::Models::DigitalCardProfileCloneParams::TextColor,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::digital_card_profile_clone_params
 
@@ -85,12 +80,7 @@ module Increase
 
         attr_accessor red: Integer
 
-        def initialize:
-          (blue: Integer, green: Integer, red: Integer) -> void
-          | (
-            ?Increase::Models::DigitalCardProfileCloneParams::text_color
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (blue: Integer, green: Integer, red: Integer) -> void
 
         def to_hash: -> Increase::Models::DigitalCardProfileCloneParams::text_color
       end

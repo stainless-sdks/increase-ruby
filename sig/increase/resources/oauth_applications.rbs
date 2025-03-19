@@ -1,29 +1,18 @@
 module Increase
   module Resources
     class OAuthApplications
-      def retrieve:
-        (
-          String oauth_application_id,
-          ?Increase::Models::OAuthApplicationRetrieveParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::OAuthApplication
-        | (
-          String oauth_application_id,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::OAuthApplication
+      def retrieve: (
+        String oauth_application_id,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Models::OAuthApplication
 
-      def list:
-        (
-          ?Increase::Models::OAuthApplicationListParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Page[Increase::Models::OAuthApplication]
-        | (
-          created_at: Increase::Models::OAuthApplicationListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          status: Increase::Models::OAuthApplicationListParams::Status,
-          request_options: Increase::request_opts
-        ) -> Increase::Page[Increase::Models::OAuthApplication]
+      def list: (
+        ?created_at: Increase::Models::OAuthApplicationListParams::CreatedAt,
+        ?cursor: String,
+        ?limit: Integer,
+        ?status: Increase::Models::OAuthApplicationListParams::Status,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Page[Increase::Models::OAuthApplication]
 
       def initialize: (client: Increase::Client) -> void
     end
