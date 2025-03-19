@@ -32,19 +32,14 @@ module Increase
 
       def production_token=: (String) -> String
 
-      def initialize:
-        (
-          grant_type: Increase::Models::OAuthTokenCreateParams::grant_type,
-          client_id: String,
-          client_secret: String,
-          code: String,
-          production_token: String,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::oauth_token_create_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        grant_type: Increase::Models::OAuthTokenCreateParams::grant_type,
+        ?client_id: String,
+        ?client_secret: String,
+        ?code: String,
+        ?production_token: String,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::oauth_token_create_params
 

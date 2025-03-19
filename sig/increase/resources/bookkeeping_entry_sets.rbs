@@ -1,41 +1,25 @@
 module Increase
   module Resources
     class BookkeepingEntrySets
-      def create:
-        (
-          Increase::Models::BookkeepingEntrySetCreateParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::BookkeepingEntrySet
-        | (
-          entries: ::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry],
-          date: Time,
-          transaction_id: String,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::BookkeepingEntrySet
+      def create: (
+        entries: ::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry],
+        ?date: Time,
+        ?transaction_id: String,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Models::BookkeepingEntrySet
 
-      def retrieve:
-        (
-          String bookkeeping_entry_set_id,
-          ?Increase::Models::BookkeepingEntrySetRetrieveParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::BookkeepingEntrySet
-        | (
-          String bookkeeping_entry_set_id,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::BookkeepingEntrySet
+      def retrieve: (
+        String bookkeeping_entry_set_id,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Models::BookkeepingEntrySet
 
-      def list:
-        (
-          ?Increase::Models::BookkeepingEntrySetListParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Page[Increase::Models::BookkeepingEntrySet]
-        | (
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          transaction_id: String,
-          request_options: Increase::request_opts
-        ) -> Increase::Page[Increase::Models::BookkeepingEntrySet]
+      def list: (
+        ?cursor: String,
+        ?idempotency_key: String,
+        ?limit: Integer,
+        ?transaction_id: String,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Page[Increase::Models::BookkeepingEntrySet]
 
       def initialize: (client: Increase::Client) -> void
     end

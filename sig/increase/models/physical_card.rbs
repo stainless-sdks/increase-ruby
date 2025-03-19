@@ -32,19 +32,17 @@ module Increase
 
       attr_accessor type: Increase::Models::PhysicalCard::type_
 
-      def initialize:
-        (
-          id: String,
-          card_id: String,
-          cardholder: Increase::Models::PhysicalCard::Cardholder,
-          created_at: Time,
-          idempotency_key: String?,
-          physical_card_profile_id: String?,
-          shipment: Increase::Models::PhysicalCard::Shipment,
-          status: Increase::Models::PhysicalCard::status,
-          type: Increase::Models::PhysicalCard::type_
-        ) -> void
-        | (?Increase::Models::physical_card | Increase::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        card_id: String,
+        cardholder: Increase::Models::PhysicalCard::Cardholder,
+        created_at: Time,
+        idempotency_key: String?,
+        physical_card_profile_id: String?,
+        shipment: Increase::Models::PhysicalCard::Shipment,
+        status: Increase::Models::PhysicalCard::status,
+        type: Increase::Models::PhysicalCard::type_
+      ) -> void
 
       def to_hash: -> Increase::Models::physical_card
 
@@ -55,12 +53,7 @@ module Increase
 
         attr_accessor last_name: String
 
-        def initialize:
-          (first_name: String, last_name: String) -> void
-          | (
-            ?Increase::Models::PhysicalCard::cardholder
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (first_name: String, last_name: String) -> void
 
         def to_hash: -> Increase::Models::PhysicalCard::cardholder
       end
@@ -82,16 +75,12 @@ module Increase
 
         attr_accessor tracking: Increase::Models::PhysicalCard::Shipment::Tracking?
 
-        def initialize:
-          (
-            address: Increase::Models::PhysicalCard::Shipment::Address,
-            method_: Increase::Models::PhysicalCard::Shipment::method_,
-            status: Increase::Models::PhysicalCard::Shipment::status,
-            tracking: Increase::Models::PhysicalCard::Shipment::Tracking?
-          ) -> void
-          | (
-            ?Increase::Models::PhysicalCard::shipment | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          address: Increase::Models::PhysicalCard::Shipment::Address,
+          method_: Increase::Models::PhysicalCard::Shipment::method_,
+          status: Increase::Models::PhysicalCard::Shipment::status,
+          tracking: Increase::Models::PhysicalCard::Shipment::Tracking?
+        ) -> void
 
         def to_hash: -> Increase::Models::PhysicalCard::shipment
 
@@ -121,20 +110,15 @@ module Increase
 
           attr_accessor state: String
 
-          def initialize:
-            (
-              city: String,
-              line1: String,
-              line2: String?,
-              line3: String?,
-              name: String,
-              postal_code: String,
-              state: String
-            ) -> void
-            | (
-              ?Increase::Models::PhysicalCard::Shipment::address
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            city: String,
+            line1: String,
+            line2: String?,
+            line3: String?,
+            name: String,
+            postal_code: String,
+            state: String
+          ) -> void
 
           def to_hash: -> Increase::Models::PhysicalCard::Shipment::address
         end
@@ -205,17 +189,12 @@ module Increase
 
           attr_accessor shipped_at: Time
 
-          def initialize:
-            (
-              number: String,
-              return_number: String?,
-              return_reason: String?,
-              shipped_at: Time
-            ) -> void
-            | (
-              ?Increase::Models::PhysicalCard::Shipment::tracking
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            number: String,
+            return_number: String?,
+            return_reason: String?,
+            shipped_at: Time
+          ) -> void
 
           def to_hash: -> Increase::Models::PhysicalCard::Shipment::tracking
         end

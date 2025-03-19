@@ -32,19 +32,17 @@ module Increase
 
       attr_accessor type: Increase::Models::CardPayment::type_
 
-      def initialize:
-        (
-          id: String,
-          account_id: String,
-          card_id: String,
-          created_at: Time,
-          digital_wallet_token_id: String?,
-          elements: ::Array[Increase::Models::CardPayment::Element],
-          physical_card_id: String?,
-          state: Increase::Models::CardPayment::State,
-          type: Increase::Models::CardPayment::type_
-        ) -> void
-        | (?Increase::Models::card_payment | Increase::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        account_id: String,
+        card_id: String,
+        created_at: Time,
+        digital_wallet_token_id: String?,
+        elements: ::Array[Increase::Models::CardPayment::Element],
+        physical_card_id: String?,
+        state: Increase::Models::CardPayment::State,
+        type: Increase::Models::CardPayment::type_
+      ) -> void
 
       def to_hash: -> Increase::Models::card_payment
 
@@ -92,25 +90,21 @@ module Increase
 
         attr_accessor other: top?
 
-        def initialize:
-          (
-            card_authentication: Increase::Models::CardPayment::Element::CardAuthentication?,
-            card_authorization: Increase::Models::CardPayment::Element::CardAuthorization?,
-            card_authorization_expiration: Increase::Models::CardPayment::Element::CardAuthorizationExpiration?,
-            card_decline: Increase::Models::CardPayment::Element::CardDecline?,
-            card_fuel_confirmation: Increase::Models::CardPayment::Element::CardFuelConfirmation?,
-            card_increment: Increase::Models::CardPayment::Element::CardIncrement?,
-            card_refund: Increase::Models::CardPayment::Element::CardRefund?,
-            card_reversal: Increase::Models::CardPayment::Element::CardReversal?,
-            card_settlement: Increase::Models::CardPayment::Element::CardSettlement?,
-            card_validation: Increase::Models::CardPayment::Element::CardValidation?,
-            category: Increase::Models::CardPayment::Element::category,
-            created_at: Time,
-            other: top?
-          ) -> void
-          | (
-            ?Increase::Models::CardPayment::element | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          card_authentication: Increase::Models::CardPayment::Element::CardAuthentication?,
+          card_authorization: Increase::Models::CardPayment::Element::CardAuthorization?,
+          card_authorization_expiration: Increase::Models::CardPayment::Element::CardAuthorizationExpiration?,
+          card_decline: Increase::Models::CardPayment::Element::CardDecline?,
+          card_fuel_confirmation: Increase::Models::CardPayment::Element::CardFuelConfirmation?,
+          card_increment: Increase::Models::CardPayment::Element::CardIncrement?,
+          card_refund: Increase::Models::CardPayment::Element::CardRefund?,
+          card_reversal: Increase::Models::CardPayment::Element::CardReversal?,
+          card_settlement: Increase::Models::CardPayment::Element::CardSettlement?,
+          card_validation: Increase::Models::CardPayment::Element::CardValidation?,
+          category: Increase::Models::CardPayment::Element::category,
+          created_at: Time,
+          other: top?
+        ) -> void
 
         def to_hash: -> Increase::Models::CardPayment::element
 
@@ -170,30 +164,25 @@ module Increase
 
           attr_accessor type: Increase::Models::CardPayment::Element::CardAuthentication::type_
 
-          def initialize:
-            (
-              id: String,
-              card_id: String,
-              card_payment_id: String,
-              category: Increase::Models::CardPayment::Element::CardAuthentication::category?,
-              challenge: Increase::Models::CardPayment::Element::CardAuthentication::Challenge?,
-              created_at: Time,
-              deny_reason: Increase::Models::CardPayment::Element::CardAuthentication::deny_reason?,
-              device_channel: Increase::Models::CardPayment::Element::CardAuthentication::device_channel?,
-              merchant_acceptor_id: String,
-              merchant_category_code: String,
-              merchant_country: String,
-              merchant_name: String,
-              purchase_amount: Integer?,
-              purchase_currency: String?,
-              real_time_decision_id: String?,
-              status: Increase::Models::CardPayment::Element::CardAuthentication::status,
-              type: Increase::Models::CardPayment::Element::CardAuthentication::type_
-            ) -> void
-            | (
-              ?Increase::Models::CardPayment::Element::card_authentication
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            id: String,
+            card_id: String,
+            card_payment_id: String,
+            category: Increase::Models::CardPayment::Element::CardAuthentication::category?,
+            challenge: Increase::Models::CardPayment::Element::CardAuthentication::Challenge?,
+            created_at: Time,
+            deny_reason: Increase::Models::CardPayment::Element::CardAuthentication::deny_reason?,
+            device_channel: Increase::Models::CardPayment::Element::CardAuthentication::device_channel?,
+            merchant_acceptor_id: String,
+            merchant_category_code: String,
+            merchant_country: String,
+            merchant_name: String,
+            purchase_amount: Integer?,
+            purchase_currency: String?,
+            real_time_decision_id: String?,
+            status: Increase::Models::CardPayment::Element::CardAuthentication::status,
+            type: Increase::Models::CardPayment::Element::CardAuthentication::type_
+          ) -> void
 
           def to_hash: -> Increase::Models::CardPayment::Element::card_authentication
 
@@ -229,18 +218,13 @@ module Increase
 
             attr_accessor verification_value: String?
 
-            def initialize:
-              (
-                attempts: ::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt],
-                created_at: Time,
-                one_time_code: String,
-                verification_method: Increase::Models::CardPayment::Element::CardAuthentication::Challenge::verification_method,
-                verification_value: String?
-              ) -> void
-              | (
-                ?Increase::Models::CardPayment::Element::CardAuthentication::challenge
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              attempts: ::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt],
+              created_at: Time,
+              one_time_code: String,
+              verification_method: Increase::Models::CardPayment::Element::CardAuthentication::Challenge::verification_method,
+              verification_value: String?
+            ) -> void
 
             def to_hash: -> Increase::Models::CardPayment::Element::CardAuthentication::challenge
 
@@ -255,15 +239,10 @@ module Increase
 
               attr_accessor outcome: Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::outcome
 
-              def initialize:
-                (
-                  created_at: Time,
-                  outcome: Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::outcome
-                ) -> void
-                | (
-                  ?Increase::Models::CardPayment::Element::CardAuthentication::Challenge::attempt
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (
+                created_at: Time,
+                outcome: Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::outcome
+              ) -> void
 
               def to_hash: -> Increase::Models::CardPayment::Element::CardAuthentication::Challenge::attempt
 
@@ -478,40 +457,35 @@ module Increase
 
           attr_accessor verification: Increase::Models::CardPayment::Element::CardAuthorization::Verification
 
-          def initialize:
-            (
-              id: String,
-              actioner: Increase::Models::CardPayment::Element::CardAuthorization::actioner,
-              amount: Integer,
-              card_payment_id: String,
-              currency: Increase::Models::CardPayment::Element::CardAuthorization::currency,
-              digital_wallet_token_id: String?,
-              direction: Increase::Models::CardPayment::Element::CardAuthorization::direction,
-              expires_at: Time,
-              merchant_acceptor_id: String,
-              merchant_category_code: String,
-              merchant_city: String?,
-              merchant_country: String,
-              merchant_descriptor: String,
-              merchant_postal_code: String?,
-              merchant_state: String?,
-              network_details: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails,
-              network_identifiers: Increase::Models::CardPayment::Element::CardAuthorization::NetworkIdentifiers,
-              network_risk_score: Integer?,
-              pending_transaction_id: String?,
-              physical_card_id: String?,
-              presentment_amount: Integer,
-              presentment_currency: String,
-              processing_category: Increase::Models::CardPayment::Element::CardAuthorization::processing_category,
-              real_time_decision_id: String?,
-              terminal_id: String?,
-              type: Increase::Models::CardPayment::Element::CardAuthorization::type_,
-              verification: Increase::Models::CardPayment::Element::CardAuthorization::Verification
-            ) -> void
-            | (
-              ?Increase::Models::CardPayment::Element::card_authorization
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            id: String,
+            actioner: Increase::Models::CardPayment::Element::CardAuthorization::actioner,
+            amount: Integer,
+            card_payment_id: String,
+            currency: Increase::Models::CardPayment::Element::CardAuthorization::currency,
+            digital_wallet_token_id: String?,
+            direction: Increase::Models::CardPayment::Element::CardAuthorization::direction,
+            expires_at: Time,
+            merchant_acceptor_id: String,
+            merchant_category_code: String,
+            merchant_city: String?,
+            merchant_country: String,
+            merchant_descriptor: String,
+            merchant_postal_code: String?,
+            merchant_state: String?,
+            network_details: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails,
+            network_identifiers: Increase::Models::CardPayment::Element::CardAuthorization::NetworkIdentifiers,
+            network_risk_score: Integer?,
+            pending_transaction_id: String?,
+            physical_card_id: String?,
+            presentment_amount: Integer,
+            presentment_currency: String,
+            processing_category: Increase::Models::CardPayment::Element::CardAuthorization::processing_category,
+            real_time_decision_id: String?,
+            terminal_id: String?,
+            type: Increase::Models::CardPayment::Element::CardAuthorization::type_,
+            verification: Increase::Models::CardPayment::Element::CardAuthorization::Verification
+          ) -> void
 
           def to_hash: -> Increase::Models::CardPayment::Element::card_authorization
 
@@ -577,15 +551,10 @@ module Increase
 
             attr_accessor visa: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa?
 
-            def initialize:
-              (
-                category: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::category,
-                visa: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa?
-              ) -> void
-              | (
-                ?Increase::Models::CardPayment::Element::CardAuthorization::network_details
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              category: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::category,
+              visa: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa?
+            ) -> void
 
             def to_hash: -> Increase::Models::CardPayment::Element::CardAuthorization::network_details
 
@@ -612,16 +581,11 @@ module Increase
 
               attr_accessor stand_in_processing_reason: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::stand_in_processing_reason?
 
-              def initialize:
-                (
-                  electronic_commerce_indicator: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::electronic_commerce_indicator?,
-                  point_of_service_entry_mode: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::point_of_service_entry_mode?,
-                  stand_in_processing_reason: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::stand_in_processing_reason?
-                ) -> void
-                | (
-                  ?Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::visa
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (
+                electronic_commerce_indicator: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::electronic_commerce_indicator?,
+                point_of_service_entry_mode: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::point_of_service_entry_mode?,
+                stand_in_processing_reason: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::stand_in_processing_reason?
+              ) -> void
 
               def to_hash: -> Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::visa
 
@@ -759,16 +723,11 @@ module Increase
 
             attr_accessor transaction_id: String?
 
-            def initialize:
-              (
-                retrieval_reference_number: String?,
-                trace_number: String?,
-                transaction_id: String?
-              ) -> void
-              | (
-                ?Increase::Models::CardPayment::Element::CardAuthorization::network_identifiers
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              retrieval_reference_number: String?,
+              trace_number: String?,
+              transaction_id: String?
+            ) -> void
 
             def to_hash: -> Increase::Models::CardPayment::Element::CardAuthorization::network_identifiers
           end
@@ -822,15 +781,10 @@ module Increase
 
             attr_accessor cardholder_address: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress
 
-            def initialize:
-              (
-                card_verification_code: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode,
-                cardholder_address: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress
-              ) -> void
-              | (
-                ?Increase::Models::CardPayment::Element::CardAuthorization::verification
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              card_verification_code: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode,
+              cardholder_address: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress
+            ) -> void
 
             def to_hash: -> Increase::Models::CardPayment::Element::CardAuthorization::verification
 
@@ -842,14 +796,9 @@ module Increase
             class CardVerificationCode < Increase::BaseModel
               attr_accessor result: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::result
 
-              def initialize:
-                (
-                  result: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::result
-                ) -> void
-                | (
-                  ?Increase::Models::CardPayment::Element::CardAuthorization::Verification::card_verification_code
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (
+                result: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::result
+              ) -> void
 
               def to_hash: -> Increase::Models::CardPayment::Element::CardAuthorization::Verification::card_verification_code
 
@@ -889,18 +838,13 @@ module Increase
 
               attr_accessor result: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::result
 
-              def initialize:
-                (
-                  actual_line1: String?,
-                  actual_postal_code: String?,
-                  provided_line1: String?,
-                  provided_postal_code: String?,
-                  result: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::result
-                ) -> void
-                | (
-                  ?Increase::Models::CardPayment::Element::CardAuthorization::Verification::cardholder_address
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (
+                actual_line1: String?,
+                actual_postal_code: String?,
+                provided_line1: String?,
+                provided_postal_code: String?,
+                result: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::result
+              ) -> void
 
               def to_hash: -> Increase::Models::CardPayment::Element::CardAuthorization::Verification::cardholder_address
 
@@ -960,19 +904,14 @@ module Increase
 
           attr_accessor type: Increase::Models::CardPayment::Element::CardAuthorizationExpiration::type_
 
-          def initialize:
-            (
-              id: String,
-              card_authorization_id: String,
-              currency: Increase::Models::CardPayment::Element::CardAuthorizationExpiration::currency,
-              expired_amount: Integer,
-              network: Increase::Models::CardPayment::Element::CardAuthorizationExpiration::network,
-              type: Increase::Models::CardPayment::Element::CardAuthorizationExpiration::type_
-            ) -> void
-            | (
-              ?Increase::Models::CardPayment::Element::card_authorization_expiration
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            id: String,
+            card_authorization_id: String,
+            currency: Increase::Models::CardPayment::Element::CardAuthorizationExpiration::currency,
+            expired_amount: Integer,
+            network: Increase::Models::CardPayment::Element::CardAuthorizationExpiration::network,
+            type: Increase::Models::CardPayment::Element::CardAuthorizationExpiration::type_
+          ) -> void
 
           def to_hash: -> Increase::Models::CardPayment::Element::card_authorization_expiration
 
@@ -1104,40 +1043,35 @@ module Increase
 
           attr_accessor verification: Increase::Models::CardPayment::Element::CardDecline::Verification
 
-          def initialize:
-            (
-              id: String,
-              actioner: Increase::Models::CardPayment::Element::CardDecline::actioner,
-              amount: Integer,
-              card_payment_id: String,
-              currency: Increase::Models::CardPayment::Element::CardDecline::currency,
-              declined_transaction_id: String,
-              digital_wallet_token_id: String?,
-              direction: Increase::Models::CardPayment::Element::CardDecline::direction,
-              merchant_acceptor_id: String,
-              merchant_category_code: String,
-              merchant_city: String?,
-              merchant_country: String,
-              merchant_descriptor: String,
-              merchant_postal_code: String?,
-              merchant_state: String?,
-              network_details: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails,
-              network_identifiers: Increase::Models::CardPayment::Element::CardDecline::NetworkIdentifiers,
-              network_risk_score: Integer?,
-              physical_card_id: String?,
-              presentment_amount: Integer,
-              presentment_currency: String,
-              processing_category: Increase::Models::CardPayment::Element::CardDecline::processing_category,
-              real_time_decision_id: String?,
-              real_time_decision_reason: Increase::Models::CardPayment::Element::CardDecline::real_time_decision_reason?,
-              reason: Increase::Models::CardPayment::Element::CardDecline::reason,
-              terminal_id: String?,
-              verification: Increase::Models::CardPayment::Element::CardDecline::Verification
-            ) -> void
-            | (
-              ?Increase::Models::CardPayment::Element::card_decline
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            id: String,
+            actioner: Increase::Models::CardPayment::Element::CardDecline::actioner,
+            amount: Integer,
+            card_payment_id: String,
+            currency: Increase::Models::CardPayment::Element::CardDecline::currency,
+            declined_transaction_id: String,
+            digital_wallet_token_id: String?,
+            direction: Increase::Models::CardPayment::Element::CardDecline::direction,
+            merchant_acceptor_id: String,
+            merchant_category_code: String,
+            merchant_city: String?,
+            merchant_country: String,
+            merchant_descriptor: String,
+            merchant_postal_code: String?,
+            merchant_state: String?,
+            network_details: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails,
+            network_identifiers: Increase::Models::CardPayment::Element::CardDecline::NetworkIdentifiers,
+            network_risk_score: Integer?,
+            physical_card_id: String?,
+            presentment_amount: Integer,
+            presentment_currency: String,
+            processing_category: Increase::Models::CardPayment::Element::CardDecline::processing_category,
+            real_time_decision_id: String?,
+            real_time_decision_reason: Increase::Models::CardPayment::Element::CardDecline::real_time_decision_reason?,
+            reason: Increase::Models::CardPayment::Element::CardDecline::reason,
+            terminal_id: String?,
+            verification: Increase::Models::CardPayment::Element::CardDecline::Verification
+          ) -> void
 
           def to_hash: -> Increase::Models::CardPayment::Element::card_decline
 
@@ -1203,15 +1137,10 @@ module Increase
 
             attr_accessor visa: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa?
 
-            def initialize:
-              (
-                category: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::category,
-                visa: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa?
-              ) -> void
-              | (
-                ?Increase::Models::CardPayment::Element::CardDecline::network_details
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              category: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::category,
+              visa: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa?
+            ) -> void
 
             def to_hash: -> Increase::Models::CardPayment::Element::CardDecline::network_details
 
@@ -1238,16 +1167,11 @@ module Increase
 
               attr_accessor stand_in_processing_reason: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::stand_in_processing_reason?
 
-              def initialize:
-                (
-                  electronic_commerce_indicator: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::electronic_commerce_indicator?,
-                  point_of_service_entry_mode: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::point_of_service_entry_mode?,
-                  stand_in_processing_reason: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::stand_in_processing_reason?
-                ) -> void
-                | (
-                  ?Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::visa
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (
+                electronic_commerce_indicator: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::electronic_commerce_indicator?,
+                point_of_service_entry_mode: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::point_of_service_entry_mode?,
+                stand_in_processing_reason: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::stand_in_processing_reason?
+              ) -> void
 
               def to_hash: -> Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::visa
 
@@ -1385,16 +1309,11 @@ module Increase
 
             attr_accessor transaction_id: String?
 
-            def initialize:
-              (
-                retrieval_reference_number: String?,
-                trace_number: String?,
-                transaction_id: String?
-              ) -> void
-              | (
-                ?Increase::Models::CardPayment::Element::CardDecline::network_identifiers
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              retrieval_reference_number: String?,
+              trace_number: String?,
+              transaction_id: String?
+            ) -> void
 
             def to_hash: -> Increase::Models::CardPayment::Element::CardDecline::network_identifiers
           end
@@ -1544,15 +1463,10 @@ module Increase
 
             attr_accessor cardholder_address: Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress
 
-            def initialize:
-              (
-                card_verification_code: Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode,
-                cardholder_address: Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress
-              ) -> void
-              | (
-                ?Increase::Models::CardPayment::Element::CardDecline::verification
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              card_verification_code: Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode,
+              cardholder_address: Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress
+            ) -> void
 
             def to_hash: -> Increase::Models::CardPayment::Element::CardDecline::verification
 
@@ -1564,14 +1478,9 @@ module Increase
             class CardVerificationCode < Increase::BaseModel
               attr_accessor result: Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::result
 
-              def initialize:
-                (
-                  result: Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::result
-                ) -> void
-                | (
-                  ?Increase::Models::CardPayment::Element::CardDecline::Verification::card_verification_code
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (
+                result: Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::result
+              ) -> void
 
               def to_hash: -> Increase::Models::CardPayment::Element::CardDecline::Verification::card_verification_code
 
@@ -1611,18 +1520,13 @@ module Increase
 
               attr_accessor result: Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::result
 
-              def initialize:
-                (
-                  actual_line1: String?,
-                  actual_postal_code: String?,
-                  provided_line1: String?,
-                  provided_postal_code: String?,
-                  result: Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::result
-                ) -> void
-                | (
-                  ?Increase::Models::CardPayment::Element::CardDecline::Verification::cardholder_address
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (
+                actual_line1: String?,
+                actual_postal_code: String?,
+                provided_line1: String?,
+                provided_postal_code: String?,
+                result: Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::result
+              ) -> void
 
               def to_hash: -> Increase::Models::CardPayment::Element::CardDecline::Verification::cardholder_address
 
@@ -1688,21 +1592,16 @@ module Increase
 
           attr_accessor updated_authorization_amount: Integer
 
-          def initialize:
-            (
-              id: String,
-              card_authorization_id: String,
-              currency: Increase::Models::CardPayment::Element::CardFuelConfirmation::currency,
-              network: Increase::Models::CardPayment::Element::CardFuelConfirmation::network,
-              network_identifiers: Increase::Models::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers,
-              pending_transaction_id: String?,
-              type: Increase::Models::CardPayment::Element::CardFuelConfirmation::type_,
-              updated_authorization_amount: Integer
-            ) -> void
-            | (
-              ?Increase::Models::CardPayment::Element::card_fuel_confirmation
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            id: String,
+            card_authorization_id: String,
+            currency: Increase::Models::CardPayment::Element::CardFuelConfirmation::currency,
+            network: Increase::Models::CardPayment::Element::CardFuelConfirmation::network,
+            network_identifiers: Increase::Models::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers,
+            pending_transaction_id: String?,
+            type: Increase::Models::CardPayment::Element::CardFuelConfirmation::type_,
+            updated_authorization_amount: Integer
+          ) -> void
 
           def to_hash: -> Increase::Models::CardPayment::Element::card_fuel_confirmation
 
@@ -1753,16 +1652,11 @@ module Increase
 
             attr_accessor transaction_id: String?
 
-            def initialize:
-              (
-                retrieval_reference_number: String?,
-                trace_number: String?,
-                transaction_id: String?
-              ) -> void
-              | (
-                ?Increase::Models::CardPayment::Element::CardFuelConfirmation::network_identifiers
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              retrieval_reference_number: String?,
+              trace_number: String?,
+              transaction_id: String?
+            ) -> void
 
             def to_hash: -> Increase::Models::CardPayment::Element::CardFuelConfirmation::network_identifiers
           end
@@ -1817,25 +1711,20 @@ module Increase
 
           attr_accessor updated_authorization_amount: Integer
 
-          def initialize:
-            (
-              id: String,
-              actioner: Increase::Models::CardPayment::Element::CardIncrement::actioner,
-              amount: Integer,
-              card_authorization_id: String,
-              currency: Increase::Models::CardPayment::Element::CardIncrement::currency,
-              network: Increase::Models::CardPayment::Element::CardIncrement::network,
-              network_identifiers: Increase::Models::CardPayment::Element::CardIncrement::NetworkIdentifiers,
-              network_risk_score: Integer?,
-              pending_transaction_id: String?,
-              real_time_decision_id: String?,
-              type: Increase::Models::CardPayment::Element::CardIncrement::type_,
-              updated_authorization_amount: Integer
-            ) -> void
-            | (
-              ?Increase::Models::CardPayment::Element::card_increment
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            id: String,
+            actioner: Increase::Models::CardPayment::Element::CardIncrement::actioner,
+            amount: Integer,
+            card_authorization_id: String,
+            currency: Increase::Models::CardPayment::Element::CardIncrement::currency,
+            network: Increase::Models::CardPayment::Element::CardIncrement::network,
+            network_identifiers: Increase::Models::CardPayment::Element::CardIncrement::NetworkIdentifiers,
+            network_risk_score: Integer?,
+            pending_transaction_id: String?,
+            real_time_decision_id: String?,
+            type: Increase::Models::CardPayment::Element::CardIncrement::type_,
+            updated_authorization_amount: Integer
+          ) -> void
 
           def to_hash: -> Increase::Models::CardPayment::Element::card_increment
 
@@ -1901,16 +1790,11 @@ module Increase
 
             attr_accessor transaction_id: String?
 
-            def initialize:
-              (
-                retrieval_reference_number: String?,
-                trace_number: String?,
-                transaction_id: String?
-              ) -> void
-              | (
-                ?Increase::Models::CardPayment::Element::CardIncrement::network_identifiers
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              retrieval_reference_number: String?,
+              trace_number: String?,
+              transaction_id: String?
+            ) -> void
 
             def to_hash: -> Increase::Models::CardPayment::Element::CardIncrement::network_identifiers
           end
@@ -1986,32 +1870,27 @@ module Increase
 
           attr_accessor type: Increase::Models::CardPayment::Element::CardRefund::type_
 
-          def initialize:
-            (
-              id: String,
-              amount: Integer,
-              card_payment_id: String,
-              cashback: Increase::Models::CardPayment::Element::CardRefund::Cashback?,
-              currency: Increase::Models::CardPayment::Element::CardRefund::currency,
-              interchange: Increase::Models::CardPayment::Element::CardRefund::Interchange?,
-              merchant_acceptor_id: String,
-              merchant_category_code: String,
-              merchant_city: String,
-              merchant_country: String,
-              merchant_name: String,
-              merchant_postal_code: String?,
-              merchant_state: String?,
-              network_identifiers: Increase::Models::CardPayment::Element::CardRefund::NetworkIdentifiers,
-              presentment_amount: Integer,
-              presentment_currency: String,
-              purchase_details: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails?,
-              transaction_id: String,
-              type: Increase::Models::CardPayment::Element::CardRefund::type_
-            ) -> void
-            | (
-              ?Increase::Models::CardPayment::Element::card_refund
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            id: String,
+            amount: Integer,
+            card_payment_id: String,
+            cashback: Increase::Models::CardPayment::Element::CardRefund::Cashback?,
+            currency: Increase::Models::CardPayment::Element::CardRefund::currency,
+            interchange: Increase::Models::CardPayment::Element::CardRefund::Interchange?,
+            merchant_acceptor_id: String,
+            merchant_category_code: String,
+            merchant_city: String,
+            merchant_country: String,
+            merchant_name: String,
+            merchant_postal_code: String?,
+            merchant_state: String?,
+            network_identifiers: Increase::Models::CardPayment::Element::CardRefund::NetworkIdentifiers,
+            presentment_amount: Integer,
+            presentment_currency: String,
+            purchase_details: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails?,
+            transaction_id: String,
+            type: Increase::Models::CardPayment::Element::CardRefund::type_
+          ) -> void
 
           def to_hash: -> Increase::Models::CardPayment::Element::card_refund
 
@@ -2026,15 +1905,10 @@ module Increase
 
             attr_accessor currency: Increase::Models::CardPayment::Element::CardRefund::Cashback::currency
 
-            def initialize:
-              (
-                amount: String,
-                currency: Increase::Models::CardPayment::Element::CardRefund::Cashback::currency
-              ) -> void
-              | (
-                ?Increase::Models::CardPayment::Element::CardRefund::cashback
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              amount: String,
+              currency: Increase::Models::CardPayment::Element::CardRefund::Cashback::currency
+            ) -> void
 
             def to_hash: -> Increase::Models::CardPayment::Element::CardRefund::cashback
 
@@ -2101,16 +1975,11 @@ module Increase
 
             attr_accessor currency: Increase::Models::CardPayment::Element::CardRefund::Interchange::currency
 
-            def initialize:
-              (
-                amount: String,
-                code: String?,
-                currency: Increase::Models::CardPayment::Element::CardRefund::Interchange::currency
-              ) -> void
-              | (
-                ?Increase::Models::CardPayment::Element::CardRefund::interchange
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              amount: String,
+              code: String?,
+              currency: Increase::Models::CardPayment::Element::CardRefund::Interchange::currency
+            ) -> void
 
             def to_hash: -> Increase::Models::CardPayment::Element::CardRefund::interchange
 
@@ -2153,16 +2022,11 @@ module Increase
 
             attr_accessor transaction_id: String?
 
-            def initialize:
-              (
-                acquirer_business_id: String,
-                acquirer_reference_number: String,
-                transaction_id: String?
-              ) -> void
-              | (
-                ?Increase::Models::CardPayment::Element::CardRefund::network_identifiers
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              acquirer_business_id: String,
+              acquirer_reference_number: String,
+              transaction_id: String?
+            ) -> void
 
             def to_hash: -> Increase::Models::CardPayment::Element::CardRefund::network_identifiers
           end
@@ -2202,23 +2066,18 @@ module Increase
 
             attr_accessor travel: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel?
 
-            def initialize:
-              (
-                car_rental: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental?,
-                customer_reference_identifier: String?,
-                local_tax_amount: Integer?,
-                local_tax_currency: String?,
-                lodging: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging?,
-                national_tax_amount: Integer?,
-                national_tax_currency: String?,
-                purchase_identifier: String?,
-                purchase_identifier_format: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::purchase_identifier_format?,
-                travel: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel?
-              ) -> void
-              | (
-                ?Increase::Models::CardPayment::Element::CardRefund::purchase_details
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              car_rental: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental?,
+              customer_reference_identifier: String?,
+              local_tax_amount: Integer?,
+              local_tax_currency: String?,
+              lodging: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging?,
+              national_tax_amount: Integer?,
+              national_tax_currency: String?,
+              purchase_identifier: String?,
+              purchase_identifier_format: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::purchase_identifier_format?,
+              travel: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel?
+            ) -> void
 
             def to_hash: -> Increase::Models::CardPayment::Element::CardRefund::purchase_details
 
@@ -2275,29 +2134,24 @@ module Increase
 
               attr_accessor weekly_rental_rate_currency: String?
 
-              def initialize:
-                (
-                  car_class_code: String?,
-                  checkout_date: Date?,
-                  daily_rental_rate_amount: Integer?,
-                  daily_rental_rate_currency: String?,
-                  days_rented: Integer?,
-                  extra_charges: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::extra_charges?,
-                  fuel_charges_amount: Integer?,
-                  fuel_charges_currency: String?,
-                  insurance_charges_amount: Integer?,
-                  insurance_charges_currency: String?,
-                  no_show_indicator: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::no_show_indicator?,
-                  one_way_drop_off_charges_amount: Integer?,
-                  one_way_drop_off_charges_currency: String?,
-                  renter_name: String?,
-                  weekly_rental_rate_amount: Integer?,
-                  weekly_rental_rate_currency: String?
-                ) -> void
-                | (
-                  ?Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::car_rental
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (
+                car_class_code: String?,
+                checkout_date: Date?,
+                daily_rental_rate_amount: Integer?,
+                daily_rental_rate_currency: String?,
+                days_rented: Integer?,
+                extra_charges: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::extra_charges?,
+                fuel_charges_amount: Integer?,
+                fuel_charges_currency: String?,
+                insurance_charges_amount: Integer?,
+                insurance_charges_currency: String?,
+                no_show_indicator: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::no_show_indicator?,
+                one_way_drop_off_charges_amount: Integer?,
+                one_way_drop_off_charges_currency: String?,
+                renter_name: String?,
+                weekly_rental_rate_amount: Integer?,
+                weekly_rental_rate_currency: String?
+              ) -> void
 
               def to_hash: -> Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::car_rental
 
@@ -2398,29 +2252,24 @@ module Increase
 
               attr_accessor total_tax_currency: String?
 
-              def initialize:
-                (
-                  check_in_date: Date?,
-                  daily_room_rate_amount: Integer?,
-                  daily_room_rate_currency: String?,
-                  extra_charges: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::extra_charges?,
-                  folio_cash_advances_amount: Integer?,
-                  folio_cash_advances_currency: String?,
-                  food_beverage_charges_amount: Integer?,
-                  food_beverage_charges_currency: String?,
-                  no_show_indicator: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::no_show_indicator?,
-                  prepaid_expenses_amount: Integer?,
-                  prepaid_expenses_currency: String?,
-                  room_nights: Integer?,
-                  total_room_tax_amount: Integer?,
-                  total_room_tax_currency: String?,
-                  total_tax_amount: Integer?,
-                  total_tax_currency: String?
-                ) -> void
-                | (
-                  ?Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::lodging
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (
+                check_in_date: Date?,
+                daily_room_rate_amount: Integer?,
+                daily_room_rate_currency: String?,
+                extra_charges: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::extra_charges?,
+                folio_cash_advances_amount: Integer?,
+                folio_cash_advances_currency: String?,
+                food_beverage_charges_amount: Integer?,
+                food_beverage_charges_currency: String?,
+                no_show_indicator: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::no_show_indicator?,
+                prepaid_expenses_amount: Integer?,
+                prepaid_expenses_currency: String?,
+                room_nights: Integer?,
+                total_room_tax_amount: Integer?,
+                total_room_tax_currency: String?,
+                total_tax_amount: Integer?,
+                total_tax_currency: String?
+              ) -> void
 
               def to_hash: -> Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::lodging
 
@@ -2538,25 +2387,20 @@ module Increase
 
               attr_accessor trip_legs: ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg]?
 
-              def initialize:
-                (
-                  ancillary: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary?,
-                  computerized_reservation_system: String?,
-                  credit_reason_indicator: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::credit_reason_indicator?,
-                  departure_date: Date?,
-                  origination_city_airport_code: String?,
-                  passenger_name: String?,
-                  restricted_ticket_indicator: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::restricted_ticket_indicator?,
-                  ticket_change_indicator: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::ticket_change_indicator?,
-                  ticket_number: String?,
-                  travel_agency_code: String?,
-                  travel_agency_name: String?,
-                  trip_legs: ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg]?
-                ) -> void
-                | (
-                  ?Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::travel
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (
+                ancillary: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary?,
+                computerized_reservation_system: String?,
+                credit_reason_indicator: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::credit_reason_indicator?,
+                departure_date: Date?,
+                origination_city_airport_code: String?,
+                passenger_name: String?,
+                restricted_ticket_indicator: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::restricted_ticket_indicator?,
+                ticket_change_indicator: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::ticket_change_indicator?,
+                ticket_number: String?,
+                travel_agency_code: String?,
+                travel_agency_name: String?,
+                trip_legs: ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg]?
+              ) -> void
 
               def to_hash: -> Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::travel
 
@@ -2580,18 +2424,13 @@ module Increase
 
                 attr_accessor ticket_document_number: String?
 
-                def initialize:
-                  (
-                    connected_ticket_document_number: String?,
-                    credit_reason_indicator: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::credit_reason_indicator?,
-                    passenger_name_or_description: String?,
-                    services: ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service],
-                    ticket_document_number: String?
-                  ) -> void
-                  | (
-                    ?Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::ancillary
-                    | Increase::BaseModel data
-                  ) -> void
+                def initialize: (
+                  connected_ticket_document_number: String?,
+                  credit_reason_indicator: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::credit_reason_indicator?,
+                  passenger_name_or_description: String?,
+                  services: ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service],
+                  ticket_document_number: String?
+                ) -> void
 
                 def to_hash: -> Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::ancillary
 
@@ -2628,15 +2467,10 @@ module Increase
 
                   attr_accessor sub_category: String?
 
-                  def initialize:
-                    (
-                      category: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::category?,
-                      sub_category: String?
-                    ) -> void
-                    | (
-                      ?Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::service
-                      | Increase::BaseModel data
-                    ) -> void
+                  def initialize: (
+                    category: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::category?,
+                    sub_category: String?
+                  ) -> void
 
                   def to_hash: -> Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::service
 
@@ -2826,19 +2660,14 @@ module Increase
 
                 attr_accessor stop_over_code: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::stop_over_code?
 
-                def initialize:
-                  (
-                    carrier_code: String?,
-                    destination_city_airport_code: String?,
-                    fare_basis_code: String?,
-                    flight_number: String?,
-                    service_class: String?,
-                    stop_over_code: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::stop_over_code?
-                  ) -> void
-                  | (
-                    ?Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::trip_leg
-                    | Increase::BaseModel data
-                  ) -> void
+                def initialize: (
+                  carrier_code: String?,
+                  destination_city_airport_code: String?,
+                  fare_basis_code: String?,
+                  flight_number: String?,
+                  service_class: String?,
+                  stop_over_code: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::stop_over_code?
+                ) -> void
 
                 def to_hash: -> Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::trip_leg
 
@@ -2929,31 +2758,26 @@ module Increase
 
           attr_accessor updated_authorization_amount: Integer
 
-          def initialize:
-            (
-              id: String,
-              card_authorization_id: String,
-              currency: Increase::Models::CardPayment::Element::CardReversal::currency,
-              merchant_acceptor_id: String,
-              merchant_category_code: String,
-              merchant_city: String?,
-              merchant_country: String?,
-              merchant_descriptor: String,
-              merchant_postal_code: String?,
-              merchant_state: String?,
-              network: Increase::Models::CardPayment::Element::CardReversal::network,
-              network_identifiers: Increase::Models::CardPayment::Element::CardReversal::NetworkIdentifiers,
-              pending_transaction_id: String?,
-              reversal_amount: Integer,
-              reversal_reason: Increase::Models::CardPayment::Element::CardReversal::reversal_reason?,
-              terminal_id: String?,
-              type: Increase::Models::CardPayment::Element::CardReversal::type_,
-              updated_authorization_amount: Integer
-            ) -> void
-            | (
-              ?Increase::Models::CardPayment::Element::card_reversal
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            id: String,
+            card_authorization_id: String,
+            currency: Increase::Models::CardPayment::Element::CardReversal::currency,
+            merchant_acceptor_id: String,
+            merchant_category_code: String,
+            merchant_city: String?,
+            merchant_country: String?,
+            merchant_descriptor: String,
+            merchant_postal_code: String?,
+            merchant_state: String?,
+            network: Increase::Models::CardPayment::Element::CardReversal::network,
+            network_identifiers: Increase::Models::CardPayment::Element::CardReversal::NetworkIdentifiers,
+            pending_transaction_id: String?,
+            reversal_amount: Integer,
+            reversal_reason: Increase::Models::CardPayment::Element::CardReversal::reversal_reason?,
+            terminal_id: String?,
+            type: Increase::Models::CardPayment::Element::CardReversal::type_,
+            updated_authorization_amount: Integer
+          ) -> void
 
           def to_hash: -> Increase::Models::CardPayment::Element::card_reversal
 
@@ -3004,16 +2828,11 @@ module Increase
 
             attr_accessor transaction_id: String?
 
-            def initialize:
-              (
-                retrieval_reference_number: String?,
-                trace_number: String?,
-                transaction_id: String?
-              ) -> void
-              | (
-                ?Increase::Models::CardPayment::Element::CardReversal::network_identifiers
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              retrieval_reference_number: String?,
+              trace_number: String?,
+              transaction_id: String?
+            ) -> void
 
             def to_hash: -> Increase::Models::CardPayment::Element::CardReversal::network_identifiers
           end
@@ -3117,34 +2936,29 @@ module Increase
 
           attr_accessor type: Increase::Models::CardPayment::Element::CardSettlement::type_
 
-          def initialize:
-            (
-              id: String,
-              amount: Integer,
-              card_authorization: String?,
-              card_payment_id: String,
-              cashback: Increase::Models::CardPayment::Element::CardSettlement::Cashback?,
-              currency: Increase::Models::CardPayment::Element::CardSettlement::currency,
-              interchange: Increase::Models::CardPayment::Element::CardSettlement::Interchange?,
-              merchant_acceptor_id: String,
-              merchant_category_code: String,
-              merchant_city: String,
-              merchant_country: String,
-              merchant_name: String,
-              merchant_postal_code: String?,
-              merchant_state: String?,
-              network_identifiers: Increase::Models::CardPayment::Element::CardSettlement::NetworkIdentifiers,
-              pending_transaction_id: String?,
-              presentment_amount: Integer,
-              presentment_currency: String,
-              purchase_details: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails?,
-              transaction_id: String,
-              type: Increase::Models::CardPayment::Element::CardSettlement::type_
-            ) -> void
-            | (
-              ?Increase::Models::CardPayment::Element::card_settlement
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            id: String,
+            amount: Integer,
+            card_authorization: String?,
+            card_payment_id: String,
+            cashback: Increase::Models::CardPayment::Element::CardSettlement::Cashback?,
+            currency: Increase::Models::CardPayment::Element::CardSettlement::currency,
+            interchange: Increase::Models::CardPayment::Element::CardSettlement::Interchange?,
+            merchant_acceptor_id: String,
+            merchant_category_code: String,
+            merchant_city: String,
+            merchant_country: String,
+            merchant_name: String,
+            merchant_postal_code: String?,
+            merchant_state: String?,
+            network_identifiers: Increase::Models::CardPayment::Element::CardSettlement::NetworkIdentifiers,
+            pending_transaction_id: String?,
+            presentment_amount: Integer,
+            presentment_currency: String,
+            purchase_details: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails?,
+            transaction_id: String,
+            type: Increase::Models::CardPayment::Element::CardSettlement::type_
+          ) -> void
 
           def to_hash: -> Increase::Models::CardPayment::Element::card_settlement
 
@@ -3159,15 +2973,10 @@ module Increase
 
             attr_accessor currency: Increase::Models::CardPayment::Element::CardSettlement::Cashback::currency
 
-            def initialize:
-              (
-                amount: String,
-                currency: Increase::Models::CardPayment::Element::CardSettlement::Cashback::currency
-              ) -> void
-              | (
-                ?Increase::Models::CardPayment::Element::CardSettlement::cashback
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              amount: String,
+              currency: Increase::Models::CardPayment::Element::CardSettlement::Cashback::currency
+            ) -> void
 
             def to_hash: -> Increase::Models::CardPayment::Element::CardSettlement::cashback
 
@@ -3234,16 +3043,11 @@ module Increase
 
             attr_accessor currency: Increase::Models::CardPayment::Element::CardSettlement::Interchange::currency
 
-            def initialize:
-              (
-                amount: String,
-                code: String?,
-                currency: Increase::Models::CardPayment::Element::CardSettlement::Interchange::currency
-              ) -> void
-              | (
-                ?Increase::Models::CardPayment::Element::CardSettlement::interchange
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              amount: String,
+              code: String?,
+              currency: Increase::Models::CardPayment::Element::CardSettlement::Interchange::currency
+            ) -> void
 
             def to_hash: -> Increase::Models::CardPayment::Element::CardSettlement::interchange
 
@@ -3286,16 +3090,11 @@ module Increase
 
             attr_accessor transaction_id: String?
 
-            def initialize:
-              (
-                acquirer_business_id: String,
-                acquirer_reference_number: String,
-                transaction_id: String?
-              ) -> void
-              | (
-                ?Increase::Models::CardPayment::Element::CardSettlement::network_identifiers
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              acquirer_business_id: String,
+              acquirer_reference_number: String,
+              transaction_id: String?
+            ) -> void
 
             def to_hash: -> Increase::Models::CardPayment::Element::CardSettlement::network_identifiers
           end
@@ -3335,23 +3134,18 @@ module Increase
 
             attr_accessor travel: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel?
 
-            def initialize:
-              (
-                car_rental: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental?,
-                customer_reference_identifier: String?,
-                local_tax_amount: Integer?,
-                local_tax_currency: String?,
-                lodging: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging?,
-                national_tax_amount: Integer?,
-                national_tax_currency: String?,
-                purchase_identifier: String?,
-                purchase_identifier_format: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::purchase_identifier_format?,
-                travel: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel?
-              ) -> void
-              | (
-                ?Increase::Models::CardPayment::Element::CardSettlement::purchase_details
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              car_rental: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental?,
+              customer_reference_identifier: String?,
+              local_tax_amount: Integer?,
+              local_tax_currency: String?,
+              lodging: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging?,
+              national_tax_amount: Integer?,
+              national_tax_currency: String?,
+              purchase_identifier: String?,
+              purchase_identifier_format: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::purchase_identifier_format?,
+              travel: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel?
+            ) -> void
 
             def to_hash: -> Increase::Models::CardPayment::Element::CardSettlement::purchase_details
 
@@ -3408,29 +3202,24 @@ module Increase
 
               attr_accessor weekly_rental_rate_currency: String?
 
-              def initialize:
-                (
-                  car_class_code: String?,
-                  checkout_date: Date?,
-                  daily_rental_rate_amount: Integer?,
-                  daily_rental_rate_currency: String?,
-                  days_rented: Integer?,
-                  extra_charges: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::extra_charges?,
-                  fuel_charges_amount: Integer?,
-                  fuel_charges_currency: String?,
-                  insurance_charges_amount: Integer?,
-                  insurance_charges_currency: String?,
-                  no_show_indicator: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::no_show_indicator?,
-                  one_way_drop_off_charges_amount: Integer?,
-                  one_way_drop_off_charges_currency: String?,
-                  renter_name: String?,
-                  weekly_rental_rate_amount: Integer?,
-                  weekly_rental_rate_currency: String?
-                ) -> void
-                | (
-                  ?Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::car_rental
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (
+                car_class_code: String?,
+                checkout_date: Date?,
+                daily_rental_rate_amount: Integer?,
+                daily_rental_rate_currency: String?,
+                days_rented: Integer?,
+                extra_charges: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::extra_charges?,
+                fuel_charges_amount: Integer?,
+                fuel_charges_currency: String?,
+                insurance_charges_amount: Integer?,
+                insurance_charges_currency: String?,
+                no_show_indicator: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::no_show_indicator?,
+                one_way_drop_off_charges_amount: Integer?,
+                one_way_drop_off_charges_currency: String?,
+                renter_name: String?,
+                weekly_rental_rate_amount: Integer?,
+                weekly_rental_rate_currency: String?
+              ) -> void
 
               def to_hash: -> Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::car_rental
 
@@ -3531,29 +3320,24 @@ module Increase
 
               attr_accessor total_tax_currency: String?
 
-              def initialize:
-                (
-                  check_in_date: Date?,
-                  daily_room_rate_amount: Integer?,
-                  daily_room_rate_currency: String?,
-                  extra_charges: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::extra_charges?,
-                  folio_cash_advances_amount: Integer?,
-                  folio_cash_advances_currency: String?,
-                  food_beverage_charges_amount: Integer?,
-                  food_beverage_charges_currency: String?,
-                  no_show_indicator: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::no_show_indicator?,
-                  prepaid_expenses_amount: Integer?,
-                  prepaid_expenses_currency: String?,
-                  room_nights: Integer?,
-                  total_room_tax_amount: Integer?,
-                  total_room_tax_currency: String?,
-                  total_tax_amount: Integer?,
-                  total_tax_currency: String?
-                ) -> void
-                | (
-                  ?Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::lodging
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (
+                check_in_date: Date?,
+                daily_room_rate_amount: Integer?,
+                daily_room_rate_currency: String?,
+                extra_charges: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::extra_charges?,
+                folio_cash_advances_amount: Integer?,
+                folio_cash_advances_currency: String?,
+                food_beverage_charges_amount: Integer?,
+                food_beverage_charges_currency: String?,
+                no_show_indicator: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::no_show_indicator?,
+                prepaid_expenses_amount: Integer?,
+                prepaid_expenses_currency: String?,
+                room_nights: Integer?,
+                total_room_tax_amount: Integer?,
+                total_room_tax_currency: String?,
+                total_tax_amount: Integer?,
+                total_tax_currency: String?
+              ) -> void
 
               def to_hash: -> Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::lodging
 
@@ -3671,25 +3455,20 @@ module Increase
 
               attr_accessor trip_legs: ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg]?
 
-              def initialize:
-                (
-                  ancillary: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary?,
-                  computerized_reservation_system: String?,
-                  credit_reason_indicator: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::credit_reason_indicator?,
-                  departure_date: Date?,
-                  origination_city_airport_code: String?,
-                  passenger_name: String?,
-                  restricted_ticket_indicator: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::restricted_ticket_indicator?,
-                  ticket_change_indicator: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::ticket_change_indicator?,
-                  ticket_number: String?,
-                  travel_agency_code: String?,
-                  travel_agency_name: String?,
-                  trip_legs: ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg]?
-                ) -> void
-                | (
-                  ?Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::travel
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (
+                ancillary: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary?,
+                computerized_reservation_system: String?,
+                credit_reason_indicator: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::credit_reason_indicator?,
+                departure_date: Date?,
+                origination_city_airport_code: String?,
+                passenger_name: String?,
+                restricted_ticket_indicator: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::restricted_ticket_indicator?,
+                ticket_change_indicator: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::ticket_change_indicator?,
+                ticket_number: String?,
+                travel_agency_code: String?,
+                travel_agency_name: String?,
+                trip_legs: ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg]?
+              ) -> void
 
               def to_hash: -> Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::travel
 
@@ -3713,18 +3492,13 @@ module Increase
 
                 attr_accessor ticket_document_number: String?
 
-                def initialize:
-                  (
-                    connected_ticket_document_number: String?,
-                    credit_reason_indicator: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::credit_reason_indicator?,
-                    passenger_name_or_description: String?,
-                    services: ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service],
-                    ticket_document_number: String?
-                  ) -> void
-                  | (
-                    ?Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::ancillary
-                    | Increase::BaseModel data
-                  ) -> void
+                def initialize: (
+                  connected_ticket_document_number: String?,
+                  credit_reason_indicator: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::credit_reason_indicator?,
+                  passenger_name_or_description: String?,
+                  services: ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service],
+                  ticket_document_number: String?
+                ) -> void
 
                 def to_hash: -> Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::ancillary
 
@@ -3761,15 +3535,10 @@ module Increase
 
                   attr_accessor sub_category: String?
 
-                  def initialize:
-                    (
-                      category: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::category?,
-                      sub_category: String?
-                    ) -> void
-                    | (
-                      ?Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::service
-                      | Increase::BaseModel data
-                    ) -> void
+                  def initialize: (
+                    category: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::category?,
+                    sub_category: String?
+                  ) -> void
 
                   def to_hash: -> Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::service
 
@@ -3959,19 +3728,14 @@ module Increase
 
                 attr_accessor stop_over_code: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::stop_over_code?
 
-                def initialize:
-                  (
-                    carrier_code: String?,
-                    destination_city_airport_code: String?,
-                    fare_basis_code: String?,
-                    flight_number: String?,
-                    service_class: String?,
-                    stop_over_code: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::stop_over_code?
-                  ) -> void
-                  | (
-                    ?Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::trip_leg
-                    | Increase::BaseModel data
-                  ) -> void
+                def initialize: (
+                  carrier_code: String?,
+                  destination_city_airport_code: String?,
+                  fare_basis_code: String?,
+                  flight_number: String?,
+                  service_class: String?,
+                  stop_over_code: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::stop_over_code?
+                ) -> void
 
                 def to_hash: -> Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::trip_leg
 
@@ -4068,33 +3832,28 @@ module Increase
 
           attr_accessor verification: Increase::Models::CardPayment::Element::CardValidation::Verification
 
-          def initialize:
-            (
-              id: String,
-              actioner: Increase::Models::CardPayment::Element::CardValidation::actioner,
-              card_payment_id: String,
-              currency: Increase::Models::CardPayment::Element::CardValidation::currency,
-              digital_wallet_token_id: String?,
-              merchant_acceptor_id: String,
-              merchant_category_code: String,
-              merchant_city: String?,
-              merchant_country: String,
-              merchant_descriptor: String,
-              merchant_postal_code: String?,
-              merchant_state: String?,
-              network_details: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails,
-              network_identifiers: Increase::Models::CardPayment::Element::CardValidation::NetworkIdentifiers,
-              network_risk_score: Integer?,
-              physical_card_id: String?,
-              real_time_decision_id: String?,
-              terminal_id: String?,
-              type: Increase::Models::CardPayment::Element::CardValidation::type_,
-              verification: Increase::Models::CardPayment::Element::CardValidation::Verification
-            ) -> void
-            | (
-              ?Increase::Models::CardPayment::Element::card_validation
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            id: String,
+            actioner: Increase::Models::CardPayment::Element::CardValidation::actioner,
+            card_payment_id: String,
+            currency: Increase::Models::CardPayment::Element::CardValidation::currency,
+            digital_wallet_token_id: String?,
+            merchant_acceptor_id: String,
+            merchant_category_code: String,
+            merchant_city: String?,
+            merchant_country: String,
+            merchant_descriptor: String,
+            merchant_postal_code: String?,
+            merchant_state: String?,
+            network_details: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails,
+            network_identifiers: Increase::Models::CardPayment::Element::CardValidation::NetworkIdentifiers,
+            network_risk_score: Integer?,
+            physical_card_id: String?,
+            real_time_decision_id: String?,
+            terminal_id: String?,
+            type: Increase::Models::CardPayment::Element::CardValidation::type_,
+            verification: Increase::Models::CardPayment::Element::CardValidation::Verification
+          ) -> void
 
           def to_hash: -> Increase::Models::CardPayment::Element::card_validation
 
@@ -4148,15 +3907,10 @@ module Increase
 
             attr_accessor visa: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa?
 
-            def initialize:
-              (
-                category: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::category,
-                visa: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa?
-              ) -> void
-              | (
-                ?Increase::Models::CardPayment::Element::CardValidation::network_details
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              category: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::category,
+              visa: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa?
+            ) -> void
 
             def to_hash: -> Increase::Models::CardPayment::Element::CardValidation::network_details
 
@@ -4183,16 +3937,11 @@ module Increase
 
               attr_accessor stand_in_processing_reason: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::stand_in_processing_reason?
 
-              def initialize:
-                (
-                  electronic_commerce_indicator: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::electronic_commerce_indicator?,
-                  point_of_service_entry_mode: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::point_of_service_entry_mode?,
-                  stand_in_processing_reason: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::stand_in_processing_reason?
-                ) -> void
-                | (
-                  ?Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::visa
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (
+                electronic_commerce_indicator: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::electronic_commerce_indicator?,
+                point_of_service_entry_mode: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::point_of_service_entry_mode?,
+                stand_in_processing_reason: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::stand_in_processing_reason?
+              ) -> void
 
               def to_hash: -> Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::visa
 
@@ -4330,16 +4079,11 @@ module Increase
 
             attr_accessor transaction_id: String?
 
-            def initialize:
-              (
-                retrieval_reference_number: String?,
-                trace_number: String?,
-                transaction_id: String?
-              ) -> void
-              | (
-                ?Increase::Models::CardPayment::Element::CardValidation::network_identifiers
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              retrieval_reference_number: String?,
+              trace_number: String?,
+              transaction_id: String?
+            ) -> void
 
             def to_hash: -> Increase::Models::CardPayment::Element::CardValidation::network_identifiers
           end
@@ -4363,15 +4107,10 @@ module Increase
 
             attr_accessor cardholder_address: Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress
 
-            def initialize:
-              (
-                card_verification_code: Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode,
-                cardholder_address: Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress
-              ) -> void
-              | (
-                ?Increase::Models::CardPayment::Element::CardValidation::verification
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              card_verification_code: Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode,
+              cardholder_address: Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress
+            ) -> void
 
             def to_hash: -> Increase::Models::CardPayment::Element::CardValidation::verification
 
@@ -4383,14 +4122,9 @@ module Increase
             class CardVerificationCode < Increase::BaseModel
               attr_accessor result: Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::result
 
-              def initialize:
-                (
-                  result: Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::result
-                ) -> void
-                | (
-                  ?Increase::Models::CardPayment::Element::CardValidation::Verification::card_verification_code
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (
+                result: Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::result
+              ) -> void
 
               def to_hash: -> Increase::Models::CardPayment::Element::CardValidation::Verification::card_verification_code
 
@@ -4430,18 +4164,13 @@ module Increase
 
               attr_accessor result: Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::result
 
-              def initialize:
-                (
-                  actual_line1: String?,
-                  actual_postal_code: String?,
-                  provided_line1: String?,
-                  provided_postal_code: String?,
-                  result: Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::result
-                ) -> void
-                | (
-                  ?Increase::Models::CardPayment::Element::CardValidation::Verification::cardholder_address
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (
+                actual_line1: String?,
+                actual_postal_code: String?,
+                provided_line1: String?,
+                provided_postal_code: String?,
+                result: Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::result
+              ) -> void
 
               def to_hash: -> Increase::Models::CardPayment::Element::CardValidation::Verification::cardholder_address
 
@@ -4549,17 +4278,13 @@ module Increase
 
         attr_accessor settled_amount: Integer
 
-        def initialize:
-          (
-            authorized_amount: Integer,
-            fuel_confirmed_amount: Integer,
-            incremented_amount: Integer,
-            reversed_amount: Integer,
-            settled_amount: Integer
-          ) -> void
-          | (
-            ?Increase::Models::CardPayment::state | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          authorized_amount: Integer,
+          fuel_confirmed_amount: Integer,
+          incremented_amount: Integer,
+          reversed_amount: Integer,
+          settled_amount: Integer
+        ) -> void
 
         def to_hash: -> Increase::Models::CardPayment::state
       end

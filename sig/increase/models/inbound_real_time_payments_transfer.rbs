@@ -53,29 +53,24 @@ module Increase
 
       attr_accessor type: Increase::Models::InboundRealTimePaymentsTransfer::type_
 
-      def initialize:
-        (
-          id: String,
-          account_id: String,
-          account_number_id: String,
-          amount: Integer,
-          confirmation: Increase::Models::InboundRealTimePaymentsTransfer::Confirmation?,
-          created_at: Time,
-          creditor_name: String,
-          currency: Increase::Models::InboundRealTimePaymentsTransfer::currency,
-          debtor_account_number: String,
-          debtor_name: String,
-          debtor_routing_number: String,
-          decline: Increase::Models::InboundRealTimePaymentsTransfer::Decline?,
-          remittance_information: String?,
-          status: Increase::Models::InboundRealTimePaymentsTransfer::status,
-          transaction_identification: String,
-          type: Increase::Models::InboundRealTimePaymentsTransfer::type_
-        ) -> void
-        | (
-          ?Increase::Models::inbound_real_time_payments_transfer
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        id: String,
+        account_id: String,
+        account_number_id: String,
+        amount: Integer,
+        confirmation: Increase::Models::InboundRealTimePaymentsTransfer::Confirmation?,
+        created_at: Time,
+        creditor_name: String,
+        currency: Increase::Models::InboundRealTimePaymentsTransfer::currency,
+        debtor_account_number: String,
+        debtor_name: String,
+        debtor_routing_number: String,
+        decline: Increase::Models::InboundRealTimePaymentsTransfer::Decline?,
+        remittance_information: String?,
+        status: Increase::Models::InboundRealTimePaymentsTransfer::status,
+        transaction_identification: String,
+        type: Increase::Models::InboundRealTimePaymentsTransfer::type_
+      ) -> void
 
       def to_hash: -> Increase::Models::inbound_real_time_payments_transfer
 
@@ -86,12 +81,7 @@ module Increase
 
         attr_accessor transaction_id: String
 
-        def initialize:
-          (confirmed_at: Time, transaction_id: String) -> void
-          | (
-            ?Increase::Models::InboundRealTimePaymentsTransfer::confirmation
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (confirmed_at: Time, transaction_id: String) -> void
 
         def to_hash: -> Increase::Models::InboundRealTimePaymentsTransfer::confirmation
       end
@@ -134,16 +124,11 @@ module Increase
 
         attr_accessor reason: Increase::Models::InboundRealTimePaymentsTransfer::Decline::reason
 
-        def initialize:
-          (
-            declined_at: Time,
-            declined_transaction_id: String,
-            reason: Increase::Models::InboundRealTimePaymentsTransfer::Decline::reason
-          ) -> void
-          | (
-            ?Increase::Models::InboundRealTimePaymentsTransfer::decline
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          declined_at: Time,
+          declined_transaction_id: String,
+          reason: Increase::Models::InboundRealTimePaymentsTransfer::Decline::reason
+        ) -> void
 
         def to_hash: -> Increase::Models::InboundRealTimePaymentsTransfer::decline
 

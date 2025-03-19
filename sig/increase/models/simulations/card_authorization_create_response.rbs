@@ -15,16 +15,11 @@ module Increase
 
         attr_accessor type: Increase::Models::Simulations::CardAuthorizationCreateResponse::type_
 
-        def initialize:
-          (
-            declined_transaction: Increase::Models::DeclinedTransaction?,
-            pending_transaction: Increase::Models::PendingTransaction?,
-            type: Increase::Models::Simulations::CardAuthorizationCreateResponse::type_
-          ) -> void
-          | (
-            ?Increase::Models::Simulations::card_authorization_create_response
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          declined_transaction: Increase::Models::DeclinedTransaction?,
+          pending_transaction: Increase::Models::PendingTransaction?,
+          type: Increase::Models::Simulations::CardAuthorizationCreateResponse::type_
+        ) -> void
 
         def to_hash: -> Increase::Models::Simulations::card_authorization_create_response
 

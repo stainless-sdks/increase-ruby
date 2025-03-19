@@ -26,17 +26,15 @@ module Increase
 
       attr_accessor unauthenticated_url: String
 
-      def initialize:
-        (
-          id: String,
-          created_at: Time,
-          expires_at: Time,
-          file_id: String,
-          idempotency_key: String?,
-          type: Increase::Models::FileLink::type_,
-          unauthenticated_url: String
-        ) -> void
-        | (?Increase::Models::file_link | Increase::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        created_at: Time,
+        expires_at: Time,
+        file_id: String,
+        idempotency_key: String?,
+        type: Increase::Models::FileLink::type_,
+        unauthenticated_url: String
+      ) -> void
 
       def to_hash: -> Increase::Models::file_link
 

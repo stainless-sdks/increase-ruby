@@ -53,28 +53,24 @@ module Increase
 
       attr_accessor type: Increase::Models::ACHPrenotification::type_
 
-      def initialize:
-        (
-          id: String,
-          account_number: String,
-          addendum: String?,
-          company_descriptive_date: String?,
-          company_discretionary_data: String?,
-          company_entry_description: String?,
-          company_name: String?,
-          created_at: Time,
-          credit_debit_indicator: Increase::Models::ACHPrenotification::credit_debit_indicator?,
-          effective_date: Time?,
-          idempotency_key: String?,
-          notifications_of_change: ::Array[Increase::Models::ACHPrenotification::NotificationsOfChange],
-          prenotification_return: Increase::Models::ACHPrenotification::PrenotificationReturn?,
-          routing_number: String,
-          status: Increase::Models::ACHPrenotification::status,
-          type: Increase::Models::ACHPrenotification::type_
-        ) -> void
-        | (
-          ?Increase::Models::ach_prenotification | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        id: String,
+        account_number: String,
+        addendum: String?,
+        company_descriptive_date: String?,
+        company_discretionary_data: String?,
+        company_entry_description: String?,
+        company_name: String?,
+        created_at: Time,
+        credit_debit_indicator: Increase::Models::ACHPrenotification::credit_debit_indicator?,
+        effective_date: Time?,
+        idempotency_key: String?,
+        notifications_of_change: ::Array[Increase::Models::ACHPrenotification::NotificationsOfChange],
+        prenotification_return: Increase::Models::ACHPrenotification::PrenotificationReturn?,
+        routing_number: String,
+        status: Increase::Models::ACHPrenotification::status,
+        type: Increase::Models::ACHPrenotification::type_
+      ) -> void
 
       def to_hash: -> Increase::Models::ach_prenotification
 
@@ -104,16 +100,11 @@ module Increase
 
         attr_accessor created_at: Time
 
-        def initialize:
-          (
-            change_code: Increase::Models::ACHPrenotification::NotificationsOfChange::change_code,
-            corrected_data: String,
-            created_at: Time
-          ) -> void
-          | (
-            ?Increase::Models::ACHPrenotification::notifications_of_change
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          change_code: Increase::Models::ACHPrenotification::NotificationsOfChange::change_code,
+          corrected_data: String,
+          created_at: Time
+        ) -> void
 
         def to_hash: -> Increase::Models::ACHPrenotification::notifications_of_change
 
@@ -211,15 +202,10 @@ module Increase
 
         attr_accessor return_reason_code: Increase::Models::ACHPrenotification::PrenotificationReturn::return_reason_code
 
-        def initialize:
-          (
-            created_at: Time,
-            return_reason_code: Increase::Models::ACHPrenotification::PrenotificationReturn::return_reason_code
-          ) -> void
-          | (
-            ?Increase::Models::ACHPrenotification::prenotification_return
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          created_at: Time,
+          return_reason_code: Increase::Models::ACHPrenotification::PrenotificationReturn::return_reason_code
+        ) -> void
 
         def to_hash: -> Increase::Models::ACHPrenotification::prenotification_return
 

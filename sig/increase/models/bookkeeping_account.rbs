@@ -26,19 +26,15 @@ module Increase
 
       attr_accessor type: Increase::Models::BookkeepingAccount::type_
 
-      def initialize:
-        (
-          id: String,
-          account_id: String?,
-          compliance_category: Increase::Models::BookkeepingAccount::compliance_category?,
-          entity_id: String?,
-          idempotency_key: String?,
-          name: String,
-          type: Increase::Models::BookkeepingAccount::type_
-        ) -> void
-        | (
-          ?Increase::Models::bookkeeping_account | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        id: String,
+        account_id: String?,
+        compliance_category: Increase::Models::BookkeepingAccount::compliance_category?,
+        entity_id: String?,
+        idempotency_key: String?,
+        name: String,
+        type: Increase::Models::BookkeepingAccount::type_
+      ) -> void
 
       def to_hash: -> Increase::Models::bookkeeping_account
 

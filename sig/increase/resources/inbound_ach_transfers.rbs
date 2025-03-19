@@ -1,68 +1,39 @@
 module Increase
   module Resources
     class InboundACHTransfers
-      def retrieve:
-        (
-          String inbound_ach_transfer_id,
-          ?Increase::Models::InboundACHTransferRetrieveParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::InboundACHTransfer
-        | (
-          String inbound_ach_transfer_id,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::InboundACHTransfer
+      def retrieve: (
+        String inbound_ach_transfer_id,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Models::InboundACHTransfer
 
-      def list:
-        (
-          ?Increase::Models::InboundACHTransferListParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Page[Increase::Models::InboundACHTransfer]
-        | (
-          account_id: String,
-          account_number_id: String,
-          created_at: Increase::Models::InboundACHTransferListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          status: Increase::Models::InboundACHTransferListParams::Status,
-          request_options: Increase::request_opts
-        ) -> Increase::Page[Increase::Models::InboundACHTransfer]
+      def list: (
+        ?account_id: String,
+        ?account_number_id: String,
+        ?created_at: Increase::Models::InboundACHTransferListParams::CreatedAt,
+        ?cursor: String,
+        ?limit: Integer,
+        ?status: Increase::Models::InboundACHTransferListParams::Status,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Page[Increase::Models::InboundACHTransfer]
 
-      def create_notification_of_change:
-        (
-          String inbound_ach_transfer_id,
-          ?Increase::Models::InboundACHTransferCreateNotificationOfChangeParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::InboundACHTransfer
-        | (
-          String inbound_ach_transfer_id,
-          updated_account_number: String,
-          updated_routing_number: String,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::InboundACHTransfer
+      def create_notification_of_change: (
+        String inbound_ach_transfer_id,
+        ?updated_account_number: String,
+        ?updated_routing_number: String,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Models::InboundACHTransfer
 
-      def decline:
-        (
-          String inbound_ach_transfer_id,
-          ?Increase::Models::InboundACHTransferDeclineParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::InboundACHTransfer
-        | (
-          String inbound_ach_transfer_id,
-          reason: Increase::Models::InboundACHTransferDeclineParams::reason,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::InboundACHTransfer
+      def decline: (
+        String inbound_ach_transfer_id,
+        ?reason: Increase::Models::InboundACHTransferDeclineParams::reason,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Models::InboundACHTransfer
 
-      def transfer_return:
-        (
-          String inbound_ach_transfer_id,
-          Increase::Models::InboundACHTransferTransferReturnParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::InboundACHTransfer
-        | (
-          String inbound_ach_transfer_id,
-          reason: Increase::Models::InboundACHTransferTransferReturnParams::reason,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::InboundACHTransfer
+      def transfer_return: (
+        String inbound_ach_transfer_id,
+        reason: Increase::Models::InboundACHTransferTransferReturnParams::reason,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Models::InboundACHTransfer
 
       def initialize: (client: Increase::Client) -> void
     end
