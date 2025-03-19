@@ -18,16 +18,11 @@ module Increase
 
         def explanation=: (String) -> String
 
-        def initialize:
-          (
-            status: Increase::Models::Simulations::CardDisputeActionParams::status,
-            ?explanation: String,
-            ?request_options: Increase::request_opts
-          ) -> void
-          | (
-            ?Increase::Models::Simulations::card_dispute_action_params
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          status: Increase::Models::Simulations::CardDisputeActionParams::status,
+          ?explanation: String,
+          ?request_options: Increase::request_opts
+        ) -> void
 
         def to_hash: -> Increase::Models::Simulations::card_dispute_action_params
 

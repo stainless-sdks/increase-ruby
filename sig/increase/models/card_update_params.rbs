@@ -40,18 +40,14 @@ module Increase
         Increase::Models::CardUpdateParams::status
       ) -> Increase::Models::CardUpdateParams::status
 
-      def initialize:
-        (
-          ?billing_address: Increase::Models::CardUpdateParams::BillingAddress,
-          ?description: String,
-          ?digital_wallet: Increase::Models::CardUpdateParams::DigitalWallet,
-          ?entity_id: String,
-          ?status: Increase::Models::CardUpdateParams::status,
-          ?request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::card_update_params | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ?billing_address: Increase::Models::CardUpdateParams::BillingAddress,
+        ?description: String,
+        ?digital_wallet: Increase::Models::CardUpdateParams::DigitalWallet,
+        ?entity_id: String,
+        ?status: Increase::Models::CardUpdateParams::status,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::card_update_params
 
@@ -77,18 +73,13 @@ module Increase
 
         def line2=: (String) -> String
 
-        def initialize:
-          (
-            city: String,
-            line1: String,
-            postal_code: String,
-            state: String,
-            ?line2: String
-          ) -> void
-          | (
-            ?Increase::Models::CardUpdateParams::billing_address
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          city: String,
+          line1: String,
+          postal_code: String,
+          state: String,
+          ?line2: String
+        ) -> void
 
         def to_hash: -> Increase::Models::CardUpdateParams::billing_address
       end
@@ -109,16 +100,11 @@ module Increase
 
         def phone=: (String) -> String
 
-        def initialize:
-          (
-            ?digital_card_profile_id: String,
-            ?email: String,
-            ?phone: String
-          ) -> void
-          | (
-            ?Increase::Models::CardUpdateParams::digital_wallet
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?digital_card_profile_id: String,
+          ?email: String,
+          ?phone: String
+        ) -> void
 
         def to_hash: -> Increase::Models::CardUpdateParams::digital_wallet
       end

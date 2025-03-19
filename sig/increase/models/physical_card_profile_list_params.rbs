@@ -31,18 +31,13 @@ module Increase
         Increase::Models::PhysicalCardProfileListParams::Status
       ) -> Increase::Models::PhysicalCardProfileListParams::Status
 
-      def initialize:
-        (
-          ?cursor: String,
-          ?idempotency_key: String,
-          ?limit: Integer,
-          ?status: Increase::Models::PhysicalCardProfileListParams::Status,
-          ?request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::physical_card_profile_list_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ?cursor: String,
+        ?idempotency_key: String,
+        ?limit: Integer,
+        ?status: Increase::Models::PhysicalCardProfileListParams::Status,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::physical_card_profile_list_params
 
@@ -58,14 +53,9 @@ module Increase
           ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
         ) -> ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
 
-        def initialize:
-          (
-            ?in_: ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
-          ) -> void
-          | (
-            ?Increase::Models::PhysicalCardProfileListParams::status
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?in_: ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
+        ) -> void
 
         def to_hash: -> Increase::Models::PhysicalCardProfileListParams::status
 

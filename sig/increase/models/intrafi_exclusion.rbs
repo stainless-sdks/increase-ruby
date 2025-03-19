@@ -35,22 +35,18 @@ module Increase
 
       attr_accessor type: Increase::Models::IntrafiExclusion::type_
 
-      def initialize:
-        (
-          id: String,
-          bank_name: String,
-          created_at: Time,
-          entity_id: String,
-          excluded_at: Time?,
-          fdic_certificate_number: String?,
-          idempotency_key: String?,
-          status: Increase::Models::IntrafiExclusion::status,
-          submitted_at: Time?,
-          type: Increase::Models::IntrafiExclusion::type_
-        ) -> void
-        | (
-          ?Increase::Models::intrafi_exclusion | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        id: String,
+        bank_name: String,
+        created_at: Time,
+        entity_id: String,
+        excluded_at: Time?,
+        fdic_certificate_number: String?,
+        idempotency_key: String?,
+        status: Increase::Models::IntrafiExclusion::status,
+        submitted_at: Time?,
+        type: Increase::Models::IntrafiExclusion::type_
+      ) -> void
 
       def to_hash: -> Increase::Models::intrafi_exclusion
 

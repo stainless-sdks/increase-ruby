@@ -41,22 +41,20 @@ module Increase
 
       attr_accessor win: Increase::Models::CardDispute::Win?
 
-      def initialize:
-        (
-          id: String,
-          acceptance: Increase::Models::CardDispute::Acceptance?,
-          amount: Integer?,
-          created_at: Time,
-          disputed_transaction_id: String,
-          explanation: String,
-          idempotency_key: String?,
-          loss: Increase::Models::CardDispute::Loss?,
-          rejection: Increase::Models::CardDispute::Rejection?,
-          status: Increase::Models::CardDispute::status,
-          type: Increase::Models::CardDispute::type_,
-          win: Increase::Models::CardDispute::Win?
-        ) -> void
-        | (?Increase::Models::card_dispute | Increase::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        acceptance: Increase::Models::CardDispute::Acceptance?,
+        amount: Integer?,
+        created_at: Time,
+        disputed_transaction_id: String,
+        explanation: String,
+        idempotency_key: String?,
+        loss: Increase::Models::CardDispute::Loss?,
+        rejection: Increase::Models::CardDispute::Rejection?,
+        status: Increase::Models::CardDispute::status,
+        type: Increase::Models::CardDispute::type_,
+        win: Increase::Models::CardDispute::Win?
+      ) -> void
 
       def to_hash: -> Increase::Models::card_dispute
 
@@ -70,16 +68,11 @@ module Increase
 
         attr_accessor transaction_id: String
 
-        def initialize:
-          (
-            accepted_at: Time,
-            card_dispute_id: String,
-            transaction_id: String
-          ) -> void
-          | (
-            ?Increase::Models::CardDispute::acceptance
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          accepted_at: Time,
+          card_dispute_id: String,
+          transaction_id: String
+        ) -> void
 
         def to_hash: -> Increase::Models::CardDispute::acceptance
       end
@@ -101,16 +94,12 @@ module Increase
 
         attr_accessor transaction_id: String
 
-        def initialize:
-          (
-            card_dispute_id: String,
-            explanation: String,
-            lost_at: Time,
-            transaction_id: String
-          ) -> void
-          | (
-            ?Increase::Models::CardDispute::loss | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          card_dispute_id: String,
+          explanation: String,
+          lost_at: Time,
+          transaction_id: String
+        ) -> void
 
         def to_hash: -> Increase::Models::CardDispute::loss
       end
@@ -125,15 +114,11 @@ module Increase
 
         attr_accessor rejected_at: Time
 
-        def initialize:
-          (
-            card_dispute_id: String,
-            explanation: String,
-            rejected_at: Time
-          ) -> void
-          | (
-            ?Increase::Models::CardDispute::rejection | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          card_dispute_id: String,
+          explanation: String,
+          rejected_at: Time
+        ) -> void
 
         def to_hash: -> Increase::Models::CardDispute::rejection
       end
@@ -183,11 +168,7 @@ module Increase
 
         attr_accessor won_at: Time
 
-        def initialize:
-          (card_dispute_id: String, won_at: Time) -> void
-          | (
-            ?Increase::Models::CardDispute::win | Increase::BaseModel data
-          ) -> void
+        def initialize: (card_dispute_id: String, won_at: Time) -> void
 
         def to_hash: -> Increase::Models::CardDispute::win
       end

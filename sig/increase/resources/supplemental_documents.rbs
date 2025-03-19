@@ -1,29 +1,19 @@
 module Increase
   module Resources
     class SupplementalDocuments
-      def create:
-        (
-          Increase::Models::SupplementalDocumentCreateParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::EntitySupplementalDocument
-        | (
-          entity_id: String,
-          file_id: String,
-          ?request_options: Increase::request_opts
-        ) -> Increase::Models::EntitySupplementalDocument
+      def create: (
+        entity_id: String,
+        file_id: String,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Models::EntitySupplementalDocument
 
-      def list:
-        (
-          Increase::Models::SupplementalDocumentListParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Page[Increase::Models::EntitySupplementalDocument]
-        | (
-          entity_id: String,
-          ?cursor: String,
-          ?idempotency_key: String,
-          ?limit: Integer,
-          ?request_options: Increase::request_opts
-        ) -> Increase::Page[Increase::Models::EntitySupplementalDocument]
+      def list: (
+        entity_id: String,
+        ?cursor: String,
+        ?idempotency_key: String,
+        ?limit: Integer,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Page[Increase::Models::EntitySupplementalDocument]
 
       def initialize: (client: Increase::Client) -> void
     end

@@ -29,20 +29,16 @@ module Increase
 
       attr_accessor type: Increase::Models::InboundMailItem::type_
 
-      def initialize:
-        (
-          id: String,
-          created_at: Time,
-          file_id: String,
-          lockbox_id: String?,
-          recipient_name: String?,
-          rejection_reason: Increase::Models::InboundMailItem::rejection_reason?,
-          status: Increase::Models::InboundMailItem::status,
-          type: Increase::Models::InboundMailItem::type_
-        ) -> void
-        | (
-          ?Increase::Models::inbound_mail_item | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        id: String,
+        created_at: Time,
+        file_id: String,
+        lockbox_id: String?,
+        recipient_name: String?,
+        rejection_reason: Increase::Models::InboundMailItem::rejection_reason?,
+        status: Increase::Models::InboundMailItem::status,
+        type: Increase::Models::InboundMailItem::type_
+      ) -> void
 
       def to_hash: -> Increase::Models::inbound_mail_item
 

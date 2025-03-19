@@ -36,23 +36,18 @@ module Increase
 
         attr_accessor type: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::type_
 
-        def initialize:
-          (
-            id: String,
-            amount: Integer,
-            automatically_releases_at: Time,
-            created_at: Time,
-            currency: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::currency,
-            held_transaction_id: String?,
-            pending_transaction_id: String?,
-            released_at: Time?,
-            status: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::status,
-            type: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::type_
-          ) -> void
-          | (
-            ?Increase::Models::Simulations::inbound_funds_hold_release_response
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          id: String,
+          amount: Integer,
+          automatically_releases_at: Time,
+          created_at: Time,
+          currency: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::currency,
+          held_transaction_id: String?,
+          pending_transaction_id: String?,
+          released_at: Time?,
+          status: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::status,
+          type: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::type_
+        ) -> void
 
         def to_hash: -> Increase::Models::Simulations::inbound_funds_hold_release_response
 

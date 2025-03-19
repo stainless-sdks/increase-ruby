@@ -1,28 +1,19 @@
 module Increase
   module Resources
     class Events
-      def retrieve:
-        (
-          String event_id,
-          ?Increase::Models::EventRetrieveParams | ::Hash[Symbol, top] params
-        ) -> Increase::Models::Event
-        | (
-          String event_id,
-          ?request_options: Increase::request_opts
-        ) -> Increase::Models::Event
+      def retrieve: (
+        String event_id,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Models::Event
 
-      def list:
-        (
-          ?Increase::Models::EventListParams | ::Hash[Symbol, top] params
-        ) -> Increase::Page[Increase::Models::Event]
-        | (
-          ?associated_object_id: String,
-          ?category: Increase::Models::EventListParams::Category,
-          ?created_at: Increase::Models::EventListParams::CreatedAt,
-          ?cursor: String,
-          ?limit: Integer,
-          ?request_options: Increase::request_opts
-        ) -> Increase::Page[Increase::Models::Event]
+      def list: (
+        ?associated_object_id: String,
+        ?category: Increase::Models::EventListParams::Category,
+        ?created_at: Increase::Models::EventListParams::CreatedAt,
+        ?cursor: String,
+        ?limit: Integer,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Page[Increase::Models::Event]
 
       def initialize: (client: Increase::Client) -> void
     end

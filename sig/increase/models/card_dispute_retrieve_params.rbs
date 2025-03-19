@@ -6,12 +6,7 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      def initialize:
-        (?request_options: Increase::request_opts) -> void
-        | (
-          ?Increase::Models::card_dispute_retrieve_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (?request_options: Increase::request_opts) -> void
 
       def to_hash: -> Increase::Models::card_dispute_retrieve_params
     end

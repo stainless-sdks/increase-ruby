@@ -26,19 +26,15 @@ module Increase
 
       attr_accessor type: Increase::Models::BookkeepingEntrySet::type_
 
-      def initialize:
-        (
-          id: String,
-          created_at: Time,
-          date: Time,
-          entries: ::Array[Increase::Models::BookkeepingEntrySet::Entry],
-          idempotency_key: String?,
-          transaction_id: String?,
-          type: Increase::Models::BookkeepingEntrySet::type_
-        ) -> void
-        | (
-          ?Increase::Models::bookkeeping_entry_set | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        id: String,
+        created_at: Time,
+        date: Time,
+        entries: ::Array[Increase::Models::BookkeepingEntrySet::Entry],
+        idempotency_key: String?,
+        transaction_id: String?,
+        type: Increase::Models::BookkeepingEntrySet::type_
+      ) -> void
 
       def to_hash: -> Increase::Models::bookkeeping_entry_set
 
@@ -51,12 +47,11 @@ module Increase
 
         attr_accessor amount: Integer
 
-        def initialize:
-          (id: String, account_id: String, amount: Integer) -> void
-          | (
-            ?Increase::Models::BookkeepingEntrySet::entry
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          id: String,
+          account_id: String,
+          amount: Integer
+        ) -> void
 
         def to_hash: -> Increase::Models::BookkeepingEntrySet::entry
       end

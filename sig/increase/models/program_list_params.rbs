@@ -15,15 +15,11 @@ module Increase
 
       def limit=: (Integer) -> Integer
 
-      def initialize:
-        (
-          ?cursor: String,
-          ?limit: Integer,
-          ?request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::program_list_params | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ?cursor: String,
+        ?limit: Integer,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::program_list_params
     end
