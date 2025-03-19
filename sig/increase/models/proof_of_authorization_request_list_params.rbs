@@ -28,10 +28,10 @@ module Increase
 
       def initialize:
         (
-          created_at: Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          request_options: Increase::request_opts
+          ?created_at: Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt,
+          ?cursor: String,
+          ?limit: Integer,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::proof_of_authorization_request_list_params
@@ -62,10 +62,10 @@ module Increase
 
         def initialize:
           (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
+            ?after: Time,
+            ?before: Time,
+            ?on_or_after: Time,
+            ?on_or_before: Time
           ) -> void
           | (
             ?Increase::Models::ProofOfAuthorizationRequestListParams::created_at

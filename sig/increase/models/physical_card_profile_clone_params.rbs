@@ -38,12 +38,12 @@ module Increase
 
       def initialize:
         (
-          carrier_image_file_id: String,
-          contact_phone: String,
-          description: String,
-          front_image_file_id: String,
-          front_text: Increase::Models::PhysicalCardProfileCloneParams::FrontText,
-          request_options: Increase::request_opts
+          ?carrier_image_file_id: String,
+          ?contact_phone: String,
+          ?description: String,
+          ?front_image_file_id: String,
+          ?front_text: Increase::Models::PhysicalCardProfileCloneParams::FrontText,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::physical_card_profile_clone_params
@@ -62,7 +62,7 @@ module Increase
         def line2=: (String) -> String
 
         def initialize:
-          (line1: String, line2: String) -> void
+          (line1: String, ?line2: String) -> void
           | (
             ?Increase::Models::PhysicalCardProfileCloneParams::front_text
             | Increase::BaseModel data

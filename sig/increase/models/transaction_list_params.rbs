@@ -45,13 +45,13 @@ module Increase
 
       def initialize:
         (
-          account_id: String,
-          category: Increase::Models::TransactionListParams::Category,
-          created_at: Increase::Models::TransactionListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          route_id: String,
-          request_options: Increase::request_opts
+          ?account_id: String,
+          ?category: Increase::Models::TransactionListParams::Category,
+          ?created_at: Increase::Models::TransactionListParams::CreatedAt,
+          ?cursor: String,
+          ?limit: Integer,
+          ?route_id: String,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::transaction_list_params | Increase::BaseModel data
@@ -71,7 +71,7 @@ module Increase
 
         def initialize:
           (
-            in_: ::Array[Increase::Models::TransactionListParams::Category::in_]
+            ?in_: ::Array[Increase::Models::TransactionListParams::Category::in_]
           ) -> void
           | (
             ?Increase::Models::TransactionListParams::category
@@ -225,10 +225,10 @@ module Increase
 
         def initialize:
           (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
+            ?after: Time,
+            ?before: Time,
+            ?on_or_after: Time,
+            ?on_or_before: Time
           ) -> void
           | (
             ?Increase::Models::TransactionListParams::created_at

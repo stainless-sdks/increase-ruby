@@ -9,7 +9,7 @@ module Increase
         ) -> Increase::Models::PendingTransaction
         | (
           String pending_transaction_id,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::PendingTransaction
 
       def list:
@@ -18,14 +18,14 @@ module Increase
           | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::PendingTransaction]
         | (
-          account_id: String,
-          category: Increase::Models::PendingTransactionListParams::Category,
-          created_at: Increase::Models::PendingTransactionListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          route_id: String,
-          status: Increase::Models::PendingTransactionListParams::Status,
-          request_options: Increase::request_opts
+          ?account_id: String,
+          ?category: Increase::Models::PendingTransactionListParams::Category,
+          ?created_at: Increase::Models::PendingTransactionListParams::CreatedAt,
+          ?cursor: String,
+          ?limit: Integer,
+          ?route_id: String,
+          ?status: Increase::Models::PendingTransactionListParams::Status,
+          ?request_options: Increase::request_opts
         ) -> Increase::Page[Increase::Models::PendingTransaction]
 
       def initialize: (client: Increase::Client) -> void

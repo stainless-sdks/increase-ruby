@@ -35,10 +35,10 @@ module Increase
           (
             account_id: String,
             amount: Integer,
-            accrued_on_account_id: String,
-            period_end: Time,
-            period_start: Time,
-            request_options: Increase::request_opts
+            ?accrued_on_account_id: String,
+            ?period_end: Time,
+            ?period_start: Time,
+            ?request_options: Increase::request_opts
           ) -> void
           | (
             ?Increase::Models::Simulations::interest_payment_create_params

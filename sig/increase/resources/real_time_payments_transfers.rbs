@@ -11,14 +11,14 @@ module Increase
           creditor_name: String,
           remittance_information: String,
           source_account_number_id: String,
-          debtor_name: String,
-          destination_account_number: String,
-          destination_routing_number: String,
-          external_account_id: String,
-          require_approval: bool,
-          ultimate_creditor_name: String,
-          ultimate_debtor_name: String,
-          request_options: Increase::request_opts
+          ?debtor_name: String,
+          ?destination_account_number: String,
+          ?destination_routing_number: String,
+          ?external_account_id: String,
+          ?require_approval: bool,
+          ?ultimate_creditor_name: String,
+          ?ultimate_debtor_name: String,
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::RealTimePaymentsTransfer
 
       def retrieve:
@@ -29,7 +29,7 @@ module Increase
         ) -> Increase::Models::RealTimePaymentsTransfer
         | (
           String real_time_payments_transfer_id,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::RealTimePaymentsTransfer
 
       def list:
@@ -38,13 +38,13 @@ module Increase
           | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::RealTimePaymentsTransfer]
         | (
-          account_id: String,
-          created_at: Increase::Models::RealTimePaymentsTransferListParams::CreatedAt,
-          cursor: String,
-          external_account_id: String,
-          idempotency_key: String,
-          limit: Integer,
-          request_options: Increase::request_opts
+          ?account_id: String,
+          ?created_at: Increase::Models::RealTimePaymentsTransferListParams::CreatedAt,
+          ?cursor: String,
+          ?external_account_id: String,
+          ?idempotency_key: String,
+          ?limit: Integer,
+          ?request_options: Increase::request_opts
         ) -> Increase::Page[Increase::Models::RealTimePaymentsTransfer]
 
       def initialize: (client: Increase::Client) -> void

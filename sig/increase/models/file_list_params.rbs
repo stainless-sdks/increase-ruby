@@ -40,12 +40,12 @@ module Increase
 
       def initialize:
         (
-          created_at: Increase::Models::FileListParams::CreatedAt,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          purpose: Increase::Models::FileListParams::Purpose,
-          request_options: Increase::request_opts
+          ?created_at: Increase::Models::FileListParams::CreatedAt,
+          ?cursor: String,
+          ?idempotency_key: String,
+          ?limit: Integer,
+          ?purpose: Increase::Models::FileListParams::Purpose,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::file_list_params | Increase::BaseModel data
@@ -75,10 +75,10 @@ module Increase
 
         def initialize:
           (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
+            ?after: Time,
+            ?before: Time,
+            ?on_or_after: Time,
+            ?on_or_before: Time
           ) -> void
           | (
             ?Increase::Models::FileListParams::created_at
@@ -99,7 +99,9 @@ module Increase
         ) -> ::Array[Increase::Models::FileListParams::Purpose::in_]
 
         def initialize:
-          (in_: ::Array[Increase::Models::FileListParams::Purpose::in_]) -> void
+          (
+            ?in_: ::Array[Increase::Models::FileListParams::Purpose::in_]
+          ) -> void
           | (
             ?Increase::Models::FileListParams::purpose
             | Increase::BaseModel data

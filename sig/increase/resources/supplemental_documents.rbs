@@ -9,7 +9,7 @@ module Increase
         | (
           entity_id: String,
           file_id: String,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::EntitySupplementalDocument
 
       def list:
@@ -19,10 +19,10 @@ module Increase
         ) -> Increase::Page[Increase::Models::EntitySupplementalDocument]
         | (
           entity_id: String,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          request_options: Increase::request_opts
+          ?cursor: String,
+          ?idempotency_key: String,
+          ?limit: Integer,
+          ?request_options: Increase::request_opts
         ) -> Increase::Page[Increase::Models::EntitySupplementalDocument]
 
       def initialize: (client: Increase::Client) -> void

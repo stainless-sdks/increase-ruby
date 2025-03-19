@@ -15,7 +15,7 @@ module Increase
       def initialize:
         (
           beneficial_owner: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::entity_create_beneficial_owner_params
@@ -44,7 +44,7 @@ module Increase
           (
             individual: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual,
             prongs: ::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::prong],
-            company_title: String
+            ?company_title: String
           ) -> void
           | (
             ?Increase::Models::EntityCreateBeneficialOwnerParams::beneficial_owner
@@ -81,7 +81,7 @@ module Increase
               date_of_birth: Date,
               identification: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification,
               name: String,
-              confirmed_no_us_tax_id: bool
+              ?confirmed_no_us_tax_id: bool
             ) -> void
             | (
               ?Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::individual
@@ -118,7 +118,7 @@ module Increase
                 line1: String,
                 state: String,
                 zip: String,
-                line2: String
+                ?line2: String
               ) -> void
               | (
                 ?Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::address
@@ -164,9 +164,9 @@ module Increase
               (
                 method_: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::method_,
                 number: String,
-                drivers_license: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense,
-                other: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other,
-                passport: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport
+                ?drivers_license: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense,
+                ?other: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other,
+                ?passport: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport
               ) -> void
               | (
                 ?Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::identification
@@ -225,7 +225,7 @@ module Increase
                   expiration_date: Date,
                   file_id: String,
                   state: String,
-                  back_file_id: String
+                  ?back_file_id: String
                 ) -> void
                 | (
                   ?Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::drivers_license
@@ -264,8 +264,8 @@ module Increase
                   country: String,
                   description: String,
                   file_id: String,
-                  back_file_id: String,
-                  expiration_date: Date
+                  ?back_file_id: String,
+                  ?expiration_date: Date
                 ) -> void
                 | (
                   ?Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::other

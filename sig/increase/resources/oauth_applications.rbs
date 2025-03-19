@@ -9,7 +9,7 @@ module Increase
         ) -> Increase::Models::OAuthApplication
         | (
           String oauth_application_id,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::OAuthApplication
 
       def list:
@@ -18,11 +18,11 @@ module Increase
           | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::OAuthApplication]
         | (
-          created_at: Increase::Models::OAuthApplicationListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          status: Increase::Models::OAuthApplicationListParams::Status,
-          request_options: Increase::request_opts
+          ?created_at: Increase::Models::OAuthApplicationListParams::CreatedAt,
+          ?cursor: String,
+          ?limit: Integer,
+          ?status: Increase::Models::OAuthApplicationListParams::Status,
+          ?request_options: Increase::request_opts
         ) -> Increase::Page[Increase::Models::OAuthApplication]
 
       def initialize: (client: Increase::Client) -> void

@@ -33,9 +33,9 @@ module Increase
         (
           account_id: String,
           name: String,
-          inbound_ach: Increase::Models::AccountNumberCreateParams::InboundACH,
-          inbound_checks: Increase::Models::AccountNumberCreateParams::InboundChecks,
-          request_options: Increase::request_opts
+          ?inbound_ach: Increase::Models::AccountNumberCreateParams::InboundACH,
+          ?inbound_checks: Increase::Models::AccountNumberCreateParams::InboundChecks,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::account_number_create_params

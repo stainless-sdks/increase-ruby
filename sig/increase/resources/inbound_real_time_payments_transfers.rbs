@@ -9,7 +9,7 @@ module Increase
         ) -> Increase::Models::InboundRealTimePaymentsTransfer
         | (
           String inbound_real_time_payments_transfer_id,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::InboundRealTimePaymentsTransfer
 
       def list:
@@ -18,12 +18,12 @@ module Increase
           | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::InboundRealTimePaymentsTransfer]
         | (
-          account_id: String,
-          account_number_id: String,
-          created_at: Increase::Models::InboundRealTimePaymentsTransferListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          request_options: Increase::request_opts
+          ?account_id: String,
+          ?account_number_id: String,
+          ?created_at: Increase::Models::InboundRealTimePaymentsTransferListParams::CreatedAt,
+          ?cursor: String,
+          ?limit: Integer,
+          ?request_options: Increase::request_opts
         ) -> Increase::Page[Increase::Models::InboundRealTimePaymentsTransfer]
 
       def initialize: (client: Increase::Client) -> void

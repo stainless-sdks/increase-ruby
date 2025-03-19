@@ -45,13 +45,13 @@ module Increase
 
       def initialize:
         (
-          account_id: String,
-          created_at: Increase::Models::CheckTransferListParams::CreatedAt,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          status: Increase::Models::CheckTransferListParams::Status,
-          request_options: Increase::request_opts
+          ?account_id: String,
+          ?created_at: Increase::Models::CheckTransferListParams::CreatedAt,
+          ?cursor: String,
+          ?idempotency_key: String,
+          ?limit: Integer,
+          ?status: Increase::Models::CheckTransferListParams::Status,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::check_transfer_list_params
@@ -82,10 +82,10 @@ module Increase
 
         def initialize:
           (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
+            ?after: Time,
+            ?before: Time,
+            ?on_or_after: Time,
+            ?on_or_before: Time
           ) -> void
           | (
             ?Increase::Models::CheckTransferListParams::created_at
@@ -107,7 +107,7 @@ module Increase
 
         def initialize:
           (
-            in_: ::Array[Increase::Models::CheckTransferListParams::Status::in_]
+            ?in_: ::Array[Increase::Models::CheckTransferListParams::Status::in_]
           ) -> void
           | (
             ?Increase::Models::CheckTransferListParams::status

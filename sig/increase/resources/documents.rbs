@@ -8,7 +8,7 @@ module Increase
         ) -> Increase::Models::Document
         | (
           String document_id,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::Document
 
       def list:
@@ -16,12 +16,12 @@ module Increase
           ?Increase::Models::DocumentListParams | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::Document]
         | (
-          category: Increase::Models::DocumentListParams::Category,
-          created_at: Increase::Models::DocumentListParams::CreatedAt,
-          cursor: String,
-          entity_id: String,
-          limit: Integer,
-          request_options: Increase::request_opts
+          ?category: Increase::Models::DocumentListParams::Category,
+          ?created_at: Increase::Models::DocumentListParams::CreatedAt,
+          ?cursor: String,
+          ?entity_id: String,
+          ?limit: Integer,
+          ?request_options: Increase::request_opts
         ) -> Increase::Page[Increase::Models::Document]
 
       def initialize: (client: Increase::Client) -> void
