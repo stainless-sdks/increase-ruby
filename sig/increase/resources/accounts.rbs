@@ -1,75 +1,47 @@
 module Increase
   module Resources
     class Accounts
-      def create:
-        (
-          Increase::Models::AccountCreateParams | ::Hash[Symbol, top] params
-        ) -> Increase::Models::Account
-        | (
-          name: String,
-          ?entity_id: String,
-          ?informational_entity_id: String,
-          ?program_id: String,
-          ?request_options: Increase::request_opts
-        ) -> Increase::Models::Account
+      def create: (
+        name: String,
+        ?entity_id: String,
+        ?informational_entity_id: String,
+        ?program_id: String,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Models::Account
 
-      def retrieve:
-        (
-          String account_id,
-          ?Increase::Models::AccountRetrieveParams | ::Hash[Symbol, top] params
-        ) -> Increase::Models::Account
-        | (
-          String account_id,
-          ?request_options: Increase::request_opts
-        ) -> Increase::Models::Account
+      def retrieve: (
+        String account_id,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Models::Account
 
-      def update:
-        (
-          String account_id,
-          ?Increase::Models::AccountUpdateParams | ::Hash[Symbol, top] params
-        ) -> Increase::Models::Account
-        | (
-          String account_id,
-          ?name: String,
-          ?request_options: Increase::request_opts
-        ) -> Increase::Models::Account
+      def update: (
+        String account_id,
+        ?name: String,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Models::Account
 
-      def list:
-        (
-          ?Increase::Models::AccountListParams | ::Hash[Symbol, top] params
-        ) -> Increase::Page[Increase::Models::Account]
-        | (
-          ?created_at: Increase::Models::AccountListParams::CreatedAt,
-          ?cursor: String,
-          ?entity_id: String,
-          ?idempotency_key: String,
-          ?informational_entity_id: String,
-          ?limit: Integer,
-          ?program_id: String,
-          ?status: Increase::Models::AccountListParams::Status,
-          ?request_options: Increase::request_opts
-        ) -> Increase::Page[Increase::Models::Account]
+      def list: (
+        ?created_at: Increase::Models::AccountListParams::CreatedAt,
+        ?cursor: String,
+        ?entity_id: String,
+        ?idempotency_key: String,
+        ?informational_entity_id: String,
+        ?limit: Integer,
+        ?program_id: String,
+        ?status: Increase::Models::AccountListParams::Status,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Page[Increase::Models::Account]
 
-      def balance:
-        (
-          String account_id,
-          ?Increase::Models::AccountBalanceParams | ::Hash[Symbol, top] params
-        ) -> Increase::Models::BalanceLookup
-        | (
-          String account_id,
-          ?at_time: Time,
-          ?request_options: Increase::request_opts
-        ) -> Increase::Models::BalanceLookup
+      def balance: (
+        String account_id,
+        ?at_time: Time,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Models::BalanceLookup
 
-      def close:
-        (
-          String account_id,
-          ?Increase::Models::AccountCloseParams | ::Hash[Symbol, top] params
-        ) -> Increase::Models::Account
-        | (
-          String account_id,
-          ?request_options: Increase::request_opts
-        ) -> Increase::Models::Account
+      def close: (
+        String account_id,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Models::Account
 
       def initialize: (client: Increase::Client) -> void
     end

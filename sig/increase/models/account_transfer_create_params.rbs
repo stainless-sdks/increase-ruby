@@ -26,19 +26,14 @@ module Increase
 
       def require_approval=: (bool) -> bool
 
-      def initialize:
-        (
-          account_id: String,
-          amount: Integer,
-          description: String,
-          destination_account_id: String,
-          ?require_approval: bool,
-          ?request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::account_transfer_create_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        account_id: String,
+        amount: Integer,
+        description: String,
+        destination_account_id: String,
+        ?require_approval: bool,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::account_transfer_create_params
     end

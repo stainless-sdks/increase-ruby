@@ -1,16 +1,12 @@
 module Increase
   module Resources
     class RoutingNumbers
-      def list:
-        (
-          Increase::Models::RoutingNumberListParams | ::Hash[Symbol, top] params
-        ) -> Increase::Page[Increase::Models::RoutingNumberListResponse]
-        | (
-          routing_number: String,
-          ?cursor: String,
-          ?limit: Integer,
-          ?request_options: Increase::request_opts
-        ) -> Increase::Page[Increase::Models::RoutingNumberListResponse]
+      def list: (
+        routing_number: String,
+        ?cursor: String,
+        ?limit: Integer,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Page[Increase::Models::RoutingNumberListResponse]
 
       def initialize: (client: Increase::Client) -> void
     end

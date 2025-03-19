@@ -1,27 +1,16 @@
 module Increase
   module Resources
     class InboundWireDrawdownRequests
-      def retrieve:
-        (
-          String inbound_wire_drawdown_request_id,
-          ?Increase::Models::InboundWireDrawdownRequestRetrieveParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::InboundWireDrawdownRequest
-        | (
-          String inbound_wire_drawdown_request_id,
-          ?request_options: Increase::request_opts
-        ) -> Increase::Models::InboundWireDrawdownRequest
+      def retrieve: (
+        String inbound_wire_drawdown_request_id,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Models::InboundWireDrawdownRequest
 
-      def list:
-        (
-          ?Increase::Models::InboundWireDrawdownRequestListParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Page[Increase::Models::InboundWireDrawdownRequest]
-        | (
-          ?cursor: String,
-          ?limit: Integer,
-          ?request_options: Increase::request_opts
-        ) -> Increase::Page[Increase::Models::InboundWireDrawdownRequest]
+      def list: (
+        ?cursor: String,
+        ?limit: Integer,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Page[Increase::Models::InboundWireDrawdownRequest]
 
       def initialize: (client: Increase::Client) -> void
     end

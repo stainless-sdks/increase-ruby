@@ -18,17 +18,12 @@ module Increase
 
       def limit=: (Integer) -> Integer
 
-      def initialize:
-        (
-          routing_number: String,
-          ?cursor: String,
-          ?limit: Integer,
-          ?request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::routing_number_list_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        routing_number: String,
+        ?cursor: String,
+        ?limit: Integer,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::routing_number_list_params
     end

@@ -26,19 +26,15 @@ module Increase
 
       attr_accessor type: Increase::Models::OAuthApplication::type_
 
-      def initialize:
-        (
-          id: String,
-          client_id: String,
-          created_at: Time,
-          deleted_at: Time?,
-          name: String?,
-          status: Increase::Models::OAuthApplication::status,
-          type: Increase::Models::OAuthApplication::type_
-        ) -> void
-        | (
-          ?Increase::Models::oauth_application | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        id: String,
+        client_id: String,
+        created_at: Time,
+        deleted_at: Time?,
+        name: String?,
+        status: Increase::Models::OAuthApplication::status,
+        type: Increase::Models::OAuthApplication::type_
+      ) -> void
 
       def to_hash: -> Increase::Models::oauth_application
 

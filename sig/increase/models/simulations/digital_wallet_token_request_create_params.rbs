@@ -10,12 +10,10 @@ module Increase
 
         attr_accessor card_id: String
 
-        def initialize:
-          (card_id: String, ?request_options: Increase::request_opts) -> void
-          | (
-            ?Increase::Models::Simulations::digital_wallet_token_request_create_params
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          card_id: String,
+          ?request_options: Increase::request_opts
+        ) -> void
 
         def to_hash: -> Increase::Models::Simulations::digital_wallet_token_request_create_params
       end

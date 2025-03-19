@@ -59,28 +59,26 @@ module Increase
 
       attr_accessor type: Increase::Models::CheckDeposit::type_
 
-      def initialize:
-        (
-          id: String,
-          account_id: String,
-          amount: Integer,
-          back_image_file_id: String?,
-          created_at: Time,
-          deposit_acceptance: Increase::Models::CheckDeposit::DepositAcceptance?,
-          deposit_rejection: Increase::Models::CheckDeposit::DepositRejection?,
-          deposit_return: Increase::Models::CheckDeposit::DepositReturn?,
-          deposit_submission: Increase::Models::CheckDeposit::DepositSubmission?,
-          description: String?,
-          front_image_file_id: String,
-          idempotency_key: String?,
-          inbound_funds_hold: Increase::Models::CheckDeposit::InboundFundsHold?,
-          inbound_mail_item_id: String?,
-          lockbox_id: String?,
-          status: Increase::Models::CheckDeposit::status,
-          transaction_id: String?,
-          type: Increase::Models::CheckDeposit::type_
-        ) -> void
-        | (?Increase::Models::check_deposit | Increase::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        account_id: String,
+        amount: Integer,
+        back_image_file_id: String?,
+        created_at: Time,
+        deposit_acceptance: Increase::Models::CheckDeposit::DepositAcceptance?,
+        deposit_rejection: Increase::Models::CheckDeposit::DepositRejection?,
+        deposit_return: Increase::Models::CheckDeposit::DepositReturn?,
+        deposit_submission: Increase::Models::CheckDeposit::DepositSubmission?,
+        description: String?,
+        front_image_file_id: String,
+        idempotency_key: String?,
+        inbound_funds_hold: Increase::Models::CheckDeposit::InboundFundsHold?,
+        inbound_mail_item_id: String?,
+        lockbox_id: String?,
+        status: Increase::Models::CheckDeposit::status,
+        transaction_id: String?,
+        type: Increase::Models::CheckDeposit::type_
+      ) -> void
 
       def to_hash: -> Increase::Models::check_deposit
 
@@ -110,20 +108,15 @@ module Increase
 
         attr_accessor serial_number: String?
 
-        def initialize:
-          (
-            account_number: String,
-            amount: Integer,
-            auxiliary_on_us: String?,
-            check_deposit_id: String,
-            currency: Increase::Models::CheckDeposit::DepositAcceptance::currency,
-            routing_number: String,
-            serial_number: String?
-          ) -> void
-          | (
-            ?Increase::Models::CheckDeposit::deposit_acceptance
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          account_number: String,
+          amount: Integer,
+          auxiliary_on_us: String?,
+          check_deposit_id: String,
+          currency: Increase::Models::CheckDeposit::DepositAcceptance::currency,
+          routing_number: String,
+          serial_number: String?
+        ) -> void
 
         def to_hash: -> Increase::Models::CheckDeposit::deposit_acceptance
 
@@ -175,19 +168,14 @@ module Increase
 
         attr_accessor rejected_at: Time
 
-        def initialize:
-          (
-            amount: Integer,
-            check_deposit_id: String,
-            currency: Increase::Models::CheckDeposit::DepositRejection::currency,
-            declined_transaction_id: String,
-            reason: Increase::Models::CheckDeposit::DepositRejection::reason,
-            rejected_at: Time
-          ) -> void
-          | (
-            ?Increase::Models::CheckDeposit::deposit_rejection
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          amount: Integer,
+          check_deposit_id: String,
+          currency: Increase::Models::CheckDeposit::DepositRejection::currency,
+          declined_transaction_id: String,
+          reason: Increase::Models::CheckDeposit::DepositRejection::reason,
+          rejected_at: Time
+        ) -> void
 
         def to_hash: -> Increase::Models::CheckDeposit::deposit_rejection
 
@@ -289,19 +277,14 @@ module Increase
 
         attr_accessor transaction_id: String
 
-        def initialize:
-          (
-            amount: Integer,
-            check_deposit_id: String,
-            currency: Increase::Models::CheckDeposit::DepositReturn::currency,
-            return_reason: Increase::Models::CheckDeposit::DepositReturn::return_reason,
-            returned_at: Time,
-            transaction_id: String
-          ) -> void
-          | (
-            ?Increase::Models::CheckDeposit::deposit_return
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          amount: Integer,
+          check_deposit_id: String,
+          currency: Increase::Models::CheckDeposit::DepositReturn::currency,
+          return_reason: Increase::Models::CheckDeposit::DepositReturn::return_reason,
+          returned_at: Time,
+          transaction_id: String
+        ) -> void
 
         def to_hash: -> Increase::Models::CheckDeposit::deposit_return
 
@@ -450,16 +433,11 @@ module Increase
 
         attr_accessor submitted_at: Time
 
-        def initialize:
-          (
-            back_file_id: String,
-            front_file_id: String,
-            submitted_at: Time
-          ) -> void
-          | (
-            ?Increase::Models::CheckDeposit::deposit_submission
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          back_file_id: String,
+          front_file_id: String,
+          submitted_at: Time
+        ) -> void
 
         def to_hash: -> Increase::Models::CheckDeposit::deposit_submission
       end
@@ -499,23 +477,18 @@ module Increase
 
         attr_accessor type: Increase::Models::CheckDeposit::InboundFundsHold::type_
 
-        def initialize:
-          (
-            id: String,
-            amount: Integer,
-            automatically_releases_at: Time,
-            created_at: Time,
-            currency: Increase::Models::CheckDeposit::InboundFundsHold::currency,
-            held_transaction_id: String?,
-            pending_transaction_id: String?,
-            released_at: Time?,
-            status: Increase::Models::CheckDeposit::InboundFundsHold::status,
-            type: Increase::Models::CheckDeposit::InboundFundsHold::type_
-          ) -> void
-          | (
-            ?Increase::Models::CheckDeposit::inbound_funds_hold
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          id: String,
+          amount: Integer,
+          automatically_releases_at: Time,
+          created_at: Time,
+          currency: Increase::Models::CheckDeposit::InboundFundsHold::currency,
+          held_transaction_id: String?,
+          pending_transaction_id: String?,
+          released_at: Time?,
+          status: Increase::Models::CheckDeposit::InboundFundsHold::status,
+          type: Increase::Models::CheckDeposit::InboundFundsHold::type_
+        ) -> void
 
         def to_hash: -> Increase::Models::CheckDeposit::inbound_funds_hold
 
