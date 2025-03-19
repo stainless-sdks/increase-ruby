@@ -17,8 +17,7 @@ module Increase
   #
   # @example
   # ```ruby
-  # accounts =
-  #   page
+  # accounts = page
   #   .to_enum
   #   .lazy
   #   .select { _1.object_id.even? }

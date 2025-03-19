@@ -10,7 +10,7 @@ AllCops:
   SuggestExtensions: false
   TargetRubyVersion: 3.1.0
 
-# Whether MFA is required or not should be left to the token configuration.
+# Whether MFA is required or not should be left to the token configuration
 Gemspec/RequireMFA:
   Enabled: false
 
@@ -72,10 +72,6 @@ Lint/EmptyInPattern:
   Exclude:
     - "test/**/*"
 
-Lint/MissingCopEnableDirective:
-  Exclude:
-    - "examples/**/*.rb"
-
 Lint/MissingSuper:
   Exclude:
     - "**/*.rbi"
@@ -87,12 +83,6 @@ Lint/UnusedMethodArgument:
 Metrics/AbcSize:
   Enabled: false
 
-Metrics/BlockLength:
-  AllowedPatterns:
-    - assert_pattern
-  Exclude:
-    - "**/*.rbi"
-
 Metrics/ClassLength:
   Enabled: false
 
@@ -101,10 +91,6 @@ Metrics/CyclomaticComplexity:
 
 Metrics/MethodLength:
   Enabled: false
-
-Metrics/ModuleLength:
-  Exclude:
-    - "**/*.rbi"
 
 Metrics/ParameterLists:
   Enabled: false
@@ -116,15 +102,7 @@ Naming/BlockForwarding:
   Exclude:
     - "**/*.rbi"
 
-Naming/ClassAndModuleCamelCase:
-  Exclude:
-    - "**/*.rbi"
-
 Naming/MethodParameterName:
-  Exclude:
-    - "**/*.rbi"
-
-Naming/PredicateName:
   Exclude:
     - "**/*.rbi"
 
@@ -241,8 +219,3 @@ Style/StringLiterals:
 # Prefer explicit symbols for clarity; you can search for `:the_symbol`.
 Style/SymbolArray:
   EnforcedStyle: brackets
-
-# This option makes examples harder to read for ruby novices.
-Style/SymbolProc:
-  Exclude:
-    - "examples/**/*.rb"

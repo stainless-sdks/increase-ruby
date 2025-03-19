@@ -43,15 +43,20 @@ module Increase
         Increase::Models::InboundACHTransferListParams::Status
       ) -> Increase::Models::InboundACHTransferListParams::Status
 
-      def initialize: (
-        ?account_id: String,
-        ?account_number_id: String,
-        ?created_at: Increase::Models::InboundACHTransferListParams::CreatedAt,
-        ?cursor: String,
-        ?limit: Integer,
-        ?status: Increase::Models::InboundACHTransferListParams::Status,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize:
+        (
+          account_id: String,
+          account_number_id: String,
+          created_at: Increase::Models::InboundACHTransferListParams::CreatedAt,
+          cursor: String,
+          limit: Integer,
+          status: Increase::Models::InboundACHTransferListParams::Status,
+          request_options: Increase::request_opts
+        ) -> void
+        | (
+          ?Increase::Models::inbound_ach_transfer_list_params
+          | Increase::BaseModel data
+        ) -> void
 
       def to_hash: -> Increase::Models::inbound_ach_transfer_list_params
 
@@ -75,12 +80,17 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize: (
-          ?after: Time,
-          ?before: Time,
-          ?on_or_after: Time,
-          ?on_or_before: Time
-        ) -> void
+        def initialize:
+          (
+            after: Time,
+            before: Time,
+            on_or_after: Time,
+            on_or_before: Time
+          ) -> void
+          | (
+            ?Increase::Models::InboundACHTransferListParams::created_at
+            | Increase::BaseModel data
+          ) -> void
 
         def to_hash: -> Increase::Models::InboundACHTransferListParams::created_at
       end
@@ -97,9 +107,14 @@ module Increase
           ::Array[Increase::Models::InboundACHTransferListParams::Status::in_]
         ) -> ::Array[Increase::Models::InboundACHTransferListParams::Status::in_]
 
-        def initialize: (
-          ?in_: ::Array[Increase::Models::InboundACHTransferListParams::Status::in_]
-        ) -> void
+        def initialize:
+          (
+            in_: ::Array[Increase::Models::InboundACHTransferListParams::Status::in_]
+          ) -> void
+          | (
+            ?Increase::Models::InboundACHTransferListParams::status
+            | Increase::BaseModel data
+          ) -> void
 
         def to_hash: -> Increase::Models::InboundACHTransferListParams::status
 

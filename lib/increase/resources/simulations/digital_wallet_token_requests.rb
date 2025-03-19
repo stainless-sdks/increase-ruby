@@ -15,8 +15,7 @@ module Increase
         #
         # @return [Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse]
         def create(params)
-          parsed, options =
-            Increase::Models::Simulations::DigitalWalletTokenRequestCreateParams.dump_request(params)
+          parsed, options = Increase::Models::Simulations::DigitalWalletTokenRequestCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "simulations/digital_wallet_token_requests",

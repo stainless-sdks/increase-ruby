@@ -19,8 +19,7 @@ module Increase
         #
         # @return [Increase::Models::RealTimePaymentsTransfer]
         def complete(real_time_payments_transfer_id, params = {})
-          parsed, options =
-            Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams.dump_request(params)
+          parsed, options = Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams.dump_request(params)
           @client.request(
             method: :post,
             path: ["simulations/real_time_payments_transfers/%0s/complete", real_time_payments_transfer_id],

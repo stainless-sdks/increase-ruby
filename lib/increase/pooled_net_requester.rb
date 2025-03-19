@@ -3,10 +3,6 @@
 module Increase
   # @api private
   class PooledNetRequester
-    # from the golang stdlib
-    #   https://github.com/golang/go/blob/c8eced8580028328fde7c03cbfcb720ce15b2358/src/net/http/transport.go#L49
-    KEEP_ALIVE_TIMEOUT = 30
-
     class << self
       # @api private
       #
@@ -51,7 +47,6 @@ module Increase
       #
       # @param blk [Proc]
       #
-      # @yieldparam [String]
       # @return [Net::HTTPGenericRequest]
       def build_request(request, &)
         method, url, headers, body = request.fetch_values(:method, :url, :headers, :body)
@@ -87,9 +82,6 @@ module Increase
     # @param url [URI::Generic]
     # @param deadline [Float]
     # @param blk [Proc]
-    #
-    # @raise [Timeout::Error]
-    # @yieldparam [Net::HTTP]
     private def with_pool(url, deadline:, &blk)
       origin = Increase::Util.uri_origin(url)
       timeout = deadline - Increase::Util.monotonic_secs
@@ -132,10 +124,7 @@ module Increase
           end
 
           self.class.calibrate_socket_timeout(conn, deadline)
-          unless conn.started?
-            conn.keep_alive_timeout = self.class::KEEP_ALIVE_TIMEOUT
-            conn.start
-          end
+          conn.start unless conn.started?
 
           self.class.calibrate_socket_timeout(conn, deadline)
           conn.request(req) do |rsp|
