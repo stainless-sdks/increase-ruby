@@ -1,29 +1,18 @@
 module Increase
   module Resources
     class AccountStatements
-      def retrieve:
-        (
-          String account_statement_id,
-          ?Increase::Models::AccountStatementRetrieveParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::AccountStatement
-        | (
-          String account_statement_id,
-          ?request_options: Increase::request_opts
-        ) -> Increase::Models::AccountStatement
+      def retrieve: (
+        String account_statement_id,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Models::AccountStatement
 
-      def list:
-        (
-          ?Increase::Models::AccountStatementListParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Page[Increase::Models::AccountStatement]
-        | (
-          ?account_id: String,
-          ?cursor: String,
-          ?limit: Integer,
-          ?statement_period_start: Increase::Models::AccountStatementListParams::StatementPeriodStart,
-          ?request_options: Increase::request_opts
-        ) -> Increase::Page[Increase::Models::AccountStatement]
+      def list: (
+        ?account_id: String,
+        ?cursor: String,
+        ?limit: Integer,
+        ?statement_period_start: Increase::Models::AccountStatementListParams::StatementPeriodStart,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Page[Increase::Models::AccountStatement]
 
       def initialize: (client: Increase::Client) -> void
     end

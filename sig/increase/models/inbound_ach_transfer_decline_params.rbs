@@ -14,15 +14,10 @@ module Increase
         Increase::Models::InboundACHTransferDeclineParams::reason
       ) -> Increase::Models::InboundACHTransferDeclineParams::reason
 
-      def initialize:
-        (
-          ?reason: Increase::Models::InboundACHTransferDeclineParams::reason,
-          ?request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::inbound_ach_transfer_decline_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ?reason: Increase::Models::InboundACHTransferDeclineParams::reason,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::inbound_ach_transfer_decline_params
 

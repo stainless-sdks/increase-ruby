@@ -11,11 +11,10 @@ module Increase
 
       def at_time=: (Time) -> Time
 
-      def initialize:
-        (?at_time: Time, ?request_options: Increase::request_opts) -> void
-        | (
-          ?Increase::Models::account_balance_params | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ?at_time: Time,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::account_balance_params
     end

@@ -1,15 +1,11 @@
 module Increase
   module Resources
     class FileLinks
-      def create:
-        (
-          Increase::Models::FileLinkCreateParams | ::Hash[Symbol, top] params
-        ) -> Increase::Models::FileLink
-        | (
-          file_id: String,
-          ?expires_at: Time,
-          ?request_options: Increase::request_opts
-        ) -> Increase::Models::FileLink
+      def create: (
+        file_id: String,
+        ?expires_at: Time,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Models::FileLink
 
       def initialize: (client: Increase::Client) -> void
     end

@@ -43,20 +43,15 @@ module Increase
 
       def route_id=: (String) -> String
 
-      def initialize:
-        (
-          ?account_id: String,
-          ?category: Increase::Models::DeclinedTransactionListParams::Category,
-          ?created_at: Increase::Models::DeclinedTransactionListParams::CreatedAt,
-          ?cursor: String,
-          ?limit: Integer,
-          ?route_id: String,
-          ?request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::declined_transaction_list_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ?account_id: String,
+        ?category: Increase::Models::DeclinedTransactionListParams::Category,
+        ?created_at: Increase::Models::DeclinedTransactionListParams::CreatedAt,
+        ?cursor: String,
+        ?limit: Integer,
+        ?route_id: String,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::declined_transaction_list_params
 
@@ -72,14 +67,9 @@ module Increase
           ::Array[Increase::Models::DeclinedTransactionListParams::Category::in_]
         ) -> ::Array[Increase::Models::DeclinedTransactionListParams::Category::in_]
 
-        def initialize:
-          (
-            ?in_: ::Array[Increase::Models::DeclinedTransactionListParams::Category::in_]
-          ) -> void
-          | (
-            ?Increase::Models::DeclinedTransactionListParams::category
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?in_: ::Array[Increase::Models::DeclinedTransactionListParams::Category::in_]
+        ) -> void
 
         def to_hash: -> Increase::Models::DeclinedTransactionListParams::category
 
@@ -138,17 +128,12 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize:
-          (
-            ?after: Time,
-            ?before: Time,
-            ?on_or_after: Time,
-            ?on_or_before: Time
-          ) -> void
-          | (
-            ?Increase::Models::DeclinedTransactionListParams::created_at
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?after: Time,
+          ?before: Time,
+          ?on_or_after: Time,
+          ?on_or_before: Time
+        ) -> void
 
         def to_hash: -> Increase::Models::DeclinedTransactionListParams::created_at
       end

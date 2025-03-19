@@ -44,19 +44,14 @@ module Increase
         Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken
       ) -> Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken
 
-      def initialize:
-        (
-          ?card_authentication: Increase::Models::RealTimeDecisionActionParams::CardAuthentication,
-          ?card_authentication_challenge: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge,
-          ?card_authorization: Increase::Models::RealTimeDecisionActionParams::CardAuthorization,
-          ?digital_wallet_authentication: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
-          ?digital_wallet_token: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken,
-          ?request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::real_time_decision_action_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ?card_authentication: Increase::Models::RealTimeDecisionActionParams::CardAuthentication,
+        ?card_authentication_challenge: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge,
+        ?card_authorization: Increase::Models::RealTimeDecisionActionParams::CardAuthorization,
+        ?digital_wallet_authentication: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
+        ?digital_wallet_token: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::real_time_decision_action_params
 
@@ -68,14 +63,9 @@ module Increase
       class CardAuthentication < Increase::BaseModel
         attr_accessor decision: Increase::Models::RealTimeDecisionActionParams::CardAuthentication::decision
 
-        def initialize:
-          (
-            decision: Increase::Models::RealTimeDecisionActionParams::CardAuthentication::decision
-          ) -> void
-          | (
-            ?Increase::Models::RealTimeDecisionActionParams::card_authentication
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          decision: Increase::Models::RealTimeDecisionActionParams::CardAuthentication::decision
+        ) -> void
 
         def to_hash: -> Increase::Models::RealTimeDecisionActionParams::card_authentication
 
@@ -103,14 +93,9 @@ module Increase
       class CardAuthenticationChallenge < Increase::BaseModel
         attr_accessor result: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::result
 
-        def initialize:
-          (
-            result: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::result
-          ) -> void
-          | (
-            ?Increase::Models::RealTimeDecisionActionParams::card_authentication_challenge
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          result: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::result
+        ) -> void
 
         def to_hash: -> Increase::Models::RealTimeDecisionActionParams::card_authentication_challenge
 
@@ -142,15 +127,10 @@ module Increase
           Increase::Models::RealTimeDecisionActionParams::CardAuthorization::decline_reason
         ) -> Increase::Models::RealTimeDecisionActionParams::CardAuthorization::decline_reason
 
-        def initialize:
-          (
-            decision: Increase::Models::RealTimeDecisionActionParams::CardAuthorization::decision,
-            ?decline_reason: Increase::Models::RealTimeDecisionActionParams::CardAuthorization::decline_reason
-          ) -> void
-          | (
-            ?Increase::Models::RealTimeDecisionActionParams::card_authorization
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          decision: Increase::Models::RealTimeDecisionActionParams::CardAuthorization::decision,
+          ?decline_reason: Increase::Models::RealTimeDecisionActionParams::CardAuthorization::decline_reason
+        ) -> void
 
         def to_hash: -> Increase::Models::RealTimeDecisionActionParams::card_authorization
 
@@ -212,15 +192,10 @@ module Increase
           Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success
         ) -> Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success
 
-        def initialize:
-          (
-            result: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::result,
-            ?success: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success
-          ) -> void
-          | (
-            ?Increase::Models::RealTimeDecisionActionParams::digital_wallet_authentication
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          result: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::result,
+          ?success: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success
+        ) -> void
 
         def to_hash: -> Increase::Models::RealTimeDecisionActionParams::digital_wallet_authentication
 
@@ -247,12 +222,7 @@ module Increase
 
           def phone=: (String) -> String
 
-          def initialize:
-            (?email: String, ?phone: String) -> void
-            | (
-              ?Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::success
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (?email: String, ?phone: String) -> void
 
           def to_hash: -> Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::success
         end
@@ -277,15 +247,10 @@ module Increase
           Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline
         ) -> Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline
 
-        def initialize:
-          (
-            ?approval: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval,
-            ?decline: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline
-          ) -> void
-          | (
-            ?Increase::Models::RealTimeDecisionActionParams::digital_wallet_token
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?approval: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval,
+          ?decline: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline
+        ) -> void
 
         def to_hash: -> Increase::Models::RealTimeDecisionActionParams::digital_wallet_token
 
@@ -300,12 +265,7 @@ module Increase
 
           def phone=: (String) -> String
 
-          def initialize:
-            (?email: String, ?phone: String) -> void
-            | (
-              ?Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::approval
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (?email: String, ?phone: String) -> void
 
           def to_hash: -> Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::approval
         end
@@ -317,12 +277,7 @@ module Increase
 
           def reason=: (String) -> String
 
-          def initialize:
-            (?reason: String) -> void
-            | (
-              ?Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::decline
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (?reason: String) -> void
 
           def to_hash: -> Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::decline
         end

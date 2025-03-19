@@ -43,19 +43,15 @@ module Increase
         Increase::Models::CardListParams::Status
       ) -> Increase::Models::CardListParams::Status
 
-      def initialize:
-        (
-          ?account_id: String,
-          ?created_at: Increase::Models::CardListParams::CreatedAt,
-          ?cursor: String,
-          ?idempotency_key: String,
-          ?limit: Integer,
-          ?status: Increase::Models::CardListParams::Status,
-          ?request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::card_list_params | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ?account_id: String,
+        ?created_at: Increase::Models::CardListParams::CreatedAt,
+        ?cursor: String,
+        ?idempotency_key: String,
+        ?limit: Integer,
+        ?status: Increase::Models::CardListParams::Status,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::card_list_params
 
@@ -79,17 +75,12 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize:
-          (
-            ?after: Time,
-            ?before: Time,
-            ?on_or_after: Time,
-            ?on_or_before: Time
-          ) -> void
-          | (
-            ?Increase::Models::CardListParams::created_at
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?after: Time,
+          ?before: Time,
+          ?on_or_after: Time,
+          ?on_or_before: Time
+        ) -> void
 
         def to_hash: -> Increase::Models::CardListParams::created_at
       end
@@ -104,11 +95,9 @@ module Increase
           ::Array[Increase::Models::CardListParams::Status::in_]
         ) -> ::Array[Increase::Models::CardListParams::Status::in_]
 
-        def initialize:
-          (?in_: ::Array[Increase::Models::CardListParams::Status::in_]) -> void
-          | (
-            ?Increase::Models::CardListParams::status | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?in_: ::Array[Increase::Models::CardListParams::Status::in_]
+        ) -> void
 
         def to_hash: -> Increase::Models::CardListParams::status
 

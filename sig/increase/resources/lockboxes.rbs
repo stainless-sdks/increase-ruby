@@ -1,52 +1,34 @@
 module Increase
   module Resources
     class Lockboxes
-      def create:
-        (
-          Increase::Models::LockboxCreateParams | ::Hash[Symbol, top] params
-        ) -> Increase::Models::Lockbox
-        | (
-          account_id: String,
-          ?description: String,
-          ?recipient_name: String,
-          ?request_options: Increase::request_opts
-        ) -> Increase::Models::Lockbox
+      def create: (
+        account_id: String,
+        ?description: String,
+        ?recipient_name: String,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Models::Lockbox
 
-      def retrieve:
-        (
-          String lockbox_id,
-          ?Increase::Models::LockboxRetrieveParams | ::Hash[Symbol, top] params
-        ) -> Increase::Models::Lockbox
-        | (
-          String lockbox_id,
-          ?request_options: Increase::request_opts
-        ) -> Increase::Models::Lockbox
+      def retrieve: (
+        String lockbox_id,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Models::Lockbox
 
-      def update:
-        (
-          String lockbox_id,
-          ?Increase::Models::LockboxUpdateParams | ::Hash[Symbol, top] params
-        ) -> Increase::Models::Lockbox
-        | (
-          String lockbox_id,
-          ?description: String,
-          ?recipient_name: String,
-          ?status: Increase::Models::LockboxUpdateParams::status,
-          ?request_options: Increase::request_opts
-        ) -> Increase::Models::Lockbox
+      def update: (
+        String lockbox_id,
+        ?description: String,
+        ?recipient_name: String,
+        ?status: Increase::Models::LockboxUpdateParams::status,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Models::Lockbox
 
-      def list:
-        (
-          ?Increase::Models::LockboxListParams | ::Hash[Symbol, top] params
-        ) -> Increase::Page[Increase::Models::Lockbox]
-        | (
-          ?account_id: String,
-          ?created_at: Increase::Models::LockboxListParams::CreatedAt,
-          ?cursor: String,
-          ?idempotency_key: String,
-          ?limit: Integer,
-          ?request_options: Increase::request_opts
-        ) -> Increase::Page[Increase::Models::Lockbox]
+      def list: (
+        ?account_id: String,
+        ?created_at: Increase::Models::LockboxListParams::CreatedAt,
+        ?cursor: String,
+        ?idempotency_key: String,
+        ?limit: Integer,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Page[Increase::Models::Lockbox]
 
       def initialize: (client: Increase::Client) -> void
     end

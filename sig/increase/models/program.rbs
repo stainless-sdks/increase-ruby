@@ -32,19 +32,17 @@ module Increase
 
       attr_accessor updated_at: Time
 
-      def initialize:
-        (
-          id: String,
-          bank: Increase::Models::Program::bank,
-          billing_account_id: String?,
-          created_at: Time,
-          default_digital_card_profile_id: String?,
-          interest_rate: String,
-          name: String,
-          type: Increase::Models::Program::type_,
-          updated_at: Time
-        ) -> void
-        | (?Increase::Models::program | Increase::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        bank: Increase::Models::Program::bank,
+        billing_account_id: String?,
+        created_at: Time,
+        default_digital_card_profile_id: String?,
+        interest_rate: String,
+        name: String,
+        type: Increase::Models::Program::type_,
+        updated_at: Time
+      ) -> void
 
       def to_hash: -> Increase::Models::program
 

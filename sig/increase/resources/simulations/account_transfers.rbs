@@ -2,16 +2,10 @@ module Increase
   module Resources
     class Simulations
       class AccountTransfers
-        def complete:
-          (
-            String account_transfer_id,
-            ?Increase::Models::Simulations::AccountTransferCompleteParams
-            | ::Hash[Symbol, top] params
-          ) -> Increase::Models::AccountTransfer
-          | (
-            String account_transfer_id,
-            ?request_options: Increase::request_opts
-          ) -> Increase::Models::AccountTransfer
+        def complete: (
+          String account_transfer_id,
+          ?request_options: Increase::request_opts
+        ) -> Increase::Models::AccountTransfer
 
         def initialize: (client: Increase::Client) -> void
       end

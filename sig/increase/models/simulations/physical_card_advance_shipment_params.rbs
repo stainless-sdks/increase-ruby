@@ -13,15 +13,10 @@ module Increase
 
         attr_accessor shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status
 
-        def initialize:
-          (
-            shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status,
-            ?request_options: Increase::request_opts
-          ) -> void
-          | (
-            ?Increase::Models::Simulations::physical_card_advance_shipment_params
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status,
+          ?request_options: Increase::request_opts
+        ) -> void
 
         def to_hash: -> Increase::Models::Simulations::physical_card_advance_shipment_params
 

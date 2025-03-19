@@ -14,15 +14,10 @@ module Increase
         Increase::Models::EventSubscriptionUpdateParams::status
       ) -> Increase::Models::EventSubscriptionUpdateParams::status
 
-      def initialize:
-        (
-          ?status: Increase::Models::EventSubscriptionUpdateParams::status,
-          ?request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::event_subscription_update_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ?status: Increase::Models::EventSubscriptionUpdateParams::status,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::event_subscription_update_params
 

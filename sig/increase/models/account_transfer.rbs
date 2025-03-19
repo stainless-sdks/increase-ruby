@@ -56,29 +56,25 @@ module Increase
 
       attr_accessor type: Increase::Models::AccountTransfer::type_
 
-      def initialize:
-        (
-          id: String,
-          account_id: String,
-          amount: Integer,
-          approval: Increase::Models::AccountTransfer::Approval?,
-          cancellation: Increase::Models::AccountTransfer::Cancellation?,
-          created_at: Time,
-          created_by: Increase::Models::AccountTransfer::CreatedBy?,
-          currency: Increase::Models::AccountTransfer::currency,
-          description: String,
-          destination_account_id: String,
-          destination_transaction_id: String?,
-          idempotency_key: String?,
-          network: Increase::Models::AccountTransfer::network,
-          pending_transaction_id: String?,
-          status: Increase::Models::AccountTransfer::status,
-          transaction_id: String?,
-          type: Increase::Models::AccountTransfer::type_
-        ) -> void
-        | (
-          ?Increase::Models::account_transfer | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        id: String,
+        account_id: String,
+        amount: Integer,
+        approval: Increase::Models::AccountTransfer::Approval?,
+        cancellation: Increase::Models::AccountTransfer::Cancellation?,
+        created_at: Time,
+        created_by: Increase::Models::AccountTransfer::CreatedBy?,
+        currency: Increase::Models::AccountTransfer::currency,
+        description: String,
+        destination_account_id: String,
+        destination_transaction_id: String?,
+        idempotency_key: String?,
+        network: Increase::Models::AccountTransfer::network,
+        pending_transaction_id: String?,
+        status: Increase::Models::AccountTransfer::status,
+        transaction_id: String?,
+        type: Increase::Models::AccountTransfer::type_
+      ) -> void
 
       def to_hash: -> Increase::Models::account_transfer
 
@@ -89,12 +85,7 @@ module Increase
 
         attr_accessor approved_by: String?
 
-        def initialize:
-          (approved_at: Time, approved_by: String?) -> void
-          | (
-            ?Increase::Models::AccountTransfer::approval
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (approved_at: Time, approved_by: String?) -> void
 
         def to_hash: -> Increase::Models::AccountTransfer::approval
       end
@@ -106,12 +97,7 @@ module Increase
 
         attr_accessor canceled_by: String?
 
-        def initialize:
-          (canceled_at: Time, canceled_by: String?) -> void
-          | (
-            ?Increase::Models::AccountTransfer::cancellation
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (canceled_at: Time, canceled_by: String?) -> void
 
         def to_hash: -> Increase::Models::AccountTransfer::cancellation
       end
@@ -133,17 +119,12 @@ module Increase
 
         attr_accessor user: Increase::Models::AccountTransfer::CreatedBy::User?
 
-        def initialize:
-          (
-            api_key: Increase::Models::AccountTransfer::CreatedBy::APIKey?,
-            category: Increase::Models::AccountTransfer::CreatedBy::category,
-            oauth_application: Increase::Models::AccountTransfer::CreatedBy::OAuthApplication?,
-            user: Increase::Models::AccountTransfer::CreatedBy::User?
-          ) -> void
-          | (
-            ?Increase::Models::AccountTransfer::created_by
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          api_key: Increase::Models::AccountTransfer::CreatedBy::APIKey?,
+          category: Increase::Models::AccountTransfer::CreatedBy::category,
+          oauth_application: Increase::Models::AccountTransfer::CreatedBy::OAuthApplication?,
+          user: Increase::Models::AccountTransfer::CreatedBy::User?
+        ) -> void
 
         def to_hash: -> Increase::Models::AccountTransfer::created_by
 
@@ -152,12 +133,7 @@ module Increase
         class APIKey < Increase::BaseModel
           attr_accessor description: String?
 
-          def initialize:
-            (description: String?) -> void
-            | (
-              ?Increase::Models::AccountTransfer::CreatedBy::api_key
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (description: String?) -> void
 
           def to_hash: -> Increase::Models::AccountTransfer::CreatedBy::api_key
         end
@@ -182,12 +158,7 @@ module Increase
         class OAuthApplication < Increase::BaseModel
           attr_accessor name: String
 
-          def initialize:
-            (name: String) -> void
-            | (
-              ?Increase::Models::AccountTransfer::CreatedBy::oauth_application
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (name: String) -> void
 
           def to_hash: -> Increase::Models::AccountTransfer::CreatedBy::oauth_application
         end
@@ -197,12 +168,7 @@ module Increase
         class User < Increase::BaseModel
           attr_accessor email: String
 
-          def initialize:
-            (email: String) -> void
-            | (
-              ?Increase::Models::AccountTransfer::CreatedBy::user
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (email: String) -> void
 
           def to_hash: -> Increase::Models::AccountTransfer::CreatedBy::user
         end

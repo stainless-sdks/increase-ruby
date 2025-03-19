@@ -110,33 +110,28 @@ module Increase
         Increase::Models::ACHTransferCreateParams::transaction_timing
       ) -> Increase::Models::ACHTransferCreateParams::transaction_timing
 
-      def initialize:
-        (
-          account_id: String,
-          amount: Integer,
-          statement_descriptor: String,
-          ?account_number: String,
-          ?addenda: Increase::Models::ACHTransferCreateParams::Addenda,
-          ?company_descriptive_date: String,
-          ?company_discretionary_data: String,
-          ?company_entry_description: String,
-          ?company_name: String,
-          ?destination_account_holder: Increase::Models::ACHTransferCreateParams::destination_account_holder,
-          ?external_account_id: String,
-          ?funding: Increase::Models::ACHTransferCreateParams::funding,
-          ?individual_id: String,
-          ?individual_name: String,
-          ?preferred_effective_date: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate,
-          ?require_approval: bool,
-          ?routing_number: String,
-          ?standard_entry_class_code: Increase::Models::ACHTransferCreateParams::standard_entry_class_code,
-          ?transaction_timing: Increase::Models::ACHTransferCreateParams::transaction_timing,
-          ?request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::ach_transfer_create_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        account_id: String,
+        amount: Integer,
+        statement_descriptor: String,
+        ?account_number: String,
+        ?addenda: Increase::Models::ACHTransferCreateParams::Addenda,
+        ?company_descriptive_date: String,
+        ?company_discretionary_data: String,
+        ?company_entry_description: String,
+        ?company_name: String,
+        ?destination_account_holder: Increase::Models::ACHTransferCreateParams::destination_account_holder,
+        ?external_account_id: String,
+        ?funding: Increase::Models::ACHTransferCreateParams::funding,
+        ?individual_id: String,
+        ?individual_name: String,
+        ?preferred_effective_date: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate,
+        ?require_approval: bool,
+        ?routing_number: String,
+        ?standard_entry_class_code: Increase::Models::ACHTransferCreateParams::standard_entry_class_code,
+        ?transaction_timing: Increase::Models::ACHTransferCreateParams::transaction_timing,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::ach_transfer_create_params
 
@@ -162,16 +157,11 @@ module Increase
           Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice
         ) -> Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice
 
-        def initialize:
-          (
-            category: Increase::Models::ACHTransferCreateParams::Addenda::category,
-            ?freeform: Increase::Models::ACHTransferCreateParams::Addenda::Freeform,
-            ?payment_order_remittance_advice: Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice
-          ) -> void
-          | (
-            ?Increase::Models::ACHTransferCreateParams::addenda
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          category: Increase::Models::ACHTransferCreateParams::Addenda::category,
+          ?freeform: Increase::Models::ACHTransferCreateParams::Addenda::Freeform,
+          ?payment_order_remittance_advice: Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice
+        ) -> void
 
         def to_hash: -> Increase::Models::ACHTransferCreateParams::addenda
 
@@ -195,14 +185,9 @@ module Increase
         class Freeform < Increase::BaseModel
           attr_accessor entries: ::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry]
 
-          def initialize:
-            (
-              entries: ::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry]
-            ) -> void
-            | (
-              ?Increase::Models::ACHTransferCreateParams::Addenda::freeform
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            entries: ::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry]
+          ) -> void
 
           def to_hash: -> Increase::Models::ACHTransferCreateParams::Addenda::freeform
 
@@ -211,12 +196,7 @@ module Increase
           class Entry < Increase::BaseModel
             attr_accessor payment_related_information: String
 
-            def initialize:
-              (payment_related_information: String) -> void
-              | (
-                ?Increase::Models::ACHTransferCreateParams::Addenda::Freeform::entry
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (payment_related_information: String) -> void
 
             def to_hash: -> Increase::Models::ACHTransferCreateParams::Addenda::Freeform::entry
           end
@@ -230,14 +210,9 @@ module Increase
         class PaymentOrderRemittanceAdvice < Increase::BaseModel
           attr_accessor invoices: ::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
 
-          def initialize:
-            (
-              invoices: ::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
-            ) -> void
-            | (
-              ?Increase::Models::ACHTransferCreateParams::Addenda::payment_order_remittance_advice
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            invoices: ::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
+          ) -> void
 
           def to_hash: -> Increase::Models::ACHTransferCreateParams::Addenda::payment_order_remittance_advice
 
@@ -248,12 +223,10 @@ module Increase
 
             attr_accessor paid_amount: Integer
 
-            def initialize:
-              (invoice_number: String, paid_amount: Integer) -> void
-              | (
-                ?Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::invoice
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              invoice_number: String,
+              paid_amount: Integer
+            ) -> void
 
             def to_hash: -> Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::invoice
           end
@@ -304,15 +277,10 @@ module Increase
           Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::settlement_schedule
         ) -> Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::settlement_schedule
 
-        def initialize:
-          (
-            ?date: Date,
-            ?settlement_schedule: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::settlement_schedule
-          ) -> void
-          | (
-            ?Increase::Models::ACHTransferCreateParams::preferred_effective_date
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?date: Date,
+          ?settlement_schedule: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::settlement_schedule
+        ) -> void
 
         def to_hash: -> Increase::Models::ACHTransferCreateParams::preferred_effective_date
 

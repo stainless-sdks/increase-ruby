@@ -16,17 +16,12 @@ module Increase
 
       def amount=: (Integer) -> Integer
 
-      def initialize:
-        (
-          disputed_transaction_id: String,
-          explanation: String,
-          ?amount: Integer,
-          ?request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::card_dispute_create_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        disputed_transaction_id: String,
+        explanation: String,
+        ?amount: Integer,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::card_dispute_create_params
     end

@@ -50,21 +50,16 @@ module Increase
         Increase::Models::PendingTransactionListParams::Status
       ) -> Increase::Models::PendingTransactionListParams::Status
 
-      def initialize:
-        (
-          ?account_id: String,
-          ?category: Increase::Models::PendingTransactionListParams::Category,
-          ?created_at: Increase::Models::PendingTransactionListParams::CreatedAt,
-          ?cursor: String,
-          ?limit: Integer,
-          ?route_id: String,
-          ?status: Increase::Models::PendingTransactionListParams::Status,
-          ?request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::pending_transaction_list_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ?account_id: String,
+        ?category: Increase::Models::PendingTransactionListParams::Category,
+        ?created_at: Increase::Models::PendingTransactionListParams::CreatedAt,
+        ?cursor: String,
+        ?limit: Integer,
+        ?route_id: String,
+        ?status: Increase::Models::PendingTransactionListParams::Status,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::pending_transaction_list_params
 
@@ -80,14 +75,9 @@ module Increase
           ::Array[Increase::Models::PendingTransactionListParams::Category::in_]
         ) -> ::Array[Increase::Models::PendingTransactionListParams::Category::in_]
 
-        def initialize:
-          (
-            ?in_: ::Array[Increase::Models::PendingTransactionListParams::Category::in_]
-          ) -> void
-          | (
-            ?Increase::Models::PendingTransactionListParams::category
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?in_: ::Array[Increase::Models::PendingTransactionListParams::Category::in_]
+        ) -> void
 
         def to_hash: -> Increase::Models::PendingTransactionListParams::category
 
@@ -158,17 +148,12 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize:
-          (
-            ?after: Time,
-            ?before: Time,
-            ?on_or_after: Time,
-            ?on_or_before: Time
-          ) -> void
-          | (
-            ?Increase::Models::PendingTransactionListParams::created_at
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?after: Time,
+          ?before: Time,
+          ?on_or_after: Time,
+          ?on_or_before: Time
+        ) -> void
 
         def to_hash: -> Increase::Models::PendingTransactionListParams::created_at
       end
@@ -185,14 +170,9 @@ module Increase
           ::Array[Increase::Models::PendingTransactionListParams::Status::in_]
         ) -> ::Array[Increase::Models::PendingTransactionListParams::Status::in_]
 
-        def initialize:
-          (
-            ?in_: ::Array[Increase::Models::PendingTransactionListParams::Status::in_]
-          ) -> void
-          | (
-            ?Increase::Models::PendingTransactionListParams::status
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?in_: ::Array[Increase::Models::PendingTransactionListParams::Status::in_]
+        ) -> void
 
         def to_hash: -> Increase::Models::PendingTransactionListParams::status
 

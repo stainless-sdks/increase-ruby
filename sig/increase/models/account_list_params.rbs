@@ -53,21 +53,17 @@ module Increase
         Increase::Models::AccountListParams::Status
       ) -> Increase::Models::AccountListParams::Status
 
-      def initialize:
-        (
-          ?created_at: Increase::Models::AccountListParams::CreatedAt,
-          ?cursor: String,
-          ?entity_id: String,
-          ?idempotency_key: String,
-          ?informational_entity_id: String,
-          ?limit: Integer,
-          ?program_id: String,
-          ?status: Increase::Models::AccountListParams::Status,
-          ?request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::account_list_params | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ?created_at: Increase::Models::AccountListParams::CreatedAt,
+        ?cursor: String,
+        ?entity_id: String,
+        ?idempotency_key: String,
+        ?informational_entity_id: String,
+        ?limit: Integer,
+        ?program_id: String,
+        ?status: Increase::Models::AccountListParams::Status,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::account_list_params
 
@@ -91,17 +87,12 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize:
-          (
-            ?after: Time,
-            ?before: Time,
-            ?on_or_after: Time,
-            ?on_or_before: Time
-          ) -> void
-          | (
-            ?Increase::Models::AccountListParams::created_at
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?after: Time,
+          ?before: Time,
+          ?on_or_after: Time,
+          ?on_or_before: Time
+        ) -> void
 
         def to_hash: -> Increase::Models::AccountListParams::created_at
       end
@@ -116,14 +107,9 @@ module Increase
           ::Array[Increase::Models::AccountListParams::Status::in_]
         ) -> ::Array[Increase::Models::AccountListParams::Status::in_]
 
-        def initialize:
-          (
-            ?in_: ::Array[Increase::Models::AccountListParams::Status::in_]
-          ) -> void
-          | (
-            ?Increase::Models::AccountListParams::status
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?in_: ::Array[Increase::Models::AccountListParams::Status::in_]
+        ) -> void
 
         def to_hash: -> Increase::Models::AccountListParams::status
 
