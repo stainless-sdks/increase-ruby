@@ -9,14 +9,15 @@ module Increase
     MAX_REDIRECTS = 20
 
     # rubocop:disable Style/MutableConstant
-    PLATFORM_HEADERS = {
-      "x-stainless-arch" => Increase::Util.arch,
-      "x-stainless-lang" => "ruby",
-      "x-stainless-os" => Increase::Util.os,
-      "x-stainless-package-version" => Increase::VERSION,
-      "x-stainless-runtime" => ::RUBY_ENGINE,
-      "x-stainless-runtime-version" => ::RUBY_ENGINE_VERSION
-    }
+    PLATFORM_HEADERS =
+      {
+        "x-stainless-arch" => Increase::Util.arch,
+        "x-stainless-lang" => "ruby",
+        "x-stainless-os" => Increase::Util.os,
+        "x-stainless-package-version" => Increase::VERSION,
+        "x-stainless-runtime" => ::RUBY_ENGINE,
+        "x-stainless-runtime-version" => ::RUBY_ENGINE_VERSION
+      }
     # rubocop:enable Style/MutableConstant
 
     class << self

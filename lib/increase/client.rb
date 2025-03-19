@@ -276,7 +276,8 @@ module Increase
       @check_transfers = Increase::Resources::CheckTransfers.new(client: self)
       @inbound_check_deposits = Increase::Resources::InboundCheckDeposits.new(client: self)
       @real_time_payments_transfers = Increase::Resources::RealTimePaymentsTransfers.new(client: self)
-      @inbound_real_time_payments_transfers = Increase::Resources::InboundRealTimePaymentsTransfers.new(client: self)
+      @inbound_real_time_payments_transfers =
+        Increase::Resources::InboundRealTimePaymentsTransfers.new(client: self)
       @check_deposits = Increase::Resources::CheckDeposits.new(client: self)
       @lockboxes = Increase::Resources::Lockboxes.new(client: self)
       @inbound_mail_items = Increase::Resources::InboundMailItems.new(client: self)
@@ -286,7 +287,8 @@ module Increase
       @supplemental_documents = Increase::Resources::SupplementalDocuments.new(client: self)
       @programs = Increase::Resources::Programs.new(client: self)
       @proof_of_authorization_requests = Increase::Resources::ProofOfAuthorizationRequests.new(client: self)
-      @proof_of_authorization_request_submissions = Increase::Resources::ProofOfAuthorizationRequestSubmissions.new(client: self)
+      @proof_of_authorization_request_submissions =
+        Increase::Resources::ProofOfAuthorizationRequestSubmissions.new(client: self)
       @account_statements = Increase::Resources::AccountStatements.new(client: self)
       @files = Increase::Resources::Files.new(client: self)
       @file_links = Increase::Resources::FileLinks.new(client: self)

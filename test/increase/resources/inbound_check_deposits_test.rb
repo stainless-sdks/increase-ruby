@@ -108,10 +108,8 @@ class Increase::Test::Resources::InboundCheckDepositsTest < Increase::Test::Reso
   end
 
   def test_return__required_params
-    response = @increase.inbound_check_deposits.return_(
-      "inbound_check_deposit_id",
-      reason: :altered_or_fictitious
-    )
+    response =
+      @increase.inbound_check_deposits.return_("inbound_check_deposit_id", reason: :altered_or_fictitious)
 
     assert_pattern do
       response => Increase::Models::InboundCheckDeposit

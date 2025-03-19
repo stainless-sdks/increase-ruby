@@ -4,10 +4,8 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::IntrafiExclusionsTest < Increase::Test::ResourceTest
   def test_create_required_params
-    response = @increase.intrafi_exclusions.create(
-      bank_name: "Example Bank",
-      entity_id: "entity_n8y8tnk2p9339ti393yi"
-    )
+    response =
+      @increase.intrafi_exclusions.create(bank_name: "Example Bank", entity_id: "entity_n8y8tnk2p9339ti393yi")
 
     assert_pattern do
       response => Increase::Models::IntrafiExclusion

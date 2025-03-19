@@ -784,7 +784,8 @@ module Increase
             CREDIT_ENTRY_REFUSED_BY_RECEIVER = :credit_entry_refused_by_receiver
 
             # Code R05. The receiving bank rejected because of an incorrect Standard Entry Class code.
-            UNAUTHORIZED_DEBIT_TO_CONSUMER_ACCOUNT_USING_CORPORATE_SEC_CODE = :unauthorized_debit_to_consumer_account_using_corporate_sec_code
+            UNAUTHORIZED_DEBIT_TO_CONSUMER_ACCOUNT_USING_CORPORATE_SEC_CODE =
+              :unauthorized_debit_to_consumer_account_using_corporate_sec_code
 
             # Code R29. The corporate customer at the receiving bank reversed the transfer.
             CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
@@ -802,7 +803,8 @@ module Increase
             ROUTING_NUMBER_CHECK_DIGIT_ERROR = :routing_number_check_digit_error
 
             # Code R10. The customer at the receiving bank reversed the transfer.
-            CUSTOMER_ADVISED_UNAUTHORIZED_IMPROPER_INELIGIBLE_OR_INCOMPLETE = :customer_advised_unauthorized_improper_ineligible_or_incomplete
+            CUSTOMER_ADVISED_UNAUTHORIZED_IMPROPER_INELIGIBLE_OR_INCOMPLETE =
+              :customer_advised_unauthorized_improper_ineligible_or_incomplete
 
             # Code R19. The amount field is incorrect or too large.
             AMOUNT_FIELD_ERROR = :amount_field_error
@@ -934,7 +936,8 @@ module Increase
             RDFI_PARTICIPANT_IN_CHECK_TRUNCATION_PROGRAM = :rdfi_participant_in_check_truncation_program
 
             # Code R14. A rare return reason. The payee is deceased.
-            REPRESENTATIVE_PAYEE_DECEASED_OR_UNABLE_TO_CONTINUE_IN_THAT_CAPACITY = :representative_payee_deceased_or_unable_to_continue_in_that_capacity
+            REPRESENTATIVE_PAYEE_DECEASED_OR_UNABLE_TO_CONTINUE_IN_THAT_CAPACITY =
+              :representative_payee_deceased_or_unable_to_continue_in_that_capacity
 
             # Code R75. A rare return reason. The originating bank disputes that an earlier `duplicate_entry` return was actually a duplicate.
             RETURN_NOT_A_DUPLICATE = :return_not_a_duplicate
@@ -2105,10 +2108,12 @@ module Increase
                   NO_CREDIT = :no_credit
 
                   # Passenger transport ancillary purchase cancellation
-                  PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :passenger_transport_ancillary_purchase_cancellation
+                  PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
+                    :passenger_transport_ancillary_purchase_cancellation
 
                   # Airline ticket and passenger transport ancillary purchase cancellation
-                  AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+                  AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
+                    :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
 
                   # Other
                   OTHER = :other
@@ -2228,10 +2233,12 @@ module Increase
                 NO_CREDIT = :no_credit
 
                 # Passenger transport ancillary purchase cancellation
-                PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :passenger_transport_ancillary_purchase_cancellation
+                PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
+                  :passenger_transport_ancillary_purchase_cancellation
 
                 # Airline ticket and passenger transport ancillary purchase cancellation
-                AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+                AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
+                  :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
 
                 # Airline ticket cancellation
                 AIRLINE_TICKET_CANCELLATION = :airline_ticket_cancellation
@@ -3509,10 +3516,12 @@ module Increase
                   NO_CREDIT = :no_credit
 
                   # Passenger transport ancillary purchase cancellation
-                  PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :passenger_transport_ancillary_purchase_cancellation
+                  PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
+                    :passenger_transport_ancillary_purchase_cancellation
 
                   # Airline ticket and passenger transport ancillary purchase cancellation
-                  AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+                  AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
+                    :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
 
                   # Other
                   OTHER = :other
@@ -3632,10 +3641,12 @@ module Increase
                 NO_CREDIT = :no_credit
 
                 # Passenger transport ancillary purchase cancellation
-                PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :passenger_transport_ancillary_purchase_cancellation
+                PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
+                  :passenger_transport_ancillary_purchase_cancellation
 
                 # Airline ticket and passenger transport ancillary purchase cancellation
-                AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+                AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
+                  :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
 
                 # Airline ticket cancellation
                 AIRLINE_TICKET_CANCELLATION = :airline_ticket_cancellation

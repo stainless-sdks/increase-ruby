@@ -4,10 +4,8 @@ require_relative "../../test_helper"
 
 class Increase::Test::Resources::Simulations::InterestPaymentsTest < Increase::Test::ResourceTest
   def test_create_required_params
-    response = @increase.simulations.interest_payments.create(
-      account_id: "account_in71c4amph0vgo2qllky",
-      amount: 1000
-    )
+    response =
+      @increase.simulations.interest_payments.create(account_id: "account_in71c4amph0vgo2qllky", amount: 1000)
 
     assert_pattern do
       response => Increase::Models::Transaction

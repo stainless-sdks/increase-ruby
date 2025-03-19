@@ -130,11 +130,8 @@ class IncreaseTest < Minitest::Test
 
   def test_client_retry_after_date
     increase = Increase::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 1)
-    requester = MockRequester.new(
-      500,
-      {"retry-after" => (Time.now + 10).httpdate},
-      {"type" => "internal_server_error"}
-    )
+    requester =
+      MockRequester.new(500, {"retry-after" => (Time.now + 10).httpdate}, {"type" => "internal_server_error"})
     increase.requester = requester
 
     assert_raises(Increase::InternalServerError) do

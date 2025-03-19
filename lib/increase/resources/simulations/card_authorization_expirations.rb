@@ -14,7 +14,8 @@ module Increase
         #
         # @return [Increase::Models::CardPayment]
         def create(params)
-          parsed, options = Increase::Models::Simulations::CardAuthorizationExpirationCreateParams.dump_request(params)
+          parsed, options =
+            Increase::Models::Simulations::CardAuthorizationExpirationCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "simulations/card_authorization_expirations",

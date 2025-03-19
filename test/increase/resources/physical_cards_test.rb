@@ -4,20 +4,21 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::PhysicalCardsTest < Increase::Test::ResourceTest
   def test_create_required_params
-    response = @increase.physical_cards.create(
-      card_id: "card_oubs0hwk5rn6knuecxg2",
-      cardholder: {first_name: "Ian", last_name: "Crease"},
-      shipment: {
-        address: {
-          city: "New York",
-          line1: "33 Liberty Street",
-          name: "Ian Crease",
-          postal_code: "10045",
-          state: "NY"
-        },
-        method: :usps
-      }
-    )
+    response =
+      @increase.physical_cards.create(
+        card_id: "card_oubs0hwk5rn6knuecxg2",
+        cardholder: {first_name: "Ian", last_name: "Crease"},
+        shipment: {
+          address: {
+            city: "New York",
+            line1: "33 Liberty Street",
+            name: "Ian Crease",
+            postal_code: "10045",
+            state: "NY"
+          },
+          method: :usps
+        }
+      )
 
     assert_pattern do
       response => Increase::Models::PhysicalCard
