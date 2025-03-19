@@ -14,13 +14,11 @@ module Increase
 
       attr_accessor type: Increase::Models::OAuthToken::type_
 
-      def initialize:
-        (
-          access_token: String,
-          token_type: Increase::Models::OAuthToken::token_type,
-          type: Increase::Models::OAuthToken::type_
-        ) -> void
-        | (?Increase::Models::oauth_token | Increase::BaseModel data) -> void
+      def initialize: (
+        access_token: String,
+        token_type: Increase::Models::OAuthToken::token_type,
+        type: Increase::Models::OAuthToken::type_
+      ) -> void
 
       def to_hash: -> Increase::Models::oauth_token
 

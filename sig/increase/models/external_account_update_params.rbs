@@ -35,18 +35,13 @@ module Increase
         Increase::Models::ExternalAccountUpdateParams::status
       ) -> Increase::Models::ExternalAccountUpdateParams::status
 
-      def initialize:
-        (
-          account_holder: Increase::Models::ExternalAccountUpdateParams::account_holder,
-          description: String,
-          funding: Increase::Models::ExternalAccountUpdateParams::funding,
-          status: Increase::Models::ExternalAccountUpdateParams::status,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::external_account_update_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ?account_holder: Increase::Models::ExternalAccountUpdateParams::account_holder,
+        ?description: String,
+        ?funding: Increase::Models::ExternalAccountUpdateParams::funding,
+        ?status: Increase::Models::ExternalAccountUpdateParams::status,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::external_account_update_params
 

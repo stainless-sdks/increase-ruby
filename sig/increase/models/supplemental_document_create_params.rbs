@@ -11,16 +11,11 @@ module Increase
 
       attr_accessor file_id: String
 
-      def initialize:
-        (
-          entity_id: String,
-          file_id: String,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::supplemental_document_create_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        entity_id: String,
+        file_id: String,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::supplemental_document_create_params
     end

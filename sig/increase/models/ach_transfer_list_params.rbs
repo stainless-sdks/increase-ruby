@@ -41,19 +41,15 @@ module Increase
 
       def limit=: (Integer) -> Integer
 
-      def initialize:
-        (
-          account_id: String,
-          created_at: Increase::Models::ACHTransferListParams::CreatedAt,
-          cursor: String,
-          external_account_id: String,
-          idempotency_key: String,
-          limit: Integer,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::ach_transfer_list_params | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ?account_id: String,
+        ?created_at: Increase::Models::ACHTransferListParams::CreatedAt,
+        ?cursor: String,
+        ?external_account_id: String,
+        ?idempotency_key: String,
+        ?limit: Integer,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::ach_transfer_list_params
 
@@ -77,17 +73,12 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize:
-          (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
-          ) -> void
-          | (
-            ?Increase::Models::ACHTransferListParams::created_at
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?after: Time,
+          ?before: Time,
+          ?on_or_after: Time,
+          ?on_or_before: Time
+        ) -> void
 
         def to_hash: -> Increase::Models::ACHTransferListParams::created_at
       end

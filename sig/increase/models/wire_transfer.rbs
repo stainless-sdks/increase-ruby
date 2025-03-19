@@ -92,39 +92,37 @@ module Increase
 
       attr_accessor type: Increase::Models::WireTransfer::type_
 
-      def initialize:
-        (
-          id: String,
-          account_id: String,
-          account_number: String,
-          amount: Integer,
-          approval: Increase::Models::WireTransfer::Approval?,
-          beneficiary_address_line1: String?,
-          beneficiary_address_line2: String?,
-          beneficiary_address_line3: String?,
-          beneficiary_name: String?,
-          cancellation: Increase::Models::WireTransfer::Cancellation?,
-          created_at: Time,
-          created_by: Increase::Models::WireTransfer::CreatedBy?,
-          currency: Increase::Models::WireTransfer::currency,
-          external_account_id: String?,
-          idempotency_key: String?,
-          message_to_recipient: String?,
-          network: Increase::Models::WireTransfer::network,
-          originator_address_line1: String?,
-          originator_address_line2: String?,
-          originator_address_line3: String?,
-          originator_name: String?,
-          pending_transaction_id: String?,
-          reversal: Increase::Models::WireTransfer::Reversal?,
-          routing_number: String,
-          source_account_number_id: String?,
-          status: Increase::Models::WireTransfer::status,
-          submission: Increase::Models::WireTransfer::Submission?,
-          transaction_id: String?,
-          type: Increase::Models::WireTransfer::type_
-        ) -> void
-        | (?Increase::Models::wire_transfer | Increase::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        account_id: String,
+        account_number: String,
+        amount: Integer,
+        approval: Increase::Models::WireTransfer::Approval?,
+        beneficiary_address_line1: String?,
+        beneficiary_address_line2: String?,
+        beneficiary_address_line3: String?,
+        beneficiary_name: String?,
+        cancellation: Increase::Models::WireTransfer::Cancellation?,
+        created_at: Time,
+        created_by: Increase::Models::WireTransfer::CreatedBy?,
+        currency: Increase::Models::WireTransfer::currency,
+        external_account_id: String?,
+        idempotency_key: String?,
+        message_to_recipient: String?,
+        network: Increase::Models::WireTransfer::network,
+        originator_address_line1: String?,
+        originator_address_line2: String?,
+        originator_address_line3: String?,
+        originator_name: String?,
+        pending_transaction_id: String?,
+        reversal: Increase::Models::WireTransfer::Reversal?,
+        routing_number: String,
+        source_account_number_id: String?,
+        status: Increase::Models::WireTransfer::status,
+        submission: Increase::Models::WireTransfer::Submission?,
+        transaction_id: String?,
+        type: Increase::Models::WireTransfer::type_
+      ) -> void
 
       def to_hash: -> Increase::Models::wire_transfer
 
@@ -135,11 +133,7 @@ module Increase
 
         attr_accessor approved_by: String?
 
-        def initialize:
-          (approved_at: Time, approved_by: String?) -> void
-          | (
-            ?Increase::Models::WireTransfer::approval | Increase::BaseModel data
-          ) -> void
+        def initialize: (approved_at: Time, approved_by: String?) -> void
 
         def to_hash: -> Increase::Models::WireTransfer::approval
       end
@@ -151,12 +145,7 @@ module Increase
 
         attr_accessor canceled_by: String?
 
-        def initialize:
-          (canceled_at: Time, canceled_by: String?) -> void
-          | (
-            ?Increase::Models::WireTransfer::cancellation
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (canceled_at: Time, canceled_by: String?) -> void
 
         def to_hash: -> Increase::Models::WireTransfer::cancellation
       end
@@ -178,17 +167,12 @@ module Increase
 
         attr_accessor user: Increase::Models::WireTransfer::CreatedBy::User?
 
-        def initialize:
-          (
-            api_key: Increase::Models::WireTransfer::CreatedBy::APIKey?,
-            category: Increase::Models::WireTransfer::CreatedBy::category,
-            oauth_application: Increase::Models::WireTransfer::CreatedBy::OAuthApplication?,
-            user: Increase::Models::WireTransfer::CreatedBy::User?
-          ) -> void
-          | (
-            ?Increase::Models::WireTransfer::created_by
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          api_key: Increase::Models::WireTransfer::CreatedBy::APIKey?,
+          category: Increase::Models::WireTransfer::CreatedBy::category,
+          oauth_application: Increase::Models::WireTransfer::CreatedBy::OAuthApplication?,
+          user: Increase::Models::WireTransfer::CreatedBy::User?
+        ) -> void
 
         def to_hash: -> Increase::Models::WireTransfer::created_by
 
@@ -197,12 +181,7 @@ module Increase
         class APIKey < Increase::BaseModel
           attr_accessor description: String?
 
-          def initialize:
-            (description: String?) -> void
-            | (
-              ?Increase::Models::WireTransfer::CreatedBy::api_key
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (description: String?) -> void
 
           def to_hash: -> Increase::Models::WireTransfer::CreatedBy::api_key
         end
@@ -227,12 +206,7 @@ module Increase
         class OAuthApplication < Increase::BaseModel
           attr_accessor name: String
 
-          def initialize:
-            (name: String) -> void
-            | (
-              ?Increase::Models::WireTransfer::CreatedBy::oauth_application
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (name: String) -> void
 
           def to_hash: -> Increase::Models::WireTransfer::CreatedBy::oauth_application
         end
@@ -242,12 +216,7 @@ module Increase
         class User < Increase::BaseModel
           attr_accessor email: String
 
-          def initialize:
-            (email: String) -> void
-            | (
-              ?Increase::Models::WireTransfer::CreatedBy::user
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (email: String) -> void
 
           def to_hash: -> Increase::Models::WireTransfer::CreatedBy::user
         end
@@ -341,29 +310,25 @@ module Increase
 
         attr_accessor wire_transfer_id: String
 
-        def initialize:
-          (
-            amount: Integer,
-            created_at: Time,
-            description: String,
-            financial_institution_to_financial_institution_information: String?,
-            input_cycle_date: Date,
-            input_message_accountability_data: String,
-            input_sequence_number: String,
-            input_source: String,
-            originator_routing_number: String?,
-            previous_message_input_cycle_date: Date,
-            previous_message_input_message_accountability_data: String,
-            previous_message_input_sequence_number: String,
-            previous_message_input_source: String,
-            receiver_financial_institution_information: String?,
-            sender_reference: String?,
-            transaction_id: String,
-            wire_transfer_id: String
-          ) -> void
-          | (
-            ?Increase::Models::WireTransfer::reversal | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          amount: Integer,
+          created_at: Time,
+          description: String,
+          financial_institution_to_financial_institution_information: String?,
+          input_cycle_date: Date,
+          input_message_accountability_data: String,
+          input_sequence_number: String,
+          input_source: String,
+          originator_routing_number: String?,
+          previous_message_input_cycle_date: Date,
+          previous_message_input_message_accountability_data: String,
+          previous_message_input_sequence_number: String,
+          previous_message_input_source: String,
+          receiver_financial_institution_information: String?,
+          sender_reference: String?,
+          transaction_id: String,
+          wire_transfer_id: String
+        ) -> void
 
         def to_hash: -> Increase::Models::WireTransfer::reversal
       end
@@ -418,15 +383,10 @@ module Increase
 
         attr_accessor submitted_at: Time
 
-        def initialize:
-          (
-            input_message_accountability_data: String,
-            submitted_at: Time
-          ) -> void
-          | (
-            ?Increase::Models::WireTransfer::submission
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          input_message_accountability_data: String,
+          submitted_at: Time
+        ) -> void
 
         def to_hash: -> Increase::Models::WireTransfer::submission
       end

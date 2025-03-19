@@ -43,19 +43,15 @@ module Increase
 
       def route_id=: (String) -> String
 
-      def initialize:
-        (
-          account_id: String,
-          category: Increase::Models::TransactionListParams::Category,
-          created_at: Increase::Models::TransactionListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          route_id: String,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::transaction_list_params | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ?account_id: String,
+        ?category: Increase::Models::TransactionListParams::Category,
+        ?created_at: Increase::Models::TransactionListParams::CreatedAt,
+        ?cursor: String,
+        ?limit: Integer,
+        ?route_id: String,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::transaction_list_params
 
@@ -69,14 +65,9 @@ module Increase
           ::Array[Increase::Models::TransactionListParams::Category::in_]
         ) -> ::Array[Increase::Models::TransactionListParams::Category::in_]
 
-        def initialize:
-          (
-            in_: ::Array[Increase::Models::TransactionListParams::Category::in_]
-          ) -> void
-          | (
-            ?Increase::Models::TransactionListParams::category
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?in_: ::Array[Increase::Models::TransactionListParams::Category::in_]
+        ) -> void
 
         def to_hash: -> Increase::Models::TransactionListParams::category
 
@@ -223,17 +214,12 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize:
-          (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
-          ) -> void
-          | (
-            ?Increase::Models::TransactionListParams::created_at
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?after: Time,
+          ?before: Time,
+          ?on_or_after: Time,
+          ?on_or_before: Time
+        ) -> void
 
         def to_hash: -> Increase::Models::TransactionListParams::created_at
       end

@@ -26,19 +26,15 @@ module Increase
 
       attr_accessor updates: ::Array[Increase::Models::DigitalWalletToken::Update]
 
-      def initialize:
-        (
-          id: String,
-          card_id: String,
-          created_at: Time,
-          status: Increase::Models::DigitalWalletToken::status,
-          token_requestor: Increase::Models::DigitalWalletToken::token_requestor,
-          type: Increase::Models::DigitalWalletToken::type_,
-          updates: ::Array[Increase::Models::DigitalWalletToken::Update]
-        ) -> void
-        | (
-          ?Increase::Models::digital_wallet_token | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        id: String,
+        card_id: String,
+        created_at: Time,
+        status: Increase::Models::DigitalWalletToken::status,
+        token_requestor: Increase::Models::DigitalWalletToken::token_requestor,
+        type: Increase::Models::DigitalWalletToken::type_,
+        updates: ::Array[Increase::Models::DigitalWalletToken::Update]
+      ) -> void
 
       def to_hash: -> Increase::Models::digital_wallet_token
 
@@ -97,15 +93,10 @@ module Increase
 
         attr_accessor timestamp: Time
 
-        def initialize:
-          (
-            status: Increase::Models::DigitalWalletToken::Update::status,
-            timestamp: Time
-          ) -> void
-          | (
-            ?Increase::Models::DigitalWalletToken::update
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          status: Increase::Models::DigitalWalletToken::Update::status,
+          timestamp: Time
+        ) -> void
 
         def to_hash: -> Increase::Models::DigitalWalletToken::update
 

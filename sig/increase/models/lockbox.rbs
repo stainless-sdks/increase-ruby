@@ -32,19 +32,17 @@ module Increase
 
       attr_accessor type: Increase::Models::Lockbox::type_
 
-      def initialize:
-        (
-          id: String,
-          account_id: String,
-          address: Increase::Models::Lockbox::Address,
-          created_at: Time,
-          description: String?,
-          idempotency_key: String?,
-          recipient_name: String?,
-          status: Increase::Models::Lockbox::status,
-          type: Increase::Models::Lockbox::type_
-        ) -> void
-        | (?Increase::Models::lockbox | Increase::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        account_id: String,
+        address: Increase::Models::Lockbox::Address,
+        created_at: Time,
+        description: String?,
+        idempotency_key: String?,
+        recipient_name: String?,
+        status: Increase::Models::Lockbox::status,
+        type: Increase::Models::Lockbox::type_
+      ) -> void
 
       def to_hash: -> Increase::Models::lockbox
 
@@ -71,18 +69,14 @@ module Increase
 
         attr_accessor state: String
 
-        def initialize:
-          (
-            city: String,
-            line1: String,
-            line2: String,
-            postal_code: String,
-            recipient: String?,
-            state: String
-          ) -> void
-          | (
-            ?Increase::Models::Lockbox::address | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          city: String,
+          line1: String,
+          line2: String,
+          postal_code: String,
+          recipient: String?,
+          state: String
+        ) -> void
 
         def to_hash: -> Increase::Models::Lockbox::address
       end

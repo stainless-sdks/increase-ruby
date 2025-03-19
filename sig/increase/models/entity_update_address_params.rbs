@@ -10,15 +10,10 @@ module Increase
 
       attr_accessor address: Increase::Models::EntityUpdateAddressParams::Address
 
-      def initialize:
-        (
-          address: Increase::Models::EntityUpdateAddressParams::Address,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::entity_update_address_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        address: Increase::Models::EntityUpdateAddressParams::Address,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::entity_update_address_params
 
@@ -44,18 +39,13 @@ module Increase
 
         def line2=: (String) -> String
 
-        def initialize:
-          (
-            city: String,
-            line1: String,
-            state: String,
-            zip: String,
-            line2: String
-          ) -> void
-          | (
-            ?Increase::Models::EntityUpdateAddressParams::address
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          city: String,
+          line1: String,
+          state: String,
+          zip: String,
+          ?line2: String
+        ) -> void
 
         def to_hash: -> Increase::Models::EntityUpdateAddressParams::address
       end

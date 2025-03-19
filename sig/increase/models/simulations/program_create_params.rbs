@@ -10,12 +10,10 @@ module Increase
 
         attr_accessor name: String
 
-        def initialize:
-          (name: String, request_options: Increase::request_opts) -> void
-          | (
-            ?Increase::Models::Simulations::program_create_params
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          name: String,
+          ?request_options: Increase::request_opts
+        ) -> void
 
         def to_hash: -> Increase::Models::Simulations::program_create_params
       end

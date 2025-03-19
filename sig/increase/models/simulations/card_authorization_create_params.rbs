@@ -94,30 +94,25 @@ module Increase
 
         def terminal_id=: (String) -> String
 
-        def initialize:
-          (
-            amount: Integer,
-            authenticated_card_payment_id: String,
-            card_id: String,
-            decline_reason: Increase::Models::Simulations::CardAuthorizationCreateParams::decline_reason,
-            digital_wallet_token_id: String,
-            direction: Increase::Models::Simulations::CardAuthorizationCreateParams::direction,
-            event_subscription_id: String,
-            merchant_acceptor_id: String,
-            merchant_category_code: String,
-            merchant_city: String,
-            merchant_country: String,
-            merchant_descriptor: String,
-            merchant_state: String,
-            network_details: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
-            physical_card_id: String,
-            terminal_id: String,
-            request_options: Increase::request_opts
-          ) -> void
-          | (
-            ?Increase::Models::Simulations::card_authorization_create_params
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          amount: Integer,
+          ?authenticated_card_payment_id: String,
+          ?card_id: String,
+          ?decline_reason: Increase::Models::Simulations::CardAuthorizationCreateParams::decline_reason,
+          ?digital_wallet_token_id: String,
+          ?direction: Increase::Models::Simulations::CardAuthorizationCreateParams::direction,
+          ?event_subscription_id: String,
+          ?merchant_acceptor_id: String,
+          ?merchant_category_code: String,
+          ?merchant_city: String,
+          ?merchant_country: String,
+          ?merchant_descriptor: String,
+          ?merchant_state: String,
+          ?network_details: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
+          ?physical_card_id: String,
+          ?terminal_id: String,
+          ?request_options: Increase::request_opts
+        ) -> void
 
         def to_hash: -> Increase::Models::Simulations::card_authorization_create_params
 
@@ -215,14 +210,9 @@ module Increase
         class NetworkDetails < Increase::BaseModel
           attr_accessor visa: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa
 
-          def initialize:
-            (
-              visa: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa
-            ) -> void
-            | (
-              ?Increase::Models::Simulations::CardAuthorizationCreateParams::network_details
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (
+            visa: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa
+          ) -> void
 
           def to_hash: -> Increase::Models::Simulations::CardAuthorizationCreateParams::network_details
 
@@ -238,14 +228,9 @@ module Increase
               Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason
             ) -> Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason
 
-            def initialize:
-              (
-                stand_in_processing_reason: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason
-              ) -> void
-              | (
-                ?Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::visa
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (
+              ?stand_in_processing_reason: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason
+            ) -> void
 
             def to_hash: -> Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::visa
 

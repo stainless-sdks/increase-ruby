@@ -21,18 +21,13 @@ module Increase
 
       attr_accessor front_image_file_id: String
 
-      def initialize:
-        (
-          carrier_image_file_id: String,
-          contact_phone: String,
-          description: String,
-          front_image_file_id: String,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::physical_card_profile_create_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        carrier_image_file_id: String,
+        contact_phone: String,
+        description: String,
+        front_image_file_id: String,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::physical_card_profile_create_params
     end

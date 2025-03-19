@@ -1,60 +1,38 @@
 module Increase
   module Resources
     class AccountNumbers
-      def create:
-        (
-          Increase::Models::AccountNumberCreateParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::AccountNumber
-        | (
-          account_id: String,
-          name: String,
-          inbound_ach: Increase::Models::AccountNumberCreateParams::InboundACH,
-          inbound_checks: Increase::Models::AccountNumberCreateParams::InboundChecks,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::AccountNumber
+      def create: (
+        account_id: String,
+        name: String,
+        ?inbound_ach: Increase::Models::AccountNumberCreateParams::InboundACH,
+        ?inbound_checks: Increase::Models::AccountNumberCreateParams::InboundChecks,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Models::AccountNumber
 
-      def retrieve:
-        (
-          String account_number_id,
-          ?Increase::Models::AccountNumberRetrieveParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::AccountNumber
-        | (
-          String account_number_id,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::AccountNumber
+      def retrieve: (
+        String account_number_id,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Models::AccountNumber
 
-      def update:
-        (
-          String account_number_id,
-          ?Increase::Models::AccountNumberUpdateParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::AccountNumber
-        | (
-          String account_number_id,
-          inbound_ach: Increase::Models::AccountNumberUpdateParams::InboundACH,
-          inbound_checks: Increase::Models::AccountNumberUpdateParams::InboundChecks,
-          name: String,
-          status: Increase::Models::AccountNumberUpdateParams::status,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::AccountNumber
+      def update: (
+        String account_number_id,
+        ?inbound_ach: Increase::Models::AccountNumberUpdateParams::InboundACH,
+        ?inbound_checks: Increase::Models::AccountNumberUpdateParams::InboundChecks,
+        ?name: String,
+        ?status: Increase::Models::AccountNumberUpdateParams::status,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Models::AccountNumber
 
-      def list:
-        (
-          ?Increase::Models::AccountNumberListParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Page[Increase::Models::AccountNumber]
-        | (
-          account_id: String,
-          ach_debit_status: Increase::Models::AccountNumberListParams::ACHDebitStatus,
-          created_at: Increase::Models::AccountNumberListParams::CreatedAt,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          status: Increase::Models::AccountNumberListParams::Status,
-          request_options: Increase::request_opts
-        ) -> Increase::Page[Increase::Models::AccountNumber]
+      def list: (
+        ?account_id: String,
+        ?ach_debit_status: Increase::Models::AccountNumberListParams::ACHDebitStatus,
+        ?created_at: Increase::Models::AccountNumberListParams::CreatedAt,
+        ?cursor: String,
+        ?idempotency_key: String,
+        ?limit: Integer,
+        ?status: Increase::Models::AccountNumberListParams::Status,
+        ?request_options: Increase::request_opts
+      ) -> Increase::Page[Increase::Models::AccountNumber]
 
       def initialize: (client: Increase::Client) -> void
     end

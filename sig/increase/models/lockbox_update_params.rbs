@@ -26,16 +26,12 @@ module Increase
         Increase::Models::LockboxUpdateParams::status
       ) -> Increase::Models::LockboxUpdateParams::status
 
-      def initialize:
-        (
-          description: String,
-          recipient_name: String,
-          status: Increase::Models::LockboxUpdateParams::status,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::lockbox_update_params | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ?description: String,
+        ?recipient_name: String,
+        ?status: Increase::Models::LockboxUpdateParams::status,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::lockbox_update_params
 

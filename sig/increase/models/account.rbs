@@ -50,25 +50,23 @@ module Increase
 
       attr_accessor type: Increase::Models::Account::type_
 
-      def initialize:
-        (
-          id: String,
-          bank: Increase::Models::Account::bank,
-          closed_at: Time?,
-          created_at: Time,
-          currency: Increase::Models::Account::currency,
-          entity_id: String?,
-          idempotency_key: String?,
-          informational_entity_id: String?,
-          interest_accrued: String,
-          interest_accrued_at: Date?,
-          interest_rate: String,
-          name: String,
-          program_id: String,
-          status: Increase::Models::Account::status,
-          type: Increase::Models::Account::type_
-        ) -> void
-        | (?Increase::Models::account | Increase::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        bank: Increase::Models::Account::bank,
+        closed_at: Time?,
+        created_at: Time,
+        currency: Increase::Models::Account::currency,
+        entity_id: String?,
+        idempotency_key: String?,
+        informational_entity_id: String?,
+        interest_accrued: String,
+        interest_accrued_at: Date?,
+        interest_rate: String,
+        name: String,
+        program_id: String,
+        status: Increase::Models::Account::status,
+        type: Increase::Models::Account::type_
+      ) -> void
 
       def to_hash: -> Increase::Models::account
 

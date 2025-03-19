@@ -12,15 +12,10 @@ module Increase
 
       attr_accessor reason: Increase::Models::InboundACHTransferTransferReturnParams::reason
 
-      def initialize:
-        (
-          reason: Increase::Models::InboundACHTransferTransferReturnParams::reason,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::inbound_ach_transfer_transfer_return_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        reason: Increase::Models::InboundACHTransferTransferReturnParams::reason,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::inbound_ach_transfer_transfer_return_params
 

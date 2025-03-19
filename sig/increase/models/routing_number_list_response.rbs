@@ -23,19 +23,14 @@ module Increase
 
       attr_accessor wire_transfers: Increase::Models::RoutingNumberListResponse::wire_transfers
 
-      def initialize:
-        (
-          ach_transfers: Increase::Models::RoutingNumberListResponse::ach_transfers,
-          name: String,
-          real_time_payments_transfers: Increase::Models::RoutingNumberListResponse::real_time_payments_transfers,
-          routing_number: String,
-          type: Increase::Models::RoutingNumberListResponse::type_,
-          wire_transfers: Increase::Models::RoutingNumberListResponse::wire_transfers
-        ) -> void
-        | (
-          ?Increase::Models::routing_number_list_response
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ach_transfers: Increase::Models::RoutingNumberListResponse::ach_transfers,
+        name: String,
+        real_time_payments_transfers: Increase::Models::RoutingNumberListResponse::real_time_payments_transfers,
+        routing_number: String,
+        type: Increase::Models::RoutingNumberListResponse::type_,
+        wire_transfers: Increase::Models::RoutingNumberListResponse::wire_transfers
+      ) -> void
 
       def to_hash: -> Increase::Models::routing_number_list_response
 

@@ -31,18 +31,13 @@ module Increase
         Increase::Models::OAuthConnectionListParams::Status
       ) -> Increase::Models::OAuthConnectionListParams::Status
 
-      def initialize:
-        (
-          cursor: String,
-          limit: Integer,
-          oauth_application_id: String,
-          status: Increase::Models::OAuthConnectionListParams::Status,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::oauth_connection_list_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ?cursor: String,
+        ?limit: Integer,
+        ?oauth_application_id: String,
+        ?status: Increase::Models::OAuthConnectionListParams::Status,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::oauth_connection_list_params
 
@@ -58,14 +53,9 @@ module Increase
           ::Array[Increase::Models::OAuthConnectionListParams::Status::in_]
         ) -> ::Array[Increase::Models::OAuthConnectionListParams::Status::in_]
 
-        def initialize:
-          (
-            in_: ::Array[Increase::Models::OAuthConnectionListParams::Status::in_]
-          ) -> void
-          | (
-            ?Increase::Models::OAuthConnectionListParams::status
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?in_: ::Array[Increase::Models::OAuthConnectionListParams::Status::in_]
+        ) -> void
 
         def to_hash: -> Increase::Models::OAuthConnectionListParams::status
 
