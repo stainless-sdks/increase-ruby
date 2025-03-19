@@ -8,7 +8,7 @@ module Increase
       include Increase::RequestParameters
 
       def initialize:
-        (request_options: Increase::request_opts) -> void
+        (?request_options: Increase::request_opts) -> void
         | (
           ?Increase::Models::digital_card_profile_retrieve_params
           | Increase::BaseModel data

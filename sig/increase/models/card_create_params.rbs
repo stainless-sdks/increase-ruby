@@ -39,11 +39,11 @@ module Increase
       def initialize:
         (
           account_id: String,
-          billing_address: Increase::Models::CardCreateParams::BillingAddress,
-          description: String,
-          digital_wallet: Increase::Models::CardCreateParams::DigitalWallet,
-          entity_id: String,
-          request_options: Increase::request_opts
+          ?billing_address: Increase::Models::CardCreateParams::BillingAddress,
+          ?description: String,
+          ?digital_wallet: Increase::Models::CardCreateParams::DigitalWallet,
+          ?entity_id: String,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::card_create_params | Increase::BaseModel data
@@ -79,7 +79,7 @@ module Increase
             line1: String,
             postal_code: String,
             state: String,
-            line2: String
+            ?line2: String
           ) -> void
           | (
             ?Increase::Models::CardCreateParams::billing_address
@@ -107,9 +107,9 @@ module Increase
 
         def initialize:
           (
-            digital_card_profile_id: String,
-            email: String,
-            phone: String
+            ?digital_card_profile_id: String,
+            ?email: String,
+            ?phone: String
           ) -> void
           | (
             ?Increase::Models::CardCreateParams::digital_wallet

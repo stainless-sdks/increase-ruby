@@ -13,14 +13,14 @@ module Increase
           recipient_account_number: String,
           recipient_name: String,
           recipient_routing_number: String,
-          originator_address_line1: String,
-          originator_address_line2: String,
-          originator_address_line3: String,
-          originator_name: String,
-          recipient_address_line1: String,
-          recipient_address_line2: String,
-          recipient_address_line3: String,
-          request_options: Increase::request_opts
+          ?originator_address_line1: String,
+          ?originator_address_line2: String,
+          ?originator_address_line3: String,
+          ?originator_name: String,
+          ?recipient_address_line1: String,
+          ?recipient_address_line2: String,
+          ?recipient_address_line3: String,
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::WireDrawdownRequest
 
       def retrieve:
@@ -31,7 +31,7 @@ module Increase
         ) -> Increase::Models::WireDrawdownRequest
         | (
           String wire_drawdown_request_id,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::WireDrawdownRequest
 
       def list:
@@ -40,11 +40,11 @@ module Increase
           | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::WireDrawdownRequest]
         | (
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          status: Increase::Models::WireDrawdownRequestListParams::Status,
-          request_options: Increase::request_opts
+          ?cursor: String,
+          ?idempotency_key: String,
+          ?limit: Integer,
+          ?status: Increase::Models::WireDrawdownRequestListParams::Status,
+          ?request_options: Increase::request_opts
         ) -> Increase::Page[Increase::Models::WireDrawdownRequest]
 
       def initialize: (client: Increase::Client) -> void

@@ -10,8 +10,8 @@ module Increase
           card_id: String,
           cardholder: Increase::Models::PhysicalCardCreateParams::Cardholder,
           shipment: Increase::Models::PhysicalCardCreateParams::Shipment,
-          physical_card_profile_id: String,
-          request_options: Increase::request_opts
+          ?physical_card_profile_id: String,
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::PhysicalCard
 
       def retrieve:
@@ -22,7 +22,7 @@ module Increase
         ) -> Increase::Models::PhysicalCard
         | (
           String physical_card_id,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::PhysicalCard
 
       def update:
@@ -34,7 +34,7 @@ module Increase
         | (
           String physical_card_id,
           status: Increase::Models::PhysicalCardUpdateParams::status,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::PhysicalCard
 
       def list:
@@ -42,12 +42,12 @@ module Increase
           ?Increase::Models::PhysicalCardListParams | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::PhysicalCard]
         | (
-          card_id: String,
-          created_at: Increase::Models::PhysicalCardListParams::CreatedAt,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          request_options: Increase::request_opts
+          ?card_id: String,
+          ?created_at: Increase::Models::PhysicalCardListParams::CreatedAt,
+          ?cursor: String,
+          ?idempotency_key: String,
+          ?limit: Integer,
+          ?request_options: Increase::request_opts
         ) -> Increase::Page[Increase::Models::PhysicalCard]
 
       def initialize: (client: Increase::Client) -> void

@@ -9,7 +9,7 @@ module Increase
         ) -> Increase::Models::BookkeepingEntry
         | (
           String bookkeeping_entry_id,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::BookkeepingEntry
 
       def list:
@@ -18,10 +18,10 @@ module Increase
           | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::BookkeepingEntry]
         | (
-          account_id: String,
-          cursor: String,
-          limit: Integer,
-          request_options: Increase::request_opts
+          ?account_id: String,
+          ?cursor: String,
+          ?limit: Integer,
+          ?request_options: Increase::request_opts
         ) -> Increase::Page[Increase::Models::BookkeepingEntry]
 
       def initialize: (client: Increase::Client) -> void

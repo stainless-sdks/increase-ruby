@@ -37,11 +37,11 @@ module Increase
 
       def initialize:
         (
-          inbound_ach: Increase::Models::AccountNumberUpdateParams::InboundACH,
-          inbound_checks: Increase::Models::AccountNumberUpdateParams::InboundChecks,
-          name: String,
-          status: Increase::Models::AccountNumberUpdateParams::status,
-          request_options: Increase::request_opts
+          ?inbound_ach: Increase::Models::AccountNumberUpdateParams::InboundACH,
+          ?inbound_checks: Increase::Models::AccountNumberUpdateParams::InboundChecks,
+          ?name: String,
+          ?status: Increase::Models::AccountNumberUpdateParams::status,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::account_number_update_params
@@ -64,7 +64,7 @@ module Increase
 
         def initialize:
           (
-            debit_status: Increase::Models::AccountNumberUpdateParams::InboundACH::debit_status
+            ?debit_status: Increase::Models::AccountNumberUpdateParams::InboundACH::debit_status
           ) -> void
           | (
             ?Increase::Models::AccountNumberUpdateParams::inbound_ach

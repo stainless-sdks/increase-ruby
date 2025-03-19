@@ -55,13 +55,13 @@ module Increase
       def initialize:
         (
           category: Increase::Models::ExportCreateParams::category,
-          account_statement_ofx: Increase::Models::ExportCreateParams::AccountStatementOfx,
-          balance_csv: Increase::Models::ExportCreateParams::BalanceCsv,
-          bookkeeping_account_balance_csv: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv,
-          entity_csv: Increase::Models::ExportCreateParams::EntityCsv,
-          transaction_csv: Increase::Models::ExportCreateParams::TransactionCsv,
-          vendor_csv: top,
-          request_options: Increase::request_opts
+          ?account_statement_ofx: Increase::Models::ExportCreateParams::AccountStatementOfx,
+          ?balance_csv: Increase::Models::ExportCreateParams::BalanceCsv,
+          ?bookkeeping_account_balance_csv: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv,
+          ?entity_csv: Increase::Models::ExportCreateParams::EntityCsv,
+          ?transaction_csv: Increase::Models::ExportCreateParams::TransactionCsv,
+          ?vendor_csv: top,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::export_create_params | Increase::BaseModel data
@@ -117,7 +117,7 @@ module Increase
         def initialize:
           (
             account_id: String,
-            created_at: Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt
+            ?created_at: Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt
           ) -> void
           | (
             ?Increase::Models::ExportCreateParams::account_statement_ofx
@@ -148,10 +148,10 @@ module Increase
 
           def initialize:
             (
-              after: Time,
-              before: Time,
-              on_or_after: Time,
-              on_or_before: Time
+              ?after: Time,
+              ?before: Time,
+              ?on_or_after: Time,
+              ?on_or_before: Time
             ) -> void
             | (
               ?Increase::Models::ExportCreateParams::AccountStatementOfx::created_at
@@ -186,9 +186,9 @@ module Increase
 
         def initialize:
           (
-            account_id: String,
-            created_at: Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt,
-            program_id: String
+            ?account_id: String,
+            ?created_at: Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt,
+            ?program_id: String
           ) -> void
           | (
             ?Increase::Models::ExportCreateParams::balance_csv
@@ -219,10 +219,10 @@ module Increase
 
           def initialize:
             (
-              after: Time,
-              before: Time,
-              on_or_after: Time,
-              on_or_before: Time
+              ?after: Time,
+              ?before: Time,
+              ?on_or_after: Time,
+              ?on_or_before: Time
             ) -> void
             | (
               ?Increase::Models::ExportCreateParams::BalanceCsv::created_at
@@ -252,8 +252,8 @@ module Increase
 
         def initialize:
           (
-            bookkeeping_account_id: String,
-            created_at: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt
+            ?bookkeeping_account_id: String,
+            ?created_at: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt
           ) -> void
           | (
             ?Increase::Models::ExportCreateParams::bookkeeping_account_balance_csv
@@ -284,10 +284,10 @@ module Increase
 
           def initialize:
             (
-              after: Time,
-              before: Time,
-              on_or_after: Time,
-              on_or_before: Time
+              ?after: Time,
+              ?before: Time,
+              ?on_or_after: Time,
+              ?on_or_before: Time
             ) -> void
             | (
               ?Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::created_at
@@ -310,7 +310,7 @@ module Increase
 
         def initialize:
           (
-            status: Increase::Models::ExportCreateParams::EntityCsv::Status
+            ?status: Increase::Models::ExportCreateParams::EntityCsv::Status
           ) -> void
           | (
             ?Increase::Models::ExportCreateParams::entity_csv
@@ -379,9 +379,9 @@ module Increase
 
         def initialize:
           (
-            account_id: String,
-            created_at: Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt,
-            program_id: String
+            ?account_id: String,
+            ?created_at: Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt,
+            ?program_id: String
           ) -> void
           | (
             ?Increase::Models::ExportCreateParams::transaction_csv
@@ -412,10 +412,10 @@ module Increase
 
           def initialize:
             (
-              after: Time,
-              before: Time,
-              on_or_after: Time,
-              on_or_before: Time
+              ?after: Time,
+              ?before: Time,
+              ?on_or_after: Time,
+              ?on_or_before: Time
             ) -> void
             | (
               ?Increase::Models::ExportCreateParams::TransactionCsv::created_at

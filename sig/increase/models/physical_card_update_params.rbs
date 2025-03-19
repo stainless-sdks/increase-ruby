@@ -13,7 +13,7 @@ module Increase
       def initialize:
         (
           status: Increase::Models::PhysicalCardUpdateParams::status,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::physical_card_update_params

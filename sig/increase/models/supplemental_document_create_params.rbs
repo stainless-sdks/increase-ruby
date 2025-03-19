@@ -15,7 +15,7 @@ module Increase
         (
           entity_id: String,
           file_id: String,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::supplemental_document_create_params

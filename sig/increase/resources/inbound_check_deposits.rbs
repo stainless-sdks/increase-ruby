@@ -9,7 +9,7 @@ module Increase
         ) -> Increase::Models::InboundCheckDeposit
         | (
           String inbound_check_deposit_id,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::InboundCheckDeposit
 
       def list:
@@ -18,12 +18,12 @@ module Increase
           | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::InboundCheckDeposit]
         | (
-          account_id: String,
-          check_transfer_id: String,
-          created_at: Increase::Models::InboundCheckDepositListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          request_options: Increase::request_opts
+          ?account_id: String,
+          ?check_transfer_id: String,
+          ?created_at: Increase::Models::InboundCheckDepositListParams::CreatedAt,
+          ?cursor: String,
+          ?limit: Integer,
+          ?request_options: Increase::request_opts
         ) -> Increase::Page[Increase::Models::InboundCheckDeposit]
 
       def decline:
@@ -34,7 +34,7 @@ module Increase
         ) -> Increase::Models::InboundCheckDeposit
         | (
           String inbound_check_deposit_id,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::InboundCheckDeposit
 
       def return_:
@@ -46,7 +46,7 @@ module Increase
         | (
           String inbound_check_deposit_id,
           reason: Increase::Models::InboundCheckDepositReturnParams::reason,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::InboundCheckDeposit
 
       def initialize: (client: Increase::Client) -> void

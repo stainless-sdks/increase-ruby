@@ -35,11 +35,11 @@ module Increase
 
       def initialize:
         (
-          created_at: Increase::Models::OAuthApplicationListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          status: Increase::Models::OAuthApplicationListParams::Status,
-          request_options: Increase::request_opts
+          ?created_at: Increase::Models::OAuthApplicationListParams::CreatedAt,
+          ?cursor: String,
+          ?limit: Integer,
+          ?status: Increase::Models::OAuthApplicationListParams::Status,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::oauth_application_list_params
@@ -70,10 +70,10 @@ module Increase
 
         def initialize:
           (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
+            ?after: Time,
+            ?before: Time,
+            ?on_or_after: Time,
+            ?on_or_before: Time
           ) -> void
           | (
             ?Increase::Models::OAuthApplicationListParams::created_at
@@ -97,7 +97,7 @@ module Increase
 
         def initialize:
           (
-            in_: ::Array[Increase::Models::OAuthApplicationListParams::Status::in_]
+            ?in_: ::Array[Increase::Models::OAuthApplicationListParams::Status::in_]
           ) -> void
           | (
             ?Increase::Models::OAuthApplicationListParams::status

@@ -7,9 +7,9 @@ module Increase
         ) -> Increase::Page[Increase::Models::RoutingNumberListResponse]
         | (
           routing_number: String,
-          cursor: String,
-          limit: Integer,
-          request_options: Increase::request_opts
+          ?cursor: String,
+          ?limit: Integer,
+          ?request_options: Increase::request_opts
         ) -> Increase::Page[Increase::Models::RoutingNumberListResponse]
 
       def initialize: (client: Increase::Client) -> void

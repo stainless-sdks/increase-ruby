@@ -16,8 +16,8 @@ module Increase
       def initialize:
         (
           file_id: String,
-          expires_at: Time,
-          request_options: Increase::request_opts
+          ?expires_at: Time,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::file_link_create_params | Increase::BaseModel data

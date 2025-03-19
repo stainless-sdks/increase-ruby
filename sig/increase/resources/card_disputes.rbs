@@ -8,8 +8,8 @@ module Increase
         | (
           disputed_transaction_id: String,
           explanation: String,
-          amount: Integer,
-          request_options: Increase::request_opts
+          ?amount: Integer,
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::CardDispute
 
       def retrieve:
@@ -20,7 +20,7 @@ module Increase
         ) -> Increase::Models::CardDispute
         | (
           String card_dispute_id,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::CardDispute
 
       def list:
@@ -28,12 +28,12 @@ module Increase
           ?Increase::Models::CardDisputeListParams | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::CardDispute]
         | (
-          created_at: Increase::Models::CardDisputeListParams::CreatedAt,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          status: Increase::Models::CardDisputeListParams::Status,
-          request_options: Increase::request_opts
+          ?created_at: Increase::Models::CardDisputeListParams::CreatedAt,
+          ?cursor: String,
+          ?idempotency_key: String,
+          ?limit: Integer,
+          ?status: Increase::Models::CardDisputeListParams::Status,
+          ?request_options: Increase::request_opts
         ) -> Increase::Page[Increase::Models::CardDispute]
 
       def initialize: (client: Increase::Client) -> void

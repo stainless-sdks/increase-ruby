@@ -11,8 +11,8 @@ module Increase
           amount: Integer,
           description: String,
           destination_account_id: String,
-          require_approval: bool,
-          request_options: Increase::request_opts
+          ?require_approval: bool,
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::AccountTransfer
 
       def retrieve:
@@ -23,7 +23,7 @@ module Increase
         ) -> Increase::Models::AccountTransfer
         | (
           String account_transfer_id,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::AccountTransfer
 
       def list:
@@ -32,12 +32,12 @@ module Increase
           | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::AccountTransfer]
         | (
-          account_id: String,
-          created_at: Increase::Models::AccountTransferListParams::CreatedAt,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          request_options: Increase::request_opts
+          ?account_id: String,
+          ?created_at: Increase::Models::AccountTransferListParams::CreatedAt,
+          ?cursor: String,
+          ?idempotency_key: String,
+          ?limit: Integer,
+          ?request_options: Increase::request_opts
         ) -> Increase::Page[Increase::Models::AccountTransfer]
 
       def approve:
@@ -48,7 +48,7 @@ module Increase
         ) -> Increase::Models::AccountTransfer
         | (
           String account_transfer_id,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::AccountTransfer
 
       def cancel:
@@ -59,7 +59,7 @@ module Increase
         ) -> Increase::Models::AccountTransfer
         | (
           String account_transfer_id,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::AccountTransfer
 
       def initialize: (client: Increase::Client) -> void

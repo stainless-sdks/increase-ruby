@@ -9,7 +9,7 @@ module Increase
         ) -> Increase::Models::InboundWireDrawdownRequest
         | (
           String inbound_wire_drawdown_request_id,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::InboundWireDrawdownRequest
 
       def list:
@@ -18,9 +18,9 @@ module Increase
           | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::InboundWireDrawdownRequest]
         | (
-          cursor: String,
-          limit: Integer,
-          request_options: Increase::request_opts
+          ?cursor: String,
+          ?limit: Integer,
+          ?request_options: Increase::request_opts
         ) -> Increase::Page[Increase::Models::InboundWireDrawdownRequest]
 
       def initialize: (client: Increase::Client) -> void

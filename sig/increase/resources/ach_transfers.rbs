@@ -9,23 +9,23 @@ module Increase
           account_id: String,
           amount: Integer,
           statement_descriptor: String,
-          account_number: String,
-          addenda: Increase::Models::ACHTransferCreateParams::Addenda,
-          company_descriptive_date: String,
-          company_discretionary_data: String,
-          company_entry_description: String,
-          company_name: String,
-          destination_account_holder: Increase::Models::ACHTransferCreateParams::destination_account_holder,
-          external_account_id: String,
-          funding: Increase::Models::ACHTransferCreateParams::funding,
-          individual_id: String,
-          individual_name: String,
-          preferred_effective_date: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate,
-          require_approval: bool,
-          routing_number: String,
-          standard_entry_class_code: Increase::Models::ACHTransferCreateParams::standard_entry_class_code,
-          transaction_timing: Increase::Models::ACHTransferCreateParams::transaction_timing,
-          request_options: Increase::request_opts
+          ?account_number: String,
+          ?addenda: Increase::Models::ACHTransferCreateParams::Addenda,
+          ?company_descriptive_date: String,
+          ?company_discretionary_data: String,
+          ?company_entry_description: String,
+          ?company_name: String,
+          ?destination_account_holder: Increase::Models::ACHTransferCreateParams::destination_account_holder,
+          ?external_account_id: String,
+          ?funding: Increase::Models::ACHTransferCreateParams::funding,
+          ?individual_id: String,
+          ?individual_name: String,
+          ?preferred_effective_date: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate,
+          ?require_approval: bool,
+          ?routing_number: String,
+          ?standard_entry_class_code: Increase::Models::ACHTransferCreateParams::standard_entry_class_code,
+          ?transaction_timing: Increase::Models::ACHTransferCreateParams::transaction_timing,
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::ACHTransfer
 
       def retrieve:
@@ -36,7 +36,7 @@ module Increase
         ) -> Increase::Models::ACHTransfer
         | (
           String ach_transfer_id,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::ACHTransfer
 
       def list:
@@ -44,13 +44,13 @@ module Increase
           ?Increase::Models::ACHTransferListParams | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::ACHTransfer]
         | (
-          account_id: String,
-          created_at: Increase::Models::ACHTransferListParams::CreatedAt,
-          cursor: String,
-          external_account_id: String,
-          idempotency_key: String,
-          limit: Integer,
-          request_options: Increase::request_opts
+          ?account_id: String,
+          ?created_at: Increase::Models::ACHTransferListParams::CreatedAt,
+          ?cursor: String,
+          ?external_account_id: String,
+          ?idempotency_key: String,
+          ?limit: Integer,
+          ?request_options: Increase::request_opts
         ) -> Increase::Page[Increase::Models::ACHTransfer]
 
       def approve:
@@ -61,7 +61,7 @@ module Increase
         ) -> Increase::Models::ACHTransfer
         | (
           String ach_transfer_id,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::ACHTransfer
 
       def cancel:
@@ -72,7 +72,7 @@ module Increase
         ) -> Increase::Models::ACHTransfer
         | (
           String ach_transfer_id,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::ACHTransfer
 
       def initialize: (client: Increase::Client) -> void

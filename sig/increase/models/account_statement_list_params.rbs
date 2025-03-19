@@ -33,11 +33,11 @@ module Increase
 
       def initialize:
         (
-          account_id: String,
-          cursor: String,
-          limit: Integer,
-          statement_period_start: Increase::Models::AccountStatementListParams::StatementPeriodStart,
-          request_options: Increase::request_opts
+          ?account_id: String,
+          ?cursor: String,
+          ?limit: Integer,
+          ?statement_period_start: Increase::Models::AccountStatementListParams::StatementPeriodStart,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::account_statement_list_params
@@ -68,10 +68,10 @@ module Increase
 
         def initialize:
           (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
+            ?after: Time,
+            ?before: Time,
+            ?on_or_after: Time,
+            ?on_or_before: Time
           ) -> void
           | (
             ?Increase::Models::AccountStatementListParams::statement_period_start

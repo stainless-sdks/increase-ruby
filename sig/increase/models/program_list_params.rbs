@@ -17,9 +17,9 @@ module Increase
 
       def initialize:
         (
-          cursor: String,
-          limit: Integer,
-          request_options: Increase::request_opts
+          ?cursor: String,
+          ?limit: Integer,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::program_list_params | Increase::BaseModel data

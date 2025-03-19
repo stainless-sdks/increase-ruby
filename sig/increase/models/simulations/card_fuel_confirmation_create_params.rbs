@@ -17,7 +17,7 @@ module Increase
           (
             amount: Integer,
             card_payment_id: String,
-            request_options: Increase::request_opts
+            ?request_options: Increase::request_opts
           ) -> void
           | (
             ?Increase::Models::Simulations::card_fuel_confirmation_create_params

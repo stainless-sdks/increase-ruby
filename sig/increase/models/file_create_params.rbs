@@ -24,8 +24,8 @@ module Increase
         (
           file: IO | StringIO,
           purpose: Increase::Models::FileCreateParams::purpose,
-          description: String,
-          request_options: Increase::request_opts
+          ?description: String,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::file_create_params | Increase::BaseModel data

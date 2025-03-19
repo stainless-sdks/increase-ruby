@@ -21,9 +21,9 @@ module Increase
       def initialize:
         (
           routing_number: String,
-          cursor: String,
-          limit: Integer,
-          request_options: Increase::request_opts
+          ?cursor: String,
+          ?limit: Integer,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::routing_number_list_params

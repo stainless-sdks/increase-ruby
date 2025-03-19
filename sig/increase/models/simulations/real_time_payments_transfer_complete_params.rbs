@@ -19,8 +19,8 @@ module Increase
 
         def initialize:
           (
-            rejection: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
-            request_options: Increase::request_opts
+            ?rejection: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
+            ?request_options: Increase::request_opts
           ) -> void
           | (
             ?Increase::Models::Simulations::real_time_payments_transfer_complete_params
