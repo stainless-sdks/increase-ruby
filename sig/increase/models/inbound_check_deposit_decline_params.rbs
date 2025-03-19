@@ -7,7 +7,12 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      def initialize: (?request_options: Increase::request_opts) -> void
+      def initialize:
+        (request_options: Increase::request_opts) -> void
+        | (
+          ?Increase::Models::inbound_check_deposit_decline_params
+          | Increase::BaseModel data
+        ) -> void
 
       def to_hash: -> Increase::Models::inbound_check_deposit_decline_params
     end

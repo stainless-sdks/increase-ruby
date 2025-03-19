@@ -36,14 +36,18 @@ module Increase
 
       def entity_id=: (String) -> String
 
-      def initialize: (
-        account_id: String,
-        ?billing_address: Increase::Models::CardCreateParams::BillingAddress,
-        ?description: String,
-        ?digital_wallet: Increase::Models::CardCreateParams::DigitalWallet,
-        ?entity_id: String,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize:
+        (
+          account_id: String,
+          billing_address: Increase::Models::CardCreateParams::BillingAddress,
+          description: String,
+          digital_wallet: Increase::Models::CardCreateParams::DigitalWallet,
+          entity_id: String,
+          request_options: Increase::request_opts
+        ) -> void
+        | (
+          ?Increase::Models::card_create_params | Increase::BaseModel data
+        ) -> void
 
       def to_hash: -> Increase::Models::card_create_params
 
@@ -69,13 +73,18 @@ module Increase
 
         def line2=: (String) -> String
 
-        def initialize: (
-          city: String,
-          line1: String,
-          postal_code: String,
-          state: String,
-          ?line2: String
-        ) -> void
+        def initialize:
+          (
+            city: String,
+            line1: String,
+            postal_code: String,
+            state: String,
+            line2: String
+          ) -> void
+          | (
+            ?Increase::Models::CardCreateParams::billing_address
+            | Increase::BaseModel data
+          ) -> void
 
         def to_hash: -> Increase::Models::CardCreateParams::billing_address
       end
@@ -96,11 +105,16 @@ module Increase
 
         def phone=: (String) -> String
 
-        def initialize: (
-          ?digital_card_profile_id: String,
-          ?email: String,
-          ?phone: String
-        ) -> void
+        def initialize:
+          (
+            digital_card_profile_id: String,
+            email: String,
+            phone: String
+          ) -> void
+          | (
+            ?Increase::Models::CardCreateParams::digital_wallet
+            | Increase::BaseModel data
+          ) -> void
 
         def to_hash: -> Increase::Models::CardCreateParams::digital_wallet
       end

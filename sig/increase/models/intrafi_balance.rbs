@@ -23,14 +23,18 @@ module Increase
 
       attr_accessor type: Increase::Models::IntrafiBalance::type_
 
-      def initialize: (
-        id: String,
-        balances: ::Array[Increase::Models::IntrafiBalance::Balance],
-        currency: Increase::Models::IntrafiBalance::currency,
-        effective_date: Date,
-        total_balance: Integer,
-        type: Increase::Models::IntrafiBalance::type_
-      ) -> void
+      def initialize:
+        (
+          id: String,
+          balances: ::Array[Increase::Models::IntrafiBalance::Balance],
+          currency: Increase::Models::IntrafiBalance::currency,
+          effective_date: Date,
+          total_balance: Integer,
+          type: Increase::Models::IntrafiBalance::type_
+        ) -> void
+        | (
+          ?Increase::Models::intrafi_balance | Increase::BaseModel data
+        ) -> void
 
       def to_hash: -> Increase::Models::intrafi_balance
 
@@ -54,13 +58,18 @@ module Increase
 
         attr_accessor fdic_certificate_number: String
 
-        def initialize: (
-          id: String,
-          balance: Integer,
-          bank: String,
-          bank_location: Increase::Models::IntrafiBalance::Balance::BankLocation?,
-          fdic_certificate_number: String
-        ) -> void
+        def initialize:
+          (
+            id: String,
+            balance: Integer,
+            bank: String,
+            bank_location: Increase::Models::IntrafiBalance::Balance::BankLocation?,
+            fdic_certificate_number: String
+          ) -> void
+          | (
+            ?Increase::Models::IntrafiBalance::balance
+            | Increase::BaseModel data
+          ) -> void
 
         def to_hash: -> Increase::Models::IntrafiBalance::balance
 
@@ -71,7 +80,12 @@ module Increase
 
           attr_accessor state: String
 
-          def initialize: (city: String, state: String) -> void
+          def initialize:
+            (city: String, state: String) -> void
+            | (
+              ?Increase::Models::IntrafiBalance::Balance::bank_location
+              | Increase::BaseModel data
+            ) -> void
 
           def to_hash: -> Increase::Models::IntrafiBalance::Balance::bank_location
         end
