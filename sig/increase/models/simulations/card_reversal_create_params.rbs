@@ -18,8 +18,8 @@ module Increase
         def initialize:
           (
             card_payment_id: String,
-            amount: Integer,
-            request_options: Increase::request_opts
+            ?amount: Integer,
+            ?request_options: Increase::request_opts
           ) -> void
           | (
             ?Increase::Models::Simulations::card_reversal_create_params

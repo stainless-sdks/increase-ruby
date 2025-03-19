@@ -13,7 +13,7 @@ module Increase
       def initialize:
         (
           reason: Increase::Models::InboundCheckDepositReturnParams::reason,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::inbound_check_deposit_return_params

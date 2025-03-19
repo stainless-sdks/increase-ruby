@@ -32,8 +32,8 @@ module Increase
           amount: Integer,
           back_image_file_id: String,
           front_image_file_id: String,
-          description: String,
-          request_options: Increase::request_opts
+          ?description: String,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::check_deposit_create_params

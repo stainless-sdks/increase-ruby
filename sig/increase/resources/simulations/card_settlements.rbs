@@ -10,8 +10,8 @@ module Increase
           | (
             card_id: String,
             pending_transaction_id: String,
-            amount: Integer,
-            request_options: Increase::request_opts
+            ?amount: Integer,
+            ?request_options: Increase::request_opts
           ) -> Increase::Models::Transaction
 
         def initialize: (client: Increase::Client) -> void

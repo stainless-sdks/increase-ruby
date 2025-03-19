@@ -7,10 +7,10 @@ module Increase
         ) -> Increase::Models::Account
         | (
           name: String,
-          entity_id: String,
-          informational_entity_id: String,
-          program_id: String,
-          request_options: Increase::request_opts
+          ?entity_id: String,
+          ?informational_entity_id: String,
+          ?program_id: String,
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::Account
 
       def retrieve:
@@ -20,7 +20,7 @@ module Increase
         ) -> Increase::Models::Account
         | (
           String account_id,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::Account
 
       def update:
@@ -30,8 +30,8 @@ module Increase
         ) -> Increase::Models::Account
         | (
           String account_id,
-          name: String,
-          request_options: Increase::request_opts
+          ?name: String,
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::Account
 
       def list:
@@ -39,15 +39,15 @@ module Increase
           ?Increase::Models::AccountListParams | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::Account]
         | (
-          created_at: Increase::Models::AccountListParams::CreatedAt,
-          cursor: String,
-          entity_id: String,
-          idempotency_key: String,
-          informational_entity_id: String,
-          limit: Integer,
-          program_id: String,
-          status: Increase::Models::AccountListParams::Status,
-          request_options: Increase::request_opts
+          ?created_at: Increase::Models::AccountListParams::CreatedAt,
+          ?cursor: String,
+          ?entity_id: String,
+          ?idempotency_key: String,
+          ?informational_entity_id: String,
+          ?limit: Integer,
+          ?program_id: String,
+          ?status: Increase::Models::AccountListParams::Status,
+          ?request_options: Increase::request_opts
         ) -> Increase::Page[Increase::Models::Account]
 
       def balance:
@@ -57,8 +57,8 @@ module Increase
         ) -> Increase::Models::BalanceLookup
         | (
           String account_id,
-          at_time: Time,
-          request_options: Increase::request_opts
+          ?at_time: Time,
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::BalanceLookup
 
       def close:
@@ -68,7 +68,7 @@ module Increase
         ) -> Increase::Models::Account
         | (
           String account_id,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::Account
 
       def initialize: (client: Increase::Client) -> void

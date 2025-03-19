@@ -38,12 +38,12 @@ module Increase
 
       def initialize:
         (
-          account_id: String,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          status: Increase::Models::IntrafiAccountEnrollmentListParams::Status,
-          request_options: Increase::request_opts
+          ?account_id: String,
+          ?cursor: String,
+          ?idempotency_key: String,
+          ?limit: Integer,
+          ?status: Increase::Models::IntrafiAccountEnrollmentListParams::Status,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::intrafi_account_enrollment_list_params
@@ -66,7 +66,7 @@ module Increase
 
         def initialize:
           (
-            in_: ::Array[Increase::Models::IntrafiAccountEnrollmentListParams::Status::in_]
+            ?in_: ::Array[Increase::Models::IntrafiAccountEnrollmentListParams::Status::in_]
           ) -> void
           | (
             ?Increase::Models::IntrafiAccountEnrollmentListParams::status

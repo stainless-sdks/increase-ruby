@@ -69,15 +69,15 @@ module Increase
       def initialize:
         (
           structure: Increase::Models::EntityCreateParams::structure,
-          corporation: Increase::Models::EntityCreateParams::Corporation,
-          description: String,
-          government_authority: Increase::Models::EntityCreateParams::GovernmentAuthority,
-          joint: Increase::Models::EntityCreateParams::Joint,
-          natural_person: Increase::Models::EntityCreateParams::NaturalPerson,
-          supplemental_documents: ::Array[Increase::Models::EntityCreateParams::SupplementalDocument],
-          third_party_verification: Increase::Models::EntityCreateParams::ThirdPartyVerification,
-          trust: Increase::Models::EntityCreateParams::Trust,
-          request_options: Increase::request_opts
+          ?corporation: Increase::Models::EntityCreateParams::Corporation,
+          ?description: String,
+          ?government_authority: Increase::Models::EntityCreateParams::GovernmentAuthority,
+          ?joint: Increase::Models::EntityCreateParams::Joint,
+          ?natural_person: Increase::Models::EntityCreateParams::NaturalPerson,
+          ?supplemental_documents: ::Array[Increase::Models::EntityCreateParams::SupplementalDocument],
+          ?third_party_verification: Increase::Models::EntityCreateParams::ThirdPartyVerification,
+          ?trust: Increase::Models::EntityCreateParams::Trust,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::entity_create_params | Increase::BaseModel data
@@ -145,9 +145,9 @@ module Increase
             beneficial_owners: ::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner],
             name: String,
             tax_identifier: String,
-            incorporation_state: String,
-            industry_code: String,
-            website: String
+            ?incorporation_state: String,
+            ?industry_code: String,
+            ?website: String
           ) -> void
           | (
             ?Increase::Models::EntityCreateParams::corporation
@@ -184,7 +184,7 @@ module Increase
               line1: String,
               state: String,
               zip: String,
-              line2: String
+              ?line2: String
             ) -> void
             | (
               ?Increase::Models::EntityCreateParams::Corporation::address
@@ -214,7 +214,7 @@ module Increase
             (
               individual: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual,
               prongs: ::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::prong],
-              company_title: String
+              ?company_title: String
             ) -> void
             | (
               ?Increase::Models::EntityCreateParams::Corporation::beneficial_owner
@@ -251,7 +251,7 @@ module Increase
                 date_of_birth: Date,
                 identification: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification,
                 name: String,
-                confirmed_no_us_tax_id: bool
+                ?confirmed_no_us_tax_id: bool
               ) -> void
               | (
                 ?Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::individual
@@ -288,7 +288,7 @@ module Increase
                   line1: String,
                   state: String,
                   zip: String,
-                  line2: String
+                  ?line2: String
                 ) -> void
                 | (
                   ?Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::address
@@ -334,9 +334,9 @@ module Increase
                 (
                   method_: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::method_,
                   number: String,
-                  drivers_license: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense,
-                  other: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other,
-                  passport: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport
+                  ?drivers_license: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense,
+                  ?other: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other,
+                  ?passport: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport
                 ) -> void
                 | (
                   ?Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::identification
@@ -395,7 +395,7 @@ module Increase
                     expiration_date: Date,
                     file_id: String,
                     state: String,
-                    back_file_id: String
+                    ?back_file_id: String
                   ) -> void
                   | (
                     ?Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::drivers_license
@@ -434,8 +434,8 @@ module Increase
                     country: String,
                     description: String,
                     file_id: String,
-                    back_file_id: String,
-                    expiration_date: Date
+                    ?back_file_id: String,
+                    ?expiration_date: Date
                   ) -> void
                   | (
                     ?Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::other
@@ -517,7 +517,7 @@ module Increase
             category: Increase::Models::EntityCreateParams::GovernmentAuthority::category,
             name: String,
             tax_identifier: String,
-            website: String
+            ?website: String
           ) -> void
           | (
             ?Increase::Models::EntityCreateParams::government_authority
@@ -554,7 +554,7 @@ module Increase
               line1: String,
               state: String,
               zip: String,
-              line2: String
+              ?line2: String
             ) -> void
             | (
               ?Increase::Models::EntityCreateParams::GovernmentAuthority::address
@@ -605,7 +605,7 @@ module Increase
         def initialize:
           (
             individuals: ::Array[Increase::Models::EntityCreateParams::Joint::Individual],
-            name: String
+            ?name: String
           ) -> void
           | (
             ?Increase::Models::EntityCreateParams::joint
@@ -642,7 +642,7 @@ module Increase
               date_of_birth: Date,
               identification: Increase::Models::EntityCreateParams::Joint::Individual::Identification,
               name: String,
-              confirmed_no_us_tax_id: bool
+              ?confirmed_no_us_tax_id: bool
             ) -> void
             | (
               ?Increase::Models::EntityCreateParams::Joint::individual
@@ -679,7 +679,7 @@ module Increase
                 line1: String,
                 state: String,
                 zip: String,
-                line2: String
+                ?line2: String
               ) -> void
               | (
                 ?Increase::Models::EntityCreateParams::Joint::Individual::address
@@ -725,9 +725,9 @@ module Increase
               (
                 method_: Increase::Models::EntityCreateParams::Joint::Individual::Identification::method_,
                 number: String,
-                drivers_license: Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense,
-                other: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other,
-                passport: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport
+                ?drivers_license: Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense,
+                ?other: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other,
+                ?passport: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport
               ) -> void
               | (
                 ?Increase::Models::EntityCreateParams::Joint::Individual::identification
@@ -786,7 +786,7 @@ module Increase
                   expiration_date: Date,
                   file_id: String,
                   state: String,
-                  back_file_id: String
+                  ?back_file_id: String
                 ) -> void
                 | (
                   ?Increase::Models::EntityCreateParams::Joint::Individual::Identification::drivers_license
@@ -825,8 +825,8 @@ module Increase
                   country: String,
                   description: String,
                   file_id: String,
-                  back_file_id: String,
-                  expiration_date: Date
+                  ?back_file_id: String,
+                  ?expiration_date: Date
                 ) -> void
                 | (
                   ?Increase::Models::EntityCreateParams::Joint::Individual::Identification::other
@@ -891,7 +891,7 @@ module Increase
             date_of_birth: Date,
             identification: Increase::Models::EntityCreateParams::NaturalPerson::Identification,
             name: String,
-            confirmed_no_us_tax_id: bool
+            ?confirmed_no_us_tax_id: bool
           ) -> void
           | (
             ?Increase::Models::EntityCreateParams::natural_person
@@ -928,7 +928,7 @@ module Increase
               line1: String,
               state: String,
               zip: String,
-              line2: String
+              ?line2: String
             ) -> void
             | (
               ?Increase::Models::EntityCreateParams::NaturalPerson::address
@@ -974,9 +974,9 @@ module Increase
             (
               method_: Increase::Models::EntityCreateParams::NaturalPerson::Identification::method_,
               number: String,
-              drivers_license: Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense,
-              other: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other,
-              passport: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport
+              ?drivers_license: Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense,
+              ?other: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other,
+              ?passport: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport
             ) -> void
             | (
               ?Increase::Models::EntityCreateParams::NaturalPerson::identification
@@ -1035,7 +1035,7 @@ module Increase
                 expiration_date: Date,
                 file_id: String,
                 state: String,
-                back_file_id: String
+                ?back_file_id: String
               ) -> void
               | (
                 ?Increase::Models::EntityCreateParams::NaturalPerson::Identification::drivers_license
@@ -1074,8 +1074,8 @@ module Increase
                 country: String,
                 description: String,
                 file_id: String,
-                back_file_id: String,
-                expiration_date: Date
+                ?back_file_id: String,
+                ?expiration_date: Date
               ) -> void
               | (
                 ?Increase::Models::EntityCreateParams::NaturalPerson::Identification::other
@@ -1203,10 +1203,10 @@ module Increase
             category: Increase::Models::EntityCreateParams::Trust::category,
             name: String,
             trustees: ::Array[Increase::Models::EntityCreateParams::Trust::Trustee],
-            formation_document_file_id: String,
-            formation_state: String,
-            grantor: Increase::Models::EntityCreateParams::Trust::Grantor,
-            tax_identifier: String
+            ?formation_document_file_id: String,
+            ?formation_state: String,
+            ?grantor: Increase::Models::EntityCreateParams::Trust::Grantor,
+            ?tax_identifier: String
           ) -> void
           | (
             ?Increase::Models::EntityCreateParams::trust
@@ -1243,7 +1243,7 @@ module Increase
               line1: String,
               state: String,
               zip: String,
-              line2: String
+              ?line2: String
             ) -> void
             | (
               ?Increase::Models::EntityCreateParams::Trust::address
@@ -1283,7 +1283,7 @@ module Increase
           def initialize:
             (
               structure: Increase::Models::EntityCreateParams::Trust::Trustee::structure,
-              individual: Increase::Models::EntityCreateParams::Trust::Trustee::Individual
+              ?individual: Increase::Models::EntityCreateParams::Trust::Trustee::Individual
             ) -> void
             | (
               ?Increase::Models::EntityCreateParams::Trust::trustee
@@ -1329,7 +1329,7 @@ module Increase
                 date_of_birth: Date,
                 identification: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification,
                 name: String,
-                confirmed_no_us_tax_id: bool
+                ?confirmed_no_us_tax_id: bool
               ) -> void
               | (
                 ?Increase::Models::EntityCreateParams::Trust::Trustee::individual
@@ -1366,7 +1366,7 @@ module Increase
                   line1: String,
                   state: String,
                   zip: String,
-                  line2: String
+                  ?line2: String
                 ) -> void
                 | (
                   ?Increase::Models::EntityCreateParams::Trust::Trustee::Individual::address
@@ -1412,9 +1412,9 @@ module Increase
                 (
                   method_: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::method_,
                   number: String,
-                  drivers_license: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense,
-                  other: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other,
-                  passport: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport
+                  ?drivers_license: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense,
+                  ?other: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other,
+                  ?passport: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport
                 ) -> void
                 | (
                   ?Increase::Models::EntityCreateParams::Trust::Trustee::Individual::identification
@@ -1473,7 +1473,7 @@ module Increase
                     expiration_date: Date,
                     file_id: String,
                     state: String,
-                    back_file_id: String
+                    ?back_file_id: String
                   ) -> void
                   | (
                     ?Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::drivers_license
@@ -1512,8 +1512,8 @@ module Increase
                     country: String,
                     description: String,
                     file_id: String,
-                    back_file_id: String,
-                    expiration_date: Date
+                    ?back_file_id: String,
+                    ?expiration_date: Date
                   ) -> void
                   | (
                     ?Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::other
@@ -1578,7 +1578,7 @@ module Increase
               date_of_birth: Date,
               identification: Increase::Models::EntityCreateParams::Trust::Grantor::Identification,
               name: String,
-              confirmed_no_us_tax_id: bool
+              ?confirmed_no_us_tax_id: bool
             ) -> void
             | (
               ?Increase::Models::EntityCreateParams::Trust::grantor
@@ -1615,7 +1615,7 @@ module Increase
                 line1: String,
                 state: String,
                 zip: String,
-                line2: String
+                ?line2: String
               ) -> void
               | (
                 ?Increase::Models::EntityCreateParams::Trust::Grantor::address
@@ -1661,9 +1661,9 @@ module Increase
               (
                 method_: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::method_,
                 number: String,
-                drivers_license: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense,
-                other: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other,
-                passport: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport
+                ?drivers_license: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense,
+                ?other: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other,
+                ?passport: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport
               ) -> void
               | (
                 ?Increase::Models::EntityCreateParams::Trust::Grantor::identification
@@ -1722,7 +1722,7 @@ module Increase
                   expiration_date: Date,
                   file_id: String,
                   state: String,
-                  back_file_id: String
+                  ?back_file_id: String
                 ) -> void
                 | (
                   ?Increase::Models::EntityCreateParams::Trust::Grantor::Identification::drivers_license
@@ -1761,8 +1761,8 @@ module Increase
                   country: String,
                   description: String,
                   file_id: String,
-                  back_file_id: String,
-                  expiration_date: Date
+                  ?back_file_id: String,
+                  ?expiration_date: Date
                 ) -> void
                 | (
                   ?Increase::Models::EntityCreateParams::Trust::Grantor::Identification::other

@@ -53,11 +53,11 @@ module Increase
           card_description: String,
           description: String,
           issuer_name: String,
-          contact_email: String,
-          contact_phone: String,
-          contact_website: String,
-          text_color: Increase::Models::DigitalCardProfileCreateParams::TextColor,
-          request_options: Increase::request_opts
+          ?contact_email: String,
+          ?contact_phone: String,
+          ?contact_website: String,
+          ?text_color: Increase::Models::DigitalCardProfileCreateParams::TextColor,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::digital_card_profile_create_params

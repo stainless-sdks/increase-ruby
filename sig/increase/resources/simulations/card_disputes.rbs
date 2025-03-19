@@ -11,8 +11,8 @@ module Increase
           | (
             String card_dispute_id,
             status: Increase::Models::Simulations::CardDisputeActionParams::status,
-            explanation: String,
-            request_options: Increase::request_opts
+            ?explanation: String,
+            ?request_options: Increase::request_opts
           ) -> Increase::Models::CardDispute
 
         def initialize: (client: Increase::Client) -> void

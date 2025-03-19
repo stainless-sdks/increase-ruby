@@ -9,7 +9,7 @@ module Increase
         | (
           account_id: String,
           email_address: String,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::IntrafiAccountEnrollment
 
       def retrieve:
@@ -20,7 +20,7 @@ module Increase
         ) -> Increase::Models::IntrafiAccountEnrollment
         | (
           String intrafi_account_enrollment_id,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::IntrafiAccountEnrollment
 
       def list:
@@ -29,12 +29,12 @@ module Increase
           | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::IntrafiAccountEnrollment]
         | (
-          account_id: String,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          status: Increase::Models::IntrafiAccountEnrollmentListParams::Status,
-          request_options: Increase::request_opts
+          ?account_id: String,
+          ?cursor: String,
+          ?idempotency_key: String,
+          ?limit: Integer,
+          ?status: Increase::Models::IntrafiAccountEnrollmentListParams::Status,
+          ?request_options: Increase::request_opts
         ) -> Increase::Page[Increase::Models::IntrafiAccountEnrollment]
 
       def unenroll:
@@ -45,7 +45,7 @@ module Increase
         ) -> Increase::Models::IntrafiAccountEnrollment
         | (
           String intrafi_account_enrollment_id,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::IntrafiAccountEnrollment
 
       def initialize: (client: Increase::Client) -> void

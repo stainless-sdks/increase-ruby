@@ -12,7 +12,7 @@ module Increase
       def initialize:
         (
           beneficial_owner_id: String,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::entity_archive_beneficial_owner_params

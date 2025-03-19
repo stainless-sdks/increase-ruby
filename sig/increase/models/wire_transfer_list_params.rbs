@@ -43,13 +43,13 @@ module Increase
 
       def initialize:
         (
-          account_id: String,
-          created_at: Increase::Models::WireTransferListParams::CreatedAt,
-          cursor: String,
-          external_account_id: String,
-          idempotency_key: String,
-          limit: Integer,
-          request_options: Increase::request_opts
+          ?account_id: String,
+          ?created_at: Increase::Models::WireTransferListParams::CreatedAt,
+          ?cursor: String,
+          ?external_account_id: String,
+          ?idempotency_key: String,
+          ?limit: Integer,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::wire_transfer_list_params
@@ -80,10 +80,10 @@ module Increase
 
         def initialize:
           (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
+            ?after: Time,
+            ?before: Time,
+            ?on_or_after: Time,
+            ?on_or_before: Time
           ) -> void
           | (
             ?Increase::Models::WireTransferListParams::created_at

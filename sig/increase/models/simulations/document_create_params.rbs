@@ -11,7 +11,7 @@ module Increase
         attr_accessor account_id: String
 
         def initialize:
-          (account_id: String, request_options: Increase::request_opts) -> void
+          (account_id: String, ?request_options: Increase::request_opts) -> void
           | (
             ?Increase::Models::Simulations::document_create_params
             | Increase::BaseModel data

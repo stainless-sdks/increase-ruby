@@ -21,8 +21,8 @@ module Increase
           (
             amount: Integer,
             lockbox_id: String,
-            contents_file_id: String,
-            request_options: Increase::request_opts
+            ?contents_file_id: String,
+            ?request_options: Increase::request_opts
           ) -> void
           | (
             ?Increase::Models::Simulations::inbound_mail_item_create_params

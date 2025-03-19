@@ -13,7 +13,7 @@ module Increase
       def initialize:
         (
           address: Increase::Models::EntityUpdateAddressParams::Address,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::entity_update_address_params
@@ -50,7 +50,7 @@ module Increase
             line1: String,
             state: String,
             zip: String,
-            line2: String
+            ?line2: String
           ) -> void
           | (
             ?Increase::Models::EntityUpdateAddressParams::address

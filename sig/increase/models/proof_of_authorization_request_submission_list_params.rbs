@@ -31,11 +31,11 @@ module Increase
 
       def initialize:
         (
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          proof_of_authorization_request_id: String,
-          request_options: Increase::request_opts
+          ?cursor: String,
+          ?idempotency_key: String,
+          ?limit: Integer,
+          ?proof_of_authorization_request_id: String,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::proof_of_authorization_request_submission_list_params

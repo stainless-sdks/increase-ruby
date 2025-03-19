@@ -30,10 +30,10 @@ module Increase
       def initialize:
         (
           entity_id: String,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          request_options: Increase::request_opts
+          ?cursor: String,
+          ?idempotency_key: String,
+          ?limit: Integer,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::supplemental_document_list_params

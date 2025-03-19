@@ -28,10 +28,10 @@ module Increase
 
       def initialize:
         (
-          description: String,
-          recipient_name: String,
-          status: Increase::Models::LockboxUpdateParams::status,
-          request_options: Increase::request_opts
+          ?description: String,
+          ?recipient_name: String,
+          ?status: Increase::Models::LockboxUpdateParams::status,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::lockbox_update_params | Increase::BaseModel data

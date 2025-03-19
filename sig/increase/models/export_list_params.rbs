@@ -47,13 +47,13 @@ module Increase
 
       def initialize:
         (
-          category: Increase::Models::ExportListParams::Category,
-          created_at: Increase::Models::ExportListParams::CreatedAt,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          status: Increase::Models::ExportListParams::Status,
-          request_options: Increase::request_opts
+          ?category: Increase::Models::ExportListParams::Category,
+          ?created_at: Increase::Models::ExportListParams::CreatedAt,
+          ?cursor: String,
+          ?idempotency_key: String,
+          ?limit: Integer,
+          ?status: Increase::Models::ExportListParams::Status,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::export_list_params | Increase::BaseModel data
@@ -73,7 +73,7 @@ module Increase
 
         def initialize:
           (
-            in_: ::Array[Increase::Models::ExportListParams::Category::in_]
+            ?in_: ::Array[Increase::Models::ExportListParams::Category::in_]
           ) -> void
           | (
             ?Increase::Models::ExportListParams::category
@@ -139,10 +139,10 @@ module Increase
 
         def initialize:
           (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
+            ?after: Time,
+            ?before: Time,
+            ?on_or_after: Time,
+            ?on_or_before: Time
           ) -> void
           | (
             ?Increase::Models::ExportListParams::created_at
@@ -164,7 +164,7 @@ module Increase
 
         def initialize:
           (
-            in_: ::Array[Increase::Models::ExportListParams::Status::in_]
+            ?in_: ::Array[Increase::Models::ExportListParams::Status::in_]
           ) -> void
           | (
             ?Increase::Models::ExportListParams::status

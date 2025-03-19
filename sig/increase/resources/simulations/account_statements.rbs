@@ -9,7 +9,7 @@ module Increase
           ) -> Increase::Models::AccountStatement
           | (
             account_id: String,
-            request_options: Increase::request_opts
+            ?request_options: Increase::request_opts
           ) -> Increase::Models::AccountStatement
 
         def initialize: (client: Increase::Client) -> void

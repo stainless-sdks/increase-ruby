@@ -32,8 +32,8 @@ module Increase
           amount: Integer,
           description: String,
           destination_account_id: String,
-          require_approval: bool,
-          request_options: Increase::request_opts
+          ?require_approval: bool,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::account_transfer_create_params

@@ -30,10 +30,10 @@ module Increase
       def initialize:
         (
           name: String,
-          entity_id: String,
-          informational_entity_id: String,
-          program_id: String,
-          request_options: Increase::request_opts
+          ?entity_id: String,
+          ?informational_entity_id: String,
+          ?program_id: String,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::account_create_params | Increase::BaseModel data
