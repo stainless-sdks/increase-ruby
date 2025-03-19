@@ -41,24 +41,20 @@ module Increase
 
       attr_accessor type: Increase::Models::PhysicalCardProfile::type_
 
-      def initialize:
-        (
-          id: String,
-          back_image_file_id: String?,
-          carrier_image_file_id: String?,
-          contact_phone: String?,
-          created_at: Time,
-          creator: Increase::Models::PhysicalCardProfile::creator,
-          description: String,
-          front_image_file_id: String?,
-          idempotency_key: String?,
-          is_default: bool,
-          status: Increase::Models::PhysicalCardProfile::status,
-          type: Increase::Models::PhysicalCardProfile::type_
-        ) -> void
-        | (
-          ?Increase::Models::physical_card_profile | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        id: String,
+        back_image_file_id: String?,
+        carrier_image_file_id: String?,
+        contact_phone: String?,
+        created_at: Time,
+        creator: Increase::Models::PhysicalCardProfile::creator,
+        description: String,
+        front_image_file_id: String?,
+        idempotency_key: String?,
+        is_default: bool,
+        status: Increase::Models::PhysicalCardProfile::status,
+        type: Increase::Models::PhysicalCardProfile::type_
+      ) -> void
 
       def to_hash: -> Increase::Models::physical_card_profile
 

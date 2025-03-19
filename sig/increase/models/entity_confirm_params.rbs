@@ -11,11 +11,10 @@ module Increase
 
       def confirmed_at=: (Time) -> Time
 
-      def initialize:
-        (confirmed_at: Time, request_options: Increase::request_opts) -> void
-        | (
-          ?Increase::Models::entity_confirm_params | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ?confirmed_at: Time,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::entity_confirm_params
     end

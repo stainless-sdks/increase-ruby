@@ -31,18 +31,13 @@ module Increase
         Increase::Models::DigitalCardProfileListParams::Status
       ) -> Increase::Models::DigitalCardProfileListParams::Status
 
-      def initialize:
-        (
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          status: Increase::Models::DigitalCardProfileListParams::Status,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::digital_card_profile_list_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ?cursor: String,
+        ?idempotency_key: String,
+        ?limit: Integer,
+        ?status: Increase::Models::DigitalCardProfileListParams::Status,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::digital_card_profile_list_params
 
@@ -58,14 +53,9 @@ module Increase
           ::Array[Increase::Models::DigitalCardProfileListParams::Status::in_]
         ) -> ::Array[Increase::Models::DigitalCardProfileListParams::Status::in_]
 
-        def initialize:
-          (
-            in_: ::Array[Increase::Models::DigitalCardProfileListParams::Status::in_]
-          ) -> void
-          | (
-            ?Increase::Models::DigitalCardProfileListParams::status
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          ?in_: ::Array[Increase::Models::DigitalCardProfileListParams::Status::in_]
+        ) -> void
 
         def to_hash: -> Increase::Models::DigitalCardProfileListParams::status
 

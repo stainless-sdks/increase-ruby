@@ -16,16 +16,11 @@ module Increase
 
       def updated_routing_number=: (String) -> String
 
-      def initialize:
-        (
-          updated_account_number: String,
-          updated_routing_number: String,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::inbound_ach_transfer_create_notification_of_change_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        ?updated_account_number: String,
+        ?updated_routing_number: String,
+        ?request_options: Increase::request_opts
+      ) -> void
 
       def to_hash: -> Increase::Models::inbound_ach_transfer_create_notification_of_change_params
     end

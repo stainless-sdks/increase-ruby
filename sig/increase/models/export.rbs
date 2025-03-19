@@ -29,18 +29,16 @@ module Increase
 
       attr_accessor type: Increase::Models::Export::type_
 
-      def initialize:
-        (
-          id: String,
-          category: Increase::Models::Export::category,
-          created_at: Time,
-          file_download_url: String?,
-          file_id: String?,
-          idempotency_key: String?,
-          status: Increase::Models::Export::status,
-          type: Increase::Models::Export::type_
-        ) -> void
-        | (?Increase::Models::export | Increase::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        category: Increase::Models::Export::category,
+        created_at: Time,
+        file_download_url: String?,
+        file_id: String?,
+        idempotency_key: String?,
+        status: Increase::Models::Export::status,
+        type: Increase::Models::Export::type_
+      ) -> void
 
       def to_hash: -> Increase::Models::export
 

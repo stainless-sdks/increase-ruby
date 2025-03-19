@@ -38,21 +38,19 @@ module Increase
 
       attr_accessor type: Increase::Models::AccountNumber::type_
 
-      def initialize:
-        (
-          id: String,
-          account_id: String,
-          account_number: String,
-          created_at: Time,
-          idempotency_key: String?,
-          inbound_ach: Increase::Models::AccountNumber::InboundACH,
-          inbound_checks: Increase::Models::AccountNumber::InboundChecks,
-          name: String,
-          routing_number: String,
-          status: Increase::Models::AccountNumber::status,
-          type: Increase::Models::AccountNumber::type_
-        ) -> void
-        | (?Increase::Models::account_number | Increase::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        account_id: String,
+        account_number: String,
+        created_at: Time,
+        idempotency_key: String?,
+        inbound_ach: Increase::Models::AccountNumber::InboundACH,
+        inbound_checks: Increase::Models::AccountNumber::InboundChecks,
+        name: String,
+        routing_number: String,
+        status: Increase::Models::AccountNumber::status,
+        type: Increase::Models::AccountNumber::type_
+      ) -> void
 
       def to_hash: -> Increase::Models::account_number
 
@@ -64,14 +62,9 @@ module Increase
       class InboundACH < Increase::BaseModel
         attr_accessor debit_status: Increase::Models::AccountNumber::InboundACH::debit_status
 
-        def initialize:
-          (
-            debit_status: Increase::Models::AccountNumber::InboundACH::debit_status
-          ) -> void
-          | (
-            ?Increase::Models::AccountNumber::inbound_ach
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          debit_status: Increase::Models::AccountNumber::InboundACH::debit_status
+        ) -> void
 
         def to_hash: -> Increase::Models::AccountNumber::inbound_ach
 
@@ -94,14 +87,9 @@ module Increase
       class InboundChecks < Increase::BaseModel
         attr_accessor status: Increase::Models::AccountNumber::InboundChecks::status
 
-        def initialize:
-          (
-            status: Increase::Models::AccountNumber::InboundChecks::status
-          ) -> void
-          | (
-            ?Increase::Models::AccountNumber::inbound_checks
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (
+          status: Increase::Models::AccountNumber::InboundChecks::status
+        ) -> void
 
         def to_hash: -> Increase::Models::AccountNumber::inbound_checks
 

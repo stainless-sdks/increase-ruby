@@ -23,16 +23,14 @@ module Increase
 
       attr_accessor verification_code: String
 
-      def initialize:
-        (
-          card_id: String,
-          expiration_month: Integer,
-          expiration_year: Integer,
-          primary_account_number: String,
-          type: Increase::Models::CardDetails::type_,
-          verification_code: String
-        ) -> void
-        | (?Increase::Models::card_details | Increase::BaseModel data) -> void
+      def initialize: (
+        card_id: String,
+        expiration_month: Integer,
+        expiration_year: Integer,
+        primary_account_number: String,
+        type: Increase::Models::CardDetails::type_,
+        verification_code: String
+      ) -> void
 
       def to_hash: -> Increase::Models::card_details
 

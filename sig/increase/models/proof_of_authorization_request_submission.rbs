@@ -59,31 +59,26 @@ module Increase
 
       attr_accessor validated_account_ownership_with_microdeposit: bool?
 
-      def initialize:
-        (
-          id: String,
-          additional_evidence_file_id: String?,
-          authorization_terms: String,
-          authorized_at: Time,
-          authorizer_company: String?,
-          authorizer_email: String?,
-          authorizer_ip_address: String?,
-          authorizer_name: String?,
-          created_at: Time,
-          customer_has_been_offboarded: bool?,
-          idempotency_key: String?,
-          proof_of_authorization_request_id: String,
-          status: Increase::Models::ProofOfAuthorizationRequestSubmission::status,
-          type: Increase::Models::ProofOfAuthorizationRequestSubmission::type_,
-          updated_at: Time,
-          validated_account_ownership_via_credential: bool?,
-          validated_account_ownership_with_account_statement: bool?,
-          validated_account_ownership_with_microdeposit: bool?
-        ) -> void
-        | (
-          ?Increase::Models::proof_of_authorization_request_submission
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        id: String,
+        additional_evidence_file_id: String?,
+        authorization_terms: String,
+        authorized_at: Time,
+        authorizer_company: String?,
+        authorizer_email: String?,
+        authorizer_ip_address: String?,
+        authorizer_name: String?,
+        created_at: Time,
+        customer_has_been_offboarded: bool?,
+        idempotency_key: String?,
+        proof_of_authorization_request_id: String,
+        status: Increase::Models::ProofOfAuthorizationRequestSubmission::status,
+        type: Increase::Models::ProofOfAuthorizationRequestSubmission::type_,
+        updated_at: Time,
+        validated_account_ownership_via_credential: bool?,
+        validated_account_ownership_with_account_statement: bool?,
+        validated_account_ownership_with_microdeposit: bool?
+      ) -> void
 
       def to_hash: -> Increase::Models::proof_of_authorization_request_submission
 

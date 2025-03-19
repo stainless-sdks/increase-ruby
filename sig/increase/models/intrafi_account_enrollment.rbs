@@ -26,20 +26,15 @@ module Increase
 
       attr_accessor type: Increase::Models::IntrafiAccountEnrollment::type_
 
-      def initialize:
-        (
-          id: String,
-          account_id: String,
-          created_at: Time,
-          idempotency_key: String?,
-          intrafi_id: String,
-          status: Increase::Models::IntrafiAccountEnrollment::status,
-          type: Increase::Models::IntrafiAccountEnrollment::type_
-        ) -> void
-        | (
-          ?Increase::Models::intrafi_account_enrollment
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        id: String,
+        account_id: String,
+        created_at: Time,
+        idempotency_key: String?,
+        intrafi_id: String,
+        status: Increase::Models::IntrafiAccountEnrollment::status,
+        type: Increase::Models::IntrafiAccountEnrollment::type_
+      ) -> void
 
       def to_hash: -> Increase::Models::intrafi_account_enrollment
 

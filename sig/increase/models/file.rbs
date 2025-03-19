@@ -32,19 +32,17 @@ module Increase
 
       attr_accessor type: Increase::Models::File::type_
 
-      def initialize:
-        (
-          id: String,
-          created_at: Time,
-          description: String?,
-          direction: Increase::Models::File::direction,
-          filename: String?,
-          idempotency_key: String?,
-          mime_type: String,
-          purpose: Increase::Models::File::purpose,
-          type: Increase::Models::File::type_
-        ) -> void
-        | (?Increase::Models::file | Increase::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        created_at: Time,
+        description: String?,
+        direction: Increase::Models::File::direction,
+        filename: String?,
+        idempotency_key: String?,
+        mime_type: String,
+        purpose: Increase::Models::File::purpose,
+        type: Increase::Models::File::type_
+      ) -> void
 
       def to_hash: -> Increase::Models::file
 

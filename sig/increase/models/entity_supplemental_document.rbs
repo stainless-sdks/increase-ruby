@@ -20,18 +20,13 @@ module Increase
 
       attr_accessor type: Increase::Models::EntitySupplementalDocument::type_
 
-      def initialize:
-        (
-          created_at: Time,
-          entity_id: String,
-          file_id: String,
-          idempotency_key: String?,
-          type: Increase::Models::EntitySupplementalDocument::type_
-        ) -> void
-        | (
-          ?Increase::Models::entity_supplemental_document
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (
+        created_at: Time,
+        entity_id: String,
+        file_id: String,
+        idempotency_key: String?,
+        type: Increase::Models::EntitySupplementalDocument::type_
+      ) -> void
 
       def to_hash: -> Increase::Models::entity_supplemental_document
 
