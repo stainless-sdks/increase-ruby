@@ -20,8 +20,8 @@ module Increase
         (
           disputed_transaction_id: String,
           explanation: String,
-          amount: Integer,
-          request_options: Increase::request_opts
+          ?amount: Integer,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::card_dispute_create_params

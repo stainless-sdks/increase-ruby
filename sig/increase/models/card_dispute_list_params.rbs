@@ -40,12 +40,12 @@ module Increase
 
       def initialize:
         (
-          created_at: Increase::Models::CardDisputeListParams::CreatedAt,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          status: Increase::Models::CardDisputeListParams::Status,
-          request_options: Increase::request_opts
+          ?created_at: Increase::Models::CardDisputeListParams::CreatedAt,
+          ?cursor: String,
+          ?idempotency_key: String,
+          ?limit: Integer,
+          ?status: Increase::Models::CardDisputeListParams::Status,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::card_dispute_list_params | Increase::BaseModel data
@@ -75,10 +75,10 @@ module Increase
 
         def initialize:
           (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
+            ?after: Time,
+            ?before: Time,
+            ?on_or_after: Time,
+            ?on_or_before: Time
           ) -> void
           | (
             ?Increase::Models::CardDisputeListParams::created_at
@@ -100,7 +100,7 @@ module Increase
 
         def initialize:
           (
-            in_: ::Array[Increase::Models::CardDisputeListParams::Status::in_]
+            ?in_: ::Array[Increase::Models::CardDisputeListParams::Status::in_]
           ) -> void
           | (
             ?Increase::Models::CardDisputeListParams::status

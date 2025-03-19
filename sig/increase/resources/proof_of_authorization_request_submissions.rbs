@@ -16,10 +16,10 @@ module Increase
           validated_account_ownership_via_credential: bool,
           validated_account_ownership_with_account_statement: bool,
           validated_account_ownership_with_microdeposit: bool,
-          additional_evidence_file_id: String,
-          authorizer_company: String,
-          authorizer_ip_address: String,
-          request_options: Increase::request_opts
+          ?additional_evidence_file_id: String,
+          ?authorizer_company: String,
+          ?authorizer_ip_address: String,
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::ProofOfAuthorizationRequestSubmission
 
       def retrieve:
@@ -30,7 +30,7 @@ module Increase
         ) -> Increase::Models::ProofOfAuthorizationRequestSubmission
         | (
           String proof_of_authorization_request_submission_id,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::ProofOfAuthorizationRequestSubmission
 
       def list:
@@ -39,11 +39,11 @@ module Increase
           | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::ProofOfAuthorizationRequestSubmission]
         | (
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          proof_of_authorization_request_id: String,
-          request_options: Increase::request_opts
+          ?cursor: String,
+          ?idempotency_key: String,
+          ?limit: Integer,
+          ?proof_of_authorization_request_id: String,
+          ?request_options: Increase::request_opts
         ) -> Increase::Page[Increase::Models::ProofOfAuthorizationRequestSubmission]
 
       def initialize: (client: Increase::Client) -> void

@@ -10,7 +10,7 @@ module Increase
           ) -> Increase::Models::Simulations::InboundFundsHoldReleaseResponse
           | (
             String inbound_funds_hold_id,
-            request_options: Increase::request_opts
+            ?request_options: Increase::request_opts
           ) -> Increase::Models::Simulations::InboundFundsHoldReleaseResponse
 
         def initialize: (client: Increase::Client) -> void

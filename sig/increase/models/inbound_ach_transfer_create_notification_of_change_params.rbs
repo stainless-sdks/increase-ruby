@@ -18,9 +18,9 @@ module Increase
 
       def initialize:
         (
-          updated_account_number: String,
-          updated_routing_number: String,
-          request_options: Increase::request_opts
+          ?updated_account_number: String,
+          ?updated_routing_number: String,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::inbound_ach_transfer_create_notification_of_change_params

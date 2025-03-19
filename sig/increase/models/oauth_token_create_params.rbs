@@ -35,11 +35,11 @@ module Increase
       def initialize:
         (
           grant_type: Increase::Models::OAuthTokenCreateParams::grant_type,
-          client_id: String,
-          client_secret: String,
-          code: String,
-          production_token: String,
-          request_options: Increase::request_opts
+          ?client_id: String,
+          ?client_secret: String,
+          ?code: String,
+          ?production_token: String,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::oauth_token_create_params

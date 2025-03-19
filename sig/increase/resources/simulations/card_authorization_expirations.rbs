@@ -9,7 +9,7 @@ module Increase
           ) -> Increase::Models::CardPayment
           | (
             card_payment_id: String,
-            request_options: Increase::request_opts
+            ?request_options: Increase::request_opts
           ) -> Increase::Models::CardPayment
 
         def initialize: (client: Increase::Client) -> void

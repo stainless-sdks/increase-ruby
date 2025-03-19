@@ -5,7 +5,7 @@ module Increase
         (
           ?Increase::Models::GroupRetrieveParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::Group
-        | (request_options: Increase::request_opts) -> Increase::Models::Group
+        | (?request_options: Increase::request_opts) -> Increase::Models::Group
 
       def initialize: (client: Increase::Client) -> void
     end

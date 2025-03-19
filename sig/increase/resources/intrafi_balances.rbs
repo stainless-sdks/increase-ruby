@@ -9,7 +9,7 @@ module Increase
         ) -> Increase::Models::IntrafiBalance
         | (
           String account_id,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::IntrafiBalance
 
       def initialize: (client: Increase::Client) -> void

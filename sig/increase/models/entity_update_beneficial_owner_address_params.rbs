@@ -19,7 +19,7 @@ module Increase
         (
           address: Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
           beneficial_owner_id: String,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::entity_update_beneficial_owner_address_params
@@ -56,7 +56,7 @@ module Increase
             line1: String,
             state: String,
             zip: String,
-            line2: String
+            ?line2: String
           ) -> void
           | (
             ?Increase::Models::EntityUpdateBeneficialOwnerAddressParams::address

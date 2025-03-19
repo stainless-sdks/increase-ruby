@@ -9,7 +9,7 @@ module Increase
         ) -> Increase::Models::AccountStatement
         | (
           String account_statement_id,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::AccountStatement
 
       def list:
@@ -18,11 +18,11 @@ module Increase
           | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::AccountStatement]
         | (
-          account_id: String,
-          cursor: String,
-          limit: Integer,
-          statement_period_start: Increase::Models::AccountStatementListParams::StatementPeriodStart,
-          request_options: Increase::request_opts
+          ?account_id: String,
+          ?cursor: String,
+          ?limit: Integer,
+          ?statement_period_start: Increase::Models::AccountStatementListParams::StatementPeriodStart,
+          ?request_options: Increase::request_opts
         ) -> Increase::Page[Increase::Models::AccountStatement]
 
       def initialize: (client: Increase::Client) -> void

@@ -9,7 +9,7 @@ module Increase
         ) -> Increase::Models::InboundWireTransfer
         | (
           String inbound_wire_transfer_id,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::InboundWireTransfer
 
       def list:
@@ -18,13 +18,13 @@ module Increase
           | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::InboundWireTransfer]
         | (
-          account_id: String,
-          account_number_id: String,
-          created_at: Increase::Models::InboundWireTransferListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          status: Increase::Models::InboundWireTransferListParams::Status,
-          request_options: Increase::request_opts
+          ?account_id: String,
+          ?account_number_id: String,
+          ?created_at: Increase::Models::InboundWireTransferListParams::CreatedAt,
+          ?cursor: String,
+          ?limit: Integer,
+          ?status: Increase::Models::InboundWireTransferListParams::Status,
+          ?request_options: Increase::request_opts
         ) -> Increase::Page[Increase::Models::InboundWireTransfer]
 
       def initialize: (client: Increase::Client) -> void

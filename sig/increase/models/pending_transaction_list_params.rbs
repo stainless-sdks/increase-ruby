@@ -52,14 +52,14 @@ module Increase
 
       def initialize:
         (
-          account_id: String,
-          category: Increase::Models::PendingTransactionListParams::Category,
-          created_at: Increase::Models::PendingTransactionListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          route_id: String,
-          status: Increase::Models::PendingTransactionListParams::Status,
-          request_options: Increase::request_opts
+          ?account_id: String,
+          ?category: Increase::Models::PendingTransactionListParams::Category,
+          ?created_at: Increase::Models::PendingTransactionListParams::CreatedAt,
+          ?cursor: String,
+          ?limit: Integer,
+          ?route_id: String,
+          ?status: Increase::Models::PendingTransactionListParams::Status,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::pending_transaction_list_params
@@ -82,7 +82,7 @@ module Increase
 
         def initialize:
           (
-            in_: ::Array[Increase::Models::PendingTransactionListParams::Category::in_]
+            ?in_: ::Array[Increase::Models::PendingTransactionListParams::Category::in_]
           ) -> void
           | (
             ?Increase::Models::PendingTransactionListParams::category
@@ -160,10 +160,10 @@ module Increase
 
         def initialize:
           (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
+            ?after: Time,
+            ?before: Time,
+            ?on_or_after: Time,
+            ?on_or_before: Time
           ) -> void
           | (
             ?Increase::Models::PendingTransactionListParams::created_at
@@ -187,7 +187,7 @@ module Increase
 
         def initialize:
           (
-            in_: ::Array[Increase::Models::PendingTransactionListParams::Status::in_]
+            ?in_: ::Array[Increase::Models::PendingTransactionListParams::Status::in_]
           ) -> void
           | (
             ?Increase::Models::PendingTransactionListParams::status

@@ -9,7 +9,7 @@ module Increase
           ) -> Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse
           | (
             card_id: String,
-            request_options: Increase::request_opts
+            ?request_options: Increase::request_opts
           ) -> Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse
 
         def initialize: (client: Increase::Client) -> void

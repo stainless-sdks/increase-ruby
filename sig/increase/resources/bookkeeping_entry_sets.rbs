@@ -8,9 +8,9 @@ module Increase
         ) -> Increase::Models::BookkeepingEntrySet
         | (
           entries: ::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry],
-          date: Time,
-          transaction_id: String,
-          request_options: Increase::request_opts
+          ?date: Time,
+          ?transaction_id: String,
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::BookkeepingEntrySet
 
       def retrieve:
@@ -21,7 +21,7 @@ module Increase
         ) -> Increase::Models::BookkeepingEntrySet
         | (
           String bookkeeping_entry_set_id,
-          request_options: Increase::request_opts
+          ?request_options: Increase::request_opts
         ) -> Increase::Models::BookkeepingEntrySet
 
       def list:
@@ -30,11 +30,11 @@ module Increase
           | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::BookkeepingEntrySet]
         | (
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          transaction_id: String,
-          request_options: Increase::request_opts
+          ?cursor: String,
+          ?idempotency_key: String,
+          ?limit: Integer,
+          ?transaction_id: String,
+          ?request_options: Increase::request_opts
         ) -> Increase::Page[Increase::Models::BookkeepingEntrySet]
 
       def initialize: (client: Increase::Client) -> void

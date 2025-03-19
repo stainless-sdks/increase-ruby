@@ -40,12 +40,12 @@ module Increase
 
       def initialize:
         (
-          category: Increase::Models::DocumentListParams::Category,
-          created_at: Increase::Models::DocumentListParams::CreatedAt,
-          cursor: String,
-          entity_id: String,
-          limit: Integer,
-          request_options: Increase::request_opts
+          ?category: Increase::Models::DocumentListParams::Category,
+          ?created_at: Increase::Models::DocumentListParams::CreatedAt,
+          ?cursor: String,
+          ?entity_id: String,
+          ?limit: Integer,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::document_list_params | Increase::BaseModel data
@@ -65,7 +65,7 @@ module Increase
 
         def initialize:
           (
-            in_: ::Array[Increase::Models::DocumentListParams::Category::in_]
+            ?in_: ::Array[Increase::Models::DocumentListParams::Category::in_]
           ) -> void
           | (
             ?Increase::Models::DocumentListParams::category
@@ -119,10 +119,10 @@ module Increase
 
         def initialize:
           (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
+            ?after: Time,
+            ?before: Time,
+            ?on_or_after: Time,
+            ?on_or_before: Time
           ) -> void
           | (
             ?Increase::Models::DocumentListParams::created_at

@@ -45,13 +45,13 @@ module Increase
 
       def initialize:
         (
-          account_id: String,
-          created_at: Increase::Models::CardListParams::CreatedAt,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          status: Increase::Models::CardListParams::Status,
-          request_options: Increase::request_opts
+          ?account_id: String,
+          ?created_at: Increase::Models::CardListParams::CreatedAt,
+          ?cursor: String,
+          ?idempotency_key: String,
+          ?limit: Integer,
+          ?status: Increase::Models::CardListParams::Status,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::card_list_params | Increase::BaseModel data
@@ -81,10 +81,10 @@ module Increase
 
         def initialize:
           (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
+            ?after: Time,
+            ?before: Time,
+            ?on_or_after: Time,
+            ?on_or_before: Time
           ) -> void
           | (
             ?Increase::Models::CardListParams::created_at
@@ -105,7 +105,7 @@ module Increase
         ) -> ::Array[Increase::Models::CardListParams::Status::in_]
 
         def initialize:
-          (in_: ::Array[Increase::Models::CardListParams::Status::in_]) -> void
+          (?in_: ::Array[Increase::Models::CardListParams::Status::in_]) -> void
           | (
             ?Increase::Models::CardListParams::status | Increase::BaseModel data
           ) -> void

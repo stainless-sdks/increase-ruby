@@ -28,8 +28,8 @@ module Increase
           card_id: String,
           cardholder: Increase::Models::PhysicalCardCreateParams::Cardholder,
           shipment: Increase::Models::PhysicalCardCreateParams::Shipment,
-          physical_card_profile_id: String,
-          request_options: Increase::request_opts
+          ?physical_card_profile_id: String,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::physical_card_create_params
@@ -120,9 +120,9 @@ module Increase
               name: String,
               postal_code: String,
               state: String,
-              line2: String,
-              line3: String,
-              phone_number: String
+              ?line2: String,
+              ?line3: String,
+              ?phone_number: String
             ) -> void
             | (
               ?Increase::Models::PhysicalCardCreateParams::Shipment::address

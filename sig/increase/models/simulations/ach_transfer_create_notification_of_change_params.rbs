@@ -20,7 +20,7 @@ module Increase
           (
             change_code: Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::change_code,
             corrected_data: String,
-            request_options: Increase::request_opts
+            ?request_options: Increase::request_opts
           ) -> void
           | (
             ?Increase::Models::Simulations::ach_transfer_create_notification_of_change_params

@@ -37,11 +37,11 @@ module Increase
 
       def initialize:
         (
-          account_holder: Increase::Models::ExternalAccountUpdateParams::account_holder,
-          description: String,
-          funding: Increase::Models::ExternalAccountUpdateParams::funding,
-          status: Increase::Models::ExternalAccountUpdateParams::status,
-          request_options: Increase::request_opts
+          ?account_holder: Increase::Models::ExternalAccountUpdateParams::account_holder,
+          ?description: String,
+          ?funding: Increase::Models::ExternalAccountUpdateParams::funding,
+          ?status: Increase::Models::ExternalAccountUpdateParams::status,
+          ?request_options: Increase::request_opts
         ) -> void
         | (
           ?Increase::Models::external_account_update_params
