@@ -118,6 +118,12 @@ module Increase
           DENY = :deny
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -152,6 +158,12 @@ module Increase
           FAILURE = :failure
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -197,6 +209,12 @@ module Increase
           DECLINE = :decline
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # The reason the card authorization was declined. This translates to a specific
@@ -223,6 +241,12 @@ module Increase
           OTHER = :other
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -266,6 +290,12 @@ module Increase
           FAILURE = :failure
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class Success < Increase::BaseModel

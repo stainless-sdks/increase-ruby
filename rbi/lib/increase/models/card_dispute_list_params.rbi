@@ -176,23 +176,29 @@ module Increase
 
           # The Card Dispute is pending review.
           PENDING_REVIEWING =
-            T.let(:pending_reviewing, Increase::Models::CardDisputeListParams::Status::In::OrSymbol)
+            T.let(:pending_reviewing, Increase::Models::CardDisputeListParams::Status::In::TaggedSymbol)
 
           # Increase has requested more information related to the Card Dispute from you.
           PENDING_USER_INFORMATION =
-            T.let(:pending_user_information, Increase::Models::CardDisputeListParams::Status::In::OrSymbol)
+            T.let(:pending_user_information, Increase::Models::CardDisputeListParams::Status::In::TaggedSymbol)
 
           # The Card Dispute has been accepted and your funds have been returned. The card dispute will eventually transition into `won` or `lost` depending on the outcome.
-          ACCEPTED = T.let(:accepted, Increase::Models::CardDisputeListParams::Status::In::OrSymbol)
+          ACCEPTED = T.let(:accepted, Increase::Models::CardDisputeListParams::Status::In::TaggedSymbol)
 
           # The Card Dispute has been rejected.
-          REJECTED = T.let(:rejected, Increase::Models::CardDisputeListParams::Status::In::OrSymbol)
+          REJECTED = T.let(:rejected, Increase::Models::CardDisputeListParams::Status::In::TaggedSymbol)
 
           # The Card Dispute has been lost and funds previously credited from the acceptance have been debited.
-          LOST = T.let(:lost, Increase::Models::CardDisputeListParams::Status::In::OrSymbol)
+          LOST = T.let(:lost, Increase::Models::CardDisputeListParams::Status::In::TaggedSymbol)
 
           # The Card Dispute has been won and no further action can be taken.
-          WON = T.let(:won, Increase::Models::CardDisputeListParams::Status::In::OrSymbol)
+          WON = T.let(:won, Increase::Models::CardDisputeListParams::Status::In::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::CardDisputeListParams::Status::In::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

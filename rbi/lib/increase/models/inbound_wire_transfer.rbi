@@ -353,6 +353,12 @@ module Increase
 
         # The Inbound Wire Transfer was reversed.
         REVERSED = T.let(:reversed, Increase::Models::InboundWireTransfer::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::InboundWireTransfer::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -365,6 +371,12 @@ module Increase
 
         INBOUND_WIRE_TRANSFER =
           T.let(:inbound_wire_transfer, Increase::Models::InboundWireTransfer::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::InboundWireTransfer::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

@@ -125,6 +125,17 @@ module Increase
               :webhook_declined,
               Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
 
         # A constant representing the object's type. For this resource it will always be
@@ -142,6 +153,17 @@ module Increase
               :inbound_digital_wallet_token_request_simulation_result,
               Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
       end
     end

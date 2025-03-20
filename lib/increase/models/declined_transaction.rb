@@ -132,6 +132,12 @@ module Increase
         USD = :USD
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The type of the route this Declined Transaction came through.
@@ -148,6 +154,12 @@ module Increase
         LOCKBOX = :lockbox
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Source < Increase::BaseModel
@@ -413,6 +425,12 @@ module Increase
             CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           # A constant representing the object's type. For this resource it will always be
@@ -423,6 +441,12 @@ module Increase
             ACH_DECLINE = :ach_decline
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -691,6 +715,12 @@ module Increase
             NETWORK = :network
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
@@ -717,6 +747,12 @@ module Increase
             USD = :USD
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           # The direction describes the direction the funds will move, either from the
@@ -731,6 +767,12 @@ module Increase
             REFUND = :refund
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           class NetworkDetails < Increase::BaseModel
@@ -767,6 +809,12 @@ module Increase
               VISA = :visa
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
 
             class Visa < Increase::BaseModel
@@ -841,6 +889,12 @@ module Increase
                 NON_SECURE_TRANSACTION = :non_secure_transaction
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               # The method used to enter the cardholder's primary account number and card
@@ -879,6 +933,12 @@ module Increase
                 INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               # Only present when `actioner: network`. Describes why a card authorization was
@@ -910,6 +970,12 @@ module Increase
                 OTHER = :other
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
           end
@@ -973,6 +1039,12 @@ module Increase
             REFUND = :refund
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           # This is present if a specific decline reason was given in the real-time
@@ -999,6 +1071,12 @@ module Increase
             OTHER = :other
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           # Why the transaction was declined.
@@ -1057,6 +1135,12 @@ module Increase
             SUSPECTED_FRAUD = :suspected_fraud
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           class Verification < Increase::BaseModel
@@ -1118,6 +1202,12 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
 
@@ -1191,6 +1281,12 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
           end
@@ -1223,6 +1319,12 @@ module Increase
           OTHER = :other
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CheckDecline < Increase::BaseModel
@@ -1355,6 +1457,12 @@ module Increase
             USER_INITIATED = :user_initiated
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -1439,6 +1547,12 @@ module Increase
             USD = :USD
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           # Why the check deposit was rejected.
@@ -1479,6 +1593,12 @@ module Increase
             UNKNOWN = :unknown
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -1607,6 +1727,12 @@ module Increase
             USD = :USD
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           # Why the transfer was declined.
@@ -1632,6 +1758,12 @@ module Increase
             REAL_TIME_PAYMENTS_NOT_ENABLED = :real_time_payments_not_enabled
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -1682,6 +1814,12 @@ module Increase
             TRANSACTION_NOT_ALLOWED = :transaction_not_allowed
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
       end
@@ -1694,6 +1832,12 @@ module Increase
         DECLINED_TRANSACTION = :declined_transaction
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

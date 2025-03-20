@@ -51,7 +51,7 @@ module Increase
 
         PROOF_OF_AUTHORIZATION_REQUEST: :proof_of_authorization_request
 
-        def self.values: -> ::Array[Increase::Models::ProofOfAuthorizationRequest::type_]
+        def self?.values: -> ::Array[Increase::Models::ProofOfAuthorizationRequest::type_]
       end
     end
   end

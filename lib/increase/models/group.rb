@@ -62,6 +62,12 @@ module Increase
         ENABLED = :enabled
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # If the Group is activated or not.
@@ -75,6 +81,12 @@ module Increase
         ACTIVATED = :activated
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -85,6 +97,12 @@ module Increase
         GROUP = :group
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

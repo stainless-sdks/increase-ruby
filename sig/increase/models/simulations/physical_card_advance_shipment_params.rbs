@@ -53,7 +53,7 @@ module Increase
           # The physical card shipment was returned to the sender and destroyed by the production facility.
           RETURNED: :returned
 
-          def self.values: -> ::Array[Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status]
+          def self?.values: -> ::Array[Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status]
         end
       end
     end

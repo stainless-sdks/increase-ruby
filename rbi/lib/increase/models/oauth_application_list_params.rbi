@@ -160,10 +160,16 @@ module Increase
             T.type_alias { T.any(Symbol, Increase::Models::OAuthApplicationListParams::Status::In::TaggedSymbol) }
 
           # The application is active and can be used by your users.
-          ACTIVE = T.let(:active, Increase::Models::OAuthApplicationListParams::Status::In::OrSymbol)
+          ACTIVE = T.let(:active, Increase::Models::OAuthApplicationListParams::Status::In::TaggedSymbol)
 
           # The application is deleted.
-          DELETED = T.let(:deleted, Increase::Models::OAuthApplicationListParams::Status::In::OrSymbol)
+          DELETED = T.let(:deleted, Increase::Models::OAuthApplicationListParams::Status::In::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::OAuthApplicationListParams::Status::In::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

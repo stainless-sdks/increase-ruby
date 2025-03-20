@@ -265,7 +265,7 @@ module Increase
                 # Another identifying document.
                 OTHER: :other
 
-                def self.values: -> ::Array[Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::method_]
+                def self?.values: -> ::Array[Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::method_]
               end
             end
           end
@@ -281,7 +281,7 @@ module Increase
             # A person who manages, directs, or has significant control of the entity.
             CONTROL: :control
 
-            def self.values: -> ::Array[Increase::Models::Entity::Corporation::BeneficialOwner::prong]
+            def self?.values: -> ::Array[Increase::Models::Entity::Corporation::BeneficialOwner::prong]
           end
         end
       end
@@ -371,7 +371,7 @@ module Increase
           # The Public Entity is a Municipality.
           MUNICIPALITY: :municipality
 
-          def self.values: -> ::Array[Increase::Models::Entity::GovernmentAuthority::category]
+          def self?.values: -> ::Array[Increase::Models::Entity::GovernmentAuthority::category]
         end
       end
 
@@ -493,7 +493,7 @@ module Increase
               # Another identifying document.
               OTHER: :other
 
-              def self.values: -> ::Array[Increase::Models::Entity::Joint::Individual::Identification::method_]
+              def self?.values: -> ::Array[Increase::Models::Entity::Joint::Individual::Identification::method_]
             end
           end
         end
@@ -599,7 +599,7 @@ module Increase
             # Another identifying document.
             OTHER: :other
 
-            def self.values: -> ::Array[Increase::Models::Entity::NaturalPerson::Identification::method_]
+            def self?.values: -> ::Array[Increase::Models::Entity::NaturalPerson::Identification::method_]
           end
         end
       end
@@ -618,7 +618,7 @@ module Increase
         # The entity is temporarily disabled and cannot be used for financial activity.
         DISABLED: :disabled
 
-        def self.values: -> ::Array[Increase::Models::Entity::status]
+        def self?.values: -> ::Array[Increase::Models::Entity::status]
       end
 
       type structure =
@@ -642,7 +642,7 @@ module Increase
         # A government authority.
         GOVERNMENT_AUTHORITY: :government_authority
 
-        def self.values: -> ::Array[Increase::Models::Entity::structure]
+        def self?.values: -> ::Array[Increase::Models::Entity::structure]
       end
 
       type third_party_verification =
@@ -674,7 +674,7 @@ module Increase
           # Middesk. See https://middesk.com for more information.
           MIDDESK: :middesk
 
-          def self.values: -> ::Array[Increase::Models::Entity::ThirdPartyVerification::vendor]
+          def self?.values: -> ::Array[Increase::Models::Entity::ThirdPartyVerification::vendor]
         end
       end
 
@@ -762,7 +762,7 @@ module Increase
           # The trust cannot be revoked.
           IRREVOCABLE: :irrevocable
 
-          def self.values: -> ::Array[Increase::Models::Entity::Trust::category]
+          def self?.values: -> ::Array[Increase::Models::Entity::Trust::category]
         end
 
         type grantor =
@@ -865,7 +865,7 @@ module Increase
               # Another identifying document.
               OTHER: :other
 
-              def self.values: -> ::Array[Increase::Models::Entity::Trust::Grantor::Identification::method_]
+              def self?.values: -> ::Array[Increase::Models::Entity::Trust::Grantor::Identification::method_]
             end
           end
         end
@@ -988,7 +988,7 @@ module Increase
                 # Another identifying document.
                 OTHER: :other
 
-                def self.values: -> ::Array[Increase::Models::Entity::Trust::Trustee::Individual::Identification::method_]
+                def self?.values: -> ::Array[Increase::Models::Entity::Trust::Trustee::Individual::Identification::method_]
               end
             end
           end
@@ -1001,7 +1001,7 @@ module Increase
             # The trustee is an individual.
             INDIVIDUAL: :individual
 
-            def self.values: -> ::Array[Increase::Models::Entity::Trust::Trustee::structure]
+            def self?.values: -> ::Array[Increase::Models::Entity::Trust::Trustee::structure]
           end
         end
       end
@@ -1013,7 +1013,7 @@ module Increase
 
         ENTITY: :entity
 
-        def self.values: -> ::Array[Increase::Models::Entity::type_]
+        def self?.values: -> ::Array[Increase::Models::Entity::type_]
       end
     end
   end

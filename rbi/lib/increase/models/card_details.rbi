@@ -103,6 +103,12 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CardDetails::Type::TaggedSymbol) }
 
         CARD_DETAILS = T.let(:card_details, Increase::Models::CardDetails::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::CardDetails::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

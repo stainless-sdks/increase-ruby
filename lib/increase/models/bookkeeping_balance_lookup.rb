@@ -43,6 +43,12 @@ module Increase
         BOOKKEEPING_BALANCE_LOOKUP = :bookkeeping_balance_lookup
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

@@ -103,7 +103,7 @@ module Increase
         # The proof of authorization request submission was sent.
         SENT: :sent
 
-        def self.values: -> ::Array[Increase::Models::ProofOfAuthorizationRequestSubmission::status]
+        def self?.values: -> ::Array[Increase::Models::ProofOfAuthorizationRequestSubmission::status]
       end
 
       type type_ = :proof_of_authorization_request_submission
@@ -113,7 +113,7 @@ module Increase
 
         PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION: :proof_of_authorization_request_submission
 
-        def self.values: -> ::Array[Increase::Models::ProofOfAuthorizationRequestSubmission::type_]
+        def self?.values: -> ::Array[Increase::Models::ProofOfAuthorizationRequestSubmission::type_]
       end
     end
   end

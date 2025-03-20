@@ -104,6 +104,12 @@ module Increase
         DASHBOARD_TABLE_CSV = :dashboard_table_csv
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The status of the Export.
@@ -120,6 +126,12 @@ module Increase
         FAILED = :failed
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -130,6 +142,12 @@ module Increase
         EXPORT = :export
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

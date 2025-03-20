@@ -84,11 +84,26 @@ module Increase
 
         # A cash in an commingled Increase Account.
         COMMINGLED_CASH =
-          T.let(:commingled_cash, Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol)
+          T.let(
+            :commingled_cash,
+            Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol
+          )
 
         # A customer balance.
         CUSTOMER_BALANCE =
-          T.let(:customer_balance, Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol)
+          T.let(
+            :customer_balance,
+            Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol
+          )
+
+        class << self
+          sig do
+            override
+              .returns(T::Array[Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol])
+          end
+          def values
+          end
+        end
       end
     end
   end

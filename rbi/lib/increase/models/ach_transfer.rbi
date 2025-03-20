@@ -636,6 +636,12 @@ module Increase
 
           # Unknown addenda type.
           OTHER = T.let(:other, Increase::Models::ACHTransfer::Addenda::Category::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::ACHTransfer::Addenda::Category::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         class Freeform < Increase::BaseModel
@@ -926,6 +932,12 @@ module Increase
 
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER = T.let(:user, Increase::Models::ACHTransfer::CreatedBy::Category::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::ACHTransfer::CreatedBy::Category::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         class OAuthApplication < Increase::BaseModel
@@ -994,6 +1006,12 @@ module Increase
 
         # US Dollar (USD)
         USD = T.let(:USD, Increase::Models::ACHTransfer::Currency::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ACHTransfer::Currency::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # The type of entity that owns the account to which the ACH Transfer is being
@@ -1013,6 +1031,12 @@ module Increase
 
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN = T.let(:unknown, Increase::Models::ACHTransfer::DestinationAccountHolder::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ACHTransfer::DestinationAccountHolder::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # The type of the account to which the transfer will be sent.
@@ -1027,6 +1051,12 @@ module Increase
 
         # A savings account.
         SAVINGS = T.let(:savings, Increase::Models::ACHTransfer::Funding::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ACHTransfer::Funding::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class InboundFundsHold < Increase::BaseModel
@@ -1211,6 +1241,12 @@ module Increase
 
           # US Dollar (USD)
           USD = T.let(:USD, Increase::Models::ACHTransfer::InboundFundsHold::Currency::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::ACHTransfer::InboundFundsHold::Currency::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         # The status of the hold.
@@ -1226,6 +1262,12 @@ module Increase
 
           # Funds have been released.
           COMPLETE = T.let(:complete, Increase::Models::ACHTransfer::InboundFundsHold::Status::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::ACHTransfer::InboundFundsHold::Status::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         # A constant representing the object's type. For this resource it will always be
@@ -1239,6 +1281,12 @@ module Increase
 
           INBOUND_FUNDS_HOLD =
             T.let(:inbound_funds_hold, Increase::Models::ACHTransfer::InboundFundsHold::Type::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::ACHTransfer::InboundFundsHold::Type::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -1250,6 +1298,12 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::Network::TaggedSymbol) }
 
         ACH = T.let(:ach, Increase::Models::ACHTransfer::Network::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ACHTransfer::Network::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class NotificationsOfChange < Increase::BaseModel
@@ -1455,6 +1509,12 @@ module Increase
               :incorrect_transaction_code_by_originating_depository_financial_institution,
               Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol
             )
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -1537,6 +1597,15 @@ module Increase
               :future_dated,
               Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
       end
 
@@ -2028,6 +2097,12 @@ module Increase
           # Code R68. A rare return reason. The return was sent too late.
           UNTIMELY_RETURN =
             T.let(:untimely_return, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -2079,6 +2154,12 @@ module Increase
         # Internet Initiated (WEB).
         INTERNET_INITIATED =
           T.let(:internet_initiated, Increase::Models::ACHTransfer::StandardEntryClassCode::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ACHTransfer::StandardEntryClassCode::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # The lifecycle status of the transfer.
@@ -2115,6 +2196,12 @@ module Increase
 
         # The transfer has been returned.
         RETURNED = T.let(:returned, Increase::Models::ACHTransfer::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ACHTransfer::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class Submission < Increase::BaseModel
@@ -2235,6 +2322,15 @@ module Increase
           # The transfer is expected to settle on a future date.
           FUTURE_DATED =
             T.let(:future_dated, Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
       end
 
@@ -2247,6 +2343,12 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::Type::TaggedSymbol) }
 
         ACH_TRANSFER = T.let(:ach_transfer, Increase::Models::ACHTransfer::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ACHTransfer::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

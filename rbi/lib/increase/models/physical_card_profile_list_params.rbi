@@ -112,24 +112,30 @@ module Increase
 
           # The Card Profile has not yet been processed by Increase.
           PENDING_CREATING =
-            T.let(:pending_creating, Increase::Models::PhysicalCardProfileListParams::Status::In::OrSymbol)
+            T.let(:pending_creating, Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol)
 
           # The card profile is awaiting review by Increase.
           PENDING_REVIEWING =
-            T.let(:pending_reviewing, Increase::Models::PhysicalCardProfileListParams::Status::In::OrSymbol)
+            T.let(:pending_reviewing, Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol)
 
           # There is an issue with the Physical Card Profile preventing it from use.
-          REJECTED = T.let(:rejected, Increase::Models::PhysicalCardProfileListParams::Status::In::OrSymbol)
+          REJECTED = T.let(:rejected, Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol)
 
           # The card profile is awaiting submission to the fulfillment provider.
           PENDING_SUBMITTING =
-            T.let(:pending_submitting, Increase::Models::PhysicalCardProfileListParams::Status::In::OrSymbol)
+            T.let(:pending_submitting, Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol)
 
           # The Physical Card Profile has been submitted to the fulfillment provider and is ready to use.
-          ACTIVE = T.let(:active, Increase::Models::PhysicalCardProfileListParams::Status::In::OrSymbol)
+          ACTIVE = T.let(:active, Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol)
 
           # The Physical Card Profile has been archived.
-          ARCHIVED = T.let(:archived, Increase::Models::PhysicalCardProfileListParams::Status::In::OrSymbol)
+          ARCHIVED = T.let(:archived, Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

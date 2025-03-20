@@ -70,7 +70,7 @@ module Increase
           # The OAuth connection is permanently deactivated.
           INACTIVE: :inactive
 
-          def self.values: -> ::Array[Increase::Models::OAuthConnectionListParams::Status::in_]
+          def self?.values: -> ::Array[Increase::Models::OAuthConnectionListParams::Status::in_]
         end
       end
     end

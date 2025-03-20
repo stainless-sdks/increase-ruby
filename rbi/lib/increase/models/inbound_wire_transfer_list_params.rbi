@@ -192,16 +192,22 @@ module Increase
             T.type_alias { T.any(Symbol, Increase::Models::InboundWireTransferListParams::Status::In::TaggedSymbol) }
 
           # The Inbound Wire Transfer is awaiting action, will transition automatically if no action is taken.
-          PENDING = T.let(:pending, Increase::Models::InboundWireTransferListParams::Status::In::OrSymbol)
+          PENDING = T.let(:pending, Increase::Models::InboundWireTransferListParams::Status::In::TaggedSymbol)
 
           # The Inbound Wire Transfer is accepted.
-          ACCEPTED = T.let(:accepted, Increase::Models::InboundWireTransferListParams::Status::In::OrSymbol)
+          ACCEPTED = T.let(:accepted, Increase::Models::InboundWireTransferListParams::Status::In::TaggedSymbol)
 
           # The Inbound Wire Transfer was declined.
-          DECLINED = T.let(:declined, Increase::Models::InboundWireTransferListParams::Status::In::OrSymbol)
+          DECLINED = T.let(:declined, Increase::Models::InboundWireTransferListParams::Status::In::TaggedSymbol)
 
           # The Inbound Wire Transfer was reversed.
-          REVERSED = T.let(:reversed, Increase::Models::InboundWireTransferListParams::Status::In::OrSymbol)
+          REVERSED = T.let(:reversed, Increase::Models::InboundWireTransferListParams::Status::In::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::InboundWireTransferListParams::Status::In::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

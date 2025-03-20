@@ -49,13 +49,19 @@ module Increase
           T.type_alias { T.any(Symbol, Increase::Models::EventSubscriptionUpdateParams::Status::TaggedSymbol) }
 
         # The subscription is active and Events will be delivered normally.
-        ACTIVE = T.let(:active, Increase::Models::EventSubscriptionUpdateParams::Status::OrSymbol)
+        ACTIVE = T.let(:active, Increase::Models::EventSubscriptionUpdateParams::Status::TaggedSymbol)
 
         # The subscription is temporarily disabled and Events will not be delivered.
-        DISABLED = T.let(:disabled, Increase::Models::EventSubscriptionUpdateParams::Status::OrSymbol)
+        DISABLED = T.let(:disabled, Increase::Models::EventSubscriptionUpdateParams::Status::TaggedSymbol)
 
         # The subscription is permanently disabled and Events will not be delivered.
-        DELETED = T.let(:deleted, Increase::Models::EventSubscriptionUpdateParams::Status::OrSymbol)
+        DELETED = T.let(:deleted, Increase::Models::EventSubscriptionUpdateParams::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::EventSubscriptionUpdateParams::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

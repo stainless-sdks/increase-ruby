@@ -79,7 +79,7 @@ module Increase
           # ACH Debits are blocked.
           BLOCKED: :blocked
 
-          def self.values: -> ::Array[Increase::Models::AccountNumber::InboundACH::debit_status]
+          def self?.values: -> ::Array[Increase::Models::AccountNumber::InboundACH::debit_status]
         end
       end
 
@@ -106,7 +106,7 @@ module Increase
           # Checks with this Account Number will be processed only if they can be matched to an existing Check Transfer.
           CHECK_TRANSFERS_ONLY: :check_transfers_only
 
-          def self.values: -> ::Array[Increase::Models::AccountNumber::InboundChecks::status]
+          def self?.values: -> ::Array[Increase::Models::AccountNumber::InboundChecks::status]
         end
       end
 
@@ -124,7 +124,7 @@ module Increase
         # The account number is permanently disabled.
         CANCELED: :canceled
 
-        def self.values: -> ::Array[Increase::Models::AccountNumber::status]
+        def self?.values: -> ::Array[Increase::Models::AccountNumber::status]
       end
 
       type type_ = :account_number
@@ -134,7 +134,7 @@ module Increase
 
         ACCOUNT_NUMBER: :account_number
 
-        def self.values: -> ::Array[Increase::Models::AccountNumber::type_]
+        def self?.values: -> ::Array[Increase::Models::AccountNumber::type_]
       end
     end
   end

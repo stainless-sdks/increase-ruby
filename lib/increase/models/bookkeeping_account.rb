@@ -78,6 +78,12 @@ module Increase
         CUSTOMER_BALANCE = :customer_balance
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -88,6 +94,12 @@ module Increase
         BOOKKEEPING_ACCOUNT = :bookkeeping_account
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

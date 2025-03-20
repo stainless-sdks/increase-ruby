@@ -195,6 +195,12 @@ module Increase
 
         # This Physical Card Profile was created by you.
         USER = T.let(:user, Increase::Models::PhysicalCardProfile::Creator::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::PhysicalCardProfile::Creator::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # The status of the Physical Card Profile.
@@ -223,6 +229,12 @@ module Increase
 
         # The Physical Card Profile has been archived.
         ARCHIVED = T.let(:archived, Increase::Models::PhysicalCardProfile::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::PhysicalCardProfile::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -235,6 +247,12 @@ module Increase
 
         PHYSICAL_CARD_PROFILE =
           T.let(:physical_card_profile, Increase::Models::PhysicalCardProfile::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::PhysicalCardProfile::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

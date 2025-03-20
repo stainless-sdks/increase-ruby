@@ -108,10 +108,16 @@ module Increase
             T.type_alias { T.any(Symbol, Increase::Models::OAuthConnectionListParams::Status::In::TaggedSymbol) }
 
           # The OAuth connection is active.
-          ACTIVE = T.let(:active, Increase::Models::OAuthConnectionListParams::Status::In::OrSymbol)
+          ACTIVE = T.let(:active, Increase::Models::OAuthConnectionListParams::Status::In::TaggedSymbol)
 
           # The OAuth connection is permanently deactivated.
-          INACTIVE = T.let(:inactive, Increase::Models::OAuthConnectionListParams::Status::In::OrSymbol)
+          INACTIVE = T.let(:inactive, Increase::Models::OAuthConnectionListParams::Status::In::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::OAuthConnectionListParams::Status::In::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

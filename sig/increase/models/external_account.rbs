@@ -68,7 +68,7 @@ module Increase
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN: :unknown
 
-        def self.values: -> ::Array[Increase::Models::ExternalAccount::account_holder]
+        def self?.values: -> ::Array[Increase::Models::ExternalAccount::account_holder]
       end
 
       type funding = :checking | :savings | :other
@@ -85,7 +85,7 @@ module Increase
         # A different type of account.
         OTHER: :other
 
-        def self.values: -> ::Array[Increase::Models::ExternalAccount::funding]
+        def self?.values: -> ::Array[Increase::Models::ExternalAccount::funding]
       end
 
       type status = :active | :archived
@@ -99,7 +99,7 @@ module Increase
         # The External Account is archived and won't appear in the dashboard.
         ARCHIVED: :archived
 
-        def self.values: -> ::Array[Increase::Models::ExternalAccount::status]
+        def self?.values: -> ::Array[Increase::Models::ExternalAccount::status]
       end
 
       type type_ = :external_account
@@ -109,7 +109,7 @@ module Increase
 
         EXTERNAL_ACCOUNT: :external_account
 
-        def self.values: -> ::Array[Increase::Models::ExternalAccount::type_]
+        def self?.values: -> ::Array[Increase::Models::ExternalAccount::type_]
       end
 
       type verification_status = :unverified | :pending | :verified
@@ -126,7 +126,7 @@ module Increase
         # The External Account is verified.
         VERIFIED: :verified
 
-        def self.values: -> ::Array[Increase::Models::ExternalAccount::verification_status]
+        def self?.values: -> ::Array[Increase::Models::ExternalAccount::verification_status]
       end
     end
   end

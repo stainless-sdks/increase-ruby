@@ -180,15 +180,32 @@ module Increase
 
           # Approve the authentication attempt without triggering a challenge.
           APPROVE =
-            T.let(:approve, Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::OrSymbol)
+            T.let(
+              :approve,
+              Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::TaggedSymbol
+            )
 
           # Request further validation before approving the authentication attempt.
           CHALLENGE =
-            T.let(:challenge, Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::OrSymbol)
+            T.let(
+              :challenge,
+              Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::TaggedSymbol
+            )
 
           # Deny the authentication attempt.
           DENY =
-            T.let(:deny, Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::OrSymbol)
+            T.let(:deny, Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
       end
 
@@ -245,15 +262,26 @@ module Increase
           SUCCESS =
             T.let(
               :success,
-              Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::OrSymbol
+              Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::TaggedSymbol
             )
 
           # Your application was unable to deliver the one-time code to the cardholder.
           FAILURE =
             T.let(
               :failure,
-              Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::OrSymbol
+              Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
       end
 
@@ -322,11 +350,22 @@ module Increase
 
           # Approve the authorization.
           APPROVE =
-            T.let(:approve, Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::OrSymbol)
+            T.let(:approve, Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::TaggedSymbol)
 
           # Decline the authorization.
           DECLINE =
-            T.let(:decline, Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::OrSymbol)
+            T.let(:decline, Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
 
         # The reason the card authorization was declined. This translates to a specific
@@ -348,40 +387,54 @@ module Increase
           INSUFFICIENT_FUNDS =
             T.let(
               :insufficient_funds,
-              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::OrSymbol
+              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
             )
 
           # This type of transaction is not allowed for this card. This transaction should not be retried.
           TRANSACTION_NEVER_ALLOWED =
             T.let(
               :transaction_never_allowed,
-              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::OrSymbol
+              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
             )
 
           # The transaction amount exceeds the cardholder's approval limit. The merchant may attempt to process the transaction again.
           EXCEEDS_APPROVAL_LIMIT =
             T.let(
               :exceeds_approval_limit,
-              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::OrSymbol
+              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
             )
 
           # The card has been temporarily disabled or not yet activated. The merchant may attempt to process the transaction again.
           CARD_TEMPORARILY_DISABLED =
             T.let(
               :card_temporarily_disabled,
-              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::OrSymbol
+              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
             )
 
           # The transaction is suspected to be fraudulent. The merchant may attempt to process the transaction again.
           SUSPECTED_FRAUD =
             T.let(
               :suspected_fraud,
-              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::OrSymbol
+              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
             )
 
           # The transaction was declined for another reason. The merchant may attempt to process the transaction again. This should be used sparingly.
           OTHER =
-            T.let(:other, Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::OrSymbol)
+            T.let(
+              :other,
+              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
+            )
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
       end
 
@@ -461,15 +514,26 @@ module Increase
           SUCCESS =
             T.let(
               :success,
-              Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::OrSymbol
+              Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::TaggedSymbol
             )
 
           # Your application failed to deliver the one-time passcode to the cardholder.
           FAILURE =
             T.let(
               :failure,
-              Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::OrSymbol
+              Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
 
         class Success < Increase::BaseModel

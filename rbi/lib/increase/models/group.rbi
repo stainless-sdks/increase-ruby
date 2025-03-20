@@ -102,6 +102,12 @@ module Increase
 
         # The Group can make ACH debits.
         ENABLED = T.let(:enabled, Increase::Models::Group::ACHDebitStatus::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::Group::ACHDebitStatus::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # If the Group is activated or not.
@@ -116,6 +122,12 @@ module Increase
 
         # The Group is activated.
         ACTIVATED = T.let(:activated, Increase::Models::Group::ActivationStatus::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::Group::ActivationStatus::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -127,6 +139,12 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Group::Type::TaggedSymbol) }
 
         GROUP = T.let(:group, Increase::Models::Group::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::Group::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

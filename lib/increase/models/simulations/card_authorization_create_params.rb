@@ -276,6 +276,12 @@ module Increase
           SUSPECTED_FRAUD = :suspected_fraud
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # The direction describes the direction the funds will move, either from the
@@ -290,6 +296,12 @@ module Increase
           REFUND = :refund
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class NetworkDetails < Increase::BaseModel
@@ -357,6 +369,12 @@ module Increase
               OTHER = :other
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
         end

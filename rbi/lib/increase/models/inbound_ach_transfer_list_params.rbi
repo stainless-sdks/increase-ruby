@@ -191,16 +191,22 @@ module Increase
             T.type_alias { T.any(Symbol, Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol) }
 
           # The Inbound ACH Transfer is awaiting action, will transition automatically if no action is taken.
-          PENDING = T.let(:pending, Increase::Models::InboundACHTransferListParams::Status::In::OrSymbol)
+          PENDING = T.let(:pending, Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol)
 
           # The Inbound ACH Transfer has been declined.
-          DECLINED = T.let(:declined, Increase::Models::InboundACHTransferListParams::Status::In::OrSymbol)
+          DECLINED = T.let(:declined, Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol)
 
           # The Inbound ACH Transfer is accepted.
-          ACCEPTED = T.let(:accepted, Increase::Models::InboundACHTransferListParams::Status::In::OrSymbol)
+          ACCEPTED = T.let(:accepted, Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol)
 
           # The Inbound ACH Transfer has been returned.
-          RETURNED = T.let(:returned, Increase::Models::InboundACHTransferListParams::Status::In::OrSymbol)
+          RETURNED = T.let(:returned, Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

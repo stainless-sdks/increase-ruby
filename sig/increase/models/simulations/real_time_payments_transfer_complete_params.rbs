@@ -127,7 +127,7 @@ module Increase
             # Some other error or issue has occurred.
             OTHER: :other
 
-            def self.values: -> ::Array[Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::reject_reason_code]
+            def self?.values: -> ::Array[Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::reject_reason_code]
           end
         end
       end

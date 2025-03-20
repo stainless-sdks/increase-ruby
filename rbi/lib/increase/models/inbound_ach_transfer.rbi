@@ -489,6 +489,12 @@ module Increase
 
           # Unstructured addendum.
           FREEFORM = T.let(:freeform, Increase::Models::InboundACHTransfer::Addenda::Category::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::InboundACHTransfer::Addenda::Category::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         class Freeform < Increase::BaseModel
@@ -685,6 +691,12 @@ module Increase
               :corporate_customer_advised_not_authorized,
               Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol
             )
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -700,6 +712,12 @@ module Increase
 
         # Debit
         DEBIT = T.let(:debit, Increase::Models::InboundACHTransfer::Direction::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::InboundACHTransfer::Direction::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # The settlement schedule the transfer is expected to follow.
@@ -718,6 +736,12 @@ module Increase
         # The transfer is expected to settle on a future date.
         FUTURE_DATED =
           T.let(:future_dated, Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class InternationalAddenda < Increase::BaseModel
@@ -1247,6 +1271,17 @@ module Increase
               :fixed_to_fixed,
               Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeIndicator::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeIndicator::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
 
         # An instruction of how to interpret the `foreign_exchange_reference` field for
@@ -1286,6 +1321,19 @@ module Increase
               :blank,
               Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[
+                  Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator::TaggedSymbol
+                  ]
+                )
+            end
+            def values
+            end
+          end
         end
 
         # The type of transfer. Set by the originator.
@@ -1443,6 +1491,17 @@ module Increase
               :internet_initiated,
               Increase::Models::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Increase::Models::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
 
         # An instruction of how to interpret the
@@ -1482,6 +1541,19 @@ module Increase
               :iban,
               Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[
+                  Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier::TaggedSymbol
+                  ]
+                )
+            end
+            def values
+            end
+          end
         end
 
         # An instruction of how to interpret the
@@ -1521,6 +1593,19 @@ module Increase
               :iban,
               Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[
+                  Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier::TaggedSymbol
+                  ]
+                )
+            end
+            def values
+            end
+          end
         end
       end
 
@@ -1651,6 +1736,12 @@ module Increase
             :international_ach_transaction,
             Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol
           )
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # The status of the transfer.
@@ -1671,6 +1762,12 @@ module Increase
 
         # The Inbound ACH Transfer has been returned.
         RETURNED = T.let(:returned, Increase::Models::InboundACHTransfer::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::InboundACHTransfer::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class TransferReturn < Increase::BaseModel
@@ -1798,6 +1895,12 @@ module Increase
               :corporate_customer_advised_not_authorized,
               Increase::Models::InboundACHTransfer::TransferReturn::Reason::TaggedSymbol
             )
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::InboundACHTransfer::TransferReturn::Reason::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -1811,6 +1914,12 @@ module Increase
 
         INBOUND_ACH_TRANSFER =
           T.let(:inbound_ach_transfer, Increase::Models::InboundACHTransfer::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::InboundACHTransfer::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

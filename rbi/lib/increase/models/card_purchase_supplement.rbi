@@ -351,6 +351,15 @@ module Increase
               :tax_calculated_on_pre_discount_invoice_total,
               Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
 
         # Indicates how the merchant applied taxes.
@@ -393,6 +402,12 @@ module Increase
               :gross_price_invoice_level,
               Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol
             )
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -656,6 +671,15 @@ module Increase
           # Purchase
           PAYMENT =
             T.let(:payment, Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
 
         # Indicates how the merchant applied the discount for this specific line item.
@@ -687,6 +711,15 @@ module Increase
               :tax_calculated_on_pre_discount_line_item_total,
               Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
       end
 
@@ -700,6 +733,12 @@ module Increase
 
         CARD_PURCHASE_SUPPLEMENT =
           T.let(:card_purchase_supplement, Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

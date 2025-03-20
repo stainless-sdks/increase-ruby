@@ -216,6 +216,12 @@ module Increase
 
           # ACH Debits are blocked.
           BLOCKED = T.let(:blocked, Increase::Models::AccountNumber::InboundACH::DebitStatus::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::AccountNumber::InboundACH::DebitStatus::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -259,6 +265,12 @@ module Increase
           # Checks with this Account Number will be processed only if they can be matched to an existing Check Transfer.
           CHECK_TRANSFERS_ONLY =
             T.let(:check_transfers_only, Increase::Models::AccountNumber::InboundChecks::Status::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::AccountNumber::InboundChecks::Status::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -277,6 +289,12 @@ module Increase
 
         # The account number is permanently disabled.
         CANCELED = T.let(:canceled, Increase::Models::AccountNumber::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::AccountNumber::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -288,6 +306,12 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::AccountNumber::Type::TaggedSymbol) }
 
         ACCOUNT_NUMBER = T.let(:account_number, Increase::Models::AccountNumber::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::AccountNumber::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

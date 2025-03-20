@@ -85,6 +85,15 @@ module Increase
               :inbound_card_authorization_simulation_result,
               Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
       end
     end

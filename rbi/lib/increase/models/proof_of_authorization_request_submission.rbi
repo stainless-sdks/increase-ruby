@@ -279,6 +279,12 @@ module Increase
 
         # The proof of authorization request submission was sent.
         SENT = T.let(:sent, Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -296,6 +302,12 @@ module Increase
             :proof_of_authorization_request_submission,
             Increase::Models::ProofOfAuthorizationRequestSubmission::Type::TaggedSymbol
           )
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ProofOfAuthorizationRequestSubmission::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

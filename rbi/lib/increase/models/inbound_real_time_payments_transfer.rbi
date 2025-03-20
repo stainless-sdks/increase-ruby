@@ -298,6 +298,12 @@ module Increase
 
         # US Dollar (USD)
         USD = T.let(:USD, Increase::Models::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class Decline < Increase::BaseModel
@@ -403,6 +409,15 @@ module Increase
               :real_time_payments_not_enabled,
               Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
       end
 
@@ -426,6 +441,12 @@ module Increase
 
         # The transfer has been declined.
         DECLINED = T.let(:declined, Increase::Models::InboundRealTimePaymentsTransfer::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::InboundRealTimePaymentsTransfer::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -442,6 +463,12 @@ module Increase
             :inbound_real_time_payments_transfer,
             Increase::Models::InboundRealTimePaymentsTransfer::Type::TaggedSymbol
           )
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::InboundRealTimePaymentsTransfer::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

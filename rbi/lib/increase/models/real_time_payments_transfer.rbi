@@ -598,6 +598,12 @@ module Increase
 
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER = T.let(:user, Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         class OAuthApplication < Increase::BaseModel
@@ -667,6 +673,12 @@ module Increase
 
         # US Dollar (USD)
         USD = T.let(:USD, Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class Rejection < Increase::BaseModel
@@ -876,6 +888,15 @@ module Increase
           # Some other error or issue has occurred.
           OTHER =
             T.let(:other, Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
       end
 
@@ -914,6 +935,12 @@ module Increase
 
         # The transfer has been sent successfully and is complete.
         COMPLETE = T.let(:complete, Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class Submission < Increase::BaseModel
@@ -959,6 +986,12 @@ module Increase
 
         REAL_TIME_PAYMENTS_TRANSFER =
           T.let(:real_time_payments_transfer, Increase::Models::RealTimePaymentsTransfer::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::RealTimePaymentsTransfer::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

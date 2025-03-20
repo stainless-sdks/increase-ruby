@@ -309,6 +309,12 @@ module Increase
           PAYMENT_ORDER_REMITTANCE_ADVICE = :payment_order_remittance_advice
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class Freeform < Increase::BaseModel
@@ -404,6 +410,12 @@ module Increase
         UNKNOWN = :unknown
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The type of the account to which the transfer will be sent.
@@ -417,6 +429,12 @@ module Increase
         SAVINGS = :savings
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class PreferredEffectiveDate < Increase::BaseModel
@@ -466,6 +484,12 @@ module Increase
           FUTURE_DATED = :future_dated
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -486,6 +510,12 @@ module Increase
         INTERNET_INITIATED = :internet_initiated
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The timing of the transaction.
@@ -499,6 +529,12 @@ module Increase
         ASYNCHRONOUS = :asynchronous
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

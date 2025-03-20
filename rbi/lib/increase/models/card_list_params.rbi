@@ -189,13 +189,19 @@ module Increase
           OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CardListParams::Status::In::TaggedSymbol) }
 
           # The card is active.
-          ACTIVE = T.let(:active, Increase::Models::CardListParams::Status::In::OrSymbol)
+          ACTIVE = T.let(:active, Increase::Models::CardListParams::Status::In::TaggedSymbol)
 
           # The card is temporarily disabled.
-          DISABLED = T.let(:disabled, Increase::Models::CardListParams::Status::In::OrSymbol)
+          DISABLED = T.let(:disabled, Increase::Models::CardListParams::Status::In::TaggedSymbol)
 
           # The card is permanently canceled.
-          CANCELED = T.let(:canceled, Increase::Models::CardListParams::Status::In::OrSymbol)
+          CANCELED = T.let(:canceled, Increase::Models::CardListParams::Status::In::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::CardListParams::Status::In::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

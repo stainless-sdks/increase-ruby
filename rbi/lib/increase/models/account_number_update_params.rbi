@@ -120,10 +120,21 @@ module Increase
             T.type_alias { T.any(Symbol, Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus::TaggedSymbol) }
 
           # ACH Debits are allowed.
-          ALLOWED = T.let(:allowed, Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus::OrSymbol)
+          ALLOWED =
+            T.let(:allowed, Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus::TaggedSymbol)
 
           # ACH Debits are blocked.
-          BLOCKED = T.let(:blocked, Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus::OrSymbol)
+          BLOCKED =
+            T.let(:blocked, Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
       end
 
@@ -163,11 +174,24 @@ module Increase
             T.type_alias { T.any(Symbol, Increase::Models::AccountNumberUpdateParams::InboundChecks::Status::TaggedSymbol) }
 
           # Checks with this Account Number will be processed even if they are not associated with a Check Transfer.
-          ALLOWED = T.let(:allowed, Increase::Models::AccountNumberUpdateParams::InboundChecks::Status::OrSymbol)
+          ALLOWED =
+            T.let(:allowed, Increase::Models::AccountNumberUpdateParams::InboundChecks::Status::TaggedSymbol)
 
           # Checks with this Account Number will be processed only if they can be matched to an existing Check Transfer.
           CHECK_TRANSFERS_ONLY =
-            T.let(:check_transfers_only, Increase::Models::AccountNumberUpdateParams::InboundChecks::Status::OrSymbol)
+            T.let(
+              :check_transfers_only,
+              Increase::Models::AccountNumberUpdateParams::InboundChecks::Status::TaggedSymbol
+            )
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::AccountNumberUpdateParams::InboundChecks::Status::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
       end
 
@@ -180,13 +204,19 @@ module Increase
           T.type_alias { T.any(Symbol, Increase::Models::AccountNumberUpdateParams::Status::TaggedSymbol) }
 
         # The account number is active.
-        ACTIVE = T.let(:active, Increase::Models::AccountNumberUpdateParams::Status::OrSymbol)
+        ACTIVE = T.let(:active, Increase::Models::AccountNumberUpdateParams::Status::TaggedSymbol)
 
         # The account number is temporarily disabled.
-        DISABLED = T.let(:disabled, Increase::Models::AccountNumberUpdateParams::Status::OrSymbol)
+        DISABLED = T.let(:disabled, Increase::Models::AccountNumberUpdateParams::Status::TaggedSymbol)
 
         # The account number is permanently disabled.
-        CANCELED = T.let(:canceled, Increase::Models::AccountNumberUpdateParams::Status::OrSymbol)
+        CANCELED = T.let(:canceled, Increase::Models::AccountNumberUpdateParams::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::AccountNumberUpdateParams::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

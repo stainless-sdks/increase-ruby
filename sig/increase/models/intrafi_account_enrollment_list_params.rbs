@@ -90,7 +90,7 @@ module Increase
           # Something unexpected happened with this account. Contact Increase support.
           REQUIRES_ATTENTION: :requires_attention
 
-          def self.values: -> ::Array[Increase::Models::IntrafiAccountEnrollmentListParams::Status::in_]
+          def self?.values: -> ::Array[Increase::Models::IntrafiAccountEnrollmentListParams::Status::in_]
         end
       end
     end

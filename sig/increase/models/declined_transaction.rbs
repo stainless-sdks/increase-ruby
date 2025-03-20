@@ -73,7 +73,7 @@ module Increase
         # US Dollar (USD)
         USD: :USD
 
-        def self.values: -> ::Array[Increase::Models::DeclinedTransaction::currency]
+        def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::currency]
       end
 
       type route_type = :account_number | :card | :lockbox
@@ -90,7 +90,7 @@ module Increase
         # A Lockbox.
         LOCKBOX: :lockbox
 
-        def self.values: -> ::Array[Increase::Models::DeclinedTransaction::route_type]
+        def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::route_type]
       end
 
       type source =
@@ -266,7 +266,7 @@ module Increase
             # The corporate customer no longer authorizes this transaction.
             CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED: :corporate_customer_advised_not_authorized
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::ACHDecline::reason]
+            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::ACHDecline::reason]
           end
 
           type type_ = :ach_decline
@@ -276,7 +276,7 @@ module Increase
 
             ACH_DECLINE: :ach_decline
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::ACHDecline::type_]
+            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::ACHDecline::type_]
           end
         end
 
@@ -412,7 +412,7 @@ module Increase
             # This object was actioned by the network, through stand-in processing.
             NETWORK: :network
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::actioner]
+            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::actioner]
           end
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
@@ -438,7 +438,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::currency]
+            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::currency]
           end
 
           type direction = :settlement | :refund
@@ -452,7 +452,7 @@ module Increase
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND: :refund
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::direction]
+            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::direction]
           end
 
           type network_details =
@@ -481,7 +481,7 @@ module Increase
               # Visa
               VISA: :visa
 
-              def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::category]
+              def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::category]
             end
 
             type visa =
@@ -543,7 +543,7 @@ module Increase
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
                 NON_SECURE_TRANSACTION: :non_secure_transaction
 
-                def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::electronic_commerce_indicator]
+                def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::electronic_commerce_indicator]
               end
 
               type point_of_service_entry_mode =
@@ -591,7 +591,7 @@ module Increase
                 # Contact chip card, without card verification value
                 INTEGRATED_CIRCUIT_CARD_NO_CVV: :integrated_circuit_card_no_cvv
 
-                def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::point_of_service_entry_mode]
+                def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::point_of_service_entry_mode]
               end
 
               type stand_in_processing_reason =
@@ -627,7 +627,7 @@ module Increase
                 # An unspecific reason for stand-in processing.
                 OTHER: :other
 
-                def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::stand_in_processing_reason]
+                def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::stand_in_processing_reason]
               end
             end
           end
@@ -684,7 +684,7 @@ module Increase
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND: :refund
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::processing_category]
+            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::processing_category]
           end
 
           type real_time_decision_reason =
@@ -716,7 +716,7 @@ module Increase
             # The transaction was declined for another reason. The merchant may attempt to process the transaction again. This should be used sparingly.
             OTHER: :other
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::real_time_decision_reason]
+            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::real_time_decision_reason]
           end
 
           type reason =
@@ -792,7 +792,7 @@ module Increase
             # The transaction was suspected to be fraudulent. Please reach out to support@increase.com for more information.
             SUSPECTED_FRAUD: :suspected_fraud
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::reason]
+            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::reason]
           end
 
           type verification =
@@ -841,7 +841,7 @@ module Increase
                 # The card verification code did not match the one on file.
                 NO_MATCH: :no_match
 
-                def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::result]
+                def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::result]
               end
             end
 
@@ -904,7 +904,7 @@ module Increase
                 # Postal code and street address do not match.
                 NO_MATCH: :no_match
 
-                def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::result]
+                def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::result]
               end
             end
           end
@@ -943,7 +943,7 @@ module Increase
           # The Declined Transaction was made for an undocumented or deprecated reason.
           OTHER: :other
 
-          def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::category]
+          def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::category]
         end
 
         type check_decline =
@@ -1057,7 +1057,7 @@ module Increase
             # Your integration declined this check via the API.
             USER_INITIATED: :user_initiated
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CheckDecline::reason]
+            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CheckDecline::reason]
           end
         end
 
@@ -1118,7 +1118,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::currency]
+            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::currency]
           end
 
           type reason =
@@ -1170,7 +1170,7 @@ module Increase
             # The check was rejected for an unknown reason.
             UNKNOWN: :unknown
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::reason]
+            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::reason]
           end
         end
 
@@ -1247,7 +1247,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::currency]
+            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::currency]
           end
 
           type reason =
@@ -1279,7 +1279,7 @@ module Increase
             # Your account is not enabled to receive Real-Time Payments transfers.
             REAL_TIME_PAYMENTS_NOT_ENABLED: :real_time_payments_not_enabled
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::reason]
+            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::reason]
           end
         end
 
@@ -1330,7 +1330,7 @@ module Increase
             # The transaction is not allowed per Increase's terms.
             TRANSACTION_NOT_ALLOWED: :transaction_not_allowed
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::WireDecline::reason]
+            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::WireDecline::reason]
           end
         end
       end
@@ -1342,7 +1342,7 @@ module Increase
 
         DECLINED_TRANSACTION: :declined_transaction
 
-        def self.values: -> ::Array[Increase::Models::DeclinedTransaction::type_]
+        def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::type_]
       end
     end
   end

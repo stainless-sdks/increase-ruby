@@ -273,14 +273,24 @@ module Increase
             T.type_alias { T.any(Symbol, Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol) }
 
           # USPS Post with tracking.
-          USPS = T.let(:usps, Increase::Models::PhysicalCardCreateParams::Shipment::Method::OrSymbol)
+          USPS = T.let(:usps, Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol)
 
           # FedEx Priority Overnight, no signature.
           FEDEX_PRIORITY_OVERNIGHT =
-            T.let(:fedex_priority_overnight, Increase::Models::PhysicalCardCreateParams::Shipment::Method::OrSymbol)
+            T.let(
+              :fedex_priority_overnight,
+              Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol
+            )
 
           # FedEx 2-day.
-          FEDEX_2_DAY = T.let(:fedex_2_day, Increase::Models::PhysicalCardCreateParams::Shipment::Method::OrSymbol)
+          FEDEX_2_DAY =
+            T.let(:fedex_2_day, Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

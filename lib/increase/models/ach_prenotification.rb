@@ -165,6 +165,12 @@ module Increase
         DEBIT = :debit
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class NotificationsOfChange < Increase::BaseModel
@@ -271,6 +277,12 @@ module Increase
             :incorrect_transaction_code_by_originating_depository_financial_institution
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -517,6 +529,12 @@ module Increase
           UNTIMELY_RETURN = :untimely_return
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -537,6 +555,12 @@ module Increase
         SUBMITTED = :submitted
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -547,6 +571,12 @@ module Increase
         ACH_PRENOTIFICATION = :ach_prenotification
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

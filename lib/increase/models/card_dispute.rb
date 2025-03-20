@@ -251,6 +251,12 @@ module Increase
         WON = :won
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -261,6 +267,12 @@ module Increase
         CARD_DISPUTE = :card_dispute
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Win < Increase::BaseModel

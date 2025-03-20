@@ -77,7 +77,7 @@ module Increase
           # The drawdown request has been refused by the recipient.
           REFUSED: :refused
 
-          def self.values: -> ::Array[Increase::Models::WireDrawdownRequestListParams::Status::in_]
+          def self?.values: -> ::Array[Increase::Models::WireDrawdownRequestListParams::Status::in_]
         end
       end
     end

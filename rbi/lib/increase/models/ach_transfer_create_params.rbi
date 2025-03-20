@@ -379,14 +379,20 @@ module Increase
             T.type_alias { T.any(Symbol, Increase::Models::ACHTransferCreateParams::Addenda::Category::TaggedSymbol) }
 
           # Unstructured `payment_related_information` passed through with the transfer.
-          FREEFORM = T.let(:freeform, Increase::Models::ACHTransferCreateParams::Addenda::Category::OrSymbol)
+          FREEFORM = T.let(:freeform, Increase::Models::ACHTransferCreateParams::Addenda::Category::TaggedSymbol)
 
           # Structured ASC X12 820 remittance advice records. Please reach out to [support@increase.com](mailto:support@increase.com) for more information.
           PAYMENT_ORDER_REMITTANCE_ADVICE =
             T.let(
               :payment_order_remittance_advice,
-              Increase::Models::ACHTransferCreateParams::Addenda::Category::OrSymbol
+              Increase::Models::ACHTransferCreateParams::Addenda::Category::TaggedSymbol
             )
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Category::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         class Freeform < Increase::BaseModel
@@ -522,14 +528,24 @@ module Increase
 
         # The External Account is owned by a business.
         BUSINESS =
-          T.let(:business, Increase::Models::ACHTransferCreateParams::DestinationAccountHolder::OrSymbol)
+          T.let(:business, Increase::Models::ACHTransferCreateParams::DestinationAccountHolder::TaggedSymbol)
 
         # The External Account is owned by an individual.
         INDIVIDUAL =
-          T.let(:individual, Increase::Models::ACHTransferCreateParams::DestinationAccountHolder::OrSymbol)
+          T.let(:individual, Increase::Models::ACHTransferCreateParams::DestinationAccountHolder::TaggedSymbol)
 
         # It's unknown what kind of entity owns the External Account.
-        UNKNOWN = T.let(:unknown, Increase::Models::ACHTransferCreateParams::DestinationAccountHolder::OrSymbol)
+        UNKNOWN =
+          T.let(:unknown, Increase::Models::ACHTransferCreateParams::DestinationAccountHolder::TaggedSymbol)
+
+        class << self
+          sig do
+            override
+              .returns(T::Array[Increase::Models::ACHTransferCreateParams::DestinationAccountHolder::TaggedSymbol])
+          end
+          def values
+          end
+        end
       end
 
       # The type of the account to which the transfer will be sent.
@@ -541,10 +557,16 @@ module Increase
           T.type_alias { T.any(Symbol, Increase::Models::ACHTransferCreateParams::Funding::TaggedSymbol) }
 
         # A checking account.
-        CHECKING = T.let(:checking, Increase::Models::ACHTransferCreateParams::Funding::OrSymbol)
+        CHECKING = T.let(:checking, Increase::Models::ACHTransferCreateParams::Funding::TaggedSymbol)
 
         # A savings account.
-        SAVINGS = T.let(:savings, Increase::Models::ACHTransferCreateParams::Funding::OrSymbol)
+        SAVINGS = T.let(:savings, Increase::Models::ACHTransferCreateParams::Funding::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ACHTransferCreateParams::Funding::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class PreferredEffectiveDate < Increase::BaseModel
@@ -618,15 +640,26 @@ module Increase
           SAME_DAY =
             T.let(
               :same_day,
-              Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule::OrSymbol
+              Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol
             )
 
           # The chosen effective date will be the business day following the ACH processing date on which the transfer is submitted. The transfer will be settled on that future day.
           FUTURE_DATED =
             T.let(
               :future_dated,
-              Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule::OrSymbol
+              Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
       end
 
@@ -643,26 +676,37 @@ module Increase
         CORPORATE_CREDIT_OR_DEBIT =
           T.let(
             :corporate_credit_or_debit,
-            Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::OrSymbol
+            Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::TaggedSymbol
           )
 
         # Corporate Trade Exchange (CTX).
         CORPORATE_TRADE_EXCHANGE =
           T.let(
             :corporate_trade_exchange,
-            Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::OrSymbol
+            Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::TaggedSymbol
           )
 
         # Prearranged Payments and Deposits (PPD).
         PREARRANGED_PAYMENTS_AND_DEPOSIT =
           T.let(
             :prearranged_payments_and_deposit,
-            Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::OrSymbol
+            Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::TaggedSymbol
           )
 
         # Internet Initiated (WEB).
         INTERNET_INITIATED =
-          T.let(:internet_initiated, Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::OrSymbol)
+          T.let(
+            :internet_initiated,
+            Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::TaggedSymbol
+          )
+
+        class << self
+          sig do
+            override.returns(T::Array[Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::TaggedSymbol])
+          end
+          def values
+          end
+        end
       end
 
       # The timing of the transaction.
@@ -675,11 +719,18 @@ module Increase
           T.type_alias { T.any(Symbol, Increase::Models::ACHTransferCreateParams::TransactionTiming::TaggedSymbol) }
 
         # A Transaction will be created immediately.
-        SYNCHRONOUS = T.let(:synchronous, Increase::Models::ACHTransferCreateParams::TransactionTiming::OrSymbol)
+        SYNCHRONOUS =
+          T.let(:synchronous, Increase::Models::ACHTransferCreateParams::TransactionTiming::TaggedSymbol)
 
         # A Transaction will be created when the funds settle at the Federal Reserve.
         ASYNCHRONOUS =
-          T.let(:asynchronous, Increase::Models::ACHTransferCreateParams::TransactionTiming::OrSymbol)
+          T.let(:asynchronous, Increase::Models::ACHTransferCreateParams::TransactionTiming::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ACHTransferCreateParams::TransactionTiming::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

@@ -158,6 +158,12 @@ module Increase
 
         BOOKKEEPING_ENTRY_SET =
           T.let(:bookkeeping_entry_set, Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

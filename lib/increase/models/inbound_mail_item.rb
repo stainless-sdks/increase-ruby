@@ -84,6 +84,12 @@ module Increase
         LOCKBOX_NOT_ACTIVE = :lockbox_not_active
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # If the mail item has been processed.
@@ -100,6 +106,12 @@ module Increase
         REJECTED = :rejected
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -110,6 +122,12 @@ module Increase
         INBOUND_MAIL_ITEM = :inbound_mail_item
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

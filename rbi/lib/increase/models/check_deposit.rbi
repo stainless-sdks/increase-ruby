@@ -403,6 +403,12 @@ module Increase
 
           # US Dollar (USD)
           USD = T.let(:USD, Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -528,6 +534,12 @@ module Increase
 
           # US Dollar (USD)
           USD = T.let(:USD, Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         # Why the check deposit was rejected.
@@ -585,6 +597,12 @@ module Increase
 
           # The check was rejected for an unknown reason.
           UNKNOWN = T.let(:unknown, Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -711,6 +729,12 @@ module Increase
 
           # US Dollar (USD)
           USD = T.let(:USD, Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         # Why this check was returned by the bank holding the account it was drawn
@@ -841,6 +865,12 @@ module Increase
           # The bank sold this account and no longer services this customer.
           BRANCH_OR_ACCOUNT_SOLD =
             T.let(:branch_or_account_sold, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -1071,6 +1101,12 @@ module Increase
 
           # US Dollar (USD)
           USD = T.let(:USD, Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         # The status of the hold.
@@ -1086,6 +1122,12 @@ module Increase
 
           # Funds have been released.
           COMPLETE = T.let(:complete, Increase::Models::CheckDeposit::InboundFundsHold::Status::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::CheckDeposit::InboundFundsHold::Status::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         # A constant representing the object's type. For this resource it will always be
@@ -1099,6 +1141,12 @@ module Increase
 
           INBOUND_FUNDS_HOLD =
             T.let(:inbound_funds_hold, Increase::Models::CheckDeposit::InboundFundsHold::Type::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::CheckDeposit::InboundFundsHold::Type::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -1120,6 +1168,12 @@ module Increase
 
         # The Check Deposit has been returned.
         RETURNED = T.let(:returned, Increase::Models::CheckDeposit::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::CheckDeposit::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -1131,6 +1185,12 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::Type::TaggedSymbol) }
 
         CHECK_DEPOSIT = T.let(:check_deposit, Increase::Models::CheckDeposit::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::CheckDeposit::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

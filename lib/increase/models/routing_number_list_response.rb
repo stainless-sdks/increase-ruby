@@ -66,6 +66,12 @@ module Increase
         NOT_SUPPORTED = :not_supported
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # This routing number's support for Real-Time Payments Transfers.
@@ -79,6 +85,12 @@ module Increase
         NOT_SUPPORTED = :not_supported
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -89,6 +101,12 @@ module Increase
         ROUTING_NUMBER = :routing_number
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # This routing number's support for Wire Transfers.
@@ -102,6 +120,12 @@ module Increase
         NOT_SUPPORTED = :not_supported
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

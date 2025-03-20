@@ -83,6 +83,12 @@ module Increase
         PRODUCTION_TOKEN = :production_token
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

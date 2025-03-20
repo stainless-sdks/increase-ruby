@@ -53,7 +53,7 @@ module Increase
 
         ACCOUNT_STATEMENT: :account_statement
 
-        def self.values: -> ::Array[Increase::Models::AccountStatement::type_]
+        def self?.values: -> ::Array[Increase::Models::AccountStatement::type_]
       end
     end
   end

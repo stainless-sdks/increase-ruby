@@ -63,7 +63,7 @@ module Increase
         # Something unexpected happened with this account. Contact Increase support.
         REQUIRES_ATTENTION: :requires_attention
 
-        def self.values: -> ::Array[Increase::Models::IntrafiAccountEnrollment::status]
+        def self?.values: -> ::Array[Increase::Models::IntrafiAccountEnrollment::status]
       end
 
       type type_ = :intrafi_account_enrollment
@@ -73,7 +73,7 @@ module Increase
 
         INTRAFI_ACCOUNT_ENROLLMENT: :intrafi_account_enrollment
 
-        def self.values: -> ::Array[Increase::Models::IntrafiAccountEnrollment::type_]
+        def self?.values: -> ::Array[Increase::Models::IntrafiAccountEnrollment::type_]
       end
     end
   end

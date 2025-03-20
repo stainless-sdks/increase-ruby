@@ -139,6 +139,12 @@ module Increase
           DASHBOARD_TABLE_CSV = :dashboard_table_csv
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -233,6 +239,12 @@ module Increase
           FAILED = :failed
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

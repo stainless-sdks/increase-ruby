@@ -45,7 +45,7 @@ module Increase
 
         FILE_LINK: :file_link
 
-        def self.values: -> ::Array[Increase::Models::FileLink::type_]
+        def self?.values: -> ::Array[Increase::Models::FileLink::type_]
       end
     end
   end

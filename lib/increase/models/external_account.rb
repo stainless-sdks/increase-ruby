@@ -122,6 +122,12 @@ module Increase
         UNKNOWN = :unknown
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The type of the account to which the transfer will be sent.
@@ -138,6 +144,12 @@ module Increase
         OTHER = :other
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The External Account's status.
@@ -151,6 +163,12 @@ module Increase
         ARCHIVED = :archived
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -161,6 +179,12 @@ module Increase
         EXTERNAL_ACCOUNT = :external_account
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # If you have verified ownership of the External Account.
@@ -177,6 +201,12 @@ module Increase
         VERIFIED = :verified
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

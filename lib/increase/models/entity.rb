@@ -421,6 +421,12 @@ module Increase
                 OTHER = :other
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
           end
@@ -436,6 +442,12 @@ module Increase
             CONTROL = :control
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
       end
@@ -569,6 +581,12 @@ module Increase
           MUNICIPALITY = :municipality
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -722,6 +740,12 @@ module Increase
               OTHER = :other
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
         end
@@ -857,6 +881,12 @@ module Increase
             OTHER = :other
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
       end
@@ -875,6 +905,12 @@ module Increase
         DISABLED = :disabled
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The entity's legal structure.
@@ -897,6 +933,12 @@ module Increase
         GOVERNMENT_AUTHORITY = :government_authority
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class ThirdPartyVerification < Increase::BaseModel
@@ -934,6 +976,12 @@ module Increase
           MIDDESK = :middesk
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -1072,6 +1120,12 @@ module Increase
           IRREVOCABLE = :irrevocable
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class Grantor < Increase::BaseModel
@@ -1203,6 +1257,12 @@ module Increase
               OTHER = :other
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
         end
@@ -1359,6 +1419,12 @@ module Increase
                 OTHER = :other
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
           end
@@ -1371,6 +1437,12 @@ module Increase
             INDIVIDUAL = :individual
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
       end
@@ -1383,6 +1455,12 @@ module Increase
         ENTITY = :entity
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end
