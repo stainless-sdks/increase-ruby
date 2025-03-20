@@ -308,6 +308,8 @@ module Increase
     abstract!
     final!
 
+    Elem = type_member(:out)
+
     sig(:final) do
       params(
         type_info: T.any(
@@ -358,7 +360,7 @@ module Increase
     end
 
     # @api private
-    sig(:final) { returns(T.anything) }
+    sig(:final) { returns(Elem) }
     protected def item_type
     end
 
@@ -387,6 +389,8 @@ module Increase
     abstract!
     final!
 
+    Elem = type_member(:out)
+
     sig(:final) do
       params(
         type_info: T.any(
@@ -437,7 +441,7 @@ module Increase
     end
 
     # @api private
-    sig(:final) { returns(T.anything) }
+    sig(:final) { returns(Elem) }
     protected def item_type
     end
 
@@ -627,17 +631,7 @@ module Increase
     def to_h
     end
 
-    # Returns a Hash of the data underlying this object. O(1)
-    #
-    #   Keys are Symbols and values are the raw values from the response. The return
-    #   value indicates which values were ever set on the object. i.e. there will be a
-    #   key in this hash if they ever were, even if the set value was nil.
-    #
-    #   This method is not recursive. The returned value is shared by the object, so it
-    #   should not be mutated.
-    sig { overridable.returns(T::Hash[Symbol, T.anything]) }
-    def to_hash
-    end
+    alias_method :to_hash, :to_h
 
     sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.anything]) }
     def deconstruct_keys(keys)
