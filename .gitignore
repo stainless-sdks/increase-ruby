@@ -7,4 +7,6 @@ Brewfile.lock.json
 bin/tapioca
 doc/
 sorbet/*
+tmp/
+
 !/sorbet/config
