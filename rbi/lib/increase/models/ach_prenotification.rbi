@@ -127,8 +127,12 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::ACHPrenotification::PrenotificationReturn))
-          .returns(T.nilable(Increase::Models::ACHPrenotification::PrenotificationReturn))
+        params(
+          _: T.nilable(T.any(Increase::Models::ACHPrenotification::PrenotificationReturn, Increase::Util::AnyHash))
+        )
+          .returns(
+            T.nilable(T.any(Increase::Models::ACHPrenotification::PrenotificationReturn, Increase::Util::AnyHash))
+          )
       end
       def prenotification_return=(_)
       end

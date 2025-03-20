@@ -25,8 +25,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::EntityCreateParams::Corporation)
-          .returns(Increase::Models::EntityCreateParams::Corporation)
+        params(_: T.any(Increase::Models::EntityCreateParams::Corporation, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::EntityCreateParams::Corporation, Increase::Util::AnyHash))
       end
       def corporation=(_)
       end
@@ -47,8 +47,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::EntityCreateParams::GovernmentAuthority)
-          .returns(Increase::Models::EntityCreateParams::GovernmentAuthority)
+        params(_: T.any(Increase::Models::EntityCreateParams::GovernmentAuthority, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::EntityCreateParams::GovernmentAuthority, Increase::Util::AnyHash))
       end
       def government_authority=(_)
       end
@@ -60,7 +60,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::EntityCreateParams::Joint).returns(Increase::Models::EntityCreateParams::Joint)
+        params(_: T.any(Increase::Models::EntityCreateParams::Joint, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::EntityCreateParams::Joint, Increase::Util::AnyHash))
       end
       def joint=(_)
       end
@@ -74,8 +75,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::EntityCreateParams::NaturalPerson)
-          .returns(Increase::Models::EntityCreateParams::NaturalPerson)
+        params(_: T.any(Increase::Models::EntityCreateParams::NaturalPerson, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::EntityCreateParams::NaturalPerson, Increase::Util::AnyHash))
       end
       def natural_person=(_)
       end
@@ -99,8 +100,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::EntityCreateParams::ThirdPartyVerification)
-          .returns(Increase::Models::EntityCreateParams::ThirdPartyVerification)
+        params(_: T.any(Increase::Models::EntityCreateParams::ThirdPartyVerification, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::EntityCreateParams::ThirdPartyVerification, Increase::Util::AnyHash))
       end
       def third_party_verification=(_)
       end
@@ -112,7 +113,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::EntityCreateParams::Trust).returns(Increase::Models::EntityCreateParams::Trust)
+        params(_: T.any(Increase::Models::EntityCreateParams::Trust, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::EntityCreateParams::Trust, Increase::Util::AnyHash))
       end
       def trust=(_)
       end
@@ -198,8 +200,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::EntityCreateParams::Corporation::Address)
-            .returns(Increase::Models::EntityCreateParams::Corporation::Address)
+          params(_: T.any(Increase::Models::EntityCreateParams::Corporation::Address, Increase::Util::AnyHash))
+            .returns(T.any(Increase::Models::EntityCreateParams::Corporation::Address, Increase::Util::AnyHash))
         end
         def address=(_)
         end
@@ -381,8 +383,18 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual)
-              .returns(Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual)
+            params(
+              _: T.any(
+                Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual,
+                Increase::Util::AnyHash
+              )
+            )
+              .returns(
+                T.any(
+                  Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual,
+                  Increase::Util::AnyHash
+                )
+              )
           end
           def individual=(_)
           end
@@ -442,8 +454,18 @@ module Increase
             end
 
             sig do
-              params(_: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address)
-                .returns(Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address)
+              params(
+                _: T.any(
+                  Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address,
+                  Increase::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address,
+                    Increase::Util::AnyHash
+                  )
+                )
             end
             def address=(_)
             end
@@ -463,8 +485,18 @@ module Increase
             end
 
             sig do
-              params(_: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification)
-                .returns(Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification)
+              params(
+                _: T.any(
+                  Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification,
+                  Increase::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification,
+                    Increase::Util::AnyHash
+                  )
+                )
             end
             def identification=(_)
             end
@@ -632,10 +664,16 @@ module Increase
 
               sig do
                 params(
-                  _: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense
+                  _: T.any(
+                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense,
+                    Increase::Util::AnyHash
+                  )
                 )
                   .returns(
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense
+                    T.any(
+                      Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense,
+                      Increase::Util::AnyHash
+                    )
                   )
               end
               def drivers_license=(_)
@@ -655,10 +693,16 @@ module Increase
 
               sig do
                 params(
-                  _: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other
+                  _: T.any(
+                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other,
+                    Increase::Util::AnyHash
+                  )
                 )
                   .returns(
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other
+                    T.any(
+                      Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other,
+                      Increase::Util::AnyHash
+                    )
                   )
               end
               def other=(_)
@@ -678,10 +722,16 @@ module Increase
 
               sig do
                 params(
-                  _: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport
+                  _: T.any(
+                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport,
+                    Increase::Util::AnyHash
+                  )
                 )
                   .returns(
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport
+                    T.any(
+                      Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport,
+                      Increase::Util::AnyHash
+                    )
                   )
               end
               def passport=(_)
@@ -977,8 +1027,12 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::EntityCreateParams::GovernmentAuthority::Address)
-            .returns(Increase::Models::EntityCreateParams::GovernmentAuthority::Address)
+          params(
+            _: T.any(Increase::Models::EntityCreateParams::GovernmentAuthority::Address, Increase::Util::AnyHash)
+          )
+            .returns(
+              T.any(Increase::Models::EntityCreateParams::GovernmentAuthority::Address, Increase::Util::AnyHash)
+            )
         end
         def address=(_)
         end
@@ -1212,8 +1266,10 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::EntityCreateParams::Joint::Individual::Address)
-              .returns(Increase::Models::EntityCreateParams::Joint::Individual::Address)
+            params(
+              _: T.any(Increase::Models::EntityCreateParams::Joint::Individual::Address, Increase::Util::AnyHash)
+            )
+              .returns(T.any(Increase::Models::EntityCreateParams::Joint::Individual::Address, Increase::Util::AnyHash))
           end
           def address=(_)
           end
@@ -1233,8 +1289,12 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::EntityCreateParams::Joint::Individual::Identification)
-              .returns(Increase::Models::EntityCreateParams::Joint::Individual::Identification)
+            params(
+              _: T.any(Increase::Models::EntityCreateParams::Joint::Individual::Identification, Increase::Util::AnyHash)
+            )
+              .returns(
+                T.any(Increase::Models::EntityCreateParams::Joint::Individual::Identification, Increase::Util::AnyHash)
+              )
           end
           def identification=(_)
           end
@@ -1388,8 +1448,18 @@ module Increase
             end
 
             sig do
-              params(_: Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense)
-                .returns(Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense)
+              params(
+                _: T.any(
+                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense,
+                  Increase::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense,
+                    Increase::Util::AnyHash
+                  )
+                )
             end
             def drivers_license=(_)
             end
@@ -1401,8 +1471,18 @@ module Increase
             end
 
             sig do
-              params(_: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other)
-                .returns(Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other)
+              params(
+                _: T.any(
+                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other,
+                  Increase::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other,
+                    Increase::Util::AnyHash
+                  )
+                )
             end
             def other=(_)
             end
@@ -1414,8 +1494,18 @@ module Increase
             end
 
             sig do
-              params(_: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport)
-                .returns(Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport)
+              params(
+                _: T.any(
+                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport,
+                  Increase::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport,
+                    Increase::Util::AnyHash
+                  )
+                )
             end
             def passport=(_)
             end
@@ -1687,8 +1777,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::EntityCreateParams::NaturalPerson::Address)
-            .returns(Increase::Models::EntityCreateParams::NaturalPerson::Address)
+          params(_: T.any(Increase::Models::EntityCreateParams::NaturalPerson::Address, Increase::Util::AnyHash))
+            .returns(T.any(Increase::Models::EntityCreateParams::NaturalPerson::Address, Increase::Util::AnyHash))
         end
         def address=(_)
         end
@@ -1708,8 +1798,12 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::EntityCreateParams::NaturalPerson::Identification)
-            .returns(Increase::Models::EntityCreateParams::NaturalPerson::Identification)
+          params(
+            _: T.any(Increase::Models::EntityCreateParams::NaturalPerson::Identification, Increase::Util::AnyHash)
+          )
+            .returns(
+              T.any(Increase::Models::EntityCreateParams::NaturalPerson::Identification, Increase::Util::AnyHash)
+            )
         end
         def identification=(_)
         end
@@ -1863,8 +1957,18 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense)
-              .returns(Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense)
+            params(
+              _: T.any(
+                Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense,
+                Increase::Util::AnyHash
+              )
+            )
+              .returns(
+                T.any(
+                  Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense,
+                  Increase::Util::AnyHash
+                )
+              )
           end
           def drivers_license=(_)
           end
@@ -1876,8 +1980,12 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other)
-              .returns(Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other)
+            params(
+              _: T.any(Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other, Increase::Util::AnyHash)
+            )
+              .returns(
+                T.any(Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other, Increase::Util::AnyHash)
+              )
           end
           def other=(_)
           end
@@ -1889,8 +1997,18 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport)
-              .returns(Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport)
+            params(
+              _: T.any(
+                Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport,
+                Increase::Util::AnyHash
+              )
+            )
+              .returns(
+                T.any(
+                  Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport,
+                  Increase::Util::AnyHash
+                )
+              )
           end
           def passport=(_)
           end
@@ -2223,8 +2341,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::EntityCreateParams::Trust::Address)
-            .returns(Increase::Models::EntityCreateParams::Trust::Address)
+          params(_: T.any(Increase::Models::EntityCreateParams::Trust::Address, Increase::Util::AnyHash))
+            .returns(T.any(Increase::Models::EntityCreateParams::Trust::Address, Increase::Util::AnyHash))
         end
         def address=(_)
         end
@@ -2289,8 +2407,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::EntityCreateParams::Trust::Grantor)
-            .returns(Increase::Models::EntityCreateParams::Trust::Grantor)
+          params(_: T.any(Increase::Models::EntityCreateParams::Trust::Grantor, Increase::Util::AnyHash))
+            .returns(T.any(Increase::Models::EntityCreateParams::Trust::Grantor, Increase::Util::AnyHash))
         end
         def grantor=(_)
         end
@@ -2453,8 +2571,10 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::EntityCreateParams::Trust::Trustee::Individual)
-              .returns(Increase::Models::EntityCreateParams::Trust::Trustee::Individual)
+            params(
+              _: T.any(Increase::Models::EntityCreateParams::Trust::Trustee::Individual, Increase::Util::AnyHash)
+            )
+              .returns(T.any(Increase::Models::EntityCreateParams::Trust::Trustee::Individual, Increase::Util::AnyHash))
           end
           def individual=(_)
           end
@@ -2503,8 +2623,12 @@ module Increase
             end
 
             sig do
-              params(_: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address)
-                .returns(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address)
+              params(
+                _: T.any(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address, Increase::Util::AnyHash)
+              )
+                .returns(
+                  T.any(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address, Increase::Util::AnyHash)
+                )
             end
             def address=(_)
             end
@@ -2524,8 +2648,18 @@ module Increase
             end
 
             sig do
-              params(_: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification)
-                .returns(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification)
+              params(
+                _: T.any(
+                  Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification,
+                  Increase::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification,
+                    Increase::Util::AnyHash
+                  )
+                )
             end
             def identification=(_)
             end
@@ -2694,9 +2828,17 @@ module Increase
 
               sig do
                 params(
-                  _: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense
+                  _: T.any(
+                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense,
+                    Increase::Util::AnyHash
+                  )
                 )
-                  .returns(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense)
+                  .returns(
+                    T.any(
+                      Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense,
+                      Increase::Util::AnyHash
+                    )
+                  )
               end
               def drivers_license=(_)
               end
@@ -2712,8 +2854,18 @@ module Increase
               end
 
               sig do
-                params(_: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other)
-                  .returns(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other)
+                params(
+                  _: T.any(
+                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other,
+                    Increase::Util::AnyHash
+                  )
+                )
+                  .returns(
+                    T.any(
+                      Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other,
+                      Increase::Util::AnyHash
+                    )
+                  )
               end
               def other=(_)
               end
@@ -2729,8 +2881,18 @@ module Increase
               end
 
               sig do
-                params(_: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport)
-                  .returns(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport)
+                params(
+                  _: T.any(
+                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport,
+                    Increase::Util::AnyHash
+                  )
+                )
+                  .returns(
+                    T.any(
+                      Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport,
+                      Increase::Util::AnyHash
+                    )
+                  )
               end
               def passport=(_)
               end
@@ -3005,8 +3167,8 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::EntityCreateParams::Trust::Grantor::Address)
-              .returns(Increase::Models::EntityCreateParams::Trust::Grantor::Address)
+            params(_: T.any(Increase::Models::EntityCreateParams::Trust::Grantor::Address, Increase::Util::AnyHash))
+              .returns(T.any(Increase::Models::EntityCreateParams::Trust::Grantor::Address, Increase::Util::AnyHash))
           end
           def address=(_)
           end
@@ -3026,8 +3188,12 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::EntityCreateParams::Trust::Grantor::Identification)
-              .returns(Increase::Models::EntityCreateParams::Trust::Grantor::Identification)
+            params(
+              _: T.any(Increase::Models::EntityCreateParams::Trust::Grantor::Identification, Increase::Util::AnyHash)
+            )
+              .returns(
+                T.any(Increase::Models::EntityCreateParams::Trust::Grantor::Identification, Increase::Util::AnyHash)
+              )
           end
           def identification=(_)
           end
@@ -3178,8 +3344,18 @@ module Increase
             end
 
             sig do
-              params(_: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense)
-                .returns(Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense)
+              params(
+                _: T.any(
+                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense,
+                  Increase::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense,
+                    Increase::Util::AnyHash
+                  )
+                )
             end
             def drivers_license=(_)
             end
@@ -3191,8 +3367,18 @@ module Increase
             end
 
             sig do
-              params(_: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other)
-                .returns(Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other)
+              params(
+                _: T.any(
+                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other,
+                  Increase::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other,
+                    Increase::Util::AnyHash
+                  )
+                )
             end
             def other=(_)
             end
@@ -3204,8 +3390,18 @@ module Increase
             end
 
             sig do
-              params(_: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport)
-                .returns(Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport)
+              params(
+                _: T.any(
+                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport,
+                  Increase::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport,
+                    Increase::Util::AnyHash
+                  )
+                )
             end
             def passport=(_)
             end

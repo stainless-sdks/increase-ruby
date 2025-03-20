@@ -20,8 +20,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::ACHTransferListParams::CreatedAt)
-          .returns(Increase::Models::ACHTransferListParams::CreatedAt)
+        params(_: T.any(Increase::Models::ACHTransferListParams::CreatedAt, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::ACHTransferListParams::CreatedAt, Increase::Util::AnyHash))
       end
       def created_at=(_)
       end

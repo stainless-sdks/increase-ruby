@@ -29,8 +29,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::InboundWireTransferListParams::CreatedAt)
-          .returns(Increase::Models::InboundWireTransferListParams::CreatedAt)
+        params(_: T.any(Increase::Models::InboundWireTransferListParams::CreatedAt, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::InboundWireTransferListParams::CreatedAt, Increase::Util::AnyHash))
       end
       def created_at=(_)
       end
@@ -59,8 +59,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::InboundWireTransferListParams::Status)
-          .returns(Increase::Models::InboundWireTransferListParams::Status)
+        params(_: T.any(Increase::Models::InboundWireTransferListParams::Status, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::InboundWireTransferListParams::Status, Increase::Util::AnyHash))
       end
       def status=(_)
       end

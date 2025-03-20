@@ -26,7 +26,10 @@ module Increase
       def cardholder
       end
 
-      sig { params(_: Increase::Models::PhysicalCard::Cardholder).returns(Increase::Models::PhysicalCard::Cardholder) }
+      sig do
+        params(_: T.any(Increase::Models::PhysicalCard::Cardholder, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::PhysicalCard::Cardholder, Increase::Util::AnyHash))
+      end
       def cardholder=(_)
       end
 
@@ -65,7 +68,10 @@ module Increase
       def shipment
       end
 
-      sig { params(_: Increase::Models::PhysicalCard::Shipment).returns(Increase::Models::PhysicalCard::Shipment) }
+      sig do
+        params(_: T.any(Increase::Models::PhysicalCard::Shipment, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::PhysicalCard::Shipment, Increase::Util::AnyHash))
+      end
       def shipment=(_)
       end
 
@@ -181,8 +187,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::PhysicalCard::Shipment::Address)
-            .returns(Increase::Models::PhysicalCard::Shipment::Address)
+          params(_: T.any(Increase::Models::PhysicalCard::Shipment::Address, Increase::Util::AnyHash))
+            .returns(T.any(Increase::Models::PhysicalCard::Shipment::Address, Increase::Util::AnyHash))
         end
         def address=(_)
         end
@@ -217,8 +223,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking))
-            .returns(T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking))
+          params(_: T.nilable(T.any(Increase::Models::PhysicalCard::Shipment::Tracking, Increase::Util::AnyHash)))
+            .returns(T.nilable(T.any(Increase::Models::PhysicalCard::Shipment::Tracking, Increase::Util::AnyHash)))
         end
         def tracking=(_)
         end

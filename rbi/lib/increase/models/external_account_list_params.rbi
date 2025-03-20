@@ -51,8 +51,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::ExternalAccountListParams::Status)
-          .returns(Increase::Models::ExternalAccountListParams::Status)
+        params(_: T.any(Increase::Models::ExternalAccountListParams::Status, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::ExternalAccountListParams::Status, Increase::Util::AnyHash))
       end
       def status=(_)
       end

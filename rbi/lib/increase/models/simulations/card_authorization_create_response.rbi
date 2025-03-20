@@ -12,8 +12,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::DeclinedTransaction))
-            .returns(T.nilable(Increase::Models::DeclinedTransaction))
+          params(_: T.nilable(T.any(Increase::Models::DeclinedTransaction, Increase::Util::AnyHash)))
+            .returns(T.nilable(T.any(Increase::Models::DeclinedTransaction, Increase::Util::AnyHash)))
         end
         def declined_transaction=(_)
         end
@@ -26,8 +26,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::PendingTransaction))
-            .returns(T.nilable(Increase::Models::PendingTransaction))
+          params(_: T.nilable(T.any(Increase::Models::PendingTransaction, Increase::Util::AnyHash)))
+            .returns(T.nilable(T.any(Increase::Models::PendingTransaction, Increase::Util::AnyHash)))
         end
         def pending_transaction=(_)
         end

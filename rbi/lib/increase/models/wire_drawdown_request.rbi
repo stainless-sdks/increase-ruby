@@ -190,8 +190,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::WireDrawdownRequest::Submission))
-          .returns(T.nilable(Increase::Models::WireDrawdownRequest::Submission))
+        params(_: T.nilable(T.any(Increase::Models::WireDrawdownRequest::Submission, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::WireDrawdownRequest::Submission, Increase::Util::AnyHash)))
       end
       def submission=(_)
       end

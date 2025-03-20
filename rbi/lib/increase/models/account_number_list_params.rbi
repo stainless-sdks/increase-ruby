@@ -20,8 +20,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::AccountNumberListParams::ACHDebitStatus)
-          .returns(Increase::Models::AccountNumberListParams::ACHDebitStatus)
+        params(_: T.any(Increase::Models::AccountNumberListParams::ACHDebitStatus, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::AccountNumberListParams::ACHDebitStatus, Increase::Util::AnyHash))
       end
       def ach_debit_status=(_)
       end
@@ -31,8 +31,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::AccountNumberListParams::CreatedAt)
-          .returns(Increase::Models::AccountNumberListParams::CreatedAt)
+        params(_: T.any(Increase::Models::AccountNumberListParams::CreatedAt, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::AccountNumberListParams::CreatedAt, Increase::Util::AnyHash))
       end
       def created_at=(_)
       end
@@ -73,8 +73,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::AccountNumberListParams::Status)
-          .returns(Increase::Models::AccountNumberListParams::Status)
+        params(_: T.any(Increase::Models::AccountNumberListParams::Status, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::AccountNumberListParams::Status, Increase::Util::AnyHash))
       end
       def status=(_)
       end

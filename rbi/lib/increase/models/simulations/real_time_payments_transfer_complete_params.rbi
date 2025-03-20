@@ -13,8 +13,18 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection)
-            .returns(Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection)
+          params(
+            _: T.any(
+              Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
+              Increase::Util::AnyHash
+            )
+          )
+            .returns(
+              T.any(
+                Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
+                Increase::Util::AnyHash
+              )
+            )
         end
         def rejection=(_)
         end

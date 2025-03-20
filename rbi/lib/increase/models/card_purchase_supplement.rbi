@@ -27,8 +27,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CardPurchaseSupplement::Invoice))
-          .returns(T.nilable(Increase::Models::CardPurchaseSupplement::Invoice))
+        params(_: T.nilable(T.any(Increase::Models::CardPurchaseSupplement::Invoice, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::CardPurchaseSupplement::Invoice, Increase::Util::AnyHash)))
       end
       def invoice=(_)
       end

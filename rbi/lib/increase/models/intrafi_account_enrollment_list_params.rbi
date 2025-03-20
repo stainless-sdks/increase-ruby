@@ -51,8 +51,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::IntrafiAccountEnrollmentListParams::Status)
-          .returns(Increase::Models::IntrafiAccountEnrollmentListParams::Status)
+        params(_: T.any(Increase::Models::IntrafiAccountEnrollmentListParams::Status, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::IntrafiAccountEnrollmentListParams::Status, Increase::Util::AnyHash))
       end
       def status=(_)
       end

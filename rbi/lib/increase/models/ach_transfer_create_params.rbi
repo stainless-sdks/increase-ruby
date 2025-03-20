@@ -56,8 +56,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::ACHTransferCreateParams::Addenda)
-          .returns(Increase::Models::ACHTransferCreateParams::Addenda)
+        params(_: T.any(Increase::Models::ACHTransferCreateParams::Addenda, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::ACHTransferCreateParams::Addenda, Increase::Util::AnyHash))
       end
       def addenda=(_)
       end
@@ -165,8 +165,10 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate)
-          .returns(Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate)
+        params(
+          _: T.any(Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate, Increase::Util::AnyHash)
+        )
+          .returns(T.any(Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate, Increase::Util::AnyHash))
       end
       def preferred_effective_date=(_)
       end
@@ -312,8 +314,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::ACHTransferCreateParams::Addenda::Freeform)
-            .returns(Increase::Models::ACHTransferCreateParams::Addenda::Freeform)
+          params(_: T.any(Increase::Models::ACHTransferCreateParams::Addenda::Freeform, Increase::Util::AnyHash))
+            .returns(T.any(Increase::Models::ACHTransferCreateParams::Addenda::Freeform, Increase::Util::AnyHash))
         end
         def freeform=(_)
         end
@@ -325,8 +327,18 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice)
-            .returns(Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice)
+          params(
+            _: T.any(
+              Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice,
+              Increase::Util::AnyHash
+            )
+          )
+            .returns(
+              T.any(
+                Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice,
+                Increase::Util::AnyHash
+              )
+            )
         end
         def payment_order_remittance_advice=(_)
         end

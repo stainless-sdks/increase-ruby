@@ -12,8 +12,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::CardUpdateParams::BillingAddress)
-          .returns(Increase::Models::CardUpdateParams::BillingAddress)
+        params(_: T.any(Increase::Models::CardUpdateParams::BillingAddress, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::CardUpdateParams::BillingAddress, Increase::Util::AnyHash))
       end
       def billing_address=(_)
       end
@@ -35,8 +35,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::CardUpdateParams::DigitalWallet)
-          .returns(Increase::Models::CardUpdateParams::DigitalWallet)
+        params(_: T.any(Increase::Models::CardUpdateParams::DigitalWallet, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::CardUpdateParams::DigitalWallet, Increase::Util::AnyHash))
       end
       def digital_wallet=(_)
       end

@@ -12,8 +12,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::AccountNumberUpdateParams::InboundACH)
-          .returns(Increase::Models::AccountNumberUpdateParams::InboundACH)
+        params(_: T.any(Increase::Models::AccountNumberUpdateParams::InboundACH, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::AccountNumberUpdateParams::InboundACH, Increase::Util::AnyHash))
       end
       def inbound_ach=(_)
       end
@@ -25,8 +25,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::AccountNumberUpdateParams::InboundChecks)
-          .returns(Increase::Models::AccountNumberUpdateParams::InboundChecks)
+        params(_: T.any(Increase::Models::AccountNumberUpdateParams::InboundChecks, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::AccountNumberUpdateParams::InboundChecks, Increase::Util::AnyHash))
       end
       def inbound_checks=(_)
       end

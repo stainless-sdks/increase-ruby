@@ -29,8 +29,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::InboundACHTransferListParams::CreatedAt)
-          .returns(Increase::Models::InboundACHTransferListParams::CreatedAt)
+        params(_: T.any(Increase::Models::InboundACHTransferListParams::CreatedAt, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::InboundACHTransferListParams::CreatedAt, Increase::Util::AnyHash))
       end
       def created_at=(_)
       end
@@ -59,8 +59,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::InboundACHTransferListParams::Status)
-          .returns(Increase::Models::InboundACHTransferListParams::Status)
+        params(_: T.any(Increase::Models::InboundACHTransferListParams::Status, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::InboundACHTransferListParams::Status, Increase::Util::AnyHash))
       end
       def status=(_)
       end

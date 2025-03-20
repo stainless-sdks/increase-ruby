@@ -21,8 +21,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::PhysicalCardCreateParams::Cardholder)
-          .returns(Increase::Models::PhysicalCardCreateParams::Cardholder)
+        params(_: T.any(Increase::Models::PhysicalCardCreateParams::Cardholder, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::PhysicalCardCreateParams::Cardholder, Increase::Util::AnyHash))
       end
       def cardholder=(_)
       end
@@ -33,8 +33,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::PhysicalCardCreateParams::Shipment)
-          .returns(Increase::Models::PhysicalCardCreateParams::Shipment)
+        params(_: T.any(Increase::Models::PhysicalCardCreateParams::Shipment, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::PhysicalCardCreateParams::Shipment, Increase::Util::AnyHash))
       end
       def shipment=(_)
       end
@@ -113,8 +113,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::PhysicalCardCreateParams::Shipment::Address)
-            .returns(Increase::Models::PhysicalCardCreateParams::Shipment::Address)
+          params(_: T.any(Increase::Models::PhysicalCardCreateParams::Shipment::Address, Increase::Util::AnyHash))
+            .returns(T.any(Increase::Models::PhysicalCardCreateParams::Shipment::Address, Increase::Util::AnyHash))
         end
         def address=(_)
         end

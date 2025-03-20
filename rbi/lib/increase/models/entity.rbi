@@ -19,8 +19,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::Entity::Corporation))
-          .returns(T.nilable(Increase::Models::Entity::Corporation))
+        params(_: T.nilable(T.any(Increase::Models::Entity::Corporation, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::Entity::Corporation, Increase::Util::AnyHash)))
       end
       def corporation=(_)
       end
@@ -61,8 +61,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::Entity::GovernmentAuthority))
-          .returns(T.nilable(Increase::Models::Entity::GovernmentAuthority))
+        params(_: T.nilable(T.any(Increase::Models::Entity::GovernmentAuthority, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::Entity::GovernmentAuthority, Increase::Util::AnyHash)))
       end
       def government_authority=(_)
       end
@@ -83,7 +83,10 @@ module Increase
       def joint
       end
 
-      sig { params(_: T.nilable(Increase::Models::Entity::Joint)).returns(T.nilable(Increase::Models::Entity::Joint)) }
+      sig do
+        params(_: T.nilable(T.any(Increase::Models::Entity::Joint, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::Entity::Joint, Increase::Util::AnyHash)))
+      end
       def joint=(_)
       end
 
@@ -94,8 +97,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::Entity::NaturalPerson))
-          .returns(T.nilable(Increase::Models::Entity::NaturalPerson))
+        params(_: T.nilable(T.any(Increase::Models::Entity::NaturalPerson, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::Entity::NaturalPerson, Increase::Util::AnyHash)))
       end
       def natural_person=(_)
       end
@@ -145,8 +148,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::Entity::ThirdPartyVerification))
-          .returns(T.nilable(Increase::Models::Entity::ThirdPartyVerification))
+        params(_: T.nilable(T.any(Increase::Models::Entity::ThirdPartyVerification, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::Entity::ThirdPartyVerification, Increase::Util::AnyHash)))
       end
       def third_party_verification=(_)
       end
@@ -156,7 +159,10 @@ module Increase
       def trust
       end
 
-      sig { params(_: T.nilable(Increase::Models::Entity::Trust)).returns(T.nilable(Increase::Models::Entity::Trust)) }
+      sig do
+        params(_: T.nilable(T.any(Increase::Models::Entity::Trust, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::Entity::Trust, Increase::Util::AnyHash)))
+      end
       def trust=(_)
       end
 
@@ -246,8 +252,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::Entity::Corporation::Address)
-            .returns(Increase::Models::Entity::Corporation::Address)
+          params(_: T.any(Increase::Models::Entity::Corporation::Address, Increase::Util::AnyHash))
+            .returns(T.any(Increase::Models::Entity::Corporation::Address, Increase::Util::AnyHash))
         end
         def address=(_)
         end
@@ -441,8 +447,12 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::Entity::Corporation::BeneficialOwner::Individual)
-              .returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual)
+            params(
+              _: T.any(Increase::Models::Entity::Corporation::BeneficialOwner::Individual, Increase::Util::AnyHash)
+            )
+              .returns(
+                T.any(Increase::Models::Entity::Corporation::BeneficialOwner::Individual, Increase::Util::AnyHash)
+              )
           end
           def individual=(_)
           end
@@ -492,8 +502,18 @@ module Increase
             end
 
             sig do
-              params(_: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address)
-                .returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address)
+              params(
+                _: T.any(
+                  Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address,
+                  Increase::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address,
+                    Increase::Util::AnyHash
+                  )
+                )
             end
             def address=(_)
             end
@@ -513,8 +533,18 @@ module Increase
             end
 
             sig do
-              params(_: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification)
-                .returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification)
+              params(
+                _: T.any(
+                  Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification,
+                  Increase::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification,
+                    Increase::Util::AnyHash
+                  )
+                )
             end
             def identification=(_)
             end
@@ -757,8 +787,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::Entity::GovernmentAuthority::Address)
-            .returns(Increase::Models::Entity::GovernmentAuthority::Address)
+          params(_: T.any(Increase::Models::Entity::GovernmentAuthority::Address, Increase::Util::AnyHash))
+            .returns(T.any(Increase::Models::Entity::GovernmentAuthority::Address, Increase::Util::AnyHash))
         end
         def address=(_)
         end
@@ -999,8 +1029,8 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::Entity::Joint::Individual::Address)
-              .returns(Increase::Models::Entity::Joint::Individual::Address)
+            params(_: T.any(Increase::Models::Entity::Joint::Individual::Address, Increase::Util::AnyHash))
+              .returns(T.any(Increase::Models::Entity::Joint::Individual::Address, Increase::Util::AnyHash))
           end
           def address=(_)
           end
@@ -1020,8 +1050,8 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::Entity::Joint::Individual::Identification)
-              .returns(Increase::Models::Entity::Joint::Individual::Identification)
+            params(_: T.any(Increase::Models::Entity::Joint::Individual::Identification, Increase::Util::AnyHash))
+              .returns(T.any(Increase::Models::Entity::Joint::Individual::Identification, Increase::Util::AnyHash))
           end
           def identification=(_)
           end
@@ -1222,8 +1252,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::Entity::NaturalPerson::Address)
-            .returns(Increase::Models::Entity::NaturalPerson::Address)
+          params(_: T.any(Increase::Models::Entity::NaturalPerson::Address, Increase::Util::AnyHash))
+            .returns(T.any(Increase::Models::Entity::NaturalPerson::Address, Increase::Util::AnyHash))
         end
         def address=(_)
         end
@@ -1243,8 +1273,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::Entity::NaturalPerson::Identification)
-            .returns(Increase::Models::Entity::NaturalPerson::Identification)
+          params(_: T.any(Increase::Models::Entity::NaturalPerson::Identification, Increase::Util::AnyHash))
+            .returns(T.any(Increase::Models::Entity::NaturalPerson::Identification, Increase::Util::AnyHash))
         end
         def identification=(_)
         end
@@ -1538,7 +1568,10 @@ module Increase
         def address
         end
 
-        sig { params(_: Increase::Models::Entity::Trust::Address).returns(Increase::Models::Entity::Trust::Address) }
+        sig do
+          params(_: T.any(Increase::Models::Entity::Trust::Address, Increase::Util::AnyHash))
+            .returns(T.any(Increase::Models::Entity::Trust::Address, Increase::Util::AnyHash))
+        end
         def address=(_)
         end
 
@@ -1579,8 +1612,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Entity::Trust::Grantor))
-            .returns(T.nilable(Increase::Models::Entity::Trust::Grantor))
+          params(_: T.nilable(T.any(Increase::Models::Entity::Trust::Grantor, Increase::Util::AnyHash)))
+            .returns(T.nilable(T.any(Increase::Models::Entity::Trust::Grantor, Increase::Util::AnyHash)))
         end
         def grantor=(_)
         end
@@ -1750,8 +1783,8 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::Entity::Trust::Grantor::Address)
-              .returns(Increase::Models::Entity::Trust::Grantor::Address)
+            params(_: T.any(Increase::Models::Entity::Trust::Grantor::Address, Increase::Util::AnyHash))
+              .returns(T.any(Increase::Models::Entity::Trust::Grantor::Address, Increase::Util::AnyHash))
           end
           def address=(_)
           end
@@ -1771,8 +1804,8 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::Entity::Trust::Grantor::Identification)
-              .returns(Increase::Models::Entity::Trust::Grantor::Identification)
+            params(_: T.any(Increase::Models::Entity::Trust::Grantor::Identification, Increase::Util::AnyHash))
+              .returns(T.any(Increase::Models::Entity::Trust::Grantor::Identification, Increase::Util::AnyHash))
           end
           def identification=(_)
           end
@@ -1974,8 +2007,8 @@ module Increase
           end
 
           sig do
-            params(_: T.nilable(Increase::Models::Entity::Trust::Trustee::Individual))
-              .returns(T.nilable(Increase::Models::Entity::Trust::Trustee::Individual))
+            params(_: T.nilable(T.any(Increase::Models::Entity::Trust::Trustee::Individual, Increase::Util::AnyHash)))
+              .returns(T.nilable(T.any(Increase::Models::Entity::Trust::Trustee::Individual, Increase::Util::AnyHash)))
           end
           def individual=(_)
           end
@@ -2021,8 +2054,8 @@ module Increase
             end
 
             sig do
-              params(_: Increase::Models::Entity::Trust::Trustee::Individual::Address)
-                .returns(Increase::Models::Entity::Trust::Trustee::Individual::Address)
+              params(_: T.any(Increase::Models::Entity::Trust::Trustee::Individual::Address, Increase::Util::AnyHash))
+                .returns(T.any(Increase::Models::Entity::Trust::Trustee::Individual::Address, Increase::Util::AnyHash))
             end
             def address=(_)
             end
@@ -2042,8 +2075,12 @@ module Increase
             end
 
             sig do
-              params(_: Increase::Models::Entity::Trust::Trustee::Individual::Identification)
-                .returns(Increase::Models::Entity::Trust::Trustee::Individual::Identification)
+              params(
+                _: T.any(Increase::Models::Entity::Trust::Trustee::Individual::Identification, Increase::Util::AnyHash)
+              )
+                .returns(
+                  T.any(Increase::Models::Entity::Trust::Trustee::Individual::Identification, Increase::Util::AnyHash)
+                )
             end
             def identification=(_)
             end

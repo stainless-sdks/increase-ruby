@@ -28,8 +28,12 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::Acknowledgement))
-          .returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Acknowledgement))
+        params(
+          _: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Acknowledgement, Increase::Util::AnyHash))
+        )
+          .returns(
+            T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Acknowledgement, Increase::Util::AnyHash))
+          )
       end
       def acknowledgement=(_)
       end
@@ -50,8 +54,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::Approval))
-          .returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Approval))
+        params(_: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Approval, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Approval, Increase::Util::AnyHash)))
       end
       def approval=(_)
       end
@@ -63,8 +67,12 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::Cancellation))
-          .returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Cancellation))
+        params(
+          _: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Cancellation, Increase::Util::AnyHash))
+        )
+          .returns(
+            T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Cancellation, Increase::Util::AnyHash))
+          )
       end
       def cancellation=(_)
       end
@@ -85,8 +93,10 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy))
-          .returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy))
+        params(
+          _: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::CreatedBy, Increase::Util::AnyHash))
+        )
+          .returns(T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::CreatedBy, Increase::Util::AnyHash)))
       end
       def created_by=(_)
       end
@@ -182,8 +192,10 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::Rejection))
-          .returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Rejection))
+        params(
+          _: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Rejection, Increase::Util::AnyHash))
+        )
+          .returns(T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Rejection, Increase::Util::AnyHash)))
       end
       def rejection=(_)
       end
@@ -225,8 +237,10 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::Submission))
-          .returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Submission))
+        params(
+          _: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Submission, Increase::Util::AnyHash))
+        )
+          .returns(T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Submission, Increase::Util::AnyHash)))
       end
       def submission=(_)
       end
@@ -461,8 +475,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey))
-            .returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey))
+          params(
+            _: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey, Increase::Util::AnyHash))
+            )
         end
         def api_key=(_)
         end
@@ -485,8 +503,16 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication))
-            .returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication))
+          params(
+            _: T.nilable(
+              T.any(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash)
+            )
+          )
+            .returns(
+              T.nilable(
+                T.any(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash)
+              )
+            )
         end
         def oauth_application=(_)
         end
@@ -497,8 +523,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User))
-            .returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User))
+          params(
+            _: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User, Increase::Util::AnyHash))
+            )
         end
         def user=(_)
         end
