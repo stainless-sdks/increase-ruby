@@ -49,8 +49,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::PhysicalCardProfileCloneParams::FrontText, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::PhysicalCardProfileCloneParams::FrontText, Increase::Util::AnyHash))
+        params(_: Increase::Models::PhysicalCardProfileCloneParams::FrontText)
+          .returns(Increase::Models::PhysicalCardProfileCloneParams::FrontText)
       end
       def front_text=(_)
       end

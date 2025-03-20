@@ -71,14 +71,11 @@ module Increase
       end
 
       # The status of the exclusion request.
-      sig { returns(Increase::Models::IntrafiExclusion::Status::TaggedSymbol) }
+      sig { returns(Symbol) }
       def status
       end
 
-      sig do
-        params(_: Increase::Models::IntrafiExclusion::Status::TaggedSymbol)
-          .returns(Increase::Models::IntrafiExclusion::Status::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def status=(_)
       end
 
@@ -93,14 +90,11 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `intrafi_exclusion`.
-      sig { returns(Increase::Models::IntrafiExclusion::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       def type
       end
 
-      sig do
-        params(_: Increase::Models::IntrafiExclusion::Type::TaggedSymbol)
-          .returns(Increase::Models::IntrafiExclusion::Type::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def type=(_)
       end
 
@@ -117,9 +111,9 @@ module Increase
           excluded_at: T.nilable(Time),
           fdic_certificate_number: T.nilable(String),
           idempotency_key: T.nilable(String),
-          status: Increase::Models::IntrafiExclusion::Status::TaggedSymbol,
+          status: Symbol,
           submitted_at: T.nilable(Time),
-          type: Increase::Models::IntrafiExclusion::Type::TaggedSymbol
+          type: Symbol
         )
           .returns(T.attached_class)
       end
@@ -148,9 +142,9 @@ module Increase
               excluded_at: T.nilable(Time),
               fdic_certificate_number: T.nilable(String),
               idempotency_key: T.nilable(String),
-              status: Increase::Models::IntrafiExclusion::Status::TaggedSymbol,
+              status: Symbol,
               submitted_at: T.nilable(Time),
-              type: Increase::Models::IntrafiExclusion::Type::TaggedSymbol
+              type: Symbol
             }
           )
       end
@@ -158,43 +152,29 @@ module Increase
       end
 
       # The status of the exclusion request.
-      module Status
-        extend Increase::Enum
+      class Status < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiExclusion::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::IntrafiExclusion::Status::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The exclusion is being added to the IntraFi network.
-        PENDING = T.let(:pending, Increase::Models::IntrafiExclusion::Status::TaggedSymbol)
+        PENDING = :pending
 
         # The exclusion has been added to the IntraFi network.
-        COMPLETED = T.let(:completed, Increase::Models::IntrafiExclusion::Status::TaggedSymbol)
+        COMPLETED = :completed
 
         # The exclusion has been removed from the IntraFi network.
-        ARCHIVED = T.let(:archived, Increase::Models::IntrafiExclusion::Status::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::IntrafiExclusion::Status::TaggedSymbol]) }
-          def values
-          end
-        end
+        ARCHIVED = :archived
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `intrafi_exclusion`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiExclusion::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::IntrafiExclusion::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        INTRAFI_EXCLUSION = T.let(:intrafi_exclusion, Increase::Models::IntrafiExclusion::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::IntrafiExclusion::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        INTRAFI_EXCLUSION = :intrafi_exclusion
       end
     end
   end

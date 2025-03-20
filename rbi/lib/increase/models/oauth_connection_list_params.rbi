@@ -40,8 +40,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::OAuthConnectionListParams::Status, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::OAuthConnectionListParams::Status, Increase::Util::AnyHash))
+        params(_: Increase::Models::OAuthConnectionListParams::Status)
+          .returns(Increase::Models::OAuthConnectionListParams::Status)
       end
       def status=(_)
       end
@@ -78,46 +78,32 @@ module Increase
         # Filter to OAuth Connections by their status. By default, return only the
         #   `active` ones. For GET requests, this should be encoded as a comma-delimited
         #   string, such as `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Increase::Models::OAuthConnectionListParams::Status::In::OrSymbol])) }
+        sig { returns(T.nilable(T::Array[Symbol])) }
         def in_
         end
 
-        sig do
-          params(_: T::Array[Increase::Models::OAuthConnectionListParams::Status::In::OrSymbol])
-            .returns(T::Array[Increase::Models::OAuthConnectionListParams::Status::In::OrSymbol])
-        end
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
         def in_=(_)
         end
 
-        sig do
-          params(in_: T::Array[Increase::Models::OAuthConnectionListParams::Status::In::OrSymbol])
-            .returns(T.attached_class)
-        end
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Increase::Models::OAuthConnectionListParams::Status::In::OrSymbol]}) }
+        sig { override.returns({in_: T::Array[Symbol]}) }
         def to_hash
         end
 
-        module In
-          extend Increase::Enum
+        class In < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthConnectionListParams::Status::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::OAuthConnectionListParams::Status::In::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # The OAuth connection is active.
-          ACTIVE = T.let(:active, Increase::Models::OAuthConnectionListParams::Status::In::TaggedSymbol)
+          ACTIVE = :active
 
           # The OAuth connection is permanently deactivated.
-          INACTIVE = T.let(:inactive, Increase::Models::OAuthConnectionListParams::Status::In::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::OAuthConnectionListParams::Status::In::TaggedSymbol]) }
-            def values
-            end
-          end
+          INACTIVE = :inactive
         end
       end
     end

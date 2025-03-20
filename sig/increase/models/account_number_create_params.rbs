@@ -55,16 +55,14 @@ module Increase
 
         type debit_status = :allowed | :blocked
 
-        module DebitStatus
-          extend Increase::Enum
-
+        class DebitStatus < Increase::Enum
           # ACH Debits are allowed.
           ALLOWED: :allowed
 
           # ACH Debits are blocked.
           BLOCKED: :blocked
 
-          def self?.values: -> ::Array[Increase::Models::AccountNumberCreateParams::InboundACH::debit_status]
+          def self.values: -> ::Array[Increase::Models::AccountNumberCreateParams::InboundACH::debit_status]
         end
       end
 
@@ -84,16 +82,14 @@ module Increase
 
         type status = :allowed | :check_transfers_only
 
-        module Status
-          extend Increase::Enum
-
+        class Status < Increase::Enum
           # Checks with this Account Number will be processed even if they are not associated with a Check Transfer.
           ALLOWED: :allowed
 
           # Checks with this Account Number will be processed only if they can be matched to an existing Check Transfer.
           CHECK_TRANSFERS_ONLY: :check_transfers_only
 
-          def self?.values: -> ::Array[Increase::Models::AccountNumberCreateParams::InboundChecks::status]
+          def self.values: -> ::Array[Increase::Models::AccountNumberCreateParams::InboundChecks::status]
         end
       end
     end

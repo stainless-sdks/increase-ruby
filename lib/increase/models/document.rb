@@ -56,10 +56,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The type of document.
-      module Category
-        extend Increase::Enum
-
+      class Category < Increase::Enum
         # Internal Revenue Service Form 1099-INT.
         FORM_1099_INT = :form_1099_int
 
@@ -73,28 +73,16 @@ module Increase
         COMPANY_INFORMATION = :company_information
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `document`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         DOCUMENT = :document
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

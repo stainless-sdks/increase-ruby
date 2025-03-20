@@ -54,14 +54,11 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `file_link`.
-      sig { returns(Increase::Models::FileLink::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       def type
       end
 
-      sig do
-        params(_: Increase::Models::FileLink::Type::TaggedSymbol)
-          .returns(Increase::Models::FileLink::Type::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def type=(_)
       end
 
@@ -84,7 +81,7 @@ module Increase
           expires_at: Time,
           file_id: String,
           idempotency_key: T.nilable(String),
-          type: Increase::Models::FileLink::Type::TaggedSymbol,
+          type: Symbol,
           unauthenticated_url: String
         )
           .returns(T.attached_class)
@@ -101,7 +98,7 @@ module Increase
               expires_at: Time,
               file_id: String,
               idempotency_key: T.nilable(String),
-              type: Increase::Models::FileLink::Type::TaggedSymbol,
+              type: Symbol,
               unauthenticated_url: String
             }
           )
@@ -111,19 +108,12 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `file_link`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::FileLink::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::FileLink::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        FILE_LINK = T.let(:file_link, Increase::Models::FileLink::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::FileLink::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        FILE_LINK = :file_link
       end
     end
   end

@@ -20,8 +20,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::CheckTransferListParams::CreatedAt, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::CheckTransferListParams::CreatedAt, Increase::Util::AnyHash))
+        params(_: Increase::Models::CheckTransferListParams::CreatedAt)
+          .returns(Increase::Models::CheckTransferListParams::CreatedAt)
       end
       def created_at=(_)
       end
@@ -62,8 +62,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::CheckTransferListParams::Status, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::CheckTransferListParams::Status, Increase::Util::AnyHash))
+        params(_: Increase::Models::CheckTransferListParams::Status)
+          .returns(Increase::Models::CheckTransferListParams::Status)
       end
       def status=(_)
       end
@@ -164,74 +164,56 @@ module Increase
         # Filter Check Transfers to those that have the specified status. For GET
         #   requests, this should be encoded as a comma-delimited string, such as
         #   `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Increase::Models::CheckTransferListParams::Status::In::OrSymbol])) }
+        sig { returns(T.nilable(T::Array[Symbol])) }
         def in_
         end
 
-        sig do
-          params(_: T::Array[Increase::Models::CheckTransferListParams::Status::In::OrSymbol])
-            .returns(T::Array[Increase::Models::CheckTransferListParams::Status::In::OrSymbol])
-        end
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
         def in_=(_)
         end
 
-        sig do
-          params(in_: T::Array[Increase::Models::CheckTransferListParams::Status::In::OrSymbol])
-            .returns(T.attached_class)
-        end
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Increase::Models::CheckTransferListParams::Status::In::OrSymbol]}) }
+        sig { override.returns({in_: T::Array[Symbol]}) }
         def to_hash
         end
 
-        module In
-          extend Increase::Enum
+        class In < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckTransferListParams::Status::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # The transfer is awaiting approval.
-          PENDING_APPROVAL =
-            T.let(:pending_approval, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol)
+          PENDING_APPROVAL = :pending_approval
 
           # The transfer has been canceled.
-          CANCELED = T.let(:canceled, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol)
+          CANCELED = :canceled
 
           # The transfer is pending submission.
-          PENDING_SUBMISSION =
-            T.let(:pending_submission, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol)
+          PENDING_SUBMISSION = :pending_submission
 
           # The transfer requires attention from an Increase operator.
-          REQUIRES_ATTENTION =
-            T.let(:requires_attention, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol)
+          REQUIRES_ATTENTION = :requires_attention
 
           # The transfer has been rejected.
-          REJECTED = T.let(:rejected, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol)
+          REJECTED = :rejected
 
           # The check is queued for mailing.
-          PENDING_MAILING =
-            T.let(:pending_mailing, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol)
+          PENDING_MAILING = :pending_mailing
 
           # The check has been mailed.
-          MAILED = T.let(:mailed, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol)
+          MAILED = :mailed
 
           # The check has been deposited.
-          DEPOSITED = T.let(:deposited, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol)
+          DEPOSITED = :deposited
 
           # A stop-payment was requested for this check.
-          STOPPED = T.let(:stopped, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol)
+          STOPPED = :stopped
 
           # The transfer has been returned.
-          RETURNED = T.let(:returned, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol]) }
-            def values
-            end
-          end
+          RETURNED = :returned
         end
       end
     end

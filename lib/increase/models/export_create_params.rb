@@ -104,10 +104,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The type of Export to create.
-      module Category
-        extend Increase::Enum
-
+      class Category < Increase::Enum
         # Export an Open Financial Exchange (OFX) file of transactions and balances for a given time range and Account.
         ACCOUNT_STATEMENT_OFX = :account_statement_ofx
 
@@ -127,12 +127,6 @@ module Increase
         VENDOR_CSV = :vendor_csv
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
       class AccountStatementOfx < Increase::BaseModel
@@ -454,9 +448,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          module In
-            extend Increase::Enum
-
+          # @abstract
+          class In < Increase::Enum
             # The entity is active.
             ACTIVE = :active
 
@@ -467,12 +460,6 @@ module Increase
             DISABLED = :disabled
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
         end
       end

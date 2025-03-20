@@ -11,8 +11,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::CardDisputeListParams::CreatedAt, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::CardDisputeListParams::CreatedAt, Increase::Util::AnyHash))
+        params(_: Increase::Models::CardDisputeListParams::CreatedAt)
+          .returns(Increase::Models::CardDisputeListParams::CreatedAt)
       end
       def created_at=(_)
       end
@@ -53,8 +53,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::CardDisputeListParams::Status, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::CardDisputeListParams::Status, Increase::Util::AnyHash))
+        params(_: Increase::Models::CardDisputeListParams::Status)
+          .returns(Increase::Models::CardDisputeListParams::Status)
       end
       def status=(_)
       end
@@ -145,60 +145,44 @@ module Increase
         # Filter Card Disputes for those with the specified status or statuses. For GET
         #   requests, this should be encoded as a comma-delimited string, such as
         #   `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Increase::Models::CardDisputeListParams::Status::In::OrSymbol])) }
+        sig { returns(T.nilable(T::Array[Symbol])) }
         def in_
         end
 
-        sig do
-          params(_: T::Array[Increase::Models::CardDisputeListParams::Status::In::OrSymbol])
-            .returns(T::Array[Increase::Models::CardDisputeListParams::Status::In::OrSymbol])
-        end
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
         def in_=(_)
         end
 
-        sig do
-          params(in_: T::Array[Increase::Models::CardDisputeListParams::Status::In::OrSymbol])
-            .returns(T.attached_class)
-        end
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Increase::Models::CardDisputeListParams::Status::In::OrSymbol]}) }
+        sig { override.returns({in_: T::Array[Symbol]}) }
         def to_hash
         end
 
-        module In
-          extend Increase::Enum
+        class In < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardDisputeListParams::Status::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::CardDisputeListParams::Status::In::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # The Card Dispute is pending review.
-          PENDING_REVIEWING =
-            T.let(:pending_reviewing, Increase::Models::CardDisputeListParams::Status::In::TaggedSymbol)
+          PENDING_REVIEWING = :pending_reviewing
 
           # Increase has requested more information related to the Card Dispute from you.
-          PENDING_USER_INFORMATION =
-            T.let(:pending_user_information, Increase::Models::CardDisputeListParams::Status::In::TaggedSymbol)
+          PENDING_USER_INFORMATION = :pending_user_information
 
           # The Card Dispute has been accepted and your funds have been returned. The card dispute will eventually transition into `won` or `lost` depending on the outcome.
-          ACCEPTED = T.let(:accepted, Increase::Models::CardDisputeListParams::Status::In::TaggedSymbol)
+          ACCEPTED = :accepted
 
           # The Card Dispute has been rejected.
-          REJECTED = T.let(:rejected, Increase::Models::CardDisputeListParams::Status::In::TaggedSymbol)
+          REJECTED = :rejected
 
           # The Card Dispute has been lost and funds previously credited from the acceptance have been debited.
-          LOST = T.let(:lost, Increase::Models::CardDisputeListParams::Status::In::TaggedSymbol)
+          LOST = :lost
 
           # The Card Dispute has been won and no further action can be taken.
-          WON = T.let(:won, Increase::Models::CardDisputeListParams::Status::In::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::CardDisputeListParams::Status::In::TaggedSymbol]) }
-            def values
-            end
-          end
+          WON = :won
         end
       end
     end

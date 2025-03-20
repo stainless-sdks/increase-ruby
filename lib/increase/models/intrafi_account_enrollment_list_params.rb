@@ -94,9 +94,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        module In
-          extend Increase::Enum
-
+        # @abstract
+        class In < Increase::Enum
           # The account is being added to the IntraFi network.
           PENDING_ENROLLING = :pending_enrolling
 
@@ -113,12 +112,6 @@ module Increase
           REQUIRES_ATTENTION = :requires_attention
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
     end

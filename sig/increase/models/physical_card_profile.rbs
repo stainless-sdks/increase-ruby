@@ -60,16 +60,14 @@ module Increase
 
       type creator = :increase | :user
 
-      module Creator
-        extend Increase::Enum
-
+      class Creator < Increase::Enum
         # This Physical Card Profile was created by Increase.
         INCREASE: :increase
 
         # This Physical Card Profile was created by you.
         USER: :user
 
-        def self?.values: -> ::Array[Increase::Models::PhysicalCardProfile::creator]
+        def self.values: -> ::Array[Increase::Models::PhysicalCardProfile::creator]
       end
 
       type status =
@@ -80,9 +78,7 @@ module Increase
         | :active
         | :archived
 
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The Card Profile has not yet been processed by Increase.
         PENDING_CREATING: :pending_creating
 
@@ -101,17 +97,15 @@ module Increase
         # The Physical Card Profile has been archived.
         ARCHIVED: :archived
 
-        def self?.values: -> ::Array[Increase::Models::PhysicalCardProfile::status]
+        def self.values: -> ::Array[Increase::Models::PhysicalCardProfile::status]
       end
 
       type type_ = :physical_card_profile
 
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         PHYSICAL_CARD_PROFILE: :physical_card_profile
 
-        def self?.values: -> ::Array[Increase::Models::PhysicalCardProfile::type_]
+        def self.values: -> ::Array[Increase::Models::PhysicalCardProfile::type_]
       end
     end
   end

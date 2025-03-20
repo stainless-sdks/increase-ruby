@@ -44,14 +44,11 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `proof_of_authorization_request`.
-      sig { returns(Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       def type
       end
 
-      sig do
-        params(_: Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol)
-          .returns(Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def type=(_)
       end
 
@@ -71,7 +68,7 @@ module Increase
           ach_transfers: T::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer],
           created_at: Time,
           due_on: Time,
-          type: Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol,
+          type: Symbol,
           updated_at: Time
         )
           .returns(T.attached_class)
@@ -87,7 +84,7 @@ module Increase
               ach_transfers: T::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer],
               created_at: Time,
               due_on: Time,
-              type: Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol,
+              type: Symbol,
               updated_at: Time
             }
           )
@@ -116,21 +113,12 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `proof_of_authorization_request`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ProofOfAuthorizationRequest::Type) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        PROOF_OF_AUTHORIZATION_REQUEST =
-          T.let(:proof_of_authorization_request, Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        PROOF_OF_AUTHORIZATION_REQUEST = :proof_of_authorization_request
       end
     end
   end

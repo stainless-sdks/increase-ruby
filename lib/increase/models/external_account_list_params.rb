@@ -94,9 +94,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        module In
-          extend Increase::Enum
-
+        # @abstract
+        class In < Increase::Enum
           # The External Account is active.
           ACTIVE = :active
 
@@ -104,12 +103,6 @@ module Increase
           ARCHIVED = :archived
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
     end

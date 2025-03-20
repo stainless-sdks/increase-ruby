@@ -42,8 +42,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::PhysicalCardProfileListParams::Status, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::PhysicalCardProfileListParams::Status, Increase::Util::AnyHash))
+        params(_: Increase::Models::PhysicalCardProfileListParams::Status)
+          .returns(Increase::Models::PhysicalCardProfileListParams::Status)
       end
       def status=(_)
       end
@@ -80,62 +80,44 @@ module Increase
         # Filter Physical Card Profiles for those with the specified statuses. For GET
         #   requests, this should be encoded as a comma-delimited string, such as
         #   `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Increase::Models::PhysicalCardProfileListParams::Status::In::OrSymbol])) }
+        sig { returns(T.nilable(T::Array[Symbol])) }
         def in_
         end
 
-        sig do
-          params(_: T::Array[Increase::Models::PhysicalCardProfileListParams::Status::In::OrSymbol])
-            .returns(T::Array[Increase::Models::PhysicalCardProfileListParams::Status::In::OrSymbol])
-        end
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
         def in_=(_)
         end
 
-        sig do
-          params(in_: T::Array[Increase::Models::PhysicalCardProfileListParams::Status::In::OrSymbol])
-            .returns(T.attached_class)
-        end
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Increase::Models::PhysicalCardProfileListParams::Status::In::OrSymbol]}) }
+        sig { override.returns({in_: T::Array[Symbol]}) }
         def to_hash
         end
 
-        module In
-          extend Increase::Enum
+        class In < Increase::Enum
+          abstract!
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardProfileListParams::Status::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # The Card Profile has not yet been processed by Increase.
-          PENDING_CREATING =
-            T.let(:pending_creating, Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol)
+          PENDING_CREATING = :pending_creating
 
           # The card profile is awaiting review by Increase.
-          PENDING_REVIEWING =
-            T.let(:pending_reviewing, Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol)
+          PENDING_REVIEWING = :pending_reviewing
 
           # There is an issue with the Physical Card Profile preventing it from use.
-          REJECTED = T.let(:rejected, Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol)
+          REJECTED = :rejected
 
           # The card profile is awaiting submission to the fulfillment provider.
-          PENDING_SUBMITTING =
-            T.let(:pending_submitting, Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol)
+          PENDING_SUBMITTING = :pending_submitting
 
           # The Physical Card Profile has been submitted to the fulfillment provider and is ready to use.
-          ACTIVE = T.let(:active, Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol)
+          ACTIVE = :active
 
           # The Physical Card Profile has been archived.
-          ARCHIVED = T.let(:archived, Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol]) }
-            def values
-            end
-          end
+          ARCHIVED = :archived
         end
       end
     end

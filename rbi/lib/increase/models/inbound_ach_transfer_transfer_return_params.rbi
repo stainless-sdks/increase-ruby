@@ -8,115 +8,63 @@ module Increase
 
       # The reason why this transfer will be returned. The most usual return codes are
       #   `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
-      sig { returns(Increase::Models::InboundACHTransferTransferReturnParams::Reason::OrSymbol) }
+      sig { returns(Symbol) }
       def reason
       end
 
-      sig do
-        params(_: Increase::Models::InboundACHTransferTransferReturnParams::Reason::OrSymbol)
-          .returns(Increase::Models::InboundACHTransferTransferReturnParams::Reason::OrSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def reason=(_)
       end
 
       sig do
-        params(
-          reason: Increase::Models::InboundACHTransferTransferReturnParams::Reason::OrSymbol,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+        params(reason: Symbol, request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
           .returns(T.attached_class)
       end
       def self.new(reason:, request_options: {})
       end
 
-      sig do
-        override
-          .returns(
-            {
-              reason: Increase::Models::InboundACHTransferTransferReturnParams::Reason::OrSymbol,
-              request_options: Increase::RequestOptions
-            }
-          )
-      end
+      sig { override.returns({reason: Symbol, request_options: Increase::RequestOptions}) }
       def to_hash
       end
 
       # The reason why this transfer will be returned. The most usual return codes are
       #   `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
-      module Reason
-        extend Increase::Enum
+      class Reason < Increase::Enum
+        abstract!
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::InboundACHTransferTransferReturnParams::Reason) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The customer's account has insufficient funds. This reason is only allowed for debits. The Nacha return code is R01.
-        INSUFFICIENT_FUNDS =
-          T.let(:insufficient_funds, Increase::Models::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol)
+        INSUFFICIENT_FUNDS = :insufficient_funds
 
         # The originating financial institution asked for this transfer to be returned. The receiving bank is complying with the request. The Nacha return code is R06.
-        RETURNED_PER_ODFI_REQUEST =
-          T.let(
-            :returned_per_odfi_request,
-            Increase::Models::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol
-          )
+        RETURNED_PER_ODFI_REQUEST = :returned_per_odfi_request
 
         # The customer no longer authorizes this transaction. The Nacha return code is R07.
-        AUTHORIZATION_REVOKED_BY_CUSTOMER =
-          T.let(
-            :authorization_revoked_by_customer,
-            Increase::Models::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol
-          )
+        AUTHORIZATION_REVOKED_BY_CUSTOMER = :authorization_revoked_by_customer
 
         # The customer asked for the payment to be stopped. This reason is only allowed for debits. The Nacha return code is R08.
-        PAYMENT_STOPPED =
-          T.let(:payment_stopped, Increase::Models::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol)
+        PAYMENT_STOPPED = :payment_stopped
 
         # The customer advises that the debit was unauthorized. The Nacha return code is R10.
         CUSTOMER_ADVISED_UNAUTHORIZED_IMPROPER_INELIGIBLE_OR_INCOMPLETE =
-          T.let(
-            :customer_advised_unauthorized_improper_ineligible_or_incomplete,
-            Increase::Models::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol
-          )
+          :customer_advised_unauthorized_improper_ineligible_or_incomplete
 
         # The payee is deceased. The Nacha return code is R14.
         REPRESENTATIVE_PAYEE_DECEASED_OR_UNABLE_TO_CONTINUE_IN_THAT_CAPACITY =
-          T.let(
-            :representative_payee_deceased_or_unable_to_continue_in_that_capacity,
-            Increase::Models::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol
-          )
+          :representative_payee_deceased_or_unable_to_continue_in_that_capacity
 
         # The account holder is deceased. The Nacha return code is R15.
-        BENEFICIARY_OR_ACCOUNT_HOLDER_DECEASED =
-          T.let(
-            :beneficiary_or_account_holder_deceased,
-            Increase::Models::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol
-          )
+        BENEFICIARY_OR_ACCOUNT_HOLDER_DECEASED = :beneficiary_or_account_holder_deceased
 
         # The customer refused a credit entry. This reason is only allowed for credits. The Nacha return code is R23.
-        CREDIT_ENTRY_REFUSED_BY_RECEIVER =
-          T.let(
-            :credit_entry_refused_by_receiver,
-            Increase::Models::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol
-          )
+        CREDIT_ENTRY_REFUSED_BY_RECEIVER = :credit_entry_refused_by_receiver
 
         # The account holder identified this transaction as a duplicate. The Nacha return code is R24.
-        DUPLICATE_ENTRY =
-          T.let(:duplicate_entry, Increase::Models::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol)
+        DUPLICATE_ENTRY = :duplicate_entry
 
         # The corporate customer no longer authorizes this transaction. The Nacha return code is R29.
-        CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED =
-          T.let(
-            :corporate_customer_advised_not_authorized,
-            Increase::Models::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol
-          )
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol]) }
-          def values
-          end
-        end
+        CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
       end
     end
   end

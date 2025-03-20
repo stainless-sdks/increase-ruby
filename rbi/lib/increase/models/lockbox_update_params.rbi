@@ -25,14 +25,11 @@ module Increase
       end
 
       # This indicates if checks can be sent to the Lockbox.
-      sig { returns(T.nilable(Increase::Models::LockboxUpdateParams::Status::OrSymbol)) }
+      sig { returns(T.nilable(Symbol)) }
       def status
       end
 
-      sig do
-        params(_: Increase::Models::LockboxUpdateParams::Status::OrSymbol)
-          .returns(Increase::Models::LockboxUpdateParams::Status::OrSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def status=(_)
       end
 
@@ -40,7 +37,7 @@ module Increase
         params(
           description: String,
           recipient_name: String,
-          status: Increase::Models::LockboxUpdateParams::Status::OrSymbol,
+          status: Symbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -54,7 +51,7 @@ module Increase
             {
               description: String,
               recipient_name: String,
-              status: Increase::Models::LockboxUpdateParams::Status::OrSymbol,
+              status: Symbol,
               request_options: Increase::RequestOptions
             }
           )
@@ -63,23 +60,16 @@ module Increase
       end
 
       # This indicates if checks can be sent to the Lockbox.
-      module Status
-        extend Increase::Enum
+      class Status < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::LockboxUpdateParams::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::LockboxUpdateParams::Status::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # This Lockbox is active. Checks mailed to it will be deposited automatically.
-        ACTIVE = T.let(:active, Increase::Models::LockboxUpdateParams::Status::TaggedSymbol)
+        ACTIVE = :active
 
         # This Lockbox is inactive. Checks mailed to it will not be deposited.
-        INACTIVE = T.let(:inactive, Increase::Models::LockboxUpdateParams::Status::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::LockboxUpdateParams::Status::TaggedSymbol]) }
-          def values
-          end
-        end
+        INACTIVE = :inactive
       end
     end
   end

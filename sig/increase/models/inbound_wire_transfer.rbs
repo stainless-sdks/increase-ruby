@@ -112,9 +112,7 @@ module Increase
 
       type status = :pending | :accepted | :declined | :reversed
 
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The Inbound Wire Transfer is awaiting action, will transition automatically if no action is taken.
         PENDING: :pending
 
@@ -127,17 +125,15 @@ module Increase
         # The Inbound Wire Transfer was reversed.
         REVERSED: :reversed
 
-        def self?.values: -> ::Array[Increase::Models::InboundWireTransfer::status]
+        def self.values: -> ::Array[Increase::Models::InboundWireTransfer::status]
       end
 
       type type_ = :inbound_wire_transfer
 
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         INBOUND_WIRE_TRANSFER: :inbound_wire_transfer
 
-        def self?.values: -> ::Array[Increase::Models::InboundWireTransfer::type_]
+        def self.values: -> ::Array[Increase::Models::InboundWireTransfer::type_]
       end
     end
   end

@@ -23,9 +23,7 @@ module Increase
 
       type status = :active | :disabled | :deleted
 
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The subscription is active and Events will be delivered normally.
         ACTIVE: :active
 
@@ -35,7 +33,7 @@ module Increase
         # The subscription is permanently disabled and Events will not be delivered.
         DELETED: :deleted
 
-        def self?.values: -> ::Array[Increase::Models::EventSubscriptionUpdateParams::status]
+        def self.values: -> ::Array[Increase::Models::EventSubscriptionUpdateParams::status]
       end
     end
   end

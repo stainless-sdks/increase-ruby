@@ -54,14 +54,11 @@ module Increase
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending
       #   Transaction's currency. This will match the currency on the Pending
       #   Transaction's Account.
-      sig { returns(Increase::Models::PendingTransaction::Currency::TaggedSymbol) }
+      sig { returns(Symbol) }
       def currency
       end
 
-      sig do
-        params(_: Increase::Models::PendingTransaction::Currency::TaggedSymbol)
-          .returns(Increase::Models::PendingTransaction::Currency::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def currency=(_)
       end
 
@@ -87,14 +84,11 @@ module Increase
       end
 
       # The type of the route this Pending Transaction came through.
-      sig { returns(T.nilable(Increase::Models::PendingTransaction::RouteType::TaggedSymbol)) }
+      sig { returns(T.nilable(Symbol)) }
       def route_type
       end
 
-      sig do
-        params(_: T.nilable(Increase::Models::PendingTransaction::RouteType::TaggedSymbol))
-          .returns(T.nilable(Increase::Models::PendingTransaction::RouteType::TaggedSymbol))
-      end
+      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
       def route_type=(_)
       end
 
@@ -106,35 +100,29 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::PendingTransaction::Source, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::PendingTransaction::Source, Increase::Util::AnyHash))
+        params(_: Increase::Models::PendingTransaction::Source)
+          .returns(Increase::Models::PendingTransaction::Source)
       end
       def source=(_)
       end
 
       # Whether the Pending Transaction has been confirmed and has an associated
       #   Transaction.
-      sig { returns(Increase::Models::PendingTransaction::Status::TaggedSymbol) }
+      sig { returns(Symbol) }
       def status
       end
 
-      sig do
-        params(_: Increase::Models::PendingTransaction::Status::TaggedSymbol)
-          .returns(Increase::Models::PendingTransaction::Status::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def status=(_)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `pending_transaction`.
-      sig { returns(Increase::Models::PendingTransaction::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       def type
       end
 
-      sig do
-        params(_: Increase::Models::PendingTransaction::Type::TaggedSymbol)
-          .returns(Increase::Models::PendingTransaction::Type::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def type=(_)
       end
 
@@ -147,13 +135,13 @@ module Increase
           amount: Integer,
           completed_at: T.nilable(Time),
           created_at: Time,
-          currency: Increase::Models::PendingTransaction::Currency::TaggedSymbol,
+          currency: Symbol,
           description: String,
           route_id: T.nilable(String),
-          route_type: T.nilable(Increase::Models::PendingTransaction::RouteType::TaggedSymbol),
+          route_type: T.nilable(Symbol),
           source: Increase::Models::PendingTransaction::Source,
-          status: Increase::Models::PendingTransaction::Status::TaggedSymbol,
-          type: Increase::Models::PendingTransaction::Type::TaggedSymbol
+          status: Symbol,
+          type: Symbol
         )
           .returns(T.attached_class)
       end
@@ -182,13 +170,13 @@ module Increase
               amount: Integer,
               completed_at: T.nilable(Time),
               created_at: Time,
-              currency: Increase::Models::PendingTransaction::Currency::TaggedSymbol,
+              currency: Symbol,
               description: String,
               route_id: T.nilable(String),
-              route_type: T.nilable(Increase::Models::PendingTransaction::RouteType::TaggedSymbol),
+              route_type: T.nilable(Symbol),
               source: Increase::Models::PendingTransaction::Source,
-              status: Increase::Models::PendingTransaction::Status::TaggedSymbol,
-              type: Increase::Models::PendingTransaction::Type::TaggedSymbol
+              status: Symbol,
+              type: Symbol
             }
           )
       end
@@ -198,58 +186,44 @@ module Increase
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending
       #   Transaction's currency. This will match the currency on the Pending
       #   Transaction's Account.
-      module Currency
-        extend Increase::Enum
+      class Currency < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PendingTransaction::Currency) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::PendingTransaction::Currency::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # Canadian Dollar (CAD)
-        CAD = T.let(:CAD, Increase::Models::PendingTransaction::Currency::TaggedSymbol)
+        CAD = :CAD
 
         # Swiss Franc (CHF)
-        CHF = T.let(:CHF, Increase::Models::PendingTransaction::Currency::TaggedSymbol)
+        CHF = :CHF
 
         # Euro (EUR)
-        EUR = T.let(:EUR, Increase::Models::PendingTransaction::Currency::TaggedSymbol)
+        EUR = :EUR
 
         # British Pound (GBP)
-        GBP = T.let(:GBP, Increase::Models::PendingTransaction::Currency::TaggedSymbol)
+        GBP = :GBP
 
         # Japanese Yen (JPY)
-        JPY = T.let(:JPY, Increase::Models::PendingTransaction::Currency::TaggedSymbol)
+        JPY = :JPY
 
         # US Dollar (USD)
-        USD = T.let(:USD, Increase::Models::PendingTransaction::Currency::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::PendingTransaction::Currency::TaggedSymbol]) }
-          def values
-          end
-        end
+        USD = :USD
       end
 
       # The type of the route this Pending Transaction came through.
-      module RouteType
-        extend Increase::Enum
+      class RouteType < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PendingTransaction::RouteType) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::PendingTransaction::RouteType::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # An Account Number.
-        ACCOUNT_NUMBER = T.let(:account_number, Increase::Models::PendingTransaction::RouteType::TaggedSymbol)
+        ACCOUNT_NUMBER = :account_number
 
         # A Card.
-        CARD = T.let(:card, Increase::Models::PendingTransaction::RouteType::TaggedSymbol)
+        CARD = :card
 
         # A Lockbox.
-        LOCKBOX = T.let(:lockbox, Increase::Models::PendingTransaction::RouteType::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::PendingTransaction::RouteType::TaggedSymbol]) }
-          def values
-          end
-        end
+        LOCKBOX = :lockbox
       end
 
       class Source < Increase::BaseModel
@@ -260,16 +234,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(
-              T.any(Increase::Models::PendingTransaction::Source::AccountTransferInstruction, Increase::Util::AnyHash)
-            )
-          )
-            .returns(
-              T.nilable(
-                T.any(Increase::Models::PendingTransaction::Source::AccountTransferInstruction, Increase::Util::AnyHash)
-              )
-            )
+          params(_: T.nilable(Increase::Models::PendingTransaction::Source::AccountTransferInstruction))
+            .returns(T.nilable(Increase::Models::PendingTransaction::Source::AccountTransferInstruction))
         end
         def account_transfer_instruction=(_)
         end
@@ -281,16 +247,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(
-              T.any(Increase::Models::PendingTransaction::Source::ACHTransferInstruction, Increase::Util::AnyHash)
-            )
-          )
-            .returns(
-              T.nilable(
-                T.any(Increase::Models::PendingTransaction::Source::ACHTransferInstruction, Increase::Util::AnyHash)
-              )
-            )
+          params(_: T.nilable(Increase::Models::PendingTransaction::Source::ACHTransferInstruction))
+            .returns(T.nilable(Increase::Models::PendingTransaction::Source::ACHTransferInstruction))
         end
         def ach_transfer_instruction=(_)
         end
@@ -304,26 +262,19 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(T.any(Increase::Models::PendingTransaction::Source::CardAuthorization, Increase::Util::AnyHash))
-          )
-            .returns(
-              T.nilable(T.any(Increase::Models::PendingTransaction::Source::CardAuthorization, Increase::Util::AnyHash))
-            )
+          params(_: T.nilable(Increase::Models::PendingTransaction::Source::CardAuthorization))
+            .returns(T.nilable(Increase::Models::PendingTransaction::Source::CardAuthorization))
         end
         def card_authorization=(_)
         end
 
         # The type of the resource. We may add additional possible values for this enum
         #   over time; your application should be able to handle such additions gracefully.
-        sig { returns(Increase::Models::PendingTransaction::Source::Category::TaggedSymbol) }
+        sig { returns(Symbol) }
         def category
         end
 
-        sig do
-          params(_: Increase::Models::PendingTransaction::Source::Category::TaggedSymbol)
-            .returns(Increase::Models::PendingTransaction::Source::Category::TaggedSymbol)
-        end
+        sig { params(_: Symbol).returns(Symbol) }
         def category=(_)
         end
 
@@ -334,16 +285,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(
-              T.any(Increase::Models::PendingTransaction::Source::CheckDepositInstruction, Increase::Util::AnyHash)
-            )
-          )
-            .returns(
-              T.nilable(
-                T.any(Increase::Models::PendingTransaction::Source::CheckDepositInstruction, Increase::Util::AnyHash)
-              )
-            )
+          params(_: T.nilable(Increase::Models::PendingTransaction::Source::CheckDepositInstruction))
+            .returns(T.nilable(Increase::Models::PendingTransaction::Source::CheckDepositInstruction))
         end
         def check_deposit_instruction=(_)
         end
@@ -355,16 +298,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(
-              T.any(Increase::Models::PendingTransaction::Source::CheckTransferInstruction, Increase::Util::AnyHash)
-            )
-          )
-            .returns(
-              T.nilable(
-                T.any(Increase::Models::PendingTransaction::Source::CheckTransferInstruction, Increase::Util::AnyHash)
-              )
-            )
+          params(_: T.nilable(Increase::Models::PendingTransaction::Source::CheckTransferInstruction))
+            .returns(T.nilable(Increase::Models::PendingTransaction::Source::CheckTransferInstruction))
         end
         def check_transfer_instruction=(_)
         end
@@ -378,12 +313,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(T.any(Increase::Models::PendingTransaction::Source::InboundFundsHold, Increase::Util::AnyHash))
-          )
-            .returns(
-              T.nilable(T.any(Increase::Models::PendingTransaction::Source::InboundFundsHold, Increase::Util::AnyHash))
-            )
+          params(_: T.nilable(Increase::Models::PendingTransaction::Source::InboundFundsHold))
+            .returns(T.nilable(Increase::Models::PendingTransaction::Source::InboundFundsHold))
         end
         def inbound_funds_hold=(_)
         end
@@ -397,16 +328,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(
-              T.any(Increase::Models::PendingTransaction::Source::InboundWireTransferReversal, Increase::Util::AnyHash)
-            )
-          )
-            .returns(
-              T.nilable(
-                T.any(Increase::Models::PendingTransaction::Source::InboundWireTransferReversal, Increase::Util::AnyHash)
-              )
-            )
+          params(_: T.nilable(Increase::Models::PendingTransaction::Source::InboundWireTransferReversal))
+            .returns(T.nilable(Increase::Models::PendingTransaction::Source::InboundWireTransferReversal))
         end
         def inbound_wire_transfer_reversal=(_)
         end
@@ -429,22 +352,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(
-              T.any(
-                Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction,
-                Increase::Util::AnyHash
-              )
-            )
-          )
-            .returns(
-              T.nilable(
-                T.any(
-                  Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction,
-                  Increase::Util::AnyHash
-                )
-              )
-            )
+          params(_: T.nilable(Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction))
+            .returns(T.nilable(Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction))
         end
         def real_time_payments_transfer_instruction=(_)
         end
@@ -456,16 +365,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(
-              T.any(Increase::Models::PendingTransaction::Source::WireTransferInstruction, Increase::Util::AnyHash)
-            )
-          )
-            .returns(
-              T.nilable(
-                T.any(Increase::Models::PendingTransaction::Source::WireTransferInstruction, Increase::Util::AnyHash)
-              )
-            )
+          params(_: T.nilable(Increase::Models::PendingTransaction::Source::WireTransferInstruction))
+            .returns(T.nilable(Increase::Models::PendingTransaction::Source::WireTransferInstruction))
         end
         def wire_transfer_instruction=(_)
         end
@@ -478,7 +379,7 @@ module Increase
             account_transfer_instruction: T.nilable(Increase::Models::PendingTransaction::Source::AccountTransferInstruction),
             ach_transfer_instruction: T.nilable(Increase::Models::PendingTransaction::Source::ACHTransferInstruction),
             card_authorization: T.nilable(Increase::Models::PendingTransaction::Source::CardAuthorization),
-            category: Increase::Models::PendingTransaction::Source::Category::TaggedSymbol,
+            category: Symbol,
             check_deposit_instruction: T.nilable(Increase::Models::PendingTransaction::Source::CheckDepositInstruction),
             check_transfer_instruction: T.nilable(Increase::Models::PendingTransaction::Source::CheckTransferInstruction),
             inbound_funds_hold: T.nilable(Increase::Models::PendingTransaction::Source::InboundFundsHold),
@@ -511,7 +412,7 @@ module Increase
                 account_transfer_instruction: T.nilable(Increase::Models::PendingTransaction::Source::AccountTransferInstruction),
                 ach_transfer_instruction: T.nilable(Increase::Models::PendingTransaction::Source::ACHTransferInstruction),
                 card_authorization: T.nilable(Increase::Models::PendingTransaction::Source::CardAuthorization),
-                category: Increase::Models::PendingTransaction::Source::Category::TaggedSymbol,
+                category: Symbol,
                 check_deposit_instruction: T.nilable(Increase::Models::PendingTransaction::Source::CheckDepositInstruction),
                 check_transfer_instruction: T.nilable(Increase::Models::PendingTransaction::Source::CheckTransferInstruction),
                 inbound_funds_hold: T.nilable(Increase::Models::PendingTransaction::Source::InboundFundsHold),
@@ -538,16 +439,11 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
           #   account currency.
-          sig { returns(Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol) }
+          sig { returns(Symbol) }
           def currency
           end
 
-          sig do
-            params(
-              _: Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol
-            )
-              .returns(Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def currency=(_)
           end
 
@@ -562,97 +458,38 @@ module Increase
 
           # An Account Transfer Instruction object. This field will be present in the JSON
           #   response if and only if `category` is equal to `account_transfer_instruction`.
-          sig do
-            params(
-              amount: Integer,
-              currency: Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol,
-              transfer_id: String
-            )
-              .returns(T.attached_class)
-          end
+          sig { params(amount: Integer, currency: Symbol, transfer_id: String).returns(T.attached_class) }
           def self.new(amount:, currency:, transfer_id:)
           end
 
-          sig do
-            override
-              .returns(
-                {
-                  amount: Integer,
-                  currency: Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol,
-                  transfer_id: String
-                }
-              )
-          end
+          sig { override.returns({amount: Integer, currency: Symbol, transfer_id: String}) }
           def to_hash
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
           #   account currency.
-          module Currency
-            extend Increase::Enum
+          class Currency < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency) }
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol
-                )
-              end
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
-            CAD =
-              T.let(
-                :CAD,
-                Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol
-              )
+            CAD = :CAD
 
             # Swiss Franc (CHF)
-            CHF =
-              T.let(
-                :CHF,
-                Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol
-              )
+            CHF = :CHF
 
             # Euro (EUR)
-            EUR =
-              T.let(
-                :EUR,
-                Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol
-              )
+            EUR = :EUR
 
             # British Pound (GBP)
-            GBP =
-              T.let(
-                :GBP,
-                Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol
-              )
+            GBP = :GBP
 
             # Japanese Yen (JPY)
-            JPY =
-              T.let(
-                :JPY,
-                Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol
-              )
+            JPY = :JPY
 
             # US Dollar (USD)
-            USD =
-              T.let(
-                :USD,
-                Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol
-              )
-
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol]
-                  )
-              end
-              def values
-              end
-            end
+            USD = :USD
           end
         end
 
@@ -698,14 +535,11 @@ module Increase
 
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
-          sig { returns(Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner::TaggedSymbol) }
+          sig { returns(Symbol) }
           def actioner
           end
 
-          sig do
-            params(_: Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner::TaggedSymbol)
-              .returns(Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def actioner=(_)
           end
 
@@ -730,14 +564,11 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
-          sig { returns(Increase::Models::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol) }
+          sig { returns(Symbol) }
           def currency
           end
 
-          sig do
-            params(_: Increase::Models::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol)
-              .returns(Increase::Models::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def currency=(_)
           end
 
@@ -753,14 +584,11 @@ module Increase
 
           # The direction describes the direction the funds will move, either from the
           #   cardholder to the merchant or from the merchant to the cardholder.
-          sig { returns(Increase::Models::PendingTransaction::Source::CardAuthorization::Direction::TaggedSymbol) }
+          sig { returns(Symbol) }
           def direction
           end
 
-          sig do
-            params(_: Increase::Models::PendingTransaction::Source::CardAuthorization::Direction::TaggedSymbol)
-              .returns(Increase::Models::PendingTransaction::Source::CardAuthorization::Direction::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def direction=(_)
           end
 
@@ -846,18 +674,8 @@ module Increase
           end
 
           sig do
-            params(
-              _: T.any(
-                Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails,
-                Increase::Util::AnyHash
-              )
-            )
-              .returns(
-                T.any(
-                  Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails,
-                  Increase::Util::AnyHash
-                )
-              )
+            params(_: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails)
+              .returns(Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails)
           end
           def network_details=(_)
           end
@@ -868,18 +686,8 @@ module Increase
           end
 
           sig do
-            params(
-              _: T.any(
-                Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers,
-                Increase::Util::AnyHash
-              )
-            )
-              .returns(
-                T.any(
-                  Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers,
-                  Increase::Util::AnyHash
-                )
-              )
+            params(_: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers)
+              .returns(Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers)
           end
           def network_identifiers=(_)
           end
@@ -934,16 +742,11 @@ module Increase
 
           # The processing category describes the intent behind the authorization, such as
           #   whether it was used for bill payments or an automatic fuel dispenser.
-          sig { returns(Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory::TaggedSymbol) }
+          sig { returns(Symbol) }
           def processing_category
           end
 
-          sig do
-            params(
-              _: Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory::TaggedSymbol
-            )
-              .returns(Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def processing_category=(_)
           end
 
@@ -969,14 +772,11 @@ module Increase
 
           # A constant representing the object's type. For this resource it will always be
           #   `card_authorization`.
-          sig { returns(Increase::Models::PendingTransaction::Source::CardAuthorization::Type::TaggedSymbol) }
+          sig { returns(Symbol) }
           def type
           end
 
-          sig do
-            params(_: Increase::Models::PendingTransaction::Source::CardAuthorization::Type::TaggedSymbol)
-              .returns(Increase::Models::PendingTransaction::Source::CardAuthorization::Type::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def type=(_)
           end
 
@@ -986,18 +786,8 @@ module Increase
           end
 
           sig do
-            params(
-              _: T.any(
-                Increase::Models::PendingTransaction::Source::CardAuthorization::Verification,
-                Increase::Util::AnyHash
-              )
-            )
-              .returns(
-                T.any(
-                  Increase::Models::PendingTransaction::Source::CardAuthorization::Verification,
-                  Increase::Util::AnyHash
-                )
-              )
+            params(_: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification)
+              .returns(Increase::Models::PendingTransaction::Source::CardAuthorization::Verification)
           end
           def verification=(_)
           end
@@ -1009,12 +799,12 @@ module Increase
           sig do
             params(
               id: String,
-              actioner: Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner::TaggedSymbol,
+              actioner: Symbol,
               amount: Integer,
               card_payment_id: String,
-              currency: Increase::Models::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol,
+              currency: Symbol,
               digital_wallet_token_id: T.nilable(String),
-              direction: Increase::Models::PendingTransaction::Source::CardAuthorization::Direction::TaggedSymbol,
+              direction: Symbol,
               expires_at: Time,
               merchant_acceptor_id: String,
               merchant_category_code: String,
@@ -1030,10 +820,10 @@ module Increase
               physical_card_id: T.nilable(String),
               presentment_amount: Integer,
               presentment_currency: String,
-              processing_category: Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory::TaggedSymbol,
+              processing_category: Symbol,
               real_time_decision_id: T.nilable(String),
               terminal_id: T.nilable(String),
-              type: Increase::Models::PendingTransaction::Source::CardAuthorization::Type::TaggedSymbol,
+              type: Symbol,
               verification: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification
             )
               .returns(T.attached_class)
@@ -1074,12 +864,12 @@ module Increase
               .returns(
                 {
                   id: String,
-                  actioner: Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner::TaggedSymbol,
+                  actioner: Symbol,
                   amount: Integer,
                   card_payment_id: String,
-                  currency: Increase::Models::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol,
+                  currency: Symbol,
                   digital_wallet_token_id: T.nilable(String),
-                  direction: Increase::Models::PendingTransaction::Source::CardAuthorization::Direction::TaggedSymbol,
+                  direction: Symbol,
                   expires_at: Time,
                   merchant_acceptor_id: String,
                   merchant_category_code: String,
@@ -1095,10 +885,10 @@ module Increase
                   physical_card_id: T.nilable(String),
                   presentment_amount: Integer,
                   presentment_currency: String,
-                  processing_category: Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory::TaggedSymbol,
+                  processing_category: Symbol,
                   real_time_decision_id: T.nilable(String),
                   terminal_id: T.nilable(String),
-                  type: Increase::Models::PendingTransaction::Source::CardAuthorization::Type::TaggedSymbol,
+                  type: Symbol,
                   verification: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification
                 }
               )
@@ -1108,131 +898,68 @@ module Increase
 
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
-          module Actioner
-            extend Increase::Enum
+          class Actioner < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # This object was actioned by the user through a real-time decision.
-            USER =
-              T.let(:user, Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner::TaggedSymbol)
+            USER = :user
 
             # This object was actioned by Increase without user intervention.
-            INCREASE =
-              T.let(:increase, Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner::TaggedSymbol)
+            INCREASE = :increase
 
             # This object was actioned by the network, through stand-in processing.
-            NETWORK =
-              T.let(:network, Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner::TaggedSymbol)
-
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner::TaggedSymbol])
-              end
-              def values
-              end
-            end
+            NETWORK = :network
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
-          module Currency
-            extend Increase::Enum
+          class Currency < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Currency) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
-            CAD =
-              T.let(:CAD, Increase::Models::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol)
+            CAD = :CAD
 
             # Swiss Franc (CHF)
-            CHF =
-              T.let(:CHF, Increase::Models::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol)
+            CHF = :CHF
 
             # Euro (EUR)
-            EUR =
-              T.let(:EUR, Increase::Models::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol)
+            EUR = :EUR
 
             # British Pound (GBP)
-            GBP =
-              T.let(:GBP, Increase::Models::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol)
+            GBP = :GBP
 
             # Japanese Yen (JPY)
-            JPY =
-              T.let(:JPY, Increase::Models::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol)
+            JPY = :JPY
 
             # US Dollar (USD)
-            USD =
-              T.let(:USD, Increase::Models::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol)
-
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol])
-              end
-              def values
-              end
-            end
+            USD = :USD
           end
 
           # The direction describes the direction the funds will move, either from the
           #   cardholder to the merchant or from the merchant to the cardholder.
-          module Direction
-            extend Increase::Enum
+          class Direction < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Direction) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Direction::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # A regular card authorization where funds are debited from the cardholder.
-            SETTLEMENT =
-              T.let(
-                :settlement,
-                Increase::Models::PendingTransaction::Source::CardAuthorization::Direction::TaggedSymbol
-              )
+            SETTLEMENT = :settlement
 
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
-            REFUND =
-              T.let(:refund, Increase::Models::PendingTransaction::Source::CardAuthorization::Direction::TaggedSymbol)
-
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::Direction::TaggedSymbol]
-                  )
-              end
-              def values
-              end
-            end
+            REFUND = :refund
           end
 
           class NetworkDetails < Increase::BaseModel
             # The payment network used to process this card authorization.
-            sig do
-              returns(
-                Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category::TaggedSymbol
-              )
-            end
+            sig { returns(Symbol) }
             def category
             end
 
-            sig do
-              params(
-                _: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category::TaggedSymbol
-              )
-                .returns(
-                  Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category::TaggedSymbol
-                )
-            end
+            sig { params(_: Symbol).returns(Symbol) }
             def category=(_)
             end
 
@@ -1243,21 +970,9 @@ module Increase
 
             sig do
               params(
-                _: T.nilable(
-                  T.any(
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa,
-                    Increase::Util::AnyHash
-                  )
-                )
+                _: T.nilable(Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa)
               )
-                .returns(
-                  T.nilable(
-                    T.any(
-                      Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa,
-                      Increase::Util::AnyHash
-                    )
-                  )
-                )
+                .returns(T.nilable(Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa))
             end
             def visa=(_)
             end
@@ -1265,7 +980,7 @@ module Increase
             # Fields specific to the `network`.
             sig do
               params(
-                category: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category::TaggedSymbol,
+                category: Symbol,
                 visa: T.nilable(Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa)
               )
                 .returns(T.attached_class)
@@ -1277,7 +992,7 @@ module Increase
               override
                 .returns(
                   {
-                    category: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category::TaggedSymbol,
+                    category: Symbol,
                     visa: T.nilable(Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa)
                   }
                 )
@@ -1286,133 +1001,53 @@ module Increase
             end
 
             # The payment network used to process this card authorization.
-            module Category
-              extend Increase::Enum
+            class Category < Increase::Enum
+              abstract!
 
-              TaggedSymbol =
-                T.type_alias { T.all(Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category) }
-              OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category::TaggedSymbol
-                  )
-                end
+              Value = type_template(:out) { {fixed: Symbol} }
 
               # Visa
-              VISA =
-                T.let(
-                  :visa,
-                  Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category::TaggedSymbol
-                )
-
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category::TaggedSymbol]
-                    )
-                end
-                def values
-                end
-              end
+              VISA = :visa
             end
 
             class Visa < Increase::BaseModel
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
               #   transactions, identifies the type of mail or telephone order.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
-                )
-              end
+              sig { returns(T.nilable(Symbol)) }
               def electronic_commerce_indicator
               end
 
-              sig do
-                params(
-                  _: T.nilable(
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
-                )
-                  .returns(
-                    T.nilable(
-                      Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                    )
-                  )
-              end
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
               def electronic_commerce_indicator=(_)
               end
 
               # The method used to enter the cardholder's primary account number and card
               #   expiration date.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
-                )
-              end
+              sig { returns(T.nilable(Symbol)) }
               def point_of_service_entry_mode
               end
 
-              sig do
-                params(
-                  _: T.nilable(
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
-                )
-                  .returns(
-                    T.nilable(
-                      Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                    )
-                  )
-              end
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
               def point_of_service_entry_mode=(_)
               end
 
               # Only present when `actioner: network`. Describes why a card authorization was
               #   approved or declined by Visa through stand-in processing.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
-                )
-              end
+              sig { returns(T.nilable(Symbol)) }
               def stand_in_processing_reason
               end
 
-              sig do
-                params(
-                  _: T.nilable(
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
-                )
-                  .returns(
-                    T.nilable(
-                      Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                    )
-                  )
-              end
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
               def stand_in_processing_reason=(_)
               end
 
               # Fields specific to the `visa` network.
               sig do
                 params(
-                  electronic_commerce_indicator: T.nilable(
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  ),
-                  point_of_service_entry_mode: T.nilable(
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  ),
-                  stand_in_processing_reason: T.nilable(
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
+                  electronic_commerce_indicator: T.nilable(Symbol),
+                  point_of_service_entry_mode: T.nilable(Symbol),
+                  stand_in_processing_reason: T.nilable(Symbol)
                 )
                   .returns(T.attached_class)
               end
@@ -1423,15 +1058,9 @@ module Increase
                 override
                   .returns(
                     {
-                      electronic_commerce_indicator: T.nilable(
-                        Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                      ),
-                      point_of_service_entry_mode: T.nilable(
-                        Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                      ),
-                      stand_in_processing_reason: T.nilable(
-                        Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                      )
+                      electronic_commerce_indicator: T.nilable(Symbol),
+                      point_of_service_entry_mode: T.nilable(Symbol),
+                      stand_in_processing_reason: T.nilable(Symbol)
                     }
                   )
               end
@@ -1441,270 +1070,104 @@ module Increase
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
               #   transactions, identifies the type of mail or telephone order.
-              module ElectronicCommerceIndicator
-                extend Increase::Enum
+              class ElectronicCommerceIndicator < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
-                MAIL_PHONE_ORDER =
-                  T.let(
-                    :mail_phone_order,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                MAIL_PHONE_ORDER = :mail_phone_order
 
                 # Recurring transaction: Payment indicator used to indicate a recurring transaction that originates from an acquirer in the US region.
-                RECURRING =
-                  T.let(
-                    :recurring,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                RECURRING = :recurring
 
                 # Installment payment: Payment indicator used to indicate one purchase of goods or services that is billed to the account in multiple charges over a period of time agreed upon by the cardholder and merchant from transactions that originate from an acquirer in the US region.
-                INSTALLMENT =
-                  T.let(
-                    :installment,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                INSTALLMENT = :installment
 
                 # Unknown classification: other mail order: Use to indicate that the type of mail/telephone order is unknown.
-                UNKNOWN_MAIL_PHONE_ORDER =
-                  T.let(
-                    :unknown_mail_phone_order,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                UNKNOWN_MAIL_PHONE_ORDER = :unknown_mail_phone_order
 
                 # Secure electronic commerce transaction: Use to indicate that the electronic commerce transaction has been authenticated using e.g., 3-D Secure
-                SECURE_ELECTRONIC_COMMERCE =
-                  T.let(
-                    :secure_electronic_commerce,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                SECURE_ELECTRONIC_COMMERCE = :secure_electronic_commerce
 
                 # Non-authenticated security transaction at a 3-D Secure-capable merchant, and merchant attempted to authenticate the cardholder using 3-D Secure: Use to identify an electronic commerce transaction where the merchant attempted to authenticate the cardholder using 3-D Secure, but was unable to complete the authentication because the issuer or cardholder does not participate in the 3-D Secure program.
                 NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT =
-                  T.let(
-                    :non_authenticated_security_transaction_at_3ds_capable_merchant,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                  :non_authenticated_security_transaction_at_3ds_capable_merchant
 
                 # Non-authenticated security transaction: Use to identify an electronic commerce transaction that uses data encryption for security however , cardholder authentication is not performed using 3-D Secure.
-                NON_AUTHENTICATED_SECURITY_TRANSACTION =
-                  T.let(
-                    :non_authenticated_security_transaction,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                NON_AUTHENTICATED_SECURITY_TRANSACTION = :non_authenticated_security_transaction
 
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
-                NON_SECURE_TRANSACTION =
-                  T.let(
-                    :non_secure_transaction,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                NON_SECURE_TRANSACTION = :non_secure_transaction
               end
 
               # The method used to enter the cardholder's primary account number and card
               #   expiration date.
-              module PointOfServiceEntryMode
-                extend Increase::Enum
+              class PointOfServiceEntryMode < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # Unknown
-                UNKNOWN =
-                  T.let(
-                    :unknown,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                UNKNOWN = :unknown
 
                 # Manual key entry
-                MANUAL =
-                  T.let(
-                    :manual,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                MANUAL = :manual
 
                 # Magnetic stripe read, without card verification value
-                MAGNETIC_STRIPE_NO_CVV =
-                  T.let(
-                    :magnetic_stripe_no_cvv,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                MAGNETIC_STRIPE_NO_CVV = :magnetic_stripe_no_cvv
 
                 # Optical code
-                OPTICAL_CODE =
-                  T.let(
-                    :optical_code,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                OPTICAL_CODE = :optical_code
 
                 # Contact chip card
-                INTEGRATED_CIRCUIT_CARD =
-                  T.let(
-                    :integrated_circuit_card,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                INTEGRATED_CIRCUIT_CARD = :integrated_circuit_card
 
                 # Contactless read of chip card
-                CONTACTLESS =
-                  T.let(
-                    :contactless,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                CONTACTLESS = :contactless
 
                 # Transaction initiated using a credential that has previously been stored on file
-                CREDENTIAL_ON_FILE =
-                  T.let(
-                    :credential_on_file,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                CREDENTIAL_ON_FILE = :credential_on_file
 
                 # Magnetic stripe read
-                MAGNETIC_STRIPE =
-                  T.let(
-                    :magnetic_stripe,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                MAGNETIC_STRIPE = :magnetic_stripe
 
                 # Contactless read of magnetic stripe data
-                CONTACTLESS_MAGNETIC_STRIPE =
-                  T.let(
-                    :contactless_magnetic_stripe,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                CONTACTLESS_MAGNETIC_STRIPE = :contactless_magnetic_stripe
 
                 # Contact chip card, without card verification value
-                INTEGRATED_CIRCUIT_CARD_NO_CVV =
-                  T.let(
-                    :integrated_circuit_card_no_cvv,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
               end
 
               # Only present when `actioner: network`. Describes why a card authorization was
               #   approved or declined by Visa through stand-in processing.
-              module StandInProcessingReason
-                extend Increase::Enum
+              class StandInProcessingReason < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # Increase failed to process the authorization in a timely manner.
-                ISSUER_ERROR =
-                  T.let(
-                    :issuer_error,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
+                ISSUER_ERROR = :issuer_error
 
                 # The physical card read had an invalid CVV, dCVV, or authorization request cryptogram.
-                INVALID_PHYSICAL_CARD =
-                  T.let(
-                    :invalid_physical_card,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
+                INVALID_PHYSICAL_CARD = :invalid_physical_card
 
                 # The 3DS cardholder authentication verification value was invalid.
                 INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE =
-                  T.let(
-                    :invalid_cardholder_authentication_verification_value,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
+                  :invalid_cardholder_authentication_verification_value
 
                 # An internal Visa error occurred. Visa uses this reason code for certain expected occurrences as well, such as Application Transaction Counter (ATC) replays.
-                INTERNAL_VISA_ERROR =
-                  T.let(
-                    :internal_visa_error,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
+                INTERNAL_VISA_ERROR = :internal_visa_error
 
                 # The merchant has enabled Visa's Transaction Advisory Service and requires further authentication to perform the transaction. In practice this is often utilized at fuel pumps to tell the cardholder to see the cashier.
                 MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED =
-                  T.let(
-                    :merchant_transaction_advisory_service_authentication_required,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
+                  :merchant_transaction_advisory_service_authentication_required
 
                 # The transaction was blocked by Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior, such as card testing.
-                PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK =
-                  T.let(
-                    :payment_fraud_disruption_acquirer_block,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
+                PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK = :payment_fraud_disruption_acquirer_block
 
                 # An unspecific reason for stand-in processing.
-                OTHER =
-                  T.let(
-                    :other,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                OTHER = :other
               end
             end
           end
@@ -1769,97 +1232,38 @@ module Increase
 
           # The processing category describes the intent behind the authorization, such as
           #   whether it was used for bill payments or an automatic fuel dispenser.
-          module ProcessingCategory
-            extend Increase::Enum
+          class ProcessingCategory < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory) }
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory::TaggedSymbol
-                )
-              end
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
-            ACCOUNT_FUNDING =
-              T.let(
-                :account_funding,
-                Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory::TaggedSymbol
-              )
+            ACCOUNT_FUNDING = :account_funding
 
             # Automatic fuel dispenser authorizations occur when a card is used at a gas pump, prior to the actual transaction amount being known. They are followed by an advice message that updates the amount of the pending transaction.
-            AUTOMATIC_FUEL_DISPENSER =
-              T.let(
-                :automatic_fuel_dispenser,
-                Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory::TaggedSymbol
-              )
+            AUTOMATIC_FUEL_DISPENSER = :automatic_fuel_dispenser
 
             # A transaction used to pay a bill.
-            BILL_PAYMENT =
-              T.let(
-                :bill_payment,
-                Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory::TaggedSymbol
-              )
+            BILL_PAYMENT = :bill_payment
 
             # A regular purchase.
-            PURCHASE =
-              T.let(
-                :purchase,
-                Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory::TaggedSymbol
-              )
+            PURCHASE = :purchase
 
             # Quasi-cash transactions represent purchases of items which may be convertible to cash.
-            QUASI_CASH =
-              T.let(
-                :quasi_cash,
-                Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory::TaggedSymbol
-              )
+            QUASI_CASH = :quasi_cash
 
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
-            REFUND =
-              T.let(
-                :refund,
-                Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory::TaggedSymbol
-              )
-
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory::TaggedSymbol]
-                  )
-              end
-              def values
-              end
-            end
+            REFUND = :refund
           end
 
           # A constant representing the object's type. For this resource it will always be
           #   `card_authorization`.
-          module Type
-            extend Increase::Enum
+          class Type < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Type) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Type::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            CARD_AUTHORIZATION =
-              T.let(
-                :card_authorization,
-                Increase::Models::PendingTransaction::Source::CardAuthorization::Type::TaggedSymbol
-              )
-
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::Type::TaggedSymbol])
-              end
-              def values
-              end
-            end
+            CARD_AUTHORIZATION = :card_authorization
           end
 
           class Verification < Increase::BaseModel
@@ -1875,16 +1279,10 @@ module Increase
 
             sig do
               params(
-                _: T.any(
-                  Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode,
-                  Increase::Util::AnyHash
-                )
+                _: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode
               )
                 .returns(
-                  T.any(
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode,
-                    Increase::Util::AnyHash
-                  )
+                  Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode
                 )
             end
             def card_verification_code=(_)
@@ -1898,17 +1296,9 @@ module Increase
 
             sig do
               params(
-                _: T.any(
-                  Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress,
-                  Increase::Util::AnyHash
-                )
+                _: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress
               )
-                .returns(
-                  T.any(
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress,
-                    Increase::Util::AnyHash
-                  )
-                )
+                .returns(Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress)
             end
             def cardholder_address=(_)
             end
@@ -1938,96 +1328,38 @@ module Increase
 
             class CardVerificationCode < Increase::BaseModel
               # The result of verifying the Card Verification Code.
-              sig do
-                returns(
-                  Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
-                )
-              end
+              sig { returns(Symbol) }
               def result
               end
 
-              sig do
-                params(
-                  _: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
-                )
-                  .returns(
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
-                  )
-              end
+              sig { params(_: Symbol).returns(Symbol) }
               def result=(_)
               end
 
               # Fields related to verification of the Card Verification Code, a 3-digit code on
               #   the back of the card.
-              sig do
-                params(
-                  result: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
-                )
-                  .returns(T.attached_class)
-              end
+              sig { params(result: Symbol).returns(T.attached_class) }
               def self.new(result:)
               end
 
-              sig do
-                override
-                  .returns(
-                    {
-                      result: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
-                    }
-                  )
-              end
+              sig { override.returns({result: Symbol}) }
               def to_hash
               end
 
               # The result of verifying the Card Verification Code.
-              module Result
-                extend Increase::Enum
+              class Result < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # No card verification code was provided in the authorization request.
-                NOT_CHECKED =
-                  T.let(
-                    :not_checked,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
-                  )
+                NOT_CHECKED = :not_checked
 
                 # The card verification code matched the one on file.
-                MATCH =
-                  T.let(
-                    :match,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
-                  )
+                MATCH = :match
 
                 # The card verification code did not match the one on file.
-                NO_MATCH =
-                  T.let(
-                    :no_match,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                NO_MATCH = :no_match
               end
             end
 
@@ -2070,22 +1402,11 @@ module Increase
               end
 
               # The address verification result returned to the card network.
-              sig do
-                returns(
-                  Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
-                )
-              end
+              sig { returns(Symbol) }
               def result
               end
 
-              sig do
-                params(
-                  _: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
-                )
-                  .returns(
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
-                  )
-              end
+              sig { params(_: Symbol).returns(Symbol) }
               def result=(_)
               end
 
@@ -2097,7 +1418,7 @@ module Increase
                   actual_postal_code: T.nilable(String),
                   provided_line1: T.nilable(String),
                   provided_postal_code: T.nilable(String),
-                  result: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
+                  result: Symbol
                 )
                   .returns(T.attached_class)
               end
@@ -2112,7 +1433,7 @@ module Increase
                       actual_postal_code: T.nilable(String),
                       provided_line1: T.nilable(String),
                       provided_postal_code: T.nilable(String),
-                      result: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
+                      result: Symbol
                     }
                   )
               end
@@ -2120,75 +1441,28 @@ module Increase
               end
 
               # The address verification result returned to the card network.
-              module Result
-                extend Increase::Enum
+              class Result < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # No adress was provided in the authorization request.
-                NOT_CHECKED =
-                  T.let(
-                    :not_checked,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
-                  )
+                NOT_CHECKED = :not_checked
 
                 # Postal code matches, but the street address was not verified.
-                POSTAL_CODE_MATCH_ADDRESS_NOT_CHECKED =
-                  T.let(
-                    :postal_code_match_address_not_checked,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
-                  )
+                POSTAL_CODE_MATCH_ADDRESS_NOT_CHECKED = :postal_code_match_address_not_checked
 
                 # Postal code matches, but the street address does not match.
-                POSTAL_CODE_MATCH_ADDRESS_NO_MATCH =
-                  T.let(
-                    :postal_code_match_address_no_match,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
-                  )
+                POSTAL_CODE_MATCH_ADDRESS_NO_MATCH = :postal_code_match_address_no_match
 
                 # Postal code does not match, but the street address matches.
-                POSTAL_CODE_NO_MATCH_ADDRESS_MATCH =
-                  T.let(
-                    :postal_code_no_match_address_match,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
-                  )
+                POSTAL_CODE_NO_MATCH_ADDRESS_MATCH = :postal_code_no_match_address_match
 
                 # Postal code and street address match.
-                MATCH =
-                  T.let(
-                    :match,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
-                  )
+                MATCH = :match
 
                 # Postal code and street address do not match.
-                NO_MATCH =
-                  T.let(
-                    :no_match,
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                NO_MATCH = :no_match
               end
             end
           end
@@ -2196,63 +1470,40 @@ module Increase
 
         # The type of the resource. We may add additional possible values for this enum
         #   over time; your application should be able to handle such additions gracefully.
-        module Category
-          extend Increase::Enum
+        class Category < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PendingTransaction::Source::Category) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::PendingTransaction::Source::Category::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # Account Transfer Instruction: details will be under the `account_transfer_instruction` object.
-          ACCOUNT_TRANSFER_INSTRUCTION =
-            T.let(:account_transfer_instruction, Increase::Models::PendingTransaction::Source::Category::TaggedSymbol)
+          ACCOUNT_TRANSFER_INSTRUCTION = :account_transfer_instruction
 
           # ACH Transfer Instruction: details will be under the `ach_transfer_instruction` object.
-          ACH_TRANSFER_INSTRUCTION =
-            T.let(:ach_transfer_instruction, Increase::Models::PendingTransaction::Source::Category::TaggedSymbol)
+          ACH_TRANSFER_INSTRUCTION = :ach_transfer_instruction
 
           # Card Authorization: details will be under the `card_authorization` object.
-          CARD_AUTHORIZATION =
-            T.let(:card_authorization, Increase::Models::PendingTransaction::Source::Category::TaggedSymbol)
+          CARD_AUTHORIZATION = :card_authorization
 
           # Check Deposit Instruction: details will be under the `check_deposit_instruction` object.
-          CHECK_DEPOSIT_INSTRUCTION =
-            T.let(:check_deposit_instruction, Increase::Models::PendingTransaction::Source::Category::TaggedSymbol)
+          CHECK_DEPOSIT_INSTRUCTION = :check_deposit_instruction
 
           # Check Transfer Instruction: details will be under the `check_transfer_instruction` object.
-          CHECK_TRANSFER_INSTRUCTION =
-            T.let(:check_transfer_instruction, Increase::Models::PendingTransaction::Source::Category::TaggedSymbol)
+          CHECK_TRANSFER_INSTRUCTION = :check_transfer_instruction
 
           # Inbound Funds Hold: details will be under the `inbound_funds_hold` object.
-          INBOUND_FUNDS_HOLD =
-            T.let(:inbound_funds_hold, Increase::Models::PendingTransaction::Source::Category::TaggedSymbol)
+          INBOUND_FUNDS_HOLD = :inbound_funds_hold
 
           # Real-Time Payments Transfer Instruction: details will be under the `real_time_payments_transfer_instruction` object.
-          REAL_TIME_PAYMENTS_TRANSFER_INSTRUCTION =
-            T.let(
-              :real_time_payments_transfer_instruction,
-              Increase::Models::PendingTransaction::Source::Category::TaggedSymbol
-            )
+          REAL_TIME_PAYMENTS_TRANSFER_INSTRUCTION = :real_time_payments_transfer_instruction
 
           # Wire Transfer Instruction: details will be under the `wire_transfer_instruction` object.
-          WIRE_TRANSFER_INSTRUCTION =
-            T.let(:wire_transfer_instruction, Increase::Models::PendingTransaction::Source::Category::TaggedSymbol)
+          WIRE_TRANSFER_INSTRUCTION = :wire_transfer_instruction
 
           # Inbound Wire Transfer Reversal: details will be under the `inbound_wire_transfer_reversal` object.
-          INBOUND_WIRE_TRANSFER_REVERSAL =
-            T.let(
-              :inbound_wire_transfer_reversal,
-              Increase::Models::PendingTransaction::Source::Category::TaggedSymbol
-            )
+          INBOUND_WIRE_TRANSFER_REVERSAL = :inbound_wire_transfer_reversal
 
           # The Pending Transaction was made for an undocumented or deprecated reason.
-          OTHER = T.let(:other, Increase::Models::PendingTransaction::Source::Category::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::PendingTransaction::Source::Category::TaggedSymbol]) }
-            def values
-            end
-          end
+          OTHER = :other
         end
 
         class CheckDepositInstruction < Increase::BaseModel
@@ -2286,14 +1537,11 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
-          sig { returns(Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol) }
+          sig { returns(Symbol) }
           def currency
           end
 
-          sig do
-            params(_: Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol)
-              .returns(Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def currency=(_)
           end
 
@@ -2314,7 +1562,7 @@ module Increase
               amount: Integer,
               back_image_file_id: T.nilable(String),
               check_deposit_id: T.nilable(String),
-              currency: Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol,
+              currency: Symbol,
               front_image_file_id: String
             )
               .returns(T.attached_class)
@@ -2329,7 +1577,7 @@ module Increase
                   amount: Integer,
                   back_image_file_id: T.nilable(String),
                   check_deposit_id: T.nilable(String),
-                  currency: Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol,
+                  currency: Symbol,
                   front_image_file_id: String
                 }
               )
@@ -2339,53 +1587,28 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
-          module Currency
-            extend Increase::Enum
+          class Currency < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency) }
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol
-                )
-              end
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
-            CAD =
-              T.let(:CAD, Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol)
+            CAD = :CAD
 
             # Swiss Franc (CHF)
-            CHF =
-              T.let(:CHF, Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol)
+            CHF = :CHF
 
             # Euro (EUR)
-            EUR =
-              T.let(:EUR, Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol)
+            EUR = :EUR
 
             # British Pound (GBP)
-            GBP =
-              T.let(:GBP, Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol)
+            GBP = :GBP
 
             # Japanese Yen (JPY)
-            JPY =
-              T.let(:JPY, Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol)
+            JPY = :JPY
 
             # US Dollar (USD)
-            USD =
-              T.let(:USD, Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol)
-
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol]
-                  )
-              end
-              def values
-              end
-            end
+            USD = :USD
           end
         end
 
@@ -2401,14 +1624,11 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
           #   currency.
-          sig { returns(Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol) }
+          sig { returns(Symbol) }
           def currency
           end
 
-          sig do
-            params(_: Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol)
-              .returns(Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def currency=(_)
           end
 
@@ -2423,97 +1643,38 @@ module Increase
 
           # A Check Transfer Instruction object. This field will be present in the JSON
           #   response if and only if `category` is equal to `check_transfer_instruction`.
-          sig do
-            params(
-              amount: Integer,
-              currency: Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol,
-              transfer_id: String
-            )
-              .returns(T.attached_class)
-          end
+          sig { params(amount: Integer, currency: Symbol, transfer_id: String).returns(T.attached_class) }
           def self.new(amount:, currency:, transfer_id:)
           end
 
-          sig do
-            override
-              .returns(
-                {
-                  amount: Integer,
-                  currency: Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol,
-                  transfer_id: String
-                }
-              )
-          end
+          sig { override.returns({amount: Integer, currency: Symbol, transfer_id: String}) }
           def to_hash
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
           #   currency.
-          module Currency
-            extend Increase::Enum
+          class Currency < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency) }
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol
-                )
-              end
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
-            CAD =
-              T.let(
-                :CAD,
-                Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol
-              )
+            CAD = :CAD
 
             # Swiss Franc (CHF)
-            CHF =
-              T.let(
-                :CHF,
-                Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol
-              )
+            CHF = :CHF
 
             # Euro (EUR)
-            EUR =
-              T.let(
-                :EUR,
-                Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol
-              )
+            EUR = :EUR
 
             # British Pound (GBP)
-            GBP =
-              T.let(
-                :GBP,
-                Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol
-              )
+            GBP = :GBP
 
             # Japanese Yen (JPY)
-            JPY =
-              T.let(
-                :JPY,
-                Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol
-              )
+            JPY = :JPY
 
             # US Dollar (USD)
-            USD =
-              T.let(
-                :USD,
-                Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol
-              )
-
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol]
-                  )
-              end
-              def values
-              end
-            end
+            USD = :USD
           end
         end
 
@@ -2559,14 +1720,11 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
           #   currency.
-          sig { returns(Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol) }
+          sig { returns(Symbol) }
           def currency
           end
 
-          sig do
-            params(_: Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol)
-              .returns(Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def currency=(_)
           end
 
@@ -2598,27 +1756,21 @@ module Increase
           end
 
           # The status of the hold.
-          sig { returns(Increase::Models::PendingTransaction::Source::InboundFundsHold::Status::TaggedSymbol) }
+          sig { returns(Symbol) }
           def status
           end
 
-          sig do
-            params(_: Increase::Models::PendingTransaction::Source::InboundFundsHold::Status::TaggedSymbol)
-              .returns(Increase::Models::PendingTransaction::Source::InboundFundsHold::Status::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def status=(_)
           end
 
           # A constant representing the object's type. For this resource it will always be
           #   `inbound_funds_hold`.
-          sig { returns(Increase::Models::PendingTransaction::Source::InboundFundsHold::Type::TaggedSymbol) }
+          sig { returns(Symbol) }
           def type
           end
 
-          sig do
-            params(_: Increase::Models::PendingTransaction::Source::InboundFundsHold::Type::TaggedSymbol)
-              .returns(Increase::Models::PendingTransaction::Source::InboundFundsHold::Type::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def type=(_)
           end
 
@@ -2632,12 +1784,12 @@ module Increase
               amount: Integer,
               automatically_releases_at: Time,
               created_at: Time,
-              currency: Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol,
+              currency: Symbol,
               held_transaction_id: T.nilable(String),
               pending_transaction_id: T.nilable(String),
               released_at: T.nilable(Time),
-              status: Increase::Models::PendingTransaction::Source::InboundFundsHold::Status::TaggedSymbol,
-              type: Increase::Models::PendingTransaction::Source::InboundFundsHold::Type::TaggedSymbol
+              status: Symbol,
+              type: Symbol
             )
               .returns(T.attached_class)
           end
@@ -2663,12 +1815,12 @@ module Increase
                   amount: Integer,
                   automatically_releases_at: Time,
                   created_at: Time,
-                  currency: Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol,
+                  currency: Symbol,
                   held_transaction_id: T.nilable(String),
                   pending_transaction_id: T.nilable(String),
                   released_at: T.nilable(Time),
-                  status: Increase::Models::PendingTransaction::Source::InboundFundsHold::Status::TaggedSymbol,
-                  type: Increase::Models::PendingTransaction::Source::InboundFundsHold::Type::TaggedSymbol
+                  status: Symbol,
+                  type: Symbol
                 }
               )
           end
@@ -2677,92 +1829,51 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
           #   currency.
-          module Currency
-            extend Increase::Enum
+          class Currency < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
-            CAD = T.let(:CAD, Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol)
+            CAD = :CAD
 
             # Swiss Franc (CHF)
-            CHF = T.let(:CHF, Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol)
+            CHF = :CHF
 
             # Euro (EUR)
-            EUR = T.let(:EUR, Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol)
+            EUR = :EUR
 
             # British Pound (GBP)
-            GBP = T.let(:GBP, Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol)
+            GBP = :GBP
 
             # Japanese Yen (JPY)
-            JPY = T.let(:JPY, Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol)
+            JPY = :JPY
 
             # US Dollar (USD)
-            USD = T.let(:USD, Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol)
-
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol])
-              end
-              def values
-              end
-            end
+            USD = :USD
           end
 
           # The status of the hold.
-          module Status
-            extend Increase::Enum
+          class Status < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::PendingTransaction::Source::InboundFundsHold::Status) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::PendingTransaction::Source::InboundFundsHold::Status::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Funds are still being held.
-            HELD = T.let(:held, Increase::Models::PendingTransaction::Source::InboundFundsHold::Status::TaggedSymbol)
+            HELD = :held
 
             # Funds have been released.
-            COMPLETE =
-              T.let(:complete, Increase::Models::PendingTransaction::Source::InboundFundsHold::Status::TaggedSymbol)
-
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::PendingTransaction::Source::InboundFundsHold::Status::TaggedSymbol])
-              end
-              def values
-              end
-            end
+            COMPLETE = :complete
           end
 
           # A constant representing the object's type. For this resource it will always be
           #   `inbound_funds_hold`.
-          module Type
-            extend Increase::Enum
+          class Type < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::PendingTransaction::Source::InboundFundsHold::Type) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::PendingTransaction::Source::InboundFundsHold::Type::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            INBOUND_FUNDS_HOLD =
-              T.let(
-                :inbound_funds_hold,
-                Increase::Models::PendingTransaction::Source::InboundFundsHold::Type::TaggedSymbol
-              )
-
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::PendingTransaction::Source::InboundFundsHold::Type::TaggedSymbol])
-              end
-              def values
-              end
-            end
+            INBOUND_FUNDS_HOLD = :inbound_funds_hold
           end
         end
 
@@ -2902,41 +2013,26 @@ module Increase
 
       # Whether the Pending Transaction has been confirmed and has an associated
       #   Transaction.
-      module Status
-        extend Increase::Enum
+      class Status < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PendingTransaction::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::PendingTransaction::Status::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The Pending Transaction is still awaiting confirmation.
-        PENDING = T.let(:pending, Increase::Models::PendingTransaction::Status::TaggedSymbol)
+        PENDING = :pending
 
         # The Pending Transaction is confirmed. An associated Transaction exists for this object. The Pending Transaction will no longer count against your balance and can generally be hidden from UIs, etc.
-        COMPLETE = T.let(:complete, Increase::Models::PendingTransaction::Status::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::PendingTransaction::Status::TaggedSymbol]) }
-          def values
-          end
-        end
+        COMPLETE = :complete
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `pending_transaction`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PendingTransaction::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::PendingTransaction::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        PENDING_TRANSACTION =
-          T.let(:pending_transaction, Increase::Models::PendingTransaction::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::PendingTransaction::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        PENDING_TRANSACTION = :pending_transaction
       end
     end
   end

@@ -11,8 +11,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::AccountListParams::CreatedAt, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::AccountListParams::CreatedAt, Increase::Util::AnyHash))
+        params(_: Increase::Models::AccountListParams::CreatedAt)
+          .returns(Increase::Models::AccountListParams::CreatedAt)
       end
       def created_at=(_)
       end
@@ -80,8 +80,7 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::AccountListParams::Status, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::AccountListParams::Status, Increase::Util::AnyHash))
+        params(_: Increase::Models::AccountListParams::Status).returns(Increase::Models::AccountListParams::Status)
       end
       def status=(_)
       end
@@ -187,42 +186,32 @@ module Increase
       class Status < Increase::BaseModel
         # Filter Accounts for those with the specified status. For GET requests, this
         #   should be encoded as a comma-delimited string, such as `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Increase::Models::AccountListParams::Status::In::OrSymbol])) }
+        sig { returns(T.nilable(T::Array[Symbol])) }
         def in_
         end
 
-        sig do
-          params(_: T::Array[Increase::Models::AccountListParams::Status::In::OrSymbol])
-            .returns(T::Array[Increase::Models::AccountListParams::Status::In::OrSymbol])
-        end
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
         def in_=(_)
         end
 
-        sig { params(in_: T::Array[Increase::Models::AccountListParams::Status::In::OrSymbol]).returns(T.attached_class) }
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Increase::Models::AccountListParams::Status::In::OrSymbol]}) }
+        sig { override.returns({in_: T::Array[Symbol]}) }
         def to_hash
         end
 
-        module In
-          extend Increase::Enum
+        class In < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountListParams::Status::In) }
-          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::AccountListParams::Status::In::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # Closed Accounts on which no new activity can occur.
-          CLOSED = T.let(:closed, Increase::Models::AccountListParams::Status::In::TaggedSymbol)
+          CLOSED = :closed
 
           # Open Accounts that are ready to use.
-          OPEN = T.let(:open, Increase::Models::AccountListParams::Status::In::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::AccountListParams::Status::In::TaggedSymbol]) }
-            def values
-            end
-          end
+          OPEN = :open
         end
       end
     end

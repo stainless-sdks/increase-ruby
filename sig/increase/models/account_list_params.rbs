@@ -115,16 +115,14 @@ module Increase
 
         type in_ = :closed | :open
 
-        module In
-          extend Increase::Enum
-
+        class In < Increase::Enum
           # Closed Accounts on which no new activity can occur.
           CLOSED: :closed
 
           # Open Accounts that are ready to use.
           OPEN: :open
 
-          def self?.values: -> ::Array[Increase::Models::AccountListParams::Status::in_]
+          def self.values: -> ::Array[Increase::Models::AccountListParams::Status::in_]
         end
       end
     end

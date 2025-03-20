@@ -123,9 +123,7 @@ module Increase
           | :deposit_account_control_agreement
           | :proof_of_authorization_request_submission
 
-        module In
-          extend Increase::Enum
-
+        class In < Increase::Enum
           # An image of the front of a check, used for check deposits.
           CHECK_IMAGE_FRONT: :check_image_front
 
@@ -204,7 +202,7 @@ module Increase
           # A file containing additional evidence for a Proof of Authorization Request Submission.
           PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION: :proof_of_authorization_request_submission
 
-          def self?.values: -> ::Array[Increase::Models::FileListParams::Purpose::in_]
+          def self.values: -> ::Array[Increase::Models::FileListParams::Purpose::in_]
         end
       end
     end

@@ -8,14 +8,11 @@ module Increase
 
       # The credential you request in exchange for the code. In Production, this is
       #   always `authorization_code`. In Sandbox, you can pass either enum value.
-      sig { returns(Increase::Models::OAuthTokenCreateParams::GrantType::OrSymbol) }
+      sig { returns(Symbol) }
       def grant_type
       end
 
-      sig do
-        params(_: Increase::Models::OAuthTokenCreateParams::GrantType::OrSymbol)
-          .returns(Increase::Models::OAuthTokenCreateParams::GrantType::OrSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def grant_type=(_)
       end
 
@@ -62,7 +59,7 @@ module Increase
 
       sig do
         params(
-          grant_type: Increase::Models::OAuthTokenCreateParams::GrantType::OrSymbol,
+          grant_type: Symbol,
           client_id: String,
           client_secret: String,
           code: String,
@@ -78,7 +75,7 @@ module Increase
         override
           .returns(
             {
-              grant_type: Increase::Models::OAuthTokenCreateParams::GrantType::OrSymbol,
+              grant_type: Symbol,
               client_id: String,
               client_secret: String,
               code: String,
@@ -92,26 +89,16 @@ module Increase
 
       # The credential you request in exchange for the code. In Production, this is
       #   always `authorization_code`. In Sandbox, you can pass either enum value.
-      module GrantType
-        extend Increase::Enum
+      class GrantType < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthTokenCreateParams::GrantType) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::OAuthTokenCreateParams::GrantType::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # An OAuth authorization code.
-        AUTHORIZATION_CODE =
-          T.let(:authorization_code, Increase::Models::OAuthTokenCreateParams::GrantType::TaggedSymbol)
+        AUTHORIZATION_CODE = :authorization_code
 
         # An OAuth production token.
-        PRODUCTION_TOKEN =
-          T.let(:production_token, Increase::Models::OAuthTokenCreateParams::GrantType::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::OAuthTokenCreateParams::GrantType::TaggedSymbol]) }
-          def values
-          end
-        end
+        PRODUCTION_TOKEN = :production_token
       end
     end
   end

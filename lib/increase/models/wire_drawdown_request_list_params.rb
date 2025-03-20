@@ -83,9 +83,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        module In
-          extend Increase::Enum
-
+        # @abstract
+        class In < Increase::Enum
           # The drawdown request is queued to be submitted to Fedwire.
           PENDING_SUBMISSION = :pending_submission
 
@@ -99,12 +98,6 @@ module Increase
           REFUSED = :refused
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
     end

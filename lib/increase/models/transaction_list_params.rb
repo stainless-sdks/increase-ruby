@@ -112,9 +112,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        module In
-          extend Increase::Enum
-
+        # @abstract
+        class In < Increase::Enum
           # Account Transfer Intention: details will be under the `account_transfer_intention` object.
           ACCOUNT_TRANSFER_INTENTION = :account_transfer_intention
 
@@ -203,12 +202,6 @@ module Increase
           OTHER = :other
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 

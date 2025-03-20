@@ -50,14 +50,11 @@ module Increase
       end
 
       # The creator of this Physical Card Profile.
-      sig { returns(Increase::Models::PhysicalCardProfile::Creator::TaggedSymbol) }
+      sig { returns(Symbol) }
       def creator
       end
 
-      sig do
-        params(_: Increase::Models::PhysicalCardProfile::Creator::TaggedSymbol)
-          .returns(Increase::Models::PhysicalCardProfile::Creator::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def creator=(_)
       end
 
@@ -101,27 +98,21 @@ module Increase
       end
 
       # The status of the Physical Card Profile.
-      sig { returns(Increase::Models::PhysicalCardProfile::Status::TaggedSymbol) }
+      sig { returns(Symbol) }
       def status
       end
 
-      sig do
-        params(_: Increase::Models::PhysicalCardProfile::Status::TaggedSymbol)
-          .returns(Increase::Models::PhysicalCardProfile::Status::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def status=(_)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `physical_card_profile`.
-      sig { returns(Increase::Models::PhysicalCardProfile::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       def type
       end
 
-      sig do
-        params(_: Increase::Models::PhysicalCardProfile::Type::TaggedSymbol)
-          .returns(Increase::Models::PhysicalCardProfile::Type::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def type=(_)
       end
 
@@ -135,13 +126,13 @@ module Increase
           carrier_image_file_id: T.nilable(String),
           contact_phone: T.nilable(String),
           created_at: Time,
-          creator: Increase::Models::PhysicalCardProfile::Creator::TaggedSymbol,
+          creator: Symbol,
           description: String,
           front_image_file_id: T.nilable(String),
           idempotency_key: T.nilable(String),
           is_default: T::Boolean,
-          status: Increase::Models::PhysicalCardProfile::Status::TaggedSymbol,
-          type: Increase::Models::PhysicalCardProfile::Type::TaggedSymbol
+          status: Symbol,
+          type: Symbol
         )
           .returns(T.attached_class)
       end
@@ -170,13 +161,13 @@ module Increase
               carrier_image_file_id: T.nilable(String),
               contact_phone: T.nilable(String),
               created_at: Time,
-              creator: Increase::Models::PhysicalCardProfile::Creator::TaggedSymbol,
+              creator: Symbol,
               description: String,
               front_image_file_id: T.nilable(String),
               idempotency_key: T.nilable(String),
               is_default: T::Boolean,
-              status: Increase::Models::PhysicalCardProfile::Status::TaggedSymbol,
-              type: Increase::Models::PhysicalCardProfile::Type::TaggedSymbol
+              status: Symbol,
+              type: Symbol
             }
           )
       end
@@ -184,75 +175,51 @@ module Increase
       end
 
       # The creator of this Physical Card Profile.
-      module Creator
-        extend Increase::Enum
+      class Creator < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardProfile::Creator) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::PhysicalCardProfile::Creator::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # This Physical Card Profile was created by Increase.
-        INCREASE = T.let(:increase, Increase::Models::PhysicalCardProfile::Creator::TaggedSymbol)
+        INCREASE = :increase
 
         # This Physical Card Profile was created by you.
-        USER = T.let(:user, Increase::Models::PhysicalCardProfile::Creator::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::PhysicalCardProfile::Creator::TaggedSymbol]) }
-          def values
-          end
-        end
+        USER = :user
       end
 
       # The status of the Physical Card Profile.
-      module Status
-        extend Increase::Enum
+      class Status < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardProfile::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::PhysicalCardProfile::Status::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The Card Profile has not yet been processed by Increase.
-        PENDING_CREATING = T.let(:pending_creating, Increase::Models::PhysicalCardProfile::Status::TaggedSymbol)
+        PENDING_CREATING = :pending_creating
 
         # The card profile is awaiting review by Increase.
-        PENDING_REVIEWING =
-          T.let(:pending_reviewing, Increase::Models::PhysicalCardProfile::Status::TaggedSymbol)
+        PENDING_REVIEWING = :pending_reviewing
 
         # There is an issue with the Physical Card Profile preventing it from use.
-        REJECTED = T.let(:rejected, Increase::Models::PhysicalCardProfile::Status::TaggedSymbol)
+        REJECTED = :rejected
 
         # The card profile is awaiting submission to the fulfillment provider.
-        PENDING_SUBMITTING =
-          T.let(:pending_submitting, Increase::Models::PhysicalCardProfile::Status::TaggedSymbol)
+        PENDING_SUBMITTING = :pending_submitting
 
         # The Physical Card Profile has been submitted to the fulfillment provider and is ready to use.
-        ACTIVE = T.let(:active, Increase::Models::PhysicalCardProfile::Status::TaggedSymbol)
+        ACTIVE = :active
 
         # The Physical Card Profile has been archived.
-        ARCHIVED = T.let(:archived, Increase::Models::PhysicalCardProfile::Status::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::PhysicalCardProfile::Status::TaggedSymbol]) }
-          def values
-          end
-        end
+        ARCHIVED = :archived
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `physical_card_profile`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardProfile::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::PhysicalCardProfile::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        PHYSICAL_CARD_PROFILE =
-          T.let(:physical_card_profile, Increase::Models::PhysicalCardProfile::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::PhysicalCardProfile::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        PHYSICAL_CARD_PROFILE = :physical_card_profile
       end
     end
   end

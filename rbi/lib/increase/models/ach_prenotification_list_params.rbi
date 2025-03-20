@@ -11,8 +11,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::ACHPrenotificationListParams::CreatedAt, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::ACHPrenotificationListParams::CreatedAt, Increase::Util::AnyHash))
+        params(_: Increase::Models::ACHPrenotificationListParams::CreatedAt)
+          .returns(Increase::Models::ACHPrenotificationListParams::CreatedAt)
       end
       def created_at=(_)
       end

@@ -44,10 +44,10 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The reason code that the simulated rejection will have.
-          module RejectReasonCode
-            extend Increase::Enum
-
+          class RejectReasonCode < Increase::Enum
             # The destination account is closed. Corresponds to the Real-Time Payments reason code `AC04`.
             ACCOUNT_CLOSED = :account_closed
 
@@ -112,12 +112,6 @@ module Increase
             OTHER = :other
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
         end
       end

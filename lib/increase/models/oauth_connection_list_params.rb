@@ -81,9 +81,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        module In
-          extend Increase::Enum
-
+        # @abstract
+        class In < Increase::Enum
           # The OAuth connection is active.
           ACTIVE = :active
 
@@ -91,12 +90,6 @@ module Increase
           INACTIVE = :inactive
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
     end

@@ -132,10 +132,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The type of Entity to create.
-      module Structure
-        extend Increase::Enum
-
+      class Structure < Increase::Enum
         # A corporation.
         CORPORATION = :corporation
 
@@ -152,12 +152,6 @@ module Increase
         GOVERNMENT_AUTHORITY = :government_authority
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
       class Corporation < Increase::BaseModel
@@ -506,10 +500,10 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # A method that can be used to verify the individual's identity.
-              module Method
-                extend Increase::Enum
-
+              class Method < Increase::Enum
                 # A social security number.
                 SOCIAL_SECURITY_NUMBER = :social_security_number
 
@@ -526,12 +520,6 @@ module Increase
                 OTHER = :other
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
 
               class DriversLicense < Increase::BaseModel
@@ -667,9 +655,8 @@ module Increase
             end
           end
 
-          module Prong
-            extend Increase::Enum
-
+          # @abstract
+          class Prong < Increase::Enum
             # A person with 25% or greater direct or indirect ownership of the entity.
             OWNERSHIP = :ownership
 
@@ -677,12 +664,6 @@ module Increase
             CONTROL = :control
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
         end
       end
@@ -811,20 +792,14 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @abstract
+        #
         # The category of the government authority.
-        module Category
-          extend Increase::Enum
-
+        class Category < Increase::Enum
           # The Public Entity is a Municipality.
           MUNICIPALITY = :municipality
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 
@@ -1021,10 +996,10 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # A method that can be used to verify the individual's identity.
-            module Method
-              extend Increase::Enum
-
+            class Method < Increase::Enum
               # A social security number.
               SOCIAL_SECURITY_NUMBER = :social_security_number
 
@@ -1041,12 +1016,6 @@ module Increase
               OTHER = :other
 
               finalize!
-
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
             end
 
             class DriversLicense < Increase::BaseModel
@@ -1352,10 +1321,10 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # A method that can be used to verify the individual's identity.
-          module Method
-            extend Increase::Enum
-
+          class Method < Increase::Enum
             # A social security number.
             SOCIAL_SECURITY_NUMBER = :social_security_number
 
@@ -1372,12 +1341,6 @@ module Increase
             OTHER = :other
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
           class DriversLicense < Increase::BaseModel
@@ -1552,10 +1515,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The vendor that was used to perform the verification.
-        module Vendor
-          extend Increase::Enum
-
+        class Vendor < Increase::Enum
           # Alloy. See https://alloy.com for more information.
           ALLOY = :alloy
 
@@ -1563,12 +1526,6 @@ module Increase
           MIDDESK = :middesk
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 
@@ -1722,12 +1679,12 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @abstract
+        #
         # Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require
         #   their own Employer Identification Number. Revocable trusts require information
         #   about the individual `grantor` who created the trust.
-        module Category
-          extend Increase::Enum
-
+        class Category < Increase::Enum
           # The trust is revocable by the grantor.
           REVOCABLE = :revocable
 
@@ -1735,12 +1692,6 @@ module Increase
           IRREVOCABLE = :irrevocable
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
 
         class Trustee < Increase::BaseModel
@@ -1769,20 +1720,14 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The structure of the trustee.
-          module Structure
-            extend Increase::Enum
-
+          class Structure < Increase::Enum
             # The trustee is an individual.
             INDIVIDUAL = :individual
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
           class Individual < Increase::BaseModel
@@ -1955,10 +1900,10 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # A method that can be used to verify the individual's identity.
-              module Method
-                extend Increase::Enum
-
+              class Method < Increase::Enum
                 # A social security number.
                 SOCIAL_SECURITY_NUMBER = :social_security_number
 
@@ -1975,12 +1920,6 @@ module Increase
                 OTHER = :other
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
 
               class DriversLicense < Increase::BaseModel
@@ -2283,10 +2222,10 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # A method that can be used to verify the individual's identity.
-            module Method
-              extend Increase::Enum
-
+            class Method < Increase::Enum
               # A social security number.
               SOCIAL_SECURITY_NUMBER = :social_security_number
 
@@ -2303,12 +2242,6 @@ module Increase
               OTHER = :other
 
               finalize!
-
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
             end
 
             class DriversLicense < Increase::BaseModel

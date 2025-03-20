@@ -24,9 +24,7 @@ module Increase
         | :endorsement_missing
         | :endorsement_irregular
 
-      module Reason
-        extend Increase::Enum
-
+      class Reason < Increase::Enum
         # The check was altered or fictitious.
         ALTERED_OR_FICTITIOUS: :altered_or_fictitious
 
@@ -42,7 +40,7 @@ module Increase
         # The check was not endorsed by the payee.
         ENDORSEMENT_IRREGULAR: :endorsement_irregular
 
-        def self?.values: -> ::Array[Increase::Models::InboundCheckDepositReturnParams::reason]
+        def self.values: -> ::Array[Increase::Models::InboundCheckDepositReturnParams::reason]
       end
     end
   end

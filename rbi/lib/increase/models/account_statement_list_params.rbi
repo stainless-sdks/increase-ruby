@@ -39,12 +39,8 @@ module Increase
       end
 
       sig do
-        params(
-          _: T.any(Increase::Models::AccountStatementListParams::StatementPeriodStart, Increase::Util::AnyHash)
-        )
-          .returns(
-            T.any(Increase::Models::AccountStatementListParams::StatementPeriodStart, Increase::Util::AnyHash)
-          )
+        params(_: Increase::Models::AccountStatementListParams::StatementPeriodStart)
+          .returns(Increase::Models::AccountStatementListParams::StatementPeriodStart)
       end
       def statement_period_start=(_)
       end

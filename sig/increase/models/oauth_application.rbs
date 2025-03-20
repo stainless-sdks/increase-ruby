@@ -40,26 +40,22 @@ module Increase
 
       type status = :active | :deleted
 
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The application is active and can be used by your users.
         ACTIVE: :active
 
         # The application is deleted.
         DELETED: :deleted
 
-        def self?.values: -> ::Array[Increase::Models::OAuthApplication::status]
+        def self.values: -> ::Array[Increase::Models::OAuthApplication::status]
       end
 
       type type_ = :oauth_application
 
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         OAUTH_APPLICATION: :oauth_application
 
-        def self?.values: -> ::Array[Increase::Models::OAuthApplication::type_]
+        def self.values: -> ::Array[Increase::Models::OAuthApplication::type_]
       end
     end
   end

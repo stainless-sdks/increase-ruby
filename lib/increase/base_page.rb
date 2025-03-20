@@ -2,26 +2,32 @@
 
 module Increase
   # @example
-  #   if page.has_next?
-  #     page = page.next_page
-  #   end
+  # ```ruby
+  # if page.has_next?
+  #   page = page.next_page
+  # end
+  # ```
   #
   # @example
-  #   page.auto_paging_each do |account|
-  #     puts(account)
-  #   end
+  # ```ruby
+  # page.auto_paging_each do |account|
+  #   puts(account)
+  # end
+  # ```
   #
   # @example
-  #   accounts =
-  #     page
-  #     .to_enum
-  #     .lazy
-  #     .select { _1.object_id.even? }
-  #     .map(&:itself)
-  #     .take(2)
-  #     .to_a
+  # ```ruby
+  # accounts =
+  #   page
+  #   .to_enum
+  #   .lazy
+  #   .select { _1.object_id.even? }
+  #   .map(&:itself)
+  #   .take(2)
+  #   .to_a
   #
-  #   accounts => Array
+  # accounts => Array
+  # ```
   module BasePage
     # rubocop:disable Lint/UnusedMethodArgument
 

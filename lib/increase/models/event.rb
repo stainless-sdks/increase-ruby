@@ -58,11 +58,11 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The category of the Event. We may add additional possible values for this enum
       #   over time; your application should be able to handle such additions gracefully.
-      module Category
-        extend Increase::Enum
-
+      class Category < Increase::Enum
         # Occurs whenever an Account is created.
         ACCOUNT_CREATED = :"account.created"
 
@@ -330,28 +330,16 @@ module Increase
         WIRE_TRANSFER_UPDATED = :"wire_transfer.updated"
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `event`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         EVENT = :event
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

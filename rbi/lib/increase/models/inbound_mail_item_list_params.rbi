@@ -11,8 +11,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::InboundMailItemListParams::CreatedAt, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::InboundMailItemListParams::CreatedAt, Increase::Util::AnyHash))
+        params(_: Increase::Models::InboundMailItemListParams::CreatedAt)
+          .returns(Increase::Models::InboundMailItemListParams::CreatedAt)
       end
       def created_at=(_)
       end

@@ -52,27 +52,21 @@ module Increase
       end
 
       # Whether the application is active.
-      sig { returns(Increase::Models::OAuthApplication::Status::TaggedSymbol) }
+      sig { returns(Symbol) }
       def status
       end
 
-      sig do
-        params(_: Increase::Models::OAuthApplication::Status::TaggedSymbol)
-          .returns(Increase::Models::OAuthApplication::Status::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def status=(_)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `oauth_application`.
-      sig { returns(Increase::Models::OAuthApplication::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       def type
       end
 
-      sig do
-        params(_: Increase::Models::OAuthApplication::Type::TaggedSymbol)
-          .returns(Increase::Models::OAuthApplication::Type::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def type=(_)
       end
 
@@ -87,8 +81,8 @@ module Increase
           created_at: Time,
           deleted_at: T.nilable(Time),
           name: T.nilable(String),
-          status: Increase::Models::OAuthApplication::Status::TaggedSymbol,
-          type: Increase::Models::OAuthApplication::Type::TaggedSymbol
+          status: Symbol,
+          type: Symbol
         )
           .returns(T.attached_class)
       end
@@ -104,8 +98,8 @@ module Increase
               created_at: Time,
               deleted_at: T.nilable(Time),
               name: T.nilable(String),
-              status: Increase::Models::OAuthApplication::Status::TaggedSymbol,
-              type: Increase::Models::OAuthApplication::Type::TaggedSymbol
+              status: Symbol,
+              type: Symbol
             }
           )
       end
@@ -113,40 +107,26 @@ module Increase
       end
 
       # Whether the application is active.
-      module Status
-        extend Increase::Enum
+      class Status < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthApplication::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::OAuthApplication::Status::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The application is active and can be used by your users.
-        ACTIVE = T.let(:active, Increase::Models::OAuthApplication::Status::TaggedSymbol)
+        ACTIVE = :active
 
         # The application is deleted.
-        DELETED = T.let(:deleted, Increase::Models::OAuthApplication::Status::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::OAuthApplication::Status::TaggedSymbol]) }
-          def values
-          end
-        end
+        DELETED = :deleted
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `oauth_application`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthApplication::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::OAuthApplication::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        OAUTH_APPLICATION = T.let(:oauth_application, Increase::Models::OAuthApplication::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::OAuthApplication::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        OAUTH_APPLICATION = :oauth_application
       end
     end
   end

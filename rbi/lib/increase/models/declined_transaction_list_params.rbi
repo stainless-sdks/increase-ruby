@@ -20,8 +20,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::DeclinedTransactionListParams::Category, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::DeclinedTransactionListParams::Category, Increase::Util::AnyHash))
+        params(_: Increase::Models::DeclinedTransactionListParams::Category)
+          .returns(Increase::Models::DeclinedTransactionListParams::Category)
       end
       def category=(_)
       end
@@ -31,8 +31,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::DeclinedTransactionListParams::CreatedAt, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::DeclinedTransactionListParams::CreatedAt, Increase::Util::AnyHash))
+        params(_: Increase::Models::DeclinedTransactionListParams::CreatedAt)
+          .returns(Increase::Models::DeclinedTransactionListParams::CreatedAt)
       end
       def created_at=(_)
       end
@@ -108,74 +108,47 @@ module Increase
       class Category < Increase::BaseModel
         # Return results whose value is in the provided list. For GET requests, this
         #   should be encoded as a comma-delimited string, such as `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol])) }
+        sig { returns(T.nilable(T::Array[Symbol])) }
         def in_
         end
 
-        sig do
-          params(_: T::Array[Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol])
-            .returns(T::Array[Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol])
-        end
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
         def in_=(_)
         end
 
-        sig do
-          params(in_: T::Array[Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol])
-            .returns(T.attached_class)
-        end
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol]}) }
+        sig { override.returns({in_: T::Array[Symbol]}) }
         def to_hash
         end
 
-        module In
-          extend Increase::Enum
+        class In < Increase::Enum
+          abstract!
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::DeclinedTransactionListParams::Category::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # ACH Decline: details will be under the `ach_decline` object.
-          ACH_DECLINE =
-            T.let(:ach_decline, Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol)
+          ACH_DECLINE = :ach_decline
 
           # Card Decline: details will be under the `card_decline` object.
-          CARD_DECLINE =
-            T.let(:card_decline, Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol)
+          CARD_DECLINE = :card_decline
 
           # Check Decline: details will be under the `check_decline` object.
-          CHECK_DECLINE =
-            T.let(:check_decline, Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol)
+          CHECK_DECLINE = :check_decline
 
           # Inbound Real-Time Payments Transfer Decline: details will be under the `inbound_real_time_payments_transfer_decline` object.
-          INBOUND_REAL_TIME_PAYMENTS_TRANSFER_DECLINE =
-            T.let(
-              :inbound_real_time_payments_transfer_decline,
-              Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol
-            )
+          INBOUND_REAL_TIME_PAYMENTS_TRANSFER_DECLINE = :inbound_real_time_payments_transfer_decline
 
           # Wire Decline: details will be under the `wire_decline` object.
-          WIRE_DECLINE =
-            T.let(:wire_decline, Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol)
+          WIRE_DECLINE = :wire_decline
 
           # Check Deposit Rejection: details will be under the `check_deposit_rejection` object.
-          CHECK_DEPOSIT_REJECTION =
-            T.let(
-              :check_deposit_rejection,
-              Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol
-            )
+          CHECK_DEPOSIT_REJECTION = :check_deposit_rejection
 
           # The Declined Transaction was made for an undocumented or deprecated reason.
-          OTHER = T.let(:other, Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol]) }
-            def values
-            end
-          end
+          OTHER = :other
         end
       end
 

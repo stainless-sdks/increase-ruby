@@ -24,22 +24,18 @@ module Increase
 
       type token_type = :bearer
 
-      module TokenType
-        extend Increase::Enum
-
+      class TokenType < Increase::Enum
         BEARER: :bearer
 
-        def self?.values: -> ::Array[Increase::Models::OAuthToken::token_type]
+        def self.values: -> ::Array[Increase::Models::OAuthToken::token_type]
       end
 
       type type_ = :oauth_token
 
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         OAUTH_TOKEN: :oauth_token
 
-        def self?.values: -> ::Array[Increase::Models::OAuthToken::type_]
+        def self.values: -> ::Array[Increase::Models::OAuthToken::type_]
       end
     end
   end

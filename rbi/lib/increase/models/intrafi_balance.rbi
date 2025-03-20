@@ -27,14 +27,11 @@ module Increase
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account
       #   currency.
-      sig { returns(Increase::Models::IntrafiBalance::Currency::TaggedSymbol) }
+      sig { returns(Symbol) }
       def currency
       end
 
-      sig do
-        params(_: Increase::Models::IntrafiBalance::Currency::TaggedSymbol)
-          .returns(Increase::Models::IntrafiBalance::Currency::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def currency=(_)
       end
 
@@ -59,14 +56,11 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `intrafi_balance`.
-      sig { returns(Increase::Models::IntrafiBalance::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       def type
       end
 
-      sig do
-        params(_: Increase::Models::IntrafiBalance::Type::TaggedSymbol)
-          .returns(Increase::Models::IntrafiBalance::Type::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def type=(_)
       end
 
@@ -77,10 +71,10 @@ module Increase
         params(
           id: String,
           balances: T::Array[Increase::Models::IntrafiBalance::Balance],
-          currency: Increase::Models::IntrafiBalance::Currency::TaggedSymbol,
+          currency: Symbol,
           effective_date: Date,
           total_balance: Integer,
-          type: Increase::Models::IntrafiBalance::Type::TaggedSymbol
+          type: Symbol
         )
           .returns(T.attached_class)
       end
@@ -93,10 +87,10 @@ module Increase
             {
               id: String,
               balances: T::Array[Increase::Models::IntrafiBalance::Balance],
-              currency: Increase::Models::IntrafiBalance::Currency::TaggedSymbol,
+              currency: Symbol,
               effective_date: Date,
               total_balance: Integer,
-              type: Increase::Models::IntrafiBalance::Type::TaggedSymbol
+              type: Symbol
             }
           )
       end
@@ -137,12 +131,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(T.any(Increase::Models::IntrafiBalance::Balance::BankLocation, Increase::Util::AnyHash))
-          )
-            .returns(
-              T.nilable(T.any(Increase::Models::IntrafiBalance::Balance::BankLocation, Increase::Util::AnyHash))
-            )
+          params(_: T.nilable(Increase::Models::IntrafiBalance::Balance::BankLocation))
+            .returns(T.nilable(Increase::Models::IntrafiBalance::Balance::BankLocation))
         end
         def bank_location=(_)
         end
@@ -218,52 +208,38 @@ module Increase
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account
       #   currency.
-      module Currency
-        extend Increase::Enum
+      class Currency < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiBalance::Currency) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::IntrafiBalance::Currency::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # Canadian Dollar (CAD)
-        CAD = T.let(:CAD, Increase::Models::IntrafiBalance::Currency::TaggedSymbol)
+        CAD = :CAD
 
         # Swiss Franc (CHF)
-        CHF = T.let(:CHF, Increase::Models::IntrafiBalance::Currency::TaggedSymbol)
+        CHF = :CHF
 
         # Euro (EUR)
-        EUR = T.let(:EUR, Increase::Models::IntrafiBalance::Currency::TaggedSymbol)
+        EUR = :EUR
 
         # British Pound (GBP)
-        GBP = T.let(:GBP, Increase::Models::IntrafiBalance::Currency::TaggedSymbol)
+        GBP = :GBP
 
         # Japanese Yen (JPY)
-        JPY = T.let(:JPY, Increase::Models::IntrafiBalance::Currency::TaggedSymbol)
+        JPY = :JPY
 
         # US Dollar (USD)
-        USD = T.let(:USD, Increase::Models::IntrafiBalance::Currency::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::IntrafiBalance::Currency::TaggedSymbol]) }
-          def values
-          end
-        end
+        USD = :USD
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `intrafi_balance`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiBalance::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::IntrafiBalance::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        INTRAFI_BALANCE = T.let(:intrafi_balance, Increase::Models::IntrafiBalance::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::IntrafiBalance::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        INTRAFI_BALANCE = :intrafi_balance
       end
     end
   end

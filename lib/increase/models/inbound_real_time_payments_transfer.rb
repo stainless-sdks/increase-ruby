@@ -171,11 +171,11 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @abstract
+      #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
       #   currency. This will always be "USD" for a Real-Time Payments transfer.
-      module Currency
-        extend Increase::Enum
-
+      class Currency < Increase::Enum
         # Canadian Dollar (CAD)
         CAD = :CAD
 
@@ -195,12 +195,6 @@ module Increase
         USD = :USD
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
       class Decline < Increase::BaseModel
@@ -233,10 +227,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The reason for the transfer decline.
-        module Reason
-          extend Increase::Enum
-
+        class Reason < Increase::Enum
           # The account number is canceled.
           ACCOUNT_NUMBER_CANCELED = :account_number_canceled
 
@@ -256,19 +250,13 @@ module Increase
           REAL_TIME_PAYMENTS_NOT_ENABLED = :real_time_payments_not_enabled
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 
+      # @abstract
+      #
       # The lifecycle status of the transfer.
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The transfer is pending confirmation.
         PENDING_CONFIRMING = :pending_confirming
 
@@ -282,28 +270,16 @@ module Increase
         DECLINED = :declined
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_real_time_payments_transfer`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         INBOUND_REAL_TIME_PAYMENTS_TRANSFER = :inbound_real_time_payments_transfer
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

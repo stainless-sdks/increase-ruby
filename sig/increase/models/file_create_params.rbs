@@ -48,9 +48,7 @@ module Increase
         | :unusual_activity_report_attachment
         | :proof_of_authorization_request_submission
 
-      module Purpose
-        extend Increase::Enum
-
+      class Purpose < Increase::Enum
         # An image of the front of a check, used for check deposits.
         CHECK_IMAGE_FRONT: :check_image_front
 
@@ -102,7 +100,7 @@ module Increase
         # A file containing additional evidence for a Proof of Authorization Request Submission.
         PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION: :proof_of_authorization_request_submission
 
-        def self?.values: -> ::Array[Increase::Models::FileCreateParams::purpose]
+        def self.values: -> ::Array[Increase::Models::FileCreateParams::purpose]
       end
     end
   end

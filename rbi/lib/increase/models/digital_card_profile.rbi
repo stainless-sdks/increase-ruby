@@ -106,14 +106,11 @@ module Increase
       end
 
       # The status of the Card Profile.
-      sig { returns(Increase::Models::DigitalCardProfile::Status::TaggedSymbol) }
+      sig { returns(Symbol) }
       def status
       end
 
-      sig do
-        params(_: Increase::Models::DigitalCardProfile::Status::TaggedSymbol)
-          .returns(Increase::Models::DigitalCardProfile::Status::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def status=(_)
       end
 
@@ -123,22 +120,19 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::DigitalCardProfile::TextColor, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::DigitalCardProfile::TextColor, Increase::Util::AnyHash))
+        params(_: Increase::Models::DigitalCardProfile::TextColor)
+          .returns(Increase::Models::DigitalCardProfile::TextColor)
       end
       def text_color=(_)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `digital_card_profile`.
-      sig { returns(Increase::Models::DigitalCardProfile::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       def type
       end
 
-      sig do
-        params(_: Increase::Models::DigitalCardProfile::Type::TaggedSymbol)
-          .returns(Increase::Models::DigitalCardProfile::Type::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def type=(_)
       end
 
@@ -158,9 +152,9 @@ module Increase
           description: String,
           idempotency_key: T.nilable(String),
           issuer_name: String,
-          status: Increase::Models::DigitalCardProfile::Status::TaggedSymbol,
+          status: Symbol,
           text_color: Increase::Models::DigitalCardProfile::TextColor,
-          type: Increase::Models::DigitalCardProfile::Type::TaggedSymbol
+          type: Symbol
         )
           .returns(T.attached_class)
       end
@@ -197,9 +191,9 @@ module Increase
               description: String,
               idempotency_key: T.nilable(String),
               issuer_name: String,
-              status: Increase::Models::DigitalCardProfile::Status::TaggedSymbol,
+              status: Symbol,
               text_color: Increase::Models::DigitalCardProfile::TextColor,
-              type: Increase::Models::DigitalCardProfile::Type::TaggedSymbol
+              type: Symbol
             }
           )
       end
@@ -207,29 +201,22 @@ module Increase
       end
 
       # The status of the Card Profile.
-      module Status
-        extend Increase::Enum
+      class Status < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalCardProfile::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::DigitalCardProfile::Status::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The Card Profile is awaiting review from Increase and/or processing by card networks.
-        PENDING = T.let(:pending, Increase::Models::DigitalCardProfile::Status::TaggedSymbol)
+        PENDING = :pending
 
         # There is an issue with the Card Profile preventing it from use.
-        REJECTED = T.let(:rejected, Increase::Models::DigitalCardProfile::Status::TaggedSymbol)
+        REJECTED = :rejected
 
         # The Card Profile can be assigned to Cards.
-        ACTIVE = T.let(:active, Increase::Models::DigitalCardProfile::Status::TaggedSymbol)
+        ACTIVE = :active
 
         # The Card Profile is no longer in use.
-        ARCHIVED = T.let(:archived, Increase::Models::DigitalCardProfile::Status::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::DigitalCardProfile::Status::TaggedSymbol]) }
-          def values
-          end
-        end
+        ARCHIVED = :archived
       end
 
       class TextColor < Increase::BaseModel
@@ -272,20 +259,12 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `digital_card_profile`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalCardProfile::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::DigitalCardProfile::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        DIGITAL_CARD_PROFILE =
-          T.let(:digital_card_profile, Increase::Models::DigitalCardProfile::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::DigitalCardProfile::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        DIGITAL_CARD_PROFILE = :digital_card_profile
       end
     end
   end

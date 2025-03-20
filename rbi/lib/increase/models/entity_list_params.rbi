@@ -11,8 +11,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::EntityListParams::CreatedAt, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::EntityListParams::CreatedAt, Increase::Util::AnyHash))
+        params(_: Increase::Models::EntityListParams::CreatedAt)
+          .returns(Increase::Models::EntityListParams::CreatedAt)
       end
       def created_at=(_)
       end
@@ -52,10 +52,7 @@ module Increase
       def status
       end
 
-      sig do
-        params(_: T.any(Increase::Models::EntityListParams::Status, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::EntityListParams::Status, Increase::Util::AnyHash))
-      end
+      sig { params(_: Increase::Models::EntityListParams::Status).returns(Increase::Models::EntityListParams::Status) }
       def status=(_)
       end
 
@@ -145,45 +142,35 @@ module Increase
         # Filter Entities for those with the specified status or statuses. For GET
         #   requests, this should be encoded as a comma-delimited string, such as
         #   `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Increase::Models::EntityListParams::Status::In::OrSymbol])) }
+        sig { returns(T.nilable(T::Array[Symbol])) }
         def in_
         end
 
-        sig do
-          params(_: T::Array[Increase::Models::EntityListParams::Status::In::OrSymbol])
-            .returns(T::Array[Increase::Models::EntityListParams::Status::In::OrSymbol])
-        end
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
         def in_=(_)
         end
 
-        sig { params(in_: T::Array[Increase::Models::EntityListParams::Status::In::OrSymbol]).returns(T.attached_class) }
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Increase::Models::EntityListParams::Status::In::OrSymbol]}) }
+        sig { override.returns({in_: T::Array[Symbol]}) }
         def to_hash
         end
 
-        module In
-          extend Increase::Enum
+        class In < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EntityListParams::Status::In) }
-          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::EntityListParams::Status::In::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # The entity is active.
-          ACTIVE = T.let(:active, Increase::Models::EntityListParams::Status::In::TaggedSymbol)
+          ACTIVE = :active
 
           # The entity is archived, and can no longer be used to create accounts.
-          ARCHIVED = T.let(:archived, Increase::Models::EntityListParams::Status::In::TaggedSymbol)
+          ARCHIVED = :archived
 
           # The entity is temporarily disabled and cannot be used for financial activity.
-          DISABLED = T.let(:disabled, Increase::Models::EntityListParams::Status::In::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::EntityListParams::Status::In::TaggedSymbol]) }
-            def values
-            end
-          end
+          DISABLED = :disabled
         end
       end
     end

@@ -157,9 +157,7 @@ module Increase
               | :drivers_license
               | :other
 
-            module Method
-              extend Increase::Enum
-
+            class Method < Increase::Enum
               # A social security number.
               SOCIAL_SECURITY_NUMBER: :social_security_number
 
@@ -175,7 +173,7 @@ module Increase
               # Another identifying document.
               OTHER: :other
 
-              def self?.values: -> ::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::method_]
+              def self.values: -> ::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::method_]
             end
 
             type drivers_license =
@@ -265,16 +263,14 @@ module Increase
 
         type prong = :ownership | :control
 
-        module Prong
-          extend Increase::Enum
-
+        class Prong < Increase::Enum
           # A person with 25% or greater direct or indirect ownership of the entity.
           OWNERSHIP: :ownership
 
           # A person who manages, directs, or has significant control of the entity.
           CONTROL: :control
 
-          def self?.values: -> ::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::prong]
+          def self.values: -> ::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::prong]
         end
       end
     end

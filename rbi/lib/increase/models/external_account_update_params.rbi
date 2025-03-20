@@ -7,14 +7,11 @@ module Increase
       include Increase::RequestParameters
 
       # The type of entity that owns the External Account.
-      sig { returns(T.nilable(Increase::Models::ExternalAccountUpdateParams::AccountHolder::OrSymbol)) }
+      sig { returns(T.nilable(Symbol)) }
       def account_holder
       end
 
-      sig do
-        params(_: Increase::Models::ExternalAccountUpdateParams::AccountHolder::OrSymbol)
-          .returns(Increase::Models::ExternalAccountUpdateParams::AccountHolder::OrSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def account_holder=(_)
       end
 
@@ -28,35 +25,29 @@ module Increase
       end
 
       # The funding type of the External Account.
-      sig { returns(T.nilable(Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol)) }
+      sig { returns(T.nilable(Symbol)) }
       def funding
       end
 
-      sig do
-        params(_: Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol)
-          .returns(Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def funding=(_)
       end
 
       # The status of the External Account.
-      sig { returns(T.nilable(Increase::Models::ExternalAccountUpdateParams::Status::OrSymbol)) }
+      sig { returns(T.nilable(Symbol)) }
       def status
       end
 
-      sig do
-        params(_: Increase::Models::ExternalAccountUpdateParams::Status::OrSymbol)
-          .returns(Increase::Models::ExternalAccountUpdateParams::Status::OrSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def status=(_)
       end
 
       sig do
         params(
-          account_holder: Increase::Models::ExternalAccountUpdateParams::AccountHolder::OrSymbol,
+          account_holder: Symbol,
           description: String,
-          funding: Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol,
-          status: Increase::Models::ExternalAccountUpdateParams::Status::OrSymbol,
+          funding: Symbol,
+          status: Symbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -68,10 +59,10 @@ module Increase
         override
           .returns(
             {
-              account_holder: Increase::Models::ExternalAccountUpdateParams::AccountHolder::OrSymbol,
+              account_holder: Symbol,
               description: String,
-              funding: Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol,
-              status: Increase::Models::ExternalAccountUpdateParams::Status::OrSymbol,
+              funding: Symbol,
+              status: Symbol,
               request_options: Increase::RequestOptions
             }
           )
@@ -80,71 +71,45 @@ module Increase
       end
 
       # The type of entity that owns the External Account.
-      module AccountHolder
-        extend Increase::Enum
+      class AccountHolder < Increase::Enum
+        abstract!
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountUpdateParams::AccountHolder) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountUpdateParams::AccountHolder::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The External Account is owned by a business.
-        BUSINESS = T.let(:business, Increase::Models::ExternalAccountUpdateParams::AccountHolder::TaggedSymbol)
+        BUSINESS = :business
 
         # The External Account is owned by an individual.
-        INDIVIDUAL =
-          T.let(:individual, Increase::Models::ExternalAccountUpdateParams::AccountHolder::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::ExternalAccountUpdateParams::AccountHolder::TaggedSymbol]) }
-          def values
-          end
-        end
+        INDIVIDUAL = :individual
       end
 
       # The funding type of the External Account.
-      module Funding
-        extend Increase::Enum
+      class Funding < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountUpdateParams::Funding) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountUpdateParams::Funding::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # A checking account.
-        CHECKING = T.let(:checking, Increase::Models::ExternalAccountUpdateParams::Funding::TaggedSymbol)
+        CHECKING = :checking
 
         # A savings account.
-        SAVINGS = T.let(:savings, Increase::Models::ExternalAccountUpdateParams::Funding::TaggedSymbol)
+        SAVINGS = :savings
 
         # A different type of account.
-        OTHER = T.let(:other, Increase::Models::ExternalAccountUpdateParams::Funding::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::ExternalAccountUpdateParams::Funding::TaggedSymbol]) }
-          def values
-          end
-        end
+        OTHER = :other
       end
 
       # The status of the External Account.
-      module Status
-        extend Increase::Enum
+      class Status < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountUpdateParams::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountUpdateParams::Status::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The External Account is active.
-        ACTIVE = T.let(:active, Increase::Models::ExternalAccountUpdateParams::Status::TaggedSymbol)
+        ACTIVE = :active
 
         # The External Account is archived and won't appear in the dashboard.
-        ARCHIVED = T.let(:archived, Increase::Models::ExternalAccountUpdateParams::Status::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::ExternalAccountUpdateParams::Status::TaggedSymbol]) }
-          def values
-          end
-        end
+        ARCHIVED = :archived
       end
     end
   end

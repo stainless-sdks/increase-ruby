@@ -53,9 +53,7 @@ module Increase
 
         type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-        module Currency
-          extend Increase::Enum
-
+        class Currency < Increase::Enum
           # Canadian Dollar (CAD)
           CAD: :CAD
 
@@ -74,31 +72,27 @@ module Increase
           # US Dollar (USD)
           USD: :USD
 
-          def self?.values: -> ::Array[Increase::Models::Simulations::InboundFundsHoldReleaseResponse::currency]
+          def self.values: -> ::Array[Increase::Models::Simulations::InboundFundsHoldReleaseResponse::currency]
         end
 
         type status = :held | :complete
 
-        module Status
-          extend Increase::Enum
-
+        class Status < Increase::Enum
           # Funds are still being held.
           HELD: :held
 
           # Funds have been released.
           COMPLETE: :complete
 
-          def self?.values: -> ::Array[Increase::Models::Simulations::InboundFundsHoldReleaseResponse::status]
+          def self.values: -> ::Array[Increase::Models::Simulations::InboundFundsHoldReleaseResponse::status]
         end
 
         type type_ = :inbound_funds_hold
 
-        module Type
-          extend Increase::Enum
-
+        class Type < Increase::Enum
           INBOUND_FUNDS_HOLD: :inbound_funds_hold
 
-          def self?.values: -> ::Array[Increase::Models::Simulations::InboundFundsHoldReleaseResponse::type_]
+          def self.values: -> ::Array[Increase::Models::Simulations::InboundFundsHoldReleaseResponse::type_]
         end
       end
     end

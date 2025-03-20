@@ -11,8 +11,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::OAuthApplicationListParams::CreatedAt, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::OAuthApplicationListParams::CreatedAt, Increase::Util::AnyHash))
+        params(_: Increase::Models::OAuthApplicationListParams::CreatedAt)
+          .returns(Increase::Models::OAuthApplicationListParams::CreatedAt)
       end
       def created_at=(_)
       end
@@ -41,8 +41,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::OAuthApplicationListParams::Status, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::OAuthApplicationListParams::Status, Increase::Util::AnyHash))
+        params(_: Increase::Models::OAuthApplicationListParams::Status)
+          .returns(Increase::Models::OAuthApplicationListParams::Status)
       end
       def status=(_)
       end
@@ -130,46 +130,32 @@ module Increase
       class Status < Increase::BaseModel
         # Return results whose value is in the provided list. For GET requests, this
         #   should be encoded as a comma-delimited string, such as `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Increase::Models::OAuthApplicationListParams::Status::In::OrSymbol])) }
+        sig { returns(T.nilable(T::Array[Symbol])) }
         def in_
         end
 
-        sig do
-          params(_: T::Array[Increase::Models::OAuthApplicationListParams::Status::In::OrSymbol])
-            .returns(T::Array[Increase::Models::OAuthApplicationListParams::Status::In::OrSymbol])
-        end
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
         def in_=(_)
         end
 
-        sig do
-          params(in_: T::Array[Increase::Models::OAuthApplicationListParams::Status::In::OrSymbol])
-            .returns(T.attached_class)
-        end
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Increase::Models::OAuthApplicationListParams::Status::In::OrSymbol]}) }
+        sig { override.returns({in_: T::Array[Symbol]}) }
         def to_hash
         end
 
-        module In
-          extend Increase::Enum
+        class In < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthApplicationListParams::Status::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::OAuthApplicationListParams::Status::In::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # The application is active and can be used by your users.
-          ACTIVE = T.let(:active, Increase::Models::OAuthApplicationListParams::Status::In::TaggedSymbol)
+          ACTIVE = :active
 
           # The application is deleted.
-          DELETED = T.let(:deleted, Increase::Models::OAuthApplicationListParams::Status::In::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::OAuthApplicationListParams::Status::In::TaggedSymbol]) }
-            def values
-            end
-          end
+          DELETED = :deleted
         end
       end
     end

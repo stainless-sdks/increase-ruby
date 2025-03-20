@@ -51,20 +51,14 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `entity_supplemental_document`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         ENTITY_SUPPLEMENTAL_DOCUMENT = :entity_supplemental_document
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

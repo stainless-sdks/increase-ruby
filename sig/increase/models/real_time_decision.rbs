@@ -82,9 +82,7 @@ module Increase
 
         type decision = :approve | :challenge | :deny
 
-        module Decision
-          extend Increase::Enum
-
+        class Decision < Increase::Enum
           # Approve the authentication attempt without triggering a challenge.
           APPROVE: :approve
 
@@ -94,7 +92,7 @@ module Increase
           # Deny the authentication attempt.
           DENY: :deny
 
-          def self?.values: -> ::Array[Increase::Models::RealTimeDecision::CardAuthentication::decision]
+          def self.values: -> ::Array[Increase::Models::RealTimeDecision::CardAuthentication::decision]
         end
       end
 
@@ -130,16 +128,14 @@ module Increase
 
         type result = :success | :failure
 
-        module Result
-          extend Increase::Enum
-
+        class Result < Increase::Enum
           # Your application successfully delivered the one-time code to the cardholder.
           SUCCESS: :success
 
           # Your application was unable to deliver the one-time code to the cardholder.
           FAILURE: :failure
 
-          def self?.values: -> ::Array[Increase::Models::RealTimeDecision::CardAuthenticationChallenge::result]
+          def self.values: -> ::Array[Increase::Models::RealTimeDecision::CardAuthenticationChallenge::result]
         end
       end
 
@@ -255,30 +251,26 @@ module Increase
 
         type decision = :approve | :decline
 
-        module Decision
-          extend Increase::Enum
-
+        class Decision < Increase::Enum
           # Approve the authorization.
           APPROVE: :approve
 
           # Decline the authorization.
           DECLINE: :decline
 
-          def self?.values: -> ::Array[Increase::Models::RealTimeDecision::CardAuthorization::decision]
+          def self.values: -> ::Array[Increase::Models::RealTimeDecision::CardAuthorization::decision]
         end
 
         type direction = :settlement | :refund
 
-        module Direction
-          extend Increase::Enum
-
+        class Direction < Increase::Enum
           # A regular card authorization where funds are debited from the cardholder.
           SETTLEMENT: :settlement
 
           # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
           REFUND: :refund
 
-          def self?.values: -> ::Array[Increase::Models::RealTimeDecision::CardAuthorization::direction]
+          def self.values: -> ::Array[Increase::Models::RealTimeDecision::CardAuthorization::direction]
         end
 
         type network_details =
@@ -301,13 +293,11 @@ module Increase
 
           type category = :visa
 
-          module Category
-            extend Increase::Enum
-
+          class Category < Increase::Enum
             # Visa
             VISA: :visa
 
-            def self?.values: -> ::Array[Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::category]
+            def self.values: -> ::Array[Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::category]
           end
 
           type visa =
@@ -342,9 +332,7 @@ module Increase
               | :non_authenticated_security_transaction
               | :non_secure_transaction
 
-            module ElectronicCommerceIndicator
-              extend Increase::Enum
-
+            class ElectronicCommerceIndicator < Increase::Enum
               # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
               MAIL_PHONE_ORDER: :mail_phone_order
 
@@ -369,7 +357,7 @@ module Increase
               # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
               NON_SECURE_TRANSACTION: :non_secure_transaction
 
-              def self?.values: -> ::Array[Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::electronic_commerce_indicator]
+              def self.values: -> ::Array[Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::electronic_commerce_indicator]
             end
 
             type point_of_service_entry_mode =
@@ -384,9 +372,7 @@ module Increase
               | :contactless_magnetic_stripe
               | :integrated_circuit_card_no_cvv
 
-            module PointOfServiceEntryMode
-              extend Increase::Enum
-
+            class PointOfServiceEntryMode < Increase::Enum
               # Unknown
               UNKNOWN: :unknown
 
@@ -417,7 +403,7 @@ module Increase
               # Contact chip card, without card verification value
               INTEGRATED_CIRCUIT_CARD_NO_CVV: :integrated_circuit_card_no_cvv
 
-              def self?.values: -> ::Array[Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::point_of_service_entry_mode]
+              def self.values: -> ::Array[Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::point_of_service_entry_mode]
             end
 
             type stand_in_processing_reason =
@@ -429,9 +415,7 @@ module Increase
               | :payment_fraud_disruption_acquirer_block
               | :other
 
-            module StandInProcessingReason
-              extend Increase::Enum
-
+            class StandInProcessingReason < Increase::Enum
               # Increase failed to process the authorization in a timely manner.
               ISSUER_ERROR: :issuer_error
 
@@ -453,7 +437,7 @@ module Increase
               # An unspecific reason for stand-in processing.
               OTHER: :other
 
-              def self?.values: -> ::Array[Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::stand_in_processing_reason]
+              def self.values: -> ::Array[Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::stand_in_processing_reason]
             end
           end
         end
@@ -489,9 +473,7 @@ module Increase
           | :quasi_cash
           | :refund
 
-        module ProcessingCategory
-          extend Increase::Enum
-
+        class ProcessingCategory < Increase::Enum
           # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
           ACCOUNT_FUNDING: :account_funding
 
@@ -510,7 +492,7 @@ module Increase
           # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
           REFUND: :refund
 
-          def self?.values: -> ::Array[Increase::Models::RealTimeDecision::CardAuthorization::processing_category]
+          def self.values: -> ::Array[Increase::Models::RealTimeDecision::CardAuthorization::processing_category]
         end
 
         type request_details =
@@ -537,16 +519,14 @@ module Increase
 
           type category = :initial_authorization | :incremental_authorization
 
-          module Category
-            extend Increase::Enum
-
+          class Category < Increase::Enum
             # A regular, standalone authorization.
             INITIAL_AUTHORIZATION: :initial_authorization
 
             # An incremental request to increase the amount of an existing authorization.
             INCREMENTAL_AUTHORIZATION: :incremental_authorization
 
-            def self?.values: -> ::Array[Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::category]
+            def self.values: -> ::Array[Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::category]
           end
 
           type incremental_authorization =
@@ -600,9 +580,7 @@ module Increase
 
             type result = :not_checked | :match | :no_match
 
-            module Result
-              extend Increase::Enum
-
+            class Result < Increase::Enum
               # No card verification code was provided in the authorization request.
               NOT_CHECKED: :not_checked
 
@@ -612,7 +590,7 @@ module Increase
               # The card verification code did not match the one on file.
               NO_MATCH: :no_match
 
-              def self?.values: -> ::Array[Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::result]
+              def self.values: -> ::Array[Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::result]
             end
           end
 
@@ -654,9 +632,7 @@ module Increase
               | :match
               | :no_match
 
-            module Result
-              extend Increase::Enum
-
+            class Result < Increase::Enum
               # No adress was provided in the authorization request.
               NOT_CHECKED: :not_checked
 
@@ -675,7 +651,7 @@ module Increase
               # Postal code and street address do not match.
               NO_MATCH: :no_match
 
-              def self?.values: -> ::Array[Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::result]
+              def self.values: -> ::Array[Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::result]
             end
           end
         end
@@ -688,9 +664,7 @@ module Increase
         | :digital_wallet_token_requested
         | :digital_wallet_authentication_requested
 
-      module Category
-        extend Increase::Enum
-
+      class Category < Increase::Enum
         # A card is being authorized.
         CARD_AUTHORIZATION_REQUESTED: :card_authorization_requested
 
@@ -706,7 +680,7 @@ module Increase
         # A card is being loaded into a digital wallet and requires cardholder authentication.
         DIGITAL_WALLET_AUTHENTICATION_REQUESTED: :digital_wallet_authentication_requested
 
-        def self?.values: -> ::Array[Increase::Models::RealTimeDecision::category]
+        def self.values: -> ::Array[Increase::Models::RealTimeDecision::category]
       end
 
       type digital_wallet_authentication =
@@ -749,23 +723,19 @@ module Increase
 
         type channel = :sms | :email
 
-        module Channel
-          extend Increase::Enum
-
+        class Channel < Increase::Enum
           # Send one-time passcodes over SMS.
           SMS: :sms
 
           # Send one-time passcodes over email.
           EMAIL: :email
 
-          def self?.values: -> ::Array[Increase::Models::RealTimeDecision::DigitalWalletAuthentication::channel]
+          def self.values: -> ::Array[Increase::Models::RealTimeDecision::DigitalWalletAuthentication::channel]
         end
 
         type digital_wallet = :apple_pay | :google_pay | :samsung_pay | :unknown
 
-        module DigitalWallet
-          extend Increase::Enum
-
+        class DigitalWallet < Increase::Enum
           # Apple Pay
           APPLE_PAY: :apple_pay
 
@@ -778,21 +748,19 @@ module Increase
           # Unknown
           UNKNOWN: :unknown
 
-          def self?.values: -> ::Array[Increase::Models::RealTimeDecision::DigitalWalletAuthentication::digital_wallet]
+          def self.values: -> ::Array[Increase::Models::RealTimeDecision::DigitalWalletAuthentication::digital_wallet]
         end
 
         type result = :success | :failure
 
-        module Result
-          extend Increase::Enum
-
+        class Result < Increase::Enum
           # Your application successfully delivered the one-time passcode to the cardholder.
           SUCCESS: :success
 
           # Your application failed to deliver the one-time passcode to the cardholder.
           FAILURE: :failure
 
-          def self?.values: -> ::Array[Increase::Models::RealTimeDecision::DigitalWalletAuthentication::result]
+          def self.values: -> ::Array[Increase::Models::RealTimeDecision::DigitalWalletAuthentication::result]
         end
       end
 
@@ -824,23 +792,19 @@ module Increase
 
         type decision = :approve | :decline
 
-        module Decision
-          extend Increase::Enum
-
+        class Decision < Increase::Enum
           # Approve the provisioning request.
           APPROVE: :approve
 
           # Decline the provisioning request.
           DECLINE: :decline
 
-          def self?.values: -> ::Array[Increase::Models::RealTimeDecision::DigitalWalletToken::decision]
+          def self.values: -> ::Array[Increase::Models::RealTimeDecision::DigitalWalletToken::decision]
         end
 
         type digital_wallet = :apple_pay | :google_pay | :samsung_pay | :unknown
 
-        module DigitalWallet
-          extend Increase::Enum
-
+        class DigitalWallet < Increase::Enum
           # Apple Pay
           APPLE_PAY: :apple_pay
 
@@ -853,15 +817,13 @@ module Increase
           # Unknown
           UNKNOWN: :unknown
 
-          def self?.values: -> ::Array[Increase::Models::RealTimeDecision::DigitalWalletToken::digital_wallet]
+          def self.values: -> ::Array[Increase::Models::RealTimeDecision::DigitalWalletToken::digital_wallet]
         end
       end
 
       type status = :pending | :responded | :timed_out
 
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The decision is pending action via real-time webhook.
         PENDING: :pending
 
@@ -871,17 +833,15 @@ module Increase
         # Your webhook failed to respond to the authorization in time.
         TIMED_OUT: :timed_out
 
-        def self?.values: -> ::Array[Increase::Models::RealTimeDecision::status]
+        def self.values: -> ::Array[Increase::Models::RealTimeDecision::status]
       end
 
       type type_ = :real_time_decision
 
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         REAL_TIME_DECISION: :real_time_decision
 
-        def self?.values: -> ::Array[Increase::Models::RealTimeDecision::type_]
+        def self.values: -> ::Array[Increase::Models::RealTimeDecision::type_]
       end
     end
   end

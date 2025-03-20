@@ -13,14 +13,11 @@ module Increase
       end
 
       # The Bank the Program is with.
-      sig { returns(Increase::Models::Program::Bank::TaggedSymbol) }
+      sig { returns(Symbol) }
       def bank
       end
 
-      sig do
-        params(_: Increase::Models::Program::Bank::TaggedSymbol)
-          .returns(Increase::Models::Program::Bank::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def bank=(_)
       end
 
@@ -74,14 +71,11 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `program`.
-      sig { returns(Increase::Models::Program::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       def type
       end
 
-      sig do
-        params(_: Increase::Models::Program::Type::TaggedSymbol)
-          .returns(Increase::Models::Program::Type::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def type=(_)
       end
 
@@ -102,13 +96,13 @@ module Increase
       sig do
         params(
           id: String,
-          bank: Increase::Models::Program::Bank::TaggedSymbol,
+          bank: Symbol,
           billing_account_id: T.nilable(String),
           created_at: Time,
           default_digital_card_profile_id: T.nilable(String),
           interest_rate: String,
           name: String,
-          type: Increase::Models::Program::Type::TaggedSymbol,
+          type: Symbol,
           updated_at: Time
         )
           .returns(T.attached_class)
@@ -131,13 +125,13 @@ module Increase
           .returns(
             {
               id: String,
-              bank: Increase::Models::Program::Bank::TaggedSymbol,
+              bank: Symbol,
               billing_account_id: T.nilable(String),
               created_at: Time,
               default_digital_card_profile_id: T.nilable(String),
               interest_rate: String,
               name: String,
-              type: Increase::Models::Program::Type::TaggedSymbol,
+              type: Symbol,
               updated_at: Time
             }
           )
@@ -146,43 +140,29 @@ module Increase
       end
 
       # The Bank the Program is with.
-      module Bank
-        extend Increase::Enum
+      class Bank < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Program::Bank) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Program::Bank::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # Core Bank
-        CORE_BANK = T.let(:core_bank, Increase::Models::Program::Bank::TaggedSymbol)
+        CORE_BANK = :core_bank
 
         # First Internet Bank of Indiana
-        FIRST_INTERNET_BANK = T.let(:first_internet_bank, Increase::Models::Program::Bank::TaggedSymbol)
+        FIRST_INTERNET_BANK = :first_internet_bank
 
         # Grasshopper Bank
-        GRASSHOPPER_BANK = T.let(:grasshopper_bank, Increase::Models::Program::Bank::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::Program::Bank::TaggedSymbol]) }
-          def values
-          end
-        end
+        GRASSHOPPER_BANK = :grasshopper_bank
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `program`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Program::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Program::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        PROGRAM = T.let(:program, Increase::Models::Program::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::Program::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        PROGRAM = :program
       end
     end
   end

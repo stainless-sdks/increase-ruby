@@ -219,11 +219,11 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Forces a card decline with a specific reason. No real time decision will be
         #   sent.
-        module DeclineReason
-          extend Increase::Enum
-
+        class DeclineReason < Increase::Enum
           # The account has been closed.
           ACCOUNT_CLOSED = :account_closed
 
@@ -276,19 +276,13 @@ module Increase
           SUSPECTED_FRAUD = :suspected_fraud
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
 
+        # @abstract
+        #
         # The direction describes the direction the funds will move, either from the
         #   cardholder to the merchant or from the merchant to the cardholder.
-        module Direction
-          extend Increase::Enum
-
+        class Direction < Increase::Enum
           # A regular card authorization where funds are debited from the cardholder.
           SETTLEMENT = :settlement
 
@@ -296,12 +290,6 @@ module Increase
           REFUND = :refund
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
 
         class NetworkDetails < Increase::BaseModel
@@ -341,10 +329,10 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # The reason code for the stand-in processing.
-            module StandInProcessingReason
-              extend Increase::Enum
-
+            class StandInProcessingReason < Increase::Enum
               # Increase failed to process the authorization in a timely manner.
               ISSUER_ERROR = :issuer_error
 
@@ -369,12 +357,6 @@ module Increase
               OTHER = :other
 
               finalize!
-
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
             end
           end
         end

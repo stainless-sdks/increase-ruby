@@ -114,27 +114,21 @@ module Increase
       end
 
       # Status of the proof of authorization request submission.
-      sig { returns(Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol) }
+      sig { returns(Symbol) }
       def status
       end
 
-      sig do
-        params(_: Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol)
-          .returns(Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def status=(_)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `proof_of_authorization_request_submission`.
-      sig { returns(Increase::Models::ProofOfAuthorizationRequestSubmission::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       def type
       end
 
-      sig do
-        params(_: Increase::Models::ProofOfAuthorizationRequestSubmission::Type::TaggedSymbol)
-          .returns(Increase::Models::ProofOfAuthorizationRequestSubmission::Type::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def type=(_)
       end
 
@@ -193,8 +187,8 @@ module Increase
           customer_has_been_offboarded: T.nilable(T::Boolean),
           idempotency_key: T.nilable(String),
           proof_of_authorization_request_id: String,
-          status: Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol,
-          type: Increase::Models::ProofOfAuthorizationRequestSubmission::Type::TaggedSymbol,
+          status: Symbol,
+          type: Symbol,
           updated_at: Time,
           validated_account_ownership_via_credential: T.nilable(T::Boolean),
           validated_account_ownership_with_account_statement: T.nilable(T::Boolean),
@@ -240,8 +234,8 @@ module Increase
               customer_has_been_offboarded: T.nilable(T::Boolean),
               idempotency_key: T.nilable(String),
               proof_of_authorization_request_id: String,
-              status: Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol,
-              type: Increase::Models::ProofOfAuthorizationRequestSubmission::Type::TaggedSymbol,
+              status: Symbol,
+              type: Symbol,
               updated_at: Time,
               validated_account_ownership_via_credential: T.nilable(T::Boolean),
               validated_account_ownership_with_account_statement: T.nilable(T::Boolean),
@@ -253,61 +247,35 @@ module Increase
       end
 
       # Status of the proof of authorization request submission.
-      module Status
-        extend Increase::Enum
+      class Status < Increase::Enum
+        abstract!
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The proof of authorization request submission is pending review.
-        PENDING_REVIEW =
-          T.let(:pending_review, Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol)
+        PENDING_REVIEW = :pending_review
 
         # The proof of authorization request submission was rejected.
-        REJECTED =
-          T.let(:rejected, Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol)
+        REJECTED = :rejected
 
         # The proof of authorization request submission was canceled and replaced with another.
-        CANCELED =
-          T.let(:canceled, Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol)
+        CANCELED = :canceled
 
         # The proof of authorization request submission is pending sending.
-        PENDING_SENDING =
-          T.let(:pending_sending, Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol)
+        PENDING_SENDING = :pending_sending
 
         # The proof of authorization request submission was sent.
-        SENT = T.let(:sent, Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol]) }
-          def values
-          end
-        end
+        SENT = :sent
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `proof_of_authorization_request_submission`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Type) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION =
-          T.let(
-            :proof_of_authorization_request_submission,
-            Increase::Models::ProofOfAuthorizationRequestSubmission::Type::TaggedSymbol
-          )
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::ProofOfAuthorizationRequestSubmission::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION = :proof_of_authorization_request_submission
       end
     end
   end

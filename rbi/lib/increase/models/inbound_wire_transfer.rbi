@@ -215,27 +215,21 @@ module Increase
       end
 
       # The status of the transfer.
-      sig { returns(Increase::Models::InboundWireTransfer::Status::TaggedSymbol) }
+      sig { returns(Symbol) }
       def status
       end
 
-      sig do
-        params(_: Increase::Models::InboundWireTransfer::Status::TaggedSymbol)
-          .returns(Increase::Models::InboundWireTransfer::Status::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def status=(_)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_wire_transfer`.
-      sig { returns(Increase::Models::InboundWireTransfer::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       def type
       end
 
-      sig do
-        params(_: Increase::Models::InboundWireTransfer::Type::TaggedSymbol)
-          .returns(Increase::Models::InboundWireTransfer::Type::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def type=(_)
       end
 
@@ -266,8 +260,8 @@ module Increase
           originator_to_beneficiary_information_line3: T.nilable(String),
           originator_to_beneficiary_information_line4: T.nilable(String),
           sender_reference: T.nilable(String),
-          status: Increase::Models::InboundWireTransfer::Status::TaggedSymbol,
-          type: Increase::Models::InboundWireTransfer::Type::TaggedSymbol
+          status: Symbol,
+          type: Symbol
         )
           .returns(T.attached_class)
       end
@@ -327,8 +321,8 @@ module Increase
               originator_to_beneficiary_information_line3: T.nilable(String),
               originator_to_beneficiary_information_line4: T.nilable(String),
               sender_reference: T.nilable(String),
-              status: Increase::Models::InboundWireTransfer::Status::TaggedSymbol,
-              type: Increase::Models::InboundWireTransfer::Type::TaggedSymbol
+              status: Symbol,
+              type: Symbol
             }
           )
       end
@@ -336,47 +330,32 @@ module Increase
       end
 
       # The status of the transfer.
-      module Status
-        extend Increase::Enum
+      class Status < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundWireTransfer::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::InboundWireTransfer::Status::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The Inbound Wire Transfer is awaiting action, will transition automatically if no action is taken.
-        PENDING = T.let(:pending, Increase::Models::InboundWireTransfer::Status::TaggedSymbol)
+        PENDING = :pending
 
         # The Inbound Wire Transfer is accepted.
-        ACCEPTED = T.let(:accepted, Increase::Models::InboundWireTransfer::Status::TaggedSymbol)
+        ACCEPTED = :accepted
 
         # The Inbound Wire Transfer was declined.
-        DECLINED = T.let(:declined, Increase::Models::InboundWireTransfer::Status::TaggedSymbol)
+        DECLINED = :declined
 
         # The Inbound Wire Transfer was reversed.
-        REVERSED = T.let(:reversed, Increase::Models::InboundWireTransfer::Status::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::InboundWireTransfer::Status::TaggedSymbol]) }
-          def values
-          end
-        end
+        REVERSED = :reversed
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_wire_transfer`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundWireTransfer::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::InboundWireTransfer::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        INBOUND_WIRE_TRANSFER =
-          T.let(:inbound_wire_transfer, Increase::Models::InboundWireTransfer::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::InboundWireTransfer::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        INBOUND_WIRE_TRANSFER = :inbound_wire_transfer
       end
     end
   end

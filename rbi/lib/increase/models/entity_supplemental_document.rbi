@@ -44,14 +44,11 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `entity_supplemental_document`.
-      sig { returns(Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       def type
       end
 
-      sig do
-        params(_: Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol)
-          .returns(Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def type=(_)
       end
 
@@ -63,7 +60,7 @@ module Increase
           entity_id: String,
           file_id: String,
           idempotency_key: T.nilable(String),
-          type: Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol
+          type: Symbol
         )
           .returns(T.attached_class)
       end
@@ -78,7 +75,7 @@ module Increase
               entity_id: String,
               file_id: String,
               idempotency_key: T.nilable(String),
-              type: Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol
+              type: Symbol
             }
           )
       end
@@ -87,21 +84,12 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `entity_supplemental_document`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EntitySupplementalDocument::Type) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        ENTITY_SUPPLEMENTAL_DOCUMENT =
-          T.let(:entity_supplemental_document, Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        ENTITY_SUPPLEMENTAL_DOCUMENT = :entity_supplemental_document
       end
     end
   end

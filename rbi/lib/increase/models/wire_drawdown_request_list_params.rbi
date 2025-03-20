@@ -42,8 +42,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::WireDrawdownRequestListParams::Status, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::WireDrawdownRequestListParams::Status, Increase::Util::AnyHash))
+        params(_: Increase::Models::WireDrawdownRequestListParams::Status)
+          .returns(Increase::Models::WireDrawdownRequestListParams::Status)
       end
       def status=(_)
       end
@@ -80,55 +80,38 @@ module Increase
         # Filter Wire Drawdown Requests for those with the specified status. For GET
         #   requests, this should be encoded as a comma-delimited string, such as
         #   `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol])) }
+        sig { returns(T.nilable(T::Array[Symbol])) }
         def in_
         end
 
-        sig do
-          params(_: T::Array[Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol])
-            .returns(T::Array[Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol])
-        end
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
         def in_=(_)
         end
 
-        sig do
-          params(in_: T::Array[Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol])
-            .returns(T.attached_class)
-        end
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol]}) }
+        sig { override.returns({in_: T::Array[Symbol]}) }
         def to_hash
         end
 
-        module In
-          extend Increase::Enum
+        class In < Increase::Enum
+          abstract!
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::WireDrawdownRequestListParams::Status::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # The drawdown request is queued to be submitted to Fedwire.
-          PENDING_SUBMISSION =
-            T.let(:pending_submission, Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol)
+          PENDING_SUBMISSION = :pending_submission
 
           # The drawdown request has been sent and the recipient should respond in some way.
-          PENDING_RESPONSE =
-            T.let(:pending_response, Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol)
+          PENDING_RESPONSE = :pending_response
 
           # The drawdown request has been fulfilled by the recipient.
-          FULFILLED = T.let(:fulfilled, Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol)
+          FULFILLED = :fulfilled
 
           # The drawdown request has been refused by the recipient.
-          REFUSED = T.let(:refused, Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol]) }
-            def values
-            end
-          end
+          REFUSED = :refused
         end
       end
     end

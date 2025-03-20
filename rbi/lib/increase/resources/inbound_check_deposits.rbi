@@ -65,7 +65,7 @@ module Increase
       sig do
         params(
           inbound_check_deposit_id: String,
-          reason: Increase::Models::InboundCheckDepositReturnParams::Reason::OrSymbol,
+          reason: Symbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::InboundCheckDeposit)

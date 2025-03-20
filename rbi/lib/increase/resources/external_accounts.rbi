@@ -9,8 +9,8 @@ module Increase
           account_number: String,
           description: String,
           routing_number: String,
-          account_holder: Increase::Models::ExternalAccountCreateParams::AccountHolder::OrSymbol,
-          funding: Increase::Models::ExternalAccountCreateParams::Funding::OrSymbol,
+          account_holder: Symbol,
+          funding: Symbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::ExternalAccount)
@@ -50,10 +50,10 @@ module Increase
       sig do
         params(
           external_account_id: String,
-          account_holder: Increase::Models::ExternalAccountUpdateParams::AccountHolder::OrSymbol,
+          account_holder: Symbol,
           description: String,
-          funding: Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol,
-          status: Increase::Models::ExternalAccountUpdateParams::Status::OrSymbol,
+          funding: Symbol,
+          status: Symbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::ExternalAccount)

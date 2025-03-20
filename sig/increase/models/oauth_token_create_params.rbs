@@ -45,16 +45,14 @@ module Increase
 
       type grant_type = :authorization_code | :production_token
 
-      module GrantType
-        extend Increase::Enum
-
+      class GrantType < Increase::Enum
         # An OAuth authorization code.
         AUTHORIZATION_CODE: :authorization_code
 
         # An OAuth production token.
         PRODUCTION_TOKEN: :production_token
 
-        def self?.values: -> ::Array[Increase::Models::OAuthTokenCreateParams::grant_type]
+        def self.values: -> ::Array[Increase::Models::OAuthTokenCreateParams::grant_type]
       end
     end
   end

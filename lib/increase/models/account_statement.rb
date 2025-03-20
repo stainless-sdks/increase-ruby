@@ -93,20 +93,14 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `account_statement`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         ACCOUNT_STATEMENT = :account_statement
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

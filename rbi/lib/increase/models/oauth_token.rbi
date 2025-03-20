@@ -14,88 +14,52 @@ module Increase
       end
 
       # The type of OAuth token.
-      sig { returns(Increase::Models::OAuthToken::TokenType::TaggedSymbol) }
+      sig { returns(Symbol) }
       def token_type
       end
 
-      sig do
-        params(_: Increase::Models::OAuthToken::TokenType::TaggedSymbol)
-          .returns(Increase::Models::OAuthToken::TokenType::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def token_type=(_)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `oauth_token`.
-      sig { returns(Increase::Models::OAuthToken::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       def type
       end
 
-      sig do
-        params(_: Increase::Models::OAuthToken::Type::TaggedSymbol)
-          .returns(Increase::Models::OAuthToken::Type::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def type=(_)
       end
 
       # A token that is returned to your application when a user completes the OAuth
       #   flow and may be used to authenticate requests. Learn more about OAuth
       #   [here](/documentation/oauth).
-      sig do
-        params(
-          access_token: String,
-          token_type: Increase::Models::OAuthToken::TokenType::TaggedSymbol,
-          type: Increase::Models::OAuthToken::Type::TaggedSymbol
-        )
-          .returns(T.attached_class)
-      end
+      sig { params(access_token: String, token_type: Symbol, type: Symbol).returns(T.attached_class) }
       def self.new(access_token:, token_type:, type:)
       end
 
-      sig do
-        override
-          .returns(
-            {
-              access_token: String,
-              token_type: Increase::Models::OAuthToken::TokenType::TaggedSymbol,
-              type: Increase::Models::OAuthToken::Type::TaggedSymbol
-            }
-          )
-      end
+      sig { override.returns({access_token: String, token_type: Symbol, type: Symbol}) }
       def to_hash
       end
 
       # The type of OAuth token.
-      module TokenType
-        extend Increase::Enum
+      class TokenType < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthToken::TokenType) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::OAuthToken::TokenType::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        BEARER = T.let(:bearer, Increase::Models::OAuthToken::TokenType::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::OAuthToken::TokenType::TaggedSymbol]) }
-          def values
-          end
-        end
+        BEARER = :bearer
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `oauth_token`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthToken::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::OAuthToken::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        OAUTH_TOKEN = T.let(:oauth_token, Increase::Models::OAuthToken::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::OAuthToken::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        OAUTH_TOKEN = :oauth_token
       end
     end
   end

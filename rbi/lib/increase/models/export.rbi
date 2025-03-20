@@ -14,14 +14,11 @@ module Increase
 
       # The category of the Export. We may add additional possible values for this enum
       #   over time; your application should be able to handle that gracefully.
-      sig { returns(Increase::Models::Export::Category::TaggedSymbol) }
+      sig { returns(Symbol) }
       def category
       end
 
-      sig do
-        params(_: Increase::Models::Export::Category::TaggedSymbol)
-          .returns(Increase::Models::Export::Category::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def category=(_)
       end
 
@@ -66,27 +63,21 @@ module Increase
       end
 
       # The status of the Export.
-      sig { returns(Increase::Models::Export::Status::TaggedSymbol) }
+      sig { returns(Symbol) }
       def status
       end
 
-      sig do
-        params(_: Increase::Models::Export::Status::TaggedSymbol)
-          .returns(Increase::Models::Export::Status::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def status=(_)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `export`.
-      sig { returns(Increase::Models::Export::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       def type
       end
 
-      sig do
-        params(_: Increase::Models::Export::Type::TaggedSymbol)
-          .returns(Increase::Models::Export::Type::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def type=(_)
       end
 
@@ -98,13 +89,13 @@ module Increase
       sig do
         params(
           id: String,
-          category: Increase::Models::Export::Category::TaggedSymbol,
+          category: Symbol,
           created_at: Time,
           file_download_url: T.nilable(String),
           file_id: T.nilable(String),
           idempotency_key: T.nilable(String),
-          status: Increase::Models::Export::Status::TaggedSymbol,
-          type: Increase::Models::Export::Type::TaggedSymbol
+          status: Symbol,
+          type: Symbol
         )
           .returns(T.attached_class)
       end
@@ -116,13 +107,13 @@ module Increase
           .returns(
             {
               id: String,
-              category: Increase::Models::Export::Category::TaggedSymbol,
+              category: Symbol,
               created_at: Time,
               file_download_url: T.nilable(String),
               file_id: T.nilable(String),
               idempotency_key: T.nilable(String),
-              status: Increase::Models::Export::Status::TaggedSymbol,
-              type: Increase::Models::Export::Type::TaggedSymbol
+              status: Symbol,
+              type: Symbol
             }
           )
       end
@@ -131,79 +122,57 @@ module Increase
 
       # The category of the Export. We may add additional possible values for this enum
       #   over time; your application should be able to handle that gracefully.
-      module Category
-        extend Increase::Enum
+      class Category < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Export::Category) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Export::Category::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # Export an Open Financial Exchange (OFX) file of transactions and balances for a given time range and Account.
-        ACCOUNT_STATEMENT_OFX = T.let(:account_statement_ofx, Increase::Models::Export::Category::TaggedSymbol)
+        ACCOUNT_STATEMENT_OFX = :account_statement_ofx
 
         # Export a CSV of all transactions for a given time range.
-        TRANSACTION_CSV = T.let(:transaction_csv, Increase::Models::Export::Category::TaggedSymbol)
+        TRANSACTION_CSV = :transaction_csv
 
         # Export a CSV of account balances for the dates in a given range.
-        BALANCE_CSV = T.let(:balance_csv, Increase::Models::Export::Category::TaggedSymbol)
+        BALANCE_CSV = :balance_csv
 
         # Export a CSV of bookkeeping account balances for the dates in a given range.
-        BOOKKEEPING_ACCOUNT_BALANCE_CSV =
-          T.let(:bookkeeping_account_balance_csv, Increase::Models::Export::Category::TaggedSymbol)
+        BOOKKEEPING_ACCOUNT_BALANCE_CSV = :bookkeeping_account_balance_csv
 
         # Export a CSV of entities with a given status.
-        ENTITY_CSV = T.let(:entity_csv, Increase::Models::Export::Category::TaggedSymbol)
+        ENTITY_CSV = :entity_csv
 
         # Export a CSV of vendors added to the third-party risk management dashboard.
-        VENDOR_CSV = T.let(:vendor_csv, Increase::Models::Export::Category::TaggedSymbol)
+        VENDOR_CSV = :vendor_csv
 
         # Certain dashboard tables are available as CSV exports. This export cannot be created via the API.
-        DASHBOARD_TABLE_CSV = T.let(:dashboard_table_csv, Increase::Models::Export::Category::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::Export::Category::TaggedSymbol]) }
-          def values
-          end
-        end
+        DASHBOARD_TABLE_CSV = :dashboard_table_csv
       end
 
       # The status of the Export.
-      module Status
-        extend Increase::Enum
+      class Status < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Export::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Export::Status::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # Increase is generating the export.
-        PENDING = T.let(:pending, Increase::Models::Export::Status::TaggedSymbol)
+        PENDING = :pending
 
         # The export has been successfully generated.
-        COMPLETE = T.let(:complete, Increase::Models::Export::Status::TaggedSymbol)
+        COMPLETE = :complete
 
         # The export failed to generate. Increase will reach out to you to resolve the issue.
-        FAILED = T.let(:failed, Increase::Models::Export::Status::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::Export::Status::TaggedSymbol]) }
-          def values
-          end
-        end
+        FAILED = :failed
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `export`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Export::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Export::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        EXPORT = T.let(:export, Increase::Models::Export::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::Export::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        EXPORT = :export
       end
     end
   end

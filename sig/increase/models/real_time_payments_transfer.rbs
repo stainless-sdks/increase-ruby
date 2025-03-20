@@ -182,9 +182,7 @@ module Increase
 
         type category = :api_key | :oauth_application | :user
 
-        module Category
-          extend Increase::Enum
-
+        class Category < Increase::Enum
           # An API key. Details will be under the `api_key` object.
           API_KEY: :api_key
 
@@ -194,7 +192,7 @@ module Increase
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER: :user
 
-          def self?.values: -> ::Array[Increase::Models::RealTimePaymentsTransfer::CreatedBy::category]
+          def self.values: -> ::Array[Increase::Models::RealTimePaymentsTransfer::CreatedBy::category]
         end
 
         type oauth_application = { name: String }
@@ -220,9 +218,7 @@ module Increase
 
       type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-      module Currency
-        extend Increase::Enum
-
+      class Currency < Increase::Enum
         # Canadian Dollar (CAD)
         CAD: :CAD
 
@@ -241,7 +237,7 @@ module Increase
         # US Dollar (USD)
         USD: :USD
 
-        def self?.values: -> ::Array[Increase::Models::RealTimePaymentsTransfer::currency]
+        def self.values: -> ::Array[Increase::Models::RealTimePaymentsTransfer::currency]
       end
 
       type rejection =
@@ -289,9 +285,7 @@ module Increase
           | :processing_error
           | :other
 
-        module RejectReasonCode
-          extend Increase::Enum
-
+        class RejectReasonCode < Increase::Enum
           # The destination account is closed. Corresponds to the Real-Time Payments reason code `AC04`.
           ACCOUNT_CLOSED: :account_closed
 
@@ -355,7 +349,7 @@ module Increase
           # Some other error or issue has occurred.
           OTHER: :other
 
-          def self?.values: -> ::Array[Increase::Models::RealTimePaymentsTransfer::Rejection::reject_reason_code]
+          def self.values: -> ::Array[Increase::Models::RealTimePaymentsTransfer::Rejection::reject_reason_code]
         end
       end
 
@@ -369,9 +363,7 @@ module Increase
         | :submitted
         | :complete
 
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The transfer is pending approval.
         PENDING_APPROVAL: :pending_approval
 
@@ -396,7 +388,7 @@ module Increase
         # The transfer has been sent successfully and is complete.
         COMPLETE: :complete
 
-        def self?.values: -> ::Array[Increase::Models::RealTimePaymentsTransfer::status]
+        def self.values: -> ::Array[Increase::Models::RealTimePaymentsTransfer::status]
       end
 
       type submission =
@@ -417,12 +409,10 @@ module Increase
 
       type type_ = :real_time_payments_transfer
 
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         REAL_TIME_PAYMENTS_TRANSFER: :real_time_payments_transfer
 
-        def self?.values: -> ::Array[Increase::Models::RealTimePaymentsTransfer::type_]
+        def self.values: -> ::Array[Increase::Models::RealTimePaymentsTransfer::type_]
       end
     end
   end

@@ -20,8 +20,7 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::CardListParams::CreatedAt, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::CardListParams::CreatedAt, Increase::Util::AnyHash))
+        params(_: Increase::Models::CardListParams::CreatedAt).returns(Increase::Models::CardListParams::CreatedAt)
       end
       def created_at=(_)
       end
@@ -61,10 +60,7 @@ module Increase
       def status
       end
 
-      sig do
-        params(_: T.any(Increase::Models::CardListParams::Status, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::CardListParams::Status, Increase::Util::AnyHash))
-      end
+      sig { params(_: Increase::Models::CardListParams::Status).returns(Increase::Models::CardListParams::Status) }
       def status=(_)
       end
 
@@ -163,45 +159,35 @@ module Increase
       class Status < Increase::BaseModel
         # Filter Cards by status. For GET requests, this should be encoded as a
         #   comma-delimited string, such as `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Increase::Models::CardListParams::Status::In::OrSymbol])) }
+        sig { returns(T.nilable(T::Array[Symbol])) }
         def in_
         end
 
-        sig do
-          params(_: T::Array[Increase::Models::CardListParams::Status::In::OrSymbol])
-            .returns(T::Array[Increase::Models::CardListParams::Status::In::OrSymbol])
-        end
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
         def in_=(_)
         end
 
-        sig { params(in_: T::Array[Increase::Models::CardListParams::Status::In::OrSymbol]).returns(T.attached_class) }
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Increase::Models::CardListParams::Status::In::OrSymbol]}) }
+        sig { override.returns({in_: T::Array[Symbol]}) }
         def to_hash
         end
 
-        module In
-          extend Increase::Enum
+        class In < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardListParams::Status::In) }
-          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CardListParams::Status::In::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # The card is active.
-          ACTIVE = T.let(:active, Increase::Models::CardListParams::Status::In::TaggedSymbol)
+          ACTIVE = :active
 
           # The card is temporarily disabled.
-          DISABLED = T.let(:disabled, Increase::Models::CardListParams::Status::In::TaggedSymbol)
+          DISABLED = :disabled
 
           # The card is permanently canceled.
-          CANCELED = T.let(:canceled, Increase::Models::CardListParams::Status::In::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::CardListParams::Status::In::TaggedSymbol]) }
-            def values
-            end
-          end
+          CANCELED = :canceled
         end
       end
     end

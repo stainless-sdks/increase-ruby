@@ -93,16 +93,14 @@ module Increase
 
         type in_ = :active | :deleted
 
-        module In
-          extend Increase::Enum
-
+        class In < Increase::Enum
           # The application is active and can be used by your users.
           ACTIVE: :active
 
           # The application is deleted.
           DELETED: :deleted
 
-          def self?.values: -> ::Array[Increase::Models::OAuthApplicationListParams::Status::in_]
+          def self.values: -> ::Array[Increase::Models::OAuthApplicationListParams::Status::in_]
         end
       end
     end

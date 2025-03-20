@@ -34,60 +34,44 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `balance_lookup`.
-      sig { returns(Increase::Models::BalanceLookup::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       def type
       end
 
-      sig do
-        params(_: Increase::Models::BalanceLookup::Type::TaggedSymbol)
-          .returns(Increase::Models::BalanceLookup::Type::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def type=(_)
       end
 
       # Represents a request to lookup the balance of an Account at a given point in
       #   time.
       sig do
-        params(
-          account_id: String,
-          available_balance: Integer,
-          current_balance: Integer,
-          type: Increase::Models::BalanceLookup::Type::TaggedSymbol
-        )
+        params(account_id: String, available_balance: Integer, current_balance: Integer, type: Symbol)
           .returns(T.attached_class)
       end
       def self.new(account_id:, available_balance:, current_balance:, type:)
       end
 
       sig do
-        override
-          .returns(
-            {
-              account_id: String,
-              available_balance: Integer,
-              current_balance: Integer,
-              type: Increase::Models::BalanceLookup::Type::TaggedSymbol
-            }
-          )
+        override.returns(
+          {
+            account_id: String,
+            available_balance: Integer,
+            current_balance: Integer,
+            type: Symbol
+          }
+        )
       end
       def to_hash
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `balance_lookup`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::BalanceLookup::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::BalanceLookup::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        BALANCE_LOOKUP = T.let(:balance_lookup, Increase::Models::BalanceLookup::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::BalanceLookup::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        BALANCE_LOOKUP = :balance_lookup
       end
     end
   end

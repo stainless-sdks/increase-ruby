@@ -20,8 +20,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::DigitalWalletTokenListParams::CreatedAt, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::DigitalWalletTokenListParams::CreatedAt, Increase::Util::AnyHash))
+        params(_: Increase::Models::DigitalWalletTokenListParams::CreatedAt)
+          .returns(Increase::Models::DigitalWalletTokenListParams::CreatedAt)
       end
       def created_at=(_)
       end

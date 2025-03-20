@@ -148,10 +148,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The bank the Account is with.
-      module Bank
-        extend Increase::Enum
-
+      class Bank < Increase::Enum
         # Core Bank
         CORE_BANK = :core_bank
 
@@ -162,19 +162,13 @@ module Increase
         GRASSHOPPER_BANK = :grasshopper_bank
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
       #   currency.
-      module Currency
-        extend Increase::Enum
-
+      class Currency < Increase::Enum
         # Canadian Dollar (CAD)
         CAD = :CAD
 
@@ -194,18 +188,12 @@ module Increase
         USD = :USD
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # The status of the Account.
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # Closed Accounts on which no new activity can occur.
         CLOSED = :closed
 
@@ -213,28 +201,16 @@ module Increase
         OPEN = :open
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `account`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         ACCOUNT = :account
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

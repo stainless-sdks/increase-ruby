@@ -64,14 +64,11 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `bookkeeping_entry_set`.
-      sig { returns(Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       def type
       end
 
-      sig do
-        params(_: Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol)
-          .returns(Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def type=(_)
       end
 
@@ -87,7 +84,7 @@ module Increase
           entries: T::Array[Increase::Models::BookkeepingEntrySet::Entry],
           idempotency_key: T.nilable(String),
           transaction_id: T.nilable(String),
-          type: Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol
+          type: Symbol
         )
           .returns(T.attached_class)
       end
@@ -104,7 +101,7 @@ module Increase
               entries: T::Array[Increase::Models::BookkeepingEntrySet::Entry],
               idempotency_key: T.nilable(String),
               transaction_id: T.nilable(String),
-              type: Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol
+              type: Symbol
             }
           )
       end
@@ -150,20 +147,12 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `bookkeeping_entry_set`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::BookkeepingEntrySet::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        BOOKKEEPING_ENTRY_SET =
-          T.let(:bookkeeping_entry_set, Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        BOOKKEEPING_ENTRY_SET = :bookkeeping_entry_set
       end
     end
   end

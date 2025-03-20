@@ -51,10 +51,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # If the Group is allowed to create ACH debits.
-      module ACHDebitStatus
-        extend Increase::Enum
-
+      class ACHDebitStatus < Increase::Enum
         # The Group cannot make ACH debits.
         DISABLED = :disabled
 
@@ -62,18 +62,12 @@ module Increase
         ENABLED = :enabled
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # If the Group is activated or not.
-      module ActivationStatus
-        extend Increase::Enum
-
+      class ActivationStatus < Increase::Enum
         # The Group is not activated.
         UNACTIVATED = :unactivated
 
@@ -81,28 +75,16 @@ module Increase
         ACTIVATED = :activated
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `group`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         GROUP = :group
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

@@ -56,20 +56,14 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `card_details`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         CARD_DETAILS = :card_details
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

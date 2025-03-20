@@ -84,8 +84,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::DigitalCardProfileCloneParams::TextColor, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::DigitalCardProfileCloneParams::TextColor, Increase::Util::AnyHash))
+        params(_: Increase::Models::DigitalCardProfileCloneParams::TextColor)
+          .returns(Increase::Models::DigitalCardProfileCloneParams::TextColor)
       end
       def text_color=(_)
       end

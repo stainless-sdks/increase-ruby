@@ -11,12 +11,8 @@ module Increase
       end
 
       sig do
-        params(
-          _: T.any(Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt, Increase::Util::AnyHash)
-        )
-          .returns(
-            T.any(Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt, Increase::Util::AnyHash)
-          )
+        params(_: Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt)
+          .returns(Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt)
       end
       def created_at=(_)
       end

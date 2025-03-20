@@ -7,14 +7,11 @@ module Increase
       include Increase::RequestParameters
 
       # The type of Entity to create.
-      sig { returns(Increase::Models::EntityCreateParams::Structure::OrSymbol) }
+      sig { returns(Symbol) }
       def structure
       end
 
-      sig do
-        params(_: Increase::Models::EntityCreateParams::Structure::OrSymbol)
-          .returns(Increase::Models::EntityCreateParams::Structure::OrSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def structure=(_)
       end
 
@@ -25,8 +22,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::EntityCreateParams::Corporation, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::EntityCreateParams::Corporation, Increase::Util::AnyHash))
+        params(_: Increase::Models::EntityCreateParams::Corporation)
+          .returns(Increase::Models::EntityCreateParams::Corporation)
       end
       def corporation=(_)
       end
@@ -47,8 +44,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::EntityCreateParams::GovernmentAuthority, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::EntityCreateParams::GovernmentAuthority, Increase::Util::AnyHash))
+        params(_: Increase::Models::EntityCreateParams::GovernmentAuthority)
+          .returns(Increase::Models::EntityCreateParams::GovernmentAuthority)
       end
       def government_authority=(_)
       end
@@ -60,8 +57,7 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::EntityCreateParams::Joint, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::EntityCreateParams::Joint, Increase::Util::AnyHash))
+        params(_: Increase::Models::EntityCreateParams::Joint).returns(Increase::Models::EntityCreateParams::Joint)
       end
       def joint=(_)
       end
@@ -75,8 +71,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::EntityCreateParams::NaturalPerson, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::EntityCreateParams::NaturalPerson, Increase::Util::AnyHash))
+        params(_: Increase::Models::EntityCreateParams::NaturalPerson)
+          .returns(Increase::Models::EntityCreateParams::NaturalPerson)
       end
       def natural_person=(_)
       end
@@ -100,8 +96,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::EntityCreateParams::ThirdPartyVerification, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::EntityCreateParams::ThirdPartyVerification, Increase::Util::AnyHash))
+        params(_: Increase::Models::EntityCreateParams::ThirdPartyVerification)
+          .returns(Increase::Models::EntityCreateParams::ThirdPartyVerification)
       end
       def third_party_verification=(_)
       end
@@ -113,15 +109,14 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::EntityCreateParams::Trust, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::EntityCreateParams::Trust, Increase::Util::AnyHash))
+        params(_: Increase::Models::EntityCreateParams::Trust).returns(Increase::Models::EntityCreateParams::Trust)
       end
       def trust=(_)
       end
 
       sig do
         params(
-          structure: Increase::Models::EntityCreateParams::Structure::OrSymbol,
+          structure: Symbol,
           corporation: Increase::Models::EntityCreateParams::Corporation,
           description: String,
           government_authority: Increase::Models::EntityCreateParams::GovernmentAuthority,
@@ -152,7 +147,7 @@ module Increase
         override
           .returns(
             {
-              structure: Increase::Models::EntityCreateParams::Structure::OrSymbol,
+              structure: Symbol,
               corporation: Increase::Models::EntityCreateParams::Corporation,
               description: String,
               government_authority: Increase::Models::EntityCreateParams::GovernmentAuthority,
@@ -169,33 +164,25 @@ module Increase
       end
 
       # The type of Entity to create.
-      module Structure
-        extend Increase::Enum
+      class Structure < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::Structure) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::Structure::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # A corporation.
-        CORPORATION = T.let(:corporation, Increase::Models::EntityCreateParams::Structure::TaggedSymbol)
+        CORPORATION = :corporation
 
         # An individual person.
-        NATURAL_PERSON = T.let(:natural_person, Increase::Models::EntityCreateParams::Structure::TaggedSymbol)
+        NATURAL_PERSON = :natural_person
 
         # Multiple individual people.
-        JOINT = T.let(:joint, Increase::Models::EntityCreateParams::Structure::TaggedSymbol)
+        JOINT = :joint
 
         # A trust.
-        TRUST = T.let(:trust, Increase::Models::EntityCreateParams::Structure::TaggedSymbol)
+        TRUST = :trust
 
         # A government authority.
-        GOVERNMENT_AUTHORITY =
-          T.let(:government_authority, Increase::Models::EntityCreateParams::Structure::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::EntityCreateParams::Structure::TaggedSymbol]) }
-          def values
-          end
-        end
+        GOVERNMENT_AUTHORITY = :government_authority
       end
 
       class Corporation < Increase::BaseModel
@@ -206,8 +193,8 @@ module Increase
         end
 
         sig do
-          params(_: T.any(Increase::Models::EntityCreateParams::Corporation::Address, Increase::Util::AnyHash))
-            .returns(T.any(Increase::Models::EntityCreateParams::Corporation::Address, Increase::Util::AnyHash))
+          params(_: Increase::Models::EntityCreateParams::Corporation::Address)
+            .returns(Increase::Models::EntityCreateParams::Corporation::Address)
         end
         def address=(_)
         end
@@ -389,18 +376,8 @@ module Increase
           end
 
           sig do
-            params(
-              _: T.any(
-                Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual,
-                Increase::Util::AnyHash
-              )
-            )
-              .returns(
-                T.any(
-                  Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual,
-                  Increase::Util::AnyHash
-                )
-              )
+            params(_: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual)
+              .returns(Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual)
           end
           def individual=(_)
           end
@@ -408,14 +385,11 @@ module Increase
           # Why this person is considered a beneficial owner of the entity. At least one
           #   option is required, if a person is both a control person and owner, submit an
           #   array containing both.
-          sig { returns(T::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::OrSymbol]) }
+          sig { returns(T::Array[Symbol]) }
           def prongs
           end
 
-          sig do
-            params(_: T::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::OrSymbol])
-              .returns(T::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::OrSymbol])
-          end
+          sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
           def prongs=(_)
           end
 
@@ -431,7 +405,7 @@ module Increase
           sig do
             params(
               individual: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual,
-              prongs: T::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::OrSymbol],
+              prongs: T::Array[Symbol],
               company_title: String
             )
               .returns(T.attached_class)
@@ -444,7 +418,7 @@ module Increase
               .returns(
                 {
                   individual: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual,
-                  prongs: T::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::OrSymbol],
+                  prongs: T::Array[Symbol],
                   company_title: String
                 }
               )
@@ -460,18 +434,8 @@ module Increase
             end
 
             sig do
-              params(
-                _: T.any(
-                  Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address,
-                  Increase::Util::AnyHash
-                )
-              )
-                .returns(
-                  T.any(
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address,
-                    Increase::Util::AnyHash
-                  )
-                )
+              params(_: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address)
+                .returns(Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address)
             end
             def address=(_)
             end
@@ -491,18 +455,8 @@ module Increase
             end
 
             sig do
-              params(
-                _: T.any(
-                  Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification,
-                  Increase::Util::AnyHash
-                )
-              )
-                .returns(
-                  T.any(
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification,
-                    Increase::Util::AnyHash
-                  )
-                )
+              params(_: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification)
+                .returns(Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification)
             end
             def identification=(_)
             end
@@ -627,22 +581,11 @@ module Increase
 
             class Identification < Increase::BaseModel
               # A method that can be used to verify the individual's identity.
-              sig do
-                returns(
-                  Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::OrSymbol
-                )
-              end
+              sig { returns(Symbol) }
               def method_
               end
 
-              sig do
-                params(
-                  _: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::OrSymbol
-                )
-                  .returns(
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::OrSymbol
-                  )
-              end
+              sig { params(_: Symbol).returns(Symbol) }
               def method_=(_)
               end
 
@@ -670,16 +613,10 @@ module Increase
 
               sig do
                 params(
-                  _: T.any(
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense,
-                    Increase::Util::AnyHash
-                  )
+                  _: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense
                 )
                   .returns(
-                    T.any(
-                      Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense,
-                      Increase::Util::AnyHash
-                    )
+                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense
                   )
               end
               def drivers_license=(_)
@@ -699,16 +636,10 @@ module Increase
 
               sig do
                 params(
-                  _: T.any(
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other,
-                    Increase::Util::AnyHash
-                  )
+                  _: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other
                 )
                   .returns(
-                    T.any(
-                      Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other,
-                      Increase::Util::AnyHash
-                    )
+                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other
                   )
               end
               def other=(_)
@@ -728,16 +659,10 @@ module Increase
 
               sig do
                 params(
-                  _: T.any(
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport,
-                    Increase::Util::AnyHash
-                  )
+                  _: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport
                 )
                   .returns(
-                    T.any(
-                      Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport,
-                      Increase::Util::AnyHash
-                    )
+                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport
                   )
               end
               def passport=(_)
@@ -746,7 +671,7 @@ module Increase
               # A means of verifying the person's identity.
               sig do
                 params(
-                  method_: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::OrSymbol,
+                  method_: Symbol,
                   number: String,
                   drivers_license: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense,
                   other: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other,
@@ -761,7 +686,7 @@ module Increase
                 override
                   .returns(
                     {
-                      method_: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::OrSymbol,
+                      method_: Symbol,
                       number: String,
                       drivers_license: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense,
                       other: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other,
@@ -773,68 +698,25 @@ module Increase
               end
 
               # A method that can be used to verify the individual's identity.
-              module Method
-                extend Increase::Enum
+              class Method < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # A social security number.
-                SOCIAL_SECURITY_NUMBER =
-                  T.let(
-                    :social_security_number,
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
-                  )
+                SOCIAL_SECURITY_NUMBER = :social_security_number
 
                 # An individual taxpayer identification number (ITIN).
-                INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER =
-                  T.let(
-                    :individual_taxpayer_identification_number,
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
-                  )
+                INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER = :individual_taxpayer_identification_number
 
                 # A passport number.
-                PASSPORT =
-                  T.let(
-                    :passport,
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
-                  )
+                PASSPORT = :passport
 
                 # A driver's license number.
-                DRIVERS_LICENSE =
-                  T.let(
-                    :drivers_license,
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
-                  )
+                DRIVERS_LICENSE = :drivers_license
 
                 # Another identifying document.
-                OTHER =
-                  T.let(
-                    :other,
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                OTHER = :other
               end
 
               class DriversLicense < Increase::BaseModel
@@ -1019,30 +901,16 @@ module Increase
             end
           end
 
-          module Prong
-            extend Increase::Enum
+          class Prong < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # A person with 25% or greater direct or indirect ownership of the entity.
-            OWNERSHIP =
-              T.let(:ownership, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::TaggedSymbol)
+            OWNERSHIP = :ownership
 
             # A person who manages, directs, or has significant control of the entity.
-            CONTROL =
-              T.let(:control, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::TaggedSymbol)
-
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::TaggedSymbol])
-              end
-              def values
-              end
-            end
+            CONTROL = :control
           end
         end
       end
@@ -1055,12 +923,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.any(Increase::Models::EntityCreateParams::GovernmentAuthority::Address, Increase::Util::AnyHash)
-          )
-            .returns(
-              T.any(Increase::Models::EntityCreateParams::GovernmentAuthority::Address, Increase::Util::AnyHash)
-            )
+          params(_: Increase::Models::EntityCreateParams::GovernmentAuthority::Address)
+            .returns(Increase::Models::EntityCreateParams::GovernmentAuthority::Address)
         end
         def address=(_)
         end
@@ -1078,14 +942,11 @@ module Increase
         end
 
         # The category of the government authority.
-        sig { returns(Increase::Models::EntityCreateParams::GovernmentAuthority::Category::OrSymbol) }
+        sig { returns(Symbol) }
         def category
         end
 
-        sig do
-          params(_: Increase::Models::EntityCreateParams::GovernmentAuthority::Category::OrSymbol)
-            .returns(Increase::Models::EntityCreateParams::GovernmentAuthority::Category::OrSymbol)
-        end
+        sig { params(_: Symbol).returns(Symbol) }
         def category=(_)
         end
 
@@ -1122,7 +983,7 @@ module Increase
           params(
             address: Increase::Models::EntityCreateParams::GovernmentAuthority::Address,
             authorized_persons: T::Array[Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson],
-            category: Increase::Models::EntityCreateParams::GovernmentAuthority::Category::OrSymbol,
+            category: Symbol,
             name: String,
             tax_identifier: String,
             website: String
@@ -1138,7 +999,7 @@ module Increase
               {
                 address: Increase::Models::EntityCreateParams::GovernmentAuthority::Address,
                 authorized_persons: T::Array[Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson],
-                category: Increase::Models::EntityCreateParams::GovernmentAuthority::Category::OrSymbol,
+                category: Symbol,
                 name: String,
                 tax_identifier: String,
                 website: String
@@ -1234,26 +1095,13 @@ module Increase
         end
 
         # The category of the government authority.
-        module Category
-          extend Increase::Enum
+        class Category < Increase::Enum
+          abstract!
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::GovernmentAuthority::Category) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::GovernmentAuthority::Category::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # The Public Entity is a Municipality.
-          MUNICIPALITY =
-            T.let(:municipality, Increase::Models::EntityCreateParams::GovernmentAuthority::Category::TaggedSymbol)
-
-          class << self
-            sig do
-              override
-                .returns(T::Array[Increase::Models::EntityCreateParams::GovernmentAuthority::Category::TaggedSymbol])
-            end
-            def values
-            end
-          end
+          MUNICIPALITY = :municipality
         end
       end
 
@@ -1303,10 +1151,8 @@ module Increase
           end
 
           sig do
-            params(
-              _: T.any(Increase::Models::EntityCreateParams::Joint::Individual::Address, Increase::Util::AnyHash)
-            )
-              .returns(T.any(Increase::Models::EntityCreateParams::Joint::Individual::Address, Increase::Util::AnyHash))
+            params(_: Increase::Models::EntityCreateParams::Joint::Individual::Address)
+              .returns(Increase::Models::EntityCreateParams::Joint::Individual::Address)
           end
           def address=(_)
           end
@@ -1326,12 +1172,8 @@ module Increase
           end
 
           sig do
-            params(
-              _: T.any(Increase::Models::EntityCreateParams::Joint::Individual::Identification, Increase::Util::AnyHash)
-            )
-              .returns(
-                T.any(Increase::Models::EntityCreateParams::Joint::Individual::Identification, Increase::Util::AnyHash)
-              )
+            params(_: Increase::Models::EntityCreateParams::Joint::Individual::Identification)
+              .returns(Increase::Models::EntityCreateParams::Joint::Individual::Identification)
           end
           def identification=(_)
           end
@@ -1453,14 +1295,11 @@ module Increase
 
           class Identification < Increase::BaseModel
             # A method that can be used to verify the individual's identity.
-            sig { returns(Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::OrSymbol) }
+            sig { returns(Symbol) }
             def method_
             end
 
-            sig do
-              params(_: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::OrSymbol)
-                .returns(Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::OrSymbol)
-            end
+            sig { params(_: Symbol).returns(Symbol) }
             def method_=(_)
             end
 
@@ -1485,18 +1324,8 @@ module Increase
             end
 
             sig do
-              params(
-                _: T.any(
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense,
-                  Increase::Util::AnyHash
-                )
-              )
-                .returns(
-                  T.any(
-                    Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense,
-                    Increase::Util::AnyHash
-                  )
-                )
+              params(_: Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense)
+                .returns(Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense)
             end
             def drivers_license=(_)
             end
@@ -1508,18 +1337,8 @@ module Increase
             end
 
             sig do
-              params(
-                _: T.any(
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other,
-                  Increase::Util::AnyHash
-                )
-              )
-                .returns(
-                  T.any(
-                    Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other,
-                    Increase::Util::AnyHash
-                  )
-                )
+              params(_: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other)
+                .returns(Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other)
             end
             def other=(_)
             end
@@ -1531,18 +1350,8 @@ module Increase
             end
 
             sig do
-              params(
-                _: T.any(
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport,
-                  Increase::Util::AnyHash
-                )
-              )
-                .returns(
-                  T.any(
-                    Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport,
-                    Increase::Util::AnyHash
-                  )
-                )
+              params(_: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport)
+                .returns(Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport)
             end
             def passport=(_)
             end
@@ -1550,7 +1359,7 @@ module Increase
             # A means of verifying the person's identity.
             sig do
               params(
-                method_: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::OrSymbol,
+                method_: Symbol,
                 number: String,
                 drivers_license: Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense,
                 other: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other,
@@ -1565,7 +1374,7 @@ module Increase
               override
                 .returns(
                   {
-                    method_: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::OrSymbol,
+                    method_: Symbol,
                     number: String,
                     drivers_license: Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense,
                     other: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other,
@@ -1577,64 +1386,25 @@ module Increase
             end
 
             # A method that can be used to verify the individual's identity.
-            module Method
-              extend Increase::Enum
+            class Method < Increase::Enum
+              abstract!
 
-              TaggedSymbol =
-                T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method) }
-              OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
-                  )
-                end
+              Value = type_template(:out) { {fixed: Symbol} }
 
               # A social security number.
-              SOCIAL_SECURITY_NUMBER =
-                T.let(
-                  :social_security_number,
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
-                )
+              SOCIAL_SECURITY_NUMBER = :social_security_number
 
               # An individual taxpayer identification number (ITIN).
-              INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER =
-                T.let(
-                  :individual_taxpayer_identification_number,
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
-                )
+              INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER = :individual_taxpayer_identification_number
 
               # A passport number.
-              PASSPORT =
-                T.let(
-                  :passport,
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
-                )
+              PASSPORT = :passport
 
               # A driver's license number.
-              DRIVERS_LICENSE =
-                T.let(
-                  :drivers_license,
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
-                )
+              DRIVERS_LICENSE = :drivers_license
 
               # Another identifying document.
-              OTHER =
-                T.let(
-                  :other,
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
-                )
-
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol]
-                    )
-                end
-                def values
-                end
-              end
+              OTHER = :other
             end
 
             class DriversLicense < Increase::BaseModel
@@ -1828,8 +1598,8 @@ module Increase
         end
 
         sig do
-          params(_: T.any(Increase::Models::EntityCreateParams::NaturalPerson::Address, Increase::Util::AnyHash))
-            .returns(T.any(Increase::Models::EntityCreateParams::NaturalPerson::Address, Increase::Util::AnyHash))
+          params(_: Increase::Models::EntityCreateParams::NaturalPerson::Address)
+            .returns(Increase::Models::EntityCreateParams::NaturalPerson::Address)
         end
         def address=(_)
         end
@@ -1849,12 +1619,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.any(Increase::Models::EntityCreateParams::NaturalPerson::Identification, Increase::Util::AnyHash)
-          )
-            .returns(
-              T.any(Increase::Models::EntityCreateParams::NaturalPerson::Identification, Increase::Util::AnyHash)
-            )
+          params(_: Increase::Models::EntityCreateParams::NaturalPerson::Identification)
+            .returns(Increase::Models::EntityCreateParams::NaturalPerson::Identification)
         end
         def identification=(_)
         end
@@ -1980,14 +1746,11 @@ module Increase
 
         class Identification < Increase::BaseModel
           # A method that can be used to verify the individual's identity.
-          sig { returns(Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::OrSymbol) }
+          sig { returns(Symbol) }
           def method_
           end
 
-          sig do
-            params(_: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::OrSymbol)
-              .returns(Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::OrSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def method_=(_)
           end
 
@@ -2008,18 +1771,8 @@ module Increase
           end
 
           sig do
-            params(
-              _: T.any(
-                Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense,
-                Increase::Util::AnyHash
-              )
-            )
-              .returns(
-                T.any(
-                  Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense,
-                  Increase::Util::AnyHash
-                )
-              )
+            params(_: Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense)
+              .returns(Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense)
           end
           def drivers_license=(_)
           end
@@ -2031,12 +1784,8 @@ module Increase
           end
 
           sig do
-            params(
-              _: T.any(Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other, Increase::Util::AnyHash)
-            )
-              .returns(
-                T.any(Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other, Increase::Util::AnyHash)
-              )
+            params(_: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other)
+              .returns(Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other)
           end
           def other=(_)
           end
@@ -2048,18 +1797,8 @@ module Increase
           end
 
           sig do
-            params(
-              _: T.any(
-                Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport,
-                Increase::Util::AnyHash
-              )
-            )
-              .returns(
-                T.any(
-                  Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport,
-                  Increase::Util::AnyHash
-                )
-              )
+            params(_: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport)
+              .returns(Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport)
           end
           def passport=(_)
           end
@@ -2067,7 +1806,7 @@ module Increase
           # A means of verifying the person's identity.
           sig do
             params(
-              method_: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::OrSymbol,
+              method_: Symbol,
               number: String,
               drivers_license: Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense,
               other: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other,
@@ -2082,7 +1821,7 @@ module Increase
             override
               .returns(
                 {
-                  method_: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::OrSymbol,
+                  method_: Symbol,
                   number: String,
                   drivers_license: Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense,
                   other: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other,
@@ -2094,56 +1833,25 @@ module Increase
           end
 
           # A method that can be used to verify the individual's identity.
-          module Method
-            extend Increase::Enum
+          class Method < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # A social security number.
-            SOCIAL_SECURITY_NUMBER =
-              T.let(
-                :social_security_number,
-                Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol
-              )
+            SOCIAL_SECURITY_NUMBER = :social_security_number
 
             # An individual taxpayer identification number (ITIN).
-            INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER =
-              T.let(
-                :individual_taxpayer_identification_number,
-                Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol
-              )
+            INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER = :individual_taxpayer_identification_number
 
             # A passport number.
-            PASSPORT =
-              T.let(
-                :passport,
-                Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol
-              )
+            PASSPORT = :passport
 
             # A driver's license number.
-            DRIVERS_LICENSE =
-              T.let(
-                :drivers_license,
-                Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol
-              )
+            DRIVERS_LICENSE = :drivers_license
 
             # Another identifying document.
-            OTHER =
-              T.let(:other, Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol)
-
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol]
-                  )
-              end
-              def values
-              end
-            end
+            OTHER = :other
           end
 
           class DriversLicense < Increase::BaseModel
@@ -2349,62 +2057,35 @@ module Increase
         end
 
         # The vendor that was used to perform the verification.
-        sig { returns(Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::OrSymbol) }
+        sig { returns(Symbol) }
         def vendor
         end
 
-        sig do
-          params(_: Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::OrSymbol)
-            .returns(Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::OrSymbol)
-        end
+        sig { params(_: Symbol).returns(Symbol) }
         def vendor=(_)
         end
 
         # A reference to data stored in a third-party verification service. Your
         #   integration may or may not use this field.
-        sig do
-          params(
-            reference: String,
-            vendor: Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::OrSymbol
-          )
-            .returns(T.attached_class)
-        end
+        sig { params(reference: String, vendor: Symbol).returns(T.attached_class) }
         def self.new(reference:, vendor:)
         end
 
-        sig do
-          override
-            .returns(
-              {reference: String, vendor: Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::OrSymbol}
-            )
-        end
+        sig { override.returns({reference: String, vendor: Symbol}) }
         def to_hash
         end
 
         # The vendor that was used to perform the verification.
-        module Vendor
-          extend Increase::Enum
+        class Vendor < Increase::Enum
+          abstract!
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # Alloy. See https://alloy.com for more information.
-          ALLOY = T.let(:alloy, Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::TaggedSymbol)
+          ALLOY = :alloy
 
           # Middesk. See https://middesk.com for more information.
-          MIDDESK =
-            T.let(:middesk, Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::TaggedSymbol)
-
-          class << self
-            sig do
-              override
-                .returns(T::Array[Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::TaggedSymbol])
-            end
-            def values
-            end
-          end
+          MIDDESK = :middesk
         end
       end
 
@@ -2416,8 +2097,8 @@ module Increase
         end
 
         sig do
-          params(_: T.any(Increase::Models::EntityCreateParams::Trust::Address, Increase::Util::AnyHash))
-            .returns(T.any(Increase::Models::EntityCreateParams::Trust::Address, Increase::Util::AnyHash))
+          params(_: Increase::Models::EntityCreateParams::Trust::Address)
+            .returns(Increase::Models::EntityCreateParams::Trust::Address)
         end
         def address=(_)
         end
@@ -2425,14 +2106,11 @@ module Increase
         # Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require
         #   their own Employer Identification Number. Revocable trusts require information
         #   about the individual `grantor` who created the trust.
-        sig { returns(Increase::Models::EntityCreateParams::Trust::Category::OrSymbol) }
+        sig { returns(Symbol) }
         def category
         end
 
-        sig do
-          params(_: Increase::Models::EntityCreateParams::Trust::Category::OrSymbol)
-            .returns(Increase::Models::EntityCreateParams::Trust::Category::OrSymbol)
-        end
+        sig { params(_: Symbol).returns(Symbol) }
         def category=(_)
         end
 
@@ -2482,8 +2160,8 @@ module Increase
         end
 
         sig do
-          params(_: T.any(Increase::Models::EntityCreateParams::Trust::Grantor, Increase::Util::AnyHash))
-            .returns(T.any(Increase::Models::EntityCreateParams::Trust::Grantor, Increase::Util::AnyHash))
+          params(_: Increase::Models::EntityCreateParams::Trust::Grantor)
+            .returns(Increase::Models::EntityCreateParams::Trust::Grantor)
         end
         def grantor=(_)
         end
@@ -2503,7 +2181,7 @@ module Increase
         sig do
           params(
             address: Increase::Models::EntityCreateParams::Trust::Address,
-            category: Increase::Models::EntityCreateParams::Trust::Category::OrSymbol,
+            category: Symbol,
             name: String,
             trustees: T::Array[Increase::Models::EntityCreateParams::Trust::Trustee],
             formation_document_file_id: String,
@@ -2530,7 +2208,7 @@ module Increase
             .returns(
               {
                 address: Increase::Models::EntityCreateParams::Trust::Address,
-                category: Increase::Models::EntityCreateParams::Trust::Category::OrSymbol,
+                category: Symbol,
                 name: String,
                 trustees: T::Array[Increase::Models::EntityCreateParams::Trust::Trustee],
                 formation_document_file_id: String,
@@ -2612,36 +2290,25 @@ module Increase
         # Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require
         #   their own Employer Identification Number. Revocable trusts require information
         #   about the individual `grantor` who created the trust.
-        module Category
-          extend Increase::Enum
+        class Category < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::Trust::Category) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::Trust::Category::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # The trust is revocable by the grantor.
-          REVOCABLE = T.let(:revocable, Increase::Models::EntityCreateParams::Trust::Category::TaggedSymbol)
+          REVOCABLE = :revocable
 
           # The trust cannot be revoked.
-          IRREVOCABLE = T.let(:irrevocable, Increase::Models::EntityCreateParams::Trust::Category::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::EntityCreateParams::Trust::Category::TaggedSymbol]) }
-            def values
-            end
-          end
+          IRREVOCABLE = :irrevocable
         end
 
         class Trustee < Increase::BaseModel
           # The structure of the trustee.
-          sig { returns(Increase::Models::EntityCreateParams::Trust::Trustee::Structure::OrSymbol) }
+          sig { returns(Symbol) }
           def structure
           end
 
-          sig do
-            params(_: Increase::Models::EntityCreateParams::Trust::Trustee::Structure::OrSymbol)
-              .returns(Increase::Models::EntityCreateParams::Trust::Trustee::Structure::OrSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def structure=(_)
           end
 
@@ -2652,19 +2319,14 @@ module Increase
           end
 
           sig do
-            params(
-              _: T.any(Increase::Models::EntityCreateParams::Trust::Trustee::Individual, Increase::Util::AnyHash)
-            )
-              .returns(T.any(Increase::Models::EntityCreateParams::Trust::Trustee::Individual, Increase::Util::AnyHash))
+            params(_: Increase::Models::EntityCreateParams::Trust::Trustee::Individual)
+              .returns(Increase::Models::EntityCreateParams::Trust::Trustee::Individual)
           end
           def individual=(_)
           end
 
           sig do
-            params(
-              structure: Increase::Models::EntityCreateParams::Trust::Trustee::Structure::OrSymbol,
-              individual: Increase::Models::EntityCreateParams::Trust::Trustee::Individual
-            )
+            params(structure: Symbol, individual: Increase::Models::EntityCreateParams::Trust::Trustee::Individual)
               .returns(T.attached_class)
           end
           def self.new(structure:, individual: nil)
@@ -2672,34 +2334,19 @@ module Increase
 
           sig do
             override
-              .returns(
-                {
-                  structure: Increase::Models::EntityCreateParams::Trust::Trustee::Structure::OrSymbol,
-                  individual: Increase::Models::EntityCreateParams::Trust::Trustee::Individual
-                }
-              )
+              .returns({structure: Symbol, individual: Increase::Models::EntityCreateParams::Trust::Trustee::Individual})
           end
           def to_hash
           end
 
           # The structure of the trustee.
-          module Structure
-            extend Increase::Enum
+          class Structure < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::Trust::Trustee::Structure) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::Trust::Trustee::Structure::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # The trustee is an individual.
-            INDIVIDUAL =
-              T.let(:individual, Increase::Models::EntityCreateParams::Trust::Trustee::Structure::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::EntityCreateParams::Trust::Trustee::Structure::TaggedSymbol]) }
-              def values
-              end
-            end
+            INDIVIDUAL = :individual
           end
 
           class Individual < Increase::BaseModel
@@ -2710,12 +2357,8 @@ module Increase
             end
 
             sig do
-              params(
-                _: T.any(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address, Increase::Util::AnyHash)
-              )
-                .returns(
-                  T.any(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address, Increase::Util::AnyHash)
-                )
+              params(_: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address)
+                .returns(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address)
             end
             def address=(_)
             end
@@ -2735,18 +2378,8 @@ module Increase
             end
 
             sig do
-              params(
-                _: T.any(
-                  Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification,
-                  Increase::Util::AnyHash
-                )
-              )
-                .returns(
-                  T.any(
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification,
-                    Increase::Util::AnyHash
-                  )
-                )
+              params(_: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification)
+                .returns(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification)
             end
             def identification=(_)
             end
@@ -2872,22 +2505,11 @@ module Increase
 
             class Identification < Increase::BaseModel
               # A method that can be used to verify the individual's identity.
-              sig do
-                returns(
-                  Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::OrSymbol
-                )
-              end
+              sig { returns(Symbol) }
               def method_
               end
 
-              sig do
-                params(
-                  _: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::OrSymbol
-                )
-                  .returns(
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::OrSymbol
-                  )
-              end
+              sig { params(_: Symbol).returns(Symbol) }
               def method_=(_)
               end
 
@@ -2915,17 +2537,9 @@ module Increase
 
               sig do
                 params(
-                  _: T.any(
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense,
-                    Increase::Util::AnyHash
-                  )
+                  _: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense
                 )
-                  .returns(
-                    T.any(
-                      Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense,
-                      Increase::Util::AnyHash
-                    )
-                  )
+                  .returns(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense)
               end
               def drivers_license=(_)
               end
@@ -2941,18 +2555,8 @@ module Increase
               end
 
               sig do
-                params(
-                  _: T.any(
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other,
-                    Increase::Util::AnyHash
-                  )
-                )
-                  .returns(
-                    T.any(
-                      Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other,
-                      Increase::Util::AnyHash
-                    )
-                  )
+                params(_: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other)
+                  .returns(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other)
               end
               def other=(_)
               end
@@ -2968,18 +2572,8 @@ module Increase
               end
 
               sig do
-                params(
-                  _: T.any(
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport,
-                    Increase::Util::AnyHash
-                  )
-                )
-                  .returns(
-                    T.any(
-                      Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport,
-                      Increase::Util::AnyHash
-                    )
-                  )
+                params(_: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport)
+                  .returns(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport)
               end
               def passport=(_)
               end
@@ -2987,7 +2581,7 @@ module Increase
               # A means of verifying the person's identity.
               sig do
                 params(
-                  method_: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::OrSymbol,
+                  method_: Symbol,
                   number: String,
                   drivers_license: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense,
                   other: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other,
@@ -3002,7 +2596,7 @@ module Increase
                 override
                   .returns(
                     {
-                      method_: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::OrSymbol,
+                      method_: Symbol,
                       number: String,
                       drivers_license: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense,
                       other: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other,
@@ -3014,64 +2608,25 @@ module Increase
               end
 
               # A method that can be used to verify the individual's identity.
-              module Method
-                extend Increase::Enum
+              class Method < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method) }
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # A social security number.
-                SOCIAL_SECURITY_NUMBER =
-                  T.let(
-                    :social_security_number,
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
-                  )
+                SOCIAL_SECURITY_NUMBER = :social_security_number
 
                 # An individual taxpayer identification number (ITIN).
-                INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER =
-                  T.let(
-                    :individual_taxpayer_identification_number,
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
-                  )
+                INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER = :individual_taxpayer_identification_number
 
                 # A passport number.
-                PASSPORT =
-                  T.let(
-                    :passport,
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
-                  )
+                PASSPORT = :passport
 
                 # A driver's license number.
-                DRIVERS_LICENSE =
-                  T.let(
-                    :drivers_license,
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
-                  )
+                DRIVERS_LICENSE = :drivers_license
 
                 # Another identifying document.
-                OTHER =
-                  T.let(
-                    :other,
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol]
-                      )
-                  end
-                  def values
-                  end
-                end
+                OTHER = :other
               end
 
               class DriversLicense < Increase::BaseModel
@@ -3265,8 +2820,8 @@ module Increase
           end
 
           sig do
-            params(_: T.any(Increase::Models::EntityCreateParams::Trust::Grantor::Address, Increase::Util::AnyHash))
-              .returns(T.any(Increase::Models::EntityCreateParams::Trust::Grantor::Address, Increase::Util::AnyHash))
+            params(_: Increase::Models::EntityCreateParams::Trust::Grantor::Address)
+              .returns(Increase::Models::EntityCreateParams::Trust::Grantor::Address)
           end
           def address=(_)
           end
@@ -3286,12 +2841,8 @@ module Increase
           end
 
           sig do
-            params(
-              _: T.any(Increase::Models::EntityCreateParams::Trust::Grantor::Identification, Increase::Util::AnyHash)
-            )
-              .returns(
-                T.any(Increase::Models::EntityCreateParams::Trust::Grantor::Identification, Increase::Util::AnyHash)
-              )
+            params(_: Increase::Models::EntityCreateParams::Trust::Grantor::Identification)
+              .returns(Increase::Models::EntityCreateParams::Trust::Grantor::Identification)
           end
           def identification=(_)
           end
@@ -3414,14 +2965,11 @@ module Increase
 
           class Identification < Increase::BaseModel
             # A method that can be used to verify the individual's identity.
-            sig { returns(Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::OrSymbol) }
+            sig { returns(Symbol) }
             def method_
             end
 
-            sig do
-              params(_: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::OrSymbol)
-                .returns(Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::OrSymbol)
-            end
+            sig { params(_: Symbol).returns(Symbol) }
             def method_=(_)
             end
 
@@ -3442,18 +2990,8 @@ module Increase
             end
 
             sig do
-              params(
-                _: T.any(
-                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense,
-                  Increase::Util::AnyHash
-                )
-              )
-                .returns(
-                  T.any(
-                    Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense,
-                    Increase::Util::AnyHash
-                  )
-                )
+              params(_: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense)
+                .returns(Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense)
             end
             def drivers_license=(_)
             end
@@ -3465,18 +3003,8 @@ module Increase
             end
 
             sig do
-              params(
-                _: T.any(
-                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other,
-                  Increase::Util::AnyHash
-                )
-              )
-                .returns(
-                  T.any(
-                    Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other,
-                    Increase::Util::AnyHash
-                  )
-                )
+              params(_: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other)
+                .returns(Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other)
             end
             def other=(_)
             end
@@ -3488,18 +3016,8 @@ module Increase
             end
 
             sig do
-              params(
-                _: T.any(
-                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport,
-                  Increase::Util::AnyHash
-                )
-              )
-                .returns(
-                  T.any(
-                    Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport,
-                    Increase::Util::AnyHash
-                  )
-                )
+              params(_: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport)
+                .returns(Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport)
             end
             def passport=(_)
             end
@@ -3507,7 +3025,7 @@ module Increase
             # A means of verifying the person's identity.
             sig do
               params(
-                method_: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::OrSymbol,
+                method_: Symbol,
                 number: String,
                 drivers_license: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense,
                 other: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other,
@@ -3522,7 +3040,7 @@ module Increase
               override
                 .returns(
                   {
-                    method_: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::OrSymbol,
+                    method_: Symbol,
                     number: String,
                     drivers_license: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense,
                     other: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other,
@@ -3534,56 +3052,25 @@ module Increase
             end
 
             # A method that can be used to verify the individual's identity.
-            module Method
-              extend Increase::Enum
+            class Method < Increase::Enum
+              abstract!
 
-              TaggedSymbol =
-                T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method) }
-              OrSymbol =
-                T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol) }
+              Value = type_template(:out) { {fixed: Symbol} }
 
               # A social security number.
-              SOCIAL_SECURITY_NUMBER =
-                T.let(
-                  :social_security_number,
-                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol
-                )
+              SOCIAL_SECURITY_NUMBER = :social_security_number
 
               # An individual taxpayer identification number (ITIN).
-              INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER =
-                T.let(
-                  :individual_taxpayer_identification_number,
-                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol
-                )
+              INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER = :individual_taxpayer_identification_number
 
               # A passport number.
-              PASSPORT =
-                T.let(
-                  :passport,
-                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol
-                )
+              PASSPORT = :passport
 
               # A driver's license number.
-              DRIVERS_LICENSE =
-                T.let(
-                  :drivers_license,
-                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol
-                )
+              DRIVERS_LICENSE = :drivers_license
 
               # Another identifying document.
-              OTHER =
-                T.let(:other, Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol)
-
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol]
-                    )
-                end
-                def values
-                end
-              end
+              OTHER = :other
             end
 
             class DriversLicense < Increase::BaseModel

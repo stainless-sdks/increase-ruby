@@ -61,9 +61,7 @@ module Increase
             | :processing_error
             | :other
 
-          module RejectReasonCode
-            extend Increase::Enum
-
+          class RejectReasonCode < Increase::Enum
             # The destination account is closed. Corresponds to the Real-Time Payments reason code `AC04`.
             ACCOUNT_CLOSED: :account_closed
 
@@ -127,7 +125,7 @@ module Increase
             # Some other error or issue has occurred.
             OTHER: :other
 
-            def self?.values: -> ::Array[Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::reject_reason_code]
+            def self.values: -> ::Array[Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::reject_reason_code]
           end
         end
       end

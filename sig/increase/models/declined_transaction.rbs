@@ -52,9 +52,7 @@ module Increase
 
       type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-      module Currency
-        extend Increase::Enum
-
+      class Currency < Increase::Enum
         # Canadian Dollar (CAD)
         CAD: :CAD
 
@@ -73,14 +71,12 @@ module Increase
         # US Dollar (USD)
         USD: :USD
 
-        def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::currency]
+        def self.values: -> ::Array[Increase::Models::DeclinedTransaction::currency]
       end
 
       type route_type = :account_number | :card | :lockbox
 
-      module RouteType
-        extend Increase::Enum
-
+      class RouteType < Increase::Enum
         # An Account Number.
         ACCOUNT_NUMBER: :account_number
 
@@ -90,7 +86,7 @@ module Increase
         # A Lockbox.
         LOCKBOX: :lockbox
 
-        def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::route_type]
+        def self.values: -> ::Array[Increase::Models::DeclinedTransaction::route_type]
       end
 
       type source =
@@ -212,9 +208,7 @@ module Increase
             | :duplicate_entry
             | :corporate_customer_advised_not_authorized
 
-          module Reason
-            extend Increase::Enum
-
+          class Reason < Increase::Enum
             # The account number is canceled.
             ACH_ROUTE_CANCELED: :ach_route_canceled
 
@@ -266,17 +260,15 @@ module Increase
             # The corporate customer no longer authorizes this transaction.
             CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED: :corporate_customer_advised_not_authorized
 
-            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::ACHDecline::reason]
+            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::ACHDecline::reason]
           end
 
           type type_ = :ach_decline
 
-          module Type
-            extend Increase::Enum
-
+          class Type < Increase::Enum
             ACH_DECLINE: :ach_decline
 
-            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::ACHDecline::type_]
+            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::ACHDecline::type_]
           end
         end
 
@@ -400,9 +392,7 @@ module Increase
 
           type actioner = :user | :increase | :network
 
-          module Actioner
-            extend Increase::Enum
-
+          class Actioner < Increase::Enum
             # This object was actioned by the user through a real-time decision.
             USER: :user
 
@@ -412,14 +402,12 @@ module Increase
             # This object was actioned by the network, through stand-in processing.
             NETWORK: :network
 
-            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::actioner]
+            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::actioner]
           end
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          module Currency
-            extend Increase::Enum
-
+          class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -438,21 +426,19 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::currency]
+            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::currency]
           end
 
           type direction = :settlement | :refund
 
-          module Direction
-            extend Increase::Enum
-
+          class Direction < Increase::Enum
             # A regular card authorization where funds are debited from the cardholder.
             SETTLEMENT: :settlement
 
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND: :refund
 
-            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::direction]
+            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::direction]
           end
 
           type network_details =
@@ -475,13 +461,11 @@ module Increase
 
             type category = :visa
 
-            module Category
-              extend Increase::Enum
-
+            class Category < Increase::Enum
               # Visa
               VISA: :visa
 
-              def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::category]
+              def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::category]
             end
 
             type visa =
@@ -516,9 +500,7 @@ module Increase
                 | :non_authenticated_security_transaction
                 | :non_secure_transaction
 
-              module ElectronicCommerceIndicator
-                extend Increase::Enum
-
+              class ElectronicCommerceIndicator < Increase::Enum
                 # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
                 MAIL_PHONE_ORDER: :mail_phone_order
 
@@ -543,7 +525,7 @@ module Increase
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
                 NON_SECURE_TRANSACTION: :non_secure_transaction
 
-                def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::electronic_commerce_indicator]
+                def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::electronic_commerce_indicator]
               end
 
               type point_of_service_entry_mode =
@@ -558,9 +540,7 @@ module Increase
                 | :contactless_magnetic_stripe
                 | :integrated_circuit_card_no_cvv
 
-              module PointOfServiceEntryMode
-                extend Increase::Enum
-
+              class PointOfServiceEntryMode < Increase::Enum
                 # Unknown
                 UNKNOWN: :unknown
 
@@ -591,7 +571,7 @@ module Increase
                 # Contact chip card, without card verification value
                 INTEGRATED_CIRCUIT_CARD_NO_CVV: :integrated_circuit_card_no_cvv
 
-                def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::point_of_service_entry_mode]
+                def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::point_of_service_entry_mode]
               end
 
               type stand_in_processing_reason =
@@ -603,9 +583,7 @@ module Increase
                 | :payment_fraud_disruption_acquirer_block
                 | :other
 
-              module StandInProcessingReason
-                extend Increase::Enum
-
+              class StandInProcessingReason < Increase::Enum
                 # Increase failed to process the authorization in a timely manner.
                 ISSUER_ERROR: :issuer_error
 
@@ -627,7 +605,7 @@ module Increase
                 # An unspecific reason for stand-in processing.
                 OTHER: :other
 
-                def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::stand_in_processing_reason]
+                def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::stand_in_processing_reason]
               end
             end
           end
@@ -663,9 +641,7 @@ module Increase
             | :quasi_cash
             | :refund
 
-          module ProcessingCategory
-            extend Increase::Enum
-
+          class ProcessingCategory < Increase::Enum
             # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
             ACCOUNT_FUNDING: :account_funding
 
@@ -684,7 +660,7 @@ module Increase
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND: :refund
 
-            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::processing_category]
+            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::processing_category]
           end
 
           type real_time_decision_reason =
@@ -695,9 +671,7 @@ module Increase
             | :suspected_fraud
             | :other
 
-          module RealTimeDecisionReason
-            extend Increase::Enum
-
+          class RealTimeDecisionReason < Increase::Enum
             # The cardholder does not have sufficient funds to cover the transaction. The merchant may attempt to process the transaction again.
             INSUFFICIENT_FUNDS: :insufficient_funds
 
@@ -716,7 +690,7 @@ module Increase
             # The transaction was declined for another reason. The merchant may attempt to process the transaction again. This should be used sparingly.
             OTHER: :other
 
-            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::real_time_decision_reason]
+            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::real_time_decision_reason]
           end
 
           type reason =
@@ -738,9 +712,7 @@ module Increase
             | :missing_original_authorization
             | :suspected_fraud
 
-          module Reason
-            extend Increase::Enum
-
+          class Reason < Increase::Enum
             # The account has been closed.
             ACCOUNT_CLOSED: :account_closed
 
@@ -792,7 +764,7 @@ module Increase
             # The transaction was suspected to be fraudulent. Please reach out to support@increase.com for more information.
             SUSPECTED_FRAUD: :suspected_fraud
 
-            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::reason]
+            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::reason]
           end
 
           type verification =
@@ -829,9 +801,7 @@ module Increase
 
               type result = :not_checked | :match | :no_match
 
-              module Result
-                extend Increase::Enum
-
+              class Result < Increase::Enum
                 # No card verification code was provided in the authorization request.
                 NOT_CHECKED: :not_checked
 
@@ -841,7 +811,7 @@ module Increase
                 # The card verification code did not match the one on file.
                 NO_MATCH: :no_match
 
-                def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::result]
+                def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::result]
               end
             end
 
@@ -883,9 +853,7 @@ module Increase
                 | :match
                 | :no_match
 
-              module Result
-                extend Increase::Enum
-
+              class Result < Increase::Enum
                 # No adress was provided in the authorization request.
                 NOT_CHECKED: :not_checked
 
@@ -904,7 +872,7 @@ module Increase
                 # Postal code and street address do not match.
                 NO_MATCH: :no_match
 
-                def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::result]
+                def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::result]
               end
             end
           end
@@ -919,9 +887,7 @@ module Increase
           | :check_deposit_rejection
           | :other
 
-        module Category
-          extend Increase::Enum
-
+        class Category < Increase::Enum
           # ACH Decline: details will be under the `ach_decline` object.
           ACH_DECLINE: :ach_decline
 
@@ -943,7 +909,7 @@ module Increase
           # The Declined Transaction was made for an undocumented or deprecated reason.
           OTHER: :other
 
-          def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::category]
+          def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::category]
         end
 
         type check_decline =
@@ -1003,9 +969,7 @@ module Increase
             | :unable_to_process
             | :user_initiated
 
-          module Reason
-            extend Increase::Enum
-
+          class Reason < Increase::Enum
             # The account number is disabled.
             ACH_ROUTE_DISABLED: :ach_route_disabled
 
@@ -1057,7 +1021,7 @@ module Increase
             # Your integration declined this check via the API.
             USER_INITIATED: :user_initiated
 
-            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CheckDecline::reason]
+            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CheckDecline::reason]
           end
         end
 
@@ -1097,9 +1061,7 @@ module Increase
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          module Currency
-            extend Increase::Enum
-
+          class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -1118,7 +1080,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::currency]
+            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::currency]
           end
 
           type reason =
@@ -1134,9 +1096,7 @@ module Increase
             | :requested_by_user
             | :unknown
 
-          module Reason
-            extend Increase::Enum
-
+          class Reason < Increase::Enum
             # The check's image is incomplete.
             INCOMPLETE_IMAGE: :incomplete_image
 
@@ -1170,7 +1130,7 @@ module Increase
             # The check was rejected for an unknown reason.
             UNKNOWN: :unknown
 
-            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::reason]
+            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::reason]
           end
         end
 
@@ -1226,9 +1186,7 @@ module Increase
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          module Currency
-            extend Increase::Enum
-
+          class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -1247,7 +1205,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::currency]
+            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::currency]
           end
 
           type reason =
@@ -1258,9 +1216,7 @@ module Increase
             | :entity_not_active
             | :real_time_payments_not_enabled
 
-          module Reason
-            extend Increase::Enum
-
+          class Reason < Increase::Enum
             # The account number is canceled.
             ACCOUNT_NUMBER_CANCELED: :account_number_canceled
 
@@ -1279,7 +1235,7 @@ module Increase
             # Your account is not enabled to receive Real-Time Payments transfers.
             REAL_TIME_PAYMENTS_NOT_ENABLED: :real_time_payments_not_enabled
 
-            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::reason]
+            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::reason]
           end
         end
 
@@ -1309,9 +1265,7 @@ module Increase
             | :no_account_number
             | :transaction_not_allowed
 
-          module Reason
-            extend Increase::Enum
-
+          class Reason < Increase::Enum
             # The account number is canceled.
             ACCOUNT_NUMBER_CANCELED: :account_number_canceled
 
@@ -1330,19 +1284,17 @@ module Increase
             # The transaction is not allowed per Increase's terms.
             TRANSACTION_NOT_ALLOWED: :transaction_not_allowed
 
-            def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::WireDecline::reason]
+            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::WireDecline::reason]
           end
         end
       end
 
       type type_ = :declined_transaction
 
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         DECLINED_TRANSACTION: :declined_transaction
 
-        def self?.values: -> ::Array[Increase::Models::DeclinedTransaction::type_]
+        def self.values: -> ::Array[Increase::Models::DeclinedTransaction::type_]
       end
     end
   end

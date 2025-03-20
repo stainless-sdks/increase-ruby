@@ -11,8 +11,7 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::FileListParams::CreatedAt, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::FileListParams::CreatedAt, Increase::Util::AnyHash))
+        params(_: Increase::Models::FileListParams::CreatedAt).returns(Increase::Models::FileListParams::CreatedAt)
       end
       def created_at=(_)
       end
@@ -52,10 +51,7 @@ module Increase
       def purpose
       end
 
-      sig do
-        params(_: T.any(Increase::Models::FileListParams::Purpose, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::FileListParams::Purpose, Increase::Util::AnyHash))
-      end
+      sig { params(_: Increase::Models::FileListParams::Purpose).returns(Increase::Models::FileListParams::Purpose) }
       def purpose=(_)
       end
 
@@ -144,136 +140,104 @@ module Increase
       class Purpose < Increase::BaseModel
         # Filter Files for those with the specified purpose or purposes. For GET requests,
         #   this should be encoded as a comma-delimited string, such as `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Increase::Models::FileListParams::Purpose::In::OrSymbol])) }
+        sig { returns(T.nilable(T::Array[Symbol])) }
         def in_
         end
 
-        sig do
-          params(_: T::Array[Increase::Models::FileListParams::Purpose::In::OrSymbol])
-            .returns(T::Array[Increase::Models::FileListParams::Purpose::In::OrSymbol])
-        end
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
         def in_=(_)
         end
 
-        sig { params(in_: T::Array[Increase::Models::FileListParams::Purpose::In::OrSymbol]).returns(T.attached_class) }
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Increase::Models::FileListParams::Purpose::In::OrSymbol]}) }
+        sig { override.returns({in_: T::Array[Symbol]}) }
         def to_hash
         end
 
-        module In
-          extend Increase::Enum
+        class In < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::FileListParams::Purpose::In) }
-          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::FileListParams::Purpose::In::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # An image of the front of a check, used for check deposits.
-          CHECK_IMAGE_FRONT =
-            T.let(:check_image_front, Increase::Models::FileListParams::Purpose::In::TaggedSymbol)
+          CHECK_IMAGE_FRONT = :check_image_front
 
           # An image of the back of a check, used for check deposits.
-          CHECK_IMAGE_BACK = T.let(:check_image_back, Increase::Models::FileListParams::Purpose::In::TaggedSymbol)
+          CHECK_IMAGE_BACK = :check_image_back
 
           # An image of the front of a deposited check after processing by Increase and submission to the Federal Reserve.
-          PROCESSED_CHECK_IMAGE_FRONT =
-            T.let(:processed_check_image_front, Increase::Models::FileListParams::Purpose::In::TaggedSymbol)
+          PROCESSED_CHECK_IMAGE_FRONT = :processed_check_image_front
 
           # An image of the back of a deposited check after processing by Increase and submission to the Federal Reserve.
-          PROCESSED_CHECK_IMAGE_BACK =
-            T.let(:processed_check_image_back, Increase::Models::FileListParams::Purpose::In::TaggedSymbol)
+          PROCESSED_CHECK_IMAGE_BACK = :processed_check_image_back
 
           # An image of a check that was mailed to a recipient.
-          MAILED_CHECK_IMAGE =
-            T.let(:mailed_check_image, Increase::Models::FileListParams::Purpose::In::TaggedSymbol)
+          MAILED_CHECK_IMAGE = :mailed_check_image
 
           # An image to be printed on the bottom or voucher of a check that you've requested Increase print.
-          CHECK_VOUCHER_IMAGE =
-            T.let(:check_voucher_image, Increase::Models::FileListParams::Purpose::In::TaggedSymbol)
+          CHECK_VOUCHER_IMAGE = :check_voucher_image
 
           # An image to be printed on an additional page and mailed with a check that you've requested Increase print.
-          CHECK_ATTACHMENT_IMAGE =
-            T.let(:check_attachment_image, Increase::Models::FileListParams::Purpose::In::TaggedSymbol)
+          CHECK_ATTACHMENT_IMAGE = :check_attachment_image
 
           # A scanned mail item sent to Increase.
-          INBOUND_MAIL_ITEM =
-            T.let(:inbound_mail_item, Increase::Models::FileListParams::Purpose::In::TaggedSymbol)
+          INBOUND_MAIL_ITEM = :inbound_mail_item
 
           # IRS Form 1099-INT.
-          FORM_1099_INT = T.let(:form_1099_int, Increase::Models::FileListParams::Purpose::In::TaggedSymbol)
+          FORM_1099_INT = :form_1099_int
 
           # IRS Form 1099-MISC.
-          FORM_1099_MISC = T.let(:form_1099_misc, Increase::Models::FileListParams::Purpose::In::TaggedSymbol)
+          FORM_1099_MISC = :form_1099_misc
 
           # IRS Form SS-4.
-          FORM_SS_4 = T.let(:form_ss_4, Increase::Models::FileListParams::Purpose::In::TaggedSymbol)
+          FORM_SS_4 = :form_ss_4
 
           # An image of a government-issued ID.
-          IDENTITY_DOCUMENT =
-            T.let(:identity_document, Increase::Models::FileListParams::Purpose::In::TaggedSymbol)
+          IDENTITY_DOCUMENT = :identity_document
 
           # A statement generated by Increase.
-          INCREASE_STATEMENT =
-            T.let(:increase_statement, Increase::Models::FileListParams::Purpose::In::TaggedSymbol)
+          INCREASE_STATEMENT = :increase_statement
 
           # A file purpose not covered by any of the other cases.
-          OTHER = T.let(:other, Increase::Models::FileListParams::Purpose::In::TaggedSymbol)
+          OTHER = :other
 
           # A legal document forming a trust.
-          TRUST_FORMATION_DOCUMENT =
-            T.let(:trust_formation_document, Increase::Models::FileListParams::Purpose::In::TaggedSymbol)
+          TRUST_FORMATION_DOCUMENT = :trust_formation_document
 
           # A card image to be rendered inside digital wallet apps. This must be a 1536x969 pixel PNG.
-          DIGITAL_WALLET_ARTWORK =
-            T.let(:digital_wallet_artwork, Increase::Models::FileListParams::Purpose::In::TaggedSymbol)
+          DIGITAL_WALLET_ARTWORK = :digital_wallet_artwork
 
           # An icon for you app to be rendered inside digital wallet apps. This must be a 100x100 pixel PNG.
-          DIGITAL_WALLET_APP_ICON =
-            T.let(:digital_wallet_app_icon, Increase::Models::FileListParams::Purpose::In::TaggedSymbol)
+          DIGITAL_WALLET_APP_ICON = :digital_wallet_app_icon
 
           # A card image to be printed on the front of a physical card. This must be a 2100x1340 pixel PNG with no other color but black.
-          PHYSICAL_CARD_FRONT =
-            T.let(:physical_card_front, Increase::Models::FileListParams::Purpose::In::TaggedSymbol)
+          PHYSICAL_CARD_FRONT = :physical_card_front
 
           # The image to be printed on the back of a physical card.
-          PHYSICAL_CARD_BACK =
-            T.let(:physical_card_back, Increase::Models::FileListParams::Purpose::In::TaggedSymbol)
+          PHYSICAL_CARD_BACK = :physical_card_back
 
           # An image representing the entirety of the carrier used for a physical card. This must be a 2550x3300 pixel PNG with no other color but black.
-          PHYSICAL_CARD_CARRIER =
-            T.let(:physical_card_carrier, Increase::Models::FileListParams::Purpose::In::TaggedSymbol)
+          PHYSICAL_CARD_CARRIER = :physical_card_carrier
 
           # A document requested by Increase.
-          DOCUMENT_REQUEST = T.let(:document_request, Increase::Models::FileListParams::Purpose::In::TaggedSymbol)
+          DOCUMENT_REQUEST = :document_request
 
           # A supplemental document associated an an Entity.
-          ENTITY_SUPPLEMENTAL_DOCUMENT =
-            T.let(:entity_supplemental_document, Increase::Models::FileListParams::Purpose::In::TaggedSymbol)
+          ENTITY_SUPPLEMENTAL_DOCUMENT = :entity_supplemental_document
 
           # The results of an Export you requested via the dashboard or API.
-          EXPORT = T.let(:export, Increase::Models::FileListParams::Purpose::In::TaggedSymbol)
+          EXPORT = :export
 
           # An attachment to an Unusual Activity Report.
-          UNUSUAL_ACTIVITY_REPORT_ATTACHMENT =
-            T.let(:unusual_activity_report_attachment, Increase::Models::FileListParams::Purpose::In::TaggedSymbol)
+          UNUSUAL_ACTIVITY_REPORT_ATTACHMENT = :unusual_activity_report_attachment
 
           # A document granting another entity access to the funds into your account.
-          DEPOSIT_ACCOUNT_CONTROL_AGREEMENT =
-            T.let(:deposit_account_control_agreement, Increase::Models::FileListParams::Purpose::In::TaggedSymbol)
+          DEPOSIT_ACCOUNT_CONTROL_AGREEMENT = :deposit_account_control_agreement
 
           # A file containing additional evidence for a Proof of Authorization Request Submission.
-          PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION =
-            T.let(
-              :proof_of_authorization_request_submission,
-              Increase::Models::FileListParams::Purpose::In::TaggedSymbol
-            )
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::FileListParams::Purpose::In::TaggedSymbol]) }
-            def values
-            end
-          end
+          PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION = :proof_of_authorization_request_submission
         end
       end
     end

@@ -19,8 +19,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::CardDispute::Acceptance, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::CardDispute::Acceptance, Increase::Util::AnyHash)))
+        params(_: T.nilable(Increase::Models::CardDispute::Acceptance))
+          .returns(T.nilable(Increase::Models::CardDispute::Acceptance))
       end
       def acceptance=(_)
       end
@@ -80,8 +80,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::CardDispute::Loss, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::CardDispute::Loss, Increase::Util::AnyHash)))
+        params(_: T.nilable(Increase::Models::CardDispute::Loss))
+          .returns(T.nilable(Increase::Models::CardDispute::Loss))
       end
       def loss=(_)
       end
@@ -93,34 +93,28 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::CardDispute::Rejection, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::CardDispute::Rejection, Increase::Util::AnyHash)))
+        params(_: T.nilable(Increase::Models::CardDispute::Rejection))
+          .returns(T.nilable(Increase::Models::CardDispute::Rejection))
       end
       def rejection=(_)
       end
 
       # The results of the Dispute investigation.
-      sig { returns(Increase::Models::CardDispute::Status::TaggedSymbol) }
+      sig { returns(Symbol) }
       def status
       end
 
-      sig do
-        params(_: Increase::Models::CardDispute::Status::TaggedSymbol)
-          .returns(Increase::Models::CardDispute::Status::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def status=(_)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `card_dispute`.
-      sig { returns(Increase::Models::CardDispute::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       def type
       end
 
-      sig do
-        params(_: Increase::Models::CardDispute::Type::TaggedSymbol)
-          .returns(Increase::Models::CardDispute::Type::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def type=(_)
       end
 
@@ -131,8 +125,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::CardDispute::Win, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::CardDispute::Win, Increase::Util::AnyHash)))
+        params(_: T.nilable(Increase::Models::CardDispute::Win))
+          .returns(T.nilable(Increase::Models::CardDispute::Win))
       end
       def win=(_)
       end
@@ -150,8 +144,8 @@ module Increase
           idempotency_key: T.nilable(String),
           loss: T.nilable(Increase::Models::CardDispute::Loss),
           rejection: T.nilable(Increase::Models::CardDispute::Rejection),
-          status: Increase::Models::CardDispute::Status::TaggedSymbol,
-          type: Increase::Models::CardDispute::Type::TaggedSymbol,
+          status: Symbol,
+          type: Symbol,
           win: T.nilable(Increase::Models::CardDispute::Win)
         )
           .returns(T.attached_class)
@@ -185,8 +179,8 @@ module Increase
               idempotency_key: T.nilable(String),
               loss: T.nilable(Increase::Models::CardDispute::Loss),
               rejection: T.nilable(Increase::Models::CardDispute::Rejection),
-              status: Increase::Models::CardDispute::Status::TaggedSymbol,
-              type: Increase::Models::CardDispute::Type::TaggedSymbol,
+              status: Symbol,
+              type: Symbol,
               win: T.nilable(Increase::Models::CardDispute::Win)
             }
           )
@@ -342,53 +336,38 @@ module Increase
       end
 
       # The results of the Dispute investigation.
-      module Status
-        extend Increase::Enum
+      class Status < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardDispute::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CardDispute::Status::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The Card Dispute is pending review.
-        PENDING_REVIEWING = T.let(:pending_reviewing, Increase::Models::CardDispute::Status::TaggedSymbol)
+        PENDING_REVIEWING = :pending_reviewing
 
         # Increase has requested more information related to the Card Dispute from you.
-        PENDING_USER_INFORMATION =
-          T.let(:pending_user_information, Increase::Models::CardDispute::Status::TaggedSymbol)
+        PENDING_USER_INFORMATION = :pending_user_information
 
         # The Card Dispute has been accepted and your funds have been returned. The card dispute will eventually transition into `won` or `lost` depending on the outcome.
-        ACCEPTED = T.let(:accepted, Increase::Models::CardDispute::Status::TaggedSymbol)
+        ACCEPTED = :accepted
 
         # The Card Dispute has been rejected.
-        REJECTED = T.let(:rejected, Increase::Models::CardDispute::Status::TaggedSymbol)
+        REJECTED = :rejected
 
         # The Card Dispute has been lost and funds previously credited from the acceptance have been debited.
-        LOST = T.let(:lost, Increase::Models::CardDispute::Status::TaggedSymbol)
+        LOST = :lost
 
         # The Card Dispute has been won and no further action can be taken.
-        WON = T.let(:won, Increase::Models::CardDispute::Status::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::CardDispute::Status::TaggedSymbol]) }
-          def values
-          end
-        end
+        WON = :won
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `card_dispute`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardDispute::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CardDispute::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        CARD_DISPUTE = T.let(:card_dispute, Increase::Models::CardDispute::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::CardDispute::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        CARD_DISPUTE = :card_dispute
       end
 
       class Win < Increase::BaseModel

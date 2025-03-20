@@ -27,10 +27,7 @@ module Increase
       def address
       end
 
-      sig do
-        params(_: T.any(Increase::Models::Lockbox::Address, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::Lockbox::Address, Increase::Util::AnyHash))
-      end
+      sig { params(_: Increase::Models::Lockbox::Address).returns(Increase::Models::Lockbox::Address) }
       def address=(_)
       end
 
@@ -74,27 +71,21 @@ module Increase
       end
 
       # This indicates if mail can be sent to this address.
-      sig { returns(Increase::Models::Lockbox::Status::TaggedSymbol) }
+      sig { returns(Symbol) }
       def status
       end
 
-      sig do
-        params(_: Increase::Models::Lockbox::Status::TaggedSymbol)
-          .returns(Increase::Models::Lockbox::Status::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def status=(_)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `lockbox`.
-      sig { returns(Increase::Models::Lockbox::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       def type
       end
 
-      sig do
-        params(_: Increase::Models::Lockbox::Type::TaggedSymbol)
-          .returns(Increase::Models::Lockbox::Type::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def type=(_)
       end
 
@@ -109,8 +100,8 @@ module Increase
           description: T.nilable(String),
           idempotency_key: T.nilable(String),
           recipient_name: T.nilable(String),
-          status: Increase::Models::Lockbox::Status::TaggedSymbol,
-          type: Increase::Models::Lockbox::Type::TaggedSymbol
+          status: Symbol,
+          type: Symbol
         )
           .returns(T.attached_class)
       end
@@ -128,8 +119,8 @@ module Increase
               description: T.nilable(String),
               idempotency_key: T.nilable(String),
               recipient_name: T.nilable(String),
-              status: Increase::Models::Lockbox::Status::TaggedSymbol,
-              type: Increase::Models::Lockbox::Type::TaggedSymbol
+              status: Symbol,
+              type: Symbol
             }
           )
       end
@@ -228,40 +219,26 @@ module Increase
       end
 
       # This indicates if mail can be sent to this address.
-      module Status
-        extend Increase::Enum
+      class Status < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Lockbox::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Lockbox::Status::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # This Lockbox is active. Checks mailed to it will be deposited automatically.
-        ACTIVE = T.let(:active, Increase::Models::Lockbox::Status::TaggedSymbol)
+        ACTIVE = :active
 
         # This Lockbox is inactive. Checks mailed to it will not be deposited.
-        INACTIVE = T.let(:inactive, Increase::Models::Lockbox::Status::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::Lockbox::Status::TaggedSymbol]) }
-          def values
-          end
-        end
+        INACTIVE = :inactive
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `lockbox`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Lockbox::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Lockbox::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        LOCKBOX = T.let(:lockbox, Increase::Models::Lockbox::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::Lockbox::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        LOCKBOX = :lockbox
       end
     end
   end

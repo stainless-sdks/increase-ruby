@@ -26,10 +26,7 @@ module Increase
       def cardholder
       end
 
-      sig do
-        params(_: T.any(Increase::Models::PhysicalCard::Cardholder, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::PhysicalCard::Cardholder, Increase::Util::AnyHash))
-      end
+      sig { params(_: Increase::Models::PhysicalCard::Cardholder).returns(Increase::Models::PhysicalCard::Cardholder) }
       def cardholder=(_)
       end
 
@@ -68,35 +65,26 @@ module Increase
       def shipment
       end
 
-      sig do
-        params(_: T.any(Increase::Models::PhysicalCard::Shipment, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::PhysicalCard::Shipment, Increase::Util::AnyHash))
-      end
+      sig { params(_: Increase::Models::PhysicalCard::Shipment).returns(Increase::Models::PhysicalCard::Shipment) }
       def shipment=(_)
       end
 
       # The status of the Physical Card.
-      sig { returns(Increase::Models::PhysicalCard::Status::TaggedSymbol) }
+      sig { returns(Symbol) }
       def status
       end
 
-      sig do
-        params(_: Increase::Models::PhysicalCard::Status::TaggedSymbol)
-          .returns(Increase::Models::PhysicalCard::Status::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def status=(_)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `physical_card`.
-      sig { returns(Increase::Models::PhysicalCard::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       def type
       end
 
-      sig do
-        params(_: Increase::Models::PhysicalCard::Type::TaggedSymbol)
-          .returns(Increase::Models::PhysicalCard::Type::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def type=(_)
       end
 
@@ -114,8 +102,8 @@ module Increase
           idempotency_key: T.nilable(String),
           physical_card_profile_id: T.nilable(String),
           shipment: Increase::Models::PhysicalCard::Shipment,
-          status: Increase::Models::PhysicalCard::Status::TaggedSymbol,
-          type: Increase::Models::PhysicalCard::Type::TaggedSymbol
+          status: Symbol,
+          type: Symbol
         )
           .returns(T.attached_class)
       end
@@ -143,8 +131,8 @@ module Increase
               idempotency_key: T.nilable(String),
               physical_card_profile_id: T.nilable(String),
               shipment: Increase::Models::PhysicalCard::Shipment,
-              status: Increase::Models::PhysicalCard::Status::TaggedSymbol,
-              type: Increase::Models::PhysicalCard::Type::TaggedSymbol
+              status: Symbol,
+              type: Symbol
             }
           )
       end
@@ -187,33 +175,27 @@ module Increase
         end
 
         sig do
-          params(_: T.any(Increase::Models::PhysicalCard::Shipment::Address, Increase::Util::AnyHash))
-            .returns(T.any(Increase::Models::PhysicalCard::Shipment::Address, Increase::Util::AnyHash))
+          params(_: Increase::Models::PhysicalCard::Shipment::Address)
+            .returns(Increase::Models::PhysicalCard::Shipment::Address)
         end
         def address=(_)
         end
 
         # The shipping method.
-        sig { returns(Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol) }
+        sig { returns(Symbol) }
         def method_
         end
 
-        sig do
-          params(_: Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol)
-            .returns(Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol)
-        end
+        sig { params(_: Symbol).returns(Symbol) }
         def method_=(_)
         end
 
         # The status of this shipment.
-        sig { returns(Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol) }
+        sig { returns(Symbol) }
         def status
         end
 
-        sig do
-          params(_: Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol)
-            .returns(Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol)
-        end
+        sig { params(_: Symbol).returns(Symbol) }
         def status=(_)
         end
 
@@ -223,8 +205,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(T.any(Increase::Models::PhysicalCard::Shipment::Tracking, Increase::Util::AnyHash)))
-            .returns(T.nilable(T.any(Increase::Models::PhysicalCard::Shipment::Tracking, Increase::Util::AnyHash)))
+          params(_: T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking))
+            .returns(T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking))
         end
         def tracking=(_)
         end
@@ -233,8 +215,8 @@ module Increase
         sig do
           params(
             address: Increase::Models::PhysicalCard::Shipment::Address,
-            method_: Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol,
-            status: Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol,
+            method_: Symbol,
+            status: Symbol,
             tracking: T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking)
           )
             .returns(T.attached_class)
@@ -247,8 +229,8 @@ module Increase
             .returns(
               {
                 address: Increase::Models::PhysicalCard::Shipment::Address,
-                method_: Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol,
-                status: Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol,
+                method_: Symbol,
+                status: Symbol,
                 tracking: T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking)
               }
             )
@@ -355,62 +337,47 @@ module Increase
         end
 
         # The shipping method.
-        module Method
-          extend Increase::Enum
+        class Method < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCard::Shipment::Method) }
-          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # USPS Post with tracking.
-          USPS = T.let(:usps, Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol)
+          USPS = :usps
 
           # FedEx Priority Overnight, no signature.
-          FEDEX_PRIORITY_OVERNIGHT =
-            T.let(:fedex_priority_overnight, Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol)
+          FEDEX_PRIORITY_OVERNIGHT = :fedex_priority_overnight
 
           # FedEx 2-day.
-          FEDEX_2_DAY = T.let(:fedex_2_day, Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol]) }
-            def values
-            end
-          end
+          FEDEX_2_DAY = :fedex_2_day
         end
 
         # The status of this shipment.
-        module Status
-          extend Increase::Enum
+        class Status < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCard::Shipment::Status) }
-          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # The physical card has not yet been shipped.
-          PENDING = T.let(:pending, Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol)
+          PENDING = :pending
 
           # The physical card shipment was canceled prior to submission.
-          CANCELED = T.let(:canceled, Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol)
+          CANCELED = :canceled
 
           # The physical card shipment has been submitted to the card fulfillment provider.
-          SUBMITTED = T.let(:submitted, Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol)
+          SUBMITTED = :submitted
 
           # The physical card shipment has been acknowledged by the card fulfillment provider and will be processed in their next batch.
-          ACKNOWLEDGED = T.let(:acknowledged, Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol)
+          ACKNOWLEDGED = :acknowledged
 
           # The physical card shipment was rejected by the card printer due to an error.
-          REJECTED = T.let(:rejected, Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol)
+          REJECTED = :rejected
 
           # The physical card has been shipped.
-          SHIPPED = T.let(:shipped, Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol)
+          SHIPPED = :shipped
 
           # The physical card shipment was returned to the sender and destroyed by the production facility.
-          RETURNED = T.let(:returned, Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol]) }
-            def values
-            end
-          end
+          RETURNED = :returned
         end
 
         class Tracking < Increase::BaseModel
@@ -482,43 +449,29 @@ module Increase
       end
 
       # The status of the Physical Card.
-      module Status
-        extend Increase::Enum
+      class Status < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCard::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::PhysicalCard::Status::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The physical card is active.
-        ACTIVE = T.let(:active, Increase::Models::PhysicalCard::Status::TaggedSymbol)
+        ACTIVE = :active
 
         # The physical card is temporarily disabled.
-        DISABLED = T.let(:disabled, Increase::Models::PhysicalCard::Status::TaggedSymbol)
+        DISABLED = :disabled
 
         # The physical card is permanently canceled.
-        CANCELED = T.let(:canceled, Increase::Models::PhysicalCard::Status::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::PhysicalCard::Status::TaggedSymbol]) }
-          def values
-          end
-        end
+        CANCELED = :canceled
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `physical_card`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCard::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::PhysicalCard::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        PHYSICAL_CARD = T.let(:physical_card, Increase::Models::PhysicalCard::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::PhysicalCard::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        PHYSICAL_CARD = :physical_card
       end
     end
   end

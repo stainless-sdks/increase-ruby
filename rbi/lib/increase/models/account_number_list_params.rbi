@@ -20,8 +20,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::AccountNumberListParams::ACHDebitStatus, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::AccountNumberListParams::ACHDebitStatus, Increase::Util::AnyHash))
+        params(_: Increase::Models::AccountNumberListParams::ACHDebitStatus)
+          .returns(Increase::Models::AccountNumberListParams::ACHDebitStatus)
       end
       def ach_debit_status=(_)
       end
@@ -31,8 +31,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::AccountNumberListParams::CreatedAt, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::AccountNumberListParams::CreatedAt, Increase::Util::AnyHash))
+        params(_: Increase::Models::AccountNumberListParams::CreatedAt)
+          .returns(Increase::Models::AccountNumberListParams::CreatedAt)
       end
       def created_at=(_)
       end
@@ -73,8 +73,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::AccountNumberListParams::Status, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::AccountNumberListParams::Status, Increase::Util::AnyHash))
+        params(_: Increase::Models::AccountNumberListParams::Status)
+          .returns(Increase::Models::AccountNumberListParams::Status)
       end
       def status=(_)
       end
@@ -125,47 +125,32 @@ module Increase
       class ACHDebitStatus < Increase::BaseModel
         # The ACH Debit status to retrieve Account Numbers for. For GET requests, this
         #   should be encoded as a comma-delimited string, such as `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::In::OrSymbol])) }
+        sig { returns(T.nilable(T::Array[Symbol])) }
         def in_
         end
 
-        sig do
-          params(_: T::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::In::OrSymbol])
-            .returns(T::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::In::OrSymbol])
-        end
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
         def in_=(_)
         end
 
-        sig do
-          params(in_: T::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::In::OrSymbol])
-            .returns(T.attached_class)
-        end
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::In::OrSymbol]}) }
+        sig { override.returns({in_: T::Array[Symbol]}) }
         def to_hash
         end
 
-        module In
-          extend Increase::Enum
+        class In < Increase::Enum
+          abstract!
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::AccountNumberListParams::ACHDebitStatus::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::AccountNumberListParams::ACHDebitStatus::In::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # ACH Debits are allowed.
-          ALLOWED = T.let(:allowed, Increase::Models::AccountNumberListParams::ACHDebitStatus::In::TaggedSymbol)
+          ALLOWED = :allowed
 
           # ACH Debits are blocked.
-          BLOCKED = T.let(:blocked, Increase::Models::AccountNumberListParams::ACHDebitStatus::In::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::In::TaggedSymbol]) }
-            def values
-            end
-          end
+          BLOCKED = :blocked
         end
       end
 
@@ -224,49 +209,35 @@ module Increase
       class Status < Increase::BaseModel
         # The status to retrieve Account Numbers for. For GET requests, this should be
         #   encoded as a comma-delimited string, such as `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Increase::Models::AccountNumberListParams::Status::In::OrSymbol])) }
+        sig { returns(T.nilable(T::Array[Symbol])) }
         def in_
         end
 
-        sig do
-          params(_: T::Array[Increase::Models::AccountNumberListParams::Status::In::OrSymbol])
-            .returns(T::Array[Increase::Models::AccountNumberListParams::Status::In::OrSymbol])
-        end
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
         def in_=(_)
         end
 
-        sig do
-          params(in_: T::Array[Increase::Models::AccountNumberListParams::Status::In::OrSymbol])
-            .returns(T.attached_class)
-        end
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Increase::Models::AccountNumberListParams::Status::In::OrSymbol]}) }
+        sig { override.returns({in_: T::Array[Symbol]}) }
         def to_hash
         end
 
-        module In
-          extend Increase::Enum
+        class In < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountNumberListParams::Status::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::AccountNumberListParams::Status::In::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # The account number is active.
-          ACTIVE = T.let(:active, Increase::Models::AccountNumberListParams::Status::In::TaggedSymbol)
+          ACTIVE = :active
 
           # The account number is temporarily disabled.
-          DISABLED = T.let(:disabled, Increase::Models::AccountNumberListParams::Status::In::TaggedSymbol)
+          DISABLED = :disabled
 
           # The account number is permanently disabled.
-          CANCELED = T.let(:canceled, Increase::Models::AccountNumberListParams::Status::In::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::AccountNumberListParams::Status::In::TaggedSymbol]) }
-            def values
-            end
-          end
+          CANCELED = :canceled
         end
       end
     end

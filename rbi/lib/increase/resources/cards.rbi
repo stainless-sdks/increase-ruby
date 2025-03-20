@@ -58,7 +58,7 @@ module Increase
           description: String,
           digital_wallet: Increase::Models::CardUpdateParams::DigitalWallet,
           entity_id: String,
-          status: Increase::Models::CardUpdateParams::Status::OrSymbol,
+          status: Symbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::Card)

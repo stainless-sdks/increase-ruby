@@ -184,9 +184,7 @@ module Increase
 
         type category = :freeform | :payment_order_remittance_advice | :other
 
-        module Category
-          extend Increase::Enum
-
+        class Category < Increase::Enum
           # Unstructured `payment_related_information` passed through with the transfer.
           FREEFORM: :freeform
 
@@ -196,7 +194,7 @@ module Increase
           # Unknown addenda type.
           OTHER: :other
 
-          def self?.values: -> ::Array[Increase::Models::ACHTransfer::Addenda::category]
+          def self.values: -> ::Array[Increase::Models::ACHTransfer::Addenda::category]
         end
 
         type freeform =
@@ -317,9 +315,7 @@ module Increase
 
         type category = :api_key | :oauth_application | :user
 
-        module Category
-          extend Increase::Enum
-
+        class Category < Increase::Enum
           # An API key. Details will be under the `api_key` object.
           API_KEY: :api_key
 
@@ -329,7 +325,7 @@ module Increase
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER: :user
 
-          def self?.values: -> ::Array[Increase::Models::ACHTransfer::CreatedBy::category]
+          def self.values: -> ::Array[Increase::Models::ACHTransfer::CreatedBy::category]
         end
 
         type oauth_application = { name: String }
@@ -355,9 +351,7 @@ module Increase
 
       type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-      module Currency
-        extend Increase::Enum
-
+      class Currency < Increase::Enum
         # Canadian Dollar (CAD)
         CAD: :CAD
 
@@ -376,14 +370,12 @@ module Increase
         # US Dollar (USD)
         USD: :USD
 
-        def self?.values: -> ::Array[Increase::Models::ACHTransfer::currency]
+        def self.values: -> ::Array[Increase::Models::ACHTransfer::currency]
       end
 
       type destination_account_holder = :business | :individual | :unknown
 
-      module DestinationAccountHolder
-        extend Increase::Enum
-
+      class DestinationAccountHolder < Increase::Enum
         # The External Account is owned by a business.
         BUSINESS: :business
 
@@ -393,21 +385,19 @@ module Increase
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN: :unknown
 
-        def self?.values: -> ::Array[Increase::Models::ACHTransfer::destination_account_holder]
+        def self.values: -> ::Array[Increase::Models::ACHTransfer::destination_account_holder]
       end
 
       type funding = :checking | :savings
 
-      module Funding
-        extend Increase::Enum
-
+      class Funding < Increase::Enum
         # A checking account.
         CHECKING: :checking
 
         # A savings account.
         SAVINGS: :savings
 
-        def self?.values: -> ::Array[Increase::Models::ACHTransfer::funding]
+        def self.values: -> ::Array[Increase::Models::ACHTransfer::funding]
       end
 
       type inbound_funds_hold =
@@ -462,9 +452,7 @@ module Increase
 
         type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-        module Currency
-          extend Increase::Enum
-
+        class Currency < Increase::Enum
           # Canadian Dollar (CAD)
           CAD: :CAD
 
@@ -483,42 +471,36 @@ module Increase
           # US Dollar (USD)
           USD: :USD
 
-          def self?.values: -> ::Array[Increase::Models::ACHTransfer::InboundFundsHold::currency]
+          def self.values: -> ::Array[Increase::Models::ACHTransfer::InboundFundsHold::currency]
         end
 
         type status = :held | :complete
 
-        module Status
-          extend Increase::Enum
-
+        class Status < Increase::Enum
           # Funds are still being held.
           HELD: :held
 
           # Funds have been released.
           COMPLETE: :complete
 
-          def self?.values: -> ::Array[Increase::Models::ACHTransfer::InboundFundsHold::status]
+          def self.values: -> ::Array[Increase::Models::ACHTransfer::InboundFundsHold::status]
         end
 
         type type_ = :inbound_funds_hold
 
-        module Type
-          extend Increase::Enum
-
+        class Type < Increase::Enum
           INBOUND_FUNDS_HOLD: :inbound_funds_hold
 
-          def self?.values: -> ::Array[Increase::Models::ACHTransfer::InboundFundsHold::type_]
+          def self.values: -> ::Array[Increase::Models::ACHTransfer::InboundFundsHold::type_]
         end
       end
 
       type network = :ach
 
-      module Network
-        extend Increase::Enum
-
+      class Network < Increase::Enum
         ACH: :ach
 
-        def self?.values: -> ::Array[Increase::Models::ACHTransfer::network]
+        def self.values: -> ::Array[Increase::Models::ACHTransfer::network]
       end
 
       type notifications_of_change =
@@ -564,9 +546,7 @@ module Increase
           | :depository_financial_institution_account_number_not_from_original_entry_detail_record
           | :incorrect_transaction_code_by_originating_depository_financial_institution
 
-        module ChangeCode
-          extend Increase::Enum
-
+        class ChangeCode < Increase::Enum
           # The account number was incorrect.
           INCORRECT_ACCOUNT_NUMBER: :incorrect_account_number
 
@@ -624,7 +604,7 @@ module Increase
           # The transaction code was incorrect, initiated by the originating depository financial institution.
           INCORRECT_TRANSACTION_CODE_BY_ORIGINATING_DEPOSITORY_FINANCIAL_INSTITUTION: :incorrect_transaction_code_by_originating_depository_financial_institution
 
-          def self?.values: -> ::Array[Increase::Models::ACHTransfer::NotificationsOfChange::change_code]
+          def self.values: -> ::Array[Increase::Models::ACHTransfer::NotificationsOfChange::change_code]
         end
       end
 
@@ -648,9 +628,7 @@ module Increase
 
         type settlement_schedule = :same_day | :future_dated
 
-        module SettlementSchedule
-          extend Increase::Enum
-
+        class SettlementSchedule < Increase::Enum
           # The chosen effective date will be the same as the ACH processing date on which the transfer is submitted.
           # This is necessary, but not sufficient for the transfer to be settled same-day:
           # it must also be submitted before the last same-day cutoff
@@ -660,7 +638,7 @@ module Increase
           # The chosen effective date will be the business day following the ACH processing date on which the transfer is submitted. The transfer will be settled on that future day.
           FUTURE_DATED: :future_dated
 
-          def self?.values: -> ::Array[Increase::Models::ACHTransfer::PreferredEffectiveDate::settlement_schedule]
+          def self.values: -> ::Array[Increase::Models::ACHTransfer::PreferredEffectiveDate::settlement_schedule]
         end
       end
 
@@ -770,9 +748,7 @@ module Increase
           | :untimely_dishonored_return
           | :untimely_return
 
-        module ReturnReasonCode
-          extend Increase::Enum
-
+        class ReturnReasonCode < Increase::Enum
           # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
           INSUFFICIENT_FUND: :insufficient_fund
 
@@ -983,7 +959,7 @@ module Increase
           # Code R68. A rare return reason. The return was sent too late.
           UNTIMELY_RETURN: :untimely_return
 
-          def self?.values: -> ::Array[Increase::Models::ACHTransfer::Return::return_reason_code]
+          def self.values: -> ::Array[Increase::Models::ACHTransfer::Return::return_reason_code]
         end
       end
 
@@ -1003,9 +979,7 @@ module Increase
         | :prearranged_payments_and_deposit
         | :internet_initiated
 
-      module StandardEntryClassCode
-        extend Increase::Enum
-
+      class StandardEntryClassCode < Increase::Enum
         # Corporate Credit and Debit (CCD).
         CORPORATE_CREDIT_OR_DEBIT: :corporate_credit_or_debit
 
@@ -1018,7 +992,7 @@ module Increase
         # Internet Initiated (WEB).
         INTERNET_INITIATED: :internet_initiated
 
-        def self?.values: -> ::Array[Increase::Models::ACHTransfer::standard_entry_class_code]
+        def self.values: -> ::Array[Increase::Models::ACHTransfer::standard_entry_class_code]
       end
 
       type status =
@@ -1032,9 +1006,7 @@ module Increase
         | :submitted
         | :returned
 
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The transfer is pending approval.
         PENDING_APPROVAL: :pending_approval
 
@@ -1062,7 +1034,7 @@ module Increase
         # The transfer has been returned.
         RETURNED: :returned
 
-        def self?.values: -> ::Array[Increase::Models::ACHTransfer::status]
+        def self.values: -> ::Array[Increase::Models::ACHTransfer::status]
       end
 
       type submission =
@@ -1097,27 +1069,23 @@ module Increase
 
         type expected_settlement_schedule = :same_day | :future_dated
 
-        module ExpectedSettlementSchedule
-          extend Increase::Enum
-
+        class ExpectedSettlementSchedule < Increase::Enum
           # The transfer is expected to settle same-day.
           SAME_DAY: :same_day
 
           # The transfer is expected to settle on a future date.
           FUTURE_DATED: :future_dated
 
-          def self?.values: -> ::Array[Increase::Models::ACHTransfer::Submission::expected_settlement_schedule]
+          def self.values: -> ::Array[Increase::Models::ACHTransfer::Submission::expected_settlement_schedule]
         end
       end
 
       type type_ = :ach_transfer
 
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         ACH_TRANSFER: :ach_transfer
 
-        def self?.values: -> ::Array[Increase::Models::ACHTransfer::type_]
+        def self.values: -> ::Array[Increase::Models::ACHTransfer::type_]
       end
     end
   end

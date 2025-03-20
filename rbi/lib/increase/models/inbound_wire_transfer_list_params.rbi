@@ -29,8 +29,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::InboundWireTransferListParams::CreatedAt, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::InboundWireTransferListParams::CreatedAt, Increase::Util::AnyHash))
+        params(_: Increase::Models::InboundWireTransferListParams::CreatedAt)
+          .returns(Increase::Models::InboundWireTransferListParams::CreatedAt)
       end
       def created_at=(_)
       end
@@ -59,8 +59,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::InboundWireTransferListParams::Status, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::InboundWireTransferListParams::Status, Increase::Util::AnyHash))
+        params(_: Increase::Models::InboundWireTransferListParams::Status)
+          .returns(Increase::Models::InboundWireTransferListParams::Status)
       end
       def status=(_)
       end
@@ -161,53 +161,38 @@ module Increase
         # Filter Inbound Wire Transfers to those with the specified status. For GET
         #   requests, this should be encoded as a comma-delimited string, such as
         #   `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Increase::Models::InboundWireTransferListParams::Status::In::OrSymbol])) }
+        sig { returns(T.nilable(T::Array[Symbol])) }
         def in_
         end
 
-        sig do
-          params(_: T::Array[Increase::Models::InboundWireTransferListParams::Status::In::OrSymbol])
-            .returns(T::Array[Increase::Models::InboundWireTransferListParams::Status::In::OrSymbol])
-        end
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
         def in_=(_)
         end
 
-        sig do
-          params(in_: T::Array[Increase::Models::InboundWireTransferListParams::Status::In::OrSymbol])
-            .returns(T.attached_class)
-        end
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Increase::Models::InboundWireTransferListParams::Status::In::OrSymbol]}) }
+        sig { override.returns({in_: T::Array[Symbol]}) }
         def to_hash
         end
 
-        module In
-          extend Increase::Enum
+        class In < Increase::Enum
+          abstract!
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::InboundWireTransferListParams::Status::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::InboundWireTransferListParams::Status::In::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # The Inbound Wire Transfer is awaiting action, will transition automatically if no action is taken.
-          PENDING = T.let(:pending, Increase::Models::InboundWireTransferListParams::Status::In::TaggedSymbol)
+          PENDING = :pending
 
           # The Inbound Wire Transfer is accepted.
-          ACCEPTED = T.let(:accepted, Increase::Models::InboundWireTransferListParams::Status::In::TaggedSymbol)
+          ACCEPTED = :accepted
 
           # The Inbound Wire Transfer was declined.
-          DECLINED = T.let(:declined, Increase::Models::InboundWireTransferListParams::Status::In::TaggedSymbol)
+          DECLINED = :declined
 
           # The Inbound Wire Transfer was reversed.
-          REVERSED = T.let(:reversed, Increase::Models::InboundWireTransferListParams::Status::In::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::InboundWireTransferListParams::Status::In::TaggedSymbol]) }
-            def values
-            end
-          end
+          REVERSED = :reversed
         end
       end
     end

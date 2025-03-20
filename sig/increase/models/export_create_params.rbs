@@ -73,9 +73,7 @@ module Increase
         | :entity_csv
         | :vendor_csv
 
-      module Category
-        extend Increase::Enum
-
+      class Category < Increase::Enum
         # Export an Open Financial Exchange (OFX) file of transactions and balances for a given time range and Account.
         ACCOUNT_STATEMENT_OFX: :account_statement_ofx
 
@@ -94,7 +92,7 @@ module Increase
         # Export a CSV of vendors added to the third-party risk management dashboard.
         VENDOR_CSV: :vendor_csv
 
-        def self?.values: -> ::Array[Increase::Models::ExportCreateParams::category]
+        def self.values: -> ::Array[Increase::Models::ExportCreateParams::category]
       end
 
       type account_statement_ofx =
@@ -298,9 +296,7 @@ module Increase
 
           type in_ = :active | :archived | :disabled
 
-          module In
-            extend Increase::Enum
-
+          class In < Increase::Enum
             # The entity is active.
             ACTIVE: :active
 
@@ -310,7 +306,7 @@ module Increase
             # The entity is temporarily disabled and cannot be used for financial activity.
             DISABLED: :disabled
 
-            def self?.values: -> ::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::in_]
+            def self.values: -> ::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::in_]
           end
         end
       end

@@ -13,12 +13,8 @@ module Increase
       end
 
       sig do
-        params(
-          _: T.any(Increase::Models::RealTimeDecisionActionParams::CardAuthentication, Increase::Util::AnyHash)
-        )
-          .returns(
-            T.any(Increase::Models::RealTimeDecisionActionParams::CardAuthentication, Increase::Util::AnyHash)
-          )
+        params(_: Increase::Models::RealTimeDecisionActionParams::CardAuthentication)
+          .returns(Increase::Models::RealTimeDecisionActionParams::CardAuthentication)
       end
       def card_authentication=(_)
       end
@@ -30,18 +26,8 @@ module Increase
       end
 
       sig do
-        params(
-          _: T.any(
-            Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge,
-            Increase::Util::AnyHash
-          )
-        )
-          .returns(
-            T.any(
-              Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge,
-              Increase::Util::AnyHash
-            )
-          )
+        params(_: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge)
+          .returns(Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge)
       end
       def card_authentication_challenge=(_)
       end
@@ -53,10 +39,8 @@ module Increase
       end
 
       sig do
-        params(
-          _: T.any(Increase::Models::RealTimeDecisionActionParams::CardAuthorization, Increase::Util::AnyHash)
-        )
-          .returns(T.any(Increase::Models::RealTimeDecisionActionParams::CardAuthorization, Increase::Util::AnyHash))
+        params(_: Increase::Models::RealTimeDecisionActionParams::CardAuthorization)
+          .returns(Increase::Models::RealTimeDecisionActionParams::CardAuthorization)
       end
       def card_authorization=(_)
       end
@@ -68,18 +52,8 @@ module Increase
       end
 
       sig do
-        params(
-          _: T.any(
-            Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
-            Increase::Util::AnyHash
-          )
-        )
-          .returns(
-            T.any(
-              Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
-              Increase::Util::AnyHash
-            )
-          )
+        params(_: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication)
+          .returns(Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication)
       end
       def digital_wallet_authentication=(_)
       end
@@ -91,12 +65,8 @@ module Increase
       end
 
       sig do
-        params(
-          _: T.any(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken, Increase::Util::AnyHash)
-        )
-          .returns(
-            T.any(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken, Increase::Util::AnyHash)
-          )
+        params(_: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken)
+          .returns(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken)
       end
       def digital_wallet_token=(_)
       end
@@ -140,314 +110,154 @@ module Increase
 
       class CardAuthentication < Increase::BaseModel
         # Whether the card authentication attempt should be approved or declined.
-        sig { returns(Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::OrSymbol) }
+        sig { returns(Symbol) }
         def decision
         end
 
-        sig do
-          params(_: Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::OrSymbol)
-            .returns(Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::OrSymbol)
-        end
+        sig { params(_: Symbol).returns(Symbol) }
         def decision=(_)
         end
 
         # If the Real-Time Decision relates to a 3DS card authentication attempt, this
         #   object contains your response to the authentication.
-        sig do
-          params(decision: Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::OrSymbol)
-            .returns(T.attached_class)
-        end
+        sig { params(decision: Symbol).returns(T.attached_class) }
         def self.new(decision:)
         end
 
-        sig do
-          override
-            .returns(
-              {decision: Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::OrSymbol}
-            )
-        end
+        sig { override.returns({decision: Symbol}) }
         def to_hash
         end
 
         # Whether the card authentication attempt should be approved or declined.
-        module Decision
-          extend Increase::Enum
+        class Decision < Increase::Enum
+          abstract!
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # Approve the authentication attempt without triggering a challenge.
-          APPROVE =
-            T.let(
-              :approve,
-              Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::TaggedSymbol
-            )
+          APPROVE = :approve
 
           # Request further validation before approving the authentication attempt.
-          CHALLENGE =
-            T.let(
-              :challenge,
-              Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::TaggedSymbol
-            )
+          CHALLENGE = :challenge
 
           # Deny the authentication attempt.
-          DENY =
-            T.let(:deny, Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::TaggedSymbol)
-
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::TaggedSymbol]
-                )
-            end
-            def values
-            end
-          end
+          DENY = :deny
         end
       end
 
       class CardAuthenticationChallenge < Increase::BaseModel
         # Whether the card authentication challenge was successfully delivered to the
         #   cardholder.
-        sig { returns(Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::OrSymbol) }
+        sig { returns(Symbol) }
         def result
         end
 
-        sig do
-          params(_: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::OrSymbol)
-            .returns(Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::OrSymbol)
-        end
+        sig { params(_: Symbol).returns(Symbol) }
         def result=(_)
         end
 
         # If the Real-Time Decision relates to 3DS card authentication challenge delivery,
         #   this object contains your response.
-        sig do
-          params(
-            result: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::OrSymbol
-          )
-            .returns(T.attached_class)
-        end
+        sig { params(result: Symbol).returns(T.attached_class) }
         def self.new(result:)
         end
 
-        sig do
-          override
-            .returns(
-              {result: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::OrSymbol}
-            )
-        end
+        sig { override.returns({result: Symbol}) }
         def to_hash
         end
 
         # Whether the card authentication challenge was successfully delivered to the
         #   cardholder.
-        module Result
-          extend Increase::Enum
+        class Result < Increase::Enum
+          abstract!
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result) }
-          OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::TaggedSymbol
-              )
-            end
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # Your application successfully delivered the one-time code to the cardholder.
-          SUCCESS =
-            T.let(
-              :success,
-              Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::TaggedSymbol
-            )
+          SUCCESS = :success
 
           # Your application was unable to deliver the one-time code to the cardholder.
-          FAILURE =
-            T.let(
-              :failure,
-              Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::TaggedSymbol
-            )
-
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::TaggedSymbol]
-                )
-            end
-            def values
-            end
-          end
+          FAILURE = :failure
         end
       end
 
       class CardAuthorization < Increase::BaseModel
         # Whether the card authorization should be approved or declined.
-        sig { returns(Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::OrSymbol) }
+        sig { returns(Symbol) }
         def decision
         end
 
-        sig do
-          params(_: Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::OrSymbol)
-            .returns(Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::OrSymbol)
-        end
+        sig { params(_: Symbol).returns(Symbol) }
         def decision=(_)
         end
 
         # The reason the card authorization was declined. This translates to a specific
         #   decline code that is sent to the card network.
-        sig do
-          returns(
-            T.nilable(Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::OrSymbol)
-          )
-        end
+        sig { returns(T.nilable(Symbol)) }
         def decline_reason
         end
 
-        sig do
-          params(_: Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::OrSymbol)
-            .returns(Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::OrSymbol)
-        end
+        sig { params(_: Symbol).returns(Symbol) }
         def decline_reason=(_)
         end
 
         # If the Real-Time Decision relates to a card authorization attempt, this object
         #   contains your response to the authorization.
-        sig do
-          params(
-            decision: Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::OrSymbol,
-            decline_reason: Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::OrSymbol
-          )
-            .returns(T.attached_class)
-        end
+        sig { params(decision: Symbol, decline_reason: Symbol).returns(T.attached_class) }
         def self.new(decision:, decline_reason: nil)
         end
 
-        sig do
-          override
-            .returns(
-              {
-                decision: Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::OrSymbol,
-                decline_reason: Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::OrSymbol
-              }
-            )
-        end
+        sig { override.returns({decision: Symbol, decline_reason: Symbol}) }
         def to_hash
         end
 
         # Whether the card authorization should be approved or declined.
-        module Decision
-          extend Increase::Enum
+        class Decision < Increase::Enum
+          abstract!
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # Approve the authorization.
-          APPROVE =
-            T.let(:approve, Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::TaggedSymbol)
+          APPROVE = :approve
 
           # Decline the authorization.
-          DECLINE =
-            T.let(:decline, Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::TaggedSymbol)
-
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::TaggedSymbol]
-                )
-            end
-            def values
-            end
-          end
+          DECLINE = :decline
         end
 
         # The reason the card authorization was declined. This translates to a specific
         #   decline code that is sent to the card network.
-        module DeclineReason
-          extend Increase::Enum
+        class DeclineReason < Increase::Enum
+          abstract!
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason) }
-          OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
-              )
-            end
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # The cardholder does not have sufficient funds to cover the transaction. The merchant may attempt to process the transaction again.
-          INSUFFICIENT_FUNDS =
-            T.let(
-              :insufficient_funds,
-              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
-            )
+          INSUFFICIENT_FUNDS = :insufficient_funds
 
           # This type of transaction is not allowed for this card. This transaction should not be retried.
-          TRANSACTION_NEVER_ALLOWED =
-            T.let(
-              :transaction_never_allowed,
-              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
-            )
+          TRANSACTION_NEVER_ALLOWED = :transaction_never_allowed
 
           # The transaction amount exceeds the cardholder's approval limit. The merchant may attempt to process the transaction again.
-          EXCEEDS_APPROVAL_LIMIT =
-            T.let(
-              :exceeds_approval_limit,
-              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
-            )
+          EXCEEDS_APPROVAL_LIMIT = :exceeds_approval_limit
 
           # The card has been temporarily disabled or not yet activated. The merchant may attempt to process the transaction again.
-          CARD_TEMPORARILY_DISABLED =
-            T.let(
-              :card_temporarily_disabled,
-              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
-            )
+          CARD_TEMPORARILY_DISABLED = :card_temporarily_disabled
 
           # The transaction is suspected to be fraudulent. The merchant may attempt to process the transaction again.
-          SUSPECTED_FRAUD =
-            T.let(
-              :suspected_fraud,
-              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
-            )
+          SUSPECTED_FRAUD = :suspected_fraud
 
           # The transaction was declined for another reason. The merchant may attempt to process the transaction again. This should be used sparingly.
-          OTHER =
-            T.let(
-              :other,
-              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
-            )
-
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol]
-                )
-            end
-            def values
-            end
-          end
+          OTHER = :other
         end
       end
 
       class DigitalWalletAuthentication < Increase::BaseModel
         # Whether your application was able to deliver the one-time passcode.
-        sig { returns(Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::OrSymbol) }
+        sig { returns(Symbol) }
         def result
         end
 
-        sig do
-          params(_: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::OrSymbol)
-            .returns(Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::OrSymbol)
-        end
+        sig { params(_: Symbol).returns(Symbol) }
         def result=(_)
         end
 
@@ -456,18 +266,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.any(
-              Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success,
-              Increase::Util::AnyHash
-            )
-          )
-            .returns(
-              T.any(
-                Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success,
-                Increase::Util::AnyHash
-              )
-            )
+          params(_: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success)
+            .returns(Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success)
         end
         def success=(_)
         end
@@ -476,7 +276,7 @@ module Increase
         #   this object contains your response to the authentication.
         sig do
           params(
-            result: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::OrSymbol,
+            result: Symbol,
             success: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success
           )
             .returns(T.attached_class)
@@ -488,7 +288,7 @@ module Increase
           override
             .returns(
               {
-                result: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::OrSymbol,
+                result: Symbol,
                 success: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success
               }
             )
@@ -497,43 +297,16 @@ module Increase
         end
 
         # Whether your application was able to deliver the one-time passcode.
-        module Result
-          extend Increase::Enum
+        class Result < Increase::Enum
+          abstract!
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result) }
-          OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::TaggedSymbol
-              )
-            end
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # Your application successfully delivered the one-time passcode to the cardholder.
-          SUCCESS =
-            T.let(
-              :success,
-              Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::TaggedSymbol
-            )
+          SUCCESS = :success
 
           # Your application failed to deliver the one-time passcode to the cardholder.
-          FAILURE =
-            T.let(
-              :failure,
-              Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::TaggedSymbol
-            )
-
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::TaggedSymbol]
-                )
-            end
-            def values
-            end
-          end
+          FAILURE = :failure
         end
 
         class Success < Increase::BaseModel
@@ -574,18 +347,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.any(
-              Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval,
-              Increase::Util::AnyHash
-            )
-          )
-            .returns(
-              T.any(
-                Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval,
-                Increase::Util::AnyHash
-              )
-            )
+          params(_: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval)
+            .returns(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval)
         end
         def approval=(_)
         end
@@ -597,18 +360,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.any(
-              Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline,
-              Increase::Util::AnyHash
-            )
-          )
-            .returns(
-              T.any(
-                Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline,
-                Increase::Util::AnyHash
-              )
-            )
+          params(_: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline)
+            .returns(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline)
         end
         def decline=(_)
         end

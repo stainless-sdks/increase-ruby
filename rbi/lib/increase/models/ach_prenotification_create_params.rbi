@@ -80,14 +80,11 @@ module Increase
       end
 
       # Whether the Prenotification is for a future debit or credit.
-      sig { returns(T.nilable(Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol)) }
+      sig { returns(T.nilable(Symbol)) }
       def credit_debit_indicator
       end
 
-      sig do
-        params(_: Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol)
-          .returns(Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def credit_debit_indicator=(_)
       end
 
@@ -121,14 +118,11 @@ module Increase
       end
 
       # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
-      sig { returns(T.nilable(Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol)) }
+      sig { returns(T.nilable(Symbol)) }
       def standard_entry_class_code
       end
 
-      sig do
-        params(_: Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol)
-          .returns(Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def standard_entry_class_code=(_)
       end
 
@@ -142,11 +136,11 @@ module Increase
           company_discretionary_data: String,
           company_entry_description: String,
           company_name: String,
-          credit_debit_indicator: Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol,
+          credit_debit_indicator: Symbol,
           effective_date: Date,
           individual_id: String,
           individual_name: String,
-          standard_entry_class_code: Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol,
+          standard_entry_class_code: Symbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -181,11 +175,11 @@ module Increase
               company_discretionary_data: String,
               company_entry_description: String,
               company_name: String,
-              credit_debit_indicator: Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol,
+              credit_debit_indicator: Symbol,
               effective_date: Date,
               individual_id: String,
               individual_name: String,
-              standard_entry_class_code: Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol,
+              standard_entry_class_code: Symbol,
               request_options: Increase::RequestOptions
             }
           )
@@ -194,77 +188,35 @@ module Increase
       end
 
       # Whether the Prenotification is for a future debit or credit.
-      module CreditDebitIndicator
-        extend Increase::Enum
+      class CreditDebitIndicator < Increase::Enum
+        abstract!
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The Prenotification is for an anticipated credit.
-        CREDIT =
-          T.let(:credit, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol)
+        CREDIT = :credit
 
         # The Prenotification is for an anticipated debit.
-        DEBIT =
-          T.let(:debit, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol)
-
-        class << self
-          sig do
-            override
-              .returns(T::Array[Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol])
-          end
-          def values
-          end
-        end
+        DEBIT = :debit
       end
 
       # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
-      module StandardEntryClassCode
-        extend Increase::Enum
+      class StandardEntryClassCode < Increase::Enum
+        abstract!
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # Corporate Credit and Debit (CCD).
-        CORPORATE_CREDIT_OR_DEBIT =
-          T.let(
-            :corporate_credit_or_debit,
-            Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol
-          )
+        CORPORATE_CREDIT_OR_DEBIT = :corporate_credit_or_debit
 
         # Corporate Trade Exchange (CTX).
-        CORPORATE_TRADE_EXCHANGE =
-          T.let(
-            :corporate_trade_exchange,
-            Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol
-          )
+        CORPORATE_TRADE_EXCHANGE = :corporate_trade_exchange
 
         # Prearranged Payments and Deposits (PPD).
-        PREARRANGED_PAYMENTS_AND_DEPOSIT =
-          T.let(
-            :prearranged_payments_and_deposit,
-            Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol
-          )
+        PREARRANGED_PAYMENTS_AND_DEPOSIT = :prearranged_payments_and_deposit
 
         # Internet Initiated (WEB).
-        INTERNET_INITIATED =
-          T.let(
-            :internet_initiated,
-            Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol
-          )
-
-        class << self
-          sig do
-            override
-              .returns(T::Array[Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol])
-          end
-          def values
-          end
-        end
+        INTERNET_INITIATED = :internet_initiated
       end
     end
   end

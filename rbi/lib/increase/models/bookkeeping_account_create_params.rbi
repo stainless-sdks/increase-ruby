@@ -25,14 +25,11 @@ module Increase
       end
 
       # The account compliance category.
-      sig { returns(T.nilable(Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol)) }
+      sig { returns(T.nilable(Symbol)) }
       def compliance_category
       end
 
-      sig do
-        params(_: Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol)
-          .returns(Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def compliance_category=(_)
       end
 
@@ -49,7 +46,7 @@ module Increase
         params(
           name: String,
           account_id: String,
-          compliance_category: Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol,
+          compliance_category: Symbol,
           entity_id: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
@@ -64,7 +61,7 @@ module Increase
             {
               name: String,
               account_id: String,
-              compliance_category: Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol,
+              compliance_category: Symbol,
               entity_id: String,
               request_options: Increase::RequestOptions
             }
@@ -74,36 +71,16 @@ module Increase
       end
 
       # The account compliance category.
-      module ComplianceCategory
-        extend Increase::Enum
+      class ComplianceCategory < Increase::Enum
+        abstract!
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # A cash in an commingled Increase Account.
-        COMMINGLED_CASH =
-          T.let(
-            :commingled_cash,
-            Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol
-          )
+        COMMINGLED_CASH = :commingled_cash
 
         # A customer balance.
-        CUSTOMER_BALANCE =
-          T.let(
-            :customer_balance,
-            Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol
-          )
-
-        class << self
-          sig do
-            override
-              .returns(T::Array[Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol])
-          end
-          def values
-          end
-        end
+        CUSTOMER_BALANCE = :customer_balance
       end
     end
   end

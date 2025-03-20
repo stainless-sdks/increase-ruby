@@ -210,14 +210,11 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_wire_drawdown_request`.
-      sig { returns(Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       def type
       end
 
-      sig do
-        params(_: Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol)
-          .returns(Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def type=(_)
       end
 
@@ -248,7 +245,7 @@ module Increase
           originator_to_beneficiary_information_line3: T.nilable(String),
           originator_to_beneficiary_information_line4: T.nilable(String),
           recipient_account_number_id: String,
-          type: Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol
+          type: Symbol
         )
           .returns(T.attached_class)
       end
@@ -305,7 +302,7 @@ module Increase
               originator_to_beneficiary_information_line3: T.nilable(String),
               originator_to_beneficiary_information_line4: T.nilable(String),
               recipient_account_number_id: String,
-              type: Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol
+              type: Symbol
             }
           )
       end
@@ -314,21 +311,12 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_wire_drawdown_request`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundWireDrawdownRequest::Type) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        INBOUND_WIRE_DRAWDOWN_REQUEST =
-          T.let(:inbound_wire_drawdown_request, Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        INBOUND_WIRE_DRAWDOWN_REQUEST = :inbound_wire_drawdown_request
       end
     end
   end

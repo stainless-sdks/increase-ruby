@@ -134,9 +134,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        module In
-          extend Increase::Enum
-
+        # @abstract
+        class In < Increase::Enum
           # The application is active and can be used by your users.
           ACTIVE = :active
 
@@ -144,12 +143,6 @@ module Increase
           DELETED = :deleted
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
     end

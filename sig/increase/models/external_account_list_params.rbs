@@ -67,16 +67,14 @@ module Increase
 
         type in_ = :active | :archived
 
-        module In
-          extend Increase::Enum
-
+        class In < Increase::Enum
           # The External Account is active.
           ACTIVE: :active
 
           # The External Account is archived and won't appear in the dashboard.
           ARCHIVED: :archived
 
-          def self?.values: -> ::Array[Increase::Models::ExternalAccountListParams::Status::in_]
+          def self.values: -> ::Array[Increase::Models::ExternalAccountListParams::Status::in_]
         end
       end
     end

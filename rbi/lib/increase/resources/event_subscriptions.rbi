@@ -8,7 +8,7 @@ module Increase
         params(
           url: String,
           oauth_connection_id: String,
-          selected_event_category: Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol,
+          selected_event_category: Symbol,
           shared_secret: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
@@ -49,7 +49,7 @@ module Increase
       sig do
         params(
           event_subscription_id: String,
-          status: Increase::Models::EventSubscriptionUpdateParams::Status::OrSymbol,
+          status: Symbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::EventSubscription)

@@ -25,14 +25,11 @@ module Increase
       end
 
       # Whether Increase will print and mail the check or if you will do it yourself.
-      sig { returns(Increase::Models::CheckTransferCreateParams::FulfillmentMethod::OrSymbol) }
+      sig { returns(Symbol) }
       def fulfillment_method
       end
 
-      sig do
-        params(_: Increase::Models::CheckTransferCreateParams::FulfillmentMethod::OrSymbol)
-          .returns(Increase::Models::CheckTransferCreateParams::FulfillmentMethod::OrSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def fulfillment_method=(_)
       end
 
@@ -54,8 +51,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck, Increase::Util::AnyHash))
+        params(_: Increase::Models::CheckTransferCreateParams::PhysicalCheck)
+          .returns(Increase::Models::CheckTransferCreateParams::PhysicalCheck)
       end
       def physical_check=(_)
       end
@@ -77,8 +74,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::CheckTransferCreateParams::ThirdParty, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::CheckTransferCreateParams::ThirdParty, Increase::Util::AnyHash))
+        params(_: Increase::Models::CheckTransferCreateParams::ThirdParty)
+          .returns(Increase::Models::CheckTransferCreateParams::ThirdParty)
       end
       def third_party=(_)
       end
@@ -87,7 +84,7 @@ module Increase
         params(
           account_id: String,
           amount: Integer,
-          fulfillment_method: Increase::Models::CheckTransferCreateParams::FulfillmentMethod::OrSymbol,
+          fulfillment_method: Symbol,
           source_account_number_id: String,
           physical_check: Increase::Models::CheckTransferCreateParams::PhysicalCheck,
           require_approval: T::Boolean,
@@ -114,7 +111,7 @@ module Increase
             {
               account_id: String,
               amount: Integer,
-              fulfillment_method: Increase::Models::CheckTransferCreateParams::FulfillmentMethod::OrSymbol,
+              fulfillment_method: Symbol,
               source_account_number_id: String,
               physical_check: Increase::Models::CheckTransferCreateParams::PhysicalCheck,
               require_approval: T::Boolean,
@@ -127,27 +124,16 @@ module Increase
       end
 
       # Whether Increase will print and mail the check or if you will do it yourself.
-      module FulfillmentMethod
-        extend Increase::Enum
+      class FulfillmentMethod < Increase::Enum
+        abstract!
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::CheckTransferCreateParams::FulfillmentMethod) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # Increase will print and mail a physical check.
-        PHYSICAL_CHECK =
-          T.let(:physical_check, Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol)
+        PHYSICAL_CHECK = :physical_check
 
         # Increase will not print a check; you are responsible for printing and mailing a check with the provided account number, routing number, check number, and amount.
-        THIRD_PARTY =
-          T.let(:third_party, Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol]) }
-          def values
-          end
-        end
+        THIRD_PARTY = :third_party
       end
 
       class PhysicalCheck < Increase::BaseModel
@@ -157,12 +143,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress, Increase::Util::AnyHash)
-          )
-            .returns(
-              T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress, Increase::Util::AnyHash)
-            )
+          params(_: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress)
+            .returns(Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress)
         end
         def mailing_address=(_)
         end
@@ -213,12 +195,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress, Increase::Util::AnyHash)
-          )
-            .returns(
-              T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress, Increase::Util::AnyHash)
-            )
+          params(_: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress)
+            .returns(Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress)
         end
         def return_address=(_)
         end

@@ -91,11 +91,11 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # If specified, this subscription will only receive webhooks for Events with the
       #   specified `category`.
-      module SelectedEventCategory
-        extend Increase::Enum
-
+      class SelectedEventCategory < Increase::Enum
         # Occurs whenever an Account is created.
         ACCOUNT_CREATED = :"account.created"
 
@@ -363,18 +363,12 @@ module Increase
         WIRE_TRANSFER_UPDATED = :"wire_transfer.updated"
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # This indicates if we'll send notifications to this subscription.
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The subscription is active and Events will be delivered normally.
         ACTIVE = :active
 
@@ -388,28 +382,16 @@ module Increase
         REQUIRES_ATTENTION = :requires_attention
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `event_subscription`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         EVENT_SUBSCRIPTION = :event_subscription
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

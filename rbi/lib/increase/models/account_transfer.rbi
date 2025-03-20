@@ -38,8 +38,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::AccountTransfer::Approval, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::AccountTransfer::Approval, Increase::Util::AnyHash)))
+        params(_: T.nilable(Increase::Models::AccountTransfer::Approval))
+          .returns(T.nilable(Increase::Models::AccountTransfer::Approval))
       end
       def approval=(_)
       end
@@ -51,8 +51,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::AccountTransfer::Cancellation, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::AccountTransfer::Cancellation, Increase::Util::AnyHash)))
+        params(_: T.nilable(Increase::Models::AccountTransfer::Cancellation))
+          .returns(T.nilable(Increase::Models::AccountTransfer::Cancellation))
       end
       def cancellation=(_)
       end
@@ -73,22 +73,19 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy, Increase::Util::AnyHash)))
+        params(_: T.nilable(Increase::Models::AccountTransfer::CreatedBy))
+          .returns(T.nilable(Increase::Models::AccountTransfer::CreatedBy))
       end
       def created_by=(_)
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
       #   account currency.
-      sig { returns(Increase::Models::AccountTransfer::Currency::TaggedSymbol) }
+      sig { returns(Symbol) }
       def currency
       end
 
-      sig do
-        params(_: Increase::Models::AccountTransfer::Currency::TaggedSymbol)
-          .returns(Increase::Models::AccountTransfer::Currency::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def currency=(_)
       end
 
@@ -131,14 +128,11 @@ module Increase
       end
 
       # The transfer's network.
-      sig { returns(Increase::Models::AccountTransfer::Network::TaggedSymbol) }
+      sig { returns(Symbol) }
       def network
       end
 
-      sig do
-        params(_: Increase::Models::AccountTransfer::Network::TaggedSymbol)
-          .returns(Increase::Models::AccountTransfer::Network::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def network=(_)
       end
 
@@ -155,14 +149,11 @@ module Increase
       end
 
       # The lifecycle status of the transfer.
-      sig { returns(Increase::Models::AccountTransfer::Status::TaggedSymbol) }
+      sig { returns(Symbol) }
       def status
       end
 
-      sig do
-        params(_: Increase::Models::AccountTransfer::Status::TaggedSymbol)
-          .returns(Increase::Models::AccountTransfer::Status::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def status=(_)
       end
 
@@ -177,14 +168,11 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `account_transfer`.
-      sig { returns(Increase::Models::AccountTransfer::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       def type
       end
 
-      sig do
-        params(_: Increase::Models::AccountTransfer::Type::TaggedSymbol)
-          .returns(Increase::Models::AccountTransfer::Type::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def type=(_)
       end
 
@@ -198,16 +186,16 @@ module Increase
           cancellation: T.nilable(Increase::Models::AccountTransfer::Cancellation),
           created_at: Time,
           created_by: T.nilable(Increase::Models::AccountTransfer::CreatedBy),
-          currency: Increase::Models::AccountTransfer::Currency::TaggedSymbol,
+          currency: Symbol,
           description: String,
           destination_account_id: String,
           destination_transaction_id: T.nilable(String),
           idempotency_key: T.nilable(String),
-          network: Increase::Models::AccountTransfer::Network::TaggedSymbol,
+          network: Symbol,
           pending_transaction_id: T.nilable(String),
-          status: Increase::Models::AccountTransfer::Status::TaggedSymbol,
+          status: Symbol,
           transaction_id: T.nilable(String),
-          type: Increase::Models::AccountTransfer::Type::TaggedSymbol
+          type: Symbol
         )
           .returns(T.attached_class)
       end
@@ -243,16 +231,16 @@ module Increase
               cancellation: T.nilable(Increase::Models::AccountTransfer::Cancellation),
               created_at: Time,
               created_by: T.nilable(Increase::Models::AccountTransfer::CreatedBy),
-              currency: Increase::Models::AccountTransfer::Currency::TaggedSymbol,
+              currency: Symbol,
               description: String,
               destination_account_id: String,
               destination_transaction_id: T.nilable(String),
               idempotency_key: T.nilable(String),
-              network: Increase::Models::AccountTransfer::Network::TaggedSymbol,
+              network: Symbol,
               pending_transaction_id: T.nilable(String),
-              status: Increase::Models::AccountTransfer::Status::TaggedSymbol,
+              status: Symbol,
               transaction_id: T.nilable(String),
-              type: Increase::Models::AccountTransfer::Type::TaggedSymbol
+              type: Symbol
             }
           )
       end
@@ -330,21 +318,18 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::APIKey, Increase::Util::AnyHash)))
-            .returns(T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::APIKey, Increase::Util::AnyHash)))
+          params(_: T.nilable(Increase::Models::AccountTransfer::CreatedBy::APIKey))
+            .returns(T.nilable(Increase::Models::AccountTransfer::CreatedBy::APIKey))
         end
         def api_key=(_)
         end
 
         # The type of object that created this transfer.
-        sig { returns(Increase::Models::AccountTransfer::CreatedBy::Category::TaggedSymbol) }
+        sig { returns(Symbol) }
         def category
         end
 
-        sig do
-          params(_: Increase::Models::AccountTransfer::CreatedBy::Category::TaggedSymbol)
-            .returns(Increase::Models::AccountTransfer::CreatedBy::Category::TaggedSymbol)
-        end
+        sig { params(_: Symbol).returns(Symbol) }
         def category=(_)
         end
 
@@ -354,12 +339,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash))
-          )
-            .returns(
-              T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash))
-            )
+          params(_: T.nilable(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication))
+            .returns(T.nilable(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication))
         end
         def oauth_application=(_)
         end
@@ -370,8 +351,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::User, Increase::Util::AnyHash)))
-            .returns(T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::User, Increase::Util::AnyHash)))
+          params(_: T.nilable(Increase::Models::AccountTransfer::CreatedBy::User))
+            .returns(T.nilable(Increase::Models::AccountTransfer::CreatedBy::User))
         end
         def user=(_)
         end
@@ -380,7 +361,7 @@ module Increase
         sig do
           params(
             api_key: T.nilable(Increase::Models::AccountTransfer::CreatedBy::APIKey),
-            category: Increase::Models::AccountTransfer::CreatedBy::Category::TaggedSymbol,
+            category: Symbol,
             oauth_application: T.nilable(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication),
             user: T.nilable(Increase::Models::AccountTransfer::CreatedBy::User)
           )
@@ -394,7 +375,7 @@ module Increase
             .returns(
               {
                 api_key: T.nilable(Increase::Models::AccountTransfer::CreatedBy::APIKey),
-                category: Increase::Models::AccountTransfer::CreatedBy::Category::TaggedSymbol,
+                category: Symbol,
                 oauth_application: T.nilable(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication),
                 user: T.nilable(Increase::Models::AccountTransfer::CreatedBy::User)
               }
@@ -424,28 +405,19 @@ module Increase
         end
 
         # The type of object that created this transfer.
-        module Category
-          extend Increase::Enum
+        class Category < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountTransfer::CreatedBy::Category) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::AccountTransfer::CreatedBy::Category::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # An API key. Details will be under the `api_key` object.
-          API_KEY = T.let(:api_key, Increase::Models::AccountTransfer::CreatedBy::Category::TaggedSymbol)
+          API_KEY = :api_key
 
           # An OAuth application you connected to Increase. Details will be under the `oauth_application` object.
-          OAUTH_APPLICATION =
-            T.let(:oauth_application, Increase::Models::AccountTransfer::CreatedBy::Category::TaggedSymbol)
+          OAUTH_APPLICATION = :oauth_application
 
           # A User in the Increase dashboard. Details will be under the `user` object.
-          USER = T.let(:user, Increase::Models::AccountTransfer::CreatedBy::Category::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::AccountTransfer::CreatedBy::Category::TaggedSymbol]) }
-            def values
-            end
-          end
+          USER = :user
         end
 
         class OAuthApplication < Increase::BaseModel
@@ -491,91 +463,63 @@ module Increase
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
       #   account currency.
-      module Currency
-        extend Increase::Enum
+      class Currency < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountTransfer::Currency) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::AccountTransfer::Currency::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # Canadian Dollar (CAD)
-        CAD = T.let(:CAD, Increase::Models::AccountTransfer::Currency::TaggedSymbol)
+        CAD = :CAD
 
         # Swiss Franc (CHF)
-        CHF = T.let(:CHF, Increase::Models::AccountTransfer::Currency::TaggedSymbol)
+        CHF = :CHF
 
         # Euro (EUR)
-        EUR = T.let(:EUR, Increase::Models::AccountTransfer::Currency::TaggedSymbol)
+        EUR = :EUR
 
         # British Pound (GBP)
-        GBP = T.let(:GBP, Increase::Models::AccountTransfer::Currency::TaggedSymbol)
+        GBP = :GBP
 
         # Japanese Yen (JPY)
-        JPY = T.let(:JPY, Increase::Models::AccountTransfer::Currency::TaggedSymbol)
+        JPY = :JPY
 
         # US Dollar (USD)
-        USD = T.let(:USD, Increase::Models::AccountTransfer::Currency::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::AccountTransfer::Currency::TaggedSymbol]) }
-          def values
-          end
-        end
+        USD = :USD
       end
 
       # The transfer's network.
-      module Network
-        extend Increase::Enum
+      class Network < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountTransfer::Network) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::AccountTransfer::Network::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        ACCOUNT = T.let(:account, Increase::Models::AccountTransfer::Network::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::AccountTransfer::Network::TaggedSymbol]) }
-          def values
-          end
-        end
+        ACCOUNT = :account
       end
 
       # The lifecycle status of the transfer.
-      module Status
-        extend Increase::Enum
+      class Status < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountTransfer::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::AccountTransfer::Status::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The transfer is pending approval.
-        PENDING_APPROVAL = T.let(:pending_approval, Increase::Models::AccountTransfer::Status::TaggedSymbol)
+        PENDING_APPROVAL = :pending_approval
 
         # The transfer has been canceled.
-        CANCELED = T.let(:canceled, Increase::Models::AccountTransfer::Status::TaggedSymbol)
+        CANCELED = :canceled
 
         # The transfer has been completed.
-        COMPLETE = T.let(:complete, Increase::Models::AccountTransfer::Status::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::AccountTransfer::Status::TaggedSymbol]) }
-          def values
-          end
-        end
+        COMPLETE = :complete
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `account_transfer`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountTransfer::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::AccountTransfer::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        ACCOUNT_TRANSFER = T.let(:account_transfer, Increase::Models::AccountTransfer::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::AccountTransfer::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        ACCOUNT_TRANSFER = :account_transfer
       end
     end
   end

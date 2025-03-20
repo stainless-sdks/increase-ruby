@@ -215,10 +215,10 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @abstract
+        #
         # The shipping method.
-        module Method
-          extend Increase::Enum
-
+        class Method < Increase::Enum
           # USPS Post with tracking.
           USPS = :usps
 
@@ -229,18 +229,12 @@ module Increase
           FEDEX_2_DAY = :fedex_2_day
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
 
+        # @abstract
+        #
         # The status of this shipment.
-        module Status
-          extend Increase::Enum
-
+        class Status < Increase::Enum
           # The physical card has not yet been shipped.
           PENDING = :pending
 
@@ -263,12 +257,6 @@ module Increase
           RETURNED = :returned
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
 
         class Tracking < Increase::BaseModel
@@ -312,10 +300,10 @@ module Increase
         end
       end
 
+      # @abstract
+      #
       # The status of the Physical Card.
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The physical card is active.
         ACTIVE = :active
 
@@ -326,28 +314,16 @@ module Increase
         CANCELED = :canceled
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `physical_card`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         PHYSICAL_CARD = :physical_card
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

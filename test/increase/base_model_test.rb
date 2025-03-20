@@ -3,9 +3,7 @@
 require_relative "test_helper"
 
 class Increase::Test::BaseModelTest < Minitest::Test
-  module E1
-    extend Increase::Enum
-
+  class E1 < Increase::Enum
     A = :a
     B = :b
   end
@@ -244,17 +242,13 @@ class Increase::Test::BaseModelTest < Minitest::Test
     optional :b, E1, api_name: :renamed_again
   end
 
-  module U1
-    extend Increase::Union
-
+  class U1 < Increase::Union
     discriminator :type
     variant :a, M1
     variant :b, M3
   end
 
-  module U2
-    extend Increase::Union
-
+  class U2 < Increase::Union
     variant A1
     variant A3
   end
@@ -336,16 +330,12 @@ class Increase::Test::BaseModelTest < Minitest::Test
     end
   end
 
-  module E2
-    extend Increase::Enum
-
+  class E2 < Increase::Enum
     A = :a
     B = :b
   end
 
-  module U3
-    extend Increase::Union
-
+  class U3 < Increase::Union
     discriminator :type
     variant :a, M1
     variant :b, M3
@@ -363,9 +353,7 @@ class Increase::Test::BaseModelTest < Minitest::Test
     assert_equal(U1, U3)
   end
 
-  module U4
-    extend Increase::Union
-
+  class U4 < Increase::Union
     variant :a, const: :a
     variant :b, const: :b
   end

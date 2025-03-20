@@ -13,12 +13,8 @@ module Increase
       end
 
       sig do
-        params(
-          _: T.any(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner, Increase::Util::AnyHash)
-        )
-          .returns(
-            T.any(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner, Increase::Util::AnyHash)
-          )
+        params(_: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner)
+          .returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner)
       end
       def beneficial_owner=(_)
       end
@@ -52,18 +48,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.any(
-              Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual,
-              Increase::Util::AnyHash
-            )
-          )
-            .returns(
-              T.any(
-                Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual,
-                Increase::Util::AnyHash
-              )
-            )
+          params(_: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual)
+            .returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual)
         end
         def individual=(_)
         end
@@ -71,14 +57,11 @@ module Increase
         # Why this person is considered a beneficial owner of the entity. At least one
         #   option is required, if a person is both a control person and owner, submit an
         #   array containing both.
-        sig { returns(T::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol]) }
+        sig { returns(T::Array[Symbol]) }
         def prongs
         end
 
-        sig do
-          params(_: T::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol])
-            .returns(T::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol])
-        end
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
         def prongs=(_)
         end
 
@@ -96,7 +79,7 @@ module Increase
         sig do
           params(
             individual: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual,
-            prongs: T::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol],
+            prongs: T::Array[Symbol],
             company_title: String
           )
             .returns(T.attached_class)
@@ -109,7 +92,7 @@ module Increase
             .returns(
               {
                 individual: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual,
-                prongs: T::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol],
+                prongs: T::Array[Symbol],
                 company_title: String
               }
             )
@@ -125,18 +108,8 @@ module Increase
           end
 
           sig do
-            params(
-              _: T.any(
-                Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address,
-                Increase::Util::AnyHash
-              )
-            )
-              .returns(
-                T.any(
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address,
-                  Increase::Util::AnyHash
-                )
-              )
+            params(_: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address)
+              .returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address)
           end
           def address=(_)
           end
@@ -157,17 +130,9 @@ module Increase
 
           sig do
             params(
-              _: T.any(
-                Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification,
-                Increase::Util::AnyHash
-              )
+              _: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification
             )
-              .returns(
-                T.any(
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification,
-                  Increase::Util::AnyHash
-                )
-              )
+              .returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification)
           end
           def identification=(_)
           end
@@ -290,22 +255,11 @@ module Increase
 
           class Identification < Increase::BaseModel
             # A method that can be used to verify the individual's identity.
-            sig do
-              returns(
-                Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol
-              )
-            end
+            sig { returns(Symbol) }
             def method_
             end
 
-            sig do
-              params(
-                _: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol
-              )
-                .returns(
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol
-                )
-            end
+            sig { params(_: Symbol).returns(Symbol) }
             def method_=(_)
             end
 
@@ -333,16 +287,10 @@ module Increase
 
             sig do
               params(
-                _: T.any(
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense,
-                  Increase::Util::AnyHash
-                )
+                _: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense
               )
                 .returns(
-                  T.any(
-                    Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense,
-                    Increase::Util::AnyHash
-                  )
+                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense
                 )
             end
             def drivers_license=(_)
@@ -362,16 +310,10 @@ module Increase
 
             sig do
               params(
-                _: T.any(
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other,
-                  Increase::Util::AnyHash
-                )
+                _: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other
               )
                 .returns(
-                  T.any(
-                    Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other,
-                    Increase::Util::AnyHash
-                  )
+                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other
                 )
             end
             def other=(_)
@@ -391,16 +333,10 @@ module Increase
 
             sig do
               params(
-                _: T.any(
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport,
-                  Increase::Util::AnyHash
-                )
+                _: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport
               )
                 .returns(
-                  T.any(
-                    Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport,
-                    Increase::Util::AnyHash
-                  )
+                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport
                 )
             end
             def passport=(_)
@@ -409,7 +345,7 @@ module Increase
             # A means of verifying the person's identity.
             sig do
               params(
-                method_: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol,
+                method_: Symbol,
                 number: String,
                 drivers_license: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense,
                 other: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other,
@@ -424,7 +360,7 @@ module Increase
               override
                 .returns(
                   {
-                    method_: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol,
+                    method_: Symbol,
                     number: String,
                     drivers_license: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense,
                     other: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other,
@@ -436,68 +372,25 @@ module Increase
             end
 
             # A method that can be used to verify the individual's identity.
-            module Method
-              extend Increase::Enum
+            class Method < Increase::Enum
+              abstract!
 
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(Symbol, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method)
-                end
-              OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
-                  )
-                end
+              Value = type_template(:out) { {fixed: Symbol} }
 
               # A social security number.
-              SOCIAL_SECURITY_NUMBER =
-                T.let(
-                  :social_security_number,
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
-                )
+              SOCIAL_SECURITY_NUMBER = :social_security_number
 
               # An individual taxpayer identification number (ITIN).
-              INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER =
-                T.let(
-                  :individual_taxpayer_identification_number,
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
-                )
+              INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER = :individual_taxpayer_identification_number
 
               # A passport number.
-              PASSPORT =
-                T.let(
-                  :passport,
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
-                )
+              PASSPORT = :passport
 
               # A driver's license number.
-              DRIVERS_LICENSE =
-                T.let(
-                  :drivers_license,
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
-                )
+              DRIVERS_LICENSE = :drivers_license
 
               # Another identifying document.
-              OTHER =
-                T.let(
-                  :other,
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
-                )
-
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
-              end
+              OTHER = :other
             end
 
             class DriversLicense < Increase::BaseModel
@@ -682,35 +575,16 @@ module Increase
           end
         end
 
-        module Prong
-          extend Increase::Enum
+        class Prong < Increase::Enum
+          abstract!
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # A person with 25% or greater direct or indirect ownership of the entity.
-          OWNERSHIP =
-            T.let(
-              :ownership,
-              Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::TaggedSymbol
-            )
+          OWNERSHIP = :ownership
 
           # A person who manages, directs, or has significant control of the entity.
-          CONTROL =
-            T.let(:control, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::TaggedSymbol)
-
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::TaggedSymbol]
-                )
-            end
-            def values
-            end
-          end
+          CONTROL = :control
         end
       end
     end

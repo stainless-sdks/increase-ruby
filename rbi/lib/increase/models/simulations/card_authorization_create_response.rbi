@@ -12,8 +12,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(T.any(Increase::Models::DeclinedTransaction, Increase::Util::AnyHash)))
-            .returns(T.nilable(T.any(Increase::Models::DeclinedTransaction, Increase::Util::AnyHash)))
+          params(_: T.nilable(Increase::Models::DeclinedTransaction))
+            .returns(T.nilable(Increase::Models::DeclinedTransaction))
         end
         def declined_transaction=(_)
         end
@@ -26,22 +26,19 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(T.any(Increase::Models::PendingTransaction, Increase::Util::AnyHash)))
-            .returns(T.nilable(T.any(Increase::Models::PendingTransaction, Increase::Util::AnyHash)))
+          params(_: T.nilable(Increase::Models::PendingTransaction))
+            .returns(T.nilable(Increase::Models::PendingTransaction))
         end
         def pending_transaction=(_)
         end
 
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_card_authorization_simulation_result`.
-        sig { returns(Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::TaggedSymbol) }
+        sig { returns(Symbol) }
         def type
         end
 
-        sig do
-          params(_: Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::TaggedSymbol)
-            .returns(Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::TaggedSymbol)
-        end
+        sig { params(_: Symbol).returns(Symbol) }
         def type=(_)
         end
 
@@ -50,7 +47,7 @@ module Increase
           params(
             declined_transaction: T.nilable(Increase::Models::DeclinedTransaction),
             pending_transaction: T.nilable(Increase::Models::PendingTransaction),
-            type: Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::TaggedSymbol
+            type: Symbol
           )
             .returns(T.attached_class)
         end
@@ -63,7 +60,7 @@ module Increase
               {
                 declined_transaction: T.nilable(Increase::Models::DeclinedTransaction),
                 pending_transaction: T.nilable(Increase::Models::PendingTransaction),
-                type: Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::TaggedSymbol
+                type: Symbol
               }
             )
         end
@@ -72,28 +69,12 @@ module Increase
 
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_card_authorization_simulation_result`.
-        module Type
-          extend Increase::Enum
+        class Type < Increase::Enum
+          abstract!
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::Simulations::CardAuthorizationCreateResponse::Type) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
-          INBOUND_CARD_AUTHORIZATION_SIMULATION_RESULT =
-            T.let(
-              :inbound_card_authorization_simulation_result,
-              Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::TaggedSymbol
-            )
-
-          class << self
-            sig do
-              override
-                .returns(T::Array[Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::TaggedSymbol])
-            end
-            def values
-            end
-          end
+          INBOUND_CARD_AUTHORIZATION_SIMULATION_RESULT = :inbound_card_authorization_simulation_result
         end
       end
     end

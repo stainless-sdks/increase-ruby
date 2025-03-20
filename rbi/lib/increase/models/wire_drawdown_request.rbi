@@ -172,14 +172,11 @@ module Increase
       end
 
       # The lifecycle status of the drawdown request.
-      sig { returns(Increase::Models::WireDrawdownRequest::Status::TaggedSymbol) }
+      sig { returns(Symbol) }
       def status
       end
 
-      sig do
-        params(_: Increase::Models::WireDrawdownRequest::Status::TaggedSymbol)
-          .returns(Increase::Models::WireDrawdownRequest::Status::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def status=(_)
       end
 
@@ -190,22 +187,19 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::WireDrawdownRequest::Submission, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::WireDrawdownRequest::Submission, Increase::Util::AnyHash)))
+        params(_: T.nilable(Increase::Models::WireDrawdownRequest::Submission))
+          .returns(T.nilable(Increase::Models::WireDrawdownRequest::Submission))
       end
       def submission=(_)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `wire_drawdown_request`.
-      sig { returns(Increase::Models::WireDrawdownRequest::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       def type
       end
 
-      sig do
-        params(_: Increase::Models::WireDrawdownRequest::Type::TaggedSymbol)
-          .returns(Increase::Models::WireDrawdownRequest::Type::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def type=(_)
       end
 
@@ -232,9 +226,9 @@ module Increase
           recipient_address_line3: T.nilable(String),
           recipient_name: T.nilable(String),
           recipient_routing_number: String,
-          status: Increase::Models::WireDrawdownRequest::Status::TaggedSymbol,
+          status: Symbol,
           submission: T.nilable(Increase::Models::WireDrawdownRequest::Submission),
-          type: Increase::Models::WireDrawdownRequest::Type::TaggedSymbol
+          type: Symbol
         )
           .returns(T.attached_class)
       end
@@ -285,9 +279,9 @@ module Increase
               recipient_address_line3: T.nilable(String),
               recipient_name: T.nilable(String),
               recipient_routing_number: String,
-              status: Increase::Models::WireDrawdownRequest::Status::TaggedSymbol,
+              status: Symbol,
               submission: T.nilable(Increase::Models::WireDrawdownRequest::Submission),
-              type: Increase::Models::WireDrawdownRequest::Type::TaggedSymbol
+              type: Symbol
             }
           )
       end
@@ -295,30 +289,22 @@ module Increase
       end
 
       # The lifecycle status of the drawdown request.
-      module Status
-        extend Increase::Enum
+      class Status < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::WireDrawdownRequest::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::WireDrawdownRequest::Status::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The drawdown request is queued to be submitted to Fedwire.
-        PENDING_SUBMISSION =
-          T.let(:pending_submission, Increase::Models::WireDrawdownRequest::Status::TaggedSymbol)
+        PENDING_SUBMISSION = :pending_submission
 
         # The drawdown request has been sent and the recipient should respond in some way.
-        PENDING_RESPONSE = T.let(:pending_response, Increase::Models::WireDrawdownRequest::Status::TaggedSymbol)
+        PENDING_RESPONSE = :pending_response
 
         # The drawdown request has been fulfilled by the recipient.
-        FULFILLED = T.let(:fulfilled, Increase::Models::WireDrawdownRequest::Status::TaggedSymbol)
+        FULFILLED = :fulfilled
 
         # The drawdown request has been refused by the recipient.
-        REFUSED = T.let(:refused, Increase::Models::WireDrawdownRequest::Status::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::WireDrawdownRequest::Status::TaggedSymbol]) }
-          def values
-          end
-        end
+        REFUSED = :refused
       end
 
       class Submission < Increase::BaseModel
@@ -345,20 +331,12 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `wire_drawdown_request`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::WireDrawdownRequest::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::WireDrawdownRequest::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        WIRE_DRAWDOWN_REQUEST =
-          T.let(:wire_drawdown_request, Increase::Models::WireDrawdownRequest::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::WireDrawdownRequest::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        WIRE_DRAWDOWN_REQUEST = :wire_drawdown_request
       end
     end
   end

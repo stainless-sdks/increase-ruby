@@ -88,9 +88,7 @@ module Increase
 
       type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-      module Currency
-        extend Increase::Enum
-
+      class Currency < Increase::Enum
         # Canadian Dollar (CAD)
         CAD: :CAD
 
@@ -109,7 +107,7 @@ module Increase
         # US Dollar (USD)
         USD: :USD
 
-        def self?.values: -> ::Array[Increase::Models::InboundRealTimePaymentsTransfer::currency]
+        def self.values: -> ::Array[Increase::Models::InboundRealTimePaymentsTransfer::currency]
       end
 
       type decline =
@@ -142,9 +140,7 @@ module Increase
           | :entity_not_active
           | :real_time_payments_not_enabled
 
-        module Reason
-          extend Increase::Enum
-
+        class Reason < Increase::Enum
           # The account number is canceled.
           ACCOUNT_NUMBER_CANCELED: :account_number_canceled
 
@@ -163,15 +159,13 @@ module Increase
           # Your account is not enabled to receive Real-Time Payments transfers.
           REAL_TIME_PAYMENTS_NOT_ENABLED: :real_time_payments_not_enabled
 
-          def self?.values: -> ::Array[Increase::Models::InboundRealTimePaymentsTransfer::Decline::reason]
+          def self.values: -> ::Array[Increase::Models::InboundRealTimePaymentsTransfer::Decline::reason]
         end
       end
 
       type status = :pending_confirming | :timed_out | :confirmed | :declined
 
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The transfer is pending confirmation.
         PENDING_CONFIRMING: :pending_confirming
 
@@ -184,17 +178,15 @@ module Increase
         # The transfer has been declined.
         DECLINED: :declined
 
-        def self?.values: -> ::Array[Increase::Models::InboundRealTimePaymentsTransfer::status]
+        def self.values: -> ::Array[Increase::Models::InboundRealTimePaymentsTransfer::status]
       end
 
       type type_ = :inbound_real_time_payments_transfer
 
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         INBOUND_REAL_TIME_PAYMENTS_TRANSFER: :inbound_real_time_payments_transfer
 
-        def self?.values: -> ::Array[Increase::Models::InboundRealTimePaymentsTransfer::type_]
+        def self.values: -> ::Array[Increase::Models::InboundRealTimePaymentsTransfer::type_]
       end
     end
   end

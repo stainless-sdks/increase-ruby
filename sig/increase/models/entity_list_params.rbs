@@ -97,9 +97,7 @@ module Increase
 
         type in_ = :active | :archived | :disabled
 
-        module In
-          extend Increase::Enum
-
+        class In < Increase::Enum
           # The entity is active.
           ACTIVE: :active
 
@@ -109,7 +107,7 @@ module Increase
           # The entity is temporarily disabled and cannot be used for financial activity.
           DISABLED: :disabled
 
-          def self?.values: -> ::Array[Increase::Models::EntityListParams::Status::in_]
+          def self.values: -> ::Array[Increase::Models::EntityListParams::Status::in_]
         end
       end
     end

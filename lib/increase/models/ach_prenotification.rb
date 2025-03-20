@@ -154,10 +154,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # If the notification is for a future credit or debit.
-      module CreditDebitIndicator
-        extend Increase::Enum
-
+      class CreditDebitIndicator < Increase::Enum
         # The Prenotification is for an anticipated credit.
         CREDIT = :credit
 
@@ -165,12 +165,6 @@ module Increase
         DEBIT = :debit
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
       class NotificationsOfChange < Increase::BaseModel
@@ -208,11 +202,11 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The required type of change that is being signaled by the receiving financial
         #   institution.
-        module ChangeCode
-          extend Increase::Enum
-
+        class ChangeCode < Increase::Enum
           # The account number was incorrect.
           INCORRECT_ACCOUNT_NUMBER = :incorrect_account_number
 
@@ -277,12 +271,6 @@ module Increase
             :incorrect_transaction_code_by_originating_depository_financial_institution
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 
@@ -311,10 +299,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Why the Prenotification was returned.
-        module ReturnReasonCode
-          extend Increase::Enum
-
+        class ReturnReasonCode < Increase::Enum
           # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
           INSUFFICIENT_FUND = :insufficient_fund
 
@@ -529,19 +517,13 @@ module Increase
           UNTIMELY_RETURN = :untimely_return
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 
+      # @abstract
+      #
       # The lifecycle status of the ACH Prenotification.
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The Prenotification is pending submission.
         PENDING_SUBMITTING = :pending_submitting
 
@@ -555,28 +537,16 @@ module Increase
         SUBMITTED = :submitted
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `ach_prenotification`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         ACH_PRENOTIFICATION = :ach_prenotification
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

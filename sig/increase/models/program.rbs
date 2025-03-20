@@ -48,9 +48,7 @@ module Increase
 
       type bank = :core_bank | :first_internet_bank | :grasshopper_bank
 
-      module Bank
-        extend Increase::Enum
-
+      class Bank < Increase::Enum
         # Core Bank
         CORE_BANK: :core_bank
 
@@ -60,17 +58,15 @@ module Increase
         # Grasshopper Bank
         GRASSHOPPER_BANK: :grasshopper_bank
 
-        def self?.values: -> ::Array[Increase::Models::Program::bank]
+        def self.values: -> ::Array[Increase::Models::Program::bank]
       end
 
       type type_ = :program
 
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         PROGRAM: :program
 
-        def self?.values: -> ::Array[Increase::Models::Program::type_]
+        def self.values: -> ::Array[Increase::Models::Program::type_]
       end
     end
   end

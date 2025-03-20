@@ -7,72 +7,45 @@ module Increase
       include Increase::RequestParameters
 
       # The reason to return the Inbound Check Deposit.
-      sig { returns(Increase::Models::InboundCheckDepositReturnParams::Reason::OrSymbol) }
+      sig { returns(Symbol) }
       def reason
       end
 
-      sig do
-        params(_: Increase::Models::InboundCheckDepositReturnParams::Reason::OrSymbol)
-          .returns(Increase::Models::InboundCheckDepositReturnParams::Reason::OrSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def reason=(_)
       end
 
       sig do
-        params(
-          reason: Increase::Models::InboundCheckDepositReturnParams::Reason::OrSymbol,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+        params(reason: Symbol, request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
           .returns(T.attached_class)
       end
       def self.new(reason:, request_options: {})
       end
 
-      sig do
-        override
-          .returns(
-            {
-              reason: Increase::Models::InboundCheckDepositReturnParams::Reason::OrSymbol,
-              request_options: Increase::RequestOptions
-            }
-          )
-      end
+      sig { override.returns({reason: Symbol, request_options: Increase::RequestOptions}) }
       def to_hash
       end
 
       # The reason to return the Inbound Check Deposit.
-      module Reason
-        extend Increase::Enum
+      class Reason < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundCheckDepositReturnParams::Reason) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::InboundCheckDepositReturnParams::Reason::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The check was altered or fictitious.
-        ALTERED_OR_FICTITIOUS =
-          T.let(:altered_or_fictitious, Increase::Models::InboundCheckDepositReturnParams::Reason::TaggedSymbol)
+        ALTERED_OR_FICTITIOUS = :altered_or_fictitious
 
         # The check was not authorized.
-        NOT_AUTHORIZED =
-          T.let(:not_authorized, Increase::Models::InboundCheckDepositReturnParams::Reason::TaggedSymbol)
+        NOT_AUTHORIZED = :not_authorized
 
         # The check was a duplicate presentment.
-        DUPLICATE_PRESENTMENT =
-          T.let(:duplicate_presentment, Increase::Models::InboundCheckDepositReturnParams::Reason::TaggedSymbol)
+        DUPLICATE_PRESENTMENT = :duplicate_presentment
 
         # The check was not endorsed.
-        ENDORSEMENT_MISSING =
-          T.let(:endorsement_missing, Increase::Models::InboundCheckDepositReturnParams::Reason::TaggedSymbol)
+        ENDORSEMENT_MISSING = :endorsement_missing
 
         # The check was not endorsed by the payee.
-        ENDORSEMENT_IRREGULAR =
-          T.let(:endorsement_irregular, Increase::Models::InboundCheckDepositReturnParams::Reason::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::InboundCheckDepositReturnParams::Reason::TaggedSymbol]) }
-          def values
-          end
-        end
+        ENDORSEMENT_IRREGULAR = :endorsement_irregular
       end
     end
   end

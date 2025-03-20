@@ -13,12 +13,8 @@ module Increase
       end
 
       sig do
-        params(
-          _: T.any(Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address, Increase::Util::AnyHash)
-        )
-          .returns(
-            T.any(Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address, Increase::Util::AnyHash)
-          )
+        params(_: Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address)
+          .returns(Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address)
       end
       def address=(_)
       end

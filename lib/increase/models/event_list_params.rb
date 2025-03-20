@@ -100,9 +100,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        module In
-          extend Increase::Enum
-
+        # @abstract
+        class In < Increase::Enum
           # Occurs whenever an Account is created.
           ACCOUNT_CREATED = :"account.created"
 
@@ -370,12 +369,6 @@ module Increase
           WIRE_TRANSFER_UPDATED = :"wire_transfer.updated"
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 

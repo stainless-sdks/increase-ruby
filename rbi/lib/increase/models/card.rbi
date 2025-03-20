@@ -26,10 +26,7 @@ module Increase
       def billing_address
       end
 
-      sig do
-        params(_: T.any(Increase::Models::Card::BillingAddress, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::Card::BillingAddress, Increase::Util::AnyHash))
-      end
+      sig { params(_: Increase::Models::Card::BillingAddress).returns(Increase::Models::Card::BillingAddress) }
       def billing_address=(_)
       end
 
@@ -60,8 +57,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::Card::DigitalWallet, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::Card::DigitalWallet, Increase::Util::AnyHash)))
+        params(_: T.nilable(Increase::Models::Card::DigitalWallet))
+          .returns(T.nilable(Increase::Models::Card::DigitalWallet))
       end
       def digital_wallet=(_)
       end
@@ -114,24 +111,21 @@ module Increase
       end
 
       # This indicates if payments can be made with the card.
-      sig { returns(Increase::Models::Card::Status::TaggedSymbol) }
+      sig { returns(Symbol) }
       def status
       end
 
-      sig do
-        params(_: Increase::Models::Card::Status::TaggedSymbol)
-          .returns(Increase::Models::Card::Status::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def status=(_)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `card`.
-      sig { returns(Increase::Models::Card::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       def type
       end
 
-      sig { params(_: Increase::Models::Card::Type::TaggedSymbol).returns(Increase::Models::Card::Type::TaggedSymbol) }
+      sig { params(_: Symbol).returns(Symbol) }
       def type=(_)
       end
 
@@ -152,8 +146,8 @@ module Increase
           expiration_year: Integer,
           idempotency_key: T.nilable(String),
           last4: String,
-          status: Increase::Models::Card::Status::TaggedSymbol,
-          type: Increase::Models::Card::Type::TaggedSymbol
+          status: Symbol,
+          type: Symbol
         )
           .returns(T.attached_class)
       end
@@ -189,8 +183,8 @@ module Increase
               expiration_year: Integer,
               idempotency_key: T.nilable(String),
               last4: String,
-              status: Increase::Models::Card::Status::TaggedSymbol,
-              type: Increase::Models::Card::Type::TaggedSymbol
+              status: Symbol,
+              type: Symbol
             }
           )
       end
@@ -331,43 +325,29 @@ module Increase
       end
 
       # This indicates if payments can be made with the card.
-      module Status
-        extend Increase::Enum
+      class Status < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Card::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Card::Status::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The card is active.
-        ACTIVE = T.let(:active, Increase::Models::Card::Status::TaggedSymbol)
+        ACTIVE = :active
 
         # The card is temporarily disabled.
-        DISABLED = T.let(:disabled, Increase::Models::Card::Status::TaggedSymbol)
+        DISABLED = :disabled
 
         # The card is permanently canceled.
-        CANCELED = T.let(:canceled, Increase::Models::Card::Status::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::Card::Status::TaggedSymbol]) }
-          def values
-          end
-        end
+        CANCELED = :canceled
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `card`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Card::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Card::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        CARD = T.let(:card, Increase::Models::Card::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::Card::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        CARD = :card
       end
     end
   end

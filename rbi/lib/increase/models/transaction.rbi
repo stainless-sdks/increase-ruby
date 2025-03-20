@@ -44,14 +44,11 @@ module Increase
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
       #   Transaction's currency. This will match the currency on the Transaction's
       #   Account.
-      sig { returns(Increase::Models::Transaction::Currency::TaggedSymbol) }
+      sig { returns(Symbol) }
       def currency
       end
 
-      sig do
-        params(_: Increase::Models::Transaction::Currency::TaggedSymbol)
-          .returns(Increase::Models::Transaction::Currency::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def currency=(_)
       end
 
@@ -77,14 +74,11 @@ module Increase
       end
 
       # The type of the route this Transaction came through.
-      sig { returns(T.nilable(Increase::Models::Transaction::RouteType::TaggedSymbol)) }
+      sig { returns(T.nilable(Symbol)) }
       def route_type
       end
 
-      sig do
-        params(_: T.nilable(Increase::Models::Transaction::RouteType::TaggedSymbol))
-          .returns(T.nilable(Increase::Models::Transaction::RouteType::TaggedSymbol))
-      end
+      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
       def route_type=(_)
       end
 
@@ -96,23 +90,17 @@ module Increase
       def source
       end
 
-      sig do
-        params(_: T.any(Increase::Models::Transaction::Source, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::Transaction::Source, Increase::Util::AnyHash))
-      end
+      sig { params(_: Increase::Models::Transaction::Source).returns(Increase::Models::Transaction::Source) }
       def source=(_)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `transaction`.
-      sig { returns(Increase::Models::Transaction::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       def type
       end
 
-      sig do
-        params(_: Increase::Models::Transaction::Type::TaggedSymbol)
-          .returns(Increase::Models::Transaction::Type::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def type=(_)
       end
 
@@ -124,12 +112,12 @@ module Increase
           account_id: String,
           amount: Integer,
           created_at: Time,
-          currency: Increase::Models::Transaction::Currency::TaggedSymbol,
+          currency: Symbol,
           description: String,
           route_id: T.nilable(String),
-          route_type: T.nilable(Increase::Models::Transaction::RouteType::TaggedSymbol),
+          route_type: T.nilable(Symbol),
           source: Increase::Models::Transaction::Source,
-          type: Increase::Models::Transaction::Type::TaggedSymbol
+          type: Symbol
         )
           .returns(T.attached_class)
       end
@@ -144,12 +132,12 @@ module Increase
               account_id: String,
               amount: Integer,
               created_at: Time,
-              currency: Increase::Models::Transaction::Currency::TaggedSymbol,
+              currency: Symbol,
               description: String,
               route_id: T.nilable(String),
-              route_type: T.nilable(Increase::Models::Transaction::RouteType::TaggedSymbol),
+              route_type: T.nilable(Symbol),
               source: Increase::Models::Transaction::Source,
-              type: Increase::Models::Transaction::Type::TaggedSymbol
+              type: Symbol
             }
           )
       end
@@ -159,58 +147,44 @@ module Increase
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
       #   Transaction's currency. This will match the currency on the Transaction's
       #   Account.
-      module Currency
-        extend Increase::Enum
+      class Currency < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Transaction::Currency) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Transaction::Currency::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # Canadian Dollar (CAD)
-        CAD = T.let(:CAD, Increase::Models::Transaction::Currency::TaggedSymbol)
+        CAD = :CAD
 
         # Swiss Franc (CHF)
-        CHF = T.let(:CHF, Increase::Models::Transaction::Currency::TaggedSymbol)
+        CHF = :CHF
 
         # Euro (EUR)
-        EUR = T.let(:EUR, Increase::Models::Transaction::Currency::TaggedSymbol)
+        EUR = :EUR
 
         # British Pound (GBP)
-        GBP = T.let(:GBP, Increase::Models::Transaction::Currency::TaggedSymbol)
+        GBP = :GBP
 
         # Japanese Yen (JPY)
-        JPY = T.let(:JPY, Increase::Models::Transaction::Currency::TaggedSymbol)
+        JPY = :JPY
 
         # US Dollar (USD)
-        USD = T.let(:USD, Increase::Models::Transaction::Currency::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::Transaction::Currency::TaggedSymbol]) }
-          def values
-          end
-        end
+        USD = :USD
       end
 
       # The type of the route this Transaction came through.
-      module RouteType
-        extend Increase::Enum
+      class RouteType < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Transaction::RouteType) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Transaction::RouteType::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # An Account Number.
-        ACCOUNT_NUMBER = T.let(:account_number, Increase::Models::Transaction::RouteType::TaggedSymbol)
+        ACCOUNT_NUMBER = :account_number
 
         # A Card.
-        CARD = T.let(:card, Increase::Models::Transaction::RouteType::TaggedSymbol)
+        CARD = :card
 
         # A Lockbox.
-        LOCKBOX = T.let(:lockbox, Increase::Models::Transaction::RouteType::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::Transaction::RouteType::TaggedSymbol]) }
-          def values
-          end
-        end
+        LOCKBOX = :lockbox
       end
 
       class Source < Increase::BaseModel
@@ -223,12 +197,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(T.any(Increase::Models::Transaction::Source::AccountTransferIntention, Increase::Util::AnyHash))
-          )
-            .returns(
-              T.nilable(T.any(Increase::Models::Transaction::Source::AccountTransferIntention, Increase::Util::AnyHash))
-            )
+          params(_: T.nilable(Increase::Models::Transaction::Source::AccountTransferIntention))
+            .returns(T.nilable(Increase::Models::Transaction::Source::AccountTransferIntention))
         end
         def account_transfer_intention=(_)
         end
@@ -242,12 +212,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(T.any(Increase::Models::Transaction::Source::ACHTransferIntention, Increase::Util::AnyHash))
-          )
-            .returns(
-              T.nilable(T.any(Increase::Models::Transaction::Source::ACHTransferIntention, Increase::Util::AnyHash))
-            )
+          params(_: T.nilable(Increase::Models::Transaction::Source::ACHTransferIntention))
+            .returns(T.nilable(Increase::Models::Transaction::Source::ACHTransferIntention))
         end
         def ach_transfer_intention=(_)
         end
@@ -261,12 +227,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(T.any(Increase::Models::Transaction::Source::ACHTransferRejection, Increase::Util::AnyHash))
-          )
-            .returns(
-              T.nilable(T.any(Increase::Models::Transaction::Source::ACHTransferRejection, Increase::Util::AnyHash))
-            )
+          params(_: T.nilable(Increase::Models::Transaction::Source::ACHTransferRejection))
+            .returns(T.nilable(Increase::Models::Transaction::Source::ACHTransferRejection))
         end
         def ach_transfer_rejection=(_)
         end
@@ -282,12 +244,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(T.any(Increase::Models::Transaction::Source::ACHTransferReturn, Increase::Util::AnyHash))
-          )
-            .returns(
-              T.nilable(T.any(Increase::Models::Transaction::Source::ACHTransferReturn, Increase::Util::AnyHash))
-            )
+          params(_: T.nilable(Increase::Models::Transaction::Source::ACHTransferReturn))
+            .returns(T.nilable(Increase::Models::Transaction::Source::ACHTransferReturn))
         end
         def ach_transfer_return=(_)
         end
@@ -300,12 +258,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(T.any(Increase::Models::Transaction::Source::CardDisputeAcceptance, Increase::Util::AnyHash))
-          )
-            .returns(
-              T.nilable(T.any(Increase::Models::Transaction::Source::CardDisputeAcceptance, Increase::Util::AnyHash))
-            )
+          params(_: T.nilable(Increase::Models::Transaction::Source::CardDisputeAcceptance))
+            .returns(T.nilable(Increase::Models::Transaction::Source::CardDisputeAcceptance))
         end
         def card_dispute_acceptance=(_)
         end
@@ -318,10 +272,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(T.any(Increase::Models::Transaction::Source::CardDisputeLoss, Increase::Util::AnyHash))
-          )
-            .returns(T.nilable(T.any(Increase::Models::Transaction::Source::CardDisputeLoss, Increase::Util::AnyHash)))
+          params(_: T.nilable(Increase::Models::Transaction::Source::CardDisputeLoss))
+            .returns(T.nilable(Increase::Models::Transaction::Source::CardDisputeLoss))
         end
         def card_dispute_loss=(_)
         end
@@ -336,8 +288,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(T.any(Increase::Models::Transaction::Source::CardRefund, Increase::Util::AnyHash)))
-            .returns(T.nilable(T.any(Increase::Models::Transaction::Source::CardRefund, Increase::Util::AnyHash)))
+          params(_: T.nilable(Increase::Models::Transaction::Source::CardRefund))
+            .returns(T.nilable(Increase::Models::Transaction::Source::CardRefund))
         end
         def card_refund=(_)
         end
@@ -350,12 +302,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(T.any(Increase::Models::Transaction::Source::CardRevenuePayment, Increase::Util::AnyHash))
-          )
-            .returns(
-              T.nilable(T.any(Increase::Models::Transaction::Source::CardRevenuePayment, Increase::Util::AnyHash))
-            )
+          params(_: T.nilable(Increase::Models::Transaction::Source::CardRevenuePayment))
+            .returns(T.nilable(Increase::Models::Transaction::Source::CardRevenuePayment))
         end
         def card_revenue_payment=(_)
         end
@@ -370,10 +318,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(T.any(Increase::Models::Transaction::Source::CardSettlement, Increase::Util::AnyHash))
-          )
-            .returns(T.nilable(T.any(Increase::Models::Transaction::Source::CardSettlement, Increase::Util::AnyHash)))
+          params(_: T.nilable(Increase::Models::Transaction::Source::CardSettlement))
+            .returns(T.nilable(Increase::Models::Transaction::Source::CardSettlement))
         end
         def card_settlement=(_)
         end
@@ -387,24 +333,19 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(T.any(Increase::Models::Transaction::Source::CashbackPayment, Increase::Util::AnyHash))
-          )
-            .returns(T.nilable(T.any(Increase::Models::Transaction::Source::CashbackPayment, Increase::Util::AnyHash)))
+          params(_: T.nilable(Increase::Models::Transaction::Source::CashbackPayment))
+            .returns(T.nilable(Increase::Models::Transaction::Source::CashbackPayment))
         end
         def cashback_payment=(_)
         end
 
         # The type of the resource. We may add additional possible values for this enum
         #   over time; your application should be able to handle such additions gracefully.
-        sig { returns(Increase::Models::Transaction::Source::Category::TaggedSymbol) }
+        sig { returns(Symbol) }
         def category
         end
 
-        sig do
-          params(_: Increase::Models::Transaction::Source::Category::TaggedSymbol)
-            .returns(Increase::Models::Transaction::Source::Category::TaggedSymbol)
-        end
+        sig { params(_: Symbol).returns(Symbol) }
         def category=(_)
         end
 
@@ -418,12 +359,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(T.any(Increase::Models::Transaction::Source::CheckDepositAcceptance, Increase::Util::AnyHash))
-          )
-            .returns(
-              T.nilable(T.any(Increase::Models::Transaction::Source::CheckDepositAcceptance, Increase::Util::AnyHash))
-            )
+          params(_: T.nilable(Increase::Models::Transaction::Source::CheckDepositAcceptance))
+            .returns(T.nilable(Increase::Models::Transaction::Source::CheckDepositAcceptance))
         end
         def check_deposit_acceptance=(_)
         end
@@ -439,12 +376,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(T.any(Increase::Models::Transaction::Source::CheckDepositReturn, Increase::Util::AnyHash))
-          )
-            .returns(
-              T.nilable(T.any(Increase::Models::Transaction::Source::CheckDepositReturn, Increase::Util::AnyHash))
-            )
+          params(_: T.nilable(Increase::Models::Transaction::Source::CheckDepositReturn))
+            .returns(T.nilable(Increase::Models::Transaction::Source::CheckDepositReturn))
         end
         def check_deposit_return=(_)
         end
@@ -458,12 +391,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(T.any(Increase::Models::Transaction::Source::CheckTransferDeposit, Increase::Util::AnyHash))
-          )
-            .returns(
-              T.nilable(T.any(Increase::Models::Transaction::Source::CheckTransferDeposit, Increase::Util::AnyHash))
-            )
+          params(_: T.nilable(Increase::Models::Transaction::Source::CheckTransferDeposit))
+            .returns(T.nilable(Increase::Models::Transaction::Source::CheckTransferDeposit))
         end
         def check_transfer_deposit=(_)
         end
@@ -476,8 +405,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(T.any(Increase::Models::Transaction::Source::FeePayment, Increase::Util::AnyHash)))
-            .returns(T.nilable(T.any(Increase::Models::Transaction::Source::FeePayment, Increase::Util::AnyHash)))
+          params(_: T.nilable(Increase::Models::Transaction::Source::FeePayment))
+            .returns(T.nilable(Increase::Models::Transaction::Source::FeePayment))
         end
         def fee_payment=(_)
         end
@@ -491,12 +420,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(T.any(Increase::Models::Transaction::Source::InboundACHTransfer, Increase::Util::AnyHash))
-          )
-            .returns(
-              T.nilable(T.any(Increase::Models::Transaction::Source::InboundACHTransfer, Increase::Util::AnyHash))
-            )
+          params(_: T.nilable(Increase::Models::Transaction::Source::InboundACHTransfer))
+            .returns(T.nilable(Increase::Models::Transaction::Source::InboundACHTransfer))
         end
         def inbound_ach_transfer=(_)
         end
@@ -511,16 +436,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(
-              T.any(Increase::Models::Transaction::Source::InboundACHTransferReturnIntention, Increase::Util::AnyHash)
-            )
-          )
-            .returns(
-              T.nilable(
-                T.any(Increase::Models::Transaction::Source::InboundACHTransferReturnIntention, Increase::Util::AnyHash)
-              )
-            )
+          params(_: T.nilable(Increase::Models::Transaction::Source::InboundACHTransferReturnIntention))
+            .returns(T.nilable(Increase::Models::Transaction::Source::InboundACHTransferReturnIntention))
         end
         def inbound_ach_transfer_return_intention=(_)
         end
@@ -534,12 +451,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(T.any(Increase::Models::Transaction::Source::InboundCheckAdjustment, Increase::Util::AnyHash))
-          )
-            .returns(
-              T.nilable(T.any(Increase::Models::Transaction::Source::InboundCheckAdjustment, Increase::Util::AnyHash))
-            )
+          params(_: T.nilable(Increase::Models::Transaction::Source::InboundCheckAdjustment))
+            .returns(T.nilable(Increase::Models::Transaction::Source::InboundCheckAdjustment))
         end
         def inbound_check_adjustment=(_)
         end
@@ -554,16 +467,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(
-              T.any(Increase::Models::Transaction::Source::InboundCheckDepositReturnIntention, Increase::Util::AnyHash)
-            )
-          )
-            .returns(
-              T.nilable(
-                T.any(Increase::Models::Transaction::Source::InboundCheckDepositReturnIntention, Increase::Util::AnyHash)
-              )
-            )
+          params(_: T.nilable(Increase::Models::Transaction::Source::InboundCheckDepositReturnIntention))
+            .returns(T.nilable(Increase::Models::Transaction::Source::InboundCheckDepositReturnIntention))
         end
         def inbound_check_deposit_return_intention=(_)
         end
@@ -578,22 +483,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(
-              T.any(
-                Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation,
-                Increase::Util::AnyHash
-              )
-            )
-          )
-            .returns(
-              T.nilable(
-                T.any(
-                  Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation,
-                  Increase::Util::AnyHash
-                )
-              )
-            )
+          params(_: T.nilable(Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation))
+            .returns(T.nilable(Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation))
         end
         def inbound_real_time_payments_transfer_confirmation=(_)
         end
@@ -606,22 +497,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(
-              T.any(
-                Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline,
-                Increase::Util::AnyHash
-              )
-            )
-          )
-            .returns(
-              T.nilable(
-                T.any(
-                  Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline,
-                  Increase::Util::AnyHash
-                )
-              )
-            )
+          params(_: T.nilable(Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline))
+            .returns(T.nilable(Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline))
         end
         def inbound_real_time_payments_transfer_decline=(_)
         end
@@ -636,12 +513,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(T.any(Increase::Models::Transaction::Source::InboundWireReversal, Increase::Util::AnyHash))
-          )
-            .returns(
-              T.nilable(T.any(Increase::Models::Transaction::Source::InboundWireReversal, Increase::Util::AnyHash))
-            )
+          params(_: T.nilable(Increase::Models::Transaction::Source::InboundWireReversal))
+            .returns(T.nilable(Increase::Models::Transaction::Source::InboundWireReversal))
         end
         def inbound_wire_reversal=(_)
         end
@@ -655,12 +528,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(T.any(Increase::Models::Transaction::Source::InboundWireTransfer, Increase::Util::AnyHash))
-          )
-            .returns(
-              T.nilable(T.any(Increase::Models::Transaction::Source::InboundWireTransfer, Increase::Util::AnyHash))
-            )
+          params(_: T.nilable(Increase::Models::Transaction::Source::InboundWireTransfer))
+            .returns(T.nilable(Increase::Models::Transaction::Source::InboundWireTransfer))
         end
         def inbound_wire_transfer=(_)
         end
@@ -675,16 +544,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(
-              T.any(Increase::Models::Transaction::Source::InboundWireTransferReversal, Increase::Util::AnyHash)
-            )
-          )
-            .returns(
-              T.nilable(
-                T.any(Increase::Models::Transaction::Source::InboundWireTransferReversal, Increase::Util::AnyHash)
-              )
-            )
+          params(_: T.nilable(Increase::Models::Transaction::Source::InboundWireTransferReversal))
+            .returns(T.nilable(Increase::Models::Transaction::Source::InboundWireTransferReversal))
         end
         def inbound_wire_transfer_reversal=(_)
         end
@@ -698,10 +559,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(T.any(Increase::Models::Transaction::Source::InterestPayment, Increase::Util::AnyHash))
-          )
-            .returns(T.nilable(T.any(Increase::Models::Transaction::Source::InterestPayment, Increase::Util::AnyHash)))
+          params(_: T.nilable(Increase::Models::Transaction::Source::InterestPayment))
+            .returns(T.nilable(Increase::Models::Transaction::Source::InterestPayment))
         end
         def interest_payment=(_)
         end
@@ -714,10 +573,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(T.any(Increase::Models::Transaction::Source::InternalSource, Increase::Util::AnyHash))
-          )
-            .returns(T.nilable(T.any(Increase::Models::Transaction::Source::InternalSource, Increase::Util::AnyHash)))
+          params(_: T.nilable(Increase::Models::Transaction::Source::InternalSource))
+            .returns(T.nilable(Increase::Models::Transaction::Source::InternalSource))
         end
         def internal_source=(_)
         end
@@ -742,22 +599,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(
-              T.any(
-                Increase::Models::Transaction::Source::RealTimePaymentsTransferAcknowledgement,
-                Increase::Util::AnyHash
-              )
-            )
-          )
-            .returns(
-              T.nilable(
-                T.any(
-                  Increase::Models::Transaction::Source::RealTimePaymentsTransferAcknowledgement,
-                  Increase::Util::AnyHash
-                )
-              )
-            )
+          params(_: T.nilable(Increase::Models::Transaction::Source::RealTimePaymentsTransferAcknowledgement))
+            .returns(T.nilable(Increase::Models::Transaction::Source::RealTimePaymentsTransferAcknowledgement))
         end
         def real_time_payments_transfer_acknowledgement=(_)
         end
@@ -770,8 +613,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(T.any(Increase::Models::Transaction::Source::SampleFunds, Increase::Util::AnyHash)))
-            .returns(T.nilable(T.any(Increase::Models::Transaction::Source::SampleFunds, Increase::Util::AnyHash)))
+          params(_: T.nilable(Increase::Models::Transaction::Source::SampleFunds))
+            .returns(T.nilable(Increase::Models::Transaction::Source::SampleFunds))
         end
         def sample_funds=(_)
         end
@@ -784,12 +627,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.nilable(T.any(Increase::Models::Transaction::Source::WireTransferIntention, Increase::Util::AnyHash))
-          )
-            .returns(
-              T.nilable(T.any(Increase::Models::Transaction::Source::WireTransferIntention, Increase::Util::AnyHash))
-            )
+          params(_: T.nilable(Increase::Models::Transaction::Source::WireTransferIntention))
+            .returns(T.nilable(Increase::Models::Transaction::Source::WireTransferIntention))
         end
         def wire_transfer_intention=(_)
         end
@@ -810,7 +649,7 @@ module Increase
             card_revenue_payment: T.nilable(Increase::Models::Transaction::Source::CardRevenuePayment),
             card_settlement: T.nilable(Increase::Models::Transaction::Source::CardSettlement),
             cashback_payment: T.nilable(Increase::Models::Transaction::Source::CashbackPayment),
-            category: Increase::Models::Transaction::Source::Category::TaggedSymbol,
+            category: Symbol,
             check_deposit_acceptance: T.nilable(Increase::Models::Transaction::Source::CheckDepositAcceptance),
             check_deposit_return: T.nilable(Increase::Models::Transaction::Source::CheckDepositReturn),
             check_transfer_deposit: T.nilable(Increase::Models::Transaction::Source::CheckTransferDeposit),
@@ -881,7 +720,7 @@ module Increase
                 card_revenue_payment: T.nilable(Increase::Models::Transaction::Source::CardRevenuePayment),
                 card_settlement: T.nilable(Increase::Models::Transaction::Source::CardSettlement),
                 cashback_payment: T.nilable(Increase::Models::Transaction::Source::CashbackPayment),
-                category: Increase::Models::Transaction::Source::Category::TaggedSymbol,
+                category: Symbol,
                 check_deposit_acceptance: T.nilable(Increase::Models::Transaction::Source::CheckDepositAcceptance),
                 check_deposit_return: T.nilable(Increase::Models::Transaction::Source::CheckDepositReturn),
                 check_transfer_deposit: T.nilable(Increase::Models::Transaction::Source::CheckTransferDeposit),
@@ -920,14 +759,11 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
           #   account currency.
-          sig { returns(Increase::Models::Transaction::Source::AccountTransferIntention::Currency::TaggedSymbol) }
+          sig { returns(Symbol) }
           def currency
           end
 
-          sig do
-            params(_: Increase::Models::Transaction::Source::AccountTransferIntention::Currency::TaggedSymbol)
-              .returns(Increase::Models::Transaction::Source::AccountTransferIntention::Currency::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def currency=(_)
           end
 
@@ -974,7 +810,7 @@ module Increase
           sig do
             params(
               amount: Integer,
-              currency: Increase::Models::Transaction::Source::AccountTransferIntention::Currency::TaggedSymbol,
+              currency: Symbol,
               description: String,
               destination_account_id: String,
               source_account_id: String,
@@ -990,7 +826,7 @@ module Increase
               .returns(
                 {
                   amount: Integer,
-                  currency: Increase::Models::Transaction::Source::AccountTransferIntention::Currency::TaggedSymbol,
+                  currency: Symbol,
                   description: String,
                   destination_account_id: String,
                   source_account_id: String,
@@ -1003,46 +839,28 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
           #   account currency.
-          module Currency
-            extend Increase::Enum
+          class Currency < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::AccountTransferIntention::Currency) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::AccountTransferIntention::Currency::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
-            CAD =
-              T.let(:CAD, Increase::Models::Transaction::Source::AccountTransferIntention::Currency::TaggedSymbol)
+            CAD = :CAD
 
             # Swiss Franc (CHF)
-            CHF =
-              T.let(:CHF, Increase::Models::Transaction::Source::AccountTransferIntention::Currency::TaggedSymbol)
+            CHF = :CHF
 
             # Euro (EUR)
-            EUR =
-              T.let(:EUR, Increase::Models::Transaction::Source::AccountTransferIntention::Currency::TaggedSymbol)
+            EUR = :EUR
 
             # British Pound (GBP)
-            GBP =
-              T.let(:GBP, Increase::Models::Transaction::Source::AccountTransferIntention::Currency::TaggedSymbol)
+            GBP = :GBP
 
             # Japanese Yen (JPY)
-            JPY =
-              T.let(:JPY, Increase::Models::Transaction::Source::AccountTransferIntention::Currency::TaggedSymbol)
+            JPY = :JPY
 
             # US Dollar (USD)
-            USD =
-              T.let(:USD, Increase::Models::Transaction::Source::AccountTransferIntention::Currency::TaggedSymbol)
-
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::Transaction::Source::AccountTransferIntention::Currency::TaggedSymbol])
-              end
-              def values
-              end
-            end
+            USD = :USD
           end
         end
 
@@ -1172,14 +990,11 @@ module Increase
 
           # Why the ACH Transfer was returned. This reason code is sent by the receiving
           #   bank back to Increase.
-          sig { returns(Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol) }
+          sig { returns(Symbol) }
           def return_reason_code
           end
 
-          sig do
-            params(_: Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol)
-              .returns(Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def return_reason_code=(_)
           end
 
@@ -1223,7 +1038,7 @@ module Increase
             params(
               created_at: Time,
               raw_return_reason_code: String,
-              return_reason_code: Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol,
+              return_reason_code: Symbol,
               trace_number: String,
               transaction_id: String,
               transfer_id: String
@@ -1239,7 +1054,7 @@ module Increase
                 {
                   created_at: Time,
                   raw_return_reason_code: String,
-                  return_reason_code: Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol,
+                  return_reason_code: Symbol,
                   trace_number: String,
                   transaction_id: String,
                   transfer_id: String
@@ -1251,514 +1066,223 @@ module Increase
 
           # Why the ACH Transfer was returned. This reason code is sent by the receiving
           #   bank back to Increase.
-          module ReturnReasonCode
-            extend Increase::Enum
+          class ReturnReasonCode < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
-            INSUFFICIENT_FUND =
-              T.let(
-                :insufficient_fund,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            INSUFFICIENT_FUND = :insufficient_fund
 
             # Code R03. The account does not exist or the receiving bank was unable to locate it.
-            NO_ACCOUNT =
-              T.let(
-                :no_account,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            NO_ACCOUNT = :no_account
 
             # Code R02. The account is closed at the receiving bank.
-            ACCOUNT_CLOSED =
-              T.let(
-                :account_closed,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            ACCOUNT_CLOSED = :account_closed
 
             # Code R04. The account number is invalid at the receiving bank.
-            INVALID_ACCOUNT_NUMBER_STRUCTURE =
-              T.let(
-                :invalid_account_number_structure,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            INVALID_ACCOUNT_NUMBER_STRUCTURE = :invalid_account_number_structure
 
             # Code R16. The account at the receiving bank was frozen per the Office of Foreign Assets Control.
-            ACCOUNT_FROZEN_ENTRY_RETURNED_PER_OFAC_INSTRUCTION =
-              T.let(
-                :account_frozen_entry_returned_per_ofac_instruction,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            ACCOUNT_FROZEN_ENTRY_RETURNED_PER_OFAC_INSTRUCTION = :account_frozen_entry_returned_per_ofac_instruction
 
             # Code R23. The receiving bank account refused a credit transfer.
-            CREDIT_ENTRY_REFUSED_BY_RECEIVER =
-              T.let(
-                :credit_entry_refused_by_receiver,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            CREDIT_ENTRY_REFUSED_BY_RECEIVER = :credit_entry_refused_by_receiver
 
             # Code R05. The receiving bank rejected because of an incorrect Standard Entry Class code.
             UNAUTHORIZED_DEBIT_TO_CONSUMER_ACCOUNT_USING_CORPORATE_SEC_CODE =
-              T.let(
-                :unauthorized_debit_to_consumer_account_using_corporate_sec_code,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+              :unauthorized_debit_to_consumer_account_using_corporate_sec_code
 
             # Code R29. The corporate customer at the receiving bank reversed the transfer.
-            CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED =
-              T.let(
-                :corporate_customer_advised_not_authorized,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
 
             # Code R08. The receiving bank stopped payment on this transfer.
-            PAYMENT_STOPPED =
-              T.let(
-                :payment_stopped,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            PAYMENT_STOPPED = :payment_stopped
 
             # Code R20. The receiving bank account does not perform transfers.
-            NON_TRANSACTION_ACCOUNT =
-              T.let(
-                :non_transaction_account,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            NON_TRANSACTION_ACCOUNT = :non_transaction_account
 
             # Code R09. The receiving bank account does not have enough available balance for the transfer.
-            UNCOLLECTED_FUNDS =
-              T.let(
-                :uncollected_funds,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            UNCOLLECTED_FUNDS = :uncollected_funds
 
             # Code R28. The routing number is incorrect.
-            ROUTING_NUMBER_CHECK_DIGIT_ERROR =
-              T.let(
-                :routing_number_check_digit_error,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            ROUTING_NUMBER_CHECK_DIGIT_ERROR = :routing_number_check_digit_error
 
             # Code R10. The customer at the receiving bank reversed the transfer.
             CUSTOMER_ADVISED_UNAUTHORIZED_IMPROPER_INELIGIBLE_OR_INCOMPLETE =
-              T.let(
-                :customer_advised_unauthorized_improper_ineligible_or_incomplete,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+              :customer_advised_unauthorized_improper_ineligible_or_incomplete
 
             # Code R19. The amount field is incorrect or too large.
-            AMOUNT_FIELD_ERROR =
-              T.let(
-                :amount_field_error,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            AMOUNT_FIELD_ERROR = :amount_field_error
 
             # Code R07. The customer at the receiving institution informed their bank that they have revoked authorization for a previously authorized transfer.
-            AUTHORIZATION_REVOKED_BY_CUSTOMER =
-              T.let(
-                :authorization_revoked_by_customer,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            AUTHORIZATION_REVOKED_BY_CUSTOMER = :authorization_revoked_by_customer
 
             # Code R13. The routing number is invalid.
-            INVALID_ACH_ROUTING_NUMBER =
-              T.let(
-                :invalid_ach_routing_number,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            INVALID_ACH_ROUTING_NUMBER = :invalid_ach_routing_number
 
             # Code R17. The receiving bank is unable to process a field in the transfer.
-            FILE_RECORD_EDIT_CRITERIA =
-              T.let(
-                :file_record_edit_criteria,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            FILE_RECORD_EDIT_CRITERIA = :file_record_edit_criteria
 
             # Code R45. The individual name field was invalid.
-            ENR_INVALID_INDIVIDUAL_NAME =
-              T.let(
-                :enr_invalid_individual_name,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            ENR_INVALID_INDIVIDUAL_NAME = :enr_invalid_individual_name
 
             # Code R06. The originating financial institution asked for this transfer to be returned. The receiving bank is complying with the request.
-            RETURNED_PER_ODFI_REQUEST =
-              T.let(
-                :returned_per_odfi_request,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            RETURNED_PER_ODFI_REQUEST = :returned_per_odfi_request
 
             # Code R34. The receiving bank's regulatory supervisor has limited their participation in the ACH network.
-            LIMITED_PARTICIPATION_DFI =
-              T.let(
-                :limited_participation_dfi,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            LIMITED_PARTICIPATION_DFI = :limited_participation_dfi
 
             # Code R85. The outbound international ACH transfer was incorrect.
-            INCORRECTLY_CODED_OUTBOUND_INTERNATIONAL_PAYMENT =
-              T.let(
-                :incorrectly_coded_outbound_international_payment,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            INCORRECTLY_CODED_OUTBOUND_INTERNATIONAL_PAYMENT = :incorrectly_coded_outbound_international_payment
 
             # Code R12. A rare return reason. The account was sold to another bank.
-            ACCOUNT_SOLD_TO_ANOTHER_DFI =
-              T.let(
-                :account_sold_to_another_dfi,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            ACCOUNT_SOLD_TO_ANOTHER_DFI = :account_sold_to_another_dfi
 
             # Code R25. The addenda record is incorrect or missing.
-            ADDENDA_ERROR =
-              T.let(
-                :addenda_error,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            ADDENDA_ERROR = :addenda_error
 
             # Code R15. A rare return reason. The account holder is deceased.
-            BENEFICIARY_OR_ACCOUNT_HOLDER_DECEASED =
-              T.let(
-                :beneficiary_or_account_holder_deceased,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            BENEFICIARY_OR_ACCOUNT_HOLDER_DECEASED = :beneficiary_or_account_holder_deceased
 
             # Code R11. A rare return reason. The customer authorized some payment to the sender, but this payment was not in error.
-            CUSTOMER_ADVISED_NOT_WITHIN_AUTHORIZATION_TERMS =
-              T.let(
-                :customer_advised_not_within_authorization_terms,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            CUSTOMER_ADVISED_NOT_WITHIN_AUTHORIZATION_TERMS = :customer_advised_not_within_authorization_terms
 
             # Code R74. A rare return reason. Sent in response to a return that was returned with code `field_error`. The latest return should include the corrected field(s).
-            CORRECTED_RETURN =
-              T.let(
-                :corrected_return,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            CORRECTED_RETURN = :corrected_return
 
             # Code R24. A rare return reason. The receiving bank received an exact duplicate entry with the same trace number and amount.
-            DUPLICATE_ENTRY =
-              T.let(
-                :duplicate_entry,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            DUPLICATE_ENTRY = :duplicate_entry
 
             # Code R67. A rare return reason. The return this message refers to was a duplicate.
-            DUPLICATE_RETURN =
-              T.let(
-                :duplicate_return,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            DUPLICATE_RETURN = :duplicate_return
 
             # Code R47. A rare return reason. Only used for US Government agency non-monetary automatic enrollment messages.
-            ENR_DUPLICATE_ENROLLMENT =
-              T.let(
-                :enr_duplicate_enrollment,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            ENR_DUPLICATE_ENROLLMENT = :enr_duplicate_enrollment
 
             # Code R43. A rare return reason. Only used for US Government agency non-monetary automatic enrollment messages.
-            ENR_INVALID_DFI_ACCOUNT_NUMBER =
-              T.let(
-                :enr_invalid_dfi_account_number,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            ENR_INVALID_DFI_ACCOUNT_NUMBER = :enr_invalid_dfi_account_number
 
             # Code R44. A rare return reason. Only used for US Government agency non-monetary automatic enrollment messages.
-            ENR_INVALID_INDIVIDUAL_ID_NUMBER =
-              T.let(
-                :enr_invalid_individual_id_number,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            ENR_INVALID_INDIVIDUAL_ID_NUMBER = :enr_invalid_individual_id_number
 
             # Code R46. A rare return reason. Only used for US Government agency non-monetary automatic enrollment messages.
-            ENR_INVALID_REPRESENTATIVE_PAYEE_INDICATOR =
-              T.let(
-                :enr_invalid_representative_payee_indicator,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            ENR_INVALID_REPRESENTATIVE_PAYEE_INDICATOR = :enr_invalid_representative_payee_indicator
 
             # Code R41. A rare return reason. Only used for US Government agency non-monetary automatic enrollment messages.
-            ENR_INVALID_TRANSACTION_CODE =
-              T.let(
-                :enr_invalid_transaction_code,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            ENR_INVALID_TRANSACTION_CODE = :enr_invalid_transaction_code
 
             # Code R40. A rare return reason. Only used for US Government agency non-monetary automatic enrollment messages.
-            ENR_RETURN_OF_ENR_ENTRY =
-              T.let(
-                :enr_return_of_enr_entry,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            ENR_RETURN_OF_ENR_ENTRY = :enr_return_of_enr_entry
 
             # Code R42. A rare return reason. Only used for US Government agency non-monetary automatic enrollment messages.
-            ENR_ROUTING_NUMBER_CHECK_DIGIT_ERROR =
-              T.let(
-                :enr_routing_number_check_digit_error,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            ENR_ROUTING_NUMBER_CHECK_DIGIT_ERROR = :enr_routing_number_check_digit_error
 
             # Code R84. A rare return reason. The International ACH Transfer cannot be processed by the gateway.
-            ENTRY_NOT_PROCESSED_BY_GATEWAY =
-              T.let(
-                :entry_not_processed_by_gateway,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            ENTRY_NOT_PROCESSED_BY_GATEWAY = :entry_not_processed_by_gateway
 
             # Code R69. A rare return reason. One or more of the fields in the ACH were malformed.
-            FIELD_ERROR =
-              T.let(
-                :field_error,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            FIELD_ERROR = :field_error
 
             # Code R83. A rare return reason. The Foreign receiving bank was unable to settle this ACH transfer.
-            FOREIGN_RECEIVING_DFI_UNABLE_TO_SETTLE =
-              T.let(
-                :foreign_receiving_dfi_unable_to_settle,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            FOREIGN_RECEIVING_DFI_UNABLE_TO_SETTLE = :foreign_receiving_dfi_unable_to_settle
 
             # Code R80. A rare return reason. The International ACH Transfer is malformed.
-            IAT_ENTRY_CODING_ERROR =
-              T.let(
-                :iat_entry_coding_error,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            IAT_ENTRY_CODING_ERROR = :iat_entry_coding_error
 
             # Code R18. A rare return reason. The ACH has an improper effective entry date field.
-            IMPROPER_EFFECTIVE_ENTRY_DATE =
-              T.let(
-                :improper_effective_entry_date,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            IMPROPER_EFFECTIVE_ENTRY_DATE = :improper_effective_entry_date
 
             # Code R39. A rare return reason. The source document related to this ACH, usually an ACH check conversion, was presented to the bank.
-            IMPROPER_SOURCE_DOCUMENT_SOURCE_DOCUMENT_PRESENTED =
-              T.let(
-                :improper_source_document_source_document_presented,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            IMPROPER_SOURCE_DOCUMENT_SOURCE_DOCUMENT_PRESENTED = :improper_source_document_source_document_presented
 
             # Code R21. A rare return reason. The Company ID field of the ACH was invalid.
-            INVALID_COMPANY_ID =
-              T.let(
-                :invalid_company_id,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            INVALID_COMPANY_ID = :invalid_company_id
 
             # Code R82. A rare return reason. The foreign receiving bank identifier for an International ACH Transfer was invalid.
-            INVALID_FOREIGN_RECEIVING_DFI_IDENTIFICATION =
-              T.let(
-                :invalid_foreign_receiving_dfi_identification,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            INVALID_FOREIGN_RECEIVING_DFI_IDENTIFICATION = :invalid_foreign_receiving_dfi_identification
 
             # Code R22. A rare return reason. The Individual ID number field of the ACH was invalid.
-            INVALID_INDIVIDUAL_ID_NUMBER =
-              T.let(
-                :invalid_individual_id_number,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            INVALID_INDIVIDUAL_ID_NUMBER = :invalid_individual_id_number
 
             # Code R53. A rare return reason. Both the Represented Check ("RCK") entry and the original check were presented to the bank.
-            ITEM_AND_RCK_ENTRY_PRESENTED_FOR_PAYMENT =
-              T.let(
-                :item_and_rck_entry_presented_for_payment,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            ITEM_AND_RCK_ENTRY_PRESENTED_FOR_PAYMENT = :item_and_rck_entry_presented_for_payment
 
             # Code R51. A rare return reason. The Represented Check ("RCK") entry is ineligible.
-            ITEM_RELATED_TO_RCK_ENTRY_IS_INELIGIBLE =
-              T.let(
-                :item_related_to_rck_entry_is_ineligible,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            ITEM_RELATED_TO_RCK_ENTRY_IS_INELIGIBLE = :item_related_to_rck_entry_is_ineligible
 
             # Code R26. A rare return reason. The ACH is missing a required field.
-            MANDATORY_FIELD_ERROR =
-              T.let(
-                :mandatory_field_error,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            MANDATORY_FIELD_ERROR = :mandatory_field_error
 
             # Code R71. A rare return reason. The receiving bank does not recognize the routing number in a dishonored return entry.
-            MISROUTED_DISHONORED_RETURN =
-              T.let(
-                :misrouted_dishonored_return,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            MISROUTED_DISHONORED_RETURN = :misrouted_dishonored_return
 
             # Code R61. A rare return reason. The receiving bank does not recognize the routing number in a return entry.
-            MISROUTED_RETURN =
-              T.let(
-                :misrouted_return,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            MISROUTED_RETURN = :misrouted_return
 
             # Code R76. A rare return reason. Sent in response to a return, the bank does not find the errors alleged by the returning bank.
-            NO_ERRORS_FOUND =
-              T.let(
-                :no_errors_found,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            NO_ERRORS_FOUND = :no_errors_found
 
             # Code R77. A rare return reason. The receiving bank does not accept the return of the erroneous debit. The funds are not available at the receiving bank.
-            NON_ACCEPTANCE_OF_R62_DISHONORED_RETURN =
-              T.let(
-                :non_acceptance_of_r62_dishonored_return,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            NON_ACCEPTANCE_OF_R62_DISHONORED_RETURN = :non_acceptance_of_r62_dishonored_return
 
             # Code R81. A rare return reason. The receiving bank does not accept International ACH Transfers.
-            NON_PARTICIPANT_IN_IAT_PROGRAM =
-              T.let(
-                :non_participant_in_iat_program,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            NON_PARTICIPANT_IN_IAT_PROGRAM = :non_participant_in_iat_program
 
             # Code R31. A rare return reason. A return that has been agreed to be accepted by the receiving bank, despite falling outside of the usual return timeframe.
-            PERMISSIBLE_RETURN_ENTRY =
-              T.let(
-                :permissible_return_entry,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            PERMISSIBLE_RETURN_ENTRY = :permissible_return_entry
 
             # Code R70. A rare return reason. The receiving bank had not approved this return.
-            PERMISSIBLE_RETURN_ENTRY_NOT_ACCEPTED =
-              T.let(
-                :permissible_return_entry_not_accepted,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            PERMISSIBLE_RETURN_ENTRY_NOT_ACCEPTED = :permissible_return_entry_not_accepted
 
             # Code R32. A rare return reason. The receiving bank could not settle this transaction.
-            RDFI_NON_SETTLEMENT =
-              T.let(
-                :rdfi_non_settlement,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            RDFI_NON_SETTLEMENT = :rdfi_non_settlement
 
             # Code R30. A rare return reason. The receiving bank does not accept Check Truncation ACH transfers.
-            RDFI_PARTICIPANT_IN_CHECK_TRUNCATION_PROGRAM =
-              T.let(
-                :rdfi_participant_in_check_truncation_program,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            RDFI_PARTICIPANT_IN_CHECK_TRUNCATION_PROGRAM = :rdfi_participant_in_check_truncation_program
 
             # Code R14. A rare return reason. The payee is deceased.
             REPRESENTATIVE_PAYEE_DECEASED_OR_UNABLE_TO_CONTINUE_IN_THAT_CAPACITY =
-              T.let(
-                :representative_payee_deceased_or_unable_to_continue_in_that_capacity,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+              :representative_payee_deceased_or_unable_to_continue_in_that_capacity
 
             # Code R75. A rare return reason. The originating bank disputes that an earlier `duplicate_entry` return was actually a duplicate.
-            RETURN_NOT_A_DUPLICATE =
-              T.let(
-                :return_not_a_duplicate,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            RETURN_NOT_A_DUPLICATE = :return_not_a_duplicate
 
             # Code R62. A rare return reason. The originating financial institution made a mistake and this return corrects it.
-            RETURN_OF_ERRONEOUS_OR_REVERSING_DEBIT =
-              T.let(
-                :return_of_erroneous_or_reversing_debit,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            RETURN_OF_ERRONEOUS_OR_REVERSING_DEBIT = :return_of_erroneous_or_reversing_debit
 
             # Code R36. A rare return reason. Return of a malformed credit entry.
-            RETURN_OF_IMPROPER_CREDIT_ENTRY =
-              T.let(
-                :return_of_improper_credit_entry,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            RETURN_OF_IMPROPER_CREDIT_ENTRY = :return_of_improper_credit_entry
 
             # Code R35. A rare return reason. Return of a malformed debit entry.
-            RETURN_OF_IMPROPER_DEBIT_ENTRY =
-              T.let(
-                :return_of_improper_debit_entry,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            RETURN_OF_IMPROPER_DEBIT_ENTRY = :return_of_improper_debit_entry
 
             # Code R33. A rare return reason. Return of a Destroyed Check ("XKC") entry.
-            RETURN_OF_XCK_ENTRY =
-              T.let(
-                :return_of_xck_entry,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            RETURN_OF_XCK_ENTRY = :return_of_xck_entry
 
             # Code R37. A rare return reason. The source document related to this ACH, usually an ACH check conversion, was presented to the bank.
-            SOURCE_DOCUMENT_PRESENTED_FOR_PAYMENT =
-              T.let(
-                :source_document_presented_for_payment,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            SOURCE_DOCUMENT_PRESENTED_FOR_PAYMENT = :source_document_presented_for_payment
 
             # Code R50. A rare return reason. State law prevents the bank from accepting the Represented Check ("RCK") entry.
-            STATE_LAW_AFFECTING_RCK_ACCEPTANCE =
-              T.let(
-                :state_law_affecting_rck_acceptance,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            STATE_LAW_AFFECTING_RCK_ACCEPTANCE = :state_law_affecting_rck_acceptance
 
             # Code R52. A rare return reason. A stop payment was issued on a Represented Check ("RCK") entry.
-            STOP_PAYMENT_ON_ITEM_RELATED_TO_RCK_ENTRY =
-              T.let(
-                :stop_payment_on_item_related_to_rck_entry,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            STOP_PAYMENT_ON_ITEM_RELATED_TO_RCK_ENTRY = :stop_payment_on_item_related_to_rck_entry
 
             # Code R38. A rare return reason. The source attached to the ACH, usually an ACH check conversion, includes a stop payment.
-            STOP_PAYMENT_ON_SOURCE_DOCUMENT =
-              T.let(
-                :stop_payment_on_source_document,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            STOP_PAYMENT_ON_SOURCE_DOCUMENT = :stop_payment_on_source_document
 
             # Code R73. A rare return reason. The bank receiving an `untimely_return` believes it was on time.
-            TIMELY_ORIGINAL_RETURN =
-              T.let(
-                :timely_original_return,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            TIMELY_ORIGINAL_RETURN = :timely_original_return
 
             # Code R27. A rare return reason. An ACH return's trace number does not match an originated ACH.
-            TRACE_NUMBER_ERROR =
-              T.let(
-                :trace_number_error,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            TRACE_NUMBER_ERROR = :trace_number_error
 
             # Code R72. A rare return reason. The dishonored return was sent too late.
-            UNTIMELY_DISHONORED_RETURN =
-              T.let(
-                :untimely_dishonored_return,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
+            UNTIMELY_DISHONORED_RETURN = :untimely_dishonored_return
 
             # Code R68. A rare return reason. The return was sent too late.
-            UNTIMELY_RETURN =
-              T.let(
-                :untimely_return,
-                Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-              )
-
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol]
-                  )
-              end
-              def values
-              end
-            end
+            UNTIMELY_RETURN = :untimely_return
           end
         end
 
@@ -1909,26 +1433,19 @@ module Increase
           end
 
           sig do
-            params(
-              _: T.nilable(T.any(Increase::Models::Transaction::Source::CardRefund::Cashback, Increase::Util::AnyHash))
-            )
-              .returns(
-                T.nilable(T.any(Increase::Models::Transaction::Source::CardRefund::Cashback, Increase::Util::AnyHash))
-              )
+            params(_: T.nilable(Increase::Models::Transaction::Source::CardRefund::Cashback))
+              .returns(T.nilable(Increase::Models::Transaction::Source::CardRefund::Cashback))
           end
           def cashback=(_)
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's settlement currency.
-          sig { returns(Increase::Models::Transaction::Source::CardRefund::Currency::TaggedSymbol) }
+          sig { returns(Symbol) }
           def currency
           end
 
-          sig do
-            params(_: Increase::Models::Transaction::Source::CardRefund::Currency::TaggedSymbol)
-              .returns(Increase::Models::Transaction::Source::CardRefund::Currency::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def currency=(_)
           end
 
@@ -1938,12 +1455,8 @@ module Increase
           end
 
           sig do
-            params(
-              _: T.nilable(T.any(Increase::Models::Transaction::Source::CardRefund::Interchange, Increase::Util::AnyHash))
-            )
-              .returns(
-                T.nilable(T.any(Increase::Models::Transaction::Source::CardRefund::Interchange, Increase::Util::AnyHash))
-              )
+            params(_: T.nilable(Increase::Models::Transaction::Source::CardRefund::Interchange))
+              .returns(T.nilable(Increase::Models::Transaction::Source::CardRefund::Interchange))
           end
           def interchange=(_)
           end
@@ -2018,12 +1531,8 @@ module Increase
           end
 
           sig do
-            params(
-              _: T.any(Increase::Models::Transaction::Source::CardRefund::NetworkIdentifiers, Increase::Util::AnyHash)
-            )
-              .returns(
-                T.any(Increase::Models::Transaction::Source::CardRefund::NetworkIdentifiers, Increase::Util::AnyHash)
-              )
+            params(_: Increase::Models::Transaction::Source::CardRefund::NetworkIdentifiers)
+              .returns(Increase::Models::Transaction::Source::CardRefund::NetworkIdentifiers)
           end
           def network_identifiers=(_)
           end
@@ -2054,16 +1563,8 @@ module Increase
           end
 
           sig do
-            params(
-              _: T.nilable(
-                T.any(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails, Increase::Util::AnyHash)
-              )
-            )
-              .returns(
-                T.nilable(
-                  T.any(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails, Increase::Util::AnyHash)
-                )
-              )
+            params(_: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails))
+              .returns(T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails))
           end
           def purchase_details=(_)
           end
@@ -2079,14 +1580,11 @@ module Increase
 
           # A constant representing the object's type. For this resource it will always be
           #   `card_refund`.
-          sig { returns(Increase::Models::Transaction::Source::CardRefund::Type::TaggedSymbol) }
+          sig { returns(Symbol) }
           def type
           end
 
-          sig do
-            params(_: Increase::Models::Transaction::Source::CardRefund::Type::TaggedSymbol)
-              .returns(Increase::Models::Transaction::Source::CardRefund::Type::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def type=(_)
           end
 
@@ -2101,7 +1599,7 @@ module Increase
               amount: Integer,
               card_payment_id: String,
               cashback: T.nilable(Increase::Models::Transaction::Source::CardRefund::Cashback),
-              currency: Increase::Models::Transaction::Source::CardRefund::Currency::TaggedSymbol,
+              currency: Symbol,
               interchange: T.nilable(Increase::Models::Transaction::Source::CardRefund::Interchange),
               merchant_acceptor_id: String,
               merchant_category_code: String,
@@ -2115,7 +1613,7 @@ module Increase
               presentment_currency: String,
               purchase_details: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails),
               transaction_id: String,
-              type: Increase::Models::Transaction::Source::CardRefund::Type::TaggedSymbol
+              type: Symbol
             )
               .returns(T.attached_class)
           end
@@ -2150,7 +1648,7 @@ module Increase
                   amount: Integer,
                   card_payment_id: String,
                   cashback: T.nilable(Increase::Models::Transaction::Source::CardRefund::Cashback),
-                  currency: Increase::Models::Transaction::Source::CardRefund::Currency::TaggedSymbol,
+                  currency: Symbol,
                   interchange: T.nilable(Increase::Models::Transaction::Source::CardRefund::Interchange),
                   merchant_acceptor_id: String,
                   merchant_category_code: String,
@@ -2164,7 +1662,7 @@ module Increase
                   presentment_currency: String,
                   purchase_details: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails),
                   transaction_id: String,
-                  type: Increase::Models::Transaction::Source::CardRefund::Type::TaggedSymbol
+                  type: Symbol
                 }
               )
           end
@@ -2184,112 +1682,74 @@ module Increase
             end
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
-            sig { returns(Increase::Models::Transaction::Source::CardRefund::Cashback::Currency::TaggedSymbol) }
+            sig { returns(Symbol) }
             def currency
             end
 
-            sig do
-              params(_: Increase::Models::Transaction::Source::CardRefund::Cashback::Currency::TaggedSymbol)
-                .returns(Increase::Models::Transaction::Source::CardRefund::Cashback::Currency::TaggedSymbol)
-            end
+            sig { params(_: Symbol).returns(Symbol) }
             def currency=(_)
             end
 
             # Cashback debited for this transaction, if eligible. Cashback is paid out in
             #   aggregate, monthly.
-            sig do
-              params(
-                amount: String,
-                currency: Increase::Models::Transaction::Source::CardRefund::Cashback::Currency::TaggedSymbol
-              )
-                .returns(T.attached_class)
-            end
+            sig { params(amount: String, currency: Symbol).returns(T.attached_class) }
             def self.new(amount:, currency:)
             end
 
-            sig do
-              override
-                .returns(
-                  {
-                    amount: String,
-                    currency: Increase::Models::Transaction::Source::CardRefund::Cashback::Currency::TaggedSymbol
-                  }
-                )
-            end
+            sig { override.returns({amount: String, currency: Symbol}) }
             def to_hash
             end
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
-            module Currency
-              extend Increase::Enum
+            class Currency < Increase::Enum
+              abstract!
 
-              TaggedSymbol =
-                T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CardRefund::Cashback::Currency) }
-              OrSymbol =
-                T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CardRefund::Cashback::Currency::TaggedSymbol) }
+              Value = type_template(:out) { {fixed: Symbol} }
 
               # Canadian Dollar (CAD)
-              CAD = T.let(:CAD, Increase::Models::Transaction::Source::CardRefund::Cashback::Currency::TaggedSymbol)
+              CAD = :CAD
 
               # Swiss Franc (CHF)
-              CHF = T.let(:CHF, Increase::Models::Transaction::Source::CardRefund::Cashback::Currency::TaggedSymbol)
+              CHF = :CHF
 
               # Euro (EUR)
-              EUR = T.let(:EUR, Increase::Models::Transaction::Source::CardRefund::Cashback::Currency::TaggedSymbol)
+              EUR = :EUR
 
               # British Pound (GBP)
-              GBP = T.let(:GBP, Increase::Models::Transaction::Source::CardRefund::Cashback::Currency::TaggedSymbol)
+              GBP = :GBP
 
               # Japanese Yen (JPY)
-              JPY = T.let(:JPY, Increase::Models::Transaction::Source::CardRefund::Cashback::Currency::TaggedSymbol)
+              JPY = :JPY
 
               # US Dollar (USD)
-              USD = T.let(:USD, Increase::Models::Transaction::Source::CardRefund::Cashback::Currency::TaggedSymbol)
-
-              class << self
-                sig do
-                  override
-                    .returns(T::Array[Increase::Models::Transaction::Source::CardRefund::Cashback::Currency::TaggedSymbol])
-                end
-                def values
-                end
-              end
+              USD = :USD
             end
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's settlement currency.
-          module Currency
-            extend Increase::Enum
+          class Currency < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CardRefund::Currency) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CardRefund::Currency::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
-            CAD = T.let(:CAD, Increase::Models::Transaction::Source::CardRefund::Currency::TaggedSymbol)
+            CAD = :CAD
 
             # Swiss Franc (CHF)
-            CHF = T.let(:CHF, Increase::Models::Transaction::Source::CardRefund::Currency::TaggedSymbol)
+            CHF = :CHF
 
             # Euro (EUR)
-            EUR = T.let(:EUR, Increase::Models::Transaction::Source::CardRefund::Currency::TaggedSymbol)
+            EUR = :EUR
 
             # British Pound (GBP)
-            GBP = T.let(:GBP, Increase::Models::Transaction::Source::CardRefund::Currency::TaggedSymbol)
+            GBP = :GBP
 
             # Japanese Yen (JPY)
-            JPY = T.let(:JPY, Increase::Models::Transaction::Source::CardRefund::Currency::TaggedSymbol)
+            JPY = :JPY
 
             # US Dollar (USD)
-            USD = T.let(:USD, Increase::Models::Transaction::Source::CardRefund::Currency::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::Transaction::Source::CardRefund::Currency::TaggedSymbol]) }
-              def values
-              end
-            end
+            USD = :USD
           end
 
           class Interchange < Increase::BaseModel
@@ -2315,78 +1775,49 @@ module Increase
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   reimbursement.
-            sig { returns(Increase::Models::Transaction::Source::CardRefund::Interchange::Currency::TaggedSymbol) }
+            sig { returns(Symbol) }
             def currency
             end
 
-            sig do
-              params(_: Increase::Models::Transaction::Source::CardRefund::Interchange::Currency::TaggedSymbol)
-                .returns(Increase::Models::Transaction::Source::CardRefund::Interchange::Currency::TaggedSymbol)
-            end
+            sig { params(_: Symbol).returns(Symbol) }
             def currency=(_)
             end
 
             # Interchange assessed as a part of this transaciton.
             sig do
-              params(
-                amount: String,
-                code: T.nilable(String),
-                currency: Increase::Models::Transaction::Source::CardRefund::Interchange::Currency::TaggedSymbol
-              )
-                .returns(T.attached_class)
+              params(amount: String, code: T.nilable(String), currency: Symbol).returns(T.attached_class)
             end
             def self.new(amount:, code:, currency:)
             end
 
-            sig do
-              override
-                .returns(
-                  {
-                    amount: String,
-                    code: T.nilable(String),
-                    currency: Increase::Models::Transaction::Source::CardRefund::Interchange::Currency::TaggedSymbol
-                  }
-                )
-            end
+            sig { override.returns({amount: String, code: T.nilable(String), currency: Symbol}) }
             def to_hash
             end
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   reimbursement.
-            module Currency
-              extend Increase::Enum
+            class Currency < Increase::Enum
+              abstract!
 
-              TaggedSymbol =
-                T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CardRefund::Interchange::Currency) }
-              OrSymbol =
-                T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CardRefund::Interchange::Currency::TaggedSymbol) }
+              Value = type_template(:out) { {fixed: Symbol} }
 
               # Canadian Dollar (CAD)
-              CAD = T.let(:CAD, Increase::Models::Transaction::Source::CardRefund::Interchange::Currency::TaggedSymbol)
+              CAD = :CAD
 
               # Swiss Franc (CHF)
-              CHF = T.let(:CHF, Increase::Models::Transaction::Source::CardRefund::Interchange::Currency::TaggedSymbol)
+              CHF = :CHF
 
               # Euro (EUR)
-              EUR = T.let(:EUR, Increase::Models::Transaction::Source::CardRefund::Interchange::Currency::TaggedSymbol)
+              EUR = :EUR
 
               # British Pound (GBP)
-              GBP = T.let(:GBP, Increase::Models::Transaction::Source::CardRefund::Interchange::Currency::TaggedSymbol)
+              GBP = :GBP
 
               # Japanese Yen (JPY)
-              JPY = T.let(:JPY, Increase::Models::Transaction::Source::CardRefund::Interchange::Currency::TaggedSymbol)
+              JPY = :JPY
 
               # US Dollar (USD)
-              USD = T.let(:USD, Increase::Models::Transaction::Source::CardRefund::Interchange::Currency::TaggedSymbol)
-
-              class << self
-                sig do
-                  override
-                    .returns(T::Array[Increase::Models::Transaction::Source::CardRefund::Interchange::Currency::TaggedSymbol])
-                end
-                def values
-                end
-              end
+              USD = :USD
             end
           end
 
@@ -2453,22 +1884,8 @@ module Increase
             end
 
             sig do
-              params(
-                _: T.nilable(
-                  T.any(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental,
-                    Increase::Util::AnyHash
-                  )
-                )
-              )
-                .returns(
-                  T.nilable(
-                    T.any(
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental,
-                      Increase::Util::AnyHash
-                    )
-                  )
-                )
+              params(_: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental))
+                .returns(T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental))
             end
             def car_rental=(_)
             end
@@ -2507,22 +1924,8 @@ module Increase
             end
 
             sig do
-              params(
-                _: T.nilable(
-                  T.any(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging,
-                    Increase::Util::AnyHash
-                  )
-                )
-              )
-                .returns(
-                  T.nilable(
-                    T.any(
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging,
-                      Increase::Util::AnyHash
-                    )
-                  )
-                )
+              params(_: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging))
+                .returns(T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging))
             end
             def lodging=(_)
             end
@@ -2556,28 +1959,11 @@ module Increase
             end
 
             # The format of the purchase identifier.
-            sig do
-              returns(
-                T.nilable(
-                  Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                )
-              )
-            end
+            sig { returns(T.nilable(Symbol)) }
             def purchase_identifier_format
             end
 
-            sig do
-              params(
-                _: T.nilable(
-                  Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                )
-              )
-                .returns(
-                  T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                  )
-                )
-            end
+            sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
             def purchase_identifier_format=(_)
             end
 
@@ -2587,16 +1973,8 @@ module Increase
             end
 
             sig do
-              params(
-                _: T.nilable(
-                  T.any(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel, Increase::Util::AnyHash)
-                )
-              )
-                .returns(
-                  T.nilable(
-                    T.any(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel, Increase::Util::AnyHash)
-                  )
-                )
+              params(_: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel))
+                .returns(T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel))
             end
             def travel=(_)
             end
@@ -2613,9 +1991,7 @@ module Increase
                 national_tax_amount: T.nilable(Integer),
                 national_tax_currency: T.nilable(String),
                 purchase_identifier: T.nilable(String),
-                purchase_identifier_format: T.nilable(
-                  Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                ),
+                purchase_identifier_format: T.nilable(Symbol),
                 travel: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel)
               )
                 .returns(T.attached_class)
@@ -2646,9 +2022,7 @@ module Increase
                     national_tax_amount: T.nilable(Integer),
                     national_tax_currency: T.nilable(String),
                     purchase_identifier: T.nilable(String),
-                    purchase_identifier_format: T.nilable(
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                    ),
+                    purchase_identifier_format: T.nilable(Symbol),
                     travel: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel)
                   }
                 )
@@ -2705,28 +2079,11 @@ module Increase
               end
 
               # Additional charges (gas, late fee, etc.) being billed.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
-                )
-              end
+              sig { returns(T.nilable(Symbol)) }
               def extra_charges
               end
 
-              sig do
-                params(
-                  _: T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
-                )
-                  .returns(
-                    T.nilable(
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                    )
-                  )
-              end
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
               def extra_charges=(_)
               end
 
@@ -2770,28 +2127,11 @@ module Increase
 
               # An indicator that the cardholder is being billed for a reserved vehicle that was
               #   not actually rented (that is, a "no-show" charge).
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                  )
-                )
-              end
+              sig { returns(T.nilable(Symbol)) }
               def no_show_indicator
               end
 
-              sig do
-                params(
-                  _: T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                  )
-                )
-                  .returns(
-                    T.nilable(
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                    )
-                  )
-              end
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
               def no_show_indicator=(_)
               end
 
@@ -2851,16 +2191,12 @@ module Increase
                   daily_rental_rate_amount: T.nilable(Integer),
                   daily_rental_rate_currency: T.nilable(String),
                   days_rented: T.nilable(Integer),
-                  extra_charges: T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  ),
+                  extra_charges: T.nilable(Symbol),
                   fuel_charges_amount: T.nilable(Integer),
                   fuel_charges_currency: T.nilable(String),
                   insurance_charges_amount: T.nilable(Integer),
                   insurance_charges_currency: T.nilable(String),
-                  no_show_indicator: T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                  ),
+                  no_show_indicator: T.nilable(Symbol),
                   one_way_drop_off_charges_amount: T.nilable(Integer),
                   one_way_drop_off_charges_currency: T.nilable(String),
                   renter_name: T.nilable(String),
@@ -2898,16 +2234,12 @@ module Increase
                       daily_rental_rate_amount: T.nilable(Integer),
                       daily_rental_rate_currency: T.nilable(String),
                       days_rented: T.nilable(Integer),
-                      extra_charges: T.nilable(
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                      ),
+                      extra_charges: T.nilable(Symbol),
                       fuel_charges_amount: T.nilable(Integer),
                       fuel_charges_currency: T.nilable(String),
                       insurance_charges_amount: T.nilable(Integer),
                       insurance_charges_currency: T.nilable(String),
-                      no_show_indicator: T.nilable(
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                      ),
+                      no_show_indicator: T.nilable(Symbol),
                       one_way_drop_off_charges_amount: T.nilable(Integer),
                       one_way_drop_off_charges_currency: T.nilable(String),
                       renter_name: T.nilable(String),
@@ -2920,116 +2252,42 @@ module Increase
               end
 
               # Additional charges (gas, late fee, etc.) being billed.
-              module ExtraCharges
-                extend Increase::Enum
+              class ExtraCharges < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges) }
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # No extra charge
-                NO_EXTRA_CHARGE =
-                  T.let(
-                    :no_extra_charge,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
+                NO_EXTRA_CHARGE = :no_extra_charge
 
                 # Gas
-                GAS =
-                  T.let(
-                    :gas,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
+                GAS = :gas
 
                 # Extra mileage
-                EXTRA_MILEAGE =
-                  T.let(
-                    :extra_mileage,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
+                EXTRA_MILEAGE = :extra_mileage
 
                 # Late return
-                LATE_RETURN =
-                  T.let(
-                    :late_return,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
+                LATE_RETURN = :late_return
 
                 # One way service fee
-                ONE_WAY_SERVICE_FEE =
-                  T.let(
-                    :one_way_service_fee,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
+                ONE_WAY_SERVICE_FEE = :one_way_service_fee
 
                 # Parking violation
-                PARKING_VIOLATION =
-                  T.let(
-                    :parking_violation,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol]
-                      )
-                  end
-                  def values
-                  end
-                end
+                PARKING_VIOLATION = :parking_violation
               end
 
               # An indicator that the cardholder is being billed for a reserved vehicle that was
               #   not actually rented (that is, a "no-show" charge).
-              module NoShowIndicator
-                extend Increase::Enum
+              class NoShowIndicator < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # Not applicable
-                NOT_APPLICABLE =
-                  T.let(
-                    :not_applicable,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                  )
+                NOT_APPLICABLE = :not_applicable
 
                 # No show for specialized vehicle
-                NO_SHOW_FOR_SPECIALIZED_VEHICLE =
-                  T.let(
-                    :no_show_for_specialized_vehicle,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                NO_SHOW_FOR_SPECIALIZED_VEHICLE = :no_show_for_specialized_vehicle
               end
             end
 
@@ -3063,28 +2321,11 @@ module Increase
               end
 
               # Additional charges (phone, late check-out, etc.) being billed.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
-                )
-              end
+              sig { returns(T.nilable(Symbol)) }
               def extra_charges
               end
 
-              sig do
-                params(
-                  _: T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
-                )
-                  .returns(
-                    T.nilable(
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                    )
-                  )
-              end
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
               def extra_charges=(_)
               end
 
@@ -3128,28 +2369,11 @@ module Increase
 
               # Indicator that the cardholder is being billed for a reserved room that was not
               #   actually used.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                  )
-                )
-              end
+              sig { returns(T.nilable(Symbol)) }
               def no_show_indicator
               end
 
-              sig do
-                params(
-                  _: T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                  )
-                )
-                  .returns(
-                    T.nilable(
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                    )
-                  )
-              end
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
               def no_show_indicator=(_)
               end
 
@@ -3225,16 +2449,12 @@ module Increase
                   check_in_date: T.nilable(Date),
                   daily_room_rate_amount: T.nilable(Integer),
                   daily_room_rate_currency: T.nilable(String),
-                  extra_charges: T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  ),
+                  extra_charges: T.nilable(Symbol),
                   folio_cash_advances_amount: T.nilable(Integer),
                   folio_cash_advances_currency: T.nilable(String),
                   food_beverage_charges_amount: T.nilable(Integer),
                   food_beverage_charges_currency: T.nilable(String),
-                  no_show_indicator: T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                  ),
+                  no_show_indicator: T.nilable(Symbol),
                   prepaid_expenses_amount: T.nilable(Integer),
                   prepaid_expenses_currency: T.nilable(String),
                   room_nights: T.nilable(Integer),
@@ -3272,16 +2492,12 @@ module Increase
                       check_in_date: T.nilable(Date),
                       daily_room_rate_amount: T.nilable(Integer),
                       daily_room_rate_currency: T.nilable(String),
-                      extra_charges: T.nilable(
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                      ),
+                      extra_charges: T.nilable(Symbol),
                       folio_cash_advances_amount: T.nilable(Integer),
                       folio_cash_advances_currency: T.nilable(String),
                       food_beverage_charges_amount: T.nilable(Integer),
                       food_beverage_charges_currency: T.nilable(String),
-                      no_show_indicator: T.nilable(
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                      ),
+                      no_show_indicator: T.nilable(Symbol),
                       prepaid_expenses_amount: T.nilable(Integer),
                       prepaid_expenses_currency: T.nilable(String),
                       room_nights: T.nilable(Integer),
@@ -3296,185 +2512,68 @@ module Increase
               end
 
               # Additional charges (phone, late check-out, etc.) being billed.
-              module ExtraCharges
-                extend Increase::Enum
+              class ExtraCharges < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges) }
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # No extra charge
-                NO_EXTRA_CHARGE =
-                  T.let(
-                    :no_extra_charge,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
+                NO_EXTRA_CHARGE = :no_extra_charge
 
                 # Restaurant
-                RESTAURANT =
-                  T.let(
-                    :restaurant,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
+                RESTAURANT = :restaurant
 
                 # Gift shop
-                GIFT_SHOP =
-                  T.let(
-                    :gift_shop,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
+                GIFT_SHOP = :gift_shop
 
                 # Mini bar
-                MINI_BAR =
-                  T.let(
-                    :mini_bar,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
+                MINI_BAR = :mini_bar
 
                 # Telephone
-                TELEPHONE =
-                  T.let(
-                    :telephone,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
+                TELEPHONE = :telephone
 
                 # Other
-                OTHER =
-                  T.let(
-                    :other,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
+                OTHER = :other
 
                 # Laundry
-                LAUNDRY =
-                  T.let(
-                    :laundry,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol]
-                      )
-                  end
-                  def values
-                  end
-                end
+                LAUNDRY = :laundry
               end
 
               # Indicator that the cardholder is being billed for a reserved room that was not
               #   actually used.
-              module NoShowIndicator
-                extend Increase::Enum
+              class NoShowIndicator < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # Not applicable
-                NOT_APPLICABLE =
-                  T.let(
-                    :not_applicable,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                  )
+                NOT_APPLICABLE = :not_applicable
 
                 # No show
-                NO_SHOW =
-                  T.let(
-                    :no_show,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol]
-                      )
-                  end
-                  def values
-                  end
-                end
+                NO_SHOW = :no_show
               end
             end
 
             # The format of the purchase identifier.
-            module PurchaseIdentifierFormat
-              extend Increase::Enum
+            class PurchaseIdentifierFormat < Increase::Enum
+              abstract!
 
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat)
-                end
-              OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                  )
-                end
+              Value = type_template(:out) { {fixed: Symbol} }
 
               # Free text
-              FREE_TEXT =
-                T.let(
-                  :free_text,
-                  Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                )
+              FREE_TEXT = :free_text
 
               # Order number
-              ORDER_NUMBER =
-                T.let(
-                  :order_number,
-                  Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                )
+              ORDER_NUMBER = :order_number
 
               # Rental agreement number
-              RENTAL_AGREEMENT_NUMBER =
-                T.let(
-                  :rental_agreement_number,
-                  Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                )
+              RENTAL_AGREEMENT_NUMBER = :rental_agreement_number
 
               # Hotel folio number
-              HOTEL_FOLIO_NUMBER =
-                T.let(
-                  :hotel_folio_number,
-                  Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                )
+              HOTEL_FOLIO_NUMBER = :hotel_folio_number
 
               # Invoice number
-              INVOICE_NUMBER =
-                T.let(
-                  :invoice_number,
-                  Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                )
-
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol]
-                    )
-                end
-                def values
-                end
-              end
+              INVOICE_NUMBER = :invoice_number
             end
 
             class Travel < Increase::BaseModel
@@ -3485,21 +2584,9 @@ module Increase
 
               sig do
                 params(
-                  _: T.nilable(
-                    T.any(
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary,
-                      Increase::Util::AnyHash
-                    )
-                  )
+                  _: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary)
                 )
-                  .returns(
-                    T.nilable(
-                      T.any(
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary,
-                        Increase::Util::AnyHash
-                      )
-                    )
-                  )
+                  .returns(T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary))
               end
               def ancillary=(_)
               end
@@ -3514,28 +2601,11 @@ module Increase
               end
 
               # Indicates the reason for a credit to the cardholder.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
-                )
-              end
+              sig { returns(T.nilable(Symbol)) }
               def credit_reason_indicator
               end
 
-              sig do
-                params(
-                  _: T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
-                )
-                  .returns(
-                    T.nilable(
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                    )
-                  )
-              end
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
               def credit_reason_indicator=(_)
               end
 
@@ -3567,54 +2637,20 @@ module Increase
               end
 
               # Indicates whether this ticket is non-refundable.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                  )
-                )
-              end
+              sig { returns(T.nilable(Symbol)) }
               def restricted_ticket_indicator
               end
 
-              sig do
-                params(
-                  _: T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                  )
-                )
-                  .returns(
-                    T.nilable(
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                    )
-                  )
-              end
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
               def restricted_ticket_indicator=(_)
               end
 
               # Indicates why a ticket was changed.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                  )
-                )
-              end
+              sig { returns(T.nilable(Symbol)) }
               def ticket_change_indicator
               end
 
-              sig do
-                params(
-                  _: T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                  )
-                )
-                  .returns(
-                    T.nilable(
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                    )
-                  )
-              end
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
               def ticket_change_indicator=(_)
               end
 
@@ -3670,18 +2706,12 @@ module Increase
                 params(
                   ancillary: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary),
                   computerized_reservation_system: T.nilable(String),
-                  credit_reason_indicator: T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  ),
+                  credit_reason_indicator: T.nilable(Symbol),
                   departure_date: T.nilable(Date),
                   origination_city_airport_code: T.nilable(String),
                   passenger_name: T.nilable(String),
-                  restricted_ticket_indicator: T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                  ),
-                  ticket_change_indicator: T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                  ),
+                  restricted_ticket_indicator: T.nilable(Symbol),
+                  ticket_change_indicator: T.nilable(Symbol),
                   ticket_number: T.nilable(String),
                   travel_agency_code: T.nilable(String),
                   travel_agency_name: T.nilable(String),
@@ -3711,18 +2741,12 @@ module Increase
                     {
                       ancillary: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary),
                       computerized_reservation_system: T.nilable(String),
-                      credit_reason_indicator: T.nilable(
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                      ),
+                      credit_reason_indicator: T.nilable(Symbol),
                       departure_date: T.nilable(Date),
                       origination_city_airport_code: T.nilable(String),
                       passenger_name: T.nilable(String),
-                      restricted_ticket_indicator: T.nilable(
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                      ),
-                      ticket_change_indicator: T.nilable(
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                      ),
+                      restricted_ticket_indicator: T.nilable(Symbol),
+                      ticket_change_indicator: T.nilable(Symbol),
                       ticket_number: T.nilable(String),
                       travel_agency_code: T.nilable(String),
                       travel_agency_name: T.nilable(String),
@@ -3746,28 +2770,11 @@ module Increase
                 end
 
                 # Indicates the reason for a credit to the cardholder.
-                sig do
-                  returns(
-                    T.nilable(
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                    )
-                  )
-                end
+                sig { returns(T.nilable(Symbol)) }
                 def credit_reason_indicator
                 end
 
-                sig do
-                  params(
-                    _: T.nilable(
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                    )
-                  )
-                    .returns(
-                      T.nilable(
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                      )
-                    )
-                end
+                sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
                 def credit_reason_indicator=(_)
                 end
 
@@ -3813,9 +2820,7 @@ module Increase
                 sig do
                   params(
                     connected_ticket_document_number: T.nilable(String),
-                    credit_reason_indicator: T.nilable(
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                    ),
+                    credit_reason_indicator: T.nilable(Symbol),
                     passenger_name_or_description: T.nilable(String),
                     services: T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service],
                     ticket_document_number: T.nilable(String)
@@ -3836,9 +2841,7 @@ module Increase
                     .returns(
                       {
                         connected_ticket_document_number: T.nilable(String),
-                        credit_reason_indicator: T.nilable(
-                          Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                        ),
+                        credit_reason_indicator: T.nilable(Symbol),
                         passenger_name_or_description: T.nilable(String),
                         services: T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service],
                         ticket_document_number: T.nilable(String)
@@ -3849,87 +2852,33 @@ module Increase
                 end
 
                 # Indicates the reason for a credit to the cardholder.
-                module CreditReasonIndicator
-                  extend Increase::Enum
+                class CreditReasonIndicator < Increase::Enum
+                  abstract!
 
-                  TaggedSymbol =
-                    T.type_alias do
-                      T.all(Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator)
-                    end
-                  OrSymbol =
-                    T.type_alias do
-                      T.any(
-                        Symbol,
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                      )
-                    end
+                  Value = type_template(:out) { {fixed: Symbol} }
 
                   # No credit
-                  NO_CREDIT =
-                    T.let(
-                      :no_credit,
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                    )
+                  NO_CREDIT = :no_credit
 
                   # Passenger transport ancillary purchase cancellation
                   PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
-                    T.let(
-                      :passenger_transport_ancillary_purchase_cancellation,
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                    )
+                    :passenger_transport_ancillary_purchase_cancellation
 
                   # Airline ticket and passenger transport ancillary purchase cancellation
                   AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
-                    T.let(
-                      :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                    )
+                    :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
 
                   # Other
-                  OTHER =
-                    T.let(
-                      :other,
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                    )
-
-                  class << self
-                    sig do
-                      override
-                        .returns(
-                          T::Array[
-                          Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                          ]
-                        )
-                    end
-                    def values
-                    end
-                  end
+                  OTHER = :other
                 end
 
                 class Service < Increase::BaseModel
                   # Category of the ancillary service.
-                  sig do
-                    returns(
-                      T.nilable(
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
-                    )
-                  end
+                  sig { returns(T.nilable(Symbol)) }
                   def category
                   end
 
-                  sig do
-                    params(
-                      _: T.nilable(
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
-                    )
-                      .returns(
-                        T.nilable(
-                          Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                        )
-                      )
-                  end
+                  sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
                   def category=(_)
                   end
 
@@ -3944,395 +2893,152 @@ module Increase
 
                   sig do
                     params(
-                      category: T.nilable(
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      ),
+                      category: T.nilable(Symbol),
                       sub_category: T.nilable(String)
-                    )
-                      .returns(T.attached_class)
+                    ).returns(T.attached_class)
                   end
                   def self.new(category:, sub_category:)
                   end
 
-                  sig do
-                    override
-                      .returns(
-                        {
-                          category: T.nilable(
-                            Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                          ),
-                          sub_category: T.nilable(String)
-                        }
-                      )
-                  end
+                  sig { override.returns({category: T.nilable(Symbol), sub_category: T.nilable(String)}) }
                   def to_hash
                   end
 
                   # Category of the ancillary service.
-                  module Category
-                    extend Increase::Enum
+                  class Category < Increase::Enum
+                    abstract!
 
-                    TaggedSymbol =
-                      T.type_alias do
-                        T.all(Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category)
-                      end
-                    OrSymbol =
-                      T.type_alias do
-                        T.any(
-                          Symbol,
-                          Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                        )
-                      end
+                    Value = type_template(:out) { {fixed: Symbol} }
 
                     # None
-                    NONE =
-                      T.let(
-                        :none,
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    NONE = :none
 
                     # Bundled service
-                    BUNDLED_SERVICE =
-                      T.let(
-                        :bundled_service,
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    BUNDLED_SERVICE = :bundled_service
 
                     # Baggage fee
-                    BAGGAGE_FEE =
-                      T.let(
-                        :baggage_fee,
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    BAGGAGE_FEE = :baggage_fee
 
                     # Change fee
-                    CHANGE_FEE =
-                      T.let(
-                        :change_fee,
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    CHANGE_FEE = :change_fee
 
                     # Cargo
-                    CARGO =
-                      T.let(
-                        :cargo,
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    CARGO = :cargo
 
                     # Carbon offset
-                    CARBON_OFFSET =
-                      T.let(
-                        :carbon_offset,
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    CARBON_OFFSET = :carbon_offset
 
                     # Frequent flyer
-                    FREQUENT_FLYER =
-                      T.let(
-                        :frequent_flyer,
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    FREQUENT_FLYER = :frequent_flyer
 
                     # Gift card
-                    GIFT_CARD =
-                      T.let(
-                        :gift_card,
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    GIFT_CARD = :gift_card
 
                     # Ground transport
-                    GROUND_TRANSPORT =
-                      T.let(
-                        :ground_transport,
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    GROUND_TRANSPORT = :ground_transport
 
                     # In-flight entertainment
-                    IN_FLIGHT_ENTERTAINMENT =
-                      T.let(
-                        :in_flight_entertainment,
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    IN_FLIGHT_ENTERTAINMENT = :in_flight_entertainment
 
                     # Lounge
-                    LOUNGE =
-                      T.let(
-                        :lounge,
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    LOUNGE = :lounge
 
                     # Medical
-                    MEDICAL =
-                      T.let(
-                        :medical,
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    MEDICAL = :medical
 
                     # Meal beverage
-                    MEAL_BEVERAGE =
-                      T.let(
-                        :meal_beverage,
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    MEAL_BEVERAGE = :meal_beverage
 
                     # Other
-                    OTHER =
-                      T.let(
-                        :other,
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    OTHER = :other
 
                     # Passenger assist fee
-                    PASSENGER_ASSIST_FEE =
-                      T.let(
-                        :passenger_assist_fee,
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    PASSENGER_ASSIST_FEE = :passenger_assist_fee
 
                     # Pets
-                    PETS =
-                      T.let(
-                        :pets,
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    PETS = :pets
 
                     # Seat fees
-                    SEAT_FEES =
-                      T.let(
-                        :seat_fees,
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    SEAT_FEES = :seat_fees
 
                     # Standby
-                    STANDBY =
-                      T.let(
-                        :standby,
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    STANDBY = :standby
 
                     # Service fee
-                    SERVICE_FEE =
-                      T.let(
-                        :service_fee,
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    SERVICE_FEE = :service_fee
 
                     # Store
-                    STORE =
-                      T.let(
-                        :store,
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    STORE = :store
 
                     # Travel service
-                    TRAVEL_SERVICE =
-                      T.let(
-                        :travel_service,
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    TRAVEL_SERVICE = :travel_service
 
                     # Unaccompanied travel
-                    UNACCOMPANIED_TRAVEL =
-                      T.let(
-                        :unaccompanied_travel,
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    UNACCOMPANIED_TRAVEL = :unaccompanied_travel
 
                     # Upgrades
-                    UPGRADES =
-                      T.let(
-                        :upgrades,
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    UPGRADES = :upgrades
 
                     # Wi-fi
-                    WIFI =
-                      T.let(
-                        :wifi,
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
-
-                    class << self
-                      sig do
-                        override
-                          .returns(
-                            T::Array[
-                            Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                            ]
-                          )
-                      end
-                      def values
-                      end
-                    end
+                    WIFI = :wifi
                   end
                 end
               end
 
               # Indicates the reason for a credit to the cardholder.
-              module CreditReasonIndicator
-                extend Increase::Enum
+              class CreditReasonIndicator < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # No credit
-                NO_CREDIT =
-                  T.let(
-                    :no_credit,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
+                NO_CREDIT = :no_credit
 
                 # Passenger transport ancillary purchase cancellation
                 PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
-                  T.let(
-                    :passenger_transport_ancillary_purchase_cancellation,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
+                  :passenger_transport_ancillary_purchase_cancellation
 
                 # Airline ticket and passenger transport ancillary purchase cancellation
                 AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
-                  T.let(
-                    :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
+                  :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
 
                 # Airline ticket cancellation
-                AIRLINE_TICKET_CANCELLATION =
-                  T.let(
-                    :airline_ticket_cancellation,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
+                AIRLINE_TICKET_CANCELLATION = :airline_ticket_cancellation
 
                 # Other
-                OTHER =
-                  T.let(
-                    :other,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
+                OTHER = :other
 
                 # Partial refund of airline ticket
-                PARTIAL_REFUND_OF_AIRLINE_TICKET =
-                  T.let(
-                    :partial_refund_of_airline_ticket,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                PARTIAL_REFUND_OF_AIRLINE_TICKET = :partial_refund_of_airline_ticket
               end
 
               # Indicates whether this ticket is non-refundable.
-              module RestrictedTicketIndicator
-                extend Increase::Enum
+              class RestrictedTicketIndicator < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # No restrictions
-                NO_RESTRICTIONS =
-                  T.let(
-                    :no_restrictions,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                  )
+                NO_RESTRICTIONS = :no_restrictions
 
                 # Restricted non-refundable ticket
-                RESTRICTED_NON_REFUNDABLE_TICKET =
-                  T.let(
-                    :restricted_non_refundable_ticket,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                RESTRICTED_NON_REFUNDABLE_TICKET = :restricted_non_refundable_ticket
               end
 
               # Indicates why a ticket was changed.
-              module TicketChangeIndicator
-                extend Increase::Enum
+              class TicketChangeIndicator < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # None
-                NONE =
-                  T.let(
-                    :none,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                  )
+                NONE = :none
 
                 # Change to existing ticket
-                CHANGE_TO_EXISTING_TICKET =
-                  T.let(
-                    :change_to_existing_ticket,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                  )
+                CHANGE_TO_EXISTING_TICKET = :change_to_existing_ticket
 
                 # New ticket
-                NEW_TICKET =
-                  T.let(
-                    :new_ticket,
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                NEW_TICKET = :new_ticket
               end
 
               class TripLeg < Increase::BaseModel
@@ -4382,28 +3088,11 @@ module Increase
                 end
 
                 # Indicates whether a stopover is allowed on this ticket.
-                sig do
-                  returns(
-                    T.nilable(
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                    )
-                  )
-                end
+                sig { returns(T.nilable(Symbol)) }
                 def stop_over_code
                 end
 
-                sig do
-                  params(
-                    _: T.nilable(
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                    )
-                  )
-                    .returns(
-                      T.nilable(
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                      )
-                    )
-                end
+                sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
                 def stop_over_code=(_)
                 end
 
@@ -4414,9 +3103,7 @@ module Increase
                     fare_basis_code: T.nilable(String),
                     flight_number: T.nilable(String),
                     service_class: T.nilable(String),
-                    stop_over_code: T.nilable(
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                    )
+                    stop_over_code: T.nilable(Symbol)
                   )
                     .returns(T.attached_class)
                 end
@@ -4439,9 +3126,7 @@ module Increase
                         fare_basis_code: T.nilable(String),
                         flight_number: T.nilable(String),
                         service_class: T.nilable(String),
-                        stop_over_code: T.nilable(
-                          Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                        )
+                        stop_over_code: T.nilable(Symbol)
                       }
                     )
                 end
@@ -4449,54 +3134,19 @@ module Increase
                 end
 
                 # Indicates whether a stopover is allowed on this ticket.
-                module StopOverCode
-                  extend Increase::Enum
+                class StopOverCode < Increase::Enum
+                  abstract!
 
-                  TaggedSymbol =
-                    T.type_alias do
-                      T.all(Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode)
-                    end
-                  OrSymbol =
-                    T.type_alias do
-                      T.any(
-                        Symbol,
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                      )
-                    end
+                  Value = type_template(:out) { {fixed: Symbol} }
 
                   # None
-                  NONE =
-                    T.let(
-                      :none,
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                    )
+                  NONE = :none
 
                   # Stop over allowed
-                  STOP_OVER_ALLOWED =
-                    T.let(
-                      :stop_over_allowed,
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                    )
+                  STOP_OVER_ALLOWED = :stop_over_allowed
 
                   # Stop over not allowed
-                  STOP_OVER_NOT_ALLOWED =
-                    T.let(
-                      :stop_over_not_allowed,
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                    )
-
-                  class << self
-                    sig do
-                      override
-                        .returns(
-                          T::Array[
-                          Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                          ]
-                        )
-                    end
-                    def values
-                    end
-                  end
+                  STOP_OVER_NOT_ALLOWED = :stop_over_not_allowed
                 end
               end
             end
@@ -4504,20 +3154,12 @@ module Increase
 
           # A constant representing the object's type. For this resource it will always be
           #   `card_refund`.
-          module Type
-            extend Increase::Enum
+          class Type < Increase::Enum
+            abstract!
 
-            TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CardRefund::Type) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CardRefund::Type::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            CARD_REFUND = T.let(:card_refund, Increase::Models::Transaction::Source::CardRefund::Type::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::Transaction::Source::CardRefund::Type::TaggedSymbol]) }
-              def values
-              end
-            end
+            CARD_REFUND = :card_refund
           end
         end
 
@@ -4534,14 +3176,11 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
-          sig { returns(Increase::Models::Transaction::Source::CardRevenuePayment::Currency::TaggedSymbol) }
+          sig { returns(Symbol) }
           def currency
           end
 
-          sig do
-            params(_: Increase::Models::Transaction::Source::CardRevenuePayment::Currency::TaggedSymbol)
-              .returns(Increase::Models::Transaction::Source::CardRevenuePayment::Currency::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def currency=(_)
           end
 
@@ -4578,7 +3217,7 @@ module Increase
           sig do
             params(
               amount: Integer,
-              currency: Increase::Models::Transaction::Source::CardRevenuePayment::Currency::TaggedSymbol,
+              currency: Symbol,
               period_end: Time,
               period_start: Time,
               transacted_on_account_id: T.nilable(String)
@@ -4593,7 +3232,7 @@ module Increase
               .returns(
                 {
                   amount: Integer,
-                  currency: Increase::Models::Transaction::Source::CardRevenuePayment::Currency::TaggedSymbol,
+                  currency: Symbol,
                   period_end: Time,
                   period_start: Time,
                   transacted_on_account_id: T.nilable(String)
@@ -4605,40 +3244,28 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
-          module Currency
-            extend Increase::Enum
+          class Currency < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CardRevenuePayment::Currency) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CardRevenuePayment::Currency::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
-            CAD = T.let(:CAD, Increase::Models::Transaction::Source::CardRevenuePayment::Currency::TaggedSymbol)
+            CAD = :CAD
 
             # Swiss Franc (CHF)
-            CHF = T.let(:CHF, Increase::Models::Transaction::Source::CardRevenuePayment::Currency::TaggedSymbol)
+            CHF = :CHF
 
             # Euro (EUR)
-            EUR = T.let(:EUR, Increase::Models::Transaction::Source::CardRevenuePayment::Currency::TaggedSymbol)
+            EUR = :EUR
 
             # British Pound (GBP)
-            GBP = T.let(:GBP, Increase::Models::Transaction::Source::CardRevenuePayment::Currency::TaggedSymbol)
+            GBP = :GBP
 
             # Japanese Yen (JPY)
-            JPY = T.let(:JPY, Increase::Models::Transaction::Source::CardRevenuePayment::Currency::TaggedSymbol)
+            JPY = :JPY
 
             # US Dollar (USD)
-            USD = T.let(:USD, Increase::Models::Transaction::Source::CardRevenuePayment::Currency::TaggedSymbol)
-
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::Transaction::Source::CardRevenuePayment::Currency::TaggedSymbol])
-              end
-              def values
-              end
-            end
+            USD = :USD
           end
         end
 
@@ -4688,26 +3315,19 @@ module Increase
           end
 
           sig do
-            params(
-              _: T.nilable(T.any(Increase::Models::Transaction::Source::CardSettlement::Cashback, Increase::Util::AnyHash))
-            )
-              .returns(
-                T.nilable(T.any(Increase::Models::Transaction::Source::CardSettlement::Cashback, Increase::Util::AnyHash))
-              )
+            params(_: T.nilable(Increase::Models::Transaction::Source::CardSettlement::Cashback))
+              .returns(T.nilable(Increase::Models::Transaction::Source::CardSettlement::Cashback))
           end
           def cashback=(_)
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's settlement currency.
-          sig { returns(Increase::Models::Transaction::Source::CardSettlement::Currency::TaggedSymbol) }
+          sig { returns(Symbol) }
           def currency
           end
 
-          sig do
-            params(_: Increase::Models::Transaction::Source::CardSettlement::Currency::TaggedSymbol)
-              .returns(Increase::Models::Transaction::Source::CardSettlement::Currency::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def currency=(_)
           end
 
@@ -4717,16 +3337,8 @@ module Increase
           end
 
           sig do
-            params(
-              _: T.nilable(
-                T.any(Increase::Models::Transaction::Source::CardSettlement::Interchange, Increase::Util::AnyHash)
-              )
-            )
-              .returns(
-                T.nilable(
-                  T.any(Increase::Models::Transaction::Source::CardSettlement::Interchange, Increase::Util::AnyHash)
-                )
-              )
+            params(_: T.nilable(Increase::Models::Transaction::Source::CardSettlement::Interchange))
+              .returns(T.nilable(Increase::Models::Transaction::Source::CardSettlement::Interchange))
           end
           def interchange=(_)
           end
@@ -4801,12 +3413,8 @@ module Increase
           end
 
           sig do
-            params(
-              _: T.any(Increase::Models::Transaction::Source::CardSettlement::NetworkIdentifiers, Increase::Util::AnyHash)
-            )
-              .returns(
-                T.any(Increase::Models::Transaction::Source::CardSettlement::NetworkIdentifiers, Increase::Util::AnyHash)
-              )
+            params(_: Increase::Models::Transaction::Source::CardSettlement::NetworkIdentifiers)
+              .returns(Increase::Models::Transaction::Source::CardSettlement::NetworkIdentifiers)
           end
           def network_identifiers=(_)
           end
@@ -4846,16 +3454,8 @@ module Increase
           end
 
           sig do
-            params(
-              _: T.nilable(
-                T.any(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails, Increase::Util::AnyHash)
-              )
-            )
-              .returns(
-                T.nilable(
-                  T.any(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails, Increase::Util::AnyHash)
-                )
-              )
+            params(_: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails))
+              .returns(T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails))
           end
           def purchase_details=(_)
           end
@@ -4871,14 +3471,11 @@ module Increase
 
           # A constant representing the object's type. For this resource it will always be
           #   `card_settlement`.
-          sig { returns(Increase::Models::Transaction::Source::CardSettlement::Type::TaggedSymbol) }
+          sig { returns(Symbol) }
           def type
           end
 
-          sig do
-            params(_: Increase::Models::Transaction::Source::CardSettlement::Type::TaggedSymbol)
-              .returns(Increase::Models::Transaction::Source::CardSettlement::Type::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def type=(_)
           end
 
@@ -4894,7 +3491,7 @@ module Increase
               card_authorization: T.nilable(String),
               card_payment_id: String,
               cashback: T.nilable(Increase::Models::Transaction::Source::CardSettlement::Cashback),
-              currency: Increase::Models::Transaction::Source::CardSettlement::Currency::TaggedSymbol,
+              currency: Symbol,
               interchange: T.nilable(Increase::Models::Transaction::Source::CardSettlement::Interchange),
               merchant_acceptor_id: String,
               merchant_category_code: String,
@@ -4909,7 +3506,7 @@ module Increase
               presentment_currency: String,
               purchase_details: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails),
               transaction_id: String,
-              type: Increase::Models::Transaction::Source::CardSettlement::Type::TaggedSymbol
+              type: Symbol
             )
               .returns(T.attached_class)
           end
@@ -4947,7 +3544,7 @@ module Increase
                   card_authorization: T.nilable(String),
                   card_payment_id: String,
                   cashback: T.nilable(Increase::Models::Transaction::Source::CardSettlement::Cashback),
-                  currency: Increase::Models::Transaction::Source::CardSettlement::Currency::TaggedSymbol,
+                  currency: Symbol,
                   interchange: T.nilable(Increase::Models::Transaction::Source::CardSettlement::Interchange),
                   merchant_acceptor_id: String,
                   merchant_category_code: String,
@@ -4962,7 +3559,7 @@ module Increase
                   presentment_currency: String,
                   purchase_details: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails),
                   transaction_id: String,
-                  type: Increase::Models::Transaction::Source::CardSettlement::Type::TaggedSymbol
+                  type: Symbol
                 }
               )
           end
@@ -4982,118 +3579,74 @@ module Increase
             end
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
-            sig { returns(Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency::TaggedSymbol) }
+            sig { returns(Symbol) }
             def currency
             end
 
-            sig do
-              params(_: Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency::TaggedSymbol)
-                .returns(Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency::TaggedSymbol)
-            end
+            sig { params(_: Symbol).returns(Symbol) }
             def currency=(_)
             end
 
             # Cashback earned on this transaction, if eligible. Cashback is paid out in
             #   aggregate, monthly.
-            sig do
-              params(
-                amount: String,
-                currency: Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency::TaggedSymbol
-              )
-                .returns(T.attached_class)
-            end
+            sig { params(amount: String, currency: Symbol).returns(T.attached_class) }
             def self.new(amount:, currency:)
             end
 
-            sig do
-              override
-                .returns(
-                  {
-                    amount: String,
-                    currency: Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency::TaggedSymbol
-                  }
-                )
-            end
+            sig { override.returns({amount: String, currency: Symbol}) }
             def to_hash
             end
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
-            module Currency
-              extend Increase::Enum
+            class Currency < Increase::Enum
+              abstract!
 
-              TaggedSymbol =
-                T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency) }
-              OrSymbol =
-                T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency::TaggedSymbol) }
+              Value = type_template(:out) { {fixed: Symbol} }
 
               # Canadian Dollar (CAD)
-              CAD =
-                T.let(:CAD, Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency::TaggedSymbol)
+              CAD = :CAD
 
               # Swiss Franc (CHF)
-              CHF =
-                T.let(:CHF, Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency::TaggedSymbol)
+              CHF = :CHF
 
               # Euro (EUR)
-              EUR =
-                T.let(:EUR, Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency::TaggedSymbol)
+              EUR = :EUR
 
               # British Pound (GBP)
-              GBP =
-                T.let(:GBP, Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency::TaggedSymbol)
+              GBP = :GBP
 
               # Japanese Yen (JPY)
-              JPY =
-                T.let(:JPY, Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency::TaggedSymbol)
+              JPY = :JPY
 
               # US Dollar (USD)
-              USD =
-                T.let(:USD, Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency::TaggedSymbol)
-
-              class << self
-                sig do
-                  override
-                    .returns(T::Array[Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency::TaggedSymbol])
-                end
-                def values
-                end
-              end
+              USD = :USD
             end
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's settlement currency.
-          module Currency
-            extend Increase::Enum
+          class Currency < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CardSettlement::Currency) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CardSettlement::Currency::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
-            CAD = T.let(:CAD, Increase::Models::Transaction::Source::CardSettlement::Currency::TaggedSymbol)
+            CAD = :CAD
 
             # Swiss Franc (CHF)
-            CHF = T.let(:CHF, Increase::Models::Transaction::Source::CardSettlement::Currency::TaggedSymbol)
+            CHF = :CHF
 
             # Euro (EUR)
-            EUR = T.let(:EUR, Increase::Models::Transaction::Source::CardSettlement::Currency::TaggedSymbol)
+            EUR = :EUR
 
             # British Pound (GBP)
-            GBP = T.let(:GBP, Increase::Models::Transaction::Source::CardSettlement::Currency::TaggedSymbol)
+            GBP = :GBP
 
             # Japanese Yen (JPY)
-            JPY = T.let(:JPY, Increase::Models::Transaction::Source::CardSettlement::Currency::TaggedSymbol)
+            JPY = :JPY
 
             # US Dollar (USD)
-            USD = T.let(:USD, Increase::Models::Transaction::Source::CardSettlement::Currency::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::Transaction::Source::CardSettlement::Currency::TaggedSymbol]) }
-              def values
-              end
-            end
+            USD = :USD
           end
 
           class Interchange < Increase::BaseModel
@@ -5119,86 +3672,49 @@ module Increase
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   reimbursement.
-            sig { returns(Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency::TaggedSymbol) }
+            sig { returns(Symbol) }
             def currency
             end
 
-            sig do
-              params(_: Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency::TaggedSymbol)
-                .returns(Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency::TaggedSymbol)
-            end
+            sig { params(_: Symbol).returns(Symbol) }
             def currency=(_)
             end
 
             # Interchange assessed as a part of this transaction.
             sig do
-              params(
-                amount: String,
-                code: T.nilable(String),
-                currency: Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency::TaggedSymbol
-              )
-                .returns(T.attached_class)
+              params(amount: String, code: T.nilable(String), currency: Symbol).returns(T.attached_class)
             end
             def self.new(amount:, code:, currency:)
             end
 
-            sig do
-              override
-                .returns(
-                  {
-                    amount: String,
-                    code: T.nilable(String),
-                    currency: Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency::TaggedSymbol
-                  }
-                )
-            end
+            sig { override.returns({amount: String, code: T.nilable(String), currency: Symbol}) }
             def to_hash
             end
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   reimbursement.
-            module Currency
-              extend Increase::Enum
+            class Currency < Increase::Enum
+              abstract!
 
-              TaggedSymbol =
-                T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency) }
-              OrSymbol =
-                T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency::TaggedSymbol) }
+              Value = type_template(:out) { {fixed: Symbol} }
 
               # Canadian Dollar (CAD)
-              CAD =
-                T.let(:CAD, Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency::TaggedSymbol)
+              CAD = :CAD
 
               # Swiss Franc (CHF)
-              CHF =
-                T.let(:CHF, Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency::TaggedSymbol)
+              CHF = :CHF
 
               # Euro (EUR)
-              EUR =
-                T.let(:EUR, Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency::TaggedSymbol)
+              EUR = :EUR
 
               # British Pound (GBP)
-              GBP =
-                T.let(:GBP, Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency::TaggedSymbol)
+              GBP = :GBP
 
               # Japanese Yen (JPY)
-              JPY =
-                T.let(:JPY, Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency::TaggedSymbol)
+              JPY = :JPY
 
               # US Dollar (USD)
-              USD =
-                T.let(:USD, Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency::TaggedSymbol)
-
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency::TaggedSymbol]
-                    )
-                end
-                def values
-                end
-              end
+              USD = :USD
             end
           end
 
@@ -5265,22 +3781,8 @@ module Increase
             end
 
             sig do
-              params(
-                _: T.nilable(
-                  T.any(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental,
-                    Increase::Util::AnyHash
-                  )
-                )
-              )
-                .returns(
-                  T.nilable(
-                    T.any(
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental,
-                      Increase::Util::AnyHash
-                    )
-                  )
-                )
+              params(_: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental))
+                .returns(T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental))
             end
             def car_rental=(_)
             end
@@ -5319,22 +3821,8 @@ module Increase
             end
 
             sig do
-              params(
-                _: T.nilable(
-                  T.any(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging,
-                    Increase::Util::AnyHash
-                  )
-                )
-              )
-                .returns(
-                  T.nilable(
-                    T.any(
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging,
-                      Increase::Util::AnyHash
-                    )
-                  )
-                )
+              params(_: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging))
+                .returns(T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging))
             end
             def lodging=(_)
             end
@@ -5368,28 +3856,11 @@ module Increase
             end
 
             # The format of the purchase identifier.
-            sig do
-              returns(
-                T.nilable(
-                  Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                )
-              )
-            end
+            sig { returns(T.nilable(Symbol)) }
             def purchase_identifier_format
             end
 
-            sig do
-              params(
-                _: T.nilable(
-                  Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                )
-              )
-                .returns(
-                  T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                  )
-                )
-            end
+            sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
             def purchase_identifier_format=(_)
             end
 
@@ -5399,22 +3870,8 @@ module Increase
             end
 
             sig do
-              params(
-                _: T.nilable(
-                  T.any(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel,
-                    Increase::Util::AnyHash
-                  )
-                )
-              )
-                .returns(
-                  T.nilable(
-                    T.any(
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel,
-                      Increase::Util::AnyHash
-                    )
-                  )
-                )
+              params(_: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel))
+                .returns(T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel))
             end
             def travel=(_)
             end
@@ -5431,9 +3888,7 @@ module Increase
                 national_tax_amount: T.nilable(Integer),
                 national_tax_currency: T.nilable(String),
                 purchase_identifier: T.nilable(String),
-                purchase_identifier_format: T.nilable(
-                  Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                ),
+                purchase_identifier_format: T.nilable(Symbol),
                 travel: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel)
               )
                 .returns(T.attached_class)
@@ -5464,9 +3919,7 @@ module Increase
                     national_tax_amount: T.nilable(Integer),
                     national_tax_currency: T.nilable(String),
                     purchase_identifier: T.nilable(String),
-                    purchase_identifier_format: T.nilable(
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                    ),
+                    purchase_identifier_format: T.nilable(Symbol),
                     travel: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel)
                   }
                 )
@@ -5523,28 +3976,11 @@ module Increase
               end
 
               # Additional charges (gas, late fee, etc.) being billed.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
-                )
-              end
+              sig { returns(T.nilable(Symbol)) }
               def extra_charges
               end
 
-              sig do
-                params(
-                  _: T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
-                )
-                  .returns(
-                    T.nilable(
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                    )
-                  )
-              end
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
               def extra_charges=(_)
               end
 
@@ -5588,28 +4024,11 @@ module Increase
 
               # An indicator that the cardholder is being billed for a reserved vehicle that was
               #   not actually rented (that is, a "no-show" charge).
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                  )
-                )
-              end
+              sig { returns(T.nilable(Symbol)) }
               def no_show_indicator
               end
 
-              sig do
-                params(
-                  _: T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                  )
-                )
-                  .returns(
-                    T.nilable(
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                    )
-                  )
-              end
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
               def no_show_indicator=(_)
               end
 
@@ -5669,16 +4088,12 @@ module Increase
                   daily_rental_rate_amount: T.nilable(Integer),
                   daily_rental_rate_currency: T.nilable(String),
                   days_rented: T.nilable(Integer),
-                  extra_charges: T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  ),
+                  extra_charges: T.nilable(Symbol),
                   fuel_charges_amount: T.nilable(Integer),
                   fuel_charges_currency: T.nilable(String),
                   insurance_charges_amount: T.nilable(Integer),
                   insurance_charges_currency: T.nilable(String),
-                  no_show_indicator: T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                  ),
+                  no_show_indicator: T.nilable(Symbol),
                   one_way_drop_off_charges_amount: T.nilable(Integer),
                   one_way_drop_off_charges_currency: T.nilable(String),
                   renter_name: T.nilable(String),
@@ -5716,16 +4131,12 @@ module Increase
                       daily_rental_rate_amount: T.nilable(Integer),
                       daily_rental_rate_currency: T.nilable(String),
                       days_rented: T.nilable(Integer),
-                      extra_charges: T.nilable(
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                      ),
+                      extra_charges: T.nilable(Symbol),
                       fuel_charges_amount: T.nilable(Integer),
                       fuel_charges_currency: T.nilable(String),
                       insurance_charges_amount: T.nilable(Integer),
                       insurance_charges_currency: T.nilable(String),
-                      no_show_indicator: T.nilable(
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                      ),
+                      no_show_indicator: T.nilable(Symbol),
                       one_way_drop_off_charges_amount: T.nilable(Integer),
                       one_way_drop_off_charges_currency: T.nilable(String),
                       renter_name: T.nilable(String),
@@ -5738,120 +4149,42 @@ module Increase
               end
 
               # Additional charges (gas, late fee, etc.) being billed.
-              module ExtraCharges
-                extend Increase::Enum
+              class ExtraCharges < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # No extra charge
-                NO_EXTRA_CHARGE =
-                  T.let(
-                    :no_extra_charge,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
+                NO_EXTRA_CHARGE = :no_extra_charge
 
                 # Gas
-                GAS =
-                  T.let(
-                    :gas,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
+                GAS = :gas
 
                 # Extra mileage
-                EXTRA_MILEAGE =
-                  T.let(
-                    :extra_mileage,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
+                EXTRA_MILEAGE = :extra_mileage
 
                 # Late return
-                LATE_RETURN =
-                  T.let(
-                    :late_return,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
+                LATE_RETURN = :late_return
 
                 # One way service fee
-                ONE_WAY_SERVICE_FEE =
-                  T.let(
-                    :one_way_service_fee,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
+                ONE_WAY_SERVICE_FEE = :one_way_service_fee
 
                 # Parking violation
-                PARKING_VIOLATION =
-                  T.let(
-                    :parking_violation,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                PARKING_VIOLATION = :parking_violation
               end
 
               # An indicator that the cardholder is being billed for a reserved vehicle that was
               #   not actually rented (that is, a "no-show" charge).
-              module NoShowIndicator
-                extend Increase::Enum
+              class NoShowIndicator < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # Not applicable
-                NOT_APPLICABLE =
-                  T.let(
-                    :not_applicable,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                  )
+                NOT_APPLICABLE = :not_applicable
 
                 # No show for specialized vehicle
-                NO_SHOW_FOR_SPECIALIZED_VEHICLE =
-                  T.let(
-                    :no_show_for_specialized_vehicle,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                NO_SHOW_FOR_SPECIALIZED_VEHICLE = :no_show_for_specialized_vehicle
               end
             end
 
@@ -5885,28 +4218,11 @@ module Increase
               end
 
               # Additional charges (phone, late check-out, etc.) being billed.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
-                )
-              end
+              sig { returns(T.nilable(Symbol)) }
               def extra_charges
               end
 
-              sig do
-                params(
-                  _: T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
-                )
-                  .returns(
-                    T.nilable(
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                    )
-                  )
-              end
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
               def extra_charges=(_)
               end
 
@@ -5950,28 +4266,11 @@ module Increase
 
               # Indicator that the cardholder is being billed for a reserved room that was not
               #   actually used.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                  )
-                )
-              end
+              sig { returns(T.nilable(Symbol)) }
               def no_show_indicator
               end
 
-              sig do
-                params(
-                  _: T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                  )
-                )
-                  .returns(
-                    T.nilable(
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                    )
-                  )
-              end
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
               def no_show_indicator=(_)
               end
 
@@ -6047,16 +4346,12 @@ module Increase
                   check_in_date: T.nilable(Date),
                   daily_room_rate_amount: T.nilable(Integer),
                   daily_room_rate_currency: T.nilable(String),
-                  extra_charges: T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  ),
+                  extra_charges: T.nilable(Symbol),
                   folio_cash_advances_amount: T.nilable(Integer),
                   folio_cash_advances_currency: T.nilable(String),
                   food_beverage_charges_amount: T.nilable(Integer),
                   food_beverage_charges_currency: T.nilable(String),
-                  no_show_indicator: T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                  ),
+                  no_show_indicator: T.nilable(Symbol),
                   prepaid_expenses_amount: T.nilable(Integer),
                   prepaid_expenses_currency: T.nilable(String),
                   room_nights: T.nilable(Integer),
@@ -6094,16 +4389,12 @@ module Increase
                       check_in_date: T.nilable(Date),
                       daily_room_rate_amount: T.nilable(Integer),
                       daily_room_rate_currency: T.nilable(String),
-                      extra_charges: T.nilable(
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                      ),
+                      extra_charges: T.nilable(Symbol),
                       folio_cash_advances_amount: T.nilable(Integer),
                       folio_cash_advances_currency: T.nilable(String),
                       food_beverage_charges_amount: T.nilable(Integer),
                       food_beverage_charges_currency: T.nilable(String),
-                      no_show_indicator: T.nilable(
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                      ),
+                      no_show_indicator: T.nilable(Symbol),
                       prepaid_expenses_amount: T.nilable(Integer),
                       prepaid_expenses_currency: T.nilable(String),
                       room_nights: T.nilable(Integer),
@@ -6118,193 +4409,68 @@ module Increase
               end
 
               # Additional charges (phone, late check-out, etc.) being billed.
-              module ExtraCharges
-                extend Increase::Enum
+              class ExtraCharges < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # No extra charge
-                NO_EXTRA_CHARGE =
-                  T.let(
-                    :no_extra_charge,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
+                NO_EXTRA_CHARGE = :no_extra_charge
 
                 # Restaurant
-                RESTAURANT =
-                  T.let(
-                    :restaurant,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
+                RESTAURANT = :restaurant
 
                 # Gift shop
-                GIFT_SHOP =
-                  T.let(
-                    :gift_shop,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
+                GIFT_SHOP = :gift_shop
 
                 # Mini bar
-                MINI_BAR =
-                  T.let(
-                    :mini_bar,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
+                MINI_BAR = :mini_bar
 
                 # Telephone
-                TELEPHONE =
-                  T.let(
-                    :telephone,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
+                TELEPHONE = :telephone
 
                 # Other
-                OTHER =
-                  T.let(
-                    :other,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
+                OTHER = :other
 
                 # Laundry
-                LAUNDRY =
-                  T.let(
-                    :laundry,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                LAUNDRY = :laundry
               end
 
               # Indicator that the cardholder is being billed for a reserved room that was not
               #   actually used.
-              module NoShowIndicator
-                extend Increase::Enum
+              class NoShowIndicator < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # Not applicable
-                NOT_APPLICABLE =
-                  T.let(
-                    :not_applicable,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                  )
+                NOT_APPLICABLE = :not_applicable
 
                 # No show
-                NO_SHOW =
-                  T.let(
-                    :no_show,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                NO_SHOW = :no_show
               end
             end
 
             # The format of the purchase identifier.
-            module PurchaseIdentifierFormat
-              extend Increase::Enum
+            class PurchaseIdentifierFormat < Increase::Enum
+              abstract!
 
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat)
-                end
-              OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                  )
-                end
+              Value = type_template(:out) { {fixed: Symbol} }
 
               # Free text
-              FREE_TEXT =
-                T.let(
-                  :free_text,
-                  Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                )
+              FREE_TEXT = :free_text
 
               # Order number
-              ORDER_NUMBER =
-                T.let(
-                  :order_number,
-                  Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                )
+              ORDER_NUMBER = :order_number
 
               # Rental agreement number
-              RENTAL_AGREEMENT_NUMBER =
-                T.let(
-                  :rental_agreement_number,
-                  Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                )
+              RENTAL_AGREEMENT_NUMBER = :rental_agreement_number
 
               # Hotel folio number
-              HOTEL_FOLIO_NUMBER =
-                T.let(
-                  :hotel_folio_number,
-                  Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                )
+              HOTEL_FOLIO_NUMBER = :hotel_folio_number
 
               # Invoice number
-              INVOICE_NUMBER =
-                T.let(
-                  :invoice_number,
-                  Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                )
-
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
-              end
+              INVOICE_NUMBER = :invoice_number
             end
 
             class Travel < Increase::BaseModel
@@ -6319,20 +4485,10 @@ module Increase
 
               sig do
                 params(
-                  _: T.nilable(
-                    T.any(
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary,
-                      Increase::Util::AnyHash
-                    )
-                  )
+                  _: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary)
                 )
                   .returns(
-                    T.nilable(
-                      T.any(
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary,
-                        Increase::Util::AnyHash
-                      )
-                    )
+                    T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary)
                   )
               end
               def ancillary=(_)
@@ -6348,28 +4504,11 @@ module Increase
               end
 
               # Indicates the reason for a credit to the cardholder.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
-                )
-              end
+              sig { returns(T.nilable(Symbol)) }
               def credit_reason_indicator
               end
 
-              sig do
-                params(
-                  _: T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
-                )
-                  .returns(
-                    T.nilable(
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                    )
-                  )
-              end
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
               def credit_reason_indicator=(_)
               end
 
@@ -6401,54 +4540,20 @@ module Increase
               end
 
               # Indicates whether this ticket is non-refundable.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                  )
-                )
-              end
+              sig { returns(T.nilable(Symbol)) }
               def restricted_ticket_indicator
               end
 
-              sig do
-                params(
-                  _: T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                  )
-                )
-                  .returns(
-                    T.nilable(
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                    )
-                  )
-              end
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
               def restricted_ticket_indicator=(_)
               end
 
               # Indicates why a ticket was changed.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                  )
-                )
-              end
+              sig { returns(T.nilable(Symbol)) }
               def ticket_change_indicator
               end
 
-              sig do
-                params(
-                  _: T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                  )
-                )
-                  .returns(
-                    T.nilable(
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                    )
-                  )
-              end
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
               def ticket_change_indicator=(_)
               end
 
@@ -6510,18 +4615,12 @@ module Increase
                 params(
                   ancillary: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary),
                   computerized_reservation_system: T.nilable(String),
-                  credit_reason_indicator: T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  ),
+                  credit_reason_indicator: T.nilable(Symbol),
                   departure_date: T.nilable(Date),
                   origination_city_airport_code: T.nilable(String),
                   passenger_name: T.nilable(String),
-                  restricted_ticket_indicator: T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                  ),
-                  ticket_change_indicator: T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                  ),
+                  restricted_ticket_indicator: T.nilable(Symbol),
+                  ticket_change_indicator: T.nilable(Symbol),
                   ticket_number: T.nilable(String),
                   travel_agency_code: T.nilable(String),
                   travel_agency_name: T.nilable(String),
@@ -6553,18 +4652,12 @@ module Increase
                     {
                       ancillary: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary),
                       computerized_reservation_system: T.nilable(String),
-                      credit_reason_indicator: T.nilable(
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                      ),
+                      credit_reason_indicator: T.nilable(Symbol),
                       departure_date: T.nilable(Date),
                       origination_city_airport_code: T.nilable(String),
                       passenger_name: T.nilable(String),
-                      restricted_ticket_indicator: T.nilable(
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                      ),
-                      ticket_change_indicator: T.nilable(
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                      ),
+                      restricted_ticket_indicator: T.nilable(Symbol),
+                      ticket_change_indicator: T.nilable(Symbol),
                       ticket_number: T.nilable(String),
                       travel_agency_code: T.nilable(String),
                       travel_agency_name: T.nilable(String),
@@ -6590,28 +4683,11 @@ module Increase
                 end
 
                 # Indicates the reason for a credit to the cardholder.
-                sig do
-                  returns(
-                    T.nilable(
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                    )
-                  )
-                end
+                sig { returns(T.nilable(Symbol)) }
                 def credit_reason_indicator
                 end
 
-                sig do
-                  params(
-                    _: T.nilable(
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                    )
-                  )
-                    .returns(
-                      T.nilable(
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                      )
-                    )
-                end
+                sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
                 def credit_reason_indicator=(_)
                 end
 
@@ -6657,9 +4733,7 @@ module Increase
                 sig do
                   params(
                     connected_ticket_document_number: T.nilable(String),
-                    credit_reason_indicator: T.nilable(
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                    ),
+                    credit_reason_indicator: T.nilable(Symbol),
                     passenger_name_or_description: T.nilable(String),
                     services: T::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service],
                     ticket_document_number: T.nilable(String)
@@ -6680,9 +4754,7 @@ module Increase
                     .returns(
                       {
                         connected_ticket_document_number: T.nilable(String),
-                        credit_reason_indicator: T.nilable(
-                          Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                        ),
+                        credit_reason_indicator: T.nilable(Symbol),
                         passenger_name_or_description: T.nilable(String),
                         services: T::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service],
                         ticket_document_number: T.nilable(String)
@@ -6693,87 +4765,33 @@ module Increase
                 end
 
                 # Indicates the reason for a credit to the cardholder.
-                module CreditReasonIndicator
-                  extend Increase::Enum
+                class CreditReasonIndicator < Increase::Enum
+                  abstract!
 
-                  TaggedSymbol =
-                    T.type_alias do
-                      T.all(Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator)
-                    end
-                  OrSymbol =
-                    T.type_alias do
-                      T.any(
-                        Symbol,
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                      )
-                    end
+                  Value = type_template(:out) { {fixed: Symbol} }
 
                   # No credit
-                  NO_CREDIT =
-                    T.let(
-                      :no_credit,
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                    )
+                  NO_CREDIT = :no_credit
 
                   # Passenger transport ancillary purchase cancellation
                   PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
-                    T.let(
-                      :passenger_transport_ancillary_purchase_cancellation,
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                    )
+                    :passenger_transport_ancillary_purchase_cancellation
 
                   # Airline ticket and passenger transport ancillary purchase cancellation
                   AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
-                    T.let(
-                      :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                    )
+                    :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
 
                   # Other
-                  OTHER =
-                    T.let(
-                      :other,
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                    )
-
-                  class << self
-                    sig do
-                      override
-                        .returns(
-                          T::Array[
-                          Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                          ]
-                        )
-                    end
-                    def values
-                    end
-                  end
+                  OTHER = :other
                 end
 
                 class Service < Increase::BaseModel
                   # Category of the ancillary service.
-                  sig do
-                    returns(
-                      T.nilable(
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
-                    )
-                  end
+                  sig { returns(T.nilable(Symbol)) }
                   def category
                   end
 
-                  sig do
-                    params(
-                      _: T.nilable(
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
-                    )
-                      .returns(
-                        T.nilable(
-                          Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                        )
-                      )
-                  end
+                  sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
                   def category=(_)
                   end
 
@@ -6788,395 +4806,152 @@ module Increase
 
                   sig do
                     params(
-                      category: T.nilable(
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      ),
+                      category: T.nilable(Symbol),
                       sub_category: T.nilable(String)
-                    )
-                      .returns(T.attached_class)
+                    ).returns(T.attached_class)
                   end
                   def self.new(category:, sub_category:)
                   end
 
-                  sig do
-                    override
-                      .returns(
-                        {
-                          category: T.nilable(
-                            Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                          ),
-                          sub_category: T.nilable(String)
-                        }
-                      )
-                  end
+                  sig { override.returns({category: T.nilable(Symbol), sub_category: T.nilable(String)}) }
                   def to_hash
                   end
 
                   # Category of the ancillary service.
-                  module Category
-                    extend Increase::Enum
+                  class Category < Increase::Enum
+                    abstract!
 
-                    TaggedSymbol =
-                      T.type_alias do
-                        T.all(Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category)
-                      end
-                    OrSymbol =
-                      T.type_alias do
-                        T.any(
-                          Symbol,
-                          Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                        )
-                      end
+                    Value = type_template(:out) { {fixed: Symbol} }
 
                     # None
-                    NONE =
-                      T.let(
-                        :none,
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    NONE = :none
 
                     # Bundled service
-                    BUNDLED_SERVICE =
-                      T.let(
-                        :bundled_service,
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    BUNDLED_SERVICE = :bundled_service
 
                     # Baggage fee
-                    BAGGAGE_FEE =
-                      T.let(
-                        :baggage_fee,
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    BAGGAGE_FEE = :baggage_fee
 
                     # Change fee
-                    CHANGE_FEE =
-                      T.let(
-                        :change_fee,
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    CHANGE_FEE = :change_fee
 
                     # Cargo
-                    CARGO =
-                      T.let(
-                        :cargo,
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    CARGO = :cargo
 
                     # Carbon offset
-                    CARBON_OFFSET =
-                      T.let(
-                        :carbon_offset,
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    CARBON_OFFSET = :carbon_offset
 
                     # Frequent flyer
-                    FREQUENT_FLYER =
-                      T.let(
-                        :frequent_flyer,
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    FREQUENT_FLYER = :frequent_flyer
 
                     # Gift card
-                    GIFT_CARD =
-                      T.let(
-                        :gift_card,
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    GIFT_CARD = :gift_card
 
                     # Ground transport
-                    GROUND_TRANSPORT =
-                      T.let(
-                        :ground_transport,
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    GROUND_TRANSPORT = :ground_transport
 
                     # In-flight entertainment
-                    IN_FLIGHT_ENTERTAINMENT =
-                      T.let(
-                        :in_flight_entertainment,
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    IN_FLIGHT_ENTERTAINMENT = :in_flight_entertainment
 
                     # Lounge
-                    LOUNGE =
-                      T.let(
-                        :lounge,
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    LOUNGE = :lounge
 
                     # Medical
-                    MEDICAL =
-                      T.let(
-                        :medical,
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    MEDICAL = :medical
 
                     # Meal beverage
-                    MEAL_BEVERAGE =
-                      T.let(
-                        :meal_beverage,
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    MEAL_BEVERAGE = :meal_beverage
 
                     # Other
-                    OTHER =
-                      T.let(
-                        :other,
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    OTHER = :other
 
                     # Passenger assist fee
-                    PASSENGER_ASSIST_FEE =
-                      T.let(
-                        :passenger_assist_fee,
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    PASSENGER_ASSIST_FEE = :passenger_assist_fee
 
                     # Pets
-                    PETS =
-                      T.let(
-                        :pets,
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    PETS = :pets
 
                     # Seat fees
-                    SEAT_FEES =
-                      T.let(
-                        :seat_fees,
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    SEAT_FEES = :seat_fees
 
                     # Standby
-                    STANDBY =
-                      T.let(
-                        :standby,
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    STANDBY = :standby
 
                     # Service fee
-                    SERVICE_FEE =
-                      T.let(
-                        :service_fee,
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    SERVICE_FEE = :service_fee
 
                     # Store
-                    STORE =
-                      T.let(
-                        :store,
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    STORE = :store
 
                     # Travel service
-                    TRAVEL_SERVICE =
-                      T.let(
-                        :travel_service,
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    TRAVEL_SERVICE = :travel_service
 
                     # Unaccompanied travel
-                    UNACCOMPANIED_TRAVEL =
-                      T.let(
-                        :unaccompanied_travel,
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    UNACCOMPANIED_TRAVEL = :unaccompanied_travel
 
                     # Upgrades
-                    UPGRADES =
-                      T.let(
-                        :upgrades,
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    UPGRADES = :upgrades
 
                     # Wi-fi
-                    WIFI =
-                      T.let(
-                        :wifi,
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
-
-                    class << self
-                      sig do
-                        override
-                          .returns(
-                            T::Array[
-                            Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                            ]
-                          )
-                      end
-                      def values
-                      end
-                    end
+                    WIFI = :wifi
                   end
                 end
               end
 
               # Indicates the reason for a credit to the cardholder.
-              module CreditReasonIndicator
-                extend Increase::Enum
+              class CreditReasonIndicator < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # No credit
-                NO_CREDIT =
-                  T.let(
-                    :no_credit,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
+                NO_CREDIT = :no_credit
 
                 # Passenger transport ancillary purchase cancellation
                 PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
-                  T.let(
-                    :passenger_transport_ancillary_purchase_cancellation,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
+                  :passenger_transport_ancillary_purchase_cancellation
 
                 # Airline ticket and passenger transport ancillary purchase cancellation
                 AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
-                  T.let(
-                    :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
+                  :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
 
                 # Airline ticket cancellation
-                AIRLINE_TICKET_CANCELLATION =
-                  T.let(
-                    :airline_ticket_cancellation,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
+                AIRLINE_TICKET_CANCELLATION = :airline_ticket_cancellation
 
                 # Other
-                OTHER =
-                  T.let(
-                    :other,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
+                OTHER = :other
 
                 # Partial refund of airline ticket
-                PARTIAL_REFUND_OF_AIRLINE_TICKET =
-                  T.let(
-                    :partial_refund_of_airline_ticket,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                PARTIAL_REFUND_OF_AIRLINE_TICKET = :partial_refund_of_airline_ticket
               end
 
               # Indicates whether this ticket is non-refundable.
-              module RestrictedTicketIndicator
-                extend Increase::Enum
+              class RestrictedTicketIndicator < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # No restrictions
-                NO_RESTRICTIONS =
-                  T.let(
-                    :no_restrictions,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                  )
+                NO_RESTRICTIONS = :no_restrictions
 
                 # Restricted non-refundable ticket
-                RESTRICTED_NON_REFUNDABLE_TICKET =
-                  T.let(
-                    :restricted_non_refundable_ticket,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                RESTRICTED_NON_REFUNDABLE_TICKET = :restricted_non_refundable_ticket
               end
 
               # Indicates why a ticket was changed.
-              module TicketChangeIndicator
-                extend Increase::Enum
+              class TicketChangeIndicator < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # None
-                NONE =
-                  T.let(
-                    :none,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                  )
+                NONE = :none
 
                 # Change to existing ticket
-                CHANGE_TO_EXISTING_TICKET =
-                  T.let(
-                    :change_to_existing_ticket,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                  )
+                CHANGE_TO_EXISTING_TICKET = :change_to_existing_ticket
 
                 # New ticket
-                NEW_TICKET =
-                  T.let(
-                    :new_ticket,
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                NEW_TICKET = :new_ticket
               end
 
               class TripLeg < Increase::BaseModel
@@ -7226,28 +5001,11 @@ module Increase
                 end
 
                 # Indicates whether a stopover is allowed on this ticket.
-                sig do
-                  returns(
-                    T.nilable(
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                    )
-                  )
-                end
+                sig { returns(T.nilable(Symbol)) }
                 def stop_over_code
                 end
 
-                sig do
-                  params(
-                    _: T.nilable(
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                    )
-                  )
-                    .returns(
-                      T.nilable(
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                      )
-                    )
-                end
+                sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
                 def stop_over_code=(_)
                 end
 
@@ -7258,9 +5016,7 @@ module Increase
                     fare_basis_code: T.nilable(String),
                     flight_number: T.nilable(String),
                     service_class: T.nilable(String),
-                    stop_over_code: T.nilable(
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                    )
+                    stop_over_code: T.nilable(Symbol)
                   )
                     .returns(T.attached_class)
                 end
@@ -7283,9 +5039,7 @@ module Increase
                         fare_basis_code: T.nilable(String),
                         flight_number: T.nilable(String),
                         service_class: T.nilable(String),
-                        stop_over_code: T.nilable(
-                          Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                        )
+                        stop_over_code: T.nilable(Symbol)
                       }
                     )
                 end
@@ -7293,54 +5047,19 @@ module Increase
                 end
 
                 # Indicates whether a stopover is allowed on this ticket.
-                module StopOverCode
-                  extend Increase::Enum
+                class StopOverCode < Increase::Enum
+                  abstract!
 
-                  TaggedSymbol =
-                    T.type_alias do
-                      T.all(Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode)
-                    end
-                  OrSymbol =
-                    T.type_alias do
-                      T.any(
-                        Symbol,
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                      )
-                    end
+                  Value = type_template(:out) { {fixed: Symbol} }
 
                   # None
-                  NONE =
-                    T.let(
-                      :none,
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                    )
+                  NONE = :none
 
                   # Stop over allowed
-                  STOP_OVER_ALLOWED =
-                    T.let(
-                      :stop_over_allowed,
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                    )
+                  STOP_OVER_ALLOWED = :stop_over_allowed
 
                   # Stop over not allowed
-                  STOP_OVER_NOT_ALLOWED =
-                    T.let(
-                      :stop_over_not_allowed,
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                    )
-
-                  class << self
-                    sig do
-                      override
-                        .returns(
-                          T::Array[
-                          Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                          ]
-                        )
-                    end
-                    def values
-                    end
-                  end
+                  STOP_OVER_NOT_ALLOWED = :stop_over_not_allowed
                 end
               end
             end
@@ -7348,22 +5067,12 @@ module Increase
 
           # A constant representing the object's type. For this resource it will always be
           #   `card_settlement`.
-          module Type
-            extend Increase::Enum
+          class Type < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CardSettlement::Type) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CardSettlement::Type::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            CARD_SETTLEMENT =
-              T.let(:card_settlement, Increase::Models::Transaction::Source::CardSettlement::Type::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::Transaction::Source::CardSettlement::Type::TaggedSymbol]) }
-              def values
-              end
-            end
+            CARD_SETTLEMENT = :card_settlement
           end
         end
 
@@ -7389,14 +5098,11 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
-          sig { returns(Increase::Models::Transaction::Source::CashbackPayment::Currency::TaggedSymbol) }
+          sig { returns(Symbol) }
           def currency
           end
 
-          sig do
-            params(_: Increase::Models::Transaction::Source::CashbackPayment::Currency::TaggedSymbol)
-              .returns(Increase::Models::Transaction::Source::CashbackPayment::Currency::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def currency=(_)
           end
 
@@ -7426,7 +5132,7 @@ module Increase
             params(
               accrued_on_card_id: T.nilable(String),
               amount: Integer,
-              currency: Increase::Models::Transaction::Source::CashbackPayment::Currency::TaggedSymbol,
+              currency: Symbol,
               period_end: Time,
               period_start: Time
             )
@@ -7441,7 +5147,7 @@ module Increase
                 {
                   accrued_on_card_id: T.nilable(String),
                   amount: Integer,
-                  currency: Increase::Models::Transaction::Source::CashbackPayment::Currency::TaggedSymbol,
+                  currency: Symbol,
                   period_end: Time,
                   period_start: Time
                 }
@@ -7452,178 +5158,124 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
-          module Currency
-            extend Increase::Enum
+          class Currency < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CashbackPayment::Currency) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CashbackPayment::Currency::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
-            CAD = T.let(:CAD, Increase::Models::Transaction::Source::CashbackPayment::Currency::TaggedSymbol)
+            CAD = :CAD
 
             # Swiss Franc (CHF)
-            CHF = T.let(:CHF, Increase::Models::Transaction::Source::CashbackPayment::Currency::TaggedSymbol)
+            CHF = :CHF
 
             # Euro (EUR)
-            EUR = T.let(:EUR, Increase::Models::Transaction::Source::CashbackPayment::Currency::TaggedSymbol)
+            EUR = :EUR
 
             # British Pound (GBP)
-            GBP = T.let(:GBP, Increase::Models::Transaction::Source::CashbackPayment::Currency::TaggedSymbol)
+            GBP = :GBP
 
             # Japanese Yen (JPY)
-            JPY = T.let(:JPY, Increase::Models::Transaction::Source::CashbackPayment::Currency::TaggedSymbol)
+            JPY = :JPY
 
             # US Dollar (USD)
-            USD = T.let(:USD, Increase::Models::Transaction::Source::CashbackPayment::Currency::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::Transaction::Source::CashbackPayment::Currency::TaggedSymbol]) }
-              def values
-              end
-            end
+            USD = :USD
           end
         end
 
         # The type of the resource. We may add additional possible values for this enum
         #   over time; your application should be able to handle such additions gracefully.
-        module Category
-          extend Increase::Enum
+        class Category < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::Category) }
-          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::Category::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # Account Transfer Intention: details will be under the `account_transfer_intention` object.
-          ACCOUNT_TRANSFER_INTENTION =
-            T.let(:account_transfer_intention, Increase::Models::Transaction::Source::Category::TaggedSymbol)
+          ACCOUNT_TRANSFER_INTENTION = :account_transfer_intention
 
           # ACH Transfer Intention: details will be under the `ach_transfer_intention` object.
-          ACH_TRANSFER_INTENTION =
-            T.let(:ach_transfer_intention, Increase::Models::Transaction::Source::Category::TaggedSymbol)
+          ACH_TRANSFER_INTENTION = :ach_transfer_intention
 
           # ACH Transfer Rejection: details will be under the `ach_transfer_rejection` object.
-          ACH_TRANSFER_REJECTION =
-            T.let(:ach_transfer_rejection, Increase::Models::Transaction::Source::Category::TaggedSymbol)
+          ACH_TRANSFER_REJECTION = :ach_transfer_rejection
 
           # ACH Transfer Return: details will be under the `ach_transfer_return` object.
-          ACH_TRANSFER_RETURN =
-            T.let(:ach_transfer_return, Increase::Models::Transaction::Source::Category::TaggedSymbol)
+          ACH_TRANSFER_RETURN = :ach_transfer_return
 
           # Cashback Payment: details will be under the `cashback_payment` object.
-          CASHBACK_PAYMENT =
-            T.let(:cashback_payment, Increase::Models::Transaction::Source::Category::TaggedSymbol)
+          CASHBACK_PAYMENT = :cashback_payment
 
           # Card Dispute Acceptance: details will be under the `card_dispute_acceptance` object.
-          CARD_DISPUTE_ACCEPTANCE =
-            T.let(:card_dispute_acceptance, Increase::Models::Transaction::Source::Category::TaggedSymbol)
+          CARD_DISPUTE_ACCEPTANCE = :card_dispute_acceptance
 
           # Card Dispute Loss: details will be under the `card_dispute_loss` object.
-          CARD_DISPUTE_LOSS =
-            T.let(:card_dispute_loss, Increase::Models::Transaction::Source::Category::TaggedSymbol)
+          CARD_DISPUTE_LOSS = :card_dispute_loss
 
           # Card Refund: details will be under the `card_refund` object.
-          CARD_REFUND = T.let(:card_refund, Increase::Models::Transaction::Source::Category::TaggedSymbol)
+          CARD_REFUND = :card_refund
 
           # Card Settlement: details will be under the `card_settlement` object.
-          CARD_SETTLEMENT = T.let(:card_settlement, Increase::Models::Transaction::Source::Category::TaggedSymbol)
+          CARD_SETTLEMENT = :card_settlement
 
           # Card Revenue Payment: details will be under the `card_revenue_payment` object.
-          CARD_REVENUE_PAYMENT =
-            T.let(:card_revenue_payment, Increase::Models::Transaction::Source::Category::TaggedSymbol)
+          CARD_REVENUE_PAYMENT = :card_revenue_payment
 
           # Check Deposit Acceptance: details will be under the `check_deposit_acceptance` object.
-          CHECK_DEPOSIT_ACCEPTANCE =
-            T.let(:check_deposit_acceptance, Increase::Models::Transaction::Source::Category::TaggedSymbol)
+          CHECK_DEPOSIT_ACCEPTANCE = :check_deposit_acceptance
 
           # Check Deposit Return: details will be under the `check_deposit_return` object.
-          CHECK_DEPOSIT_RETURN =
-            T.let(:check_deposit_return, Increase::Models::Transaction::Source::Category::TaggedSymbol)
+          CHECK_DEPOSIT_RETURN = :check_deposit_return
 
           # Check Transfer Deposit: details will be under the `check_transfer_deposit` object.
-          CHECK_TRANSFER_DEPOSIT =
-            T.let(:check_transfer_deposit, Increase::Models::Transaction::Source::Category::TaggedSymbol)
+          CHECK_TRANSFER_DEPOSIT = :check_transfer_deposit
 
           # Fee Payment: details will be under the `fee_payment` object.
-          FEE_PAYMENT = T.let(:fee_payment, Increase::Models::Transaction::Source::Category::TaggedSymbol)
+          FEE_PAYMENT = :fee_payment
 
           # Inbound ACH Transfer Intention: details will be under the `inbound_ach_transfer` object.
-          INBOUND_ACH_TRANSFER =
-            T.let(:inbound_ach_transfer, Increase::Models::Transaction::Source::Category::TaggedSymbol)
+          INBOUND_ACH_TRANSFER = :inbound_ach_transfer
 
           # Inbound ACH Transfer Return Intention: details will be under the `inbound_ach_transfer_return_intention` object.
-          INBOUND_ACH_TRANSFER_RETURN_INTENTION =
-            T.let(
-              :inbound_ach_transfer_return_intention,
-              Increase::Models::Transaction::Source::Category::TaggedSymbol
-            )
+          INBOUND_ACH_TRANSFER_RETURN_INTENTION = :inbound_ach_transfer_return_intention
 
           # Inbound Check Deposit Return Intention: details will be under the `inbound_check_deposit_return_intention` object.
-          INBOUND_CHECK_DEPOSIT_RETURN_INTENTION =
-            T.let(
-              :inbound_check_deposit_return_intention,
-              Increase::Models::Transaction::Source::Category::TaggedSymbol
-            )
+          INBOUND_CHECK_DEPOSIT_RETURN_INTENTION = :inbound_check_deposit_return_intention
 
           # Inbound Check Adjustment: details will be under the `inbound_check_adjustment` object.
-          INBOUND_CHECK_ADJUSTMENT =
-            T.let(:inbound_check_adjustment, Increase::Models::Transaction::Source::Category::TaggedSymbol)
+          INBOUND_CHECK_ADJUSTMENT = :inbound_check_adjustment
 
           # Inbound Real-Time Payments Transfer Confirmation: details will be under the `inbound_real_time_payments_transfer_confirmation` object.
-          INBOUND_REAL_TIME_PAYMENTS_TRANSFER_CONFIRMATION =
-            T.let(
-              :inbound_real_time_payments_transfer_confirmation,
-              Increase::Models::Transaction::Source::Category::TaggedSymbol
-            )
+          INBOUND_REAL_TIME_PAYMENTS_TRANSFER_CONFIRMATION = :inbound_real_time_payments_transfer_confirmation
 
           # Inbound Real-Time Payments Transfer Decline: details will be under the `inbound_real_time_payments_transfer_decline` object.
-          INBOUND_REAL_TIME_PAYMENTS_TRANSFER_DECLINE =
-            T.let(
-              :inbound_real_time_payments_transfer_decline,
-              Increase::Models::Transaction::Source::Category::TaggedSymbol
-            )
+          INBOUND_REAL_TIME_PAYMENTS_TRANSFER_DECLINE = :inbound_real_time_payments_transfer_decline
 
           # Inbound Wire Reversal: details will be under the `inbound_wire_reversal` object.
-          INBOUND_WIRE_REVERSAL =
-            T.let(:inbound_wire_reversal, Increase::Models::Transaction::Source::Category::TaggedSymbol)
+          INBOUND_WIRE_REVERSAL = :inbound_wire_reversal
 
           # Inbound Wire Transfer Intention: details will be under the `inbound_wire_transfer` object.
-          INBOUND_WIRE_TRANSFER =
-            T.let(:inbound_wire_transfer, Increase::Models::Transaction::Source::Category::TaggedSymbol)
+          INBOUND_WIRE_TRANSFER = :inbound_wire_transfer
 
           # Inbound Wire Transfer Reversal Intention: details will be under the `inbound_wire_transfer_reversal` object.
-          INBOUND_WIRE_TRANSFER_REVERSAL =
-            T.let(:inbound_wire_transfer_reversal, Increase::Models::Transaction::Source::Category::TaggedSymbol)
+          INBOUND_WIRE_TRANSFER_REVERSAL = :inbound_wire_transfer_reversal
 
           # Interest Payment: details will be under the `interest_payment` object.
-          INTEREST_PAYMENT =
-            T.let(:interest_payment, Increase::Models::Transaction::Source::Category::TaggedSymbol)
+          INTEREST_PAYMENT = :interest_payment
 
           # Internal Source: details will be under the `internal_source` object.
-          INTERNAL_SOURCE = T.let(:internal_source, Increase::Models::Transaction::Source::Category::TaggedSymbol)
+          INTERNAL_SOURCE = :internal_source
 
           # Real-Time Payments Transfer Acknowledgement: details will be under the `real_time_payments_transfer_acknowledgement` object.
-          REAL_TIME_PAYMENTS_TRANSFER_ACKNOWLEDGEMENT =
-            T.let(
-              :real_time_payments_transfer_acknowledgement,
-              Increase::Models::Transaction::Source::Category::TaggedSymbol
-            )
+          REAL_TIME_PAYMENTS_TRANSFER_ACKNOWLEDGEMENT = :real_time_payments_transfer_acknowledgement
 
           # Sample Funds: details will be under the `sample_funds` object.
-          SAMPLE_FUNDS = T.let(:sample_funds, Increase::Models::Transaction::Source::Category::TaggedSymbol)
+          SAMPLE_FUNDS = :sample_funds
 
           # Wire Transfer Intention: details will be under the `wire_transfer_intention` object.
-          WIRE_TRANSFER_INTENTION =
-            T.let(:wire_transfer_intention, Increase::Models::Transaction::Source::Category::TaggedSymbol)
+          WIRE_TRANSFER_INTENTION = :wire_transfer_intention
 
           # The Transaction was made for an undocumented or deprecated reason.
-          OTHER = T.let(:other, Increase::Models::Transaction::Source::Category::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::Transaction::Source::Category::TaggedSymbol]) }
-            def values
-            end
-          end
+          OTHER = :other
         end
 
         class CheckDepositAcceptance < Increase::BaseModel
@@ -7667,14 +5319,11 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
-          sig { returns(Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency::TaggedSymbol) }
+          sig { returns(Symbol) }
           def currency
           end
 
-          sig do
-            params(_: Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency::TaggedSymbol)
-              .returns(Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def currency=(_)
           end
 
@@ -7708,7 +5357,7 @@ module Increase
               amount: Integer,
               auxiliary_on_us: T.nilable(String),
               check_deposit_id: String,
-              currency: Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency::TaggedSymbol,
+              currency: Symbol,
               routing_number: String,
               serial_number: T.nilable(String)
             )
@@ -7725,7 +5374,7 @@ module Increase
                   amount: Integer,
                   auxiliary_on_us: T.nilable(String),
                   check_deposit_id: String,
-                  currency: Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency::TaggedSymbol,
+                  currency: Symbol,
                   routing_number: String,
                   serial_number: T.nilable(String)
                 }
@@ -7736,40 +5385,28 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
-          module Currency
-            extend Increase::Enum
+          class Currency < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
-            CAD = T.let(:CAD, Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency::TaggedSymbol)
+            CAD = :CAD
 
             # Swiss Franc (CHF)
-            CHF = T.let(:CHF, Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency::TaggedSymbol)
+            CHF = :CHF
 
             # Euro (EUR)
-            EUR = T.let(:EUR, Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency::TaggedSymbol)
+            EUR = :EUR
 
             # British Pound (GBP)
-            GBP = T.let(:GBP, Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency::TaggedSymbol)
+            GBP = :GBP
 
             # Japanese Yen (JPY)
-            JPY = T.let(:JPY, Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency::TaggedSymbol)
+            JPY = :JPY
 
             # US Dollar (USD)
-            USD = T.let(:USD, Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency::TaggedSymbol)
-
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency::TaggedSymbol])
-              end
-              def values
-              end
-            end
+            USD = :USD
           end
         end
 
@@ -7794,27 +5431,21 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
-          sig { returns(Increase::Models::Transaction::Source::CheckDepositReturn::Currency::TaggedSymbol) }
+          sig { returns(Symbol) }
           def currency
           end
 
-          sig do
-            params(_: Increase::Models::Transaction::Source::CheckDepositReturn::Currency::TaggedSymbol)
-              .returns(Increase::Models::Transaction::Source::CheckDepositReturn::Currency::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def currency=(_)
           end
 
           # Why this check was returned by the bank holding the account it was drawn
           #   against.
-          sig { returns(Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol) }
+          sig { returns(Symbol) }
           def return_reason
           end
 
-          sig do
-            params(_: Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol)
-              .returns(Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def return_reason=(_)
           end
 
@@ -7848,8 +5479,8 @@ module Increase
             params(
               amount: Integer,
               check_deposit_id: String,
-              currency: Increase::Models::Transaction::Source::CheckDepositReturn::Currency::TaggedSymbol,
-              return_reason: Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol,
+              currency: Symbol,
+              return_reason: Symbol,
               returned_at: Time,
               transaction_id: String
             )
@@ -7864,8 +5495,8 @@ module Increase
                 {
                   amount: Integer,
                   check_deposit_id: String,
-                  currency: Increase::Models::Transaction::Source::CheckDepositReturn::Currency::TaggedSymbol,
-                  return_reason: Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol,
+                  currency: Symbol,
+                  return_reason: Symbol,
                   returned_at: Time,
                   transaction_id: String
                 }
@@ -7876,233 +5507,114 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
-          module Currency
-            extend Increase::Enum
+          class Currency < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CheckDepositReturn::Currency) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CheckDepositReturn::Currency::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
-            CAD = T.let(:CAD, Increase::Models::Transaction::Source::CheckDepositReturn::Currency::TaggedSymbol)
+            CAD = :CAD
 
             # Swiss Franc (CHF)
-            CHF = T.let(:CHF, Increase::Models::Transaction::Source::CheckDepositReturn::Currency::TaggedSymbol)
+            CHF = :CHF
 
             # Euro (EUR)
-            EUR = T.let(:EUR, Increase::Models::Transaction::Source::CheckDepositReturn::Currency::TaggedSymbol)
+            EUR = :EUR
 
             # British Pound (GBP)
-            GBP = T.let(:GBP, Increase::Models::Transaction::Source::CheckDepositReturn::Currency::TaggedSymbol)
+            GBP = :GBP
 
             # Japanese Yen (JPY)
-            JPY = T.let(:JPY, Increase::Models::Transaction::Source::CheckDepositReturn::Currency::TaggedSymbol)
+            JPY = :JPY
 
             # US Dollar (USD)
-            USD = T.let(:USD, Increase::Models::Transaction::Source::CheckDepositReturn::Currency::TaggedSymbol)
-
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::Transaction::Source::CheckDepositReturn::Currency::TaggedSymbol])
-              end
-              def values
-              end
-            end
+            USD = :USD
           end
 
           # Why this check was returned by the bank holding the account it was drawn
           #   against.
-          module ReturnReason
-            extend Increase::Enum
+          class ReturnReason < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # The check doesn't allow ACH conversion.
-            ACH_CONVERSION_NOT_SUPPORTED =
-              T.let(
-                :ach_conversion_not_supported,
-                Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol
-              )
+            ACH_CONVERSION_NOT_SUPPORTED = :ach_conversion_not_supported
 
             # The account is closed.
-            CLOSED_ACCOUNT =
-              T.let(
-                :closed_account,
-                Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol
-              )
+            CLOSED_ACCOUNT = :closed_account
 
             # The check has already been deposited.
-            DUPLICATE_SUBMISSION =
-              T.let(
-                :duplicate_submission,
-                Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol
-              )
+            DUPLICATE_SUBMISSION = :duplicate_submission
 
             # Insufficient funds
-            INSUFFICIENT_FUNDS =
-              T.let(
-                :insufficient_funds,
-                Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol
-              )
+            INSUFFICIENT_FUNDS = :insufficient_funds
 
             # No account was found matching the check details.
-            NO_ACCOUNT =
-              T.let(:no_account, Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol)
+            NO_ACCOUNT = :no_account
 
             # The check was not authorized.
-            NOT_AUTHORIZED =
-              T.let(
-                :not_authorized,
-                Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol
-              )
+            NOT_AUTHORIZED = :not_authorized
 
             # The check is too old.
-            STALE_DATED =
-              T.let(:stale_dated, Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol)
+            STALE_DATED = :stale_dated
 
             # The payment has been stopped by the account holder.
-            STOP_PAYMENT =
-              T.let(
-                :stop_payment,
-                Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol
-              )
+            STOP_PAYMENT = :stop_payment
 
             # The reason for the return is unknown.
-            UNKNOWN_REASON =
-              T.let(
-                :unknown_reason,
-                Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol
-              )
+            UNKNOWN_REASON = :unknown_reason
 
             # The image doesn't match the details submitted.
-            UNMATCHED_DETAILS =
-              T.let(
-                :unmatched_details,
-                Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol
-              )
+            UNMATCHED_DETAILS = :unmatched_details
 
             # The image could not be read.
-            UNREADABLE_IMAGE =
-              T.let(
-                :unreadable_image,
-                Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol
-              )
+            UNREADABLE_IMAGE = :unreadable_image
 
             # The check endorsement was irregular.
-            ENDORSEMENT_IRREGULAR =
-              T.let(
-                :endorsement_irregular,
-                Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol
-              )
+            ENDORSEMENT_IRREGULAR = :endorsement_irregular
 
             # The check present was either altered or fake.
-            ALTERED_OR_FICTITIOUS_ITEM =
-              T.let(
-                :altered_or_fictitious_item,
-                Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol
-              )
+            ALTERED_OR_FICTITIOUS_ITEM = :altered_or_fictitious_item
 
             # The account this check is drawn on is frozen.
-            FROZEN_OR_BLOCKED_ACCOUNT =
-              T.let(
-                :frozen_or_blocked_account,
-                Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol
-              )
+            FROZEN_OR_BLOCKED_ACCOUNT = :frozen_or_blocked_account
 
             # The check is post dated.
-            POST_DATED =
-              T.let(:post_dated, Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol)
+            POST_DATED = :post_dated
 
             # The endorsement was missing.
-            ENDORSEMENT_MISSING =
-              T.let(
-                :endorsement_missing,
-                Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol
-              )
+            ENDORSEMENT_MISSING = :endorsement_missing
 
             # The check signature was missing.
-            SIGNATURE_MISSING =
-              T.let(
-                :signature_missing,
-                Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol
-              )
+            SIGNATURE_MISSING = :signature_missing
 
             # The bank suspects a stop payment will be placed.
-            STOP_PAYMENT_SUSPECT =
-              T.let(
-                :stop_payment_suspect,
-                Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol
-              )
+            STOP_PAYMENT_SUSPECT = :stop_payment_suspect
 
             # The bank cannot read the image.
-            UNUSABLE_IMAGE =
-              T.let(
-                :unusable_image,
-                Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol
-              )
+            UNUSABLE_IMAGE = :unusable_image
 
             # The check image fails the bank's security check.
-            IMAGE_FAILS_SECURITY_CHECK =
-              T.let(
-                :image_fails_security_check,
-                Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol
-              )
+            IMAGE_FAILS_SECURITY_CHECK = :image_fails_security_check
 
             # The bank cannot determine the amount.
-            CANNOT_DETERMINE_AMOUNT =
-              T.let(
-                :cannot_determine_amount,
-                Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol
-              )
+            CANNOT_DETERMINE_AMOUNT = :cannot_determine_amount
 
             # The signature is inconsistent with prior signatures.
-            SIGNATURE_IRREGULAR =
-              T.let(
-                :signature_irregular,
-                Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol
-              )
+            SIGNATURE_IRREGULAR = :signature_irregular
 
             # The check is a non-cash item and cannot be drawn against the account.
-            NON_CASH_ITEM =
-              T.let(
-                :non_cash_item,
-                Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol
-              )
+            NON_CASH_ITEM = :non_cash_item
 
             # The bank is unable to process this check.
-            UNABLE_TO_PROCESS =
-              T.let(
-                :unable_to_process,
-                Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol
-              )
+            UNABLE_TO_PROCESS = :unable_to_process
 
             # The check exceeds the bank or customer's limit.
-            ITEM_EXCEEDS_DOLLAR_LIMIT =
-              T.let(
-                :item_exceeds_dollar_limit,
-                Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol
-              )
+            ITEM_EXCEEDS_DOLLAR_LIMIT = :item_exceeds_dollar_limit
 
             # The bank sold this account and no longer services this customer.
-            BRANCH_OR_ACCOUNT_SOLD =
-              T.let(
-                :branch_or_account_sold,
-                Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol
-              )
-
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol])
-              end
-              def values
-              end
-            end
+            BRANCH_OR_ACCOUNT_SOLD = :branch_or_account_sold
           end
         end
 
@@ -8177,14 +5689,11 @@ module Increase
 
           # A constant representing the object's type. For this resource it will always be
           #   `check_transfer_deposit`.
-          sig { returns(Increase::Models::Transaction::Source::CheckTransferDeposit::Type::TaggedSymbol) }
+          sig { returns(Symbol) }
           def type
           end
 
-          sig do
-            params(_: Increase::Models::Transaction::Source::CheckTransferDeposit::Type::TaggedSymbol)
-              .returns(Increase::Models::Transaction::Source::CheckTransferDeposit::Type::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def type=(_)
           end
 
@@ -8201,7 +5710,7 @@ module Increase
               inbound_check_deposit_id: T.nilable(String),
               transaction_id: T.nilable(String),
               transfer_id: T.nilable(String),
-              type: Increase::Models::Transaction::Source::CheckTransferDeposit::Type::TaggedSymbol
+              type: Symbol
             )
               .returns(T.attached_class)
           end
@@ -8228,7 +5737,7 @@ module Increase
                   inbound_check_deposit_id: T.nilable(String),
                   transaction_id: T.nilable(String),
                   transfer_id: T.nilable(String),
-                  type: Increase::Models::Transaction::Source::CheckTransferDeposit::Type::TaggedSymbol
+                  type: Symbol
                 }
               )
           end
@@ -8237,27 +5746,12 @@ module Increase
 
           # A constant representing the object's type. For this resource it will always be
           #   `check_transfer_deposit`.
-          module Type
-            extend Increase::Enum
+          class Type < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CheckTransferDeposit::Type) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CheckTransferDeposit::Type::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            CHECK_TRANSFER_DEPOSIT =
-              T.let(
-                :check_transfer_deposit,
-                Increase::Models::Transaction::Source::CheckTransferDeposit::Type::TaggedSymbol
-              )
-
-            class << self
-              sig do
-                override.returns(T::Array[Increase::Models::Transaction::Source::CheckTransferDeposit::Type::TaggedSymbol])
-              end
-              def values
-              end
-            end
+            CHECK_TRANSFER_DEPOSIT = :check_transfer_deposit
           end
         end
 
@@ -8274,14 +5768,11 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
-          sig { returns(Increase::Models::Transaction::Source::FeePayment::Currency::TaggedSymbol) }
+          sig { returns(Symbol) }
           def currency
           end
 
-          sig do
-            params(_: Increase::Models::Transaction::Source::FeePayment::Currency::TaggedSymbol)
-              .returns(Increase::Models::Transaction::Source::FeePayment::Currency::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def currency=(_)
           end
 
@@ -8307,12 +5798,7 @@ module Increase
           #   only if `category` is equal to `fee_payment`. A Fee Payment represents a payment
           #   made to Increase.
           sig do
-            params(
-              amount: Integer,
-              currency: Increase::Models::Transaction::Source::FeePayment::Currency::TaggedSymbol,
-              fee_period_start: Date,
-              program_id: T.nilable(String)
-            )
+            params(amount: Integer, currency: Symbol, fee_period_start: Date, program_id: T.nilable(String))
               .returns(T.attached_class)
           end
           def self.new(amount:, currency:, fee_period_start:, program_id:)
@@ -8320,51 +5806,40 @@ module Increase
 
           sig do
             override
-              .returns(
-                {
-                  amount: Integer,
-                  currency: Increase::Models::Transaction::Source::FeePayment::Currency::TaggedSymbol,
-                  fee_period_start: Date,
-                  program_id: T.nilable(String)
-                }
-              )
+              .returns({
+                         amount: Integer,
+                         currency: Symbol,
+                         fee_period_start: Date,
+                         program_id: T.nilable(String)
+                       })
           end
           def to_hash
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
-          module Currency
-            extend Increase::Enum
+          class Currency < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::FeePayment::Currency) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::FeePayment::Currency::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
-            CAD = T.let(:CAD, Increase::Models::Transaction::Source::FeePayment::Currency::TaggedSymbol)
+            CAD = :CAD
 
             # Swiss Franc (CHF)
-            CHF = T.let(:CHF, Increase::Models::Transaction::Source::FeePayment::Currency::TaggedSymbol)
+            CHF = :CHF
 
             # Euro (EUR)
-            EUR = T.let(:EUR, Increase::Models::Transaction::Source::FeePayment::Currency::TaggedSymbol)
+            EUR = :EUR
 
             # British Pound (GBP)
-            GBP = T.let(:GBP, Increase::Models::Transaction::Source::FeePayment::Currency::TaggedSymbol)
+            GBP = :GBP
 
             # Japanese Yen (JPY)
-            JPY = T.let(:JPY, Increase::Models::Transaction::Source::FeePayment::Currency::TaggedSymbol)
+            JPY = :JPY
 
             # US Dollar (USD)
-            USD = T.let(:USD, Increase::Models::Transaction::Source::FeePayment::Currency::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::Transaction::Source::FeePayment::Currency::TaggedSymbol]) }
-              def values
-              end
-            end
+            USD = :USD
           end
         end
 
@@ -8375,16 +5850,8 @@ module Increase
           end
 
           sig do
-            params(
-              _: T.nilable(
-                T.any(Increase::Models::Transaction::Source::InboundACHTransfer::Addenda, Increase::Util::AnyHash)
-              )
-            )
-              .returns(
-                T.nilable(
-                  T.any(Increase::Models::Transaction::Source::InboundACHTransfer::Addenda, Increase::Util::AnyHash)
-                )
-              )
+            params(_: T.nilable(Increase::Models::Transaction::Source::InboundACHTransfer::Addenda))
+              .returns(T.nilable(Increase::Models::Transaction::Source::InboundACHTransfer::Addenda))
           end
           def addenda=(_)
           end
@@ -8543,14 +6010,11 @@ module Increase
 
           class Addenda < Increase::BaseModel
             # The type of addendum.
-            sig { returns(Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category::TaggedSymbol) }
+            sig { returns(Symbol) }
             def category
             end
 
-            sig do
-              params(_: Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category::TaggedSymbol)
-                .returns(Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category::TaggedSymbol)
-            end
+            sig { params(_: Symbol).returns(Symbol) }
             def category=(_)
             end
 
@@ -8560,22 +6024,8 @@ module Increase
             end
 
             sig do
-              params(
-                _: T.nilable(
-                  T.any(
-                    Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform,
-                    Increase::Util::AnyHash
-                  )
-                )
-              )
-                .returns(
-                  T.nilable(
-                    T.any(
-                      Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform,
-                      Increase::Util::AnyHash
-                    )
-                  )
-                )
+              params(_: T.nilable(Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform))
+                .returns(T.nilable(Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform))
             end
             def freeform=(_)
             end
@@ -8583,7 +6033,7 @@ module Increase
             # Additional information sent from the originator.
             sig do
               params(
-                category: Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category::TaggedSymbol,
+                category: Symbol,
                 freeform: T.nilable(Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform)
               )
                 .returns(T.attached_class)
@@ -8595,7 +6045,7 @@ module Increase
               override
                 .returns(
                   {
-                    category: Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category::TaggedSymbol,
+                    category: Symbol,
                     freeform: T.nilable(Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform)
                   }
                 )
@@ -8604,31 +6054,13 @@ module Increase
             end
 
             # The type of addendum.
-            module Category
-              extend Increase::Enum
+            class Category < Increase::Enum
+              abstract!
 
-              TaggedSymbol =
-                T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category) }
-              OrSymbol =
-                T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category::TaggedSymbol) }
+              Value = type_template(:out) { {fixed: Symbol} }
 
               # Unstructured addendum.
-              FREEFORM =
-                T.let(
-                  :freeform,
-                  Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category::TaggedSymbol
-                )
-
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category::TaggedSymbol]
-                    )
-                end
-                def values
-                end
-              end
+              FREEFORM = :freeform
             end
 
             class Freeform < Increase::BaseModel
@@ -8729,14 +6161,11 @@ module Increase
           end
 
           # The reason for the adjustment.
-          sig { returns(Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason::TaggedSymbol) }
+          sig { returns(Symbol) }
           def reason
           end
 
-          sig do
-            params(_: Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason::TaggedSymbol)
-              .returns(Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def reason=(_)
           end
 
@@ -8745,71 +6174,32 @@ module Increase
           #   Inbound Check Adjustment is created when Increase receives an adjustment for a
           #   check or return deposited through Check21.
           sig do
-            params(
-              adjusted_transaction_id: String,
-              amount: Integer,
-              reason: Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason::TaggedSymbol
-            )
-              .returns(T.attached_class)
+            params(adjusted_transaction_id: String, amount: Integer, reason: Symbol).returns(T.attached_class)
           end
           def self.new(adjusted_transaction_id:, amount:, reason:)
           end
 
-          sig do
-            override
-              .returns(
-                {
-                  adjusted_transaction_id: String,
-                  amount: Integer,
-                  reason: Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason::TaggedSymbol
-                }
-              )
-          end
+          sig { override.returns({adjusted_transaction_id: String, amount: Integer, reason: Symbol}) }
           def to_hash
           end
 
           # The reason for the adjustment.
-          module Reason
-            extend Increase::Enum
+          class Reason < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # The return was initiated too late and the receiving institution has responded with a Late Return Claim.
-            LATE_RETURN =
-              T.let(:late_return, Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason::TaggedSymbol)
+            LATE_RETURN = :late_return
 
             # The check was deposited to the wrong payee and the depositing institution has reimbursed the funds with a Wrong Payee Credit.
-            WRONG_PAYEE_CREDIT =
-              T.let(
-                :wrong_payee_credit,
-                Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason::TaggedSymbol
-              )
+            WRONG_PAYEE_CREDIT = :wrong_payee_credit
 
             # The check was deposited with a different amount than what was written on the check.
-            ADJUSTED_AMOUNT =
-              T.let(
-                :adjusted_amount,
-                Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason::TaggedSymbol
-              )
+            ADJUSTED_AMOUNT = :adjusted_amount
 
             # The recipient was not able to process the check. This usually happens for e.g., low quality images.
-            NON_CONFORMING_ITEM =
-              T.let(
-                :non_conforming_item,
-                Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason::TaggedSymbol
-              )
-
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason::TaggedSymbol])
-              end
-              def values
-              end
-            end
+            NON_CONFORMING_ITEM = :non_conforming_item
           end
         end
 
@@ -8870,22 +6260,11 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
           #   currency. This will always be "USD" for a Real-Time Payments transfer.
-          sig do
-            returns(
-              Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency::TaggedSymbol
-            )
-          end
+          sig { returns(Symbol) }
           def currency
           end
 
-          sig do
-            params(
-              _: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency::TaggedSymbol
-            )
-              .returns(
-                Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency::TaggedSymbol
-              )
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def currency=(_)
           end
 
@@ -8952,7 +6331,7 @@ module Increase
             params(
               amount: Integer,
               creditor_name: String,
-              currency: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency::TaggedSymbol,
+              currency: Symbol,
               debtor_account_number: String,
               debtor_name: String,
               debtor_routing_number: String,
@@ -8981,7 +6360,7 @@ module Increase
                 {
                   amount: Integer,
                   creditor_name: String,
-                  currency: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency::TaggedSymbol,
+                  currency: Symbol,
                   debtor_account_number: String,
                   debtor_name: String,
                   debtor_routing_number: String,
@@ -8996,73 +6375,28 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
           #   currency. This will always be "USD" for a Real-Time Payments transfer.
-          module Currency
-            extend Increase::Enum
+          class Currency < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias do
-                T.all(Symbol, Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency)
-              end
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency::TaggedSymbol
-                )
-              end
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
-            CAD =
-              T.let(
-                :CAD,
-                Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency::TaggedSymbol
-              )
+            CAD = :CAD
 
             # Swiss Franc (CHF)
-            CHF =
-              T.let(
-                :CHF,
-                Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency::TaggedSymbol
-              )
+            CHF = :CHF
 
             # Euro (EUR)
-            EUR =
-              T.let(
-                :EUR,
-                Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency::TaggedSymbol
-              )
+            EUR = :EUR
 
             # British Pound (GBP)
-            GBP =
-              T.let(
-                :GBP,
-                Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency::TaggedSymbol
-              )
+            GBP = :GBP
 
             # Japanese Yen (JPY)
-            JPY =
-              T.let(
-                :JPY,
-                Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency::TaggedSymbol
-              )
+            JPY = :JPY
 
             # US Dollar (USD)
-            USD =
-              T.let(
-                :USD,
-                Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency::TaggedSymbol
-              )
-
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency::TaggedSymbol]
-                  )
-              end
-              def values
-              end
-            end
+            USD = :USD
           end
         end
 
@@ -9089,22 +6423,11 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
           #   transfer's currency. This will always be "USD" for a Real-Time Payments
           #   transfer.
-          sig do
-            returns(
-              Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol
-            )
-          end
+          sig { returns(Symbol) }
           def currency
           end
 
-          sig do
-            params(
-              _: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol
-            )
-              .returns(
-                Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol
-              )
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def currency=(_)
           end
 
@@ -9136,22 +6459,11 @@ module Increase
           end
 
           # Why the transfer was declined.
-          sig do
-            returns(
-              Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol
-            )
-          end
+          sig { returns(Symbol) }
           def reason
           end
 
-          sig do
-            params(
-              _: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol
-            )
-              .returns(
-                Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol
-              )
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def reason=(_)
           end
 
@@ -9189,11 +6501,11 @@ module Increase
             params(
               amount: Integer,
               creditor_name: String,
-              currency: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol,
+              currency: Symbol,
               debtor_account_number: String,
               debtor_name: String,
               debtor_routing_number: String,
-              reason: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol,
+              reason: Symbol,
               remittance_information: T.nilable(String),
               transaction_identification: String,
               transfer_id: String
@@ -9220,11 +6532,11 @@ module Increase
                 {
                   amount: Integer,
                   creditor_name: String,
-                  currency: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol,
+                  currency: Symbol,
                   debtor_account_number: String,
                   debtor_name: String,
                   debtor_routing_number: String,
-                  reason: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol,
+                  reason: Symbol,
                   remittance_information: T.nilable(String),
                   transaction_identification: String,
                   transfer_id: String
@@ -9237,139 +6549,53 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
           #   transfer's currency. This will always be "USD" for a Real-Time Payments
           #   transfer.
-          module Currency
-            extend Increase::Enum
+          class Currency < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency) }
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol
-                )
-              end
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
-            CAD =
-              T.let(
-                :CAD,
-                Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol
-              )
+            CAD = :CAD
 
             # Swiss Franc (CHF)
-            CHF =
-              T.let(
-                :CHF,
-                Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol
-              )
+            CHF = :CHF
 
             # Euro (EUR)
-            EUR =
-              T.let(
-                :EUR,
-                Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol
-              )
+            EUR = :EUR
 
             # British Pound (GBP)
-            GBP =
-              T.let(
-                :GBP,
-                Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol
-              )
+            GBP = :GBP
 
             # Japanese Yen (JPY)
-            JPY =
-              T.let(
-                :JPY,
-                Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol
-              )
+            JPY = :JPY
 
             # US Dollar (USD)
-            USD =
-              T.let(
-                :USD,
-                Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol
-              )
-
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol]
-                  )
-              end
-              def values
-              end
-            end
+            USD = :USD
           end
 
           # Why the transfer was declined.
-          module Reason
-            extend Increase::Enum
+          class Reason < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason) }
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol
-                )
-              end
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # The account number is canceled.
-            ACCOUNT_NUMBER_CANCELED =
-              T.let(
-                :account_number_canceled,
-                Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol
-              )
+            ACCOUNT_NUMBER_CANCELED = :account_number_canceled
 
             # The account number is disabled.
-            ACCOUNT_NUMBER_DISABLED =
-              T.let(
-                :account_number_disabled,
-                Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol
-              )
+            ACCOUNT_NUMBER_DISABLED = :account_number_disabled
 
             # Your account is restricted.
-            ACCOUNT_RESTRICTED =
-              T.let(
-                :account_restricted,
-                Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol
-              )
+            ACCOUNT_RESTRICTED = :account_restricted
 
             # Your account is inactive.
-            GROUP_LOCKED =
-              T.let(
-                :group_locked,
-                Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol
-              )
+            GROUP_LOCKED = :group_locked
 
             # The account's entity is not active.
-            ENTITY_NOT_ACTIVE =
-              T.let(
-                :entity_not_active,
-                Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol
-              )
+            ENTITY_NOT_ACTIVE = :entity_not_active
 
             # Your account is not enabled to receive Real-Time Payments transfers.
-            REAL_TIME_PAYMENTS_NOT_ENABLED =
-              T.let(
-                :real_time_payments_not_enabled,
-                Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol
-              )
-
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol]
-                  )
-              end
-              def values
-              end
-            end
+            REAL_TIME_PAYMENTS_NOT_ENABLED = :real_time_payments_not_enabled
           end
         end
 
@@ -9910,14 +7136,11 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
-          sig { returns(Increase::Models::Transaction::Source::InterestPayment::Currency::TaggedSymbol) }
+          sig { returns(Symbol) }
           def currency
           end
 
-          sig do
-            params(_: Increase::Models::Transaction::Source::InterestPayment::Currency::TaggedSymbol)
-              .returns(Increase::Models::Transaction::Source::InterestPayment::Currency::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def currency=(_)
           end
 
@@ -9947,7 +7170,7 @@ module Increase
             params(
               accrued_on_account_id: String,
               amount: Integer,
-              currency: Increase::Models::Transaction::Source::InterestPayment::Currency::TaggedSymbol,
+              currency: Symbol,
               period_end: Time,
               period_start: Time
             )
@@ -9962,7 +7185,7 @@ module Increase
                 {
                   accrued_on_account_id: String,
                   amount: Integer,
-                  currency: Increase::Models::Transaction::Source::InterestPayment::Currency::TaggedSymbol,
+                  currency: Symbol,
                   period_end: Time,
                   period_start: Time
                 }
@@ -9973,37 +7196,28 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
-          module Currency
-            extend Increase::Enum
+          class Currency < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::InterestPayment::Currency) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::InterestPayment::Currency::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
-            CAD = T.let(:CAD, Increase::Models::Transaction::Source::InterestPayment::Currency::TaggedSymbol)
+            CAD = :CAD
 
             # Swiss Franc (CHF)
-            CHF = T.let(:CHF, Increase::Models::Transaction::Source::InterestPayment::Currency::TaggedSymbol)
+            CHF = :CHF
 
             # Euro (EUR)
-            EUR = T.let(:EUR, Increase::Models::Transaction::Source::InterestPayment::Currency::TaggedSymbol)
+            EUR = :EUR
 
             # British Pound (GBP)
-            GBP = T.let(:GBP, Increase::Models::Transaction::Source::InterestPayment::Currency::TaggedSymbol)
+            GBP = :GBP
 
             # Japanese Yen (JPY)
-            JPY = T.let(:JPY, Increase::Models::Transaction::Source::InterestPayment::Currency::TaggedSymbol)
+            JPY = :JPY
 
             # US Dollar (USD)
-            USD = T.let(:USD, Increase::Models::Transaction::Source::InterestPayment::Currency::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::Transaction::Source::InterestPayment::Currency::TaggedSymbol]) }
-              def values
-              end
-            end
+            USD = :USD
           end
         end
 
@@ -10020,170 +7234,112 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
-          sig { returns(Increase::Models::Transaction::Source::InternalSource::Currency::TaggedSymbol) }
+          sig { returns(Symbol) }
           def currency
           end
 
-          sig do
-            params(_: Increase::Models::Transaction::Source::InternalSource::Currency::TaggedSymbol)
-              .returns(Increase::Models::Transaction::Source::InternalSource::Currency::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def currency=(_)
           end
 
           # An Internal Source is a transaction between you and Increase. This describes the
           #   reason for the transaction.
-          sig { returns(Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol) }
+          sig { returns(Symbol) }
           def reason
           end
 
-          sig do
-            params(_: Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol)
-              .returns(Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol)
-          end
+          sig { params(_: Symbol).returns(Symbol) }
           def reason=(_)
           end
 
           # An Internal Source object. This field will be present in the JSON response if
           #   and only if `category` is equal to `internal_source`. A transaction between the
           #   user and Increase. See the `reason` attribute for more information.
-          sig do
-            params(
-              amount: Integer,
-              currency: Increase::Models::Transaction::Source::InternalSource::Currency::TaggedSymbol,
-              reason: Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol
-            )
-              .returns(T.attached_class)
-          end
+          sig { params(amount: Integer, currency: Symbol, reason: Symbol).returns(T.attached_class) }
           def self.new(amount:, currency:, reason:)
           end
 
-          sig do
-            override
-              .returns(
-                {
-                  amount: Integer,
-                  currency: Increase::Models::Transaction::Source::InternalSource::Currency::TaggedSymbol,
-                  reason: Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol
-                }
-              )
-          end
+          sig { override.returns({amount: Integer, currency: Symbol, reason: Symbol}) }
           def to_hash
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
-          module Currency
-            extend Increase::Enum
+          class Currency < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::InternalSource::Currency) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::InternalSource::Currency::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
-            CAD = T.let(:CAD, Increase::Models::Transaction::Source::InternalSource::Currency::TaggedSymbol)
+            CAD = :CAD
 
             # Swiss Franc (CHF)
-            CHF = T.let(:CHF, Increase::Models::Transaction::Source::InternalSource::Currency::TaggedSymbol)
+            CHF = :CHF
 
             # Euro (EUR)
-            EUR = T.let(:EUR, Increase::Models::Transaction::Source::InternalSource::Currency::TaggedSymbol)
+            EUR = :EUR
 
             # British Pound (GBP)
-            GBP = T.let(:GBP, Increase::Models::Transaction::Source::InternalSource::Currency::TaggedSymbol)
+            GBP = :GBP
 
             # Japanese Yen (JPY)
-            JPY = T.let(:JPY, Increase::Models::Transaction::Source::InternalSource::Currency::TaggedSymbol)
+            JPY = :JPY
 
             # US Dollar (USD)
-            USD = T.let(:USD, Increase::Models::Transaction::Source::InternalSource::Currency::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::Transaction::Source::InternalSource::Currency::TaggedSymbol]) }
-              def values
-              end
-            end
+            USD = :USD
           end
 
           # An Internal Source is a transaction between you and Increase. This describes the
           #   reason for the transaction.
-          module Reason
-            extend Increase::Enum
+          class Reason < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::InternalSource::Reason) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Account closure
-            ACCOUNT_CLOSURE =
-              T.let(:account_closure, Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol)
+            ACCOUNT_CLOSURE = :account_closure
 
             # Bank-drawn check
-            BANK_DRAWN_CHECK =
-              T.let(:bank_drawn_check, Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol)
+            BANK_DRAWN_CHECK = :bank_drawn_check
 
             # Bank-drawn check credit
-            BANK_DRAWN_CHECK_CREDIT =
-              T.let(
-                :bank_drawn_check_credit,
-                Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol
-              )
+            BANK_DRAWN_CHECK_CREDIT = :bank_drawn_check_credit
 
             # Bank migration
-            BANK_MIGRATION =
-              T.let(:bank_migration, Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol)
+            BANK_MIGRATION = :bank_migration
 
             # Check adjustment
-            CHECK_ADJUSTMENT =
-              T.let(:check_adjustment, Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol)
+            CHECK_ADJUSTMENT = :check_adjustment
 
             # Collection payment
-            COLLECTION_PAYMENT =
-              T.let(:collection_payment, Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol)
+            COLLECTION_PAYMENT = :collection_payment
 
             # Collection receivable
-            COLLECTION_RECEIVABLE =
-              T.let(:collection_receivable, Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol)
+            COLLECTION_RECEIVABLE = :collection_receivable
 
             # Empyreal adjustment
-            EMPYREAL_ADJUSTMENT =
-              T.let(:empyreal_adjustment, Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol)
+            EMPYREAL_ADJUSTMENT = :empyreal_adjustment
 
             # Error
-            ERROR = T.let(:error, Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol)
+            ERROR = :error
 
             # Error correction
-            ERROR_CORRECTION =
-              T.let(:error_correction, Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol)
+            ERROR_CORRECTION = :error_correction
 
             # Fees
-            FEES = T.let(:fees, Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol)
+            FEES = :fees
 
             # Interest
-            INTEREST = T.let(:interest, Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol)
+            INTEREST = :interest
 
             # Negative balance forgiveness
-            NEGATIVE_BALANCE_FORGIVENESS =
-              T.let(
-                :negative_balance_forgiveness,
-                Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol
-              )
+            NEGATIVE_BALANCE_FORGIVENESS = :negative_balance_forgiveness
 
             # Sample funds
-            SAMPLE_FUNDS =
-              T.let(:sample_funds, Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol)
+            SAMPLE_FUNDS = :sample_funds
 
             # Sample funds return
-            SAMPLE_FUNDS_RETURN =
-              T.let(:sample_funds_return, Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol]) }
-              def values
-              end
-            end
+            SAMPLE_FUNDS_RETURN = :sample_funds_return
           end
         end
 
@@ -10370,19 +7526,12 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `transaction`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Transaction::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Transaction::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        TRANSACTION = T.let(:transaction, Increase::Models::Transaction::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::Transaction::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        TRANSACTION = :transaction
       end
     end
   end

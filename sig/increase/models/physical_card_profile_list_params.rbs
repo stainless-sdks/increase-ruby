@@ -67,9 +67,7 @@ module Increase
           | :active
           | :archived
 
-        module In
-          extend Increase::Enum
-
+        class In < Increase::Enum
           # The Card Profile has not yet been processed by Increase.
           PENDING_CREATING: :pending_creating
 
@@ -88,7 +86,7 @@ module Increase
           # The Physical Card Profile has been archived.
           ARCHIVED: :archived
 
-          def self?.values: -> ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
+          def self.values: -> ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
         end
       end
     end

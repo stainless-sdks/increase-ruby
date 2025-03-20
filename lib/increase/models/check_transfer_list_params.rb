@@ -171,9 +171,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        module In
-          extend Increase::Enum
-
+        # @abstract
+        class In < Increase::Enum
           # The transfer is awaiting approval.
           PENDING_APPROVAL = :pending_approval
 
@@ -205,12 +204,6 @@ module Increase
           RETURNED = :returned
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
     end

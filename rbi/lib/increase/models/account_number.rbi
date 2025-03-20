@@ -57,8 +57,7 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::AccountNumber::InboundACH, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::AccountNumber::InboundACH, Increase::Util::AnyHash))
+        params(_: Increase::Models::AccountNumber::InboundACH).returns(Increase::Models::AccountNumber::InboundACH)
       end
       def inbound_ach=(_)
       end
@@ -70,8 +69,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::AccountNumber::InboundChecks, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::AccountNumber::InboundChecks, Increase::Util::AnyHash))
+        params(_: Increase::Models::AccountNumber::InboundChecks)
+          .returns(Increase::Models::AccountNumber::InboundChecks)
       end
       def inbound_checks=(_)
       end
@@ -95,27 +94,21 @@ module Increase
       end
 
       # This indicates if payments can be made to the Account Number.
-      sig { returns(Increase::Models::AccountNumber::Status::TaggedSymbol) }
+      sig { returns(Symbol) }
       def status
       end
 
-      sig do
-        params(_: Increase::Models::AccountNumber::Status::TaggedSymbol)
-          .returns(Increase::Models::AccountNumber::Status::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def status=(_)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `account_number`.
-      sig { returns(Increase::Models::AccountNumber::Type::TaggedSymbol) }
+      sig { returns(Symbol) }
       def type
       end
 
-      sig do
-        params(_: Increase::Models::AccountNumber::Type::TaggedSymbol)
-          .returns(Increase::Models::AccountNumber::Type::TaggedSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def type=(_)
       end
 
@@ -135,8 +128,8 @@ module Increase
           inbound_checks: Increase::Models::AccountNumber::InboundChecks,
           name: String,
           routing_number: String,
-          status: Increase::Models::AccountNumber::Status::TaggedSymbol,
-          type: Increase::Models::AccountNumber::Type::TaggedSymbol
+          status: Symbol,
+          type: Symbol
         )
           .returns(T.attached_class)
       end
@@ -168,8 +161,8 @@ module Increase
               inbound_checks: Increase::Models::AccountNumber::InboundChecks,
               name: String,
               routing_number: String,
-              status: Increase::Models::AccountNumber::Status::TaggedSymbol,
-              type: Increase::Models::AccountNumber::Type::TaggedSymbol
+              status: Symbol,
+              type: Symbol
             }
           )
       end
@@ -179,139 +172,96 @@ module Increase
       class InboundACH < Increase::BaseModel
         # Whether ACH debits are allowed against this Account Number. Note that they will
         #   still be declined if this is `allowed` if the Account Number is not active.
-        sig { returns(Increase::Models::AccountNumber::InboundACH::DebitStatus::TaggedSymbol) }
+        sig { returns(Symbol) }
         def debit_status
         end
 
-        sig do
-          params(_: Increase::Models::AccountNumber::InboundACH::DebitStatus::TaggedSymbol)
-            .returns(Increase::Models::AccountNumber::InboundACH::DebitStatus::TaggedSymbol)
-        end
+        sig { params(_: Symbol).returns(Symbol) }
         def debit_status=(_)
         end
 
         # Properties related to how this Account Number handles inbound ACH transfers.
-        sig do
-          params(debit_status: Increase::Models::AccountNumber::InboundACH::DebitStatus::TaggedSymbol)
-            .returns(T.attached_class)
-        end
+        sig { params(debit_status: Symbol).returns(T.attached_class) }
         def self.new(debit_status:)
         end
 
-        sig { override.returns({debit_status: Increase::Models::AccountNumber::InboundACH::DebitStatus::TaggedSymbol}) }
+        sig { override.returns({debit_status: Symbol}) }
         def to_hash
         end
 
         # Whether ACH debits are allowed against this Account Number. Note that they will
         #   still be declined if this is `allowed` if the Account Number is not active.
-        module DebitStatus
-          extend Increase::Enum
+        class DebitStatus < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountNumber::InboundACH::DebitStatus) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::AccountNumber::InboundACH::DebitStatus::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # ACH Debits are allowed.
-          ALLOWED = T.let(:allowed, Increase::Models::AccountNumber::InboundACH::DebitStatus::TaggedSymbol)
+          ALLOWED = :allowed
 
           # ACH Debits are blocked.
-          BLOCKED = T.let(:blocked, Increase::Models::AccountNumber::InboundACH::DebitStatus::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::AccountNumber::InboundACH::DebitStatus::TaggedSymbol]) }
-            def values
-            end
-          end
+          BLOCKED = :blocked
         end
       end
 
       class InboundChecks < Increase::BaseModel
         # How Increase should process checks with this account number printed on them.
-        sig { returns(Increase::Models::AccountNumber::InboundChecks::Status::TaggedSymbol) }
+        sig { returns(Symbol) }
         def status
         end
 
-        sig do
-          params(_: Increase::Models::AccountNumber::InboundChecks::Status::TaggedSymbol)
-            .returns(Increase::Models::AccountNumber::InboundChecks::Status::TaggedSymbol)
-        end
+        sig { params(_: Symbol).returns(Symbol) }
         def status=(_)
         end
 
         # Properties related to how this Account Number should handle inbound check
         #   withdrawals.
-        sig do
-          params(status: Increase::Models::AccountNumber::InboundChecks::Status::TaggedSymbol)
-            .returns(T.attached_class)
-        end
+        sig { params(status: Symbol).returns(T.attached_class) }
         def self.new(status:)
         end
 
-        sig { override.returns({status: Increase::Models::AccountNumber::InboundChecks::Status::TaggedSymbol}) }
+        sig { override.returns({status: Symbol}) }
         def to_hash
         end
 
         # How Increase should process checks with this account number printed on them.
-        module Status
-          extend Increase::Enum
+        class Status < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountNumber::InboundChecks::Status) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::AccountNumber::InboundChecks::Status::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # Checks with this Account Number will be processed even if they are not associated with a Check Transfer.
-          ALLOWED = T.let(:allowed, Increase::Models::AccountNumber::InboundChecks::Status::TaggedSymbol)
+          ALLOWED = :allowed
 
           # Checks with this Account Number will be processed only if they can be matched to an existing Check Transfer.
-          CHECK_TRANSFERS_ONLY =
-            T.let(:check_transfers_only, Increase::Models::AccountNumber::InboundChecks::Status::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::AccountNumber::InboundChecks::Status::TaggedSymbol]) }
-            def values
-            end
-          end
+          CHECK_TRANSFERS_ONLY = :check_transfers_only
         end
       end
 
       # This indicates if payments can be made to the Account Number.
-      module Status
-        extend Increase::Enum
+      class Status < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountNumber::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::AccountNumber::Status::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The account number is active.
-        ACTIVE = T.let(:active, Increase::Models::AccountNumber::Status::TaggedSymbol)
+        ACTIVE = :active
 
         # The account number is temporarily disabled.
-        DISABLED = T.let(:disabled, Increase::Models::AccountNumber::Status::TaggedSymbol)
+        DISABLED = :disabled
 
         # The account number is permanently disabled.
-        CANCELED = T.let(:canceled, Increase::Models::AccountNumber::Status::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::AccountNumber::Status::TaggedSymbol]) }
-          def values
-          end
-        end
+        CANCELED = :canceled
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `account_number`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountNumber::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::AccountNumber::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        ACCOUNT_NUMBER = T.let(:account_number, Increase::Models::AccountNumber::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::AccountNumber::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        ACCOUNT_NUMBER = :account_number
       end
     end
   end

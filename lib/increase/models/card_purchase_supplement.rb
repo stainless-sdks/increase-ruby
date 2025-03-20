@@ -204,10 +204,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Indicates how the merchant applied the discount.
-        module DiscountTreatmentCode
-          extend Increase::Enum
-
+        class DiscountTreatmentCode < Increase::Enum
           # No invoice level discount provided
           NO_INVOICE_LEVEL_DISCOUNT_PROVIDED = :no_invoice_level_discount_provided
 
@@ -218,18 +218,12 @@ module Increase
           TAX_CALCULATED_ON_PRE_DISCOUNT_INVOICE_TOTAL = :tax_calculated_on_pre_discount_invoice_total
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
 
+        # @abstract
+        #
         # Indicates how the merchant applied taxes.
-        module TaxTreatments
-          extend Increase::Enum
-
+        class TaxTreatments < Increase::Enum
           # No tax applies
           NO_TAX_APPLIES = :no_tax_applies
 
@@ -246,12 +240,6 @@ module Increase
           GROSS_PRICE_INVOICE_LEVEL = :gross_price_invoice_level
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 
@@ -408,10 +396,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Indicates the type of line item.
-        module DetailIndicator
-          extend Increase::Enum
-
+        class DetailIndicator < Increase::Enum
           # Normal
           NORMAL = :normal
 
@@ -422,18 +410,12 @@ module Increase
           PAYMENT = :payment
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
 
+        # @abstract
+        #
         # Indicates how the merchant applied the discount for this specific line item.
-        module DiscountTreatmentCode
-          extend Increase::Enum
-
+        class DiscountTreatmentCode < Increase::Enum
           # No line item level discount provided
           NO_LINE_ITEM_LEVEL_DISCOUNT_PROVIDED = :no_line_item_level_discount_provided
 
@@ -444,29 +426,17 @@ module Increase
           TAX_CALCULATED_ON_PRE_DISCOUNT_LINE_ITEM_TOTAL = :tax_calculated_on_pre_discount_line_item_total
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `card_purchase_supplement`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         CARD_PURCHASE_SUPPLEMENT = :card_purchase_supplement
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

@@ -326,10 +326,10 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @abstract
+        #
         # The type of object that created this transfer.
-        module Category
-          extend Increase::Enum
-
+        class Category < Increase::Enum
           # An API key. Details will be under the `api_key` object.
           API_KEY = :api_key
 
@@ -340,12 +340,6 @@ module Increase
           USER = :user
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
 
         class OAuthApplication < Increase::BaseModel
@@ -383,11 +377,11 @@ module Increase
         end
       end
 
+      # @abstract
+      #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
       #   currency.
-      module Currency
-        extend Increase::Enum
-
+      class Currency < Increase::Enum
         # Canadian Dollar (CAD)
         CAD = :CAD
 
@@ -407,18 +401,12 @@ module Increase
         USD = :USD
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # Whether Increase will print and mail the check or if you will do it yourself.
-      module FulfillmentMethod
-        extend Increase::Enum
-
+      class FulfillmentMethod < Increase::Enum
         # Increase will print and mail a physical check.
         PHYSICAL_CHECK = :physical_check
 
@@ -426,12 +414,6 @@ module Increase
         THIRD_PARTY = :third_party
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
       class Mailing < Increase::BaseModel
@@ -654,10 +636,10 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @abstract
+        #
         # The shipping method for the check.
-        module ShippingMethod
-          extend Increase::Enum
-
+        class ShippingMethod < Increase::Enum
           # USPS First Class
           USPS_FIRST_CLASS = :usps_first_class
 
@@ -665,12 +647,6 @@ module Increase
           FEDEX_OVERNIGHT = :fedex_overnight
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
 
         class TrackingUpdate < Increase::BaseModel
@@ -702,10 +678,10 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The type of tracking event.
-          module Category
-            extend Increase::Enum
-
+          class Category < Increase::Enum
             # The check is in transit.
             IN_TRANSIT = :in_transit
 
@@ -719,20 +695,14 @@ module Increase
             RETURNED_TO_SENDER = :returned_to_sender
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
         end
       end
 
+      # @abstract
+      #
       # The lifecycle status of the transfer.
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The transfer is awaiting approval.
         PENDING_APPROVAL = :pending_approval
 
@@ -764,12 +734,6 @@ module Increase
         RETURNED = :returned
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
       class StopPaymentRequest < Increase::BaseModel
@@ -811,10 +775,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The reason why this transfer was stopped.
-        module Reason
-          extend Increase::Enum
-
+        class Reason < Increase::Enum
           # The check could not be delivered.
           MAIL_DELIVERY_FAILED = :mail_delivery_failed
 
@@ -828,28 +792,16 @@ module Increase
           UNKNOWN = :unknown
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
 
+        # @abstract
+        #
         # A constant representing the object's type. For this resource it will always be
         #   `check_transfer_stop_payment_request`.
-        module Type
-          extend Increase::Enum
-
+        class Type < Increase::Enum
           CHECK_TRANSFER_STOP_PAYMENT_REQUEST = :check_transfer_stop_payment_request
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 
@@ -888,20 +840,14 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `check_transfer`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         CHECK_TRANSFER = :check_transfer
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

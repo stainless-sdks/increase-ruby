@@ -11,8 +11,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::DocumentListParams::Category, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::DocumentListParams::Category, Increase::Util::AnyHash))
+        params(_: Increase::Models::DocumentListParams::Category)
+          .returns(Increase::Models::DocumentListParams::Category)
       end
       def category=(_)
       end
@@ -22,8 +22,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::DocumentListParams::CreatedAt, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::DocumentListParams::CreatedAt, Increase::Util::AnyHash))
+        params(_: Increase::Models::DocumentListParams::CreatedAt)
+          .returns(Increase::Models::DocumentListParams::CreatedAt)
       end
       def created_at=(_)
       end
@@ -90,54 +90,38 @@ module Increase
         # Filter Documents for those with the specified category or categories. For GET
         #   requests, this should be encoded as a comma-delimited string, such as
         #   `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Increase::Models::DocumentListParams::Category::In::OrSymbol])) }
+        sig { returns(T.nilable(T::Array[Symbol])) }
         def in_
         end
 
-        sig do
-          params(_: T::Array[Increase::Models::DocumentListParams::Category::In::OrSymbol])
-            .returns(T::Array[Increase::Models::DocumentListParams::Category::In::OrSymbol])
-        end
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
         def in_=(_)
         end
 
-        sig do
-          params(in_: T::Array[Increase::Models::DocumentListParams::Category::In::OrSymbol])
-            .returns(T.attached_class)
-        end
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Increase::Models::DocumentListParams::Category::In::OrSymbol]}) }
+        sig { override.returns({in_: T::Array[Symbol]}) }
         def to_hash
         end
 
-        module In
-          extend Increase::Enum
+        class In < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DocumentListParams::Category::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::DocumentListParams::Category::In::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # Internal Revenue Service Form 1099-INT.
-          FORM_1099_INT = T.let(:form_1099_int, Increase::Models::DocumentListParams::Category::In::TaggedSymbol)
+          FORM_1099_INT = :form_1099_int
 
           # Internal Revenue Service Form 1099-MISC.
-          FORM_1099_MISC = T.let(:form_1099_misc, Increase::Models::DocumentListParams::Category::In::TaggedSymbol)
+          FORM_1099_MISC = :form_1099_misc
 
           # A document submitted in response to a proof of authorization request for an ACH transfer.
-          PROOF_OF_AUTHORIZATION =
-            T.let(:proof_of_authorization, Increase::Models::DocumentListParams::Category::In::TaggedSymbol)
+          PROOF_OF_AUTHORIZATION = :proof_of_authorization
 
           # Company information, such a policies or procedures, typically submitted during our due diligence process.
-          COMPANY_INFORMATION =
-            T.let(:company_information, Increase::Models::DocumentListParams::Category::In::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::DocumentListParams::Category::In::TaggedSymbol]) }
-            def values
-            end
-          end
+          COMPANY_INFORMATION = :company_information
         end
       end
 

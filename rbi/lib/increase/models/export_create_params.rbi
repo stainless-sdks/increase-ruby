@@ -7,14 +7,11 @@ module Increase
       include Increase::RequestParameters
 
       # The type of Export to create.
-      sig { returns(Increase::Models::ExportCreateParams::Category::OrSymbol) }
+      sig { returns(Symbol) }
       def category
       end
 
-      sig do
-        params(_: Increase::Models::ExportCreateParams::Category::OrSymbol)
-          .returns(Increase::Models::ExportCreateParams::Category::OrSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def category=(_)
       end
 
@@ -25,8 +22,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::ExportCreateParams::AccountStatementOfx, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::ExportCreateParams::AccountStatementOfx, Increase::Util::AnyHash))
+        params(_: Increase::Models::ExportCreateParams::AccountStatementOfx)
+          .returns(Increase::Models::ExportCreateParams::AccountStatementOfx)
       end
       def account_statement_ofx=(_)
       end
@@ -38,8 +35,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::ExportCreateParams::BalanceCsv, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::ExportCreateParams::BalanceCsv, Increase::Util::AnyHash))
+        params(_: Increase::Models::ExportCreateParams::BalanceCsv)
+          .returns(Increase::Models::ExportCreateParams::BalanceCsv)
       end
       def balance_csv=(_)
       end
@@ -51,12 +48,8 @@ module Increase
       end
 
       sig do
-        params(
-          _: T.any(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv, Increase::Util::AnyHash)
-        )
-          .returns(
-            T.any(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv, Increase::Util::AnyHash)
-          )
+        params(_: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv)
+          .returns(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv)
       end
       def bookkeeping_account_balance_csv=(_)
       end
@@ -67,8 +60,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::ExportCreateParams::EntityCsv, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::ExportCreateParams::EntityCsv, Increase::Util::AnyHash))
+        params(_: Increase::Models::ExportCreateParams::EntityCsv)
+          .returns(Increase::Models::ExportCreateParams::EntityCsv)
       end
       def entity_csv=(_)
       end
@@ -80,8 +73,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::ExportCreateParams::TransactionCsv, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::ExportCreateParams::TransactionCsv, Increase::Util::AnyHash))
+        params(_: Increase::Models::ExportCreateParams::TransactionCsv)
+          .returns(Increase::Models::ExportCreateParams::TransactionCsv)
       end
       def transaction_csv=(_)
       end
@@ -97,7 +90,7 @@ module Increase
 
       sig do
         params(
-          category: Increase::Models::ExportCreateParams::Category::OrSymbol,
+          category: Symbol,
           account_statement_ofx: Increase::Models::ExportCreateParams::AccountStatementOfx,
           balance_csv: Increase::Models::ExportCreateParams::BalanceCsv,
           bookkeeping_account_balance_csv: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv,
@@ -124,7 +117,7 @@ module Increase
         override
           .returns(
             {
-              category: Increase::Models::ExportCreateParams::Category::OrSymbol,
+              category: Symbol,
               account_statement_ofx: Increase::Models::ExportCreateParams::AccountStatementOfx,
               balance_csv: Increase::Models::ExportCreateParams::BalanceCsv,
               bookkeeping_account_balance_csv: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv,
@@ -139,37 +132,28 @@ module Increase
       end
 
       # The type of Export to create.
-      module Category
-        extend Increase::Enum
+      class Category < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExportCreateParams::Category) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ExportCreateParams::Category::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # Export an Open Financial Exchange (OFX) file of transactions and balances for a given time range and Account.
-        ACCOUNT_STATEMENT_OFX =
-          T.let(:account_statement_ofx, Increase::Models::ExportCreateParams::Category::TaggedSymbol)
+        ACCOUNT_STATEMENT_OFX = :account_statement_ofx
 
         # Export a CSV of all transactions for a given time range.
-        TRANSACTION_CSV = T.let(:transaction_csv, Increase::Models::ExportCreateParams::Category::TaggedSymbol)
+        TRANSACTION_CSV = :transaction_csv
 
         # Export a CSV of account balances for the dates in a given range.
-        BALANCE_CSV = T.let(:balance_csv, Increase::Models::ExportCreateParams::Category::TaggedSymbol)
+        BALANCE_CSV = :balance_csv
 
         # Export a CSV of bookkeeping account balances for the dates in a given range.
-        BOOKKEEPING_ACCOUNT_BALANCE_CSV =
-          T.let(:bookkeeping_account_balance_csv, Increase::Models::ExportCreateParams::Category::TaggedSymbol)
+        BOOKKEEPING_ACCOUNT_BALANCE_CSV = :bookkeeping_account_balance_csv
 
         # Export a CSV of entities with a given status.
-        ENTITY_CSV = T.let(:entity_csv, Increase::Models::ExportCreateParams::Category::TaggedSymbol)
+        ENTITY_CSV = :entity_csv
 
         # Export a CSV of vendors added to the third-party risk management dashboard.
-        VENDOR_CSV = T.let(:vendor_csv, Increase::Models::ExportCreateParams::Category::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::ExportCreateParams::Category::TaggedSymbol]) }
-          def values
-          end
-        end
+        VENDOR_CSV = :vendor_csv
       end
 
       class AccountStatementOfx < Increase::BaseModel
@@ -188,12 +172,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.any(Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt, Increase::Util::AnyHash)
-          )
-            .returns(
-              T.any(Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt, Increase::Util::AnyHash)
-            )
+          params(_: Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt)
+            .returns(Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt)
         end
         def created_at=(_)
         end
@@ -289,8 +269,8 @@ module Increase
         end
 
         sig do
-          params(_: T.any(Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt, Increase::Util::AnyHash))
-            .returns(T.any(Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt, Increase::Util::AnyHash))
+          params(_: Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt)
+            .returns(Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt)
         end
         def created_at=(_)
         end
@@ -400,18 +380,8 @@ module Increase
         end
 
         sig do
-          params(
-            _: T.any(
-              Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt,
-              Increase::Util::AnyHash
-            )
-          )
-            .returns(
-              T.any(
-                Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt,
-                Increase::Util::AnyHash
-              )
-            )
+          params(_: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt)
+            .returns(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt)
         end
         def created_at=(_)
         end
@@ -501,8 +471,8 @@ module Increase
         end
 
         sig do
-          params(_: T.any(Increase::Models::ExportCreateParams::EntityCsv::Status, Increase::Util::AnyHash))
-            .returns(T.any(Increase::Models::ExportCreateParams::EntityCsv::Status, Increase::Util::AnyHash))
+          params(_: Increase::Models::ExportCreateParams::EntityCsv::Status)
+            .returns(Increase::Models::ExportCreateParams::EntityCsv::Status)
         end
         def status=(_)
         end
@@ -519,51 +489,36 @@ module Increase
         class Status < Increase::BaseModel
           # Entity statuses to filter by. For GET requests, this should be encoded as a
           #   comma-delimited string, such as `?in=one,two,three`.
-          sig { returns(T::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::In::OrSymbol]) }
+          sig { returns(T::Array[Symbol]) }
           def in_
           end
 
-          sig do
-            params(_: T::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::In::OrSymbol])
-              .returns(T::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::In::OrSymbol])
-          end
+          sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
           def in_=(_)
           end
 
           # Entity statuses to filter by.
-          sig do
-            params(in_: T::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::In::OrSymbol])
-              .returns(T.attached_class)
-          end
+          sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
           def self.new(in_:)
           end
 
-          sig { override.returns({in_: T::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::In::OrSymbol]}) }
+          sig { override.returns({in_: T::Array[Symbol]}) }
           def to_hash
           end
 
-          module In
-            extend Increase::Enum
+          class In < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::ExportCreateParams::EntityCsv::Status::In) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::ExportCreateParams::EntityCsv::Status::In::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # The entity is active.
-            ACTIVE = T.let(:active, Increase::Models::ExportCreateParams::EntityCsv::Status::In::TaggedSymbol)
+            ACTIVE = :active
 
             # The entity is archived, and can no longer be used to create accounts.
-            ARCHIVED = T.let(:archived, Increase::Models::ExportCreateParams::EntityCsv::Status::In::TaggedSymbol)
+            ARCHIVED = :archived
 
             # The entity is temporarily disabled and cannot be used for financial activity.
-            DISABLED = T.let(:disabled, Increase::Models::ExportCreateParams::EntityCsv::Status::In::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::In::TaggedSymbol]) }
-              def values
-              end
-            end
+            DISABLED = :disabled
           end
         end
       end
@@ -584,8 +539,8 @@ module Increase
         end
 
         sig do
-          params(_: T.any(Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt, Increase::Util::AnyHash))
-            .returns(T.any(Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt, Increase::Util::AnyHash))
+          params(_: Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt)
+            .returns(Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt)
         end
         def created_at=(_)
         end

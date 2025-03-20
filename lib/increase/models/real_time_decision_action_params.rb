@@ -104,10 +104,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Whether the card authentication attempt should be approved or declined.
-        module Decision
-          extend Increase::Enum
-
+        class Decision < Increase::Enum
           # Approve the authentication attempt without triggering a challenge.
           APPROVE = :approve
 
@@ -118,12 +118,6 @@ module Increase
           DENY = :deny
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 
@@ -146,11 +140,11 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Whether the card authentication challenge was successfully delivered to the
         #   cardholder.
-        module Result
-          extend Increase::Enum
-
+        class Result < Increase::Enum
           # Your application successfully delivered the one-time code to the cardholder.
           SUCCESS = :success
 
@@ -158,12 +152,6 @@ module Increase
           FAILURE = :failure
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 
@@ -198,10 +186,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Whether the card authorization should be approved or declined.
-        module Decision
-          extend Increase::Enum
-
+        class Decision < Increase::Enum
           # Approve the authorization.
           APPROVE = :approve
 
@@ -209,19 +197,13 @@ module Increase
           DECLINE = :decline
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
 
+        # @abstract
+        #
         # The reason the card authorization was declined. This translates to a specific
         #   decline code that is sent to the card network.
-        module DeclineReason
-          extend Increase::Enum
-
+        class DeclineReason < Increase::Enum
           # The cardholder does not have sufficient funds to cover the transaction. The merchant may attempt to process the transaction again.
           INSUFFICIENT_FUNDS = :insufficient_funds
 
@@ -241,12 +223,6 @@ module Increase
           OTHER = :other
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 
@@ -279,10 +255,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Whether your application was able to deliver the one-time passcode.
-        module Result
-          extend Increase::Enum
-
+        class Result < Increase::Enum
           # Your application successfully delivered the one-time passcode to the cardholder.
           SUCCESS = :success
 
@@ -290,12 +266,6 @@ module Increase
           FAILURE = :failure
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
 
         class Success < Increase::BaseModel

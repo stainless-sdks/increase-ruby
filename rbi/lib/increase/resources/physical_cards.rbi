@@ -47,7 +47,7 @@ module Increase
       sig do
         params(
           physical_card_id: String,
-          status: Increase::Models::PhysicalCardUpdateParams::Status::OrSymbol,
+          status: Symbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::PhysicalCard)

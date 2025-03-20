@@ -51,8 +51,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::ExternalAccountListParams::Status, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::ExternalAccountListParams::Status, Increase::Util::AnyHash))
+        params(_: Increase::Models::ExternalAccountListParams::Status)
+          .returns(Increase::Models::ExternalAccountListParams::Status)
       end
       def status=(_)
       end
@@ -91,46 +91,32 @@ module Increase
         # Filter External Accounts for those with the specified status or statuses. For
         #   GET requests, this should be encoded as a comma-delimited string, such as
         #   `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Increase::Models::ExternalAccountListParams::Status::In::OrSymbol])) }
+        sig { returns(T.nilable(T::Array[Symbol])) }
         def in_
         end
 
-        sig do
-          params(_: T::Array[Increase::Models::ExternalAccountListParams::Status::In::OrSymbol])
-            .returns(T::Array[Increase::Models::ExternalAccountListParams::Status::In::OrSymbol])
-        end
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
         def in_=(_)
         end
 
-        sig do
-          params(in_: T::Array[Increase::Models::ExternalAccountListParams::Status::In::OrSymbol])
-            .returns(T.attached_class)
-        end
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Increase::Models::ExternalAccountListParams::Status::In::OrSymbol]}) }
+        sig { override.returns({in_: T::Array[Symbol]}) }
         def to_hash
         end
 
-        module In
-          extend Increase::Enum
+        class In < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountListParams::Status::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountListParams::Status::In::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # The External Account is active.
-          ACTIVE = T.let(:active, Increase::Models::ExternalAccountListParams::Status::In::TaggedSymbol)
+          ACTIVE = :active
 
           # The External Account is archived and won't appear in the dashboard.
-          ARCHIVED = T.let(:archived, Increase::Models::ExternalAccountListParams::Status::In::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::ExternalAccountListParams::Status::In::TaggedSymbol]) }
-            def values
-            end
-          end
+          ARCHIVED = :archived
         end
       end
     end

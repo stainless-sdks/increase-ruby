@@ -47,23 +47,19 @@ module Increase
 
       type account_holder = :business | :individual
 
-      module AccountHolder
-        extend Increase::Enum
-
+      class AccountHolder < Increase::Enum
         # The External Account is owned by a business.
         BUSINESS: :business
 
         # The External Account is owned by an individual.
         INDIVIDUAL: :individual
 
-        def self?.values: -> ::Array[Increase::Models::ExternalAccountUpdateParams::account_holder]
+        def self.values: -> ::Array[Increase::Models::ExternalAccountUpdateParams::account_holder]
       end
 
       type funding = :checking | :savings | :other
 
-      module Funding
-        extend Increase::Enum
-
+      class Funding < Increase::Enum
         # A checking account.
         CHECKING: :checking
 
@@ -73,21 +69,19 @@ module Increase
         # A different type of account.
         OTHER: :other
 
-        def self?.values: -> ::Array[Increase::Models::ExternalAccountUpdateParams::funding]
+        def self.values: -> ::Array[Increase::Models::ExternalAccountUpdateParams::funding]
       end
 
       type status = :active | :archived
 
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The External Account is active.
         ACTIVE: :active
 
         # The External Account is archived and won't appear in the dashboard.
         ARCHIVED: :archived
 
-        def self?.values: -> ::Array[Increase::Models::ExternalAccountUpdateParams::status]
+        def self.values: -> ::Array[Increase::Models::ExternalAccountUpdateParams::status]
       end
     end
   end

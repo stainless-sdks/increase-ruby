@@ -12,8 +12,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::CardUpdateParams::BillingAddress, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::CardUpdateParams::BillingAddress, Increase::Util::AnyHash))
+        params(_: Increase::Models::CardUpdateParams::BillingAddress)
+          .returns(Increase::Models::CardUpdateParams::BillingAddress)
       end
       def billing_address=(_)
       end
@@ -35,8 +35,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::CardUpdateParams::DigitalWallet, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::CardUpdateParams::DigitalWallet, Increase::Util::AnyHash))
+        params(_: Increase::Models::CardUpdateParams::DigitalWallet)
+          .returns(Increase::Models::CardUpdateParams::DigitalWallet)
       end
       def digital_wallet=(_)
       end
@@ -52,14 +52,11 @@ module Increase
       end
 
       # The status to update the Card with.
-      sig { returns(T.nilable(Increase::Models::CardUpdateParams::Status::OrSymbol)) }
+      sig { returns(T.nilable(Symbol)) }
       def status
       end
 
-      sig do
-        params(_: Increase::Models::CardUpdateParams::Status::OrSymbol)
-          .returns(Increase::Models::CardUpdateParams::Status::OrSymbol)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def status=(_)
       end
 
@@ -69,7 +66,7 @@ module Increase
           description: String,
           digital_wallet: Increase::Models::CardUpdateParams::DigitalWallet,
           entity_id: String,
-          status: Increase::Models::CardUpdateParams::Status::OrSymbol,
+          status: Symbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -92,7 +89,7 @@ module Increase
               description: String,
               digital_wallet: Increase::Models::CardUpdateParams::DigitalWallet,
               entity_id: String,
-              status: Increase::Models::CardUpdateParams::Status::OrSymbol,
+              status: Symbol,
               request_options: Increase::RequestOptions
             }
           )
@@ -206,26 +203,19 @@ module Increase
       end
 
       # The status to update the Card with.
-      module Status
-        extend Increase::Enum
+      class Status < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardUpdateParams::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CardUpdateParams::Status::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The card is active.
-        ACTIVE = T.let(:active, Increase::Models::CardUpdateParams::Status::TaggedSymbol)
+        ACTIVE = :active
 
         # The card is temporarily disabled.
-        DISABLED = T.let(:disabled, Increase::Models::CardUpdateParams::Status::TaggedSymbol)
+        DISABLED = :disabled
 
         # The card is permanently canceled.
-        CANCELED = T.let(:canceled, Increase::Models::CardUpdateParams::Status::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::CardUpdateParams::Status::TaggedSymbol]) }
-          def values
-          end
-        end
+        CANCELED = :canceled
       end
     end
   end

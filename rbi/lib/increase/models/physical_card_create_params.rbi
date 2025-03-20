@@ -21,8 +21,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::PhysicalCardCreateParams::Cardholder, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::PhysicalCardCreateParams::Cardholder, Increase::Util::AnyHash))
+        params(_: Increase::Models::PhysicalCardCreateParams::Cardholder)
+          .returns(Increase::Models::PhysicalCardCreateParams::Cardholder)
       end
       def cardholder=(_)
       end
@@ -33,8 +33,8 @@ module Increase
       end
 
       sig do
-        params(_: T.any(Increase::Models::PhysicalCardCreateParams::Shipment, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::PhysicalCardCreateParams::Shipment, Increase::Util::AnyHash))
+        params(_: Increase::Models::PhysicalCardCreateParams::Shipment)
+          .returns(Increase::Models::PhysicalCardCreateParams::Shipment)
       end
       def shipment=(_)
       end
@@ -113,43 +113,31 @@ module Increase
         end
 
         sig do
-          params(_: T.any(Increase::Models::PhysicalCardCreateParams::Shipment::Address, Increase::Util::AnyHash))
-            .returns(T.any(Increase::Models::PhysicalCardCreateParams::Shipment::Address, Increase::Util::AnyHash))
+          params(_: Increase::Models::PhysicalCardCreateParams::Shipment::Address)
+            .returns(Increase::Models::PhysicalCardCreateParams::Shipment::Address)
         end
         def address=(_)
         end
 
         # The shipping method to use.
-        sig { returns(Increase::Models::PhysicalCardCreateParams::Shipment::Method::OrSymbol) }
+        sig { returns(Symbol) }
         def method_
         end
 
-        sig do
-          params(_: Increase::Models::PhysicalCardCreateParams::Shipment::Method::OrSymbol)
-            .returns(Increase::Models::PhysicalCardCreateParams::Shipment::Method::OrSymbol)
-        end
+        sig { params(_: Symbol).returns(Symbol) }
         def method_=(_)
         end
 
         # The details used to ship this physical card.
         sig do
-          params(
-            address: Increase::Models::PhysicalCardCreateParams::Shipment::Address,
-            method_: Increase::Models::PhysicalCardCreateParams::Shipment::Method::OrSymbol
-          )
+          params(address: Increase::Models::PhysicalCardCreateParams::Shipment::Address, method_: Symbol)
             .returns(T.attached_class)
         end
         def self.new(address:, method_:)
         end
 
         sig do
-          override
-            .returns(
-              {
-                address: Increase::Models::PhysicalCardCreateParams::Shipment::Address,
-                method_: Increase::Models::PhysicalCardCreateParams::Shipment::Method::OrSymbol
-              }
-            )
+          override.returns({address: Increase::Models::PhysicalCardCreateParams::Shipment::Address, method_: Symbol})
         end
         def to_hash
         end
@@ -264,33 +252,19 @@ module Increase
         end
 
         # The shipping method to use.
-        module Method
-          extend Increase::Enum
+        class Method < Increase::Enum
+          abstract!
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardCreateParams::Shipment::Method) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # USPS Post with tracking.
-          USPS = T.let(:usps, Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol)
+          USPS = :usps
 
           # FedEx Priority Overnight, no signature.
-          FEDEX_PRIORITY_OVERNIGHT =
-            T.let(
-              :fedex_priority_overnight,
-              Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol
-            )
+          FEDEX_PRIORITY_OVERNIGHT = :fedex_priority_overnight
 
           # FedEx 2-day.
-          FEDEX_2_DAY =
-            T.let(:fedex_2_day, Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol]) }
-            def values
-            end
-          end
+          FEDEX_2_DAY = :fedex_2_day
         end
       end
     end
