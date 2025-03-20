@@ -298,10 +298,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # The type of addenda to pass with the transfer.
-        class Category < Increase::Enum
+        module Category
+          extend Increase::Enum
+
           # Unstructured `payment_related_information` passed through with the transfer.
           FREEFORM = :freeform
 
@@ -389,11 +389,11 @@ module Increase
         end
       end
 
-      # @abstract
-      #
       # The type of entity that owns the account to which the ACH Transfer is being
       #   sent.
-      class DestinationAccountHolder < Increase::Enum
+      module DestinationAccountHolder
+        extend Increase::Enum
+
         # The External Account is owned by a business.
         BUSINESS = :business
 
@@ -406,10 +406,10 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # The type of the account to which the transfer will be sent.
-      class Funding < Increase::Enum
+      module Funding
+        extend Increase::Enum
+
         # A checking account.
         CHECKING = :checking
 
@@ -455,10 +455,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # A schedule by which Increase will choose an effective date for the transfer.
-        class SettlementSchedule < Increase::Enum
+        module SettlementSchedule
+          extend Increase::Enum
+
           # The chosen effective date will be the same as the ACH processing date on which the transfer is submitted. This is necessary, but not sufficient for the transfer to be settled same-day: it must also be submitted before the last same-day cutoff and be less than or equal to $1,000.000.00.
           SAME_DAY = :same_day
 
@@ -469,10 +469,10 @@ module Increase
         end
       end
 
-      # @abstract
-      #
       # The Standard Entry Class (SEC) code to use for the transfer.
-      class StandardEntryClassCode < Increase::Enum
+      module StandardEntryClassCode
+        extend Increase::Enum
+
         # Corporate Credit and Debit (CCD).
         CORPORATE_CREDIT_OR_DEBIT = :corporate_credit_or_debit
 
@@ -488,10 +488,10 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # The timing of the transaction.
-      class TransactionTiming < Increase::Enum
+      module TransactionTiming
+        extend Increase::Enum
+
         # A Transaction will be created immediately.
         SYNCHRONOUS = :synchronous
 

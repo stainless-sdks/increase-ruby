@@ -109,113 +109,161 @@ module Increase
       class Category < Increase::BaseModel
         # Return results whose value is in the provided list. For GET requests, this
         #   should be encoded as a comma-delimited string, such as `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Symbol])) }
+        sig { returns(T.nilable(T::Array[Increase::Models::TransactionListParams::Category::In::OrSymbol])) }
         def in_
         end
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        sig do
+          params(_: T::Array[Increase::Models::TransactionListParams::Category::In::OrSymbol])
+            .returns(T::Array[Increase::Models::TransactionListParams::Category::In::OrSymbol])
+        end
         def in_=(_)
         end
 
-        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
+        sig do
+          params(in_: T::Array[Increase::Models::TransactionListParams::Category::In::OrSymbol])
+            .returns(T.attached_class)
+        end
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Symbol]}) }
+        sig { override.returns({in_: T::Array[Increase::Models::TransactionListParams::Category::In::OrSymbol]}) }
         def to_hash
         end
 
-        class In < Increase::Enum
-          abstract!
+        module In
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::TransactionListParams::Category::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::TransactionListParams::Category::In::TaggedSymbol) }
 
           # Account Transfer Intention: details will be under the `account_transfer_intention` object.
-          ACCOUNT_TRANSFER_INTENTION = :account_transfer_intention
+          ACCOUNT_TRANSFER_INTENTION =
+            T.let(:account_transfer_intention, Increase::Models::TransactionListParams::Category::In::OrSymbol)
 
           # ACH Transfer Intention: details will be under the `ach_transfer_intention` object.
-          ACH_TRANSFER_INTENTION = :ach_transfer_intention
+          ACH_TRANSFER_INTENTION =
+            T.let(:ach_transfer_intention, Increase::Models::TransactionListParams::Category::In::OrSymbol)
 
           # ACH Transfer Rejection: details will be under the `ach_transfer_rejection` object.
-          ACH_TRANSFER_REJECTION = :ach_transfer_rejection
+          ACH_TRANSFER_REJECTION =
+            T.let(:ach_transfer_rejection, Increase::Models::TransactionListParams::Category::In::OrSymbol)
 
           # ACH Transfer Return: details will be under the `ach_transfer_return` object.
-          ACH_TRANSFER_RETURN = :ach_transfer_return
+          ACH_TRANSFER_RETURN =
+            T.let(:ach_transfer_return, Increase::Models::TransactionListParams::Category::In::OrSymbol)
 
           # Cashback Payment: details will be under the `cashback_payment` object.
-          CASHBACK_PAYMENT = :cashback_payment
+          CASHBACK_PAYMENT =
+            T.let(:cashback_payment, Increase::Models::TransactionListParams::Category::In::OrSymbol)
 
           # Card Dispute Acceptance: details will be under the `card_dispute_acceptance` object.
-          CARD_DISPUTE_ACCEPTANCE = :card_dispute_acceptance
+          CARD_DISPUTE_ACCEPTANCE =
+            T.let(:card_dispute_acceptance, Increase::Models::TransactionListParams::Category::In::OrSymbol)
 
           # Card Dispute Loss: details will be under the `card_dispute_loss` object.
-          CARD_DISPUTE_LOSS = :card_dispute_loss
+          CARD_DISPUTE_LOSS =
+            T.let(:card_dispute_loss, Increase::Models::TransactionListParams::Category::In::OrSymbol)
 
           # Card Refund: details will be under the `card_refund` object.
-          CARD_REFUND = :card_refund
+          CARD_REFUND = T.let(:card_refund, Increase::Models::TransactionListParams::Category::In::OrSymbol)
 
           # Card Settlement: details will be under the `card_settlement` object.
-          CARD_SETTLEMENT = :card_settlement
+          CARD_SETTLEMENT =
+            T.let(:card_settlement, Increase::Models::TransactionListParams::Category::In::OrSymbol)
 
           # Card Revenue Payment: details will be under the `card_revenue_payment` object.
-          CARD_REVENUE_PAYMENT = :card_revenue_payment
+          CARD_REVENUE_PAYMENT =
+            T.let(:card_revenue_payment, Increase::Models::TransactionListParams::Category::In::OrSymbol)
 
           # Check Deposit Acceptance: details will be under the `check_deposit_acceptance` object.
-          CHECK_DEPOSIT_ACCEPTANCE = :check_deposit_acceptance
+          CHECK_DEPOSIT_ACCEPTANCE =
+            T.let(:check_deposit_acceptance, Increase::Models::TransactionListParams::Category::In::OrSymbol)
 
           # Check Deposit Return: details will be under the `check_deposit_return` object.
-          CHECK_DEPOSIT_RETURN = :check_deposit_return
+          CHECK_DEPOSIT_RETURN =
+            T.let(:check_deposit_return, Increase::Models::TransactionListParams::Category::In::OrSymbol)
 
           # Check Transfer Deposit: details will be under the `check_transfer_deposit` object.
-          CHECK_TRANSFER_DEPOSIT = :check_transfer_deposit
+          CHECK_TRANSFER_DEPOSIT =
+            T.let(:check_transfer_deposit, Increase::Models::TransactionListParams::Category::In::OrSymbol)
 
           # Fee Payment: details will be under the `fee_payment` object.
-          FEE_PAYMENT = :fee_payment
+          FEE_PAYMENT = T.let(:fee_payment, Increase::Models::TransactionListParams::Category::In::OrSymbol)
 
           # Inbound ACH Transfer Intention: details will be under the `inbound_ach_transfer` object.
-          INBOUND_ACH_TRANSFER = :inbound_ach_transfer
+          INBOUND_ACH_TRANSFER =
+            T.let(:inbound_ach_transfer, Increase::Models::TransactionListParams::Category::In::OrSymbol)
 
           # Inbound ACH Transfer Return Intention: details will be under the `inbound_ach_transfer_return_intention` object.
-          INBOUND_ACH_TRANSFER_RETURN_INTENTION = :inbound_ach_transfer_return_intention
+          INBOUND_ACH_TRANSFER_RETURN_INTENTION =
+            T.let(
+              :inbound_ach_transfer_return_intention,
+              Increase::Models::TransactionListParams::Category::In::OrSymbol
+            )
 
           # Inbound Check Deposit Return Intention: details will be under the `inbound_check_deposit_return_intention` object.
-          INBOUND_CHECK_DEPOSIT_RETURN_INTENTION = :inbound_check_deposit_return_intention
+          INBOUND_CHECK_DEPOSIT_RETURN_INTENTION =
+            T.let(
+              :inbound_check_deposit_return_intention,
+              Increase::Models::TransactionListParams::Category::In::OrSymbol
+            )
 
           # Inbound Check Adjustment: details will be under the `inbound_check_adjustment` object.
-          INBOUND_CHECK_ADJUSTMENT = :inbound_check_adjustment
+          INBOUND_CHECK_ADJUSTMENT =
+            T.let(:inbound_check_adjustment, Increase::Models::TransactionListParams::Category::In::OrSymbol)
 
           # Inbound Real-Time Payments Transfer Confirmation: details will be under the `inbound_real_time_payments_transfer_confirmation` object.
-          INBOUND_REAL_TIME_PAYMENTS_TRANSFER_CONFIRMATION = :inbound_real_time_payments_transfer_confirmation
+          INBOUND_REAL_TIME_PAYMENTS_TRANSFER_CONFIRMATION =
+            T.let(
+              :inbound_real_time_payments_transfer_confirmation,
+              Increase::Models::TransactionListParams::Category::In::OrSymbol
+            )
 
           # Inbound Real-Time Payments Transfer Decline: details will be under the `inbound_real_time_payments_transfer_decline` object.
-          INBOUND_REAL_TIME_PAYMENTS_TRANSFER_DECLINE = :inbound_real_time_payments_transfer_decline
+          INBOUND_REAL_TIME_PAYMENTS_TRANSFER_DECLINE =
+            T.let(
+              :inbound_real_time_payments_transfer_decline,
+              Increase::Models::TransactionListParams::Category::In::OrSymbol
+            )
 
           # Inbound Wire Reversal: details will be under the `inbound_wire_reversal` object.
-          INBOUND_WIRE_REVERSAL = :inbound_wire_reversal
+          INBOUND_WIRE_REVERSAL =
+            T.let(:inbound_wire_reversal, Increase::Models::TransactionListParams::Category::In::OrSymbol)
 
           # Inbound Wire Transfer Intention: details will be under the `inbound_wire_transfer` object.
-          INBOUND_WIRE_TRANSFER = :inbound_wire_transfer
+          INBOUND_WIRE_TRANSFER =
+            T.let(:inbound_wire_transfer, Increase::Models::TransactionListParams::Category::In::OrSymbol)
 
           # Inbound Wire Transfer Reversal Intention: details will be under the `inbound_wire_transfer_reversal` object.
-          INBOUND_WIRE_TRANSFER_REVERSAL = :inbound_wire_transfer_reversal
+          INBOUND_WIRE_TRANSFER_REVERSAL =
+            T.let(:inbound_wire_transfer_reversal, Increase::Models::TransactionListParams::Category::In::OrSymbol)
 
           # Interest Payment: details will be under the `interest_payment` object.
-          INTEREST_PAYMENT = :interest_payment
+          INTEREST_PAYMENT =
+            T.let(:interest_payment, Increase::Models::TransactionListParams::Category::In::OrSymbol)
 
           # Internal Source: details will be under the `internal_source` object.
-          INTERNAL_SOURCE = :internal_source
+          INTERNAL_SOURCE =
+            T.let(:internal_source, Increase::Models::TransactionListParams::Category::In::OrSymbol)
 
           # Real-Time Payments Transfer Acknowledgement: details will be under the `real_time_payments_transfer_acknowledgement` object.
-          REAL_TIME_PAYMENTS_TRANSFER_ACKNOWLEDGEMENT = :real_time_payments_transfer_acknowledgement
+          REAL_TIME_PAYMENTS_TRANSFER_ACKNOWLEDGEMENT =
+            T.let(
+              :real_time_payments_transfer_acknowledgement,
+              Increase::Models::TransactionListParams::Category::In::OrSymbol
+            )
 
           # Sample Funds: details will be under the `sample_funds` object.
-          SAMPLE_FUNDS = :sample_funds
+          SAMPLE_FUNDS = T.let(:sample_funds, Increase::Models::TransactionListParams::Category::In::OrSymbol)
 
           # Wire Transfer Intention: details will be under the `wire_transfer_intention` object.
-          WIRE_TRANSFER_INTENTION = :wire_transfer_intention
+          WIRE_TRANSFER_INTENTION =
+            T.let(:wire_transfer_intention, Increase::Models::TransactionListParams::Category::In::OrSymbol)
 
           # The Transaction was made for an undocumented or deprecated reason.
-          OTHER = :other
+          OTHER = T.let(:other, Increase::Models::TransactionListParams::Category::In::OrSymbol)
         end
       end
 

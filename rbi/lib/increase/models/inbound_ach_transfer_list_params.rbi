@@ -161,38 +161,46 @@ module Increase
         # Filter Inbound ACH Transfers to those with the specified status. For GET
         #   requests, this should be encoded as a comma-delimited string, such as
         #   `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Symbol])) }
+        sig { returns(T.nilable(T::Array[Increase::Models::InboundACHTransferListParams::Status::In::OrSymbol])) }
         def in_
         end
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        sig do
+          params(_: T::Array[Increase::Models::InboundACHTransferListParams::Status::In::OrSymbol])
+            .returns(T::Array[Increase::Models::InboundACHTransferListParams::Status::In::OrSymbol])
+        end
         def in_=(_)
         end
 
-        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
+        sig do
+          params(in_: T::Array[Increase::Models::InboundACHTransferListParams::Status::In::OrSymbol])
+            .returns(T.attached_class)
+        end
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Symbol]}) }
+        sig { override.returns({in_: T::Array[Increase::Models::InboundACHTransferListParams::Status::In::OrSymbol]}) }
         def to_hash
         end
 
-        class In < Increase::Enum
-          abstract!
+        module In
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundACHTransferListParams::Status::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol) }
 
           # The Inbound ACH Transfer is awaiting action, will transition automatically if no action is taken.
-          PENDING = :pending
+          PENDING = T.let(:pending, Increase::Models::InboundACHTransferListParams::Status::In::OrSymbol)
 
           # The Inbound ACH Transfer has been declined.
-          DECLINED = :declined
+          DECLINED = T.let(:declined, Increase::Models::InboundACHTransferListParams::Status::In::OrSymbol)
 
           # The Inbound ACH Transfer is accepted.
-          ACCEPTED = :accepted
+          ACCEPTED = T.let(:accepted, Increase::Models::InboundACHTransferListParams::Status::In::OrSymbol)
 
           # The Inbound ACH Transfer has been returned.
-          RETURNED = :returned
+          RETURNED = T.let(:returned, Increase::Models::InboundACHTransferListParams::Status::In::OrSymbol)
         end
       end
     end

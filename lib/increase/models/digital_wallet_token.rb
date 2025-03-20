@@ -64,10 +64,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # This indicates if payments can be made with the Digital Wallet Token.
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The digital wallet token is active.
         ACTIVE = :active
 
@@ -83,10 +83,10 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # The digital wallet app being used.
-      class TokenRequestor < Increase::Enum
+      module TokenRequestor
+        extend Increase::Enum
+
         # Apple Pay
         APPLE_PAY = :apple_pay
 
@@ -102,11 +102,11 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `digital_wallet_token`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         DIGITAL_WALLET_TOKEN = :digital_wallet_token
 
         finalize!
@@ -134,10 +134,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # The status the update changed this Digital Wallet Token to.
-        class Status < Increase::Enum
+        module Status
+          extend Increase::Enum
+
           # The digital wallet token is active.
           ACTIVE = :active
 

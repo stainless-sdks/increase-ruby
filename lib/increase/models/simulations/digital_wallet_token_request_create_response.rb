@@ -38,11 +38,11 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # If the simulated tokenization attempt was declined, this field contains details
         #   as to why.
-        class DeclineReason < Increase::Enum
+        module DeclineReason
+          extend Increase::Enum
+
           # The card is not active.
           CARD_NOT_ACTIVE = :card_not_active
 
@@ -58,11 +58,11 @@ module Increase
           finalize!
         end
 
-        # @abstract
-        #
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_digital_wallet_token_request_simulation_result`.
-        class Type < Increase::Enum
+        module Type
+          extend Increase::Enum
+
           INBOUND_DIGITAL_WALLET_TOKEN_REQUEST_SIMULATION_RESULT =
             :inbound_digital_wallet_token_request_simulation_result
 

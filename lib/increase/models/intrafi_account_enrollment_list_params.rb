@@ -94,8 +94,9 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        class In < Increase::Enum
+        module In
+          extend Increase::Enum
+
           # The account is being added to the IntraFi network.
           PENDING_ENROLLING = :pending_enrolling
 

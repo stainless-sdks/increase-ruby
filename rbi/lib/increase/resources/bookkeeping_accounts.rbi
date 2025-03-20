@@ -8,7 +8,7 @@ module Increase
         params(
           name: String,
           account_id: String,
-          compliance_category: Symbol,
+          compliance_category: Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol,
           entity_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )

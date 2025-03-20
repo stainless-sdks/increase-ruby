@@ -167,7 +167,9 @@ module Increase
 
         type category = :freeform | :payment_order_remittance_advice
 
-        class Category < Increase::Enum
+        module Category
+          extend Increase::Enum
+
           # Unstructured `payment_related_information` passed through with the transfer.
           FREEFORM: :freeform
 
@@ -235,7 +237,9 @@ module Increase
 
       type destination_account_holder = :business | :individual | :unknown
 
-      class DestinationAccountHolder < Increase::Enum
+      module DestinationAccountHolder
+        extend Increase::Enum
+
         # The External Account is owned by a business.
         BUSINESS: :business
 
@@ -250,7 +254,9 @@ module Increase
 
       type funding = :checking | :savings
 
-      class Funding < Increase::Enum
+      module Funding
+        extend Increase::Enum
+
         # A checking account.
         CHECKING: :checking
 
@@ -286,7 +292,9 @@ module Increase
 
         type settlement_schedule = :same_day | :future_dated
 
-        class SettlementSchedule < Increase::Enum
+        module SettlementSchedule
+          extend Increase::Enum
+
           # The chosen effective date will be the same as the ACH processing date on which the transfer is submitted. This is necessary, but not sufficient for the transfer to be settled same-day: it must also be submitted before the last same-day cutoff and be less than or equal to $1,000.000.00.
           SAME_DAY: :same_day
 
@@ -303,7 +311,9 @@ module Increase
         | :prearranged_payments_and_deposit
         | :internet_initiated
 
-      class StandardEntryClassCode < Increase::Enum
+      module StandardEntryClassCode
+        extend Increase::Enum
+
         # Corporate Credit and Debit (CCD).
         CORPORATE_CREDIT_OR_DEBIT: :corporate_credit_or_debit
 
@@ -321,7 +331,9 @@ module Increase
 
       type transaction_timing = :synchronous | :asynchronous
 
-      class TransactionTiming < Increase::Enum
+      module TransactionTiming
+        extend Increase::Enum
+
         # A Transaction will be created immediately.
         SYNCHRONOUS: :synchronous
 

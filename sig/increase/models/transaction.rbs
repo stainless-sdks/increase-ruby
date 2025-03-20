@@ -52,7 +52,9 @@ module Increase
 
       type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-      class Currency < Increase::Enum
+      module Currency
+        extend Increase::Enum
+
         # Canadian Dollar (CAD)
         CAD: :CAD
 
@@ -76,7 +78,9 @@ module Increase
 
       type route_type = :account_number | :card | :lockbox
 
-      class RouteType < Increase::Enum
+      module RouteType
+        extend Increase::Enum
+
         # An Account Number.
         ACCOUNT_NUMBER: :account_number
 
@@ -255,7 +259,9 @@ module Increase
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -425,7 +431,9 @@ module Increase
             | :untimely_dishonored_return
             | :untimely_return
 
-          class ReturnReasonCode < Increase::Enum
+          module ReturnReasonCode
+            extend Increase::Enum
+
             # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
             INSUFFICIENT_FUND: :insufficient_fund
 
@@ -792,7 +800,9 @@ module Increase
 
             type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-            class Currency < Increase::Enum
+            module Currency
+              extend Increase::Enum
+
               # Canadian Dollar (CAD)
               CAD: :CAD
 
@@ -817,7 +827,9 @@ module Increase
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -863,7 +875,9 @@ module Increase
 
             type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-            class Currency < Increase::Enum
+            module Currency
+              extend Increase::Enum
+
               # Canadian Dollar (CAD)
               CAD: :CAD
 
@@ -1041,7 +1055,9 @@ module Increase
                 | :one_way_service_fee
                 | :parking_violation
 
-              class ExtraCharges < Increase::Enum
+              module ExtraCharges
+                extend Increase::Enum
+
                 # No extra charge
                 NO_EXTRA_CHARGE: :no_extra_charge
 
@@ -1066,7 +1082,9 @@ module Increase
               type no_show_indicator =
                 :not_applicable | :no_show_for_specialized_vehicle
 
-              class NoShowIndicator < Increase::Enum
+              module NoShowIndicator
+                extend Increase::Enum
+
                 # Not applicable
                 NOT_APPLICABLE: :not_applicable
 
@@ -1160,7 +1178,9 @@ module Increase
                 | :other
                 | :laundry
 
-              class ExtraCharges < Increase::Enum
+              module ExtraCharges
+                extend Increase::Enum
+
                 # No extra charge
                 NO_EXTRA_CHARGE: :no_extra_charge
 
@@ -1187,7 +1207,9 @@ module Increase
 
               type no_show_indicator = :not_applicable | :no_show
 
-              class NoShowIndicator < Increase::Enum
+              module NoShowIndicator
+                extend Increase::Enum
+
                 # Not applicable
                 NOT_APPLICABLE: :not_applicable
 
@@ -1205,7 +1227,9 @@ module Increase
               | :hotel_folio_number
               | :invoice_number
 
-            class PurchaseIdentifierFormat < Increase::Enum
+            module PurchaseIdentifierFormat
+              extend Increase::Enum
+
               # Free text
               FREE_TEXT: :free_text
 
@@ -1318,7 +1342,9 @@ module Increase
                   | :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
                   | :other
 
-                class CreditReasonIndicator < Increase::Enum
+                module CreditReasonIndicator
+                  extend Increase::Enum
+
                   # No credit
                   NO_CREDIT: :no_credit
 
@@ -1378,7 +1404,9 @@ module Increase
                     | :upgrades
                     | :wifi
 
-                  class Category < Increase::Enum
+                  module Category
+                    extend Increase::Enum
+
                     # None
                     NONE: :none
 
@@ -1464,7 +1492,9 @@ module Increase
                 | :other
                 | :partial_refund_of_airline_ticket
 
-              class CreditReasonIndicator < Increase::Enum
+              module CreditReasonIndicator
+                extend Increase::Enum
+
                 # No credit
                 NO_CREDIT: :no_credit
 
@@ -1489,7 +1519,9 @@ module Increase
               type restricted_ticket_indicator =
                 :no_restrictions | :restricted_non_refundable_ticket
 
-              class RestrictedTicketIndicator < Increase::Enum
+              module RestrictedTicketIndicator
+                extend Increase::Enum
+
                 # No restrictions
                 NO_RESTRICTIONS: :no_restrictions
 
@@ -1502,7 +1534,9 @@ module Increase
               type ticket_change_indicator =
                 :none | :change_to_existing_ticket | :new_ticket
 
-              class TicketChangeIndicator < Increase::Enum
+              module TicketChangeIndicator
+                extend Increase::Enum
+
                 # None
                 NONE: :none
 
@@ -1552,7 +1586,9 @@ module Increase
                 type stop_over_code =
                   :none | :stop_over_allowed | :stop_over_not_allowed
 
-                class StopOverCode < Increase::Enum
+                module StopOverCode
+                  extend Increase::Enum
+
                   # None
                   NONE: :none
 
@@ -1570,7 +1606,9 @@ module Increase
 
           type type_ = :card_refund
 
-          class Type < Increase::Enum
+          module Type
+            extend Increase::Enum
+
             CARD_REFUND: :card_refund
 
             def self.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::type_]
@@ -1609,7 +1647,9 @@ module Increase
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -1746,7 +1786,9 @@ module Increase
 
             type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-            class Currency < Increase::Enum
+            module Currency
+              extend Increase::Enum
+
               # Canadian Dollar (CAD)
               CAD: :CAD
 
@@ -1771,7 +1813,9 @@ module Increase
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -1817,7 +1861,9 @@ module Increase
 
             type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-            class Currency < Increase::Enum
+            module Currency
+              extend Increase::Enum
+
               # Canadian Dollar (CAD)
               CAD: :CAD
 
@@ -1995,7 +2041,9 @@ module Increase
                 | :one_way_service_fee
                 | :parking_violation
 
-              class ExtraCharges < Increase::Enum
+              module ExtraCharges
+                extend Increase::Enum
+
                 # No extra charge
                 NO_EXTRA_CHARGE: :no_extra_charge
 
@@ -2020,7 +2068,9 @@ module Increase
               type no_show_indicator =
                 :not_applicable | :no_show_for_specialized_vehicle
 
-              class NoShowIndicator < Increase::Enum
+              module NoShowIndicator
+                extend Increase::Enum
+
                 # Not applicable
                 NOT_APPLICABLE: :not_applicable
 
@@ -2114,7 +2164,9 @@ module Increase
                 | :other
                 | :laundry
 
-              class ExtraCharges < Increase::Enum
+              module ExtraCharges
+                extend Increase::Enum
+
                 # No extra charge
                 NO_EXTRA_CHARGE: :no_extra_charge
 
@@ -2141,7 +2193,9 @@ module Increase
 
               type no_show_indicator = :not_applicable | :no_show
 
-              class NoShowIndicator < Increase::Enum
+              module NoShowIndicator
+                extend Increase::Enum
+
                 # Not applicable
                 NOT_APPLICABLE: :not_applicable
 
@@ -2159,7 +2213,9 @@ module Increase
               | :hotel_folio_number
               | :invoice_number
 
-            class PurchaseIdentifierFormat < Increase::Enum
+            module PurchaseIdentifierFormat
+              extend Increase::Enum
+
               # Free text
               FREE_TEXT: :free_text
 
@@ -2272,7 +2328,9 @@ module Increase
                   | :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
                   | :other
 
-                class CreditReasonIndicator < Increase::Enum
+                module CreditReasonIndicator
+                  extend Increase::Enum
+
                   # No credit
                   NO_CREDIT: :no_credit
 
@@ -2332,7 +2390,9 @@ module Increase
                     | :upgrades
                     | :wifi
 
-                  class Category < Increase::Enum
+                  module Category
+                    extend Increase::Enum
+
                     # None
                     NONE: :none
 
@@ -2418,7 +2478,9 @@ module Increase
                 | :other
                 | :partial_refund_of_airline_ticket
 
-              class CreditReasonIndicator < Increase::Enum
+              module CreditReasonIndicator
+                extend Increase::Enum
+
                 # No credit
                 NO_CREDIT: :no_credit
 
@@ -2443,7 +2505,9 @@ module Increase
               type restricted_ticket_indicator =
                 :no_restrictions | :restricted_non_refundable_ticket
 
-              class RestrictedTicketIndicator < Increase::Enum
+              module RestrictedTicketIndicator
+                extend Increase::Enum
+
                 # No restrictions
                 NO_RESTRICTIONS: :no_restrictions
 
@@ -2456,7 +2520,9 @@ module Increase
               type ticket_change_indicator =
                 :none | :change_to_existing_ticket | :new_ticket
 
-              class TicketChangeIndicator < Increase::Enum
+              module TicketChangeIndicator
+                extend Increase::Enum
+
                 # None
                 NONE: :none
 
@@ -2506,7 +2572,9 @@ module Increase
                 type stop_over_code =
                   :none | :stop_over_allowed | :stop_over_not_allowed
 
-                class StopOverCode < Increase::Enum
+                module StopOverCode
+                  extend Increase::Enum
+
                   # None
                   NONE: :none
 
@@ -2524,7 +2592,9 @@ module Increase
 
           type type_ = :card_settlement
 
-          class Type < Increase::Enum
+          module Type
+            extend Increase::Enum
+
             CARD_SETTLEMENT: :card_settlement
 
             def self.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::type_]
@@ -2563,7 +2633,9 @@ module Increase
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -2617,7 +2689,9 @@ module Increase
           | :wire_transfer_intention
           | :other
 
-        class Category < Increase::Enum
+        module Category
+          extend Increase::Enum
+
           # Account Transfer Intention: details will be under the `account_transfer_intention` object.
           ACCOUNT_TRANSFER_INTENTION: :account_transfer_intention
 
@@ -2748,7 +2822,9 @@ module Increase
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -2807,7 +2883,9 @@ module Increase
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -2857,7 +2935,9 @@ module Increase
             | :item_exceeds_dollar_limit
             | :branch_or_account_sold
 
-          class ReturnReason < Increase::Enum
+          module ReturnReason
+            extend Increase::Enum
+
             # The check doesn't allow ACH conversion.
             ACH_CONVERSION_NOT_SUPPORTED: :ach_conversion_not_supported
 
@@ -2984,7 +3064,9 @@ module Increase
 
           type type_ = :check_transfer_deposit
 
-          class Type < Increase::Enum
+          module Type
+            extend Increase::Enum
+
             CHECK_TRANSFER_DEPOSIT: :check_transfer_deposit
 
             def self.values: -> ::Array[Increase::Models::Transaction::Source::CheckTransferDeposit::type_]
@@ -3019,7 +3101,9 @@ module Increase
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -3116,7 +3200,9 @@ module Increase
 
             type category = :freeform
 
-            class Category < Increase::Enum
+            module Category
+              extend Increase::Enum
+
               # Unstructured addendum.
               FREEFORM: :freeform
 
@@ -3189,7 +3275,9 @@ module Increase
             | :adjusted_amount
             | :non_conforming_item
 
-          class Reason < Increase::Enum
+          module Reason
+            extend Increase::Enum
+
             # The return was initiated too late and the receiving institution has responded with a Late Return Claim.
             LATE_RETURN: :late_return
 
@@ -3270,7 +3358,9 @@ module Increase
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -3345,7 +3435,9 @@ module Increase
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -3375,7 +3467,9 @@ module Increase
             | :entity_not_active
             | :real_time_payments_not_enabled
 
-          class Reason < Increase::Enum
+          module Reason
+            extend Increase::Enum
+
             # The account number is canceled.
             ACCOUNT_NUMBER_CANCELED: :account_number_canceled
 
@@ -3607,7 +3701,9 @@ module Increase
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -3654,7 +3750,9 @@ module Increase
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -3693,7 +3791,9 @@ module Increase
             | :sample_funds
             | :sample_funds_return
 
-          class Reason < Increase::Enum
+          module Reason
+            extend Increase::Enum
+
             # Account closure
             ACCOUNT_CLOSURE: :account_closure
 
@@ -3818,7 +3918,9 @@ module Increase
 
       type type_ = :transaction
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         TRANSACTION: :transaction
 
         def self.values: -> ::Array[Increase::Models::Transaction::type_]

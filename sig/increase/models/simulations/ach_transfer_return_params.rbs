@@ -96,7 +96,9 @@ module Increase
           | :untimely_dishonored_return
           | :untimely_return
 
-        class Reason < Increase::Enum
+        module Reason
+          extend Increase::Enum
+
           # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
           INSUFFICIENT_FUND: :insufficient_fund
 

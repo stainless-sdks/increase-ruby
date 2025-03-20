@@ -164,7 +164,9 @@ module Increase
 
         type category = :api_key | :oauth_application | :user
 
-        class Category < Increase::Enum
+        module Category
+          extend Increase::Enum
+
           # An API key. Details will be under the `api_key` object.
           API_KEY: :api_key
 
@@ -200,7 +202,9 @@ module Increase
 
       type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-      class Currency < Increase::Enum
+      module Currency
+        extend Increase::Enum
+
         # Canadian Dollar (CAD)
         CAD: :CAD
 
@@ -224,7 +228,9 @@ module Increase
 
       type fulfillment_method = :physical_check | :third_party
 
-      class FulfillmentMethod < Increase::Enum
+      module FulfillmentMethod
+        extend Increase::Enum
+
         # Increase will print and mail a physical check.
         PHYSICAL_CHECK: :physical_check
 
@@ -367,7 +373,9 @@ module Increase
 
         type shipping_method = :usps_first_class | :fedex_overnight
 
-        class ShippingMethod < Increase::Enum
+        module ShippingMethod
+          extend Increase::Enum
+
           # USPS First Class
           USPS_FIRST_CLASS: :usps_first_class
 
@@ -405,7 +413,9 @@ module Increase
             | :delivered
             | :returned_to_sender
 
-          class Category < Increase::Enum
+          module Category
+            extend Increase::Enum
+
             # The check is in transit.
             IN_TRANSIT: :in_transit
 
@@ -435,7 +445,9 @@ module Increase
         | :stopped
         | :returned
 
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The transfer is awaiting approval.
         PENDING_APPROVAL: :pending_approval
 
@@ -501,7 +513,9 @@ module Increase
           | :not_authorized
           | :unknown
 
-        class Reason < Increase::Enum
+        module Reason
+          extend Increase::Enum
+
           # The check could not be delivered.
           MAIL_DELIVERY_FAILED: :mail_delivery_failed
 
@@ -519,7 +533,9 @@ module Increase
 
         type type_ = :check_transfer_stop_payment_request
 
-        class Type < Increase::Enum
+        module Type
+          extend Increase::Enum
+
           CHECK_TRANSFER_STOP_PAYMENT_REQUEST: :check_transfer_stop_payment_request
 
           def self.values: -> ::Array[Increase::Models::CheckTransfer::StopPaymentRequest::type_]
@@ -548,7 +564,9 @@ module Increase
 
       type type_ = :check_transfer
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         CHECK_TRANSFER: :check_transfer
 
         def self.values: -> ::Array[Increase::Models::CheckTransfer::type_]

@@ -45,7 +45,9 @@ module Increase
         | :unenrolled
         | :requires_attention
 
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The account is being added to the IntraFi network.
         PENDING_ENROLLING: :pending_enrolling
 
@@ -66,7 +68,9 @@ module Increase
 
       type type_ = :intrafi_account_enrollment
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         INTRAFI_ACCOUNT_ENROLLMENT: :intrafi_account_enrollment
 
         def self.values: -> ::Array[Increase::Models::IntrafiAccountEnrollment::type_]

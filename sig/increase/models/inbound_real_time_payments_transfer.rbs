@@ -88,7 +88,9 @@ module Increase
 
       type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-      class Currency < Increase::Enum
+      module Currency
+        extend Increase::Enum
+
         # Canadian Dollar (CAD)
         CAD: :CAD
 
@@ -140,7 +142,9 @@ module Increase
           | :entity_not_active
           | :real_time_payments_not_enabled
 
-        class Reason < Increase::Enum
+        module Reason
+          extend Increase::Enum
+
           # The account number is canceled.
           ACCOUNT_NUMBER_CANCELED: :account_number_canceled
 
@@ -165,7 +169,9 @@ module Increase
 
       type status = :pending_confirming | :timed_out | :confirmed | :declined
 
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The transfer is pending confirmation.
         PENDING_CONFIRMING: :pending_confirming
 
@@ -183,7 +189,9 @@ module Increase
 
       type type_ = :inbound_real_time_payments_transfer
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         INBOUND_REAL_TIME_PAYMENTS_TRANSFER: :inbound_real_time_payments_transfer
 
         def self.values: -> ::Array[Increase::Models::InboundRealTimePaymentsTransfer::type_]

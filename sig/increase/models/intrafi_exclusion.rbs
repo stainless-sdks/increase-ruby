@@ -52,7 +52,9 @@ module Increase
 
       type status = :pending | :completed | :archived
 
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The exclusion is being added to the IntraFi network.
         PENDING: :pending
 
@@ -67,7 +69,9 @@ module Increase
 
       type type_ = :intrafi_exclusion
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         INTRAFI_EXCLUSION: :intrafi_exclusion
 
         def self.values: -> ::Array[Increase::Models::IntrafiExclusion::type_]

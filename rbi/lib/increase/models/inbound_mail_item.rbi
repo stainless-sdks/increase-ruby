@@ -51,30 +51,39 @@ module Increase
       end
 
       # If the mail item has been rejected, why it was rejected.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol)) }
       def rejection_reason
       end
 
-      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      sig do
+        params(_: T.nilable(Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol))
+          .returns(T.nilable(Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol))
+      end
       def rejection_reason=(_)
       end
 
       # If the mail item has been processed.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::InboundMailItem::Status::TaggedSymbol) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::InboundMailItem::Status::TaggedSymbol)
+          .returns(Increase::Models::InboundMailItem::Status::TaggedSymbol)
+      end
       def status=(_)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_mail_item`.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::InboundMailItem::Type::TaggedSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::InboundMailItem::Type::TaggedSymbol)
+          .returns(Increase::Models::InboundMailItem::Type::TaggedSymbol)
+      end
       def type=(_)
       end
 
@@ -86,9 +95,9 @@ module Increase
           file_id: String,
           lockbox_id: T.nilable(String),
           recipient_name: T.nilable(String),
-          rejection_reason: T.nilable(Symbol),
-          status: Symbol,
-          type: Symbol
+          rejection_reason: T.nilable(Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol),
+          status: Increase::Models::InboundMailItem::Status::TaggedSymbol,
+          type: Increase::Models::InboundMailItem::Type::TaggedSymbol
         )
           .returns(T.attached_class)
       end
@@ -104,9 +113,9 @@ module Increase
               file_id: String,
               lockbox_id: T.nilable(String),
               recipient_name: T.nilable(String),
-              rejection_reason: T.nilable(Symbol),
-              status: Symbol,
-              type: Symbol
+              rejection_reason: T.nilable(Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol),
+              status: Increase::Models::InboundMailItem::Status::TaggedSymbol,
+              type: Increase::Models::InboundMailItem::Type::TaggedSymbol
             }
           )
       end
@@ -114,45 +123,51 @@ module Increase
       end
 
       # If the mail item has been rejected, why it was rejected.
-      class RejectionReason < Increase::Enum
-        abstract!
+      module RejectionReason
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundMailItem::RejectionReason) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol) }
 
         # The mail item does not match any lockbox.
-        NO_MATCHING_LOCKBOX = :no_matching_lockbox
+        NO_MATCHING_LOCKBOX =
+          T.let(:no_matching_lockbox, Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol)
 
         # The mail item does not contain a check.
-        NO_CHECK = :no_check
+        NO_CHECK = T.let(:no_check, Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol)
 
         # The Lockbox or its associated Account is not active.
-        LOCKBOX_NOT_ACTIVE = :lockbox_not_active
+        LOCKBOX_NOT_ACTIVE =
+          T.let(:lockbox_not_active, Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol)
       end
 
       # If the mail item has been processed.
-      class Status < Increase::Enum
-        abstract!
+      module Status
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundMailItem::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::InboundMailItem::Status::TaggedSymbol) }
 
         # The mail item is pending processing.
-        PENDING = :pending
+        PENDING = T.let(:pending, Increase::Models::InboundMailItem::Status::TaggedSymbol)
 
         # The mail item has been processed.
-        PROCESSED = :processed
+        PROCESSED = T.let(:processed, Increase::Models::InboundMailItem::Status::TaggedSymbol)
 
         # The mail item has been rejected.
-        REJECTED = :rejected
+        REJECTED = T.let(:rejected, Increase::Models::InboundMailItem::Status::TaggedSymbol)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_mail_item`.
-      class Type < Increase::Enum
-        abstract!
+      module Type
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundMailItem::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::InboundMailItem::Type::TaggedSymbol) }
 
-        INBOUND_MAIL_ITEM = :inbound_mail_item
+        INBOUND_MAIL_ITEM = T.let(:inbound_mail_item, Increase::Models::InboundMailItem::Type::TaggedSymbol)
       end
     end
   end

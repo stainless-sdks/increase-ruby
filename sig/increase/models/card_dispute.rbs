@@ -131,7 +131,9 @@ module Increase
         | :lost
         | :won
 
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The Card Dispute is pending review.
         PENDING_REVIEWING: :pending_reviewing
 
@@ -155,7 +157,9 @@ module Increase
 
       type type_ = :card_dispute
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         CARD_DISPUTE: :card_dispute
 
         def self.values: -> ::Array[Increase::Models::CardDispute::type_]

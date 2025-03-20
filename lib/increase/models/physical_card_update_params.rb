@@ -21,10 +21,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # The status to update the Physical Card to.
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The physical card is active.
         ACTIVE = :active
 

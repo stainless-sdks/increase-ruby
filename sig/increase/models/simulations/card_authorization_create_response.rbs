@@ -25,7 +25,9 @@ module Increase
 
         type type_ = :inbound_card_authorization_simulation_result
 
-        class Type < Increase::Enum
+        module Type
+          extend Increase::Enum
+
           INBOUND_CARD_AUTHORIZATION_SIMULATION_RESULT: :inbound_card_authorization_simulation_result
 
           def self.values: -> ::Array[Increase::Models::Simulations::CardAuthorizationCreateResponse::type_]

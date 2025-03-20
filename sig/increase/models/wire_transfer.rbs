@@ -188,7 +188,9 @@ module Increase
 
         type category = :api_key | :oauth_application | :user
 
-        class Category < Increase::Enum
+        module Category
+          extend Increase::Enum
+
           # An API key. Details will be under the `api_key` object.
           API_KEY: :api_key
 
@@ -224,7 +226,9 @@ module Increase
 
       type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-      class Currency < Increase::Enum
+      module Currency
+        extend Increase::Enum
+
         # Canadian Dollar (CAD)
         CAD: :CAD
 
@@ -248,7 +252,9 @@ module Increase
 
       type network = :wire
 
-      class Network < Increase::Enum
+      module Network
+        extend Increase::Enum
+
         WIRE: :wire
 
         def self.values: -> ::Array[Increase::Models::WireTransfer::network]
@@ -344,7 +350,9 @@ module Increase
         | :submitted
         | :complete
 
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The transfer is pending approval.
         PENDING_APPROVAL: :pending_approval
 
@@ -393,7 +401,9 @@ module Increase
 
       type type_ = :wire_transfer
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         WIRE_TRANSFER: :wire_transfer
 
         def self.values: -> ::Array[Increase::Models::WireTransfer::type_]

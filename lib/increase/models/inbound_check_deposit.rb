@@ -225,10 +225,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # The reason for the adjustment.
-        class Reason < Increase::Enum
+        module Reason
+          extend Increase::Enum
+
           # The return was initiated too late and the receiving institution has responded with a Late Return Claim.
           LATE_RETURN = :late_return
 
@@ -245,10 +245,10 @@ module Increase
         end
       end
 
-      # @abstract
-      #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
-      class Currency < Increase::Enum
+      module Currency
+        extend Increase::Enum
+
         # Canadian Dollar (CAD)
         CAD = :CAD
 
@@ -301,10 +301,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # The reason the deposit was returned.
-        class Reason < Increase::Enum
+        module Reason
+          extend Increase::Enum
+
           # The check was altered or fictitious.
           ALTERED_OR_FICTITIOUS = :altered_or_fictitious
 
@@ -324,11 +324,11 @@ module Increase
         end
       end
 
-      # @abstract
-      #
       # Whether the details on the check match the recipient name of the check transfer.
       #   This is an optional feature, contact sales to enable.
-      class PayeeNameAnalysis < Increase::Enum
+      module PayeeNameAnalysis
+        extend Increase::Enum
+
         # The details on the check match the recipient name of the check transfer.
         NAME_MATCHES = :name_matches
 
@@ -341,10 +341,10 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # The status of the Inbound Check Deposit.
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The Inbound Check Deposit is pending.
         PENDING = :pending
 
@@ -363,11 +363,11 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_check_deposit`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         INBOUND_CHECK_DEPOSIT = :inbound_check_deposit
 
         finalize!

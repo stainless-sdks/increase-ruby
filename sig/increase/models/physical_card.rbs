@@ -125,7 +125,9 @@ module Increase
 
         type method_ = :usps | :fedex_priority_overnight | :fedex_2_day
 
-        class Method < Increase::Enum
+        module Method
+          extend Increase::Enum
+
           # USPS Post with tracking.
           USPS: :usps
 
@@ -147,7 +149,9 @@ module Increase
           | :shipped
           | :returned
 
-        class Status < Increase::Enum
+        module Status
+          extend Increase::Enum
+
           # The physical card has not yet been shipped.
           PENDING: :pending
 
@@ -202,7 +206,9 @@ module Increase
 
       type status = :active | :disabled | :canceled
 
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The physical card is active.
         ACTIVE: :active
 
@@ -217,7 +223,9 @@ module Increase
 
       type type_ = :physical_card
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         PHYSICAL_CARD: :physical_card
 
         def self.values: -> ::Array[Increase::Models::PhysicalCard::type_]

@@ -41,11 +41,14 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `card_details`.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::CardDetails::Type::TaggedSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::CardDetails::Type::TaggedSymbol)
+          .returns(Increase::Models::CardDetails::Type::TaggedSymbol)
+      end
       def type=(_)
       end
 
@@ -67,7 +70,7 @@ module Increase
           expiration_month: Integer,
           expiration_year: Integer,
           primary_account_number: String,
-          type: Symbol,
+          type: Increase::Models::CardDetails::Type::TaggedSymbol,
           verification_code: String
         )
           .returns(T.attached_class)
@@ -83,7 +86,7 @@ module Increase
               expiration_month: Integer,
               expiration_year: Integer,
               primary_account_number: String,
-              type: Symbol,
+              type: Increase::Models::CardDetails::Type::TaggedSymbol,
               verification_code: String
             }
           )
@@ -93,12 +96,13 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `card_details`.
-      class Type < Increase::Enum
-        abstract!
+      module Type
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardDetails::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CardDetails::Type::TaggedSymbol) }
 
-        CARD_DETAILS = :card_details
+        CARD_DETAILS = T.let(:card_details, Increase::Models::CardDetails::Type::TaggedSymbol)
       end
     end
   end

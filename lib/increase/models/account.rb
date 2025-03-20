@@ -148,10 +148,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # The bank the Account is with.
-      class Bank < Increase::Enum
+      module Bank
+        extend Increase::Enum
+
         # Core Bank
         CORE_BANK = :core_bank
 
@@ -164,11 +164,11 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
       #   currency.
-      class Currency < Increase::Enum
+      module Currency
+        extend Increase::Enum
+
         # Canadian Dollar (CAD)
         CAD = :CAD
 
@@ -190,10 +190,10 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # The status of the Account.
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # Closed Accounts on which no new activity can occur.
         CLOSED = :closed
 
@@ -203,11 +203,11 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `account`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         ACCOUNT = :account
 
         finalize!

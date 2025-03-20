@@ -132,7 +132,9 @@ module Increase
         | :"wire_transfer.created"
         | :"wire_transfer.updated"
 
-      class SelectedEventCategory < Increase::Enum
+      module SelectedEventCategory
+        extend Increase::Enum
+
         # Occurs whenever an Account is created.
         ACCOUNT_CREATED: :"account.created"
 
@@ -402,7 +404,9 @@ module Increase
 
       type status = :active | :disabled | :deleted | :requires_attention
 
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The subscription is active and Events will be delivered normally.
         ACTIVE: :active
 
@@ -420,7 +424,9 @@ module Increase
 
       type type_ = :event_subscription
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         EVENT_SUBSCRIPTION: :event_subscription
 
         def self.values: -> ::Array[Increase::Models::EventSubscription::type_]

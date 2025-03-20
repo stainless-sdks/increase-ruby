@@ -65,10 +65,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # Whether the connection is active.
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The OAuth connection is active.
         ACTIVE = :active
 
@@ -78,11 +78,11 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `oauth_connection`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         OAUTH_CONNECTION = :oauth_connection
 
         finalize!

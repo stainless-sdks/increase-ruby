@@ -92,10 +92,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # Whether Increase will print and mail the check or if you will do it yourself.
-      class FulfillmentMethod < Increase::Enum
+      module FulfillmentMethod
+        extend Increase::Enum
+
         # Increase will print and mail a physical check.
         PHYSICAL_CHECK = :physical_check
 

@@ -29,7 +29,9 @@ module Increase
           | :shipped
           | :returned
 
-        class ShipmentStatus < Increase::Enum
+        module ShipmentStatus
+          extend Increase::Enum
+
           # The physical card has not yet been shipped.
           PENDING: :pending
 

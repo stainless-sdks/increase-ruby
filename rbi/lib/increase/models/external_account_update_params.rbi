@@ -7,11 +7,14 @@ module Increase
       include Increase::RequestParameters
 
       # The type of entity that owns the External Account.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Increase::Models::ExternalAccountUpdateParams::AccountHolder::OrSymbol)) }
       def account_holder
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::ExternalAccountUpdateParams::AccountHolder::OrSymbol)
+          .returns(Increase::Models::ExternalAccountUpdateParams::AccountHolder::OrSymbol)
+      end
       def account_holder=(_)
       end
 
@@ -25,29 +28,35 @@ module Increase
       end
 
       # The funding type of the External Account.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol)) }
       def funding
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol)
+          .returns(Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol)
+      end
       def funding=(_)
       end
 
       # The status of the External Account.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Increase::Models::ExternalAccountUpdateParams::Status::OrSymbol)) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::ExternalAccountUpdateParams::Status::OrSymbol)
+          .returns(Increase::Models::ExternalAccountUpdateParams::Status::OrSymbol)
+      end
       def status=(_)
       end
 
       sig do
         params(
-          account_holder: Symbol,
+          account_holder: Increase::Models::ExternalAccountUpdateParams::AccountHolder::OrSymbol,
           description: String,
-          funding: Symbol,
-          status: Symbol,
+          funding: Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol,
+          status: Increase::Models::ExternalAccountUpdateParams::Status::OrSymbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -59,10 +68,10 @@ module Increase
         override
           .returns(
             {
-              account_holder: Symbol,
+              account_holder: Increase::Models::ExternalAccountUpdateParams::AccountHolder::OrSymbol,
               description: String,
-              funding: Symbol,
-              status: Symbol,
+              funding: Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol,
+              status: Increase::Models::ExternalAccountUpdateParams::Status::OrSymbol,
               request_options: Increase::RequestOptions
             }
           )
@@ -71,45 +80,52 @@ module Increase
       end
 
       # The type of entity that owns the External Account.
-      class AccountHolder < Increase::Enum
-        abstract!
+      module AccountHolder
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountUpdateParams::AccountHolder) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountUpdateParams::AccountHolder::TaggedSymbol) }
 
         # The External Account is owned by a business.
-        BUSINESS = :business
+        BUSINESS = T.let(:business, Increase::Models::ExternalAccountUpdateParams::AccountHolder::OrSymbol)
 
         # The External Account is owned by an individual.
-        INDIVIDUAL = :individual
+        INDIVIDUAL = T.let(:individual, Increase::Models::ExternalAccountUpdateParams::AccountHolder::OrSymbol)
       end
 
       # The funding type of the External Account.
-      class Funding < Increase::Enum
-        abstract!
+      module Funding
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountUpdateParams::Funding) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountUpdateParams::Funding::TaggedSymbol) }
 
         # A checking account.
-        CHECKING = :checking
+        CHECKING = T.let(:checking, Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol)
 
         # A savings account.
-        SAVINGS = :savings
+        SAVINGS = T.let(:savings, Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol)
 
         # A different type of account.
-        OTHER = :other
+        OTHER = T.let(:other, Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol)
       end
 
       # The status of the External Account.
-      class Status < Increase::Enum
-        abstract!
+      module Status
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountUpdateParams::Status) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountUpdateParams::Status::TaggedSymbol) }
 
         # The External Account is active.
-        ACTIVE = :active
+        ACTIVE = T.let(:active, Increase::Models::ExternalAccountUpdateParams::Status::OrSymbol)
 
         # The External Account is archived and won't appear in the dashboard.
-        ARCHIVED = :archived
+        ARCHIVED = T.let(:archived, Increase::Models::ExternalAccountUpdateParams::Status::OrSymbol)
       end
     end
   end

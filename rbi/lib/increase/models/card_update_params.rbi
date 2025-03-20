@@ -52,11 +52,14 @@ module Increase
       end
 
       # The status to update the Card with.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Increase::Models::CardUpdateParams::Status::OrSymbol)) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::CardUpdateParams::Status::OrSymbol)
+          .returns(Increase::Models::CardUpdateParams::Status::OrSymbol)
+      end
       def status=(_)
       end
 
@@ -66,7 +69,7 @@ module Increase
           description: String,
           digital_wallet: Increase::Models::CardUpdateParams::DigitalWallet,
           entity_id: String,
-          status: Symbol,
+          status: Increase::Models::CardUpdateParams::Status::OrSymbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -89,7 +92,7 @@ module Increase
               description: String,
               digital_wallet: Increase::Models::CardUpdateParams::DigitalWallet,
               entity_id: String,
-              status: Symbol,
+              status: Increase::Models::CardUpdateParams::Status::OrSymbol,
               request_options: Increase::RequestOptions
             }
           )
@@ -203,19 +206,20 @@ module Increase
       end
 
       # The status to update the Card with.
-      class Status < Increase::Enum
-        abstract!
+      module Status
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardUpdateParams::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CardUpdateParams::Status::TaggedSymbol) }
 
         # The card is active.
-        ACTIVE = :active
+        ACTIVE = T.let(:active, Increase::Models::CardUpdateParams::Status::OrSymbol)
 
         # The card is temporarily disabled.
-        DISABLED = :disabled
+        DISABLED = T.let(:disabled, Increase::Models::CardUpdateParams::Status::OrSymbol)
 
         # The card is permanently canceled.
-        CANCELED = :canceled
+        CANCELED = T.let(:canceled, Increase::Models::CardUpdateParams::Status::OrSymbol)
       end
     end
   end

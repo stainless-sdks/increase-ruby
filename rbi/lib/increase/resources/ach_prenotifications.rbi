@@ -14,11 +14,11 @@ module Increase
           company_discretionary_data: String,
           company_entry_description: String,
           company_name: String,
-          credit_debit_indicator: Symbol,
+          credit_debit_indicator: Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol,
           effective_date: Date,
           individual_id: String,
           individual_name: String,
-          standard_entry_class_code: Symbol,
+          standard_entry_class_code: Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::ACHPrenotification)

@@ -6,7 +6,7 @@ module Increase
       # Create an Entity
       sig do
         params(
-          structure: Symbol,
+          structure: Increase::Models::EntityCreateParams::Structure::OrSymbol,
           corporation: Increase::Models::EntityCreateParams::Corporation,
           description: String,
           government_authority: Increase::Models::EntityCreateParams::GovernmentAuthority,

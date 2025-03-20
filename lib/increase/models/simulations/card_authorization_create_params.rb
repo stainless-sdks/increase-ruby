@@ -219,11 +219,11 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # Forces a card decline with a specific reason. No real time decision will be
         #   sent.
-        class DeclineReason < Increase::Enum
+        module DeclineReason
+          extend Increase::Enum
+
           # The account has been closed.
           ACCOUNT_CLOSED = :account_closed
 
@@ -278,11 +278,11 @@ module Increase
           finalize!
         end
 
-        # @abstract
-        #
         # The direction describes the direction the funds will move, either from the
         #   cardholder to the merchant or from the merchant to the cardholder.
-        class Direction < Increase::Enum
+        module Direction
+          extend Increase::Enum
+
           # A regular card authorization where funds are debited from the cardholder.
           SETTLEMENT = :settlement
 
@@ -329,10 +329,10 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
-            # @abstract
-            #
             # The reason code for the stand-in processing.
-            class StandInProcessingReason < Increase::Enum
+            module StandInProcessingReason
+              extend Increase::Enum
+
               # Increase failed to process the authorization in a timely manner.
               ISSUER_ERROR = :issuer_error
 

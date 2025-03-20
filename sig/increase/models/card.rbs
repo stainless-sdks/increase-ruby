@@ -114,7 +114,9 @@ module Increase
 
       type status = :active | :disabled | :canceled
 
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The card is active.
         ACTIVE: :active
 
@@ -129,7 +131,9 @@ module Increase
 
       type type_ = :card
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         CARD: :card
 
         def self.values: -> ::Array[Increase::Models::Card::type_]

@@ -113,7 +113,9 @@ module Increase
           | :stopped
           | :returned
 
-        class In < Increase::Enum
+        module In
+          extend Increase::Enum
+
           # The transfer is awaiting approval.
           PENDING_APPROVAL: :pending_approval
 

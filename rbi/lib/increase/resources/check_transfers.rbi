@@ -8,7 +8,7 @@ module Increase
         params(
           account_id: String,
           amount: Integer,
-          fulfillment_method: Symbol,
+          fulfillment_method: Increase::Models::CheckTransferCreateParams::FulfillmentMethod::OrSymbol,
           source_account_number_id: String,
           physical_check: Increase::Models::CheckTransferCreateParams::PhysicalCheck,
           require_approval: T::Boolean,
@@ -122,7 +122,7 @@ module Increase
       sig do
         params(
           check_transfer_id: String,
-          reason: Symbol,
+          reason: Increase::Models::CheckTransferStopPaymentParams::Reason::OrSymbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::CheckTransfer)

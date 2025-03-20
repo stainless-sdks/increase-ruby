@@ -113,7 +113,9 @@ module Increase
           | :tax_calculated_on_post_discount_invoice_total
           | :tax_calculated_on_pre_discount_invoice_total
 
-        class DiscountTreatmentCode < Increase::Enum
+        module DiscountTreatmentCode
+          extend Increase::Enum
+
           # No invoice level discount provided
           NO_INVOICE_LEVEL_DISCOUNT_PROVIDED: :no_invoice_level_discount_provided
 
@@ -133,7 +135,9 @@ module Increase
           | :gross_price_line_item_level
           | :gross_price_invoice_level
 
-        class TaxTreatments < Increase::Enum
+        module TaxTreatments
+          extend Increase::Enum
+
           # No tax applies
           NO_TAX_APPLIES: :no_tax_applies
 
@@ -233,7 +237,9 @@ module Increase
 
         type detail_indicator = :normal | :credit | :payment
 
-        class DetailIndicator < Increase::Enum
+        module DetailIndicator
+          extend Increase::Enum
+
           # Normal
           NORMAL: :normal
 
@@ -251,7 +257,9 @@ module Increase
           | :tax_calculated_on_post_discount_line_item_total
           | :tax_calculated_on_pre_discount_line_item_total
 
-        class DiscountTreatmentCode < Increase::Enum
+        module DiscountTreatmentCode
+          extend Increase::Enum
+
           # No line item level discount provided
           NO_LINE_ITEM_LEVEL_DISCOUNT_PROVIDED: :no_line_item_level_discount_provided
 
@@ -267,7 +275,9 @@ module Increase
 
       type type_ = :card_purchase_supplement
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         CARD_PURCHASE_SUPPLEMENT: :card_purchase_supplement
 
         def self.values: -> ::Array[Increase::Models::CardPurchaseSupplement::type_]

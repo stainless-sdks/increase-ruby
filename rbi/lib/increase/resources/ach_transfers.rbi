@@ -15,16 +15,16 @@ module Increase
           company_discretionary_data: String,
           company_entry_description: String,
           company_name: String,
-          destination_account_holder: Symbol,
+          destination_account_holder: Increase::Models::ACHTransferCreateParams::DestinationAccountHolder::OrSymbol,
           external_account_id: String,
-          funding: Symbol,
+          funding: Increase::Models::ACHTransferCreateParams::Funding::OrSymbol,
           individual_id: String,
           individual_name: String,
           preferred_effective_date: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate,
           require_approval: T::Boolean,
           routing_number: String,
-          standard_entry_class_code: Symbol,
-          transaction_timing: Symbol,
+          standard_entry_class_code: Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::OrSymbol,
+          transaction_timing: Increase::Models::ACHTransferCreateParams::TransactionTiming::OrSymbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::ACHTransfer)

@@ -80,44 +80,56 @@ module Increase
         # Filter Physical Card Profiles for those with the specified statuses. For GET
         #   requests, this should be encoded as a comma-delimited string, such as
         #   `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Symbol])) }
+        sig { returns(T.nilable(T::Array[Increase::Models::PhysicalCardProfileListParams::Status::In::OrSymbol])) }
         def in_
         end
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        sig do
+          params(_: T::Array[Increase::Models::PhysicalCardProfileListParams::Status::In::OrSymbol])
+            .returns(T::Array[Increase::Models::PhysicalCardProfileListParams::Status::In::OrSymbol])
+        end
         def in_=(_)
         end
 
-        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
+        sig do
+          params(in_: T::Array[Increase::Models::PhysicalCardProfileListParams::Status::In::OrSymbol])
+            .returns(T.attached_class)
+        end
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Symbol]}) }
+        sig { override.returns({in_: T::Array[Increase::Models::PhysicalCardProfileListParams::Status::In::OrSymbol]}) }
         def to_hash
         end
 
-        class In < Increase::Enum
-          abstract!
+        module In
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardProfileListParams::Status::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol) }
 
           # The Card Profile has not yet been processed by Increase.
-          PENDING_CREATING = :pending_creating
+          PENDING_CREATING =
+            T.let(:pending_creating, Increase::Models::PhysicalCardProfileListParams::Status::In::OrSymbol)
 
           # The card profile is awaiting review by Increase.
-          PENDING_REVIEWING = :pending_reviewing
+          PENDING_REVIEWING =
+            T.let(:pending_reviewing, Increase::Models::PhysicalCardProfileListParams::Status::In::OrSymbol)
 
           # There is an issue with the Physical Card Profile preventing it from use.
-          REJECTED = :rejected
+          REJECTED = T.let(:rejected, Increase::Models::PhysicalCardProfileListParams::Status::In::OrSymbol)
 
           # The card profile is awaiting submission to the fulfillment provider.
-          PENDING_SUBMITTING = :pending_submitting
+          PENDING_SUBMITTING =
+            T.let(:pending_submitting, Increase::Models::PhysicalCardProfileListParams::Status::In::OrSymbol)
 
           # The Physical Card Profile has been submitted to the fulfillment provider and is ready to use.
-          ACTIVE = :active
+          ACTIVE = T.let(:active, Increase::Models::PhysicalCardProfileListParams::Status::In::OrSymbol)
 
           # The Physical Card Profile has been archived.
-          ARCHIVED = :archived
+          ARCHIVED = T.let(:archived, Increase::Models::PhysicalCardProfileListParams::Status::In::OrSymbol)
         end
       end
     end

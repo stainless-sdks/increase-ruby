@@ -40,7 +40,9 @@ module Increase
 
       type status = :active | :inactive | :suspended | :deactivated
 
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The digital wallet token is active.
         ACTIVE: :active
 
@@ -58,7 +60,9 @@ module Increase
 
       type token_requestor = :apple_pay | :google_pay | :samsung_pay | :unknown
 
-      class TokenRequestor < Increase::Enum
+      module TokenRequestor
+        extend Increase::Enum
+
         # Apple Pay
         APPLE_PAY: :apple_pay
 
@@ -76,7 +80,9 @@ module Increase
 
       type type_ = :digital_wallet_token
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         DIGITAL_WALLET_TOKEN: :digital_wallet_token
 
         def self.values: -> ::Array[Increase::Models::DigitalWalletToken::type_]
@@ -102,7 +108,9 @@ module Increase
 
         type status = :active | :inactive | :suspended | :deactivated
 
-        class Status < Increase::Enum
+        module Status
+          extend Increase::Enum
+
           # The digital wallet token is active.
           ACTIVE: :active
 

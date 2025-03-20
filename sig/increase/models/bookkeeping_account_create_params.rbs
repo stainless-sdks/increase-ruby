@@ -41,7 +41,9 @@ module Increase
 
       type compliance_category = :commingled_cash | :customer_balance
 
-      class ComplianceCategory < Increase::Enum
+      module ComplianceCategory
+        extend Increase::Enum
+
         # A cash in an commingled Increase Account.
         COMMINGLED_CASH: :commingled_cash
 

@@ -36,20 +36,20 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # The type of OAuth token.
-      class TokenType < Increase::Enum
+      module TokenType
+        extend Increase::Enum
+
         BEARER = :bearer
 
         finalize!
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `oauth_token`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         OAUTH_TOKEN = :oauth_token
 
         finalize!

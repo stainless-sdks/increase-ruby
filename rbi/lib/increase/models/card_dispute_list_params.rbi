@@ -145,44 +145,54 @@ module Increase
         # Filter Card Disputes for those with the specified status or statuses. For GET
         #   requests, this should be encoded as a comma-delimited string, such as
         #   `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Symbol])) }
+        sig { returns(T.nilable(T::Array[Increase::Models::CardDisputeListParams::Status::In::OrSymbol])) }
         def in_
         end
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        sig do
+          params(_: T::Array[Increase::Models::CardDisputeListParams::Status::In::OrSymbol])
+            .returns(T::Array[Increase::Models::CardDisputeListParams::Status::In::OrSymbol])
+        end
         def in_=(_)
         end
 
-        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
+        sig do
+          params(in_: T::Array[Increase::Models::CardDisputeListParams::Status::In::OrSymbol])
+            .returns(T.attached_class)
+        end
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Symbol]}) }
+        sig { override.returns({in_: T::Array[Increase::Models::CardDisputeListParams::Status::In::OrSymbol]}) }
         def to_hash
         end
 
-        class In < Increase::Enum
-          abstract!
+        module In
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardDisputeListParams::Status::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CardDisputeListParams::Status::In::TaggedSymbol) }
 
           # The Card Dispute is pending review.
-          PENDING_REVIEWING = :pending_reviewing
+          PENDING_REVIEWING =
+            T.let(:pending_reviewing, Increase::Models::CardDisputeListParams::Status::In::OrSymbol)
 
           # Increase has requested more information related to the Card Dispute from you.
-          PENDING_USER_INFORMATION = :pending_user_information
+          PENDING_USER_INFORMATION =
+            T.let(:pending_user_information, Increase::Models::CardDisputeListParams::Status::In::OrSymbol)
 
           # The Card Dispute has been accepted and your funds have been returned. The card dispute will eventually transition into `won` or `lost` depending on the outcome.
-          ACCEPTED = :accepted
+          ACCEPTED = T.let(:accepted, Increase::Models::CardDisputeListParams::Status::In::OrSymbol)
 
           # The Card Dispute has been rejected.
-          REJECTED = :rejected
+          REJECTED = T.let(:rejected, Increase::Models::CardDisputeListParams::Status::In::OrSymbol)
 
           # The Card Dispute has been lost and funds previously credited from the acceptance have been debited.
-          LOST = :lost
+          LOST = T.let(:lost, Increase::Models::CardDisputeListParams::Status::In::OrSymbol)
 
           # The Card Dispute has been won and no further action can be taken.
-          WON = :won
+          WON = T.let(:won, Increase::Models::CardDisputeListParams::Status::In::OrSymbol)
         end
       end
     end

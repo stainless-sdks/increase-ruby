@@ -166,10 +166,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # Status of the proof of authorization request submission.
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The proof of authorization request submission is pending review.
         PENDING_REVIEW = :pending_review
 
@@ -188,11 +188,11 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `proof_of_authorization_request_submission`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION = :proof_of_authorization_request_submission
 
         finalize!

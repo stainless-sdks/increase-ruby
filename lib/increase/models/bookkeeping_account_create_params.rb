@@ -55,10 +55,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # The account compliance category.
-      class ComplianceCategory < Increase::Enum
+      module ComplianceCategory
+        extend Increase::Enum
+
         # A cash in an commingled Increase Account.
         COMMINGLED_CASH = :commingled_cash
 

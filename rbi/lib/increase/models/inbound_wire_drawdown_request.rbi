@@ -210,11 +210,14 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_wire_drawdown_request`.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol)
+          .returns(Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol)
+      end
       def type=(_)
       end
 
@@ -245,7 +248,7 @@ module Increase
           originator_to_beneficiary_information_line3: T.nilable(String),
           originator_to_beneficiary_information_line4: T.nilable(String),
           recipient_account_number_id: String,
-          type: Symbol
+          type: Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol
         )
           .returns(T.attached_class)
       end
@@ -302,7 +305,7 @@ module Increase
               originator_to_beneficiary_information_line3: T.nilable(String),
               originator_to_beneficiary_information_line4: T.nilable(String),
               recipient_account_number_id: String,
-              type: Symbol
+              type: Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol
             }
           )
       end
@@ -311,12 +314,15 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_wire_drawdown_request`.
-      class Type < Increase::Enum
-        abstract!
+      module Type
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundWireDrawdownRequest::Type) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol) }
 
-        INBOUND_WIRE_DRAWDOWN_REQUEST = :inbound_wire_drawdown_request
+        INBOUND_WIRE_DRAWDOWN_REQUEST =
+          T.let(:inbound_wire_drawdown_request, Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol)
       end
     end
   end

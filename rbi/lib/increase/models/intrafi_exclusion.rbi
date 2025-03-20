@@ -71,11 +71,14 @@ module Increase
       end
 
       # The status of the exclusion request.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::IntrafiExclusion::Status::TaggedSymbol) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::IntrafiExclusion::Status::TaggedSymbol)
+          .returns(Increase::Models::IntrafiExclusion::Status::TaggedSymbol)
+      end
       def status=(_)
       end
 
@@ -90,11 +93,14 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `intrafi_exclusion`.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::IntrafiExclusion::Type::TaggedSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::IntrafiExclusion::Type::TaggedSymbol)
+          .returns(Increase::Models::IntrafiExclusion::Type::TaggedSymbol)
+      end
       def type=(_)
       end
 
@@ -111,9 +117,9 @@ module Increase
           excluded_at: T.nilable(Time),
           fdic_certificate_number: T.nilable(String),
           idempotency_key: T.nilable(String),
-          status: Symbol,
+          status: Increase::Models::IntrafiExclusion::Status::TaggedSymbol,
           submitted_at: T.nilable(Time),
-          type: Symbol
+          type: Increase::Models::IntrafiExclusion::Type::TaggedSymbol
         )
           .returns(T.attached_class)
       end
@@ -142,9 +148,9 @@ module Increase
               excluded_at: T.nilable(Time),
               fdic_certificate_number: T.nilable(String),
               idempotency_key: T.nilable(String),
-              status: Symbol,
+              status: Increase::Models::IntrafiExclusion::Status::TaggedSymbol,
               submitted_at: T.nilable(Time),
-              type: Symbol
+              type: Increase::Models::IntrafiExclusion::Type::TaggedSymbol
             }
           )
       end
@@ -152,29 +158,31 @@ module Increase
       end
 
       # The status of the exclusion request.
-      class Status < Increase::Enum
-        abstract!
+      module Status
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiExclusion::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::IntrafiExclusion::Status::TaggedSymbol) }
 
         # The exclusion is being added to the IntraFi network.
-        PENDING = :pending
+        PENDING = T.let(:pending, Increase::Models::IntrafiExclusion::Status::TaggedSymbol)
 
         # The exclusion has been added to the IntraFi network.
-        COMPLETED = :completed
+        COMPLETED = T.let(:completed, Increase::Models::IntrafiExclusion::Status::TaggedSymbol)
 
         # The exclusion has been removed from the IntraFi network.
-        ARCHIVED = :archived
+        ARCHIVED = T.let(:archived, Increase::Models::IntrafiExclusion::Status::TaggedSymbol)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `intrafi_exclusion`.
-      class Type < Increase::Enum
-        abstract!
+      module Type
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiExclusion::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::IntrafiExclusion::Type::TaggedSymbol) }
 
-        INTRAFI_EXCLUSION = :intrafi_exclusion
+        INTRAFI_EXCLUSION = T.let(:intrafi_exclusion, Increase::Models::IntrafiExclusion::Type::TaggedSymbol)
       end
     end
   end

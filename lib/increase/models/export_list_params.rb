@@ -114,8 +114,9 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        class In < Increase::Enum
+        module In
+          extend Increase::Enum
+
           # Export an Open Financial Exchange (OFX) file of transactions and balances for a given time range and Account.
           ACCOUNT_STATEMENT_OFX = :account_statement_ofx
 
@@ -219,8 +220,9 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        class In < Increase::Enum
+        module In
+          extend Increase::Enum
+
           # Increase is generating the export.
           PENDING = :pending
 

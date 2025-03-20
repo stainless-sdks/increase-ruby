@@ -40,7 +40,9 @@ module Increase
 
       type status = :active | :inactive
 
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The OAuth connection is active.
         ACTIVE: :active
 
@@ -52,7 +54,9 @@ module Increase
 
       type type_ = :oauth_connection
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         OAUTH_CONNECTION: :oauth_connection
 
         def self.values: -> ::Array[Increase::Models::OAuthConnection::type_]

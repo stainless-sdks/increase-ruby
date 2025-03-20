@@ -13,11 +13,14 @@ module Increase
       end
 
       # The type of entity that owns the External Account.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::ExternalAccount::AccountHolder::TaggedSymbol) }
       def account_holder
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::ExternalAccount::AccountHolder::TaggedSymbol)
+          .returns(Increase::Models::ExternalAccount::AccountHolder::TaggedSymbol)
+      end
       def account_holder=(_)
       end
 
@@ -50,11 +53,14 @@ module Increase
       end
 
       # The type of the account to which the transfer will be sent.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::ExternalAccount::Funding::TaggedSymbol) }
       def funding
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::ExternalAccount::Funding::TaggedSymbol)
+          .returns(Increase::Models::ExternalAccount::Funding::TaggedSymbol)
+      end
       def funding=(_)
       end
 
@@ -79,30 +85,39 @@ module Increase
       end
 
       # The External Account's status.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::ExternalAccount::Status::TaggedSymbol) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::ExternalAccount::Status::TaggedSymbol)
+          .returns(Increase::Models::ExternalAccount::Status::TaggedSymbol)
+      end
       def status=(_)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `external_account`.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::ExternalAccount::Type::TaggedSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::ExternalAccount::Type::TaggedSymbol)
+          .returns(Increase::Models::ExternalAccount::Type::TaggedSymbol)
+      end
       def type=(_)
       end
 
       # If you have verified ownership of the External Account.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::ExternalAccount::VerificationStatus::TaggedSymbol) }
       def verification_status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::ExternalAccount::VerificationStatus::TaggedSymbol)
+          .returns(Increase::Models::ExternalAccount::VerificationStatus::TaggedSymbol)
+      end
       def verification_status=(_)
       end
 
@@ -111,16 +126,16 @@ module Increase
       sig do
         params(
           id: String,
-          account_holder: Symbol,
+          account_holder: Increase::Models::ExternalAccount::AccountHolder::TaggedSymbol,
           account_number: String,
           created_at: Time,
           description: String,
-          funding: Symbol,
+          funding: Increase::Models::ExternalAccount::Funding::TaggedSymbol,
           idempotency_key: T.nilable(String),
           routing_number: String,
-          status: Symbol,
-          type: Symbol,
-          verification_status: Symbol
+          status: Increase::Models::ExternalAccount::Status::TaggedSymbol,
+          type: Increase::Models::ExternalAccount::Type::TaggedSymbol,
+          verification_status: Increase::Models::ExternalAccount::VerificationStatus::TaggedSymbol
         )
           .returns(T.attached_class)
       end
@@ -144,16 +159,16 @@ module Increase
           .returns(
             {
               id: String,
-              account_holder: Symbol,
+              account_holder: Increase::Models::ExternalAccount::AccountHolder::TaggedSymbol,
               account_number: String,
               created_at: Time,
               description: String,
-              funding: Symbol,
+              funding: Increase::Models::ExternalAccount::Funding::TaggedSymbol,
               idempotency_key: T.nilable(String),
               routing_number: String,
-              status: Symbol,
-              type: Symbol,
-              verification_status: Symbol
+              status: Increase::Models::ExternalAccount::Status::TaggedSymbol,
+              type: Increase::Models::ExternalAccount::Type::TaggedSymbol,
+              verification_status: Increase::Models::ExternalAccount::VerificationStatus::TaggedSymbol
             }
           )
       end
@@ -161,74 +176,80 @@ module Increase
       end
 
       # The type of entity that owns the External Account.
-      class AccountHolder < Increase::Enum
-        abstract!
+      module AccountHolder
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccount::AccountHolder) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ExternalAccount::AccountHolder::TaggedSymbol) }
 
         # The External Account is owned by a business.
-        BUSINESS = :business
+        BUSINESS = T.let(:business, Increase::Models::ExternalAccount::AccountHolder::TaggedSymbol)
 
         # The External Account is owned by an individual.
-        INDIVIDUAL = :individual
+        INDIVIDUAL = T.let(:individual, Increase::Models::ExternalAccount::AccountHolder::TaggedSymbol)
 
         # It's unknown what kind of entity owns the External Account.
-        UNKNOWN = :unknown
+        UNKNOWN = T.let(:unknown, Increase::Models::ExternalAccount::AccountHolder::TaggedSymbol)
       end
 
       # The type of the account to which the transfer will be sent.
-      class Funding < Increase::Enum
-        abstract!
+      module Funding
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccount::Funding) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ExternalAccount::Funding::TaggedSymbol) }
 
         # A checking account.
-        CHECKING = :checking
+        CHECKING = T.let(:checking, Increase::Models::ExternalAccount::Funding::TaggedSymbol)
 
         # A savings account.
-        SAVINGS = :savings
+        SAVINGS = T.let(:savings, Increase::Models::ExternalAccount::Funding::TaggedSymbol)
 
         # A different type of account.
-        OTHER = :other
+        OTHER = T.let(:other, Increase::Models::ExternalAccount::Funding::TaggedSymbol)
       end
 
       # The External Account's status.
-      class Status < Increase::Enum
-        abstract!
+      module Status
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccount::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ExternalAccount::Status::TaggedSymbol) }
 
         # The External Account is active.
-        ACTIVE = :active
+        ACTIVE = T.let(:active, Increase::Models::ExternalAccount::Status::TaggedSymbol)
 
         # The External Account is archived and won't appear in the dashboard.
-        ARCHIVED = :archived
+        ARCHIVED = T.let(:archived, Increase::Models::ExternalAccount::Status::TaggedSymbol)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `external_account`.
-      class Type < Increase::Enum
-        abstract!
+      module Type
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccount::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ExternalAccount::Type::TaggedSymbol) }
 
-        EXTERNAL_ACCOUNT = :external_account
+        EXTERNAL_ACCOUNT = T.let(:external_account, Increase::Models::ExternalAccount::Type::TaggedSymbol)
       end
 
       # If you have verified ownership of the External Account.
-      class VerificationStatus < Increase::Enum
-        abstract!
+      module VerificationStatus
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccount::VerificationStatus) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::ExternalAccount::VerificationStatus::TaggedSymbol) }
 
         # The External Account has not been verified.
-        UNVERIFIED = :unverified
+        UNVERIFIED = T.let(:unverified, Increase::Models::ExternalAccount::VerificationStatus::TaggedSymbol)
 
         # The External Account is in the process of being verified.
-        PENDING = :pending
+        PENDING = T.let(:pending, Increase::Models::ExternalAccount::VerificationStatus::TaggedSymbol)
 
         # The External Account is verified.
-        VERIFIED = :verified
+        VERIFIED = T.let(:verified, Increase::Models::ExternalAccount::VerificationStatus::TaggedSymbol)
       end
     end
   end

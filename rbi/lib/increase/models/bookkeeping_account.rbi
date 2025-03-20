@@ -22,11 +22,14 @@ module Increase
       end
 
       # The compliance category of the account.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol)) }
       def compliance_category
       end
 
-      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      sig do
+        params(_: T.nilable(Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol))
+          .returns(T.nilable(Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol))
+      end
       def compliance_category=(_)
       end
 
@@ -61,11 +64,14 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `bookkeeping_account`.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::BookkeepingAccount::Type::TaggedSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::BookkeepingAccount::Type::TaggedSymbol)
+          .returns(Increase::Models::BookkeepingAccount::Type::TaggedSymbol)
+      end
       def type=(_)
       end
 
@@ -76,11 +82,11 @@ module Increase
         params(
           id: String,
           account_id: T.nilable(String),
-          compliance_category: T.nilable(Symbol),
+          compliance_category: T.nilable(Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol),
           entity_id: T.nilable(String),
           idempotency_key: T.nilable(String),
           name: String,
-          type: Symbol
+          type: Increase::Models::BookkeepingAccount::Type::TaggedSymbol
         )
           .returns(T.attached_class)
       end
@@ -93,11 +99,11 @@ module Increase
             {
               id: String,
               account_id: T.nilable(String),
-              compliance_category: T.nilable(Symbol),
+              compliance_category: T.nilable(Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol),
               entity_id: T.nilable(String),
               idempotency_key: T.nilable(String),
               name: String,
-              type: Symbol
+              type: Increase::Models::BookkeepingAccount::Type::TaggedSymbol
             }
           )
       end
@@ -105,26 +111,32 @@ module Increase
       end
 
       # The compliance category of the account.
-      class ComplianceCategory < Increase::Enum
-        abstract!
+      module ComplianceCategory
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::BookkeepingAccount::ComplianceCategory) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol) }
 
         # A cash in an commingled Increase Account.
-        COMMINGLED_CASH = :commingled_cash
+        COMMINGLED_CASH =
+          T.let(:commingled_cash, Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol)
 
         # A customer balance.
-        CUSTOMER_BALANCE = :customer_balance
+        CUSTOMER_BALANCE =
+          T.let(:customer_balance, Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `bookkeeping_account`.
-      class Type < Increase::Enum
-        abstract!
+      module Type
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::BookkeepingAccount::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::BookkeepingAccount::Type::TaggedSymbol) }
 
-        BOOKKEEPING_ACCOUNT = :bookkeeping_account
+        BOOKKEEPING_ACCOUNT =
+          T.let(:bookkeeping_account, Increase::Models::BookkeepingAccount::Type::TaggedSymbol)
       end
     end
   end

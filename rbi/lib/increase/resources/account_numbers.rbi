@@ -50,7 +50,7 @@ module Increase
           inbound_ach: Increase::Models::AccountNumberUpdateParams::InboundACH,
           inbound_checks: Increase::Models::AccountNumberUpdateParams::InboundChecks,
           name: String,
-          status: Symbol,
+          status: Increase::Models::AccountNumberUpdateParams::Status::OrSymbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::AccountNumber)

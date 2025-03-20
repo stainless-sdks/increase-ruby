@@ -221,10 +221,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # The status of the transfer.
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The Inbound Wire Transfer is awaiting action, will transition automatically if no action is taken.
         PENDING = :pending
 
@@ -240,11 +240,11 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_wire_transfer`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         INBOUND_WIRE_TRANSFER = :inbound_wire_transfer
 
         finalize!

@@ -40,7 +40,9 @@ module Increase
 
       type compliance_category = :commingled_cash | :customer_balance
 
-      class ComplianceCategory < Increase::Enum
+      module ComplianceCategory
+        extend Increase::Enum
+
         # A cash in an commingled Increase Account.
         COMMINGLED_CASH: :commingled_cash
 
@@ -52,7 +54,9 @@ module Increase
 
       type type_ = :bookkeeping_account
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         BOOKKEEPING_ACCOUNT: :bookkeeping_account
 
         def self.values: -> ::Array[Increase::Models::BookkeepingAccount::type_]

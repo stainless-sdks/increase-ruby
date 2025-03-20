@@ -6,7 +6,7 @@ module Increase
       # Create an OAuth Token
       sig do
         params(
-          grant_type: Symbol,
+          grant_type: Increase::Models::OAuthTokenCreateParams::GrantType::OrSymbol,
           client_id: String,
           client_secret: String,
           code: String,

@@ -97,7 +97,9 @@ module Increase
       type status =
         :pending_submission | :pending_response | :fulfilled | :refused
 
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The drawdown request is queued to be submitted to Fedwire.
         PENDING_SUBMISSION: :pending_submission
 
@@ -125,7 +127,9 @@ module Increase
 
       type type_ = :wire_drawdown_request
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         WIRE_DRAWDOWN_REQUEST: :wire_drawdown_request
 
         def self.values: -> ::Array[Increase::Models::WireDrawdownRequest::type_]

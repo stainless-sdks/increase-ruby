@@ -111,47 +111,56 @@ module Increase
         # Filter Exports for those with the specified category or categories. For GET
         #   requests, this should be encoded as a comma-delimited string, such as
         #   `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Symbol])) }
+        sig { returns(T.nilable(T::Array[Increase::Models::ExportListParams::Category::In::OrSymbol])) }
         def in_
         end
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        sig do
+          params(_: T::Array[Increase::Models::ExportListParams::Category::In::OrSymbol])
+            .returns(T::Array[Increase::Models::ExportListParams::Category::In::OrSymbol])
+        end
         def in_=(_)
         end
 
-        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
+        sig do
+          params(in_: T::Array[Increase::Models::ExportListParams::Category::In::OrSymbol]).returns(T.attached_class)
+        end
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Symbol]}) }
+        sig { override.returns({in_: T::Array[Increase::Models::ExportListParams::Category::In::OrSymbol]}) }
         def to_hash
         end
 
-        class In < Increase::Enum
-          abstract!
+        module In
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExportListParams::Category::In) }
+          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ExportListParams::Category::In::TaggedSymbol) }
 
           # Export an Open Financial Exchange (OFX) file of transactions and balances for a given time range and Account.
-          ACCOUNT_STATEMENT_OFX = :account_statement_ofx
+          ACCOUNT_STATEMENT_OFX =
+            T.let(:account_statement_ofx, Increase::Models::ExportListParams::Category::In::OrSymbol)
 
           # Export a CSV of all transactions for a given time range.
-          TRANSACTION_CSV = :transaction_csv
+          TRANSACTION_CSV = T.let(:transaction_csv, Increase::Models::ExportListParams::Category::In::OrSymbol)
 
           # Export a CSV of account balances for the dates in a given range.
-          BALANCE_CSV = :balance_csv
+          BALANCE_CSV = T.let(:balance_csv, Increase::Models::ExportListParams::Category::In::OrSymbol)
 
           # Export a CSV of bookkeeping account balances for the dates in a given range.
-          BOOKKEEPING_ACCOUNT_BALANCE_CSV = :bookkeeping_account_balance_csv
+          BOOKKEEPING_ACCOUNT_BALANCE_CSV =
+            T.let(:bookkeeping_account_balance_csv, Increase::Models::ExportListParams::Category::In::OrSymbol)
 
           # Export a CSV of entities with a given status.
-          ENTITY_CSV = :entity_csv
+          ENTITY_CSV = T.let(:entity_csv, Increase::Models::ExportListParams::Category::In::OrSymbol)
 
           # Export a CSV of vendors added to the third-party risk management dashboard.
-          VENDOR_CSV = :vendor_csv
+          VENDOR_CSV = T.let(:vendor_csv, Increase::Models::ExportListParams::Category::In::OrSymbol)
 
           # Certain dashboard tables are available as CSV exports. This export cannot be created via the API.
-          DASHBOARD_TABLE_CSV = :dashboard_table_csv
+          DASHBOARD_TABLE_CSV =
+            T.let(:dashboard_table_csv, Increase::Models::ExportListParams::Category::In::OrSymbol)
         end
       end
 
@@ -211,35 +220,39 @@ module Increase
         # Filter Exports for those with the specified status or statuses. For GET
         #   requests, this should be encoded as a comma-delimited string, such as
         #   `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Symbol])) }
+        sig { returns(T.nilable(T::Array[Increase::Models::ExportListParams::Status::In::OrSymbol])) }
         def in_
         end
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        sig do
+          params(_: T::Array[Increase::Models::ExportListParams::Status::In::OrSymbol])
+            .returns(T::Array[Increase::Models::ExportListParams::Status::In::OrSymbol])
+        end
         def in_=(_)
         end
 
-        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
+        sig { params(in_: T::Array[Increase::Models::ExportListParams::Status::In::OrSymbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Symbol]}) }
+        sig { override.returns({in_: T::Array[Increase::Models::ExportListParams::Status::In::OrSymbol]}) }
         def to_hash
         end
 
-        class In < Increase::Enum
-          abstract!
+        module In
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExportListParams::Status::In) }
+          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ExportListParams::Status::In::TaggedSymbol) }
 
           # Increase is generating the export.
-          PENDING = :pending
+          PENDING = T.let(:pending, Increase::Models::ExportListParams::Status::In::OrSymbol)
 
           # The export has been successfully generated.
-          COMPLETE = :complete
+          COMPLETE = T.let(:complete, Increase::Models::ExportListParams::Status::In::OrSymbol)
 
           # The export failed to generate. Increase will reach out to you to resolve the issue.
-          FAILED = :failed
+          FAILED = T.let(:failed, Increase::Models::ExportListParams::Status::In::OrSymbol)
         end
       end
     end

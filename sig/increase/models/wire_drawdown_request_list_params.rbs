@@ -62,7 +62,9 @@ module Increase
         type in_ =
           :pending_submission | :pending_response | :fulfilled | :refused
 
-        class In < Increase::Enum
+        module In
+          extend Increase::Enum
+
           # The drawdown request is queued to be submitted to Fedwire.
           PENDING_SUBMISSION: :pending_submission
 

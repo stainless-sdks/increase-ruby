@@ -51,21 +51,27 @@ module Increase
       end
 
       # Whether the connection is active.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::OAuthConnection::Status::TaggedSymbol) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::OAuthConnection::Status::TaggedSymbol)
+          .returns(Increase::Models::OAuthConnection::Status::TaggedSymbol)
+      end
       def status=(_)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `oauth_connection`.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::OAuthConnection::Type::TaggedSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::OAuthConnection::Type::TaggedSymbol)
+          .returns(Increase::Models::OAuthConnection::Type::TaggedSymbol)
+      end
       def type=(_)
       end
 
@@ -79,8 +85,8 @@ module Increase
           deleted_at: T.nilable(Time),
           group_id: String,
           oauth_application_id: String,
-          status: Symbol,
-          type: Symbol
+          status: Increase::Models::OAuthConnection::Status::TaggedSymbol,
+          type: Increase::Models::OAuthConnection::Type::TaggedSymbol
         )
           .returns(T.attached_class)
       end
@@ -96,8 +102,8 @@ module Increase
               deleted_at: T.nilable(Time),
               group_id: String,
               oauth_application_id: String,
-              status: Symbol,
-              type: Symbol
+              status: Increase::Models::OAuthConnection::Status::TaggedSymbol,
+              type: Increase::Models::OAuthConnection::Type::TaggedSymbol
             }
           )
       end
@@ -105,26 +111,28 @@ module Increase
       end
 
       # Whether the connection is active.
-      class Status < Increase::Enum
-        abstract!
+      module Status
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthConnection::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::OAuthConnection::Status::TaggedSymbol) }
 
         # The OAuth connection is active.
-        ACTIVE = :active
+        ACTIVE = T.let(:active, Increase::Models::OAuthConnection::Status::TaggedSymbol)
 
         # The OAuth connection is permanently deactivated.
-        INACTIVE = :inactive
+        INACTIVE = T.let(:inactive, Increase::Models::OAuthConnection::Status::TaggedSymbol)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `oauth_connection`.
-      class Type < Increase::Enum
-        abstract!
+      module Type
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthConnection::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::OAuthConnection::Type::TaggedSymbol) }
 
-        OAUTH_CONNECTION = :oauth_connection
+        OAUTH_CONNECTION = T.let(:oauth_connection, Increase::Models::OAuthConnection::Type::TaggedSymbol)
       end
     end
   end

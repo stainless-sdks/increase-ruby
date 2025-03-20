@@ -193,10 +193,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # The lifecycle status of the drawdown request.
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The drawdown request is queued to be submitted to Fedwire.
         PENDING_SUBMISSION = :pending_submission
 
@@ -231,11 +231,11 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `wire_drawdown_request`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         WIRE_DRAWDOWN_REQUEST = :wire_drawdown_request
 
         finalize!

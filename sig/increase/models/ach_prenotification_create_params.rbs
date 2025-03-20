@@ -93,7 +93,9 @@ module Increase
 
       type credit_debit_indicator = :credit | :debit
 
-      class CreditDebitIndicator < Increase::Enum
+      module CreditDebitIndicator
+        extend Increase::Enum
+
         # The Prenotification is for an anticipated credit.
         CREDIT: :credit
 
@@ -109,7 +111,9 @@ module Increase
         | :prearranged_payments_and_deposit
         | :internet_initiated
 
-      class StandardEntryClassCode < Increase::Enum
+      module StandardEntryClassCode
+        extend Increase::Enum
+
         # Corporate Credit and Debit (CCD).
         CORPORATE_CREDIT_OR_DEBIT: :corporate_credit_or_debit
 

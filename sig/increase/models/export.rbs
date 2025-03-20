@@ -51,7 +51,9 @@ module Increase
         | :vendor_csv
         | :dashboard_table_csv
 
-      class Category < Increase::Enum
+      module Category
+        extend Increase::Enum
+
         # Export an Open Financial Exchange (OFX) file of transactions and balances for a given time range and Account.
         ACCOUNT_STATEMENT_OFX: :account_statement_ofx
 
@@ -78,7 +80,9 @@ module Increase
 
       type status = :pending | :complete | :failed
 
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # Increase is generating the export.
         PENDING: :pending
 
@@ -93,7 +97,9 @@ module Increase
 
       type type_ = :export
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         EXPORT: :export
 
         def self.values: -> ::Array[Increase::Models::Export::type_]

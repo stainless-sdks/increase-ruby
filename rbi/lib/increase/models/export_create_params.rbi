@@ -7,11 +7,14 @@ module Increase
       include Increase::RequestParameters
 
       # The type of Export to create.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::ExportCreateParams::Category::OrSymbol) }
       def category
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::ExportCreateParams::Category::OrSymbol)
+          .returns(Increase::Models::ExportCreateParams::Category::OrSymbol)
+      end
       def category=(_)
       end
 
@@ -90,7 +93,7 @@ module Increase
 
       sig do
         params(
-          category: Symbol,
+          category: Increase::Models::ExportCreateParams::Category::OrSymbol,
           account_statement_ofx: Increase::Models::ExportCreateParams::AccountStatementOfx,
           balance_csv: Increase::Models::ExportCreateParams::BalanceCsv,
           bookkeeping_account_balance_csv: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv,
@@ -117,7 +120,7 @@ module Increase
         override
           .returns(
             {
-              category: Symbol,
+              category: Increase::Models::ExportCreateParams::Category::OrSymbol,
               account_statement_ofx: Increase::Models::ExportCreateParams::AccountStatementOfx,
               balance_csv: Increase::Models::ExportCreateParams::BalanceCsv,
               bookkeeping_account_balance_csv: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv,
@@ -132,28 +135,31 @@ module Increase
       end
 
       # The type of Export to create.
-      class Category < Increase::Enum
-        abstract!
+      module Category
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExportCreateParams::Category) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ExportCreateParams::Category::TaggedSymbol) }
 
         # Export an Open Financial Exchange (OFX) file of transactions and balances for a given time range and Account.
-        ACCOUNT_STATEMENT_OFX = :account_statement_ofx
+        ACCOUNT_STATEMENT_OFX =
+          T.let(:account_statement_ofx, Increase::Models::ExportCreateParams::Category::OrSymbol)
 
         # Export a CSV of all transactions for a given time range.
-        TRANSACTION_CSV = :transaction_csv
+        TRANSACTION_CSV = T.let(:transaction_csv, Increase::Models::ExportCreateParams::Category::OrSymbol)
 
         # Export a CSV of account balances for the dates in a given range.
-        BALANCE_CSV = :balance_csv
+        BALANCE_CSV = T.let(:balance_csv, Increase::Models::ExportCreateParams::Category::OrSymbol)
 
         # Export a CSV of bookkeeping account balances for the dates in a given range.
-        BOOKKEEPING_ACCOUNT_BALANCE_CSV = :bookkeeping_account_balance_csv
+        BOOKKEEPING_ACCOUNT_BALANCE_CSV =
+          T.let(:bookkeeping_account_balance_csv, Increase::Models::ExportCreateParams::Category::OrSymbol)
 
         # Export a CSV of entities with a given status.
-        ENTITY_CSV = :entity_csv
+        ENTITY_CSV = T.let(:entity_csv, Increase::Models::ExportCreateParams::Category::OrSymbol)
 
         # Export a CSV of vendors added to the third-party risk management dashboard.
-        VENDOR_CSV = :vendor_csv
+        VENDOR_CSV = T.let(:vendor_csv, Increase::Models::ExportCreateParams::Category::OrSymbol)
       end
 
       class AccountStatementOfx < Increase::BaseModel
@@ -489,36 +495,45 @@ module Increase
         class Status < Increase::BaseModel
           # Entity statuses to filter by. For GET requests, this should be encoded as a
           #   comma-delimited string, such as `?in=one,two,three`.
-          sig { returns(T::Array[Symbol]) }
+          sig { returns(T::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::In::OrSymbol]) }
           def in_
           end
 
-          sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+          sig do
+            params(_: T::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::In::OrSymbol])
+              .returns(T::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::In::OrSymbol])
+          end
           def in_=(_)
           end
 
           # Entity statuses to filter by.
-          sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
+          sig do
+            params(in_: T::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::In::OrSymbol])
+              .returns(T.attached_class)
+          end
           def self.new(in_:)
           end
 
-          sig { override.returns({in_: T::Array[Symbol]}) }
+          sig { override.returns({in_: T::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::In::OrSymbol]}) }
           def to_hash
           end
 
-          class In < Increase::Enum
-            abstract!
+          module In
+            extend Increase::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, Increase::Models::ExportCreateParams::EntityCsv::Status::In) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Increase::Models::ExportCreateParams::EntityCsv::Status::In::TaggedSymbol) }
 
             # The entity is active.
-            ACTIVE = :active
+            ACTIVE = T.let(:active, Increase::Models::ExportCreateParams::EntityCsv::Status::In::OrSymbol)
 
             # The entity is archived, and can no longer be used to create accounts.
-            ARCHIVED = :archived
+            ARCHIVED = T.let(:archived, Increase::Models::ExportCreateParams::EntityCsv::Status::In::OrSymbol)
 
             # The entity is temporarily disabled and cannot be used for financial activity.
-            DISABLED = :disabled
+            DISABLED = T.let(:disabled, Increase::Models::ExportCreateParams::EntityCsv::Status::In::OrSymbol)
           end
         end
       end

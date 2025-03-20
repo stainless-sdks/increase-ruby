@@ -22,11 +22,11 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # The reason why this transfer will be returned. The most usual return codes are
       #   `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
-      class Reason < Increase::Enum
+      module Reason
+        extend Increase::Enum
+
         # The customer's account has insufficient funds. This reason is only allowed for debits. The Nacha return code is R01.
         INSUFFICIENT_FUNDS = :insufficient_funds
 

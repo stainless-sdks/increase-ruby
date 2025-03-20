@@ -83,8 +83,9 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        class In < Increase::Enum
+        module In
+          extend Increase::Enum
+
           # The Card Profile is awaiting review from Increase and/or processing by card networks.
           PENDING = :pending
 

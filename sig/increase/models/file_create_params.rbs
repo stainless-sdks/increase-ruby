@@ -48,7 +48,9 @@ module Increase
         | :unusual_activity_report_attachment
         | :proof_of_authorization_request_submission
 
-      class Purpose < Increase::Enum
+      module Purpose
+        extend Increase::Enum
+
         # An image of the front of a check, used for check deposits.
         CHECK_IMAGE_FRONT: :check_image_front
 

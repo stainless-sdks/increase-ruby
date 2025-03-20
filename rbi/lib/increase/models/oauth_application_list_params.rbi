@@ -130,32 +130,40 @@ module Increase
       class Status < Increase::BaseModel
         # Return results whose value is in the provided list. For GET requests, this
         #   should be encoded as a comma-delimited string, such as `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Symbol])) }
+        sig { returns(T.nilable(T::Array[Increase::Models::OAuthApplicationListParams::Status::In::OrSymbol])) }
         def in_
         end
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        sig do
+          params(_: T::Array[Increase::Models::OAuthApplicationListParams::Status::In::OrSymbol])
+            .returns(T::Array[Increase::Models::OAuthApplicationListParams::Status::In::OrSymbol])
+        end
         def in_=(_)
         end
 
-        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
+        sig do
+          params(in_: T::Array[Increase::Models::OAuthApplicationListParams::Status::In::OrSymbol])
+            .returns(T.attached_class)
+        end
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Symbol]}) }
+        sig { override.returns({in_: T::Array[Increase::Models::OAuthApplicationListParams::Status::In::OrSymbol]}) }
         def to_hash
         end
 
-        class In < Increase::Enum
-          abstract!
+        module In
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthApplicationListParams::Status::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::OAuthApplicationListParams::Status::In::TaggedSymbol) }
 
           # The application is active and can be used by your users.
-          ACTIVE = :active
+          ACTIVE = T.let(:active, Increase::Models::OAuthApplicationListParams::Status::In::OrSymbol)
 
           # The application is deleted.
-          DELETED = :deleted
+          DELETED = T.let(:deleted, Increase::Models::OAuthApplicationListParams::Status::In::OrSymbol)
         end
       end
     end
