@@ -126,7 +126,7 @@ module Increase
     private def auth_headers: -> ::Hash[String, String]
 
     def initialize: (
-      ?environment: :production | :sandbox | nil,
+      ?environment: :"0" | :"1" | nil,
       ?base_url: String?,
       ?api_key: String?,
       ?max_retries: Integer,

@@ -196,7 +196,7 @@ module Increase
 
     # Creates and returns a new client for interacting with the API.
     #
-    # @param environment [:production, :sandbox, nil] Specifies the environment to use for the API.
+    # @param environment [:"0", :"1", nil] Specifies the environment to use for the API.
     #
     #   Each environment maps to a different base URL:
     #
