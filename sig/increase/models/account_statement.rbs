@@ -48,7 +48,9 @@ module Increase
 
       type type_ = :account_statement
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         ACCOUNT_STATEMENT: :account_statement
 
         def self.values: -> ::Array[Increase::Models::AccountStatement::type_]

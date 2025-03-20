@@ -19,7 +19,9 @@ module Increase
 
       type status = :active | :disabled | :canceled
 
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The physical card is active.
         ACTIVE: :active
 

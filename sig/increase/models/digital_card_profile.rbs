@@ -68,7 +68,9 @@ module Increase
 
       type status = :pending | :rejected | :active | :archived
 
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The Card Profile is awaiting review from Increase and/or processing by card networks.
         PENDING: :pending
 
@@ -100,7 +102,9 @@ module Increase
 
       type type_ = :digital_card_profile
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         DIGITAL_CARD_PROFILE: :digital_card_profile
 
         def self.values: -> ::Array[Increase::Models::DigitalCardProfile::type_]

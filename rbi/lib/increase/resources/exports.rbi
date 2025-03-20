@@ -6,7 +6,7 @@ module Increase
       # Create an Export
       sig do
         params(
-          category: Symbol,
+          category: Increase::Models::ExportCreateParams::Category::OrSymbol,
           account_statement_ofx: Increase::Models::ExportCreateParams::AccountStatementOfx,
           balance_csv: Increase::Models::ExportCreateParams::BalanceCsv,
           bookkeeping_account_balance_csv: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv,

@@ -83,7 +83,9 @@ module Increase
 
         type in_ = :allowed | :blocked
 
-        class In < Increase::Enum
+        module In
+          extend Increase::Enum
+
           # ACH Debits are allowed.
           ALLOWED: :allowed
 
@@ -142,7 +144,9 @@ module Increase
 
         type in_ = :active | :disabled | :canceled
 
-        class In < Increase::Enum
+        module In
+          extend Increase::Enum
+
           # The account number is active.
           ACTIVE: :active
 

@@ -159,35 +159,39 @@ module Increase
       class Status < Increase::BaseModel
         # Filter Cards by status. For GET requests, this should be encoded as a
         #   comma-delimited string, such as `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Symbol])) }
+        sig { returns(T.nilable(T::Array[Increase::Models::CardListParams::Status::In::OrSymbol])) }
         def in_
         end
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        sig do
+          params(_: T::Array[Increase::Models::CardListParams::Status::In::OrSymbol])
+            .returns(T::Array[Increase::Models::CardListParams::Status::In::OrSymbol])
+        end
         def in_=(_)
         end
 
-        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
+        sig { params(in_: T::Array[Increase::Models::CardListParams::Status::In::OrSymbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Symbol]}) }
+        sig { override.returns({in_: T::Array[Increase::Models::CardListParams::Status::In::OrSymbol]}) }
         def to_hash
         end
 
-        class In < Increase::Enum
-          abstract!
+        module In
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardListParams::Status::In) }
+          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CardListParams::Status::In::TaggedSymbol) }
 
           # The card is active.
-          ACTIVE = :active
+          ACTIVE = T.let(:active, Increase::Models::CardListParams::Status::In::OrSymbol)
 
           # The card is temporarily disabled.
-          DISABLED = :disabled
+          DISABLED = T.let(:disabled, Increase::Models::CardListParams::Status::In::OrSymbol)
 
           # The card is permanently canceled.
-          CANCELED = :canceled
+          CANCELED = T.let(:canceled, Increase::Models::CardListParams::Status::In::OrSymbol)
         end
       end
     end

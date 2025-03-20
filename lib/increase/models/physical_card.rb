@@ -215,10 +215,10 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        # @abstract
-        #
         # The shipping method.
-        class Method < Increase::Enum
+        module Method
+          extend Increase::Enum
+
           # USPS Post with tracking.
           USPS = :usps
 
@@ -231,10 +231,10 @@ module Increase
           finalize!
         end
 
-        # @abstract
-        #
         # The status of this shipment.
-        class Status < Increase::Enum
+        module Status
+          extend Increase::Enum
+
           # The physical card has not yet been shipped.
           PENDING = :pending
 
@@ -300,10 +300,10 @@ module Increase
         end
       end
 
-      # @abstract
-      #
       # The status of the Physical Card.
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The physical card is active.
         ACTIVE = :active
 
@@ -316,11 +316,11 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `physical_card`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         PHYSICAL_CARD = :physical_card
 
         finalize!

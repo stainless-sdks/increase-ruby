@@ -149,10 +149,10 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @abstract
-      #
       # This indicates if mail can be sent to this address.
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # This Lockbox is active. Checks mailed to it will be deposited automatically.
         ACTIVE = :active
 
@@ -162,11 +162,11 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `lockbox`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         LOCKBOX = :lockbox
 
         finalize!

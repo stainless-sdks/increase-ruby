@@ -132,10 +132,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # The type of Entity to create.
-      class Structure < Increase::Enum
+      module Structure
+        extend Increase::Enum
+
         # A corporation.
         CORPORATION = :corporation
 
@@ -500,10 +500,10 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
-              # @abstract
-              #
               # A method that can be used to verify the individual's identity.
-              class Method < Increase::Enum
+              module Method
+                extend Increase::Enum
+
                 # A social security number.
                 SOCIAL_SECURITY_NUMBER = :social_security_number
 
@@ -655,8 +655,9 @@ module Increase
             end
           end
 
-          # @abstract
-          class Prong < Increase::Enum
+          module Prong
+            extend Increase::Enum
+
             # A person with 25% or greater direct or indirect ownership of the entity.
             OWNERSHIP = :ownership
 
@@ -792,10 +793,10 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        # @abstract
-        #
         # The category of the government authority.
-        class Category < Increase::Enum
+        module Category
+          extend Increase::Enum
+
           # The Public Entity is a Municipality.
           MUNICIPALITY = :municipality
 
@@ -996,10 +997,10 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
-            # @abstract
-            #
             # A method that can be used to verify the individual's identity.
-            class Method < Increase::Enum
+            module Method
+              extend Increase::Enum
+
               # A social security number.
               SOCIAL_SECURITY_NUMBER = :social_security_number
 
@@ -1321,10 +1322,10 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @abstract
-          #
           # A method that can be used to verify the individual's identity.
-          class Method < Increase::Enum
+          module Method
+            extend Increase::Enum
+
             # A social security number.
             SOCIAL_SECURITY_NUMBER = :social_security_number
 
@@ -1515,10 +1516,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # The vendor that was used to perform the verification.
-        class Vendor < Increase::Enum
+        module Vendor
+          extend Increase::Enum
+
           # Alloy. See https://alloy.com for more information.
           ALLOY = :alloy
 
@@ -1679,12 +1680,12 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        # @abstract
-        #
         # Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require
         #   their own Employer Identification Number. Revocable trusts require information
         #   about the individual `grantor` who created the trust.
-        class Category < Increase::Enum
+        module Category
+          extend Increase::Enum
+
           # The trust is revocable by the grantor.
           REVOCABLE = :revocable
 
@@ -1720,10 +1721,10 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @abstract
-          #
           # The structure of the trustee.
-          class Structure < Increase::Enum
+          module Structure
+            extend Increase::Enum
+
             # The trustee is an individual.
             INDIVIDUAL = :individual
 
@@ -1900,10 +1901,10 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
-              # @abstract
-              #
               # A method that can be used to verify the individual's identity.
-              class Method < Increase::Enum
+              module Method
+                extend Increase::Enum
+
                 # A social security number.
                 SOCIAL_SECURITY_NUMBER = :social_security_number
 
@@ -2222,10 +2223,10 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
-            # @abstract
-            #
             # A method that can be used to verify the individual's identity.
-            class Method < Increase::Enum
+            module Method
+              extend Increase::Enum
+
               # A social security number.
               SOCIAL_SECURITY_NUMBER = :social_security_number
 

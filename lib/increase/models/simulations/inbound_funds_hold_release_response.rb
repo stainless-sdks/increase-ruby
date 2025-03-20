@@ -102,11 +102,11 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
         #   currency.
-        class Currency < Increase::Enum
+        module Currency
+          extend Increase::Enum
+
           # Canadian Dollar (CAD)
           CAD = :CAD
 
@@ -128,10 +128,10 @@ module Increase
           finalize!
         end
 
-        # @abstract
-        #
         # The status of the hold.
-        class Status < Increase::Enum
+        module Status
+          extend Increase::Enum
+
           # Funds are still being held.
           HELD = :held
 
@@ -141,11 +141,11 @@ module Increase
           finalize!
         end
 
-        # @abstract
-        #
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_funds_hold`.
-        class Type < Increase::Enum
+        module Type
+          extend Increase::Enum
+
           INBOUND_FUNDS_HOLD = :inbound_funds_hold
 
           finalize!

@@ -32,7 +32,9 @@ module Increase
 
       type ach_debit_status = :disabled | :enabled
 
-      class ACHDebitStatus < Increase::Enum
+      module ACHDebitStatus
+        extend Increase::Enum
+
         # The Group cannot make ACH debits.
         DISABLED: :disabled
 
@@ -44,7 +46,9 @@ module Increase
 
       type activation_status = :unactivated | :activated
 
-      class ActivationStatus < Increase::Enum
+      module ActivationStatus
+        extend Increase::Enum
+
         # The Group is not activated.
         UNACTIVATED: :unactivated
 
@@ -56,7 +60,9 @@ module Increase
 
       type type_ = :group
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         GROUP: :group
 
         def self.values: -> ::Array[Increase::Models::Group::type_]

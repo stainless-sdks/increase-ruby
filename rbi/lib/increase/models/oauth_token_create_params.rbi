@@ -8,11 +8,14 @@ module Increase
 
       # The credential you request in exchange for the code. In Production, this is
       #   always `authorization_code`. In Sandbox, you can pass either enum value.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::OAuthTokenCreateParams::GrantType::OrSymbol) }
       def grant_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::OAuthTokenCreateParams::GrantType::OrSymbol)
+          .returns(Increase::Models::OAuthTokenCreateParams::GrantType::OrSymbol)
+      end
       def grant_type=(_)
       end
 
@@ -59,7 +62,7 @@ module Increase
 
       sig do
         params(
-          grant_type: Symbol,
+          grant_type: Increase::Models::OAuthTokenCreateParams::GrantType::OrSymbol,
           client_id: String,
           client_secret: String,
           code: String,
@@ -75,7 +78,7 @@ module Increase
         override
           .returns(
             {
-              grant_type: Symbol,
+              grant_type: Increase::Models::OAuthTokenCreateParams::GrantType::OrSymbol,
               client_id: String,
               client_secret: String,
               code: String,
@@ -89,16 +92,20 @@ module Increase
 
       # The credential you request in exchange for the code. In Production, this is
       #   always `authorization_code`. In Sandbox, you can pass either enum value.
-      class GrantType < Increase::Enum
-        abstract!
+      module GrantType
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthTokenCreateParams::GrantType) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::OAuthTokenCreateParams::GrantType::TaggedSymbol) }
 
         # An OAuth authorization code.
-        AUTHORIZATION_CODE = :authorization_code
+        AUTHORIZATION_CODE =
+          T.let(:authorization_code, Increase::Models::OAuthTokenCreateParams::GrantType::OrSymbol)
 
         # An OAuth production token.
-        PRODUCTION_TOKEN = :production_token
+        PRODUCTION_TOKEN =
+          T.let(:production_token, Increase::Models::OAuthTokenCreateParams::GrantType::OrSymbol)
       end
     end
   end

@@ -25,11 +25,14 @@ module Increase
       end
 
       # Whether Increase will print and mail the check or if you will do it yourself.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::CheckTransferCreateParams::FulfillmentMethod::OrSymbol) }
       def fulfillment_method
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::CheckTransferCreateParams::FulfillmentMethod::OrSymbol)
+          .returns(Increase::Models::CheckTransferCreateParams::FulfillmentMethod::OrSymbol)
+      end
       def fulfillment_method=(_)
       end
 
@@ -84,7 +87,7 @@ module Increase
         params(
           account_id: String,
           amount: Integer,
-          fulfillment_method: Symbol,
+          fulfillment_method: Increase::Models::CheckTransferCreateParams::FulfillmentMethod::OrSymbol,
           source_account_number_id: String,
           physical_check: Increase::Models::CheckTransferCreateParams::PhysicalCheck,
           require_approval: T::Boolean,
@@ -111,7 +114,7 @@ module Increase
             {
               account_id: String,
               amount: Integer,
-              fulfillment_method: Symbol,
+              fulfillment_method: Increase::Models::CheckTransferCreateParams::FulfillmentMethod::OrSymbol,
               source_account_number_id: String,
               physical_check: Increase::Models::CheckTransferCreateParams::PhysicalCheck,
               require_approval: T::Boolean,
@@ -124,16 +127,21 @@ module Increase
       end
 
       # Whether Increase will print and mail the check or if you will do it yourself.
-      class FulfillmentMethod < Increase::Enum
-        abstract!
+      module FulfillmentMethod
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::CheckTransferCreateParams::FulfillmentMethod) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol) }
 
         # Increase will print and mail a physical check.
-        PHYSICAL_CHECK = :physical_check
+        PHYSICAL_CHECK =
+          T.let(:physical_check, Increase::Models::CheckTransferCreateParams::FulfillmentMethod::OrSymbol)
 
         # Increase will not print a check; you are responsible for printing and mailing a check with the provided account number, routing number, check number, and amount.
-        THIRD_PARTY = :third_party
+        THIRD_PARTY =
+          T.let(:third_party, Increase::Models::CheckTransferCreateParams::FulfillmentMethod::OrSymbol)
       end
 
       class PhysicalCheck < Increase::BaseModel

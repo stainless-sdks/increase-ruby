@@ -153,21 +153,27 @@ module Increase
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
       #   currency. For ACH transfers this is always equal to `usd`.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::ACHTransfer::Currency::TaggedSymbol) }
       def currency
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::ACHTransfer::Currency::TaggedSymbol)
+          .returns(Increase::Models::ACHTransfer::Currency::TaggedSymbol)
+      end
       def currency=(_)
       end
 
       # The type of entity that owns the account to which the ACH Transfer is being
       #   sent.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::ACHTransfer::DestinationAccountHolder::TaggedSymbol) }
       def destination_account_holder
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::ACHTransfer::DestinationAccountHolder::TaggedSymbol)
+          .returns(Increase::Models::ACHTransfer::DestinationAccountHolder::TaggedSymbol)
+      end
       def destination_account_holder=(_)
       end
 
@@ -181,11 +187,14 @@ module Increase
       end
 
       # The type of the account to which the transfer will be sent.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::ACHTransfer::Funding::TaggedSymbol) }
       def funding
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::ACHTransfer::Funding::TaggedSymbol)
+          .returns(Increase::Models::ACHTransfer::Funding::TaggedSymbol)
+      end
       def funding=(_)
       end
 
@@ -233,11 +242,14 @@ module Increase
       end
 
       # The transfer's network.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::ACHTransfer::Network::TaggedSymbol) }
       def network
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::ACHTransfer::Network::TaggedSymbol)
+          .returns(Increase::Models::ACHTransfer::Network::TaggedSymbol)
+      end
       def network=(_)
       end
 
@@ -316,11 +328,14 @@ module Increase
       end
 
       # The Standard Entry Class (SEC) code to use for the transfer.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::ACHTransfer::StandardEntryClassCode::TaggedSymbol) }
       def standard_entry_class_code
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::ACHTransfer::StandardEntryClassCode::TaggedSymbol)
+          .returns(Increase::Models::ACHTransfer::StandardEntryClassCode::TaggedSymbol)
+      end
       def standard_entry_class_code=(_)
       end
 
@@ -334,11 +349,14 @@ module Increase
       end
 
       # The lifecycle status of the transfer.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::ACHTransfer::Status::TaggedSymbol) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::ACHTransfer::Status::TaggedSymbol)
+          .returns(Increase::Models::ACHTransfer::Status::TaggedSymbol)
+      end
       def status=(_)
       end
 
@@ -369,11 +387,14 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `ach_transfer`.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::ACHTransfer::Type::TaggedSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::ACHTransfer::Type::TaggedSymbol)
+          .returns(Increase::Models::ACHTransfer::Type::TaggedSymbol)
+      end
       def type=(_)
       end
 
@@ -395,27 +416,27 @@ module Increase
           company_name: T.nilable(String),
           created_at: Time,
           created_by: T.nilable(Increase::Models::ACHTransfer::CreatedBy),
-          currency: Symbol,
-          destination_account_holder: Symbol,
+          currency: Increase::Models::ACHTransfer::Currency::TaggedSymbol,
+          destination_account_holder: Increase::Models::ACHTransfer::DestinationAccountHolder::TaggedSymbol,
           external_account_id: T.nilable(String),
-          funding: Symbol,
+          funding: Increase::Models::ACHTransfer::Funding::TaggedSymbol,
           idempotency_key: T.nilable(String),
           inbound_funds_hold: T.nilable(Increase::Models::ACHTransfer::InboundFundsHold),
           individual_id: T.nilable(String),
           individual_name: T.nilable(String),
-          network: Symbol,
+          network: Increase::Models::ACHTransfer::Network::TaggedSymbol,
           notifications_of_change: T::Array[Increase::Models::ACHTransfer::NotificationsOfChange],
           pending_transaction_id: T.nilable(String),
           preferred_effective_date: Increase::Models::ACHTransfer::PreferredEffectiveDate,
           return_: T.nilable(Increase::Models::ACHTransfer::Return),
           routing_number: String,
           settlement: T.nilable(Increase::Models::ACHTransfer::Settlement),
-          standard_entry_class_code: Symbol,
+          standard_entry_class_code: Increase::Models::ACHTransfer::StandardEntryClassCode::TaggedSymbol,
           statement_descriptor: String,
-          status: Symbol,
+          status: Increase::Models::ACHTransfer::Status::TaggedSymbol,
           submission: T.nilable(Increase::Models::ACHTransfer::Submission),
           transaction_id: T.nilable(String),
-          type: Symbol
+          type: Increase::Models::ACHTransfer::Type::TaggedSymbol
         )
           .returns(T.attached_class)
       end
@@ -476,27 +497,27 @@ module Increase
               company_name: T.nilable(String),
               created_at: Time,
               created_by: T.nilable(Increase::Models::ACHTransfer::CreatedBy),
-              currency: Symbol,
-              destination_account_holder: Symbol,
+              currency: Increase::Models::ACHTransfer::Currency::TaggedSymbol,
+              destination_account_holder: Increase::Models::ACHTransfer::DestinationAccountHolder::TaggedSymbol,
               external_account_id: T.nilable(String),
-              funding: Symbol,
+              funding: Increase::Models::ACHTransfer::Funding::TaggedSymbol,
               idempotency_key: T.nilable(String),
               inbound_funds_hold: T.nilable(Increase::Models::ACHTransfer::InboundFundsHold),
               individual_id: T.nilable(String),
               individual_name: T.nilable(String),
-              network: Symbol,
+              network: Increase::Models::ACHTransfer::Network::TaggedSymbol,
               notifications_of_change: T::Array[Increase::Models::ACHTransfer::NotificationsOfChange],
               pending_transaction_id: T.nilable(String),
               preferred_effective_date: Increase::Models::ACHTransfer::PreferredEffectiveDate,
               return_: T.nilable(Increase::Models::ACHTransfer::Return),
               routing_number: String,
               settlement: T.nilable(Increase::Models::ACHTransfer::Settlement),
-              standard_entry_class_code: Symbol,
+              standard_entry_class_code: Increase::Models::ACHTransfer::StandardEntryClassCode::TaggedSymbol,
               statement_descriptor: String,
-              status: Symbol,
+              status: Increase::Models::ACHTransfer::Status::TaggedSymbol,
               submission: T.nilable(Increase::Models::ACHTransfer::Submission),
               transaction_id: T.nilable(String),
-              type: Symbol
+              type: Increase::Models::ACHTransfer::Type::TaggedSymbol
             }
           )
       end
@@ -529,11 +550,14 @@ module Increase
       class Addenda < Increase::BaseModel
         # The type of the resource. We may add additional possible values for this enum
         #   over time; your application should be able to handle such additions gracefully.
-        sig { returns(Symbol) }
+        sig { returns(Increase::Models::ACHTransfer::Addenda::Category::TaggedSymbol) }
         def category
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Increase::Models::ACHTransfer::Addenda::Category::TaggedSymbol)
+            .returns(Increase::Models::ACHTransfer::Addenda::Category::TaggedSymbol)
+        end
         def category=(_)
         end
 
@@ -565,7 +589,7 @@ module Increase
         # Additional information that will be sent to the recipient.
         sig do
           params(
-            category: Symbol,
+            category: Increase::Models::ACHTransfer::Addenda::Category::TaggedSymbol,
             freeform: T.nilable(Increase::Models::ACHTransfer::Addenda::Freeform),
             payment_order_remittance_advice: T.nilable(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice)
           )
@@ -578,7 +602,7 @@ module Increase
           override
             .returns(
               {
-                category: Symbol,
+                category: Increase::Models::ACHTransfer::Addenda::Category::TaggedSymbol,
                 freeform: T.nilable(Increase::Models::ACHTransfer::Addenda::Freeform),
                 payment_order_remittance_advice: T.nilable(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice)
               }
@@ -589,19 +613,21 @@ module Increase
 
         # The type of the resource. We may add additional possible values for this enum
         #   over time; your application should be able to handle such additions gracefully.
-        class Category < Increase::Enum
-          abstract!
+        module Category
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::Addenda::Category) }
+          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::Addenda::Category::TaggedSymbol) }
 
           # Unstructured `payment_related_information` passed through with the transfer.
-          FREEFORM = :freeform
+          FREEFORM = T.let(:freeform, Increase::Models::ACHTransfer::Addenda::Category::TaggedSymbol)
 
           # Structured ASC X12 820 remittance advice records. Please reach out to [support@increase.com](mailto:support@increase.com) for more information.
-          PAYMENT_ORDER_REMITTANCE_ADVICE = :payment_order_remittance_advice
+          PAYMENT_ORDER_REMITTANCE_ADVICE =
+            T.let(:payment_order_remittance_advice, Increase::Models::ACHTransfer::Addenda::Category::TaggedSymbol)
 
           # Unknown addenda type.
-          OTHER = :other
+          OTHER = T.let(:other, Increase::Models::ACHTransfer::Addenda::Category::TaggedSymbol)
         end
 
         class Freeform < Increase::BaseModel
@@ -789,11 +815,14 @@ module Increase
         end
 
         # The type of object that created this transfer.
-        sig { returns(Symbol) }
+        sig { returns(Increase::Models::ACHTransfer::CreatedBy::Category::TaggedSymbol) }
         def category
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Increase::Models::ACHTransfer::CreatedBy::Category::TaggedSymbol)
+            .returns(Increase::Models::ACHTransfer::CreatedBy::Category::TaggedSymbol)
+        end
         def category=(_)
         end
 
@@ -825,7 +854,7 @@ module Increase
         sig do
           params(
             api_key: T.nilable(Increase::Models::ACHTransfer::CreatedBy::APIKey),
-            category: Symbol,
+            category: Increase::Models::ACHTransfer::CreatedBy::Category::TaggedSymbol,
             oauth_application: T.nilable(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication),
             user: T.nilable(Increase::Models::ACHTransfer::CreatedBy::User)
           )
@@ -839,7 +868,7 @@ module Increase
             .returns(
               {
                 api_key: T.nilable(Increase::Models::ACHTransfer::CreatedBy::APIKey),
-                category: Symbol,
+                category: Increase::Models::ACHTransfer::CreatedBy::Category::TaggedSymbol,
                 oauth_application: T.nilable(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication),
                 user: T.nilable(Increase::Models::ACHTransfer::CreatedBy::User)
               }
@@ -869,19 +898,22 @@ module Increase
         end
 
         # The type of object that created this transfer.
-        class Category < Increase::Enum
-          abstract!
+        module Category
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::CreatedBy::Category) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::CreatedBy::Category::TaggedSymbol) }
 
           # An API key. Details will be under the `api_key` object.
-          API_KEY = :api_key
+          API_KEY = T.let(:api_key, Increase::Models::ACHTransfer::CreatedBy::Category::TaggedSymbol)
 
           # An OAuth application you connected to Increase. Details will be under the `oauth_application` object.
-          OAUTH_APPLICATION = :oauth_application
+          OAUTH_APPLICATION =
+            T.let(:oauth_application, Increase::Models::ACHTransfer::CreatedBy::Category::TaggedSymbol)
 
           # A User in the Increase dashboard. Details will be under the `user` object.
-          USER = :user
+          USER = T.let(:user, Increase::Models::ACHTransfer::CreatedBy::Category::TaggedSymbol)
         end
 
         class OAuthApplication < Increase::BaseModel
@@ -927,58 +959,62 @@ module Increase
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
       #   currency. For ACH transfers this is always equal to `usd`.
-      class Currency < Increase::Enum
-        abstract!
+      module Currency
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::Currency) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::Currency::TaggedSymbol) }
 
         # Canadian Dollar (CAD)
-        CAD = :CAD
+        CAD = T.let(:CAD, Increase::Models::ACHTransfer::Currency::TaggedSymbol)
 
         # Swiss Franc (CHF)
-        CHF = :CHF
+        CHF = T.let(:CHF, Increase::Models::ACHTransfer::Currency::TaggedSymbol)
 
         # Euro (EUR)
-        EUR = :EUR
+        EUR = T.let(:EUR, Increase::Models::ACHTransfer::Currency::TaggedSymbol)
 
         # British Pound (GBP)
-        GBP = :GBP
+        GBP = T.let(:GBP, Increase::Models::ACHTransfer::Currency::TaggedSymbol)
 
         # Japanese Yen (JPY)
-        JPY = :JPY
+        JPY = T.let(:JPY, Increase::Models::ACHTransfer::Currency::TaggedSymbol)
 
         # US Dollar (USD)
-        USD = :USD
+        USD = T.let(:USD, Increase::Models::ACHTransfer::Currency::TaggedSymbol)
       end
 
       # The type of entity that owns the account to which the ACH Transfer is being
       #   sent.
-      class DestinationAccountHolder < Increase::Enum
-        abstract!
+      module DestinationAccountHolder
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::DestinationAccountHolder) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::DestinationAccountHolder::TaggedSymbol) }
 
         # The External Account is owned by a business.
-        BUSINESS = :business
+        BUSINESS = T.let(:business, Increase::Models::ACHTransfer::DestinationAccountHolder::TaggedSymbol)
 
         # The External Account is owned by an individual.
-        INDIVIDUAL = :individual
+        INDIVIDUAL = T.let(:individual, Increase::Models::ACHTransfer::DestinationAccountHolder::TaggedSymbol)
 
         # It's unknown what kind of entity owns the External Account.
-        UNKNOWN = :unknown
+        UNKNOWN = T.let(:unknown, Increase::Models::ACHTransfer::DestinationAccountHolder::TaggedSymbol)
       end
 
       # The type of the account to which the transfer will be sent.
-      class Funding < Increase::Enum
-        abstract!
+      module Funding
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::Funding) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::Funding::TaggedSymbol) }
 
         # A checking account.
-        CHECKING = :checking
+        CHECKING = T.let(:checking, Increase::Models::ACHTransfer::Funding::TaggedSymbol)
 
         # A savings account.
-        SAVINGS = :savings
+        SAVINGS = T.let(:savings, Increase::Models::ACHTransfer::Funding::TaggedSymbol)
       end
 
       class InboundFundsHold < Increase::BaseModel
@@ -1023,11 +1059,14 @@ module Increase
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
         #   currency.
-        sig { returns(Symbol) }
+        sig { returns(Increase::Models::ACHTransfer::InboundFundsHold::Currency::TaggedSymbol) }
         def currency
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Increase::Models::ACHTransfer::InboundFundsHold::Currency::TaggedSymbol)
+            .returns(Increase::Models::ACHTransfer::InboundFundsHold::Currency::TaggedSymbol)
+        end
         def currency=(_)
         end
 
@@ -1059,21 +1098,27 @@ module Increase
         end
 
         # The status of the hold.
-        sig { returns(Symbol) }
+        sig { returns(Increase::Models::ACHTransfer::InboundFundsHold::Status::TaggedSymbol) }
         def status
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Increase::Models::ACHTransfer::InboundFundsHold::Status::TaggedSymbol)
+            .returns(Increase::Models::ACHTransfer::InboundFundsHold::Status::TaggedSymbol)
+        end
         def status=(_)
         end
 
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_funds_hold`.
-        sig { returns(Symbol) }
+        sig { returns(Increase::Models::ACHTransfer::InboundFundsHold::Type::TaggedSymbol) }
         def type
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Increase::Models::ACHTransfer::InboundFundsHold::Type::TaggedSymbol)
+            .returns(Increase::Models::ACHTransfer::InboundFundsHold::Type::TaggedSymbol)
+        end
         def type=(_)
         end
 
@@ -1085,12 +1130,12 @@ module Increase
             amount: Integer,
             automatically_releases_at: Time,
             created_at: Time,
-            currency: Symbol,
+            currency: Increase::Models::ACHTransfer::InboundFundsHold::Currency::TaggedSymbol,
             held_transaction_id: T.nilable(String),
             pending_transaction_id: T.nilable(String),
             released_at: T.nilable(Time),
-            status: Symbol,
-            type: Symbol
+            status: Increase::Models::ACHTransfer::InboundFundsHold::Status::TaggedSymbol,
+            type: Increase::Models::ACHTransfer::InboundFundsHold::Type::TaggedSymbol
           )
             .returns(T.attached_class)
         end
@@ -1116,12 +1161,12 @@ module Increase
                 amount: Integer,
                 automatically_releases_at: Time,
                 created_at: Time,
-                currency: Symbol,
+                currency: Increase::Models::ACHTransfer::InboundFundsHold::Currency::TaggedSymbol,
                 held_transaction_id: T.nilable(String),
                 pending_transaction_id: T.nilable(String),
                 released_at: T.nilable(Time),
-                status: Symbol,
-                type: Symbol
+                status: Increase::Models::ACHTransfer::InboundFundsHold::Status::TaggedSymbol,
+                type: Increase::Models::ACHTransfer::InboundFundsHold::Type::TaggedSymbol
               }
             )
         end
@@ -1130,71 +1175,82 @@ module Increase
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
         #   currency.
-        class Currency < Increase::Enum
-          abstract!
+        module Currency
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::InboundFundsHold::Currency) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::InboundFundsHold::Currency::TaggedSymbol) }
 
           # Canadian Dollar (CAD)
-          CAD = :CAD
+          CAD = T.let(:CAD, Increase::Models::ACHTransfer::InboundFundsHold::Currency::TaggedSymbol)
 
           # Swiss Franc (CHF)
-          CHF = :CHF
+          CHF = T.let(:CHF, Increase::Models::ACHTransfer::InboundFundsHold::Currency::TaggedSymbol)
 
           # Euro (EUR)
-          EUR = :EUR
+          EUR = T.let(:EUR, Increase::Models::ACHTransfer::InboundFundsHold::Currency::TaggedSymbol)
 
           # British Pound (GBP)
-          GBP = :GBP
+          GBP = T.let(:GBP, Increase::Models::ACHTransfer::InboundFundsHold::Currency::TaggedSymbol)
 
           # Japanese Yen (JPY)
-          JPY = :JPY
+          JPY = T.let(:JPY, Increase::Models::ACHTransfer::InboundFundsHold::Currency::TaggedSymbol)
 
           # US Dollar (USD)
-          USD = :USD
+          USD = T.let(:USD, Increase::Models::ACHTransfer::InboundFundsHold::Currency::TaggedSymbol)
         end
 
         # The status of the hold.
-        class Status < Increase::Enum
-          abstract!
+        module Status
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::InboundFundsHold::Status) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::InboundFundsHold::Status::TaggedSymbol) }
 
           # Funds are still being held.
-          HELD = :held
+          HELD = T.let(:held, Increase::Models::ACHTransfer::InboundFundsHold::Status::TaggedSymbol)
 
           # Funds have been released.
-          COMPLETE = :complete
+          COMPLETE = T.let(:complete, Increase::Models::ACHTransfer::InboundFundsHold::Status::TaggedSymbol)
         end
 
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_funds_hold`.
-        class Type < Increase::Enum
-          abstract!
+        module Type
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::InboundFundsHold::Type) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::InboundFundsHold::Type::TaggedSymbol) }
 
-          INBOUND_FUNDS_HOLD = :inbound_funds_hold
+          INBOUND_FUNDS_HOLD =
+            T.let(:inbound_funds_hold, Increase::Models::ACHTransfer::InboundFundsHold::Type::TaggedSymbol)
         end
       end
 
       # The transfer's network.
-      class Network < Increase::Enum
-        abstract!
+      module Network
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::Network) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::Network::TaggedSymbol) }
 
-        ACH = :ach
+        ACH = T.let(:ach, Increase::Models::ACHTransfer::Network::TaggedSymbol)
       end
 
       class NotificationsOfChange < Increase::BaseModel
         # The required type of change that is being signaled by the receiving financial
         #   institution.
-        sig { returns(Symbol) }
+        sig { returns(Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol) }
         def change_code
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol)
+            .returns(Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol)
+        end
         def change_code=(_)
         end
 
@@ -1222,84 +1278,171 @@ module Increase
         end
 
         sig do
-          params(change_code: Symbol, corrected_data: String, created_at: Time).returns(T.attached_class)
+          params(
+            change_code: Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol,
+            corrected_data: String,
+            created_at: Time
+          )
+            .returns(T.attached_class)
         end
         def self.new(change_code:, corrected_data:, created_at:)
         end
 
-        sig { override.returns({change_code: Symbol, corrected_data: String, created_at: Time}) }
+        sig do
+          override
+            .returns(
+              {
+                change_code: Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol,
+                corrected_data: String,
+                created_at: Time
+              }
+            )
+        end
         def to_hash
         end
 
         # The required type of change that is being signaled by the receiving financial
         #   institution.
-        class ChangeCode < Increase::Enum
-          abstract!
+        module ChangeCode
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol) }
 
           # The account number was incorrect.
-          INCORRECT_ACCOUNT_NUMBER = :incorrect_account_number
+          INCORRECT_ACCOUNT_NUMBER =
+            T.let(
+              :incorrect_account_number,
+              Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol
+            )
 
           # The routing number was incorrect.
-          INCORRECT_ROUTING_NUMBER = :incorrect_routing_number
+          INCORRECT_ROUTING_NUMBER =
+            T.let(
+              :incorrect_routing_number,
+              Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol
+            )
 
           # Both the routing number and the account number were incorrect.
-          INCORRECT_ROUTING_NUMBER_AND_ACCOUNT_NUMBER = :incorrect_routing_number_and_account_number
+          INCORRECT_ROUTING_NUMBER_AND_ACCOUNT_NUMBER =
+            T.let(
+              :incorrect_routing_number_and_account_number,
+              Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol
+            )
 
           # The transaction code was incorrect. Try changing the `funding` parameter from checking to savings or vice-versa.
-          INCORRECT_TRANSACTION_CODE = :incorrect_transaction_code
+          INCORRECT_TRANSACTION_CODE =
+            T.let(
+              :incorrect_transaction_code,
+              Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol
+            )
 
           # The account number and the transaction code were incorrect.
-          INCORRECT_ACCOUNT_NUMBER_AND_TRANSACTION_CODE = :incorrect_account_number_and_transaction_code
+          INCORRECT_ACCOUNT_NUMBER_AND_TRANSACTION_CODE =
+            T.let(
+              :incorrect_account_number_and_transaction_code,
+              Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol
+            )
 
           # The routing number, account number, and transaction code were incorrect.
           INCORRECT_ROUTING_NUMBER_ACCOUNT_NUMBER_AND_TRANSACTION_CODE =
-            :incorrect_routing_number_account_number_and_transaction_code
+            T.let(
+              :incorrect_routing_number_account_number_and_transaction_code,
+              Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol
+            )
 
           # The receiving depository financial institution identification was incorrect.
           INCORRECT_RECEIVING_DEPOSITORY_FINANCIAL_INSTITUTION_IDENTIFICATION =
-            :incorrect_receiving_depository_financial_institution_identification
+            T.let(
+              :incorrect_receiving_depository_financial_institution_identification,
+              Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol
+            )
 
           # The individual identification number was incorrect.
-          INCORRECT_INDIVIDUAL_IDENTIFICATION_NUMBER = :incorrect_individual_identification_number
+          INCORRECT_INDIVIDUAL_IDENTIFICATION_NUMBER =
+            T.let(
+              :incorrect_individual_identification_number,
+              Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol
+            )
 
           # The addenda had an incorrect format.
-          ADDENDA_FORMAT_ERROR = :addenda_format_error
+          ADDENDA_FORMAT_ERROR =
+            T.let(
+              :addenda_format_error,
+              Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol
+            )
 
           # The standard entry class code was incorrect for an outbound international payment.
           INCORRECT_STANDARD_ENTRY_CLASS_CODE_FOR_OUTBOUND_INTERNATIONAL_PAYMENT =
-            :incorrect_standard_entry_class_code_for_outbound_international_payment
+            T.let(
+              :incorrect_standard_entry_class_code_for_outbound_international_payment,
+              Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol
+            )
 
           # The notification of change was misrouted.
-          MISROUTED_NOTIFICATION_OF_CHANGE = :misrouted_notification_of_change
+          MISROUTED_NOTIFICATION_OF_CHANGE =
+            T.let(
+              :misrouted_notification_of_change,
+              Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol
+            )
 
           # The trace number was incorrect.
-          INCORRECT_TRACE_NUMBER = :incorrect_trace_number
+          INCORRECT_TRACE_NUMBER =
+            T.let(
+              :incorrect_trace_number,
+              Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol
+            )
 
           # The company identification number was incorrect.
-          INCORRECT_COMPANY_IDENTIFICATION_NUMBER = :incorrect_company_identification_number
+          INCORRECT_COMPANY_IDENTIFICATION_NUMBER =
+            T.let(
+              :incorrect_company_identification_number,
+              Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol
+            )
 
           # The individual identification number or identification number was incorrect.
-          INCORRECT_IDENTIFICATION_NUMBER = :incorrect_identification_number
+          INCORRECT_IDENTIFICATION_NUMBER =
+            T.let(
+              :incorrect_identification_number,
+              Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol
+            )
 
           # The corrected data was incorrectly formatted.
-          INCORRECTLY_FORMATTED_CORRECTED_DATA = :incorrectly_formatted_corrected_data
+          INCORRECTLY_FORMATTED_CORRECTED_DATA =
+            T.let(
+              :incorrectly_formatted_corrected_data,
+              Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol
+            )
 
           # The discretionary data was incorrect.
-          INCORRECT_DISCRETIONARY_DATA = :incorrect_discretionary_data
+          INCORRECT_DISCRETIONARY_DATA =
+            T.let(
+              :incorrect_discretionary_data,
+              Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol
+            )
 
           # The routing number was not from the original entry detail record.
           ROUTING_NUMBER_NOT_FROM_ORIGINAL_ENTRY_DETAIL_RECORD =
-            :routing_number_not_from_original_entry_detail_record
+            T.let(
+              :routing_number_not_from_original_entry_detail_record,
+              Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol
+            )
 
           # The depository financial institution account number was not from the original entry detail record.
           DEPOSITORY_FINANCIAL_INSTITUTION_ACCOUNT_NUMBER_NOT_FROM_ORIGINAL_ENTRY_DETAIL_RECORD =
-            :depository_financial_institution_account_number_not_from_original_entry_detail_record
+            T.let(
+              :depository_financial_institution_account_number_not_from_original_entry_detail_record,
+              Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol
+            )
 
           # The transaction code was incorrect, initiated by the originating depository financial institution.
           INCORRECT_TRANSACTION_CODE_BY_ORIGINATING_DEPOSITORY_FINANCIAL_INSTITUTION =
-            :incorrect_transaction_code_by_originating_depository_financial_institution
+            T.let(
+              :incorrect_transaction_code_by_originating_depository_financial_institution,
+              Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol
+            )
         end
       end
 
@@ -1315,11 +1458,22 @@ module Increase
         end
 
         # A schedule by which Increase will choose an effective date for the transfer.
-        sig { returns(T.nilable(Symbol)) }
+        sig do
+          returns(
+            T.nilable(Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol)
+          )
+        end
         def settlement_schedule
         end
 
-        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        sig do
+          params(
+            _: T.nilable(Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol)
+          )
+            .returns(
+              T.nilable(Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol)
+            )
+        end
         def settlement_schedule=(_)
         end
 
@@ -1328,29 +1482,49 @@ module Increase
         #   `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
         #   must be set.
         sig do
-          params(date: T.nilable(Date), settlement_schedule: T.nilable(Symbol)).returns(T.attached_class)
+          params(
+            date: T.nilable(Date),
+            settlement_schedule: T.nilable(Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol)
+          )
+            .returns(T.attached_class)
         end
         def self.new(date:, settlement_schedule:)
         end
 
-        sig { override.returns({date: T.nilable(Date), settlement_schedule: T.nilable(Symbol)}) }
+        sig do
+          override
+            .returns(
+              {
+                date: T.nilable(Date),
+                settlement_schedule: T.nilable(Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol)
+              }
+            )
+        end
         def to_hash
         end
 
         # A schedule by which Increase will choose an effective date for the transfer.
-        class SettlementSchedule < Increase::Enum
-          abstract!
+        module SettlementSchedule
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol) }
 
           # The chosen effective date will be the same as the ACH processing date on which the transfer is submitted.
           # This is necessary, but not sufficient for the transfer to be settled same-day:
           # it must also be submitted before the last same-day cutoff
           # and be less than or equal to $1,000.000.00.
-          SAME_DAY = :same_day
+          SAME_DAY =
+            T.let(:same_day, Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol)
 
           # The chosen effective date will be the business day following the ACH processing date on which the transfer is submitted. The transfer will be settled on that future day.
-          FUTURE_DATED = :future_dated
+          FUTURE_DATED =
+            T.let(
+              :future_dated,
+              Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol
+            )
         end
       end
 
@@ -1376,11 +1550,14 @@ module Increase
 
         # Why the ACH Transfer was returned. This reason code is sent by the receiving
         #   bank back to Increase.
-        sig { returns(Symbol) }
+        sig { returns(Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol) }
         def return_reason_code
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
+            .returns(Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
+        end
         def return_reason_code=(_)
         end
 
@@ -1419,7 +1596,7 @@ module Increase
           params(
             created_at: Time,
             raw_return_reason_code: String,
-            return_reason_code: Symbol,
+            return_reason_code: Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol,
             trace_number: String,
             transaction_id: String,
             transfer_id: String
@@ -1435,7 +1612,7 @@ module Increase
               {
                 created_at: Time,
                 raw_return_reason_code: String,
-                return_reason_code: Symbol,
+                return_reason_code: Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol,
                 trace_number: String,
                 transaction_id: String,
                 transfer_id: String
@@ -1447,223 +1624,398 @@ module Increase
 
         # Why the ACH Transfer was returned. This reason code is sent by the receiving
         #   bank back to Increase.
-        class ReturnReasonCode < Increase::Enum
-          abstract!
+        module ReturnReasonCode
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::Return::ReturnReasonCode) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol) }
 
           # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
-          INSUFFICIENT_FUND = :insufficient_fund
+          INSUFFICIENT_FUND =
+            T.let(:insufficient_fund, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R03. The account does not exist or the receiving bank was unable to locate it.
-          NO_ACCOUNT = :no_account
+          NO_ACCOUNT = T.let(:no_account, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R02. The account is closed at the receiving bank.
-          ACCOUNT_CLOSED = :account_closed
+          ACCOUNT_CLOSED =
+            T.let(:account_closed, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R04. The account number is invalid at the receiving bank.
-          INVALID_ACCOUNT_NUMBER_STRUCTURE = :invalid_account_number_structure
+          INVALID_ACCOUNT_NUMBER_STRUCTURE =
+            T.let(
+              :invalid_account_number_structure,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R16. The account at the receiving bank was frozen per the Office of Foreign Assets Control.
-          ACCOUNT_FROZEN_ENTRY_RETURNED_PER_OFAC_INSTRUCTION = :account_frozen_entry_returned_per_ofac_instruction
+          ACCOUNT_FROZEN_ENTRY_RETURNED_PER_OFAC_INSTRUCTION =
+            T.let(
+              :account_frozen_entry_returned_per_ofac_instruction,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R23. The receiving bank account refused a credit transfer.
-          CREDIT_ENTRY_REFUSED_BY_RECEIVER = :credit_entry_refused_by_receiver
+          CREDIT_ENTRY_REFUSED_BY_RECEIVER =
+            T.let(
+              :credit_entry_refused_by_receiver,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R05. The receiving bank rejected because of an incorrect Standard Entry Class code.
           UNAUTHORIZED_DEBIT_TO_CONSUMER_ACCOUNT_USING_CORPORATE_SEC_CODE =
-            :unauthorized_debit_to_consumer_account_using_corporate_sec_code
+            T.let(
+              :unauthorized_debit_to_consumer_account_using_corporate_sec_code,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R29. The corporate customer at the receiving bank reversed the transfer.
-          CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
+          CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED =
+            T.let(
+              :corporate_customer_advised_not_authorized,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R08. The receiving bank stopped payment on this transfer.
-          PAYMENT_STOPPED = :payment_stopped
+          PAYMENT_STOPPED =
+            T.let(:payment_stopped, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R20. The receiving bank account does not perform transfers.
-          NON_TRANSACTION_ACCOUNT = :non_transaction_account
+          NON_TRANSACTION_ACCOUNT =
+            T.let(:non_transaction_account, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R09. The receiving bank account does not have enough available balance for the transfer.
-          UNCOLLECTED_FUNDS = :uncollected_funds
+          UNCOLLECTED_FUNDS =
+            T.let(:uncollected_funds, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R28. The routing number is incorrect.
-          ROUTING_NUMBER_CHECK_DIGIT_ERROR = :routing_number_check_digit_error
+          ROUTING_NUMBER_CHECK_DIGIT_ERROR =
+            T.let(
+              :routing_number_check_digit_error,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R10. The customer at the receiving bank reversed the transfer.
           CUSTOMER_ADVISED_UNAUTHORIZED_IMPROPER_INELIGIBLE_OR_INCOMPLETE =
-            :customer_advised_unauthorized_improper_ineligible_or_incomplete
+            T.let(
+              :customer_advised_unauthorized_improper_ineligible_or_incomplete,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R19. The amount field is incorrect or too large.
-          AMOUNT_FIELD_ERROR = :amount_field_error
+          AMOUNT_FIELD_ERROR =
+            T.let(:amount_field_error, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R07. The customer at the receiving institution informed their bank that they have revoked authorization for a previously authorized transfer.
-          AUTHORIZATION_REVOKED_BY_CUSTOMER = :authorization_revoked_by_customer
+          AUTHORIZATION_REVOKED_BY_CUSTOMER =
+            T.let(
+              :authorization_revoked_by_customer,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R13. The routing number is invalid.
-          INVALID_ACH_ROUTING_NUMBER = :invalid_ach_routing_number
+          INVALID_ACH_ROUTING_NUMBER =
+            T.let(:invalid_ach_routing_number, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R17. The receiving bank is unable to process a field in the transfer.
-          FILE_RECORD_EDIT_CRITERIA = :file_record_edit_criteria
+          FILE_RECORD_EDIT_CRITERIA =
+            T.let(:file_record_edit_criteria, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R45. The individual name field was invalid.
-          ENR_INVALID_INDIVIDUAL_NAME = :enr_invalid_individual_name
+          ENR_INVALID_INDIVIDUAL_NAME =
+            T.let(:enr_invalid_individual_name, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R06. The originating financial institution asked for this transfer to be returned. The receiving bank is complying with the request.
-          RETURNED_PER_ODFI_REQUEST = :returned_per_odfi_request
+          RETURNED_PER_ODFI_REQUEST =
+            T.let(:returned_per_odfi_request, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R34. The receiving bank's regulatory supervisor has limited their participation in the ACH network.
-          LIMITED_PARTICIPATION_DFI = :limited_participation_dfi
+          LIMITED_PARTICIPATION_DFI =
+            T.let(:limited_participation_dfi, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R85. The outbound international ACH transfer was incorrect.
-          INCORRECTLY_CODED_OUTBOUND_INTERNATIONAL_PAYMENT = :incorrectly_coded_outbound_international_payment
+          INCORRECTLY_CODED_OUTBOUND_INTERNATIONAL_PAYMENT =
+            T.let(
+              :incorrectly_coded_outbound_international_payment,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R12. A rare return reason. The account was sold to another bank.
-          ACCOUNT_SOLD_TO_ANOTHER_DFI = :account_sold_to_another_dfi
+          ACCOUNT_SOLD_TO_ANOTHER_DFI =
+            T.let(:account_sold_to_another_dfi, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R25. The addenda record is incorrect or missing.
-          ADDENDA_ERROR = :addenda_error
+          ADDENDA_ERROR =
+            T.let(:addenda_error, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R15. A rare return reason. The account holder is deceased.
-          BENEFICIARY_OR_ACCOUNT_HOLDER_DECEASED = :beneficiary_or_account_holder_deceased
+          BENEFICIARY_OR_ACCOUNT_HOLDER_DECEASED =
+            T.let(
+              :beneficiary_or_account_holder_deceased,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R11. A rare return reason. The customer authorized some payment to the sender, but this payment was not in error.
-          CUSTOMER_ADVISED_NOT_WITHIN_AUTHORIZATION_TERMS = :customer_advised_not_within_authorization_terms
+          CUSTOMER_ADVISED_NOT_WITHIN_AUTHORIZATION_TERMS =
+            T.let(
+              :customer_advised_not_within_authorization_terms,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R74. A rare return reason. Sent in response to a return that was returned with code `field_error`. The latest return should include the corrected field(s).
-          CORRECTED_RETURN = :corrected_return
+          CORRECTED_RETURN =
+            T.let(:corrected_return, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R24. A rare return reason. The receiving bank received an exact duplicate entry with the same trace number and amount.
-          DUPLICATE_ENTRY = :duplicate_entry
+          DUPLICATE_ENTRY =
+            T.let(:duplicate_entry, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R67. A rare return reason. The return this message refers to was a duplicate.
-          DUPLICATE_RETURN = :duplicate_return
+          DUPLICATE_RETURN =
+            T.let(:duplicate_return, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R47. A rare return reason. Only used for US Government agency non-monetary automatic enrollment messages.
-          ENR_DUPLICATE_ENROLLMENT = :enr_duplicate_enrollment
+          ENR_DUPLICATE_ENROLLMENT =
+            T.let(:enr_duplicate_enrollment, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R43. A rare return reason. Only used for US Government agency non-monetary automatic enrollment messages.
-          ENR_INVALID_DFI_ACCOUNT_NUMBER = :enr_invalid_dfi_account_number
+          ENR_INVALID_DFI_ACCOUNT_NUMBER =
+            T.let(
+              :enr_invalid_dfi_account_number,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R44. A rare return reason. Only used for US Government agency non-monetary automatic enrollment messages.
-          ENR_INVALID_INDIVIDUAL_ID_NUMBER = :enr_invalid_individual_id_number
+          ENR_INVALID_INDIVIDUAL_ID_NUMBER =
+            T.let(
+              :enr_invalid_individual_id_number,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R46. A rare return reason. Only used for US Government agency non-monetary automatic enrollment messages.
-          ENR_INVALID_REPRESENTATIVE_PAYEE_INDICATOR = :enr_invalid_representative_payee_indicator
+          ENR_INVALID_REPRESENTATIVE_PAYEE_INDICATOR =
+            T.let(
+              :enr_invalid_representative_payee_indicator,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R41. A rare return reason. Only used for US Government agency non-monetary automatic enrollment messages.
-          ENR_INVALID_TRANSACTION_CODE = :enr_invalid_transaction_code
+          ENR_INVALID_TRANSACTION_CODE =
+            T.let(
+              :enr_invalid_transaction_code,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R40. A rare return reason. Only used for US Government agency non-monetary automatic enrollment messages.
-          ENR_RETURN_OF_ENR_ENTRY = :enr_return_of_enr_entry
+          ENR_RETURN_OF_ENR_ENTRY =
+            T.let(:enr_return_of_enr_entry, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R42. A rare return reason. Only used for US Government agency non-monetary automatic enrollment messages.
-          ENR_ROUTING_NUMBER_CHECK_DIGIT_ERROR = :enr_routing_number_check_digit_error
+          ENR_ROUTING_NUMBER_CHECK_DIGIT_ERROR =
+            T.let(
+              :enr_routing_number_check_digit_error,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R84. A rare return reason. The International ACH Transfer cannot be processed by the gateway.
-          ENTRY_NOT_PROCESSED_BY_GATEWAY = :entry_not_processed_by_gateway
+          ENTRY_NOT_PROCESSED_BY_GATEWAY =
+            T.let(
+              :entry_not_processed_by_gateway,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R69. A rare return reason. One or more of the fields in the ACH were malformed.
-          FIELD_ERROR = :field_error
+          FIELD_ERROR = T.let(:field_error, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R83. A rare return reason. The Foreign receiving bank was unable to settle this ACH transfer.
-          FOREIGN_RECEIVING_DFI_UNABLE_TO_SETTLE = :foreign_receiving_dfi_unable_to_settle
+          FOREIGN_RECEIVING_DFI_UNABLE_TO_SETTLE =
+            T.let(
+              :foreign_receiving_dfi_unable_to_settle,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R80. A rare return reason. The International ACH Transfer is malformed.
-          IAT_ENTRY_CODING_ERROR = :iat_entry_coding_error
+          IAT_ENTRY_CODING_ERROR =
+            T.let(:iat_entry_coding_error, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R18. A rare return reason. The ACH has an improper effective entry date field.
-          IMPROPER_EFFECTIVE_ENTRY_DATE = :improper_effective_entry_date
+          IMPROPER_EFFECTIVE_ENTRY_DATE =
+            T.let(
+              :improper_effective_entry_date,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R39. A rare return reason. The source document related to this ACH, usually an ACH check conversion, was presented to the bank.
-          IMPROPER_SOURCE_DOCUMENT_SOURCE_DOCUMENT_PRESENTED = :improper_source_document_source_document_presented
+          IMPROPER_SOURCE_DOCUMENT_SOURCE_DOCUMENT_PRESENTED =
+            T.let(
+              :improper_source_document_source_document_presented,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R21. A rare return reason. The Company ID field of the ACH was invalid.
-          INVALID_COMPANY_ID = :invalid_company_id
+          INVALID_COMPANY_ID =
+            T.let(:invalid_company_id, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R82. A rare return reason. The foreign receiving bank identifier for an International ACH Transfer was invalid.
-          INVALID_FOREIGN_RECEIVING_DFI_IDENTIFICATION = :invalid_foreign_receiving_dfi_identification
+          INVALID_FOREIGN_RECEIVING_DFI_IDENTIFICATION =
+            T.let(
+              :invalid_foreign_receiving_dfi_identification,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R22. A rare return reason. The Individual ID number field of the ACH was invalid.
-          INVALID_INDIVIDUAL_ID_NUMBER = :invalid_individual_id_number
+          INVALID_INDIVIDUAL_ID_NUMBER =
+            T.let(
+              :invalid_individual_id_number,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R53. A rare return reason. Both the Represented Check ("RCK") entry and the original check were presented to the bank.
-          ITEM_AND_RCK_ENTRY_PRESENTED_FOR_PAYMENT = :item_and_rck_entry_presented_for_payment
+          ITEM_AND_RCK_ENTRY_PRESENTED_FOR_PAYMENT =
+            T.let(
+              :item_and_rck_entry_presented_for_payment,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R51. A rare return reason. The Represented Check ("RCK") entry is ineligible.
-          ITEM_RELATED_TO_RCK_ENTRY_IS_INELIGIBLE = :item_related_to_rck_entry_is_ineligible
+          ITEM_RELATED_TO_RCK_ENTRY_IS_INELIGIBLE =
+            T.let(
+              :item_related_to_rck_entry_is_ineligible,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R26. A rare return reason. The ACH is missing a required field.
-          MANDATORY_FIELD_ERROR = :mandatory_field_error
+          MANDATORY_FIELD_ERROR =
+            T.let(:mandatory_field_error, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R71. A rare return reason. The receiving bank does not recognize the routing number in a dishonored return entry.
-          MISROUTED_DISHONORED_RETURN = :misrouted_dishonored_return
+          MISROUTED_DISHONORED_RETURN =
+            T.let(:misrouted_dishonored_return, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R61. A rare return reason. The receiving bank does not recognize the routing number in a return entry.
-          MISROUTED_RETURN = :misrouted_return
+          MISROUTED_RETURN =
+            T.let(:misrouted_return, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R76. A rare return reason. Sent in response to a return, the bank does not find the errors alleged by the returning bank.
-          NO_ERRORS_FOUND = :no_errors_found
+          NO_ERRORS_FOUND =
+            T.let(:no_errors_found, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R77. A rare return reason. The receiving bank does not accept the return of the erroneous debit. The funds are not available at the receiving bank.
-          NON_ACCEPTANCE_OF_R62_DISHONORED_RETURN = :non_acceptance_of_r62_dishonored_return
+          NON_ACCEPTANCE_OF_R62_DISHONORED_RETURN =
+            T.let(
+              :non_acceptance_of_r62_dishonored_return,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R81. A rare return reason. The receiving bank does not accept International ACH Transfers.
-          NON_PARTICIPANT_IN_IAT_PROGRAM = :non_participant_in_iat_program
+          NON_PARTICIPANT_IN_IAT_PROGRAM =
+            T.let(
+              :non_participant_in_iat_program,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R31. A rare return reason. A return that has been agreed to be accepted by the receiving bank, despite falling outside of the usual return timeframe.
-          PERMISSIBLE_RETURN_ENTRY = :permissible_return_entry
+          PERMISSIBLE_RETURN_ENTRY =
+            T.let(:permissible_return_entry, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R70. A rare return reason. The receiving bank had not approved this return.
-          PERMISSIBLE_RETURN_ENTRY_NOT_ACCEPTED = :permissible_return_entry_not_accepted
+          PERMISSIBLE_RETURN_ENTRY_NOT_ACCEPTED =
+            T.let(
+              :permissible_return_entry_not_accepted,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R32. A rare return reason. The receiving bank could not settle this transaction.
-          RDFI_NON_SETTLEMENT = :rdfi_non_settlement
+          RDFI_NON_SETTLEMENT =
+            T.let(:rdfi_non_settlement, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R30. A rare return reason. The receiving bank does not accept Check Truncation ACH transfers.
-          RDFI_PARTICIPANT_IN_CHECK_TRUNCATION_PROGRAM = :rdfi_participant_in_check_truncation_program
+          RDFI_PARTICIPANT_IN_CHECK_TRUNCATION_PROGRAM =
+            T.let(
+              :rdfi_participant_in_check_truncation_program,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R14. A rare return reason. The payee is deceased.
           REPRESENTATIVE_PAYEE_DECEASED_OR_UNABLE_TO_CONTINUE_IN_THAT_CAPACITY =
-            :representative_payee_deceased_or_unable_to_continue_in_that_capacity
+            T.let(
+              :representative_payee_deceased_or_unable_to_continue_in_that_capacity,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R75. A rare return reason. The originating bank disputes that an earlier `duplicate_entry` return was actually a duplicate.
-          RETURN_NOT_A_DUPLICATE = :return_not_a_duplicate
+          RETURN_NOT_A_DUPLICATE =
+            T.let(:return_not_a_duplicate, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R62. A rare return reason. The originating financial institution made a mistake and this return corrects it.
-          RETURN_OF_ERRONEOUS_OR_REVERSING_DEBIT = :return_of_erroneous_or_reversing_debit
+          RETURN_OF_ERRONEOUS_OR_REVERSING_DEBIT =
+            T.let(
+              :return_of_erroneous_or_reversing_debit,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R36. A rare return reason. Return of a malformed credit entry.
-          RETURN_OF_IMPROPER_CREDIT_ENTRY = :return_of_improper_credit_entry
+          RETURN_OF_IMPROPER_CREDIT_ENTRY =
+            T.let(
+              :return_of_improper_credit_entry,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R35. A rare return reason. Return of a malformed debit entry.
-          RETURN_OF_IMPROPER_DEBIT_ENTRY = :return_of_improper_debit_entry
+          RETURN_OF_IMPROPER_DEBIT_ENTRY =
+            T.let(
+              :return_of_improper_debit_entry,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R33. A rare return reason. Return of a Destroyed Check ("XKC") entry.
-          RETURN_OF_XCK_ENTRY = :return_of_xck_entry
+          RETURN_OF_XCK_ENTRY =
+            T.let(:return_of_xck_entry, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R37. A rare return reason. The source document related to this ACH, usually an ACH check conversion, was presented to the bank.
-          SOURCE_DOCUMENT_PRESENTED_FOR_PAYMENT = :source_document_presented_for_payment
+          SOURCE_DOCUMENT_PRESENTED_FOR_PAYMENT =
+            T.let(
+              :source_document_presented_for_payment,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R50. A rare return reason. State law prevents the bank from accepting the Represented Check ("RCK") entry.
-          STATE_LAW_AFFECTING_RCK_ACCEPTANCE = :state_law_affecting_rck_acceptance
+          STATE_LAW_AFFECTING_RCK_ACCEPTANCE =
+            T.let(
+              :state_law_affecting_rck_acceptance,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R52. A rare return reason. A stop payment was issued on a Represented Check ("RCK") entry.
-          STOP_PAYMENT_ON_ITEM_RELATED_TO_RCK_ENTRY = :stop_payment_on_item_related_to_rck_entry
+          STOP_PAYMENT_ON_ITEM_RELATED_TO_RCK_ENTRY =
+            T.let(
+              :stop_payment_on_item_related_to_rck_entry,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R38. A rare return reason. The source attached to the ACH, usually an ACH check conversion, includes a stop payment.
-          STOP_PAYMENT_ON_SOURCE_DOCUMENT = :stop_payment_on_source_document
+          STOP_PAYMENT_ON_SOURCE_DOCUMENT =
+            T.let(
+              :stop_payment_on_source_document,
+              Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol
+            )
 
           # Code R73. A rare return reason. The bank receiving an `untimely_return` believes it was on time.
-          TIMELY_ORIGINAL_RETURN = :timely_original_return
+          TIMELY_ORIGINAL_RETURN =
+            T.let(:timely_original_return, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R27. A rare return reason. An ACH return's trace number does not match an originated ACH.
-          TRACE_NUMBER_ERROR = :trace_number_error
+          TRACE_NUMBER_ERROR =
+            T.let(:trace_number_error, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R72. A rare return reason. The dishonored return was sent too late.
-          UNTIMELY_DISHONORED_RETURN = :untimely_dishonored_return
+          UNTIMELY_DISHONORED_RETURN =
+            T.let(:untimely_dishonored_return, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           # Code R68. A rare return reason. The return was sent too late.
-          UNTIMELY_RETURN = :untimely_return
+          UNTIMELY_RETURN =
+            T.let(:untimely_return, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
         end
       end
 
@@ -1690,56 +2042,67 @@ module Increase
       end
 
       # The Standard Entry Class (SEC) code to use for the transfer.
-      class StandardEntryClassCode < Increase::Enum
-        abstract!
+      module StandardEntryClassCode
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::StandardEntryClassCode) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::StandardEntryClassCode::TaggedSymbol) }
 
         # Corporate Credit and Debit (CCD).
-        CORPORATE_CREDIT_OR_DEBIT = :corporate_credit_or_debit
+        CORPORATE_CREDIT_OR_DEBIT =
+          T.let(:corporate_credit_or_debit, Increase::Models::ACHTransfer::StandardEntryClassCode::TaggedSymbol)
 
         # Corporate Trade Exchange (CTX).
-        CORPORATE_TRADE_EXCHANGE = :corporate_trade_exchange
+        CORPORATE_TRADE_EXCHANGE =
+          T.let(:corporate_trade_exchange, Increase::Models::ACHTransfer::StandardEntryClassCode::TaggedSymbol)
 
         # Prearranged Payments and Deposits (PPD).
-        PREARRANGED_PAYMENTS_AND_DEPOSIT = :prearranged_payments_and_deposit
+        PREARRANGED_PAYMENTS_AND_DEPOSIT =
+          T.let(
+            :prearranged_payments_and_deposit,
+            Increase::Models::ACHTransfer::StandardEntryClassCode::TaggedSymbol
+          )
 
         # Internet Initiated (WEB).
-        INTERNET_INITIATED = :internet_initiated
+        INTERNET_INITIATED =
+          T.let(:internet_initiated, Increase::Models::ACHTransfer::StandardEntryClassCode::TaggedSymbol)
       end
 
       # The lifecycle status of the transfer.
-      class Status < Increase::Enum
-        abstract!
+      module Status
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::Status::TaggedSymbol) }
 
         # The transfer is pending approval.
-        PENDING_APPROVAL = :pending_approval
+        PENDING_APPROVAL = T.let(:pending_approval, Increase::Models::ACHTransfer::Status::TaggedSymbol)
 
         # The transfer belongs to a Transfer Session that is pending confirmation.
-        PENDING_TRANSFER_SESSION_CONFIRMATION = :pending_transfer_session_confirmation
+        PENDING_TRANSFER_SESSION_CONFIRMATION =
+          T.let(:pending_transfer_session_confirmation, Increase::Models::ACHTransfer::Status::TaggedSymbol)
 
         # The transfer has been canceled.
-        CANCELED = :canceled
+        CANCELED = T.let(:canceled, Increase::Models::ACHTransfer::Status::TaggedSymbol)
 
         # The transfer is pending submission to the Federal Reserve.
-        PENDING_SUBMISSION = :pending_submission
+        PENDING_SUBMISSION = T.let(:pending_submission, Increase::Models::ACHTransfer::Status::TaggedSymbol)
 
         # The transfer is pending review by Increase.
-        PENDING_REVIEWING = :pending_reviewing
+        PENDING_REVIEWING = T.let(:pending_reviewing, Increase::Models::ACHTransfer::Status::TaggedSymbol)
 
         # The transfer requires attention from an Increase operator.
-        REQUIRES_ATTENTION = :requires_attention
+        REQUIRES_ATTENTION = T.let(:requires_attention, Increase::Models::ACHTransfer::Status::TaggedSymbol)
 
         # The transfer has been rejected.
-        REJECTED = :rejected
+        REJECTED = T.let(:rejected, Increase::Models::ACHTransfer::Status::TaggedSymbol)
 
         # The transfer is complete.
-        SUBMITTED = :submitted
+        SUBMITTED = T.let(:submitted, Increase::Models::ACHTransfer::Status::TaggedSymbol)
 
         # The transfer has been returned.
-        RETURNED = :returned
+        RETURNED = T.let(:returned, Increase::Models::ACHTransfer::Status::TaggedSymbol)
       end
 
       class Submission < Increase::BaseModel
@@ -1770,11 +2133,14 @@ module Increase
         # The settlement schedule the transfer is expected to follow. This expectation
         #   takes into account the `effective_date`, `submitted_at`, and the amount of the
         #   transfer.
-        sig { returns(Symbol) }
+        sig { returns(Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule::TaggedSymbol) }
         def expected_settlement_schedule
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule::TaggedSymbol)
+            .returns(Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule::TaggedSymbol)
+        end
         def expected_settlement_schedule=(_)
         end
 
@@ -1809,7 +2175,7 @@ module Increase
           params(
             effective_date: Date,
             expected_funds_settlement_at: Time,
-            expected_settlement_schedule: Symbol,
+            expected_settlement_schedule: Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule::TaggedSymbol,
             submitted_at: Time,
             trace_number: String
           )
@@ -1830,7 +2196,7 @@ module Increase
               {
                 effective_date: Date,
                 expected_funds_settlement_at: Time,
-                expected_settlement_schedule: Symbol,
+                expected_settlement_schedule: Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule::TaggedSymbol,
                 submitted_at: Time,
                 trace_number: String
               }
@@ -1842,27 +2208,33 @@ module Increase
         # The settlement schedule the transfer is expected to follow. This expectation
         #   takes into account the `effective_date`, `submitted_at`, and the amount of the
         #   transfer.
-        class ExpectedSettlementSchedule < Increase::Enum
-          abstract!
+        module ExpectedSettlementSchedule
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule::TaggedSymbol) }
 
           # The transfer is expected to settle same-day.
-          SAME_DAY = :same_day
+          SAME_DAY =
+            T.let(:same_day, Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule::TaggedSymbol)
 
           # The transfer is expected to settle on a future date.
-          FUTURE_DATED = :future_dated
+          FUTURE_DATED =
+            T.let(:future_dated, Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule::TaggedSymbol)
         end
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `ach_transfer`.
-      class Type < Increase::Enum
-        abstract!
+      module Type
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::Type::TaggedSymbol) }
 
-        ACH_TRANSFER = :ach_transfer
+        ACH_TRANSFER = T.let(:ach_transfer, Increase::Models::ACHTransfer::Type::TaggedSymbol)
       end
     end
   end

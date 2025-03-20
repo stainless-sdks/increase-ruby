@@ -35,11 +35,11 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `bookkeeping_balance_lookup`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         BOOKKEEPING_BALANCE_LOOKUP = :bookkeeping_balance_lookup
 
         finalize!

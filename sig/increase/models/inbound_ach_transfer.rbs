@@ -150,7 +150,9 @@ module Increase
 
         type category = :freeform
 
-        class Category < Increase::Enum
+        module Category
+          extend Increase::Enum
+
           # Unstructured addendum.
           FREEFORM: :freeform
 
@@ -224,7 +226,9 @@ module Increase
           | :duplicate_entry
           | :corporate_customer_advised_not_authorized
 
-        class Reason < Increase::Enum
+        module Reason
+          extend Increase::Enum
+
           # The account number is canceled.
           ACH_ROUTE_CANCELED: :ach_route_canceled
 
@@ -282,7 +286,9 @@ module Increase
 
       type direction = :credit | :debit
 
-      class Direction < Increase::Enum
+      module Direction
+        extend Increase::Enum
+
         # Credit
         CREDIT: :credit
 
@@ -294,7 +300,9 @@ module Increase
 
       type expected_settlement_schedule = :same_day | :future_dated
 
-      class ExpectedSettlementSchedule < Increase::Enum
+      module ExpectedSettlementSchedule
+        extend Increase::Enum
+
         # The transfer is expected to settle same-day.
         SAME_DAY: :same_day
 
@@ -449,7 +457,9 @@ module Increase
         type foreign_exchange_indicator =
           :fixed_to_variable | :variable_to_fixed | :fixed_to_fixed
 
-        class ForeignExchangeIndicator < Increase::Enum
+        module ForeignExchangeIndicator
+          extend Increase::Enum
+
           # The originator chose an amount in their own currency. The settled amount in USD was converted using the exchange rate.
           FIXED_TO_VARIABLE: :fixed_to_variable
 
@@ -465,7 +475,9 @@ module Increase
         type foreign_exchange_reference_indicator =
           :foreign_exchange_rate | :foreign_exchange_reference_number | :blank
 
-        class ForeignExchangeReferenceIndicator < Increase::Enum
+        module ForeignExchangeReferenceIndicator
+          extend Increase::Enum
+
           # The ACH file contains a foreign exchange rate.
           FOREIGN_EXCHANGE_RATE: :foreign_exchange_rate
 
@@ -500,7 +512,9 @@ module Increase
           | :telphone_initiated
           | :internet_initiated
 
-        class InternationalTransactionTypeCode < Increase::Enum
+        module InternationalTransactionTypeCode
+          extend Increase::Enum
+
           # Sent as `ANN` in the Nacha file.
           ANNUITY: :annuity
 
@@ -567,7 +581,9 @@ module Increase
         type originating_depository_financial_institution_id_qualifier =
           :national_clearing_system_number | :bic_code | :iban
 
-        class OriginatingDepositoryFinancialInstitutionIDQualifier < Increase::Enum
+        module OriginatingDepositoryFinancialInstitutionIDQualifier
+          extend Increase::Enum
+
           # A domestic clearing system number. In the US, for example, this is the American Banking Association (ABA) routing number.
           NATIONAL_CLEARING_SYSTEM_NUMBER: :national_clearing_system_number
 
@@ -583,7 +599,9 @@ module Increase
         type receiving_depository_financial_institution_id_qualifier =
           :national_clearing_system_number | :bic_code | :iban
 
-        class ReceivingDepositoryFinancialInstitutionIDQualifier < Increase::Enum
+        module ReceivingDepositoryFinancialInstitutionIDQualifier
+          extend Increase::Enum
+
           # A domestic clearing system number. In the US, for example, this is the American Banking Association (ABA) routing number.
           NATIONAL_CLEARING_SYSTEM_NUMBER: :national_clearing_system_number
 
@@ -631,7 +649,9 @@ module Increase
         | :destroyed_check
         | :international_ach_transaction
 
-      class StandardEntryClassCode < Increase::Enum
+      module StandardEntryClassCode
+        extend Increase::Enum
+
         # Corporate Credit and Debit (CCD).
         CORPORATE_CREDIT_OR_DEBIT: :corporate_credit_or_debit
 
@@ -685,7 +705,9 @@ module Increase
 
       type status = :pending | :declined | :accepted | :returned
 
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The Inbound ACH Transfer is awaiting action, will transition automatically if no action is taken.
         PENDING: :pending
 
@@ -735,7 +757,9 @@ module Increase
           | :duplicate_entry
           | :corporate_customer_advised_not_authorized
 
-        class Reason < Increase::Enum
+        module Reason
+          extend Increase::Enum
+
           # The customer's account has insufficient funds. This reason is only allowed for debits. The Nacha return code is R01.
           INSUFFICIENT_FUNDS: :insufficient_funds
 
@@ -772,7 +796,9 @@ module Increase
 
       type type_ = :inbound_ach_transfer
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         INBOUND_ACH_TRANSFER: :inbound_ach_transfer
 
         def self.values: -> ::Array[Increase::Models::InboundACHTransfer::type_]

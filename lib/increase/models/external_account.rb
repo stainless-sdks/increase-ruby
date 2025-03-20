@@ -108,10 +108,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # The type of entity that owns the External Account.
-      class AccountHolder < Increase::Enum
+      module AccountHolder
+        extend Increase::Enum
+
         # The External Account is owned by a business.
         BUSINESS = :business
 
@@ -124,10 +124,10 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # The type of the account to which the transfer will be sent.
-      class Funding < Increase::Enum
+      module Funding
+        extend Increase::Enum
+
         # A checking account.
         CHECKING = :checking
 
@@ -140,10 +140,10 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # The External Account's status.
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The External Account is active.
         ACTIVE = :active
 
@@ -153,20 +153,20 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `external_account`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         EXTERNAL_ACCOUNT = :external_account
 
         finalize!
       end
 
-      # @abstract
-      #
       # If you have verified ownership of the External Account.
-      class VerificationStatus < Increase::Enum
+      module VerificationStatus
+        extend Increase::Enum
+
         # The External Account has not been verified.
         UNVERIFIED = :unverified
 

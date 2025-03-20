@@ -124,7 +124,9 @@ module Increase
         | :"wire_transfer.created"
         | :"wire_transfer.updated"
 
-      class Category < Increase::Enum
+      module Category
+        extend Increase::Enum
+
         # Occurs whenever an Account is created.
         ACCOUNT_CREATED: :"account.created"
 
@@ -394,7 +396,9 @@ module Increase
 
       type type_ = :event
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         EVENT: :event
 
         def self.values: -> ::Array[Increase::Models::Event::type_]

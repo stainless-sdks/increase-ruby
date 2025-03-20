@@ -135,7 +135,9 @@ module Increase
           | :missing_original_authorization
           | :suspected_fraud
 
-        class DeclineReason < Increase::Enum
+        module DeclineReason
+          extend Increase::Enum
+
           # The account has been closed.
           ACCOUNT_CLOSED: :account_closed
 
@@ -192,7 +194,9 @@ module Increase
 
         type direction = :settlement | :refund
 
-        class Direction < Increase::Enum
+        module Direction
+          extend Increase::Enum
+
           # A regular card authorization where funds are debited from the cardholder.
           SETTLEMENT: :settlement
 
@@ -243,7 +247,9 @@ module Increase
               | :payment_fraud_disruption_acquirer_block
               | :other
 
-            class StandInProcessingReason < Increase::Enum
+            module StandInProcessingReason
+              extend Increase::Enum
+
               # Increase failed to process the authorization in a timely manner.
               ISSUER_ERROR: :issuer_error
 

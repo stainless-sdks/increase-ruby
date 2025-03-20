@@ -46,7 +46,9 @@ module Increase
 
       type type_ = :proof_of_authorization_request
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         PROOF_OF_AUTHORIZATION_REQUEST: :proof_of_authorization_request
 
         def self.values: -> ::Array[Increase::Models::ProofOfAuthorizationRequest::type_]

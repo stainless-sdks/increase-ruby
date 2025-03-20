@@ -164,56 +164,68 @@ module Increase
         # Filter Check Transfers to those that have the specified status. For GET
         #   requests, this should be encoded as a comma-delimited string, such as
         #   `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Symbol])) }
+        sig { returns(T.nilable(T::Array[Increase::Models::CheckTransferListParams::Status::In::OrSymbol])) }
         def in_
         end
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        sig do
+          params(_: T::Array[Increase::Models::CheckTransferListParams::Status::In::OrSymbol])
+            .returns(T::Array[Increase::Models::CheckTransferListParams::Status::In::OrSymbol])
+        end
         def in_=(_)
         end
 
-        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
+        sig do
+          params(in_: T::Array[Increase::Models::CheckTransferListParams::Status::In::OrSymbol])
+            .returns(T.attached_class)
+        end
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Symbol]}) }
+        sig { override.returns({in_: T::Array[Increase::Models::CheckTransferListParams::Status::In::OrSymbol]}) }
         def to_hash
         end
 
-        class In < Increase::Enum
-          abstract!
+        module In
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckTransferListParams::Status::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol) }
 
           # The transfer is awaiting approval.
-          PENDING_APPROVAL = :pending_approval
+          PENDING_APPROVAL =
+            T.let(:pending_approval, Increase::Models::CheckTransferListParams::Status::In::OrSymbol)
 
           # The transfer has been canceled.
-          CANCELED = :canceled
+          CANCELED = T.let(:canceled, Increase::Models::CheckTransferListParams::Status::In::OrSymbol)
 
           # The transfer is pending submission.
-          PENDING_SUBMISSION = :pending_submission
+          PENDING_SUBMISSION =
+            T.let(:pending_submission, Increase::Models::CheckTransferListParams::Status::In::OrSymbol)
 
           # The transfer requires attention from an Increase operator.
-          REQUIRES_ATTENTION = :requires_attention
+          REQUIRES_ATTENTION =
+            T.let(:requires_attention, Increase::Models::CheckTransferListParams::Status::In::OrSymbol)
 
           # The transfer has been rejected.
-          REJECTED = :rejected
+          REJECTED = T.let(:rejected, Increase::Models::CheckTransferListParams::Status::In::OrSymbol)
 
           # The check is queued for mailing.
-          PENDING_MAILING = :pending_mailing
+          PENDING_MAILING =
+            T.let(:pending_mailing, Increase::Models::CheckTransferListParams::Status::In::OrSymbol)
 
           # The check has been mailed.
-          MAILED = :mailed
+          MAILED = T.let(:mailed, Increase::Models::CheckTransferListParams::Status::In::OrSymbol)
 
           # The check has been deposited.
-          DEPOSITED = :deposited
+          DEPOSITED = T.let(:deposited, Increase::Models::CheckTransferListParams::Status::In::OrSymbol)
 
           # A stop-payment was requested for this check.
-          STOPPED = :stopped
+          STOPPED = T.let(:stopped, Increase::Models::CheckTransferListParams::Status::In::OrSymbol)
 
           # The transfer has been returned.
-          RETURNED = :returned
+          RETURNED = T.let(:returned, Increase::Models::CheckTransferListParams::Status::In::OrSymbol)
         end
       end
     end

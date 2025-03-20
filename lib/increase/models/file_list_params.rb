@@ -148,8 +148,9 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        class In < Increase::Enum
+        module In
+          extend Increase::Enum
+
           # An image of the front of a check, used for check deposits.
           CHECK_IMAGE_FRONT = :check_image_front
 

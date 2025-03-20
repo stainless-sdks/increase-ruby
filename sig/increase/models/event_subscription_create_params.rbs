@@ -129,7 +129,9 @@ module Increase
         | :"wire_transfer.created"
         | :"wire_transfer.updated"
 
-      class SelectedEventCategory < Increase::Enum
+      module SelectedEventCategory
+        extend Increase::Enum
+
         # Occurs whenever an Account is created.
         ACCOUNT_CREATED: :"account.created"
 

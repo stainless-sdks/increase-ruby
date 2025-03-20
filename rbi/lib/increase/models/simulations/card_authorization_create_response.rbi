@@ -34,11 +34,14 @@ module Increase
 
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_card_authorization_simulation_result`.
-        sig { returns(Symbol) }
+        sig { returns(Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::TaggedSymbol) }
         def type
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::TaggedSymbol)
+            .returns(Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::TaggedSymbol)
+        end
         def type=(_)
         end
 
@@ -47,7 +50,7 @@ module Increase
           params(
             declined_transaction: T.nilable(Increase::Models::DeclinedTransaction),
             pending_transaction: T.nilable(Increase::Models::PendingTransaction),
-            type: Symbol
+            type: Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::TaggedSymbol
           )
             .returns(T.attached_class)
         end
@@ -60,7 +63,7 @@ module Increase
               {
                 declined_transaction: T.nilable(Increase::Models::DeclinedTransaction),
                 pending_transaction: T.nilable(Increase::Models::PendingTransaction),
-                type: Symbol
+                type: Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::TaggedSymbol
               }
             )
         end
@@ -69,12 +72,19 @@ module Increase
 
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_card_authorization_simulation_result`.
-        class Type < Increase::Enum
-          abstract!
+        module Type
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::Simulations::CardAuthorizationCreateResponse::Type) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::TaggedSymbol) }
 
-          INBOUND_CARD_AUTHORIZATION_SIMULATION_RESULT = :inbound_card_authorization_simulation_result
+          INBOUND_CARD_AUTHORIZATION_SIMULATION_RESULT =
+            T.let(
+              :inbound_card_authorization_simulation_result,
+              Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::TaggedSymbol
+            )
         end
       end
     end

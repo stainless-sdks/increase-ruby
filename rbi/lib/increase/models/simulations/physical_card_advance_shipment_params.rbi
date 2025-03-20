@@ -8,17 +8,20 @@ module Increase
         include Increase::RequestParameters
 
         # The shipment status to move the Physical Card to.
-        sig { returns(Symbol) }
+        sig { returns(Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol) }
         def shipment_status
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol)
+            .returns(Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol)
+        end
         def shipment_status=(_)
         end
 
         sig do
           params(
-            shipment_status: Symbol,
+            shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
           )
             .returns(T.attached_class)
@@ -26,36 +29,80 @@ module Increase
         def self.new(shipment_status:, request_options: {})
         end
 
-        sig { override.returns({shipment_status: Symbol, request_options: Increase::RequestOptions}) }
+        sig do
+          override
+            .returns(
+              {
+                shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol,
+                request_options: Increase::RequestOptions
+              }
+            )
+        end
         def to_hash
         end
 
         # The shipment status to move the Physical Card to.
-        class ShipmentStatus < Increase::Enum
-          abstract!
+        module ShipmentStatus
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus) }
+          OrSymbol =
+            T.type_alias do
+              T.any(
+                Symbol,
+                Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::TaggedSymbol
+              )
+            end
 
           # The physical card has not yet been shipped.
-          PENDING = :pending
+          PENDING =
+            T.let(
+              :pending,
+              Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol
+            )
 
           # The physical card shipment was canceled prior to submission.
-          CANCELED = :canceled
+          CANCELED =
+            T.let(
+              :canceled,
+              Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol
+            )
 
           # The physical card shipment has been submitted to the card fulfillment provider.
-          SUBMITTED = :submitted
+          SUBMITTED =
+            T.let(
+              :submitted,
+              Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol
+            )
 
           # The physical card shipment has been acknowledged by the card fulfillment provider and will be processed in their next batch.
-          ACKNOWLEDGED = :acknowledged
+          ACKNOWLEDGED =
+            T.let(
+              :acknowledged,
+              Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol
+            )
 
           # The physical card shipment was rejected by the card printer due to an error.
-          REJECTED = :rejected
+          REJECTED =
+            T.let(
+              :rejected,
+              Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol
+            )
 
           # The physical card has been shipped.
-          SHIPPED = :shipped
+          SHIPPED =
+            T.let(
+              :shipped,
+              Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol
+            )
 
           # The physical card shipment was returned to the sender and destroyed by the production facility.
-          RETURNED = :returned
+          RETURNED =
+            T.let(
+              :returned,
+              Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol
+            )
         end
       end
     end

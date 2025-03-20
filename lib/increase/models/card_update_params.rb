@@ -178,10 +178,10 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @abstract
-      #
       # The status to update the Card with.
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The card is active.
         ACTIVE = :active
 

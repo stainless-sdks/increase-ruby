@@ -21,10 +21,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # The reason to return the Inbound Check Deposit.
-      class Reason < Increase::Enum
+      module Reason
+        extend Increase::Enum
+
         # The check was altered or fictitious.
         ALTERED_OR_FICTITIOUS = :altered_or_fictitious
 

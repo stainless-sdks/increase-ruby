@@ -70,10 +70,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # If the mail item has been rejected, why it was rejected.
-      class RejectionReason < Increase::Enum
+      module RejectionReason
+        extend Increase::Enum
+
         # The mail item does not match any lockbox.
         NO_MATCHING_LOCKBOX = :no_matching_lockbox
 
@@ -86,10 +86,10 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # If the mail item has been processed.
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The mail item is pending processing.
         PENDING = :pending
 
@@ -102,11 +102,11 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_mail_item`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         INBOUND_MAIL_ITEM = :inbound_mail_item
 
         finalize!

@@ -80,11 +80,14 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `account_statement`.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::AccountStatement::Type::TaggedSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::AccountStatement::Type::TaggedSymbol)
+          .returns(Increase::Models::AccountStatement::Type::TaggedSymbol)
+      end
       def type=(_)
       end
 
@@ -101,7 +104,7 @@ module Increase
           starting_balance: Integer,
           statement_period_end: Time,
           statement_period_start: Time,
-          type: Symbol
+          type: Increase::Models::AccountStatement::Type::TaggedSymbol
         )
           .returns(T.attached_class)
       end
@@ -130,7 +133,7 @@ module Increase
               starting_balance: Integer,
               statement_period_end: Time,
               statement_period_start: Time,
-              type: Symbol
+              type: Increase::Models::AccountStatement::Type::TaggedSymbol
             }
           )
       end
@@ -139,12 +142,13 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `account_statement`.
-      class Type < Increase::Enum
-        abstract!
+      module Type
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountStatement::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::AccountStatement::Type::TaggedSymbol) }
 
-        ACCOUNT_STATEMENT = :account_statement
+        ACCOUNT_STATEMENT = T.let(:account_statement, Increase::Models::AccountStatement::Type::TaggedSymbol)
       end
     end
   end

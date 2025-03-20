@@ -33,10 +33,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # The status to move the dispute to.
-        class Status < Increase::Enum
+        module Status
+          extend Increase::Enum
+
           # Increase has requested more information related to the Card Dispute from you.
           PENDING_USER_INFORMATION = :pending_user_information
 

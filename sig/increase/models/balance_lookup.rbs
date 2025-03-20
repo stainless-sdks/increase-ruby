@@ -28,7 +28,9 @@ module Increase
 
       type type_ = :balance_lookup
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         BALANCE_LOOKUP: :balance_lookup
 
         def self.values: -> ::Array[Increase::Models::BalanceLookup::type_]

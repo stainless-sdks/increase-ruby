@@ -24,7 +24,9 @@ module Increase
         | :endorsement_missing
         | :endorsement_irregular
 
-      class Reason < Increase::Enum
+      module Reason
+        extend Increase::Enum
+
         # The check was altered or fictitious.
         ALTERED_OR_FICTITIOUS: :altered_or_fictitious
 

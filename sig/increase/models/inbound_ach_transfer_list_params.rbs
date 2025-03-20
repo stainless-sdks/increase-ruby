@@ -105,7 +105,9 @@ module Increase
 
         type in_ = :pending | :declined | :accepted | :returned
 
-        class In < Increase::Enum
+        module In
+          extend Increase::Enum
+
           # The Inbound ACH Transfer is awaiting action, will transition automatically if no action is taken.
           PENDING: :pending
 

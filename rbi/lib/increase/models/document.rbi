@@ -13,11 +13,14 @@ module Increase
       end
 
       # The type of document.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::Document::Category::TaggedSymbol) }
       def category
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::Document::Category::TaggedSymbol)
+          .returns(Increase::Models::Document::Category::TaggedSymbol)
+      end
       def category=(_)
       end
 
@@ -51,11 +54,14 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `document`.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::Document::Type::TaggedSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::Document::Type::TaggedSymbol)
+          .returns(Increase::Models::Document::Type::TaggedSymbol)
+      end
       def type=(_)
       end
 
@@ -64,11 +70,11 @@ module Increase
       sig do
         params(
           id: String,
-          category: Symbol,
+          category: Increase::Models::Document::Category::TaggedSymbol,
           created_at: Time,
           entity_id: T.nilable(String),
           file_id: String,
-          type: Symbol
+          type: Increase::Models::Document::Type::TaggedSymbol
         )
           .returns(T.attached_class)
       end
@@ -80,11 +86,11 @@ module Increase
           .returns(
             {
               id: String,
-              category: Symbol,
+              category: Increase::Models::Document::Category::TaggedSymbol,
               created_at: Time,
               entity_id: T.nilable(String),
               file_id: String,
-              type: Symbol
+              type: Increase::Models::Document::Type::TaggedSymbol
             }
           )
       end
@@ -92,32 +98,35 @@ module Increase
       end
 
       # The type of document.
-      class Category < Increase::Enum
-        abstract!
+      module Category
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Document::Category) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Document::Category::TaggedSymbol) }
 
         # Internal Revenue Service Form 1099-INT.
-        FORM_1099_INT = :form_1099_int
+        FORM_1099_INT = T.let(:form_1099_int, Increase::Models::Document::Category::TaggedSymbol)
 
         # Internal Revenue Service Form 1099-MISC.
-        FORM_1099_MISC = :form_1099_misc
+        FORM_1099_MISC = T.let(:form_1099_misc, Increase::Models::Document::Category::TaggedSymbol)
 
         # A document submitted in response to a proof of authorization request for an ACH transfer.
-        PROOF_OF_AUTHORIZATION = :proof_of_authorization
+        PROOF_OF_AUTHORIZATION =
+          T.let(:proof_of_authorization, Increase::Models::Document::Category::TaggedSymbol)
 
         # Company information, such a policies or procedures, typically submitted during our due diligence process.
-        COMPANY_INFORMATION = :company_information
+        COMPANY_INFORMATION = T.let(:company_information, Increase::Models::Document::Category::TaggedSymbol)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `document`.
-      class Type < Increase::Enum
-        abstract!
+      module Type
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Document::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Document::Type::TaggedSymbol) }
 
-        DOCUMENT = :document
+        DOCUMENT = T.let(:document, Increase::Models::Document::Type::TaggedSymbol)
       end
     end
   end

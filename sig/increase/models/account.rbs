@@ -72,7 +72,9 @@ module Increase
 
       type bank = :core_bank | :first_internet_bank | :grasshopper_bank
 
-      class Bank < Increase::Enum
+      module Bank
+        extend Increase::Enum
+
         # Core Bank
         CORE_BANK: :core_bank
 
@@ -87,7 +89,9 @@ module Increase
 
       type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-      class Currency < Increase::Enum
+      module Currency
+        extend Increase::Enum
+
         # Canadian Dollar (CAD)
         CAD: :CAD
 
@@ -111,7 +115,9 @@ module Increase
 
       type status = :closed | :open
 
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # Closed Accounts on which no new activity can occur.
         CLOSED: :closed
 
@@ -123,7 +129,9 @@ module Increase
 
       type type_ = :account
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         ACCOUNT: :account
 
         def self.values: -> ::Array[Increase::Models::Account::type_]

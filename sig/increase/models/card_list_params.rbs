@@ -103,7 +103,9 @@ module Increase
 
         type in_ = :active | :disabled | :canceled
 
-        class In < Increase::Enum
+        module In
+          extend Increase::Enum
+
           # The card is active.
           ACTIVE: :active
 

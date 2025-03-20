@@ -52,7 +52,9 @@ module Increase
 
       type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-      class Currency < Increase::Enum
+      module Currency
+        extend Increase::Enum
+
         # Canadian Dollar (CAD)
         CAD: :CAD
 
@@ -76,7 +78,9 @@ module Increase
 
       type route_type = :account_number | :card | :lockbox
 
-      class RouteType < Increase::Enum
+      module RouteType
+        extend Increase::Enum
+
         # An Account Number.
         ACCOUNT_NUMBER: :account_number
 
@@ -208,7 +212,9 @@ module Increase
             | :duplicate_entry
             | :corporate_customer_advised_not_authorized
 
-          class Reason < Increase::Enum
+          module Reason
+            extend Increase::Enum
+
             # The account number is canceled.
             ACH_ROUTE_CANCELED: :ach_route_canceled
 
@@ -265,7 +271,9 @@ module Increase
 
           type type_ = :ach_decline
 
-          class Type < Increase::Enum
+          module Type
+            extend Increase::Enum
+
             ACH_DECLINE: :ach_decline
 
             def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::ACHDecline::type_]
@@ -392,7 +400,9 @@ module Increase
 
           type actioner = :user | :increase | :network
 
-          class Actioner < Increase::Enum
+          module Actioner
+            extend Increase::Enum
+
             # This object was actioned by the user through a real-time decision.
             USER: :user
 
@@ -407,7 +417,9 @@ module Increase
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -431,7 +443,9 @@ module Increase
 
           type direction = :settlement | :refund
 
-          class Direction < Increase::Enum
+          module Direction
+            extend Increase::Enum
+
             # A regular card authorization where funds are debited from the cardholder.
             SETTLEMENT: :settlement
 
@@ -461,7 +475,9 @@ module Increase
 
             type category = :visa
 
-            class Category < Increase::Enum
+            module Category
+              extend Increase::Enum
+
               # Visa
               VISA: :visa
 
@@ -500,7 +516,9 @@ module Increase
                 | :non_authenticated_security_transaction
                 | :non_secure_transaction
 
-              class ElectronicCommerceIndicator < Increase::Enum
+              module ElectronicCommerceIndicator
+                extend Increase::Enum
+
                 # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
                 MAIL_PHONE_ORDER: :mail_phone_order
 
@@ -540,7 +558,9 @@ module Increase
                 | :contactless_magnetic_stripe
                 | :integrated_circuit_card_no_cvv
 
-              class PointOfServiceEntryMode < Increase::Enum
+              module PointOfServiceEntryMode
+                extend Increase::Enum
+
                 # Unknown
                 UNKNOWN: :unknown
 
@@ -583,7 +603,9 @@ module Increase
                 | :payment_fraud_disruption_acquirer_block
                 | :other
 
-              class StandInProcessingReason < Increase::Enum
+              module StandInProcessingReason
+                extend Increase::Enum
+
                 # Increase failed to process the authorization in a timely manner.
                 ISSUER_ERROR: :issuer_error
 
@@ -641,7 +663,9 @@ module Increase
             | :quasi_cash
             | :refund
 
-          class ProcessingCategory < Increase::Enum
+          module ProcessingCategory
+            extend Increase::Enum
+
             # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
             ACCOUNT_FUNDING: :account_funding
 
@@ -671,7 +695,9 @@ module Increase
             | :suspected_fraud
             | :other
 
-          class RealTimeDecisionReason < Increase::Enum
+          module RealTimeDecisionReason
+            extend Increase::Enum
+
             # The cardholder does not have sufficient funds to cover the transaction. The merchant may attempt to process the transaction again.
             INSUFFICIENT_FUNDS: :insufficient_funds
 
@@ -712,7 +738,9 @@ module Increase
             | :missing_original_authorization
             | :suspected_fraud
 
-          class Reason < Increase::Enum
+          module Reason
+            extend Increase::Enum
+
             # The account has been closed.
             ACCOUNT_CLOSED: :account_closed
 
@@ -801,7 +829,9 @@ module Increase
 
               type result = :not_checked | :match | :no_match
 
-              class Result < Increase::Enum
+              module Result
+                extend Increase::Enum
+
                 # No card verification code was provided in the authorization request.
                 NOT_CHECKED: :not_checked
 
@@ -853,7 +883,9 @@ module Increase
                 | :match
                 | :no_match
 
-              class Result < Increase::Enum
+              module Result
+                extend Increase::Enum
+
                 # No adress was provided in the authorization request.
                 NOT_CHECKED: :not_checked
 
@@ -887,7 +919,9 @@ module Increase
           | :check_deposit_rejection
           | :other
 
-        class Category < Increase::Enum
+        module Category
+          extend Increase::Enum
+
           # ACH Decline: details will be under the `ach_decline` object.
           ACH_DECLINE: :ach_decline
 
@@ -969,7 +1003,9 @@ module Increase
             | :unable_to_process
             | :user_initiated
 
-          class Reason < Increase::Enum
+          module Reason
+            extend Increase::Enum
+
             # The account number is disabled.
             ACH_ROUTE_DISABLED: :ach_route_disabled
 
@@ -1061,7 +1097,9 @@ module Increase
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -1096,7 +1134,9 @@ module Increase
             | :requested_by_user
             | :unknown
 
-          class Reason < Increase::Enum
+          module Reason
+            extend Increase::Enum
+
             # The check's image is incomplete.
             INCOMPLETE_IMAGE: :incomplete_image
 
@@ -1186,7 +1226,9 @@ module Increase
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -1216,7 +1258,9 @@ module Increase
             | :entity_not_active
             | :real_time_payments_not_enabled
 
-          class Reason < Increase::Enum
+          module Reason
+            extend Increase::Enum
+
             # The account number is canceled.
             ACCOUNT_NUMBER_CANCELED: :account_number_canceled
 
@@ -1265,7 +1309,9 @@ module Increase
             | :no_account_number
             | :transaction_not_allowed
 
-          class Reason < Increase::Enum
+          module Reason
+            extend Increase::Enum
+
             # The account number is canceled.
             ACCOUNT_NUMBER_CANCELED: :account_number_canceled
 
@@ -1291,7 +1337,9 @@ module Increase
 
       type type_ = :declined_transaction
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         DECLINED_TRANSACTION: :declined_transaction
 
         def self.values: -> ::Array[Increase::Models::DeclinedTransaction::type_]

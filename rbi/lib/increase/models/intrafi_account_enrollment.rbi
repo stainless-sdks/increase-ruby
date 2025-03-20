@@ -54,21 +54,27 @@ module Increase
 
       # The status of the account in the network. An account takes about one business
       #   day to go from `pending_enrolling` to `enrolled`.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol)
+          .returns(Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol)
+      end
       def status=(_)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `intrafi_account_enrollment`.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::IntrafiAccountEnrollment::Type::TaggedSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::IntrafiAccountEnrollment::Type::TaggedSymbol)
+          .returns(Increase::Models::IntrafiAccountEnrollment::Type::TaggedSymbol)
+      end
       def type=(_)
       end
 
@@ -86,8 +92,8 @@ module Increase
           created_at: Time,
           idempotency_key: T.nilable(String),
           intrafi_id: String,
-          status: Symbol,
-          type: Symbol
+          status: Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol,
+          type: Increase::Models::IntrafiAccountEnrollment::Type::TaggedSymbol
         )
           .returns(T.attached_class)
       end
@@ -103,8 +109,8 @@ module Increase
               created_at: Time,
               idempotency_key: T.nilable(String),
               intrafi_id: String,
-              status: Symbol,
-              type: Symbol
+              status: Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol,
+              type: Increase::Models::IntrafiAccountEnrollment::Type::TaggedSymbol
             }
           )
       end
@@ -113,35 +119,42 @@ module Increase
 
       # The status of the account in the network. An account takes about one business
       #   day to go from `pending_enrolling` to `enrolled`.
-      class Status < Increase::Enum
-        abstract!
+      module Status
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiAccountEnrollment::Status) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol) }
 
         # The account is being added to the IntraFi network.
-        PENDING_ENROLLING = :pending_enrolling
+        PENDING_ENROLLING =
+          T.let(:pending_enrolling, Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol)
 
         # The account has been enrolled with IntraFi.
-        ENROLLED = :enrolled
+        ENROLLED = T.let(:enrolled, Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol)
 
         # The account is being unenrolled from IntraFi's deposit sweep.
-        PENDING_UNENROLLING = :pending_unenrolling
+        PENDING_UNENROLLING =
+          T.let(:pending_unenrolling, Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol)
 
         # The account was once enrolled, but is no longer enrolled at IntraFi.
-        UNENROLLED = :unenrolled
+        UNENROLLED = T.let(:unenrolled, Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol)
 
         # Something unexpected happened with this account. Contact Increase support.
-        REQUIRES_ATTENTION = :requires_attention
+        REQUIRES_ATTENTION =
+          T.let(:requires_attention, Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `intrafi_account_enrollment`.
-      class Type < Increase::Enum
-        abstract!
+      module Type
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiAccountEnrollment::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::IntrafiAccountEnrollment::Type::TaggedSymbol) }
 
-        INTRAFI_ACCOUNT_ENROLLMENT = :intrafi_account_enrollment
+        INTRAFI_ACCOUNT_ENROLLMENT =
+          T.let(:intrafi_account_enrollment, Increase::Models::IntrafiAccountEnrollment::Type::TaggedSymbol)
       end
     end
   end

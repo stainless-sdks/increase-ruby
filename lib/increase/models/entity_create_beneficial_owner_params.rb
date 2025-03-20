@@ -231,10 +231,10 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
-            # @abstract
-            #
             # A method that can be used to verify the individual's identity.
-            class Method < Increase::Enum
+            module Method
+              extend Increase::Enum
+
               # A social security number.
               SOCIAL_SECURITY_NUMBER = :social_security_number
 
@@ -386,8 +386,9 @@ module Increase
           end
         end
 
-        # @abstract
-        class Prong < Increase::Enum
+        module Prong
+          extend Increase::Enum
+
           # A person with 25% or greater direct or indirect ownership of the entity.
           OWNERSHIP = :ownership
 

@@ -23,7 +23,9 @@ module Increase
 
       type reason = :mail_delivery_failed | :not_authorized | :unknown
 
-      class Reason < Increase::Enum
+      module Reason
+        extend Increase::Enum
+
         # The check could not be delivered.
         MAIL_DELIVERY_FAILED: :mail_delivery_failed
 

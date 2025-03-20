@@ -153,10 +153,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # Whether or not the authentication attempt was approved.
-        class Decision < Increase::Enum
+        module Decision
+          extend Increase::Enum
+
           # Approve the authentication attempt without triggering a challenge.
           APPROVE = :approve
 
@@ -217,10 +217,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # Whether or not the challenge was delivered to the cardholder.
-        class Result < Increase::Enum
+        module Result
+          extend Increase::Enum
+
           # Your application successfully delivered the one-time code to the cardholder.
           SUCCESS = :success
 
@@ -463,10 +463,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # Whether or not the authorization was approved.
-        class Decision < Increase::Enum
+        module Decision
+          extend Increase::Enum
+
           # Approve the authorization.
           APPROVE = :approve
 
@@ -476,11 +476,11 @@ module Increase
           finalize!
         end
 
-        # @abstract
-        #
         # The direction describes the direction the funds will move, either from the
         #   cardholder to the merchant or from the merchant to the cardholder.
-        class Direction < Increase::Enum
+        module Direction
+          extend Increase::Enum
+
           # A regular card authorization where funds are debited from the cardholder.
           SETTLEMENT = :settlement
 
@@ -516,10 +516,10 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @abstract
-          #
           # The payment network used to process this card authorization.
-          class Category < Increase::Enum
+          module Category
+            extend Increase::Enum
+
             # Visa
             VISA = :visa
 
@@ -566,12 +566,12 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
-            # @abstract
-            #
             # For electronic commerce transactions, this identifies the level of security used
             #   in obtaining the customer's payment credential. For mail or telephone order
             #   transactions, identifies the type of mail or telephone order.
-            class ElectronicCommerceIndicator < Increase::Enum
+            module ElectronicCommerceIndicator
+              extend Increase::Enum
+
               # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
               MAIL_PHONE_ORDER = :mail_phone_order
 
@@ -600,11 +600,11 @@ module Increase
               finalize!
             end
 
-            # @abstract
-            #
             # The method used to enter the cardholder's primary account number and card
             #   expiration date.
-            class PointOfServiceEntryMode < Increase::Enum
+            module PointOfServiceEntryMode
+              extend Increase::Enum
+
               # Unknown
               UNKNOWN = :unknown
 
@@ -638,11 +638,11 @@ module Increase
               finalize!
             end
 
-            # @abstract
-            #
             # Only present when `actioner: network`. Describes why a card authorization was
             #   approved or declined by Visa through stand-in processing.
-            class StandInProcessingReason < Increase::Enum
+            module StandInProcessingReason
+              extend Increase::Enum
+
               # Increase failed to process the authorization in a timely manner.
               ISSUER_ERROR = :issuer_error
 
@@ -706,11 +706,11 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        # @abstract
-        #
         # The processing category describes the intent behind the authorization, such as
         #   whether it was used for bill payments or an automatic fuel dispenser.
-        class ProcessingCategory < Increase::Enum
+        module ProcessingCategory
+          extend Increase::Enum
+
           # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
           ACCOUNT_FUNDING = :account_funding
 
@@ -766,11 +766,11 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @abstract
-          #
           # The type of this request (e.g., an initial authorization or an incremental
           #   authorization).
-          class Category < Increase::Enum
+          module Category
+            extend Increase::Enum
+
             # A regular, standalone authorization.
             INITIAL_AUTHORIZATION = :initial_authorization
 
@@ -851,10 +851,10 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
-            # @abstract
-            #
             # The result of verifying the Card Verification Code.
-            class Result < Increase::Enum
+            module Result
+              extend Increase::Enum
+
               # No card verification code was provided in the authorization request.
               NOT_CHECKED = :not_checked
 
@@ -915,10 +915,10 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
-            # @abstract
-            #
             # The address verification result returned to the card network.
-            class Result < Increase::Enum
+            module Result
+              extend Increase::Enum
+
               # No adress was provided in the authorization request.
               NOT_CHECKED = :not_checked
 
@@ -943,10 +943,10 @@ module Increase
         end
       end
 
-      # @abstract
-      #
       # The category of the Real-Time Decision.
-      class Category < Increase::Enum
+      module Category
+        extend Increase::Enum
+
         # A card is being authorized.
         CARD_AUTHORIZATION_REQUESTED = :card_authorization_requested
 
@@ -1027,10 +1027,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # The channel to send the card user their one-time passcode.
-        class Channel < Increase::Enum
+        module Channel
+          extend Increase::Enum
+
           # Send one-time passcodes over SMS.
           SMS = :sms
 
@@ -1040,10 +1040,10 @@ module Increase
           finalize!
         end
 
-        # @abstract
-        #
         # The digital wallet app being used.
-        class DigitalWallet < Increase::Enum
+        module DigitalWallet
+          extend Increase::Enum
+
           # Apple Pay
           APPLE_PAY = :apple_pay
 
@@ -1059,10 +1059,10 @@ module Increase
           finalize!
         end
 
-        # @abstract
-        #
         # Whether your application successfully delivered the one-time passcode.
-        class Result < Increase::Enum
+        module Result
+          extend Increase::Enum
+
           # Your application successfully delivered the one-time passcode to the cardholder.
           SUCCESS = :success
 
@@ -1116,11 +1116,11 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # Whether or not the provisioning request was approved. This will be null until
         #   the real time decision is responded to.
-        class Decision < Increase::Enum
+        module Decision
+          extend Increase::Enum
+
           # Approve the provisioning request.
           APPROVE = :approve
 
@@ -1130,10 +1130,10 @@ module Increase
           finalize!
         end
 
-        # @abstract
-        #
         # The digital wallet app being used.
-        class DigitalWallet < Increase::Enum
+        module DigitalWallet
+          extend Increase::Enum
+
           # Apple Pay
           APPLE_PAY = :apple_pay
 
@@ -1150,10 +1150,10 @@ module Increase
         end
       end
 
-      # @abstract
-      #
       # The status of the Real-Time Decision.
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The decision is pending action via real-time webhook.
         PENDING = :pending
 
@@ -1166,11 +1166,11 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `real_time_decision`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         REAL_TIME_DECISION = :real_time_decision
 
         finalize!

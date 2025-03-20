@@ -23,10 +23,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # The shipment status to move the Physical Card to.
-        class ShipmentStatus < Increase::Enum
+        module ShipmentStatus
+          extend Increase::Enum
+
           # The physical card has not yet been shipped.
           PENDING = :pending
 

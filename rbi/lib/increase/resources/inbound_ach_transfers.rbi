@@ -73,7 +73,7 @@ module Increase
       sig do
         params(
           inbound_ach_transfer_id: String,
-          reason: Symbol,
+          reason: Increase::Models::InboundACHTransferDeclineParams::Reason::OrSymbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::InboundACHTransfer)
@@ -93,7 +93,7 @@ module Increase
       sig do
         params(
           inbound_ach_transfer_id: String,
-          reason: Symbol,
+          reason: Increase::Models::InboundACHTransferTransferReturnParams::Reason::OrSymbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::InboundACHTransfer)

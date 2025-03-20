@@ -45,7 +45,9 @@ module Increase
           | :depository_financial_institution_account_number_not_from_original_entry_detail_record
           | :incorrect_transaction_code_by_originating_depository_financial_institution
 
-        class ChangeCode < Increase::Enum
+        module ChangeCode
+          extend Increase::Enum
+
           # The account number was incorrect.
           INCORRECT_ACCOUNT_NUMBER: :incorrect_account_number
 

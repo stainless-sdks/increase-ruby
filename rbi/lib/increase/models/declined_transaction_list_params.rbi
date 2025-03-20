@@ -108,47 +108,65 @@ module Increase
       class Category < Increase::BaseModel
         # Return results whose value is in the provided list. For GET requests, this
         #   should be encoded as a comma-delimited string, such as `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Symbol])) }
+        sig { returns(T.nilable(T::Array[Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol])) }
         def in_
         end
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        sig do
+          params(_: T::Array[Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol])
+            .returns(T::Array[Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol])
+        end
         def in_=(_)
         end
 
-        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
+        sig do
+          params(in_: T::Array[Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol])
+            .returns(T.attached_class)
+        end
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Symbol]}) }
+        sig { override.returns({in_: T::Array[Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol]}) }
         def to_hash
         end
 
-        class In < Increase::Enum
-          abstract!
+        module In
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::DeclinedTransactionListParams::Category::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol) }
 
           # ACH Decline: details will be under the `ach_decline` object.
-          ACH_DECLINE = :ach_decline
+          ACH_DECLINE =
+            T.let(:ach_decline, Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol)
 
           # Card Decline: details will be under the `card_decline` object.
-          CARD_DECLINE = :card_decline
+          CARD_DECLINE =
+            T.let(:card_decline, Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol)
 
           # Check Decline: details will be under the `check_decline` object.
-          CHECK_DECLINE = :check_decline
+          CHECK_DECLINE =
+            T.let(:check_decline, Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol)
 
           # Inbound Real-Time Payments Transfer Decline: details will be under the `inbound_real_time_payments_transfer_decline` object.
-          INBOUND_REAL_TIME_PAYMENTS_TRANSFER_DECLINE = :inbound_real_time_payments_transfer_decline
+          INBOUND_REAL_TIME_PAYMENTS_TRANSFER_DECLINE =
+            T.let(
+              :inbound_real_time_payments_transfer_decline,
+              Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol
+            )
 
           # Wire Decline: details will be under the `wire_decline` object.
-          WIRE_DECLINE = :wire_decline
+          WIRE_DECLINE =
+            T.let(:wire_decline, Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol)
 
           # Check Deposit Rejection: details will be under the `check_deposit_rejection` object.
-          CHECK_DEPOSIT_REJECTION = :check_deposit_rejection
+          CHECK_DEPOSIT_REJECTION =
+            T.let(:check_deposit_rejection, Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol)
 
           # The Declined Transaction was made for an undocumented or deprecated reason.
-          OTHER = :other
+          OTHER = T.let(:other, Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol)
         end
       end
 

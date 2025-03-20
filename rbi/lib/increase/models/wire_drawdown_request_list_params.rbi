@@ -80,38 +80,49 @@ module Increase
         # Filter Wire Drawdown Requests for those with the specified status. For GET
         #   requests, this should be encoded as a comma-delimited string, such as
         #   `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Symbol])) }
+        sig { returns(T.nilable(T::Array[Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol])) }
         def in_
         end
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        sig do
+          params(_: T::Array[Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol])
+            .returns(T::Array[Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol])
+        end
         def in_=(_)
         end
 
-        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
+        sig do
+          params(in_: T::Array[Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol])
+            .returns(T.attached_class)
+        end
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Symbol]}) }
+        sig { override.returns({in_: T::Array[Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol]}) }
         def to_hash
         end
 
-        class In < Increase::Enum
-          abstract!
+        module In
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::WireDrawdownRequestListParams::Status::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol) }
 
           # The drawdown request is queued to be submitted to Fedwire.
-          PENDING_SUBMISSION = :pending_submission
+          PENDING_SUBMISSION =
+            T.let(:pending_submission, Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol)
 
           # The drawdown request has been sent and the recipient should respond in some way.
-          PENDING_RESPONSE = :pending_response
+          PENDING_RESPONSE =
+            T.let(:pending_response, Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol)
 
           # The drawdown request has been fulfilled by the recipient.
-          FULFILLED = :fulfilled
+          FULFILLED = T.let(:fulfilled, Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol)
 
           # The drawdown request has been refused by the recipient.
-          REFUSED = :refused
+          REFUSED = T.let(:refused, Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol)
         end
       end
     end

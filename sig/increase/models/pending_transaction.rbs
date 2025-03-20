@@ -60,7 +60,9 @@ module Increase
 
       type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-      class Currency < Increase::Enum
+      module Currency
+        extend Increase::Enum
+
         # Canadian Dollar (CAD)
         CAD: :CAD
 
@@ -84,7 +86,9 @@ module Increase
 
       type route_type = :account_number | :card | :lockbox
 
-      class RouteType < Increase::Enum
+      module RouteType
+        extend Increase::Enum
+
         # An Account Number.
         ACCOUNT_NUMBER: :account_number
 
@@ -175,7 +179,9 @@ module Increase
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -330,7 +336,9 @@ module Increase
 
           type actioner = :user | :increase | :network
 
-          class Actioner < Increase::Enum
+          module Actioner
+            extend Increase::Enum
+
             # This object was actioned by the user through a real-time decision.
             USER: :user
 
@@ -345,7 +353,9 @@ module Increase
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -369,7 +379,9 @@ module Increase
 
           type direction = :settlement | :refund
 
-          class Direction < Increase::Enum
+          module Direction
+            extend Increase::Enum
+
             # A regular card authorization where funds are debited from the cardholder.
             SETTLEMENT: :settlement
 
@@ -399,7 +411,9 @@ module Increase
 
             type category = :visa
 
-            class Category < Increase::Enum
+            module Category
+              extend Increase::Enum
+
               # Visa
               VISA: :visa
 
@@ -438,7 +452,9 @@ module Increase
                 | :non_authenticated_security_transaction
                 | :non_secure_transaction
 
-              class ElectronicCommerceIndicator < Increase::Enum
+              module ElectronicCommerceIndicator
+                extend Increase::Enum
+
                 # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
                 MAIL_PHONE_ORDER: :mail_phone_order
 
@@ -478,7 +494,9 @@ module Increase
                 | :contactless_magnetic_stripe
                 | :integrated_circuit_card_no_cvv
 
-              class PointOfServiceEntryMode < Increase::Enum
+              module PointOfServiceEntryMode
+                extend Increase::Enum
+
                 # Unknown
                 UNKNOWN: :unknown
 
@@ -521,7 +539,9 @@ module Increase
                 | :payment_fraud_disruption_acquirer_block
                 | :other
 
-              class StandInProcessingReason < Increase::Enum
+              module StandInProcessingReason
+                extend Increase::Enum
+
                 # Increase failed to process the authorization in a timely manner.
                 ISSUER_ERROR: :issuer_error
 
@@ -579,7 +599,9 @@ module Increase
             | :quasi_cash
             | :refund
 
-          class ProcessingCategory < Increase::Enum
+          module ProcessingCategory
+            extend Increase::Enum
+
             # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
             ACCOUNT_FUNDING: :account_funding
 
@@ -603,7 +625,9 @@ module Increase
 
           type type_ = :card_authorization
 
-          class Type < Increase::Enum
+          module Type
+            extend Increase::Enum
+
             CARD_AUTHORIZATION: :card_authorization
 
             def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::type_]
@@ -643,7 +667,9 @@ module Increase
 
               type result = :not_checked | :match | :no_match
 
-              class Result < Increase::Enum
+              module Result
+                extend Increase::Enum
+
                 # No card verification code was provided in the authorization request.
                 NOT_CHECKED: :not_checked
 
@@ -695,7 +721,9 @@ module Increase
                 | :match
                 | :no_match
 
-              class Result < Increase::Enum
+              module Result
+                extend Increase::Enum
+
                 # No adress was provided in the authorization request.
                 NOT_CHECKED: :not_checked
 
@@ -732,7 +760,9 @@ module Increase
           | :inbound_wire_transfer_reversal
           | :other
 
-        class Category < Increase::Enum
+        module Category
+          extend Increase::Enum
+
           # Account Transfer Instruction: details will be under the `account_transfer_instruction` object.
           ACCOUNT_TRANSFER_INSTRUCTION: :account_transfer_instruction
 
@@ -798,7 +828,9 @@ module Increase
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -845,7 +877,9 @@ module Increase
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -920,7 +954,9 @@ module Increase
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -944,7 +980,9 @@ module Increase
 
           type status = :held | :complete
 
-          class Status < Increase::Enum
+          module Status
+            extend Increase::Enum
+
             # Funds are still being held.
             HELD: :held
 
@@ -956,7 +994,9 @@ module Increase
 
           type type_ = :inbound_funds_hold
 
-          class Type < Increase::Enum
+          module Type
+            extend Increase::Enum
+
             INBOUND_FUNDS_HOLD: :inbound_funds_hold
 
             def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::InboundFundsHold::type_]
@@ -1021,7 +1061,9 @@ module Increase
 
       type status = :pending | :complete
 
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The Pending Transaction is still awaiting confirmation.
         PENDING: :pending
 
@@ -1033,7 +1075,9 @@ module Increase
 
       type type_ = :pending_transaction
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         PENDING_TRANSACTION: :pending_transaction
 
         def self.values: -> ::Array[Increase::Models::PendingTransaction::type_]

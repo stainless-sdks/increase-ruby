@@ -93,7 +93,9 @@ module Increase
 
         type in_ = :active | :deleted
 
-        class In < Increase::Enum
+        module In
+          extend Increase::Enum
+
           # The application is active and can be used by your users.
           ACTIVE: :active
 

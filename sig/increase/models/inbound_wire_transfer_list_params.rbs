@@ -105,7 +105,9 @@ module Increase
 
         type in_ = :pending | :accepted | :declined | :reversed
 
-        class In < Increase::Enum
+        module In
+          extend Increase::Enum
+
           # The Inbound Wire Transfer is awaiting action, will transition automatically if no action is taken.
           PENDING: :pending
 

@@ -55,7 +55,9 @@ module Increase
 
       type fulfillment_method = :physical_check | :third_party
 
-      class FulfillmentMethod < Increase::Enum
+      module FulfillmentMethod
+        extend Increase::Enum
+
         # Increase will print and mail a physical check.
         PHYSICAL_CHECK: :physical_check
 

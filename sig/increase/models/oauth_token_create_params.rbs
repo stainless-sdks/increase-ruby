@@ -45,7 +45,9 @@ module Increase
 
       type grant_type = :authorization_code | :production_token
 
-      class GrantType < Increase::Enum
+      module GrantType
+        extend Increase::Enum
+
         # An OAuth authorization code.
         AUTHORIZATION_CODE: :authorization_code
 

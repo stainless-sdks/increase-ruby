@@ -25,10 +25,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # The status to update the Event Subscription with.
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The subscription is active and Events will be delivered normally.
         ACTIVE = :active
 

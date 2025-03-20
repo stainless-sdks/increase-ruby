@@ -107,12 +107,12 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
       #   Transaction's currency. This will match the currency on the Transaction's
       #   Account.
-      class Currency < Increase::Enum
+      module Currency
+        extend Increase::Enum
+
         # Canadian Dollar (CAD)
         CAD = :CAD
 
@@ -134,10 +134,10 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # The type of the route this Transaction came through.
-      class RouteType < Increase::Enum
+      module RouteType
+        extend Increase::Enum
+
         # An Account Number.
         ACCOUNT_NUMBER = :account_number
 
@@ -591,11 +591,11 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @abstract
-          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
           #   account currency.
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -760,11 +760,11 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @abstract
-          #
           # Why the ACH Transfer was returned. This reason code is sent by the receiving
           #   bank back to Increase.
-          class ReturnReasonCode < Increase::Enum
+          module ReturnReasonCode
+            extend Increase::Enum
+
             # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
             INSUFFICIENT_FUND = :insufficient_fund
 
@@ -1264,10 +1264,10 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
-            # @abstract
-            #
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
-            class Currency < Increase::Enum
+            module Currency
+              extend Increase::Enum
+
               # Canadian Dollar (CAD)
               CAD = :CAD
 
@@ -1290,11 +1290,11 @@ module Increase
             end
           end
 
-          # @abstract
-          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's settlement currency.
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -1349,11 +1349,11 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
-            # @abstract
-            #
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   reimbursement.
-            class Currency < Increase::Enum
+            module Currency
+              extend Increase::Enum
+
               # Canadian Dollar (CAD)
               CAD = :CAD
 
@@ -1666,10 +1666,10 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
-              # @abstract
-              #
               # Additional charges (gas, late fee, etc.) being billed.
-              class ExtraCharges < Increase::Enum
+              module ExtraCharges
+                extend Increase::Enum
+
                 # No extra charge
                 NO_EXTRA_CHARGE = :no_extra_charge
 
@@ -1691,11 +1691,11 @@ module Increase
                 finalize!
               end
 
-              # @abstract
-              #
               # An indicator that the cardholder is being billed for a reserved vehicle that was
               #   not actually rented (that is, a "no-show" charge).
-              class NoShowIndicator < Increase::Enum
+              module NoShowIndicator
+                extend Increase::Enum
+
                 # Not applicable
                 NOT_APPLICABLE = :not_applicable
 
@@ -1858,10 +1858,10 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
-              # @abstract
-              #
               # Additional charges (phone, late check-out, etc.) being billed.
-              class ExtraCharges < Increase::Enum
+              module ExtraCharges
+                extend Increase::Enum
+
                 # No extra charge
                 NO_EXTRA_CHARGE = :no_extra_charge
 
@@ -1886,11 +1886,11 @@ module Increase
                 finalize!
               end
 
-              # @abstract
-              #
               # Indicator that the cardholder is being billed for a reserved room that was not
               #   actually used.
-              class NoShowIndicator < Increase::Enum
+              module NoShowIndicator
+                extend Increase::Enum
+
                 # Not applicable
                 NOT_APPLICABLE = :not_applicable
 
@@ -1901,10 +1901,10 @@ module Increase
               end
             end
 
-            # @abstract
-            #
             # The format of the purchase identifier.
-            class PurchaseIdentifierFormat < Increase::Enum
+            module PurchaseIdentifierFormat
+              extend Increase::Enum
+
               # Free text
               FREE_TEXT = :free_text
 
@@ -2100,10 +2100,10 @@ module Increase
 
                 # def initialize: (Hash | Increase::BaseModel) -> void
 
-                # @abstract
-                #
                 # Indicates the reason for a credit to the cardholder.
-                class CreditReasonIndicator < Increase::Enum
+                module CreditReasonIndicator
+                  extend Increase::Enum
+
                   # No credit
                   NO_CREDIT = :no_credit
 
@@ -2144,10 +2144,10 @@ module Increase
 
                   # def initialize: (Hash | Increase::BaseModel) -> void
 
-                  # @abstract
-                  #
                   # Category of the ancillary service.
-                  class Category < Increase::Enum
+                  module Category
+                    extend Increase::Enum
+
                     # None
                     NONE = :none
 
@@ -2225,10 +2225,10 @@ module Increase
                 end
               end
 
-              # @abstract
-              #
               # Indicates the reason for a credit to the cardholder.
-              class CreditReasonIndicator < Increase::Enum
+              module CreditReasonIndicator
+                extend Increase::Enum
+
                 # No credit
                 NO_CREDIT = :no_credit
 
@@ -2252,10 +2252,10 @@ module Increase
                 finalize!
               end
 
-              # @abstract
-              #
               # Indicates whether this ticket is non-refundable.
-              class RestrictedTicketIndicator < Increase::Enum
+              module RestrictedTicketIndicator
+                extend Increase::Enum
+
                 # No restrictions
                 NO_RESTRICTIONS = :no_restrictions
 
@@ -2265,10 +2265,10 @@ module Increase
                 finalize!
               end
 
-              # @abstract
-              #
               # Indicates why a ticket was changed.
-              class TicketChangeIndicator < Increase::Enum
+              module TicketChangeIndicator
+                extend Increase::Enum
+
                 # None
                 NONE = :none
 
@@ -2342,10 +2342,10 @@ module Increase
 
                 # def initialize: (Hash | Increase::BaseModel) -> void
 
-                # @abstract
-                #
                 # Indicates whether a stopover is allowed on this ticket.
-                class StopOverCode < Increase::Enum
+                module StopOverCode
+                  extend Increase::Enum
+
                   # None
                   NONE = :none
 
@@ -2361,11 +2361,11 @@ module Increase
             end
           end
 
-          # @abstract
-          #
           # A constant representing the object's type. For this resource it will always be
           #   `card_refund`.
-          class Type < Increase::Enum
+          module Type
+            extend Increase::Enum
+
             CARD_REFUND = :card_refund
 
             finalize!
@@ -2420,11 +2420,11 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @abstract
-          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -2671,10 +2671,10 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
-            # @abstract
-            #
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
-            class Currency < Increase::Enum
+            module Currency
+              extend Increase::Enum
+
               # Canadian Dollar (CAD)
               CAD = :CAD
 
@@ -2697,11 +2697,11 @@ module Increase
             end
           end
 
-          # @abstract
-          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's settlement currency.
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -2757,11 +2757,11 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
-            # @abstract
-            #
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   reimbursement.
-            class Currency < Increase::Enum
+            module Currency
+              extend Increase::Enum
+
               # Canadian Dollar (CAD)
               CAD = :CAD
 
@@ -3074,10 +3074,10 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
-              # @abstract
-              #
               # Additional charges (gas, late fee, etc.) being billed.
-              class ExtraCharges < Increase::Enum
+              module ExtraCharges
+                extend Increase::Enum
+
                 # No extra charge
                 NO_EXTRA_CHARGE = :no_extra_charge
 
@@ -3099,11 +3099,11 @@ module Increase
                 finalize!
               end
 
-              # @abstract
-              #
               # An indicator that the cardholder is being billed for a reserved vehicle that was
               #   not actually rented (that is, a "no-show" charge).
-              class NoShowIndicator < Increase::Enum
+              module NoShowIndicator
+                extend Increase::Enum
+
                 # Not applicable
                 NOT_APPLICABLE = :not_applicable
 
@@ -3266,10 +3266,10 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
-              # @abstract
-              #
               # Additional charges (phone, late check-out, etc.) being billed.
-              class ExtraCharges < Increase::Enum
+              module ExtraCharges
+                extend Increase::Enum
+
                 # No extra charge
                 NO_EXTRA_CHARGE = :no_extra_charge
 
@@ -3294,11 +3294,11 @@ module Increase
                 finalize!
               end
 
-              # @abstract
-              #
               # Indicator that the cardholder is being billed for a reserved room that was not
               #   actually used.
-              class NoShowIndicator < Increase::Enum
+              module NoShowIndicator
+                extend Increase::Enum
+
                 # Not applicable
                 NOT_APPLICABLE = :not_applicable
 
@@ -3309,10 +3309,10 @@ module Increase
               end
             end
 
-            # @abstract
-            #
             # The format of the purchase identifier.
-            class PurchaseIdentifierFormat < Increase::Enum
+            module PurchaseIdentifierFormat
+              extend Increase::Enum
+
               # Free text
               FREE_TEXT = :free_text
 
@@ -3508,10 +3508,10 @@ module Increase
 
                 # def initialize: (Hash | Increase::BaseModel) -> void
 
-                # @abstract
-                #
                 # Indicates the reason for a credit to the cardholder.
-                class CreditReasonIndicator < Increase::Enum
+                module CreditReasonIndicator
+                  extend Increase::Enum
+
                   # No credit
                   NO_CREDIT = :no_credit
 
@@ -3552,10 +3552,10 @@ module Increase
 
                   # def initialize: (Hash | Increase::BaseModel) -> void
 
-                  # @abstract
-                  #
                   # Category of the ancillary service.
-                  class Category < Increase::Enum
+                  module Category
+                    extend Increase::Enum
+
                     # None
                     NONE = :none
 
@@ -3633,10 +3633,10 @@ module Increase
                 end
               end
 
-              # @abstract
-              #
               # Indicates the reason for a credit to the cardholder.
-              class CreditReasonIndicator < Increase::Enum
+              module CreditReasonIndicator
+                extend Increase::Enum
+
                 # No credit
                 NO_CREDIT = :no_credit
 
@@ -3660,10 +3660,10 @@ module Increase
                 finalize!
               end
 
-              # @abstract
-              #
               # Indicates whether this ticket is non-refundable.
-              class RestrictedTicketIndicator < Increase::Enum
+              module RestrictedTicketIndicator
+                extend Increase::Enum
+
                 # No restrictions
                 NO_RESTRICTIONS = :no_restrictions
 
@@ -3673,10 +3673,10 @@ module Increase
                 finalize!
               end
 
-              # @abstract
-              #
               # Indicates why a ticket was changed.
-              class TicketChangeIndicator < Increase::Enum
+              module TicketChangeIndicator
+                extend Increase::Enum
+
                 # None
                 NONE = :none
 
@@ -3750,10 +3750,10 @@ module Increase
 
                 # def initialize: (Hash | Increase::BaseModel) -> void
 
-                # @abstract
-                #
                 # Indicates whether a stopover is allowed on this ticket.
-                class StopOverCode < Increase::Enum
+                module StopOverCode
+                  extend Increase::Enum
+
                   # None
                   NONE = :none
 
@@ -3769,11 +3769,11 @@ module Increase
             end
           end
 
-          # @abstract
-          #
           # A constant representing the object's type. For this resource it will always be
           #   `card_settlement`.
-          class Type < Increase::Enum
+          module Type
+            extend Increase::Enum
+
             CARD_SETTLEMENT = :card_settlement
 
             finalize!
@@ -3829,11 +3829,11 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @abstract
-          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -3856,11 +3856,11 @@ module Increase
           end
         end
 
-        # @abstract
-        #
         # The type of the resource. We may add additional possible values for this enum
         #   over time; your application should be able to handle such additions gracefully.
-        class Category < Increase::Enum
+        module Category
+          extend Increase::Enum
+
           # Account Transfer Intention: details will be under the `account_transfer_intention` object.
           ACCOUNT_TRANSFER_INTENTION = :account_transfer_intention
 
@@ -4028,11 +4028,11 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @abstract
-          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -4116,11 +4116,11 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @abstract
-          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -4142,11 +4142,11 @@ module Increase
             finalize!
           end
 
-          # @abstract
-          #
           # Why this check was returned by the bank holding the account it was drawn
           #   against.
-          class ReturnReason < Increase::Enum
+          module ReturnReason
+            extend Increase::Enum
+
             # The check doesn't allow ACH conversion.
             ACH_CONVERSION_NOT_SUPPORTED = :ach_conversion_not_supported
 
@@ -4315,11 +4315,11 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @abstract
-          #
           # A constant representing the object's type. For this resource it will always be
           #   `check_transfer_deposit`.
-          class Type < Increase::Enum
+          module Type
+            extend Increase::Enum
+
             CHECK_TRANSFER_DEPOSIT = :check_transfer_deposit
 
             finalize!
@@ -4367,11 +4367,11 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @abstract
-          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -4530,10 +4530,10 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
-            # @abstract
-            #
             # The type of addendum.
-            class Category < Increase::Enum
+            module Category
+              extend Increase::Enum
+
               # Unstructured addendum.
               FREEFORM = :freeform
 
@@ -4629,10 +4629,10 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @abstract
-          #
           # The reason for the adjustment.
-          class Reason < Increase::Enum
+          module Reason
+            extend Increase::Enum
+
             # The return was initiated too late and the receiving institution has responded with a Late Return Claim.
             LATE_RETURN = :late_return
 
@@ -4769,11 +4769,11 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @abstract
-          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
           #   currency. This will always be "USD" for a Real-Time Payments transfer.
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -4896,12 +4896,12 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @abstract
-          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
           #   transfer's currency. This will always be "USD" for a Real-Time Payments
           #   transfer.
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -4923,10 +4923,10 @@ module Increase
             finalize!
           end
 
-          # @abstract
-          #
           # Why the transfer was declined.
-          class Reason < Increase::Enum
+          module Reason
+            extend Increase::Enum
+
             # The account number is canceled.
             ACCOUNT_NUMBER_CANCELED = :account_number_canceled
 
@@ -5350,11 +5350,11 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @abstract
-          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -5412,11 +5412,11 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @abstract
-          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -5438,11 +5438,11 @@ module Increase
             finalize!
           end
 
-          # @abstract
-          #
           # An Internal Source is a transaction between you and Increase. This describes the
           #   reason for the transaction.
-          class Reason < Increase::Enum
+          module Reason
+            extend Increase::Enum
+
             # Account closure
             ACCOUNT_CLOSURE = :account_closure
 
@@ -5617,11 +5617,11 @@ module Increase
         end
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `transaction`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         TRANSACTION = :transaction
 
         finalize!

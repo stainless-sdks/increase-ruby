@@ -123,7 +123,9 @@ module Increase
           | :deposit_account_control_agreement
           | :proof_of_authorization_request_submission
 
-        class In < Increase::Enum
+        module In
+          extend Increase::Enum
+
           # An image of the front of a check, used for check deposits.
           CHECK_IMAGE_FRONT: :check_image_front
 

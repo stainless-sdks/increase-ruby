@@ -40,7 +40,9 @@ module Increase
 
       type type_ = :file_link
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         FILE_LINK: :file_link
 
         def self.values: -> ::Array[Increase::Models::FileLink::type_]

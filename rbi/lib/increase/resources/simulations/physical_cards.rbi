@@ -10,7 +10,7 @@ module Increase
         sig do
           params(
             physical_card_id: String,
-            shipment_status: Symbol,
+            shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol,
             request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
           )
             .returns(Increase::Models::PhysicalCard)

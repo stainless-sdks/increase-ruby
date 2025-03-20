@@ -244,11 +244,11 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
         #   transaction's currency.
-        class Currency < Increase::Enum
+        module Currency
+          extend Increase::Enum
+
           # Canadian Dollar (CAD)
           CAD = :CAD
 
@@ -326,11 +326,11 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
         #   currency.
-        class Currency < Increase::Enum
+        module Currency
+          extend Increase::Enum
+
           # Canadian Dollar (CAD)
           CAD = :CAD
 
@@ -352,10 +352,10 @@ module Increase
           finalize!
         end
 
-        # @abstract
-        #
         # Why the check deposit was rejected.
-        class Reason < Increase::Enum
+        module Reason
+          extend Increase::Enum
+
           # The check's image is incomplete.
           INCOMPLETE_IMAGE = :incomplete_image
 
@@ -449,11 +449,11 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
         #   transaction's currency.
-        class Currency < Increase::Enum
+        module Currency
+          extend Increase::Enum
+
           # Canadian Dollar (CAD)
           CAD = :CAD
 
@@ -475,11 +475,11 @@ module Increase
           finalize!
         end
 
-        # @abstract
-        #
         # Why this check was returned by the bank holding the account it was drawn
         #   against.
-        class ReturnReason < Increase::Enum
+        module ReturnReason
+          extend Increase::Enum
+
           # The check doesn't allow ACH conversion.
           ACH_CONVERSION_NOT_SUPPORTED = :ach_conversion_not_supported
 
@@ -697,11 +697,11 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
         #   currency.
-        class Currency < Increase::Enum
+        module Currency
+          extend Increase::Enum
+
           # Canadian Dollar (CAD)
           CAD = :CAD
 
@@ -723,10 +723,10 @@ module Increase
           finalize!
         end
 
-        # @abstract
-        #
         # The status of the hold.
-        class Status < Increase::Enum
+        module Status
+          extend Increase::Enum
+
           # Funds are still being held.
           HELD = :held
 
@@ -736,21 +736,21 @@ module Increase
           finalize!
         end
 
-        # @abstract
-        #
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_funds_hold`.
-        class Type < Increase::Enum
+        module Type
+          extend Increase::Enum
+
           INBOUND_FUNDS_HOLD = :inbound_funds_hold
 
           finalize!
         end
       end
 
-      # @abstract
-      #
       # The status of the Check Deposit.
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The Check Deposit is pending review.
         PENDING = :pending
 
@@ -766,11 +766,11 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `check_deposit`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         CHECK_DEPOSIT = :check_deposit
 
         finalize!
