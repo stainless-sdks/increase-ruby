@@ -106,7 +106,7 @@ module Increase
           # The Declined Transaction was made for an undocumented or deprecated reason.
           OTHER: :other
 
-          def self.values: -> ::Array[Increase::Models::DeclinedTransactionListParams::Category::in_]
+          def self?.values: -> ::Array[Increase::Models::DeclinedTransactionListParams::Category::in_]
         end
       end
 

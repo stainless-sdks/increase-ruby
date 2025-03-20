@@ -210,6 +210,12 @@ module Increase
         REFUSED = :refused
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Submission < Increase::BaseModel
@@ -239,6 +245,12 @@ module Increase
         WIRE_DRAWDOWN_REQUEST = :wire_drawdown_request
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

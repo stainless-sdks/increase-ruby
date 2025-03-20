@@ -392,6 +392,12 @@ module Increase
           OTHER = :other
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class Freeform < Increase::BaseModel
@@ -591,6 +597,12 @@ module Increase
           USER = :user
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class OAuthApplication < Increase::BaseModel
@@ -652,6 +664,12 @@ module Increase
         USD = :USD
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The type of entity that owns the account to which the ACH Transfer is being
@@ -669,6 +687,12 @@ module Increase
         UNKNOWN = :unknown
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The type of the account to which the transfer will be sent.
@@ -682,6 +706,12 @@ module Increase
         SAVINGS = :savings
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class InboundFundsHold < Increase::BaseModel
@@ -807,6 +837,12 @@ module Increase
           USD = :USD
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # The status of the hold.
@@ -820,6 +856,12 @@ module Increase
           COMPLETE = :complete
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # A constant representing the object's type. For this resource it will always be
@@ -830,6 +872,12 @@ module Increase
           INBOUND_FUNDS_HOLD = :inbound_funds_hold
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -840,6 +888,12 @@ module Increase
         ACH = :ach
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class NotificationsOfChange < Increase::BaseModel
@@ -945,6 +999,12 @@ module Increase
             :incorrect_transaction_code_by_originating_depository_financial_institution
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -991,6 +1051,12 @@ module Increase
           FUTURE_DATED = :future_dated
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -1279,6 +1345,12 @@ module Increase
           UNTIMELY_RETURN = :untimely_return
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -1318,6 +1390,12 @@ module Increase
         INTERNET_INITIATED = :internet_initiated
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The lifecycle status of the transfer.
@@ -1352,6 +1430,12 @@ module Increase
         RETURNED = :returned
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Submission < Increase::BaseModel
@@ -1437,6 +1521,12 @@ module Increase
           FUTURE_DATED = :future_dated
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -1448,6 +1538,12 @@ module Increase
         ACH_TRANSFER = :ach_transfer
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

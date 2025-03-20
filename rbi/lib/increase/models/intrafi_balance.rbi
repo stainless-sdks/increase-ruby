@@ -241,6 +241,12 @@ module Increase
 
         # US Dollar (USD)
         USD = T.let(:USD, Increase::Models::IntrafiBalance::Currency::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::IntrafiBalance::Currency::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -252,6 +258,12 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::IntrafiBalance::Type::TaggedSymbol) }
 
         INTRAFI_BALANCE = T.let(:intrafi_balance, Increase::Models::IntrafiBalance::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::IntrafiBalance::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

@@ -156,6 +156,12 @@ module Increase
           OTHER = :other
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -248,6 +254,12 @@ module Increase
           COMPLETE = :complete
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

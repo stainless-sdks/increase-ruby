@@ -189,7 +189,7 @@ module Increase
           # The transaction was suspected to be fraudulent. Please reach out to support@increase.com for more information.
           SUSPECTED_FRAUD: :suspected_fraud
 
-          def self.values: -> ::Array[Increase::Models::Simulations::CardAuthorizationCreateParams::decline_reason]
+          def self?.values: -> ::Array[Increase::Models::Simulations::CardAuthorizationCreateParams::decline_reason]
         end
 
         type direction = :settlement | :refund
@@ -203,7 +203,7 @@ module Increase
           # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
           REFUND: :refund
 
-          def self.values: -> ::Array[Increase::Models::Simulations::CardAuthorizationCreateParams::direction]
+          def self?.values: -> ::Array[Increase::Models::Simulations::CardAuthorizationCreateParams::direction]
         end
 
         type network_details =
@@ -271,7 +271,7 @@ module Increase
               # An unspecific reason for stand-in processing.
               OTHER: :other
 
-              def self.values: -> ::Array[Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason]
+              def self?.values: -> ::Array[Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason]
             end
           end
         end

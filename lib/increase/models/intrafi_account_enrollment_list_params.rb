@@ -113,6 +113,12 @@ module Increase
           REQUIRES_ATTENTION = :requires_attention
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

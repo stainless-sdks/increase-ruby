@@ -124,6 +124,12 @@ module Increase
 
         # The application is deleted.
         DELETED = T.let(:deleted, Increase::Models::OAuthApplication::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::OAuthApplication::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -135,6 +141,12 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::OAuthApplication::Type::TaggedSymbol) }
 
         OAUTH_APPLICATION = T.let(:oauth_application, Increase::Models::OAuthApplication::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::OAuthApplication::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

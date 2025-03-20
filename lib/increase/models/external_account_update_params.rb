@@ -69,6 +69,12 @@ module Increase
         INDIVIDUAL = :individual
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The funding type of the External Account.
@@ -85,6 +91,12 @@ module Increase
         OTHER = :other
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The status of the External Account.
@@ -98,6 +110,12 @@ module Increase
         ARCHIVED = :archived
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

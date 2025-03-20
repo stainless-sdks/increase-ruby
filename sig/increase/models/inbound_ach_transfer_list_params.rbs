@@ -120,7 +120,7 @@ module Increase
           # The Inbound ACH Transfer has been returned.
           RETURNED: :returned
 
-          def self.values: -> ::Array[Increase::Models::InboundACHTransferListParams::Status::in_]
+          def self?.values: -> ::Array[Increase::Models::InboundACHTransferListParams::Status::in_]
         end
       end
     end

@@ -243,6 +243,12 @@ module Increase
 
         # Grasshopper Bank
         GRASSHOPPER_BANK = T.let(:grasshopper_bank, Increase::Models::Account::Bank::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::Account::Bank::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
@@ -270,6 +276,12 @@ module Increase
 
         # US Dollar (USD)
         USD = T.let(:USD, Increase::Models::Account::Currency::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::Account::Currency::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # The status of the Account.
@@ -284,6 +296,12 @@ module Increase
 
         # Open Accounts that are ready to use.
         OPEN = T.let(:open, Increase::Models::Account::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::Account::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -295,6 +313,12 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Account::Type::TaggedSymbol) }
 
         ACCOUNT = T.let(:account, Increase::Models::Account::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::Account::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

@@ -125,6 +125,12 @@ module Increase
         # A customer balance.
         CUSTOMER_BALANCE =
           T.let(:customer_balance, Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -137,6 +143,12 @@ module Increase
 
         BOOKKEEPING_ACCOUNT =
           T.let(:bookkeeping_account, Increase::Models::BookkeepingAccount::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::BookkeepingAccount::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

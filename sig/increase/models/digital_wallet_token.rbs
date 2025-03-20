@@ -55,7 +55,7 @@ module Increase
         # The digital wallet token has been permanently canceled.
         DEACTIVATED: :deactivated
 
-        def self.values: -> ::Array[Increase::Models::DigitalWalletToken::status]
+        def self?.values: -> ::Array[Increase::Models::DigitalWalletToken::status]
       end
 
       type token_requestor = :apple_pay | :google_pay | :samsung_pay | :unknown
@@ -75,7 +75,7 @@ module Increase
         # Unknown
         UNKNOWN: :unknown
 
-        def self.values: -> ::Array[Increase::Models::DigitalWalletToken::token_requestor]
+        def self?.values: -> ::Array[Increase::Models::DigitalWalletToken::token_requestor]
       end
 
       type type_ = :digital_wallet_token
@@ -85,7 +85,7 @@ module Increase
 
         DIGITAL_WALLET_TOKEN: :digital_wallet_token
 
-        def self.values: -> ::Array[Increase::Models::DigitalWalletToken::type_]
+        def self?.values: -> ::Array[Increase::Models::DigitalWalletToken::type_]
       end
 
       type update =
@@ -123,7 +123,7 @@ module Increase
           # The digital wallet token has been permanently canceled.
           DEACTIVATED: :deactivated
 
-          def self.values: -> ::Array[Increase::Models::DigitalWalletToken::Update::status]
+          def self?.values: -> ::Array[Increase::Models::DigitalWalletToken::Update::status]
         end
       end
     end

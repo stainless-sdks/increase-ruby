@@ -109,7 +109,7 @@ module Increase
           # The entity is temporarily disabled and cannot be used for financial activity.
           DISABLED: :disabled
 
-          def self.values: -> ::Array[Increase::Models::EntityListParams::Status::in_]
+          def self?.values: -> ::Array[Increase::Models::EntityListParams::Status::in_]
         end
       end
     end

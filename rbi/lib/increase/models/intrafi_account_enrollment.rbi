@@ -143,6 +143,12 @@ module Increase
         # Something unexpected happened with this account. Contact Increase support.
         REQUIRES_ATTENTION =
           T.let(:requires_attention, Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -155,6 +161,12 @@ module Increase
 
         INTRAFI_ACCOUNT_ENROLLMENT =
           T.let(:intrafi_account_enrollment, Increase::Models::IntrafiAccountEnrollment::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::IntrafiAccountEnrollment::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

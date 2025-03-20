@@ -195,6 +195,12 @@ module Increase
         USD = :USD
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Decline < Increase::BaseModel
@@ -250,6 +256,12 @@ module Increase
           REAL_TIME_PAYMENTS_NOT_ENABLED = :real_time_payments_not_enabled
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -270,6 +282,12 @@ module Increase
         DECLINED = :declined
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -280,6 +298,12 @@ module Increase
         INBOUND_REAL_TIME_PAYMENTS_TRANSFER = :inbound_real_time_payments_transfer
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

@@ -366,6 +366,12 @@ module Increase
 
         # The Card Dispute has been won and no further action can be taken.
         WON = T.let(:won, Increase::Models::CardDispute::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::CardDispute::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -377,6 +383,12 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CardDispute::Type::TaggedSymbol) }
 
         CARD_DISPUTE = T.let(:card_dispute, Increase::Models::CardDispute::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::CardDispute::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class Win < Increase::BaseModel

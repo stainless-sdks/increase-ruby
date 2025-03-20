@@ -126,22 +126,32 @@ module Increase
 
           # The account is being added to the IntraFi network.
           PENDING_ENROLLING =
-            T.let(:pending_enrolling, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol)
+            T.let(:pending_enrolling, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol)
 
           # The account has been enrolled with IntraFi.
-          ENROLLED = T.let(:enrolled, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol)
+          ENROLLED =
+            T.let(:enrolled, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol)
 
           # The account is being unenrolled from IntraFi's deposit sweep.
           PENDING_UNENROLLING =
-            T.let(:pending_unenrolling, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol)
+            T.let(
+              :pending_unenrolling,
+              Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol
+            )
 
           # The account was once enrolled, but is no longer enrolled at IntraFi.
           UNENROLLED =
-            T.let(:unenrolled, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol)
+            T.let(:unenrolled, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol)
 
           # Something unexpected happened with this account. Contact Increase support.
           REQUIRES_ATTENTION =
-            T.let(:requires_attention, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol)
+            T.let(:requires_attention, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

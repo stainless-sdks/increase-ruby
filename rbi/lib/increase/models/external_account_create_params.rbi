@@ -98,13 +98,20 @@ module Increase
           T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol) }
 
         # The External Account is owned by a business.
-        BUSINESS = T.let(:business, Increase::Models::ExternalAccountCreateParams::AccountHolder::OrSymbol)
+        BUSINESS = T.let(:business, Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol)
 
         # The External Account is owned by an individual.
-        INDIVIDUAL = T.let(:individual, Increase::Models::ExternalAccountCreateParams::AccountHolder::OrSymbol)
+        INDIVIDUAL =
+          T.let(:individual, Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol)
 
         # It's unknown what kind of entity owns the External Account.
-        UNKNOWN = T.let(:unknown, Increase::Models::ExternalAccountCreateParams::AccountHolder::OrSymbol)
+        UNKNOWN = T.let(:unknown, Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # The type of the destination account. Defaults to `checking`.
@@ -116,13 +123,19 @@ module Increase
           T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol) }
 
         # A checking account.
-        CHECKING = T.let(:checking, Increase::Models::ExternalAccountCreateParams::Funding::OrSymbol)
+        CHECKING = T.let(:checking, Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol)
 
         # A savings account.
-        SAVINGS = T.let(:savings, Increase::Models::ExternalAccountCreateParams::Funding::OrSymbol)
+        SAVINGS = T.let(:savings, Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol)
 
         # A different type of account.
-        OTHER = T.let(:other, Increase::Models::ExternalAccountCreateParams::Funding::OrSymbol)
+        OTHER = T.let(:other, Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

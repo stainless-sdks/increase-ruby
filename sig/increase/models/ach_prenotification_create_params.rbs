@@ -102,7 +102,7 @@ module Increase
         # The Prenotification is for an anticipated debit.
         DEBIT: :debit
 
-        def self.values: -> ::Array[Increase::Models::ACHPrenotificationCreateParams::credit_debit_indicator]
+        def self?.values: -> ::Array[Increase::Models::ACHPrenotificationCreateParams::credit_debit_indicator]
       end
 
       type standard_entry_class_code =
@@ -126,7 +126,7 @@ module Increase
         # Internet Initiated (WEB).
         INTERNET_INITIATED: :internet_initiated
 
-        def self.values: -> ::Array[Increase::Models::ACHPrenotificationCreateParams::standard_entry_class_code]
+        def self?.values: -> ::Array[Increase::Models::ACHPrenotificationCreateParams::standard_entry_class_code]
       end
     end
   end

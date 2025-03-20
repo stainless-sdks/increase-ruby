@@ -182,6 +182,12 @@ module Increase
 
         # US Dollar (USD)
         USD = T.let(:USD, Increase::Models::DeclinedTransaction::Currency::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::DeclinedTransaction::Currency::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # The type of the route this Declined Transaction came through.
@@ -199,6 +205,12 @@ module Increase
 
         # A Lockbox.
         LOCKBOX = T.let(:lockbox, Increase::Models::DeclinedTransaction::RouteType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::DeclinedTransaction::RouteType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class Source < Increase::BaseModel
@@ -672,6 +684,14 @@ module Increase
                 :corporate_customer_advised_not_authorized,
                 Increase::Models::DeclinedTransaction::Source::ACHDecline::Reason::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override.returns(T::Array[Increase::Models::DeclinedTransaction::Source::ACHDecline::Reason::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
 
           # A constant representing the object's type. For this resource it will always be
@@ -686,6 +706,12 @@ module Increase
 
             ACH_DECLINE =
               T.let(:ach_decline, Increase::Models::DeclinedTransaction::Source::ACHDecline::Type::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Increase::Models::DeclinedTransaction::Source::ACHDecline::Type::TaggedSymbol]) }
+              def values
+              end
+            end
           end
         end
 
@@ -1133,6 +1159,15 @@ module Increase
             # This object was actioned by the network, through stand-in processing.
             NETWORK =
               T.let(:network, Increase::Models::DeclinedTransaction::Source::CardDecline::Actioner::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Actioner::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
@@ -1162,6 +1197,15 @@ module Increase
 
             # US Dollar (USD)
             USD = T.let(:USD, Increase::Models::DeclinedTransaction::Source::CardDecline::Currency::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Currency::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
 
           # The direction describes the direction the funds will move, either from the
@@ -1181,6 +1225,15 @@ module Increase
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND =
               T.let(:refund, Increase::Models::DeclinedTransaction::Source::CardDecline::Direction::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Direction::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
 
           class NetworkDetails < Increase::BaseModel
@@ -1273,6 +1326,17 @@ module Increase
                   :visa,
                   Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category::TaggedSymbol
                 )
+
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category::TaggedSymbol]
+                    )
+                end
+                def values
+                end
+              end
             end
 
             class Visa < Increase::BaseModel
@@ -1468,6 +1532,19 @@ module Increase
                     :non_secure_transaction,
                     Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
 
               # The method used to enter the cardholder's primary account number and card
@@ -1556,6 +1633,19 @@ module Increase
                     :integrated_circuit_card_no_cvv,
                     Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
 
               # Only present when `actioner: network`. Describes why a card authorization was
@@ -1623,6 +1713,19 @@ module Increase
                     :other,
                     Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
             end
           end
@@ -1741,6 +1844,17 @@ module Increase
                 :refund,
                 Increase::Models::DeclinedTransaction::Source::CardDecline::ProcessingCategory::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::ProcessingCategory::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
 
           # This is present if a specific decline reason was given in the real-time
@@ -1799,6 +1913,17 @@ module Increase
                 :other,
                 Increase::Models::DeclinedTransaction::Source::CardDecline::RealTimeDecisionReason::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::RealTimeDecisionReason::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
 
           # Why the transaction was declined.
@@ -1904,6 +2029,15 @@ module Increase
             # The transaction was suspected to be fraudulent. Please reach out to support@increase.com for more information.
             SUSPECTED_FRAUD =
               T.let(:suspected_fraud, Increase::Models::DeclinedTransaction::Source::CardDecline::Reason::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Reason::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
 
           class Verification < Increase::BaseModel
@@ -2055,6 +2189,19 @@ module Increase
                     :no_match,
                     Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
             end
 
@@ -2203,6 +2350,19 @@ module Increase
                     :no_match,
                     Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
             end
           end
@@ -2245,6 +2405,12 @@ module Increase
 
           # The Declined Transaction was made for an undocumented or deprecated reason.
           OTHER = T.let(:other, Increase::Models::DeclinedTransaction::Source::Category::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::DeclinedTransaction::Source::Category::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         class CheckDecline < Increase::BaseModel
@@ -2466,6 +2632,15 @@ module Increase
             # Your integration declined this check via the API.
             USER_INITIATED =
               T.let(:user_initiated, Increase::Models::DeclinedTransaction::Source::CheckDecline::Reason::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::DeclinedTransaction::Source::CheckDecline::Reason::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
         end
 
@@ -2603,6 +2778,17 @@ module Increase
             # US Dollar (USD)
             USD =
               T.let(:USD, Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Currency::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Currency::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
 
           # Why the check deposit was rejected.
@@ -2690,6 +2876,17 @@ module Increase
                 :unknown,
                 Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Reason::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Reason::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
         end
 
@@ -2920,6 +3117,19 @@ module Increase
                 :USD,
                 Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol
+                    ]
+                  )
+              end
+              def values
+              end
+            end
           end
 
           # Why the transfer was declined.
@@ -2979,6 +3189,19 @@ module Increase
                 :real_time_payments_not_enabled,
                 Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol
+                    ]
+                  )
+              end
+              def values
+              end
+            end
           end
         end
 
@@ -3075,6 +3298,15 @@ module Increase
                 :transaction_not_allowed,
                 Increase::Models::DeclinedTransaction::Source::WireDecline::Reason::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::DeclinedTransaction::Source::WireDecline::Reason::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
         end
       end
@@ -3089,6 +3321,12 @@ module Increase
 
         DECLINED_TRANSACTION =
           T.let(:declined_transaction, Increase::Models::DeclinedTransaction::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::DeclinedTransaction::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

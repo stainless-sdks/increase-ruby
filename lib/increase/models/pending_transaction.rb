@@ -149,6 +149,12 @@ module Increase
         USD = :USD
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The type of the route this Pending Transaction came through.
@@ -165,6 +171,12 @@ module Increase
         LOCKBOX = :lockbox
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Source < Increase::BaseModel
@@ -364,6 +376,12 @@ module Increase
             USD = :USD
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -660,6 +678,12 @@ module Increase
             NETWORK = :network
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
@@ -686,6 +710,12 @@ module Increase
             USD = :USD
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           # The direction describes the direction the funds will move, either from the
@@ -700,6 +730,12 @@ module Increase
             REFUND = :refund
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           class NetworkDetails < Increase::BaseModel
@@ -736,6 +772,12 @@ module Increase
               VISA = :visa
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
 
             class Visa < Increase::BaseModel
@@ -810,6 +852,12 @@ module Increase
                 NON_SECURE_TRANSACTION = :non_secure_transaction
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               # The method used to enter the cardholder's primary account number and card
@@ -848,6 +896,12 @@ module Increase
                 INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               # Only present when `actioner: network`. Describes why a card authorization was
@@ -879,6 +933,12 @@ module Increase
                 OTHER = :other
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
           end
@@ -942,6 +1002,12 @@ module Increase
             REFUND = :refund
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           # A constant representing the object's type. For this resource it will always be
@@ -952,6 +1018,12 @@ module Increase
             CARD_AUTHORIZATION = :card_authorization
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           class Verification < Increase::BaseModel
@@ -1013,6 +1085,12 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
 
@@ -1086,6 +1164,12 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
           end
@@ -1127,6 +1211,12 @@ module Increase
           OTHER = :other
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CheckDepositInstruction < Increase::BaseModel
@@ -1202,6 +1292,12 @@ module Increase
             USD = :USD
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -1262,6 +1358,12 @@ module Increase
             USD = :USD
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -1390,6 +1492,12 @@ module Increase
             USD = :USD
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           # The status of the hold.
@@ -1403,6 +1511,12 @@ module Increase
             COMPLETE = :complete
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           # A constant representing the object's type. For this resource it will always be
@@ -1413,6 +1527,12 @@ module Increase
             INBOUND_FUNDS_HOLD = :inbound_funds_hold
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -1523,6 +1643,12 @@ module Increase
         COMPLETE = :complete
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -1533,6 +1659,12 @@ module Increase
         PENDING_TRANSACTION = :pending_transaction
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

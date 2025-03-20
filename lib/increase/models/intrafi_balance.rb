@@ -152,6 +152,12 @@ module Increase
         USD = :USD
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -162,6 +168,12 @@ module Increase
         INTRAFI_BALANCE = :intrafi_balance
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

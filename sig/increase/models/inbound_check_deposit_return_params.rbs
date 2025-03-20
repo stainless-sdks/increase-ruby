@@ -42,7 +42,7 @@ module Increase
         # The check was not endorsed by the payee.
         ENDORSEMENT_IRREGULAR: :endorsement_irregular
 
-        def self.values: -> ::Array[Increase::Models::InboundCheckDepositReturnParams::reason]
+        def self?.values: -> ::Array[Increase::Models::InboundCheckDepositReturnParams::reason]
       end
     end
   end

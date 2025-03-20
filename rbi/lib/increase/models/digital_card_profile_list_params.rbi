@@ -110,16 +110,22 @@ module Increase
             T.type_alias { T.any(Symbol, Increase::Models::DigitalCardProfileListParams::Status::In::TaggedSymbol) }
 
           # The Card Profile is awaiting review from Increase and/or processing by card networks.
-          PENDING = T.let(:pending, Increase::Models::DigitalCardProfileListParams::Status::In::OrSymbol)
+          PENDING = T.let(:pending, Increase::Models::DigitalCardProfileListParams::Status::In::TaggedSymbol)
 
           # There is an issue with the Card Profile preventing it from use.
-          REJECTED = T.let(:rejected, Increase::Models::DigitalCardProfileListParams::Status::In::OrSymbol)
+          REJECTED = T.let(:rejected, Increase::Models::DigitalCardProfileListParams::Status::In::TaggedSymbol)
 
           # The Card Profile can be assigned to Cards.
-          ACTIVE = T.let(:active, Increase::Models::DigitalCardProfileListParams::Status::In::OrSymbol)
+          ACTIVE = T.let(:active, Increase::Models::DigitalCardProfileListParams::Status::In::TaggedSymbol)
 
           # The Card Profile is no longer in use.
-          ARCHIVED = T.let(:archived, Increase::Models::DigitalCardProfileListParams::Status::In::OrSymbol)
+          ARCHIVED = T.let(:archived, Increase::Models::DigitalCardProfileListParams::Status::In::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::DigitalCardProfileListParams::Status::In::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

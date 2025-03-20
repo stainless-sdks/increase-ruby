@@ -340,6 +340,12 @@ module Increase
           USER = :user
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class OAuthApplication < Increase::BaseModel
@@ -401,6 +407,12 @@ module Increase
         USD = :USD
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # Whether Increase will print and mail the check or if you will do it yourself.
@@ -414,6 +426,12 @@ module Increase
         THIRD_PARTY = :third_party
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Mailing < Increase::BaseModel
@@ -647,6 +665,12 @@ module Increase
           FEDEX_OVERNIGHT = :fedex_overnight
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class TrackingUpdate < Increase::BaseModel
@@ -695,6 +719,12 @@ module Increase
             RETURNED_TO_SENDER = :returned_to_sender
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
       end
@@ -734,6 +764,12 @@ module Increase
         RETURNED = :returned
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class StopPaymentRequest < Increase::BaseModel
@@ -792,6 +828,12 @@ module Increase
           UNKNOWN = :unknown
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # A constant representing the object's type. For this resource it will always be
@@ -802,6 +844,12 @@ module Increase
           CHECK_TRANSFER_STOP_PAYMENT_REQUEST = :check_transfer_stop_payment_request
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -848,6 +896,12 @@ module Increase
         CHECK_TRANSFER = :check_transfer
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

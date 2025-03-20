@@ -64,7 +64,7 @@ module Increase
           # ACH Debits are blocked.
           BLOCKED: :blocked
 
-          def self.values: -> ::Array[Increase::Models::AccountNumberCreateParams::InboundACH::debit_status]
+          def self?.values: -> ::Array[Increase::Models::AccountNumberCreateParams::InboundACH::debit_status]
         end
       end
 
@@ -93,7 +93,7 @@ module Increase
           # Checks with this Account Number will be processed only if they can be matched to an existing Check Transfer.
           CHECK_TRANSFERS_ONLY: :check_transfers_only
 
-          def self.values: -> ::Array[Increase::Models::AccountNumberCreateParams::InboundChecks::status]
+          def self?.values: -> ::Array[Increase::Models::AccountNumberCreateParams::InboundChecks::status]
         end
       end
     end

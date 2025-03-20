@@ -98,6 +98,12 @@ module Increase
             :incorrect_transaction_code_by_originating_depository_financial_institution
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

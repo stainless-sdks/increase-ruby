@@ -49,7 +49,7 @@ module Increase
         # The application is deleted.
         DELETED: :deleted
 
-        def self.values: -> ::Array[Increase::Models::OAuthApplication::status]
+        def self?.values: -> ::Array[Increase::Models::OAuthApplication::status]
       end
 
       type type_ = :oauth_application
@@ -59,7 +59,7 @@ module Increase
 
         OAUTH_APPLICATION: :oauth_application
 
-        def self.values: -> ::Array[Increase::Models::OAuthApplication::type_]
+        def self?.values: -> ::Array[Increase::Models::OAuthApplication::type_]
       end
     end
   end

@@ -302,6 +302,12 @@ module Increase
           FREEFORM = :freeform
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class Freeform < Increase::BaseModel
@@ -426,6 +432,12 @@ module Increase
           CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -440,6 +452,12 @@ module Increase
         DEBIT = :debit
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The settlement schedule the transfer is expected to follow.
@@ -453,6 +471,12 @@ module Increase
         FUTURE_DATED = :future_dated
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class InternationalAddenda < Increase::BaseModel
@@ -772,6 +796,12 @@ module Increase
           FIXED_TO_FIXED = :fixed_to_fixed
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # An instruction of how to interpret the `foreign_exchange_reference` field for
@@ -789,6 +819,12 @@ module Increase
           BLANK = :blank
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # The type of transfer. Set by the originator.
@@ -856,6 +892,12 @@ module Increase
           INTERNET_INITIATED = :internet_initiated
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # An instruction of how to interpret the
@@ -873,6 +915,12 @@ module Increase
           IBAN = :iban
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # An instruction of how to interpret the
@@ -890,6 +938,12 @@ module Increase
           IBAN = :iban
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -971,6 +1025,12 @@ module Increase
         INTERNATIONAL_ACH_TRANSACTION = :international_ach_transaction
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The status of the transfer.
@@ -990,6 +1050,12 @@ module Increase
         RETURNED = :returned
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class TransferReturn < Increase::BaseModel
@@ -1059,6 +1125,12 @@ module Increase
           CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -1070,6 +1142,12 @@ module Increase
         INBOUND_ACH_TRANSFER = :inbound_ach_transfer
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

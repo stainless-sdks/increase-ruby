@@ -213,10 +213,16 @@ module Increase
           OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::AccountListParams::Status::In::TaggedSymbol) }
 
           # Closed Accounts on which no new activity can occur.
-          CLOSED = T.let(:closed, Increase::Models::AccountListParams::Status::In::OrSymbol)
+          CLOSED = T.let(:closed, Increase::Models::AccountListParams::Status::In::TaggedSymbol)
 
           # Open Accounts that are ready to use.
-          OPEN = T.let(:open, Increase::Models::AccountListParams::Status::In::OrSymbol)
+          OPEN = T.let(:open, Increase::Models::AccountListParams::Status::In::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::AccountListParams::Status::In::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

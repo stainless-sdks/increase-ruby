@@ -143,27 +143,33 @@ module Increase
 
           # Export an Open Financial Exchange (OFX) file of transactions and balances for a given time range and Account.
           ACCOUNT_STATEMENT_OFX =
-            T.let(:account_statement_ofx, Increase::Models::ExportListParams::Category::In::OrSymbol)
+            T.let(:account_statement_ofx, Increase::Models::ExportListParams::Category::In::TaggedSymbol)
 
           # Export a CSV of all transactions for a given time range.
-          TRANSACTION_CSV = T.let(:transaction_csv, Increase::Models::ExportListParams::Category::In::OrSymbol)
+          TRANSACTION_CSV = T.let(:transaction_csv, Increase::Models::ExportListParams::Category::In::TaggedSymbol)
 
           # Export a CSV of account balances for the dates in a given range.
-          BALANCE_CSV = T.let(:balance_csv, Increase::Models::ExportListParams::Category::In::OrSymbol)
+          BALANCE_CSV = T.let(:balance_csv, Increase::Models::ExportListParams::Category::In::TaggedSymbol)
 
           # Export a CSV of bookkeeping account balances for the dates in a given range.
           BOOKKEEPING_ACCOUNT_BALANCE_CSV =
-            T.let(:bookkeeping_account_balance_csv, Increase::Models::ExportListParams::Category::In::OrSymbol)
+            T.let(:bookkeeping_account_balance_csv, Increase::Models::ExportListParams::Category::In::TaggedSymbol)
 
           # Export a CSV of entities with a given status.
-          ENTITY_CSV = T.let(:entity_csv, Increase::Models::ExportListParams::Category::In::OrSymbol)
+          ENTITY_CSV = T.let(:entity_csv, Increase::Models::ExportListParams::Category::In::TaggedSymbol)
 
           # Export a CSV of vendors added to the third-party risk management dashboard.
-          VENDOR_CSV = T.let(:vendor_csv, Increase::Models::ExportListParams::Category::In::OrSymbol)
+          VENDOR_CSV = T.let(:vendor_csv, Increase::Models::ExportListParams::Category::In::TaggedSymbol)
 
           # Certain dashboard tables are available as CSV exports. This export cannot be created via the API.
           DASHBOARD_TABLE_CSV =
-            T.let(:dashboard_table_csv, Increase::Models::ExportListParams::Category::In::OrSymbol)
+            T.let(:dashboard_table_csv, Increase::Models::ExportListParams::Category::In::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::ExportListParams::Category::In::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -249,13 +255,19 @@ module Increase
           OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ExportListParams::Status::In::TaggedSymbol) }
 
           # Increase is generating the export.
-          PENDING = T.let(:pending, Increase::Models::ExportListParams::Status::In::OrSymbol)
+          PENDING = T.let(:pending, Increase::Models::ExportListParams::Status::In::TaggedSymbol)
 
           # The export has been successfully generated.
-          COMPLETE = T.let(:complete, Increase::Models::ExportListParams::Status::In::OrSymbol)
+          COMPLETE = T.let(:complete, Increase::Models::ExportListParams::Status::In::TaggedSymbol)
 
           # The export failed to generate. Increase will reach out to you to resolve the issue.
-          FAILED = T.let(:failed, Increase::Models::ExportListParams::Status::In::OrSymbol)
+          FAILED = T.let(:failed, Increase::Models::ExportListParams::Status::In::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::ExportListParams::Status::In::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

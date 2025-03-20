@@ -246,6 +246,12 @@ module Increase
           UNTIMELY_RETURN = :untimely_return
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

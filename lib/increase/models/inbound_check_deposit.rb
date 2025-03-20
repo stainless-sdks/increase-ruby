@@ -242,6 +242,12 @@ module Increase
           NON_CONFORMING_ITEM = :non_conforming_item
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -268,6 +274,12 @@ module Increase
         USD = :USD
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class DepositReturn < Increase::BaseModel
@@ -321,6 +333,12 @@ module Increase
           ENDORSEMENT_IRREGULAR = :endorsement_irregular
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -339,6 +357,12 @@ module Increase
         NOT_EVALUATED = :not_evaluated
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The status of the Inbound Check Deposit.
@@ -361,6 +385,12 @@ module Increase
         REQUIRES_ATTENTION = :requires_attention
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -371,6 +401,12 @@ module Increase
         INBOUND_CHECK_DEPOSIT = :inbound_check_deposit
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

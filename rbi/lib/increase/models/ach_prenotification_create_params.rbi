@@ -203,10 +203,21 @@ module Increase
           T.type_alias { T.any(Symbol, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol) }
 
         # The Prenotification is for an anticipated credit.
-        CREDIT = T.let(:credit, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol)
+        CREDIT =
+          T.let(:credit, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol)
 
         # The Prenotification is for an anticipated debit.
-        DEBIT = T.let(:debit, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol)
+        DEBIT =
+          T.let(:debit, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol)
+
+        class << self
+          sig do
+            override
+              .returns(T::Array[Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol])
+          end
+          def values
+          end
+        end
       end
 
       # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
@@ -222,29 +233,38 @@ module Increase
         CORPORATE_CREDIT_OR_DEBIT =
           T.let(
             :corporate_credit_or_debit,
-            Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol
+            Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol
           )
 
         # Corporate Trade Exchange (CTX).
         CORPORATE_TRADE_EXCHANGE =
           T.let(
             :corporate_trade_exchange,
-            Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol
+            Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol
           )
 
         # Prearranged Payments and Deposits (PPD).
         PREARRANGED_PAYMENTS_AND_DEPOSIT =
           T.let(
             :prearranged_payments_and_deposit,
-            Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol
+            Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol
           )
 
         # Internet Initiated (WEB).
         INTERNET_INITIATED =
           T.let(
             :internet_initiated,
-            Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol
+            Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol
           )
+
+        class << self
+          sig do
+            override
+              .returns(T::Array[Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol])
+          end
+          def values
+          end
+        end
       end
     end
   end

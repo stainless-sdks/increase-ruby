@@ -370,6 +370,12 @@ module Increase
 
           # FedEx 2-day.
           FEDEX_2_DAY = T.let(:fedex_2_day, Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         # The status of this shipment.
@@ -399,6 +405,12 @@ module Increase
 
           # The physical card shipment was returned to the sender and destroyed by the production facility.
           RETURNED = T.let(:returned, Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         class Tracking < Increase::BaseModel
@@ -484,6 +496,12 @@ module Increase
 
         # The physical card is permanently canceled.
         CANCELED = T.let(:canceled, Increase::Models::PhysicalCard::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::PhysicalCard::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -495,6 +513,12 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::PhysicalCard::Type::TaggedSymbol) }
 
         PHYSICAL_CARD = T.let(:physical_card, Increase::Models::PhysicalCard::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::PhysicalCard::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

@@ -92,7 +92,7 @@ module Increase
           # ACH Debits are blocked.
           BLOCKED: :blocked
 
-          def self.values: -> ::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::in_]
+          def self?.values: -> ::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::in_]
         end
       end
 
@@ -156,7 +156,7 @@ module Increase
           # The account number is permanently disabled.
           CANCELED: :canceled
 
-          def self.values: -> ::Array[Increase::Models::AccountNumberListParams::Status::in_]
+          def self?.values: -> ::Array[Increase::Models::AccountNumberListParams::Status::in_]
         end
       end
     end

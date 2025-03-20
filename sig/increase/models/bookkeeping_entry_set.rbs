@@ -63,7 +63,7 @@ module Increase
 
         BOOKKEEPING_ENTRY_SET: :bookkeeping_entry_set
 
-        def self.values: -> ::Array[Increase::Models::BookkeepingEntrySet::type_]
+        def self?.values: -> ::Array[Increase::Models::BookkeepingEntrySet::type_]
       end
     end
   end

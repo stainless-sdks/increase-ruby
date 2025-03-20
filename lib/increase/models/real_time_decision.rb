@@ -167,6 +167,12 @@ module Increase
           DENY = :deny
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -228,6 +234,12 @@ module Increase
           FAILURE = :failure
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -474,6 +486,12 @@ module Increase
           DECLINE = :decline
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # The direction describes the direction the funds will move, either from the
@@ -488,6 +506,12 @@ module Increase
           REFUND = :refund
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class NetworkDetails < Increase::BaseModel
@@ -524,6 +548,12 @@ module Increase
             VISA = :visa
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           class Visa < Increase::BaseModel
@@ -598,6 +628,12 @@ module Increase
               NON_SECURE_TRANSACTION = :non_secure_transaction
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
 
             # The method used to enter the cardholder's primary account number and card
@@ -636,6 +672,12 @@ module Increase
               INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
 
             # Only present when `actioner: network`. Describes why a card authorization was
@@ -667,6 +709,12 @@ module Increase
               OTHER = :other
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
         end
@@ -730,6 +778,12 @@ module Increase
           REFUND = :refund
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class RequestDetails < Increase::BaseModel
@@ -778,6 +832,12 @@ module Increase
             INCREMENTAL_AUTHORIZATION = :incremental_authorization
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           class IncrementalAuthorization < Increase::BaseModel
@@ -865,6 +925,12 @@ module Increase
               NO_MATCH = :no_match
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
 
@@ -938,6 +1004,12 @@ module Increase
               NO_MATCH = :no_match
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
         end
@@ -963,6 +1035,12 @@ module Increase
         DIGITAL_WALLET_AUTHENTICATION_REQUESTED = :digital_wallet_authentication_requested
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class DigitalWalletAuthentication < Increase::BaseModel
@@ -1038,6 +1116,12 @@ module Increase
           EMAIL = :email
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # The digital wallet app being used.
@@ -1057,6 +1141,12 @@ module Increase
           UNKNOWN = :unknown
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # Whether your application successfully delivered the one-time passcode.
@@ -1070,6 +1160,12 @@ module Increase
           FAILURE = :failure
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -1128,6 +1224,12 @@ module Increase
           DECLINE = :decline
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # The digital wallet app being used.
@@ -1147,6 +1249,12 @@ module Increase
           UNKNOWN = :unknown
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -1164,6 +1272,12 @@ module Increase
         TIMED_OUT = :timed_out
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -1174,6 +1288,12 @@ module Increase
         REAL_TIME_DECISION = :real_time_decision
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

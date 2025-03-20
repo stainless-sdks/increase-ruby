@@ -175,7 +175,7 @@ module Increase
               # Another identifying document.
               OTHER: :other
 
-              def self.values: -> ::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::method_]
+              def self?.values: -> ::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::method_]
             end
 
             type drivers_license =
@@ -274,7 +274,7 @@ module Increase
           # A person who manages, directs, or has significant control of the entity.
           CONTROL: :control
 
-          def self.values: -> ::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::prong]
+          def self?.values: -> ::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::prong]
         end
       end
     end

@@ -88,7 +88,7 @@ module Increase
           # The Physical Card Profile has been archived.
           ARCHIVED: :archived
 
-          def self.values: -> ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
+          def self?.values: -> ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
         end
       end
     end

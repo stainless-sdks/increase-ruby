@@ -127,7 +127,7 @@ module Increase
         # The Inbound Wire Transfer was reversed.
         REVERSED: :reversed
 
-        def self.values: -> ::Array[Increase::Models::InboundWireTransfer::status]
+        def self?.values: -> ::Array[Increase::Models::InboundWireTransfer::status]
       end
 
       type type_ = :inbound_wire_transfer
@@ -137,7 +137,7 @@ module Increase
 
         INBOUND_WIRE_TRANSFER: :inbound_wire_transfer
 
-        def self.values: -> ::Array[Increase::Models::InboundWireTransfer::type_]
+        def self?.values: -> ::Array[Increase::Models::InboundWireTransfer::type_]
       end
     end
   end

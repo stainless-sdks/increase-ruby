@@ -132,6 +132,12 @@ module Increase
         USD = :USD
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The type of the route this Transaction came through.
@@ -148,6 +154,12 @@ module Increase
         LOCKBOX = :lockbox
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Source < Increase::BaseModel
@@ -615,6 +627,12 @@ module Increase
             USD = :USD
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -979,6 +997,12 @@ module Increase
             UNTIMELY_RETURN = :untimely_return
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -1287,6 +1311,12 @@ module Increase
               USD = :USD
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
 
@@ -1314,6 +1344,12 @@ module Increase
             USD = :USD
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           class Interchange < Increase::BaseModel
@@ -1373,6 +1409,12 @@ module Increase
               USD = :USD
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
 
@@ -1689,6 +1731,12 @@ module Increase
                 PARKING_VIOLATION = :parking_violation
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               # An indicator that the cardholder is being billed for a reserved vehicle that was
@@ -1703,6 +1751,12 @@ module Increase
                 NO_SHOW_FOR_SPECIALIZED_VEHICLE = :no_show_for_specialized_vehicle
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
 
@@ -1884,6 +1938,12 @@ module Increase
                 LAUNDRY = :laundry
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               # Indicator that the cardholder is being billed for a reserved room that was not
@@ -1898,6 +1958,12 @@ module Increase
                 NO_SHOW = :no_show
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
 
@@ -1921,6 +1987,12 @@ module Increase
               INVOICE_NUMBER = :invoice_number
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
 
             class Travel < Increase::BaseModel
@@ -2119,6 +2191,12 @@ module Increase
                   OTHER = :other
 
                   finalize!
+
+                  class << self
+                    # @!parse
+                    #   # @return [Array<Symbol>]
+                    #   def values; end
+                  end
                 end
 
                 class Service < Increase::BaseModel
@@ -2221,6 +2299,12 @@ module Increase
                     WIFI = :wifi
 
                     finalize!
+
+                    class << self
+                      # @!parse
+                      #   # @return [Array<Symbol>]
+                      #   def values; end
+                    end
                   end
                 end
               end
@@ -2250,6 +2334,12 @@ module Increase
                 PARTIAL_REFUND_OF_AIRLINE_TICKET = :partial_refund_of_airline_ticket
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               # Indicates whether this ticket is non-refundable.
@@ -2263,6 +2353,12 @@ module Increase
                 RESTRICTED_NON_REFUNDABLE_TICKET = :restricted_non_refundable_ticket
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               # Indicates why a ticket was changed.
@@ -2279,6 +2375,12 @@ module Increase
                 NEW_TICKET = :new_ticket
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               class TripLeg < Increase::BaseModel
@@ -2356,6 +2458,12 @@ module Increase
                   STOP_OVER_NOT_ALLOWED = :stop_over_not_allowed
 
                   finalize!
+
+                  class << self
+                    # @!parse
+                    #   # @return [Array<Symbol>]
+                    #   def values; end
+                  end
                 end
               end
             end
@@ -2369,6 +2477,12 @@ module Increase
             CARD_REFUND = :card_refund
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -2444,6 +2558,12 @@ module Increase
             USD = :USD
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -2694,6 +2814,12 @@ module Increase
               USD = :USD
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
 
@@ -2721,6 +2847,12 @@ module Increase
             USD = :USD
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           class Interchange < Increase::BaseModel
@@ -2781,6 +2913,12 @@ module Increase
               USD = :USD
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
 
@@ -3097,6 +3235,12 @@ module Increase
                 PARKING_VIOLATION = :parking_violation
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               # An indicator that the cardholder is being billed for a reserved vehicle that was
@@ -3111,6 +3255,12 @@ module Increase
                 NO_SHOW_FOR_SPECIALIZED_VEHICLE = :no_show_for_specialized_vehicle
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
 
@@ -3292,6 +3442,12 @@ module Increase
                 LAUNDRY = :laundry
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               # Indicator that the cardholder is being billed for a reserved room that was not
@@ -3306,6 +3462,12 @@ module Increase
                 NO_SHOW = :no_show
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
 
@@ -3329,6 +3491,12 @@ module Increase
               INVOICE_NUMBER = :invoice_number
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
 
             class Travel < Increase::BaseModel
@@ -3527,6 +3695,12 @@ module Increase
                   OTHER = :other
 
                   finalize!
+
+                  class << self
+                    # @!parse
+                    #   # @return [Array<Symbol>]
+                    #   def values; end
+                  end
                 end
 
                 class Service < Increase::BaseModel
@@ -3629,6 +3803,12 @@ module Increase
                     WIFI = :wifi
 
                     finalize!
+
+                    class << self
+                      # @!parse
+                      #   # @return [Array<Symbol>]
+                      #   def values; end
+                    end
                   end
                 end
               end
@@ -3658,6 +3838,12 @@ module Increase
                 PARTIAL_REFUND_OF_AIRLINE_TICKET = :partial_refund_of_airline_ticket
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               # Indicates whether this ticket is non-refundable.
@@ -3671,6 +3857,12 @@ module Increase
                 RESTRICTED_NON_REFUNDABLE_TICKET = :restricted_non_refundable_ticket
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               # Indicates why a ticket was changed.
@@ -3687,6 +3879,12 @@ module Increase
                 NEW_TICKET = :new_ticket
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               class TripLeg < Increase::BaseModel
@@ -3764,6 +3962,12 @@ module Increase
                   STOP_OVER_NOT_ALLOWED = :stop_over_not_allowed
 
                   finalize!
+
+                  class << self
+                    # @!parse
+                    #   # @return [Array<Symbol>]
+                    #   def values; end
+                  end
                 end
               end
             end
@@ -3777,6 +3981,12 @@ module Increase
             CARD_SETTLEMENT = :card_settlement
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -3853,6 +4063,12 @@ module Increase
             USD = :USD
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -3949,6 +4165,12 @@ module Increase
           OTHER = :other
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CheckDepositAcceptance < Increase::BaseModel
@@ -4052,6 +4274,12 @@ module Increase
             USD = :USD
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -4140,6 +4368,12 @@ module Increase
             USD = :USD
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           # Why this check was returned by the bank holding the account it was drawn
@@ -4226,6 +4460,12 @@ module Increase
             BRANCH_OR_ACCOUNT_SOLD = :branch_or_account_sold
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -4323,6 +4563,12 @@ module Increase
             CHECK_TRANSFER_DEPOSIT = :check_transfer_deposit
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -4391,6 +4637,12 @@ module Increase
             USD = :USD
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -4538,6 +4790,12 @@ module Increase
               FREEFORM = :freeform
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
 
             class Freeform < Increase::BaseModel
@@ -4646,6 +4904,12 @@ module Increase
             NON_CONFORMING_ITEM = :non_conforming_item
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -4793,6 +5057,12 @@ module Increase
             USD = :USD
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -4921,6 +5191,12 @@ module Increase
             USD = :USD
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           # Why the transfer was declined.
@@ -4946,6 +5222,12 @@ module Increase
             REAL_TIME_PAYMENTS_NOT_ENABLED = :real_time_payments_not_enabled
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -5374,6 +5656,12 @@ module Increase
             USD = :USD
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -5436,6 +5724,12 @@ module Increase
             USD = :USD
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           # An Internal Source is a transaction between you and Increase. This describes the
@@ -5489,6 +5783,12 @@ module Increase
             SAMPLE_FUNDS_RETURN = :sample_funds_return
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -5625,6 +5925,12 @@ module Increase
         TRANSACTION = :transaction
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

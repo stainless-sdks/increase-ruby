@@ -533,6 +533,12 @@ module Increase
 
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER = T.let(:user, Increase::Models::CheckTransfer::CreatedBy::Category::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::CheckTransfer::CreatedBy::Category::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         class OAuthApplication < Increase::BaseModel
@@ -601,6 +607,12 @@ module Increase
 
         # US Dollar (USD)
         USD = T.let(:USD, Increase::Models::CheckTransfer::Currency::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::CheckTransfer::Currency::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # Whether Increase will print and mail the check or if you will do it yourself.
@@ -616,6 +628,12 @@ module Increase
 
         # Increase will not print a check; you are responsible for printing and mailing a check with the provided account number, routing number, check number, and amount.
         THIRD_PARTY = T.let(:third_party, Increase::Models::CheckTransfer::FulfillmentMethod::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::CheckTransfer::FulfillmentMethod::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class Mailing < Increase::BaseModel
@@ -989,6 +1007,12 @@ module Increase
           # FedEx Overnight
           FEDEX_OVERNIGHT =
             T.let(:fedex_overnight, Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         class TrackingUpdate < Increase::BaseModel
@@ -1077,6 +1101,15 @@ module Increase
                 :returned_to_sender,
                 Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
         end
       end
@@ -1117,6 +1150,12 @@ module Increase
 
         # The transfer has been returned.
         RETURNED = T.let(:returned, Increase::Models::CheckTransfer::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::CheckTransfer::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class StopPaymentRequest < Increase::BaseModel
@@ -1214,6 +1253,12 @@ module Increase
 
           # The check was stopped for another reason.
           UNKNOWN = T.let(:unknown, Increase::Models::CheckTransfer::StopPaymentRequest::Reason::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::CheckTransfer::StopPaymentRequest::Reason::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         # A constant representing the object's type. For this resource it will always be
@@ -1230,6 +1275,12 @@ module Increase
               :check_transfer_stop_payment_request,
               Increase::Models::CheckTransfer::StopPaymentRequest::Type::TaggedSymbol
             )
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::CheckTransfer::StopPaymentRequest::Type::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -1283,6 +1334,12 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CheckTransfer::Type::TaggedSymbol) }
 
         CHECK_TRANSFER = T.let(:check_transfer, Increase::Models::CheckTransfer::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::CheckTransfer::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

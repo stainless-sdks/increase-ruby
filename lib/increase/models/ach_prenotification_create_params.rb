@@ -179,6 +179,12 @@ module Increase
         DEBIT = :debit
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
@@ -198,6 +204,12 @@ module Increase
         INTERNET_INITIATED = :internet_initiated
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

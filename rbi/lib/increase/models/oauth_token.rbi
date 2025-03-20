@@ -73,6 +73,12 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::OAuthToken::TokenType::TaggedSymbol) }
 
         BEARER = T.let(:bearer, Increase::Models::OAuthToken::TokenType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::OAuthToken::TokenType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -84,6 +90,12 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::OAuthToken::Type::TaggedSymbol) }
 
         OAUTH_TOKEN = T.let(:oauth_token, Increase::Models::OAuthToken::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::OAuthToken::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

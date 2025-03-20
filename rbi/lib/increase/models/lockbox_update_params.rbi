@@ -70,10 +70,16 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::LockboxUpdateParams::Status::TaggedSymbol) }
 
         # This Lockbox is active. Checks mailed to it will be deposited automatically.
-        ACTIVE = T.let(:active, Increase::Models::LockboxUpdateParams::Status::OrSymbol)
+        ACTIVE = T.let(:active, Increase::Models::LockboxUpdateParams::Status::TaggedSymbol)
 
         # This Lockbox is inactive. Checks mailed to it will not be deposited.
-        INACTIVE = T.let(:inactive, Increase::Models::LockboxUpdateParams::Status::OrSymbol)
+        INACTIVE = T.let(:inactive, Increase::Models::LockboxUpdateParams::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::LockboxUpdateParams::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

@@ -57,7 +57,7 @@ module Increase
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN: :unknown
 
-        def self.values: -> ::Array[Increase::Models::ExternalAccountCreateParams::account_holder]
+        def self?.values: -> ::Array[Increase::Models::ExternalAccountCreateParams::account_holder]
       end
 
       type funding = :checking | :savings | :other
@@ -74,7 +74,7 @@ module Increase
         # A different type of account.
         OTHER: :other
 
-        def self.values: -> ::Array[Increase::Models::ExternalAccountCreateParams::funding]
+        def self?.values: -> ::Array[Increase::Models::ExternalAccountCreateParams::funding]
       end
     end
   end

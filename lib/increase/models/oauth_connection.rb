@@ -76,6 +76,12 @@ module Increase
         INACTIVE = :inactive
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -86,6 +92,12 @@ module Increase
         OAUTH_CONNECTION = :oauth_connection
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

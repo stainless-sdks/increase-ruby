@@ -182,6 +182,12 @@ module Increase
 
         # US Dollar (USD)
         USD = T.let(:USD, Increase::Models::Transaction::Currency::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::Transaction::Currency::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # The type of the route this Transaction came through.
@@ -199,6 +205,12 @@ module Increase
 
         # A Lockbox.
         LOCKBOX = T.let(:lockbox, Increase::Models::Transaction::RouteType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::Transaction::RouteType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class Source < Increase::BaseModel
@@ -1022,6 +1034,15 @@ module Increase
             # US Dollar (USD)
             USD =
               T.let(:USD, Increase::Models::Transaction::Source::AccountTransferIntention::Currency::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::Transaction::Source::AccountTransferIntention::Currency::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
         end
 
@@ -1727,6 +1748,17 @@ module Increase
                 :untimely_return,
                 Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
         end
 
@@ -2213,6 +2245,15 @@ module Increase
 
               # US Dollar (USD)
               USD = T.let(:USD, Increase::Models::Transaction::Source::CardRefund::Cashback::Currency::TaggedSymbol)
+
+              class << self
+                sig do
+                  override
+                    .returns(T::Array[Increase::Models::Transaction::Source::CardRefund::Cashback::Currency::TaggedSymbol])
+                end
+                def values
+                end
+              end
             end
           end
 
@@ -2243,6 +2284,12 @@ module Increase
 
             # US Dollar (USD)
             USD = T.let(:USD, Increase::Models::Transaction::Source::CardRefund::Currency::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Increase::Models::Transaction::Source::CardRefund::Currency::TaggedSymbol]) }
+              def values
+              end
+            end
           end
 
           class Interchange < Increase::BaseModel
@@ -2331,6 +2378,15 @@ module Increase
 
               # US Dollar (USD)
               USD = T.let(:USD, Increase::Models::Transaction::Source::CardRefund::Interchange::Currency::TaggedSymbol)
+
+              class << self
+                sig do
+                  override
+                    .returns(T::Array[Increase::Models::Transaction::Source::CardRefund::Interchange::Currency::TaggedSymbol])
+                end
+                def values
+                end
+              end
             end
           end
 
@@ -2918,6 +2974,17 @@ module Increase
                     :parking_violation,
                     Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
 
               # An indicator that the cardholder is being billed for a reserved vehicle that was
@@ -2950,6 +3017,19 @@ module Increase
                     :no_show_for_specialized_vehicle,
                     Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
             end
 
@@ -3277,6 +3357,17 @@ module Increase
                     :laundry,
                     Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
 
               # Indicator that the cardholder is being billed for a reserved room that was not
@@ -3309,6 +3400,17 @@ module Increase
                     :no_show,
                     Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
             end
 
@@ -3362,6 +3464,17 @@ module Increase
                   :invoice_number,
                   Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
                 )
+
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol]
+                    )
+                end
+                def values
+                end
+              end
             end
 
             class Travel < Increase::BaseModel
@@ -3778,6 +3891,19 @@ module Increase
                       :other,
                       Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
                     )
+
+                  class << self
+                    sig do
+                      override
+                        .returns(
+                          T::Array[
+                          Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
+                          ]
+                        )
+                    end
+                    def values
+                    end
+                  end
                 end
 
                 class Service < Increase::BaseModel
@@ -4025,6 +4151,19 @@ module Increase
                         :wifi,
                         Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
+
+                    class << self
+                      sig do
+                        override
+                          .returns(
+                            T::Array[
+                            Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                            ]
+                          )
+                      end
+                      def values
+                      end
+                    end
                   end
                 end
               end
@@ -4086,6 +4225,19 @@ module Increase
                     :partial_refund_of_airline_ticket,
                     Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
 
               # Indicates whether this ticket is non-refundable.
@@ -4117,6 +4269,19 @@ module Increase
                     :restricted_non_refundable_ticket,
                     Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
 
               # Indicates why a ticket was changed.
@@ -4155,6 +4320,19 @@ module Increase
                     :new_ticket,
                     Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
 
               class TripLeg < Increase::BaseModel
@@ -4306,6 +4484,19 @@ module Increase
                       :stop_over_not_allowed,
                       Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
                     )
+
+                  class << self
+                    sig do
+                      override
+                        .returns(
+                          T::Array[
+                          Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
+                          ]
+                        )
+                    end
+                    def values
+                    end
+                  end
                 end
               end
             end
@@ -4321,6 +4512,12 @@ module Increase
               T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CardRefund::Type::TaggedSymbol) }
 
             CARD_REFUND = T.let(:card_refund, Increase::Models::Transaction::Source::CardRefund::Type::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Increase::Models::Transaction::Source::CardRefund::Type::TaggedSymbol]) }
+              def values
+              end
+            end
           end
         end
 
@@ -4433,6 +4630,15 @@ module Increase
 
             # US Dollar (USD)
             USD = T.let(:USD, Increase::Models::Transaction::Source::CardRevenuePayment::Currency::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::Transaction::Source::CardRevenuePayment::Currency::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
         end
 
@@ -4843,6 +5049,15 @@ module Increase
               # US Dollar (USD)
               USD =
                 T.let(:USD, Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency::TaggedSymbol)
+
+              class << self
+                sig do
+                  override
+                    .returns(T::Array[Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency::TaggedSymbol])
+                end
+                def values
+                end
+              end
             end
           end
 
@@ -4873,6 +5088,12 @@ module Increase
 
             # US Dollar (USD)
             USD = T.let(:USD, Increase::Models::Transaction::Source::CardSettlement::Currency::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Increase::Models::Transaction::Source::CardSettlement::Currency::TaggedSymbol]) }
+              def values
+              end
+            end
           end
 
           class Interchange < Increase::BaseModel
@@ -4967,6 +5188,17 @@ module Increase
               # US Dollar (USD)
               USD =
                 T.let(:USD, Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency::TaggedSymbol)
+
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency::TaggedSymbol]
+                    )
+                end
+                def values
+                end
+              end
             end
           end
 
@@ -5562,6 +5794,19 @@ module Increase
                     :parking_violation,
                     Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
 
               # An indicator that the cardholder is being billed for a reserved vehicle that was
@@ -5594,6 +5839,19 @@ module Increase
                     :no_show_for_specialized_vehicle,
                     Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
             end
 
@@ -5923,6 +6181,19 @@ module Increase
                     :laundry,
                     Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
 
               # Indicator that the cardholder is being billed for a reserved room that was not
@@ -5955,6 +6226,19 @@ module Increase
                     :no_show,
                     Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
             end
 
@@ -6008,6 +6292,19 @@ module Increase
                   :invoice_number,
                   Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
                 )
+
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
+                      ]
+                    )
+                end
+                def values
+                end
+              end
             end
 
             class Travel < Increase::BaseModel
@@ -6438,6 +6735,19 @@ module Increase
                       :other,
                       Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
                     )
+
+                  class << self
+                    sig do
+                      override
+                        .returns(
+                          T::Array[
+                          Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
+                          ]
+                        )
+                    end
+                    def values
+                    end
+                  end
                 end
 
                 class Service < Increase::BaseModel
@@ -6685,6 +6995,19 @@ module Increase
                         :wifi,
                         Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
+
+                    class << self
+                      sig do
+                        override
+                          .returns(
+                            T::Array[
+                            Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                            ]
+                          )
+                      end
+                      def values
+                      end
+                    end
                   end
                 end
               end
@@ -6746,6 +7069,19 @@ module Increase
                     :partial_refund_of_airline_ticket,
                     Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
 
               # Indicates whether this ticket is non-refundable.
@@ -6777,6 +7113,19 @@ module Increase
                     :restricted_non_refundable_ticket,
                     Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
 
               # Indicates why a ticket was changed.
@@ -6815,6 +7164,19 @@ module Increase
                     :new_ticket,
                     Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
 
               class TripLeg < Increase::BaseModel
@@ -6966,6 +7328,19 @@ module Increase
                       :stop_over_not_allowed,
                       Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
                     )
+
+                  class << self
+                    sig do
+                      override
+                        .returns(
+                          T::Array[
+                          Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
+                          ]
+                        )
+                    end
+                    def values
+                    end
+                  end
                 end
               end
             end
@@ -6983,6 +7358,12 @@ module Increase
 
             CARD_SETTLEMENT =
               T.let(:card_settlement, Increase::Models::Transaction::Source::CardSettlement::Type::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Increase::Models::Transaction::Source::CardSettlement::Type::TaggedSymbol]) }
+              def values
+              end
+            end
           end
         end
 
@@ -7096,6 +7477,12 @@ module Increase
 
             # US Dollar (USD)
             USD = T.let(:USD, Increase::Models::Transaction::Source::CashbackPayment::Currency::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Increase::Models::Transaction::Source::CashbackPayment::Currency::TaggedSymbol]) }
+              def values
+              end
+            end
           end
         end
 
@@ -7231,6 +7618,12 @@ module Increase
 
           # The Transaction was made for an undocumented or deprecated reason.
           OTHER = T.let(:other, Increase::Models::Transaction::Source::Category::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::Transaction::Source::Category::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         class CheckDepositAcceptance < Increase::BaseModel
@@ -7368,6 +7761,15 @@ module Increase
 
             # US Dollar (USD)
             USD = T.let(:USD, Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
         end
 
@@ -7499,6 +7901,15 @@ module Increase
 
             # US Dollar (USD)
             USD = T.let(:USD, Increase::Models::Transaction::Source::CheckDepositReturn::Currency::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::Transaction::Source::CheckDepositReturn::Currency::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
 
           # Why this check was returned by the bank holding the account it was drawn
@@ -7683,6 +8094,15 @@ module Increase
                 :branch_or_account_sold,
                 Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
         end
 
@@ -7830,6 +8250,14 @@ module Increase
                 :check_transfer_deposit,
                 Increase::Models::Transaction::Source::CheckTransferDeposit::Type::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override.returns(T::Array[Increase::Models::Transaction::Source::CheckTransferDeposit::Type::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
         end
 
@@ -7931,6 +8359,12 @@ module Increase
 
             # US Dollar (USD)
             USD = T.let(:USD, Increase::Models::Transaction::Source::FeePayment::Currency::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Increase::Models::Transaction::Source::FeePayment::Currency::TaggedSymbol]) }
+              def values
+              end
+            end
           end
         end
 
@@ -8184,6 +8618,17 @@ module Increase
                   :freeform,
                   Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category::TaggedSymbol
                 )
+
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category::TaggedSymbol]
+                    )
+                end
+                def values
+                end
+              end
             end
 
             class Freeform < Increase::BaseModel
@@ -8356,6 +8801,15 @@ module Increase
                 :non_conforming_item,
                 Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
         end
 
@@ -8598,6 +9052,17 @@ module Increase
                 :USD,
                 Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
         end
 
@@ -8826,6 +9291,17 @@ module Increase
                 :USD,
                 Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
 
           # Why the transfer was declined.
@@ -8883,6 +9359,17 @@ module Increase
                 :real_time_payments_not_enabled,
                 Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
         end
 
@@ -9511,6 +9998,12 @@ module Increase
 
             # US Dollar (USD)
             USD = T.let(:USD, Increase::Models::Transaction::Source::InterestPayment::Currency::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Increase::Models::Transaction::Source::InterestPayment::Currency::TaggedSymbol]) }
+              def values
+              end
+            end
           end
         end
 
@@ -9605,6 +10098,12 @@ module Increase
 
             # US Dollar (USD)
             USD = T.let(:USD, Increase::Models::Transaction::Source::InternalSource::Currency::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Increase::Models::Transaction::Source::InternalSource::Currency::TaggedSymbol]) }
+              def values
+              end
+            end
           end
 
           # An Internal Source is a transaction between you and Increase. This describes the
@@ -9679,6 +10178,12 @@ module Increase
             # Sample funds return
             SAMPLE_FUNDS_RETURN =
               T.let(:sample_funds_return, Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol]) }
+              def values
+              end
+            end
           end
         end
 
@@ -9872,6 +10377,12 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Transaction::Type::TaggedSymbol) }
 
         TRANSACTION = T.let(:transaction, Increase::Models::Transaction::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::Transaction::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

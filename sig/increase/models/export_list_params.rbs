@@ -106,7 +106,7 @@ module Increase
           # Certain dashboard tables are available as CSV exports. This export cannot be created via the API.
           DASHBOARD_TABLE_CSV: :dashboard_table_csv
 
-          def self.values: -> ::Array[Increase::Models::ExportListParams::Category::in_]
+          def self?.values: -> ::Array[Increase::Models::ExportListParams::Category::in_]
         end
       end
 
@@ -170,7 +170,7 @@ module Increase
           # The export failed to generate. Increase will reach out to you to resolve the issue.
           FAILED: :failed
 
-          def self.values: -> ::Array[Increase::Models::ExportListParams::Status::in_]
+          def self?.values: -> ::Array[Increase::Models::ExportListParams::Status::in_]
         end
       end
     end

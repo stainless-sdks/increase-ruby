@@ -78,6 +78,12 @@ module Increase
         PROOF_OF_AUTHORIZATION_REQUEST = :proof_of_authorization_request
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

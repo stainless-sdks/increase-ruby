@@ -109,6 +109,12 @@ module Increase
         GRASSHOPPER_BANK = :grasshopper_bank
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -119,6 +125,12 @@ module Increase
         PROGRAM = :program
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

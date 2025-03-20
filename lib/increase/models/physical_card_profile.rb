@@ -129,6 +129,12 @@ module Increase
         USER = :user
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The status of the Physical Card Profile.
@@ -154,6 +160,12 @@ module Increase
         ARCHIVED = :archived
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -164,6 +176,12 @@ module Increase
         PHYSICAL_CARD_PROFILE = :physical_card_profile
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

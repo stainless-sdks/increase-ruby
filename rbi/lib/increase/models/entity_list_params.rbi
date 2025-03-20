@@ -171,13 +171,19 @@ module Increase
           OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::EntityListParams::Status::In::TaggedSymbol) }
 
           # The entity is active.
-          ACTIVE = T.let(:active, Increase::Models::EntityListParams::Status::In::OrSymbol)
+          ACTIVE = T.let(:active, Increase::Models::EntityListParams::Status::In::TaggedSymbol)
 
           # The entity is archived, and can no longer be used to create accounts.
-          ARCHIVED = T.let(:archived, Increase::Models::EntityListParams::Status::In::OrSymbol)
+          ARCHIVED = T.let(:archived, Increase::Models::EntityListParams::Status::In::TaggedSymbol)
 
           # The entity is temporarily disabled and cannot be used for financial activity.
-          DISABLED = T.let(:disabled, Increase::Models::EntityListParams::Status::In::OrSymbol)
+          DISABLED = T.let(:disabled, Increase::Models::EntityListParams::Status::In::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::EntityListParams::Status::In::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

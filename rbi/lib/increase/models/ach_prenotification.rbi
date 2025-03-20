@@ -253,6 +253,12 @@ module Increase
 
         # The Prenotification is for an anticipated debit.
         DEBIT = T.let(:debit, Increase::Models::ACHPrenotification::CreditDebitIndicator::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ACHPrenotification::CreditDebitIndicator::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class NotificationsOfChange < Increase::BaseModel
@@ -458,6 +464,15 @@ module Increase
               :incorrect_transaction_code_by_originating_depository_financial_institution,
               Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
       end
 
@@ -1005,6 +1020,17 @@ module Increase
               :untimely_return,
               Increase::Models::ACHPrenotification::PrenotificationReturn::ReturnReasonCode::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Increase::Models::ACHPrenotification::PrenotificationReturn::ReturnReasonCode::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
       end
 
@@ -1028,6 +1054,12 @@ module Increase
 
         # The Prenotification is complete.
         SUBMITTED = T.let(:submitted, Increase::Models::ACHPrenotification::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ACHPrenotification::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -1040,6 +1072,12 @@ module Increase
 
         ACH_PRENOTIFICATION =
           T.let(:ach_prenotification, Increase::Models::ACHPrenotification::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ACHPrenotification::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

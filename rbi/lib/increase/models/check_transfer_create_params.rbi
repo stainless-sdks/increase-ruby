@@ -137,11 +137,17 @@ module Increase
 
         # Increase will print and mail a physical check.
         PHYSICAL_CHECK =
-          T.let(:physical_check, Increase::Models::CheckTransferCreateParams::FulfillmentMethod::OrSymbol)
+          T.let(:physical_check, Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol)
 
         # Increase will not print a check; you are responsible for printing and mailing a check with the provided account number, routing number, check number, and amount.
         THIRD_PARTY =
-          T.let(:third_party, Increase::Models::CheckTransferCreateParams::FulfillmentMethod::OrSymbol)
+          T.let(:third_party, Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class PhysicalCheck < Increase::BaseModel

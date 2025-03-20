@@ -82,6 +82,12 @@ module Increase
           BLOCKED = :blocked
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -115,6 +121,12 @@ module Increase
           CHECK_TRANSFERS_ONLY = :check_transfers_only
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

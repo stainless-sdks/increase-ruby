@@ -201,6 +201,12 @@ module Increase
           INTERNATIONAL_ACH_TRANSACTION = :international_ach_transaction
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end
