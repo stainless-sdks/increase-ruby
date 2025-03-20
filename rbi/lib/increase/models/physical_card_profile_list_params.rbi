@@ -42,8 +42,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::PhysicalCardProfileListParams::Status)
-          .returns(Increase::Models::PhysicalCardProfileListParams::Status)
+        params(_: T.any(Increase::Models::PhysicalCardProfileListParams::Status, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::PhysicalCardProfileListParams::Status, Increase::Util::AnyHash))
       end
       def status=(_)
       end

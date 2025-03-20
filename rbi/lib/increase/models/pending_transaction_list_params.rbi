@@ -20,8 +20,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::PendingTransactionListParams::Category)
-          .returns(Increase::Models::PendingTransactionListParams::Category)
+        params(_: T.any(Increase::Models::PendingTransactionListParams::Category, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::PendingTransactionListParams::Category, Increase::Util::AnyHash))
       end
       def category=(_)
       end
@@ -31,8 +31,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::PendingTransactionListParams::CreatedAt)
-          .returns(Increase::Models::PendingTransactionListParams::CreatedAt)
+        params(_: T.any(Increase::Models::PendingTransactionListParams::CreatedAt, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::PendingTransactionListParams::CreatedAt, Increase::Util::AnyHash))
       end
       def created_at=(_)
       end
@@ -70,8 +70,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::PendingTransactionListParams::Status)
-          .returns(Increase::Models::PendingTransactionListParams::Status)
+        params(_: T.any(Increase::Models::PendingTransactionListParams::Status, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::PendingTransactionListParams::Status, Increase::Util::AnyHash))
       end
       def status=(_)
       end

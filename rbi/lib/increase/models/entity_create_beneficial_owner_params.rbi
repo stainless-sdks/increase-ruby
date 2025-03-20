@@ -13,8 +13,12 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner)
-          .returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner)
+        params(
+          _: T.any(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner, Increase::Util::AnyHash)
+        )
+          .returns(
+            T.any(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner, Increase::Util::AnyHash)
+          )
       end
       def beneficial_owner=(_)
       end
@@ -48,8 +52,18 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual)
-            .returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual)
+          params(
+            _: T.any(
+              Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual,
+              Increase::Util::AnyHash
+            )
+          )
+            .returns(
+              T.any(
+                Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual,
+                Increase::Util::AnyHash
+              )
+            )
         end
         def individual=(_)
         end
@@ -111,8 +125,18 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address)
-              .returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address)
+            params(
+              _: T.any(
+                Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address,
+                Increase::Util::AnyHash
+              )
+            )
+              .returns(
+                T.any(
+                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address,
+                  Increase::Util::AnyHash
+                )
+              )
           end
           def address=(_)
           end
@@ -133,9 +157,17 @@ module Increase
 
           sig do
             params(
-              _: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification
+              _: T.any(
+                Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification,
+                Increase::Util::AnyHash
+              )
             )
-              .returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification)
+              .returns(
+                T.any(
+                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification,
+                  Increase::Util::AnyHash
+                )
+              )
           end
           def identification=(_)
           end
@@ -301,10 +333,16 @@ module Increase
 
             sig do
               params(
-                _: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense
+                _: T.any(
+                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense,
+                  Increase::Util::AnyHash
+                )
               )
                 .returns(
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense
+                  T.any(
+                    Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense,
+                    Increase::Util::AnyHash
+                  )
                 )
             end
             def drivers_license=(_)
@@ -324,10 +362,16 @@ module Increase
 
             sig do
               params(
-                _: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other
+                _: T.any(
+                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other,
+                  Increase::Util::AnyHash
+                )
               )
                 .returns(
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other
+                  T.any(
+                    Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other,
+                    Increase::Util::AnyHash
+                  )
                 )
             end
             def other=(_)
@@ -347,10 +391,16 @@ module Increase
 
             sig do
               params(
-                _: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport
+                _: T.any(
+                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport,
+                  Increase::Util::AnyHash
+                )
               )
                 .returns(
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport
+                  T.any(
+                    Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport,
+                    Increase::Util::AnyHash
+                  )
                 )
             end
             def passport=(_)

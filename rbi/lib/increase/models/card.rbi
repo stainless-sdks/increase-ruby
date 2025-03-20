@@ -26,7 +26,10 @@ module Increase
       def billing_address
       end
 
-      sig { params(_: Increase::Models::Card::BillingAddress).returns(Increase::Models::Card::BillingAddress) }
+      sig do
+        params(_: T.any(Increase::Models::Card::BillingAddress, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::Card::BillingAddress, Increase::Util::AnyHash))
+      end
       def billing_address=(_)
       end
 
@@ -57,8 +60,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::Card::DigitalWallet))
-          .returns(T.nilable(Increase::Models::Card::DigitalWallet))
+        params(_: T.nilable(T.any(Increase::Models::Card::DigitalWallet, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::Card::DigitalWallet, Increase::Util::AnyHash)))
       end
       def digital_wallet=(_)
       end

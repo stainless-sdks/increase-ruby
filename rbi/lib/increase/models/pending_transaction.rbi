@@ -106,8 +106,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::PendingTransaction::Source)
-          .returns(Increase::Models::PendingTransaction::Source)
+        params(_: T.any(Increase::Models::PendingTransaction::Source, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::PendingTransaction::Source, Increase::Util::AnyHash))
       end
       def source=(_)
       end
@@ -248,8 +248,16 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::PendingTransaction::Source::AccountTransferInstruction))
-            .returns(T.nilable(Increase::Models::PendingTransaction::Source::AccountTransferInstruction))
+          params(
+            _: T.nilable(
+              T.any(Increase::Models::PendingTransaction::Source::AccountTransferInstruction, Increase::Util::AnyHash)
+            )
+          )
+            .returns(
+              T.nilable(
+                T.any(Increase::Models::PendingTransaction::Source::AccountTransferInstruction, Increase::Util::AnyHash)
+              )
+            )
         end
         def account_transfer_instruction=(_)
         end
@@ -261,8 +269,16 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::PendingTransaction::Source::ACHTransferInstruction))
-            .returns(T.nilable(Increase::Models::PendingTransaction::Source::ACHTransferInstruction))
+          params(
+            _: T.nilable(
+              T.any(Increase::Models::PendingTransaction::Source::ACHTransferInstruction, Increase::Util::AnyHash)
+            )
+          )
+            .returns(
+              T.nilable(
+                T.any(Increase::Models::PendingTransaction::Source::ACHTransferInstruction, Increase::Util::AnyHash)
+              )
+            )
         end
         def ach_transfer_instruction=(_)
         end
@@ -276,8 +292,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::PendingTransaction::Source::CardAuthorization))
-            .returns(T.nilable(Increase::Models::PendingTransaction::Source::CardAuthorization))
+          params(
+            _: T.nilable(T.any(Increase::Models::PendingTransaction::Source::CardAuthorization, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::PendingTransaction::Source::CardAuthorization, Increase::Util::AnyHash))
+            )
         end
         def card_authorization=(_)
         end
@@ -302,8 +322,16 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::PendingTransaction::Source::CheckDepositInstruction))
-            .returns(T.nilable(Increase::Models::PendingTransaction::Source::CheckDepositInstruction))
+          params(
+            _: T.nilable(
+              T.any(Increase::Models::PendingTransaction::Source::CheckDepositInstruction, Increase::Util::AnyHash)
+            )
+          )
+            .returns(
+              T.nilable(
+                T.any(Increase::Models::PendingTransaction::Source::CheckDepositInstruction, Increase::Util::AnyHash)
+              )
+            )
         end
         def check_deposit_instruction=(_)
         end
@@ -315,8 +343,16 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::PendingTransaction::Source::CheckTransferInstruction))
-            .returns(T.nilable(Increase::Models::PendingTransaction::Source::CheckTransferInstruction))
+          params(
+            _: T.nilable(
+              T.any(Increase::Models::PendingTransaction::Source::CheckTransferInstruction, Increase::Util::AnyHash)
+            )
+          )
+            .returns(
+              T.nilable(
+                T.any(Increase::Models::PendingTransaction::Source::CheckTransferInstruction, Increase::Util::AnyHash)
+              )
+            )
         end
         def check_transfer_instruction=(_)
         end
@@ -330,8 +366,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::PendingTransaction::Source::InboundFundsHold))
-            .returns(T.nilable(Increase::Models::PendingTransaction::Source::InboundFundsHold))
+          params(
+            _: T.nilable(T.any(Increase::Models::PendingTransaction::Source::InboundFundsHold, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::PendingTransaction::Source::InboundFundsHold, Increase::Util::AnyHash))
+            )
         end
         def inbound_funds_hold=(_)
         end
@@ -345,8 +385,16 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::PendingTransaction::Source::InboundWireTransferReversal))
-            .returns(T.nilable(Increase::Models::PendingTransaction::Source::InboundWireTransferReversal))
+          params(
+            _: T.nilable(
+              T.any(Increase::Models::PendingTransaction::Source::InboundWireTransferReversal, Increase::Util::AnyHash)
+            )
+          )
+            .returns(
+              T.nilable(
+                T.any(Increase::Models::PendingTransaction::Source::InboundWireTransferReversal, Increase::Util::AnyHash)
+              )
+            )
         end
         def inbound_wire_transfer_reversal=(_)
         end
@@ -369,8 +417,22 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction))
-            .returns(T.nilable(Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction))
+          params(
+            _: T.nilable(
+              T.any(
+                Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction,
+                Increase::Util::AnyHash
+              )
+            )
+          )
+            .returns(
+              T.nilable(
+                T.any(
+                  Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction,
+                  Increase::Util::AnyHash
+                )
+              )
+            )
         end
         def real_time_payments_transfer_instruction=(_)
         end
@@ -382,8 +444,16 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::PendingTransaction::Source::WireTransferInstruction))
-            .returns(T.nilable(Increase::Models::PendingTransaction::Source::WireTransferInstruction))
+          params(
+            _: T.nilable(
+              T.any(Increase::Models::PendingTransaction::Source::WireTransferInstruction, Increase::Util::AnyHash)
+            )
+          )
+            .returns(
+              T.nilable(
+                T.any(Increase::Models::PendingTransaction::Source::WireTransferInstruction, Increase::Util::AnyHash)
+              )
+            )
         end
         def wire_transfer_instruction=(_)
         end
@@ -753,8 +823,18 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails)
-              .returns(Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails)
+            params(
+              _: T.any(
+                Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails,
+                Increase::Util::AnyHash
+              )
+            )
+              .returns(
+                T.any(
+                  Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails,
+                  Increase::Util::AnyHash
+                )
+              )
           end
           def network_details=(_)
           end
@@ -765,8 +845,18 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers)
-              .returns(Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers)
+            params(
+              _: T.any(
+                Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers,
+                Increase::Util::AnyHash
+              )
+            )
+              .returns(
+                T.any(
+                  Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers,
+                  Increase::Util::AnyHash
+                )
+              )
           end
           def network_identifiers=(_)
           end
@@ -873,8 +963,18 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification)
-              .returns(Increase::Models::PendingTransaction::Source::CardAuthorization::Verification)
+            params(
+              _: T.any(
+                Increase::Models::PendingTransaction::Source::CardAuthorization::Verification,
+                Increase::Util::AnyHash
+              )
+            )
+              .returns(
+                T.any(
+                  Increase::Models::PendingTransaction::Source::CardAuthorization::Verification,
+                  Increase::Util::AnyHash
+                )
+              )
           end
           def verification=(_)
           end
@@ -1091,9 +1191,21 @@ module Increase
 
             sig do
               params(
-                _: T.nilable(Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa)
+                _: T.nilable(
+                  T.any(
+                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa,
+                    Increase::Util::AnyHash
+                  )
+                )
               )
-                .returns(T.nilable(Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa))
+                .returns(
+                  T.nilable(
+                    T.any(
+                      Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa,
+                      Increase::Util::AnyHash
+                    )
+                  )
+                )
             end
             def visa=(_)
             end
@@ -1641,10 +1753,16 @@ module Increase
 
             sig do
               params(
-                _: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode
+                _: T.any(
+                  Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode,
+                  Increase::Util::AnyHash
+                )
               )
                 .returns(
-                  Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode
+                  T.any(
+                    Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode,
+                    Increase::Util::AnyHash
+                  )
                 )
             end
             def card_verification_code=(_)
@@ -1658,9 +1776,17 @@ module Increase
 
             sig do
               params(
-                _: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress
+                _: T.any(
+                  Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress,
+                  Increase::Util::AnyHash
+                )
               )
-                .returns(Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress)
+                .returns(
+                  T.any(
+                    Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress,
+                    Increase::Util::AnyHash
+                  )
+                )
             end
             def cardholder_address=(_)
             end

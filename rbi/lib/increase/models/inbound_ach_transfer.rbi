@@ -18,8 +18,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::InboundACHTransfer::Acceptance))
-          .returns(T.nilable(Increase::Models::InboundACHTransfer::Acceptance))
+        params(_: T.nilable(T.any(Increase::Models::InboundACHTransfer::Acceptance, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::InboundACHTransfer::Acceptance, Increase::Util::AnyHash)))
       end
       def acceptance=(_)
       end
@@ -48,8 +48,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::InboundACHTransfer::Addenda))
-          .returns(T.nilable(Increase::Models::InboundACHTransfer::Addenda))
+        params(_: T.nilable(T.any(Increase::Models::InboundACHTransfer::Addenda, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::InboundACHTransfer::Addenda, Increase::Util::AnyHash)))
       end
       def addenda=(_)
       end
@@ -88,8 +88,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::InboundACHTransfer::Decline))
-          .returns(T.nilable(Increase::Models::InboundACHTransfer::Decline))
+        params(_: T.nilable(T.any(Increase::Models::InboundACHTransfer::Decline, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::InboundACHTransfer::Decline, Increase::Util::AnyHash)))
       end
       def decline=(_)
       end
@@ -135,8 +135,12 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::InboundACHTransfer::InternationalAddenda))
-          .returns(T.nilable(Increase::Models::InboundACHTransfer::InternationalAddenda))
+        params(
+          _: T.nilable(T.any(Increase::Models::InboundACHTransfer::InternationalAddenda, Increase::Util::AnyHash))
+        )
+          .returns(
+            T.nilable(T.any(Increase::Models::InboundACHTransfer::InternationalAddenda, Increase::Util::AnyHash))
+          )
       end
       def international_addenda=(_)
       end
@@ -148,8 +152,12 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::InboundACHTransfer::NotificationOfChange))
-          .returns(T.nilable(Increase::Models::InboundACHTransfer::NotificationOfChange))
+        params(
+          _: T.nilable(T.any(Increase::Models::InboundACHTransfer::NotificationOfChange, Increase::Util::AnyHash))
+        )
+          .returns(
+            T.nilable(T.any(Increase::Models::InboundACHTransfer::NotificationOfChange, Increase::Util::AnyHash))
+          )
       end
       def notification_of_change=(_)
       end
@@ -269,8 +277,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::InboundACHTransfer::TransferReturn))
-          .returns(T.nilable(Increase::Models::InboundACHTransfer::TransferReturn))
+        params(_: T.nilable(T.any(Increase::Models::InboundACHTransfer::TransferReturn, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::InboundACHTransfer::TransferReturn, Increase::Util::AnyHash)))
       end
       def transfer_return=(_)
       end
@@ -438,8 +446,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::InboundACHTransfer::Addenda::Freeform))
-            .returns(T.nilable(Increase::Models::InboundACHTransfer::Addenda::Freeform))
+          params(
+            _: T.nilable(T.any(Increase::Models::InboundACHTransfer::Addenda::Freeform, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::InboundACHTransfer::Addenda::Freeform, Increase::Util::AnyHash))
+            )
         end
         def freeform=(_)
         end

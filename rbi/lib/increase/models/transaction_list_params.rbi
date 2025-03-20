@@ -20,8 +20,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::TransactionListParams::Category)
-          .returns(Increase::Models::TransactionListParams::Category)
+        params(_: T.any(Increase::Models::TransactionListParams::Category, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::TransactionListParams::Category, Increase::Util::AnyHash))
       end
       def category=(_)
       end
@@ -31,8 +31,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::TransactionListParams::CreatedAt)
-          .returns(Increase::Models::TransactionListParams::CreatedAt)
+        params(_: T.any(Increase::Models::TransactionListParams::CreatedAt, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::TransactionListParams::CreatedAt, Increase::Util::AnyHash))
       end
       def created_at=(_)
       end

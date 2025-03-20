@@ -13,8 +13,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::EntityUpdateAddressParams::Address)
-          .returns(Increase::Models::EntityUpdateAddressParams::Address)
+        params(_: T.any(Increase::Models::EntityUpdateAddressParams::Address, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::EntityUpdateAddressParams::Address, Increase::Util::AnyHash))
       end
       def address=(_)
       end

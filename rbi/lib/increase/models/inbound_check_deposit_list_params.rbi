@@ -30,8 +30,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::InboundCheckDepositListParams::CreatedAt)
-          .returns(Increase::Models::InboundCheckDepositListParams::CreatedAt)
+        params(_: T.any(Increase::Models::InboundCheckDepositListParams::CreatedAt, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::InboundCheckDepositListParams::CreatedAt, Increase::Util::AnyHash))
       end
       def created_at=(_)
       end

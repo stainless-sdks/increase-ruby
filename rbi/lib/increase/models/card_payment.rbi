@@ -75,7 +75,10 @@ module Increase
       def state
       end
 
-      sig { params(_: Increase::Models::CardPayment::State).returns(Increase::Models::CardPayment::State) }
+      sig do
+        params(_: T.any(Increase::Models::CardPayment::State, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::CardPayment::State, Increase::Util::AnyHash))
+      end
       def state=(_)
       end
 
@@ -149,8 +152,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::CardPayment::Element::CardAuthentication))
-            .returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthentication))
+          params(
+            _: T.nilable(T.any(Increase::Models::CardPayment::Element::CardAuthentication, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::CardPayment::Element::CardAuthentication, Increase::Util::AnyHash))
+            )
         end
         def card_authentication=(_)
         end
@@ -164,8 +171,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::CardPayment::Element::CardAuthorization))
-            .returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthorization))
+          params(
+            _: T.nilable(T.any(Increase::Models::CardPayment::Element::CardAuthorization, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::CardPayment::Element::CardAuthorization, Increase::Util::AnyHash))
+            )
         end
         def card_authorization=(_)
         end
@@ -179,8 +190,16 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::CardPayment::Element::CardAuthorizationExpiration))
-            .returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthorizationExpiration))
+          params(
+            _: T.nilable(
+              T.any(Increase::Models::CardPayment::Element::CardAuthorizationExpiration, Increase::Util::AnyHash)
+            )
+          )
+            .returns(
+              T.nilable(
+                T.any(Increase::Models::CardPayment::Element::CardAuthorizationExpiration, Increase::Util::AnyHash)
+              )
+            )
         end
         def card_authorization_expiration=(_)
         end
@@ -192,8 +211,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::CardPayment::Element::CardDecline))
-            .returns(T.nilable(Increase::Models::CardPayment::Element::CardDecline))
+          params(_: T.nilable(T.any(Increase::Models::CardPayment::Element::CardDecline, Increase::Util::AnyHash)))
+            .returns(T.nilable(T.any(Increase::Models::CardPayment::Element::CardDecline, Increase::Util::AnyHash)))
         end
         def card_decline=(_)
         end
@@ -207,8 +226,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::CardPayment::Element::CardFuelConfirmation))
-            .returns(T.nilable(Increase::Models::CardPayment::Element::CardFuelConfirmation))
+          params(
+            _: T.nilable(T.any(Increase::Models::CardPayment::Element::CardFuelConfirmation, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::CardPayment::Element::CardFuelConfirmation, Increase::Util::AnyHash))
+            )
         end
         def card_fuel_confirmation=(_)
         end
@@ -221,8 +244,10 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::CardPayment::Element::CardIncrement))
-            .returns(T.nilable(Increase::Models::CardPayment::Element::CardIncrement))
+          params(
+            _: T.nilable(T.any(Increase::Models::CardPayment::Element::CardIncrement, Increase::Util::AnyHash))
+          )
+            .returns(T.nilable(T.any(Increase::Models::CardPayment::Element::CardIncrement, Increase::Util::AnyHash)))
         end
         def card_increment=(_)
         end
@@ -237,8 +262,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::CardPayment::Element::CardRefund))
-            .returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund))
+          params(_: T.nilable(T.any(Increase::Models::CardPayment::Element::CardRefund, Increase::Util::AnyHash)))
+            .returns(T.nilable(T.any(Increase::Models::CardPayment::Element::CardRefund, Increase::Util::AnyHash)))
         end
         def card_refund=(_)
         end
@@ -251,8 +276,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::CardPayment::Element::CardReversal))
-            .returns(T.nilable(Increase::Models::CardPayment::Element::CardReversal))
+          params(_: T.nilable(T.any(Increase::Models::CardPayment::Element::CardReversal, Increase::Util::AnyHash)))
+            .returns(T.nilable(T.any(Increase::Models::CardPayment::Element::CardReversal, Increase::Util::AnyHash)))
         end
         def card_reversal=(_)
         end
@@ -267,8 +292,10 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::CardPayment::Element::CardSettlement))
-            .returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement))
+          params(
+            _: T.nilable(T.any(Increase::Models::CardPayment::Element::CardSettlement, Increase::Util::AnyHash))
+          )
+            .returns(T.nilable(T.any(Increase::Models::CardPayment::Element::CardSettlement, Increase::Util::AnyHash)))
         end
         def card_settlement=(_)
         end
@@ -282,8 +309,10 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::CardPayment::Element::CardValidation))
-            .returns(T.nilable(Increase::Models::CardPayment::Element::CardValidation))
+          params(
+            _: T.nilable(T.any(Increase::Models::CardPayment::Element::CardValidation, Increase::Util::AnyHash))
+          )
+            .returns(T.nilable(T.any(Increase::Models::CardPayment::Element::CardValidation, Increase::Util::AnyHash)))
         end
         def card_validation=(_)
         end
@@ -425,8 +454,16 @@ module Increase
           end
 
           sig do
-            params(_: T.nilable(Increase::Models::CardPayment::Element::CardAuthentication::Challenge))
-              .returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthentication::Challenge))
+            params(
+              _: T.nilable(
+                T.any(Increase::Models::CardPayment::Element::CardAuthentication::Challenge, Increase::Util::AnyHash)
+              )
+            )
+              .returns(
+                T.nilable(
+                  T.any(Increase::Models::CardPayment::Element::CardAuthentication::Challenge, Increase::Util::AnyHash)
+                )
+              )
           end
           def challenge=(_)
           end
@@ -1188,8 +1225,12 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails)
-              .returns(Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails)
+            params(
+              _: T.any(Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails, Increase::Util::AnyHash)
+            )
+              .returns(
+                T.any(Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails, Increase::Util::AnyHash)
+              )
           end
           def network_details=(_)
           end
@@ -1200,8 +1241,18 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::CardPayment::Element::CardAuthorization::NetworkIdentifiers)
-              .returns(Increase::Models::CardPayment::Element::CardAuthorization::NetworkIdentifiers)
+            params(
+              _: T.any(
+                Increase::Models::CardPayment::Element::CardAuthorization::NetworkIdentifiers,
+                Increase::Util::AnyHash
+              )
+            )
+              .returns(
+                T.any(
+                  Increase::Models::CardPayment::Element::CardAuthorization::NetworkIdentifiers,
+                  Increase::Util::AnyHash
+                )
+              )
           end
           def network_identifiers=(_)
           end
@@ -1306,8 +1357,12 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::CardPayment::Element::CardAuthorization::Verification)
-              .returns(Increase::Models::CardPayment::Element::CardAuthorization::Verification)
+            params(
+              _: T.any(Increase::Models::CardPayment::Element::CardAuthorization::Verification, Increase::Util::AnyHash)
+            )
+              .returns(
+                T.any(Increase::Models::CardPayment::Element::CardAuthorization::Verification, Increase::Util::AnyHash)
+              )
           end
           def verification=(_)
           end
@@ -1507,8 +1562,22 @@ module Increase
             end
 
             sig do
-              params(_: T.nilable(Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa))
-                .returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa))
+              params(
+                _: T.nilable(
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa,
+                    Increase::Util::AnyHash
+                  )
+                )
+              )
+                .returns(
+                  T.nilable(
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa,
+                      Increase::Util::AnyHash
+                    )
+                  )
+                )
             end
             def visa=(_)
             end
@@ -2043,8 +2112,18 @@ module Increase
             end
 
             sig do
-              params(_: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode)
-                .returns(Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode)
+              params(
+                _: T.any(
+                  Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode,
+                  Increase::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode,
+                    Increase::Util::AnyHash
+                  )
+                )
             end
             def card_verification_code=(_)
             end
@@ -2056,8 +2135,18 @@ module Increase
             end
 
             sig do
-              params(_: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress)
-                .returns(Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress)
+              params(
+                _: T.any(
+                  Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress,
+                  Increase::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress,
+                    Increase::Util::AnyHash
+                  )
+                )
             end
             def cardholder_address=(_)
             end
@@ -2644,8 +2733,12 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails)
-              .returns(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails)
+            params(
+              _: T.any(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails, Increase::Util::AnyHash)
+            )
+              .returns(
+                T.any(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails, Increase::Util::AnyHash)
+              )
           end
           def network_details=(_)
           end
@@ -2656,8 +2749,12 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::CardPayment::Element::CardDecline::NetworkIdentifiers)
-              .returns(Increase::Models::CardPayment::Element::CardDecline::NetworkIdentifiers)
+            params(
+              _: T.any(Increase::Models::CardPayment::Element::CardDecline::NetworkIdentifiers, Increase::Util::AnyHash)
+            )
+              .returns(
+                T.any(Increase::Models::CardPayment::Element::CardDecline::NetworkIdentifiers, Increase::Util::AnyHash)
+              )
           end
           def network_identifiers=(_)
           end
@@ -2773,8 +2870,10 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::CardPayment::Element::CardDecline::Verification)
-              .returns(Increase::Models::CardPayment::Element::CardDecline::Verification)
+            params(
+              _: T.any(Increase::Models::CardPayment::Element::CardDecline::Verification, Increase::Util::AnyHash)
+            )
+              .returns(T.any(Increase::Models::CardPayment::Element::CardDecline::Verification, Increase::Util::AnyHash))
           end
           def verification=(_)
           end
@@ -2967,8 +3066,16 @@ module Increase
             end
 
             sig do
-              params(_: T.nilable(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa))
-                .returns(T.nilable(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa))
+              params(
+                _: T.nilable(
+                  T.any(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa, Increase::Util::AnyHash)
+                )
+              )
+                .returns(
+                  T.nilable(
+                    T.any(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa, Increase::Util::AnyHash)
+                  )
+                )
             end
             def visa=(_)
             end
@@ -3612,8 +3719,18 @@ module Increase
             end
 
             sig do
-              params(_: Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode)
-                .returns(Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode)
+              params(
+                _: T.any(
+                  Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode,
+                  Increase::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode,
+                    Increase::Util::AnyHash
+                  )
+                )
             end
             def card_verification_code=(_)
             end
@@ -3625,8 +3742,18 @@ module Increase
             end
 
             sig do
-              params(_: Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress)
-                .returns(Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress)
+              params(
+                _: T.any(
+                  Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress,
+                  Increase::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress,
+                    Increase::Util::AnyHash
+                  )
+                )
             end
             def cardholder_address=(_)
             end
@@ -3936,8 +4063,18 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers)
-              .returns(Increase::Models::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers)
+            params(
+              _: T.any(
+                Increase::Models::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers,
+                Increase::Util::AnyHash
+              )
+            )
+              .returns(
+                T.any(
+                  Increase::Models::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers,
+                  Increase::Util::AnyHash
+                )
+              )
           end
           def network_identifiers=(_)
           end
@@ -4213,8 +4350,12 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::CardPayment::Element::CardIncrement::NetworkIdentifiers)
-              .returns(Increase::Models::CardPayment::Element::CardIncrement::NetworkIdentifiers)
+            params(
+              _: T.any(Increase::Models::CardPayment::Element::CardIncrement::NetworkIdentifiers, Increase::Util::AnyHash)
+            )
+              .returns(
+                T.any(Increase::Models::CardPayment::Element::CardIncrement::NetworkIdentifiers, Increase::Util::AnyHash)
+              )
           end
           def network_identifiers=(_)
           end
@@ -4501,8 +4642,12 @@ module Increase
           end
 
           sig do
-            params(_: T.nilable(Increase::Models::CardPayment::Element::CardRefund::Cashback))
-              .returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::Cashback))
+            params(
+              _: T.nilable(T.any(Increase::Models::CardPayment::Element::CardRefund::Cashback, Increase::Util::AnyHash))
+            )
+              .returns(
+                T.nilable(T.any(Increase::Models::CardPayment::Element::CardRefund::Cashback, Increase::Util::AnyHash))
+              )
           end
           def cashback=(_)
           end
@@ -4526,8 +4671,12 @@ module Increase
           end
 
           sig do
-            params(_: T.nilable(Increase::Models::CardPayment::Element::CardRefund::Interchange))
-              .returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::Interchange))
+            params(
+              _: T.nilable(T.any(Increase::Models::CardPayment::Element::CardRefund::Interchange, Increase::Util::AnyHash))
+            )
+              .returns(
+                T.nilable(T.any(Increase::Models::CardPayment::Element::CardRefund::Interchange, Increase::Util::AnyHash))
+              )
           end
           def interchange=(_)
           end
@@ -4602,8 +4751,12 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::CardPayment::Element::CardRefund::NetworkIdentifiers)
-              .returns(Increase::Models::CardPayment::Element::CardRefund::NetworkIdentifiers)
+            params(
+              _: T.any(Increase::Models::CardPayment::Element::CardRefund::NetworkIdentifiers, Increase::Util::AnyHash)
+            )
+              .returns(
+                T.any(Increase::Models::CardPayment::Element::CardRefund::NetworkIdentifiers, Increase::Util::AnyHash)
+              )
           end
           def network_identifiers=(_)
           end
@@ -4634,8 +4787,16 @@ module Increase
           end
 
           sig do
-            params(_: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails))
-              .returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails))
+            params(
+              _: T.nilable(
+                T.any(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails, Increase::Util::AnyHash)
+              )
+            )
+              .returns(
+                T.nilable(
+                  T.any(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails, Increase::Util::AnyHash)
+                )
+              )
           end
           def purchase_details=(_)
           end
@@ -5007,8 +5168,22 @@ module Increase
             end
 
             sig do
-              params(_: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental))
-                .returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental))
+              params(
+                _: T.nilable(
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental,
+                    Increase::Util::AnyHash
+                  )
+                )
+              )
+                .returns(
+                  T.nilable(
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental,
+                      Increase::Util::AnyHash
+                    )
+                  )
+                )
             end
             def car_rental=(_)
             end
@@ -5047,8 +5222,22 @@ module Increase
             end
 
             sig do
-              params(_: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging))
-                .returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging))
+              params(
+                _: T.nilable(
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging,
+                    Increase::Util::AnyHash
+                  )
+                )
+              )
+                .returns(
+                  T.nilable(
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging,
+                      Increase::Util::AnyHash
+                    )
+                  )
+                )
             end
             def lodging=(_)
             end
@@ -5113,8 +5302,22 @@ module Increase
             end
 
             sig do
-              params(_: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel))
-                .returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel))
+              params(
+                _: T.nilable(
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel,
+                    Increase::Util::AnyHash
+                  )
+                )
+              )
+                .returns(
+                  T.nilable(
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel,
+                      Increase::Util::AnyHash
+                    )
+                  )
+                )
             end
             def travel=(_)
             end
@@ -5948,9 +6151,21 @@ module Increase
 
               sig do
                 params(
-                  _: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary)
+                  _: T.nilable(
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary,
+                      Increase::Util::AnyHash
+                    )
+                  )
                 )
-                  .returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary))
+                  .returns(
+                    T.nilable(
+                      T.any(
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary,
+                        Increase::Util::AnyHash
+                      )
+                    )
+                  )
               end
               def ancillary=(_)
               end
@@ -7004,8 +7219,12 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::CardPayment::Element::CardReversal::NetworkIdentifiers)
-              .returns(Increase::Models::CardPayment::Element::CardReversal::NetworkIdentifiers)
+            params(
+              _: T.any(Increase::Models::CardPayment::Element::CardReversal::NetworkIdentifiers, Increase::Util::AnyHash)
+            )
+              .returns(
+                T.any(Increase::Models::CardPayment::Element::CardReversal::NetworkIdentifiers, Increase::Util::AnyHash)
+              )
           end
           def network_identifiers=(_)
           end
@@ -7348,8 +7567,16 @@ module Increase
           end
 
           sig do
-            params(_: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::Cashback))
-              .returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::Cashback))
+            params(
+              _: T.nilable(
+                T.any(Increase::Models::CardPayment::Element::CardSettlement::Cashback, Increase::Util::AnyHash)
+              )
+            )
+              .returns(
+                T.nilable(
+                  T.any(Increase::Models::CardPayment::Element::CardSettlement::Cashback, Increase::Util::AnyHash)
+                )
+              )
           end
           def cashback=(_)
           end
@@ -7373,8 +7600,16 @@ module Increase
           end
 
           sig do
-            params(_: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::Interchange))
-              .returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::Interchange))
+            params(
+              _: T.nilable(
+                T.any(Increase::Models::CardPayment::Element::CardSettlement::Interchange, Increase::Util::AnyHash)
+              )
+            )
+              .returns(
+                T.nilable(
+                  T.any(Increase::Models::CardPayment::Element::CardSettlement::Interchange, Increase::Util::AnyHash)
+                )
+              )
           end
           def interchange=(_)
           end
@@ -7449,8 +7684,12 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::CardPayment::Element::CardSettlement::NetworkIdentifiers)
-              .returns(Increase::Models::CardPayment::Element::CardSettlement::NetworkIdentifiers)
+            params(
+              _: T.any(Increase::Models::CardPayment::Element::CardSettlement::NetworkIdentifiers, Increase::Util::AnyHash)
+            )
+              .returns(
+                T.any(Increase::Models::CardPayment::Element::CardSettlement::NetworkIdentifiers, Increase::Util::AnyHash)
+              )
           end
           def network_identifiers=(_)
           end
@@ -7490,8 +7729,16 @@ module Increase
           end
 
           sig do
-            params(_: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails))
-              .returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails))
+            params(
+              _: T.nilable(
+                T.any(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails, Increase::Util::AnyHash)
+              )
+            )
+              .returns(
+                T.nilable(
+                  T.any(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails, Increase::Util::AnyHash)
+                )
+              )
           end
           def purchase_details=(_)
           end
@@ -7875,8 +8122,22 @@ module Increase
             end
 
             sig do
-              params(_: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental))
-                .returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental))
+              params(
+                _: T.nilable(
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental,
+                    Increase::Util::AnyHash
+                  )
+                )
+              )
+                .returns(
+                  T.nilable(
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental,
+                      Increase::Util::AnyHash
+                    )
+                  )
+                )
             end
             def car_rental=(_)
             end
@@ -7915,8 +8176,22 @@ module Increase
             end
 
             sig do
-              params(_: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging))
-                .returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging))
+              params(
+                _: T.nilable(
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging,
+                    Increase::Util::AnyHash
+                  )
+                )
+              )
+                .returns(
+                  T.nilable(
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging,
+                      Increase::Util::AnyHash
+                    )
+                  )
+                )
             end
             def lodging=(_)
             end
@@ -7981,8 +8256,22 @@ module Increase
             end
 
             sig do
-              params(_: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel))
-                .returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel))
+              params(
+                _: T.nilable(
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel,
+                    Increase::Util::AnyHash
+                  )
+                )
+              )
+                .returns(
+                  T.nilable(
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel,
+                      Increase::Util::AnyHash
+                    )
+                  )
+                )
             end
             def travel=(_)
             end
@@ -8822,10 +9111,20 @@ module Increase
 
               sig do
                 params(
-                  _: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary)
+                  _: T.nilable(
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary,
+                      Increase::Util::AnyHash
+                    )
+                  )
                 )
                   .returns(
-                    T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary)
+                    T.nilable(
+                      T.any(
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary,
+                        Increase::Util::AnyHash
+                      )
+                    )
                   )
               end
               def ancillary=(_)
@@ -9903,8 +10202,12 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails)
-              .returns(Increase::Models::CardPayment::Element::CardValidation::NetworkDetails)
+            params(
+              _: T.any(Increase::Models::CardPayment::Element::CardValidation::NetworkDetails, Increase::Util::AnyHash)
+            )
+              .returns(
+                T.any(Increase::Models::CardPayment::Element::CardValidation::NetworkDetails, Increase::Util::AnyHash)
+              )
           end
           def network_details=(_)
           end
@@ -9915,8 +10218,12 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::CardPayment::Element::CardValidation::NetworkIdentifiers)
-              .returns(Increase::Models::CardPayment::Element::CardValidation::NetworkIdentifiers)
+            params(
+              _: T.any(Increase::Models::CardPayment::Element::CardValidation::NetworkIdentifiers, Increase::Util::AnyHash)
+            )
+              .returns(
+                T.any(Increase::Models::CardPayment::Element::CardValidation::NetworkIdentifiers, Increase::Util::AnyHash)
+              )
           end
           def network_identifiers=(_)
           end
@@ -9980,8 +10287,12 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::CardPayment::Element::CardValidation::Verification)
-              .returns(Increase::Models::CardPayment::Element::CardValidation::Verification)
+            params(
+              _: T.any(Increase::Models::CardPayment::Element::CardValidation::Verification, Increase::Util::AnyHash)
+            )
+              .returns(
+                T.any(Increase::Models::CardPayment::Element::CardValidation::Verification, Increase::Util::AnyHash)
+              )
           end
           def verification=(_)
           end
@@ -10138,8 +10449,22 @@ module Increase
             end
 
             sig do
-              params(_: T.nilable(Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa))
-                .returns(T.nilable(Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa))
+              params(
+                _: T.nilable(
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa,
+                    Increase::Util::AnyHash
+                  )
+                )
+              )
+                .returns(
+                  T.nilable(
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa,
+                      Increase::Util::AnyHash
+                    )
+                  )
+                )
             end
             def visa=(_)
             end
@@ -10621,8 +10946,18 @@ module Increase
             end
 
             sig do
-              params(_: Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode)
-                .returns(Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode)
+              params(
+                _: T.any(
+                  Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode,
+                  Increase::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode,
+                    Increase::Util::AnyHash
+                  )
+                )
             end
             def card_verification_code=(_)
             end
@@ -10634,8 +10969,18 @@ module Increase
             end
 
             sig do
-              params(_: Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress)
-                .returns(Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress)
+              params(
+                _: T.any(
+                  Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress,
+                  Increase::Util::AnyHash
+                )
+              )
+                .returns(
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress,
+                    Increase::Util::AnyHash
+                  )
+                )
             end
             def cardholder_address=(_)
             end

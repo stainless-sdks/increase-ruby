@@ -20,8 +20,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::WireTransferListParams::CreatedAt)
-          .returns(Increase::Models::WireTransferListParams::CreatedAt)
+        params(_: T.any(Increase::Models::WireTransferListParams::CreatedAt, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::WireTransferListParams::CreatedAt, Increase::Util::AnyHash))
       end
       def created_at=(_)
       end

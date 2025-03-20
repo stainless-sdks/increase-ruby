@@ -144,8 +144,18 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails)
-            .returns(Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails)
+          params(
+            _: T.any(
+              Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
+              Increase::Util::AnyHash
+            )
+          )
+            .returns(
+              T.any(
+                Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
+                Increase::Util::AnyHash
+              )
+            )
         end
         def network_details=(_)
         end
@@ -395,8 +405,18 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa)
-              .returns(Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa)
+            params(
+              _: T.any(
+                Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa,
+                Increase::Util::AnyHash
+              )
+            )
+              .returns(
+                T.any(
+                  Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa,
+                  Increase::Util::AnyHash
+                )
+              )
           end
           def visa=(_)
           end

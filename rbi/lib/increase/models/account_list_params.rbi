@@ -11,8 +11,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::AccountListParams::CreatedAt)
-          .returns(Increase::Models::AccountListParams::CreatedAt)
+        params(_: T.any(Increase::Models::AccountListParams::CreatedAt, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::AccountListParams::CreatedAt, Increase::Util::AnyHash))
       end
       def created_at=(_)
       end
@@ -80,7 +80,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::AccountListParams::Status).returns(Increase::Models::AccountListParams::Status)
+        params(_: T.any(Increase::Models::AccountListParams::Status, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::AccountListParams::Status, Increase::Util::AnyHash))
       end
       def status=(_)
       end

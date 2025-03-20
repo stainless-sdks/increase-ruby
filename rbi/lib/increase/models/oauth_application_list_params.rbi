@@ -11,8 +11,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::OAuthApplicationListParams::CreatedAt)
-          .returns(Increase::Models::OAuthApplicationListParams::CreatedAt)
+        params(_: T.any(Increase::Models::OAuthApplicationListParams::CreatedAt, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::OAuthApplicationListParams::CreatedAt, Increase::Util::AnyHash))
       end
       def created_at=(_)
       end
@@ -41,8 +41,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::OAuthApplicationListParams::Status)
-          .returns(Increase::Models::OAuthApplicationListParams::Status)
+        params(_: T.any(Increase::Models::OAuthApplicationListParams::Status, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::OAuthApplicationListParams::Status, Increase::Util::AnyHash))
       end
       def status=(_)
       end

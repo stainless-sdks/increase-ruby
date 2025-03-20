@@ -42,8 +42,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::WireDrawdownRequestListParams::Status)
-          .returns(Increase::Models::WireDrawdownRequestListParams::Status)
+        params(_: T.any(Increase::Models::WireDrawdownRequestListParams::Status, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::WireDrawdownRequestListParams::Status, Increase::Util::AnyHash))
       end
       def status=(_)
       end

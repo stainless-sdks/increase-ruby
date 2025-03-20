@@ -11,7 +11,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::FileListParams::CreatedAt).returns(Increase::Models::FileListParams::CreatedAt)
+        params(_: T.any(Increase::Models::FileListParams::CreatedAt, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::FileListParams::CreatedAt, Increase::Util::AnyHash))
       end
       def created_at=(_)
       end
@@ -51,7 +52,10 @@ module Increase
       def purpose
       end
 
-      sig { params(_: Increase::Models::FileListParams::Purpose).returns(Increase::Models::FileListParams::Purpose) }
+      sig do
+        params(_: T.any(Increase::Models::FileListParams::Purpose, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::FileListParams::Purpose, Increase::Util::AnyHash))
+      end
       def purpose=(_)
       end
 

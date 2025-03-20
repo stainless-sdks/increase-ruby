@@ -20,8 +20,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::CheckTransferListParams::CreatedAt)
-          .returns(Increase::Models::CheckTransferListParams::CreatedAt)
+        params(_: T.any(Increase::Models::CheckTransferListParams::CreatedAt, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::CheckTransferListParams::CreatedAt, Increase::Util::AnyHash))
       end
       def created_at=(_)
       end
@@ -62,8 +62,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::CheckTransferListParams::Status)
-          .returns(Increase::Models::CheckTransferListParams::Status)
+        params(_: T.any(Increase::Models::CheckTransferListParams::Status, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::CheckTransferListParams::Status, Increase::Util::AnyHash))
       end
       def status=(_)
       end
