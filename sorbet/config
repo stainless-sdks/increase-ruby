@@ -1,2 +1,3 @@
 --dir=rbi
 --ignore=test/
+--ignore=tmp/

@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-require "minitest/test_task"
-require "rake/clean"
-require "rubocop/rake_task"
+require "pathname"
 require "securerandom"
 require "shellwords"
 
+require "minitest/test_task"
+require "rake/clean"
+require "rubocop/rake_task"
+
 CLEAN.push(*%w[.idea/ .ruby-lsp/ .yardoc/])
 
-xargs = %w[xargs --no-run-if-empty --null --max-procs=0 --max-args=300 --]
-
-task(default: [:test, :format])
+task(default: [:test])
 
 Minitest::TestTask.create do |t|
   t.libs = %w[.]
@@ -24,6 +24,7 @@ RuboCop::RakeTask.new(:rubocop) do |t|
   end
 end
 
+xargs = %w[xargs --no-run-if-empty --null --max-procs=0 --max-args=300 --]
 multitask(:ruboformat) do
   find = %w[find ./lib ./test ./rbi -type f -and ( -name *.rb -or -name *.rbi ) -print0]
   fmt = xargs + %w[rubocop --fail-level F --autocorrect --format simple --]
@@ -69,12 +70,29 @@ multitask(:steep) do
   sh(*%w[steep check])
 end
 
+srb_tc = *%w[srb typecheck]
 multitask(:sorbet) do
-  sh(*%w[srb typecheck])
+  sh(srb_tc)
 end
 
 file("sorbet/tapioca") do
   sh(*%w[tapioca init])
+end
+
+multitask(:tapioca) do
+  gem = "increase"
+  tapioca = Pathname("tmp/tapioca")
+  tapioca.rmtree
+  tapioca.mkpath
+
+  tapioca.join("Gemfile").write(<<~RUBY)
+    source("https://rubygems.org")
+    gem("#{gem}", path: "../..")
+  RUBY
+
+  sh(*%w[bundle], chdir: tapioca)
+  sh(*%w[tapioca gem], gem, chdir: tapioca)
+  sh(srb_tc, chdir: tapioca)
 end
 
 multitask(typecheck: [:steep, :sorbet])
@@ -84,6 +102,6 @@ multitask(:build) do
   sh(*%w[gem build -- increase.gemspec])
 end
 
-multitask(release: [:build]) do
+multitask(release: [:tapioca, :lint, :build]) do
   sh(*%w[gem push], *FileList["increase-*.gem"])
 end
