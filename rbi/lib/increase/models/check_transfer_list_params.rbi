@@ -195,37 +195,43 @@ module Increase
 
           # The transfer is awaiting approval.
           PENDING_APPROVAL =
-            T.let(:pending_approval, Increase::Models::CheckTransferListParams::Status::In::OrSymbol)
+            T.let(:pending_approval, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol)
 
           # The transfer has been canceled.
-          CANCELED = T.let(:canceled, Increase::Models::CheckTransferListParams::Status::In::OrSymbol)
+          CANCELED = T.let(:canceled, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol)
 
           # The transfer is pending submission.
           PENDING_SUBMISSION =
-            T.let(:pending_submission, Increase::Models::CheckTransferListParams::Status::In::OrSymbol)
+            T.let(:pending_submission, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol)
 
           # The transfer requires attention from an Increase operator.
           REQUIRES_ATTENTION =
-            T.let(:requires_attention, Increase::Models::CheckTransferListParams::Status::In::OrSymbol)
+            T.let(:requires_attention, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol)
 
           # The transfer has been rejected.
-          REJECTED = T.let(:rejected, Increase::Models::CheckTransferListParams::Status::In::OrSymbol)
+          REJECTED = T.let(:rejected, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol)
 
           # The check is queued for mailing.
           PENDING_MAILING =
-            T.let(:pending_mailing, Increase::Models::CheckTransferListParams::Status::In::OrSymbol)
+            T.let(:pending_mailing, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol)
 
           # The check has been mailed.
-          MAILED = T.let(:mailed, Increase::Models::CheckTransferListParams::Status::In::OrSymbol)
+          MAILED = T.let(:mailed, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol)
 
           # The check has been deposited.
-          DEPOSITED = T.let(:deposited, Increase::Models::CheckTransferListParams::Status::In::OrSymbol)
+          DEPOSITED = T.let(:deposited, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol)
 
           # A stop-payment was requested for this check.
-          STOPPED = T.let(:stopped, Increase::Models::CheckTransferListParams::Status::In::OrSymbol)
+          STOPPED = T.let(:stopped, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol)
 
           # The transfer has been returned.
-          RETURNED = T.let(:returned, Increase::Models::CheckTransferListParams::Status::In::OrSymbol)
+          RETURNED = T.let(:returned, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

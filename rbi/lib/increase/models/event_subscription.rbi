@@ -654,6 +654,12 @@ module Increase
         # Occurs whenever a Wire Transfer is updated.
         WIRE_TRANSFER_UPDATED =
           T.let(:"wire_transfer.updated", Increase::Models::EventSubscription::SelectedEventCategory::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::EventSubscription::SelectedEventCategory::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # This indicates if we'll send notifications to this subscription.
@@ -675,6 +681,12 @@ module Increase
         # The subscription is temporarily disabled due to delivery errors and Events will not be delivered.
         REQUIRES_ATTENTION =
           T.let(:requires_attention, Increase::Models::EventSubscription::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::EventSubscription::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -686,6 +698,12 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::EventSubscription::Type::TaggedSymbol) }
 
         EVENT_SUBSCRIPTION = T.let(:event_subscription, Increase::Models::EventSubscription::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::EventSubscription::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

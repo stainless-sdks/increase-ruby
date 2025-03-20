@@ -123,7 +123,7 @@ module Increase
         # The card is permanently canceled.
         CANCELED: :canceled
 
-        def self.values: -> ::Array[Increase::Models::CardUpdateParams::status]
+        def self?.values: -> ::Array[Increase::Models::CardUpdateParams::status]
       end
     end
   end

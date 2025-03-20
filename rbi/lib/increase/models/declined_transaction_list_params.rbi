@@ -140,33 +140,42 @@ module Increase
 
           # ACH Decline: details will be under the `ach_decline` object.
           ACH_DECLINE =
-            T.let(:ach_decline, Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol)
+            T.let(:ach_decline, Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol)
 
           # Card Decline: details will be under the `card_decline` object.
           CARD_DECLINE =
-            T.let(:card_decline, Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol)
+            T.let(:card_decline, Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol)
 
           # Check Decline: details will be under the `check_decline` object.
           CHECK_DECLINE =
-            T.let(:check_decline, Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol)
+            T.let(:check_decline, Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol)
 
           # Inbound Real-Time Payments Transfer Decline: details will be under the `inbound_real_time_payments_transfer_decline` object.
           INBOUND_REAL_TIME_PAYMENTS_TRANSFER_DECLINE =
             T.let(
               :inbound_real_time_payments_transfer_decline,
-              Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol
+              Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol
             )
 
           # Wire Decline: details will be under the `wire_decline` object.
           WIRE_DECLINE =
-            T.let(:wire_decline, Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol)
+            T.let(:wire_decline, Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol)
 
           # Check Deposit Rejection: details will be under the `check_deposit_rejection` object.
           CHECK_DEPOSIT_REJECTION =
-            T.let(:check_deposit_rejection, Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol)
+            T.let(
+              :check_deposit_rejection,
+              Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol
+            )
 
           # The Declined Transaction was made for an undocumented or deprecated reason.
-          OTHER = T.let(:other, Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol)
+          OTHER = T.let(:other, Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 

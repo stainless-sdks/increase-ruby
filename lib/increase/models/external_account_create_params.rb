@@ -72,6 +72,12 @@ module Increase
         UNKNOWN = :unknown
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The type of the destination account. Defaults to `checking`.
@@ -88,6 +94,12 @@ module Increase
         OTHER = :other
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

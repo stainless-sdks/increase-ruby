@@ -121,10 +121,16 @@ module Increase
             T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountListParams::Status::In::TaggedSymbol) }
 
           # The External Account is active.
-          ACTIVE = T.let(:active, Increase::Models::ExternalAccountListParams::Status::In::OrSymbol)
+          ACTIVE = T.let(:active, Increase::Models::ExternalAccountListParams::Status::In::TaggedSymbol)
 
           # The External Account is archived and won't appear in the dashboard.
-          ARCHIVED = T.let(:archived, Increase::Models::ExternalAccountListParams::Status::In::OrSymbol)
+          ARCHIVED = T.let(:archived, Increase::Models::ExternalAccountListParams::Status::In::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::ExternalAccountListParams::Status::In::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

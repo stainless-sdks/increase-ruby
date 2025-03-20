@@ -41,7 +41,7 @@ module Increase
 
         CARD_DETAILS: :card_details
 
-        def self.values: -> ::Array[Increase::Models::CardDetails::type_]
+        def self?.values: -> ::Array[Increase::Models::CardDetails::type_]
       end
     end
   end

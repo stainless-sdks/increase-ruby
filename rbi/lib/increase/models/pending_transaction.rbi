@@ -221,6 +221,12 @@ module Increase
 
         # US Dollar (USD)
         USD = T.let(:USD, Increase::Models::PendingTransaction::Currency::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::PendingTransaction::Currency::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # The type of the route this Pending Transaction came through.
@@ -238,6 +244,12 @@ module Increase
 
         # A Lockbox.
         LOCKBOX = T.let(:lockbox, Increase::Models::PendingTransaction::RouteType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::PendingTransaction::RouteType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class Source < Increase::BaseModel
@@ -630,6 +642,17 @@ module Increase
                 :USD,
                 Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
         end
 
@@ -1104,6 +1127,15 @@ module Increase
             # This object was actioned by the network, through stand-in processing.
             NETWORK =
               T.let(:network, Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
@@ -1139,6 +1171,15 @@ module Increase
             # US Dollar (USD)
             USD =
               T.let(:USD, Increase::Models::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
 
           # The direction describes the direction the funds will move, either from the
@@ -1161,6 +1202,17 @@ module Increase
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND =
               T.let(:refund, Increase::Models::PendingTransaction::Source::CardAuthorization::Direction::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::Direction::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
 
           class NetworkDetails < Increase::BaseModel
@@ -1253,6 +1305,17 @@ module Increase
                   :visa,
                   Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category::TaggedSymbol
                 )
+
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category::TaggedSymbol]
+                    )
+                end
+                def values
+                end
+              end
             end
 
             class Visa < Increase::BaseModel
@@ -1448,6 +1511,19 @@ module Increase
                     :non_secure_transaction,
                     Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
 
               # The method used to enter the cardholder's primary account number and card
@@ -1536,6 +1612,19 @@ module Increase
                     :integrated_circuit_card_no_cvv,
                     Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
 
               # Only present when `actioner: network`. Describes why a card authorization was
@@ -1603,6 +1692,19 @@ module Increase
                     :other,
                     Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
             end
           end
@@ -1721,6 +1823,17 @@ module Increase
                 :refund,
                 Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
 
           # A constant representing the object's type. For this resource it will always be
@@ -1738,6 +1851,15 @@ module Increase
                 :card_authorization,
                 Increase::Models::PendingTransaction::Source::CardAuthorization::Type::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::Type::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
 
           class Verification < Increase::BaseModel
@@ -1893,6 +2015,19 @@ module Increase
                     :no_match,
                     Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
             end
 
@@ -2041,6 +2176,19 @@ module Increase
                     :no_match,
                     Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
             end
           end
@@ -2099,6 +2247,12 @@ module Increase
 
           # The Pending Transaction was made for an undocumented or deprecated reason.
           OTHER = T.let(:other, Increase::Models::PendingTransaction::Source::Category::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::PendingTransaction::Source::Category::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         class CheckDepositInstruction < Increase::BaseModel
@@ -2221,6 +2375,17 @@ module Increase
             # US Dollar (USD)
             USD =
               T.let(:USD, Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
         end
 
@@ -2338,6 +2503,17 @@ module Increase
                 :USD,
                 Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
         end
 
@@ -2526,6 +2702,15 @@ module Increase
 
             # US Dollar (USD)
             USD = T.let(:USD, Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
 
           # The status of the hold.
@@ -2543,6 +2728,15 @@ module Increase
             # Funds have been released.
             COMPLETE =
               T.let(:complete, Increase::Models::PendingTransaction::Source::InboundFundsHold::Status::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::PendingTransaction::Source::InboundFundsHold::Status::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
 
           # A constant representing the object's type. For this resource it will always be
@@ -2560,6 +2754,15 @@ module Increase
                 :inbound_funds_hold,
                 Increase::Models::PendingTransaction::Source::InboundFundsHold::Type::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::PendingTransaction::Source::InboundFundsHold::Type::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
         end
 
@@ -2710,6 +2913,12 @@ module Increase
 
         # The Pending Transaction is confirmed. An associated Transaction exists for this object. The Pending Transaction will no longer count against your balance and can generally be hidden from UIs, etc.
         COMPLETE = T.let(:complete, Increase::Models::PendingTransaction::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::PendingTransaction::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -2722,6 +2931,12 @@ module Increase
 
         PENDING_TRANSACTION =
           T.let(:pending_transaction, Increase::Models::PendingTransaction::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::PendingTransaction::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

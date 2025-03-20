@@ -186,6 +186,15 @@ module Increase
 
           # US Dollar (USD)
           USD = T.let(:USD, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
 
         # The status of the hold.
@@ -203,6 +212,15 @@ module Increase
           # Funds have been released.
           COMPLETE =
             T.let(:complete, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
 
         # A constant representing the object's type. For this resource it will always be
@@ -220,6 +238,15 @@ module Increase
               :inbound_funds_hold,
               Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
       end
     end

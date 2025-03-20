@@ -239,6 +239,12 @@ module Increase
 
         # This Lockbox is inactive. Checks mailed to it will not be deposited.
         INACTIVE = T.let(:inactive, Increase::Models::Lockbox::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::Lockbox::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -250,6 +256,12 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Lockbox::Type::TaggedSymbol) }
 
         LOCKBOX = T.let(:lockbox, Increase::Models::Lockbox::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::Lockbox::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

@@ -64,6 +64,12 @@ module Increase
         CARD_DETAILS = :card_details
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

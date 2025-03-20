@@ -194,7 +194,7 @@ module Increase
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER: :user
 
-          def self.values: -> ::Array[Increase::Models::RealTimePaymentsTransfer::CreatedBy::category]
+          def self?.values: -> ::Array[Increase::Models::RealTimePaymentsTransfer::CreatedBy::category]
         end
 
         type oauth_application = { name: String }
@@ -241,7 +241,7 @@ module Increase
         # US Dollar (USD)
         USD: :USD
 
-        def self.values: -> ::Array[Increase::Models::RealTimePaymentsTransfer::currency]
+        def self?.values: -> ::Array[Increase::Models::RealTimePaymentsTransfer::currency]
       end
 
       type rejection =
@@ -355,7 +355,7 @@ module Increase
           # Some other error or issue has occurred.
           OTHER: :other
 
-          def self.values: -> ::Array[Increase::Models::RealTimePaymentsTransfer::Rejection::reject_reason_code]
+          def self?.values: -> ::Array[Increase::Models::RealTimePaymentsTransfer::Rejection::reject_reason_code]
         end
       end
 
@@ -396,7 +396,7 @@ module Increase
         # The transfer has been sent successfully and is complete.
         COMPLETE: :complete
 
-        def self.values: -> ::Array[Increase::Models::RealTimePaymentsTransfer::status]
+        def self?.values: -> ::Array[Increase::Models::RealTimePaymentsTransfer::status]
       end
 
       type submission =
@@ -422,7 +422,7 @@ module Increase
 
         REAL_TIME_PAYMENTS_TRANSFER: :real_time_payments_transfer
 
-        def self.values: -> ::Array[Increase::Models::RealTimePaymentsTransfer::type_]
+        def self?.values: -> ::Array[Increase::Models::RealTimePaymentsTransfer::type_]
       end
     end
   end

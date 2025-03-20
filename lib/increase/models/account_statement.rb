@@ -101,6 +101,12 @@ module Increase
         ACCOUNT_STATEMENT = :account_statement
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

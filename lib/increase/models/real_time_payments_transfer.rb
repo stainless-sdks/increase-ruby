@@ -376,6 +376,12 @@ module Increase
           USER = :user
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class OAuthApplication < Increase::BaseModel
@@ -437,6 +443,12 @@ module Increase
         USD = :USD
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Rejection < Increase::BaseModel
@@ -543,6 +555,12 @@ module Increase
           OTHER = :other
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -575,6 +593,12 @@ module Increase
         COMPLETE = :complete
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Submission < Increase::BaseModel
@@ -611,6 +635,12 @@ module Increase
         REAL_TIME_PAYMENTS_TRANSFER = :real_time_payments_transfer
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

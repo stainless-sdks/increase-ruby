@@ -103,6 +103,12 @@ module Increase
         THIRD_PARTY = :third_party
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class PhysicalCheck < Increase::BaseModel

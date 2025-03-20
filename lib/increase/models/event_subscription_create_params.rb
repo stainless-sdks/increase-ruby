@@ -330,6 +330,12 @@ module Increase
         WIRE_TRANSFER_UPDATED = :"wire_transfer.updated"
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

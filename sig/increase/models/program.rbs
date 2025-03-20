@@ -60,7 +60,7 @@ module Increase
         # Grasshopper Bank
         GRASSHOPPER_BANK: :grasshopper_bank
 
-        def self.values: -> ::Array[Increase::Models::Program::bank]
+        def self?.values: -> ::Array[Increase::Models::Program::bank]
       end
 
       type type_ = :program
@@ -70,7 +70,7 @@ module Increase
 
         PROGRAM: :program
 
-        def self.values: -> ::Array[Increase::Models::Program::type_]
+        def self?.values: -> ::Array[Increase::Models::Program::type_]
       end
     end
   end

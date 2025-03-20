@@ -217,6 +217,12 @@ module Increase
         INBOUND_WIRE_DRAWDOWN_REQUEST = :inbound_wire_drawdown_request
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

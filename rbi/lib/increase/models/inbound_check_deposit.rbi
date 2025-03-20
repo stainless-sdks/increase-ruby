@@ -385,6 +385,12 @@ module Increase
           # The recipient was not able to process the check. This usually happens for e.g., low quality images.
           NON_CONFORMING_ITEM =
             T.let(:non_conforming_item, Increase::Models::InboundCheckDeposit::Adjustment::Reason::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::InboundCheckDeposit::Adjustment::Reason::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -412,6 +418,12 @@ module Increase
 
         # US Dollar (USD)
         USD = T.let(:USD, Increase::Models::InboundCheckDeposit::Currency::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::InboundCheckDeposit::Currency::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class DepositReturn < Increase::BaseModel
@@ -499,6 +511,12 @@ module Increase
           # The check was not endorsed by the payee.
           ENDORSEMENT_IRREGULAR =
             T.let(:endorsement_irregular, Increase::Models::InboundCheckDeposit::DepositReturn::Reason::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::InboundCheckDeposit::DepositReturn::Reason::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -522,6 +540,12 @@ module Increase
         # The payee name analysis was not evaluated.
         NOT_EVALUATED =
           T.let(:not_evaluated, Increase::Models::InboundCheckDeposit::PayeeNameAnalysis::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::InboundCheckDeposit::PayeeNameAnalysis::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # The status of the Inbound Check Deposit.
@@ -546,6 +570,12 @@ module Increase
         # The Inbound Check Deposit requires attention from an Increase operator.
         REQUIRES_ATTENTION =
           T.let(:requires_attention, Increase::Models::InboundCheckDeposit::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::InboundCheckDeposit::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -558,6 +588,12 @@ module Increase
 
         INBOUND_CHECK_DEPOSIT =
           T.let(:inbound_check_deposit, Increase::Models::InboundCheckDeposit::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::InboundCheckDeposit::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

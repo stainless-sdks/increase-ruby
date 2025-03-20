@@ -112,17 +112,23 @@ module Increase
 
           # The drawdown request is queued to be submitted to Fedwire.
           PENDING_SUBMISSION =
-            T.let(:pending_submission, Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol)
+            T.let(:pending_submission, Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol)
 
           # The drawdown request has been sent and the recipient should respond in some way.
           PENDING_RESPONSE =
-            T.let(:pending_response, Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol)
+            T.let(:pending_response, Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol)
 
           # The drawdown request has been fulfilled by the recipient.
-          FULFILLED = T.let(:fulfilled, Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol)
+          FULFILLED = T.let(:fulfilled, Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol)
 
           # The drawdown request has been refused by the recipient.
-          REFUSED = T.let(:refused, Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol)
+          REFUSED = T.let(:refused, Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

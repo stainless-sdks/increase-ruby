@@ -63,19 +63,28 @@ module Increase
 
           # Increase has requested more information related to the Card Dispute from you.
           PENDING_USER_INFORMATION =
-            T.let(:pending_user_information, Increase::Models::Simulations::CardDisputeActionParams::Status::OrSymbol)
+            T.let(
+              :pending_user_information,
+              Increase::Models::Simulations::CardDisputeActionParams::Status::TaggedSymbol
+            )
 
           # The Card Dispute has been accepted and your funds have been returned. The card dispute will eventually transition into `won` or `lost` depending on the outcome.
-          ACCEPTED = T.let(:accepted, Increase::Models::Simulations::CardDisputeActionParams::Status::OrSymbol)
+          ACCEPTED = T.let(:accepted, Increase::Models::Simulations::CardDisputeActionParams::Status::TaggedSymbol)
 
           # The Card Dispute has been rejected.
-          REJECTED = T.let(:rejected, Increase::Models::Simulations::CardDisputeActionParams::Status::OrSymbol)
+          REJECTED = T.let(:rejected, Increase::Models::Simulations::CardDisputeActionParams::Status::TaggedSymbol)
 
           # The Card Dispute has been lost and funds previously credited from the acceptance have been debited.
-          LOST = T.let(:lost, Increase::Models::Simulations::CardDisputeActionParams::Status::OrSymbol)
+          LOST = T.let(:lost, Increase::Models::Simulations::CardDisputeActionParams::Status::TaggedSymbol)
 
           # The Card Dispute has been won and no further action can be taken.
-          WON = T.let(:won, Increase::Models::Simulations::CardDisputeActionParams::Status::OrSymbol)
+          WON = T.let(:won, Increase::Models::Simulations::CardDisputeActionParams::Status::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::Simulations::CardDisputeActionParams::Status::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

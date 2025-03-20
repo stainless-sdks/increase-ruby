@@ -149,6 +149,12 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::AccountStatement::Type::TaggedSymbol) }
 
         ACCOUNT_STATEMENT = T.let(:account_statement, Increase::Models::AccountStatement::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::AccountStatement::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

@@ -76,7 +76,7 @@ module Increase
           # The Card Profile is no longer in use.
           ARCHIVED: :archived
 
-          def self.values: -> ::Array[Increase::Models::DigitalCardProfileListParams::Status::in_]
+          def self?.values: -> ::Array[Increase::Models::DigitalCardProfileListParams::Status::in_]
         end
       end
     end

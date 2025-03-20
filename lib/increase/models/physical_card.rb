@@ -229,6 +229,12 @@ module Increase
           FEDEX_2_DAY = :fedex_2_day
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # The status of this shipment.
@@ -257,6 +263,12 @@ module Increase
           RETURNED = :returned
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class Tracking < Increase::BaseModel
@@ -314,6 +326,12 @@ module Increase
         CANCELED = :canceled
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -324,6 +342,12 @@ module Increase
         PHYSICAL_CARD = :physical_card
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

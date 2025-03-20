@@ -49,13 +49,19 @@ module Increase
           T.type_alias { T.any(Symbol, Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol) }
 
         # The physical card is active.
-        ACTIVE = T.let(:active, Increase::Models::PhysicalCardUpdateParams::Status::OrSymbol)
+        ACTIVE = T.let(:active, Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol)
 
         # The physical card is temporarily disabled.
-        DISABLED = T.let(:disabled, Increase::Models::PhysicalCardUpdateParams::Status::OrSymbol)
+        DISABLED = T.let(:disabled, Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol)
 
         # The physical card is permanently canceled.
-        CANCELED = T.let(:canceled, Increase::Models::PhysicalCardUpdateParams::Status::OrSymbol)
+        CANCELED = T.let(:canceled, Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

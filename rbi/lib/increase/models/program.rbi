@@ -160,6 +160,12 @@ module Increase
 
         # Grasshopper Bank
         GRASSHOPPER_BANK = T.let(:grasshopper_bank, Increase::Models::Program::Bank::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::Program::Bank::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -171,6 +177,12 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Program::Type::TaggedSymbol) }
 
         PROGRAM = T.let(:program, Increase::Models::Program::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::Program::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

@@ -120,18 +120,24 @@ module Increase
             T.type_alias { T.any(Symbol, Increase::Models::DocumentListParams::Category::In::TaggedSymbol) }
 
           # Internal Revenue Service Form 1099-INT.
-          FORM_1099_INT = T.let(:form_1099_int, Increase::Models::DocumentListParams::Category::In::OrSymbol)
+          FORM_1099_INT = T.let(:form_1099_int, Increase::Models::DocumentListParams::Category::In::TaggedSymbol)
 
           # Internal Revenue Service Form 1099-MISC.
-          FORM_1099_MISC = T.let(:form_1099_misc, Increase::Models::DocumentListParams::Category::In::OrSymbol)
+          FORM_1099_MISC = T.let(:form_1099_misc, Increase::Models::DocumentListParams::Category::In::TaggedSymbol)
 
           # A document submitted in response to a proof of authorization request for an ACH transfer.
           PROOF_OF_AUTHORIZATION =
-            T.let(:proof_of_authorization, Increase::Models::DocumentListParams::Category::In::OrSymbol)
+            T.let(:proof_of_authorization, Increase::Models::DocumentListParams::Category::In::TaggedSymbol)
 
           # Company information, such a policies or procedures, typically submitted during our due diligence process.
           COMPANY_INFORMATION =
-            T.let(:company_information, Increase::Models::DocumentListParams::Category::In::OrSymbol)
+            T.let(:company_information, Increase::Models::DocumentListParams::Category::In::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::DocumentListParams::Category::In::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 

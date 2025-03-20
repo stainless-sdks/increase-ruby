@@ -309,7 +309,7 @@ module Increase
           # Code R68. A rare return reason. The return was sent too late.
           UNTIMELY_RETURN: :untimely_return
 
-          def self.values: -> ::Array[Increase::Models::Simulations::ACHTransferReturnParams::reason]
+          def self?.values: -> ::Array[Increase::Models::Simulations::ACHTransferReturnParams::reason]
         end
       end
     end

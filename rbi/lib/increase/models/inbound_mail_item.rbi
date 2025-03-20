@@ -140,6 +140,12 @@ module Increase
         # The Lockbox or its associated Account is not active.
         LOCKBOX_NOT_ACTIVE =
           T.let(:lockbox_not_active, Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # If the mail item has been processed.
@@ -157,6 +163,12 @@ module Increase
 
         # The mail item has been rejected.
         REJECTED = T.let(:rejected, Increase::Models::InboundMailItem::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::InboundMailItem::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -168,6 +180,12 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::InboundMailItem::Type::TaggedSymbol) }
 
         INBOUND_MAIL_ITEM = T.let(:inbound_mail_item, Increase::Models::InboundMailItem::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::InboundMailItem::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

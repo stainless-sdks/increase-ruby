@@ -285,6 +285,12 @@ module Increase
 
           # Deny the authentication attempt.
           DENY = T.let(:deny, Increase::Models::RealTimeDecision::CardAuthentication::Decision::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::RealTimeDecision::CardAuthentication::Decision::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -385,6 +391,15 @@ module Increase
           # Your application was unable to deliver the one-time code to the cardholder.
           FAILURE =
             T.let(:failure, Increase::Models::RealTimeDecision::CardAuthenticationChallenge::Result::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::RealTimeDecision::CardAuthenticationChallenge::Result::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
       end
 
@@ -775,6 +790,12 @@ module Increase
 
           # Decline the authorization.
           DECLINE = T.let(:decline, Increase::Models::RealTimeDecision::CardAuthorization::Decision::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::RealTimeDecision::CardAuthorization::Decision::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         # The direction describes the direction the funds will move, either from the
@@ -793,6 +814,12 @@ module Increase
 
           # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
           REFUND = T.let(:refund, Increase::Models::RealTimeDecision::CardAuthorization::Direction::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::RealTimeDecision::CardAuthorization::Direction::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         class NetworkDetails < Increase::BaseModel
@@ -877,6 +904,17 @@ module Increase
                 :visa,
                 Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
 
           class Visa < Increase::BaseModel
@@ -1072,6 +1110,19 @@ module Increase
                   :non_secure_transaction,
                   Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                 )
+
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                      ]
+                    )
+                end
+                def values
+                end
+              end
             end
 
             # The method used to enter the cardholder's primary account number and card
@@ -1160,6 +1211,19 @@ module Increase
                   :integrated_circuit_card_no_cvv,
                   Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                 )
+
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                      ]
+                    )
+                end
+                def values
+                end
+              end
             end
 
             # Only present when `actioner: network`. Describes why a card authorization was
@@ -1227,6 +1291,19 @@ module Increase
                   :other,
                   Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                 )
+
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                      ]
+                    )
+                end
+                def values
+                end
+              end
             end
           end
         end
@@ -1334,6 +1411,15 @@ module Increase
           # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
           REFUND =
             T.let(:refund, Increase::Models::RealTimeDecision::CardAuthorization::ProcessingCategory::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::RealTimeDecision::CardAuthorization::ProcessingCategory::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
 
         class RequestDetails < Increase::BaseModel
@@ -1442,6 +1528,17 @@ module Increase
                 :incremental_authorization,
                 Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
 
           class IncrementalAuthorization < Increase::BaseModel
@@ -1629,6 +1726,19 @@ module Increase
                   :no_match,
                   Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
                 )
+
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
+                      ]
+                    )
+                end
+                def values
+                end
+              end
             end
           end
 
@@ -1777,6 +1887,19 @@ module Increase
                   :no_match,
                   Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
                 )
+
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
+                      ]
+                    )
+                end
+                def values
+                end
+              end
             end
           end
         end
@@ -1814,6 +1937,12 @@ module Increase
             :digital_wallet_authentication_requested,
             Increase::Models::RealTimeDecision::Category::TaggedSymbol
           )
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::RealTimeDecision::Category::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class DigitalWalletAuthentication < Increase::BaseModel
@@ -1940,6 +2069,15 @@ module Increase
           # Send one-time passcodes over email.
           EMAIL =
             T.let(:email, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
 
         # The digital wallet app being used.
@@ -1983,6 +2121,17 @@ module Increase
               :unknown,
               Increase::Models::RealTimeDecision::DigitalWalletAuthentication::DigitalWallet::TaggedSymbol
             )
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Increase::Models::RealTimeDecision::DigitalWalletAuthentication::DigitalWallet::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
 
         # Whether your application successfully delivered the one-time passcode.
@@ -2001,6 +2150,15 @@ module Increase
           # Your application failed to deliver the one-time passcode to the cardholder.
           FAILURE =
             T.let(:failure, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Result::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Result::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
       end
 
@@ -2092,6 +2250,12 @@ module Increase
 
           # Decline the provisioning request.
           DECLINE = T.let(:decline, Increase::Models::RealTimeDecision::DigitalWalletToken::Decision::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::RealTimeDecision::DigitalWalletToken::Decision::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         # The digital wallet app being used.
@@ -2118,6 +2282,15 @@ module Increase
           # Unknown
           UNKNOWN =
             T.let(:unknown, Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
       end
 
@@ -2136,6 +2309,12 @@ module Increase
 
         # Your webhook failed to respond to the authorization in time.
         TIMED_OUT = T.let(:timed_out, Increase::Models::RealTimeDecision::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::RealTimeDecision::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -2147,6 +2326,12 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::RealTimeDecision::Type::TaggedSymbol) }
 
         REAL_TIME_DECISION = T.let(:real_time_decision, Increase::Models::RealTimeDecision::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::RealTimeDecision::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

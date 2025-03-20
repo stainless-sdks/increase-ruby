@@ -363,6 +363,12 @@ module Increase
         WIRE_TRANSFER_UPDATED = :"wire_transfer.updated"
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # This indicates if we'll send notifications to this subscription.
@@ -382,6 +388,12 @@ module Increase
         REQUIRES_ATTENTION = :requires_attention
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -392,6 +404,12 @@ module Increase
         EVENT_SUBSCRIPTION = :event_subscription
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

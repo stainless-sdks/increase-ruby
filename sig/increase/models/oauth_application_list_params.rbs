@@ -102,7 +102,7 @@ module Increase
           # The application is deleted.
           DELETED: :deleted
 
-          def self.values: -> ::Array[Increase::Models::OAuthApplicationListParams::Status::in_]
+          def self?.values: -> ::Array[Increase::Models::OAuthApplicationListParams::Status::in_]
         end
       end
     end

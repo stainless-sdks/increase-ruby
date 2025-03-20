@@ -156,10 +156,16 @@ module Increase
             T.type_alias { T.any(Symbol, Increase::Models::AccountNumberListParams::ACHDebitStatus::In::TaggedSymbol) }
 
           # ACH Debits are allowed.
-          ALLOWED = T.let(:allowed, Increase::Models::AccountNumberListParams::ACHDebitStatus::In::OrSymbol)
+          ALLOWED = T.let(:allowed, Increase::Models::AccountNumberListParams::ACHDebitStatus::In::TaggedSymbol)
 
           # ACH Debits are blocked.
-          BLOCKED = T.let(:blocked, Increase::Models::AccountNumberListParams::ACHDebitStatus::In::OrSymbol)
+          BLOCKED = T.let(:blocked, Increase::Models::AccountNumberListParams::ACHDebitStatus::In::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::In::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -248,13 +254,19 @@ module Increase
             T.type_alias { T.any(Symbol, Increase::Models::AccountNumberListParams::Status::In::TaggedSymbol) }
 
           # The account number is active.
-          ACTIVE = T.let(:active, Increase::Models::AccountNumberListParams::Status::In::OrSymbol)
+          ACTIVE = T.let(:active, Increase::Models::AccountNumberListParams::Status::In::TaggedSymbol)
 
           # The account number is temporarily disabled.
-          DISABLED = T.let(:disabled, Increase::Models::AccountNumberListParams::Status::In::OrSymbol)
+          DISABLED = T.let(:disabled, Increase::Models::AccountNumberListParams::Status::In::TaggedSymbol)
 
           # The account number is permanently disabled.
-          CANCELED = T.let(:canceled, Increase::Models::AccountNumberListParams::Status::In::OrSymbol)
+          CANCELED = T.let(:canceled, Increase::Models::AccountNumberListParams::Status::In::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::AccountNumberListParams::Status::In::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

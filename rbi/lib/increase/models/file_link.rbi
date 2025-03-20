@@ -118,6 +118,12 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::FileLink::Type::TaggedSymbol) }
 
         FILE_LINK = T.let(:file_link, Increase::Models::FileLink::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::FileLink::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

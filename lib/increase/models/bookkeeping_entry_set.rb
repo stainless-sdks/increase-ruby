@@ -103,6 +103,12 @@ module Increase
         BOOKKEEPING_ENTRY_SET = :bookkeeping_entry_set
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

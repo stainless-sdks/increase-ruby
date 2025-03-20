@@ -56,6 +56,12 @@ module Increase
           WEBHOOK_DECLINED = :webhook_declined
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # A constant representing the object's type. For this resource it will always be
@@ -67,6 +73,12 @@ module Increase
             :inbound_digital_wallet_token_request_simulation_result
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

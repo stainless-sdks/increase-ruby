@@ -218,6 +218,12 @@ module Increase
           TAX_CALCULATED_ON_PRE_DISCOUNT_INVOICE_TOTAL = :tax_calculated_on_pre_discount_invoice_total
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # Indicates how the merchant applied taxes.
@@ -240,6 +246,12 @@ module Increase
           GROSS_PRICE_INVOICE_LEVEL = :gross_price_invoice_level
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -410,6 +422,12 @@ module Increase
           PAYMENT = :payment
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # Indicates how the merchant applied the discount for this specific line item.
@@ -426,6 +444,12 @@ module Increase
           TAX_CALCULATED_ON_PRE_DISCOUNT_LINE_ITEM_TOTAL = :tax_calculated_on_pre_discount_line_item_total
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -437,6 +461,12 @@ module Increase
         CARD_PURCHASE_SUPPLEMENT = :card_purchase_supplement
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

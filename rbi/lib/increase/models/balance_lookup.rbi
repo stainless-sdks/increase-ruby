@@ -82,6 +82,12 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::BalanceLookup::Type::TaggedSymbol) }
 
         BALANCE_LOOKUP = T.let(:balance_lookup, Increase::Models::BalanceLookup::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::BalanceLookup::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

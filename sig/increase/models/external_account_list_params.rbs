@@ -76,7 +76,7 @@ module Increase
           # The External Account is archived and won't appear in the dashboard.
           ARCHIVED: :archived
 
-          def self.values: -> ::Array[Increase::Models::ExternalAccountListParams::Status::in_]
+          def self?.values: -> ::Array[Increase::Models::ExternalAccountListParams::Status::in_]
         end
       end
     end

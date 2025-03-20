@@ -100,7 +100,7 @@ module Increase
         # US Dollar (USD)
         USD: :USD
 
-        def self.values: -> ::Array[Increase::Models::IntrafiBalance::currency]
+        def self?.values: -> ::Array[Increase::Models::IntrafiBalance::currency]
       end
 
       type type_ = :intrafi_balance
@@ -110,7 +110,7 @@ module Increase
 
         INTRAFI_BALANCE: :intrafi_balance
 
-        def self.values: -> ::Array[Increase::Models::IntrafiBalance::type_]
+        def self?.values: -> ::Array[Increase::Models::IntrafiBalance::type_]
       end
     end
   end

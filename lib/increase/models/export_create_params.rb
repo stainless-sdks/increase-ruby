@@ -127,6 +127,12 @@ module Increase
         VENDOR_CSV = :vendor_csv
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class AccountStatementOfx < Increase::BaseModel
@@ -461,6 +467,12 @@ module Increase
             DISABLED = :disabled
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
       end

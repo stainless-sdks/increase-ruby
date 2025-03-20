@@ -152,7 +152,7 @@ module Increase
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER: :user
 
-          def self.values: -> ::Array[Increase::Models::AccountTransfer::CreatedBy::category]
+          def self?.values: -> ::Array[Increase::Models::AccountTransfer::CreatedBy::category]
         end
 
         type oauth_application = { name: String }
@@ -199,7 +199,7 @@ module Increase
         # US Dollar (USD)
         USD: :USD
 
-        def self.values: -> ::Array[Increase::Models::AccountTransfer::currency]
+        def self?.values: -> ::Array[Increase::Models::AccountTransfer::currency]
       end
 
       type network = :account
@@ -209,7 +209,7 @@ module Increase
 
         ACCOUNT: :account
 
-        def self.values: -> ::Array[Increase::Models::AccountTransfer::network]
+        def self?.values: -> ::Array[Increase::Models::AccountTransfer::network]
       end
 
       type status = :pending_approval | :canceled | :complete
@@ -226,7 +226,7 @@ module Increase
         # The transfer has been completed.
         COMPLETE: :complete
 
-        def self.values: -> ::Array[Increase::Models::AccountTransfer::status]
+        def self?.values: -> ::Array[Increase::Models::AccountTransfer::status]
       end
 
       type type_ = :account_transfer
@@ -236,7 +236,7 @@ module Increase
 
         ACCOUNT_TRANSFER: :account_transfer
 
-        def self.values: -> ::Array[Increase::Models::AccountTransfer::type_]
+        def self?.values: -> ::Array[Increase::Models::AccountTransfer::type_]
       end
     end
   end

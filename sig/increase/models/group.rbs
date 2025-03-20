@@ -41,7 +41,7 @@ module Increase
         # The Group can make ACH debits.
         ENABLED: :enabled
 
-        def self.values: -> ::Array[Increase::Models::Group::ach_debit_status]
+        def self?.values: -> ::Array[Increase::Models::Group::ach_debit_status]
       end
 
       type activation_status = :unactivated | :activated
@@ -55,7 +55,7 @@ module Increase
         # The Group is activated.
         ACTIVATED: :activated
 
-        def self.values: -> ::Array[Increase::Models::Group::activation_status]
+        def self?.values: -> ::Array[Increase::Models::Group::activation_status]
       end
 
       type type_ = :group
@@ -65,7 +65,7 @@ module Increase
 
         GROUP: :group
 
-        def self.values: -> ::Array[Increase::Models::Group::type_]
+        def self?.values: -> ::Array[Increase::Models::Group::type_]
       end
     end
   end

@@ -150,6 +150,12 @@ module Increase
         ARCHIVED = :archived
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class TextColor < Increase::BaseModel
@@ -191,6 +197,12 @@ module Increase
         DIGITAL_CARD_PROFILE = :digital_card_profile
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

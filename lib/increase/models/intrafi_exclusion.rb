@@ -117,6 +117,12 @@ module Increase
         ARCHIVED = :archived
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -127,6 +133,12 @@ module Increase
         INTRAFI_EXCLUSION = :intrafi_exclusion
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

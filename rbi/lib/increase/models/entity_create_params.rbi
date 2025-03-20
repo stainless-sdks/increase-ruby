@@ -176,20 +176,26 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::Structure::TaggedSymbol) }
 
         # A corporation.
-        CORPORATION = T.let(:corporation, Increase::Models::EntityCreateParams::Structure::OrSymbol)
+        CORPORATION = T.let(:corporation, Increase::Models::EntityCreateParams::Structure::TaggedSymbol)
 
         # An individual person.
-        NATURAL_PERSON = T.let(:natural_person, Increase::Models::EntityCreateParams::Structure::OrSymbol)
+        NATURAL_PERSON = T.let(:natural_person, Increase::Models::EntityCreateParams::Structure::TaggedSymbol)
 
         # Multiple individual people.
-        JOINT = T.let(:joint, Increase::Models::EntityCreateParams::Structure::OrSymbol)
+        JOINT = T.let(:joint, Increase::Models::EntityCreateParams::Structure::TaggedSymbol)
 
         # A trust.
-        TRUST = T.let(:trust, Increase::Models::EntityCreateParams::Structure::OrSymbol)
+        TRUST = T.let(:trust, Increase::Models::EntityCreateParams::Structure::TaggedSymbol)
 
         # A government authority.
         GOVERNMENT_AUTHORITY =
-          T.let(:government_authority, Increase::Models::EntityCreateParams::Structure::OrSymbol)
+          T.let(:government_authority, Increase::Models::EntityCreateParams::Structure::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::EntityCreateParams::Structure::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class Corporation < Increase::BaseModel
@@ -786,36 +792,49 @@ module Increase
                 SOCIAL_SECURITY_NUMBER =
                   T.let(
                     :social_security_number,
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::OrSymbol
+                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                   )
 
                 # An individual taxpayer identification number (ITIN).
                 INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER =
                   T.let(
                     :individual_taxpayer_identification_number,
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::OrSymbol
+                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                   )
 
                 # A passport number.
                 PASSPORT =
                   T.let(
                     :passport,
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::OrSymbol
+                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                   )
 
                 # A driver's license number.
                 DRIVERS_LICENSE =
                   T.let(
                     :drivers_license,
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::OrSymbol
+                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                   )
 
                 # Another identifying document.
                 OTHER =
                   T.let(
                     :other,
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::OrSymbol
+                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
 
               class DriversLicense < Increase::BaseModel
@@ -1010,11 +1029,20 @@ module Increase
 
             # A person with 25% or greater direct or indirect ownership of the entity.
             OWNERSHIP =
-              T.let(:ownership, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::OrSymbol)
+              T.let(:ownership, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::TaggedSymbol)
 
             # A person who manages, directs, or has significant control of the entity.
             CONTROL =
-              T.let(:control, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::OrSymbol)
+              T.let(:control, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
         end
       end
@@ -1216,7 +1244,16 @@ module Increase
 
           # The Public Entity is a Municipality.
           MUNICIPALITY =
-            T.let(:municipality, Increase::Models::EntityCreateParams::GovernmentAuthority::Category::OrSymbol)
+            T.let(:municipality, Increase::Models::EntityCreateParams::GovernmentAuthority::Category::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::EntityCreateParams::GovernmentAuthority::Category::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
       end
 
@@ -1557,33 +1594,47 @@ module Increase
               SOCIAL_SECURITY_NUMBER =
                 T.let(
                   :social_security_number,
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::OrSymbol
+                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
                 )
 
               # An individual taxpayer identification number (ITIN).
               INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER =
                 T.let(
                   :individual_taxpayer_identification_number,
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::OrSymbol
+                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
                 )
 
               # A passport number.
               PASSPORT =
                 T.let(
                   :passport,
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::OrSymbol
+                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
                 )
 
               # A driver's license number.
               DRIVERS_LICENSE =
                 T.let(
                   :drivers_license,
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::OrSymbol
+                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
                 )
 
               # Another identifying document.
               OTHER =
-                T.let(:other, Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::OrSymbol)
+                T.let(
+                  :other,
+                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
+                )
+
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol]
+                    )
+                end
+                def values
+                end
+              end
             end
 
             class DriversLicense < Increase::BaseModel
@@ -2055,30 +2106,44 @@ module Increase
             SOCIAL_SECURITY_NUMBER =
               T.let(
                 :social_security_number,
-                Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::OrSymbol
+                Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol
               )
 
             # An individual taxpayer identification number (ITIN).
             INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER =
               T.let(
                 :individual_taxpayer_identification_number,
-                Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::OrSymbol
+                Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol
               )
 
             # A passport number.
             PASSPORT =
-              T.let(:passport, Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::OrSymbol)
+              T.let(
+                :passport,
+                Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol
+              )
 
             # A driver's license number.
             DRIVERS_LICENSE =
               T.let(
                 :drivers_license,
-                Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::OrSymbol
+                Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol
               )
 
             # Another identifying document.
             OTHER =
-              T.let(:other, Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::OrSymbol)
+              T.let(:other, Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
 
           class DriversLicense < Increase::BaseModel
@@ -2326,10 +2391,20 @@ module Increase
             T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::TaggedSymbol) }
 
           # Alloy. See https://alloy.com for more information.
-          ALLOY = T.let(:alloy, Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::OrSymbol)
+          ALLOY = T.let(:alloy, Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::TaggedSymbol)
 
           # Middesk. See https://middesk.com for more information.
-          MIDDESK = T.let(:middesk, Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::OrSymbol)
+          MIDDESK =
+            T.let(:middesk, Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
       end
 
@@ -2545,10 +2620,16 @@ module Increase
             T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::Trust::Category::TaggedSymbol) }
 
           # The trust is revocable by the grantor.
-          REVOCABLE = T.let(:revocable, Increase::Models::EntityCreateParams::Trust::Category::OrSymbol)
+          REVOCABLE = T.let(:revocable, Increase::Models::EntityCreateParams::Trust::Category::TaggedSymbol)
 
           # The trust cannot be revoked.
-          IRREVOCABLE = T.let(:irrevocable, Increase::Models::EntityCreateParams::Trust::Category::OrSymbol)
+          IRREVOCABLE = T.let(:irrevocable, Increase::Models::EntityCreateParams::Trust::Category::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::EntityCreateParams::Trust::Category::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         class Trustee < Increase::BaseModel
@@ -2612,7 +2693,13 @@ module Increase
 
             # The trustee is an individual.
             INDIVIDUAL =
-              T.let(:individual, Increase::Models::EntityCreateParams::Trust::Trustee::Structure::OrSymbol)
+              T.let(:individual, Increase::Models::EntityCreateParams::Trust::Trustee::Structure::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Increase::Models::EntityCreateParams::Trust::Trustee::Structure::TaggedSymbol]) }
+              def values
+              end
+            end
           end
 
           class Individual < Increase::BaseModel
@@ -2944,36 +3031,47 @@ module Increase
                 SOCIAL_SECURITY_NUMBER =
                   T.let(
                     :social_security_number,
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::OrSymbol
+                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
                   )
 
                 # An individual taxpayer identification number (ITIN).
                 INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER =
                   T.let(
                     :individual_taxpayer_identification_number,
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::OrSymbol
+                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
                   )
 
                 # A passport number.
                 PASSPORT =
                   T.let(
                     :passport,
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::OrSymbol
+                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
                   )
 
                 # A driver's license number.
                 DRIVERS_LICENSE =
                   T.let(
                     :drivers_license,
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::OrSymbol
+                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
                   )
 
                 # Another identifying document.
                 OTHER =
                   T.let(
                     :other,
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::OrSymbol
+                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
 
               class DriversLicense < Increase::BaseModel
@@ -3448,30 +3546,44 @@ module Increase
               SOCIAL_SECURITY_NUMBER =
                 T.let(
                   :social_security_number,
-                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::OrSymbol
+                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol
                 )
 
               # An individual taxpayer identification number (ITIN).
               INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER =
                 T.let(
                   :individual_taxpayer_identification_number,
-                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::OrSymbol
+                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol
                 )
 
               # A passport number.
               PASSPORT =
-                T.let(:passport, Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::OrSymbol)
+                T.let(
+                  :passport,
+                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol
+                )
 
               # A driver's license number.
               DRIVERS_LICENSE =
                 T.let(
                   :drivers_license,
-                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::OrSymbol
+                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol
                 )
 
               # Another identifying document.
               OTHER =
-                T.let(:other, Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::OrSymbol)
+                T.let(:other, Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol)
+
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol]
+                    )
+                end
+                def values
+                end
+              end
             end
 
             class DriversLicense < Increase::BaseModel

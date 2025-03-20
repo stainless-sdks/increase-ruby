@@ -81,6 +81,12 @@ module Increase
         DEACTIVATED = :deactivated
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The digital wallet app being used.
@@ -100,6 +106,12 @@ module Increase
         UNKNOWN = :unknown
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -110,6 +122,12 @@ module Increase
         DIGITAL_WALLET_TOKEN = :digital_wallet_token
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Update < Increase::BaseModel
@@ -151,6 +169,12 @@ module Increase
           DEACTIVATED = :deactivated
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

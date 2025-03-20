@@ -101,11 +101,17 @@ module Increase
 
         # An OAuth authorization code.
         AUTHORIZATION_CODE =
-          T.let(:authorization_code, Increase::Models::OAuthTokenCreateParams::GrantType::OrSymbol)
+          T.let(:authorization_code, Increase::Models::OAuthTokenCreateParams::GrantType::TaggedSymbol)
 
         # An OAuth production token.
         PRODUCTION_TOKEN =
-          T.let(:production_token, Increase::Models::OAuthTokenCreateParams::GrantType::OrSymbol)
+          T.let(:production_token, Increase::Models::OAuthTokenCreateParams::GrantType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::OAuthTokenCreateParams::GrantType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

@@ -126,6 +126,12 @@ module Increase
           USD = :USD
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # The status of the hold.
@@ -139,6 +145,12 @@ module Increase
           COMPLETE = :complete
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # A constant representing the object's type. For this resource it will always be
@@ -149,6 +161,12 @@ module Increase
           INBOUND_FUNDS_HOLD = :inbound_funds_hold
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

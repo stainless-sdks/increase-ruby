@@ -156,49 +156,67 @@ module Increase
           ACCOUNT_TRANSFER_INSTRUCTION =
             T.let(
               :account_transfer_instruction,
-              Increase::Models::PendingTransactionListParams::Category::In::OrSymbol
+              Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
             )
 
           # ACH Transfer Instruction: details will be under the `ach_transfer_instruction` object.
           ACH_TRANSFER_INSTRUCTION =
-            T.let(:ach_transfer_instruction, Increase::Models::PendingTransactionListParams::Category::In::OrSymbol)
+            T.let(
+              :ach_transfer_instruction,
+              Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
+            )
 
           # Card Authorization: details will be under the `card_authorization` object.
           CARD_AUTHORIZATION =
-            T.let(:card_authorization, Increase::Models::PendingTransactionListParams::Category::In::OrSymbol)
+            T.let(:card_authorization, Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol)
 
           # Check Deposit Instruction: details will be under the `check_deposit_instruction` object.
           CHECK_DEPOSIT_INSTRUCTION =
-            T.let(:check_deposit_instruction, Increase::Models::PendingTransactionListParams::Category::In::OrSymbol)
+            T.let(
+              :check_deposit_instruction,
+              Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
+            )
 
           # Check Transfer Instruction: details will be under the `check_transfer_instruction` object.
           CHECK_TRANSFER_INSTRUCTION =
-            T.let(:check_transfer_instruction, Increase::Models::PendingTransactionListParams::Category::In::OrSymbol)
+            T.let(
+              :check_transfer_instruction,
+              Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
+            )
 
           # Inbound Funds Hold: details will be under the `inbound_funds_hold` object.
           INBOUND_FUNDS_HOLD =
-            T.let(:inbound_funds_hold, Increase::Models::PendingTransactionListParams::Category::In::OrSymbol)
+            T.let(:inbound_funds_hold, Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol)
 
           # Real-Time Payments Transfer Instruction: details will be under the `real_time_payments_transfer_instruction` object.
           REAL_TIME_PAYMENTS_TRANSFER_INSTRUCTION =
             T.let(
               :real_time_payments_transfer_instruction,
-              Increase::Models::PendingTransactionListParams::Category::In::OrSymbol
+              Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
             )
 
           # Wire Transfer Instruction: details will be under the `wire_transfer_instruction` object.
           WIRE_TRANSFER_INSTRUCTION =
-            T.let(:wire_transfer_instruction, Increase::Models::PendingTransactionListParams::Category::In::OrSymbol)
+            T.let(
+              :wire_transfer_instruction,
+              Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
+            )
 
           # Inbound Wire Transfer Reversal: details will be under the `inbound_wire_transfer_reversal` object.
           INBOUND_WIRE_TRANSFER_REVERSAL =
             T.let(
               :inbound_wire_transfer_reversal,
-              Increase::Models::PendingTransactionListParams::Category::In::OrSymbol
+              Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
             )
 
           # The Pending Transaction was made for an undocumented or deprecated reason.
-          OTHER = T.let(:other, Increase::Models::PendingTransactionListParams::Category::In::OrSymbol)
+          OTHER = T.let(:other, Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -289,10 +307,16 @@ module Increase
             T.type_alias { T.any(Symbol, Increase::Models::PendingTransactionListParams::Status::In::TaggedSymbol) }
 
           # The Pending Transaction is still awaiting confirmation.
-          PENDING = T.let(:pending, Increase::Models::PendingTransactionListParams::Status::In::OrSymbol)
+          PENDING = T.let(:pending, Increase::Models::PendingTransactionListParams::Status::In::TaggedSymbol)
 
           # The Pending Transaction is confirmed. An associated Transaction exists for this object. The Pending Transaction will no longer count against your balance and can generally be hidden from UIs, etc.
-          COMPLETE = T.let(:complete, Increase::Models::PendingTransactionListParams::Status::In::OrSymbol)
+          COMPLETE = T.let(:complete, Increase::Models::PendingTransactionListParams::Status::In::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::PendingTransactionListParams::Status::In::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

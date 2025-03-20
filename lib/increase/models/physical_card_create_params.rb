@@ -188,6 +188,12 @@ module Increase
           FEDEX_2_DAY = :fedex_2_day
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

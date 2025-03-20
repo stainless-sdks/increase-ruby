@@ -455,36 +455,49 @@ module Increase
               SOCIAL_SECURITY_NUMBER =
                 T.let(
                   :social_security_number,
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol
+                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                 )
 
               # An individual taxpayer identification number (ITIN).
               INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER =
                 T.let(
                   :individual_taxpayer_identification_number,
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol
+                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                 )
 
               # A passport number.
               PASSPORT =
                 T.let(
                   :passport,
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol
+                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                 )
 
               # A driver's license number.
               DRIVERS_LICENSE =
                 T.let(
                   :drivers_license,
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol
+                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                 )
 
               # Another identifying document.
               OTHER =
                 T.let(
                   :other,
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol
+                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                 )
+
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
+                      ]
+                    )
+                end
+                def values
+                end
+              end
             end
 
             class DriversLicense < Increase::BaseModel
@@ -679,11 +692,25 @@ module Increase
 
           # A person with 25% or greater direct or indirect ownership of the entity.
           OWNERSHIP =
-            T.let(:ownership, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol)
+            T.let(
+              :ownership,
+              Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::TaggedSymbol
+            )
 
           # A person who manages, directs, or has significant control of the entity.
           CONTROL =
-            T.let(:control, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol)
+            T.let(:control, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::TaggedSymbol]
+                )
+            end
+            def values
+            end
+          end
         end
       end
     end

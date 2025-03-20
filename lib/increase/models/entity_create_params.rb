@@ -152,6 +152,12 @@ module Increase
         GOVERNMENT_AUTHORITY = :government_authority
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Corporation < Increase::BaseModel
@@ -520,6 +526,12 @@ module Increase
                 OTHER = :other
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               class DriversLicense < Increase::BaseModel
@@ -665,6 +677,12 @@ module Increase
             CONTROL = :control
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
       end
@@ -801,6 +819,12 @@ module Increase
           MUNICIPALITY = :municipality
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -1017,6 +1041,12 @@ module Increase
               OTHER = :other
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
 
             class DriversLicense < Increase::BaseModel
@@ -1342,6 +1372,12 @@ module Increase
             OTHER = :other
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           class DriversLicense < Increase::BaseModel
@@ -1527,6 +1563,12 @@ module Increase
           MIDDESK = :middesk
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -1693,6 +1735,12 @@ module Increase
           IRREVOCABLE = :irrevocable
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class Trustee < Increase::BaseModel
@@ -1729,6 +1777,12 @@ module Increase
             INDIVIDUAL = :individual
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           class Individual < Increase::BaseModel
@@ -1921,6 +1975,12 @@ module Increase
                 OTHER = :other
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               class DriversLicense < Increase::BaseModel
@@ -2243,6 +2303,12 @@ module Increase
               OTHER = :other
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
 
             class DriversLicense < Increase::BaseModel

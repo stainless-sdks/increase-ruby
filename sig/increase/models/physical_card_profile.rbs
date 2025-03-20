@@ -69,7 +69,7 @@ module Increase
         # This Physical Card Profile was created by you.
         USER: :user
 
-        def self.values: -> ::Array[Increase::Models::PhysicalCardProfile::creator]
+        def self?.values: -> ::Array[Increase::Models::PhysicalCardProfile::creator]
       end
 
       type status =
@@ -101,7 +101,7 @@ module Increase
         # The Physical Card Profile has been archived.
         ARCHIVED: :archived
 
-        def self.values: -> ::Array[Increase::Models::PhysicalCardProfile::status]
+        def self?.values: -> ::Array[Increase::Models::PhysicalCardProfile::status]
       end
 
       type type_ = :physical_card_profile
@@ -111,7 +111,7 @@ module Increase
 
         PHYSICAL_CARD_PROFILE: :physical_card_profile
 
-        def self.values: -> ::Array[Increase::Models::PhysicalCardProfile::type_]
+        def self?.values: -> ::Array[Increase::Models::PhysicalCardProfile::type_]
       end
     end
   end

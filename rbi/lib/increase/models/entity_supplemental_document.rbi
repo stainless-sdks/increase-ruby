@@ -96,6 +96,12 @@ module Increase
 
         ENTITY_SUPPLEMENTAL_DOCUMENT =
           T.let(:entity_supplemental_document, Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

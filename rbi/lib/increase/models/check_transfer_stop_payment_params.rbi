@@ -50,14 +50,20 @@ module Increase
 
         # The check could not be delivered.
         MAIL_DELIVERY_FAILED =
-          T.let(:mail_delivery_failed, Increase::Models::CheckTransferStopPaymentParams::Reason::OrSymbol)
+          T.let(:mail_delivery_failed, Increase::Models::CheckTransferStopPaymentParams::Reason::TaggedSymbol)
 
         # The check was not authorized.
         NOT_AUTHORIZED =
-          T.let(:not_authorized, Increase::Models::CheckTransferStopPaymentParams::Reason::OrSymbol)
+          T.let(:not_authorized, Increase::Models::CheckTransferStopPaymentParams::Reason::TaggedSymbol)
 
         # The check was stopped for another reason.
-        UNKNOWN = T.let(:unknown, Increase::Models::CheckTransferStopPaymentParams::Reason::OrSymbol)
+        UNKNOWN = T.let(:unknown, Increase::Models::CheckTransferStopPaymentParams::Reason::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::CheckTransferStopPaymentParams::Reason::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

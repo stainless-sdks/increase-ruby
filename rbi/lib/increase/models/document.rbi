@@ -116,6 +116,12 @@ module Increase
 
         # Company information, such a policies or procedures, typically submitted during our due diligence process.
         COMPANY_INFORMATION = T.let(:company_information, Increase::Models::Document::Category::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::Document::Category::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -127,6 +133,12 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Document::Type::TaggedSymbol) }
 
         DOCUMENT = T.let(:document, Increase::Models::Document::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::Document::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

@@ -119,10 +119,21 @@ module Increase
             T.type_alias { T.any(Symbol, Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::TaggedSymbol) }
 
           # ACH Debits are allowed.
-          ALLOWED = T.let(:allowed, Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::OrSymbol)
+          ALLOWED =
+            T.let(:allowed, Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::TaggedSymbol)
 
           # ACH Debits are blocked.
-          BLOCKED = T.let(:blocked, Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::OrSymbol)
+          BLOCKED =
+            T.let(:blocked, Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
       end
 
@@ -164,11 +175,24 @@ module Increase
             T.type_alias { T.any(Symbol, Increase::Models::AccountNumberCreateParams::InboundChecks::Status::TaggedSymbol) }
 
           # Checks with this Account Number will be processed even if they are not associated with a Check Transfer.
-          ALLOWED = T.let(:allowed, Increase::Models::AccountNumberCreateParams::InboundChecks::Status::OrSymbol)
+          ALLOWED =
+            T.let(:allowed, Increase::Models::AccountNumberCreateParams::InboundChecks::Status::TaggedSymbol)
 
           # Checks with this Account Number will be processed only if they can be matched to an existing Check Transfer.
           CHECK_TRANSFERS_ONLY =
-            T.let(:check_transfers_only, Increase::Models::AccountNumberCreateParams::InboundChecks::Status::OrSymbol)
+            T.let(
+              :check_transfers_only,
+              Increase::Models::AccountNumberCreateParams::InboundChecks::Status::TaggedSymbol
+            )
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::AccountNumberCreateParams::InboundChecks::Status::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
       end
     end

@@ -126,7 +126,7 @@ module Increase
           # The Pending Transaction was made for an undocumented or deprecated reason.
           OTHER: :other
 
-          def self.values: -> ::Array[Increase::Models::PendingTransactionListParams::Category::in_]
+          def self?.values: -> ::Array[Increase::Models::PendingTransactionListParams::Category::in_]
         end
       end
 
@@ -189,7 +189,7 @@ module Increase
           # The Pending Transaction is confirmed. An associated Transaction exists for this object. The Pending Transaction will no longer count against your balance and can generally be hidden from UIs, etc.
           COMPLETE: :complete
 
-          def self.values: -> ::Array[Increase::Models::PendingTransactionListParams::Status::in_]
+          def self?.values: -> ::Array[Increase::Models::PendingTransactionListParams::Status::in_]
         end
       end
     end

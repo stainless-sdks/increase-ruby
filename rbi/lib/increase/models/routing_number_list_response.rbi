@@ -115,6 +115,12 @@ module Increase
         # The routing number cannot receive this transfer type.
         NOT_SUPPORTED =
           T.let(:not_supported, Increase::Models::RoutingNumberListResponse::ACHTransfers::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::RoutingNumberListResponse::ACHTransfers::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # This routing number's support for Real-Time Payments Transfers.
@@ -136,6 +142,15 @@ module Increase
             :not_supported,
             Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers::TaggedSymbol
           )
+
+        class << self
+          sig do
+            override
+              .returns(T::Array[Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers::TaggedSymbol])
+          end
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -148,6 +163,12 @@ module Increase
           T.type_alias { T.any(Symbol, Increase::Models::RoutingNumberListResponse::Type::TaggedSymbol) }
 
         ROUTING_NUMBER = T.let(:routing_number, Increase::Models::RoutingNumberListResponse::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::RoutingNumberListResponse::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # This routing number's support for Wire Transfers.
@@ -164,6 +185,12 @@ module Increase
         # The routing number cannot receive this transfer type.
         NOT_SUPPORTED =
           T.let(:not_supported, Increase::Models::RoutingNumberListResponse::WireTransfers::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::RoutingNumberListResponse::WireTransfers::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

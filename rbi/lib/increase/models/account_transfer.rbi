@@ -440,6 +440,12 @@ module Increase
 
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER = T.let(:user, Increase::Models::AccountTransfer::CreatedBy::Category::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Increase::Models::AccountTransfer::CreatedBy::Category::TaggedSymbol]) }
+            def values
+            end
+          end
         end
 
         class OAuthApplication < Increase::BaseModel
@@ -508,6 +514,12 @@ module Increase
 
         # US Dollar (USD)
         USD = T.let(:USD, Increase::Models::AccountTransfer::Currency::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::AccountTransfer::Currency::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # The transfer's network.
@@ -518,6 +530,12 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::AccountTransfer::Network::TaggedSymbol) }
 
         ACCOUNT = T.let(:account, Increase::Models::AccountTransfer::Network::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::AccountTransfer::Network::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # The lifecycle status of the transfer.
@@ -535,6 +553,12 @@ module Increase
 
         # The transfer has been completed.
         COMPLETE = T.let(:complete, Increase::Models::AccountTransfer::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::AccountTransfer::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -546,6 +570,12 @@ module Increase
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::AccountTransfer::Type::TaggedSymbol) }
 
         ACCOUNT_TRANSFER = T.let(:account_transfer, Increase::Models::AccountTransfer::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Increase::Models::AccountTransfer::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

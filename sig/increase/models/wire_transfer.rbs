@@ -200,7 +200,7 @@ module Increase
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER: :user
 
-          def self.values: -> ::Array[Increase::Models::WireTransfer::CreatedBy::category]
+          def self?.values: -> ::Array[Increase::Models::WireTransfer::CreatedBy::category]
         end
 
         type oauth_application = { name: String }
@@ -247,7 +247,7 @@ module Increase
         # US Dollar (USD)
         USD: :USD
 
-        def self.values: -> ::Array[Increase::Models::WireTransfer::currency]
+        def self?.values: -> ::Array[Increase::Models::WireTransfer::currency]
       end
 
       type network = :wire
@@ -257,7 +257,7 @@ module Increase
 
         WIRE: :wire
 
-        def self.values: -> ::Array[Increase::Models::WireTransfer::network]
+        def self?.values: -> ::Array[Increase::Models::WireTransfer::network]
       end
 
       type reversal =
@@ -380,7 +380,7 @@ module Increase
         # The transfer has been acknowledged by Fedwire and can be considered complete.
         COMPLETE: :complete
 
-        def self.values: -> ::Array[Increase::Models::WireTransfer::status]
+        def self?.values: -> ::Array[Increase::Models::WireTransfer::status]
       end
 
       type submission =
@@ -406,7 +406,7 @@ module Increase
 
         WIRE_TRANSFER: :wire_transfer
 
-        def self.values: -> ::Array[Increase::Models::WireTransfer::type_]
+        def self?.values: -> ::Array[Increase::Models::WireTransfer::type_]
       end
     end
   end

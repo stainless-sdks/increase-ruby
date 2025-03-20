@@ -59,6 +59,12 @@ module Increase
         ENTITY_SUPPLEMENTAL_DOCUMENT = :entity_supplemental_document
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

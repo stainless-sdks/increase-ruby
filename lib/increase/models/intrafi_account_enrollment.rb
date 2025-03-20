@@ -93,6 +93,12 @@ module Increase
         REQUIRES_ATTENTION = :requires_attention
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -103,6 +109,12 @@ module Increase
         INTRAFI_ACCOUNT_ENROLLMENT = :intrafi_account_enrollment
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end
