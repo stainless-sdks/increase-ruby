@@ -90,8 +90,9 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        class In < Increase::Enum
+        module In
+          extend Increase::Enum
+
           # Internal Revenue Service Form 1099-INT.
           FORM_1099_INT = :form_1099_int
 

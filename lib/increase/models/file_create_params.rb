@@ -41,10 +41,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # What the File will be used for in Increase's systems.
-      class Purpose < Increase::Enum
+      module Purpose
+        extend Increase::Enum
+
         # An image of the front of a check, used for check deposits.
         CHECK_IMAGE_FRONT = :check_image_front
 

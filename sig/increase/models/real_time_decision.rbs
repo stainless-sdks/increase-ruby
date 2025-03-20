@@ -82,7 +82,9 @@ module Increase
 
         type decision = :approve | :challenge | :deny
 
-        class Decision < Increase::Enum
+        module Decision
+          extend Increase::Enum
+
           # Approve the authentication attempt without triggering a challenge.
           APPROVE: :approve
 
@@ -128,7 +130,9 @@ module Increase
 
         type result = :success | :failure
 
-        class Result < Increase::Enum
+        module Result
+          extend Increase::Enum
+
           # Your application successfully delivered the one-time code to the cardholder.
           SUCCESS: :success
 
@@ -251,7 +255,9 @@ module Increase
 
         type decision = :approve | :decline
 
-        class Decision < Increase::Enum
+        module Decision
+          extend Increase::Enum
+
           # Approve the authorization.
           APPROVE: :approve
 
@@ -263,7 +269,9 @@ module Increase
 
         type direction = :settlement | :refund
 
-        class Direction < Increase::Enum
+        module Direction
+          extend Increase::Enum
+
           # A regular card authorization where funds are debited from the cardholder.
           SETTLEMENT: :settlement
 
@@ -293,7 +301,9 @@ module Increase
 
           type category = :visa
 
-          class Category < Increase::Enum
+          module Category
+            extend Increase::Enum
+
             # Visa
             VISA: :visa
 
@@ -332,7 +342,9 @@ module Increase
               | :non_authenticated_security_transaction
               | :non_secure_transaction
 
-            class ElectronicCommerceIndicator < Increase::Enum
+            module ElectronicCommerceIndicator
+              extend Increase::Enum
+
               # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
               MAIL_PHONE_ORDER: :mail_phone_order
 
@@ -372,7 +384,9 @@ module Increase
               | :contactless_magnetic_stripe
               | :integrated_circuit_card_no_cvv
 
-            class PointOfServiceEntryMode < Increase::Enum
+            module PointOfServiceEntryMode
+              extend Increase::Enum
+
               # Unknown
               UNKNOWN: :unknown
 
@@ -415,7 +429,9 @@ module Increase
               | :payment_fraud_disruption_acquirer_block
               | :other
 
-            class StandInProcessingReason < Increase::Enum
+            module StandInProcessingReason
+              extend Increase::Enum
+
               # Increase failed to process the authorization in a timely manner.
               ISSUER_ERROR: :issuer_error
 
@@ -473,7 +489,9 @@ module Increase
           | :quasi_cash
           | :refund
 
-        class ProcessingCategory < Increase::Enum
+        module ProcessingCategory
+          extend Increase::Enum
+
           # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
           ACCOUNT_FUNDING: :account_funding
 
@@ -519,7 +537,9 @@ module Increase
 
           type category = :initial_authorization | :incremental_authorization
 
-          class Category < Increase::Enum
+          module Category
+            extend Increase::Enum
+
             # A regular, standalone authorization.
             INITIAL_AUTHORIZATION: :initial_authorization
 
@@ -580,7 +600,9 @@ module Increase
 
             type result = :not_checked | :match | :no_match
 
-            class Result < Increase::Enum
+            module Result
+              extend Increase::Enum
+
               # No card verification code was provided in the authorization request.
               NOT_CHECKED: :not_checked
 
@@ -632,7 +654,9 @@ module Increase
               | :match
               | :no_match
 
-            class Result < Increase::Enum
+            module Result
+              extend Increase::Enum
+
               # No adress was provided in the authorization request.
               NOT_CHECKED: :not_checked
 
@@ -664,7 +688,9 @@ module Increase
         | :digital_wallet_token_requested
         | :digital_wallet_authentication_requested
 
-      class Category < Increase::Enum
+      module Category
+        extend Increase::Enum
+
         # A card is being authorized.
         CARD_AUTHORIZATION_REQUESTED: :card_authorization_requested
 
@@ -723,7 +749,9 @@ module Increase
 
         type channel = :sms | :email
 
-        class Channel < Increase::Enum
+        module Channel
+          extend Increase::Enum
+
           # Send one-time passcodes over SMS.
           SMS: :sms
 
@@ -735,7 +763,9 @@ module Increase
 
         type digital_wallet = :apple_pay | :google_pay | :samsung_pay | :unknown
 
-        class DigitalWallet < Increase::Enum
+        module DigitalWallet
+          extend Increase::Enum
+
           # Apple Pay
           APPLE_PAY: :apple_pay
 
@@ -753,7 +783,9 @@ module Increase
 
         type result = :success | :failure
 
-        class Result < Increase::Enum
+        module Result
+          extend Increase::Enum
+
           # Your application successfully delivered the one-time passcode to the cardholder.
           SUCCESS: :success
 
@@ -792,7 +824,9 @@ module Increase
 
         type decision = :approve | :decline
 
-        class Decision < Increase::Enum
+        module Decision
+          extend Increase::Enum
+
           # Approve the provisioning request.
           APPROVE: :approve
 
@@ -804,7 +838,9 @@ module Increase
 
         type digital_wallet = :apple_pay | :google_pay | :samsung_pay | :unknown
 
-        class DigitalWallet < Increase::Enum
+        module DigitalWallet
+          extend Increase::Enum
+
           # Apple Pay
           APPLE_PAY: :apple_pay
 
@@ -823,7 +859,9 @@ module Increase
 
       type status = :pending | :responded | :timed_out
 
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The decision is pending action via real-time webhook.
         PENDING: :pending
 
@@ -838,7 +876,9 @@ module Increase
 
       type type_ = :real_time_decision
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         REAL_TIME_DECISION: :real_time_decision
 
         def self.values: -> ::Array[Increase::Models::RealTimeDecision::type_]

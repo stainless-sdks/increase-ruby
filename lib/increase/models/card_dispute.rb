@@ -228,10 +228,10 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @abstract
-      #
       # The results of the Dispute investigation.
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The Card Dispute is pending review.
         PENDING_REVIEWING = :pending_reviewing
 
@@ -253,11 +253,11 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `card_dispute`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         CARD_DISPUTE = :card_dispute
 
         finalize!

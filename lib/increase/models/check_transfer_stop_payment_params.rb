@@ -25,10 +25,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # The reason why this transfer should be stopped.
-      class Reason < Increase::Enum
+      module Reason
+        extend Increase::Enum
+
         # The check could not be delivered.
         MAIL_DELIVERY_FAILED = :mail_delivery_failed
 

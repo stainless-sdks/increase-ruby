@@ -154,10 +154,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # If the notification is for a future credit or debit.
-      class CreditDebitIndicator < Increase::Enum
+      module CreditDebitIndicator
+        extend Increase::Enum
+
         # The Prenotification is for an anticipated credit.
         CREDIT = :credit
 
@@ -202,11 +202,11 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # The required type of change that is being signaled by the receiving financial
         #   institution.
-        class ChangeCode < Increase::Enum
+        module ChangeCode
+          extend Increase::Enum
+
           # The account number was incorrect.
           INCORRECT_ACCOUNT_NUMBER = :incorrect_account_number
 
@@ -299,10 +299,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # Why the Prenotification was returned.
-        class ReturnReasonCode < Increase::Enum
+        module ReturnReasonCode
+          extend Increase::Enum
+
           # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
           INSUFFICIENT_FUND = :insufficient_fund
 
@@ -520,10 +520,10 @@ module Increase
         end
       end
 
-      # @abstract
-      #
       # The lifecycle status of the ACH Prenotification.
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The Prenotification is pending submission.
         PENDING_SUBMITTING = :pending_submitting
 
@@ -539,11 +539,11 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `ach_prenotification`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         ACH_PRENOTIFICATION = :ach_prenotification
 
         finalize!

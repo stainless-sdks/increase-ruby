@@ -209,11 +209,11 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_wire_drawdown_request`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         INBOUND_WIRE_DRAWDOWN_REQUEST = :inbound_wire_drawdown_request
 
         finalize!

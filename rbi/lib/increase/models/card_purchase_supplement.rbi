@@ -56,11 +56,14 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `card_purchase_supplement`.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol)
+          .returns(Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol)
+      end
       def type=(_)
       end
 
@@ -73,7 +76,7 @@ module Increase
           invoice: T.nilable(Increase::Models::CardPurchaseSupplement::Invoice),
           line_items: T.nilable(T::Array[Increase::Models::CardPurchaseSupplement::LineItem]),
           transaction_id: String,
-          type: Symbol
+          type: Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol
         )
           .returns(T.attached_class)
       end
@@ -89,7 +92,7 @@ module Increase
               invoice: T.nilable(Increase::Models::CardPurchaseSupplement::Invoice),
               line_items: T.nilable(T::Array[Increase::Models::CardPurchaseSupplement::LineItem]),
               transaction_id: String,
-              type: Symbol
+              type: Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol
             }
           )
       end
@@ -116,11 +119,16 @@ module Increase
         end
 
         # Indicates how the merchant applied the discount.
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol)) }
         def discount_treatment_code
         end
 
-        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        sig do
+          params(
+            _: T.nilable(Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol)
+          )
+            .returns(T.nilable(Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol))
+        end
         def discount_treatment_code=(_)
         end
 
@@ -226,11 +234,14 @@ module Increase
         end
 
         # Indicates how the merchant applied taxes.
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol)) }
         def tax_treatments
         end
 
-        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        sig do
+          params(_: T.nilable(Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol))
+            .returns(T.nilable(Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol))
+        end
         def tax_treatments=(_)
         end
 
@@ -248,7 +259,7 @@ module Increase
           params(
             discount_amount: T.nilable(Integer),
             discount_currency: T.nilable(String),
-            discount_treatment_code: T.nilable(Symbol),
+            discount_treatment_code: T.nilable(Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol),
             duty_tax_amount: T.nilable(Integer),
             duty_tax_currency: T.nilable(String),
             order_date: T.nilable(Date),
@@ -260,7 +271,7 @@ module Increase
             shipping_tax_amount: T.nilable(Integer),
             shipping_tax_currency: T.nilable(String),
             shipping_tax_rate: T.nilable(String),
-            tax_treatments: T.nilable(Symbol),
+            tax_treatments: T.nilable(Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol),
             unique_value_added_tax_invoice_reference: T.nilable(String)
           )
             .returns(T.attached_class)
@@ -291,7 +302,7 @@ module Increase
               {
                 discount_amount: T.nilable(Integer),
                 discount_currency: T.nilable(String),
-                discount_treatment_code: T.nilable(Symbol),
+                discount_treatment_code: T.nilable(Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol),
                 duty_tax_amount: T.nilable(Integer),
                 duty_tax_currency: T.nilable(String),
                 order_date: T.nilable(Date),
@@ -303,7 +314,7 @@ module Increase
                 shipping_tax_amount: T.nilable(Integer),
                 shipping_tax_currency: T.nilable(String),
                 shipping_tax_rate: T.nilable(String),
-                tax_treatments: T.nilable(Symbol),
+                tax_treatments: T.nilable(Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol),
                 unique_value_added_tax_invoice_reference: T.nilable(String)
               }
             )
@@ -312,41 +323,76 @@ module Increase
         end
 
         # Indicates how the merchant applied the discount.
-        class DiscountTreatmentCode < Increase::Enum
-          abstract!
+        module DiscountTreatmentCode
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol) }
 
           # No invoice level discount provided
-          NO_INVOICE_LEVEL_DISCOUNT_PROVIDED = :no_invoice_level_discount_provided
+          NO_INVOICE_LEVEL_DISCOUNT_PROVIDED =
+            T.let(
+              :no_invoice_level_discount_provided,
+              Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol
+            )
 
           # Tax calculated on post discount invoice total
-          TAX_CALCULATED_ON_POST_DISCOUNT_INVOICE_TOTAL = :tax_calculated_on_post_discount_invoice_total
+          TAX_CALCULATED_ON_POST_DISCOUNT_INVOICE_TOTAL =
+            T.let(
+              :tax_calculated_on_post_discount_invoice_total,
+              Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol
+            )
 
           # Tax calculated on pre discount invoice total
-          TAX_CALCULATED_ON_PRE_DISCOUNT_INVOICE_TOTAL = :tax_calculated_on_pre_discount_invoice_total
+          TAX_CALCULATED_ON_PRE_DISCOUNT_INVOICE_TOTAL =
+            T.let(
+              :tax_calculated_on_pre_discount_invoice_total,
+              Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol
+            )
         end
 
         # Indicates how the merchant applied taxes.
-        class TaxTreatments < Increase::Enum
-          abstract!
+        module TaxTreatments
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol) }
 
           # No tax applies
-          NO_TAX_APPLIES = :no_tax_applies
+          NO_TAX_APPLIES =
+            T.let(:no_tax_applies, Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol)
 
           # Net price line item level
-          NET_PRICE_LINE_ITEM_LEVEL = :net_price_line_item_level
+          NET_PRICE_LINE_ITEM_LEVEL =
+            T.let(
+              :net_price_line_item_level,
+              Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol
+            )
 
           # Net price invoice level
-          NET_PRICE_INVOICE_LEVEL = :net_price_invoice_level
+          NET_PRICE_INVOICE_LEVEL =
+            T.let(
+              :net_price_invoice_level,
+              Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol
+            )
 
           # Gross price line item level
-          GROSS_PRICE_LINE_ITEM_LEVEL = :gross_price_line_item_level
+          GROSS_PRICE_LINE_ITEM_LEVEL =
+            T.let(
+              :gross_price_line_item_level,
+              Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol
+            )
 
           # Gross price invoice level
-          GROSS_PRICE_INVOICE_LEVEL = :gross_price_invoice_level
+          GROSS_PRICE_INVOICE_LEVEL =
+            T.let(
+              :gross_price_invoice_level,
+              Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol
+            )
         end
       end
 
@@ -361,11 +407,14 @@ module Increase
         end
 
         # Indicates the type of line item.
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol)) }
         def detail_indicator
         end
 
-        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        sig do
+          params(_: T.nilable(Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol))
+            .returns(T.nilable(Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol))
+        end
         def detail_indicator=(_)
         end
 
@@ -388,11 +437,22 @@ module Increase
         end
 
         # Indicates how the merchant applied the discount for this specific line item.
-        sig { returns(T.nilable(Symbol)) }
+        sig do
+          returns(
+            T.nilable(Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol)
+          )
+        end
         def discount_treatment_code
         end
 
-        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        sig do
+          params(
+            _: T.nilable(Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol)
+          )
+            .returns(
+              T.nilable(Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol)
+            )
+        end
         def discount_treatment_code=(_)
         end
 
@@ -509,10 +569,10 @@ module Increase
         sig do
           params(
             id: String,
-            detail_indicator: T.nilable(Symbol),
+            detail_indicator: T.nilable(Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol),
             discount_amount: T.nilable(Integer),
             discount_currency: T.nilable(String),
-            discount_treatment_code: T.nilable(Symbol),
+            discount_treatment_code: T.nilable(Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol),
             item_commodity_code: T.nilable(String),
             item_descriptor: T.nilable(String),
             item_quantity: T.nilable(String),
@@ -554,10 +614,10 @@ module Increase
             .returns(
               {
                 id: String,
-                detail_indicator: T.nilable(Symbol),
+                detail_indicator: T.nilable(Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol),
                 discount_amount: T.nilable(Integer),
                 discount_currency: T.nilable(String),
-                discount_treatment_code: T.nilable(Symbol),
+                discount_treatment_code: T.nilable(Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol),
                 item_commodity_code: T.nilable(String),
                 item_descriptor: T.nilable(String),
                 item_quantity: T.nilable(String),
@@ -577,46 +637,69 @@ module Increase
         end
 
         # Indicates the type of line item.
-        class DetailIndicator < Increase::Enum
-          abstract!
+        module DetailIndicator
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol) }
 
           # Normal
-          NORMAL = :normal
+          NORMAL =
+            T.let(:normal, Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol)
 
           # Credit
-          CREDIT = :credit
+          CREDIT =
+            T.let(:credit, Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol)
 
           # Purchase
-          PAYMENT = :payment
+          PAYMENT =
+            T.let(:payment, Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol)
         end
 
         # Indicates how the merchant applied the discount for this specific line item.
-        class DiscountTreatmentCode < Increase::Enum
-          abstract!
+        module DiscountTreatmentCode
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol) }
 
           # No line item level discount provided
-          NO_LINE_ITEM_LEVEL_DISCOUNT_PROVIDED = :no_line_item_level_discount_provided
+          NO_LINE_ITEM_LEVEL_DISCOUNT_PROVIDED =
+            T.let(
+              :no_line_item_level_discount_provided,
+              Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol
+            )
 
           # Tax calculated on post discount line item total
-          TAX_CALCULATED_ON_POST_DISCOUNT_LINE_ITEM_TOTAL = :tax_calculated_on_post_discount_line_item_total
+          TAX_CALCULATED_ON_POST_DISCOUNT_LINE_ITEM_TOTAL =
+            T.let(
+              :tax_calculated_on_post_discount_line_item_total,
+              Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol
+            )
 
           # Tax calculated on pre discount line item total
-          TAX_CALCULATED_ON_PRE_DISCOUNT_LINE_ITEM_TOTAL = :tax_calculated_on_pre_discount_line_item_total
+          TAX_CALCULATED_ON_PRE_DISCOUNT_LINE_ITEM_TOTAL =
+            T.let(
+              :tax_calculated_on_pre_discount_line_item_total,
+              Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol
+            )
         end
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `card_purchase_supplement`.
-      class Type < Increase::Enum
-        abstract!
+      module Type
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardPurchaseSupplement::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol) }
 
-        CARD_PURCHASE_SUPPLEMENT = :card_purchase_supplement
+        CARD_PURCHASE_SUPPLEMENT =
+          T.let(:card_purchase_supplement, Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol)
       end
     end
   end

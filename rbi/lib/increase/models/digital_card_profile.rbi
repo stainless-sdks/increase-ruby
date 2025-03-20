@@ -106,11 +106,14 @@ module Increase
       end
 
       # The status of the Card Profile.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::DigitalCardProfile::Status::TaggedSymbol) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::DigitalCardProfile::Status::TaggedSymbol)
+          .returns(Increase::Models::DigitalCardProfile::Status::TaggedSymbol)
+      end
       def status=(_)
       end
 
@@ -128,11 +131,14 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `digital_card_profile`.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::DigitalCardProfile::Type::TaggedSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::DigitalCardProfile::Type::TaggedSymbol)
+          .returns(Increase::Models::DigitalCardProfile::Type::TaggedSymbol)
+      end
       def type=(_)
       end
 
@@ -152,9 +158,9 @@ module Increase
           description: String,
           idempotency_key: T.nilable(String),
           issuer_name: String,
-          status: Symbol,
+          status: Increase::Models::DigitalCardProfile::Status::TaggedSymbol,
           text_color: Increase::Models::DigitalCardProfile::TextColor,
-          type: Symbol
+          type: Increase::Models::DigitalCardProfile::Type::TaggedSymbol
         )
           .returns(T.attached_class)
       end
@@ -191,9 +197,9 @@ module Increase
               description: String,
               idempotency_key: T.nilable(String),
               issuer_name: String,
-              status: Symbol,
+              status: Increase::Models::DigitalCardProfile::Status::TaggedSymbol,
               text_color: Increase::Models::DigitalCardProfile::TextColor,
-              type: Symbol
+              type: Increase::Models::DigitalCardProfile::Type::TaggedSymbol
             }
           )
       end
@@ -201,22 +207,23 @@ module Increase
       end
 
       # The status of the Card Profile.
-      class Status < Increase::Enum
-        abstract!
+      module Status
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalCardProfile::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::DigitalCardProfile::Status::TaggedSymbol) }
 
         # The Card Profile is awaiting review from Increase and/or processing by card networks.
-        PENDING = :pending
+        PENDING = T.let(:pending, Increase::Models::DigitalCardProfile::Status::TaggedSymbol)
 
         # There is an issue with the Card Profile preventing it from use.
-        REJECTED = :rejected
+        REJECTED = T.let(:rejected, Increase::Models::DigitalCardProfile::Status::TaggedSymbol)
 
         # The Card Profile can be assigned to Cards.
-        ACTIVE = :active
+        ACTIVE = T.let(:active, Increase::Models::DigitalCardProfile::Status::TaggedSymbol)
 
         # The Card Profile is no longer in use.
-        ARCHIVED = :archived
+        ARCHIVED = T.let(:archived, Increase::Models::DigitalCardProfile::Status::TaggedSymbol)
       end
 
       class TextColor < Increase::BaseModel
@@ -259,12 +266,14 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `digital_card_profile`.
-      class Type < Increase::Enum
-        abstract!
+      module Type
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalCardProfile::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::DigitalCardProfile::Type::TaggedSymbol) }
 
-        DIGITAL_CARD_PROFILE = :digital_card_profile
+        DIGITAL_CARD_PROFILE =
+          T.let(:digital_card_profile, Increase::Models::DigitalCardProfile::Type::TaggedSymbol)
       end
     end
   end

@@ -70,7 +70,9 @@ module Increase
 
         type debit_status = :allowed | :blocked
 
-        class DebitStatus < Increase::Enum
+        module DebitStatus
+          extend Increase::Enum
+
           # ACH Debits are allowed.
           ALLOWED: :allowed
 
@@ -95,7 +97,9 @@ module Increase
 
         type status = :allowed | :check_transfers_only
 
-        class Status < Increase::Enum
+        module Status
+          extend Increase::Enum
+
           # Checks with this Account Number will be processed even if they are not associated with a Check Transfer.
           ALLOWED: :allowed
 
@@ -108,7 +112,9 @@ module Increase
 
       type status = :active | :disabled | :canceled
 
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The account number is active.
         ACTIVE: :active
 
@@ -123,7 +129,9 @@ module Increase
 
       type type_ = :account_number
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         ACCOUNT_NUMBER: :account_number
 
         def self.values: -> ::Array[Increase::Models::AccountNumber::type_]

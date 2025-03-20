@@ -164,11 +164,14 @@ module Increase
       end
 
       # The status of the Check Deposit.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::CheckDeposit::Status::TaggedSymbol) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::CheckDeposit::Status::TaggedSymbol)
+          .returns(Increase::Models::CheckDeposit::Status::TaggedSymbol)
+      end
       def status=(_)
       end
 
@@ -183,11 +186,14 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `check_deposit`.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::CheckDeposit::Type::TaggedSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::CheckDeposit::Type::TaggedSymbol)
+          .returns(Increase::Models::CheckDeposit::Type::TaggedSymbol)
+      end
       def type=(_)
       end
 
@@ -209,9 +215,9 @@ module Increase
           inbound_funds_hold: T.nilable(Increase::Models::CheckDeposit::InboundFundsHold),
           inbound_mail_item_id: T.nilable(String),
           lockbox_id: T.nilable(String),
-          status: Symbol,
+          status: Increase::Models::CheckDeposit::Status::TaggedSymbol,
           transaction_id: T.nilable(String),
-          type: Symbol
+          type: Increase::Models::CheckDeposit::Type::TaggedSymbol
         )
           .returns(T.attached_class)
       end
@@ -256,9 +262,9 @@ module Increase
               inbound_funds_hold: T.nilable(Increase::Models::CheckDeposit::InboundFundsHold),
               inbound_mail_item_id: T.nilable(String),
               lockbox_id: T.nilable(String),
-              status: Symbol,
+              status: Increase::Models::CheckDeposit::Status::TaggedSymbol,
               transaction_id: T.nilable(String),
-              type: Symbol
+              type: Increase::Models::CheckDeposit::Type::TaggedSymbol
             }
           )
       end
@@ -306,11 +312,14 @@ module Increase
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
         #   transaction's currency.
-        sig { returns(Symbol) }
+        sig { returns(Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol) }
         def currency
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol)
+            .returns(Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol)
+        end
         def currency=(_)
         end
 
@@ -341,7 +350,7 @@ module Increase
             amount: Integer,
             auxiliary_on_us: T.nilable(String),
             check_deposit_id: String,
-            currency: Symbol,
+            currency: Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol,
             routing_number: String,
             serial_number: T.nilable(String)
           )
@@ -358,7 +367,7 @@ module Increase
                 amount: Integer,
                 auxiliary_on_us: T.nilable(String),
                 check_deposit_id: String,
-                currency: Symbol,
+                currency: Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol,
                 routing_number: String,
                 serial_number: T.nilable(String)
               }
@@ -369,28 +378,31 @@ module Increase
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
         #   transaction's currency.
-        class Currency < Increase::Enum
-          abstract!
+        module Currency
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::DepositAcceptance::Currency) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol) }
 
           # Canadian Dollar (CAD)
-          CAD = :CAD
+          CAD = T.let(:CAD, Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol)
 
           # Swiss Franc (CHF)
-          CHF = :CHF
+          CHF = T.let(:CHF, Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol)
 
           # Euro (EUR)
-          EUR = :EUR
+          EUR = T.let(:EUR, Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol)
 
           # British Pound (GBP)
-          GBP = :GBP
+          GBP = T.let(:GBP, Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol)
 
           # Japanese Yen (JPY)
-          JPY = :JPY
+          JPY = T.let(:JPY, Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol)
 
           # US Dollar (USD)
-          USD = :USD
+          USD = T.let(:USD, Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol)
         end
       end
 
@@ -416,11 +428,14 @@ module Increase
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
         #   currency.
-        sig { returns(Symbol) }
+        sig { returns(Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol) }
         def currency
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol)
+            .returns(Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol)
+        end
         def currency=(_)
         end
 
@@ -434,11 +449,14 @@ module Increase
         end
 
         # Why the check deposit was rejected.
-        sig { returns(Symbol) }
+        sig { returns(Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol) }
         def reason
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol)
+            .returns(Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol)
+        end
         def reason=(_)
         end
 
@@ -458,9 +476,9 @@ module Increase
           params(
             amount: Integer,
             check_deposit_id: String,
-            currency: Symbol,
+            currency: Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol,
             declined_transaction_id: String,
-            reason: Symbol,
+            reason: Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol,
             rejected_at: Time
           )
             .returns(T.attached_class)
@@ -474,9 +492,9 @@ module Increase
               {
                 amount: Integer,
                 check_deposit_id: String,
-                currency: Symbol,
+                currency: Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol,
                 declined_transaction_id: String,
-                reason: Symbol,
+                reason: Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol,
                 rejected_at: Time
               }
             )
@@ -486,68 +504,87 @@ module Increase
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
         #   currency.
-        class Currency < Increase::Enum
-          abstract!
+        module Currency
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::DepositRejection::Currency) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol) }
 
           # Canadian Dollar (CAD)
-          CAD = :CAD
+          CAD = T.let(:CAD, Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol)
 
           # Swiss Franc (CHF)
-          CHF = :CHF
+          CHF = T.let(:CHF, Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol)
 
           # Euro (EUR)
-          EUR = :EUR
+          EUR = T.let(:EUR, Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol)
 
           # British Pound (GBP)
-          GBP = :GBP
+          GBP = T.let(:GBP, Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol)
 
           # Japanese Yen (JPY)
-          JPY = :JPY
+          JPY = T.let(:JPY, Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol)
 
           # US Dollar (USD)
-          USD = :USD
+          USD = T.let(:USD, Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol)
         end
 
         # Why the check deposit was rejected.
-        class Reason < Increase::Enum
-          abstract!
+        module Reason
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::DepositRejection::Reason) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol) }
 
           # The check's image is incomplete.
-          INCOMPLETE_IMAGE = :incomplete_image
+          INCOMPLETE_IMAGE =
+            T.let(:incomplete_image, Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol)
 
           # This is a duplicate check submission.
-          DUPLICATE = :duplicate
+          DUPLICATE = T.let(:duplicate, Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol)
 
           # This check has poor image quality.
-          POOR_IMAGE_QUALITY = :poor_image_quality
+          POOR_IMAGE_QUALITY =
+            T.let(:poor_image_quality, Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol)
 
           # The check was deposited with the incorrect amount.
-          INCORRECT_AMOUNT = :incorrect_amount
+          INCORRECT_AMOUNT =
+            T.let(:incorrect_amount, Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol)
 
           # The check is made out to someone other than the account holder.
-          INCORRECT_RECIPIENT = :incorrect_recipient
+          INCORRECT_RECIPIENT =
+            T.let(:incorrect_recipient, Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol)
 
           # This check was not eligible for mobile deposit.
-          NOT_ELIGIBLE_FOR_MOBILE_DEPOSIT = :not_eligible_for_mobile_deposit
+          NOT_ELIGIBLE_FOR_MOBILE_DEPOSIT =
+            T.let(
+              :not_eligible_for_mobile_deposit,
+              Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol
+            )
 
           # This check is missing at least one required field.
-          MISSING_REQUIRED_DATA_ELEMENTS = :missing_required_data_elements
+          MISSING_REQUIRED_DATA_ELEMENTS =
+            T.let(
+              :missing_required_data_elements,
+              Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol
+            )
 
           # This check is suspected to be fraudulent.
-          SUSPECTED_FRAUD = :suspected_fraud
+          SUSPECTED_FRAUD =
+            T.let(:suspected_fraud, Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol)
 
           # This check's deposit window has expired.
-          DEPOSIT_WINDOW_EXPIRED = :deposit_window_expired
+          DEPOSIT_WINDOW_EXPIRED =
+            T.let(:deposit_window_expired, Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol)
 
           # The check was rejected at the user's request.
-          REQUESTED_BY_USER = :requested_by_user
+          REQUESTED_BY_USER =
+            T.let(:requested_by_user, Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol)
 
           # The check was rejected for an unknown reason.
-          UNKNOWN = :unknown
+          UNKNOWN = T.let(:unknown, Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol)
         end
       end
 
@@ -572,21 +609,27 @@ module Increase
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
         #   transaction's currency.
-        sig { returns(Symbol) }
+        sig { returns(Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol) }
         def currency
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol)
+            .returns(Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol)
+        end
         def currency=(_)
         end
 
         # Why this check was returned by the bank holding the account it was drawn
         #   against.
-        sig { returns(Symbol) }
+        sig { returns(Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol) }
         def return_reason
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
+            .returns(Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
+        end
         def return_reason=(_)
         end
 
@@ -616,8 +659,8 @@ module Increase
           params(
             amount: Integer,
             check_deposit_id: String,
-            currency: Symbol,
-            return_reason: Symbol,
+            currency: Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol,
+            return_reason: Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol,
             returned_at: Time,
             transaction_id: String
           )
@@ -632,8 +675,8 @@ module Increase
               {
                 amount: Integer,
                 check_deposit_id: String,
-                currency: Symbol,
-                return_reason: Symbol,
+                currency: Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol,
+                return_reason: Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol,
                 returned_at: Time,
                 transaction_id: String
               }
@@ -644,114 +687,160 @@ module Increase
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
         #   transaction's currency.
-        class Currency < Increase::Enum
-          abstract!
+        module Currency
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::DepositReturn::Currency) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol) }
 
           # Canadian Dollar (CAD)
-          CAD = :CAD
+          CAD = T.let(:CAD, Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol)
 
           # Swiss Franc (CHF)
-          CHF = :CHF
+          CHF = T.let(:CHF, Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol)
 
           # Euro (EUR)
-          EUR = :EUR
+          EUR = T.let(:EUR, Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol)
 
           # British Pound (GBP)
-          GBP = :GBP
+          GBP = T.let(:GBP, Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol)
 
           # Japanese Yen (JPY)
-          JPY = :JPY
+          JPY = T.let(:JPY, Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol)
 
           # US Dollar (USD)
-          USD = :USD
+          USD = T.let(:USD, Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol)
         end
 
         # Why this check was returned by the bank holding the account it was drawn
         #   against.
-        class ReturnReason < Increase::Enum
-          abstract!
+        module ReturnReason
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::DepositReturn::ReturnReason) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol) }
 
           # The check doesn't allow ACH conversion.
-          ACH_CONVERSION_NOT_SUPPORTED = :ach_conversion_not_supported
+          ACH_CONVERSION_NOT_SUPPORTED =
+            T.let(
+              :ach_conversion_not_supported,
+              Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol
+            )
 
           # The account is closed.
-          CLOSED_ACCOUNT = :closed_account
+          CLOSED_ACCOUNT =
+            T.let(:closed_account, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
 
           # The check has already been deposited.
-          DUPLICATE_SUBMISSION = :duplicate_submission
+          DUPLICATE_SUBMISSION =
+            T.let(:duplicate_submission, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
 
           # Insufficient funds
-          INSUFFICIENT_FUNDS = :insufficient_funds
+          INSUFFICIENT_FUNDS =
+            T.let(:insufficient_funds, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
 
           # No account was found matching the check details.
-          NO_ACCOUNT = :no_account
+          NO_ACCOUNT =
+            T.let(:no_account, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
 
           # The check was not authorized.
-          NOT_AUTHORIZED = :not_authorized
+          NOT_AUTHORIZED =
+            T.let(:not_authorized, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
 
           # The check is too old.
-          STALE_DATED = :stale_dated
+          STALE_DATED =
+            T.let(:stale_dated, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
 
           # The payment has been stopped by the account holder.
-          STOP_PAYMENT = :stop_payment
+          STOP_PAYMENT =
+            T.let(:stop_payment, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
 
           # The reason for the return is unknown.
-          UNKNOWN_REASON = :unknown_reason
+          UNKNOWN_REASON =
+            T.let(:unknown_reason, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
 
           # The image doesn't match the details submitted.
-          UNMATCHED_DETAILS = :unmatched_details
+          UNMATCHED_DETAILS =
+            T.let(:unmatched_details, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
 
           # The image could not be read.
-          UNREADABLE_IMAGE = :unreadable_image
+          UNREADABLE_IMAGE =
+            T.let(:unreadable_image, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
 
           # The check endorsement was irregular.
-          ENDORSEMENT_IRREGULAR = :endorsement_irregular
+          ENDORSEMENT_IRREGULAR =
+            T.let(:endorsement_irregular, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
 
           # The check present was either altered or fake.
-          ALTERED_OR_FICTITIOUS_ITEM = :altered_or_fictitious_item
+          ALTERED_OR_FICTITIOUS_ITEM =
+            T.let(
+              :altered_or_fictitious_item,
+              Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol
+            )
 
           # The account this check is drawn on is frozen.
-          FROZEN_OR_BLOCKED_ACCOUNT = :frozen_or_blocked_account
+          FROZEN_OR_BLOCKED_ACCOUNT =
+            T.let(
+              :frozen_or_blocked_account,
+              Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol
+            )
 
           # The check is post dated.
-          POST_DATED = :post_dated
+          POST_DATED =
+            T.let(:post_dated, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
 
           # The endorsement was missing.
-          ENDORSEMENT_MISSING = :endorsement_missing
+          ENDORSEMENT_MISSING =
+            T.let(:endorsement_missing, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
 
           # The check signature was missing.
-          SIGNATURE_MISSING = :signature_missing
+          SIGNATURE_MISSING =
+            T.let(:signature_missing, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
 
           # The bank suspects a stop payment will be placed.
-          STOP_PAYMENT_SUSPECT = :stop_payment_suspect
+          STOP_PAYMENT_SUSPECT =
+            T.let(:stop_payment_suspect, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
 
           # The bank cannot read the image.
-          UNUSABLE_IMAGE = :unusable_image
+          UNUSABLE_IMAGE =
+            T.let(:unusable_image, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
 
           # The check image fails the bank's security check.
-          IMAGE_FAILS_SECURITY_CHECK = :image_fails_security_check
+          IMAGE_FAILS_SECURITY_CHECK =
+            T.let(
+              :image_fails_security_check,
+              Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol
+            )
 
           # The bank cannot determine the amount.
-          CANNOT_DETERMINE_AMOUNT = :cannot_determine_amount
+          CANNOT_DETERMINE_AMOUNT =
+            T.let(:cannot_determine_amount, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
 
           # The signature is inconsistent with prior signatures.
-          SIGNATURE_IRREGULAR = :signature_irregular
+          SIGNATURE_IRREGULAR =
+            T.let(:signature_irregular, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
 
           # The check is a non-cash item and cannot be drawn against the account.
-          NON_CASH_ITEM = :non_cash_item
+          NON_CASH_ITEM =
+            T.let(:non_cash_item, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
 
           # The bank is unable to process this check.
-          UNABLE_TO_PROCESS = :unable_to_process
+          UNABLE_TO_PROCESS =
+            T.let(:unable_to_process, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
 
           # The check exceeds the bank or customer's limit.
-          ITEM_EXCEEDS_DOLLAR_LIMIT = :item_exceeds_dollar_limit
+          ITEM_EXCEEDS_DOLLAR_LIMIT =
+            T.let(
+              :item_exceeds_dollar_limit,
+              Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol
+            )
 
           # The bank sold this account and no longer services this customer.
-          BRANCH_OR_ACCOUNT_SOLD = :branch_or_account_sold
+          BRANCH_OR_ACCOUNT_SOLD =
+            T.let(:branch_or_account_sold, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
         end
       end
 
@@ -842,11 +931,14 @@ module Increase
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
         #   currency.
-        sig { returns(Symbol) }
+        sig { returns(Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol) }
         def currency
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol)
+            .returns(Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol)
+        end
         def currency=(_)
         end
 
@@ -878,21 +970,27 @@ module Increase
         end
 
         # The status of the hold.
-        sig { returns(Symbol) }
+        sig { returns(Increase::Models::CheckDeposit::InboundFundsHold::Status::TaggedSymbol) }
         def status
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Increase::Models::CheckDeposit::InboundFundsHold::Status::TaggedSymbol)
+            .returns(Increase::Models::CheckDeposit::InboundFundsHold::Status::TaggedSymbol)
+        end
         def status=(_)
         end
 
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_funds_hold`.
-        sig { returns(Symbol) }
+        sig { returns(Increase::Models::CheckDeposit::InboundFundsHold::Type::TaggedSymbol) }
         def type
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Increase::Models::CheckDeposit::InboundFundsHold::Type::TaggedSymbol)
+            .returns(Increase::Models::CheckDeposit::InboundFundsHold::Type::TaggedSymbol)
+        end
         def type=(_)
         end
 
@@ -904,12 +1002,12 @@ module Increase
             amount: Integer,
             automatically_releases_at: Time,
             created_at: Time,
-            currency: Symbol,
+            currency: Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol,
             held_transaction_id: T.nilable(String),
             pending_transaction_id: T.nilable(String),
             released_at: T.nilable(Time),
-            status: Symbol,
-            type: Symbol
+            status: Increase::Models::CheckDeposit::InboundFundsHold::Status::TaggedSymbol,
+            type: Increase::Models::CheckDeposit::InboundFundsHold::Type::TaggedSymbol
           )
             .returns(T.attached_class)
         end
@@ -935,12 +1033,12 @@ module Increase
                 amount: Integer,
                 automatically_releases_at: Time,
                 created_at: Time,
-                currency: Symbol,
+                currency: Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol,
                 held_transaction_id: T.nilable(String),
                 pending_transaction_id: T.nilable(String),
                 released_at: T.nilable(Time),
-                status: Symbol,
-                type: Symbol
+                status: Increase::Models::CheckDeposit::InboundFundsHold::Status::TaggedSymbol,
+                type: Increase::Models::CheckDeposit::InboundFundsHold::Type::TaggedSymbol
               }
             )
         end
@@ -949,81 +1047,90 @@ module Increase
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
         #   currency.
-        class Currency < Increase::Enum
-          abstract!
+        module Currency
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Currency) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol) }
 
           # Canadian Dollar (CAD)
-          CAD = :CAD
+          CAD = T.let(:CAD, Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol)
 
           # Swiss Franc (CHF)
-          CHF = :CHF
+          CHF = T.let(:CHF, Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol)
 
           # Euro (EUR)
-          EUR = :EUR
+          EUR = T.let(:EUR, Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol)
 
           # British Pound (GBP)
-          GBP = :GBP
+          GBP = T.let(:GBP, Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol)
 
           # Japanese Yen (JPY)
-          JPY = :JPY
+          JPY = T.let(:JPY, Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol)
 
           # US Dollar (USD)
-          USD = :USD
+          USD = T.let(:USD, Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol)
         end
 
         # The status of the hold.
-        class Status < Increase::Enum
-          abstract!
+        module Status
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Status) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Status::TaggedSymbol) }
 
           # Funds are still being held.
-          HELD = :held
+          HELD = T.let(:held, Increase::Models::CheckDeposit::InboundFundsHold::Status::TaggedSymbol)
 
           # Funds have been released.
-          COMPLETE = :complete
+          COMPLETE = T.let(:complete, Increase::Models::CheckDeposit::InboundFundsHold::Status::TaggedSymbol)
         end
 
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_funds_hold`.
-        class Type < Increase::Enum
-          abstract!
+        module Type
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Type) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Type::TaggedSymbol) }
 
-          INBOUND_FUNDS_HOLD = :inbound_funds_hold
+          INBOUND_FUNDS_HOLD =
+            T.let(:inbound_funds_hold, Increase::Models::CheckDeposit::InboundFundsHold::Type::TaggedSymbol)
         end
       end
 
       # The status of the Check Deposit.
-      class Status < Increase::Enum
-        abstract!
+      module Status
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::Status::TaggedSymbol) }
 
         # The Check Deposit is pending review.
-        PENDING = :pending
+        PENDING = T.let(:pending, Increase::Models::CheckDeposit::Status::TaggedSymbol)
 
         # The Check Deposit has been deposited.
-        SUBMITTED = :submitted
+        SUBMITTED = T.let(:submitted, Increase::Models::CheckDeposit::Status::TaggedSymbol)
 
         # The Check Deposit has been rejected.
-        REJECTED = :rejected
+        REJECTED = T.let(:rejected, Increase::Models::CheckDeposit::Status::TaggedSymbol)
 
         # The Check Deposit has been returned.
-        RETURNED = :returned
+        RETURNED = T.let(:returned, Increase::Models::CheckDeposit::Status::TaggedSymbol)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `check_deposit`.
-      class Type < Increase::Enum
-        abstract!
+      module Type
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::Type::TaggedSymbol) }
 
-        CHECK_DEPOSIT = :check_deposit
+        CHECK_DEPOSIT = T.let(:check_deposit, Increase::Models::CheckDeposit::Type::TaggedSymbol)
       end
     end
   end

@@ -128,11 +128,11 @@ module Increase
         end
       end
 
-      # @abstract
-      #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account
       #   currency.
-      class Currency < Increase::Enum
+      module Currency
+        extend Increase::Enum
+
         # Canadian Dollar (CAD)
         CAD = :CAD
 
@@ -154,11 +154,11 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `intrafi_balance`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         INTRAFI_BALANCE = :intrafi_balance
 
         finalize!

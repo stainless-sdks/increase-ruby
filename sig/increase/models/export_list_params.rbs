@@ -82,7 +82,9 @@ module Increase
           | :vendor_csv
           | :dashboard_table_csv
 
-        class In < Increase::Enum
+        module In
+          extend Increase::Enum
+
           # Export an Open Financial Exchange (OFX) file of transactions and balances for a given time range and Account.
           ACCOUNT_STATEMENT_OFX: :account_statement_ofx
 
@@ -156,7 +158,9 @@ module Increase
 
         type in_ = :pending | :complete | :failed
 
-        class In < Increase::Enum
+        module In
+          extend Increase::Enum
+
           # Increase is generating the export.
           PENDING: :pending
 

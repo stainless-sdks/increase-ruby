@@ -111,21 +111,24 @@ module Increase
       end
 
       # This indicates if payments can be made with the card.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::Card::Status::TaggedSymbol) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::Card::Status::TaggedSymbol)
+          .returns(Increase::Models::Card::Status::TaggedSymbol)
+      end
       def status=(_)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `card`.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::Card::Type::TaggedSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig { params(_: Increase::Models::Card::Type::TaggedSymbol).returns(Increase::Models::Card::Type::TaggedSymbol) }
       def type=(_)
       end
 
@@ -146,8 +149,8 @@ module Increase
           expiration_year: Integer,
           idempotency_key: T.nilable(String),
           last4: String,
-          status: Symbol,
-          type: Symbol
+          status: Increase::Models::Card::Status::TaggedSymbol,
+          type: Increase::Models::Card::Type::TaggedSymbol
         )
           .returns(T.attached_class)
       end
@@ -183,8 +186,8 @@ module Increase
               expiration_year: Integer,
               idempotency_key: T.nilable(String),
               last4: String,
-              status: Symbol,
-              type: Symbol
+              status: Increase::Models::Card::Status::TaggedSymbol,
+              type: Increase::Models::Card::Type::TaggedSymbol
             }
           )
       end
@@ -325,29 +328,31 @@ module Increase
       end
 
       # This indicates if payments can be made with the card.
-      class Status < Increase::Enum
-        abstract!
+      module Status
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Card::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Card::Status::TaggedSymbol) }
 
         # The card is active.
-        ACTIVE = :active
+        ACTIVE = T.let(:active, Increase::Models::Card::Status::TaggedSymbol)
 
         # The card is temporarily disabled.
-        DISABLED = :disabled
+        DISABLED = T.let(:disabled, Increase::Models::Card::Status::TaggedSymbol)
 
         # The card is permanently canceled.
-        CANCELED = :canceled
+        CANCELED = T.let(:canceled, Increase::Models::Card::Status::TaggedSymbol)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `card`.
-      class Type < Increase::Enum
-        abstract!
+      module Type
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Card::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Card::Type::TaggedSymbol) }
 
-        CARD = :card
+        CARD = T.let(:card, Increase::Models::Card::Type::TaggedSymbol)
       end
     end
   end

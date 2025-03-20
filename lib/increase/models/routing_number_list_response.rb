@@ -55,10 +55,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # This routing number's support for ACH Transfers.
-      class ACHTransfers < Increase::Enum
+      module ACHTransfers
+        extend Increase::Enum
+
         # The routing number can receive this transfer type.
         SUPPORTED = :supported
 
@@ -68,10 +68,10 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # This routing number's support for Real-Time Payments Transfers.
-      class RealTimePaymentsTransfers < Increase::Enum
+      module RealTimePaymentsTransfers
+        extend Increase::Enum
+
         # The routing number can receive this transfer type.
         SUPPORTED = :supported
 
@@ -81,20 +81,20 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `routing_number`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         ROUTING_NUMBER = :routing_number
 
         finalize!
       end
 
-      # @abstract
-      #
       # This routing number's support for Wire Transfers.
-      class WireTransfers < Increase::Enum
+      module WireTransfers
+        extend Increase::Enum
+
         # The routing number can receive this transfer type.
         SUPPORTED = :supported
 

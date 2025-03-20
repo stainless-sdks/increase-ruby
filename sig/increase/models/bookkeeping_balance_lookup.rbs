@@ -24,7 +24,9 @@ module Increase
 
       type type_ = :bookkeeping_balance_lookup
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         BOOKKEEPING_BALANCE_LOOKUP: :bookkeeping_balance_lookup
 
         def self.values: -> ::Array[Increase::Models::BookkeepingBalanceLookup::type_]

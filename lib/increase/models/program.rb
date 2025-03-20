@@ -95,10 +95,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # The Bank the Program is with.
-      class Bank < Increase::Enum
+      module Bank
+        extend Increase::Enum
+
         # Core Bank
         CORE_BANK = :core_bank
 
@@ -111,11 +111,11 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `program`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         PROGRAM = :program
 
         finalize!

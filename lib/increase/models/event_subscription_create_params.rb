@@ -58,11 +58,11 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # If specified, this subscription will only receive webhooks for Events with the
       #   specified `category`.
-      class SelectedEventCategory < Increase::Enum
+      module SelectedEventCategory
+        extend Increase::Enum
+
         # Occurs whenever an Account is created.
         ACCOUNT_CREATED = :"account.created"
 

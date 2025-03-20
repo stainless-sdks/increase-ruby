@@ -8,11 +8,16 @@ module Increase
         include Increase::RequestParameters
 
         # The reason for the notification of change.
-        sig { returns(Symbol) }
+        sig { returns(Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol) }
         def change_code
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(
+            _: Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol
+          )
+            .returns(Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol)
+        end
         def change_code=(_)
         end
 
@@ -27,7 +32,7 @@ module Increase
 
         sig do
           params(
-            change_code: Symbol,
+            change_code: Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol,
             corrected_data: String,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
           )
@@ -37,85 +42,164 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              change_code: Symbol,
-              corrected_data: String,
-              request_options: Increase::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                change_code: Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol,
+                corrected_data: String,
+                request_options: Increase::RequestOptions
+              }
+            )
         end
         def to_hash
         end
 
         # The reason for the notification of change.
-        class ChangeCode < Increase::Enum
-          abstract!
+        module ChangeCode
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode) }
+          OrSymbol =
+            T.type_alias do
+              T.any(
+                Symbol,
+                Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::TaggedSymbol
+              )
+            end
 
           # The account number was incorrect.
-          INCORRECT_ACCOUNT_NUMBER = :incorrect_account_number
+          INCORRECT_ACCOUNT_NUMBER =
+            T.let(
+              :incorrect_account_number,
+              Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol
+            )
 
           # The routing number was incorrect.
-          INCORRECT_ROUTING_NUMBER = :incorrect_routing_number
+          INCORRECT_ROUTING_NUMBER =
+            T.let(
+              :incorrect_routing_number,
+              Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol
+            )
 
           # Both the routing number and the account number were incorrect.
-          INCORRECT_ROUTING_NUMBER_AND_ACCOUNT_NUMBER = :incorrect_routing_number_and_account_number
+          INCORRECT_ROUTING_NUMBER_AND_ACCOUNT_NUMBER =
+            T.let(
+              :incorrect_routing_number_and_account_number,
+              Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol
+            )
 
           # The transaction code was incorrect. Try changing the `funding` parameter from checking to savings or vice-versa.
-          INCORRECT_TRANSACTION_CODE = :incorrect_transaction_code
+          INCORRECT_TRANSACTION_CODE =
+            T.let(
+              :incorrect_transaction_code,
+              Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol
+            )
 
           # The account number and the transaction code were incorrect.
-          INCORRECT_ACCOUNT_NUMBER_AND_TRANSACTION_CODE = :incorrect_account_number_and_transaction_code
+          INCORRECT_ACCOUNT_NUMBER_AND_TRANSACTION_CODE =
+            T.let(
+              :incorrect_account_number_and_transaction_code,
+              Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol
+            )
 
           # The routing number, account number, and transaction code were incorrect.
           INCORRECT_ROUTING_NUMBER_ACCOUNT_NUMBER_AND_TRANSACTION_CODE =
-            :incorrect_routing_number_account_number_and_transaction_code
+            T.let(
+              :incorrect_routing_number_account_number_and_transaction_code,
+              Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol
+            )
 
           # The receiving depository financial institution identification was incorrect.
           INCORRECT_RECEIVING_DEPOSITORY_FINANCIAL_INSTITUTION_IDENTIFICATION =
-            :incorrect_receiving_depository_financial_institution_identification
+            T.let(
+              :incorrect_receiving_depository_financial_institution_identification,
+              Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol
+            )
 
           # The individual identification number was incorrect.
-          INCORRECT_INDIVIDUAL_IDENTIFICATION_NUMBER = :incorrect_individual_identification_number
+          INCORRECT_INDIVIDUAL_IDENTIFICATION_NUMBER =
+            T.let(
+              :incorrect_individual_identification_number,
+              Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol
+            )
 
           # The addenda had an incorrect format.
-          ADDENDA_FORMAT_ERROR = :addenda_format_error
+          ADDENDA_FORMAT_ERROR =
+            T.let(
+              :addenda_format_error,
+              Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol
+            )
 
           # The standard entry class code was incorrect for an outbound international payment.
           INCORRECT_STANDARD_ENTRY_CLASS_CODE_FOR_OUTBOUND_INTERNATIONAL_PAYMENT =
-            :incorrect_standard_entry_class_code_for_outbound_international_payment
+            T.let(
+              :incorrect_standard_entry_class_code_for_outbound_international_payment,
+              Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol
+            )
 
           # The notification of change was misrouted.
-          MISROUTED_NOTIFICATION_OF_CHANGE = :misrouted_notification_of_change
+          MISROUTED_NOTIFICATION_OF_CHANGE =
+            T.let(
+              :misrouted_notification_of_change,
+              Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol
+            )
 
           # The trace number was incorrect.
-          INCORRECT_TRACE_NUMBER = :incorrect_trace_number
+          INCORRECT_TRACE_NUMBER =
+            T.let(
+              :incorrect_trace_number,
+              Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol
+            )
 
           # The company identification number was incorrect.
-          INCORRECT_COMPANY_IDENTIFICATION_NUMBER = :incorrect_company_identification_number
+          INCORRECT_COMPANY_IDENTIFICATION_NUMBER =
+            T.let(
+              :incorrect_company_identification_number,
+              Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol
+            )
 
           # The individual identification number or identification number was incorrect.
-          INCORRECT_IDENTIFICATION_NUMBER = :incorrect_identification_number
+          INCORRECT_IDENTIFICATION_NUMBER =
+            T.let(
+              :incorrect_identification_number,
+              Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol
+            )
 
           # The corrected data was incorrectly formatted.
-          INCORRECTLY_FORMATTED_CORRECTED_DATA = :incorrectly_formatted_corrected_data
+          INCORRECTLY_FORMATTED_CORRECTED_DATA =
+            T.let(
+              :incorrectly_formatted_corrected_data,
+              Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol
+            )
 
           # The discretionary data was incorrect.
-          INCORRECT_DISCRETIONARY_DATA = :incorrect_discretionary_data
+          INCORRECT_DISCRETIONARY_DATA =
+            T.let(
+              :incorrect_discretionary_data,
+              Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol
+            )
 
           # The routing number was not from the original entry detail record.
           ROUTING_NUMBER_NOT_FROM_ORIGINAL_ENTRY_DETAIL_RECORD =
-            :routing_number_not_from_original_entry_detail_record
+            T.let(
+              :routing_number_not_from_original_entry_detail_record,
+              Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol
+            )
 
           # The depository financial institution account number was not from the original entry detail record.
           DEPOSITORY_FINANCIAL_INSTITUTION_ACCOUNT_NUMBER_NOT_FROM_ORIGINAL_ENTRY_DETAIL_RECORD =
-            :depository_financial_institution_account_number_not_from_original_entry_detail_record
+            T.let(
+              :depository_financial_institution_account_number_not_from_original_entry_detail_record,
+              Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol
+            )
 
           # The transaction code was incorrect, initiated by the originating depository financial institution.
           INCORRECT_TRANSACTION_CODE_BY_ORIGINATING_DEPOSITORY_FINANCIAL_INSTITUTION =
-            :incorrect_transaction_code_by_originating_depository_financial_institution
+            T.let(
+              :incorrect_transaction_code_by_originating_depository_financial_institution,
+              Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol
+            )
         end
       end
     end

@@ -64,11 +64,14 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `bookkeeping_entry_set`.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol)
+          .returns(Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol)
+      end
       def type=(_)
       end
 
@@ -84,7 +87,7 @@ module Increase
           entries: T::Array[Increase::Models::BookkeepingEntrySet::Entry],
           idempotency_key: T.nilable(String),
           transaction_id: T.nilable(String),
-          type: Symbol
+          type: Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol
         )
           .returns(T.attached_class)
       end
@@ -101,7 +104,7 @@ module Increase
               entries: T::Array[Increase::Models::BookkeepingEntrySet::Entry],
               idempotency_key: T.nilable(String),
               transaction_id: T.nilable(String),
-              type: Symbol
+              type: Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol
             }
           )
       end
@@ -147,12 +150,14 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `bookkeeping_entry_set`.
-      class Type < Increase::Enum
-        abstract!
+      module Type
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::BookkeepingEntrySet::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol) }
 
-        BOOKKEEPING_ENTRY_SET = :bookkeeping_entry_set
+        BOOKKEEPING_ENTRY_SET =
+          T.let(:bookkeeping_entry_set, Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol)
       end
     end
   end

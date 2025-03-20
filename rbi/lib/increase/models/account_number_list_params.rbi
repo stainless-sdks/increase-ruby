@@ -125,32 +125,41 @@ module Increase
       class ACHDebitStatus < Increase::BaseModel
         # The ACH Debit status to retrieve Account Numbers for. For GET requests, this
         #   should be encoded as a comma-delimited string, such as `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Symbol])) }
+        sig { returns(T.nilable(T::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::In::OrSymbol])) }
         def in_
         end
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        sig do
+          params(_: T::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::In::OrSymbol])
+            .returns(T::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::In::OrSymbol])
+        end
         def in_=(_)
         end
 
-        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
+        sig do
+          params(in_: T::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::In::OrSymbol])
+            .returns(T.attached_class)
+        end
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Symbol]}) }
+        sig { override.returns({in_: T::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::In::OrSymbol]}) }
         def to_hash
         end
 
-        class In < Increase::Enum
-          abstract!
+        module In
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::AccountNumberListParams::ACHDebitStatus::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::AccountNumberListParams::ACHDebitStatus::In::TaggedSymbol) }
 
           # ACH Debits are allowed.
-          ALLOWED = :allowed
+          ALLOWED = T.let(:allowed, Increase::Models::AccountNumberListParams::ACHDebitStatus::In::OrSymbol)
 
           # ACH Debits are blocked.
-          BLOCKED = :blocked
+          BLOCKED = T.let(:blocked, Increase::Models::AccountNumberListParams::ACHDebitStatus::In::OrSymbol)
         end
       end
 
@@ -209,35 +218,43 @@ module Increase
       class Status < Increase::BaseModel
         # The status to retrieve Account Numbers for. For GET requests, this should be
         #   encoded as a comma-delimited string, such as `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Symbol])) }
+        sig { returns(T.nilable(T::Array[Increase::Models::AccountNumberListParams::Status::In::OrSymbol])) }
         def in_
         end
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        sig do
+          params(_: T::Array[Increase::Models::AccountNumberListParams::Status::In::OrSymbol])
+            .returns(T::Array[Increase::Models::AccountNumberListParams::Status::In::OrSymbol])
+        end
         def in_=(_)
         end
 
-        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
+        sig do
+          params(in_: T::Array[Increase::Models::AccountNumberListParams::Status::In::OrSymbol])
+            .returns(T.attached_class)
+        end
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Symbol]}) }
+        sig { override.returns({in_: T::Array[Increase::Models::AccountNumberListParams::Status::In::OrSymbol]}) }
         def to_hash
         end
 
-        class In < Increase::Enum
-          abstract!
+        module In
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountNumberListParams::Status::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::AccountNumberListParams::Status::In::TaggedSymbol) }
 
           # The account number is active.
-          ACTIVE = :active
+          ACTIVE = T.let(:active, Increase::Models::AccountNumberListParams::Status::In::OrSymbol)
 
           # The account number is temporarily disabled.
-          DISABLED = :disabled
+          DISABLED = T.let(:disabled, Increase::Models::AccountNumberListParams::Status::In::OrSymbol)
 
           # The account number is permanently disabled.
-          CANCELED = :canceled
+          CANCELED = T.let(:canceled, Increase::Models::AccountNumberListParams::Status::In::OrSymbol)
         end
       end
     end

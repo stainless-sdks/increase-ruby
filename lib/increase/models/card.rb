@@ -209,10 +209,10 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @abstract
-      #
       # This indicates if payments can be made with the card.
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The card is active.
         ACTIVE = :active
 
@@ -225,11 +225,11 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `card`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         CARD = :card
 
         finalize!

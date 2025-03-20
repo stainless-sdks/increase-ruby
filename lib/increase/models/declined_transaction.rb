@@ -107,12 +107,12 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Declined
       #   Transaction's currency. This will match the currency on the Declined
       #   Transaction's Account.
-      class Currency < Increase::Enum
+      module Currency
+        extend Increase::Enum
+
         # Canadian Dollar (CAD)
         CAD = :CAD
 
@@ -134,10 +134,10 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # The type of the route this Declined Transaction came through.
-      class RouteType < Increase::Enum
+      module RouteType
+        extend Increase::Enum
+
         # An Account Number.
         ACCOUNT_NUMBER = :account_number
 
@@ -355,10 +355,10 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @abstract
-          #
           # Why the ACH transfer was declined.
-          class Reason < Increase::Enum
+          module Reason
+            extend Increase::Enum
+
             # The account number is canceled.
             ACH_ROUTE_CANCELED = :ach_route_canceled
 
@@ -415,11 +415,11 @@ module Increase
             finalize!
           end
 
-          # @abstract
-          #
           # A constant representing the object's type. For this resource it will always be
           #   `ach_decline`.
-          class Type < Increase::Enum
+          module Type
+            extend Increase::Enum
+
             ACH_DECLINE = :ach_decline
 
             finalize!
@@ -676,11 +676,11 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @abstract
-          #
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
-          class Actioner < Increase::Enum
+          module Actioner
+            extend Increase::Enum
+
             # This object was actioned by the user through a real-time decision.
             USER = :user
 
@@ -693,11 +693,11 @@ module Increase
             finalize!
           end
 
-          # @abstract
-          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
           #   account currency.
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -719,11 +719,11 @@ module Increase
             finalize!
           end
 
-          # @abstract
-          #
           # The direction describes the direction the funds will move, either from the
           #   cardholder to the merchant or from the merchant to the cardholder.
-          class Direction < Increase::Enum
+          module Direction
+            extend Increase::Enum
+
             # A regular card authorization where funds are debited from the cardholder.
             SETTLEMENT = :settlement
 
@@ -759,10 +759,10 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
-            # @abstract
-            #
             # The payment network used to process this card authorization.
-            class Category < Increase::Enum
+            module Category
+              extend Increase::Enum
+
               # Visa
               VISA = :visa
 
@@ -809,12 +809,12 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
-              # @abstract
-              #
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
               #   transactions, identifies the type of mail or telephone order.
-              class ElectronicCommerceIndicator < Increase::Enum
+              module ElectronicCommerceIndicator
+                extend Increase::Enum
+
                 # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
                 MAIL_PHONE_ORDER = :mail_phone_order
 
@@ -843,11 +843,11 @@ module Increase
                 finalize!
               end
 
-              # @abstract
-              #
               # The method used to enter the cardholder's primary account number and card
               #   expiration date.
-              class PointOfServiceEntryMode < Increase::Enum
+              module PointOfServiceEntryMode
+                extend Increase::Enum
+
                 # Unknown
                 UNKNOWN = :unknown
 
@@ -881,11 +881,11 @@ module Increase
                 finalize!
               end
 
-              # @abstract
-              #
               # Only present when `actioner: network`. Describes why a card authorization was
               #   approved or declined by Visa through stand-in processing.
-              class StandInProcessingReason < Increase::Enum
+              module StandInProcessingReason
+                extend Increase::Enum
+
                 # Increase failed to process the authorization in a timely manner.
                 ISSUER_ERROR = :issuer_error
 
@@ -949,11 +949,11 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
-          # @abstract
-          #
           # The processing category describes the intent behind the authorization, such as
           #   whether it was used for bill payments or an automatic fuel dispenser.
-          class ProcessingCategory < Increase::Enum
+          module ProcessingCategory
+            extend Increase::Enum
+
             # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
             ACCOUNT_FUNDING = :account_funding
 
@@ -975,11 +975,11 @@ module Increase
             finalize!
           end
 
-          # @abstract
-          #
           # This is present if a specific decline reason was given in the real-time
           #   decision.
-          class RealTimeDecisionReason < Increase::Enum
+          module RealTimeDecisionReason
+            extend Increase::Enum
+
             # The cardholder does not have sufficient funds to cover the transaction. The merchant may attempt to process the transaction again.
             INSUFFICIENT_FUNDS = :insufficient_funds
 
@@ -1001,10 +1001,10 @@ module Increase
             finalize!
           end
 
-          # @abstract
-          #
           # Why the transaction was declined.
-          class Reason < Increase::Enum
+          module Reason
+            extend Increase::Enum
+
             # The account has been closed.
             ACCOUNT_CLOSED = :account_closed
 
@@ -1104,10 +1104,10 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
-              # @abstract
-              #
               # The result of verifying the Card Verification Code.
-              class Result < Increase::Enum
+              module Result
+                extend Increase::Enum
+
                 # No card verification code was provided in the authorization request.
                 NOT_CHECKED = :not_checked
 
@@ -1168,10 +1168,10 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
-              # @abstract
-              #
               # The address verification result returned to the card network.
-              class Result < Increase::Enum
+              module Result
+                extend Increase::Enum
+
                 # No adress was provided in the authorization request.
                 NOT_CHECKED = :not_checked
 
@@ -1196,11 +1196,11 @@ module Increase
           end
         end
 
-        # @abstract
-        #
         # The type of the resource. We may add additional possible values for this enum
         #   over time; your application should be able to handle such additions gracefully.
-        class Category < Increase::Enum
+        module Category
+          extend Increase::Enum
+
           # ACH Decline: details will be under the `ach_decline` object.
           ACH_DECLINE = :ach_decline
 
@@ -1299,10 +1299,10 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @abstract
-          #
           # Why the check was declined.
-          class Reason < Increase::Enum
+          module Reason
+            extend Increase::Enum
+
             # The account number is disabled.
             ACH_ROUTE_DISABLED = :ach_route_disabled
 
@@ -1415,11 +1415,11 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @abstract
-          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
           #   currency.
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -1441,10 +1441,10 @@ module Increase
             finalize!
           end
 
-          # @abstract
-          #
           # Why the check deposit was rejected.
-          class Reason < Increase::Enum
+          module Reason
+            extend Increase::Enum
+
             # The check's image is incomplete.
             INCOMPLETE_IMAGE = :incomplete_image
 
@@ -1582,12 +1582,12 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @abstract
-          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
           #   transfer's currency. This will always be "USD" for a Real-Time Payments
           #   transfer.
-          class Currency < Increase::Enum
+          module Currency
+            extend Increase::Enum
+
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -1609,10 +1609,10 @@ module Increase
             finalize!
           end
 
-          # @abstract
-          #
           # Why the transfer was declined.
-          class Reason < Increase::Enum
+          module Reason
+            extend Increase::Enum
+
             # The account number is canceled.
             ACCOUNT_NUMBER_CANCELED = :account_number_canceled
 
@@ -1659,10 +1659,10 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @abstract
-          #
           # Why the wire transfer was declined.
-          class Reason < Increase::Enum
+          module Reason
+            extend Increase::Enum
+
             # The account number is canceled.
             ACCOUNT_NUMBER_CANCELED = :account_number_canceled
 
@@ -1686,11 +1686,11 @@ module Increase
         end
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `declined_transaction`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         DECLINED_TRANSACTION = :declined_transaction
 
         finalize!

@@ -25,11 +25,14 @@ module Increase
       end
 
       # This indicates if checks can be sent to the Lockbox.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Increase::Models::LockboxUpdateParams::Status::OrSymbol)) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::LockboxUpdateParams::Status::OrSymbol)
+          .returns(Increase::Models::LockboxUpdateParams::Status::OrSymbol)
+      end
       def status=(_)
       end
 
@@ -37,7 +40,7 @@ module Increase
         params(
           description: String,
           recipient_name: String,
-          status: Symbol,
+          status: Increase::Models::LockboxUpdateParams::Status::OrSymbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -51,7 +54,7 @@ module Increase
             {
               description: String,
               recipient_name: String,
-              status: Symbol,
+              status: Increase::Models::LockboxUpdateParams::Status::OrSymbol,
               request_options: Increase::RequestOptions
             }
           )
@@ -60,16 +63,17 @@ module Increase
       end
 
       # This indicates if checks can be sent to the Lockbox.
-      class Status < Increase::Enum
-        abstract!
+      module Status
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::LockboxUpdateParams::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::LockboxUpdateParams::Status::TaggedSymbol) }
 
         # This Lockbox is active. Checks mailed to it will be deposited automatically.
-        ACTIVE = :active
+        ACTIVE = T.let(:active, Increase::Models::LockboxUpdateParams::Status::OrSymbol)
 
         # This Lockbox is inactive. Checks mailed to it will not be deposited.
-        INACTIVE = :inactive
+        INACTIVE = T.let(:inactive, Increase::Models::LockboxUpdateParams::Status::OrSymbol)
       end
     end
   end

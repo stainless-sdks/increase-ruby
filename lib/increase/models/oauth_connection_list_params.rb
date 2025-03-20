@@ -81,8 +81,9 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        class In < Increase::Enum
+        module In
+          extend Increase::Enum
+
           # The OAuth connection is active.
           ACTIVE = :active
 

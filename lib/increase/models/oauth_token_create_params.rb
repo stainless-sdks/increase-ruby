@@ -71,11 +71,11 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # The credential you request in exchange for the code. In Production, this is
       #   always `authorization_code`. In Sandbox, you can pass either enum value.
-      class GrantType < Increase::Enum
+      module GrantType
+        extend Increase::Enum
+
         # An OAuth authorization code.
         AUTHORIZATION_CODE = :authorization_code
 

@@ -148,10 +148,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # The standard entry class code for the transfer.
-        class StandardEntryClassCode < Increase::Enum
+        module StandardEntryClassCode
+          extend Increase::Enum
+
           # Corporate Credit and Debit (CCD).
           CORPORATE_CREDIT_OR_DEBIT = :corporate_credit_or_debit
 

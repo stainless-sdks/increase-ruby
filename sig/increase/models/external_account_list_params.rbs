@@ -67,7 +67,9 @@ module Increase
 
         type in_ = :active | :archived
 
-        class In < Increase::Enum
+        module In
+          extend Increase::Enum
+
           # The External Account is active.
           ACTIVE: :active
 

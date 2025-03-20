@@ -29,7 +29,9 @@ module Increase
           | :webhook_timed_out
           | :webhook_declined
 
-        class DeclineReason < Increase::Enum
+        module DeclineReason
+          extend Increase::Enum
+
           # The card is not active.
           CARD_NOT_ACTIVE: :card_not_active
 
@@ -47,7 +49,9 @@ module Increase
 
         type type_ = :inbound_digital_wallet_token_request_simulation_result
 
-        class Type < Increase::Enum
+        module Type
+          extend Increase::Enum
+
           INBOUND_DIGITAL_WALLET_TOKEN_REQUEST_SIMULATION_RESULT: :inbound_digital_wallet_token_request_simulation_result
 
           def self.values: -> ::Array[Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::type_]

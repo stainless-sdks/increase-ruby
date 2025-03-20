@@ -45,7 +45,9 @@ module Increase
 
       type account_holder = :business | :individual | :unknown
 
-      class AccountHolder < Increase::Enum
+      module AccountHolder
+        extend Increase::Enum
+
         # The External Account is owned by a business.
         BUSINESS: :business
 
@@ -60,7 +62,9 @@ module Increase
 
       type funding = :checking | :savings | :other
 
-      class Funding < Increase::Enum
+      module Funding
+        extend Increase::Enum
+
         # A checking account.
         CHECKING: :checking
 

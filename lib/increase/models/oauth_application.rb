@@ -67,10 +67,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # Whether the application is active.
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The application is active and can be used by your users.
         ACTIVE = :active
 
@@ -80,11 +80,11 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `oauth_application`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         OAUTH_APPLICATION = :oauth_application
 
         finalize!

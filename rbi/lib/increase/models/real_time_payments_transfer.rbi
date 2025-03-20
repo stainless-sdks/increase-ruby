@@ -103,11 +103,14 @@ module Increase
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
       #   currency. For real-time payments transfers this is always equal to `USD`.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol) }
       def currency
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol)
+          .returns(Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol)
+      end
       def currency=(_)
       end
 
@@ -204,11 +207,14 @@ module Increase
       end
 
       # The lifecycle status of the transfer.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol)
+          .returns(Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol)
+      end
       def status=(_)
       end
 
@@ -236,11 +242,14 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `real_time_payments_transfer`.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::RealTimePaymentsTransfer::Type::TaggedSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::RealTimePaymentsTransfer::Type::TaggedSymbol)
+          .returns(Increase::Models::RealTimePaymentsTransfer::Type::TaggedSymbol)
+      end
       def type=(_)
       end
 
@@ -277,7 +286,7 @@ module Increase
           created_at: Time,
           created_by: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy),
           creditor_name: String,
-          currency: Symbol,
+          currency: Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol,
           debtor_name: T.nilable(String),
           destination_account_number: String,
           destination_routing_number: String,
@@ -287,10 +296,10 @@ module Increase
           rejection: T.nilable(Increase::Models::RealTimePaymentsTransfer::Rejection),
           remittance_information: String,
           source_account_number_id: String,
-          status: Symbol,
+          status: Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol,
           submission: T.nilable(Increase::Models::RealTimePaymentsTransfer::Submission),
           transaction_id: T.nilable(String),
-          type: Symbol,
+          type: Increase::Models::RealTimePaymentsTransfer::Type::TaggedSymbol,
           ultimate_creditor_name: T.nilable(String),
           ultimate_debtor_name: T.nilable(String)
         )
@@ -338,7 +347,7 @@ module Increase
               created_at: Time,
               created_by: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy),
               creditor_name: String,
-              currency: Symbol,
+              currency: Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol,
               debtor_name: T.nilable(String),
               destination_account_number: String,
               destination_routing_number: String,
@@ -348,10 +357,10 @@ module Increase
               rejection: T.nilable(Increase::Models::RealTimePaymentsTransfer::Rejection),
               remittance_information: String,
               source_account_number_id: String,
-              status: Symbol,
+              status: Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol,
               submission: T.nilable(Increase::Models::RealTimePaymentsTransfer::Submission),
               transaction_id: T.nilable(String),
-              type: Symbol,
+              type: Increase::Models::RealTimePaymentsTransfer::Type::TaggedSymbol,
               ultimate_creditor_name: T.nilable(String),
               ultimate_debtor_name: T.nilable(String)
             }
@@ -459,11 +468,14 @@ module Increase
         end
 
         # The type of object that created this transfer.
-        sig { returns(Symbol) }
+        sig { returns(Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::TaggedSymbol) }
         def category
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::TaggedSymbol)
+            .returns(Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::TaggedSymbol)
+        end
         def category=(_)
         end
 
@@ -495,7 +507,7 @@ module Increase
         sig do
           params(
             api_key: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey),
-            category: Symbol,
+            category: Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::TaggedSymbol,
             oauth_application: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication),
             user: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User)
           )
@@ -509,7 +521,7 @@ module Increase
             .returns(
               {
                 api_key: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey),
-                category: Symbol,
+                category: Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::TaggedSymbol,
                 oauth_application: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication),
                 user: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User)
               }
@@ -539,19 +551,23 @@ module Increase
         end
 
         # The type of object that created this transfer.
-        class Category < Increase::Enum
-          abstract!
+        module Category
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::TaggedSymbol) }
 
           # An API key. Details will be under the `api_key` object.
-          API_KEY = :api_key
+          API_KEY = T.let(:api_key, Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::TaggedSymbol)
 
           # An OAuth application you connected to Increase. Details will be under the `oauth_application` object.
-          OAUTH_APPLICATION = :oauth_application
+          OAUTH_APPLICATION =
+            T.let(:oauth_application, Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::TaggedSymbol)
 
           # A User in the Increase dashboard. Details will be under the `user` object.
-          USER = :user
+          USER = T.let(:user, Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::TaggedSymbol)
         end
 
         class OAuthApplication < Increase::BaseModel
@@ -597,28 +613,30 @@ module Increase
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
       #   currency. For real-time payments transfers this is always equal to `USD`.
-      class Currency < Increase::Enum
-        abstract!
+      module Currency
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransfer::Currency) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol) }
 
         # Canadian Dollar (CAD)
-        CAD = :CAD
+        CAD = T.let(:CAD, Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol)
 
         # Swiss Franc (CHF)
-        CHF = :CHF
+        CHF = T.let(:CHF, Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol)
 
         # Euro (EUR)
-        EUR = :EUR
+        EUR = T.let(:EUR, Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol)
 
         # British Pound (GBP)
-        GBP = :GBP
+        GBP = T.let(:GBP, Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol)
 
         # Japanese Yen (JPY)
-        JPY = :JPY
+        JPY = T.let(:JPY, Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol)
 
         # US Dollar (USD)
-        USD = :USD
+        USD = T.let(:USD, Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol)
       end
 
       class Rejection < Increase::BaseModel
@@ -634,11 +652,14 @@ module Increase
 
         # The reason the transfer was rejected as provided by the recipient bank or the
         #   Real-Time Payments network.
-        sig { returns(Symbol) }
+        sig { returns(Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol) }
         def reject_reason_code
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol)
+            .returns(Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol)
+        end
         def reject_reason_code=(_)
         end
 
@@ -657,7 +678,7 @@ module Increase
         sig do
           params(
             reject_reason_additional_information: T.nilable(String),
-            reject_reason_code: Symbol,
+            reject_reason_code: Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol,
             rejected_at: T.nilable(Time)
           )
             .returns(T.attached_class)
@@ -670,7 +691,7 @@ module Increase
             .returns(
               {
                 reject_reason_additional_information: T.nilable(String),
-                reject_reason_code: Symbol,
+                reject_reason_code: Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol,
                 rejected_at: T.nilable(Time)
               }
             )
@@ -680,105 +701,189 @@ module Increase
 
         # The reason the transfer was rejected as provided by the recipient bank or the
         #   Real-Time Payments network.
-        class RejectReasonCode < Increase::Enum
-          abstract!
+        module RejectReasonCode
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol) }
 
           # The destination account is closed. Corresponds to the Real-Time Payments reason code `AC04`.
-          ACCOUNT_CLOSED = :account_closed
+          ACCOUNT_CLOSED =
+            T.let(
+              :account_closed,
+              Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol
+            )
 
           # The destination account is currently blocked from receiving transactions. Corresponds to the Real-Time Payments reason code `AC06`.
-          ACCOUNT_BLOCKED = :account_blocked
+          ACCOUNT_BLOCKED =
+            T.let(
+              :account_blocked,
+              Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol
+            )
 
           # The destination account is ineligible to receive Real-Time Payments transfers. Corresponds to the Real-Time Payments reason code `AC14`.
-          INVALID_CREDITOR_ACCOUNT_TYPE = :invalid_creditor_account_type
+          INVALID_CREDITOR_ACCOUNT_TYPE =
+            T.let(
+              :invalid_creditor_account_type,
+              Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol
+            )
 
           # The destination account does not exist. Corresponds to the Real-Time Payments reason code `AC03`.
-          INVALID_CREDITOR_ACCOUNT_NUMBER = :invalid_creditor_account_number
+          INVALID_CREDITOR_ACCOUNT_NUMBER =
+            T.let(
+              :invalid_creditor_account_number,
+              Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol
+            )
 
           # The destination routing number is invalid. Corresponds to the Real-Time Payments reason code `RC04`.
-          INVALID_CREDITOR_FINANCIAL_INSTITUTION_IDENTIFIER = :invalid_creditor_financial_institution_identifier
+          INVALID_CREDITOR_FINANCIAL_INSTITUTION_IDENTIFIER =
+            T.let(
+              :invalid_creditor_financial_institution_identifier,
+              Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol
+            )
 
           # The destination account holder is deceased. Corresponds to the Real-Time Payments reason code `MD07`.
-          END_CUSTOMER_DECEASED = :end_customer_deceased
+          END_CUSTOMER_DECEASED =
+            T.let(
+              :end_customer_deceased,
+              Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol
+            )
 
           # The reason is provided as narrative information in the additional information field.
-          NARRATIVE = :narrative
+          NARRATIVE =
+            T.let(:narrative, Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol)
 
           # Real-Time Payments transfers are not allowed to the destination account. Corresponds to the Real-Time Payments reason code `AG01`.
-          TRANSACTION_FORBIDDEN = :transaction_forbidden
+          TRANSACTION_FORBIDDEN =
+            T.let(
+              :transaction_forbidden,
+              Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol
+            )
 
           # Real-Time Payments transfers are not enabled for the destination account. Corresponds to the Real-Time Payments reason code `AG03`.
-          TRANSACTION_TYPE_NOT_SUPPORTED = :transaction_type_not_supported
+          TRANSACTION_TYPE_NOT_SUPPORTED =
+            T.let(
+              :transaction_type_not_supported,
+              Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol
+            )
 
           # The amount of the transfer is different than expected by the recipient. Corresponds to the Real-Time Payments reason code `AM09`.
-          UNEXPECTED_AMOUNT = :unexpected_amount
+          UNEXPECTED_AMOUNT =
+            T.let(
+              :unexpected_amount,
+              Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol
+            )
 
           # The amount is higher than the recipient is authorized to send or receive. Corresponds to the Real-Time Payments reason code `AM14`.
-          AMOUNT_EXCEEDS_BANK_LIMITS = :amount_exceeds_bank_limits
+          AMOUNT_EXCEEDS_BANK_LIMITS =
+            T.let(
+              :amount_exceeds_bank_limits,
+              Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol
+            )
 
           # The creditor's address is required, but missing or invalid. Corresponds to the Real-Time Payments reason code `BE04`.
-          INVALID_CREDITOR_ADDRESS = :invalid_creditor_address
+          INVALID_CREDITOR_ADDRESS =
+            T.let(
+              :invalid_creditor_address,
+              Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol
+            )
 
           # The specified creditor is unknown. Corresponds to the Real-Time Payments reason code `BE06`.
-          UNKNOWN_END_CUSTOMER = :unknown_end_customer
+          UNKNOWN_END_CUSTOMER =
+            T.let(
+              :unknown_end_customer,
+              Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol
+            )
 
           # The debtor's address is required, but missing or invalid. Corresponds to the Real-Time Payments reason code `BE07`.
-          INVALID_DEBTOR_ADDRESS = :invalid_debtor_address
+          INVALID_DEBTOR_ADDRESS =
+            T.let(
+              :invalid_debtor_address,
+              Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol
+            )
 
           # There was a timeout processing the transfer. Corresponds to the Real-Time Payments reason code `DS24`.
-          TIMEOUT = :timeout
+          TIMEOUT =
+            T.let(:timeout, Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol)
 
           # Real-Time Payments transfers are not enabled for the destination account. Corresponds to the Real-Time Payments reason code `NOAT`.
-          UNSUPPORTED_MESSAGE_FOR_RECIPIENT = :unsupported_message_for_recipient
+          UNSUPPORTED_MESSAGE_FOR_RECIPIENT =
+            T.let(
+              :unsupported_message_for_recipient,
+              Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol
+            )
 
           # The destination financial institution is currently not connected to Real-Time Payments. Corresponds to the Real-Time Payments reason code `9912`.
-          RECIPIENT_CONNECTION_NOT_AVAILABLE = :recipient_connection_not_available
+          RECIPIENT_CONNECTION_NOT_AVAILABLE =
+            T.let(
+              :recipient_connection_not_available,
+              Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol
+            )
 
           # Real-Time Payments is currently unavailable. Corresponds to the Real-Time Payments reason code `9948`.
-          REAL_TIME_PAYMENTS_SUSPENDED = :real_time_payments_suspended
+          REAL_TIME_PAYMENTS_SUSPENDED =
+            T.let(
+              :real_time_payments_suspended,
+              Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol
+            )
 
           # The destination financial institution is currently signed off of Real-Time Payments. Corresponds to the Real-Time Payments reason code `9910`.
-          INSTRUCTED_AGENT_SIGNED_OFF = :instructed_agent_signed_off
+          INSTRUCTED_AGENT_SIGNED_OFF =
+            T.let(
+              :instructed_agent_signed_off,
+              Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol
+            )
 
           # The transfer was rejected due to an internal Increase issue. We have been notified.
-          PROCESSING_ERROR = :processing_error
+          PROCESSING_ERROR =
+            T.let(
+              :processing_error,
+              Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol
+            )
 
           # Some other error or issue has occurred.
-          OTHER = :other
+          OTHER =
+            T.let(:other, Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol)
         end
       end
 
       # The lifecycle status of the transfer.
-      class Status < Increase::Enum
-        abstract!
+      module Status
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransfer::Status) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol) }
 
         # The transfer is pending approval.
-        PENDING_APPROVAL = :pending_approval
+        PENDING_APPROVAL =
+          T.let(:pending_approval, Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol)
 
         # The transfer has been canceled.
-        CANCELED = :canceled
+        CANCELED = T.let(:canceled, Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol)
 
         # The transfer is pending review by Increase.
-        PENDING_REVIEWING = :pending_reviewing
+        PENDING_REVIEWING =
+          T.let(:pending_reviewing, Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol)
 
         # The transfer requires attention from an Increase operator.
-        REQUIRES_ATTENTION = :requires_attention
+        REQUIRES_ATTENTION =
+          T.let(:requires_attention, Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol)
 
         # The transfer was rejected by the network or the recipient's bank.
-        REJECTED = :rejected
+        REJECTED = T.let(:rejected, Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol)
 
         # The transfer is queued to be submitted to Real-Time Payments.
-        PENDING_SUBMISSION = :pending_submission
+        PENDING_SUBMISSION =
+          T.let(:pending_submission, Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol)
 
         # The transfer has been submitted and is pending a response from Real-Time Payments.
-        SUBMITTED = :submitted
+        SUBMITTED = T.let(:submitted, Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol)
 
         # The transfer has been sent successfully and is complete.
-        COMPLETE = :complete
+        COMPLETE = T.let(:complete, Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol)
       end
 
       class Submission < Increase::BaseModel
@@ -816,12 +921,14 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `real_time_payments_transfer`.
-      class Type < Increase::Enum
-        abstract!
+      module Type
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransfer::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::RealTimePaymentsTransfer::Type::TaggedSymbol) }
 
-        REAL_TIME_PAYMENTS_TRANSFER = :real_time_payments_transfer
+        REAL_TIME_PAYMENTS_TRANSFER =
+          T.let(:real_time_payments_transfer, Increase::Models::RealTimePaymentsTransfer::Type::TaggedSymbol)
       end
     end
   end

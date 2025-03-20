@@ -108,20 +108,26 @@ module Increase
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
       #   currency.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::CheckTransfer::Currency::TaggedSymbol) }
       def currency
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::CheckTransfer::Currency::TaggedSymbol)
+          .returns(Increase::Models::CheckTransfer::Currency::TaggedSymbol)
+      end
       def currency=(_)
       end
 
       # Whether Increase will print and mail the check or if you will do it yourself.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::CheckTransfer::FulfillmentMethod::TaggedSymbol) }
       def fulfillment_method
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::CheckTransfer::FulfillmentMethod::TaggedSymbol)
+          .returns(Increase::Models::CheckTransfer::FulfillmentMethod::TaggedSymbol)
+      end
       def fulfillment_method=(_)
       end
 
@@ -194,11 +200,14 @@ module Increase
       end
 
       # The lifecycle status of the transfer.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::CheckTransfer::Status::TaggedSymbol) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::CheckTransfer::Status::TaggedSymbol)
+          .returns(Increase::Models::CheckTransfer::Status::TaggedSymbol)
+      end
       def status=(_)
       end
 
@@ -242,11 +251,14 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `check_transfer`.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::CheckTransfer::Type::TaggedSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::CheckTransfer::Type::TaggedSymbol)
+          .returns(Increase::Models::CheckTransfer::Type::TaggedSymbol)
+      end
       def type=(_)
       end
 
@@ -264,19 +276,19 @@ module Increase
           check_number: String,
           created_at: Time,
           created_by: T.nilable(Increase::Models::CheckTransfer::CreatedBy),
-          currency: Symbol,
-          fulfillment_method: Symbol,
+          currency: Increase::Models::CheckTransfer::Currency::TaggedSymbol,
+          fulfillment_method: Increase::Models::CheckTransfer::FulfillmentMethod::TaggedSymbol,
           idempotency_key: T.nilable(String),
           mailing: T.nilable(Increase::Models::CheckTransfer::Mailing),
           pending_transaction_id: T.nilable(String),
           physical_check: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck),
           routing_number: String,
           source_account_number_id: T.nilable(String),
-          status: Symbol,
+          status: Increase::Models::CheckTransfer::Status::TaggedSymbol,
           stop_payment_request: T.nilable(Increase::Models::CheckTransfer::StopPaymentRequest),
           submission: T.nilable(Increase::Models::CheckTransfer::Submission),
           third_party: T.nilable(Increase::Models::CheckTransfer::ThirdParty),
-          type: Symbol
+          type: Increase::Models::CheckTransfer::Type::TaggedSymbol
         )
           .returns(T.attached_class)
       end
@@ -321,19 +333,19 @@ module Increase
               check_number: String,
               created_at: Time,
               created_by: T.nilable(Increase::Models::CheckTransfer::CreatedBy),
-              currency: Symbol,
-              fulfillment_method: Symbol,
+              currency: Increase::Models::CheckTransfer::Currency::TaggedSymbol,
+              fulfillment_method: Increase::Models::CheckTransfer::FulfillmentMethod::TaggedSymbol,
               idempotency_key: T.nilable(String),
               mailing: T.nilable(Increase::Models::CheckTransfer::Mailing),
               pending_transaction_id: T.nilable(String),
               physical_check: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck),
               routing_number: String,
               source_account_number_id: T.nilable(String),
-              status: Symbol,
+              status: Increase::Models::CheckTransfer::Status::TaggedSymbol,
               stop_payment_request: T.nilable(Increase::Models::CheckTransfer::StopPaymentRequest),
               submission: T.nilable(Increase::Models::CheckTransfer::Submission),
               third_party: T.nilable(Increase::Models::CheckTransfer::ThirdParty),
-              type: Symbol
+              type: Increase::Models::CheckTransfer::Type::TaggedSymbol
             }
           )
       end
@@ -418,11 +430,14 @@ module Increase
         end
 
         # The type of object that created this transfer.
-        sig { returns(Symbol) }
+        sig { returns(Increase::Models::CheckTransfer::CreatedBy::Category::TaggedSymbol) }
         def category
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Increase::Models::CheckTransfer::CreatedBy::Category::TaggedSymbol)
+            .returns(Increase::Models::CheckTransfer::CreatedBy::Category::TaggedSymbol)
+        end
         def category=(_)
         end
 
@@ -454,7 +469,7 @@ module Increase
         sig do
           params(
             api_key: T.nilable(Increase::Models::CheckTransfer::CreatedBy::APIKey),
-            category: Symbol,
+            category: Increase::Models::CheckTransfer::CreatedBy::Category::TaggedSymbol,
             oauth_application: T.nilable(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication),
             user: T.nilable(Increase::Models::CheckTransfer::CreatedBy::User)
           )
@@ -468,7 +483,7 @@ module Increase
             .returns(
               {
                 api_key: T.nilable(Increase::Models::CheckTransfer::CreatedBy::APIKey),
-                category: Symbol,
+                category: Increase::Models::CheckTransfer::CreatedBy::Category::TaggedSymbol,
                 oauth_application: T.nilable(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication),
                 user: T.nilable(Increase::Models::CheckTransfer::CreatedBy::User)
               }
@@ -498,19 +513,22 @@ module Increase
         end
 
         # The type of object that created this transfer.
-        class Category < Increase::Enum
-          abstract!
+        module Category
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckTransfer::CreatedBy::Category) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CheckTransfer::CreatedBy::Category::TaggedSymbol) }
 
           # An API key. Details will be under the `api_key` object.
-          API_KEY = :api_key
+          API_KEY = T.let(:api_key, Increase::Models::CheckTransfer::CreatedBy::Category::TaggedSymbol)
 
           # An OAuth application you connected to Increase. Details will be under the `oauth_application` object.
-          OAUTH_APPLICATION = :oauth_application
+          OAUTH_APPLICATION =
+            T.let(:oauth_application, Increase::Models::CheckTransfer::CreatedBy::Category::TaggedSymbol)
 
           # A User in the Increase dashboard. Details will be under the `user` object.
-          USER = :user
+          USER = T.let(:user, Increase::Models::CheckTransfer::CreatedBy::Category::TaggedSymbol)
         end
 
         class OAuthApplication < Increase::BaseModel
@@ -556,41 +574,44 @@ module Increase
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
       #   currency.
-      class Currency < Increase::Enum
-        abstract!
+      module Currency
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckTransfer::Currency) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CheckTransfer::Currency::TaggedSymbol) }
 
         # Canadian Dollar (CAD)
-        CAD = :CAD
+        CAD = T.let(:CAD, Increase::Models::CheckTransfer::Currency::TaggedSymbol)
 
         # Swiss Franc (CHF)
-        CHF = :CHF
+        CHF = T.let(:CHF, Increase::Models::CheckTransfer::Currency::TaggedSymbol)
 
         # Euro (EUR)
-        EUR = :EUR
+        EUR = T.let(:EUR, Increase::Models::CheckTransfer::Currency::TaggedSymbol)
 
         # British Pound (GBP)
-        GBP = :GBP
+        GBP = T.let(:GBP, Increase::Models::CheckTransfer::Currency::TaggedSymbol)
 
         # Japanese Yen (JPY)
-        JPY = :JPY
+        JPY = T.let(:JPY, Increase::Models::CheckTransfer::Currency::TaggedSymbol)
 
         # US Dollar (USD)
-        USD = :USD
+        USD = T.let(:USD, Increase::Models::CheckTransfer::Currency::TaggedSymbol)
       end
 
       # Whether Increase will print and mail the check or if you will do it yourself.
-      class FulfillmentMethod < Increase::Enum
-        abstract!
+      module FulfillmentMethod
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckTransfer::FulfillmentMethod) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::CheckTransfer::FulfillmentMethod::TaggedSymbol) }
 
         # Increase will print and mail a physical check.
-        PHYSICAL_CHECK = :physical_check
+        PHYSICAL_CHECK = T.let(:physical_check, Increase::Models::CheckTransfer::FulfillmentMethod::TaggedSymbol)
 
         # Increase will not print a check; you are responsible for printing and mailing a check with the provided account number, routing number, check number, and amount.
-        THIRD_PARTY = :third_party
+        THIRD_PARTY = T.let(:third_party, Increase::Models::CheckTransfer::FulfillmentMethod::TaggedSymbol)
       end
 
       class Mailing < Increase::BaseModel
@@ -692,11 +713,14 @@ module Increase
         end
 
         # The shipping method for the check.
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod::TaggedSymbol)) }
         def shipping_method
         end
 
-        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        sig do
+          params(_: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod::TaggedSymbol))
+            .returns(T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod::TaggedSymbol))
+        end
         def shipping_method=(_)
         end
 
@@ -731,7 +755,7 @@ module Increase
             note: T.nilable(String),
             recipient_name: String,
             return_address: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress),
-            shipping_method: T.nilable(Symbol),
+            shipping_method: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod::TaggedSymbol),
             signature_text: T.nilable(String),
             tracking_updates: T::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate]
           )
@@ -758,7 +782,7 @@ module Increase
                 note: T.nilable(String),
                 recipient_name: String,
                 return_address: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress),
-                shipping_method: T.nilable(Symbol),
+                shipping_method: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod::TaggedSymbol),
                 signature_text: T.nilable(String),
                 tracking_updates: T::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate]
               }
@@ -942,25 +966,33 @@ module Increase
         end
 
         # The shipping method for the check.
-        class ShippingMethod < Increase::Enum
-          abstract!
+        module ShippingMethod
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod::TaggedSymbol) }
 
           # USPS First Class
-          USPS_FIRST_CLASS = :usps_first_class
+          USPS_FIRST_CLASS =
+            T.let(:usps_first_class, Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod::TaggedSymbol)
 
           # FedEx Overnight
-          FEDEX_OVERNIGHT = :fedex_overnight
+          FEDEX_OVERNIGHT =
+            T.let(:fedex_overnight, Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod::TaggedSymbol)
         end
 
         class TrackingUpdate < Increase::BaseModel
           # The type of tracking event.
-          sig { returns(Symbol) }
+          sig { returns(Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category::TaggedSymbol) }
           def category
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category::TaggedSymbol)
+              .returns(Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category::TaggedSymbol)
+          end
           def category=(_)
           end
 
@@ -983,79 +1015,112 @@ module Increase
           def postal_code=(_)
           end
 
-          sig { params(category: Symbol, created_at: Time, postal_code: String).returns(T.attached_class) }
+          sig do
+            params(
+              category: Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category::TaggedSymbol,
+              created_at: Time,
+              postal_code: String
+            )
+              .returns(T.attached_class)
+          end
           def self.new(category:, created_at:, postal_code:)
           end
 
-          sig { override.returns({category: Symbol, created_at: Time, postal_code: String}) }
+          sig do
+            override
+              .returns(
+                {
+                  category: Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category::TaggedSymbol,
+                  created_at: Time,
+                  postal_code: String
+                }
+              )
+          end
           def to_hash
           end
 
           # The type of tracking event.
-          class Category < Increase::Enum
-            abstract!
+          module Category
+            extend Increase::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category::TaggedSymbol) }
 
             # The check is in transit.
-            IN_TRANSIT = :in_transit
+            IN_TRANSIT =
+              T.let(:in_transit, Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category::TaggedSymbol)
 
             # The check has been processed for delivery.
-            PROCESSED_FOR_DELIVERY = :processed_for_delivery
+            PROCESSED_FOR_DELIVERY =
+              T.let(
+                :processed_for_delivery,
+                Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category::TaggedSymbol
+              )
 
             # The check has been delivered.
-            DELIVERED = :delivered
+            DELIVERED =
+              T.let(:delivered, Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category::TaggedSymbol)
 
             # Delivery failed and the check was returned to sender.
-            RETURNED_TO_SENDER = :returned_to_sender
+            RETURNED_TO_SENDER =
+              T.let(
+                :returned_to_sender,
+                Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category::TaggedSymbol
+              )
           end
         end
       end
 
       # The lifecycle status of the transfer.
-      class Status < Increase::Enum
-        abstract!
+      module Status
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckTransfer::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CheckTransfer::Status::TaggedSymbol) }
 
         # The transfer is awaiting approval.
-        PENDING_APPROVAL = :pending_approval
+        PENDING_APPROVAL = T.let(:pending_approval, Increase::Models::CheckTransfer::Status::TaggedSymbol)
 
         # The transfer has been canceled.
-        CANCELED = :canceled
+        CANCELED = T.let(:canceled, Increase::Models::CheckTransfer::Status::TaggedSymbol)
 
         # The transfer is pending submission.
-        PENDING_SUBMISSION = :pending_submission
+        PENDING_SUBMISSION = T.let(:pending_submission, Increase::Models::CheckTransfer::Status::TaggedSymbol)
 
         # The transfer requires attention from an Increase operator.
-        REQUIRES_ATTENTION = :requires_attention
+        REQUIRES_ATTENTION = T.let(:requires_attention, Increase::Models::CheckTransfer::Status::TaggedSymbol)
 
         # The transfer has been rejected.
-        REJECTED = :rejected
+        REJECTED = T.let(:rejected, Increase::Models::CheckTransfer::Status::TaggedSymbol)
 
         # The check is queued for mailing.
-        PENDING_MAILING = :pending_mailing
+        PENDING_MAILING = T.let(:pending_mailing, Increase::Models::CheckTransfer::Status::TaggedSymbol)
 
         # The check has been mailed.
-        MAILED = :mailed
+        MAILED = T.let(:mailed, Increase::Models::CheckTransfer::Status::TaggedSymbol)
 
         # The check has been deposited.
-        DEPOSITED = :deposited
+        DEPOSITED = T.let(:deposited, Increase::Models::CheckTransfer::Status::TaggedSymbol)
 
         # A stop-payment was requested for this check.
-        STOPPED = :stopped
+        STOPPED = T.let(:stopped, Increase::Models::CheckTransfer::Status::TaggedSymbol)
 
         # The transfer has been returned.
-        RETURNED = :returned
+        RETURNED = T.let(:returned, Increase::Models::CheckTransfer::Status::TaggedSymbol)
       end
 
       class StopPaymentRequest < Increase::BaseModel
         # The reason why this transfer was stopped.
-        sig { returns(Symbol) }
+        sig { returns(Increase::Models::CheckTransfer::StopPaymentRequest::Reason::TaggedSymbol) }
         def reason
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Increase::Models::CheckTransfer::StopPaymentRequest::Reason::TaggedSymbol)
+            .returns(Increase::Models::CheckTransfer::StopPaymentRequest::Reason::TaggedSymbol)
+        end
         def reason=(_)
         end
 
@@ -1079,11 +1144,14 @@ module Increase
 
         # A constant representing the object's type. For this resource it will always be
         #   `check_transfer_stop_payment_request`.
-        sig { returns(Symbol) }
+        sig { returns(Increase::Models::CheckTransfer::StopPaymentRequest::Type::TaggedSymbol) }
         def type
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Increase::Models::CheckTransfer::StopPaymentRequest::Type::TaggedSymbol)
+            .returns(Increase::Models::CheckTransfer::StopPaymentRequest::Type::TaggedSymbol)
+        end
         def type=(_)
         end
 
@@ -1091,46 +1159,69 @@ module Increase
         #   details.
         sig do
           params(
-            reason: Symbol,
+            reason: Increase::Models::CheckTransfer::StopPaymentRequest::Reason::TaggedSymbol,
             requested_at: Time,
             transfer_id: String,
-            type: Symbol
-          ).returns(T.attached_class)
+            type: Increase::Models::CheckTransfer::StopPaymentRequest::Type::TaggedSymbol
+          )
+            .returns(T.attached_class)
         end
         def self.new(reason:, requested_at:, transfer_id:, type:)
         end
 
-        sig { override.returns({reason: Symbol, requested_at: Time, transfer_id: String, type: Symbol}) }
+        sig do
+          override
+            .returns(
+              {
+                reason: Increase::Models::CheckTransfer::StopPaymentRequest::Reason::TaggedSymbol,
+                requested_at: Time,
+                transfer_id: String,
+                type: Increase::Models::CheckTransfer::StopPaymentRequest::Type::TaggedSymbol
+              }
+            )
+        end
         def to_hash
         end
 
         # The reason why this transfer was stopped.
-        class Reason < Increase::Enum
-          abstract!
+        module Reason
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::CheckTransfer::StopPaymentRequest::Reason) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CheckTransfer::StopPaymentRequest::Reason::TaggedSymbol) }
 
           # The check could not be delivered.
-          MAIL_DELIVERY_FAILED = :mail_delivery_failed
+          MAIL_DELIVERY_FAILED =
+            T.let(:mail_delivery_failed, Increase::Models::CheckTransfer::StopPaymentRequest::Reason::TaggedSymbol)
 
           # The check was canceled by an Increase operator who will provide details out-of-band.
-          REJECTED_BY_INCREASE = :rejected_by_increase
+          REJECTED_BY_INCREASE =
+            T.let(:rejected_by_increase, Increase::Models::CheckTransfer::StopPaymentRequest::Reason::TaggedSymbol)
 
           # The check was not authorized.
-          NOT_AUTHORIZED = :not_authorized
+          NOT_AUTHORIZED =
+            T.let(:not_authorized, Increase::Models::CheckTransfer::StopPaymentRequest::Reason::TaggedSymbol)
 
           # The check was stopped for another reason.
-          UNKNOWN = :unknown
+          UNKNOWN = T.let(:unknown, Increase::Models::CheckTransfer::StopPaymentRequest::Reason::TaggedSymbol)
         end
 
         # A constant representing the object's type. For this resource it will always be
         #   `check_transfer_stop_payment_request`.
-        class Type < Increase::Enum
-          abstract!
+        module Type
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckTransfer::StopPaymentRequest::Type) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CheckTransfer::StopPaymentRequest::Type::TaggedSymbol) }
 
-          CHECK_TRANSFER_STOP_PAYMENT_REQUEST = :check_transfer_stop_payment_request
+          CHECK_TRANSFER_STOP_PAYMENT_REQUEST =
+            T.let(
+              :check_transfer_stop_payment_request,
+              Increase::Models::CheckTransfer::StopPaymentRequest::Type::TaggedSymbol
+            )
         end
       end
 
@@ -1177,12 +1268,13 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `check_transfer`.
-      class Type < Increase::Enum
-        abstract!
+      module Type
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckTransfer::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CheckTransfer::Type::TaggedSymbol) }
 
-        CHECK_TRANSFER = :check_transfer
+        CHECK_TRANSFER = T.let(:check_transfer, Increase::Models::CheckTransfer::Type::TaggedSymbol)
       end
     end
   end

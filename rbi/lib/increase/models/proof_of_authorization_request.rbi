@@ -44,11 +44,14 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `proof_of_authorization_request`.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol)
+          .returns(Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol)
+      end
       def type=(_)
       end
 
@@ -68,7 +71,7 @@ module Increase
           ach_transfers: T::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer],
           created_at: Time,
           due_on: Time,
-          type: Symbol,
+          type: Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol,
           updated_at: Time
         )
           .returns(T.attached_class)
@@ -84,7 +87,7 @@ module Increase
               ach_transfers: T::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer],
               created_at: Time,
               due_on: Time,
-              type: Symbol,
+              type: Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol,
               updated_at: Time
             }
           )
@@ -113,12 +116,15 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `proof_of_authorization_request`.
-      class Type < Increase::Enum
-        abstract!
+      module Type
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ProofOfAuthorizationRequest::Type) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol) }
 
-        PROOF_OF_AUTHORIZATION_REQUEST = :proof_of_authorization_request
+        PROOF_OF_AUTHORIZATION_REQUEST =
+          T.let(:proof_of_authorization_request, Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol)
       end
     end
   end

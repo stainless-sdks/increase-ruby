@@ -326,10 +326,10 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        # @abstract
-        #
         # The type of object that created this transfer.
-        class Category < Increase::Enum
+        module Category
+          extend Increase::Enum
+
           # An API key. Details will be under the `api_key` object.
           API_KEY = :api_key
 
@@ -377,11 +377,11 @@ module Increase
         end
       end
 
-      # @abstract
-      #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
       #   currency.
-      class Currency < Increase::Enum
+      module Currency
+        extend Increase::Enum
+
         # Canadian Dollar (CAD)
         CAD = :CAD
 
@@ -403,10 +403,10 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # Whether Increase will print and mail the check or if you will do it yourself.
-      class FulfillmentMethod < Increase::Enum
+      module FulfillmentMethod
+        extend Increase::Enum
+
         # Increase will print and mail a physical check.
         PHYSICAL_CHECK = :physical_check
 
@@ -636,10 +636,10 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        # @abstract
-        #
         # The shipping method for the check.
-        class ShippingMethod < Increase::Enum
+        module ShippingMethod
+          extend Increase::Enum
+
           # USPS First Class
           USPS_FIRST_CLASS = :usps_first_class
 
@@ -678,10 +678,10 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @abstract
-          #
           # The type of tracking event.
-          class Category < Increase::Enum
+          module Category
+            extend Increase::Enum
+
             # The check is in transit.
             IN_TRANSIT = :in_transit
 
@@ -699,10 +699,10 @@ module Increase
         end
       end
 
-      # @abstract
-      #
       # The lifecycle status of the transfer.
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The transfer is awaiting approval.
         PENDING_APPROVAL = :pending_approval
 
@@ -775,10 +775,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # The reason why this transfer was stopped.
-        class Reason < Increase::Enum
+        module Reason
+          extend Increase::Enum
+
           # The check could not be delivered.
           MAIL_DELIVERY_FAILED = :mail_delivery_failed
 
@@ -794,11 +794,11 @@ module Increase
           finalize!
         end
 
-        # @abstract
-        #
         # A constant representing the object's type. For this resource it will always be
         #   `check_transfer_stop_payment_request`.
-        class Type < Increase::Enum
+        module Type
+          extend Increase::Enum
+
           CHECK_TRANSFER_STOP_PAYMENT_REQUEST = :check_transfer_stop_payment_request
 
           finalize!
@@ -840,11 +840,11 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `check_transfer`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         CHECK_TRANSFER = :check_transfer
 
         finalize!

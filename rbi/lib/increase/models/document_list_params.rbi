@@ -90,38 +90,48 @@ module Increase
         # Filter Documents for those with the specified category or categories. For GET
         #   requests, this should be encoded as a comma-delimited string, such as
         #   `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Symbol])) }
+        sig { returns(T.nilable(T::Array[Increase::Models::DocumentListParams::Category::In::OrSymbol])) }
         def in_
         end
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        sig do
+          params(_: T::Array[Increase::Models::DocumentListParams::Category::In::OrSymbol])
+            .returns(T::Array[Increase::Models::DocumentListParams::Category::In::OrSymbol])
+        end
         def in_=(_)
         end
 
-        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
+        sig do
+          params(in_: T::Array[Increase::Models::DocumentListParams::Category::In::OrSymbol])
+            .returns(T.attached_class)
+        end
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Symbol]}) }
+        sig { override.returns({in_: T::Array[Increase::Models::DocumentListParams::Category::In::OrSymbol]}) }
         def to_hash
         end
 
-        class In < Increase::Enum
-          abstract!
+        module In
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DocumentListParams::Category::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::DocumentListParams::Category::In::TaggedSymbol) }
 
           # Internal Revenue Service Form 1099-INT.
-          FORM_1099_INT = :form_1099_int
+          FORM_1099_INT = T.let(:form_1099_int, Increase::Models::DocumentListParams::Category::In::OrSymbol)
 
           # Internal Revenue Service Form 1099-MISC.
-          FORM_1099_MISC = :form_1099_misc
+          FORM_1099_MISC = T.let(:form_1099_misc, Increase::Models::DocumentListParams::Category::In::OrSymbol)
 
           # A document submitted in response to a proof of authorization request for an ACH transfer.
-          PROOF_OF_AUTHORIZATION = :proof_of_authorization
+          PROOF_OF_AUTHORIZATION =
+            T.let(:proof_of_authorization, Increase::Models::DocumentListParams::Category::In::OrSymbol)
 
           # Company information, such a policies or procedures, typically submitted during our due diligence process.
-          COMPANY_INFORMATION = :company_information
+          COMPANY_INFORMATION =
+            T.let(:company_information, Increase::Models::DocumentListParams::Category::In::OrSymbol)
         end
       end
 

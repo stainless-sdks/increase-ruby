@@ -377,11 +377,11 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # The type of the resource. We may add additional possible values for this enum
         #   over time; your application should be able to handle such additions gracefully.
-        class Category < Increase::Enum
+        module Category
+          extend Increase::Enum
+
           # Unstructured `payment_related_information` passed through with the transfer.
           FREEFORM = :freeform
 
@@ -577,10 +577,10 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        # @abstract
-        #
         # The type of object that created this transfer.
-        class Category < Increase::Enum
+        module Category
+          extend Increase::Enum
+
           # An API key. Details will be under the `api_key` object.
           API_KEY = :api_key
 
@@ -628,11 +628,11 @@ module Increase
         end
       end
 
-      # @abstract
-      #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
       #   currency. For ACH transfers this is always equal to `usd`.
-      class Currency < Increase::Enum
+      module Currency
+        extend Increase::Enum
+
         # Canadian Dollar (CAD)
         CAD = :CAD
 
@@ -654,11 +654,11 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # The type of entity that owns the account to which the ACH Transfer is being
       #   sent.
-      class DestinationAccountHolder < Increase::Enum
+      module DestinationAccountHolder
+        extend Increase::Enum
+
         # The External Account is owned by a business.
         BUSINESS = :business
 
@@ -671,10 +671,10 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # The type of the account to which the transfer will be sent.
-      class Funding < Increase::Enum
+      module Funding
+        extend Increase::Enum
+
         # A checking account.
         CHECKING = :checking
 
@@ -783,11 +783,11 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
         #   currency.
-        class Currency < Increase::Enum
+        module Currency
+          extend Increase::Enum
+
           # Canadian Dollar (CAD)
           CAD = :CAD
 
@@ -809,10 +809,10 @@ module Increase
           finalize!
         end
 
-        # @abstract
-        #
         # The status of the hold.
-        class Status < Increase::Enum
+        module Status
+          extend Increase::Enum
+
           # Funds are still being held.
           HELD = :held
 
@@ -822,21 +822,21 @@ module Increase
           finalize!
         end
 
-        # @abstract
-        #
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_funds_hold`.
-        class Type < Increase::Enum
+        module Type
+          extend Increase::Enum
+
           INBOUND_FUNDS_HOLD = :inbound_funds_hold
 
           finalize!
         end
       end
 
-      # @abstract
-      #
       # The transfer's network.
-      class Network < Increase::Enum
+      module Network
+        extend Increase::Enum
+
         ACH = :ach
 
         finalize!
@@ -876,11 +876,11 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # The required type of change that is being signaled by the receiving financial
         #   institution.
-        class ChangeCode < Increase::Enum
+        module ChangeCode
+          extend Increase::Enum
+
           # The account number was incorrect.
           INCORRECT_ACCOUNT_NUMBER = :incorrect_account_number
 
@@ -977,10 +977,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # A schedule by which Increase will choose an effective date for the transfer.
-        class SettlementSchedule < Increase::Enum
+        module SettlementSchedule
+          extend Increase::Enum
+
           # The chosen effective date will be the same as the ACH processing date on which the transfer is submitted.
           # This is necessary, but not sufficient for the transfer to be settled same-day:
           # it must also be submitted before the last same-day cutoff
@@ -1060,11 +1060,11 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # Why the ACH Transfer was returned. This reason code is sent by the receiving
         #   bank back to Increase.
-        class ReturnReasonCode < Increase::Enum
+        module ReturnReasonCode
+          extend Increase::Enum
+
           # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
           INSUFFICIENT_FUND = :insufficient_fund
 
@@ -1301,10 +1301,10 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @abstract
-      #
       # The Standard Entry Class (SEC) code to use for the transfer.
-      class StandardEntryClassCode < Increase::Enum
+      module StandardEntryClassCode
+        extend Increase::Enum
+
         # Corporate Credit and Debit (CCD).
         CORPORATE_CREDIT_OR_DEBIT = :corporate_credit_or_debit
 
@@ -1320,10 +1320,10 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # The lifecycle status of the transfer.
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The transfer is pending approval.
         PENDING_APPROVAL = :pending_approval
 
@@ -1424,12 +1424,12 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # The settlement schedule the transfer is expected to follow. This expectation
         #   takes into account the `effective_date`, `submitted_at`, and the amount of the
         #   transfer.
-        class ExpectedSettlementSchedule < Increase::Enum
+        module ExpectedSettlementSchedule
+          extend Increase::Enum
+
           # The transfer is expected to settle same-day.
           SAME_DAY = :same_day
 
@@ -1440,11 +1440,11 @@ module Increase
         end
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `ach_transfer`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         ACH_TRANSFER = :ach_transfer
 
         finalize!

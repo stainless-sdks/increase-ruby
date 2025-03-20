@@ -9,7 +9,7 @@ module Increase
       sig do
         params(
           file: T.any(IO, StringIO),
-          purpose: Symbol,
+          purpose: Increase::Models::FileCreateParams::Purpose::OrSymbol,
           description: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )

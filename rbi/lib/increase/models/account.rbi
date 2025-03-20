@@ -13,11 +13,14 @@ module Increase
       end
 
       # The bank the Account is with.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::Account::Bank::TaggedSymbol) }
       def bank
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::Account::Bank::TaggedSymbol)
+          .returns(Increase::Models::Account::Bank::TaggedSymbol)
+      end
       def bank=(_)
       end
 
@@ -43,11 +46,14 @@ module Increase
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
       #   currency.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::Account::Currency::TaggedSymbol) }
       def currency
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::Account::Currency::TaggedSymbol)
+          .returns(Increase::Models::Account::Currency::TaggedSymbol)
+      end
       def currency=(_)
       end
 
@@ -132,21 +138,27 @@ module Increase
       end
 
       # The status of the Account.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::Account::Status::TaggedSymbol) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::Account::Status::TaggedSymbol)
+          .returns(Increase::Models::Account::Status::TaggedSymbol)
+      end
       def status=(_)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `account`.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::Account::Type::TaggedSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::Account::Type::TaggedSymbol)
+          .returns(Increase::Models::Account::Type::TaggedSymbol)
+      end
       def type=(_)
       end
 
@@ -155,10 +167,10 @@ module Increase
       sig do
         params(
           id: String,
-          bank: Symbol,
+          bank: Increase::Models::Account::Bank::TaggedSymbol,
           closed_at: T.nilable(Time),
           created_at: Time,
-          currency: Symbol,
+          currency: Increase::Models::Account::Currency::TaggedSymbol,
           entity_id: T.nilable(String),
           idempotency_key: T.nilable(String),
           informational_entity_id: T.nilable(String),
@@ -167,8 +179,8 @@ module Increase
           interest_rate: String,
           name: String,
           program_id: String,
-          status: Symbol,
-          type: Symbol
+          status: Increase::Models::Account::Status::TaggedSymbol,
+          type: Increase::Models::Account::Type::TaggedSymbol
         )
           .returns(T.attached_class)
       end
@@ -196,10 +208,10 @@ module Increase
           .returns(
             {
               id: String,
-              bank: Symbol,
+              bank: Increase::Models::Account::Bank::TaggedSymbol,
               closed_at: T.nilable(Time),
               created_at: Time,
-              currency: Symbol,
+              currency: Increase::Models::Account::Currency::TaggedSymbol,
               entity_id: T.nilable(String),
               idempotency_key: T.nilable(String),
               informational_entity_id: T.nilable(String),
@@ -208,8 +220,8 @@ module Increase
               interest_rate: String,
               name: String,
               program_id: String,
-              status: Symbol,
-              type: Symbol
+              status: Increase::Models::Account::Status::TaggedSymbol,
+              type: Increase::Models::Account::Type::TaggedSymbol
             }
           )
       end
@@ -217,68 +229,72 @@ module Increase
       end
 
       # The bank the Account is with.
-      class Bank < Increase::Enum
-        abstract!
+      module Bank
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Account::Bank) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Account::Bank::TaggedSymbol) }
 
         # Core Bank
-        CORE_BANK = :core_bank
+        CORE_BANK = T.let(:core_bank, Increase::Models::Account::Bank::TaggedSymbol)
 
         # First Internet Bank of Indiana
-        FIRST_INTERNET_BANK = :first_internet_bank
+        FIRST_INTERNET_BANK = T.let(:first_internet_bank, Increase::Models::Account::Bank::TaggedSymbol)
 
         # Grasshopper Bank
-        GRASSHOPPER_BANK = :grasshopper_bank
+        GRASSHOPPER_BANK = T.let(:grasshopper_bank, Increase::Models::Account::Bank::TaggedSymbol)
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
       #   currency.
-      class Currency < Increase::Enum
-        abstract!
+      module Currency
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Account::Currency) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Account::Currency::TaggedSymbol) }
 
         # Canadian Dollar (CAD)
-        CAD = :CAD
+        CAD = T.let(:CAD, Increase::Models::Account::Currency::TaggedSymbol)
 
         # Swiss Franc (CHF)
-        CHF = :CHF
+        CHF = T.let(:CHF, Increase::Models::Account::Currency::TaggedSymbol)
 
         # Euro (EUR)
-        EUR = :EUR
+        EUR = T.let(:EUR, Increase::Models::Account::Currency::TaggedSymbol)
 
         # British Pound (GBP)
-        GBP = :GBP
+        GBP = T.let(:GBP, Increase::Models::Account::Currency::TaggedSymbol)
 
         # Japanese Yen (JPY)
-        JPY = :JPY
+        JPY = T.let(:JPY, Increase::Models::Account::Currency::TaggedSymbol)
 
         # US Dollar (USD)
-        USD = :USD
+        USD = T.let(:USD, Increase::Models::Account::Currency::TaggedSymbol)
       end
 
       # The status of the Account.
-      class Status < Increase::Enum
-        abstract!
+      module Status
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Account::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Account::Status::TaggedSymbol) }
 
         # Closed Accounts on which no new activity can occur.
-        CLOSED = :closed
+        CLOSED = T.let(:closed, Increase::Models::Account::Status::TaggedSymbol)
 
         # Open Accounts that are ready to use.
-        OPEN = :open
+        OPEN = T.let(:open, Increase::Models::Account::Status::TaggedSymbol)
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `account`.
-      class Type < Increase::Enum
-        abstract!
+      module Type
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Account::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Account::Type::TaggedSymbol) }
 
-        ACCOUNT = :account
+        ACCOUNT = T.let(:account, Increase::Models::Account::Type::TaggedSymbol)
       end
     end
   end

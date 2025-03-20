@@ -71,7 +71,9 @@ module Increase
 
         type decision = :approve | :challenge | :deny
 
-        class Decision < Increase::Enum
+        module Decision
+          extend Increase::Enum
+
           # Approve the authentication attempt without triggering a challenge.
           APPROVE: :approve
 
@@ -101,7 +103,9 @@ module Increase
 
         type result = :success | :failure
 
-        class Result < Increase::Enum
+        module Result
+          extend Increase::Enum
+
           # Your application successfully delivered the one-time code to the cardholder.
           SUCCESS: :success
 
@@ -136,7 +140,9 @@ module Increase
 
         type decision = :approve | :decline
 
-        class Decision < Increase::Enum
+        module Decision
+          extend Increase::Enum
+
           # Approve the authorization.
           APPROVE: :approve
 
@@ -154,7 +160,9 @@ module Increase
           | :suspected_fraud
           | :other
 
-        class DeclineReason < Increase::Enum
+        module DeclineReason
+          extend Increase::Enum
+
           # The cardholder does not have sufficient funds to cover the transaction. The merchant may attempt to process the transaction again.
           INSUFFICIENT_FUNDS: :insufficient_funds
 
@@ -201,7 +209,9 @@ module Increase
 
         type result = :success | :failure
 
-        class Result < Increase::Enum
+        module Result
+          extend Increase::Enum
+
           # Your application successfully delivered the one-time passcode to the cardholder.
           SUCCESS: :success
 

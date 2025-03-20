@@ -45,7 +45,7 @@ module Increase
           lockbox_id: String,
           description: String,
           recipient_name: String,
-          status: Symbol,
+          status: Increase::Models::LockboxUpdateParams::Status::OrSymbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::Lockbox)

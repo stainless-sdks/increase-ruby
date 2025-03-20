@@ -79,7 +79,9 @@ module Increase
 
       type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-      class Currency < Increase::Enum
+      module Currency
+        extend Increase::Enum
+
         # Canadian Dollar (CAD)
         CAD: :CAD
 
@@ -103,7 +105,9 @@ module Increase
 
       type type_ = :intrafi_balance
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         INTRAFI_BALANCE: :intrafi_balance
 
         def self.values: -> ::Array[Increase::Models::IntrafiBalance::type_]

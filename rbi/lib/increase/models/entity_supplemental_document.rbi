@@ -44,11 +44,14 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `entity_supplemental_document`.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol)
+          .returns(Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol)
+      end
       def type=(_)
       end
 
@@ -60,7 +63,7 @@ module Increase
           entity_id: String,
           file_id: String,
           idempotency_key: T.nilable(String),
-          type: Symbol
+          type: Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol
         )
           .returns(T.attached_class)
       end
@@ -75,7 +78,7 @@ module Increase
               entity_id: String,
               file_id: String,
               idempotency_key: T.nilable(String),
-              type: Symbol
+              type: Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol
             }
           )
       end
@@ -84,12 +87,15 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `entity_supplemental_document`.
-      class Type < Increase::Enum
-        abstract!
+      module Type
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EntitySupplementalDocument::Type) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol) }
 
-        ENTITY_SUPPLEMENTAL_DOCUMENT = :entity_supplemental_document
+        ENTITY_SUPPLEMENTAL_DOCUMENT =
+          T.let(:entity_supplemental_document, Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol)
       end
     end
   end

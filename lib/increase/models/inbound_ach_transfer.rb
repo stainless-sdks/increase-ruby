@@ -294,10 +294,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # The type of addendum.
-        class Category < Increase::Enum
+        module Category
+          extend Increase::Enum
+
           # Unstructured addendum.
           FREEFORM = :freeform
 
@@ -368,10 +368,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # The reason for the transfer decline.
-        class Reason < Increase::Enum
+        module Reason
+          extend Increase::Enum
+
           # The account number is canceled.
           ACH_ROUTE_CANCELED = :ach_route_canceled
 
@@ -429,10 +429,10 @@ module Increase
         end
       end
 
-      # @abstract
-      #
       # The direction of the transfer.
-      class Direction < Increase::Enum
+      module Direction
+        extend Increase::Enum
+
         # Credit
         CREDIT = :credit
 
@@ -442,10 +442,10 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # The settlement schedule the transfer is expected to follow.
-      class ExpectedSettlementSchedule < Increase::Enum
+      module ExpectedSettlementSchedule
+        extend Increase::Enum
+
         # The transfer is expected to settle same-day.
         SAME_DAY = :same_day
 
@@ -758,10 +758,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # A description of how the foreign exchange rate was calculated.
-        class ForeignExchangeIndicator < Increase::Enum
+        module ForeignExchangeIndicator
+          extend Increase::Enum
+
           # The originator chose an amount in their own currency. The settled amount in USD was converted using the exchange rate.
           FIXED_TO_VARIABLE = :fixed_to_variable
 
@@ -774,11 +774,11 @@ module Increase
           finalize!
         end
 
-        # @abstract
-        #
         # An instruction of how to interpret the `foreign_exchange_reference` field for
         #   this Transaction.
-        class ForeignExchangeReferenceIndicator < Increase::Enum
+        module ForeignExchangeReferenceIndicator
+          extend Increase::Enum
+
           # The ACH file contains a foreign exchange rate.
           FOREIGN_EXCHANGE_RATE = :foreign_exchange_rate
 
@@ -791,10 +791,10 @@ module Increase
           finalize!
         end
 
-        # @abstract
-        #
         # The type of transfer. Set by the originator.
-        class InternationalTransactionTypeCode < Increase::Enum
+        module InternationalTransactionTypeCode
+          extend Increase::Enum
+
           # Sent as `ANN` in the Nacha file.
           ANNUITY = :annuity
 
@@ -858,11 +858,11 @@ module Increase
           finalize!
         end
 
-        # @abstract
-        #
         # An instruction of how to interpret the
         #   `originating_depository_financial_institution_id` field for this Transaction.
-        class OriginatingDepositoryFinancialInstitutionIDQualifier < Increase::Enum
+        module OriginatingDepositoryFinancialInstitutionIDQualifier
+          extend Increase::Enum
+
           # A domestic clearing system number. In the US, for example, this is the American Banking Association (ABA) routing number.
           NATIONAL_CLEARING_SYSTEM_NUMBER = :national_clearing_system_number
 
@@ -875,11 +875,11 @@ module Increase
           finalize!
         end
 
-        # @abstract
-        #
         # An instruction of how to interpret the
         #   `receiving_depository_financial_institution_id` field for this Transaction.
-        class ReceivingDepositoryFinancialInstitutionIDQualifier < Increase::Enum
+        module ReceivingDepositoryFinancialInstitutionIDQualifier
+          extend Increase::Enum
+
           # A domestic clearing system number. In the US, for example, this is the American Banking Association (ABA) routing number.
           NATIONAL_CLEARING_SYSTEM_NUMBER = :national_clearing_system_number
 
@@ -918,10 +918,10 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @abstract
-      #
       # The Standard Entry Class (SEC) code of the transfer.
-      class StandardEntryClassCode < Increase::Enum
+      module StandardEntryClassCode
+        extend Increase::Enum
+
         # Corporate Credit and Debit (CCD).
         CORPORATE_CREDIT_OR_DEBIT = :corporate_credit_or_debit
 
@@ -973,10 +973,10 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # The status of the transfer.
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The Inbound ACH Transfer is awaiting action, will transition automatically if no action is taken.
         PENDING = :pending
 
@@ -1022,10 +1022,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # The reason for the transfer return.
-        class Reason < Increase::Enum
+        module Reason
+          extend Increase::Enum
+
           # The customer's account has insufficient funds. This reason is only allowed for debits. The Nacha return code is R01.
           INSUFFICIENT_FUNDS = :insufficient_funds
 
@@ -1062,11 +1062,11 @@ module Increase
         end
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_ach_transfer`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         INBOUND_ACH_TRANSFER = :inbound_ach_transfer
 
         finalize!

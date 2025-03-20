@@ -40,7 +40,9 @@ module Increase
         | :proof_of_authorization
         | :company_information
 
-      class Category < Increase::Enum
+      module Category
+        extend Increase::Enum
+
         # Internal Revenue Service Form 1099-INT.
         FORM_1099_INT: :form_1099_int
 
@@ -58,7 +60,9 @@ module Increase
 
       type type_ = :document
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         DOCUMENT: :document
 
         def self.values: -> ::Array[Increase::Models::Document::type_]

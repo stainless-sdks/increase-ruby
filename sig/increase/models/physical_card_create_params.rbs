@@ -114,7 +114,9 @@ module Increase
 
         type method_ = :usps | :fedex_priority_overnight | :fedex_2_day
 
-        class Method < Increase::Enum
+        module Method
+          extend Increase::Enum
+
           # USPS Post with tracking.
           USPS: :usps
 

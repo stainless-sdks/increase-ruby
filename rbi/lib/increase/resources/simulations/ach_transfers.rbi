@@ -29,7 +29,7 @@ module Increase
         sig do
           params(
             ach_transfer_id: String,
-            change_code: Symbol,
+            change_code: Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol,
             corrected_data: String,
             request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
           )
@@ -53,7 +53,7 @@ module Increase
         sig do
           params(
             ach_transfer_id: String,
-            reason: Symbol,
+            reason: Increase::Models::Simulations::ACHTransferReturnParams::Reason::OrSymbol,
             request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
           )
             .returns(Increase::Models::ACHTransfer)

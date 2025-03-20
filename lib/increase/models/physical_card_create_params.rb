@@ -174,10 +174,10 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        # @abstract
-        #
         # The shipping method to use.
-        class Method < Increase::Enum
+        module Method
+          extend Increase::Enum
+
           # USPS Post with tracking.
           USPS = :usps
 

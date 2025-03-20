@@ -129,11 +129,11 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # Whether ACH debits are allowed against this Account Number. Note that they will
         #   still be declined if this is `allowed` if the Account Number is not active.
-        class DebitStatus < Increase::Enum
+        module DebitStatus
+          extend Increase::Enum
+
           # ACH Debits are allowed.
           ALLOWED = :allowed
 
@@ -161,10 +161,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # How Increase should process checks with this account number printed on them.
-        class Status < Increase::Enum
+        module Status
+          extend Increase::Enum
+
           # Checks with this Account Number will be processed even if they are not associated with a Check Transfer.
           ALLOWED = :allowed
 
@@ -175,10 +175,10 @@ module Increase
         end
       end
 
-      # @abstract
-      #
       # This indicates if payments can be made to the Account Number.
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The account number is active.
         ACTIVE = :active
 
@@ -191,11 +191,11 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `account_number`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         ACCOUNT_NUMBER = :account_number
 
         finalize!

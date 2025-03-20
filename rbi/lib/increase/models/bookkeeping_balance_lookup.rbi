@@ -24,32 +24,53 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `bookkeeping_balance_lookup`.
-      sig { returns(Symbol) }
+      sig { returns(Increase::Models::BookkeepingBalanceLookup::Type::TaggedSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::BookkeepingBalanceLookup::Type::TaggedSymbol)
+          .returns(Increase::Models::BookkeepingBalanceLookup::Type::TaggedSymbol)
+      end
       def type=(_)
       end
 
       # Represents a request to lookup the balance of an Bookkeeping Account at a given
       #   point in time.
-      sig { params(balance: Integer, bookkeeping_account_id: String, type: Symbol).returns(T.attached_class) }
+      sig do
+        params(
+          balance: Integer,
+          bookkeeping_account_id: String,
+          type: Increase::Models::BookkeepingBalanceLookup::Type::TaggedSymbol
+        )
+          .returns(T.attached_class)
+      end
       def self.new(balance:, bookkeeping_account_id:, type:)
       end
 
-      sig { override.returns({balance: Integer, bookkeeping_account_id: String, type: Symbol}) }
+      sig do
+        override
+          .returns(
+            {
+              balance: Integer,
+              bookkeeping_account_id: String,
+              type: Increase::Models::BookkeepingBalanceLookup::Type::TaggedSymbol
+            }
+          )
+      end
       def to_hash
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `bookkeeping_balance_lookup`.
-      class Type < Increase::Enum
-        abstract!
+      module Type
+        extend Increase::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::BookkeepingBalanceLookup::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::BookkeepingBalanceLookup::Type::TaggedSymbol) }
 
-        BOOKKEEPING_BALANCE_LOOKUP = :bookkeeping_balance_lookup
+        BOOKKEEPING_BALANCE_LOOKUP =
+          T.let(:bookkeeping_balance_lookup, Increase::Models::BookkeepingBalanceLookup::Type::TaggedSymbol)
       end
     end
   end

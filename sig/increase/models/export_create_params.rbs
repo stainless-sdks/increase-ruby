@@ -73,7 +73,9 @@ module Increase
         | :entity_csv
         | :vendor_csv
 
-      class Category < Increase::Enum
+      module Category
+        extend Increase::Enum
+
         # Export an Open Financial Exchange (OFX) file of transactions and balances for a given time range and Account.
         ACCOUNT_STATEMENT_OFX: :account_statement_ofx
 
@@ -296,7 +298,9 @@ module Increase
 
           type in_ = :active | :archived | :disabled
 
-          class In < Increase::Enum
+          module In
+            extend Increase::Enum
+
             # The entity is active.
             ACTIVE: :active
 

@@ -38,11 +38,11 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_card_authorization_simulation_result`.
-        class Type < Increase::Enum
+        module Type
+          extend Increase::Enum
+
           INBOUND_CARD_AUTHORIZATION_SIMULATION_RESULT = :inbound_card_authorization_simulation_result
 
           finalize!

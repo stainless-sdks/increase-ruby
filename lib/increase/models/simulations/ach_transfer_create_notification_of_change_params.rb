@@ -30,10 +30,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # The reason for the notification of change.
-        class ChangeCode < Increase::Enum
+        module ChangeCode
+          extend Increase::Enum
+
           # The account number was incorrect.
           INCORRECT_ACCOUNT_NUMBER = :incorrect_account_number
 

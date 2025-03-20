@@ -133,10 +133,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
       # The status of the Card Profile.
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The Card Profile is awaiting review from Increase and/or processing by card networks.
         PENDING = :pending
 
@@ -183,11 +183,11 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `digital_card_profile`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         DIGITAL_CARD_PROFILE = :digital_card_profile
 
         finalize!

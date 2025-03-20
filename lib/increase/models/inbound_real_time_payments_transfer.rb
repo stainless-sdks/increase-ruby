@@ -171,11 +171,11 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @abstract
-      #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
       #   currency. This will always be "USD" for a Real-Time Payments transfer.
-      class Currency < Increase::Enum
+      module Currency
+        extend Increase::Enum
+
         # Canadian Dollar (CAD)
         CAD = :CAD
 
@@ -227,10 +227,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # The reason for the transfer decline.
-        class Reason < Increase::Enum
+        module Reason
+          extend Increase::Enum
+
           # The account number is canceled.
           ACCOUNT_NUMBER_CANCELED = :account_number_canceled
 
@@ -253,10 +253,10 @@ module Increase
         end
       end
 
-      # @abstract
-      #
       # The lifecycle status of the transfer.
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The transfer is pending confirmation.
         PENDING_CONFIRMING = :pending_confirming
 
@@ -272,11 +272,11 @@ module Increase
         finalize!
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_real_time_payments_transfer`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         INBOUND_REAL_TIME_PAYMENTS_TRANSFER = :inbound_real_time_payments_transfer
 
         finalize!

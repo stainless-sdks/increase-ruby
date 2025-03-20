@@ -32,7 +32,9 @@ module Increase
 
       type type_ = :entity_supplemental_document
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         ENTITY_SUPPLEMENTAL_DOCUMENT: :entity_supplemental_document
 
         def self.values: -> ::Array[Increase::Models::EntitySupplementalDocument::type_]

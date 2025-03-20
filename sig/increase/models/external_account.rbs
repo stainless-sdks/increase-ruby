@@ -56,7 +56,9 @@ module Increase
 
       type account_holder = :business | :individual | :unknown
 
-      class AccountHolder < Increase::Enum
+      module AccountHolder
+        extend Increase::Enum
+
         # The External Account is owned by a business.
         BUSINESS: :business
 
@@ -71,7 +73,9 @@ module Increase
 
       type funding = :checking | :savings | :other
 
-      class Funding < Increase::Enum
+      module Funding
+        extend Increase::Enum
+
         # A checking account.
         CHECKING: :checking
 
@@ -86,7 +90,9 @@ module Increase
 
       type status = :active | :archived
 
-      class Status < Increase::Enum
+      module Status
+        extend Increase::Enum
+
         # The External Account is active.
         ACTIVE: :active
 
@@ -98,7 +104,9 @@ module Increase
 
       type type_ = :external_account
 
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         EXTERNAL_ACCOUNT: :external_account
 
         def self.values: -> ::Array[Increase::Models::ExternalAccount::type_]
@@ -106,7 +114,9 @@ module Increase
 
       type verification_status = :unverified | :pending | :verified
 
-      class VerificationStatus < Increase::Enum
+      module VerificationStatus
+        extend Increase::Enum
+
         # The External Account has not been verified.
         UNVERIFIED: :unverified
 

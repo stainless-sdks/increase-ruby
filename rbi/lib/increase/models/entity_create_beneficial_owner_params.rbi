@@ -57,11 +57,14 @@ module Increase
         # Why this person is considered a beneficial owner of the entity. At least one
         #   option is required, if a person is both a control person and owner, submit an
         #   array containing both.
-        sig { returns(T::Array[Symbol]) }
+        sig { returns(T::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol]) }
         def prongs
         end
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        sig do
+          params(_: T::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol])
+            .returns(T::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol])
+        end
         def prongs=(_)
         end
 
@@ -79,7 +82,7 @@ module Increase
         sig do
           params(
             individual: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual,
-            prongs: T::Array[Symbol],
+            prongs: T::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol],
             company_title: String
           )
             .returns(T.attached_class)
@@ -92,7 +95,7 @@ module Increase
             .returns(
               {
                 individual: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual,
-                prongs: T::Array[Symbol],
+                prongs: T::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol],
                 company_title: String
               }
             )
@@ -255,11 +258,22 @@ module Increase
 
           class Identification < Increase::BaseModel
             # A method that can be used to verify the individual's identity.
-            sig { returns(Symbol) }
+            sig do
+              returns(
+                Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol
+              )
+            end
             def method_
             end
 
-            sig { params(_: Symbol).returns(Symbol) }
+            sig do
+              params(
+                _: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol
+              )
+                .returns(
+                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol
+                )
+            end
             def method_=(_)
             end
 
@@ -345,7 +359,7 @@ module Increase
             # A means of verifying the person's identity.
             sig do
               params(
-                method_: Symbol,
+                method_: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol,
                 number: String,
                 drivers_license: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense,
                 other: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other,
@@ -360,7 +374,7 @@ module Increase
               override
                 .returns(
                   {
-                    method_: Symbol,
+                    method_: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol,
                     number: String,
                     drivers_license: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense,
                     other: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other,
@@ -372,25 +386,55 @@ module Increase
             end
 
             # A method that can be used to verify the individual's identity.
-            class Method < Increase::Enum
-              abstract!
+            module Method
+              extend Increase::Enum
 
-              Value = type_template(:out) { {fixed: Symbol} }
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(Symbol, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method)
+                end
+              OrSymbol =
+                T.type_alias do
+                  T.any(
+                    Symbol,
+                    Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
+                  )
+                end
 
               # A social security number.
-              SOCIAL_SECURITY_NUMBER = :social_security_number
+              SOCIAL_SECURITY_NUMBER =
+                T.let(
+                  :social_security_number,
+                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol
+                )
 
               # An individual taxpayer identification number (ITIN).
-              INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER = :individual_taxpayer_identification_number
+              INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER =
+                T.let(
+                  :individual_taxpayer_identification_number,
+                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol
+                )
 
               # A passport number.
-              PASSPORT = :passport
+              PASSPORT =
+                T.let(
+                  :passport,
+                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol
+                )
 
               # A driver's license number.
-              DRIVERS_LICENSE = :drivers_license
+              DRIVERS_LICENSE =
+                T.let(
+                  :drivers_license,
+                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol
+                )
 
               # Another identifying document.
-              OTHER = :other
+              OTHER =
+                T.let(
+                  :other,
+                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol
+                )
             end
 
             class DriversLicense < Increase::BaseModel
@@ -575,16 +619,21 @@ module Increase
           end
         end
 
-        class Prong < Increase::Enum
-          abstract!
+        module Prong
+          extend Increase::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::TaggedSymbol) }
 
           # A person with 25% or greater direct or indirect ownership of the entity.
-          OWNERSHIP = :ownership
+          OWNERSHIP =
+            T.let(:ownership, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol)
 
           # A person who manages, directs, or has significant control of the entity.
-          CONTROL = :control
+          CONTROL =
+            T.let(:control, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol)
         end
       end
     end

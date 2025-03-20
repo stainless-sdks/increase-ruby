@@ -204,10 +204,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # Indicates how the merchant applied the discount.
-        class DiscountTreatmentCode < Increase::Enum
+        module DiscountTreatmentCode
+          extend Increase::Enum
+
           # No invoice level discount provided
           NO_INVOICE_LEVEL_DISCOUNT_PROVIDED = :no_invoice_level_discount_provided
 
@@ -220,10 +220,10 @@ module Increase
           finalize!
         end
 
-        # @abstract
-        #
         # Indicates how the merchant applied taxes.
-        class TaxTreatments < Increase::Enum
+        module TaxTreatments
+          extend Increase::Enum
+
           # No tax applies
           NO_TAX_APPLIES = :no_tax_applies
 
@@ -396,10 +396,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @abstract
-        #
         # Indicates the type of line item.
-        class DetailIndicator < Increase::Enum
+        module DetailIndicator
+          extend Increase::Enum
+
           # Normal
           NORMAL = :normal
 
@@ -412,10 +412,10 @@ module Increase
           finalize!
         end
 
-        # @abstract
-        #
         # Indicates how the merchant applied the discount for this specific line item.
-        class DiscountTreatmentCode < Increase::Enum
+        module DiscountTreatmentCode
+          extend Increase::Enum
+
           # No line item level discount provided
           NO_LINE_ITEM_LEVEL_DISCOUNT_PROVIDED = :no_line_item_level_discount_provided
 
@@ -429,11 +429,11 @@ module Increase
         end
       end
 
-      # @abstract
-      #
       # A constant representing the object's type. For this resource it will always be
       #   `card_purchase_supplement`.
-      class Type < Increase::Enum
+      module Type
+        extend Increase::Enum
+
         CARD_PURCHASE_SUPPLEMENT = :card_purchase_supplement
 
         finalize!
