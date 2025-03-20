@@ -182,6 +182,8 @@ module Increase
 
     # rubocop:disable Lint/UnusedMethodArgument
 
+    private_class_method :new
+
     # @param other [Object]
     #
     # @return [Boolean]
@@ -230,6 +232,8 @@ module Increase
   # Ruby has no Boolean class; this is something for models to refer to.
   class BooleanModel
     extend Increase::Converter
+
+    private_class_method :new
 
     # @param other [Object]
     #
@@ -302,6 +306,8 @@ module Increase
       # Guard against thread safety issues by instantiating `@values`.
       private def finalize! = values
     end
+
+    private_class_method :new
 
     # @param other [Object]
     #
@@ -453,6 +459,8 @@ module Increase
     # rubocop:disable Style/HashEachMethods
     # rubocop:disable Style/CaseEquality
 
+    private_class_method :new
+
     # @param other [Object]
     #
     # @return [Boolean]
@@ -563,18 +571,9 @@ module Increase
   class ArrayOf
     include Increase::Converter
 
-    # @param type_info [Hash{Symbol=>Object}, Proc, Increase::Converter, Class]
-    #
-    # @param spec [Hash{Symbol=>Object}] .
-    #
-    #   @option spec [NilClass, TrueClass, FalseClass, Integer, Float, Symbol] :const
-    #
-    #   @option spec [Proc] :enum
-    #
-    #   @option spec [Proc] :union
-    #
-    #   @option spec [Boolean] :"nil?"
-    def self.[](type_info, spec = {}) = new(type_info, spec)
+    private_class_method :new
+
+    def self.[](...) = new(...)
 
     # @param other [Object]
     #
@@ -695,18 +694,9 @@ module Increase
   class HashOf
     include Increase::Converter
 
-    # @param type_info [Hash{Symbol=>Object}, Proc, Increase::Converter, Class]
-    #
-    # @param spec [Hash{Symbol=>Object}] .
-    #
-    #   @option spec [NilClass, TrueClass, FalseClass, Integer, Float, Symbol] :const
-    #
-    #   @option spec [Proc] :enum
-    #
-    #   @option spec [Proc] :union
-    #
-    #   @option spec [Boolean] :"nil?"
-    def self.[](type_info, spec = {}) = new(type_info, spec)
+    private_class_method :new
+
+    def self.[](...) = new(...)
 
     # @param other [Object]
     #
