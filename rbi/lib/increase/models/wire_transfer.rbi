@@ -46,8 +46,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::WireTransfer::Approval))
-          .returns(T.nilable(Increase::Models::WireTransfer::Approval))
+        params(_: T.nilable(T.any(Increase::Models::WireTransfer::Approval, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::WireTransfer::Approval, Increase::Util::AnyHash)))
       end
       def approval=(_)
       end
@@ -95,8 +95,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::WireTransfer::Cancellation))
-          .returns(T.nilable(Increase::Models::WireTransfer::Cancellation))
+        params(_: T.nilable(T.any(Increase::Models::WireTransfer::Cancellation, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::WireTransfer::Cancellation, Increase::Util::AnyHash)))
       end
       def cancellation=(_)
       end
@@ -117,8 +117,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::WireTransfer::CreatedBy))
-          .returns(T.nilable(Increase::Models::WireTransfer::CreatedBy))
+        params(_: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy, Increase::Util::AnyHash)))
       end
       def created_by=(_)
       end
@@ -231,8 +231,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::WireTransfer::Reversal))
-          .returns(T.nilable(Increase::Models::WireTransfer::Reversal))
+        params(_: T.nilable(T.any(Increase::Models::WireTransfer::Reversal, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::WireTransfer::Reversal, Increase::Util::AnyHash)))
       end
       def reversal=(_)
       end
@@ -274,8 +274,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::WireTransfer::Submission))
-          .returns(T.nilable(Increase::Models::WireTransfer::Submission))
+        params(_: T.nilable(T.any(Increase::Models::WireTransfer::Submission, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::WireTransfer::Submission, Increase::Util::AnyHash)))
       end
       def submission=(_)
       end
@@ -481,8 +481,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::WireTransfer::CreatedBy::APIKey))
-            .returns(T.nilable(Increase::Models::WireTransfer::CreatedBy::APIKey))
+          params(_: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::APIKey, Increase::Util::AnyHash)))
+            .returns(T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::APIKey, Increase::Util::AnyHash)))
         end
         def api_key=(_)
         end
@@ -505,8 +505,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::WireTransfer::CreatedBy::OAuthApplication))
-            .returns(T.nilable(Increase::Models::WireTransfer::CreatedBy::OAuthApplication))
+          params(
+            _: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash))
+            )
         end
         def oauth_application=(_)
         end
@@ -517,8 +521,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::WireTransfer::CreatedBy::User))
-            .returns(T.nilable(Increase::Models::WireTransfer::CreatedBy::User))
+          params(_: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::User, Increase::Util::AnyHash)))
+            .returns(T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::User, Increase::Util::AnyHash)))
         end
         def user=(_)
         end

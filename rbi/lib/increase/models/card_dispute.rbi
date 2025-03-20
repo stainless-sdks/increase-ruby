@@ -19,8 +19,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CardDispute::Acceptance))
-          .returns(T.nilable(Increase::Models::CardDispute::Acceptance))
+        params(_: T.nilable(T.any(Increase::Models::CardDispute::Acceptance, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::CardDispute::Acceptance, Increase::Util::AnyHash)))
       end
       def acceptance=(_)
       end
@@ -80,8 +80,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CardDispute::Loss))
-          .returns(T.nilable(Increase::Models::CardDispute::Loss))
+        params(_: T.nilable(T.any(Increase::Models::CardDispute::Loss, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::CardDispute::Loss, Increase::Util::AnyHash)))
       end
       def loss=(_)
       end
@@ -93,8 +93,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CardDispute::Rejection))
-          .returns(T.nilable(Increase::Models::CardDispute::Rejection))
+        params(_: T.nilable(T.any(Increase::Models::CardDispute::Rejection, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::CardDispute::Rejection, Increase::Util::AnyHash)))
       end
       def rejection=(_)
       end
@@ -131,8 +131,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CardDispute::Win))
-          .returns(T.nilable(Increase::Models::CardDispute::Win))
+        params(_: T.nilable(T.any(Increase::Models::CardDispute::Win, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::CardDispute::Win, Increase::Util::AnyHash)))
       end
       def win=(_)
       end

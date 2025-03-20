@@ -21,8 +21,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::CardPurchaseSupplementListParams::CreatedAt)
-          .returns(Increase::Models::CardPurchaseSupplementListParams::CreatedAt)
+        params(_: T.any(Increase::Models::CardPurchaseSupplementListParams::CreatedAt, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::CardPurchaseSupplementListParams::CreatedAt, Increase::Util::AnyHash))
       end
       def created_at=(_)
       end

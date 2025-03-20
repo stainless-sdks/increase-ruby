@@ -38,8 +38,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::ACHTransfer::Acknowledgement))
-          .returns(T.nilable(Increase::Models::ACHTransfer::Acknowledgement))
+        params(_: T.nilable(T.any(Increase::Models::ACHTransfer::Acknowledgement, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::ACHTransfer::Acknowledgement, Increase::Util::AnyHash)))
       end
       def acknowledgement=(_)
       end
@@ -50,8 +50,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::ACHTransfer::Addenda))
-          .returns(T.nilable(Increase::Models::ACHTransfer::Addenda))
+        params(_: T.nilable(T.any(Increase::Models::ACHTransfer::Addenda, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::ACHTransfer::Addenda, Increase::Util::AnyHash)))
       end
       def addenda=(_)
       end
@@ -74,8 +74,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::ACHTransfer::Approval))
-          .returns(T.nilable(Increase::Models::ACHTransfer::Approval))
+        params(_: T.nilable(T.any(Increase::Models::ACHTransfer::Approval, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::ACHTransfer::Approval, Increase::Util::AnyHash)))
       end
       def approval=(_)
       end
@@ -87,8 +87,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::ACHTransfer::Cancellation))
-          .returns(T.nilable(Increase::Models::ACHTransfer::Cancellation))
+        params(_: T.nilable(T.any(Increase::Models::ACHTransfer::Cancellation, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::ACHTransfer::Cancellation, Increase::Util::AnyHash)))
       end
       def cancellation=(_)
       end
@@ -145,8 +145,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::ACHTransfer::CreatedBy))
-          .returns(T.nilable(Increase::Models::ACHTransfer::CreatedBy))
+        params(_: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy, Increase::Util::AnyHash)))
       end
       def created_by=(_)
       end
@@ -216,8 +216,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::ACHTransfer::InboundFundsHold))
-          .returns(T.nilable(Increase::Models::ACHTransfer::InboundFundsHold))
+        params(_: T.nilable(T.any(Increase::Models::ACHTransfer::InboundFundsHold, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::ACHTransfer::InboundFundsHold, Increase::Util::AnyHash)))
       end
       def inbound_funds_hold=(_)
       end
@@ -287,8 +287,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::ACHTransfer::PreferredEffectiveDate)
-          .returns(Increase::Models::ACHTransfer::PreferredEffectiveDate)
+        params(_: T.any(Increase::Models::ACHTransfer::PreferredEffectiveDate, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::ACHTransfer::PreferredEffectiveDate, Increase::Util::AnyHash))
       end
       def preferred_effective_date=(_)
       end
@@ -299,8 +299,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::ACHTransfer::Return))
-          .returns(T.nilable(Increase::Models::ACHTransfer::Return))
+        params(_: T.nilable(T.any(Increase::Models::ACHTransfer::Return, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::ACHTransfer::Return, Increase::Util::AnyHash)))
       end
       def return_=(_)
       end
@@ -321,8 +321,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::ACHTransfer::Settlement))
-          .returns(T.nilable(Increase::Models::ACHTransfer::Settlement))
+        params(_: T.nilable(T.any(Increase::Models::ACHTransfer::Settlement, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::ACHTransfer::Settlement, Increase::Util::AnyHash)))
       end
       def settlement=(_)
       end
@@ -370,8 +370,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::ACHTransfer::Submission))
-          .returns(T.nilable(Increase::Models::ACHTransfer::Submission))
+        params(_: T.nilable(T.any(Increase::Models::ACHTransfer::Submission, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::ACHTransfer::Submission, Increase::Util::AnyHash)))
       end
       def submission=(_)
       end
@@ -567,8 +567,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::ACHTransfer::Addenda::Freeform))
-            .returns(T.nilable(Increase::Models::ACHTransfer::Addenda::Freeform))
+          params(_: T.nilable(T.any(Increase::Models::ACHTransfer::Addenda::Freeform, Increase::Util::AnyHash)))
+            .returns(T.nilable(T.any(Increase::Models::ACHTransfer::Addenda::Freeform, Increase::Util::AnyHash)))
         end
         def freeform=(_)
         end
@@ -580,8 +580,16 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice))
-            .returns(T.nilable(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice))
+          params(
+            _: T.nilable(
+              T.any(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice, Increase::Util::AnyHash)
+            )
+          )
+            .returns(
+              T.nilable(
+                T.any(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice, Increase::Util::AnyHash)
+              )
+            )
         end
         def payment_order_remittance_advice=(_)
         end
@@ -808,8 +816,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::ACHTransfer::CreatedBy::APIKey))
-            .returns(T.nilable(Increase::Models::ACHTransfer::CreatedBy::APIKey))
+          params(_: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy::APIKey, Increase::Util::AnyHash)))
+            .returns(T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy::APIKey, Increase::Util::AnyHash)))
         end
         def api_key=(_)
         end
@@ -832,8 +840,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication))
-            .returns(T.nilable(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication))
+          params(
+            _: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash))
+            )
         end
         def oauth_application=(_)
         end
@@ -844,8 +856,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::ACHTransfer::CreatedBy::User))
-            .returns(T.nilable(Increase::Models::ACHTransfer::CreatedBy::User))
+          params(_: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy::User, Increase::Util::AnyHash)))
+            .returns(T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy::User, Increase::Util::AnyHash)))
         end
         def user=(_)
         end

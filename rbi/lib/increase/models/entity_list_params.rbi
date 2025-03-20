@@ -11,8 +11,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::EntityListParams::CreatedAt)
-          .returns(Increase::Models::EntityListParams::CreatedAt)
+        params(_: T.any(Increase::Models::EntityListParams::CreatedAt, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::EntityListParams::CreatedAt, Increase::Util::AnyHash))
       end
       def created_at=(_)
       end
@@ -52,7 +52,10 @@ module Increase
       def status
       end
 
-      sig { params(_: Increase::Models::EntityListParams::Status).returns(Increase::Models::EntityListParams::Status) }
+      sig do
+        params(_: T.any(Increase::Models::EntityListParams::Status, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::EntityListParams::Status, Increase::Util::AnyHash))
+      end
       def status=(_)
       end
 

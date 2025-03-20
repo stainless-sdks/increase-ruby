@@ -56,8 +56,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CheckDeposit::DepositAcceptance))
-          .returns(T.nilable(Increase::Models::CheckDeposit::DepositAcceptance))
+        params(_: T.nilable(T.any(Increase::Models::CheckDeposit::DepositAcceptance, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::CheckDeposit::DepositAcceptance, Increase::Util::AnyHash)))
       end
       def deposit_acceptance=(_)
       end
@@ -69,8 +69,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CheckDeposit::DepositRejection))
-          .returns(T.nilable(Increase::Models::CheckDeposit::DepositRejection))
+        params(_: T.nilable(T.any(Increase::Models::CheckDeposit::DepositRejection, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::CheckDeposit::DepositRejection, Increase::Util::AnyHash)))
       end
       def deposit_rejection=(_)
       end
@@ -82,8 +82,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CheckDeposit::DepositReturn))
-          .returns(T.nilable(Increase::Models::CheckDeposit::DepositReturn))
+        params(_: T.nilable(T.any(Increase::Models::CheckDeposit::DepositReturn, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::CheckDeposit::DepositReturn, Increase::Util::AnyHash)))
       end
       def deposit_return=(_)
       end
@@ -95,8 +95,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CheckDeposit::DepositSubmission))
-          .returns(T.nilable(Increase::Models::CheckDeposit::DepositSubmission))
+        params(_: T.nilable(T.any(Increase::Models::CheckDeposit::DepositSubmission, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::CheckDeposit::DepositSubmission, Increase::Util::AnyHash)))
       end
       def deposit_submission=(_)
       end
@@ -137,8 +137,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CheckDeposit::InboundFundsHold))
-          .returns(T.nilable(Increase::Models::CheckDeposit::InboundFundsHold))
+        params(_: T.nilable(T.any(Increase::Models::CheckDeposit::InboundFundsHold, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::CheckDeposit::InboundFundsHold, Increase::Util::AnyHash)))
       end
       def inbound_funds_hold=(_)
       end

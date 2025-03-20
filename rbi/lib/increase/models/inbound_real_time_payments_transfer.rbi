@@ -45,8 +45,12 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation))
-          .returns(T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation))
+        params(
+          _: T.nilable(T.any(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation, Increase::Util::AnyHash))
+        )
+          .returns(
+            T.nilable(T.any(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation, Increase::Util::AnyHash))
+          )
       end
       def confirmation=(_)
       end
@@ -116,8 +120,12 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Decline))
-          .returns(T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Decline))
+        params(
+          _: T.nilable(T.any(Increase::Models::InboundRealTimePaymentsTransfer::Decline, Increase::Util::AnyHash))
+        )
+          .returns(
+            T.nilable(T.any(Increase::Models::InboundRealTimePaymentsTransfer::Decline, Increase::Util::AnyHash))
+          )
       end
       def decline=(_)
       end

@@ -38,8 +38,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::AccountTransfer::Approval))
-          .returns(T.nilable(Increase::Models::AccountTransfer::Approval))
+        params(_: T.nilable(T.any(Increase::Models::AccountTransfer::Approval, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::AccountTransfer::Approval, Increase::Util::AnyHash)))
       end
       def approval=(_)
       end
@@ -51,8 +51,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::AccountTransfer::Cancellation))
-          .returns(T.nilable(Increase::Models::AccountTransfer::Cancellation))
+        params(_: T.nilable(T.any(Increase::Models::AccountTransfer::Cancellation, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::AccountTransfer::Cancellation, Increase::Util::AnyHash)))
       end
       def cancellation=(_)
       end
@@ -73,8 +73,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::AccountTransfer::CreatedBy))
-          .returns(T.nilable(Increase::Models::AccountTransfer::CreatedBy))
+        params(_: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy, Increase::Util::AnyHash)))
       end
       def created_by=(_)
       end
@@ -330,8 +330,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::AccountTransfer::CreatedBy::APIKey))
-            .returns(T.nilable(Increase::Models::AccountTransfer::CreatedBy::APIKey))
+          params(_: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::APIKey, Increase::Util::AnyHash)))
+            .returns(T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::APIKey, Increase::Util::AnyHash)))
         end
         def api_key=(_)
         end
@@ -354,8 +354,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication))
-            .returns(T.nilable(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication))
+          params(
+            _: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash))
+            )
         end
         def oauth_application=(_)
         end
@@ -366,8 +370,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::AccountTransfer::CreatedBy::User))
-            .returns(T.nilable(Increase::Models::AccountTransfer::CreatedBy::User))
+          params(_: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::User, Increase::Util::AnyHash)))
+            .returns(T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::User, Increase::Util::AnyHash)))
         end
         def user=(_)
         end

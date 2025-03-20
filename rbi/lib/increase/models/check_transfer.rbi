@@ -46,8 +46,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CheckTransfer::Approval))
-          .returns(T.nilable(Increase::Models::CheckTransfer::Approval))
+        params(_: T.nilable(T.any(Increase::Models::CheckTransfer::Approval, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::CheckTransfer::Approval, Increase::Util::AnyHash)))
       end
       def approval=(_)
       end
@@ -69,8 +69,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CheckTransfer::Cancellation))
-          .returns(T.nilable(Increase::Models::CheckTransfer::Cancellation))
+        params(_: T.nilable(T.any(Increase::Models::CheckTransfer::Cancellation, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::CheckTransfer::Cancellation, Increase::Util::AnyHash)))
       end
       def cancellation=(_)
       end
@@ -100,8 +100,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CheckTransfer::CreatedBy))
-          .returns(T.nilable(Increase::Models::CheckTransfer::CreatedBy))
+        params(_: T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy, Increase::Util::AnyHash)))
       end
       def created_by=(_)
       end
@@ -149,8 +149,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CheckTransfer::Mailing))
-          .returns(T.nilable(Increase::Models::CheckTransfer::Mailing))
+        params(_: T.nilable(T.any(Increase::Models::CheckTransfer::Mailing, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::CheckTransfer::Mailing, Increase::Util::AnyHash)))
       end
       def mailing=(_)
       end
@@ -174,8 +174,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck))
-          .returns(T.nilable(Increase::Models::CheckTransfer::PhysicalCheck))
+        params(_: T.nilable(T.any(Increase::Models::CheckTransfer::PhysicalCheck, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::CheckTransfer::PhysicalCheck, Increase::Util::AnyHash)))
       end
       def physical_check=(_)
       end
@@ -218,8 +218,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CheckTransfer::StopPaymentRequest))
-          .returns(T.nilable(Increase::Models::CheckTransfer::StopPaymentRequest))
+        params(_: T.nilable(T.any(Increase::Models::CheckTransfer::StopPaymentRequest, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::CheckTransfer::StopPaymentRequest, Increase::Util::AnyHash)))
       end
       def stop_payment_request=(_)
       end
@@ -230,8 +230,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CheckTransfer::Submission))
-          .returns(T.nilable(Increase::Models::CheckTransfer::Submission))
+        params(_: T.nilable(T.any(Increase::Models::CheckTransfer::Submission, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::CheckTransfer::Submission, Increase::Util::AnyHash)))
       end
       def submission=(_)
       end
@@ -243,8 +243,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CheckTransfer::ThirdParty))
-          .returns(T.nilable(Increase::Models::CheckTransfer::ThirdParty))
+        params(_: T.nilable(T.any(Increase::Models::CheckTransfer::ThirdParty, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::CheckTransfer::ThirdParty, Increase::Util::AnyHash)))
       end
       def third_party=(_)
       end
@@ -423,8 +423,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::CheckTransfer::CreatedBy::APIKey))
-            .returns(T.nilable(Increase::Models::CheckTransfer::CreatedBy::APIKey))
+          params(_: T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy::APIKey, Increase::Util::AnyHash)))
+            .returns(T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy::APIKey, Increase::Util::AnyHash)))
         end
         def api_key=(_)
         end
@@ -447,8 +447,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication))
-            .returns(T.nilable(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication))
+          params(
+            _: T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash))
+            )
         end
         def oauth_application=(_)
         end
@@ -459,8 +463,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::CheckTransfer::CreatedBy::User))
-            .returns(T.nilable(Increase::Models::CheckTransfer::CreatedBy::User))
+          params(_: T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy::User, Increase::Util::AnyHash)))
+            .returns(T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy::User, Increase::Util::AnyHash)))
         end
         def user=(_)
         end
@@ -667,8 +671,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress)
-            .returns(Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress)
+          params(_: T.any(Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress, Increase::Util::AnyHash))
+            .returns(T.any(Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress, Increase::Util::AnyHash))
         end
         def mailing_address=(_)
         end
@@ -706,8 +710,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress))
-            .returns(T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress))
+          params(
+            _: T.nilable(T.any(Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress, Increase::Util::AnyHash))
+            )
         end
         def return_address=(_)
         end

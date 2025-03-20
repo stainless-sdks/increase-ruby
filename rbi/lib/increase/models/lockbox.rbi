@@ -27,7 +27,10 @@ module Increase
       def address
       end
 
-      sig { params(_: Increase::Models::Lockbox::Address).returns(Increase::Models::Lockbox::Address) }
+      sig do
+        params(_: T.any(Increase::Models::Lockbox::Address, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::Lockbox::Address, Increase::Util::AnyHash))
+      end
       def address=(_)
       end
 

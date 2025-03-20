@@ -96,7 +96,10 @@ module Increase
       def source
       end
 
-      sig { params(_: Increase::Models::Transaction::Source).returns(Increase::Models::Transaction::Source) }
+      sig do
+        params(_: T.any(Increase::Models::Transaction::Source, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::Transaction::Source, Increase::Util::AnyHash))
+      end
       def source=(_)
       end
 
@@ -208,8 +211,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::AccountTransferIntention))
-            .returns(T.nilable(Increase::Models::Transaction::Source::AccountTransferIntention))
+          params(
+            _: T.nilable(T.any(Increase::Models::Transaction::Source::AccountTransferIntention, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::Transaction::Source::AccountTransferIntention, Increase::Util::AnyHash))
+            )
         end
         def account_transfer_intention=(_)
         end
@@ -223,8 +230,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::ACHTransferIntention))
-            .returns(T.nilable(Increase::Models::Transaction::Source::ACHTransferIntention))
+          params(
+            _: T.nilable(T.any(Increase::Models::Transaction::Source::ACHTransferIntention, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::Transaction::Source::ACHTransferIntention, Increase::Util::AnyHash))
+            )
         end
         def ach_transfer_intention=(_)
         end
@@ -238,8 +249,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::ACHTransferRejection))
-            .returns(T.nilable(Increase::Models::Transaction::Source::ACHTransferRejection))
+          params(
+            _: T.nilable(T.any(Increase::Models::Transaction::Source::ACHTransferRejection, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::Transaction::Source::ACHTransferRejection, Increase::Util::AnyHash))
+            )
         end
         def ach_transfer_rejection=(_)
         end
@@ -255,8 +270,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::ACHTransferReturn))
-            .returns(T.nilable(Increase::Models::Transaction::Source::ACHTransferReturn))
+          params(
+            _: T.nilable(T.any(Increase::Models::Transaction::Source::ACHTransferReturn, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::Transaction::Source::ACHTransferReturn, Increase::Util::AnyHash))
+            )
         end
         def ach_transfer_return=(_)
         end
@@ -269,8 +288,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::CardDisputeAcceptance))
-            .returns(T.nilable(Increase::Models::Transaction::Source::CardDisputeAcceptance))
+          params(
+            _: T.nilable(T.any(Increase::Models::Transaction::Source::CardDisputeAcceptance, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::Transaction::Source::CardDisputeAcceptance, Increase::Util::AnyHash))
+            )
         end
         def card_dispute_acceptance=(_)
         end
@@ -283,8 +306,10 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::CardDisputeLoss))
-            .returns(T.nilable(Increase::Models::Transaction::Source::CardDisputeLoss))
+          params(
+            _: T.nilable(T.any(Increase::Models::Transaction::Source::CardDisputeLoss, Increase::Util::AnyHash))
+          )
+            .returns(T.nilable(T.any(Increase::Models::Transaction::Source::CardDisputeLoss, Increase::Util::AnyHash)))
         end
         def card_dispute_loss=(_)
         end
@@ -299,8 +324,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::CardRefund))
-            .returns(T.nilable(Increase::Models::Transaction::Source::CardRefund))
+          params(_: T.nilable(T.any(Increase::Models::Transaction::Source::CardRefund, Increase::Util::AnyHash)))
+            .returns(T.nilable(T.any(Increase::Models::Transaction::Source::CardRefund, Increase::Util::AnyHash)))
         end
         def card_refund=(_)
         end
@@ -313,8 +338,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::CardRevenuePayment))
-            .returns(T.nilable(Increase::Models::Transaction::Source::CardRevenuePayment))
+          params(
+            _: T.nilable(T.any(Increase::Models::Transaction::Source::CardRevenuePayment, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::Transaction::Source::CardRevenuePayment, Increase::Util::AnyHash))
+            )
         end
         def card_revenue_payment=(_)
         end
@@ -329,8 +358,10 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::CardSettlement))
-            .returns(T.nilable(Increase::Models::Transaction::Source::CardSettlement))
+          params(
+            _: T.nilable(T.any(Increase::Models::Transaction::Source::CardSettlement, Increase::Util::AnyHash))
+          )
+            .returns(T.nilable(T.any(Increase::Models::Transaction::Source::CardSettlement, Increase::Util::AnyHash)))
         end
         def card_settlement=(_)
         end
@@ -344,8 +375,10 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::CashbackPayment))
-            .returns(T.nilable(Increase::Models::Transaction::Source::CashbackPayment))
+          params(
+            _: T.nilable(T.any(Increase::Models::Transaction::Source::CashbackPayment, Increase::Util::AnyHash))
+          )
+            .returns(T.nilable(T.any(Increase::Models::Transaction::Source::CashbackPayment, Increase::Util::AnyHash)))
         end
         def cashback_payment=(_)
         end
@@ -373,8 +406,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::CheckDepositAcceptance))
-            .returns(T.nilable(Increase::Models::Transaction::Source::CheckDepositAcceptance))
+          params(
+            _: T.nilable(T.any(Increase::Models::Transaction::Source::CheckDepositAcceptance, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::Transaction::Source::CheckDepositAcceptance, Increase::Util::AnyHash))
+            )
         end
         def check_deposit_acceptance=(_)
         end
@@ -390,8 +427,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::CheckDepositReturn))
-            .returns(T.nilable(Increase::Models::Transaction::Source::CheckDepositReturn))
+          params(
+            _: T.nilable(T.any(Increase::Models::Transaction::Source::CheckDepositReturn, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::Transaction::Source::CheckDepositReturn, Increase::Util::AnyHash))
+            )
         end
         def check_deposit_return=(_)
         end
@@ -405,8 +446,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::CheckTransferDeposit))
-            .returns(T.nilable(Increase::Models::Transaction::Source::CheckTransferDeposit))
+          params(
+            _: T.nilable(T.any(Increase::Models::Transaction::Source::CheckTransferDeposit, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::Transaction::Source::CheckTransferDeposit, Increase::Util::AnyHash))
+            )
         end
         def check_transfer_deposit=(_)
         end
@@ -419,8 +464,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::FeePayment))
-            .returns(T.nilable(Increase::Models::Transaction::Source::FeePayment))
+          params(_: T.nilable(T.any(Increase::Models::Transaction::Source::FeePayment, Increase::Util::AnyHash)))
+            .returns(T.nilable(T.any(Increase::Models::Transaction::Source::FeePayment, Increase::Util::AnyHash)))
         end
         def fee_payment=(_)
         end
@@ -434,8 +479,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::InboundACHTransfer))
-            .returns(T.nilable(Increase::Models::Transaction::Source::InboundACHTransfer))
+          params(
+            _: T.nilable(T.any(Increase::Models::Transaction::Source::InboundACHTransfer, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::Transaction::Source::InboundACHTransfer, Increase::Util::AnyHash))
+            )
         end
         def inbound_ach_transfer=(_)
         end
@@ -450,8 +499,16 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::InboundACHTransferReturnIntention))
-            .returns(T.nilable(Increase::Models::Transaction::Source::InboundACHTransferReturnIntention))
+          params(
+            _: T.nilable(
+              T.any(Increase::Models::Transaction::Source::InboundACHTransferReturnIntention, Increase::Util::AnyHash)
+            )
+          )
+            .returns(
+              T.nilable(
+                T.any(Increase::Models::Transaction::Source::InboundACHTransferReturnIntention, Increase::Util::AnyHash)
+              )
+            )
         end
         def inbound_ach_transfer_return_intention=(_)
         end
@@ -465,8 +522,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::InboundCheckAdjustment))
-            .returns(T.nilable(Increase::Models::Transaction::Source::InboundCheckAdjustment))
+          params(
+            _: T.nilable(T.any(Increase::Models::Transaction::Source::InboundCheckAdjustment, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::Transaction::Source::InboundCheckAdjustment, Increase::Util::AnyHash))
+            )
         end
         def inbound_check_adjustment=(_)
         end
@@ -481,8 +542,16 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::InboundCheckDepositReturnIntention))
-            .returns(T.nilable(Increase::Models::Transaction::Source::InboundCheckDepositReturnIntention))
+          params(
+            _: T.nilable(
+              T.any(Increase::Models::Transaction::Source::InboundCheckDepositReturnIntention, Increase::Util::AnyHash)
+            )
+          )
+            .returns(
+              T.nilable(
+                T.any(Increase::Models::Transaction::Source::InboundCheckDepositReturnIntention, Increase::Util::AnyHash)
+              )
+            )
         end
         def inbound_check_deposit_return_intention=(_)
         end
@@ -497,8 +566,22 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation))
-            .returns(T.nilable(Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation))
+          params(
+            _: T.nilable(
+              T.any(
+                Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation,
+                Increase::Util::AnyHash
+              )
+            )
+          )
+            .returns(
+              T.nilable(
+                T.any(
+                  Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation,
+                  Increase::Util::AnyHash
+                )
+              )
+            )
         end
         def inbound_real_time_payments_transfer_confirmation=(_)
         end
@@ -511,8 +594,22 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline))
-            .returns(T.nilable(Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline))
+          params(
+            _: T.nilable(
+              T.any(
+                Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline,
+                Increase::Util::AnyHash
+              )
+            )
+          )
+            .returns(
+              T.nilable(
+                T.any(
+                  Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline,
+                  Increase::Util::AnyHash
+                )
+              )
+            )
         end
         def inbound_real_time_payments_transfer_decline=(_)
         end
@@ -527,8 +624,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::InboundWireReversal))
-            .returns(T.nilable(Increase::Models::Transaction::Source::InboundWireReversal))
+          params(
+            _: T.nilable(T.any(Increase::Models::Transaction::Source::InboundWireReversal, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::Transaction::Source::InboundWireReversal, Increase::Util::AnyHash))
+            )
         end
         def inbound_wire_reversal=(_)
         end
@@ -542,8 +643,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::InboundWireTransfer))
-            .returns(T.nilable(Increase::Models::Transaction::Source::InboundWireTransfer))
+          params(
+            _: T.nilable(T.any(Increase::Models::Transaction::Source::InboundWireTransfer, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::Transaction::Source::InboundWireTransfer, Increase::Util::AnyHash))
+            )
         end
         def inbound_wire_transfer=(_)
         end
@@ -558,8 +663,16 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::InboundWireTransferReversal))
-            .returns(T.nilable(Increase::Models::Transaction::Source::InboundWireTransferReversal))
+          params(
+            _: T.nilable(
+              T.any(Increase::Models::Transaction::Source::InboundWireTransferReversal, Increase::Util::AnyHash)
+            )
+          )
+            .returns(
+              T.nilable(
+                T.any(Increase::Models::Transaction::Source::InboundWireTransferReversal, Increase::Util::AnyHash)
+              )
+            )
         end
         def inbound_wire_transfer_reversal=(_)
         end
@@ -573,8 +686,10 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::InterestPayment))
-            .returns(T.nilable(Increase::Models::Transaction::Source::InterestPayment))
+          params(
+            _: T.nilable(T.any(Increase::Models::Transaction::Source::InterestPayment, Increase::Util::AnyHash))
+          )
+            .returns(T.nilable(T.any(Increase::Models::Transaction::Source::InterestPayment, Increase::Util::AnyHash)))
         end
         def interest_payment=(_)
         end
@@ -587,8 +702,10 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::InternalSource))
-            .returns(T.nilable(Increase::Models::Transaction::Source::InternalSource))
+          params(
+            _: T.nilable(T.any(Increase::Models::Transaction::Source::InternalSource, Increase::Util::AnyHash))
+          )
+            .returns(T.nilable(T.any(Increase::Models::Transaction::Source::InternalSource, Increase::Util::AnyHash)))
         end
         def internal_source=(_)
         end
@@ -613,8 +730,22 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::RealTimePaymentsTransferAcknowledgement))
-            .returns(T.nilable(Increase::Models::Transaction::Source::RealTimePaymentsTransferAcknowledgement))
+          params(
+            _: T.nilable(
+              T.any(
+                Increase::Models::Transaction::Source::RealTimePaymentsTransferAcknowledgement,
+                Increase::Util::AnyHash
+              )
+            )
+          )
+            .returns(
+              T.nilable(
+                T.any(
+                  Increase::Models::Transaction::Source::RealTimePaymentsTransferAcknowledgement,
+                  Increase::Util::AnyHash
+                )
+              )
+            )
         end
         def real_time_payments_transfer_acknowledgement=(_)
         end
@@ -627,8 +758,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::SampleFunds))
-            .returns(T.nilable(Increase::Models::Transaction::Source::SampleFunds))
+          params(_: T.nilable(T.any(Increase::Models::Transaction::Source::SampleFunds, Increase::Util::AnyHash)))
+            .returns(T.nilable(T.any(Increase::Models::Transaction::Source::SampleFunds, Increase::Util::AnyHash)))
         end
         def sample_funds=(_)
         end
@@ -641,8 +772,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Transaction::Source::WireTransferIntention))
-            .returns(T.nilable(Increase::Models::Transaction::Source::WireTransferIntention))
+          params(
+            _: T.nilable(T.any(Increase::Models::Transaction::Source::WireTransferIntention, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::Transaction::Source::WireTransferIntention, Increase::Util::AnyHash))
+            )
         end
         def wire_transfer_intention=(_)
         end
@@ -1742,8 +1877,12 @@ module Increase
           end
 
           sig do
-            params(_: T.nilable(Increase::Models::Transaction::Source::CardRefund::Cashback))
-              .returns(T.nilable(Increase::Models::Transaction::Source::CardRefund::Cashback))
+            params(
+              _: T.nilable(T.any(Increase::Models::Transaction::Source::CardRefund::Cashback, Increase::Util::AnyHash))
+            )
+              .returns(
+                T.nilable(T.any(Increase::Models::Transaction::Source::CardRefund::Cashback, Increase::Util::AnyHash))
+              )
           end
           def cashback=(_)
           end
@@ -1767,8 +1906,12 @@ module Increase
           end
 
           sig do
-            params(_: T.nilable(Increase::Models::Transaction::Source::CardRefund::Interchange))
-              .returns(T.nilable(Increase::Models::Transaction::Source::CardRefund::Interchange))
+            params(
+              _: T.nilable(T.any(Increase::Models::Transaction::Source::CardRefund::Interchange, Increase::Util::AnyHash))
+            )
+              .returns(
+                T.nilable(T.any(Increase::Models::Transaction::Source::CardRefund::Interchange, Increase::Util::AnyHash))
+              )
           end
           def interchange=(_)
           end
@@ -1843,8 +1986,12 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::Transaction::Source::CardRefund::NetworkIdentifiers)
-              .returns(Increase::Models::Transaction::Source::CardRefund::NetworkIdentifiers)
+            params(
+              _: T.any(Increase::Models::Transaction::Source::CardRefund::NetworkIdentifiers, Increase::Util::AnyHash)
+            )
+              .returns(
+                T.any(Increase::Models::Transaction::Source::CardRefund::NetworkIdentifiers, Increase::Util::AnyHash)
+              )
           end
           def network_identifiers=(_)
           end
@@ -1875,8 +2022,16 @@ module Increase
           end
 
           sig do
-            params(_: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails))
-              .returns(T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails))
+            params(
+              _: T.nilable(
+                T.any(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails, Increase::Util::AnyHash)
+              )
+            )
+              .returns(
+                T.nilable(
+                  T.any(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails, Increase::Util::AnyHash)
+                )
+              )
           end
           def purchase_details=(_)
           end
@@ -2242,8 +2397,22 @@ module Increase
             end
 
             sig do
-              params(_: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental))
-                .returns(T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental))
+              params(
+                _: T.nilable(
+                  T.any(
+                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental,
+                    Increase::Util::AnyHash
+                  )
+                )
+              )
+                .returns(
+                  T.nilable(
+                    T.any(
+                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental,
+                      Increase::Util::AnyHash
+                    )
+                  )
+                )
             end
             def car_rental=(_)
             end
@@ -2282,8 +2451,22 @@ module Increase
             end
 
             sig do
-              params(_: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging))
-                .returns(T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging))
+              params(
+                _: T.nilable(
+                  T.any(
+                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging,
+                    Increase::Util::AnyHash
+                  )
+                )
+              )
+                .returns(
+                  T.nilable(
+                    T.any(
+                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging,
+                      Increase::Util::AnyHash
+                    )
+                  )
+                )
             end
             def lodging=(_)
             end
@@ -2348,8 +2531,16 @@ module Increase
             end
 
             sig do
-              params(_: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel))
-                .returns(T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel))
+              params(
+                _: T.nilable(
+                  T.any(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel, Increase::Util::AnyHash)
+                )
+              )
+                .returns(
+                  T.nilable(
+                    T.any(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel, Increase::Util::AnyHash)
+                  )
+                )
             end
             def travel=(_)
             end
@@ -3181,9 +3372,21 @@ module Increase
 
               sig do
                 params(
-                  _: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary)
+                  _: T.nilable(
+                    T.any(
+                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary,
+                      Increase::Util::AnyHash
+                    )
+                  )
                 )
-                  .returns(T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary))
+                  .returns(
+                    T.nilable(
+                      T.any(
+                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary,
+                        Increase::Util::AnyHash
+                      )
+                    )
+                  )
               end
               def ancillary=(_)
               end
@@ -4279,8 +4482,12 @@ module Increase
           end
 
           sig do
-            params(_: T.nilable(Increase::Models::Transaction::Source::CardSettlement::Cashback))
-              .returns(T.nilable(Increase::Models::Transaction::Source::CardSettlement::Cashback))
+            params(
+              _: T.nilable(T.any(Increase::Models::Transaction::Source::CardSettlement::Cashback, Increase::Util::AnyHash))
+            )
+              .returns(
+                T.nilable(T.any(Increase::Models::Transaction::Source::CardSettlement::Cashback, Increase::Util::AnyHash))
+              )
           end
           def cashback=(_)
           end
@@ -4304,8 +4511,16 @@ module Increase
           end
 
           sig do
-            params(_: T.nilable(Increase::Models::Transaction::Source::CardSettlement::Interchange))
-              .returns(T.nilable(Increase::Models::Transaction::Source::CardSettlement::Interchange))
+            params(
+              _: T.nilable(
+                T.any(Increase::Models::Transaction::Source::CardSettlement::Interchange, Increase::Util::AnyHash)
+              )
+            )
+              .returns(
+                T.nilable(
+                  T.any(Increase::Models::Transaction::Source::CardSettlement::Interchange, Increase::Util::AnyHash)
+                )
+              )
           end
           def interchange=(_)
           end
@@ -4380,8 +4595,12 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::Transaction::Source::CardSettlement::NetworkIdentifiers)
-              .returns(Increase::Models::Transaction::Source::CardSettlement::NetworkIdentifiers)
+            params(
+              _: T.any(Increase::Models::Transaction::Source::CardSettlement::NetworkIdentifiers, Increase::Util::AnyHash)
+            )
+              .returns(
+                T.any(Increase::Models::Transaction::Source::CardSettlement::NetworkIdentifiers, Increase::Util::AnyHash)
+              )
           end
           def network_identifiers=(_)
           end
@@ -4421,8 +4640,16 @@ module Increase
           end
 
           sig do
-            params(_: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails))
-              .returns(T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails))
+            params(
+              _: T.nilable(
+                T.any(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails, Increase::Util::AnyHash)
+              )
+            )
+              .returns(
+                T.nilable(
+                  T.any(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails, Increase::Util::AnyHash)
+                )
+              )
           end
           def purchase_details=(_)
           end
@@ -4806,8 +5033,22 @@ module Increase
             end
 
             sig do
-              params(_: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental))
-                .returns(T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental))
+              params(
+                _: T.nilable(
+                  T.any(
+                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental,
+                    Increase::Util::AnyHash
+                  )
+                )
+              )
+                .returns(
+                  T.nilable(
+                    T.any(
+                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental,
+                      Increase::Util::AnyHash
+                    )
+                  )
+                )
             end
             def car_rental=(_)
             end
@@ -4846,8 +5087,22 @@ module Increase
             end
 
             sig do
-              params(_: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging))
-                .returns(T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging))
+              params(
+                _: T.nilable(
+                  T.any(
+                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging,
+                    Increase::Util::AnyHash
+                  )
+                )
+              )
+                .returns(
+                  T.nilable(
+                    T.any(
+                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging,
+                      Increase::Util::AnyHash
+                    )
+                  )
+                )
             end
             def lodging=(_)
             end
@@ -4912,8 +5167,22 @@ module Increase
             end
 
             sig do
-              params(_: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel))
-                .returns(T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel))
+              params(
+                _: T.nilable(
+                  T.any(
+                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel,
+                    Increase::Util::AnyHash
+                  )
+                )
+              )
+                .returns(
+                  T.nilable(
+                    T.any(
+                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel,
+                      Increase::Util::AnyHash
+                    )
+                  )
+                )
             end
             def travel=(_)
             end
@@ -5753,10 +6022,20 @@ module Increase
 
               sig do
                 params(
-                  _: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary)
+                  _: T.nilable(
+                    T.any(
+                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary,
+                      Increase::Util::AnyHash
+                    )
+                  )
                 )
                   .returns(
-                    T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary)
+                    T.nilable(
+                      T.any(
+                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary,
+                        Increase::Util::AnyHash
+                      )
+                    )
                   )
               end
               def ancillary=(_)
@@ -7662,8 +7941,16 @@ module Increase
           end
 
           sig do
-            params(_: T.nilable(Increase::Models::Transaction::Source::InboundACHTransfer::Addenda))
-              .returns(T.nilable(Increase::Models::Transaction::Source::InboundACHTransfer::Addenda))
+            params(
+              _: T.nilable(
+                T.any(Increase::Models::Transaction::Source::InboundACHTransfer::Addenda, Increase::Util::AnyHash)
+              )
+            )
+              .returns(
+                T.nilable(
+                  T.any(Increase::Models::Transaction::Source::InboundACHTransfer::Addenda, Increase::Util::AnyHash)
+                )
+              )
           end
           def addenda=(_)
           end
@@ -7839,8 +8126,22 @@ module Increase
             end
 
             sig do
-              params(_: T.nilable(Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform))
-                .returns(T.nilable(Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform))
+              params(
+                _: T.nilable(
+                  T.any(
+                    Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform,
+                    Increase::Util::AnyHash
+                  )
+                )
+              )
+                .returns(
+                  T.nilable(
+                    T.any(
+                      Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform,
+                      Increase::Util::AnyHash
+                    )
+                  )
+                )
             end
             def freeform=(_)
             end

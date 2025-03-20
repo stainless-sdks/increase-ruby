@@ -20,7 +20,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::EventListParams::Category).returns(Increase::Models::EventListParams::Category)
+        params(_: T.any(Increase::Models::EventListParams::Category, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::EventListParams::Category, Increase::Util::AnyHash))
       end
       def category=(_)
       end
@@ -30,8 +31,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::EventListParams::CreatedAt)
-          .returns(Increase::Models::EventListParams::CreatedAt)
+        params(_: T.any(Increase::Models::EventListParams::CreatedAt, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::EventListParams::CreatedAt, Increase::Util::AnyHash))
       end
       def created_at=(_)
       end

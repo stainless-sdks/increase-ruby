@@ -152,8 +152,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::InboundCheckDeposit::DepositReturn))
-          .returns(T.nilable(Increase::Models::InboundCheckDeposit::DepositReturn))
+        params(_: T.nilable(T.any(Increase::Models::InboundCheckDeposit::DepositReturn, Increase::Util::AnyHash)))
+          .returns(T.nilable(T.any(Increase::Models::InboundCheckDeposit::DepositReturn, Increase::Util::AnyHash)))
       end
       def deposit_return=(_)
       end

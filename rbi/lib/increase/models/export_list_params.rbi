@@ -11,8 +11,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::ExportListParams::Category)
-          .returns(Increase::Models::ExportListParams::Category)
+        params(_: T.any(Increase::Models::ExportListParams::Category, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::ExportListParams::Category, Increase::Util::AnyHash))
       end
       def category=(_)
       end
@@ -22,8 +22,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::ExportListParams::CreatedAt)
-          .returns(Increase::Models::ExportListParams::CreatedAt)
+        params(_: T.any(Increase::Models::ExportListParams::CreatedAt, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::ExportListParams::CreatedAt, Increase::Util::AnyHash))
       end
       def created_at=(_)
       end
@@ -63,7 +63,10 @@ module Increase
       def status
       end
 
-      sig { params(_: Increase::Models::ExportListParams::Status).returns(Increase::Models::ExportListParams::Status) }
+      sig do
+        params(_: T.any(Increase::Models::ExportListParams::Status, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::ExportListParams::Status, Increase::Util::AnyHash))
+      end
       def status=(_)
       end
 

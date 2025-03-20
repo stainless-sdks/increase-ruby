@@ -40,8 +40,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::OAuthConnectionListParams::Status)
-          .returns(Increase::Models::OAuthConnectionListParams::Status)
+        params(_: T.any(Increase::Models::OAuthConnectionListParams::Status, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::OAuthConnectionListParams::Status, Increase::Util::AnyHash))
       end
       def status=(_)
       end

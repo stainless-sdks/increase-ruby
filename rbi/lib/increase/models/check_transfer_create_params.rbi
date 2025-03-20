@@ -54,8 +54,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::CheckTransferCreateParams::PhysicalCheck)
-          .returns(Increase::Models::CheckTransferCreateParams::PhysicalCheck)
+        params(_: T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck, Increase::Util::AnyHash))
       end
       def physical_check=(_)
       end
@@ -77,8 +77,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::CheckTransferCreateParams::ThirdParty)
-          .returns(Increase::Models::CheckTransferCreateParams::ThirdParty)
+        params(_: T.any(Increase::Models::CheckTransferCreateParams::ThirdParty, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::CheckTransferCreateParams::ThirdParty, Increase::Util::AnyHash))
       end
       def third_party=(_)
       end
@@ -151,8 +151,12 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress)
-            .returns(Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress)
+          params(
+            _: T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress, Increase::Util::AnyHash)
+          )
+            .returns(
+              T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress, Increase::Util::AnyHash)
+            )
         end
         def mailing_address=(_)
         end
@@ -203,8 +207,12 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress)
-            .returns(Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress)
+          params(
+            _: T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress, Increase::Util::AnyHash)
+          )
+            .returns(
+              T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress, Increase::Util::AnyHash)
+            )
         end
         def return_address=(_)
         end

@@ -20,7 +20,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::CardListParams::CreatedAt).returns(Increase::Models::CardListParams::CreatedAt)
+        params(_: T.any(Increase::Models::CardListParams::CreatedAt, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::CardListParams::CreatedAt, Increase::Util::AnyHash))
       end
       def created_at=(_)
       end
@@ -60,7 +61,10 @@ module Increase
       def status
       end
 
-      sig { params(_: Increase::Models::CardListParams::Status).returns(Increase::Models::CardListParams::Status) }
+      sig do
+        params(_: T.any(Increase::Models::CardListParams::Status, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::CardListParams::Status, Increase::Util::AnyHash))
+      end
       def status=(_)
       end
 

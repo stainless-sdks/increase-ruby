@@ -11,8 +11,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::DocumentListParams::Category)
-          .returns(Increase::Models::DocumentListParams::Category)
+        params(_: T.any(Increase::Models::DocumentListParams::Category, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::DocumentListParams::Category, Increase::Util::AnyHash))
       end
       def category=(_)
       end
@@ -22,8 +22,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::DocumentListParams::CreatedAt)
-          .returns(Increase::Models::DocumentListParams::CreatedAt)
+        params(_: T.any(Increase::Models::DocumentListParams::CreatedAt, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::DocumentListParams::CreatedAt, Increase::Util::AnyHash))
       end
       def created_at=(_)
       end

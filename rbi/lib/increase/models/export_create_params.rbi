@@ -25,8 +25,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::ExportCreateParams::AccountStatementOfx)
-          .returns(Increase::Models::ExportCreateParams::AccountStatementOfx)
+        params(_: T.any(Increase::Models::ExportCreateParams::AccountStatementOfx, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::ExportCreateParams::AccountStatementOfx, Increase::Util::AnyHash))
       end
       def account_statement_ofx=(_)
       end
@@ -38,8 +38,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::ExportCreateParams::BalanceCsv)
-          .returns(Increase::Models::ExportCreateParams::BalanceCsv)
+        params(_: T.any(Increase::Models::ExportCreateParams::BalanceCsv, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::ExportCreateParams::BalanceCsv, Increase::Util::AnyHash))
       end
       def balance_csv=(_)
       end
@@ -51,8 +51,12 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv)
-          .returns(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv)
+        params(
+          _: T.any(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv, Increase::Util::AnyHash)
+        )
+          .returns(
+            T.any(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv, Increase::Util::AnyHash)
+          )
       end
       def bookkeeping_account_balance_csv=(_)
       end
@@ -63,8 +67,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::ExportCreateParams::EntityCsv)
-          .returns(Increase::Models::ExportCreateParams::EntityCsv)
+        params(_: T.any(Increase::Models::ExportCreateParams::EntityCsv, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::ExportCreateParams::EntityCsv, Increase::Util::AnyHash))
       end
       def entity_csv=(_)
       end
@@ -76,8 +80,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::ExportCreateParams::TransactionCsv)
-          .returns(Increase::Models::ExportCreateParams::TransactionCsv)
+        params(_: T.any(Increase::Models::ExportCreateParams::TransactionCsv, Increase::Util::AnyHash))
+          .returns(T.any(Increase::Models::ExportCreateParams::TransactionCsv, Increase::Util::AnyHash))
       end
       def transaction_csv=(_)
       end
@@ -178,8 +182,12 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt)
-            .returns(Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt)
+          params(
+            _: T.any(Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt, Increase::Util::AnyHash)
+          )
+            .returns(
+              T.any(Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt, Increase::Util::AnyHash)
+            )
         end
         def created_at=(_)
         end
@@ -275,8 +283,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt)
-            .returns(Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt)
+          params(_: T.any(Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt, Increase::Util::AnyHash))
+            .returns(T.any(Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt, Increase::Util::AnyHash))
         end
         def created_at=(_)
         end
@@ -386,8 +394,18 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt)
-            .returns(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt)
+          params(
+            _: T.any(
+              Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt,
+              Increase::Util::AnyHash
+            )
+          )
+            .returns(
+              T.any(
+                Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt,
+                Increase::Util::AnyHash
+              )
+            )
         end
         def created_at=(_)
         end
@@ -477,8 +495,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::ExportCreateParams::EntityCsv::Status)
-            .returns(Increase::Models::ExportCreateParams::EntityCsv::Status)
+          params(_: T.any(Increase::Models::ExportCreateParams::EntityCsv::Status, Increase::Util::AnyHash))
+            .returns(T.any(Increase::Models::ExportCreateParams::EntityCsv::Status, Increase::Util::AnyHash))
         end
         def status=(_)
         end
@@ -554,8 +572,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt)
-            .returns(Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt)
+          params(_: T.any(Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt, Increase::Util::AnyHash))
+            .returns(T.any(Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt, Increase::Util::AnyHash))
         end
         def created_at=(_)
         end

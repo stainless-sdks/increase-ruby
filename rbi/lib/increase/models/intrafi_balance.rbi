@@ -137,8 +137,12 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::IntrafiBalance::Balance::BankLocation))
-            .returns(T.nilable(Increase::Models::IntrafiBalance::Balance::BankLocation))
+          params(
+            _: T.nilable(T.any(Increase::Models::IntrafiBalance::Balance::BankLocation, Increase::Util::AnyHash))
+          )
+            .returns(
+              T.nilable(T.any(Increase::Models::IntrafiBalance::Balance::BankLocation, Increase::Util::AnyHash))
+            )
         end
         def bank_location=(_)
         end

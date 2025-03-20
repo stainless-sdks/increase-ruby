@@ -13,8 +13,12 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::RealTimeDecisionActionParams::CardAuthentication)
-          .returns(Increase::Models::RealTimeDecisionActionParams::CardAuthentication)
+        params(
+          _: T.any(Increase::Models::RealTimeDecisionActionParams::CardAuthentication, Increase::Util::AnyHash)
+        )
+          .returns(
+            T.any(Increase::Models::RealTimeDecisionActionParams::CardAuthentication, Increase::Util::AnyHash)
+          )
       end
       def card_authentication=(_)
       end
@@ -26,8 +30,18 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge)
-          .returns(Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge)
+        params(
+          _: T.any(
+            Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge,
+            Increase::Util::AnyHash
+          )
+        )
+          .returns(
+            T.any(
+              Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge,
+              Increase::Util::AnyHash
+            )
+          )
       end
       def card_authentication_challenge=(_)
       end
@@ -39,8 +53,10 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::RealTimeDecisionActionParams::CardAuthorization)
-          .returns(Increase::Models::RealTimeDecisionActionParams::CardAuthorization)
+        params(
+          _: T.any(Increase::Models::RealTimeDecisionActionParams::CardAuthorization, Increase::Util::AnyHash)
+        )
+          .returns(T.any(Increase::Models::RealTimeDecisionActionParams::CardAuthorization, Increase::Util::AnyHash))
       end
       def card_authorization=(_)
       end
@@ -52,8 +68,18 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication)
-          .returns(Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication)
+        params(
+          _: T.any(
+            Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
+            Increase::Util::AnyHash
+          )
+        )
+          .returns(
+            T.any(
+              Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
+              Increase::Util::AnyHash
+            )
+          )
       end
       def digital_wallet_authentication=(_)
       end
@@ -65,8 +91,12 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken)
-          .returns(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken)
+        params(
+          _: T.any(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken, Increase::Util::AnyHash)
+        )
+          .returns(
+            T.any(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken, Increase::Util::AnyHash)
+          )
       end
       def digital_wallet_token=(_)
       end
@@ -373,8 +403,18 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success)
-            .returns(Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success)
+          params(
+            _: T.any(
+              Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success,
+              Increase::Util::AnyHash
+            )
+          )
+            .returns(
+              T.any(
+                Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success,
+                Increase::Util::AnyHash
+              )
+            )
         end
         def success=(_)
         end
@@ -470,8 +510,18 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval)
-            .returns(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval)
+          params(
+            _: T.any(
+              Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval,
+              Increase::Util::AnyHash
+            )
+          )
+            .returns(
+              T.any(
+                Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval,
+                Increase::Util::AnyHash
+              )
+            )
         end
         def approval=(_)
         end
@@ -483,8 +533,18 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline)
-            .returns(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline)
+          params(
+            _: T.any(
+              Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline,
+              Increase::Util::AnyHash
+            )
+          )
+            .returns(
+              T.any(
+                Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline,
+                Increase::Util::AnyHash
+              )
+            )
         end
         def decline=(_)
         end
