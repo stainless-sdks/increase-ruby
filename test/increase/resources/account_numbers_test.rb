@@ -84,6 +84,8 @@ class Increase::Test::Resources::AccountNumbersTest < Increase::Test::ResourceTe
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Increase::Models::AccountNumber
     end

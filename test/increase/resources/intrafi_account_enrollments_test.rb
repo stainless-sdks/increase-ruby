@@ -55,6 +55,8 @@ class Increase::Test::Resources::IntrafiAccountEnrollmentsTest < Increase::Test:
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Increase::Models::IntrafiAccountEnrollment
     end

@@ -43,7 +43,7 @@ module Increase
 
       case page_data
       in {data: Array | nil => data}
-        @data = data&.map { model.coerce(_1) }
+        @data = data&.map { Increase::Converter.coerce(model, _1) }
       else
       end
 

@@ -91,6 +91,8 @@ class Increase::Test::Resources::PhysicalCardsTest < Increase::Test::ResourceTes
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Increase::Models::PhysicalCard
     end

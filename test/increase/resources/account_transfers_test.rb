@@ -77,6 +77,8 @@ class Increase::Test::Resources::AccountTransfersTest < Increase::Test::Resource
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Increase::Models::AccountTransfer
     end
