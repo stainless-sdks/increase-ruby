@@ -5,33 +5,71 @@ module Increase
     class DigitalWalletToken < Increase::BaseModel
       # The Digital Wallet Token identifier.
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       # The identifier for the Card this Digital Wallet Token belongs to.
       sig { returns(String) }
-      attr_accessor :card_id
+      def card_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def card_id=(_)
+      end
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
       #   the Digital Wallet Token was created.
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       # This indicates if payments can be made with the Digital Wallet Token.
-      sig { returns(Increase::Models::DigitalWalletToken::Status::TaggedSymbol) }
-      attr_accessor :status
+      sig { returns(Symbol) }
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       # The digital wallet app being used.
-      sig { returns(Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol) }
-      attr_accessor :token_requestor
+      sig { returns(Symbol) }
+      def token_requestor
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def token_requestor=(_)
+      end
 
       # A constant representing the object's type. For this resource it will always be
       #   `digital_wallet_token`.
-      sig { returns(Increase::Models::DigitalWalletToken::Type::TaggedSymbol) }
-      attr_accessor :type
+      sig { returns(Symbol) }
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       # Updates to the Digital Wallet Token.
       sig { returns(T::Array[Increase::Models::DigitalWalletToken::Update]) }
-      attr_accessor :updates
+      def updates
+      end
+
+      sig do
+        params(_: T::Array[Increase::Models::DigitalWalletToken::Update])
+          .returns(T::Array[Increase::Models::DigitalWalletToken::Update])
+      end
+      def updates=(_)
+      end
 
       # A Digital Wallet Token is created when a user adds a Card to their Apple Pay or
       #   Google Pay app. The Digital Wallet Token can be used for purchases just like a
@@ -41,10 +79,10 @@ module Increase
           id: String,
           card_id: String,
           created_at: Time,
-          status: Increase::Models::DigitalWalletToken::Status::OrSymbol,
-          token_requestor: Increase::Models::DigitalWalletToken::TokenRequestor::OrSymbol,
-          type: Increase::Models::DigitalWalletToken::Type::OrSymbol,
-          updates: T::Array[T.any(Increase::Models::DigitalWalletToken::Update, Increase::Util::AnyHash)]
+          status: Symbol,
+          token_requestor: Symbol,
+          type: Symbol,
+          updates: T::Array[Increase::Models::DigitalWalletToken::Update]
         )
           .returns(T.attached_class)
       end
@@ -58,9 +96,9 @@ module Increase
               id: String,
               card_id: String,
               created_at: Time,
-              status: Increase::Models::DigitalWalletToken::Status::TaggedSymbol,
-              token_requestor: Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol,
-              type: Increase::Models::DigitalWalletToken::Type::TaggedSymbol,
+              status: Symbol,
+              token_requestor: Symbol,
+              type: Symbol,
               updates: T::Array[Increase::Models::DigitalWalletToken::Update]
             }
           )
@@ -69,125 +107,98 @@ module Increase
       end
 
       # This indicates if payments can be made with the Digital Wallet Token.
-      module Status
-        extend Increase::Enum
+      class Status < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalWalletToken::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::DigitalWalletToken::Status::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The digital wallet token is active.
-        ACTIVE = T.let(:active, Increase::Models::DigitalWalletToken::Status::TaggedSymbol)
+        ACTIVE = :active
 
         # The digital wallet token has been created but not successfully activated via two-factor authentication yet.
-        INACTIVE = T.let(:inactive, Increase::Models::DigitalWalletToken::Status::TaggedSymbol)
+        INACTIVE = :inactive
 
         # The digital wallet token has been temporarily paused.
-        SUSPENDED = T.let(:suspended, Increase::Models::DigitalWalletToken::Status::TaggedSymbol)
+        SUSPENDED = :suspended
 
         # The digital wallet token has been permanently canceled.
-        DEACTIVATED = T.let(:deactivated, Increase::Models::DigitalWalletToken::Status::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::DigitalWalletToken::Status::TaggedSymbol]) }
-          def values
-          end
-        end
+        DEACTIVATED = :deactivated
       end
 
       # The digital wallet app being used.
-      module TokenRequestor
-        extend Increase::Enum
+      class TokenRequestor < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalWalletToken::TokenRequestor) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # Apple Pay
-        APPLE_PAY = T.let(:apple_pay, Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol)
+        APPLE_PAY = :apple_pay
 
         # Google Pay
-        GOOGLE_PAY = T.let(:google_pay, Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol)
+        GOOGLE_PAY = :google_pay
 
         # Samsung Pay
-        SAMSUNG_PAY = T.let(:samsung_pay, Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol)
+        SAMSUNG_PAY = :samsung_pay
 
         # Unknown
-        UNKNOWN = T.let(:unknown, Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol]) }
-          def values
-          end
-        end
+        UNKNOWN = :unknown
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `digital_wallet_token`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalWalletToken::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::DigitalWalletToken::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        DIGITAL_WALLET_TOKEN =
-          T.let(:digital_wallet_token, Increase::Models::DigitalWalletToken::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::DigitalWalletToken::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        DIGITAL_WALLET_TOKEN = :digital_wallet_token
       end
 
       class Update < Increase::BaseModel
         # The status the update changed this Digital Wallet Token to.
-        sig { returns(Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol) }
-        attr_accessor :status
+        sig { returns(Symbol) }
+        def status
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def status=(_)
+        end
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #   the update happened.
         sig { returns(Time) }
-        attr_accessor :timestamp
-
-        sig do
-          params(status: Increase::Models::DigitalWalletToken::Update::Status::OrSymbol, timestamp: Time)
-            .returns(T.attached_class)
+        def timestamp
         end
+
+        sig { params(_: Time).returns(Time) }
+        def timestamp=(_)
+        end
+
+        sig { params(status: Symbol, timestamp: Time).returns(T.attached_class) }
         def self.new(status:, timestamp:)
         end
 
-        sig do
-          override
-            .returns({status: Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol, timestamp: Time})
-        end
+        sig { override.returns({status: Symbol, timestamp: Time}) }
         def to_hash
         end
 
         # The status the update changed this Digital Wallet Token to.
-        module Status
-          extend Increase::Enum
+        class Status < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalWalletToken::Update::Status) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # The digital wallet token is active.
-          ACTIVE = T.let(:active, Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol)
+          ACTIVE = :active
 
           # The digital wallet token has been created but not successfully activated via two-factor authentication yet.
-          INACTIVE = T.let(:inactive, Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol)
+          INACTIVE = :inactive
 
           # The digital wallet token has been temporarily paused.
-          SUSPENDED = T.let(:suspended, Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol)
+          SUSPENDED = :suspended
 
           # The digital wallet token has been permanently canceled.
-          DEACTIVATED = T.let(:deactivated, Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol]) }
-            def values
-            end
-          end
+          DEACTIVATED = :deactivated
         end
       end
     end

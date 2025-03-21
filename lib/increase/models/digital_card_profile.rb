@@ -133,10 +133,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The status of the Card Profile.
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The Card Profile is awaiting review from Increase and/or processing by card networks.
         PENDING = :pending
 
@@ -150,12 +150,6 @@ module Increase
         ARCHIVED = :archived
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
       class TextColor < Increase::BaseModel
@@ -189,20 +183,14 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `digital_card_profile`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         DIGITAL_CARD_PROFILE = :digital_card_profile
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

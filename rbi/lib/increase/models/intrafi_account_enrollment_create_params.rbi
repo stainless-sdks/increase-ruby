@@ -8,17 +8,27 @@ module Increase
 
       # The identifier for the account to be added to IntraFi.
       sig { returns(String) }
-      attr_accessor :account_id
+      def account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       # The contact email for the account owner, to be shared with IntraFi.
       sig { returns(String) }
-      attr_accessor :email_address
+      def email_address
+      end
+
+      sig { params(_: String).returns(String) }
+      def email_address=(_)
+      end
 
       sig do
         params(
           account_id: String,
           email_address: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end

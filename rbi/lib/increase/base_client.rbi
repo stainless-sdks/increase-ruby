@@ -5,44 +5,41 @@ module Increase
   class BaseClient
     abstract!
 
-    RequestComponentsShape =
-      T.type_alias do
-        {
-          method: Symbol,
-          path: T.any(String, T::Array[String]),
-          query: T.nilable(T::Hash[String, T.nilable(T.any(T::Array[String], String))]),
-          headers: T.nilable(
-            T::Hash[String,
-                    T.nilable(
-                      T.any(
-                        String,
-                        Integer,
-                        T::Array[T.nilable(T.any(String, Integer))]
-                      )
-                    )]
-          ),
-          body: T.nilable(T.anything),
-          unwrap: T.nilable(Symbol),
-          page: T.nilable(T::Class[Increase::BasePage[Increase::BaseModel]]),
-          stream: T.nilable(T::Class[T.anything]),
-          model: T.nilable(Increase::Converter::Input),
-          options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
-        }
-      end
+    RequestComponentsShape = T.type_alias do
+      {
+        method: Symbol,
+        path: T.any(String, T::Array[String]),
+        query: T.nilable(T::Hash[String, T.nilable(T.any(T::Array[String], String))]),
+        headers: T.nilable(
+          T::Hash[String,
+                  T.nilable(
+                    T.any(
+                      String,
+                      Integer,
+                      T::Array[T.nilable(T.any(String, Integer))]
+                    )
+                  )]
+        ),
+        body: T.nilable(T.anything),
+        unwrap: T.nilable(Symbol),
+        page: T.nilable(T::Class[Increase::BasePage[Increase::BaseModel]]),
+        stream: T.nilable(T::Class[T.anything]),
+        model: T.nilable(Increase::Converter::Input),
+        options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+      }
+    end
 
-    RequestInputShape =
-      T.type_alias do
-        {
-          method: Symbol,
-          url: URI::Generic,
-          headers: T::Hash[String, String],
-          body: T.anything,
-          max_retries: Integer,
-          timeout: Float
-        }
-      end
+    RequestInputShape = T.type_alias do
+      {
+        method: Symbol,
+        url: URI::Generic,
+        headers: T::Hash[String, String],
+        body: T.anything,
+        max_retries: Integer,
+        timeout: Float
+      }
+    end
 
-    # from whatwg fetch spec
     MAX_REDIRECTS = 20
 
     PLATFORM_HEADERS = T::Hash[String, String]
@@ -83,9 +80,13 @@ module Increase
       end
     end
 
-    # @api private
     sig { returns(T.anything) }
-    attr_accessor :requester
+    def requester
+    end
+
+    sig { params(_: T.anything).returns(T.anything) }
+    def requester=(_)
+    end
 
     # @api private
     sig do
@@ -125,7 +126,7 @@ module Increase
     # @api private
     sig do
       overridable
-        .params(req: Increase::BaseClient::RequestComponentsShape, opts: Increase::Util::AnyHash)
+        .params(req: Increase::BaseClient::RequestComponentsShape, opts: T::Hash[Symbol, T.anything])
         .returns(Increase::BaseClient::RequestInputShape)
     end
     private def build_request(req, opts)
@@ -171,7 +172,7 @@ module Increase
         page: T.nilable(T::Class[Increase::BasePage[Increase::BaseModel]]),
         stream: T.nilable(T::Class[T.anything]),
         model: T.nilable(Increase::Converter::Input),
-        options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+        options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
       )
         .returns(T.anything)
     end

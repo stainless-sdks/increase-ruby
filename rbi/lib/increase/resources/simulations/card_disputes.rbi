@@ -11,9 +11,9 @@ module Increase
         sig do
           params(
             card_dispute_id: String,
-            status: Increase::Models::Simulations::CardDisputeActionParams::Status::OrSymbol,
+            status: Symbol,
             explanation: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
           )
             .returns(Increase::Models::CardDispute)
         end

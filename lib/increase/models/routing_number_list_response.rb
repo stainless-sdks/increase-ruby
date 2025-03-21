@@ -55,10 +55,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # This routing number's support for ACH Transfers.
-      module ACHTransfers
-        extend Increase::Enum
-
+      class ACHTransfers < Increase::Enum
         # The routing number can receive this transfer type.
         SUPPORTED = :supported
 
@@ -66,18 +66,12 @@ module Increase
         NOT_SUPPORTED = :not_supported
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # This routing number's support for Real-Time Payments Transfers.
-      module RealTimePaymentsTransfers
-        extend Increase::Enum
-
+      class RealTimePaymentsTransfers < Increase::Enum
         # The routing number can receive this transfer type.
         SUPPORTED = :supported
 
@@ -85,34 +79,22 @@ module Increase
         NOT_SUPPORTED = :not_supported
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `routing_number`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         ROUTING_NUMBER = :routing_number
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # This routing number's support for Wire Transfers.
-      module WireTransfers
-        extend Increase::Enum
-
+      class WireTransfers < Increase::Enum
         # The routing number can receive this transfer type.
         SUPPORTED = :supported
 
@@ -120,12 +102,6 @@ module Increase
         NOT_SUPPORTED = :not_supported
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

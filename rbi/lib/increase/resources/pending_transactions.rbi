@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           pending_transaction_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::PendingTransaction)
       end
@@ -22,13 +22,13 @@ module Increase
       sig do
         params(
           account_id: String,
-          category: T.any(Increase::Models::PendingTransactionListParams::Category, Increase::Util::AnyHash),
-          created_at: T.any(Increase::Models::PendingTransactionListParams::CreatedAt, Increase::Util::AnyHash),
+          category: Increase::Models::PendingTransactionListParams::Category,
+          created_at: Increase::Models::PendingTransactionListParams::CreatedAt,
           cursor: String,
           limit: Integer,
           route_id: String,
-          status: T.any(Increase::Models::PendingTransactionListParams::Status, Increase::Util::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          status: Increase::Models::PendingTransactionListParams::Status,
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Page[Increase::Models::PendingTransaction])
       end

@@ -29,13 +29,18 @@ module Increase
 
       def shared_secret=: (String) -> String
 
-      def initialize: (
-        url: String,
-        ?oauth_connection_id: String,
-        ?selected_event_category: Increase::Models::EventSubscriptionCreateParams::selected_event_category,
-        ?shared_secret: String,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize:
+        (
+          url: String,
+          oauth_connection_id: String,
+          selected_event_category: Increase::Models::EventSubscriptionCreateParams::selected_event_category,
+          shared_secret: String,
+          request_options: Increase::request_opts
+        ) -> void
+        | (
+          ?Increase::Models::event_subscription_create_params
+          | Increase::BaseModel data
+        ) -> void
 
       def to_hash: -> Increase::Models::event_subscription_create_params
 
@@ -129,9 +134,7 @@ module Increase
         | :"wire_transfer.created"
         | :"wire_transfer.updated"
 
-      module SelectedEventCategory
-        extend Increase::Enum
-
+      class SelectedEventCategory < Increase::Enum
         # Occurs whenever an Account is created.
         ACCOUNT_CREATED: :"account.created"
 
@@ -396,7 +399,7 @@ module Increase
         # Occurs whenever a Wire Transfer is updated.
         WIRE_TRANSFER_UPDATED: :"wire_transfer.updated"
 
-        def self?.values: -> ::Array[Increase::Models::EventSubscriptionCreateParams::selected_event_category]
+        def self.values: -> ::Array[Increase::Models::EventSubscriptionCreateParams::selected_event_category]
       end
     end
   end

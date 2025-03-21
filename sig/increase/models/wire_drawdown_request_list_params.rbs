@@ -31,13 +31,18 @@ module Increase
         Increase::Models::WireDrawdownRequestListParams::Status
       ) -> Increase::Models::WireDrawdownRequestListParams::Status
 
-      def initialize: (
-        ?cursor: String,
-        ?idempotency_key: String,
-        ?limit: Integer,
-        ?status: Increase::Models::WireDrawdownRequestListParams::Status,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize:
+        (
+          cursor: String,
+          idempotency_key: String,
+          limit: Integer,
+          status: Increase::Models::WireDrawdownRequestListParams::Status,
+          request_options: Increase::request_opts
+        ) -> void
+        | (
+          ?Increase::Models::wire_drawdown_request_list_params
+          | Increase::BaseModel data
+        ) -> void
 
       def to_hash: -> Increase::Models::wire_drawdown_request_list_params
 
@@ -53,18 +58,21 @@ module Increase
           ::Array[Increase::Models::WireDrawdownRequestListParams::Status::in_]
         ) -> ::Array[Increase::Models::WireDrawdownRequestListParams::Status::in_]
 
-        def initialize: (
-          ?in_: ::Array[Increase::Models::WireDrawdownRequestListParams::Status::in_]
-        ) -> void
+        def initialize:
+          (
+            in_: ::Array[Increase::Models::WireDrawdownRequestListParams::Status::in_]
+          ) -> void
+          | (
+            ?Increase::Models::WireDrawdownRequestListParams::status
+            | Increase::BaseModel data
+          ) -> void
 
         def to_hash: -> Increase::Models::WireDrawdownRequestListParams::status
 
         type in_ =
           :pending_submission | :pending_response | :fulfilled | :refused
 
-        module In
-          extend Increase::Enum
-
+        class In < Increase::Enum
           # The drawdown request is queued to be submitted to Fedwire.
           PENDING_SUBMISSION: :pending_submission
 
@@ -77,7 +85,7 @@ module Increase
           # The drawdown request has been refused by the recipient.
           REFUSED: :refused
 
-          def self?.values: -> ::Array[Increase::Models::WireDrawdownRequestListParams::Status::in_]
+          def self.values: -> ::Array[Increase::Models::WireDrawdownRequestListParams::Status::in_]
         end
       end
     end

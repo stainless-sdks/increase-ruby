@@ -17,10 +17,15 @@ module Increase
           Increase::Models::Simulations::ACHTransferReturnParams::reason
         ) -> Increase::Models::Simulations::ACHTransferReturnParams::reason
 
-        def initialize: (
-          ?reason: Increase::Models::Simulations::ACHTransferReturnParams::reason,
-          ?request_options: Increase::request_opts
-        ) -> void
+        def initialize:
+          (
+            reason: Increase::Models::Simulations::ACHTransferReturnParams::reason,
+            request_options: Increase::request_opts
+          ) -> void
+          | (
+            ?Increase::Models::Simulations::ach_transfer_return_params
+            | Increase::BaseModel data
+          ) -> void
 
         def to_hash: -> Increase::Models::Simulations::ach_transfer_return_params
 
@@ -96,9 +101,7 @@ module Increase
           | :untimely_dishonored_return
           | :untimely_return
 
-        module Reason
-          extend Increase::Enum
-
+        class Reason < Increase::Enum
           # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
           INSUFFICIENT_FUND: :insufficient_fund
 
@@ -309,7 +312,7 @@ module Increase
           # Code R68. A rare return reason. The return was sent too late.
           UNTIMELY_RETURN: :untimely_return
 
-          def self?.values: -> ::Array[Increase::Models::Simulations::ACHTransferReturnParams::reason]
+          def self.values: -> ::Array[Increase::Models::Simulations::ACHTransferReturnParams::reason]
         end
       end
     end

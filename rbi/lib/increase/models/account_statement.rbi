@@ -5,43 +5,88 @@ module Increase
     class AccountStatement < Increase::BaseModel
       # The Account Statement identifier.
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       # The identifier for the Account this Account Statement belongs to.
       sig { returns(String) }
-      attr_accessor :account_id
+      def account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
       #   Statement was created.
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       # The Account's balance at the start of its statement period.
       sig { returns(Integer) }
-      attr_accessor :ending_balance
+      def ending_balance
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def ending_balance=(_)
+      end
 
       # The identifier of the File containing a PDF of the statement.
       sig { returns(String) }
-      attr_accessor :file_id
+      def file_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def file_id=(_)
+      end
 
       # The Account's balance at the start of its statement period.
       sig { returns(Integer) }
-      attr_accessor :starting_balance
+      def starting_balance
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def starting_balance=(_)
+      end
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the end
       #   of the period the Account Statement covers.
       sig { returns(Time) }
-      attr_accessor :statement_period_end
+      def statement_period_end
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def statement_period_end=(_)
+      end
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the
       #   start of the period the Account Statement covers.
       sig { returns(Time) }
-      attr_accessor :statement_period_start
+      def statement_period_start
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def statement_period_start=(_)
+      end
 
       # A constant representing the object's type. For this resource it will always be
       #   `account_statement`.
-      sig { returns(Increase::Models::AccountStatement::Type::TaggedSymbol) }
-      attr_accessor :type
+      sig { returns(Symbol) }
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       # Account Statements are generated monthly for every active Account. You can
       #   access the statement's data via the API or retrieve a PDF with its details via
@@ -56,7 +101,7 @@ module Increase
           starting_balance: Integer,
           statement_period_end: Time,
           statement_period_start: Time,
-          type: Increase::Models::AccountStatement::Type::OrSymbol
+          type: Symbol
         )
           .returns(T.attached_class)
       end
@@ -85,7 +130,7 @@ module Increase
               starting_balance: Integer,
               statement_period_end: Time,
               statement_period_start: Time,
-              type: Increase::Models::AccountStatement::Type::TaggedSymbol
+              type: Symbol
             }
           )
       end
@@ -94,19 +139,12 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `account_statement`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountStatement::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::AccountStatement::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        ACCOUNT_STATEMENT = T.let(:account_statement, Increase::Models::AccountStatement::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::AccountStatement::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        ACCOUNT_STATEMENT = :account_statement
       end
     end
   end

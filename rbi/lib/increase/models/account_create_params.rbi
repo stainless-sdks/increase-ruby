@@ -8,30 +8,41 @@ module Increase
 
       # The name you choose for the Account.
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       # The identifier for the Entity that will own the Account.
       sig { returns(T.nilable(String)) }
-      attr_reader :entity_id
+      def entity_id
+      end
 
-      sig { params(entity_id: String).void }
-      attr_writer :entity_id
+      sig { params(_: String).returns(String) }
+      def entity_id=(_)
+      end
 
       # The identifier of an Entity that, while not owning the Account, is associated
       #   with its activity. Its relationship to your group must be `informational`.
       sig { returns(T.nilable(String)) }
-      attr_reader :informational_entity_id
+      def informational_entity_id
+      end
 
-      sig { params(informational_entity_id: String).void }
-      attr_writer :informational_entity_id
+      sig { params(_: String).returns(String) }
+      def informational_entity_id=(_)
+      end
 
       # The identifier for the Program that this Account falls under. Required if you
       #   operate more than one Program.
       sig { returns(T.nilable(String)) }
-      attr_reader :program_id
+      def program_id
+      end
 
-      sig { params(program_id: String).void }
-      attr_writer :program_id
+      sig { params(_: String).returns(String) }
+      def program_id=(_)
+      end
 
       sig do
         params(
@@ -39,7 +50,7 @@ module Increase
           entity_id: String,
           informational_entity_id: String,
           program_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end

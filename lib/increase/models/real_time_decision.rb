@@ -153,10 +153,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Whether or not the authentication attempt was approved.
-        module Decision
-          extend Increase::Enum
-
+        class Decision < Increase::Enum
           # Approve the authentication attempt without triggering a challenge.
           APPROVE = :approve
 
@@ -167,12 +167,6 @@ module Increase
           DENY = :deny
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 
@@ -223,10 +217,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Whether or not the challenge was delivered to the cardholder.
-        module Result
-          extend Increase::Enum
-
+        class Result < Increase::Enum
           # Your application successfully delivered the one-time code to the cardholder.
           SUCCESS = :success
 
@@ -234,12 +228,6 @@ module Increase
           FAILURE = :failure
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 
@@ -475,10 +463,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Whether or not the authorization was approved.
-        module Decision
-          extend Increase::Enum
-
+        class Decision < Increase::Enum
           # Approve the authorization.
           APPROVE = :approve
 
@@ -486,19 +474,13 @@ module Increase
           DECLINE = :decline
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
 
+        # @abstract
+        #
         # The direction describes the direction the funds will move, either from the
         #   cardholder to the merchant or from the merchant to the cardholder.
-        module Direction
-          extend Increase::Enum
-
+        class Direction < Increase::Enum
           # A regular card authorization where funds are debited from the cardholder.
           SETTLEMENT = :settlement
 
@@ -506,12 +488,6 @@ module Increase
           REFUND = :refund
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
 
         class NetworkDetails < Increase::BaseModel
@@ -540,20 +516,14 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The payment network used to process this card authorization.
-          module Category
-            extend Increase::Enum
-
+          class Category < Increase::Enum
             # Visa
             VISA = :visa
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
           class Visa < Increase::BaseModel
@@ -596,12 +566,12 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # For electronic commerce transactions, this identifies the level of security used
             #   in obtaining the customer's payment credential. For mail or telephone order
             #   transactions, identifies the type of mail or telephone order.
-            module ElectronicCommerceIndicator
-              extend Increase::Enum
-
+            class ElectronicCommerceIndicator < Increase::Enum
               # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
               MAIL_PHONE_ORDER = :mail_phone_order
 
@@ -618,8 +588,7 @@ module Increase
               SECURE_ELECTRONIC_COMMERCE = :secure_electronic_commerce
 
               # Non-authenticated security transaction at a 3-D Secure-capable merchant, and merchant attempted to authenticate the cardholder using 3-D Secure: Use to identify an electronic commerce transaction where the merchant attempted to authenticate the cardholder using 3-D Secure, but was unable to complete the authentication because the issuer or cardholder does not participate in the 3-D Secure program.
-              NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT =
-                :non_authenticated_security_transaction_at_3ds_capable_merchant
+              NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT = :non_authenticated_security_transaction_at_3ds_capable_merchant
 
               # Non-authenticated security transaction: Use to identify an electronic commerce transaction that uses data encryption for security however , cardholder authentication is not performed using 3-D Secure.
               NON_AUTHENTICATED_SECURITY_TRANSACTION = :non_authenticated_security_transaction
@@ -628,19 +597,13 @@ module Increase
               NON_SECURE_TRANSACTION = :non_secure_transaction
 
               finalize!
-
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
             end
 
+            # @abstract
+            #
             # The method used to enter the cardholder's primary account number and card
             #   expiration date.
-            module PointOfServiceEntryMode
-              extend Increase::Enum
-
+            class PointOfServiceEntryMode < Increase::Enum
               # Unknown
               UNKNOWN = :unknown
 
@@ -672,19 +635,13 @@ module Increase
               INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
 
               finalize!
-
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
             end
 
+            # @abstract
+            #
             # Only present when `actioner: network`. Describes why a card authorization was
             #   approved or declined by Visa through stand-in processing.
-            module StandInProcessingReason
-              extend Increase::Enum
-
+            class StandInProcessingReason < Increase::Enum
               # Increase failed to process the authorization in a timely manner.
               ISSUER_ERROR = :issuer_error
 
@@ -692,15 +649,13 @@ module Increase
               INVALID_PHYSICAL_CARD = :invalid_physical_card
 
               # The 3DS cardholder authentication verification value was invalid.
-              INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE =
-                :invalid_cardholder_authentication_verification_value
+              INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE = :invalid_cardholder_authentication_verification_value
 
               # An internal Visa error occurred. Visa uses this reason code for certain expected occurrences as well, such as Application Transaction Counter (ATC) replays.
               INTERNAL_VISA_ERROR = :internal_visa_error
 
               # The merchant has enabled Visa's Transaction Advisory Service and requires further authentication to perform the transaction. In practice this is often utilized at fuel pumps to tell the cardholder to see the cashier.
-              MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED =
-                :merchant_transaction_advisory_service_authentication_required
+              MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED = :merchant_transaction_advisory_service_authentication_required
 
               # The transaction was blocked by Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior, such as card testing.
               PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK = :payment_fraud_disruption_acquirer_block
@@ -709,12 +664,6 @@ module Increase
               OTHER = :other
 
               finalize!
-
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
             end
           end
         end
@@ -754,11 +703,11 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @abstract
+        #
         # The processing category describes the intent behind the authorization, such as
         #   whether it was used for bill payments or an automatic fuel dispenser.
-        module ProcessingCategory
-          extend Increase::Enum
-
+        class ProcessingCategory < Increase::Enum
           # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
           ACCOUNT_FUNDING = :account_funding
 
@@ -778,12 +727,6 @@ module Increase
           REFUND = :refund
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
 
         class RequestDetails < Increase::BaseModel
@@ -820,11 +763,11 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The type of this request (e.g., an initial authorization or an incremental
           #   authorization).
-          module Category
-            extend Increase::Enum
-
+          class Category < Increase::Enum
             # A regular, standalone authorization.
             INITIAL_AUTHORIZATION = :initial_authorization
 
@@ -832,12 +775,6 @@ module Increase
             INCREMENTAL_AUTHORIZATION = :incremental_authorization
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
           class IncrementalAuthorization < Increase::BaseModel
@@ -911,10 +848,10 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # The result of verifying the Card Verification Code.
-            module Result
-              extend Increase::Enum
-
+            class Result < Increase::Enum
               # No card verification code was provided in the authorization request.
               NOT_CHECKED = :not_checked
 
@@ -925,12 +862,6 @@ module Increase
               NO_MATCH = :no_match
 
               finalize!
-
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
             end
           end
 
@@ -981,10 +912,10 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # The address verification result returned to the card network.
-            module Result
-              extend Increase::Enum
-
+            class Result < Increase::Enum
               # No adress was provided in the authorization request.
               NOT_CHECKED = :not_checked
 
@@ -1004,21 +935,15 @@ module Increase
               NO_MATCH = :no_match
 
               finalize!
-
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
             end
           end
         end
       end
 
+      # @abstract
+      #
       # The category of the Real-Time Decision.
-      module Category
-        extend Increase::Enum
-
+      class Category < Increase::Enum
         # A card is being authorized.
         CARD_AUTHORIZATION_REQUESTED = :card_authorization_requested
 
@@ -1035,12 +960,6 @@ module Increase
         DIGITAL_WALLET_AUTHENTICATION_REQUESTED = :digital_wallet_authentication_requested
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
       class DigitalWalletAuthentication < Increase::BaseModel
@@ -1105,10 +1024,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The channel to send the card user their one-time passcode.
-        module Channel
-          extend Increase::Enum
-
+        class Channel < Increase::Enum
           # Send one-time passcodes over SMS.
           SMS = :sms
 
@@ -1116,18 +1035,12 @@ module Increase
           EMAIL = :email
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
 
+        # @abstract
+        #
         # The digital wallet app being used.
-        module DigitalWallet
-          extend Increase::Enum
-
+        class DigitalWallet < Increase::Enum
           # Apple Pay
           APPLE_PAY = :apple_pay
 
@@ -1141,18 +1054,12 @@ module Increase
           UNKNOWN = :unknown
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
 
+        # @abstract
+        #
         # Whether your application successfully delivered the one-time passcode.
-        module Result
-          extend Increase::Enum
-
+        class Result < Increase::Enum
           # Your application successfully delivered the one-time passcode to the cardholder.
           SUCCESS = :success
 
@@ -1160,12 +1067,6 @@ module Increase
           FAILURE = :failure
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 
@@ -1212,11 +1113,11 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Whether or not the provisioning request was approved. This will be null until
         #   the real time decision is responded to.
-        module Decision
-          extend Increase::Enum
-
+        class Decision < Increase::Enum
           # Approve the provisioning request.
           APPROVE = :approve
 
@@ -1224,18 +1125,12 @@ module Increase
           DECLINE = :decline
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
 
+        # @abstract
+        #
         # The digital wallet app being used.
-        module DigitalWallet
-          extend Increase::Enum
-
+        class DigitalWallet < Increase::Enum
           # Apple Pay
           APPLE_PAY = :apple_pay
 
@@ -1249,19 +1144,13 @@ module Increase
           UNKNOWN = :unknown
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 
+      # @abstract
+      #
       # The status of the Real-Time Decision.
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The decision is pending action via real-time webhook.
         PENDING = :pending
 
@@ -1272,28 +1161,16 @@ module Increase
         TIMED_OUT = :timed_out
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `real_time_decision`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         REAL_TIME_DECISION = :real_time_decision
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

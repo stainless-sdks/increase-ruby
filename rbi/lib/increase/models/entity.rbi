@@ -5,125 +5,184 @@ module Increase
     class Entity < Increase::BaseModel
       # The entity's identifier.
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       # Details of the corporation entity. Will be present if `structure` is equal to
       #   `corporation`.
       sig { returns(T.nilable(Increase::Models::Entity::Corporation)) }
-      attr_reader :corporation
+      def corporation
+      end
 
-      sig { params(corporation: T.nilable(T.any(Increase::Models::Entity::Corporation, Increase::Util::AnyHash))).void }
-      attr_writer :corporation
+      sig do
+        params(_: T.nilable(Increase::Models::Entity::Corporation))
+          .returns(T.nilable(Increase::Models::Entity::Corporation))
+      end
+      def corporation=(_)
+      end
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Entity
       #   was created.
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       # The entity's description for display purposes.
       sig { returns(T.nilable(String)) }
-      attr_accessor :description
+      def description
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def description=(_)
+      end
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
       #   Entity's details were most recently confirmed.
       sig { returns(T.nilable(Time)) }
-      attr_accessor :details_confirmed_at
+      def details_confirmed_at
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def details_confirmed_at=(_)
+      end
 
       # Details of the government authority entity. Will be present if `structure` is
       #   equal to `government_authority`.
       sig { returns(T.nilable(Increase::Models::Entity::GovernmentAuthority)) }
-      attr_reader :government_authority
+      def government_authority
+      end
 
       sig do
-        params(
-          government_authority: T.nilable(T.any(Increase::Models::Entity::GovernmentAuthority, Increase::Util::AnyHash))
-        )
-          .void
+        params(_: T.nilable(Increase::Models::Entity::GovernmentAuthority))
+          .returns(T.nilable(Increase::Models::Entity::GovernmentAuthority))
       end
-      attr_writer :government_authority
+      def government_authority=(_)
+      end
 
       # The idempotency key you chose for this object. This value is unique across
       #   Increase and is used to ensure that a request is only processed once. Learn more
       #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      attr_accessor :idempotency_key
+      def idempotency_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def idempotency_key=(_)
+      end
 
       # Details of the joint entity. Will be present if `structure` is equal to `joint`.
       sig { returns(T.nilable(Increase::Models::Entity::Joint)) }
-      attr_reader :joint
+      def joint
+      end
 
-      sig { params(joint: T.nilable(T.any(Increase::Models::Entity::Joint, Increase::Util::AnyHash))).void }
-      attr_writer :joint
+      sig { params(_: T.nilable(Increase::Models::Entity::Joint)).returns(T.nilable(Increase::Models::Entity::Joint)) }
+      def joint=(_)
+      end
 
       # Details of the natural person entity. Will be present if `structure` is equal to
       #   `natural_person`.
       sig { returns(T.nilable(Increase::Models::Entity::NaturalPerson)) }
-      attr_reader :natural_person
+      def natural_person
+      end
 
       sig do
-        params(natural_person: T.nilable(T.any(Increase::Models::Entity::NaturalPerson, Increase::Util::AnyHash)))
-          .void
+        params(_: T.nilable(Increase::Models::Entity::NaturalPerson))
+          .returns(T.nilable(Increase::Models::Entity::NaturalPerson))
       end
-      attr_writer :natural_person
+      def natural_person=(_)
+      end
 
       # The status of the entity.
-      sig { returns(Increase::Models::Entity::Status::TaggedSymbol) }
-      attr_accessor :status
+      sig { returns(Symbol) }
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       # The entity's legal structure.
-      sig { returns(Increase::Models::Entity::Structure::TaggedSymbol) }
-      attr_accessor :structure
+      sig { returns(Symbol) }
+      def structure
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def structure=(_)
+      end
 
       # Additional documentation associated with the entity. This is limited to the
       #   first 10 documents for an entity. If an entity has more than 10 documents, use
       #   the GET /entity_supplemental_documents list endpoint to retrieve them.
       sig { returns(T::Array[Increase::Models::EntitySupplementalDocument]) }
-      attr_accessor :supplemental_documents
+      def supplemental_documents
+      end
+
+      sig do
+        params(_: T::Array[Increase::Models::EntitySupplementalDocument])
+          .returns(T::Array[Increase::Models::EntitySupplementalDocument])
+      end
+      def supplemental_documents=(_)
+      end
 
       # A reference to data stored in a third-party verification service. Your
       #   integration may or may not use this field.
       sig { returns(T.nilable(Increase::Models::Entity::ThirdPartyVerification)) }
-      attr_reader :third_party_verification
+      def third_party_verification
+      end
 
       sig do
-        params(
-          third_party_verification: T.nilable(T.any(Increase::Models::Entity::ThirdPartyVerification, Increase::Util::AnyHash))
-        )
-          .void
+        params(_: T.nilable(Increase::Models::Entity::ThirdPartyVerification))
+          .returns(T.nilable(Increase::Models::Entity::ThirdPartyVerification))
       end
-      attr_writer :third_party_verification
+      def third_party_verification=(_)
+      end
 
       # Details of the trust entity. Will be present if `structure` is equal to `trust`.
       sig { returns(T.nilable(Increase::Models::Entity::Trust)) }
-      attr_reader :trust
+      def trust
+      end
 
-      sig { params(trust: T.nilable(T.any(Increase::Models::Entity::Trust, Increase::Util::AnyHash))).void }
-      attr_writer :trust
+      sig { params(_: T.nilable(Increase::Models::Entity::Trust)).returns(T.nilable(Increase::Models::Entity::Trust)) }
+      def trust=(_)
+      end
 
       # A constant representing the object's type. For this resource it will always be
       #   `entity`.
-      sig { returns(Increase::Models::Entity::Type::TaggedSymbol) }
-      attr_accessor :type
+      sig { returns(Symbol) }
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       # Entities are the legal entities that own accounts. They can be people,
       #   corporations, partnerships, government authorities, or trusts.
       sig do
         params(
           id: String,
-          corporation: T.nilable(T.any(Increase::Models::Entity::Corporation, Increase::Util::AnyHash)),
+          corporation: T.nilable(Increase::Models::Entity::Corporation),
           created_at: Time,
           description: T.nilable(String),
           details_confirmed_at: T.nilable(Time),
-          government_authority: T.nilable(T.any(Increase::Models::Entity::GovernmentAuthority, Increase::Util::AnyHash)),
+          government_authority: T.nilable(Increase::Models::Entity::GovernmentAuthority),
           idempotency_key: T.nilable(String),
-          joint: T.nilable(T.any(Increase::Models::Entity::Joint, Increase::Util::AnyHash)),
-          natural_person: T.nilable(T.any(Increase::Models::Entity::NaturalPerson, Increase::Util::AnyHash)),
-          status: Increase::Models::Entity::Status::OrSymbol,
-          structure: Increase::Models::Entity::Structure::OrSymbol,
-          supplemental_documents: T::Array[T.any(Increase::Models::EntitySupplementalDocument, Increase::Util::AnyHash)],
-          third_party_verification: T.nilable(T.any(Increase::Models::Entity::ThirdPartyVerification, Increase::Util::AnyHash)),
-          trust: T.nilable(T.any(Increase::Models::Entity::Trust, Increase::Util::AnyHash)),
-          type: Increase::Models::Entity::Type::OrSymbol
+          joint: T.nilable(Increase::Models::Entity::Joint),
+          natural_person: T.nilable(Increase::Models::Entity::NaturalPerson),
+          status: Symbol,
+          structure: Symbol,
+          supplemental_documents: T::Array[Increase::Models::EntitySupplementalDocument],
+          third_party_verification: T.nilable(Increase::Models::Entity::ThirdPartyVerification),
+          trust: T.nilable(Increase::Models::Entity::Trust),
+          type: Symbol
         )
           .returns(T.attached_class)
       end
@@ -159,12 +218,12 @@ module Increase
               idempotency_key: T.nilable(String),
               joint: T.nilable(Increase::Models::Entity::Joint),
               natural_person: T.nilable(Increase::Models::Entity::NaturalPerson),
-              status: Increase::Models::Entity::Status::TaggedSymbol,
-              structure: Increase::Models::Entity::Structure::TaggedSymbol,
+              status: Symbol,
+              structure: Symbol,
               supplemental_documents: T::Array[Increase::Models::EntitySupplementalDocument],
               third_party_verification: T.nilable(Increase::Models::Entity::ThirdPartyVerification),
               trust: T.nilable(Increase::Models::Entity::Trust),
-              type: Increase::Models::Entity::Type::TaggedSymbol
+              type: Symbol
             }
           )
       end
@@ -174,44 +233,82 @@ module Increase
       class Corporation < Increase::BaseModel
         # The corporation's address.
         sig { returns(Increase::Models::Entity::Corporation::Address) }
-        attr_reader :address
+        def address
+        end
 
-        sig { params(address: T.any(Increase::Models::Entity::Corporation::Address, Increase::Util::AnyHash)).void }
-        attr_writer :address
+        sig do
+          params(_: Increase::Models::Entity::Corporation::Address)
+            .returns(Increase::Models::Entity::Corporation::Address)
+        end
+        def address=(_)
+        end
 
         # The identifying details of anyone controlling or owning 25% or more of the
         #   corporation.
         sig { returns(T::Array[Increase::Models::Entity::Corporation::BeneficialOwner]) }
-        attr_accessor :beneficial_owners
+        def beneficial_owners
+        end
+
+        sig do
+          params(_: T::Array[Increase::Models::Entity::Corporation::BeneficialOwner])
+            .returns(T::Array[Increase::Models::Entity::Corporation::BeneficialOwner])
+        end
+        def beneficial_owners=(_)
+        end
 
         # The two-letter United States Postal Service (USPS) abbreviation for the
         #   corporation's state of incorporation.
         sig { returns(T.nilable(String)) }
-        attr_accessor :incorporation_state
+        def incorporation_state
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def incorporation_state=(_)
+        end
 
         # The numeric North American Industry Classification System (NAICS) code submitted
         #   for the corporation.
         sig { returns(T.nilable(String)) }
-        attr_accessor :industry_code
+        def industry_code
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def industry_code=(_)
+        end
 
         # The legal name of the corporation.
         sig { returns(String) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         # The Employer Identification Number (EIN) for the corporation.
         sig { returns(T.nilable(String)) }
-        attr_accessor :tax_identifier
+        def tax_identifier
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def tax_identifier=(_)
+        end
 
         # The website of the corporation.
         sig { returns(T.nilable(String)) }
-        attr_accessor :website
+        def website
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def website=(_)
+        end
 
         # Details of the corporation entity. Will be present if `structure` is equal to
         #   `corporation`.
         sig do
           params(
-            address: T.any(Increase::Models::Entity::Corporation::Address, Increase::Util::AnyHash),
-            beneficial_owners: T::Array[T.any(Increase::Models::Entity::Corporation::BeneficialOwner, Increase::Util::AnyHash)],
+            address: Increase::Models::Entity::Corporation::Address,
+            beneficial_owners: T::Array[Increase::Models::Entity::Corporation::BeneficialOwner],
             incorporation_state: T.nilable(String),
             industry_code: T.nilable(String),
             name: String,
@@ -243,24 +340,49 @@ module Increase
         class Address < Increase::BaseModel
           # The city of the address.
           sig { returns(String) }
-          attr_accessor :city
+          def city
+          end
+
+          sig { params(_: String).returns(String) }
+          def city=(_)
+          end
 
           # The first line of the address.
           sig { returns(String) }
-          attr_accessor :line1
+          def line1
+          end
+
+          sig { params(_: String).returns(String) }
+          def line1=(_)
+          end
 
           # The second line of the address.
           sig { returns(T.nilable(String)) }
-          attr_accessor :line2
+          def line2
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def line2=(_)
+          end
 
           # The two-letter United States Postal Service (USPS) abbreviation for the state of
           #   the address.
           sig { returns(String) }
-          attr_accessor :state
+          def state
+          end
+
+          sig { params(_: String).returns(String) }
+          def state=(_)
+          end
 
           # The ZIP code of the address.
           sig { returns(String) }
-          attr_accessor :zip
+          def zip
+          end
+
+          sig { params(_: String).returns(String) }
+          def zip=(_)
+          end
 
           # The corporation's address.
           sig do
@@ -288,34 +410,49 @@ module Increase
         class BeneficialOwner < Increase::BaseModel
           # The identifier of this beneficial owner.
           sig { returns(String) }
-          attr_accessor :beneficial_owner_id
+          def beneficial_owner_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def beneficial_owner_id=(_)
+          end
 
           # This person's role or title within the entity.
           sig { returns(T.nilable(String)) }
-          attr_accessor :company_title
+          def company_title
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def company_title=(_)
+          end
 
           # Personal details for the beneficial owner.
           sig { returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual) }
-          attr_reader :individual
+          def individual
+          end
 
           sig do
-            params(
-              individual: T.any(Increase::Models::Entity::Corporation::BeneficialOwner::Individual, Increase::Util::AnyHash)
-            )
-              .void
+            params(_: Increase::Models::Entity::Corporation::BeneficialOwner::Individual)
+              .returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual)
           end
-          attr_writer :individual
+          def individual=(_)
+          end
 
           # Why this person is considered a beneficial owner of the entity.
-          sig { returns(Increase::Models::Entity::Corporation::BeneficialOwner::Prong::TaggedSymbol) }
-          attr_accessor :prong
+          sig { returns(Symbol) }
+          def prong
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def prong=(_)
+          end
 
           sig do
             params(
               beneficial_owner_id: String,
               company_title: T.nilable(String),
-              individual: T.any(Increase::Models::Entity::Corporation::BeneficialOwner::Individual, Increase::Util::AnyHash),
-              prong: Increase::Models::Entity::Corporation::BeneficialOwner::Prong::OrSymbol
+              individual: Increase::Models::Entity::Corporation::BeneficialOwner::Individual,
+              prong: Symbol
             )
               .returns(T.attached_class)
           end
@@ -329,7 +466,7 @@ module Increase
                   beneficial_owner_id: String,
                   company_title: T.nilable(String),
                   individual: Increase::Models::Entity::Corporation::BeneficialOwner::Individual,
-                  prong: Increase::Models::Entity::Corporation::BeneficialOwner::Prong::TaggedSymbol
+                  prong: Symbol
                 }
               )
           end
@@ -339,54 +476,52 @@ module Increase
           class Individual < Increase::BaseModel
             # The person's address.
             sig { returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address) }
-            attr_reader :address
+            def address
+            end
 
             sig do
-              params(
-                address: T.any(
-                  Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address,
-                  Increase::Util::AnyHash
-                )
-              )
-                .void
+              params(_: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address)
+                .returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address)
             end
-            attr_writer :address
+            def address=(_)
+            end
 
             # The person's date of birth in YYYY-MM-DD format.
             sig { returns(Date) }
-            attr_accessor :date_of_birth
+            def date_of_birth
+            end
+
+            sig { params(_: Date).returns(Date) }
+            def date_of_birth=(_)
+            end
 
             # A means of verifying the person's identity.
             sig { returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification) }
-            attr_reader :identification
+            def identification
+            end
 
             sig do
-              params(
-                identification: T.any(
-                  Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification,
-                  Increase::Util::AnyHash
-                )
-              )
-                .void
+              params(_: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification)
+                .returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification)
             end
-            attr_writer :identification
+            def identification=(_)
+            end
 
             # The person's legal name.
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             # Personal details for the beneficial owner.
             sig do
               params(
-                address: T.any(
-                  Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address,
-                  Increase::Util::AnyHash
-                ),
+                address: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address,
                 date_of_birth: Date,
-                identification: T.any(
-                  Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification,
-                  Increase::Util::AnyHash
-                ),
+                identification: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification,
                 name: String
               )
                 .returns(T.attached_class)
@@ -411,24 +546,49 @@ module Increase
             class Address < Increase::BaseModel
               # The city of the address.
               sig { returns(String) }
-              attr_accessor :city
+              def city
+              end
+
+              sig { params(_: String).returns(String) }
+              def city=(_)
+              end
 
               # The first line of the address.
               sig { returns(String) }
-              attr_accessor :line1
+              def line1
+              end
+
+              sig { params(_: String).returns(String) }
+              def line1=(_)
+              end
 
               # The second line of the address.
               sig { returns(T.nilable(String)) }
-              attr_accessor :line2
+              def line2
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def line2=(_)
+              end
 
               # The two-letter United States Postal Service (USPS) abbreviation for the state of
               #   the address.
               sig { returns(String) }
-              attr_accessor :state
+              def state
+              end
+
+              sig { params(_: String).returns(String) }
+              def state=(_)
+              end
 
               # The ZIP code of the address.
               sig { returns(String) }
-              attr_accessor :zip
+              def zip
+              end
+
+              sig { params(_: String).returns(String) }
+              def zip=(_)
+              end
 
               # The person's address.
               sig do
@@ -455,125 +615,68 @@ module Increase
 
             class Identification < Increase::BaseModel
               # A method that can be used to verify the individual's identity.
-              sig do
-                returns(
-                  Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
-                )
+              sig { returns(Symbol) }
+              def method_
               end
-              attr_accessor :method_
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def method_=(_)
+              end
 
               # The last 4 digits of the identification number that can be used to verify the
               #   individual's identity.
               sig { returns(String) }
-              attr_accessor :number_last4
+              def number_last4
+              end
+
+              sig { params(_: String).returns(String) }
+              def number_last4=(_)
+              end
 
               # A means of verifying the person's identity.
-              sig do
-                params(
-                  method_: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method::OrSymbol,
-                  number_last4: String
-                )
-                  .returns(T.attached_class)
-              end
+              sig { params(method_: Symbol, number_last4: String).returns(T.attached_class) }
               def self.new(method_:, number_last4:)
               end
 
-              sig do
-                override
-                  .returns(
-                    {
-                      method_: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol,
-                      number_last4: String
-                    }
-                  )
-              end
+              sig { override.returns({method_: Symbol, number_last4: String}) }
               def to_hash
               end
 
               # A method that can be used to verify the individual's identity.
-              module Method
-                extend Increase::Enum
+              class Method < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias { T.all(Symbol, Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method) }
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # A social security number.
-                SOCIAL_SECURITY_NUMBER =
-                  T.let(
-                    :social_security_number,
-                    Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
-                  )
+                SOCIAL_SECURITY_NUMBER = :social_security_number
 
                 # An individual taxpayer identification number (ITIN).
-                INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER =
-                  T.let(
-                    :individual_taxpayer_identification_number,
-                    Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
-                  )
+                INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER = :individual_taxpayer_identification_number
 
                 # A passport number.
-                PASSPORT =
-                  T.let(
-                    :passport,
-                    Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
-                  )
+                PASSPORT = :passport
 
                 # A driver's license number.
-                DRIVERS_LICENSE =
-                  T.let(
-                    :drivers_license,
-                    Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
-                  )
+                DRIVERS_LICENSE = :drivers_license
 
                 # Another identifying document.
-                OTHER =
-                  T.let(
-                    :other,
-                    Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol]
-                      )
-                  end
-                  def values
-                  end
-                end
+                OTHER = :other
               end
             end
           end
 
           # Why this person is considered a beneficial owner of the entity.
-          module Prong
-            extend Increase::Enum
+          class Prong < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::Entity::Corporation::BeneficialOwner::Prong) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::Entity::Corporation::BeneficialOwner::Prong::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # A person with 25% or greater direct or indirect ownership of the entity.
-            OWNERSHIP =
-              T.let(:ownership, Increase::Models::Entity::Corporation::BeneficialOwner::Prong::TaggedSymbol)
+            OWNERSHIP = :ownership
 
             # A person who manages, directs, or has significant control of the entity.
-            CONTROL = T.let(:control, Increase::Models::Entity::Corporation::BeneficialOwner::Prong::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::Entity::Corporation::BeneficialOwner::Prong::TaggedSymbol]) }
-              def values
-              end
-            end
+            CONTROL = :control
           end
         end
       end
@@ -581,41 +684,71 @@ module Increase
       class GovernmentAuthority < Increase::BaseModel
         # The government authority's address.
         sig { returns(Increase::Models::Entity::GovernmentAuthority::Address) }
-        attr_reader :address
+        def address
+        end
 
         sig do
-          params(address: T.any(Increase::Models::Entity::GovernmentAuthority::Address, Increase::Util::AnyHash))
-            .void
+          params(_: Increase::Models::Entity::GovernmentAuthority::Address)
+            .returns(Increase::Models::Entity::GovernmentAuthority::Address)
         end
-        attr_writer :address
+        def address=(_)
+        end
 
         # The identifying details of authorized persons of the government authority.
         sig { returns(T::Array[Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson]) }
-        attr_accessor :authorized_persons
+        def authorized_persons
+        end
+
+        sig do
+          params(_: T::Array[Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson])
+            .returns(T::Array[Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson])
+        end
+        def authorized_persons=(_)
+        end
 
         # The category of the government authority.
-        sig { returns(Increase::Models::Entity::GovernmentAuthority::Category::TaggedSymbol) }
-        attr_accessor :category
+        sig { returns(Symbol) }
+        def category
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def category=(_)
+        end
 
         # The government authority's name.
         sig { returns(String) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         # The Employer Identification Number (EIN) of the government authority.
         sig { returns(T.nilable(String)) }
-        attr_accessor :tax_identifier
+        def tax_identifier
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def tax_identifier=(_)
+        end
 
         # The government authority's website.
         sig { returns(T.nilable(String)) }
-        attr_accessor :website
+        def website
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def website=(_)
+        end
 
         # Details of the government authority entity. Will be present if `structure` is
         #   equal to `government_authority`.
         sig do
           params(
-            address: T.any(Increase::Models::Entity::GovernmentAuthority::Address, Increase::Util::AnyHash),
-            authorized_persons: T::Array[T.any(Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson, Increase::Util::AnyHash)],
-            category: Increase::Models::Entity::GovernmentAuthority::Category::OrSymbol,
+            address: Increase::Models::Entity::GovernmentAuthority::Address,
+            authorized_persons: T::Array[Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson],
+            category: Symbol,
             name: String,
             tax_identifier: T.nilable(String),
             website: T.nilable(String)
@@ -631,7 +764,7 @@ module Increase
               {
                 address: Increase::Models::Entity::GovernmentAuthority::Address,
                 authorized_persons: T::Array[Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson],
-                category: Increase::Models::Entity::GovernmentAuthority::Category::TaggedSymbol,
+                category: Symbol,
                 name: String,
                 tax_identifier: T.nilable(String),
                 website: T.nilable(String)
@@ -644,24 +777,49 @@ module Increase
         class Address < Increase::BaseModel
           # The city of the address.
           sig { returns(String) }
-          attr_accessor :city
+          def city
+          end
+
+          sig { params(_: String).returns(String) }
+          def city=(_)
+          end
 
           # The first line of the address.
           sig { returns(String) }
-          attr_accessor :line1
+          def line1
+          end
+
+          sig { params(_: String).returns(String) }
+          def line1=(_)
+          end
 
           # The second line of the address.
           sig { returns(T.nilable(String)) }
-          attr_accessor :line2
+          def line2
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def line2=(_)
+          end
 
           # The two-letter United States Postal Service (USPS) abbreviation for the state of
           #   the address.
           sig { returns(String) }
-          attr_accessor :state
+          def state
+          end
+
+          sig { params(_: String).returns(String) }
+          def state=(_)
+          end
 
           # The ZIP code of the address.
           sig { returns(String) }
-          attr_accessor :zip
+          def zip
+          end
+
+          sig { params(_: String).returns(String) }
+          def zip=(_)
+          end
 
           # The government authority's address.
           sig do
@@ -689,11 +847,21 @@ module Increase
         class AuthorizedPerson < Increase::BaseModel
           # The identifier of this authorized person.
           sig { returns(String) }
-          attr_accessor :authorized_person_id
+          def authorized_person_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def authorized_person_id=(_)
+          end
 
           # The person's legal name.
           sig { returns(String) }
-          attr_accessor :name
+          def name
+          end
+
+          sig { params(_: String).returns(String) }
+          def name=(_)
+          end
 
           sig { params(authorized_person_id: String, name: String).returns(T.attached_class) }
           def self.new(authorized_person_id:, name:)
@@ -705,40 +873,41 @@ module Increase
         end
 
         # The category of the government authority.
-        module Category
-          extend Increase::Enum
+        class Category < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Entity::GovernmentAuthority::Category) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::Entity::GovernmentAuthority::Category::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # The Public Entity is a Municipality.
-          MUNICIPALITY =
-            T.let(:municipality, Increase::Models::Entity::GovernmentAuthority::Category::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::Entity::GovernmentAuthority::Category::TaggedSymbol]) }
-            def values
-            end
-          end
+          MUNICIPALITY = :municipality
         end
       end
 
       class Joint < Increase::BaseModel
         # The two individuals that share control of the entity.
         sig { returns(T::Array[Increase::Models::Entity::Joint::Individual]) }
-        attr_accessor :individuals
+        def individuals
+        end
+
+        sig do
+          params(_: T::Array[Increase::Models::Entity::Joint::Individual])
+            .returns(T::Array[Increase::Models::Entity::Joint::Individual])
+        end
+        def individuals=(_)
+        end
 
         # The entity's name.
         sig { returns(String) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         # Details of the joint entity. Will be present if `structure` is equal to `joint`.
         sig do
-          params(
-            individuals: T::Array[T.any(Increase::Models::Entity::Joint::Individual, Increase::Util::AnyHash)],
-            name: String
-          )
+          params(individuals: T::Array[Increase::Models::Entity::Joint::Individual], name: String)
             .returns(T.attached_class)
         end
         def self.new(individuals:, name:)
@@ -751,36 +920,51 @@ module Increase
         class Individual < Increase::BaseModel
           # The person's address.
           sig { returns(Increase::Models::Entity::Joint::Individual::Address) }
-          attr_reader :address
+          def address
+          end
 
-          sig { params(address: T.any(Increase::Models::Entity::Joint::Individual::Address, Increase::Util::AnyHash)).void }
-          attr_writer :address
+          sig do
+            params(_: Increase::Models::Entity::Joint::Individual::Address)
+              .returns(Increase::Models::Entity::Joint::Individual::Address)
+          end
+          def address=(_)
+          end
 
           # The person's date of birth in YYYY-MM-DD format.
           sig { returns(Date) }
-          attr_accessor :date_of_birth
+          def date_of_birth
+          end
+
+          sig { params(_: Date).returns(Date) }
+          def date_of_birth=(_)
+          end
 
           # A means of verifying the person's identity.
           sig { returns(Increase::Models::Entity::Joint::Individual::Identification) }
-          attr_reader :identification
+          def identification
+          end
 
           sig do
-            params(
-              identification: T.any(Increase::Models::Entity::Joint::Individual::Identification, Increase::Util::AnyHash)
-            )
-              .void
+            params(_: Increase::Models::Entity::Joint::Individual::Identification)
+              .returns(Increase::Models::Entity::Joint::Individual::Identification)
           end
-          attr_writer :identification
+          def identification=(_)
+          end
 
           # The person's legal name.
           sig { returns(String) }
-          attr_accessor :name
+          def name
+          end
+
+          sig { params(_: String).returns(String) }
+          def name=(_)
+          end
 
           sig do
             params(
-              address: T.any(Increase::Models::Entity::Joint::Individual::Address, Increase::Util::AnyHash),
+              address: Increase::Models::Entity::Joint::Individual::Address,
               date_of_birth: Date,
-              identification: T.any(Increase::Models::Entity::Joint::Individual::Identification, Increase::Util::AnyHash),
+              identification: Increase::Models::Entity::Joint::Individual::Identification,
               name: String
             )
               .returns(T.attached_class)
@@ -805,24 +989,49 @@ module Increase
           class Address < Increase::BaseModel
             # The city of the address.
             sig { returns(String) }
-            attr_accessor :city
+            def city
+            end
+
+            sig { params(_: String).returns(String) }
+            def city=(_)
+            end
 
             # The first line of the address.
             sig { returns(String) }
-            attr_accessor :line1
+            def line1
+            end
+
+            sig { params(_: String).returns(String) }
+            def line1=(_)
+            end
 
             # The second line of the address.
             sig { returns(T.nilable(String)) }
-            attr_accessor :line2
+            def line2
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def line2=(_)
+            end
 
             # The two-letter United States Postal Service (USPS) abbreviation for the state of
             #   the address.
             sig { returns(String) }
-            attr_accessor :state
+            def state
+            end
+
+            sig { params(_: String).returns(String) }
+            def state=(_)
+            end
 
             # The ZIP code of the address.
             sig { returns(String) }
-            attr_accessor :zip
+            def zip
+            end
+
+            sig { params(_: String).returns(String) }
+            def zip=(_)
+            end
 
             # The person's address.
             sig do
@@ -849,79 +1058,53 @@ module Increase
 
           class Identification < Increase::BaseModel
             # A method that can be used to verify the individual's identity.
-            sig { returns(Increase::Models::Entity::Joint::Individual::Identification::Method::TaggedSymbol) }
-            attr_accessor :method_
+            sig { returns(Symbol) }
+            def method_
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def method_=(_)
+            end
 
             # The last 4 digits of the identification number that can be used to verify the
             #   individual's identity.
             sig { returns(String) }
-            attr_accessor :number_last4
+            def number_last4
+            end
+
+            sig { params(_: String).returns(String) }
+            def number_last4=(_)
+            end
 
             # A means of verifying the person's identity.
-            sig do
-              params(
-                method_: Increase::Models::Entity::Joint::Individual::Identification::Method::OrSymbol,
-                number_last4: String
-              )
-                .returns(T.attached_class)
-            end
+            sig { params(method_: Symbol, number_last4: String).returns(T.attached_class) }
             def self.new(method_:, number_last4:)
             end
 
-            sig do
-              override
-                .returns(
-                  {
-                    method_: Increase::Models::Entity::Joint::Individual::Identification::Method::TaggedSymbol,
-                    number_last4: String
-                  }
-                )
-            end
+            sig { override.returns({method_: Symbol, number_last4: String}) }
             def to_hash
             end
 
             # A method that can be used to verify the individual's identity.
-            module Method
-              extend Increase::Enum
+            class Method < Increase::Enum
+              abstract!
 
-              TaggedSymbol =
-                T.type_alias { T.all(Symbol, Increase::Models::Entity::Joint::Individual::Identification::Method) }
-              OrSymbol =
-                T.type_alias { T.any(Symbol, Increase::Models::Entity::Joint::Individual::Identification::Method::TaggedSymbol) }
+              Value = type_template(:out) { {fixed: Symbol} }
 
               # A social security number.
-              SOCIAL_SECURITY_NUMBER =
-                T.let(
-                  :social_security_number,
-                  Increase::Models::Entity::Joint::Individual::Identification::Method::TaggedSymbol
-                )
+              SOCIAL_SECURITY_NUMBER = :social_security_number
 
               # An individual taxpayer identification number (ITIN).
-              INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER =
-                T.let(
-                  :individual_taxpayer_identification_number,
-                  Increase::Models::Entity::Joint::Individual::Identification::Method::TaggedSymbol
-                )
+              INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER = :individual_taxpayer_identification_number
 
               # A passport number.
-              PASSPORT =
-                T.let(:passport, Increase::Models::Entity::Joint::Individual::Identification::Method::TaggedSymbol)
+              PASSPORT = :passport
 
               # A driver's license number.
-              DRIVERS_LICENSE =
-                T.let(:drivers_license, Increase::Models::Entity::Joint::Individual::Identification::Method::TaggedSymbol)
+              DRIVERS_LICENSE = :drivers_license
 
               # Another identifying document.
-              OTHER = T.let(:other, Increase::Models::Entity::Joint::Individual::Identification::Method::TaggedSymbol)
-
-              class << self
-                sig do
-                  override
-                    .returns(T::Array[Increase::Models::Entity::Joint::Individual::Identification::Method::TaggedSymbol])
-                end
-                def values
-                end
-              end
+              OTHER = :other
             end
           end
         end
@@ -930,38 +1113,53 @@ module Increase
       class NaturalPerson < Increase::BaseModel
         # The person's address.
         sig { returns(Increase::Models::Entity::NaturalPerson::Address) }
-        attr_reader :address
+        def address
+        end
 
-        sig { params(address: T.any(Increase::Models::Entity::NaturalPerson::Address, Increase::Util::AnyHash)).void }
-        attr_writer :address
+        sig do
+          params(_: Increase::Models::Entity::NaturalPerson::Address)
+            .returns(Increase::Models::Entity::NaturalPerson::Address)
+        end
+        def address=(_)
+        end
 
         # The person's date of birth in YYYY-MM-DD format.
         sig { returns(Date) }
-        attr_accessor :date_of_birth
+        def date_of_birth
+        end
+
+        sig { params(_: Date).returns(Date) }
+        def date_of_birth=(_)
+        end
 
         # A means of verifying the person's identity.
         sig { returns(Increase::Models::Entity::NaturalPerson::Identification) }
-        attr_reader :identification
+        def identification
+        end
 
         sig do
-          params(
-            identification: T.any(Increase::Models::Entity::NaturalPerson::Identification, Increase::Util::AnyHash)
-          )
-            .void
+          params(_: Increase::Models::Entity::NaturalPerson::Identification)
+            .returns(Increase::Models::Entity::NaturalPerson::Identification)
         end
-        attr_writer :identification
+        def identification=(_)
+        end
 
         # The person's legal name.
         sig { returns(String) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         # Details of the natural person entity. Will be present if `structure` is equal to
         #   `natural_person`.
         sig do
           params(
-            address: T.any(Increase::Models::Entity::NaturalPerson::Address, Increase::Util::AnyHash),
+            address: Increase::Models::Entity::NaturalPerson::Address,
             date_of_birth: Date,
-            identification: T.any(Increase::Models::Entity::NaturalPerson::Identification, Increase::Util::AnyHash),
+            identification: Increase::Models::Entity::NaturalPerson::Identification,
             name: String
           )
             .returns(T.attached_class)
@@ -986,24 +1184,49 @@ module Increase
         class Address < Increase::BaseModel
           # The city of the address.
           sig { returns(String) }
-          attr_accessor :city
+          def city
+          end
+
+          sig { params(_: String).returns(String) }
+          def city=(_)
+          end
 
           # The first line of the address.
           sig { returns(String) }
-          attr_accessor :line1
+          def line1
+          end
+
+          sig { params(_: String).returns(String) }
+          def line1=(_)
+          end
 
           # The second line of the address.
           sig { returns(T.nilable(String)) }
-          attr_accessor :line2
+          def line2
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def line2=(_)
+          end
 
           # The two-letter United States Postal Service (USPS) abbreviation for the state of
           #   the address.
           sig { returns(String) }
-          attr_accessor :state
+          def state
+          end
+
+          sig { params(_: String).returns(String) }
+          def state=(_)
+          end
 
           # The ZIP code of the address.
           sig { returns(String) }
-          attr_accessor :zip
+          def zip
+          end
+
+          sig { params(_: String).returns(String) }
+          def zip=(_)
+          end
 
           # The person's address.
           sig do
@@ -1030,229 +1253,229 @@ module Increase
 
         class Identification < Increase::BaseModel
           # A method that can be used to verify the individual's identity.
-          sig { returns(Increase::Models::Entity::NaturalPerson::Identification::Method::TaggedSymbol) }
-          attr_accessor :method_
+          sig { returns(Symbol) }
+          def method_
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def method_=(_)
+          end
 
           # The last 4 digits of the identification number that can be used to verify the
           #   individual's identity.
           sig { returns(String) }
-          attr_accessor :number_last4
+          def number_last4
+          end
+
+          sig { params(_: String).returns(String) }
+          def number_last4=(_)
+          end
 
           # A means of verifying the person's identity.
-          sig do
-            params(
-              method_: Increase::Models::Entity::NaturalPerson::Identification::Method::OrSymbol,
-              number_last4: String
-            )
-              .returns(T.attached_class)
-          end
+          sig { params(method_: Symbol, number_last4: String).returns(T.attached_class) }
           def self.new(method_:, number_last4:)
           end
 
-          sig do
-            override
-              .returns(
-                {method_: Increase::Models::Entity::NaturalPerson::Identification::Method::TaggedSymbol, number_last4: String}
-              )
-          end
+          sig { override.returns({method_: Symbol, number_last4: String}) }
           def to_hash
           end
 
           # A method that can be used to verify the individual's identity.
-          module Method
-            extend Increase::Enum
+          class Method < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::Entity::NaturalPerson::Identification::Method) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::Entity::NaturalPerson::Identification::Method::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # A social security number.
-            SOCIAL_SECURITY_NUMBER =
-              T.let(
-                :social_security_number,
-                Increase::Models::Entity::NaturalPerson::Identification::Method::TaggedSymbol
-              )
+            SOCIAL_SECURITY_NUMBER = :social_security_number
 
             # An individual taxpayer identification number (ITIN).
-            INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER =
-              T.let(
-                :individual_taxpayer_identification_number,
-                Increase::Models::Entity::NaturalPerson::Identification::Method::TaggedSymbol
-              )
+            INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER = :individual_taxpayer_identification_number
 
             # A passport number.
-            PASSPORT =
-              T.let(:passport, Increase::Models::Entity::NaturalPerson::Identification::Method::TaggedSymbol)
+            PASSPORT = :passport
 
             # A driver's license number.
-            DRIVERS_LICENSE =
-              T.let(:drivers_license, Increase::Models::Entity::NaturalPerson::Identification::Method::TaggedSymbol)
+            DRIVERS_LICENSE = :drivers_license
 
             # Another identifying document.
-            OTHER = T.let(:other, Increase::Models::Entity::NaturalPerson::Identification::Method::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::Entity::NaturalPerson::Identification::Method::TaggedSymbol]) }
-              def values
-              end
-            end
+            OTHER = :other
           end
         end
       end
 
       # The status of the entity.
-      module Status
-        extend Increase::Enum
+      class Status < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Entity::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Entity::Status::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The entity is active.
-        ACTIVE = T.let(:active, Increase::Models::Entity::Status::TaggedSymbol)
+        ACTIVE = :active
 
         # The entity is archived, and can no longer be used to create accounts.
-        ARCHIVED = T.let(:archived, Increase::Models::Entity::Status::TaggedSymbol)
+        ARCHIVED = :archived
 
         # The entity is temporarily disabled and cannot be used for financial activity.
-        DISABLED = T.let(:disabled, Increase::Models::Entity::Status::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::Entity::Status::TaggedSymbol]) }
-          def values
-          end
-        end
+        DISABLED = :disabled
       end
 
       # The entity's legal structure.
-      module Structure
-        extend Increase::Enum
+      class Structure < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Entity::Structure) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Entity::Structure::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # A corporation.
-        CORPORATION = T.let(:corporation, Increase::Models::Entity::Structure::TaggedSymbol)
+        CORPORATION = :corporation
 
         # An individual person.
-        NATURAL_PERSON = T.let(:natural_person, Increase::Models::Entity::Structure::TaggedSymbol)
+        NATURAL_PERSON = :natural_person
 
         # Multiple individual people.
-        JOINT = T.let(:joint, Increase::Models::Entity::Structure::TaggedSymbol)
+        JOINT = :joint
 
         # A trust.
-        TRUST = T.let(:trust, Increase::Models::Entity::Structure::TaggedSymbol)
+        TRUST = :trust
 
         # A government authority.
-        GOVERNMENT_AUTHORITY = T.let(:government_authority, Increase::Models::Entity::Structure::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::Entity::Structure::TaggedSymbol]) }
-          def values
-          end
-        end
+        GOVERNMENT_AUTHORITY = :government_authority
       end
 
       class ThirdPartyVerification < Increase::BaseModel
         # The reference identifier for the third party verification.
         sig { returns(String) }
-        attr_accessor :reference
+        def reference
+        end
+
+        sig { params(_: String).returns(String) }
+        def reference=(_)
+        end
 
         # The vendor that was used to perform the verification.
-        sig { returns(Increase::Models::Entity::ThirdPartyVerification::Vendor::TaggedSymbol) }
-        attr_accessor :vendor
+        sig { returns(Symbol) }
+        def vendor
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def vendor=(_)
+        end
 
         # A reference to data stored in a third-party verification service. Your
         #   integration may or may not use this field.
-        sig do
-          params(reference: String, vendor: Increase::Models::Entity::ThirdPartyVerification::Vendor::OrSymbol)
-            .returns(T.attached_class)
-        end
+        sig { params(reference: String, vendor: Symbol).returns(T.attached_class) }
         def self.new(reference:, vendor:)
         end
 
-        sig do
-          override
-            .returns(
-              {reference: String, vendor: Increase::Models::Entity::ThirdPartyVerification::Vendor::TaggedSymbol}
-            )
-        end
+        sig { override.returns({reference: String, vendor: Symbol}) }
         def to_hash
         end
 
         # The vendor that was used to perform the verification.
-        module Vendor
-          extend Increase::Enum
+        class Vendor < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Entity::ThirdPartyVerification::Vendor) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::Entity::ThirdPartyVerification::Vendor::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # Alloy. See https://alloy.com for more information.
-          ALLOY = T.let(:alloy, Increase::Models::Entity::ThirdPartyVerification::Vendor::TaggedSymbol)
+          ALLOY = :alloy
 
           # Middesk. See https://middesk.com for more information.
-          MIDDESK = T.let(:middesk, Increase::Models::Entity::ThirdPartyVerification::Vendor::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::Entity::ThirdPartyVerification::Vendor::TaggedSymbol]) }
-            def values
-            end
-          end
+          MIDDESK = :middesk
         end
       end
 
       class Trust < Increase::BaseModel
         # The trust's address.
         sig { returns(Increase::Models::Entity::Trust::Address) }
-        attr_reader :address
+        def address
+        end
 
-        sig { params(address: T.any(Increase::Models::Entity::Trust::Address, Increase::Util::AnyHash)).void }
-        attr_writer :address
+        sig { params(_: Increase::Models::Entity::Trust::Address).returns(Increase::Models::Entity::Trust::Address) }
+        def address=(_)
+        end
 
         # Whether the trust is `revocable` or `irrevocable`.
-        sig { returns(Increase::Models::Entity::Trust::Category::TaggedSymbol) }
-        attr_accessor :category
+        sig { returns(Symbol) }
+        def category
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def category=(_)
+        end
 
         # The ID for the File containing the formation document of the trust.
         sig { returns(T.nilable(String)) }
-        attr_accessor :formation_document_file_id
+        def formation_document_file_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def formation_document_file_id=(_)
+        end
 
         # The two-letter United States Postal Service (USPS) abbreviation for the state in
         #   which the trust was formed.
         sig { returns(T.nilable(String)) }
-        attr_accessor :formation_state
+        def formation_state
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def formation_state=(_)
+        end
 
         # The grantor of the trust. Will be present if the `category` is `revocable`.
         sig { returns(T.nilable(Increase::Models::Entity::Trust::Grantor)) }
-        attr_reader :grantor
+        def grantor
+        end
 
-        sig { params(grantor: T.nilable(T.any(Increase::Models::Entity::Trust::Grantor, Increase::Util::AnyHash))).void }
-        attr_writer :grantor
+        sig do
+          params(_: T.nilable(Increase::Models::Entity::Trust::Grantor))
+            .returns(T.nilable(Increase::Models::Entity::Trust::Grantor))
+        end
+        def grantor=(_)
+        end
 
         # The trust's name.
         sig { returns(String) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         # The Employer Identification Number (EIN) of the trust itself.
         sig { returns(T.nilable(String)) }
-        attr_accessor :tax_identifier
+        def tax_identifier
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def tax_identifier=(_)
+        end
 
         # The trustees of the trust.
         sig { returns(T::Array[Increase::Models::Entity::Trust::Trustee]) }
-        attr_accessor :trustees
+        def trustees
+        end
+
+        sig do
+          params(_: T::Array[Increase::Models::Entity::Trust::Trustee])
+            .returns(T::Array[Increase::Models::Entity::Trust::Trustee])
+        end
+        def trustees=(_)
+        end
 
         # Details of the trust entity. Will be present if `structure` is equal to `trust`.
         sig do
           params(
-            address: T.any(Increase::Models::Entity::Trust::Address, Increase::Util::AnyHash),
-            category: Increase::Models::Entity::Trust::Category::OrSymbol,
+            address: Increase::Models::Entity::Trust::Address,
+            category: Symbol,
             formation_document_file_id: T.nilable(String),
             formation_state: T.nilable(String),
-            grantor: T.nilable(T.any(Increase::Models::Entity::Trust::Grantor, Increase::Util::AnyHash)),
+            grantor: T.nilable(Increase::Models::Entity::Trust::Grantor),
             name: String,
             tax_identifier: T.nilable(String),
-            trustees: T::Array[T.any(Increase::Models::Entity::Trust::Trustee, Increase::Util::AnyHash)]
+            trustees: T::Array[Increase::Models::Entity::Trust::Trustee]
           )
             .returns(T.attached_class)
         end
@@ -1273,7 +1496,7 @@ module Increase
             .returns(
               {
                 address: Increase::Models::Entity::Trust::Address,
-                category: Increase::Models::Entity::Trust::Category::TaggedSymbol,
+                category: Symbol,
                 formation_document_file_id: T.nilable(String),
                 formation_state: T.nilable(String),
                 grantor: T.nilable(Increase::Models::Entity::Trust::Grantor),
@@ -1289,24 +1512,49 @@ module Increase
         class Address < Increase::BaseModel
           # The city of the address.
           sig { returns(String) }
-          attr_accessor :city
+          def city
+          end
+
+          sig { params(_: String).returns(String) }
+          def city=(_)
+          end
 
           # The first line of the address.
           sig { returns(String) }
-          attr_accessor :line1
+          def line1
+          end
+
+          sig { params(_: String).returns(String) }
+          def line1=(_)
+          end
 
           # The second line of the address.
           sig { returns(T.nilable(String)) }
-          attr_accessor :line2
+          def line2
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def line2=(_)
+          end
 
           # The two-letter United States Postal Service (USPS) abbreviation for the state of
           #   the address.
           sig { returns(String) }
-          attr_accessor :state
+          def state
+          end
+
+          sig { params(_: String).returns(String) }
+          def state=(_)
+          end
 
           # The ZIP code of the address.
           sig { returns(String) }
-          attr_accessor :zip
+          def zip
+          end
+
+          sig { params(_: String).returns(String) }
+          def zip=(_)
+          end
 
           # The trust's address.
           sig do
@@ -1332,59 +1580,67 @@ module Increase
         end
 
         # Whether the trust is `revocable` or `irrevocable`.
-        module Category
-          extend Increase::Enum
+        class Category < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Entity::Trust::Category) }
-          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Entity::Trust::Category::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # The trust is revocable by the grantor.
-          REVOCABLE = T.let(:revocable, Increase::Models::Entity::Trust::Category::TaggedSymbol)
+          REVOCABLE = :revocable
 
           # The trust cannot be revoked.
-          IRREVOCABLE = T.let(:irrevocable, Increase::Models::Entity::Trust::Category::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::Entity::Trust::Category::TaggedSymbol]) }
-            def values
-            end
-          end
+          IRREVOCABLE = :irrevocable
         end
 
         class Grantor < Increase::BaseModel
           # The person's address.
           sig { returns(Increase::Models::Entity::Trust::Grantor::Address) }
-          attr_reader :address
+          def address
+          end
 
-          sig { params(address: T.any(Increase::Models::Entity::Trust::Grantor::Address, Increase::Util::AnyHash)).void }
-          attr_writer :address
+          sig do
+            params(_: Increase::Models::Entity::Trust::Grantor::Address)
+              .returns(Increase::Models::Entity::Trust::Grantor::Address)
+          end
+          def address=(_)
+          end
 
           # The person's date of birth in YYYY-MM-DD format.
           sig { returns(Date) }
-          attr_accessor :date_of_birth
+          def date_of_birth
+          end
+
+          sig { params(_: Date).returns(Date) }
+          def date_of_birth=(_)
+          end
 
           # A means of verifying the person's identity.
           sig { returns(Increase::Models::Entity::Trust::Grantor::Identification) }
-          attr_reader :identification
+          def identification
+          end
 
           sig do
-            params(
-              identification: T.any(Increase::Models::Entity::Trust::Grantor::Identification, Increase::Util::AnyHash)
-            )
-              .void
+            params(_: Increase::Models::Entity::Trust::Grantor::Identification)
+              .returns(Increase::Models::Entity::Trust::Grantor::Identification)
           end
-          attr_writer :identification
+          def identification=(_)
+          end
 
           # The person's legal name.
           sig { returns(String) }
-          attr_accessor :name
+          def name
+          end
+
+          sig { params(_: String).returns(String) }
+          def name=(_)
+          end
 
           # The grantor of the trust. Will be present if the `category` is `revocable`.
           sig do
             params(
-              address: T.any(Increase::Models::Entity::Trust::Grantor::Address, Increase::Util::AnyHash),
+              address: Increase::Models::Entity::Trust::Grantor::Address,
               date_of_birth: Date,
-              identification: T.any(Increase::Models::Entity::Trust::Grantor::Identification, Increase::Util::AnyHash),
+              identification: Increase::Models::Entity::Trust::Grantor::Identification,
               name: String
             )
               .returns(T.attached_class)
@@ -1409,24 +1665,49 @@ module Increase
           class Address < Increase::BaseModel
             # The city of the address.
             sig { returns(String) }
-            attr_accessor :city
+            def city
+            end
+
+            sig { params(_: String).returns(String) }
+            def city=(_)
+            end
 
             # The first line of the address.
             sig { returns(String) }
-            attr_accessor :line1
+            def line1
+            end
+
+            sig { params(_: String).returns(String) }
+            def line1=(_)
+            end
 
             # The second line of the address.
             sig { returns(T.nilable(String)) }
-            attr_accessor :line2
+            def line2
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def line2=(_)
+            end
 
             # The two-letter United States Postal Service (USPS) abbreviation for the state of
             #   the address.
             sig { returns(String) }
-            attr_accessor :state
+            def state
+            end
+
+            sig { params(_: String).returns(String) }
+            def state=(_)
+            end
 
             # The ZIP code of the address.
             sig { returns(String) }
-            attr_accessor :zip
+            def zip
+            end
+
+            sig { params(_: String).returns(String) }
+            def zip=(_)
+            end
 
             # The person's address.
             sig do
@@ -1453,76 +1734,53 @@ module Increase
 
           class Identification < Increase::BaseModel
             # A method that can be used to verify the individual's identity.
-            sig { returns(Increase::Models::Entity::Trust::Grantor::Identification::Method::TaggedSymbol) }
-            attr_accessor :method_
+            sig { returns(Symbol) }
+            def method_
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def method_=(_)
+            end
 
             # The last 4 digits of the identification number that can be used to verify the
             #   individual's identity.
             sig { returns(String) }
-            attr_accessor :number_last4
+            def number_last4
+            end
+
+            sig { params(_: String).returns(String) }
+            def number_last4=(_)
+            end
 
             # A means of verifying the person's identity.
-            sig do
-              params(
-                method_: Increase::Models::Entity::Trust::Grantor::Identification::Method::OrSymbol,
-                number_last4: String
-              )
-                .returns(T.attached_class)
-            end
+            sig { params(method_: Symbol, number_last4: String).returns(T.attached_class) }
             def self.new(method_:, number_last4:)
             end
 
-            sig do
-              override
-                .returns(
-                  {
-                    method_: Increase::Models::Entity::Trust::Grantor::Identification::Method::TaggedSymbol,
-                    number_last4: String
-                  }
-                )
-            end
+            sig { override.returns({method_: Symbol, number_last4: String}) }
             def to_hash
             end
 
             # A method that can be used to verify the individual's identity.
-            module Method
-              extend Increase::Enum
+            class Method < Increase::Enum
+              abstract!
 
-              TaggedSymbol =
-                T.type_alias { T.all(Symbol, Increase::Models::Entity::Trust::Grantor::Identification::Method) }
-              OrSymbol =
-                T.type_alias { T.any(Symbol, Increase::Models::Entity::Trust::Grantor::Identification::Method::TaggedSymbol) }
+              Value = type_template(:out) { {fixed: Symbol} }
 
               # A social security number.
-              SOCIAL_SECURITY_NUMBER =
-                T.let(
-                  :social_security_number,
-                  Increase::Models::Entity::Trust::Grantor::Identification::Method::TaggedSymbol
-                )
+              SOCIAL_SECURITY_NUMBER = :social_security_number
 
               # An individual taxpayer identification number (ITIN).
-              INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER =
-                T.let(
-                  :individual_taxpayer_identification_number,
-                  Increase::Models::Entity::Trust::Grantor::Identification::Method::TaggedSymbol
-                )
+              INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER = :individual_taxpayer_identification_number
 
               # A passport number.
-              PASSPORT =
-                T.let(:passport, Increase::Models::Entity::Trust::Grantor::Identification::Method::TaggedSymbol)
+              PASSPORT = :passport
 
               # A driver's license number.
-              DRIVERS_LICENSE =
-                T.let(:drivers_license, Increase::Models::Entity::Trust::Grantor::Identification::Method::TaggedSymbol)
+              DRIVERS_LICENSE = :drivers_license
 
               # Another identifying document.
-              OTHER = T.let(:other, Increase::Models::Entity::Trust::Grantor::Identification::Method::TaggedSymbol)
-
-              class << self
-                sig { override.returns(T::Array[Increase::Models::Entity::Trust::Grantor::Identification::Method::TaggedSymbol]) }
-                def values
-                end
-              end
+              OTHER = :other
             end
           end
         end
@@ -1531,25 +1789,27 @@ module Increase
           # The individual trustee of the trust. Will be present if the trustee's
           #   `structure` is equal to `individual`.
           sig { returns(T.nilable(Increase::Models::Entity::Trust::Trustee::Individual)) }
-          attr_reader :individual
+          def individual
+          end
 
           sig do
-            params(
-              individual: T.nilable(T.any(Increase::Models::Entity::Trust::Trustee::Individual, Increase::Util::AnyHash))
-            )
-              .void
+            params(_: T.nilable(Increase::Models::Entity::Trust::Trustee::Individual))
+              .returns(T.nilable(Increase::Models::Entity::Trust::Trustee::Individual))
           end
-          attr_writer :individual
+          def individual=(_)
+          end
 
           # The structure of the trustee. Will always be equal to `individual`.
-          sig { returns(Increase::Models::Entity::Trust::Trustee::Structure::TaggedSymbol) }
-          attr_accessor :structure
+          sig { returns(Symbol) }
+          def structure
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def structure=(_)
+          end
 
           sig do
-            params(
-              individual: T.nilable(T.any(Increase::Models::Entity::Trust::Trustee::Individual, Increase::Util::AnyHash)),
-              structure: Increase::Models::Entity::Trust::Trustee::Structure::OrSymbol
-            )
+            params(individual: T.nilable(Increase::Models::Entity::Trust::Trustee::Individual), structure: Symbol)
               .returns(T.attached_class)
           end
           def self.new(individual:, structure:)
@@ -1557,12 +1817,7 @@ module Increase
 
           sig do
             override
-              .returns(
-                {
-                  individual: T.nilable(Increase::Models::Entity::Trust::Trustee::Individual),
-                  structure: Increase::Models::Entity::Trust::Trustee::Structure::TaggedSymbol
-                }
-              )
+              .returns({individual: T.nilable(Increase::Models::Entity::Trust::Trustee::Individual), structure: Symbol})
           end
           def to_hash
           end
@@ -1570,43 +1825,53 @@ module Increase
           class Individual < Increase::BaseModel
             # The person's address.
             sig { returns(Increase::Models::Entity::Trust::Trustee::Individual::Address) }
-            attr_reader :address
+            def address
+            end
 
             sig do
-              params(
-                address: T.any(Increase::Models::Entity::Trust::Trustee::Individual::Address, Increase::Util::AnyHash)
-              )
-                .void
+              params(_: Increase::Models::Entity::Trust::Trustee::Individual::Address)
+                .returns(Increase::Models::Entity::Trust::Trustee::Individual::Address)
             end
-            attr_writer :address
+            def address=(_)
+            end
 
             # The person's date of birth in YYYY-MM-DD format.
             sig { returns(Date) }
-            attr_accessor :date_of_birth
+            def date_of_birth
+            end
+
+            sig { params(_: Date).returns(Date) }
+            def date_of_birth=(_)
+            end
 
             # A means of verifying the person's identity.
             sig { returns(Increase::Models::Entity::Trust::Trustee::Individual::Identification) }
-            attr_reader :identification
+            def identification
+            end
 
             sig do
-              params(
-                identification: T.any(Increase::Models::Entity::Trust::Trustee::Individual::Identification, Increase::Util::AnyHash)
-              )
-                .void
+              params(_: Increase::Models::Entity::Trust::Trustee::Individual::Identification)
+                .returns(Increase::Models::Entity::Trust::Trustee::Individual::Identification)
             end
-            attr_writer :identification
+            def identification=(_)
+            end
 
             # The person's legal name.
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             # The individual trustee of the trust. Will be present if the trustee's
             #   `structure` is equal to `individual`.
             sig do
               params(
-                address: T.any(Increase::Models::Entity::Trust::Trustee::Individual::Address, Increase::Util::AnyHash),
+                address: Increase::Models::Entity::Trust::Trustee::Individual::Address,
                 date_of_birth: Date,
-                identification: T.any(Increase::Models::Entity::Trust::Trustee::Individual::Identification, Increase::Util::AnyHash),
+                identification: Increase::Models::Entity::Trust::Trustee::Individual::Identification,
                 name: String
               )
                 .returns(T.attached_class)
@@ -1631,24 +1896,49 @@ module Increase
             class Address < Increase::BaseModel
               # The city of the address.
               sig { returns(String) }
-              attr_accessor :city
+              def city
+              end
+
+              sig { params(_: String).returns(String) }
+              def city=(_)
+              end
 
               # The first line of the address.
               sig { returns(String) }
-              attr_accessor :line1
+              def line1
+              end
+
+              sig { params(_: String).returns(String) }
+              def line1=(_)
+              end
 
               # The second line of the address.
               sig { returns(T.nilable(String)) }
-              attr_accessor :line2
+              def line2
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def line2=(_)
+              end
 
               # The two-letter United States Postal Service (USPS) abbreviation for the state of
               #   the address.
               sig { returns(String) }
-              attr_accessor :state
+              def state
+              end
+
+              sig { params(_: String).returns(String) }
+              def state=(_)
+              end
 
               # The ZIP code of the address.
               sig { returns(String) }
-              attr_accessor :zip
+              def zip
+              end
+
+              sig { params(_: String).returns(String) }
+              def zip=(_)
+              end
 
               # The person's address.
               sig do
@@ -1675,127 +1965,77 @@ module Increase
 
             class Identification < Increase::BaseModel
               # A method that can be used to verify the individual's identity.
-              sig { returns(Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method::TaggedSymbol) }
-              attr_accessor :method_
+              sig { returns(Symbol) }
+              def method_
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def method_=(_)
+              end
 
               # The last 4 digits of the identification number that can be used to verify the
               #   individual's identity.
               sig { returns(String) }
-              attr_accessor :number_last4
+              def number_last4
+              end
+
+              sig { params(_: String).returns(String) }
+              def number_last4=(_)
+              end
 
               # A means of verifying the person's identity.
-              sig do
-                params(
-                  method_: Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method::OrSymbol,
-                  number_last4: String
-                )
-                  .returns(T.attached_class)
-              end
+              sig { params(method_: Symbol, number_last4: String).returns(T.attached_class) }
               def self.new(method_:, number_last4:)
               end
 
-              sig do
-                override
-                  .returns(
-                    {
-                      method_: Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method::TaggedSymbol,
-                      number_last4: String
-                    }
-                  )
-              end
+              sig { override.returns({method_: Symbol, number_last4: String}) }
               def to_hash
               end
 
               # A method that can be used to verify the individual's identity.
-              module Method
-                extend Increase::Enum
+              class Method < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias { T.all(Symbol, Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method) }
-                OrSymbol =
-                  T.type_alias { T.any(Symbol, Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method::TaggedSymbol) }
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # A social security number.
-                SOCIAL_SECURITY_NUMBER =
-                  T.let(
-                    :social_security_number,
-                    Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
-                  )
+                SOCIAL_SECURITY_NUMBER = :social_security_number
 
                 # An individual taxpayer identification number (ITIN).
-                INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER =
-                  T.let(
-                    :individual_taxpayer_identification_number,
-                    Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
-                  )
+                INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER = :individual_taxpayer_identification_number
 
                 # A passport number.
-                PASSPORT =
-                  T.let(
-                    :passport,
-                    Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
-                  )
+                PASSPORT = :passport
 
                 # A driver's license number.
-                DRIVERS_LICENSE =
-                  T.let(
-                    :drivers_license,
-                    Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
-                  )
+                DRIVERS_LICENSE = :drivers_license
 
                 # Another identifying document.
-                OTHER =
-                  T.let(:other, Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method::TaggedSymbol)
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method::TaggedSymbol]
-                      )
-                  end
-                  def values
-                  end
-                end
+                OTHER = :other
               end
             end
           end
 
           # The structure of the trustee. Will always be equal to `individual`.
-          module Structure
-            extend Increase::Enum
+          class Structure < Increase::Enum
+            abstract!
 
-            TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Entity::Trust::Trustee::Structure) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::Entity::Trust::Trustee::Structure::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # The trustee is an individual.
-            INDIVIDUAL = T.let(:individual, Increase::Models::Entity::Trust::Trustee::Structure::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::Entity::Trust::Trustee::Structure::TaggedSymbol]) }
-              def values
-              end
-            end
+            INDIVIDUAL = :individual
           end
         end
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `entity`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Entity::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Entity::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        ENTITY = T.let(:entity, Increase::Models::Entity::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::Entity::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        ENTITY = :entity
       end
     end
   end

@@ -225,10 +225,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The reason for the adjustment.
-        module Reason
-          extend Increase::Enum
-
+        class Reason < Increase::Enum
           # The return was initiated too late and the receiving institution has responded with a Late Return Claim.
           LATE_RETURN = :late_return
 
@@ -242,19 +242,13 @@ module Increase
           NON_CONFORMING_ITEM = :non_conforming_item
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 
+      # @abstract
+      #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
-      module Currency
-        extend Increase::Enum
-
+      class Currency < Increase::Enum
         # Canadian Dollar (CAD)
         CAD = :CAD
 
@@ -274,12 +268,6 @@ module Increase
         USD = :USD
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
       class DepositReturn < Increase::BaseModel
@@ -313,10 +301,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The reason the deposit was returned.
-        module Reason
-          extend Increase::Enum
-
+        class Reason < Increase::Enum
           # The check was altered or fictitious.
           ALTERED_OR_FICTITIOUS = :altered_or_fictitious
 
@@ -333,20 +321,14 @@ module Increase
           ENDORSEMENT_IRREGULAR = :endorsement_irregular
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 
+      # @abstract
+      #
       # Whether the details on the check match the recipient name of the check transfer.
       #   This is an optional feature, contact sales to enable.
-      module PayeeNameAnalysis
-        extend Increase::Enum
-
+      class PayeeNameAnalysis < Increase::Enum
         # The details on the check match the recipient name of the check transfer.
         NAME_MATCHES = :name_matches
 
@@ -357,18 +339,12 @@ module Increase
         NOT_EVALUATED = :not_evaluated
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # The status of the Inbound Check Deposit.
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The Inbound Check Deposit is pending.
         PENDING = :pending
 
@@ -385,28 +361,16 @@ module Increase
         REQUIRES_ATTENTION = :requires_attention
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_check_deposit`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         INBOUND_CHECK_DEPOSIT = :inbound_check_deposit
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

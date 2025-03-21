@@ -107,12 +107,12 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Declined
       #   Transaction's currency. This will match the currency on the Declined
       #   Transaction's Account.
-      module Currency
-        extend Increase::Enum
-
+      class Currency < Increase::Enum
         # Canadian Dollar (CAD)
         CAD = :CAD
 
@@ -132,18 +132,12 @@ module Increase
         USD = :USD
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # The type of the route this Declined Transaction came through.
-      module RouteType
-        extend Increase::Enum
-
+      class RouteType < Increase::Enum
         # An Account Number.
         ACCOUNT_NUMBER = :account_number
 
@@ -154,12 +148,6 @@ module Increase
         LOCKBOX = :lockbox
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
       class Source < Increase::BaseModel
@@ -367,10 +355,10 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # Why the ACH transfer was declined.
-          module Reason
-            extend Increase::Enum
-
+          class Reason < Increase::Enum
             # The account number is canceled.
             ACH_ROUTE_CANCELED = :ach_route_canceled
 
@@ -405,12 +393,10 @@ module Increase
             PAYMENT_STOPPED = :payment_stopped
 
             # The customer advises that the debit was unauthorized.
-            CUSTOMER_ADVISED_UNAUTHORIZED_IMPROPER_INELIGIBLE_OR_INCOMPLETE =
-              :customer_advised_unauthorized_improper_ineligible_or_incomplete
+            CUSTOMER_ADVISED_UNAUTHORIZED_IMPROPER_INELIGIBLE_OR_INCOMPLETE = :customer_advised_unauthorized_improper_ineligible_or_incomplete
 
             # The payee is deceased.
-            REPRESENTATIVE_PAYEE_DECEASED_OR_UNABLE_TO_CONTINUE_IN_THAT_CAPACITY =
-              :representative_payee_deceased_or_unable_to_continue_in_that_capacity
+            REPRESENTATIVE_PAYEE_DECEASED_OR_UNABLE_TO_CONTINUE_IN_THAT_CAPACITY = :representative_payee_deceased_or_unable_to_continue_in_that_capacity
 
             # The account holder is deceased.
             BENEFICIARY_OR_ACCOUNT_HOLDER_DECEASED = :beneficiary_or_account_holder_deceased
@@ -425,28 +411,16 @@ module Increase
             CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
+          # @abstract
+          #
           # A constant representing the object's type. For this resource it will always be
           #   `ach_decline`.
-          module Type
-            extend Increase::Enum
-
+          class Type < Increase::Enum
             ACH_DECLINE = :ach_decline
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
         end
 
@@ -700,11 +674,11 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
-          module Actioner
-            extend Increase::Enum
-
+          class Actioner < Increase::Enum
             # This object was actioned by the user through a real-time decision.
             USER = :user
 
@@ -715,19 +689,13 @@ module Increase
             NETWORK = :network
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
           #   account currency.
-          module Currency
-            extend Increase::Enum
-
+          class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -747,19 +715,13 @@ module Increase
             USD = :USD
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
+          # @abstract
+          #
           # The direction describes the direction the funds will move, either from the
           #   cardholder to the merchant or from the merchant to the cardholder.
-          module Direction
-            extend Increase::Enum
-
+          class Direction < Increase::Enum
             # A regular card authorization where funds are debited from the cardholder.
             SETTLEMENT = :settlement
 
@@ -767,12 +729,6 @@ module Increase
             REFUND = :refund
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
           class NetworkDetails < Increase::BaseModel
@@ -801,20 +757,14 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # The payment network used to process this card authorization.
-            module Category
-              extend Increase::Enum
-
+            class Category < Increase::Enum
               # Visa
               VISA = :visa
 
               finalize!
-
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
             end
 
             class Visa < Increase::BaseModel
@@ -857,12 +807,12 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
               #   transactions, identifies the type of mail or telephone order.
-              module ElectronicCommerceIndicator
-                extend Increase::Enum
-
+              class ElectronicCommerceIndicator < Increase::Enum
                 # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
                 MAIL_PHONE_ORDER = :mail_phone_order
 
@@ -879,8 +829,7 @@ module Increase
                 SECURE_ELECTRONIC_COMMERCE = :secure_electronic_commerce
 
                 # Non-authenticated security transaction at a 3-D Secure-capable merchant, and merchant attempted to authenticate the cardholder using 3-D Secure: Use to identify an electronic commerce transaction where the merchant attempted to authenticate the cardholder using 3-D Secure, but was unable to complete the authentication because the issuer or cardholder does not participate in the 3-D Secure program.
-                NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT =
-                  :non_authenticated_security_transaction_at_3ds_capable_merchant
+                NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT = :non_authenticated_security_transaction_at_3ds_capable_merchant
 
                 # Non-authenticated security transaction: Use to identify an electronic commerce transaction that uses data encryption for security however , cardholder authentication is not performed using 3-D Secure.
                 NON_AUTHENTICATED_SECURITY_TRANSACTION = :non_authenticated_security_transaction
@@ -889,19 +838,13 @@ module Increase
                 NON_SECURE_TRANSACTION = :non_secure_transaction
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
 
+              # @abstract
+              #
               # The method used to enter the cardholder's primary account number and card
               #   expiration date.
-              module PointOfServiceEntryMode
-                extend Increase::Enum
-
+              class PointOfServiceEntryMode < Increase::Enum
                 # Unknown
                 UNKNOWN = :unknown
 
@@ -933,19 +876,13 @@ module Increase
                 INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
 
+              # @abstract
+              #
               # Only present when `actioner: network`. Describes why a card authorization was
               #   approved or declined by Visa through stand-in processing.
-              module StandInProcessingReason
-                extend Increase::Enum
-
+              class StandInProcessingReason < Increase::Enum
                 # Increase failed to process the authorization in a timely manner.
                 ISSUER_ERROR = :issuer_error
 
@@ -953,15 +890,13 @@ module Increase
                 INVALID_PHYSICAL_CARD = :invalid_physical_card
 
                 # The 3DS cardholder authentication verification value was invalid.
-                INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE =
-                  :invalid_cardholder_authentication_verification_value
+                INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE = :invalid_cardholder_authentication_verification_value
 
                 # An internal Visa error occurred. Visa uses this reason code for certain expected occurrences as well, such as Application Transaction Counter (ATC) replays.
                 INTERNAL_VISA_ERROR = :internal_visa_error
 
                 # The merchant has enabled Visa's Transaction Advisory Service and requires further authentication to perform the transaction. In practice this is often utilized at fuel pumps to tell the cardholder to see the cashier.
-                MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED =
-                  :merchant_transaction_advisory_service_authentication_required
+                MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED = :merchant_transaction_advisory_service_authentication_required
 
                 # The transaction was blocked by Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior, such as card testing.
                 PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK = :payment_fraud_disruption_acquirer_block
@@ -970,12 +905,6 @@ module Increase
                 OTHER = :other
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
             end
           end
@@ -1015,11 +944,11 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @abstract
+          #
           # The processing category describes the intent behind the authorization, such as
           #   whether it was used for bill payments or an automatic fuel dispenser.
-          module ProcessingCategory
-            extend Increase::Enum
-
+          class ProcessingCategory < Increase::Enum
             # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
             ACCOUNT_FUNDING = :account_funding
 
@@ -1039,19 +968,13 @@ module Increase
             REFUND = :refund
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
+          # @abstract
+          #
           # This is present if a specific decline reason was given in the real-time
           #   decision.
-          module RealTimeDecisionReason
-            extend Increase::Enum
-
+          class RealTimeDecisionReason < Increase::Enum
             # The cardholder does not have sufficient funds to cover the transaction. The merchant may attempt to process the transaction again.
             INSUFFICIENT_FUNDS = :insufficient_funds
 
@@ -1071,18 +994,12 @@ module Increase
             OTHER = :other
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
+          # @abstract
+          #
           # Why the transaction was declined.
-          module Reason
-            extend Increase::Enum
-
+          class Reason < Increase::Enum
             # The account has been closed.
             ACCOUNT_CLOSED = :account_closed
 
@@ -1135,12 +1052,6 @@ module Increase
             SUSPECTED_FRAUD = :suspected_fraud
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
           class Verification < Increase::BaseModel
@@ -1188,10 +1099,10 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # The result of verifying the Card Verification Code.
-              module Result
-                extend Increase::Enum
-
+              class Result < Increase::Enum
                 # No card verification code was provided in the authorization request.
                 NOT_CHECKED = :not_checked
 
@@ -1202,12 +1113,6 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
             end
 
@@ -1258,10 +1163,10 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # The address verification result returned to the card network.
-              module Result
-                extend Increase::Enum
-
+              class Result < Increase::Enum
                 # No adress was provided in the authorization request.
                 NOT_CHECKED = :not_checked
 
@@ -1281,22 +1186,16 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
             end
           end
         end
 
+        # @abstract
+        #
         # The type of the resource. We may add additional possible values for this enum
         #   over time; your application should be able to handle such additions gracefully.
-        module Category
-          extend Increase::Enum
-
+        class Category < Increase::Enum
           # ACH Decline: details will be under the `ach_decline` object.
           ACH_DECLINE = :ach_decline
 
@@ -1319,12 +1218,6 @@ module Increase
           OTHER = :other
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
 
         class CheckDecline < Increase::BaseModel
@@ -1401,10 +1294,10 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # Why the check was declined.
-          module Reason
-            extend Increase::Enum
-
+          class Reason < Increase::Enum
             # The account number is disabled.
             ACH_ROUTE_DISABLED = :ach_route_disabled
 
@@ -1457,12 +1350,6 @@ module Increase
             USER_INITIATED = :user_initiated
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
         end
 
@@ -1523,11 +1410,11 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
           #   currency.
-          module Currency
-            extend Increase::Enum
-
+          class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -1547,18 +1434,12 @@ module Increase
             USD = :USD
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
+          # @abstract
+          #
           # Why the check deposit was rejected.
-          module Reason
-            extend Increase::Enum
-
+          class Reason < Increase::Enum
             # The check's image is incomplete.
             INCOMPLETE_IMAGE = :incomplete_image
 
@@ -1593,12 +1474,6 @@ module Increase
             UNKNOWN = :unknown
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
         end
 
@@ -1702,12 +1577,12 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
           #   transfer's currency. This will always be "USD" for a Real-Time Payments
           #   transfer.
-          module Currency
-            extend Increase::Enum
-
+          class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -1727,18 +1602,12 @@ module Increase
             USD = :USD
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
+          # @abstract
+          #
           # Why the transfer was declined.
-          module Reason
-            extend Increase::Enum
-
+          class Reason < Increase::Enum
             # The account number is canceled.
             ACCOUNT_NUMBER_CANCELED = :account_number_canceled
 
@@ -1758,12 +1627,6 @@ module Increase
             REAL_TIME_PAYMENTS_NOT_ENABLED = :real_time_payments_not_enabled
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
         end
 
@@ -1791,10 +1654,10 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # Why the wire transfer was declined.
-          module Reason
-            extend Increase::Enum
-
+          class Reason < Increase::Enum
             # The account number is canceled.
             ACCOUNT_NUMBER_CANCELED = :account_number_canceled
 
@@ -1814,30 +1677,18 @@ module Increase
             TRANSACTION_NOT_ALLOWED = :transaction_not_allowed
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
         end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `declined_transaction`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         DECLINED_TRANSACTION = :declined_transaction
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

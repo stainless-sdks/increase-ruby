@@ -31,13 +31,18 @@ module Increase
         Increase::Models::PhysicalCardProfileListParams::Status
       ) -> Increase::Models::PhysicalCardProfileListParams::Status
 
-      def initialize: (
-        ?cursor: String,
-        ?idempotency_key: String,
-        ?limit: Integer,
-        ?status: Increase::Models::PhysicalCardProfileListParams::Status,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize:
+        (
+          cursor: String,
+          idempotency_key: String,
+          limit: Integer,
+          status: Increase::Models::PhysicalCardProfileListParams::Status,
+          request_options: Increase::request_opts
+        ) -> void
+        | (
+          ?Increase::Models::physical_card_profile_list_params
+          | Increase::BaseModel data
+        ) -> void
 
       def to_hash: -> Increase::Models::physical_card_profile_list_params
 
@@ -53,9 +58,14 @@ module Increase
           ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
         ) -> ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
 
-        def initialize: (
-          ?in_: ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
-        ) -> void
+        def initialize:
+          (
+            in_: ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
+          ) -> void
+          | (
+            ?Increase::Models::PhysicalCardProfileListParams::status
+            | Increase::BaseModel data
+          ) -> void
 
         def to_hash: -> Increase::Models::PhysicalCardProfileListParams::status
 
@@ -67,9 +77,7 @@ module Increase
           | :active
           | :archived
 
-        module In
-          extend Increase::Enum
-
+        class In < Increase::Enum
           # The Card Profile has not yet been processed by Increase.
           PENDING_CREATING: :pending_creating
 
@@ -88,7 +96,7 @@ module Increase
           # The Physical Card Profile has been archived.
           ARCHIVED: :archived
 
-          def self?.values: -> ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
+          def self.values: -> ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
         end
       end
     end

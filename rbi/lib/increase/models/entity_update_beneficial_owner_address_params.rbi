@@ -9,26 +9,31 @@ module Increase
       # The individual's physical address. Mail receiving locations like PO Boxes and
       #   PMB's are disallowed.
       sig { returns(Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address) }
-      attr_reader :address
+      def address
+      end
 
       sig do
-        params(
-          address: T.any(Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address, Increase::Util::AnyHash)
-        )
-          .void
+        params(_: Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address)
+          .returns(Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address)
       end
-      attr_writer :address
+      def address=(_)
+      end
 
       # The identifying details of anyone controlling or owning 25% or more of the
       #   corporation.
       sig { returns(String) }
-      attr_accessor :beneficial_owner_id
+      def beneficial_owner_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def beneficial_owner_id=(_)
+      end
 
       sig do
         params(
-          address: T.any(Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address, Increase::Util::AnyHash),
+          address: Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
           beneficial_owner_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end
@@ -51,27 +56,49 @@ module Increase
       class Address < Increase::BaseModel
         # The city of the address.
         sig { returns(String) }
-        attr_accessor :city
+        def city
+        end
+
+        sig { params(_: String).returns(String) }
+        def city=(_)
+        end
 
         # The first line of the address. This is usually the street number and street.
         sig { returns(String) }
-        attr_accessor :line1
+        def line1
+        end
+
+        sig { params(_: String).returns(String) }
+        def line1=(_)
+        end
 
         # The two-letter United States Postal Service (USPS) abbreviation for the state of
         #   the address.
         sig { returns(String) }
-        attr_accessor :state
+        def state
+        end
+
+        sig { params(_: String).returns(String) }
+        def state=(_)
+        end
 
         # The ZIP code of the address.
         sig { returns(String) }
-        attr_accessor :zip
+        def zip
+        end
+
+        sig { params(_: String).returns(String) }
+        def zip=(_)
+        end
 
         # The second line of the address. This might be the floor or room number.
         sig { returns(T.nilable(String)) }
-        attr_reader :line2
+        def line2
+        end
 
-        sig { params(line2: String).void }
-        attr_writer :line2
+        sig { params(_: String).returns(String) }
+        def line2=(_)
+        end
 
         # The individual's physical address. Mail receiving locations like PO Boxes and
         #   PMB's are disallowed.

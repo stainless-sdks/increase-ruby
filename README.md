@@ -4,7 +4,7 @@ The Increase Ruby library provides convenient access to the Increase REST API fr
 
 ## Documentation
 
-Documentation for released of this gem can be found [on RubyDoc](https://gemdocs.org/gems/increase).
+Documentation for the most recent release of this gem can be found [on RubyDoc](https://gemdocs.org/gems/increase/latest).
 
 The underlying REST API documentation can be found on [increase.com](https://increase.com/documentation).
 
@@ -143,15 +143,11 @@ increase.accounts.create(
 
 ## Sorbet Support
 
-**This library emits an intentional warning under the [`tapioca` toolchain](https://github.com/Shopify/tapioca)**. This is normal, and does not impact functionality.
-
 This library is written with [Sorbet type definitions](https://sorbet.org/docs/rbi). However, there is no runtime dependency on the `sorbet-runtime`.
 
 What this means is that while you can use Sorbet to type check your code statically, and benefit from the [Sorbet Language Server](https://sorbet.org/docs/lsp) in your editor, there is no runtime type checking and execution overhead from Sorbet itself.
 
 Due to limitations with the Sorbet type system, where a method otherwise can take an instance of `Increase::BaseModel` class, you will need to use the `**` splat operator to pass the arguments:
-
-Please follow Sorbet's [setup guides](https://sorbet.org/docs/adopting) for best experience.
 
 ```ruby
 model = AccountCreateParams.new(
@@ -162,18 +158,6 @@ model = AccountCreateParams.new(
 
 increase.accounts.create(**model)
 ```
-
-## Advanced
-
-### Concurrency & Connection Pooling
-
-The `Increase::Client` instances are thread-safe, and should be re-used across multiple threads. By default, each `Client` have their own HTTP connection pool, with a maximum number of connections equal to thread count.
-
-When the maximum number of connections has been checked out from the connection pool, the `Client` will wait for an in use connection to become available. The queue time for this mechanism is accounted for by the per-request timeout.
-
-Unless otherwise specified, other classes in the SDK do not have locks protecting their underlying data structure.
-
-Currently, `Increase::Client` instances are only fork-safe if there are no in-flight HTTP requests.
 
 ## Versioning
 

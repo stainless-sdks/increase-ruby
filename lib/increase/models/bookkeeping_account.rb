@@ -67,10 +67,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The compliance category of the account.
-      module ComplianceCategory
-        extend Increase::Enum
-
+      class ComplianceCategory < Increase::Enum
         # A cash in an commingled Increase Account.
         COMMINGLED_CASH = :commingled_cash
 
@@ -78,28 +78,16 @@ module Increase
         CUSTOMER_BALANCE = :customer_balance
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `bookkeeping_account`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         BOOKKEEPING_ACCOUNT = :bookkeeping_account
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

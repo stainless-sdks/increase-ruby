@@ -72,11 +72,11 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The status of the account in the network. An account takes about one business
       #   day to go from `pending_enrolling` to `enrolled`.
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The account is being added to the IntraFi network.
         PENDING_ENROLLING = :pending_enrolling
 
@@ -93,28 +93,16 @@ module Increase
         REQUIRES_ATTENTION = :requires_attention
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `intrafi_account_enrollment`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         INTRAFI_ACCOUNT_ENROLLMENT = :intrafi_account_enrollment
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

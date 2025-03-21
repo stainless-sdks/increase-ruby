@@ -9,26 +9,38 @@ module Increase
 
         # The amount of the check to be simulated, in cents.
         sig { returns(Integer) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def amount=(_)
+        end
 
         # The identifier of the Lockbox to simulate inbound mail to.
         sig { returns(String) }
-        attr_accessor :lockbox_id
+        def lockbox_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def lockbox_id=(_)
+        end
 
         # The file containing the PDF contents. If not present, a default check image file
         #   will be used.
         sig { returns(T.nilable(String)) }
-        attr_reader :contents_file_id
+        def contents_file_id
+        end
 
-        sig { params(contents_file_id: String).void }
-        attr_writer :contents_file_id
+        sig { params(_: String).returns(String) }
+        def contents_file_id=(_)
+        end
 
         sig do
           params(
             amount: Integer,
             lockbox_id: String,
             contents_file_id: String,
-            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
           )
             .returns(T.attached_class)
         end

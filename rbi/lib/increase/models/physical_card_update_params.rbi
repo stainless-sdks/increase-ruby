@@ -7,53 +7,39 @@ module Increase
       include Increase::RequestParameters
 
       # The status to update the Physical Card to.
-      sig { returns(Increase::Models::PhysicalCardUpdateParams::Status::OrSymbol) }
-      attr_accessor :status
+      sig { returns(Symbol) }
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig do
-        params(
-          status: Increase::Models::PhysicalCardUpdateParams::Status::OrSymbol,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
-        )
+        params(status: Symbol, request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
           .returns(T.attached_class)
       end
       def self.new(status:, request_options: {})
       end
 
-      sig do
-        override
-          .returns(
-            {
-              status: Increase::Models::PhysicalCardUpdateParams::Status::OrSymbol,
-              request_options: Increase::RequestOptions
-            }
-          )
-      end
+      sig { override.returns({status: Symbol, request_options: Increase::RequestOptions}) }
       def to_hash
       end
 
       # The status to update the Physical Card to.
-      module Status
-        extend Increase::Enum
+      class Status < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardUpdateParams::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The physical card is active.
-        ACTIVE = T.let(:active, Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol)
+        ACTIVE = :active
 
         # The physical card is temporarily disabled.
-        DISABLED = T.let(:disabled, Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol)
+        DISABLED = :disabled
 
         # The physical card is permanently canceled.
-        CANCELED = T.let(:canceled, Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol]) }
-          def values
-          end
-        end
+        CANCELED = :canceled
       end
     end
   end

@@ -7,74 +7,95 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(T.nilable(Increase::Models::AccountListParams::CreatedAt)) }
-      attr_reader :created_at
+      def created_at
+      end
 
-      sig { params(created_at: T.any(Increase::Models::AccountListParams::CreatedAt, Increase::Util::AnyHash)).void }
-      attr_writer :created_at
+      sig do
+        params(_: Increase::Models::AccountListParams::CreatedAt)
+          .returns(Increase::Models::AccountListParams::CreatedAt)
+      end
+      def created_at=(_)
+      end
 
       # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
-      attr_reader :cursor
+      def cursor
+      end
 
-      sig { params(cursor: String).void }
-      attr_writer :cursor
+      sig { params(_: String).returns(String) }
+      def cursor=(_)
+      end
 
       # Filter Accounts for those belonging to the specified Entity.
       sig { returns(T.nilable(String)) }
-      attr_reader :entity_id
+      def entity_id
+      end
 
-      sig { params(entity_id: String).void }
-      attr_writer :entity_id
+      sig { params(_: String).returns(String) }
+      def entity_id=(_)
+      end
 
       # Filter records to the one with the specified `idempotency_key` you chose for
       #   that object. This value is unique across Increase and is used to ensure that a
       #   request is only processed once. Learn more about
       #   [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      attr_reader :idempotency_key
+      def idempotency_key
+      end
 
-      sig { params(idempotency_key: String).void }
-      attr_writer :idempotency_key
+      sig { params(_: String).returns(String) }
+      def idempotency_key=(_)
+      end
 
       # Filter Accounts for those belonging to the specified Entity as informational.
       sig { returns(T.nilable(String)) }
-      attr_reader :informational_entity_id
+      def informational_entity_id
+      end
 
-      sig { params(informational_entity_id: String).void }
-      attr_writer :informational_entity_id
+      sig { params(_: String).returns(String) }
+      def informational_entity_id=(_)
+      end
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       # Filter Accounts for those in a specific Program.
       sig { returns(T.nilable(String)) }
-      attr_reader :program_id
+      def program_id
+      end
 
-      sig { params(program_id: String).void }
-      attr_writer :program_id
+      sig { params(_: String).returns(String) }
+      def program_id=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::AccountListParams::Status)) }
-      attr_reader :status
+      def status
+      end
 
-      sig { params(status: T.any(Increase::Models::AccountListParams::Status, Increase::Util::AnyHash)).void }
-      attr_writer :status
+      sig do
+        params(_: Increase::Models::AccountListParams::Status).returns(Increase::Models::AccountListParams::Status)
+      end
+      def status=(_)
+      end
 
       sig do
         params(
-          created_at: T.any(Increase::Models::AccountListParams::CreatedAt, Increase::Util::AnyHash),
+          created_at: Increase::Models::AccountListParams::CreatedAt,
           cursor: String,
           entity_id: String,
           idempotency_key: String,
           informational_entity_id: String,
           limit: Integer,
           program_id: String,
-          status: T.any(Increase::Models::AccountListParams::Status, Increase::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          status: Increase::Models::AccountListParams::Status,
+          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end
@@ -114,34 +135,42 @@ module Increase
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :after
+        def after
+        end
 
-        sig { params(after: Time).void }
-        attr_writer :after
+        sig { params(_: Time).returns(Time) }
+        def after=(_)
+        end
 
         # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :before
+        def before
+        end
 
-        sig { params(before: Time).void }
-        attr_writer :before
+        sig { params(_: Time).returns(Time) }
+        def before=(_)
+        end
 
         # Return results on or after this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :on_or_after
+        def on_or_after
+        end
 
-        sig { params(on_or_after: Time).void }
-        attr_writer :on_or_after
+        sig { params(_: Time).returns(Time) }
+        def on_or_after=(_)
+        end
 
         # Return results on or before this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :on_or_before
+        def on_or_before
+        end
 
-        sig { params(on_or_before: Time).void }
-        attr_writer :on_or_before
+        sig { params(_: Time).returns(Time) }
+        def on_or_before=(_)
+        end
 
         sig do
           params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
@@ -157,37 +186,32 @@ module Increase
       class Status < Increase::BaseModel
         # Filter Accounts for those with the specified status. For GET requests, this
         #   should be encoded as a comma-delimited string, such as `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Increase::Models::AccountListParams::Status::In::OrSymbol])) }
-        attr_reader :in_
+        sig { returns(T.nilable(T::Array[Symbol])) }
+        def in_
+        end
 
-        sig { params(in_: T::Array[Increase::Models::AccountListParams::Status::In::OrSymbol]).void }
-        attr_writer :in_
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        def in_=(_)
+        end
 
-        sig { params(in_: T::Array[Increase::Models::AccountListParams::Status::In::OrSymbol]).returns(T.attached_class) }
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Increase::Models::AccountListParams::Status::In::OrSymbol]}) }
+        sig { override.returns({in_: T::Array[Symbol]}) }
         def to_hash
         end
 
-        module In
-          extend Increase::Enum
+        class In < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountListParams::Status::In) }
-          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::AccountListParams::Status::In::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # Closed Accounts on which no new activity can occur.
-          CLOSED = T.let(:closed, Increase::Models::AccountListParams::Status::In::TaggedSymbol)
+          CLOSED = :closed
 
           # Open Accounts that are ready to use.
-          OPEN = T.let(:open, Increase::Models::AccountListParams::Status::In::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::AccountListParams::Status::In::TaggedSymbol]) }
-            def values
-            end
-          end
+          OPEN = :open
         end
       end
     end

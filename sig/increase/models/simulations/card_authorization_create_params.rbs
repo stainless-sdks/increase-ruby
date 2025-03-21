@@ -94,25 +94,30 @@ module Increase
 
         def terminal_id=: (String) -> String
 
-        def initialize: (
-          amount: Integer,
-          ?authenticated_card_payment_id: String,
-          ?card_id: String,
-          ?decline_reason: Increase::Models::Simulations::CardAuthorizationCreateParams::decline_reason,
-          ?digital_wallet_token_id: String,
-          ?direction: Increase::Models::Simulations::CardAuthorizationCreateParams::direction,
-          ?event_subscription_id: String,
-          ?merchant_acceptor_id: String,
-          ?merchant_category_code: String,
-          ?merchant_city: String,
-          ?merchant_country: String,
-          ?merchant_descriptor: String,
-          ?merchant_state: String,
-          ?network_details: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
-          ?physical_card_id: String,
-          ?terminal_id: String,
-          ?request_options: Increase::request_opts
-        ) -> void
+        def initialize:
+          (
+            amount: Integer,
+            authenticated_card_payment_id: String,
+            card_id: String,
+            decline_reason: Increase::Models::Simulations::CardAuthorizationCreateParams::decline_reason,
+            digital_wallet_token_id: String,
+            direction: Increase::Models::Simulations::CardAuthorizationCreateParams::direction,
+            event_subscription_id: String,
+            merchant_acceptor_id: String,
+            merchant_category_code: String,
+            merchant_city: String,
+            merchant_country: String,
+            merchant_descriptor: String,
+            merchant_state: String,
+            network_details: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
+            physical_card_id: String,
+            terminal_id: String,
+            request_options: Increase::request_opts
+          ) -> void
+          | (
+            ?Increase::Models::Simulations::card_authorization_create_params
+            | Increase::BaseModel data
+          ) -> void
 
         def to_hash: -> Increase::Models::Simulations::card_authorization_create_params
 
@@ -135,9 +140,7 @@ module Increase
           | :missing_original_authorization
           | :suspected_fraud
 
-        module DeclineReason
-          extend Increase::Enum
-
+        class DeclineReason < Increase::Enum
           # The account has been closed.
           ACCOUNT_CLOSED: :account_closed
 
@@ -189,21 +192,19 @@ module Increase
           # The transaction was suspected to be fraudulent. Please reach out to support@increase.com for more information.
           SUSPECTED_FRAUD: :suspected_fraud
 
-          def self?.values: -> ::Array[Increase::Models::Simulations::CardAuthorizationCreateParams::decline_reason]
+          def self.values: -> ::Array[Increase::Models::Simulations::CardAuthorizationCreateParams::decline_reason]
         end
 
         type direction = :settlement | :refund
 
-        module Direction
-          extend Increase::Enum
-
+        class Direction < Increase::Enum
           # A regular card authorization where funds are debited from the cardholder.
           SETTLEMENT: :settlement
 
           # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
           REFUND: :refund
 
-          def self?.values: -> ::Array[Increase::Models::Simulations::CardAuthorizationCreateParams::direction]
+          def self.values: -> ::Array[Increase::Models::Simulations::CardAuthorizationCreateParams::direction]
         end
 
         type network_details =
@@ -214,9 +215,14 @@ module Increase
         class NetworkDetails < Increase::BaseModel
           attr_accessor visa: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa
 
-          def initialize: (
-            visa: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa
-          ) -> void
+          def initialize:
+            (
+              visa: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa
+            ) -> void
+            | (
+              ?Increase::Models::Simulations::CardAuthorizationCreateParams::network_details
+              | Increase::BaseModel data
+            ) -> void
 
           def to_hash: -> Increase::Models::Simulations::CardAuthorizationCreateParams::network_details
 
@@ -232,9 +238,14 @@ module Increase
               Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason
             ) -> Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason
 
-            def initialize: (
-              ?stand_in_processing_reason: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason
-            ) -> void
+            def initialize:
+              (
+                stand_in_processing_reason: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason
+              ) -> void
+              | (
+                ?Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::visa
+                | Increase::BaseModel data
+              ) -> void
 
             def to_hash: -> Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::visa
 
@@ -247,9 +258,7 @@ module Increase
               | :payment_fraud_disruption_acquirer_block
               | :other
 
-            module StandInProcessingReason
-              extend Increase::Enum
-
+            class StandInProcessingReason < Increase::Enum
               # Increase failed to process the authorization in a timely manner.
               ISSUER_ERROR: :issuer_error
 
@@ -271,7 +280,7 @@ module Increase
               # An unspecific reason for stand-in processing.
               OTHER: :other
 
-              def self?.values: -> ::Array[Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason]
+              def self.values: -> ::Array[Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason]
             end
           end
         end

@@ -8,41 +8,47 @@ module Increase
 
       # The name you choose for the account.
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       # The entity, if `compliance_category` is `commingled_cash`.
       sig { returns(T.nilable(String)) }
-      attr_reader :account_id
+      def account_id
+      end
 
-      sig { params(account_id: String).void }
-      attr_writer :account_id
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       # The account compliance category.
-      sig { returns(T.nilable(Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol)) }
-      attr_reader :compliance_category
-
-      sig do
-        params(
-          compliance_category: Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol
-        )
-          .void
+      sig { returns(T.nilable(Symbol)) }
+      def compliance_category
       end
-      attr_writer :compliance_category
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def compliance_category=(_)
+      end
 
       # The entity, if `compliance_category` is `customer_balance`.
       sig { returns(T.nilable(String)) }
-      attr_reader :entity_id
+      def entity_id
+      end
 
-      sig { params(entity_id: String).void }
-      attr_writer :entity_id
+      sig { params(_: String).returns(String) }
+      def entity_id=(_)
+      end
 
       sig do
         params(
           name: String,
           account_id: String,
-          compliance_category: Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol,
+          compliance_category: Symbol,
           entity_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end
@@ -55,7 +61,7 @@ module Increase
             {
               name: String,
               account_id: String,
-              compliance_category: Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol,
+              compliance_category: Symbol,
               entity_id: String,
               request_options: Increase::RequestOptions
             }
@@ -65,36 +71,16 @@ module Increase
       end
 
       # The account compliance category.
-      module ComplianceCategory
-        extend Increase::Enum
+      class ComplianceCategory < Increase::Enum
+        abstract!
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # A cash in an commingled Increase Account.
-        COMMINGLED_CASH =
-          T.let(
-            :commingled_cash,
-            Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol
-          )
+        COMMINGLED_CASH = :commingled_cash
 
         # A customer balance.
-        CUSTOMER_BALANCE =
-          T.let(
-            :customer_balance,
-            Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol
-          )
-
-        class << self
-          sig do
-            override
-              .returns(T::Array[Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol])
-          end
-          def values
-          end
-        end
+        CUSTOMER_BALANCE = :customer_balance
       end
     end
   end

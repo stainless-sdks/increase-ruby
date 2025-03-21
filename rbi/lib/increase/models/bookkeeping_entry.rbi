@@ -5,29 +5,59 @@ module Increase
     class BookkeepingEntry < Increase::BaseModel
       # The entry identifier.
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       # The identifier for the Account the Entry belongs to.
       sig { returns(String) }
-      attr_accessor :account_id
+      def account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       # The Entry amount in the minor unit of its currency. For dollars, for example,
       #   this is cents.
       sig { returns(Integer) }
-      attr_accessor :amount
+      def amount
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def amount=(_)
+      end
 
       # When the entry set was created.
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       # The identifier for the Account the Entry belongs to.
       sig { returns(String) }
-      attr_accessor :entry_set_id
+      def entry_set_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def entry_set_id=(_)
+      end
 
       # A constant representing the object's type. For this resource it will always be
       #   `bookkeeping_entry`.
-      sig { returns(Increase::Models::BookkeepingEntry::Type::TaggedSymbol) }
-      attr_accessor :type
+      sig { returns(Symbol) }
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       # Entries are T-account entries recording debits and credits. Your compliance
       #   setup might require annotating money movements using this API. Learn more in our
@@ -39,7 +69,7 @@ module Increase
           amount: Integer,
           created_at: Time,
           entry_set_id: String,
-          type: Increase::Models::BookkeepingEntry::Type::OrSymbol
+          type: Symbol
         )
           .returns(T.attached_class)
       end
@@ -55,7 +85,7 @@ module Increase
               amount: Integer,
               created_at: Time,
               entry_set_id: String,
-              type: Increase::Models::BookkeepingEntry::Type::TaggedSymbol
+              type: Symbol
             }
           )
       end
@@ -64,19 +94,12 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `bookkeeping_entry`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::BookkeepingEntry::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::BookkeepingEntry::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        BOOKKEEPING_ENTRY = T.let(:bookkeeping_entry, Increase::Models::BookkeepingEntry::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::BookkeepingEntry::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        BOOKKEEPING_ENTRY = :bookkeeping_entry
       end
     end
   end

@@ -31,13 +31,18 @@ module Increase
         Increase::Models::DigitalCardProfileListParams::Status
       ) -> Increase::Models::DigitalCardProfileListParams::Status
 
-      def initialize: (
-        ?cursor: String,
-        ?idempotency_key: String,
-        ?limit: Integer,
-        ?status: Increase::Models::DigitalCardProfileListParams::Status,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize:
+        (
+          cursor: String,
+          idempotency_key: String,
+          limit: Integer,
+          status: Increase::Models::DigitalCardProfileListParams::Status,
+          request_options: Increase::request_opts
+        ) -> void
+        | (
+          ?Increase::Models::digital_card_profile_list_params
+          | Increase::BaseModel data
+        ) -> void
 
       def to_hash: -> Increase::Models::digital_card_profile_list_params
 
@@ -53,17 +58,20 @@ module Increase
           ::Array[Increase::Models::DigitalCardProfileListParams::Status::in_]
         ) -> ::Array[Increase::Models::DigitalCardProfileListParams::Status::in_]
 
-        def initialize: (
-          ?in_: ::Array[Increase::Models::DigitalCardProfileListParams::Status::in_]
-        ) -> void
+        def initialize:
+          (
+            in_: ::Array[Increase::Models::DigitalCardProfileListParams::Status::in_]
+          ) -> void
+          | (
+            ?Increase::Models::DigitalCardProfileListParams::status
+            | Increase::BaseModel data
+          ) -> void
 
         def to_hash: -> Increase::Models::DigitalCardProfileListParams::status
 
         type in_ = :pending | :rejected | :active | :archived
 
-        module In
-          extend Increase::Enum
-
+        class In < Increase::Enum
           # The Card Profile is awaiting review from Increase and/or processing by card networks.
           PENDING: :pending
 
@@ -76,7 +84,7 @@ module Increase
           # The Card Profile is no longer in use.
           ARCHIVED: :archived
 
-          def self?.values: -> ::Array[Increase::Models::DigitalCardProfileListParams::Status::in_]
+          def self.values: -> ::Array[Increase::Models::DigitalCardProfileListParams::Status::in_]
         end
       end
     end

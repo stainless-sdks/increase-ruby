@@ -10,10 +10,15 @@ module Increase
 
       attr_accessor reason: Increase::Models::InboundCheckDepositReturnParams::reason
 
-      def initialize: (
-        reason: Increase::Models::InboundCheckDepositReturnParams::reason,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize:
+        (
+          reason: Increase::Models::InboundCheckDepositReturnParams::reason,
+          request_options: Increase::request_opts
+        ) -> void
+        | (
+          ?Increase::Models::inbound_check_deposit_return_params
+          | Increase::BaseModel data
+        ) -> void
 
       def to_hash: -> Increase::Models::inbound_check_deposit_return_params
 
@@ -24,9 +29,7 @@ module Increase
         | :endorsement_missing
         | :endorsement_irregular
 
-      module Reason
-        extend Increase::Enum
-
+      class Reason < Increase::Enum
         # The check was altered or fictitious.
         ALTERED_OR_FICTITIOUS: :altered_or_fictitious
 
@@ -42,7 +45,7 @@ module Increase
         # The check was not endorsed by the payee.
         ENDORSEMENT_IRREGULAR: :endorsement_irregular
 
-        def self?.values: -> ::Array[Increase::Models::InboundCheckDepositReturnParams::reason]
+        def self.values: -> ::Array[Increase::Models::InboundCheckDepositReturnParams::reason]
       end
     end
   end

@@ -9,15 +9,14 @@ module Increase
     MAX_REDIRECTS = 20
 
     # rubocop:disable Style/MutableConstant
-    PLATFORM_HEADERS =
-      {
-        "x-stainless-arch" => Increase::Util.arch,
-        "x-stainless-lang" => "ruby",
-        "x-stainless-os" => Increase::Util.os,
-        "x-stainless-package-version" => Increase::VERSION,
-        "x-stainless-runtime" => ::RUBY_ENGINE,
-        "x-stainless-runtime-version" => ::RUBY_ENGINE_VERSION
-      }
+    PLATFORM_HEADERS = {
+      "x-stainless-arch" => Increase::Util.arch,
+      "x-stainless-lang" => "ruby",
+      "x-stainless-os" => Increase::Util.os,
+      "x-stainless-package-version" => Increase::VERSION,
+      "x-stainless-runtime" => ::RUBY_ENGINE,
+      "x-stainless-runtime-version" => ::RUBY_ENGINE_VERSION
+    }
     # rubocop:enable Style/MutableConstant
 
     class << self
@@ -220,7 +219,7 @@ module Increase
     #
     #   @option opts [Hash{String=>String, nil}, nil] :extra_headers
     #
-    #   @option opts [Object, nil] :extra_body
+    #   @option opts [Hash{Symbol=>Object}, nil] :extra_body
     #
     #   @option opts [Integer, nil] :max_retries
     #
@@ -437,7 +436,7 @@ module Increase
       decoded = Increase::Util.decode_content(response, stream: stream)
       case req
       in { stream: Class => st }
-        st.new(model: model, url: url, status: status, response: response, stream: decoded)
+        st.new(model: model, url: url, status: status, response: response, messages: decoded)
       in { page: Class => page }
         page.new(client: self, req: req, headers: response, page_data: decoded)
       else

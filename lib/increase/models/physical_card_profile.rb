@@ -118,10 +118,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The creator of this Physical Card Profile.
-      module Creator
-        extend Increase::Enum
-
+      class Creator < Increase::Enum
         # This Physical Card Profile was created by Increase.
         INCREASE = :increase
 
@@ -129,18 +129,12 @@ module Increase
         USER = :user
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # The status of the Physical Card Profile.
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The Card Profile has not yet been processed by Increase.
         PENDING_CREATING = :pending_creating
 
@@ -160,28 +154,16 @@ module Increase
         ARCHIVED = :archived
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `physical_card_profile`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         PHYSICAL_CARD_PROFILE = :physical_card_profile
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

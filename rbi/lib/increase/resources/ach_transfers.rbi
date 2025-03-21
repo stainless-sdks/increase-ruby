@@ -10,22 +10,22 @@ module Increase
           amount: Integer,
           statement_descriptor: String,
           account_number: String,
-          addenda: T.any(Increase::Models::ACHTransferCreateParams::Addenda, Increase::Util::AnyHash),
+          addenda: Increase::Models::ACHTransferCreateParams::Addenda,
           company_descriptive_date: String,
           company_discretionary_data: String,
           company_entry_description: String,
           company_name: String,
-          destination_account_holder: Increase::Models::ACHTransferCreateParams::DestinationAccountHolder::OrSymbol,
+          destination_account_holder: Symbol,
           external_account_id: String,
-          funding: Increase::Models::ACHTransferCreateParams::Funding::OrSymbol,
+          funding: Symbol,
           individual_id: String,
           individual_name: String,
-          preferred_effective_date: T.any(Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate, Increase::Util::AnyHash),
+          preferred_effective_date: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate,
           require_approval: T::Boolean,
           routing_number: String,
-          standard_entry_class_code: Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::OrSymbol,
-          transaction_timing: Increase::Models::ACHTransferCreateParams::TransactionTiming::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          standard_entry_class_code: Symbol,
+          transaction_timing: Symbol,
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::ACHTransfer)
       end
@@ -95,7 +95,7 @@ module Increase
       sig do
         params(
           ach_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::ACHTransfer)
       end
@@ -110,12 +110,12 @@ module Increase
       sig do
         params(
           account_id: String,
-          created_at: T.any(Increase::Models::ACHTransferListParams::CreatedAt, Increase::Util::AnyHash),
+          created_at: Increase::Models::ACHTransferListParams::CreatedAt,
           cursor: String,
           external_account_id: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Page[Increase::Models::ACHTransfer])
       end
@@ -143,7 +143,7 @@ module Increase
       sig do
         params(
           ach_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::ACHTransfer)
       end
@@ -158,7 +158,7 @@ module Increase
       sig do
         params(
           ach_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::ACHTransfer)
       end

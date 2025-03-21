@@ -174,10 +174,10 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @abstract
+        #
         # The shipping method to use.
-        module Method
-          extend Increase::Enum
-
+        class Method < Increase::Enum
           # USPS Post with tracking.
           USPS = :usps
 
@@ -188,12 +188,6 @@ module Increase
           FEDEX_2_DAY = :fedex_2_day
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
     end

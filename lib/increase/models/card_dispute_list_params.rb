@@ -149,9 +149,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        module In
-          extend Increase::Enum
-
+        # @abstract
+        class In < Increase::Enum
           # The Card Dispute is pending review.
           PENDING_REVIEWING = :pending_reviewing
 
@@ -171,12 +170,6 @@ module Increase
           WON = :won
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
     end

@@ -3,20 +3,9 @@
 module Increase
   # @api private
   class PooledNetRequester
-    RequestShape =
-      T.type_alias do
-        {
-          method: Symbol,
-          url: URI::Generic,
-          headers: T::Hash[String, String],
-          body: T.anything,
-          deadline: Float
-        }
-      end
-
-    # from the golang stdlib
-    #   https://github.com/golang/go/blob/c8eced8580028328fde7c03cbfcb720ce15b2358/src/net/http/transport.go#L49
-    KEEP_ALIVE_TIMEOUT = 30
+    RequestShape = T.type_alias do
+      {method: Symbol, url: URI::Generic, headers: T::Hash[String, String], body: T.anything, deadline: Float}
+    end
 
     class << self
       # @api private

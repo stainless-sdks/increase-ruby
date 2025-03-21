@@ -8,55 +8,73 @@ module Increase
 
       # Filter Transactions for those belonging to the specified Account.
       sig { returns(T.nilable(String)) }
-      attr_reader :account_id
+      def account_id
+      end
 
-      sig { params(account_id: String).void }
-      attr_writer :account_id
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::TransactionListParams::Category)) }
-      attr_reader :category
+      def category
+      end
 
-      sig { params(category: T.any(Increase::Models::TransactionListParams::Category, Increase::Util::AnyHash)).void }
-      attr_writer :category
+      sig do
+        params(_: Increase::Models::TransactionListParams::Category)
+          .returns(Increase::Models::TransactionListParams::Category)
+      end
+      def category=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::TransactionListParams::CreatedAt)) }
-      attr_reader :created_at
+      def created_at
+      end
 
-      sig { params(created_at: T.any(Increase::Models::TransactionListParams::CreatedAt, Increase::Util::AnyHash)).void }
-      attr_writer :created_at
+      sig do
+        params(_: Increase::Models::TransactionListParams::CreatedAt)
+          .returns(Increase::Models::TransactionListParams::CreatedAt)
+      end
+      def created_at=(_)
+      end
 
       # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
-      attr_reader :cursor
+      def cursor
+      end
 
-      sig { params(cursor: String).void }
-      attr_writer :cursor
+      sig { params(_: String).returns(String) }
+      def cursor=(_)
+      end
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       # Filter Transactions for those belonging to the specified route. This could be a
       #   Card ID or an Account Number ID.
       sig { returns(T.nilable(String)) }
-      attr_reader :route_id
+      def route_id
+      end
 
-      sig { params(route_id: String).void }
-      attr_writer :route_id
+      sig { params(_: String).returns(String) }
+      def route_id=(_)
+      end
 
       sig do
         params(
           account_id: String,
-          category: T.any(Increase::Models::TransactionListParams::Category, Increase::Util::AnyHash),
-          created_at: T.any(Increase::Models::TransactionListParams::CreatedAt, Increase::Util::AnyHash),
+          category: Increase::Models::TransactionListParams::Category,
+          created_at: Increase::Models::TransactionListParams::CreatedAt,
           cursor: String,
           limit: Integer,
           route_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end
@@ -91,165 +109,113 @@ module Increase
       class Category < Increase::BaseModel
         # Return results whose value is in the provided list. For GET requests, this
         #   should be encoded as a comma-delimited string, such as `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Increase::Models::TransactionListParams::Category::In::OrSymbol])) }
-        attr_reader :in_
-
-        sig { params(in_: T::Array[Increase::Models::TransactionListParams::Category::In::OrSymbol]).void }
-        attr_writer :in_
-
-        sig do
-          params(in_: T::Array[Increase::Models::TransactionListParams::Category::In::OrSymbol])
-            .returns(T.attached_class)
+        sig { returns(T.nilable(T::Array[Symbol])) }
+        def in_
         end
+
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        def in_=(_)
+        end
+
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Increase::Models::TransactionListParams::Category::In::OrSymbol]}) }
+        sig { override.returns({in_: T::Array[Symbol]}) }
         def to_hash
         end
 
-        module In
-          extend Increase::Enum
+        class In < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::TransactionListParams::Category::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::TransactionListParams::Category::In::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # Account Transfer Intention: details will be under the `account_transfer_intention` object.
-          ACCOUNT_TRANSFER_INTENTION =
-            T.let(:account_transfer_intention, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
+          ACCOUNT_TRANSFER_INTENTION = :account_transfer_intention
 
           # ACH Transfer Intention: details will be under the `ach_transfer_intention` object.
-          ACH_TRANSFER_INTENTION =
-            T.let(:ach_transfer_intention, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
+          ACH_TRANSFER_INTENTION = :ach_transfer_intention
 
           # ACH Transfer Rejection: details will be under the `ach_transfer_rejection` object.
-          ACH_TRANSFER_REJECTION =
-            T.let(:ach_transfer_rejection, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
+          ACH_TRANSFER_REJECTION = :ach_transfer_rejection
 
           # ACH Transfer Return: details will be under the `ach_transfer_return` object.
-          ACH_TRANSFER_RETURN =
-            T.let(:ach_transfer_return, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
+          ACH_TRANSFER_RETURN = :ach_transfer_return
 
           # Cashback Payment: details will be under the `cashback_payment` object.
-          CASHBACK_PAYMENT =
-            T.let(:cashback_payment, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
+          CASHBACK_PAYMENT = :cashback_payment
 
           # Card Dispute Acceptance: details will be under the `card_dispute_acceptance` object.
-          CARD_DISPUTE_ACCEPTANCE =
-            T.let(:card_dispute_acceptance, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
+          CARD_DISPUTE_ACCEPTANCE = :card_dispute_acceptance
 
           # Card Dispute Loss: details will be under the `card_dispute_loss` object.
-          CARD_DISPUTE_LOSS =
-            T.let(:card_dispute_loss, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
+          CARD_DISPUTE_LOSS = :card_dispute_loss
 
           # Card Refund: details will be under the `card_refund` object.
-          CARD_REFUND = T.let(:card_refund, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
+          CARD_REFUND = :card_refund
 
           # Card Settlement: details will be under the `card_settlement` object.
-          CARD_SETTLEMENT =
-            T.let(:card_settlement, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
+          CARD_SETTLEMENT = :card_settlement
 
           # Card Revenue Payment: details will be under the `card_revenue_payment` object.
-          CARD_REVENUE_PAYMENT =
-            T.let(:card_revenue_payment, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
+          CARD_REVENUE_PAYMENT = :card_revenue_payment
 
           # Check Deposit Acceptance: details will be under the `check_deposit_acceptance` object.
-          CHECK_DEPOSIT_ACCEPTANCE =
-            T.let(:check_deposit_acceptance, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
+          CHECK_DEPOSIT_ACCEPTANCE = :check_deposit_acceptance
 
           # Check Deposit Return: details will be under the `check_deposit_return` object.
-          CHECK_DEPOSIT_RETURN =
-            T.let(:check_deposit_return, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
+          CHECK_DEPOSIT_RETURN = :check_deposit_return
 
           # Check Transfer Deposit: details will be under the `check_transfer_deposit` object.
-          CHECK_TRANSFER_DEPOSIT =
-            T.let(:check_transfer_deposit, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
+          CHECK_TRANSFER_DEPOSIT = :check_transfer_deposit
 
           # Fee Payment: details will be under the `fee_payment` object.
-          FEE_PAYMENT = T.let(:fee_payment, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
+          FEE_PAYMENT = :fee_payment
 
           # Inbound ACH Transfer Intention: details will be under the `inbound_ach_transfer` object.
-          INBOUND_ACH_TRANSFER =
-            T.let(:inbound_ach_transfer, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
+          INBOUND_ACH_TRANSFER = :inbound_ach_transfer
 
           # Inbound ACH Transfer Return Intention: details will be under the `inbound_ach_transfer_return_intention` object.
-          INBOUND_ACH_TRANSFER_RETURN_INTENTION =
-            T.let(
-              :inbound_ach_transfer_return_intention,
-              Increase::Models::TransactionListParams::Category::In::TaggedSymbol
-            )
+          INBOUND_ACH_TRANSFER_RETURN_INTENTION = :inbound_ach_transfer_return_intention
 
           # Inbound Check Deposit Return Intention: details will be under the `inbound_check_deposit_return_intention` object.
-          INBOUND_CHECK_DEPOSIT_RETURN_INTENTION =
-            T.let(
-              :inbound_check_deposit_return_intention,
-              Increase::Models::TransactionListParams::Category::In::TaggedSymbol
-            )
+          INBOUND_CHECK_DEPOSIT_RETURN_INTENTION = :inbound_check_deposit_return_intention
 
           # Inbound Check Adjustment: details will be under the `inbound_check_adjustment` object.
-          INBOUND_CHECK_ADJUSTMENT =
-            T.let(:inbound_check_adjustment, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
+          INBOUND_CHECK_ADJUSTMENT = :inbound_check_adjustment
 
           # Inbound Real-Time Payments Transfer Confirmation: details will be under the `inbound_real_time_payments_transfer_confirmation` object.
-          INBOUND_REAL_TIME_PAYMENTS_TRANSFER_CONFIRMATION =
-            T.let(
-              :inbound_real_time_payments_transfer_confirmation,
-              Increase::Models::TransactionListParams::Category::In::TaggedSymbol
-            )
+          INBOUND_REAL_TIME_PAYMENTS_TRANSFER_CONFIRMATION = :inbound_real_time_payments_transfer_confirmation
 
           # Inbound Real-Time Payments Transfer Decline: details will be under the `inbound_real_time_payments_transfer_decline` object.
-          INBOUND_REAL_TIME_PAYMENTS_TRANSFER_DECLINE =
-            T.let(
-              :inbound_real_time_payments_transfer_decline,
-              Increase::Models::TransactionListParams::Category::In::TaggedSymbol
-            )
+          INBOUND_REAL_TIME_PAYMENTS_TRANSFER_DECLINE = :inbound_real_time_payments_transfer_decline
 
           # Inbound Wire Reversal: details will be under the `inbound_wire_reversal` object.
-          INBOUND_WIRE_REVERSAL =
-            T.let(:inbound_wire_reversal, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
+          INBOUND_WIRE_REVERSAL = :inbound_wire_reversal
 
           # Inbound Wire Transfer Intention: details will be under the `inbound_wire_transfer` object.
-          INBOUND_WIRE_TRANSFER =
-            T.let(:inbound_wire_transfer, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
+          INBOUND_WIRE_TRANSFER = :inbound_wire_transfer
 
           # Inbound Wire Transfer Reversal Intention: details will be under the `inbound_wire_transfer_reversal` object.
-          INBOUND_WIRE_TRANSFER_REVERSAL =
-            T.let(
-              :inbound_wire_transfer_reversal,
-              Increase::Models::TransactionListParams::Category::In::TaggedSymbol
-            )
+          INBOUND_WIRE_TRANSFER_REVERSAL = :inbound_wire_transfer_reversal
 
           # Interest Payment: details will be under the `interest_payment` object.
-          INTEREST_PAYMENT =
-            T.let(:interest_payment, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
+          INTEREST_PAYMENT = :interest_payment
 
           # Internal Source: details will be under the `internal_source` object.
-          INTERNAL_SOURCE =
-            T.let(:internal_source, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
+          INTERNAL_SOURCE = :internal_source
 
           # Real-Time Payments Transfer Acknowledgement: details will be under the `real_time_payments_transfer_acknowledgement` object.
-          REAL_TIME_PAYMENTS_TRANSFER_ACKNOWLEDGEMENT =
-            T.let(
-              :real_time_payments_transfer_acknowledgement,
-              Increase::Models::TransactionListParams::Category::In::TaggedSymbol
-            )
+          REAL_TIME_PAYMENTS_TRANSFER_ACKNOWLEDGEMENT = :real_time_payments_transfer_acknowledgement
 
           # Sample Funds: details will be under the `sample_funds` object.
-          SAMPLE_FUNDS = T.let(:sample_funds, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
+          SAMPLE_FUNDS = :sample_funds
 
           # Wire Transfer Intention: details will be under the `wire_transfer_intention` object.
-          WIRE_TRANSFER_INTENTION =
-            T.let(:wire_transfer_intention, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
+          WIRE_TRANSFER_INTENTION = :wire_transfer_intention
 
           # The Transaction was made for an undocumented or deprecated reason.
-          OTHER = T.let(:other, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::TransactionListParams::Category::In::TaggedSymbol]) }
-            def values
-            end
-          end
+          OTHER = :other
         end
       end
 
@@ -257,34 +223,42 @@ module Increase
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :after
+        def after
+        end
 
-        sig { params(after: Time).void }
-        attr_writer :after
+        sig { params(_: Time).returns(Time) }
+        def after=(_)
+        end
 
         # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :before
+        def before
+        end
 
-        sig { params(before: Time).void }
-        attr_writer :before
+        sig { params(_: Time).returns(Time) }
+        def before=(_)
+        end
 
         # Return results on or after this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :on_or_after
+        def on_or_after
+        end
 
-        sig { params(on_or_after: Time).void }
-        attr_writer :on_or_after
+        sig { params(_: Time).returns(Time) }
+        def on_or_after=(_)
+        end
 
         # Return results on or before this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :on_or_before
+        def on_or_before
+        end
 
-        sig { params(on_or_before: Time).void }
-        attr_writer :on_or_before
+        sig { params(_: Time).returns(Time) }
+        def on_or_before=(_)
+        end
 
         sig do
           params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)

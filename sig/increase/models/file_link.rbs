@@ -26,26 +26,26 @@ module Increase
 
       attr_accessor unauthenticated_url: String
 
-      def initialize: (
-        id: String,
-        created_at: Time,
-        expires_at: Time,
-        file_id: String,
-        idempotency_key: String?,
-        type: Increase::Models::FileLink::type_,
-        unauthenticated_url: String
-      ) -> void
+      def initialize:
+        (
+          id: String,
+          created_at: Time,
+          expires_at: Time,
+          file_id: String,
+          idempotency_key: String?,
+          type: Increase::Models::FileLink::type_,
+          unauthenticated_url: String
+        ) -> void
+        | (?Increase::Models::file_link | Increase::BaseModel data) -> void
 
       def to_hash: -> Increase::Models::file_link
 
       type type_ = :file_link
 
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         FILE_LINK: :file_link
 
-        def self?.values: -> ::Array[Increase::Models::FileLink::type_]
+        def self.values: -> ::Array[Increase::Models::FileLink::type_]
       end
     end
   end

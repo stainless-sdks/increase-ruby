@@ -4,11 +4,10 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::SupplementalDocumentsTest < Increase::Test::ResourceTest
   def test_create_required_params
-    response =
-      @increase.supplemental_documents.create(
-        entity_id: "entity_n8y8tnk2p9339ti393yi",
-        file_id: "file_makxrc67oh9l6sg7w9yc"
-      )
+    response = @increase.supplemental_documents.create(
+      entity_id: "entity_n8y8tnk2p9339ti393yi",
+      file_id: "file_makxrc67oh9l6sg7w9yc"
+    )
 
     assert_pattern do
       response => Increase::Models::EntitySupplementalDocument
@@ -33,8 +32,6 @@ class Increase::Test::Resources::SupplementalDocumentsTest < Increase::Test::Res
     end
 
     row = response.to_enum.first
-    return if row.nil?
-
     assert_pattern do
       row => Increase::Models::EntitySupplementalDocument
     end

@@ -13,10 +13,15 @@ module Increase
 
         attr_accessor shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status
 
-        def initialize: (
-          shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status,
-          ?request_options: Increase::request_opts
-        ) -> void
+        def initialize:
+          (
+            shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status,
+            request_options: Increase::request_opts
+          ) -> void
+          | (
+            ?Increase::Models::Simulations::physical_card_advance_shipment_params
+            | Increase::BaseModel data
+          ) -> void
 
         def to_hash: -> Increase::Models::Simulations::physical_card_advance_shipment_params
 
@@ -29,9 +34,7 @@ module Increase
           | :shipped
           | :returned
 
-        module ShipmentStatus
-          extend Increase::Enum
-
+        class ShipmentStatus < Increase::Enum
           # The physical card has not yet been shipped.
           PENDING: :pending
 
@@ -53,7 +56,7 @@ module Increase
           # The physical card shipment was returned to the sender and destroyed by the production facility.
           RETURNED: :returned
 
-          def self?.values: -> ::Array[Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status]
+          def self.values: -> ::Array[Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status]
         end
       end
     end

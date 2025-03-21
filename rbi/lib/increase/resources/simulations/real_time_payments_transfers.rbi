@@ -11,11 +11,8 @@ module Increase
         sig do
           params(
             real_time_payments_transfer_id: String,
-            rejection: T.any(
-              Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
-              Increase::Util::AnyHash
-            ),
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+            rejection: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
           )
             .returns(Increase::Models::RealTimePaymentsTransfer)
         end

@@ -45,15 +45,19 @@ module Increase
         Increase::Models::ExportListParams::Status
       ) -> Increase::Models::ExportListParams::Status
 
-      def initialize: (
-        ?category: Increase::Models::ExportListParams::Category,
-        ?created_at: Increase::Models::ExportListParams::CreatedAt,
-        ?cursor: String,
-        ?idempotency_key: String,
-        ?limit: Integer,
-        ?status: Increase::Models::ExportListParams::Status,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize:
+        (
+          category: Increase::Models::ExportListParams::Category,
+          created_at: Increase::Models::ExportListParams::CreatedAt,
+          cursor: String,
+          idempotency_key: String,
+          limit: Integer,
+          status: Increase::Models::ExportListParams::Status,
+          request_options: Increase::request_opts
+        ) -> void
+        | (
+          ?Increase::Models::export_list_params | Increase::BaseModel data
+        ) -> void
 
       def to_hash: -> Increase::Models::export_list_params
 
@@ -67,9 +71,14 @@ module Increase
           ::Array[Increase::Models::ExportListParams::Category::in_]
         ) -> ::Array[Increase::Models::ExportListParams::Category::in_]
 
-        def initialize: (
-          ?in_: ::Array[Increase::Models::ExportListParams::Category::in_]
-        ) -> void
+        def initialize:
+          (
+            in_: ::Array[Increase::Models::ExportListParams::Category::in_]
+          ) -> void
+          | (
+            ?Increase::Models::ExportListParams::category
+            | Increase::BaseModel data
+          ) -> void
 
         def to_hash: -> Increase::Models::ExportListParams::category
 
@@ -82,9 +91,7 @@ module Increase
           | :vendor_csv
           | :dashboard_table_csv
 
-        module In
-          extend Increase::Enum
-
+        class In < Increase::Enum
           # Export an Open Financial Exchange (OFX) file of transactions and balances for a given time range and Account.
           ACCOUNT_STATEMENT_OFX: :account_statement_ofx
 
@@ -106,7 +113,7 @@ module Increase
           # Certain dashboard tables are available as CSV exports. This export cannot be created via the API.
           DASHBOARD_TABLE_CSV: :dashboard_table_csv
 
-          def self?.values: -> ::Array[Increase::Models::ExportListParams::Category::in_]
+          def self.values: -> ::Array[Increase::Models::ExportListParams::Category::in_]
         end
       end
 
@@ -130,12 +137,17 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize: (
-          ?after: Time,
-          ?before: Time,
-          ?on_or_after: Time,
-          ?on_or_before: Time
-        ) -> void
+        def initialize:
+          (
+            after: Time,
+            before: Time,
+            on_or_after: Time,
+            on_or_before: Time
+          ) -> void
+          | (
+            ?Increase::Models::ExportListParams::created_at
+            | Increase::BaseModel data
+          ) -> void
 
         def to_hash: -> Increase::Models::ExportListParams::created_at
       end
@@ -150,17 +162,20 @@ module Increase
           ::Array[Increase::Models::ExportListParams::Status::in_]
         ) -> ::Array[Increase::Models::ExportListParams::Status::in_]
 
-        def initialize: (
-          ?in_: ::Array[Increase::Models::ExportListParams::Status::in_]
-        ) -> void
+        def initialize:
+          (
+            in_: ::Array[Increase::Models::ExportListParams::Status::in_]
+          ) -> void
+          | (
+            ?Increase::Models::ExportListParams::status
+            | Increase::BaseModel data
+          ) -> void
 
         def to_hash: -> Increase::Models::ExportListParams::status
 
         type in_ = :pending | :complete | :failed
 
-        module In
-          extend Increase::Enum
-
+        class In < Increase::Enum
           # Increase is generating the export.
           PENDING: :pending
 
@@ -170,7 +185,7 @@ module Increase
           # The export failed to generate. Increase will reach out to you to resolve the issue.
           FAILED: :failed
 
-          def self?.values: -> ::Array[Increase::Models::ExportListParams::Status::in_]
+          def self.values: -> ::Array[Increase::Models::ExportListParams::Status::in_]
         end
       end
     end

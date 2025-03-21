@@ -4,8 +4,7 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::InboundRealTimePaymentsTransfersTest < Increase::Test::ResourceTest
   def test_retrieve
-    response =
-      @increase.inbound_real_time_payments_transfers.retrieve("inbound_real_time_payments_transfer_id")
+    response = @increase.inbound_real_time_payments_transfers.retrieve("inbound_real_time_payments_transfer_id")
 
     assert_pattern do
       response => Increase::Models::InboundRealTimePaymentsTransfer
@@ -41,8 +40,6 @@ class Increase::Test::Resources::InboundRealTimePaymentsTransfersTest < Increase
     end
 
     row = response.to_enum.first
-    return if row.nil?
-
     assert_pattern do
       row => Increase::Models::InboundRealTimePaymentsTransfer
     end

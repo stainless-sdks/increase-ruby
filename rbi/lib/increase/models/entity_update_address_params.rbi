@@ -9,15 +9,20 @@ module Increase
       # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
       #   are disallowed.
       sig { returns(Increase::Models::EntityUpdateAddressParams::Address) }
-      attr_reader :address
+      def address
+      end
 
-      sig { params(address: T.any(Increase::Models::EntityUpdateAddressParams::Address, Increase::Util::AnyHash)).void }
-      attr_writer :address
+      sig do
+        params(_: Increase::Models::EntityUpdateAddressParams::Address)
+          .returns(Increase::Models::EntityUpdateAddressParams::Address)
+      end
+      def address=(_)
+      end
 
       sig do
         params(
-          address: T.any(Increase::Models::EntityUpdateAddressParams::Address, Increase::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          address: Increase::Models::EntityUpdateAddressParams::Address,
+          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end
@@ -36,27 +41,49 @@ module Increase
       class Address < Increase::BaseModel
         # The city of the address.
         sig { returns(String) }
-        attr_accessor :city
+        def city
+        end
+
+        sig { params(_: String).returns(String) }
+        def city=(_)
+        end
 
         # The first line of the address. This is usually the street number and street.
         sig { returns(String) }
-        attr_accessor :line1
+        def line1
+        end
+
+        sig { params(_: String).returns(String) }
+        def line1=(_)
+        end
 
         # The two-letter United States Postal Service (USPS) abbreviation for the state of
         #   the address.
         sig { returns(String) }
-        attr_accessor :state
+        def state
+        end
+
+        sig { params(_: String).returns(String) }
+        def state=(_)
+        end
 
         # The ZIP code of the address.
         sig { returns(String) }
-        attr_accessor :zip
+        def zip
+        end
+
+        sig { params(_: String).returns(String) }
+        def zip=(_)
+        end
 
         # The second line of the address. This might be the floor or room number.
         sig { returns(T.nilable(String)) }
-        attr_reader :line2
+        def line2
+        end
 
-        sig { params(line2: String).void }
-        attr_writer :line2
+        sig { params(_: String).returns(String) }
+        def line2=(_)
+        end
 
         # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
         #   are disallowed.

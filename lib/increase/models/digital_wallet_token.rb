@@ -64,10 +64,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # This indicates if payments can be made with the Digital Wallet Token.
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The digital wallet token is active.
         ACTIVE = :active
 
@@ -81,18 +81,12 @@ module Increase
         DEACTIVATED = :deactivated
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # The digital wallet app being used.
-      module TokenRequestor
-        extend Increase::Enum
-
+      class TokenRequestor < Increase::Enum
         # Apple Pay
         APPLE_PAY = :apple_pay
 
@@ -106,28 +100,16 @@ module Increase
         UNKNOWN = :unknown
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `digital_wallet_token`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         DIGITAL_WALLET_TOKEN = :digital_wallet_token
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
       class Update < Increase::BaseModel
@@ -152,10 +134,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The status the update changed this Digital Wallet Token to.
-        module Status
-          extend Increase::Enum
-
+        class Status < Increase::Enum
           # The digital wallet token is active.
           ACTIVE = :active
 
@@ -169,12 +151,6 @@ module Increase
           DEACTIVATED = :deactivated
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
     end

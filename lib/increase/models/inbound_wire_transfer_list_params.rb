@@ -168,9 +168,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        module In
-          extend Increase::Enum
-
+        # @abstract
+        class In < Increase::Enum
           # The Inbound Wire Transfer is awaiting action, will transition automatically if no action is taken.
           PENDING = :pending
 
@@ -184,12 +183,6 @@ module Increase
           REVERSED = :reversed
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
     end

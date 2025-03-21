@@ -8,19 +8,39 @@ module Increase
 
       # The identifier of the File containing the physical card's carrier image.
       sig { returns(String) }
-      attr_accessor :carrier_image_file_id
+      def carrier_image_file_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def carrier_image_file_id=(_)
+      end
 
       # A phone number the user can contact to receive support for their card.
       sig { returns(String) }
-      attr_accessor :contact_phone
+      def contact_phone
+      end
+
+      sig { params(_: String).returns(String) }
+      def contact_phone=(_)
+      end
 
       # A description you can use to identify the Card Profile.
       sig { returns(String) }
-      attr_accessor :description
+      def description
+      end
+
+      sig { params(_: String).returns(String) }
+      def description=(_)
+      end
 
       # The identifier of the File containing the physical card's front image.
       sig { returns(String) }
-      attr_accessor :front_image_file_id
+      def front_image_file_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def front_image_file_id=(_)
+      end
 
       sig do
         params(
@@ -28,7 +48,7 @@ module Increase
           contact_phone: String,
           description: String,
           front_image_file_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end

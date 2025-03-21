@@ -83,9 +83,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        module In
-          extend Increase::Enum
-
+        # @abstract
+        class In < Increase::Enum
           # The Card Profile is awaiting review from Increase and/or processing by card networks.
           PENDING = :pending
 
@@ -99,12 +98,6 @@ module Increase
           ARCHIVED = :archived
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
     end

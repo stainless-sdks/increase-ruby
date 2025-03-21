@@ -209,10 +209,10 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @abstract
+      #
       # This indicates if payments can be made with the card.
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The card is active.
         ACTIVE = :active
 
@@ -223,28 +223,16 @@ module Increase
         CANCELED = :canceled
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `card`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         CARD = :card
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

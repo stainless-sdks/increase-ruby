@@ -17,10 +17,15 @@ module Increase
           Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection
         ) -> Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection
 
-        def initialize: (
-          ?rejection: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
-          ?request_options: Increase::request_opts
-        ) -> void
+        def initialize:
+          (
+            rejection: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
+            request_options: Increase::request_opts
+          ) -> void
+          | (
+            ?Increase::Models::Simulations::real_time_payments_transfer_complete_params
+            | Increase::BaseModel data
+          ) -> void
 
         def to_hash: -> Increase::Models::Simulations::real_time_payments_transfer_complete_params
 
@@ -32,9 +37,14 @@ module Increase
         class Rejection < Increase::BaseModel
           attr_accessor reject_reason_code: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::reject_reason_code
 
-          def initialize: (
-            reject_reason_code: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::reject_reason_code
-          ) -> void
+          def initialize:
+            (
+              reject_reason_code: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::reject_reason_code
+            ) -> void
+            | (
+              ?Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::rejection
+              | Increase::BaseModel data
+            ) -> void
 
           def to_hash: -> Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::rejection
 
@@ -61,9 +71,7 @@ module Increase
             | :processing_error
             | :other
 
-          module RejectReasonCode
-            extend Increase::Enum
-
+          class RejectReasonCode < Increase::Enum
             # The destination account is closed. Corresponds to the Real-Time Payments reason code `AC04`.
             ACCOUNT_CLOSED: :account_closed
 
@@ -127,7 +135,7 @@ module Increase
             # Some other error or issue has occurred.
             OTHER: :other
 
-            def self?.values: -> ::Array[Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::reject_reason_code]
+            def self.values: -> ::Array[Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::reject_reason_code]
           end
         end
       end

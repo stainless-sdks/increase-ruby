@@ -14,12 +14,12 @@ module Increase
           company_discretionary_data: String,
           company_entry_description: String,
           company_name: String,
-          credit_debit_indicator: Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol,
+          credit_debit_indicator: Symbol,
           effective_date: Date,
           individual_id: String,
           individual_name: String,
-          standard_entry_class_code: Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          standard_entry_class_code: Symbol,
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::ACHPrenotification)
       end
@@ -61,7 +61,7 @@ module Increase
       sig do
         params(
           ach_prenotification_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::ACHPrenotification)
       end
@@ -75,11 +75,11 @@ module Increase
       # List ACH Prenotifications
       sig do
         params(
-          created_at: T.any(Increase::Models::ACHPrenotificationListParams::CreatedAt, Increase::Util::AnyHash),
+          created_at: Increase::Models::ACHPrenotificationListParams::CreatedAt,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Page[Increase::Models::ACHPrenotification])
       end

@@ -298,10 +298,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The type of addenda to pass with the transfer.
-        module Category
-          extend Increase::Enum
-
+        class Category < Increase::Enum
           # Unstructured `payment_related_information` passed through with the transfer.
           FREEFORM = :freeform
 
@@ -309,12 +309,6 @@ module Increase
           PAYMENT_ORDER_REMITTANCE_ADVICE = :payment_order_remittance_advice
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
 
         class Freeform < Increase::BaseModel
@@ -395,11 +389,11 @@ module Increase
         end
       end
 
+      # @abstract
+      #
       # The type of entity that owns the account to which the ACH Transfer is being
       #   sent.
-      module DestinationAccountHolder
-        extend Increase::Enum
-
+      class DestinationAccountHolder < Increase::Enum
         # The External Account is owned by a business.
         BUSINESS = :business
 
@@ -410,18 +404,12 @@ module Increase
         UNKNOWN = :unknown
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # The type of the account to which the transfer will be sent.
-      module Funding
-        extend Increase::Enum
-
+      class Funding < Increase::Enum
         # A checking account.
         CHECKING = :checking
 
@@ -429,12 +417,6 @@ module Increase
         SAVINGS = :savings
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
       class PreferredEffectiveDate < Increase::BaseModel
@@ -473,10 +455,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # A schedule by which Increase will choose an effective date for the transfer.
-        module SettlementSchedule
-          extend Increase::Enum
-
+        class SettlementSchedule < Increase::Enum
           # The chosen effective date will be the same as the ACH processing date on which the transfer is submitted. This is necessary, but not sufficient for the transfer to be settled same-day: it must also be submitted before the last same-day cutoff and be less than or equal to $1,000.000.00.
           SAME_DAY = :same_day
 
@@ -484,19 +466,13 @@ module Increase
           FUTURE_DATED = :future_dated
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 
+      # @abstract
+      #
       # The Standard Entry Class (SEC) code to use for the transfer.
-      module StandardEntryClassCode
-        extend Increase::Enum
-
+      class StandardEntryClassCode < Increase::Enum
         # Corporate Credit and Debit (CCD).
         CORPORATE_CREDIT_OR_DEBIT = :corporate_credit_or_debit
 
@@ -510,18 +486,12 @@ module Increase
         INTERNET_INITIATED = :internet_initiated
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # The timing of the transaction.
-      module TransactionTiming
-        extend Increase::Enum
-
+      class TransactionTiming < Increase::Enum
         # A Transaction will be created immediately.
         SYNCHRONOUS = :synchronous
 
@@ -529,12 +499,6 @@ module Increase
         ASYNCHRONOUS = :asynchronous
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

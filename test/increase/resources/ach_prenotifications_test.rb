@@ -4,12 +4,11 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::ACHPrenotificationsTest < Increase::Test::ResourceTest
   def test_create_required_params
-    response =
-      @increase.ach_prenotifications.create(
-        account_id: "account_in71c4amph0vgo2qllky",
-        account_number: "987654321",
-        routing_number: "101050001"
-      )
+    response = @increase.ach_prenotifications.create(
+      account_id: "account_in71c4amph0vgo2qllky",
+      account_number: "987654321",
+      routing_number: "101050001"
+    )
 
     assert_pattern do
       response => Increase::Models::ACHPrenotification
@@ -74,8 +73,6 @@ class Increase::Test::Resources::ACHPrenotificationsTest < Increase::Test::Resou
     end
 
     row = response.to_enum.first
-    return if row.nil?
-
     assert_pattern do
       row => Increase::Models::ACHPrenotification
     end

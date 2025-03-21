@@ -3,9 +3,7 @@
 require_relative "test_helper"
 
 class Increase::Test::BaseModelTest < Minitest::Test
-  module E1
-    extend Increase::Enum
-
+  class E1 < Increase::Enum
     A = :a
     B = :b
   end
@@ -224,37 +222,19 @@ class Increase::Test::BaseModelTest < Minitest::Test
     end
   end
 
-  class M4 < M2
-    required :c, M1
-    required :d, Increase::ArrayOf[M4]
-    required :e, M2, api_name: :f
-  end
-
-  def test_model_to_h
-    model = M4.new(a: "wow", c: {}, d: [{}, 2, {c: {}}], f: {})
-    assert_pattern do
-      model.to_h => {a: "wow", c: M1, d: [M4, 2, M4 => child], f: M2}
-      assert_equal({c: M1.new}, child.to_h)
-    end
-  end
-
   A3 = Increase::ArrayOf[A1]
 
   class M3 < M1
     optional :b, E1, api_name: :renamed_again
   end
 
-  module U1
-    extend Increase::Union
-
+  class U1 < Increase::Union
     discriminator :type
     variant :a, M1
     variant :b, M3
   end
 
-  module U2
-    extend Increase::Union
-
+  class U2 < Increase::Union
     variant A1
     variant A3
   end
@@ -336,16 +316,12 @@ class Increase::Test::BaseModelTest < Minitest::Test
     end
   end
 
-  module E2
-    extend Increase::Enum
-
+  class E2 < Increase::Enum
     A = :a
     B = :b
   end
 
-  module U3
-    extend Increase::Union
-
+  class U3 < Increase::Union
     discriminator :type
     variant :a, M1
     variant :b, M3
@@ -363,9 +339,7 @@ class Increase::Test::BaseModelTest < Minitest::Test
     assert_equal(U1, U3)
   end
 
-  module U4
-    extend Increase::Union
-
+  class U4 < Increase::Union
     variant :a, const: :a
     variant :b, const: :b
   end

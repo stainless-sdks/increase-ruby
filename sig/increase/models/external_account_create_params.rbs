@@ -32,22 +32,25 @@ module Increase
         Increase::Models::ExternalAccountCreateParams::funding
       ) -> Increase::Models::ExternalAccountCreateParams::funding
 
-      def initialize: (
-        account_number: String,
-        description: String,
-        routing_number: String,
-        ?account_holder: Increase::Models::ExternalAccountCreateParams::account_holder,
-        ?funding: Increase::Models::ExternalAccountCreateParams::funding,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize:
+        (
+          account_number: String,
+          description: String,
+          routing_number: String,
+          account_holder: Increase::Models::ExternalAccountCreateParams::account_holder,
+          funding: Increase::Models::ExternalAccountCreateParams::funding,
+          request_options: Increase::request_opts
+        ) -> void
+        | (
+          ?Increase::Models::external_account_create_params
+          | Increase::BaseModel data
+        ) -> void
 
       def to_hash: -> Increase::Models::external_account_create_params
 
       type account_holder = :business | :individual | :unknown
 
-      module AccountHolder
-        extend Increase::Enum
-
+      class AccountHolder < Increase::Enum
         # The External Account is owned by a business.
         BUSINESS: :business
 
@@ -57,14 +60,12 @@ module Increase
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN: :unknown
 
-        def self?.values: -> ::Array[Increase::Models::ExternalAccountCreateParams::account_holder]
+        def self.values: -> ::Array[Increase::Models::ExternalAccountCreateParams::account_holder]
       end
 
       type funding = :checking | :savings | :other
 
-      module Funding
-        extend Increase::Enum
-
+      class Funding < Increase::Enum
         # A checking account.
         CHECKING: :checking
 
@@ -74,7 +75,7 @@ module Increase
         # A different type of account.
         OTHER: :other
 
-        def self?.values: -> ::Array[Increase::Models::ExternalAccountCreateParams::funding]
+        def self.values: -> ::Array[Increase::Models::ExternalAccountCreateParams::funding]
       end
     end
   end

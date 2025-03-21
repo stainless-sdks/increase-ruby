@@ -67,20 +67,14 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `file_link`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         FILE_LINK = :file_link
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

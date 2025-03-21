@@ -50,16 +50,21 @@ module Increase
         Increase::Models::PendingTransactionListParams::Status
       ) -> Increase::Models::PendingTransactionListParams::Status
 
-      def initialize: (
-        ?account_id: String,
-        ?category: Increase::Models::PendingTransactionListParams::Category,
-        ?created_at: Increase::Models::PendingTransactionListParams::CreatedAt,
-        ?cursor: String,
-        ?limit: Integer,
-        ?route_id: String,
-        ?status: Increase::Models::PendingTransactionListParams::Status,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize:
+        (
+          account_id: String,
+          category: Increase::Models::PendingTransactionListParams::Category,
+          created_at: Increase::Models::PendingTransactionListParams::CreatedAt,
+          cursor: String,
+          limit: Integer,
+          route_id: String,
+          status: Increase::Models::PendingTransactionListParams::Status,
+          request_options: Increase::request_opts
+        ) -> void
+        | (
+          ?Increase::Models::pending_transaction_list_params
+          | Increase::BaseModel data
+        ) -> void
 
       def to_hash: -> Increase::Models::pending_transaction_list_params
 
@@ -75,9 +80,14 @@ module Increase
           ::Array[Increase::Models::PendingTransactionListParams::Category::in_]
         ) -> ::Array[Increase::Models::PendingTransactionListParams::Category::in_]
 
-        def initialize: (
-          ?in_: ::Array[Increase::Models::PendingTransactionListParams::Category::in_]
-        ) -> void
+        def initialize:
+          (
+            in_: ::Array[Increase::Models::PendingTransactionListParams::Category::in_]
+          ) -> void
+          | (
+            ?Increase::Models::PendingTransactionListParams::category
+            | Increase::BaseModel data
+          ) -> void
 
         def to_hash: -> Increase::Models::PendingTransactionListParams::category
 
@@ -93,9 +103,7 @@ module Increase
           | :inbound_wire_transfer_reversal
           | :other
 
-        module In
-          extend Increase::Enum
-
+        class In < Increase::Enum
           # Account Transfer Instruction: details will be under the `account_transfer_instruction` object.
           ACCOUNT_TRANSFER_INSTRUCTION: :account_transfer_instruction
 
@@ -126,7 +134,7 @@ module Increase
           # The Pending Transaction was made for an undocumented or deprecated reason.
           OTHER: :other
 
-          def self?.values: -> ::Array[Increase::Models::PendingTransactionListParams::Category::in_]
+          def self.values: -> ::Array[Increase::Models::PendingTransactionListParams::Category::in_]
         end
       end
 
@@ -150,12 +158,17 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize: (
-          ?after: Time,
-          ?before: Time,
-          ?on_or_after: Time,
-          ?on_or_before: Time
-        ) -> void
+        def initialize:
+          (
+            after: Time,
+            before: Time,
+            on_or_after: Time,
+            on_or_before: Time
+          ) -> void
+          | (
+            ?Increase::Models::PendingTransactionListParams::created_at
+            | Increase::BaseModel data
+          ) -> void
 
         def to_hash: -> Increase::Models::PendingTransactionListParams::created_at
       end
@@ -172,24 +185,27 @@ module Increase
           ::Array[Increase::Models::PendingTransactionListParams::Status::in_]
         ) -> ::Array[Increase::Models::PendingTransactionListParams::Status::in_]
 
-        def initialize: (
-          ?in_: ::Array[Increase::Models::PendingTransactionListParams::Status::in_]
-        ) -> void
+        def initialize:
+          (
+            in_: ::Array[Increase::Models::PendingTransactionListParams::Status::in_]
+          ) -> void
+          | (
+            ?Increase::Models::PendingTransactionListParams::status
+            | Increase::BaseModel data
+          ) -> void
 
         def to_hash: -> Increase::Models::PendingTransactionListParams::status
 
         type in_ = :pending | :complete
 
-        module In
-          extend Increase::Enum
-
+        class In < Increase::Enum
           # The Pending Transaction is still awaiting confirmation.
           PENDING: :pending
 
           # The Pending Transaction is confirmed. An associated Transaction exists for this object. The Pending Transaction will no longer count against your balance and can generally be hidden from UIs, etc.
           COMPLETE: :complete
 
-          def self?.values: -> ::Array[Increase::Models::PendingTransactionListParams::Status::in_]
+          def self.values: -> ::Array[Increase::Models::PendingTransactionListParams::Status::in_]
         end
       end
     end

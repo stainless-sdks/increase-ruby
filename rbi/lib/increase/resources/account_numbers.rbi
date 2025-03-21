@@ -8,9 +8,9 @@ module Increase
         params(
           account_id: String,
           name: String,
-          inbound_ach: T.any(Increase::Models::AccountNumberCreateParams::InboundACH, Increase::Util::AnyHash),
-          inbound_checks: T.any(Increase::Models::AccountNumberCreateParams::InboundChecks, Increase::Util::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          inbound_ach: Increase::Models::AccountNumberCreateParams::InboundACH,
+          inbound_checks: Increase::Models::AccountNumberCreateParams::InboundChecks,
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::AccountNumber)
       end
@@ -32,7 +32,7 @@ module Increase
       sig do
         params(
           account_number_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::AccountNumber)
       end
@@ -47,11 +47,11 @@ module Increase
       sig do
         params(
           account_number_id: String,
-          inbound_ach: T.any(Increase::Models::AccountNumberUpdateParams::InboundACH, Increase::Util::AnyHash),
-          inbound_checks: T.any(Increase::Models::AccountNumberUpdateParams::InboundChecks, Increase::Util::AnyHash),
+          inbound_ach: Increase::Models::AccountNumberUpdateParams::InboundACH,
+          inbound_checks: Increase::Models::AccountNumberUpdateParams::InboundChecks,
           name: String,
-          status: Increase::Models::AccountNumberUpdateParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          status: Symbol,
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::AccountNumber)
       end
@@ -75,13 +75,13 @@ module Increase
       sig do
         params(
           account_id: String,
-          ach_debit_status: T.any(Increase::Models::AccountNumberListParams::ACHDebitStatus, Increase::Util::AnyHash),
-          created_at: T.any(Increase::Models::AccountNumberListParams::CreatedAt, Increase::Util::AnyHash),
+          ach_debit_status: Increase::Models::AccountNumberListParams::ACHDebitStatus,
+          created_at: Increase::Models::AccountNumberListParams::CreatedAt,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: T.any(Increase::Models::AccountNumberListParams::Status, Increase::Util::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          status: Increase::Models::AccountNumberListParams::Status,
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Page[Increase::Models::AccountNumber])
       end

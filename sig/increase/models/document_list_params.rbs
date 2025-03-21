@@ -38,14 +38,18 @@ module Increase
 
       def limit=: (Integer) -> Integer
 
-      def initialize: (
-        ?category: Increase::Models::DocumentListParams::Category,
-        ?created_at: Increase::Models::DocumentListParams::CreatedAt,
-        ?cursor: String,
-        ?entity_id: String,
-        ?limit: Integer,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize:
+        (
+          category: Increase::Models::DocumentListParams::Category,
+          created_at: Increase::Models::DocumentListParams::CreatedAt,
+          cursor: String,
+          entity_id: String,
+          limit: Integer,
+          request_options: Increase::request_opts
+        ) -> void
+        | (
+          ?Increase::Models::document_list_params | Increase::BaseModel data
+        ) -> void
 
       def to_hash: -> Increase::Models::document_list_params
 
@@ -59,9 +63,14 @@ module Increase
           ::Array[Increase::Models::DocumentListParams::Category::in_]
         ) -> ::Array[Increase::Models::DocumentListParams::Category::in_]
 
-        def initialize: (
-          ?in_: ::Array[Increase::Models::DocumentListParams::Category::in_]
-        ) -> void
+        def initialize:
+          (
+            in_: ::Array[Increase::Models::DocumentListParams::Category::in_]
+          ) -> void
+          | (
+            ?Increase::Models::DocumentListParams::category
+            | Increase::BaseModel data
+          ) -> void
 
         def to_hash: -> Increase::Models::DocumentListParams::category
 
@@ -71,9 +80,7 @@ module Increase
           | :proof_of_authorization
           | :company_information
 
-        module In
-          extend Increase::Enum
-
+        class In < Increase::Enum
           # Internal Revenue Service Form 1099-INT.
           FORM_1099_INT: :form_1099_int
 
@@ -86,7 +93,7 @@ module Increase
           # Company information, such a policies or procedures, typically submitted during our due diligence process.
           COMPANY_INFORMATION: :company_information
 
-          def self?.values: -> ::Array[Increase::Models::DocumentListParams::Category::in_]
+          def self.values: -> ::Array[Increase::Models::DocumentListParams::Category::in_]
         end
       end
 
@@ -110,12 +117,17 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize: (
-          ?after: Time,
-          ?before: Time,
-          ?on_or_after: Time,
-          ?on_or_before: Time
-        ) -> void
+        def initialize:
+          (
+            after: Time,
+            before: Time,
+            on_or_after: Time,
+            on_or_before: Time
+          ) -> void
+          | (
+            ?Increase::Models::DocumentListParams::created_at
+            | Increase::BaseModel data
+          ) -> void
 
         def to_hash: -> Increase::Models::DocumentListParams::created_at
       end

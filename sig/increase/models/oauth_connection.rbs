@@ -26,40 +26,40 @@ module Increase
 
       attr_accessor type: Increase::Models::OAuthConnection::type_
 
-      def initialize: (
-        id: String,
-        created_at: Time,
-        deleted_at: Time?,
-        group_id: String,
-        oauth_application_id: String,
-        status: Increase::Models::OAuthConnection::status,
-        type: Increase::Models::OAuthConnection::type_
-      ) -> void
+      def initialize:
+        (
+          id: String,
+          created_at: Time,
+          deleted_at: Time?,
+          group_id: String,
+          oauth_application_id: String,
+          status: Increase::Models::OAuthConnection::status,
+          type: Increase::Models::OAuthConnection::type_
+        ) -> void
+        | (
+          ?Increase::Models::oauth_connection | Increase::BaseModel data
+        ) -> void
 
       def to_hash: -> Increase::Models::oauth_connection
 
       type status = :active | :inactive
 
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The OAuth connection is active.
         ACTIVE: :active
 
         # The OAuth connection is permanently deactivated.
         INACTIVE: :inactive
 
-        def self?.values: -> ::Array[Increase::Models::OAuthConnection::status]
+        def self.values: -> ::Array[Increase::Models::OAuthConnection::status]
       end
 
       type type_ = :oauth_connection
 
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         OAUTH_CONNECTION: :oauth_connection
 
-        def self?.values: -> ::Array[Increase::Models::OAuthConnection::type_]
+        def self.values: -> ::Array[Increase::Models::OAuthConnection::type_]
       end
     end
   end

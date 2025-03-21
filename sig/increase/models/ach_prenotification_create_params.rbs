@@ -72,37 +72,40 @@ module Increase
         Increase::Models::ACHPrenotificationCreateParams::standard_entry_class_code
       ) -> Increase::Models::ACHPrenotificationCreateParams::standard_entry_class_code
 
-      def initialize: (
-        account_id: String,
-        account_number: String,
-        routing_number: String,
-        ?addendum: String,
-        ?company_descriptive_date: String,
-        ?company_discretionary_data: String,
-        ?company_entry_description: String,
-        ?company_name: String,
-        ?credit_debit_indicator: Increase::Models::ACHPrenotificationCreateParams::credit_debit_indicator,
-        ?effective_date: Date,
-        ?individual_id: String,
-        ?individual_name: String,
-        ?standard_entry_class_code: Increase::Models::ACHPrenotificationCreateParams::standard_entry_class_code,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize:
+        (
+          account_id: String,
+          account_number: String,
+          routing_number: String,
+          addendum: String,
+          company_descriptive_date: String,
+          company_discretionary_data: String,
+          company_entry_description: String,
+          company_name: String,
+          credit_debit_indicator: Increase::Models::ACHPrenotificationCreateParams::credit_debit_indicator,
+          effective_date: Date,
+          individual_id: String,
+          individual_name: String,
+          standard_entry_class_code: Increase::Models::ACHPrenotificationCreateParams::standard_entry_class_code,
+          request_options: Increase::request_opts
+        ) -> void
+        | (
+          ?Increase::Models::ach_prenotification_create_params
+          | Increase::BaseModel data
+        ) -> void
 
       def to_hash: -> Increase::Models::ach_prenotification_create_params
 
       type credit_debit_indicator = :credit | :debit
 
-      module CreditDebitIndicator
-        extend Increase::Enum
-
+      class CreditDebitIndicator < Increase::Enum
         # The Prenotification is for an anticipated credit.
         CREDIT: :credit
 
         # The Prenotification is for an anticipated debit.
         DEBIT: :debit
 
-        def self?.values: -> ::Array[Increase::Models::ACHPrenotificationCreateParams::credit_debit_indicator]
+        def self.values: -> ::Array[Increase::Models::ACHPrenotificationCreateParams::credit_debit_indicator]
       end
 
       type standard_entry_class_code =
@@ -111,9 +114,7 @@ module Increase
         | :prearranged_payments_and_deposit
         | :internet_initiated
 
-      module StandardEntryClassCode
-        extend Increase::Enum
-
+      class StandardEntryClassCode < Increase::Enum
         # Corporate Credit and Debit (CCD).
         CORPORATE_CREDIT_OR_DEBIT: :corporate_credit_or_debit
 
@@ -126,7 +127,7 @@ module Increase
         # Internet Initiated (WEB).
         INTERNET_INITIATED: :internet_initiated
 
-        def self?.values: -> ::Array[Increase::Models::ACHPrenotificationCreateParams::standard_entry_class_code]
+        def self.values: -> ::Array[Increase::Models::ACHPrenotificationCreateParams::standard_entry_class_code]
       end
     end
   end

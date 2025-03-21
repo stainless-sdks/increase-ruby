@@ -8,109 +8,153 @@ module Increase
 
       # The identifier for the account that will send the transfer.
       sig { returns(String) }
-      attr_accessor :account_id
+      def account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       # The transfer amount in USD cents.
       sig { returns(Integer) }
-      attr_accessor :amount
+      def amount
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def amount=(_)
+      end
 
       # The beneficiary's name.
       sig { returns(String) }
-      attr_accessor :beneficiary_name
+      def beneficiary_name
+      end
+
+      sig { params(_: String).returns(String) }
+      def beneficiary_name=(_)
+      end
 
       # The message that will show on the recipient's bank statement.
       sig { returns(String) }
-      attr_accessor :message_to_recipient
+      def message_to_recipient
+      end
+
+      sig { params(_: String).returns(String) }
+      def message_to_recipient=(_)
+      end
 
       # The account number for the destination account.
       sig { returns(T.nilable(String)) }
-      attr_reader :account_number
+      def account_number
+      end
 
-      sig { params(account_number: String).void }
-      attr_writer :account_number
+      sig { params(_: String).returns(String) }
+      def account_number=(_)
+      end
 
       # The beneficiary's address line 1.
       sig { returns(T.nilable(String)) }
-      attr_reader :beneficiary_address_line1
+      def beneficiary_address_line1
+      end
 
-      sig { params(beneficiary_address_line1: String).void }
-      attr_writer :beneficiary_address_line1
+      sig { params(_: String).returns(String) }
+      def beneficiary_address_line1=(_)
+      end
 
       # The beneficiary's address line 2.
       sig { returns(T.nilable(String)) }
-      attr_reader :beneficiary_address_line2
+      def beneficiary_address_line2
+      end
 
-      sig { params(beneficiary_address_line2: String).void }
-      attr_writer :beneficiary_address_line2
+      sig { params(_: String).returns(String) }
+      def beneficiary_address_line2=(_)
+      end
 
       # The beneficiary's address line 3.
       sig { returns(T.nilable(String)) }
-      attr_reader :beneficiary_address_line3
+      def beneficiary_address_line3
+      end
 
-      sig { params(beneficiary_address_line3: String).void }
-      attr_writer :beneficiary_address_line3
+      sig { params(_: String).returns(String) }
+      def beneficiary_address_line3=(_)
+      end
 
       # The ID of an External Account to initiate a transfer to. If this parameter is
       #   provided, `account_number` and `routing_number` must be absent.
       sig { returns(T.nilable(String)) }
-      attr_reader :external_account_id
+      def external_account_id
+      end
 
-      sig { params(external_account_id: String).void }
-      attr_writer :external_account_id
+      sig { params(_: String).returns(String) }
+      def external_account_id=(_)
+      end
 
       # The originator's address line 1. This is only necessary if you're transferring
       #   from a commingled account. Otherwise, we'll use the associated entity's details.
       sig { returns(T.nilable(String)) }
-      attr_reader :originator_address_line1
+      def originator_address_line1
+      end
 
-      sig { params(originator_address_line1: String).void }
-      attr_writer :originator_address_line1
+      sig { params(_: String).returns(String) }
+      def originator_address_line1=(_)
+      end
 
       # The originator's address line 2. This is only necessary if you're transferring
       #   from a commingled account. Otherwise, we'll use the associated entity's details.
       sig { returns(T.nilable(String)) }
-      attr_reader :originator_address_line2
+      def originator_address_line2
+      end
 
-      sig { params(originator_address_line2: String).void }
-      attr_writer :originator_address_line2
+      sig { params(_: String).returns(String) }
+      def originator_address_line2=(_)
+      end
 
       # The originator's address line 3. This is only necessary if you're transferring
       #   from a commingled account. Otherwise, we'll use the associated entity's details.
       sig { returns(T.nilable(String)) }
-      attr_reader :originator_address_line3
+      def originator_address_line3
+      end
 
-      sig { params(originator_address_line3: String).void }
-      attr_writer :originator_address_line3
+      sig { params(_: String).returns(String) }
+      def originator_address_line3=(_)
+      end
 
       # The originator's name. This is only necessary if you're transferring from a
       #   commingled account. Otherwise, we'll use the associated entity's details.
       sig { returns(T.nilable(String)) }
-      attr_reader :originator_name
+      def originator_name
+      end
 
-      sig { params(originator_name: String).void }
-      attr_writer :originator_name
+      sig { params(_: String).returns(String) }
+      def originator_name=(_)
+      end
 
       # Whether the transfer requires explicit approval via the dashboard or API.
       sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :require_approval
+      def require_approval
+      end
 
-      sig { params(require_approval: T::Boolean).void }
-      attr_writer :require_approval
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def require_approval=(_)
+      end
 
       # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
       #   destination account.
       sig { returns(T.nilable(String)) }
-      attr_reader :routing_number
+      def routing_number
+      end
 
-      sig { params(routing_number: String).void }
-      attr_writer :routing_number
+      sig { params(_: String).returns(String) }
+      def routing_number=(_)
+      end
 
       # The ID of an Account Number that will be passed to the wire's recipient
       sig { returns(T.nilable(String)) }
-      attr_reader :source_account_number_id
+      def source_account_number_id
+      end
 
-      sig { params(source_account_number_id: String).void }
-      attr_writer :source_account_number_id
+      sig { params(_: String).returns(String) }
+      def source_account_number_id=(_)
+      end
 
       sig do
         params(
@@ -130,7 +174,7 @@ module Increase
           require_approval: T::Boolean,
           routing_number: String,
           source_account_number_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end

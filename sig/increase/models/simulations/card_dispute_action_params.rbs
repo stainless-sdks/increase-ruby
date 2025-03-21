@@ -18,20 +18,23 @@ module Increase
 
         def explanation=: (String) -> String
 
-        def initialize: (
-          status: Increase::Models::Simulations::CardDisputeActionParams::status,
-          ?explanation: String,
-          ?request_options: Increase::request_opts
-        ) -> void
+        def initialize:
+          (
+            status: Increase::Models::Simulations::CardDisputeActionParams::status,
+            explanation: String,
+            request_options: Increase::request_opts
+          ) -> void
+          | (
+            ?Increase::Models::Simulations::card_dispute_action_params
+            | Increase::BaseModel data
+          ) -> void
 
         def to_hash: -> Increase::Models::Simulations::card_dispute_action_params
 
         type status =
           :pending_user_information | :accepted | :rejected | :lost | :won
 
-        module Status
-          extend Increase::Enum
-
+        class Status < Increase::Enum
           # Increase has requested more information related to the Card Dispute from you.
           PENDING_USER_INFORMATION: :pending_user_information
 
@@ -47,7 +50,7 @@ module Increase
           # The Card Dispute has been won and no further action can be taken.
           WON: :won
 
-          def self?.values: -> ::Array[Increase::Models::Simulations::CardDisputeActionParams::status]
+          def self.values: -> ::Array[Increase::Models::Simulations::CardDisputeActionParams::status]
         end
       end
     end

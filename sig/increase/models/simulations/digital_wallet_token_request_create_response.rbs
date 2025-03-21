@@ -15,11 +15,16 @@ module Increase
 
         attr_accessor type: Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::type_
 
-        def initialize: (
-          decline_reason: Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::decline_reason?,
-          digital_wallet_token_id: String?,
-          type: Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::type_
-        ) -> void
+        def initialize:
+          (
+            decline_reason: Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::decline_reason?,
+            digital_wallet_token_id: String?,
+            type: Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::type_
+          ) -> void
+          | (
+            ?Increase::Models::Simulations::digital_wallet_token_request_create_response
+            | Increase::BaseModel data
+          ) -> void
 
         def to_hash: -> Increase::Models::Simulations::digital_wallet_token_request_create_response
 
@@ -29,9 +34,7 @@ module Increase
           | :webhook_timed_out
           | :webhook_declined
 
-        module DeclineReason
-          extend Increase::Enum
-
+        class DeclineReason < Increase::Enum
           # The card is not active.
           CARD_NOT_ACTIVE: :card_not_active
 
@@ -44,17 +47,15 @@ module Increase
           # Your webhook declined the token provisioning attempt.
           WEBHOOK_DECLINED: :webhook_declined
 
-          def self?.values: -> ::Array[Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::decline_reason]
+          def self.values: -> ::Array[Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::decline_reason]
         end
 
         type type_ = :inbound_digital_wallet_token_request_simulation_result
 
-        module Type
-          extend Increase::Enum
-
+        class Type < Increase::Enum
           INBOUND_DIGITAL_WALLET_TOKEN_REQUEST_SIMULATION_RESULT: :inbound_digital_wallet_token_request_simulation_result
 
-          def self?.values: -> ::Array[Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::type_]
+          def self.values: -> ::Array[Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::type_]
         end
       end
     end

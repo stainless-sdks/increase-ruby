@@ -8,39 +8,58 @@ module Increase
 
       # The account number for the destination account.
       sig { returns(String) }
-      attr_accessor :account_number
+      def account_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_number=(_)
+      end
 
       # The name you choose for the Account.
       sig { returns(String) }
-      attr_accessor :description
+      def description
+      end
+
+      sig { params(_: String).returns(String) }
+      def description=(_)
+      end
 
       # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
       #   destination account.
       sig { returns(String) }
-      attr_accessor :routing_number
+      def routing_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def routing_number=(_)
+      end
 
       # The type of entity that owns the External Account.
-      sig { returns(T.nilable(Increase::Models::ExternalAccountCreateParams::AccountHolder::OrSymbol)) }
-      attr_reader :account_holder
+      sig { returns(T.nilable(Symbol)) }
+      def account_holder
+      end
 
-      sig { params(account_holder: Increase::Models::ExternalAccountCreateParams::AccountHolder::OrSymbol).void }
-      attr_writer :account_holder
+      sig { params(_: Symbol).returns(Symbol) }
+      def account_holder=(_)
+      end
 
       # The type of the destination account. Defaults to `checking`.
-      sig { returns(T.nilable(Increase::Models::ExternalAccountCreateParams::Funding::OrSymbol)) }
-      attr_reader :funding
+      sig { returns(T.nilable(Symbol)) }
+      def funding
+      end
 
-      sig { params(funding: Increase::Models::ExternalAccountCreateParams::Funding::OrSymbol).void }
-      attr_writer :funding
+      sig { params(_: Symbol).returns(Symbol) }
+      def funding=(_)
+      end
 
       sig do
         params(
           account_number: String,
           description: String,
           routing_number: String,
-          account_holder: Increase::Models::ExternalAccountCreateParams::AccountHolder::OrSymbol,
-          funding: Increase::Models::ExternalAccountCreateParams::Funding::OrSymbol,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          account_holder: Symbol,
+          funding: Symbol,
+          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end
@@ -54,8 +73,8 @@ module Increase
               account_number: String,
               description: String,
               routing_number: String,
-              account_holder: Increase::Models::ExternalAccountCreateParams::AccountHolder::OrSymbol,
-              funding: Increase::Models::ExternalAccountCreateParams::Funding::OrSymbol,
+              account_holder: Symbol,
+              funding: Symbol,
               request_options: Increase::RequestOptions
             }
           )
@@ -64,53 +83,35 @@ module Increase
       end
 
       # The type of entity that owns the External Account.
-      module AccountHolder
-        extend Increase::Enum
+      class AccountHolder < Increase::Enum
+        abstract!
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountCreateParams::AccountHolder) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The External Account is owned by a business.
-        BUSINESS = T.let(:business, Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol)
+        BUSINESS = :business
 
         # The External Account is owned by an individual.
-        INDIVIDUAL =
-          T.let(:individual, Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol)
+        INDIVIDUAL = :individual
 
         # It's unknown what kind of entity owns the External Account.
-        UNKNOWN = T.let(:unknown, Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol]) }
-          def values
-          end
-        end
+        UNKNOWN = :unknown
       end
 
       # The type of the destination account. Defaults to `checking`.
-      module Funding
-        extend Increase::Enum
+      class Funding < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountCreateParams::Funding) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # A checking account.
-        CHECKING = T.let(:checking, Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol)
+        CHECKING = :checking
 
         # A savings account.
-        SAVINGS = T.let(:savings, Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol)
+        SAVINGS = :savings
 
         # A different type of account.
-        OTHER = T.let(:other, Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol]) }
-          def values
-          end
-        end
+        OTHER = :other
       end
     end
   end

@@ -15,22 +15,25 @@ module Increase
 
         attr_accessor type: Increase::Models::Simulations::CardAuthorizationCreateResponse::type_
 
-        def initialize: (
-          declined_transaction: Increase::Models::DeclinedTransaction?,
-          pending_transaction: Increase::Models::PendingTransaction?,
-          type: Increase::Models::Simulations::CardAuthorizationCreateResponse::type_
-        ) -> void
+        def initialize:
+          (
+            declined_transaction: Increase::Models::DeclinedTransaction?,
+            pending_transaction: Increase::Models::PendingTransaction?,
+            type: Increase::Models::Simulations::CardAuthorizationCreateResponse::type_
+          ) -> void
+          | (
+            ?Increase::Models::Simulations::card_authorization_create_response
+            | Increase::BaseModel data
+          ) -> void
 
         def to_hash: -> Increase::Models::Simulations::card_authorization_create_response
 
         type type_ = :inbound_card_authorization_simulation_result
 
-        module Type
-          extend Increase::Enum
-
+        class Type < Increase::Enum
           INBOUND_CARD_AUTHORIZATION_SIMULATION_RESULT: :inbound_card_authorization_simulation_result
 
-          def self?.values: -> ::Array[Increase::Models::Simulations::CardAuthorizationCreateResponse::type_]
+          def self.values: -> ::Array[Increase::Models::Simulations::CardAuthorizationCreateResponse::type_]
         end
       end
     end

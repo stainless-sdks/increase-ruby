@@ -4,13 +4,12 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::RealTimePaymentsTransfersTest < Increase::Test::ResourceTest
   def test_create_required_params
-    response =
-      @increase.real_time_payments_transfers.create(
-        amount: 100,
-        creditor_name: "Ian Crease",
-        remittance_information: "Invoice 29582",
-        source_account_number_id: "account_number_v18nkfqm6afpsrvy82b2"
-      )
+    response = @increase.real_time_payments_transfers.create(
+      amount: 100,
+      creditor_name: "Ian Crease",
+      remittance_information: "Invoice 29582",
+      source_account_number_id: "account_number_v18nkfqm6afpsrvy82b2"
+    )
 
     assert_pattern do
       response => Increase::Models::RealTimePaymentsTransfer
@@ -93,8 +92,6 @@ class Increase::Test::Resources::RealTimePaymentsTransfersTest < Increase::Test:
     end
 
     row = response.to_enum.first
-    return if row.nil?
-
     assert_pattern do
       row => Increase::Models::RealTimePaymentsTransfer
     end

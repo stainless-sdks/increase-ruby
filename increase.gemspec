@@ -12,8 +12,8 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = ["README.md"]
   s.required_ruby_version = ">= 3.0.0"
   s.add_dependency "connection_pool"
-  s.homepage = "https://gemdocs.org/gems/increase"
+  s.homepage = "https://gemdocs.org/gems/increase/latest"
   s.metadata["homepage_uri"] = s.homepage
   s.metadata["source_code_uri"] = "https://github.com/Increase/increase-ruby"
-  s.metadata["rubygems_mfa_required"] = false.to_s
+  s.metadata["rubygems_mfa_required"] = "false"
 end

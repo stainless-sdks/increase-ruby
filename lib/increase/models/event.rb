@@ -58,11 +58,11 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The category of the Event. We may add additional possible values for this enum
       #   over time; your application should be able to handle such additions gracefully.
-      module Category
-        extend Increase::Enum
-
+      class Category < Increase::Enum
         # Occurs whenever an Account is created.
         ACCOUNT_CREATED = :"account.created"
 
@@ -292,15 +292,13 @@ module Increase
         REAL_TIME_DECISION_DIGITAL_WALLET_TOKEN_REQUESTED = :"real_time_decision.digital_wallet_token_requested"
 
         # Occurs whenever a Real-Time Decision is created in response to a digital wallet requiring two-factor authentication.
-        REAL_TIME_DECISION_DIGITAL_WALLET_AUTHENTICATION_REQUESTED =
-          :"real_time_decision.digital_wallet_authentication_requested"
+        REAL_TIME_DECISION_DIGITAL_WALLET_AUTHENTICATION_REQUESTED = :"real_time_decision.digital_wallet_authentication_requested"
 
         # Occurs whenever a Real-Time Decision is created in response to 3DS authentication.
         REAL_TIME_DECISION_CARD_AUTHENTICATION_REQUESTED = :"real_time_decision.card_authentication_requested"
 
         # Occurs whenever a Real-Time Decision is created in response to 3DS authentication challenges.
-        REAL_TIME_DECISION_CARD_AUTHENTICATION_CHALLENGE_REQUESTED =
-          :"real_time_decision.card_authentication_challenge_requested"
+        REAL_TIME_DECISION_CARD_AUTHENTICATION_CHALLENGE_REQUESTED = :"real_time_decision.card_authentication_challenge_requested"
 
         # Occurs whenever a Real-Time Payments Transfer is created.
         REAL_TIME_PAYMENTS_TRANSFER_CREATED = :"real_time_payments_transfer.created"
@@ -330,28 +328,16 @@ module Increase
         WIRE_TRANSFER_UPDATED = :"wire_transfer.updated"
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `event`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         EVENT = :event
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

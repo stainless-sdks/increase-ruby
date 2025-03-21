@@ -367,14 +367,13 @@ module Increase
       # @return [Hash{String=>String}]
       def normalized_headers(*headers)
         {}.merge(*headers.compact).to_h do |key, val|
-          value =
-            case val
-            in Array
-              val.map { _1.to_s.strip }.join(", ")
-            else
-              val&.to_s&.strip
-            end
-          [key.downcase, value]
+          case val
+          in Array
+            val.map { _1.to_s.strip }.join(", ")
+          else
+            val&.to_s&.strip
+          end
+          [key.downcase, val]
         end
       end
     end
@@ -429,8 +428,6 @@ module Increase
       #
       # @param stream [String, IO, StringIO, Enumerable]
       # @param blk [Proc]
-      #
-      # @yieldparam [String]
       def initialize(stream, &blk)
         @stream = stream.is_a?(String) ? StringIO.new(stream) : stream
         @buf = String.new.b
@@ -441,7 +438,6 @@ module Increase
     class << self
       # @param blk [Proc]
       #
-      # @yieldparam [Enumerator::Yielder]
       # @return [Enumerable]
       def string_io(&blk)
         Enumerator.new do |y|
@@ -456,8 +452,6 @@ module Increase
     end
 
     class << self
-      # rubocop:disable Naming/MethodParameterName
-
       # @api private
       #
       # @param y [Enumerator::Yielder]
@@ -495,8 +489,6 @@ module Increase
         end
         y << "\r\n"
       end
-
-      # rubocop:enable Naming/MethodParameterName
 
       # @api private
       #
@@ -636,7 +628,6 @@ module Increase
       # @param enum [Enumerable, nil]
       # @param blk [Proc]
       #
-      # @yieldparam [Enumerator::Yielder]
       # @return [Enumerable]
       def chain_fused(enum, &blk)
         iter = Enumerator.new { blk.call(_1) }

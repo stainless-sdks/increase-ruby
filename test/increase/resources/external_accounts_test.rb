@@ -4,12 +4,11 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::ExternalAccountsTest < Increase::Test::ResourceTest
   def test_create_required_params
-    response =
-      @increase.external_accounts.create(
-        account_number: "987654321",
-        description: "Landlord",
-        routing_number: "101050001"
-      )
+    response = @increase.external_accounts.create(
+      account_number: "987654321",
+      description: "Landlord",
+      routing_number: "101050001"
+    )
 
     assert_pattern do
       response => Increase::Models::ExternalAccount
@@ -88,8 +87,6 @@ class Increase::Test::Resources::ExternalAccountsTest < Increase::Test::Resource
     end
 
     row = response.to_enum.first
-    return if row.nil?
-
     assert_pattern do
       row => Increase::Models::ExternalAccount
     end

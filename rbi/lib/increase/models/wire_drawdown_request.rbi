@@ -5,103 +5,203 @@ module Increase
     class WireDrawdownRequest < Increase::BaseModel
       # The Wire drawdown request identifier.
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       # The Account Number to which the recipient of this request is being requested to
       #   send funds.
       sig { returns(String) }
-      attr_accessor :account_number_id
+      def account_number_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_number_id=(_)
+      end
 
       # The amount being requested in cents.
       sig { returns(Integer) }
-      attr_accessor :amount
+      def amount
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def amount=(_)
+      end
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
       #   the wire drawdown request was created.
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
       #   requested. Will always be "USD".
       sig { returns(String) }
-      attr_accessor :currency
+      def currency
+      end
+
+      sig { params(_: String).returns(String) }
+      def currency=(_)
+      end
 
       # If the recipient fulfills the drawdown request by sending funds, then this will
       #   be the identifier of the corresponding Transaction.
       sig { returns(T.nilable(String)) }
-      attr_accessor :fulfillment_inbound_wire_transfer_id
+      def fulfillment_inbound_wire_transfer_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def fulfillment_inbound_wire_transfer_id=(_)
+      end
 
       # The idempotency key you chose for this object. This value is unique across
       #   Increase and is used to ensure that a request is only processed once. Learn more
       #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      attr_accessor :idempotency_key
+      def idempotency_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def idempotency_key=(_)
+      end
 
       # The message the recipient will see as part of the drawdown request.
       sig { returns(String) }
-      attr_accessor :message_to_recipient
+      def message_to_recipient
+      end
+
+      sig { params(_: String).returns(String) }
+      def message_to_recipient=(_)
+      end
 
       # The originator's address line 1.
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_address_line1
+      def originator_address_line1
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_address_line1=(_)
+      end
 
       # The originator's address line 2.
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_address_line2
+      def originator_address_line2
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_address_line2=(_)
+      end
 
       # The originator's address line 3.
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_address_line3
+      def originator_address_line3
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_address_line3=(_)
+      end
 
       # The originator's name.
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_name
+      def originator_name
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_name=(_)
+      end
 
       # The drawdown request's recipient's account number.
       sig { returns(String) }
-      attr_accessor :recipient_account_number
+      def recipient_account_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def recipient_account_number=(_)
+      end
 
       # Line 1 of the drawdown request's recipient's address.
       sig { returns(T.nilable(String)) }
-      attr_accessor :recipient_address_line1
+      def recipient_address_line1
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def recipient_address_line1=(_)
+      end
 
       # Line 2 of the drawdown request's recipient's address.
       sig { returns(T.nilable(String)) }
-      attr_accessor :recipient_address_line2
+      def recipient_address_line2
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def recipient_address_line2=(_)
+      end
 
       # Line 3 of the drawdown request's recipient's address.
       sig { returns(T.nilable(String)) }
-      attr_accessor :recipient_address_line3
+      def recipient_address_line3
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def recipient_address_line3=(_)
+      end
 
       # The drawdown request's recipient's name.
       sig { returns(T.nilable(String)) }
-      attr_accessor :recipient_name
+      def recipient_name
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def recipient_name=(_)
+      end
 
       # The drawdown request's recipient's routing number.
       sig { returns(String) }
-      attr_accessor :recipient_routing_number
+      def recipient_routing_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def recipient_routing_number=(_)
+      end
 
       # The lifecycle status of the drawdown request.
-      sig { returns(Increase::Models::WireDrawdownRequest::Status::TaggedSymbol) }
-      attr_accessor :status
+      sig { returns(Symbol) }
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       # After the drawdown request is submitted to Fedwire, this will contain
       #   supplemental details.
       sig { returns(T.nilable(Increase::Models::WireDrawdownRequest::Submission)) }
-      attr_reader :submission
+      def submission
+      end
 
       sig do
-        params(
-          submission: T.nilable(T.any(Increase::Models::WireDrawdownRequest::Submission, Increase::Util::AnyHash))
-        )
-          .void
+        params(_: T.nilable(Increase::Models::WireDrawdownRequest::Submission))
+          .returns(T.nilable(Increase::Models::WireDrawdownRequest::Submission))
       end
-      attr_writer :submission
+      def submission=(_)
+      end
 
       # A constant representing the object's type. For this resource it will always be
       #   `wire_drawdown_request`.
-      sig { returns(Increase::Models::WireDrawdownRequest::Type::TaggedSymbol) }
-      attr_accessor :type
+      sig { returns(Symbol) }
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       # Wire drawdown requests enable you to request that someone else send you a wire.
       #   This feature is in beta; reach out to
@@ -126,9 +226,9 @@ module Increase
           recipient_address_line3: T.nilable(String),
           recipient_name: T.nilable(String),
           recipient_routing_number: String,
-          status: Increase::Models::WireDrawdownRequest::Status::OrSymbol,
-          submission: T.nilable(T.any(Increase::Models::WireDrawdownRequest::Submission, Increase::Util::AnyHash)),
-          type: Increase::Models::WireDrawdownRequest::Type::OrSymbol
+          status: Symbol,
+          submission: T.nilable(Increase::Models::WireDrawdownRequest::Submission),
+          type: Symbol
         )
           .returns(T.attached_class)
       end
@@ -179,9 +279,9 @@ module Increase
               recipient_address_line3: T.nilable(String),
               recipient_name: T.nilable(String),
               recipient_routing_number: String,
-              status: Increase::Models::WireDrawdownRequest::Status::TaggedSymbol,
+              status: Symbol,
               submission: T.nilable(Increase::Models::WireDrawdownRequest::Submission),
-              type: Increase::Models::WireDrawdownRequest::Type::TaggedSymbol
+              type: Symbol
             }
           )
       end
@@ -189,37 +289,34 @@ module Increase
       end
 
       # The lifecycle status of the drawdown request.
-      module Status
-        extend Increase::Enum
+      class Status < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::WireDrawdownRequest::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::WireDrawdownRequest::Status::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The drawdown request is queued to be submitted to Fedwire.
-        PENDING_SUBMISSION =
-          T.let(:pending_submission, Increase::Models::WireDrawdownRequest::Status::TaggedSymbol)
+        PENDING_SUBMISSION = :pending_submission
 
         # The drawdown request has been sent and the recipient should respond in some way.
-        PENDING_RESPONSE = T.let(:pending_response, Increase::Models::WireDrawdownRequest::Status::TaggedSymbol)
+        PENDING_RESPONSE = :pending_response
 
         # The drawdown request has been fulfilled by the recipient.
-        FULFILLED = T.let(:fulfilled, Increase::Models::WireDrawdownRequest::Status::TaggedSymbol)
+        FULFILLED = :fulfilled
 
         # The drawdown request has been refused by the recipient.
-        REFUSED = T.let(:refused, Increase::Models::WireDrawdownRequest::Status::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::WireDrawdownRequest::Status::TaggedSymbol]) }
-          def values
-          end
-        end
+        REFUSED = :refused
       end
 
       class Submission < Increase::BaseModel
         # The input message accountability data (IMAD) uniquely identifying the submission
         #   with Fedwire.
         sig { returns(String) }
-        attr_accessor :input_message_accountability_data
+        def input_message_accountability_data
+        end
+
+        sig { params(_: String).returns(String) }
+        def input_message_accountability_data=(_)
+        end
 
         # After the drawdown request is submitted to Fedwire, this will contain
         #   supplemental details.
@@ -234,20 +331,12 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `wire_drawdown_request`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::WireDrawdownRequest::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::WireDrawdownRequest::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        WIRE_DRAWDOWN_REQUEST =
-          T.let(:wire_drawdown_request, Increase::Models::WireDrawdownRequest::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::WireDrawdownRequest::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        WIRE_DRAWDOWN_REQUEST = :wire_drawdown_request
       end
     end
   end

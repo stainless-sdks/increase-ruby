@@ -219,11 +219,11 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Forces a card decline with a specific reason. No real time decision will be
         #   sent.
-        module DeclineReason
-          extend Increase::Enum
-
+        class DeclineReason < Increase::Enum
           # The account has been closed.
           ACCOUNT_CLOSED = :account_closed
 
@@ -276,19 +276,13 @@ module Increase
           SUSPECTED_FRAUD = :suspected_fraud
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
 
+        # @abstract
+        #
         # The direction describes the direction the funds will move, either from the
         #   cardholder to the merchant or from the merchant to the cardholder.
-        module Direction
-          extend Increase::Enum
-
+        class Direction < Increase::Enum
           # A regular card authorization where funds are debited from the cardholder.
           SETTLEMENT = :settlement
 
@@ -296,12 +290,6 @@ module Increase
           REFUND = :refund
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
 
         class NetworkDetails < Increase::BaseModel
@@ -341,10 +329,10 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # The reason code for the stand-in processing.
-            module StandInProcessingReason
-              extend Increase::Enum
-
+            class StandInProcessingReason < Increase::Enum
               # Increase failed to process the authorization in a timely manner.
               ISSUER_ERROR = :issuer_error
 
@@ -352,15 +340,13 @@ module Increase
               INVALID_PHYSICAL_CARD = :invalid_physical_card
 
               # The 3DS cardholder authentication verification value was invalid.
-              INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE =
-                :invalid_cardholder_authentication_verification_value
+              INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE = :invalid_cardholder_authentication_verification_value
 
               # An internal Visa error occurred. Visa uses this reason code for certain expected occurrences as well, such as Application Transaction Counter (ATC) replays.
               INTERNAL_VISA_ERROR = :internal_visa_error
 
               # The merchant has enabled Visa's Transaction Advisory Service and requires further authentication to perform the transaction. In practice this is often utilized at fuel pumps to tell the cardholder to see the cashier.
-              MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED =
-                :merchant_transaction_advisory_service_authentication_required
+              MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED = :merchant_transaction_advisory_service_authentication_required
 
               # The transaction was blocked by Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior, such as card testing.
               PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK = :payment_fraud_disruption_acquirer_block
@@ -369,12 +355,6 @@ module Increase
               OTHER = :other
 
               finalize!
-
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
             end
           end
         end

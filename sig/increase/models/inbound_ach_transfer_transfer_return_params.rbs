@@ -12,10 +12,15 @@ module Increase
 
       attr_accessor reason: Increase::Models::InboundACHTransferTransferReturnParams::reason
 
-      def initialize: (
-        reason: Increase::Models::InboundACHTransferTransferReturnParams::reason,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize:
+        (
+          reason: Increase::Models::InboundACHTransferTransferReturnParams::reason,
+          request_options: Increase::request_opts
+        ) -> void
+        | (
+          ?Increase::Models::inbound_ach_transfer_transfer_return_params
+          | Increase::BaseModel data
+        ) -> void
 
       def to_hash: -> Increase::Models::inbound_ach_transfer_transfer_return_params
 
@@ -31,9 +36,7 @@ module Increase
         | :duplicate_entry
         | :corporate_customer_advised_not_authorized
 
-      module Reason
-        extend Increase::Enum
-
+      class Reason < Increase::Enum
         # The customer's account has insufficient funds. This reason is only allowed for debits. The Nacha return code is R01.
         INSUFFICIENT_FUNDS: :insufficient_funds
 
@@ -64,7 +67,7 @@ module Increase
         # The corporate customer no longer authorizes this transaction. The Nacha return code is R29.
         CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED: :corporate_customer_advised_not_authorized
 
-        def self?.values: -> ::Array[Increase::Models::InboundACHTransferTransferReturnParams::reason]
+        def self.values: -> ::Array[Increase::Models::InboundACHTransferTransferReturnParams::reason]
       end
     end
   end

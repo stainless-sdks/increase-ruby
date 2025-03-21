@@ -170,116 +170,132 @@ module Increase
   #
   #   We can therefore convert string values to Symbols, but can't convert other
   #   values safely.
-  module Enum
-    include Increase::Converter
+  class Enum
+    extend Increase::Converter
 
-    # All of the valid Symbol values for this enum.
-    sig { overridable.returns(T::Array[T.any(NilClass, T::Boolean, Integer, Float, Symbol)]) }
-    def values
-    end
+    abstract!
 
-    # @api private
-    #
-    # Guard against thread safety issues by instantiating `@values`.
-    sig { void }
-    private def finalize!
+    Value = type_template(:out)
+
+    class << self
+      # All of the valid Symbol values for this enum.
+      sig { overridable.returns(T::Array[Value]) }
+      def values
+      end
+
+      # @api private
+      #
+      # Guard against thread safety issues by instantiating `@values`.
+      sig { void }
+      private def finalize!
+      end
     end
 
     sig { params(other: T.anything).returns(T::Boolean) }
-    def ===(other)
+    def self.===(other)
     end
 
     sig { params(other: T.anything).returns(T::Boolean) }
-    def ==(other)
+    def self.==(other)
     end
 
-    # @api private
-    sig { override.params(value: T.any(String, Symbol, T.anything)).returns(T.any(Symbol, T.anything)) }
-    def coerce(value)
-    end
+    class << self
+      # @api private
+      sig { override.params(value: T.any(String, Symbol, T.anything)).returns(T.any(Symbol, T.anything)) }
+      def coerce(value)
+      end
 
-    # @api private
-    sig { override.params(value: T.any(Symbol, T.anything)).returns(T.any(Symbol, T.anything)) }
-    def dump(value)
-    end
+      # @api private
+      sig { override.params(value: T.any(Symbol, T.anything)).returns(T.any(Symbol, T.anything)) }
+      def dump(value)
+      end
 
-    # @api private
-    sig do
-      override
-        .params(value: T.anything)
-        .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
-    end
-    def try_strict_coerce(value)
+      # @api private
+      sig do
+        override
+          .params(value: T.anything)
+          .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
+      end
+      def try_strict_coerce(value)
+      end
     end
   end
 
   # @api private
-  module Union
-    include Increase::Converter
+  class Union
+    extend Increase::Converter
 
-    # @api private
-    #
-    # All of the specified variant info for this union.
-    sig { returns(T::Array[[T.nilable(Symbol), T.proc.returns(Increase::Converter::Input)]]) }
-    private def known_variants
-    end
+    abstract!
 
-    # @api private
-    sig { returns(T::Array[[T.nilable(Symbol), T.anything]]) }
-    protected def derefed_variants
-    end
+    Variants = type_template(:out)
 
-    # All of the specified variants for this union.
-    sig { overridable.returns(T::Array[T.anything]) }
-    def variants
-    end
+    class << self
+      # @api private
+      #
+      # All of the specified variant info for this union.
+      sig { returns(T::Array[[T.nilable(Symbol), T.proc.returns(Variants)]]) }
+      private def known_variants
+      end
 
-    # @api private
-    sig { params(property: Symbol).void }
-    private def discriminator(property)
-    end
+      # @api private
+      sig { returns(T::Array[[T.nilable(Symbol), Variants]]) }
+      protected def derefed_variants
+      end
 
-    # @api private
-    sig do
-      params(
-        key: T.any(Symbol, Increase::Util::AnyHash, T.proc.returns(T.anything), T.anything),
-        spec: T.any(Increase::Util::AnyHash, T.proc.returns(T.anything), T.anything)
-      )
-        .void
-    end
-    private def variant(key, spec = nil)
-    end
+      # All of the specified variants for this union.
+      sig { overridable.returns(T::Array[Variants]) }
+      def variants
+      end
 
-    # @api private
-    sig { params(value: T.anything).returns(T.nilable(T.anything)) }
-    private def resolve_variant(value)
+      # @api private
+      sig { params(property: Symbol).void }
+      private def discriminator(property)
+      end
+
+      # @api private
+      sig do
+        params(
+          key: T.any(Symbol, T::Hash[Symbol, T.anything], T.proc.returns(Variants), Variants),
+          spec: T.any(T::Hash[Symbol, T.anything], T.proc.returns(Variants), Variants)
+        )
+          .void
+      end
+      private def variant(key, spec = nil)
+      end
+
+      # @api private
+      sig { params(value: T.anything).returns(T.nilable(Variants)) }
+      private def resolve_variant(value)
+      end
     end
 
     sig { params(other: T.anything).returns(T::Boolean) }
-    def ===(other)
+    def self.===(other)
     end
 
     sig { params(other: T.anything).returns(T::Boolean) }
-    def ==(other)
+    def self.==(other)
     end
 
-    # @api private
-    sig { override.params(value: T.anything).returns(T.anything) }
-    def coerce(value)
-    end
+    class << self
+      # @api private
+      sig { override.params(value: T.anything).returns(T.anything) }
+      def coerce(value)
+      end
 
-    # @api private
-    sig { override.params(value: T.anything).returns(T.anything) }
-    def dump(value)
-    end
+      # @api private
+      sig { override.params(value: T.anything).returns(T.anything) }
+      def dump(value)
+      end
 
-    # @api private
-    sig do
-      override
-        .params(value: T.anything)
-        .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
-    end
-    def try_strict_coerce(value)
+      # @api private
+      sig do
+        override
+          .params(value: T.anything)
+          .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
+      end
+      def try_strict_coerce(value)
+      end
     end
   end
 
@@ -292,19 +308,7 @@ module Increase
     abstract!
     final!
 
-    sig(:final) do
-      params(
-        type_info: T.any(
-          Increase::Util::AnyHash,
-          T.proc.returns(Increase::Converter::Input),
-          Increase::Converter::Input
-        ),
-        spec: Increase::Util::AnyHash
-      )
-        .returns(T.attached_class)
-    end
-    def self.[](type_info, spec = {})
-    end
+    Elem = type_member(:out)
 
     sig(:final) { params(other: T.anything).returns(T::Boolean) }
     def ===(other)
@@ -342,7 +346,7 @@ module Increase
     end
 
     # @api private
-    sig(:final) { returns(T.anything) }
+    sig(:final) { returns(Elem) }
     protected def item_type
     end
 
@@ -350,15 +354,15 @@ module Increase
     sig(:final) do
       params(
         type_info: T.any(
-          Increase::Util::AnyHash,
+          T::Hash[Symbol, T.anything],
           T.proc.returns(Increase::Converter::Input),
           Increase::Converter::Input
         ),
-        spec: Increase::Util::AnyHash
+        spec: T::Hash[Symbol, T.anything]
       )
-        .void
+        .returns(T.attached_class)
     end
-    def initialize(type_info, spec = {})
+    def self.new(type_info, spec = {})
     end
   end
 
@@ -371,19 +375,7 @@ module Increase
     abstract!
     final!
 
-    sig(:final) do
-      params(
-        type_info: T.any(
-          Increase::Util::AnyHash,
-          T.proc.returns(Increase::Converter::Input),
-          Increase::Converter::Input
-        ),
-        spec: Increase::Util::AnyHash
-      )
-        .returns(T.attached_class)
-    end
-    def self.[](type_info, spec = {})
-    end
+    Elem = type_member(:out)
 
     sig(:final) { params(other: T.anything).returns(T::Boolean) }
     def ===(other)
@@ -397,7 +389,7 @@ module Increase
     sig(:final) do
       override
         .params(value: T.any(T::Hash[T.anything, T.anything], T.anything))
-        .returns(T.any(Increase::Util::AnyHash, T.anything))
+        .returns(T.any(T::Hash[Symbol, T.anything], T.anything))
     end
     def coerce(value)
     end
@@ -406,7 +398,7 @@ module Increase
     sig(:final) do
       override
         .params(value: T.any(T::Hash[T.anything, T.anything], T.anything))
-        .returns(T.any(Increase::Util::AnyHash, T.anything))
+        .returns(T.any(T::Hash[Symbol, T.anything], T.anything))
     end
     def dump(value)
     end
@@ -421,7 +413,7 @@ module Increase
     end
 
     # @api private
-    sig(:final) { returns(T.anything) }
+    sig(:final) { returns(Elem) }
     protected def item_type
     end
 
@@ -429,15 +421,15 @@ module Increase
     sig(:final) do
       params(
         type_info: T.any(
-          Increase::Util::AnyHash,
+          T::Hash[Symbol, T.anything],
           T.proc.returns(Increase::Converter::Input),
           Increase::Converter::Input
         ),
-        spec: Increase::Util::AnyHash
+        spec: T::Hash[Symbol, T.anything]
       )
-        .void
+        .returns(T.attached_class)
     end
-    def initialize(type_info, spec = {})
+    def self.new(type_info, spec = {})
     end
   end
 
@@ -463,11 +455,6 @@ module Increase
         )
       end
       def known_fields
-      end
-
-      # @api private
-      sig { returns(T::Hash[Symbol, Symbol]) }
-      def reverse_map
       end
 
       # @api private
@@ -501,7 +488,7 @@ module Increase
             T.proc.returns(Increase::Converter::Input),
             Increase::Converter::Input
           ),
-          spec: Increase::Util::AnyHash
+          spec: T::Hash[Symbol, T.anything]
         )
           .void
       end
@@ -513,11 +500,11 @@ module Increase
         params(
           name_sym: Symbol,
           type_info: T.any(
-            Increase::Util::AnyHash,
+            T::Hash[Symbol, T.anything],
             T.proc.returns(Increase::Converter::Input),
             Increase::Converter::Input
           ),
-          spec: Increase::Util::AnyHash
+          spec: T::Hash[Symbol, T.anything]
         )
           .void
       end
@@ -529,11 +516,11 @@ module Increase
         params(
           name_sym: Symbol,
           type_info: T.any(
-            Increase::Util::AnyHash,
+            T::Hash[Symbol, T.anything],
             T.proc.returns(Increase::Converter::Input),
             Increase::Converter::Input
           ),
-          spec: Increase::Util::AnyHash
+          spec: T::Hash[Symbol, T.anything]
         )
           .void
       end
@@ -607,23 +594,13 @@ module Increase
     #
     #   This method is not recursive. The returned value is shared by the object, so it
     #   should not be mutated.
-    sig { overridable.returns(Increase::Util::AnyHash) }
+    sig { overridable.returns(T::Hash[Symbol, T.anything]) }
     def to_h
     end
 
-    # Returns a Hash of the data underlying this object. O(1)
-    #
-    #   Keys are Symbols and values are the raw values from the response. The return
-    #   value indicates which values were ever set on the object. i.e. there will be a
-    #   key in this hash if they ever were, even if the set value was nil.
-    #
-    #   This method is not recursive. The returned value is shared by the object, so it
-    #   should not be mutated.
-    sig { overridable.returns(Increase::Util::AnyHash) }
-    def to_hash
-    end
+    alias_method :to_hash, :to_h
 
-    sig { params(keys: T.nilable(T::Array[Symbol])).returns(Increase::Util::AnyHash) }
+    sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.anything]) }
     def deconstruct_keys(keys)
     end
 

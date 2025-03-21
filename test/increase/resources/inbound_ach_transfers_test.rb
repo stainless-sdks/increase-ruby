@@ -51,8 +51,6 @@ class Increase::Test::Resources::InboundACHTransfersTest < Increase::Test::Resou
     end
 
     row = response.to_enum.first
-    return if row.nil?
-
     assert_pattern do
       row => Increase::Models::InboundACHTransfer
     end
@@ -171,8 +169,10 @@ class Increase::Test::Resources::InboundACHTransfersTest < Increase::Test::Resou
   end
 
   def test_transfer_return_required_params
-    response =
-      @increase.inbound_ach_transfers.transfer_return("inbound_ach_transfer_id", reason: :insufficient_funds)
+    response = @increase.inbound_ach_transfers.transfer_return(
+      "inbound_ach_transfer_id",
+      reason: :insufficient_funds
+    )
 
     assert_pattern do
       response => Increase::Models::InboundACHTransfer

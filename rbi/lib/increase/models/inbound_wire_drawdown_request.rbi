@@ -5,103 +5,218 @@ module Increase
     class InboundWireDrawdownRequest < Increase::BaseModel
       # The Wire drawdown request identifier.
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       # The amount being requested in cents.
       sig { returns(Integer) }
-      attr_accessor :amount
+      def amount
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def amount=(_)
+      end
 
       # The drawdown request's beneficiary's account number.
       sig { returns(String) }
-      attr_accessor :beneficiary_account_number
+      def beneficiary_account_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def beneficiary_account_number=(_)
+      end
 
       # Line 1 of the drawdown request's beneficiary's address.
       sig { returns(T.nilable(String)) }
-      attr_accessor :beneficiary_address_line1
+      def beneficiary_address_line1
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def beneficiary_address_line1=(_)
+      end
 
       # Line 2 of the drawdown request's beneficiary's address.
       sig { returns(T.nilable(String)) }
-      attr_accessor :beneficiary_address_line2
+      def beneficiary_address_line2
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def beneficiary_address_line2=(_)
+      end
 
       # Line 3 of the drawdown request's beneficiary's address.
       sig { returns(T.nilable(String)) }
-      attr_accessor :beneficiary_address_line3
+      def beneficiary_address_line3
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def beneficiary_address_line3=(_)
+      end
 
       # The drawdown request's beneficiary's name.
       sig { returns(T.nilable(String)) }
-      attr_accessor :beneficiary_name
+      def beneficiary_name
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def beneficiary_name=(_)
+      end
 
       # The drawdown request's beneficiary's routing number.
       sig { returns(String) }
-      attr_accessor :beneficiary_routing_number
+      def beneficiary_routing_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def beneficiary_routing_number=(_)
+      end
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
       #   the inbound wire drawdown requested was created.
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
       #   requested. Will always be "USD".
       sig { returns(String) }
-      attr_accessor :currency
+      def currency
+      end
+
+      sig { params(_: String).returns(String) }
+      def currency=(_)
+      end
 
       # A message from the drawdown request's originator.
       sig { returns(T.nilable(String)) }
-      attr_accessor :message_to_recipient
+      def message_to_recipient
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def message_to_recipient=(_)
+      end
 
       # The drawdown request's originator's account number.
       sig { returns(String) }
-      attr_accessor :originator_account_number
+      def originator_account_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def originator_account_number=(_)
+      end
 
       # Line 1 of the drawdown request's originator's address.
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_address_line1
+      def originator_address_line1
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_address_line1=(_)
+      end
 
       # Line 2 of the drawdown request's originator's address.
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_address_line2
+      def originator_address_line2
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_address_line2=(_)
+      end
 
       # Line 3 of the drawdown request's originator's address.
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_address_line3
+      def originator_address_line3
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_address_line3=(_)
+      end
 
       # The drawdown request's originator's name.
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_name
+      def originator_name
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_name=(_)
+      end
 
       # The drawdown request's originator's routing number.
       sig { returns(String) }
-      attr_accessor :originator_routing_number
+      def originator_routing_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def originator_routing_number=(_)
+      end
 
       # Line 1 of the information conveyed from the originator of the message to the
       #   beneficiary.
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_to_beneficiary_information_line1
+      def originator_to_beneficiary_information_line1
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_to_beneficiary_information_line1=(_)
+      end
 
       # Line 2 of the information conveyed from the originator of the message to the
       #   beneficiary.
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_to_beneficiary_information_line2
+      def originator_to_beneficiary_information_line2
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_to_beneficiary_information_line2=(_)
+      end
 
       # Line 3 of the information conveyed from the originator of the message to the
       #   beneficiary.
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_to_beneficiary_information_line3
+      def originator_to_beneficiary_information_line3
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_to_beneficiary_information_line3=(_)
+      end
 
       # Line 4 of the information conveyed from the originator of the message to the
       #   beneficiary.
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_to_beneficiary_information_line4
+      def originator_to_beneficiary_information_line4
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_to_beneficiary_information_line4=(_)
+      end
 
       # The Account Number from which the recipient of this request is being requested
       #   to send funds.
       sig { returns(String) }
-      attr_accessor :recipient_account_number_id
+      def recipient_account_number_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def recipient_account_number_id=(_)
+      end
 
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_wire_drawdown_request`.
-      sig { returns(Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol) }
-      attr_accessor :type
+      sig { returns(Symbol) }
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       # Inbound wire drawdown requests are requests from someone else to send them a
       #   wire. This feature is in beta; reach out to
@@ -130,7 +245,7 @@ module Increase
           originator_to_beneficiary_information_line3: T.nilable(String),
           originator_to_beneficiary_information_line4: T.nilable(String),
           recipient_account_number_id: String,
-          type: Increase::Models::InboundWireDrawdownRequest::Type::OrSymbol
+          type: Symbol
         )
           .returns(T.attached_class)
       end
@@ -187,7 +302,7 @@ module Increase
               originator_to_beneficiary_information_line3: T.nilable(String),
               originator_to_beneficiary_information_line4: T.nilable(String),
               recipient_account_number_id: String,
-              type: Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol
+              type: Symbol
             }
           )
       end
@@ -196,21 +311,12 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_wire_drawdown_request`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundWireDrawdownRequest::Type) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        INBOUND_WIRE_DRAWDOWN_REQUEST =
-          T.let(:inbound_wire_drawdown_request, Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        INBOUND_WIRE_DRAWDOWN_REQUEST = :inbound_wire_drawdown_request
       end
     end
   end

@@ -29,28 +29,31 @@ module Increase
 
       def entity_id=: (String) -> String
 
-      def initialize: (
-        name: String,
-        ?account_id: String,
-        ?compliance_category: Increase::Models::BookkeepingAccountCreateParams::compliance_category,
-        ?entity_id: String,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize:
+        (
+          name: String,
+          account_id: String,
+          compliance_category: Increase::Models::BookkeepingAccountCreateParams::compliance_category,
+          entity_id: String,
+          request_options: Increase::request_opts
+        ) -> void
+        | (
+          ?Increase::Models::bookkeeping_account_create_params
+          | Increase::BaseModel data
+        ) -> void
 
       def to_hash: -> Increase::Models::bookkeeping_account_create_params
 
       type compliance_category = :commingled_cash | :customer_balance
 
-      module ComplianceCategory
-        extend Increase::Enum
-
+      class ComplianceCategory < Increase::Enum
         # A cash in an commingled Increase Account.
         COMMINGLED_CASH: :commingled_cash
 
         # A customer balance.
         CUSTOMER_BALANCE: :customer_balance
 
-        def self?.values: -> ::Array[Increase::Models::BookkeepingAccountCreateParams::compliance_category]
+        def self.values: -> ::Array[Increase::Models::BookkeepingAccountCreateParams::compliance_category]
       end
     end
   end

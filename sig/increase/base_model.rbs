@@ -62,28 +62,28 @@ module Increase
     ) -> ([true, top, nil] | [false, bool, Integer])
   end
 
-  module Enum
-    include Increase::Converter
+  class Enum
+    extend Increase::Converter
 
     def self.values: -> ::Array[(nil | bool | Integer | Float | Symbol)]
 
     private def self.finalize!: -> void
 
-    def ===: (top other) -> bool
+    def self.===: (top other) -> bool
 
-    def ==: (top other) -> bool
+    def self.==: (top other) -> bool
 
-    def coerce: (String | Symbol | top value) -> (Symbol | top)
+    def self.coerce: (String | Symbol | top value) -> (Symbol | top)
 
-    def dump: (Symbol | top value) -> (Symbol | top)
+    def self.dump: (Symbol | top value) -> (Symbol | top)
 
-    def try_strict_coerce: (
+    def self.try_strict_coerce: (
       top value
     ) -> ([true, top, nil] | [false, bool, Integer])
   end
 
-  module Union
-    include Increase::Converter
+  class Union
+    extend Increase::Converter
 
     private def self.known_variants: -> ::Array[[Symbol?, (^-> Increase::Converter::input)]]
 
@@ -105,28 +105,21 @@ module Increase
 
     private def self.resolve_variant: (top value) -> Increase::Converter::input?
 
-    def ===: (top other) -> bool
+    def self.===: (top other) -> bool
 
-    def ==: (top other) -> bool
+    def self.==: (top other) -> bool
 
-    def coerce: (top value) -> top
+    def self.coerce: (top value) -> top
 
-    def dump: (top value) -> top
+    def self.dump: (top value) -> top
 
-    def try_strict_coerce: (
+    def self.try_strict_coerce: (
       top value
     ) -> ([true, top, nil] | [false, bool, Integer])
   end
 
-  class ArrayOf
+  class ArrayOf[Elem]
     include Increase::Converter
-
-    def self.[]: (
-      ::Hash[Symbol, top]
-      | ^-> Increase::Converter::input
-      | Increase::Converter::input type_info,
-      ?::Hash[Symbol, top] spec
-    ) -> instance
 
     def ===: (top other) -> bool
 
@@ -140,7 +133,7 @@ module Increase
       top value
     ) -> ([true, top, nil] | [false, bool, Integer])
 
-    def item_type: -> top
+    def item_type: -> Elem
 
     def initialize: (
       ::Hash[Symbol, top]
@@ -150,15 +143,8 @@ module Increase
     ) -> void
   end
 
-  class HashOf
+  class HashOf[Elem]
     include Increase::Converter
-
-    def self.[]: (
-      ::Hash[Symbol, top]
-      | ^-> Increase::Converter::input
-      | Increase::Converter::input type_info,
-      ?::Hash[Symbol, top] spec
-    ) -> instance
 
     def ===: (top other) -> bool
 
@@ -172,7 +158,7 @@ module Increase
       top value
     ) -> ([true, top, nil] | [false, bool, Integer])
 
-    def item_type: -> top
+    def item_type: -> Elem
 
     def initialize: (
       ::Hash[Symbol, top]
@@ -189,8 +175,6 @@ module Increase
 
     def self.known_fields: -> ::Hash[Symbol, (Increase::BaseModel::known_field
     & { type_fn: (^-> Increase::Converter::input) })]
-
-    def self.reverse_map: -> ::Hash[Symbol, Symbol]
 
     def self.fields: -> ::Hash[Symbol, (Increase::BaseModel::known_field
     & { type: Increase::Converter::input })]

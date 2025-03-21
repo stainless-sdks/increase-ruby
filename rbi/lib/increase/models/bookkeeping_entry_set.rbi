@@ -5,34 +5,72 @@ module Increase
     class BookkeepingEntrySet < Increase::BaseModel
       # The entry set identifier.
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       # When the entry set was created.
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       # The timestamp of the entry set.
       sig { returns(Time) }
-      attr_accessor :date
+      def date
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def date=(_)
+      end
 
       # The entries.
       sig { returns(T::Array[Increase::Models::BookkeepingEntrySet::Entry]) }
-      attr_accessor :entries
+      def entries
+      end
+
+      sig do
+        params(_: T::Array[Increase::Models::BookkeepingEntrySet::Entry])
+          .returns(T::Array[Increase::Models::BookkeepingEntrySet::Entry])
+      end
+      def entries=(_)
+      end
 
       # The idempotency key you chose for this object. This value is unique across
       #   Increase and is used to ensure that a request is only processed once. Learn more
       #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      attr_accessor :idempotency_key
+      def idempotency_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def idempotency_key=(_)
+      end
 
       # The transaction identifier, if any.
       sig { returns(T.nilable(String)) }
-      attr_accessor :transaction_id
+      def transaction_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def transaction_id=(_)
+      end
 
       # A constant representing the object's type. For this resource it will always be
       #   `bookkeeping_entry_set`.
-      sig { returns(Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol) }
-      attr_accessor :type
+      sig { returns(Symbol) }
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       # Entry Sets are accounting entries that are transactionally applied. Your
       #   compliance setup might require annotating money movements using this API. Learn
@@ -43,10 +81,10 @@ module Increase
           id: String,
           created_at: Time,
           date: Time,
-          entries: T::Array[T.any(Increase::Models::BookkeepingEntrySet::Entry, Increase::Util::AnyHash)],
+          entries: T::Array[Increase::Models::BookkeepingEntrySet::Entry],
           idempotency_key: T.nilable(String),
           transaction_id: T.nilable(String),
-          type: Increase::Models::BookkeepingEntrySet::Type::OrSymbol
+          type: Symbol
         )
           .returns(T.attached_class)
       end
@@ -63,7 +101,7 @@ module Increase
               entries: T::Array[Increase::Models::BookkeepingEntrySet::Entry],
               idempotency_key: T.nilable(String),
               transaction_id: T.nilable(String),
-              type: Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol
+              type: Symbol
             }
           )
       end
@@ -73,15 +111,30 @@ module Increase
       class Entry < Increase::BaseModel
         # The entry identifier.
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         # The bookkeeping account impacted by the entry.
         sig { returns(String) }
-        attr_accessor :account_id
+        def account_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def account_id=(_)
+        end
 
         # The amount of the entry in minor units.
         sig { returns(Integer) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def amount=(_)
+        end
 
         sig { params(id: String, account_id: String, amount: Integer).returns(T.attached_class) }
         def self.new(id:, account_id:, amount:)
@@ -94,20 +147,12 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `bookkeeping_entry_set`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::BookkeepingEntrySet::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        BOOKKEEPING_ENTRY_SET =
-          T.let(:bookkeeping_entry_set, Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        BOOKKEEPING_ENTRY_SET = :bookkeeping_entry_set
       end
     end
   end

@@ -32,17 +32,19 @@ module Increase
 
       attr_accessor type: Increase::Models::PhysicalCard::type_
 
-      def initialize: (
-        id: String,
-        card_id: String,
-        cardholder: Increase::Models::PhysicalCard::Cardholder,
-        created_at: Time,
-        idempotency_key: String?,
-        physical_card_profile_id: String?,
-        shipment: Increase::Models::PhysicalCard::Shipment,
-        status: Increase::Models::PhysicalCard::status,
-        type: Increase::Models::PhysicalCard::type_
-      ) -> void
+      def initialize:
+        (
+          id: String,
+          card_id: String,
+          cardholder: Increase::Models::PhysicalCard::Cardholder,
+          created_at: Time,
+          idempotency_key: String?,
+          physical_card_profile_id: String?,
+          shipment: Increase::Models::PhysicalCard::Shipment,
+          status: Increase::Models::PhysicalCard::status,
+          type: Increase::Models::PhysicalCard::type_
+        ) -> void
+        | (?Increase::Models::physical_card | Increase::BaseModel data) -> void
 
       def to_hash: -> Increase::Models::physical_card
 
@@ -53,7 +55,12 @@ module Increase
 
         attr_accessor last_name: String
 
-        def initialize: (first_name: String, last_name: String) -> void
+        def initialize:
+          (first_name: String, last_name: String) -> void
+          | (
+            ?Increase::Models::PhysicalCard::cardholder
+            | Increase::BaseModel data
+          ) -> void
 
         def to_hash: -> Increase::Models::PhysicalCard::cardholder
       end
@@ -75,12 +82,16 @@ module Increase
 
         attr_accessor tracking: Increase::Models::PhysicalCard::Shipment::Tracking?
 
-        def initialize: (
-          address: Increase::Models::PhysicalCard::Shipment::Address,
-          method_: Increase::Models::PhysicalCard::Shipment::method_,
-          status: Increase::Models::PhysicalCard::Shipment::status,
-          tracking: Increase::Models::PhysicalCard::Shipment::Tracking?
-        ) -> void
+        def initialize:
+          (
+            address: Increase::Models::PhysicalCard::Shipment::Address,
+            method_: Increase::Models::PhysicalCard::Shipment::method_,
+            status: Increase::Models::PhysicalCard::Shipment::status,
+            tracking: Increase::Models::PhysicalCard::Shipment::Tracking?
+          ) -> void
+          | (
+            ?Increase::Models::PhysicalCard::shipment | Increase::BaseModel data
+          ) -> void
 
         def to_hash: -> Increase::Models::PhysicalCard::shipment
 
@@ -110,24 +121,27 @@ module Increase
 
           attr_accessor state: String
 
-          def initialize: (
-            city: String,
-            line1: String,
-            line2: String?,
-            line3: String?,
-            name: String,
-            postal_code: String,
-            state: String
-          ) -> void
+          def initialize:
+            (
+              city: String,
+              line1: String,
+              line2: String?,
+              line3: String?,
+              name: String,
+              postal_code: String,
+              state: String
+            ) -> void
+            | (
+              ?Increase::Models::PhysicalCard::Shipment::address
+              | Increase::BaseModel data
+            ) -> void
 
           def to_hash: -> Increase::Models::PhysicalCard::Shipment::address
         end
 
         type method_ = :usps | :fedex_priority_overnight | :fedex_2_day
 
-        module Method
-          extend Increase::Enum
-
+        class Method < Increase::Enum
           # USPS Post with tracking.
           USPS: :usps
 
@@ -137,7 +151,7 @@ module Increase
           # FedEx 2-day.
           FEDEX_2_DAY: :fedex_2_day
 
-          def self?.values: -> ::Array[Increase::Models::PhysicalCard::Shipment::method_]
+          def self.values: -> ::Array[Increase::Models::PhysicalCard::Shipment::method_]
         end
 
         type status =
@@ -149,9 +163,7 @@ module Increase
           | :shipped
           | :returned
 
-        module Status
-          extend Increase::Enum
-
+        class Status < Increase::Enum
           # The physical card has not yet been shipped.
           PENDING: :pending
 
@@ -173,7 +185,7 @@ module Increase
           # The physical card shipment was returned to the sender and destroyed by the production facility.
           RETURNED: :returned
 
-          def self?.values: -> ::Array[Increase::Models::PhysicalCard::Shipment::status]
+          def self.values: -> ::Array[Increase::Models::PhysicalCard::Shipment::status]
         end
 
         type tracking =
@@ -193,12 +205,17 @@ module Increase
 
           attr_accessor shipped_at: Time
 
-          def initialize: (
-            number: String,
-            return_number: String?,
-            return_reason: String?,
-            shipped_at: Time
-          ) -> void
+          def initialize:
+            (
+              number: String,
+              return_number: String?,
+              return_reason: String?,
+              shipped_at: Time
+            ) -> void
+            | (
+              ?Increase::Models::PhysicalCard::Shipment::tracking
+              | Increase::BaseModel data
+            ) -> void
 
           def to_hash: -> Increase::Models::PhysicalCard::Shipment::tracking
         end
@@ -206,9 +223,7 @@ module Increase
 
       type status = :active | :disabled | :canceled
 
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The physical card is active.
         ACTIVE: :active
 
@@ -218,17 +233,15 @@ module Increase
         # The physical card is permanently canceled.
         CANCELED: :canceled
 
-        def self?.values: -> ::Array[Increase::Models::PhysicalCard::status]
+        def self.values: -> ::Array[Increase::Models::PhysicalCard::status]
       end
 
       type type_ = :physical_card
 
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         PHYSICAL_CARD: :physical_card
 
-        def self?.values: -> ::Array[Increase::Models::PhysicalCard::type_]
+        def self.values: -> ::Array[Increase::Models::PhysicalCard::type_]
       end
     end
   end

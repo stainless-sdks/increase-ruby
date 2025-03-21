@@ -70,20 +70,14 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `proof_of_authorization_request`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         PROOF_OF_AUTHORIZATION_REQUEST = :proof_of_authorization_request
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

@@ -16,9 +16,9 @@ module Increase
             amount: Integer,
             authenticated_card_payment_id: String,
             card_id: String,
-            decline_reason: Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::OrSymbol,
+            decline_reason: Symbol,
             digital_wallet_token_id: String,
-            direction: Increase::Models::Simulations::CardAuthorizationCreateParams::Direction::OrSymbol,
+            direction: Symbol,
             event_subscription_id: String,
             merchant_acceptor_id: String,
             merchant_category_code: String,
@@ -26,13 +26,10 @@ module Increase
             merchant_country: String,
             merchant_descriptor: String,
             merchant_state: String,
-            network_details: T.any(
-              Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
-              Increase::Util::AnyHash
-            ),
+            network_details: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
             physical_card_id: String,
             terminal_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
           )
             .returns(Increase::Models::Simulations::CardAuthorizationCreateResponse)
         end

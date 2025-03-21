@@ -194,9 +194,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        module In
-          extend Increase::Enum
-
+        # @abstract
+        class In < Increase::Enum
           # Closed Accounts on which no new activity can occur.
           CLOSED = :closed
 
@@ -204,12 +203,6 @@ module Increase
           OPEN = :open
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
     end

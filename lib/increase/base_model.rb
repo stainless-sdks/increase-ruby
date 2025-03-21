@@ -48,7 +48,7 @@ module Increase
           type_info(spec.slice(:const, :enum, :union).first&.last)
         in Proc
           spec
-        in Increase::Converter | Module | Symbol
+        in Increase::Converter | Class | Symbol
           -> { spec }
         in true | false
           -> { Increase::BooleanModel }
@@ -81,7 +81,7 @@ module Increase
           else
             value
           end
-        in Module
+        in Class
           case target
           in -> { _1 <= NilClass }
             nil
@@ -144,7 +144,7 @@ module Increase
           else
             [false, false, 0]
           end
-        in Module
+        in Class
           case [target, value]
           in [-> { _1 <= NilClass }, _]
             [true, nil, value.nil? ? 1 : 0]
@@ -181,6 +181,8 @@ module Increase
     extend Increase::Converter
 
     # rubocop:disable Lint/UnusedMethodArgument
+
+    private_class_method :new
 
     # @param other [Object]
     #
@@ -231,6 +233,8 @@ module Increase
   class BooleanModel
     extend Increase::Converter
 
+    private_class_method :new
+
     # @param other [Object]
     #
     # @return [Boolean]
@@ -276,6 +280,8 @@ module Increase
 
   # @api private
   #
+  # @abstract
+  #
   # A value from among a specified list of options. OpenAPI enum values map to Ruby
   #   values in the SDK as follows:
   #
@@ -286,167 +292,179 @@ module Increase
   #
   #   We can therefore convert string values to Symbols, but can't convert other
   #   values safely.
-  module Enum
-    include Increase::Converter
+  class Enum
+    extend Increase::Converter
 
-    # All of the valid Symbol values for this enum.
-    #
-    # @return [Array<NilClass, Boolean, Integer, Float, Symbol>]
-    def values = (@values ||= constants.map { const_get(_1) })
+    class << self
+      # All of the valid Symbol values for this enum.
+      #
+      # @return [Array<NilClass, Boolean, Integer, Float, Symbol>]
+      def values = (@values ||= constants.map { const_get(_1) })
 
-    # @api private
-    #
-    # Guard against thread safety issues by instantiating `@values`.
-    private def finalize! = values
+      # @api private
+      #
+      # Guard against thread safety issues by instantiating `@values`.
+      private def finalize! = values
+    end
+
+    private_class_method :new
 
     # @param other [Object]
     #
     # @return [Boolean]
-    def ===(other) = values.include?(other)
+    def self.===(other) = values.include?(other)
 
     # @param other [Object]
     #
     # @return [Boolean]
-    def ==(other)
-      other.is_a?(Module) && other.singleton_class.ancestors.include?(Increase::Enum) && other.values.to_set == values.to_set
+    def self.==(other)
+      other.is_a?(Class) && other <= Increase::Enum && other.values.to_set == values.to_set
     end
 
-    # @api private
-    #
-    # @param value [String, Symbol, Object]
-    #
-    # @return [Symbol, Object]
-    def coerce(value)
-      case value
-      in Symbol | String if values.include?(val = value.to_sym)
-        val
-      else
-        value
-      end
-    end
-
-    # @!parse
-    #   # @api private
-    #   #
-    #   # @param value [Symbol, Object]
-    #   #
-    #   # @return [Symbol, Object]
-    #   def dump(value) = super
-
-    # @api private
-    #
-    # @param value [Object]
-    #
-    # @return [Array(true, Object, nil), Array(false, Boolean, Integer)]
-    def try_strict_coerce(value)
-      return [true, value, 1] if values.include?(value)
-
-      case value
-      in Symbol | String if values.include?(val = value.to_sym)
-        [true, val, 1]
-      else
-        case [value, values.first]
-        in [true | false, true | false] | [Integer, Integer] | [Symbol | String, Symbol]
-          [false, true, 0]
+    class << self
+      # @api private
+      #
+      # @param value [String, Symbol, Object]
+      #
+      # @return [Symbol, Object]
+      def coerce(value)
+        case value
+        in Symbol | String if values.include?(val = value.to_sym)
+          val
         else
-          [false, false, 0]
+          value
+        end
+      end
+
+      # @!parse
+      #   # @api private
+      #   #
+      #   # @param value [Symbol, Object]
+      #   #
+      #   # @return [Symbol, Object]
+      #   def dump(value) = super
+
+      # @api private
+      #
+      # @param value [Object]
+      #
+      # @return [Array(true, Object, nil), Array(false, Boolean, Integer)]
+      def try_strict_coerce(value)
+        return [true, value, 1] if values.include?(value)
+
+        case value
+        in Symbol | String if values.include?(val = value.to_sym)
+          [true, val, 1]
+        else
+          case [value, values.first]
+          in [true | false, true | false] | [Integer, Integer] | [Symbol | String, Symbol]
+            [false, true, 0]
+          else
+            [false, false, 0]
+          end
         end
       end
     end
   end
 
   # @api private
-  module Union
-    include Increase::Converter
+  #
+  # @abstract
+  class Union
+    extend Increase::Converter
 
-    # @api private
-    #
-    # All of the specified variant info for this union.
-    #
-    # @return [Array<Array(Symbol, Proc)>]
-    private def known_variants = (@known_variants ||= [])
+    class << self
+      # @api private
+      #
+      # All of the specified variant info for this union.
+      #
+      # @return [Array<Array(Symbol, Proc)>]
+      private def known_variants = (@known_variants ||= [])
 
-    # @api private
-    #
-    # @return [Array<Array(Symbol, Object)>]
-    protected def derefed_variants
-      @known_variants.map { |key, variant_fn| [key, variant_fn.call] }
-    end
-
-    # All of the specified variants for this union.
-    #
-    # @return [Array<Object>]
-    def variants
-      derefed_variants.map(&:last)
-    end
-
-    # @api private
-    #
-    # @param property [Symbol]
-    private def discriminator(property)
-      case property
-      in Symbol
-        @discriminator = property
+      # @api private
+      #
+      # @return [Array<Array(Symbol, Object)>]
+      protected def derefed_variants
+        @known_variants.map { |key, variant_fn| [key, variant_fn.call] }
       end
-    end
 
-    # @api private
-    #
-    # @param key [Symbol, Hash{Symbol=>Object}, Proc, Increase::Converter, Class]
-    #
-    # @param spec [Hash{Symbol=>Object}, Proc, Increase::Converter, Class] .
-    #
-    #   @option spec [NilClass, TrueClass, FalseClass, Integer, Float, Symbol] :const
-    #
-    #   @option spec [Proc] :enum
-    #
-    #   @option spec [Proc] :union
-    #
-    #   @option spec [Boolean] :"nil?"
-    private def variant(key, spec = nil)
-      variant_info =
-        case key
+      # All of the specified variants for this union.
+      #
+      # @return [Array<Object>]
+      def variants
+        derefed_variants.map(&:last)
+      end
+
+      # @api private
+      #
+      # @param property [Symbol]
+      private def discriminator(property)
+        case property
         in Symbol
-          [key, Increase::Converter.type_info(spec)]
-        in Proc | Increase::Converter | Module | Hash
-          [nil, Increase::Converter.type_info(key)]
+          @discriminator = property
         end
+      end
 
-      known_variants << variant_info
-    end
-
-    # @api private
-    #
-    # @param value [Object]
-    #
-    # @return [Increase::Converter, Class, nil]
-    private def resolve_variant(value)
-      case [@discriminator, value]
-      in [_, Increase::BaseModel]
-        value.class
-      in [Symbol, Hash]
-        key =
-          if value.key?(@discriminator)
-            value.fetch(@discriminator)
-          elsif value.key?((discriminator = @discriminator.to_s))
-            value.fetch(discriminator)
+      # @api private
+      #
+      # @param key [Symbol, Hash{Symbol=>Object}, Proc, Increase::Converter, Class]
+      #
+      # @param spec [Hash{Symbol=>Object}, Proc, Increase::Converter, Class] .
+      #
+      #   @option spec [NilClass, TrueClass, FalseClass, Integer, Float, Symbol] :const
+      #
+      #   @option spec [Proc] :enum
+      #
+      #   @option spec [Proc] :union
+      #
+      #   @option spec [Boolean] :"nil?"
+      private def variant(key, spec = nil)
+        variant_info =
+          case key
+          in Symbol
+            [key, Increase::Converter.type_info(spec)]
+          in Proc | Increase::Converter | Class | Hash
+            [nil, Increase::Converter.type_info(key)]
           end
 
-        key = key.to_sym if key.is_a?(String)
-        _, resolved = known_variants.find { |k,| k == key }
-        resolved.nil? ? Increase::Unknown : resolved.call
-      else
-        nil
+        known_variants << variant_info
+      end
+
+      # @api private
+      #
+      # @param value [Object]
+      #
+      # @return [Increase::Converter, Class, nil]
+      private def resolve_variant(value)
+        case [@discriminator, value]
+        in [_, Increase::BaseModel]
+          value.class
+        in [Symbol, Hash]
+          key =
+            if value.key?(@discriminator)
+              value.fetch(@discriminator)
+            elsif value.key?((discriminator = @discriminator.to_s))
+              value.fetch(discriminator)
+            end
+
+          key = key.to_sym if key.is_a?(String)
+          _, resolved = known_variants.find { |k,| k == key }
+          resolved.nil? ? Increase::Unknown : resolved.call
+        else
+          nil
+        end
       end
     end
 
     # rubocop:disable Style/HashEachMethods
     # rubocop:disable Style/CaseEquality
 
+    private_class_method :new
+
     # @param other [Object]
     #
     # @return [Boolean]
-    def ===(other)
+    def self.===(other)
       known_variants.any? do |_, variant_fn|
         variant_fn.call === other
       end
@@ -455,88 +473,90 @@ module Increase
     # @param other [Object]
     #
     # @return [Boolean]
-    def ==(other)
-      other.is_a?(Module) && other.singleton_class.ancestors.include?(Increase::Union) && other.derefed_variants == derefed_variants
+    def self.==(other)
+      other.is_a?(Class) && other <= Increase::Union && other.derefed_variants == derefed_variants
     end
 
-    # @api private
-    #
-    # @param value [Object]
-    #
-    # @return [Object]
-    def coerce(value)
-      if (variant = resolve_variant(value))
-        return Increase::Converter.coerce(variant, value)
-      end
-
-      matches = []
-
-      known_variants.each do |_, variant_fn|
-        variant = variant_fn.call
-
-        case Increase::Converter.try_strict_coerce(variant, value)
-        in [true, coerced, _]
-          return coerced
-        in [false, true, score]
-          matches << [score, variant]
-        in [false, false, _]
-          nil
+    class << self
+      # @api private
+      #
+      # @param value [Object]
+      #
+      # @return [Object]
+      def coerce(value)
+        if (variant = resolve_variant(value))
+          return Increase::Converter.coerce(variant, value)
         end
+
+        matches = []
+
+        known_variants.each do |_, variant_fn|
+          variant = variant_fn.call
+
+          case Increase::Converter.try_strict_coerce(variant, value)
+          in [true, coerced, _]
+            return coerced
+          in [false, true, score]
+            matches << [score, variant]
+          in [false, false, _]
+            nil
+          end
+        end
+
+        _, variant = matches.sort! { _2.first <=> _1.first }.find { |score,| !score.zero? }
+        variant.nil? ? value : Increase::Converter.coerce(variant, value)
       end
 
-      _, variant = matches.sort! { _2.first <=> _1.first }.find { |score,| !score.zero? }
-      variant.nil? ? value : Increase::Converter.coerce(variant, value)
-    end
-
-    # @api private
-    #
-    # @param value [Object]
-    #
-    # @return [Object]
-    def dump(value)
-      if (variant = resolve_variant(value))
-        return Increase::Converter.dump(variant, value)
-      end
-
-      known_variants.each do |_, variant_fn|
-        variant = variant_fn.call
-        if variant === value
+      # @api private
+      #
+      # @param value [Object]
+      #
+      # @return [Object]
+      def dump(value)
+        if (variant = resolve_variant(value))
           return Increase::Converter.dump(variant, value)
         end
-      end
-      value
-    end
 
-    # @api private
-    #
-    # @param value [Object]
-    #
-    # @return [Array(true, Object, nil), Array(false, Boolean, Integer)]
-    def try_strict_coerce(value)
-      # TODO(ruby) this will result in super linear decoding behaviour for nested unions
-      # follow up with a decoding context that captures current strictness levels
-      if (variant = resolve_variant(value))
-        return Converter.try_strict_coerce(variant, value)
-      end
-
-      coercible = false
-      max_score = 0
-
-      known_variants.each do |_, variant_fn|
-        variant = variant_fn.call
-
-        case Increase::Converter.try_strict_coerce(variant, value)
-        in [true, coerced, score]
-          return [true, coerced, score]
-        in [false, true, score]
-          coercible = true
-          max_score = [max_score, score].max
-        in [false, false, _]
-          nil
+        known_variants.each do |_, variant_fn|
+          variant = variant_fn.call
+          if variant === value
+            return Increase::Converter.dump(variant, value)
+          end
         end
+        value
       end
 
-      [false, coercible, max_score]
+      # @api private
+      #
+      # @param value [Object]
+      #
+      # @return [Array(true, Object, nil), Array(false, Boolean, Integer)]
+      def try_strict_coerce(value)
+        # TODO(ruby) this will result in super linear decoding behaviour for nested unions
+        # follow up with a decoding context that captures current strictness levels
+        if (variant = resolve_variant(value))
+          return Converter.try_strict_coerce(variant, value)
+        end
+
+        coercible = false
+        max_score = 0
+
+        known_variants.each do |_, variant_fn|
+          variant = variant_fn.call
+
+          case Increase::Converter.try_strict_coerce(variant, value)
+          in [true, coerced, score]
+            return [true, coerced, score]
+          in [false, true, score]
+            coercible = true
+            max_score = [max_score, score].max
+          in [false, false, _]
+            nil
+          end
+        end
+
+        [false, coercible, max_score]
+      end
     end
 
     # rubocop:enable Style/CaseEquality
@@ -551,18 +571,9 @@ module Increase
   class ArrayOf
     include Increase::Converter
 
-    # @param type_info [Hash{Symbol=>Object}, Proc, Increase::Converter, Class]
-    #
-    # @param spec [Hash{Symbol=>Object}] .
-    #
-    #   @option spec [NilClass, TrueClass, FalseClass, Integer, Float, Symbol] :const
-    #
-    #   @option spec [Proc] :enum
-    #
-    #   @option spec [Proc] :union
-    #
-    #   @option spec [Boolean] :"nil?"
-    def self.[](type_info, spec = {}) = new(type_info, spec)
+    private_class_method :new
+
+    def self.[](...) = new(...)
 
     # @param other [Object]
     #
@@ -683,18 +694,9 @@ module Increase
   class HashOf
     include Increase::Converter
 
-    # @param type_info [Hash{Symbol=>Object}, Proc, Increase::Converter, Class]
-    #
-    # @param spec [Hash{Symbol=>Object}] .
-    #
-    #   @option spec [NilClass, TrueClass, FalseClass, Integer, Float, Symbol] :const
-    #
-    #   @option spec [Proc] :enum
-    #
-    #   @option spec [Proc] :union
-    #
-    #   @option spec [Boolean] :"nil?"
-    def self.[](type_info, spec = {}) = new(type_info, spec)
+    private_class_method :new
+
+    def self.[](...) = new(...)
 
     # @param other [Object]
     #
@@ -820,12 +822,14 @@ module Increase
   # @abstract
   #
   # @example
-  #   # `account` is a `Increase::Models::Account`
-  #   account => {
-  #     id: id,
-  #     bank: bank,
-  #     closed_at: closed_at
-  #   }
+  # ```ruby
+  # # `account` is a `Increase::Models::Account`
+  # account => {
+  #   id: id,
+  #   bank: bank,
+  #   closed_at: closed_at
+  # }
+  # ```
   class BaseModel
     extend Increase::Converter
 
@@ -838,13 +842,6 @@ module Increase
       # @return [Hash{Symbol=>Hash{Symbol=>Object}}]
       def known_fields
         @known_fields ||= (self < Increase::BaseModel ? superclass.known_fields.dup : {})
-      end
-
-      # @api private
-      #
-      # @return [Hash{Symbol=>Symbol}]
-      def reverse_map
-        @reverse_map ||= (self < Increase::BaseModel ? superclass.reverse_map.dup : {})
       end
 
       # @api private
@@ -881,7 +878,7 @@ module Increase
       private def add_field(name_sym, required:, type_info:, spec:)
         type_fn, info =
           case type_info
-          in Proc | Module | Increase::Converter
+          in Proc | Class | Increase::Converter
             [Increase::Converter.type_info({**spec, union: type_info}), spec]
           in Hash
             [Increase::Converter.type_info(type_info), type_info]
@@ -890,7 +887,7 @@ module Increase
         fallback = info[:const]
         defaults[name_sym] = fallback if required && !info[:nil?] && info.key?(:const)
 
-        key = info[:api_name]&.tap { reverse_map[_1] = name_sym } || name_sym
+        key = info.fetch(:api_name, name_sym)
         setter = "#{name_sym}="
 
         if known_fields.key?(name_sym)
@@ -1147,21 +1144,7 @@ module Increase
     def initialize(data = {})
       case Increase::Util.coerce_hash(data)
       in Hash => coerced
-        @data = coerced.to_h do |key, value|
-          name = key.to_sym
-          mapped = self.class.reverse_map.fetch(name, name)
-          type = self.class.fields[mapped]&.fetch(:type)
-          stored =
-            case [type, value]
-            in [Module, Hash] if type <= Increase::BaseModel
-              type.new(value)
-            in [Increase::ArrayOf, Array] | [Increase::HashOf, Hash]
-              type.coerce(value)
-            else
-              value
-            end
-          [name, stored]
-        end
+        @data = coerced.transform_keys(&:to_sym)
       else
         raise ArgumentError.new("Expected a #{Hash} or #{Increase::BaseModel}, got #{data.inspect}")
       end

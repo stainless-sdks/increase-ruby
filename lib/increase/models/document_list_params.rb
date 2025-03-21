@@ -90,9 +90,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        module In
-          extend Increase::Enum
-
+        # @abstract
+        class In < Increase::Enum
           # Internal Revenue Service Form 1099-INT.
           FORM_1099_INT = :form_1099_int
 
@@ -106,12 +105,6 @@ module Increase
           COMPANY_INFORMATION = :company_information
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 

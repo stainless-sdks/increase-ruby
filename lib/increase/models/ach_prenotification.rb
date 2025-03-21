@@ -154,10 +154,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # If the notification is for a future credit or debit.
-      module CreditDebitIndicator
-        extend Increase::Enum
-
+      class CreditDebitIndicator < Increase::Enum
         # The Prenotification is for an anticipated credit.
         CREDIT = :credit
 
@@ -165,12 +165,6 @@ module Increase
         DEBIT = :debit
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
       class NotificationsOfChange < Increase::BaseModel
@@ -208,11 +202,11 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The required type of change that is being signaled by the receiving financial
         #   institution.
-        module ChangeCode
-          extend Increase::Enum
-
+        class ChangeCode < Increase::Enum
           # The account number was incorrect.
           INCORRECT_ACCOUNT_NUMBER = :incorrect_account_number
 
@@ -229,12 +223,10 @@ module Increase
           INCORRECT_ACCOUNT_NUMBER_AND_TRANSACTION_CODE = :incorrect_account_number_and_transaction_code
 
           # The routing number, account number, and transaction code were incorrect.
-          INCORRECT_ROUTING_NUMBER_ACCOUNT_NUMBER_AND_TRANSACTION_CODE =
-            :incorrect_routing_number_account_number_and_transaction_code
+          INCORRECT_ROUTING_NUMBER_ACCOUNT_NUMBER_AND_TRANSACTION_CODE = :incorrect_routing_number_account_number_and_transaction_code
 
           # The receiving depository financial institution identification was incorrect.
-          INCORRECT_RECEIVING_DEPOSITORY_FINANCIAL_INSTITUTION_IDENTIFICATION =
-            :incorrect_receiving_depository_financial_institution_identification
+          INCORRECT_RECEIVING_DEPOSITORY_FINANCIAL_INSTITUTION_IDENTIFICATION = :incorrect_receiving_depository_financial_institution_identification
 
           # The individual identification number was incorrect.
           INCORRECT_INDIVIDUAL_IDENTIFICATION_NUMBER = :incorrect_individual_identification_number
@@ -243,8 +235,7 @@ module Increase
           ADDENDA_FORMAT_ERROR = :addenda_format_error
 
           # The standard entry class code was incorrect for an outbound international payment.
-          INCORRECT_STANDARD_ENTRY_CLASS_CODE_FOR_OUTBOUND_INTERNATIONAL_PAYMENT =
-            :incorrect_standard_entry_class_code_for_outbound_international_payment
+          INCORRECT_STANDARD_ENTRY_CLASS_CODE_FOR_OUTBOUND_INTERNATIONAL_PAYMENT = :incorrect_standard_entry_class_code_for_outbound_international_payment
 
           # The notification of change was misrouted.
           MISROUTED_NOTIFICATION_OF_CHANGE = :misrouted_notification_of_change
@@ -265,24 +256,15 @@ module Increase
           INCORRECT_DISCRETIONARY_DATA = :incorrect_discretionary_data
 
           # The routing number was not from the original entry detail record.
-          ROUTING_NUMBER_NOT_FROM_ORIGINAL_ENTRY_DETAIL_RECORD =
-            :routing_number_not_from_original_entry_detail_record
+          ROUTING_NUMBER_NOT_FROM_ORIGINAL_ENTRY_DETAIL_RECORD = :routing_number_not_from_original_entry_detail_record
 
           # The depository financial institution account number was not from the original entry detail record.
-          DEPOSITORY_FINANCIAL_INSTITUTION_ACCOUNT_NUMBER_NOT_FROM_ORIGINAL_ENTRY_DETAIL_RECORD =
-            :depository_financial_institution_account_number_not_from_original_entry_detail_record
+          DEPOSITORY_FINANCIAL_INSTITUTION_ACCOUNT_NUMBER_NOT_FROM_ORIGINAL_ENTRY_DETAIL_RECORD = :depository_financial_institution_account_number_not_from_original_entry_detail_record
 
           # The transaction code was incorrect, initiated by the originating depository financial institution.
-          INCORRECT_TRANSACTION_CODE_BY_ORIGINATING_DEPOSITORY_FINANCIAL_INSTITUTION =
-            :incorrect_transaction_code_by_originating_depository_financial_institution
+          INCORRECT_TRANSACTION_CODE_BY_ORIGINATING_DEPOSITORY_FINANCIAL_INSTITUTION = :incorrect_transaction_code_by_originating_depository_financial_institution
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 
@@ -311,10 +293,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Why the Prenotification was returned.
-        module ReturnReasonCode
-          extend Increase::Enum
-
+        class ReturnReasonCode < Increase::Enum
           # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
           INSUFFICIENT_FUND = :insufficient_fund
 
@@ -334,8 +316,7 @@ module Increase
           CREDIT_ENTRY_REFUSED_BY_RECEIVER = :credit_entry_refused_by_receiver
 
           # Code R05. The receiving bank rejected because of an incorrect Standard Entry Class code.
-          UNAUTHORIZED_DEBIT_TO_CONSUMER_ACCOUNT_USING_CORPORATE_SEC_CODE =
-            :unauthorized_debit_to_consumer_account_using_corporate_sec_code
+          UNAUTHORIZED_DEBIT_TO_CONSUMER_ACCOUNT_USING_CORPORATE_SEC_CODE = :unauthorized_debit_to_consumer_account_using_corporate_sec_code
 
           # Code R29. The corporate customer at the receiving bank reversed the transfer.
           CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
@@ -353,8 +334,7 @@ module Increase
           ROUTING_NUMBER_CHECK_DIGIT_ERROR = :routing_number_check_digit_error
 
           # Code R10. The customer at the receiving bank reversed the transfer.
-          CUSTOMER_ADVISED_UNAUTHORIZED_IMPROPER_INELIGIBLE_OR_INCOMPLETE =
-            :customer_advised_unauthorized_improper_ineligible_or_incomplete
+          CUSTOMER_ADVISED_UNAUTHORIZED_IMPROPER_INELIGIBLE_OR_INCOMPLETE = :customer_advised_unauthorized_improper_ineligible_or_incomplete
 
           # Code R19. The amount field is incorrect or too large.
           AMOUNT_FIELD_ERROR = :amount_field_error
@@ -486,8 +466,7 @@ module Increase
           RDFI_PARTICIPANT_IN_CHECK_TRUNCATION_PROGRAM = :rdfi_participant_in_check_truncation_program
 
           # Code R14. A rare return reason. The payee is deceased.
-          REPRESENTATIVE_PAYEE_DECEASED_OR_UNABLE_TO_CONTINUE_IN_THAT_CAPACITY =
-            :representative_payee_deceased_or_unable_to_continue_in_that_capacity
+          REPRESENTATIVE_PAYEE_DECEASED_OR_UNABLE_TO_CONTINUE_IN_THAT_CAPACITY = :representative_payee_deceased_or_unable_to_continue_in_that_capacity
 
           # Code R75. A rare return reason. The originating bank disputes that an earlier `duplicate_entry` return was actually a duplicate.
           RETURN_NOT_A_DUPLICATE = :return_not_a_duplicate
@@ -529,19 +508,13 @@ module Increase
           UNTIMELY_RETURN = :untimely_return
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 
+      # @abstract
+      #
       # The lifecycle status of the ACH Prenotification.
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The Prenotification is pending submission.
         PENDING_SUBMITTING = :pending_submitting
 
@@ -555,28 +528,16 @@ module Increase
         SUBMITTED = :submitted
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `ach_prenotification`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         ACH_PRENOTIFICATION = :ach_prenotification
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

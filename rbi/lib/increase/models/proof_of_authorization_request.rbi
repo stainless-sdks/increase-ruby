@@ -5,37 +5,70 @@ module Increase
     class ProofOfAuthorizationRequest < Increase::BaseModel
       # The Proof of Authorization Request identifier.
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       # The ACH Transfers associated with the request.
       sig { returns(T::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer]) }
-      attr_accessor :ach_transfers
+      def ach_transfers
+      end
+
+      sig do
+        params(_: T::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer])
+          .returns(T::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer])
+      end
+      def ach_transfers=(_)
+      end
 
       # The time the Proof of Authorization Request was created.
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       # The time the Proof of Authorization Request is due.
       sig { returns(Time) }
-      attr_accessor :due_on
+      def due_on
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def due_on=(_)
+      end
 
       # A constant representing the object's type. For this resource it will always be
       #   `proof_of_authorization_request`.
-      sig { returns(Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol) }
-      attr_accessor :type
+      sig { returns(Symbol) }
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       # The time the Proof of Authorization Request was last updated.
       sig { returns(Time) }
-      attr_accessor :updated_at
+      def updated_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def updated_at=(_)
+      end
 
       # A request for proof of authorization for one or more ACH debit transfers.
       sig do
         params(
           id: String,
-          ach_transfers: T::Array[T.any(Increase::Models::ProofOfAuthorizationRequest::ACHTransfer, Increase::Util::AnyHash)],
+          ach_transfers: T::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer],
           created_at: Time,
           due_on: Time,
-          type: Increase::Models::ProofOfAuthorizationRequest::Type::OrSymbol,
+          type: Symbol,
           updated_at: Time
         )
           .returns(T.attached_class)
@@ -51,7 +84,7 @@ module Increase
               ach_transfers: T::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer],
               created_at: Time,
               due_on: Time,
-              type: Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol,
+              type: Symbol,
               updated_at: Time
             }
           )
@@ -62,7 +95,12 @@ module Increase
       class ACHTransfer < Increase::BaseModel
         # The ACH Transfer identifier.
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { params(id: String).returns(T.attached_class) }
         def self.new(id:)
@@ -75,21 +113,12 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `proof_of_authorization_request`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ProofOfAuthorizationRequest::Type) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        PROOF_OF_AUTHORIZATION_REQUEST =
-          T.let(:proof_of_authorization_request, Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        PROOF_OF_AUTHORIZATION_REQUEST = :proof_of_authorization_request
       end
     end
   end
