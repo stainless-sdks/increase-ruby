@@ -71,12 +71,12 @@ module Increase
       sig do
         params(
           account_id: String,
-          created_at: Increase::Models::CardListParams::CreatedAt,
+          created_at: T.any(Increase::Models::CardListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::Models::CardListParams::Status,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          status: T.any(Increase::Models::CardListParams::Status, Increase::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

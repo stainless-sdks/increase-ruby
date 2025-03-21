@@ -42,7 +42,7 @@ module Increase
             amount: Integer,
             card_payment_id: String,
             event_subscription_id: String,
-            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

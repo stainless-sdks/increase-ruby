@@ -194,10 +194,13 @@ module Increase
             merchant_country: String,
             merchant_descriptor: String,
             merchant_state: String,
-            network_details: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
+            network_details: T.any(
+              Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
+              Increase::Util::AnyHash
+            ),
             physical_card_id: String,
             terminal_id: String,
-            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -443,7 +446,12 @@ module Increase
 
           # Fields specific to a given card network.
           sig do
-            params(visa: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa)
+            params(
+              visa: T.any(
+                Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa,
+                Increase::Util::AnyHash
+              )
+            )
               .returns(T.attached_class)
           end
           def self.new(visa:)

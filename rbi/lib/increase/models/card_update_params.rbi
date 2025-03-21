@@ -65,12 +65,12 @@ module Increase
 
       sig do
         params(
-          billing_address: Increase::Models::CardUpdateParams::BillingAddress,
+          billing_address: T.any(Increase::Models::CardUpdateParams::BillingAddress, Increase::Util::AnyHash),
           description: String,
-          digital_wallet: Increase::Models::CardUpdateParams::DigitalWallet,
+          digital_wallet: T.any(Increase::Models::CardUpdateParams::DigitalWallet, Increase::Util::AnyHash),
           entity_id: String,
           status: Increase::Models::CardUpdateParams::Status::OrSymbol,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

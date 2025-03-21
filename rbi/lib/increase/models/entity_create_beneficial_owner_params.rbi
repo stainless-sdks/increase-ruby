@@ -25,8 +25,8 @@ module Increase
 
       sig do
         params(
-          beneficial_owner: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          beneficial_owner: T.any(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner, Increase::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -95,7 +95,10 @@ module Increase
         #   corporation.
         sig do
           params(
-            individual: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual,
+            individual: T.any(
+              Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual,
+              Increase::Util::AnyHash
+            ),
             prongs: T::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol],
             company_title: String
           )
@@ -196,9 +199,15 @@ module Increase
           # Personal details for the beneficial owner.
           sig do
             params(
-              address: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address,
+              address: T.any(
+                Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address,
+                Increase::Util::AnyHash
+              ),
               date_of_birth: Date,
-              identification: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification,
+              identification: T.any(
+                Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification,
+                Increase::Util::AnyHash
+              ),
               name: String,
               confirmed_no_us_tax_id: T::Boolean
             )
@@ -411,9 +420,18 @@ module Increase
               params(
                 method_: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol,
                 number: String,
-                drivers_license: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense,
-                other: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other,
-                passport: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport
+                drivers_license: T.any(
+                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense,
+                  Increase::Util::AnyHash
+                ),
+                other: T.any(
+                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other,
+                  Increase::Util::AnyHash
+                ),
+                passport: T.any(
+                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport,
+                  Increase::Util::AnyHash
+                )
               )
                 .returns(T.attached_class)
             end

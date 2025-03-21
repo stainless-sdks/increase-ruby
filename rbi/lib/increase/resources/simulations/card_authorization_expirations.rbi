@@ -8,7 +8,7 @@ module Increase
         sig do
           params(
             card_payment_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
           )
             .returns(Increase::Models::CardPayment)
         end

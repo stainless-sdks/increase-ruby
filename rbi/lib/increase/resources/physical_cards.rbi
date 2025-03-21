@@ -10,7 +10,7 @@ module Increase
           cardholder: Increase::Models::PhysicalCardCreateParams::Cardholder,
           shipment: Increase::Models::PhysicalCardCreateParams::Shipment,
           physical_card_profile_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::PhysicalCard)
       end
@@ -32,7 +32,7 @@ module Increase
       sig do
         params(
           physical_card_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::PhysicalCard)
       end
@@ -48,7 +48,7 @@ module Increase
         params(
           physical_card_id: String,
           status: Increase::Models::PhysicalCardUpdateParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::PhysicalCard)
       end
@@ -69,7 +69,7 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::PhysicalCard])
       end

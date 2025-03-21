@@ -82,13 +82,13 @@ module Increase
       sig do
         params(
           account_id: String,
-          ach_debit_status: Increase::Models::AccountNumberListParams::ACHDebitStatus,
-          created_at: Increase::Models::AccountNumberListParams::CreatedAt,
+          ach_debit_status: T.any(Increase::Models::AccountNumberListParams::ACHDebitStatus, Increase::Util::AnyHash),
+          created_at: T.any(Increase::Models::AccountNumberListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::Models::AccountNumberListParams::Status,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          status: T.any(Increase::Models::AccountNumberListParams::Status, Increase::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

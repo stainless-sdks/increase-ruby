@@ -42,10 +42,10 @@ module Increase
 
       sig do
         params(
-          created_at: Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt,
+          created_at: T.any(Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -184,19 +184,19 @@ module Increase
       sig do
         params(
           id: String,
-          corporation: T.nilable(Increase::Models::Entity::Corporation),
+          corporation: T.nilable(T.any(Increase::Models::Entity::Corporation, Increase::Util::AnyHash)),
           created_at: Time,
           description: T.nilable(String),
           details_confirmed_at: T.nilable(Time),
-          government_authority: T.nilable(Increase::Models::Entity::GovernmentAuthority),
+          government_authority: T.nilable(T.any(Increase::Models::Entity::GovernmentAuthority, Increase::Util::AnyHash)),
           idempotency_key: T.nilable(String),
-          joint: T.nilable(Increase::Models::Entity::Joint),
-          natural_person: T.nilable(Increase::Models::Entity::NaturalPerson),
+          joint: T.nilable(T.any(Increase::Models::Entity::Joint, Increase::Util::AnyHash)),
+          natural_person: T.nilable(T.any(Increase::Models::Entity::NaturalPerson, Increase::Util::AnyHash)),
           status: Increase::Models::Entity::Status::TaggedSymbol,
           structure: Increase::Models::Entity::Structure::TaggedSymbol,
           supplemental_documents: T::Array[Increase::Models::EntitySupplementalDocument],
-          third_party_verification: T.nilable(Increase::Models::Entity::ThirdPartyVerification),
-          trust: T.nilable(Increase::Models::Entity::Trust),
+          third_party_verification: T.nilable(T.any(Increase::Models::Entity::ThirdPartyVerification, Increase::Util::AnyHash)),
+          trust: T.nilable(T.any(Increase::Models::Entity::Trust, Increase::Util::AnyHash)),
           type: Increase::Models::Entity::Type::TaggedSymbol
         )
           .returns(T.attached_class)
@@ -322,7 +322,7 @@ module Increase
         #   `corporation`.
         sig do
           params(
-            address: Increase::Models::Entity::Corporation::Address,
+            address: T.any(Increase::Models::Entity::Corporation::Address, Increase::Util::AnyHash),
             beneficial_owners: T::Array[Increase::Models::Entity::Corporation::BeneficialOwner],
             incorporation_state: T.nilable(String),
             industry_code: T.nilable(String),
@@ -473,7 +473,7 @@ module Increase
             params(
               beneficial_owner_id: String,
               company_title: T.nilable(String),
-              individual: Increase::Models::Entity::Corporation::BeneficialOwner::Individual,
+              individual: T.any(Increase::Models::Entity::Corporation::BeneficialOwner::Individual, Increase::Util::AnyHash),
               prong: Increase::Models::Entity::Corporation::BeneficialOwner::Prong::TaggedSymbol
             )
               .returns(T.attached_class)
@@ -561,9 +561,15 @@ module Increase
             # Personal details for the beneficial owner.
             sig do
               params(
-                address: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address,
+                address: T.any(
+                  Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address,
+                  Increase::Util::AnyHash
+                ),
                 date_of_birth: Date,
-                identification: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification,
+                identification: T.any(
+                  Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification,
+                  Increase::Util::AnyHash
+                ),
                 name: String
               )
                 .returns(T.attached_class)
@@ -865,7 +871,7 @@ module Increase
         #   equal to `government_authority`.
         sig do
           params(
-            address: Increase::Models::Entity::GovernmentAuthority::Address,
+            address: T.any(Increase::Models::Entity::GovernmentAuthority::Address, Increase::Util::AnyHash),
             authorized_persons: T::Array[Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson],
             category: Increase::Models::Entity::GovernmentAuthority::Category::TaggedSymbol,
             name: String,
@@ -1090,9 +1096,9 @@ module Increase
 
           sig do
             params(
-              address: Increase::Models::Entity::Joint::Individual::Address,
+              address: T.any(Increase::Models::Entity::Joint::Individual::Address, Increase::Util::AnyHash),
               date_of_birth: Date,
-              identification: Increase::Models::Entity::Joint::Individual::Identification,
+              identification: T.any(Increase::Models::Entity::Joint::Individual::Identification, Increase::Util::AnyHash),
               name: String
             )
               .returns(T.attached_class)
@@ -1324,9 +1330,9 @@ module Increase
         #   `natural_person`.
         sig do
           params(
-            address: Increase::Models::Entity::NaturalPerson::Address,
+            address: T.any(Increase::Models::Entity::NaturalPerson::Address, Increase::Util::AnyHash),
             date_of_birth: Date,
-            identification: Increase::Models::Entity::NaturalPerson::Identification,
+            identification: T.any(Increase::Models::Entity::NaturalPerson::Identification, Increase::Util::AnyHash),
             name: String
           )
             .returns(T.attached_class)
@@ -1707,11 +1713,11 @@ module Increase
         # Details of the trust entity. Will be present if `structure` is equal to `trust`.
         sig do
           params(
-            address: Increase::Models::Entity::Trust::Address,
+            address: T.any(Increase::Models::Entity::Trust::Address, Increase::Util::AnyHash),
             category: Increase::Models::Entity::Trust::Category::TaggedSymbol,
             formation_document_file_id: T.nilable(String),
             formation_state: T.nilable(String),
-            grantor: T.nilable(Increase::Models::Entity::Trust::Grantor),
+            grantor: T.nilable(T.any(Increase::Models::Entity::Trust::Grantor, Increase::Util::AnyHash)),
             name: String,
             tax_identifier: T.nilable(String),
             trustees: T::Array[Increase::Models::Entity::Trust::Trustee]
@@ -1884,9 +1890,9 @@ module Increase
           # The grantor of the trust. Will be present if the `category` is `revocable`.
           sig do
             params(
-              address: Increase::Models::Entity::Trust::Grantor::Address,
+              address: T.any(Increase::Models::Entity::Trust::Grantor::Address, Increase::Util::AnyHash),
               date_of_birth: Date,
-              identification: Increase::Models::Entity::Trust::Grantor::Identification,
+              identification: T.any(Increase::Models::Entity::Trust::Grantor::Identification, Increase::Util::AnyHash),
               name: String
             )
               .returns(T.attached_class)
@@ -2095,7 +2101,7 @@ module Increase
 
           sig do
             params(
-              individual: T.nilable(Increase::Models::Entity::Trust::Trustee::Individual),
+              individual: T.nilable(T.any(Increase::Models::Entity::Trust::Trustee::Individual, Increase::Util::AnyHash)),
               structure: Increase::Models::Entity::Trust::Trustee::Structure::TaggedSymbol
             )
               .returns(T.attached_class)
@@ -2166,9 +2172,9 @@ module Increase
             #   `structure` is equal to `individual`.
             sig do
               params(
-                address: Increase::Models::Entity::Trust::Trustee::Individual::Address,
+                address: T.any(Increase::Models::Entity::Trust::Trustee::Individual::Address, Increase::Util::AnyHash),
                 date_of_birth: Date,
-                identification: Increase::Models::Entity::Trust::Trustee::Individual::Identification,
+                identification: T.any(Increase::Models::Entity::Trust::Trustee::Individual::Identification, Increase::Util::AnyHash),
                 name: String
               )
                 .returns(T.attached_class)

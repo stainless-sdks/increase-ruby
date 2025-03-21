@@ -8,7 +8,7 @@ module Increase
         params(
           account_id: String,
           email_address: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::IntrafiAccountEnrollment)
       end
@@ -25,7 +25,7 @@ module Increase
       sig do
         params(
           intrafi_account_enrollment_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::IntrafiAccountEnrollment)
       end
@@ -44,7 +44,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           status: Increase::Models::IntrafiAccountEnrollmentListParams::Status,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::IntrafiAccountEnrollment])
       end
@@ -70,7 +70,7 @@ module Increase
       sig do
         params(
           intrafi_account_enrollment_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::IntrafiAccountEnrollment)
       end

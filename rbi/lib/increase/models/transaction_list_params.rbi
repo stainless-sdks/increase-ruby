@@ -69,12 +69,12 @@ module Increase
       sig do
         params(
           account_id: String,
-          category: Increase::Models::TransactionListParams::Category,
-          created_at: Increase::Models::TransactionListParams::CreatedAt,
+          category: T.any(Increase::Models::TransactionListParams::Category, Increase::Util::AnyHash),
+          created_at: T.any(Increase::Models::TransactionListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
           route_id: String,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

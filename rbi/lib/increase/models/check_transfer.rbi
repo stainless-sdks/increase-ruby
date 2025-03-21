@@ -270,24 +270,24 @@ module Increase
           account_id: String,
           account_number: String,
           amount: Integer,
-          approval: T.nilable(Increase::Models::CheckTransfer::Approval),
+          approval: T.nilable(T.any(Increase::Models::CheckTransfer::Approval, Increase::Util::AnyHash)),
           approved_inbound_check_deposit_id: T.nilable(String),
-          cancellation: T.nilable(Increase::Models::CheckTransfer::Cancellation),
+          cancellation: T.nilable(T.any(Increase::Models::CheckTransfer::Cancellation, Increase::Util::AnyHash)),
           check_number: String,
           created_at: Time,
-          created_by: T.nilable(Increase::Models::CheckTransfer::CreatedBy),
+          created_by: T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy, Increase::Util::AnyHash)),
           currency: Increase::Models::CheckTransfer::Currency::TaggedSymbol,
           fulfillment_method: Increase::Models::CheckTransfer::FulfillmentMethod::TaggedSymbol,
           idempotency_key: T.nilable(String),
-          mailing: T.nilable(Increase::Models::CheckTransfer::Mailing),
+          mailing: T.nilable(T.any(Increase::Models::CheckTransfer::Mailing, Increase::Util::AnyHash)),
           pending_transaction_id: T.nilable(String),
-          physical_check: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck),
+          physical_check: T.nilable(T.any(Increase::Models::CheckTransfer::PhysicalCheck, Increase::Util::AnyHash)),
           routing_number: String,
           source_account_number_id: T.nilable(String),
           status: Increase::Models::CheckTransfer::Status::TaggedSymbol,
-          stop_payment_request: T.nilable(Increase::Models::CheckTransfer::StopPaymentRequest),
-          submission: T.nilable(Increase::Models::CheckTransfer::Submission),
-          third_party: T.nilable(Increase::Models::CheckTransfer::ThirdParty),
+          stop_payment_request: T.nilable(T.any(Increase::Models::CheckTransfer::StopPaymentRequest, Increase::Util::AnyHash)),
+          submission: T.nilable(T.any(Increase::Models::CheckTransfer::Submission, Increase::Util::AnyHash)),
+          third_party: T.nilable(T.any(Increase::Models::CheckTransfer::ThirdParty, Increase::Util::AnyHash)),
           type: Increase::Models::CheckTransfer::Type::TaggedSymbol
         )
           .returns(T.attached_class)
@@ -472,10 +472,10 @@ module Increase
         # What object created the transfer, either via the API or the dashboard.
         sig do
           params(
-            api_key: T.nilable(Increase::Models::CheckTransfer::CreatedBy::APIKey),
+            api_key: T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy::APIKey, Increase::Util::AnyHash)),
             category: Increase::Models::CheckTransfer::CreatedBy::Category::TaggedSymbol,
-            oauth_application: T.nilable(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication),
-            user: T.nilable(Increase::Models::CheckTransfer::CreatedBy::User)
+            oauth_application: T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash)),
+            user: T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy::User, Increase::Util::AnyHash))
           )
             .returns(T.attached_class)
         end
@@ -776,11 +776,11 @@ module Increase
         #   be present if and only if `fulfillment_method` is equal to `physical_check`.
         sig do
           params(
-            mailing_address: Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress,
+            mailing_address: T.any(Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress, Increase::Util::AnyHash),
             memo: T.nilable(String),
             note: T.nilable(String),
             recipient_name: String,
-            return_address: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress),
+            return_address: T.nilable(T.any(Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress, Increase::Util::AnyHash)),
             shipping_method: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod::TaggedSymbol),
             signature_text: T.nilable(String),
             tracking_updates: T::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate]

@@ -104,7 +104,7 @@ module Increase
         params(
           id: String,
           account_id: String,
-          address: Increase::Models::Lockbox::Address,
+          address: T.any(Increase::Models::Lockbox::Address, Increase::Util::AnyHash),
           created_at: Time,
           description: T.nilable(String),
           idempotency_key: T.nilable(String),

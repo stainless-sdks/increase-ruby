@@ -310,14 +310,14 @@ module Increase
           account_id: String,
           account_number: String,
           amount: Integer,
-          approval: T.nilable(Increase::Models::WireTransfer::Approval),
+          approval: T.nilable(T.any(Increase::Models::WireTransfer::Approval, Increase::Util::AnyHash)),
           beneficiary_address_line1: T.nilable(String),
           beneficiary_address_line2: T.nilable(String),
           beneficiary_address_line3: T.nilable(String),
           beneficiary_name: T.nilable(String),
-          cancellation: T.nilable(Increase::Models::WireTransfer::Cancellation),
+          cancellation: T.nilable(T.any(Increase::Models::WireTransfer::Cancellation, Increase::Util::AnyHash)),
           created_at: Time,
-          created_by: T.nilable(Increase::Models::WireTransfer::CreatedBy),
+          created_by: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy, Increase::Util::AnyHash)),
           currency: Increase::Models::WireTransfer::Currency::TaggedSymbol,
           external_account_id: T.nilable(String),
           idempotency_key: T.nilable(String),
@@ -328,11 +328,11 @@ module Increase
           originator_address_line3: T.nilable(String),
           originator_name: T.nilable(String),
           pending_transaction_id: T.nilable(String),
-          reversal: T.nilable(Increase::Models::WireTransfer::Reversal),
+          reversal: T.nilable(T.any(Increase::Models::WireTransfer::Reversal, Increase::Util::AnyHash)),
           routing_number: String,
           source_account_number_id: T.nilable(String),
           status: Increase::Models::WireTransfer::Status::TaggedSymbol,
-          submission: T.nilable(Increase::Models::WireTransfer::Submission),
+          submission: T.nilable(T.any(Increase::Models::WireTransfer::Submission, Increase::Util::AnyHash)),
           transaction_id: T.nilable(String),
           type: Increase::Models::WireTransfer::Type::TaggedSymbol
         )
@@ -530,10 +530,10 @@ module Increase
         # What object created the transfer, either via the API or the dashboard.
         sig do
           params(
-            api_key: T.nilable(Increase::Models::WireTransfer::CreatedBy::APIKey),
+            api_key: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::APIKey, Increase::Util::AnyHash)),
             category: Increase::Models::WireTransfer::CreatedBy::Category::TaggedSymbol,
-            oauth_application: T.nilable(Increase::Models::WireTransfer::CreatedBy::OAuthApplication),
-            user: T.nilable(Increase::Models::WireTransfer::CreatedBy::User)
+            oauth_application: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash)),
+            user: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::User, Increase::Util::AnyHash))
           )
             .returns(T.attached_class)
         end

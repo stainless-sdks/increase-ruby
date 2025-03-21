@@ -64,10 +64,10 @@ module Increase
         params(
           account_id: String,
           account_number_id: String,
-          created_at: Increase::Models::InboundRealTimePaymentsTransferListParams::CreatedAt,
+          created_at: T.any(Increase::Models::InboundRealTimePaymentsTransferListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -143,10 +143,10 @@ module Increase
         params(
           id: String,
           account_id: String,
-          billing_address: Increase::Models::Card::BillingAddress,
+          billing_address: T.any(Increase::Models::Card::BillingAddress, Increase::Util::AnyHash),
           created_at: Time,
           description: T.nilable(String),
-          digital_wallet: T.nilable(Increase::Models::Card::DigitalWallet),
+          digital_wallet: T.nilable(T.any(Increase::Models::Card::DigitalWallet, Increase::Util::AnyHash)),
           entity_id: T.nilable(String),
           expiration_month: Integer,
           expiration_year: Integer,

@@ -5,7 +5,7 @@ module Increase
     class Groups
       # Returns details for the currently authenticated Group.
       sig do
-        params(request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])))
+        params(request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash)))
           .returns(Increase::Models::Group)
       end
       def retrieve(request_options: {})
