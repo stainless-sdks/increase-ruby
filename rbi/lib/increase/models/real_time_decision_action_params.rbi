@@ -170,15 +170,13 @@ module Increase
           DENY =
             T.let(:deny, Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::TaggedSymbol)
 
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::TaggedSymbol]
-                )
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(
+                T::Array[Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::TaggedSymbol]
+              )
+          end
+          def self.values
           end
         end
       end
@@ -238,15 +236,13 @@ module Increase
               Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::TaggedSymbol]
-                )
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(
+                T::Array[Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::TaggedSymbol]
+              )
+          end
+          def self.values
           end
         end
       end
@@ -314,15 +310,13 @@ module Increase
           DECLINE =
             T.let(:decline, Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::TaggedSymbol)
 
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::TaggedSymbol]
-                )
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(
+                T::Array[Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::TaggedSymbol]
+              )
+          end
+          def self.values
           end
         end
 
@@ -383,15 +377,13 @@ module Increase
               Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol]
-                )
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(
+                T::Array[Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol]
+              )
+          end
+          def self.values
           end
         end
       end
@@ -470,15 +462,13 @@ module Increase
               Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::TaggedSymbol]
-                )
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(
+                T::Array[Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::TaggedSymbol]
+              )
+          end
+          def self.values
           end
         end
 

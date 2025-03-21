@@ -91,10 +91,8 @@ module Increase
         PRODUCTION_TOKEN =
           T.let(:production_token, Increase::Models::OAuthTokenCreateParams::GrantType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::OAuthTokenCreateParams::GrantType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::OAuthTokenCreateParams::GrantType::TaggedSymbol]) }
+        def self.values
         end
       end
     end

@@ -223,10 +223,8 @@ module Increase
           FEDEX_2_DAY =
             T.let(:fedex_2_day, Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol]) }
+          def self.values
           end
         end
       end

@@ -412,10 +412,8 @@ module Increase
         # Occurs whenever a Wire Transfer is updated.
         WIRE_TRANSFER_UPDATED = T.let(:"wire_transfer.updated", Increase::Models::Event::Category::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::Event::Category::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::Event::Category::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -429,10 +427,8 @@ module Increase
 
         EVENT = T.let(:event, Increase::Models::Event::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::Event::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::Event::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end

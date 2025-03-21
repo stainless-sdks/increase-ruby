@@ -96,15 +96,13 @@ module Increase
               Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::TaggedSymbol]
-                )
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(
+                T::Array[Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::TaggedSymbol]
+              )
+          end
+          def self.values
           end
         end
       end

@@ -71,10 +71,8 @@ module Increase
 
         CARD_DETAILS = T.let(:card_details, Increase::Models::CardDetails::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::CardDetails::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::CardDetails::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end

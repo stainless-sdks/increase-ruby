@@ -340,15 +340,13 @@ module Increase
               Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol]
-                )
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(
+                T::Array[Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol]
+              )
+          end
+          def self.values
           end
         end
 
@@ -370,13 +368,11 @@ module Increase
           REFUND =
             T.let(:refund, Increase::Models::Simulations::CardAuthorizationCreateParams::Direction::TaggedSymbol)
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[Increase::Models::Simulations::CardAuthorizationCreateParams::Direction::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[Increase::Models::Simulations::CardAuthorizationCreateParams::Direction::TaggedSymbol])
+          end
+          def self.values
           end
         end
 
@@ -521,17 +517,15 @@ module Increase
                   Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    ]
+                  )
+              end
+              def self.values
               end
             end
           end

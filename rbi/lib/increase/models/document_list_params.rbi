@@ -112,10 +112,8 @@ module Increase
           COMPANY_INFORMATION =
             T.let(:company_information, Increase::Models::DocumentListParams::Category::In::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Increase::Models::DocumentListParams::Category::In::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Increase::Models::DocumentListParams::Category::In::TaggedSymbol]) }
+          def self.values
           end
         end
       end

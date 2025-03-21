@@ -169,10 +169,8 @@ module Increase
         # US Dollar (USD)
         USD = T.let(:USD, Increase::Models::IntrafiBalance::Currency::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::IntrafiBalance::Currency::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::IntrafiBalance::Currency::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -186,10 +184,8 @@ module Increase
 
         INTRAFI_BALANCE = T.let(:intrafi_balance, Increase::Models::IntrafiBalance::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::IntrafiBalance::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::IntrafiBalance::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end

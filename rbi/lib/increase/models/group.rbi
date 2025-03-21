@@ -70,10 +70,8 @@ module Increase
         # The Group can make ACH debits.
         ENABLED = T.let(:enabled, Increase::Models::Group::ACHDebitStatus::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::Group::ACHDebitStatus::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::Group::ACHDebitStatus::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -90,10 +88,8 @@ module Increase
         # The Group is activated.
         ACTIVATED = T.let(:activated, Increase::Models::Group::ActivationStatus::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::Group::ActivationStatus::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::Group::ActivationStatus::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -107,10 +103,8 @@ module Increase
 
         GROUP = T.let(:group, Increase::Models::Group::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::Group::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::Group::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end

@@ -422,11 +422,9 @@ module Increase
 
                 finalize!
 
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def self.values; end
               end
             end
           end
@@ -443,11 +441,9 @@ module Increase
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
       end
@@ -582,11 +578,9 @@ module Increase
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
       end
 
@@ -741,11 +735,9 @@ module Increase
 
               finalize!
 
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def self.values; end
             end
           end
         end
@@ -882,11 +874,9 @@ module Increase
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
       end
@@ -906,11 +896,9 @@ module Increase
 
         finalize!
 
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       # The entity's legal structure.
@@ -934,11 +922,9 @@ module Increase
 
         finalize!
 
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       class ThirdPartyVerification < Increase::BaseModel
@@ -977,11 +963,9 @@ module Increase
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
       end
 
@@ -1121,11 +1105,9 @@ module Increase
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         class Grantor < Increase::BaseModel
@@ -1258,11 +1240,9 @@ module Increase
 
               finalize!
 
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def self.values; end
             end
           end
         end
@@ -1420,11 +1400,9 @@ module Increase
 
                 finalize!
 
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def self.values; end
               end
             end
           end
@@ -1438,11 +1416,9 @@ module Increase
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
       end
@@ -1456,11 +1432,9 @@ module Increase
 
         finalize!
 
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
     end
   end

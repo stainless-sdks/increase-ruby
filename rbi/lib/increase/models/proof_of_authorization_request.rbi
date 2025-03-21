@@ -85,10 +85,8 @@ module Increase
         PROOF_OF_AUTHORIZATION_REQUEST =
           T.let(:proof_of_authorization_request, Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end
