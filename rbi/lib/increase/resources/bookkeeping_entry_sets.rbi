@@ -9,7 +9,7 @@ module Increase
           entries: T::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry],
           date: Time,
           transaction_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::BookkeepingEntrySet)
       end
@@ -29,7 +29,7 @@ module Increase
       sig do
         params(
           bookkeeping_entry_set_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::BookkeepingEntrySet)
       end
@@ -47,7 +47,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           transaction_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::BookkeepingEntrySet])
       end

@@ -48,8 +48,8 @@ module Increase
         # The results of a Card Authorization simulation.
         sig do
           params(
-            declined_transaction: T.nilable(Increase::Models::DeclinedTransaction),
-            pending_transaction: T.nilable(Increase::Models::PendingTransaction),
+            declined_transaction: T.nilable(T.any(Increase::Models::DeclinedTransaction, Increase::Util::AnyHash)),
+            pending_transaction: T.nilable(T.any(Increase::Models::PendingTransaction, Increase::Util::AnyHash)),
             type: Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::TaggedSymbol
           )
             .returns(T.attached_class)

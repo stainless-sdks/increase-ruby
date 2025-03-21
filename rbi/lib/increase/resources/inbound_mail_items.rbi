@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           inbound_mail_item_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::InboundMailItem)
       end
@@ -25,7 +25,7 @@ module Increase
           cursor: String,
           limit: Integer,
           lockbox_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::InboundMailItem])
       end

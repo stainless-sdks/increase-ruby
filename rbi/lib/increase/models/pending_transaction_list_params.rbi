@@ -79,13 +79,13 @@ module Increase
       sig do
         params(
           account_id: String,
-          category: Increase::Models::PendingTransactionListParams::Category,
-          created_at: Increase::Models::PendingTransactionListParams::CreatedAt,
+          category: T.any(Increase::Models::PendingTransactionListParams::Category, Increase::Util::AnyHash),
+          created_at: T.any(Increase::Models::PendingTransactionListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
           route_id: String,
-          status: Increase::Models::PendingTransactionListParams::Status,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          status: T.any(Increase::Models::PendingTransactionListParams::Status, Increase::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

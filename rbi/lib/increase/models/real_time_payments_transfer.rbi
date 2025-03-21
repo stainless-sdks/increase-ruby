@@ -293,12 +293,12 @@ module Increase
         params(
           id: String,
           account_id: String,
-          acknowledgement: T.nilable(Increase::Models::RealTimePaymentsTransfer::Acknowledgement),
+          acknowledgement: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Acknowledgement, Increase::Util::AnyHash)),
           amount: Integer,
-          approval: T.nilable(Increase::Models::RealTimePaymentsTransfer::Approval),
-          cancellation: T.nilable(Increase::Models::RealTimePaymentsTransfer::Cancellation),
+          approval: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Approval, Increase::Util::AnyHash)),
+          cancellation: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Cancellation, Increase::Util::AnyHash)),
           created_at: Time,
-          created_by: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy),
+          created_by: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::CreatedBy, Increase::Util::AnyHash)),
           creditor_name: String,
           currency: Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol,
           debtor_name: T.nilable(String),
@@ -307,11 +307,11 @@ module Increase
           external_account_id: T.nilable(String),
           idempotency_key: T.nilable(String),
           pending_transaction_id: T.nilable(String),
-          rejection: T.nilable(Increase::Models::RealTimePaymentsTransfer::Rejection),
+          rejection: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Rejection, Increase::Util::AnyHash)),
           remittance_information: String,
           source_account_number_id: String,
           status: Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol,
-          submission: T.nilable(Increase::Models::RealTimePaymentsTransfer::Submission),
+          submission: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Submission, Increase::Util::AnyHash)),
           transaction_id: T.nilable(String),
           type: Increase::Models::RealTimePaymentsTransfer::Type::TaggedSymbol,
           ultimate_creditor_name: T.nilable(String),
@@ -536,10 +536,12 @@ module Increase
         # What object created the transfer, either via the API or the dashboard.
         sig do
           params(
-            api_key: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey),
+            api_key: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey, Increase::Util::AnyHash)),
             category: Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::TaggedSymbol,
-            oauth_application: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication),
-            user: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User)
+            oauth_application: T.nilable(
+              T.any(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash)
+            ),
+            user: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User, Increase::Util::AnyHash))
           )
             .returns(T.attached_class)
         end

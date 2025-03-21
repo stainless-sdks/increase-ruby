@@ -21,8 +21,8 @@ module Increase
 
       sig do
         params(
-          address: Increase::Models::EntityUpdateAddressParams::Address,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          address: T.any(Increase::Models::EntityUpdateAddressParams::Address, Increase::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -54,8 +54,8 @@ module Increase
           account_id: String,
           cursor: String,
           limit: Integer,
-          statement_period_start: Increase::Models::AccountStatementListParams::StatementPeriodStart,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          statement_period_start: T.any(Increase::Models::AccountStatementListParams::StatementPeriodStart, Increase::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

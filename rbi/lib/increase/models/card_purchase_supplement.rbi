@@ -73,7 +73,7 @@ module Increase
         params(
           id: String,
           card_payment_id: T.nilable(String),
-          invoice: T.nilable(Increase::Models::CardPurchaseSupplement::Invoice),
+          invoice: T.nilable(T.any(Increase::Models::CardPurchaseSupplement::Invoice, Increase::Util::AnyHash)),
           line_items: T.nilable(T::Array[Increase::Models::CardPurchaseSupplement::LineItem]),
           transaction_id: String,
           type: Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol

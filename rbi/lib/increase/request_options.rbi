@@ -4,13 +4,13 @@ module Increase
   # @api private
   module RequestParameters
     # Options to specify HTTP behaviour for this request.
-    sig { returns(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])) }
+    sig { returns(T.any(Increase::RequestOptions, Increase::Util::AnyHash)) }
     def request_options
     end
 
     sig do
-      params(_: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        .returns(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+      params(_: T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+        .returns(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
     end
     def request_options=(_)
     end
@@ -18,7 +18,7 @@ module Increase
     # @api private
     module Converter
       # @api private
-      sig { params(params: T.anything).returns([T.anything, T::Hash[Symbol, T.anything]]) }
+      sig { params(params: T.anything).returns([T.anything, Increase::Util::AnyHash]) }
       def dump_request(params)
       end
     end
@@ -100,7 +100,7 @@ module Increase
     end
 
     # Returns a new instance of RequestOptions.
-    sig { params(values: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
+    sig { params(values: Increase::Util::AnyHash).returns(T.attached_class) }
     def self.new(values = {})
     end
   end

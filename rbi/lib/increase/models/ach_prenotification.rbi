@@ -187,7 +187,7 @@ module Increase
           effective_date: T.nilable(Time),
           idempotency_key: T.nilable(String),
           notifications_of_change: T::Array[Increase::Models::ACHPrenotification::NotificationsOfChange],
-          prenotification_return: T.nilable(Increase::Models::ACHPrenotification::PrenotificationReturn),
+          prenotification_return: T.nilable(T.any(Increase::Models::ACHPrenotification::PrenotificationReturn, Increase::Util::AnyHash)),
           routing_number: String,
           status: Increase::Models::ACHPrenotification::Status::TaggedSymbol,
           type: Increase::Models::ACHPrenotification::Type::TaggedSymbol

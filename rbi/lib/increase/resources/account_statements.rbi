@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           account_statement_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::AccountStatement)
       end
@@ -25,7 +25,7 @@ module Increase
           cursor: String,
           limit: Integer,
           statement_period_start: Increase::Models::AccountStatementListParams::StatementPeriodStart,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::AccountStatement])
       end

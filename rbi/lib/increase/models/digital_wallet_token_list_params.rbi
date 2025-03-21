@@ -48,10 +48,10 @@ module Increase
       sig do
         params(
           card_id: String,
-          created_at: Increase::Models::DigitalWalletTokenListParams::CreatedAt,
+          created_at: T.any(Increase::Models::DigitalWalletTokenListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

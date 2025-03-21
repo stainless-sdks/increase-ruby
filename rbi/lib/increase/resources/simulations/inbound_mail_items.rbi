@@ -11,7 +11,7 @@ module Increase
             amount: Integer,
             lockbox_id: String,
             contents_file_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
           )
             .returns(Increase::Models::InboundMailItem)
         end

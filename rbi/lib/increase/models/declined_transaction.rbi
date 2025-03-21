@@ -128,7 +128,7 @@ module Increase
           description: String,
           route_id: T.nilable(String),
           route_type: T.nilable(Increase::Models::DeclinedTransaction::RouteType::TaggedSymbol),
-          source: Increase::Models::DeclinedTransaction::Source,
+          source: T.any(Increase::Models::DeclinedTransaction::Source, Increase::Util::AnyHash),
           type: Increase::Models::DeclinedTransaction::Type::TaggedSymbol
         )
           .returns(T.attached_class)
@@ -361,14 +361,21 @@ module Increase
         #   as deprecated and will be removed in the future.
         sig do
           params(
-            ach_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::ACHDecline),
-            card_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline),
+            ach_decline: T.nilable(T.any(Increase::Models::DeclinedTransaction::Source::ACHDecline, Increase::Util::AnyHash)),
+            card_decline: T.nilable(T.any(Increase::Models::DeclinedTransaction::Source::CardDecline, Increase::Util::AnyHash)),
             category: Increase::Models::DeclinedTransaction::Source::Category::TaggedSymbol,
-            check_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDecline),
-            check_deposit_rejection: T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDepositRejection),
-            inbound_real_time_payments_transfer_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline),
+            check_decline: T.nilable(T.any(Increase::Models::DeclinedTransaction::Source::CheckDecline, Increase::Util::AnyHash)),
+            check_deposit_rejection: T.nilable(
+              T.any(Increase::Models::DeclinedTransaction::Source::CheckDepositRejection, Increase::Util::AnyHash)
+            ),
+            inbound_real_time_payments_transfer_decline: T.nilable(
+              T.any(
+                Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline,
+                Increase::Util::AnyHash
+              )
+            ),
             other: T.nilable(T.anything),
-            wire_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::WireDecline)
+            wire_decline: T.nilable(T.any(Increase::Models::DeclinedTransaction::Source::WireDecline, Increase::Util::AnyHash))
           )
             .returns(T.attached_class)
         end
@@ -1052,8 +1059,11 @@ module Increase
               merchant_descriptor: String,
               merchant_postal_code: T.nilable(String),
               merchant_state: T.nilable(String),
-              network_details: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails,
-              network_identifiers: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers,
+              network_details: T.any(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails, Increase::Util::AnyHash),
+              network_identifiers: T.any(
+                Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers,
+                Increase::Util::AnyHash
+              ),
               network_risk_score: T.nilable(Integer),
               physical_card_id: T.nilable(String),
               presentment_amount: Integer,
@@ -1065,7 +1075,7 @@ module Increase
               ),
               reason: Increase::Models::DeclinedTransaction::Source::CardDecline::Reason::TaggedSymbol,
               terminal_id: T.nilable(String),
-              verification: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification
+              verification: T.any(Increase::Models::DeclinedTransaction::Source::CardDecline::Verification, Increase::Util::AnyHash)
             )
               .returns(T.attached_class)
           end
@@ -1287,7 +1297,12 @@ module Increase
             sig do
               params(
                 category: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category::TaggedSymbol,
-                visa: T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa)
+                visa: T.nilable(
+                  T.any(
+                    Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa,
+                    Increase::Util::AnyHash
+                  )
+                )
               )
                 .returns(T.attached_class)
             end
@@ -2090,8 +2105,14 @@ module Increase
             # Fields related to verification of cardholder-provided values.
             sig do
               params(
-                card_verification_code: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode,
-                cardholder_address: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress
+                card_verification_code: T.any(
+                  Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode,
+                  Increase::Util::AnyHash
+                ),
+                cardholder_address: T.any(
+                  Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress,
+                  Increase::Util::AnyHash
+                )
               )
                 .returns(T.attached_class)
             end

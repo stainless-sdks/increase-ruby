@@ -23,7 +23,7 @@ module Increase
         sig do
           params(
             reason: Increase::Models::Simulations::ACHTransferReturnParams::Reason::OrSymbol,
-            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

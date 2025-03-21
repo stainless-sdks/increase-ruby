@@ -222,7 +222,7 @@ module Increase
           amount: Integer,
           statement_descriptor: String,
           account_number: String,
-          addenda: Increase::Models::ACHTransferCreateParams::Addenda,
+          addenda: T.any(Increase::Models::ACHTransferCreateParams::Addenda, Increase::Util::AnyHash),
           company_descriptive_date: String,
           company_discretionary_data: String,
           company_entry_description: String,
@@ -232,12 +232,12 @@ module Increase
           funding: Increase::Models::ACHTransferCreateParams::Funding::OrSymbol,
           individual_id: String,
           individual_name: String,
-          preferred_effective_date: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate,
+          preferred_effective_date: T.any(Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate, Increase::Util::AnyHash),
           require_approval: T::Boolean,
           routing_number: String,
           standard_entry_class_code: Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::OrSymbol,
           transaction_timing: Increase::Models::ACHTransferCreateParams::TransactionTiming::OrSymbol,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -348,8 +348,11 @@ module Increase
         sig do
           params(
             category: Increase::Models::ACHTransferCreateParams::Addenda::Category::OrSymbol,
-            freeform: Increase::Models::ACHTransferCreateParams::Addenda::Freeform,
-            payment_order_remittance_advice: Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice
+            freeform: T.any(Increase::Models::ACHTransferCreateParams::Addenda::Freeform, Increase::Util::AnyHash),
+            payment_order_remittance_advice: T.any(
+              Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice,
+              Increase::Util::AnyHash
+            )
           )
             .returns(T.attached_class)
         end

@@ -301,19 +301,19 @@ module Increase
       sig do
         params(
           id: String,
-          acceptance: T.nilable(Increase::Models::InboundACHTransfer::Acceptance),
+          acceptance: T.nilable(T.any(Increase::Models::InboundACHTransfer::Acceptance, Increase::Util::AnyHash)),
           account_id: String,
           account_number_id: String,
-          addenda: T.nilable(Increase::Models::InboundACHTransfer::Addenda),
+          addenda: T.nilable(T.any(Increase::Models::InboundACHTransfer::Addenda, Increase::Util::AnyHash)),
           amount: Integer,
           automatically_resolves_at: Time,
           created_at: Time,
-          decline: T.nilable(Increase::Models::InboundACHTransfer::Decline),
+          decline: T.nilable(T.any(Increase::Models::InboundACHTransfer::Decline, Increase::Util::AnyHash)),
           direction: Increase::Models::InboundACHTransfer::Direction::TaggedSymbol,
           effective_date: Date,
           expected_settlement_schedule: Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule::TaggedSymbol,
-          international_addenda: T.nilable(Increase::Models::InboundACHTransfer::InternationalAddenda),
-          notification_of_change: T.nilable(Increase::Models::InboundACHTransfer::NotificationOfChange),
+          international_addenda: T.nilable(T.any(Increase::Models::InboundACHTransfer::InternationalAddenda, Increase::Util::AnyHash)),
+          notification_of_change: T.nilable(T.any(Increase::Models::InboundACHTransfer::NotificationOfChange, Increase::Util::AnyHash)),
           originator_company_descriptive_date: T.nilable(String),
           originator_company_discretionary_data: T.nilable(String),
           originator_company_entry_description: String,
@@ -325,7 +325,7 @@ module Increase
           standard_entry_class_code: Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol,
           status: Increase::Models::InboundACHTransfer::Status::TaggedSymbol,
           trace_number: String,
-          transfer_return: T.nilable(Increase::Models::InboundACHTransfer::TransferReturn),
+          transfer_return: T.nilable(T.any(Increase::Models::InboundACHTransfer::TransferReturn, Increase::Util::AnyHash)),
           type: Increase::Models::InboundACHTransfer::Type::TaggedSymbol
         )
           .returns(T.attached_class)
@@ -460,7 +460,7 @@ module Increase
         sig do
           params(
             category: Increase::Models::InboundACHTransfer::Addenda::Category::TaggedSymbol,
-            freeform: T.nilable(Increase::Models::InboundACHTransfer::Addenda::Freeform)
+            freeform: T.nilable(T.any(Increase::Models::InboundACHTransfer::Addenda::Freeform, Increase::Util::AnyHash))
           )
             .returns(T.attached_class)
         end

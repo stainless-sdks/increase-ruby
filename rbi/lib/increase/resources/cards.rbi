@@ -11,7 +11,7 @@ module Increase
           description: String,
           digital_wallet: Increase::Models::CardCreateParams::DigitalWallet,
           entity_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::Card)
       end
@@ -39,7 +39,7 @@ module Increase
       sig do
         params(
           card_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::Card)
       end
@@ -59,7 +59,7 @@ module Increase
           digital_wallet: Increase::Models::CardUpdateParams::DigitalWallet,
           entity_id: String,
           status: Increase::Models::CardUpdateParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::Card)
       end
@@ -92,7 +92,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           status: Increase::Models::CardListParams::Status,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::Card])
       end
@@ -119,7 +119,7 @@ module Increase
       sig do
         params(
           card_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::CardDetails)
       end

@@ -159,7 +159,7 @@ module Increase
           idempotency_key: T.nilable(String),
           issuer_name: String,
           status: Increase::Models::DigitalCardProfile::Status::TaggedSymbol,
-          text_color: Increase::Models::DigitalCardProfile::TextColor,
+          text_color: T.any(Increase::Models::DigitalCardProfile::TextColor, Increase::Util::AnyHash),
           type: Increase::Models::DigitalCardProfile::Type::TaggedSymbol
         )
           .returns(T.attached_class)

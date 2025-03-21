@@ -16,7 +16,7 @@ module Increase
       end
 
       sig do
-        params(at_time: Time, request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+        params(at_time: Time, request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash))
           .returns(T.attached_class)
       end
       def self.new(at_time: nil, request_options: {})

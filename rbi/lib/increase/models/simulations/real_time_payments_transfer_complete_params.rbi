@@ -31,8 +31,11 @@ module Increase
 
         sig do
           params(
-            rejection: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
-            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+            rejection: T.any(
+              Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
+              Increase::Util::AnyHash
+            ),
+            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

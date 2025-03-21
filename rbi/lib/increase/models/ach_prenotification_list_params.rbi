@@ -50,11 +50,11 @@ module Increase
 
       sig do
         params(
-          created_at: Increase::Models::ACHPrenotificationListParams::CreatedAt,
+          created_at: T.any(Increase::Models::ACHPrenotificationListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

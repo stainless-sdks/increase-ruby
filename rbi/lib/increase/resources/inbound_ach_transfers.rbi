@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           inbound_ach_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::InboundACHTransfer)
       end
@@ -27,7 +27,7 @@ module Increase
           cursor: String,
           limit: Integer,
           status: Increase::Models::InboundACHTransferListParams::Status,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::InboundACHTransfer])
       end
@@ -53,7 +53,7 @@ module Increase
           inbound_ach_transfer_id: String,
           updated_account_number: String,
           updated_routing_number: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::InboundACHTransfer)
       end
@@ -74,7 +74,7 @@ module Increase
         params(
           inbound_ach_transfer_id: String,
           reason: Increase::Models::InboundACHTransferDeclineParams::Reason::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::InboundACHTransfer)
       end
@@ -94,7 +94,7 @@ module Increase
         params(
           inbound_ach_transfer_id: String,
           reason: Increase::Models::InboundACHTransferTransferReturnParams::Reason::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::InboundACHTransfer)
       end

@@ -12,7 +12,7 @@ module Increase
           params(
             real_time_payments_transfer_id: String,
             rejection: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
-            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
           )
             .returns(Increase::Models::RealTimePaymentsTransfer)
         end

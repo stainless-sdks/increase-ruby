@@ -22,7 +22,7 @@ module Increase
           require_approval: T::Boolean,
           routing_number: String,
           source_account_number_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::WireTransfer)
       end
@@ -73,7 +73,7 @@ module Increase
       sig do
         params(
           wire_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::WireTransfer)
       end
@@ -93,7 +93,7 @@ module Increase
           external_account_id: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::WireTransfer])
       end
@@ -121,7 +121,7 @@ module Increase
       sig do
         params(
           wire_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::WireTransfer)
       end
@@ -136,7 +136,7 @@ module Increase
       sig do
         params(
           wire_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::WireTransfer)
       end

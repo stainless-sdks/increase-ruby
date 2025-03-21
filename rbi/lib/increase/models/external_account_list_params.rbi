@@ -63,8 +63,8 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           routing_number: String,
-          status: Increase::Models::ExternalAccountListParams::Status,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          status: T.any(Increase::Models::ExternalAccountListParams::Status, Increase::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

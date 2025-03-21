@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           oauth_application_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::OAuthApplication)
       end
@@ -25,7 +25,7 @@ module Increase
           cursor: String,
           limit: Integer,
           status: Increase::Models::OAuthApplicationListParams::Status,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::OAuthApplication])
       end

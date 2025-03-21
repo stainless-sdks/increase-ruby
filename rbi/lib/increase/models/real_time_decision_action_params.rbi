@@ -103,12 +103,18 @@ module Increase
 
       sig do
         params(
-          card_authentication: Increase::Models::RealTimeDecisionActionParams::CardAuthentication,
-          card_authentication_challenge: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge,
-          card_authorization: Increase::Models::RealTimeDecisionActionParams::CardAuthorization,
-          digital_wallet_authentication: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
-          digital_wallet_token: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          card_authentication: T.any(Increase::Models::RealTimeDecisionActionParams::CardAuthentication, Increase::Util::AnyHash),
+          card_authentication_challenge: T.any(
+            Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge,
+            Increase::Util::AnyHash
+          ),
+          card_authorization: T.any(Increase::Models::RealTimeDecisionActionParams::CardAuthorization, Increase::Util::AnyHash),
+          digital_wallet_authentication: T.any(
+            Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
+            Increase::Util::AnyHash
+          ),
+          digital_wallet_token: T.any(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken, Increase::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -477,7 +483,10 @@ module Increase
         sig do
           params(
             result: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::OrSymbol,
-            success: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success
+            success: T.any(
+              Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success,
+              Increase::Util::AnyHash
+            )
           )
             .returns(T.attached_class)
         end
@@ -617,8 +626,14 @@ module Increase
         #   attempt, this object contains your response to the attempt.
         sig do
           params(
-            approval: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval,
-            decline: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline
+            approval: T.any(
+              Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval,
+              Increase::Util::AnyHash
+            ),
+            decline: T.any(
+              Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline,
+              Increase::Util::AnyHash
+            )
           )
             .returns(T.attached_class)
         end

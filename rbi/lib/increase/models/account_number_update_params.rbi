@@ -54,11 +54,11 @@ module Increase
 
       sig do
         params(
-          inbound_ach: Increase::Models::AccountNumberUpdateParams::InboundACH,
-          inbound_checks: Increase::Models::AccountNumberUpdateParams::InboundChecks,
+          inbound_ach: T.any(Increase::Models::AccountNumberUpdateParams::InboundACH, Increase::Util::AnyHash),
+          inbound_checks: T.any(Increase::Models::AccountNumberUpdateParams::InboundChecks, Increase::Util::AnyHash),
           name: String,
           status: Increase::Models::AccountNumberUpdateParams::Status::OrSymbol,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

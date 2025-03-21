@@ -13,7 +13,7 @@ module Increase
           physical_check: Increase::Models::CheckTransferCreateParams::PhysicalCheck,
           require_approval: T::Boolean,
           third_party: Increase::Models::CheckTransferCreateParams::ThirdParty,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::CheckTransfer)
       end
@@ -45,7 +45,7 @@ module Increase
       sig do
         params(
           check_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::CheckTransfer)
       end
@@ -65,7 +65,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           status: Increase::Models::CheckTransferListParams::Status,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::CheckTransfer])
       end
@@ -92,7 +92,7 @@ module Increase
       sig do
         params(
           check_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::CheckTransfer)
       end
@@ -107,7 +107,7 @@ module Increase
       sig do
         params(
           check_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::CheckTransfer)
       end
@@ -123,7 +123,7 @@ module Increase
         params(
           check_transfer_id: String,
           reason: Increase::Models::CheckTransferStopPaymentParams::Reason::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::CheckTransfer)
       end
