@@ -121,10 +121,8 @@ module Increase
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN = T.let(:unknown, Increase::Models::ExternalAccount::AccountHolder::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::ExternalAccount::AccountHolder::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::ExternalAccount::AccountHolder::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -144,10 +142,8 @@ module Increase
         # A different type of account.
         OTHER = T.let(:other, Increase::Models::ExternalAccount::Funding::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::ExternalAccount::Funding::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::ExternalAccount::Funding::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -164,10 +160,8 @@ module Increase
         # The External Account is archived and won't appear in the dashboard.
         ARCHIVED = T.let(:archived, Increase::Models::ExternalAccount::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::ExternalAccount::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::ExternalAccount::Status::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -181,10 +175,8 @@ module Increase
 
         EXTERNAL_ACCOUNT = T.let(:external_account, Increase::Models::ExternalAccount::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::ExternalAccount::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::ExternalAccount::Type::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -205,10 +197,8 @@ module Increase
         # The External Account is verified.
         VERIFIED = T.let(:verified, Increase::Models::ExternalAccount::VerificationStatus::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::ExternalAccount::VerificationStatus::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::ExternalAccount::VerificationStatus::TaggedSymbol]) }
+        def self.values
         end
       end
     end

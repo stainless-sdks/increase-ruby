@@ -498,10 +498,8 @@ module Increase
           WIRE_TRANSFER_UPDATED =
             T.let(:"wire_transfer.updated", Increase::Models::EventListParams::Category::In::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Increase::Models::EventListParams::Category::In::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Increase::Models::EventListParams::Category::In::TaggedSymbol]) }
+          def self.values
           end
         end
       end

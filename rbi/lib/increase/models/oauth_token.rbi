@@ -53,10 +53,8 @@ module Increase
 
         BEARER = T.let(:bearer, Increase::Models::OAuthToken::TokenType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::OAuthToken::TokenType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::OAuthToken::TokenType::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -70,10 +68,8 @@ module Increase
 
         OAUTH_TOKEN = T.let(:oauth_token, Increase::Models::OAuthToken::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::OAuthToken::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::OAuthToken::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end

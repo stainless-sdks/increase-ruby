@@ -141,10 +141,8 @@ module Increase
           # ACH Debits are blocked.
           BLOCKED = T.let(:blocked, Increase::Models::AccountNumberListParams::ACHDebitStatus::In::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::In::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::In::TaggedSymbol]) }
+          def self.values
           end
         end
       end
@@ -229,10 +227,8 @@ module Increase
           # The account number is permanently disabled.
           CANCELED = T.let(:canceled, Increase::Models::AccountNumberListParams::Status::In::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Increase::Models::AccountNumberListParams::Status::In::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Increase::Models::AccountNumberListParams::Status::In::TaggedSymbol]) }
+          def self.values
           end
         end
       end

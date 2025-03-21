@@ -84,10 +84,8 @@ module Increase
         # The application is deleted.
         DELETED = T.let(:deleted, Increase::Models::OAuthApplication::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::OAuthApplication::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::OAuthApplication::Status::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -101,10 +99,8 @@ module Increase
 
         OAUTH_APPLICATION = T.let(:oauth_application, Increase::Models::OAuthApplication::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::OAuthApplication::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::OAuthApplication::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end

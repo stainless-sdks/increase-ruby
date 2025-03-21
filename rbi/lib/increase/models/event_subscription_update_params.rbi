@@ -52,10 +52,8 @@ module Increase
         # The subscription is permanently disabled and Events will not be delivered.
         DELETED = T.let(:deleted, Increase::Models::EventSubscriptionUpdateParams::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::EventSubscriptionUpdateParams::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::EventSubscriptionUpdateParams::Status::TaggedSymbol]) }
+        def self.values
         end
       end
     end

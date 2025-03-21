@@ -78,10 +78,8 @@ module Increase
         INDIVIDUAL =
           T.let(:individual, Increase::Models::ExternalAccountUpdateParams::AccountHolder::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::ExternalAccountUpdateParams::AccountHolder::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::ExternalAccountUpdateParams::AccountHolder::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -102,10 +100,8 @@ module Increase
         # A different type of account.
         OTHER = T.let(:other, Increase::Models::ExternalAccountUpdateParams::Funding::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::ExternalAccountUpdateParams::Funding::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::ExternalAccountUpdateParams::Funding::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -123,10 +119,8 @@ module Increase
         # The External Account is archived and won't appear in the dashboard.
         ARCHIVED = T.let(:archived, Increase::Models::ExternalAccountUpdateParams::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::ExternalAccountUpdateParams::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::ExternalAccountUpdateParams::Status::TaggedSymbol]) }
+        def self.values
         end
       end
     end

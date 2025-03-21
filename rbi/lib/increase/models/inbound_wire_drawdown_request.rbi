@@ -206,10 +206,8 @@ module Increase
         INBOUND_WIRE_DRAWDOWN_REQUEST =
           T.let(:inbound_wire_drawdown_request, Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end

@@ -85,10 +85,8 @@ module Increase
         CUSTOMER_BALANCE =
           T.let(:customer_balance, Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -103,10 +101,8 @@ module Increase
         BOOKKEEPING_ACCOUNT =
           T.let(:bookkeeping_account, Increase::Models::BookkeepingAccount::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::BookkeepingAccount::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::BookkeepingAccount::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end

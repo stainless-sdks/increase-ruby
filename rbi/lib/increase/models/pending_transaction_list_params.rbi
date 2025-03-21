@@ -192,10 +192,8 @@ module Increase
           # The Pending Transaction was made for an undocumented or deprecated reason.
           OTHER = T.let(:other, Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol]) }
+          def self.values
           end
         end
       end
@@ -279,10 +277,8 @@ module Increase
           # The Pending Transaction is confirmed. An associated Transaction exists for this object. The Pending Transaction will no longer count against your balance and can generally be hidden from UIs, etc.
           COMPLETE = T.let(:complete, Increase::Models::PendingTransactionListParams::Status::In::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Increase::Models::PendingTransactionListParams::Status::In::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Increase::Models::PendingTransactionListParams::Status::In::TaggedSymbol]) }
+          def self.values
           end
         end
       end

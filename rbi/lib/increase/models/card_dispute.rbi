@@ -254,10 +254,8 @@ module Increase
         # The Card Dispute has been won and no further action can be taken.
         WON = T.let(:won, Increase::Models::CardDispute::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::CardDispute::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::CardDispute::Status::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -271,10 +269,8 @@ module Increase
 
         CARD_DISPUTE = T.let(:card_dispute, Increase::Models::CardDispute::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::CardDispute::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::CardDispute::Type::TaggedSymbol]) }
+        def self.values
         end
       end
 

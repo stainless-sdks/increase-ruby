@@ -240,10 +240,8 @@ module Increase
               Increase::Models::FileListParams::Purpose::In::TaggedSymbol
             )
 
-          class << self
-            sig { override.returns(T::Array[Increase::Models::FileListParams::Purpose::In::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Increase::Models::FileListParams::Purpose::In::TaggedSymbol]) }
+          def self.values
           end
         end
       end

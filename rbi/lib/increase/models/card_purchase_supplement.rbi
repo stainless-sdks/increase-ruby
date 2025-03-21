@@ -233,13 +233,11 @@ module Increase
               Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol])
+          end
+          def self.values
           end
         end
 
@@ -284,10 +282,8 @@ module Increase
               Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol
             )
 
-          class << self
-            sig { override.returns(T::Array[Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol]) }
+          def self.values
           end
         end
       end
@@ -458,13 +454,11 @@ module Increase
           PAYMENT =
             T.let(:payment, Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol)
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol])
+          end
+          def self.values
           end
         end
 
@@ -498,13 +492,11 @@ module Increase
               Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol])
+          end
+          def self.values
           end
         end
       end
@@ -520,10 +512,8 @@ module Increase
         CARD_PURCHASE_SUPPLEMENT =
           T.let(:card_purchase_supplement, Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end

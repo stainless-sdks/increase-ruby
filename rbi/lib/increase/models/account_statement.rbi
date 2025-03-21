@@ -102,10 +102,8 @@ module Increase
 
         ACCOUNT_STATEMENT = T.let(:account_statement, Increase::Models::AccountStatement::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::AccountStatement::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::AccountStatement::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end

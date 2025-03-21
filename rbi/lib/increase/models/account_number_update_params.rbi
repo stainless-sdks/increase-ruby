@@ -115,13 +115,11 @@ module Increase
           BLOCKED =
             T.let(:blocked, Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus::TaggedSymbol)
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus::TaggedSymbol])
+          end
+          def self.values
           end
         end
       end
@@ -164,13 +162,11 @@ module Increase
               Increase::Models::AccountNumberUpdateParams::InboundChecks::Status::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[Increase::Models::AccountNumberUpdateParams::InboundChecks::Status::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[Increase::Models::AccountNumberUpdateParams::InboundChecks::Status::TaggedSymbol])
+          end
+          def self.values
           end
         end
       end
@@ -192,10 +188,8 @@ module Increase
         # The account number is permanently disabled.
         CANCELED = T.let(:canceled, Increase::Models::AccountNumberUpdateParams::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::AccountNumberUpdateParams::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::AccountNumberUpdateParams::Status::TaggedSymbol]) }
+        def self.values
         end
       end
     end

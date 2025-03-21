@@ -124,10 +124,8 @@ module Increase
         # US Dollar (USD)
         USD = T.let(:USD, Increase::Models::DeclinedTransaction::Currency::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::DeclinedTransaction::Currency::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::DeclinedTransaction::Currency::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -147,10 +145,8 @@ module Increase
         # A Lockbox.
         LOCKBOX = T.let(:lockbox, Increase::Models::DeclinedTransaction::RouteType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::DeclinedTransaction::RouteType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::DeclinedTransaction::RouteType::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -523,12 +519,10 @@ module Increase
                 Increase::Models::DeclinedTransaction::Source::ACHDecline::Reason::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override.returns(T::Array[Increase::Models::DeclinedTransaction::Source::ACHDecline::Reason::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override.returns(T::Array[Increase::Models::DeclinedTransaction::Source::ACHDecline::Reason::TaggedSymbol])
+            end
+            def self.values
             end
           end
 
@@ -545,10 +539,8 @@ module Increase
             ACH_DECLINE =
               T.let(:ach_decline, Increase::Models::DeclinedTransaction::Source::ACHDecline::Type::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[Increase::Models::DeclinedTransaction::Source::ACHDecline::Type::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Increase::Models::DeclinedTransaction::Source::ACHDecline::Type::TaggedSymbol]) }
+            def self.values
             end
           end
         end
@@ -838,13 +830,11 @@ module Increase
             NETWORK =
               T.let(:network, Increase::Models::DeclinedTransaction::Source::CardDecline::Actioner::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Actioner::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Actioner::TaggedSymbol])
+            end
+            def self.values
             end
           end
 
@@ -876,13 +866,11 @@ module Increase
             # US Dollar (USD)
             USD = T.let(:USD, Increase::Models::DeclinedTransaction::Source::CardDecline::Currency::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Currency::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Currency::TaggedSymbol])
+            end
+            def self.values
             end
           end
 
@@ -904,13 +892,11 @@ module Increase
             REFUND =
               T.let(:refund, Increase::Models::DeclinedTransaction::Source::CardDecline::Direction::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Direction::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Direction::TaggedSymbol])
+            end
+            def self.values
             end
           end
 
@@ -989,15 +975,13 @@ module Increase
                   Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category::TaggedSymbol]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category::TaggedSymbol]
+                  )
+              end
+              def self.values
               end
             end
 
@@ -1147,17 +1131,15 @@ module Increase
                     Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
 
@@ -1248,17 +1230,15 @@ module Increase
                     Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
 
@@ -1328,17 +1308,15 @@ module Increase
                     Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -1444,15 +1422,13 @@ module Increase
                 Increase::Models::DeclinedTransaction::Source::CardDecline::ProcessingCategory::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::ProcessingCategory::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::ProcessingCategory::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
 
@@ -1513,15 +1489,13 @@ module Increase
                 Increase::Models::DeclinedTransaction::Source::CardDecline::RealTimeDecisionReason::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::RealTimeDecisionReason::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::RealTimeDecisionReason::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
 
@@ -1629,13 +1603,11 @@ module Increase
             SUSPECTED_FRAUD =
               T.let(:suspected_fraud, Increase::Models::DeclinedTransaction::Source::CardDecline::Reason::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Reason::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Reason::TaggedSymbol])
+            end
+            def self.values
             end
           end
 
@@ -1769,17 +1741,15 @@ module Increase
                     Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -1898,17 +1868,15 @@ module Increase
                     Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -1953,10 +1921,8 @@ module Increase
           # The Declined Transaction was made for an undocumented or deprecated reason.
           OTHER = T.let(:other, Increase::Models::DeclinedTransaction::Source::Category::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Increase::Models::DeclinedTransaction::Source::Category::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Increase::Models::DeclinedTransaction::Source::Category::TaggedSymbol]) }
+          def self.values
           end
         end
 
@@ -2142,13 +2108,11 @@ module Increase
             USER_INITIATED =
               T.let(:user_initiated, Increase::Models::DeclinedTransaction::Source::CheckDecline::Reason::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::DeclinedTransaction::Source::CheckDecline::Reason::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Increase::Models::DeclinedTransaction::Source::CheckDecline::Reason::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end
@@ -2252,15 +2216,13 @@ module Increase
             USD =
               T.let(:USD, Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Currency::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Currency::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Currency::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
 
@@ -2350,15 +2312,13 @@ module Increase
                 Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Reason::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Reason::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Reason::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -2527,17 +2487,15 @@ module Increase
                 Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[
-                    Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol
-                    ]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[
+                  Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol
+                  ]
+                )
+            end
+            def self.values
             end
           end
 
@@ -2599,17 +2557,15 @@ module Increase
                 Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[
-                    Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol
-                    ]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[
+                  Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol
+                  ]
+                )
+            end
+            def self.values
             end
           end
         end
@@ -2695,13 +2651,11 @@ module Increase
                 Increase::Models::DeclinedTransaction::Source::WireDecline::Reason::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::DeclinedTransaction::Source::WireDecline::Reason::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Increase::Models::DeclinedTransaction::Source::WireDecline::Reason::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end
@@ -2718,10 +2672,8 @@ module Increase
         DECLINED_TRANSACTION =
           T.let(:declined_transaction, Increase::Models::DeclinedTransaction::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::DeclinedTransaction::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::DeclinedTransaction::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end

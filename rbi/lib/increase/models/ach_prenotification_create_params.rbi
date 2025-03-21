@@ -179,13 +179,11 @@ module Increase
         DEBIT =
           T.let(:debit, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol)
 
-        class << self
-          sig do
-            override
-              .returns(T::Array[Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol])
-          end
-          def values
-          end
+        sig do
+          override
+            .returns(T::Array[Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol])
+        end
+        def self.values
         end
       end
 
@@ -226,13 +224,11 @@ module Increase
             Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol
           )
 
-        class << self
-          sig do
-            override
-              .returns(T::Array[Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol])
-          end
-          def values
-          end
+        sig do
+          override
+            .returns(T::Array[Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol])
+        end
+        def self.values
         end
       end
     end

@@ -149,10 +149,8 @@ module Increase
         # The Card Profile is no longer in use.
         ARCHIVED = T.let(:archived, Increase::Models::DigitalCardProfile::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::DigitalCardProfile::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::DigitalCardProfile::Status::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -190,10 +188,8 @@ module Increase
         DIGITAL_CARD_PROFILE =
           T.let(:digital_card_profile, Increase::Models::DigitalCardProfile::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::DigitalCardProfile::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::DigitalCardProfile::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end

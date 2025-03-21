@@ -108,10 +108,8 @@ module Increase
           # The External Account is archived and won't appear in the dashboard.
           ARCHIVED = T.let(:archived, Increase::Models::ExternalAccountListParams::Status::In::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Increase::Models::ExternalAccountListParams::Status::In::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Increase::Models::ExternalAccountListParams::Status::In::TaggedSymbol]) }
+          def self.values
           end
         end
       end

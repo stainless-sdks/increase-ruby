@@ -483,10 +483,8 @@ module Increase
           UNTIMELY_RETURN =
             T.let(:untimely_return, Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol]) }
+          def self.values
           end
         end
       end

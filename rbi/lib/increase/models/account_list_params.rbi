@@ -183,10 +183,8 @@ module Increase
           # Open Accounts that are ready to use.
           OPEN = T.let(:open, Increase::Models::AccountListParams::Status::In::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Increase::Models::AccountListParams::Status::In::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Increase::Models::AccountListParams::Status::In::TaggedSymbol]) }
+          def self.values
           end
         end
       end

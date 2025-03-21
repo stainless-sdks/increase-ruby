@@ -202,10 +202,8 @@ module Increase
         # US Dollar (USD)
         USD = T.let(:USD, Increase::Models::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -295,13 +293,11 @@ module Increase
               Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason::TaggedSymbol])
+          end
+          def self.values
           end
         end
       end
@@ -327,10 +323,8 @@ module Increase
         # The transfer has been declined.
         DECLINED = T.let(:declined, Increase::Models::InboundRealTimePaymentsTransfer::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::InboundRealTimePaymentsTransfer::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::InboundRealTimePaymentsTransfer::Status::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -349,10 +343,8 @@ module Increase
             Increase::Models::InboundRealTimePaymentsTransfer::Type::TaggedSymbol
           )
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::InboundRealTimePaymentsTransfer::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::InboundRealTimePaymentsTransfer::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end

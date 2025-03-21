@@ -157,10 +157,8 @@ module Increase
         # Grasshopper Bank
         GRASSHOPPER_BANK = T.let(:grasshopper_bank, Increase::Models::Account::Bank::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::Account::Bank::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::Account::Bank::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -190,10 +188,8 @@ module Increase
         # US Dollar (USD)
         USD = T.let(:USD, Increase::Models::Account::Currency::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::Account::Currency::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::Account::Currency::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -210,10 +206,8 @@ module Increase
         # Open Accounts that are ready to use.
         OPEN = T.let(:open, Increase::Models::Account::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::Account::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::Account::Status::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -227,10 +221,8 @@ module Increase
 
         ACCOUNT = T.let(:account, Increase::Models::Account::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::Account::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::Account::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end

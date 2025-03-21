@@ -81,10 +81,8 @@ module Increase
 
         FILE_LINK = T.let(:file_link, Increase::Models::FileLink::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::FileLink::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::FileLink::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end
