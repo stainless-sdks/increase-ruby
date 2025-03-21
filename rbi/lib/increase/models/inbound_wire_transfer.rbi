@@ -266,8 +266,8 @@ module Increase
           originator_to_beneficiary_information_line3: T.nilable(String),
           originator_to_beneficiary_information_line4: T.nilable(String),
           sender_reference: T.nilable(String),
-          status: Increase::Models::InboundWireTransfer::Status::TaggedSymbol,
-          type: Increase::Models::InboundWireTransfer::Type::TaggedSymbol
+          status: Increase::Models::InboundWireTransfer::Status::OrSymbol,
+          type: Increase::Models::InboundWireTransfer::Type::OrSymbol
         )
           .returns(T.attached_class)
       end

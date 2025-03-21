@@ -52,7 +52,7 @@ module Increase
           account_id: String,
           available_balance: Integer,
           current_balance: Integer,
-          type: Increase::Models::BalanceLookup::Type::TaggedSymbol
+          type: Increase::Models::BalanceLookup::Type::OrSymbol
         )
           .returns(T.attached_class)
       end

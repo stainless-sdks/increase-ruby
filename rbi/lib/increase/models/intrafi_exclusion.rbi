@@ -117,9 +117,9 @@ module Increase
           excluded_at: T.nilable(Time),
           fdic_certificate_number: T.nilable(String),
           idempotency_key: T.nilable(String),
-          status: Increase::Models::IntrafiExclusion::Status::TaggedSymbol,
+          status: Increase::Models::IntrafiExclusion::Status::OrSymbol,
           submitted_at: T.nilable(Time),
-          type: Increase::Models::IntrafiExclusion::Type::TaggedSymbol
+          type: Increase::Models::IntrafiExclusion::Type::OrSymbol
         )
           .returns(T.attached_class)
       end

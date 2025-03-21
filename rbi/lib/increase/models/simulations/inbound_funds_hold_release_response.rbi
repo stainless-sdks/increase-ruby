@@ -116,12 +116,12 @@ module Increase
             amount: Integer,
             automatically_releases_at: Time,
             created_at: Time,
-            currency: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency::TaggedSymbol,
+            currency: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency::OrSymbol,
             held_transaction_id: T.nilable(String),
             pending_transaction_id: T.nilable(String),
             released_at: T.nilable(Time),
-            status: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status::TaggedSymbol,
-            type: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type::TaggedSymbol
+            status: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status::OrSymbol,
+            type: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type::OrSymbol
           )
             .returns(T.attached_class)
         end

@@ -124,12 +124,12 @@ module Increase
           account_id: String,
           amount: Integer,
           created_at: Time,
-          currency: Increase::Models::DeclinedTransaction::Currency::TaggedSymbol,
+          currency: Increase::Models::DeclinedTransaction::Currency::OrSymbol,
           description: String,
           route_id: T.nilable(String),
-          route_type: T.nilable(Increase::Models::DeclinedTransaction::RouteType::TaggedSymbol),
+          route_type: T.nilable(Increase::Models::DeclinedTransaction::RouteType::OrSymbol),
           source: T.any(Increase::Models::DeclinedTransaction::Source, Increase::Util::AnyHash),
-          type: Increase::Models::DeclinedTransaction::Type::TaggedSymbol
+          type: Increase::Models::DeclinedTransaction::Type::OrSymbol
         )
           .returns(T.attached_class)
       end
@@ -363,7 +363,7 @@ module Increase
           params(
             ach_decline: T.nilable(T.any(Increase::Models::DeclinedTransaction::Source::ACHDecline, Increase::Util::AnyHash)),
             card_decline: T.nilable(T.any(Increase::Models::DeclinedTransaction::Source::CardDecline, Increase::Util::AnyHash)),
-            category: Increase::Models::DeclinedTransaction::Source::Category::TaggedSymbol,
+            category: Increase::Models::DeclinedTransaction::Source::Category::OrSymbol,
             check_decline: T.nilable(T.any(Increase::Models::DeclinedTransaction::Source::CheckDecline, Increase::Util::AnyHash)),
             check_deposit_rejection: T.nilable(
               T.any(Increase::Models::DeclinedTransaction::Source::CheckDepositRejection, Increase::Util::AnyHash)
@@ -536,11 +536,11 @@ module Increase
               originator_company_discretionary_data: T.nilable(String),
               originator_company_id: String,
               originator_company_name: String,
-              reason: Increase::Models::DeclinedTransaction::Source::ACHDecline::Reason::TaggedSymbol,
+              reason: Increase::Models::DeclinedTransaction::Source::ACHDecline::Reason::OrSymbol,
               receiver_id_number: T.nilable(String),
               receiver_name: T.nilable(String),
               trace_number: String,
-              type: Increase::Models::DeclinedTransaction::Source::ACHDecline::Type::TaggedSymbol
+              type: Increase::Models::DeclinedTransaction::Source::ACHDecline::Type::OrSymbol
             )
               .returns(T.attached_class)
           end
@@ -1045,13 +1045,13 @@ module Increase
           sig do
             params(
               id: String,
-              actioner: Increase::Models::DeclinedTransaction::Source::CardDecline::Actioner::TaggedSymbol,
+              actioner: Increase::Models::DeclinedTransaction::Source::CardDecline::Actioner::OrSymbol,
               amount: Integer,
               card_payment_id: String,
-              currency: Increase::Models::DeclinedTransaction::Source::CardDecline::Currency::TaggedSymbol,
+              currency: Increase::Models::DeclinedTransaction::Source::CardDecline::Currency::OrSymbol,
               declined_transaction_id: String,
               digital_wallet_token_id: T.nilable(String),
-              direction: Increase::Models::DeclinedTransaction::Source::CardDecline::Direction::TaggedSymbol,
+              direction: Increase::Models::DeclinedTransaction::Source::CardDecline::Direction::OrSymbol,
               merchant_acceptor_id: String,
               merchant_category_code: String,
               merchant_city: T.nilable(String),
@@ -1068,12 +1068,10 @@ module Increase
               physical_card_id: T.nilable(String),
               presentment_amount: Integer,
               presentment_currency: String,
-              processing_category: Increase::Models::DeclinedTransaction::Source::CardDecline::ProcessingCategory::TaggedSymbol,
+              processing_category: Increase::Models::DeclinedTransaction::Source::CardDecline::ProcessingCategory::OrSymbol,
               real_time_decision_id: T.nilable(String),
-              real_time_decision_reason: T.nilable(
-                Increase::Models::DeclinedTransaction::Source::CardDecline::RealTimeDecisionReason::TaggedSymbol
-              ),
-              reason: Increase::Models::DeclinedTransaction::Source::CardDecline::Reason::TaggedSymbol,
+              real_time_decision_reason: T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline::RealTimeDecisionReason::OrSymbol),
+              reason: Increase::Models::DeclinedTransaction::Source::CardDecline::Reason::OrSymbol,
               terminal_id: T.nilable(String),
               verification: T.any(Increase::Models::DeclinedTransaction::Source::CardDecline::Verification, Increase::Util::AnyHash)
             )
@@ -1296,7 +1294,7 @@ module Increase
             # Fields specific to the `network`.
             sig do
               params(
-                category: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category::TaggedSymbol,
+                category: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category::OrSymbol,
                 visa: T.nilable(
                   T.any(
                     Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa,
@@ -1441,13 +1439,13 @@ module Increase
               sig do
                 params(
                   electronic_commerce_indicator: T.nilable(
-                    Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::OrSymbol
                   ),
                   point_of_service_entry_mode: T.nilable(
-                    Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::OrSymbol
                   ),
                   stand_in_processing_reason: T.nilable(
-                    Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::StandInProcessingReason::OrSymbol
                   )
                 )
                   .returns(T.attached_class)
@@ -2156,7 +2154,7 @@ module Increase
               #   the back of the card.
               sig do
                 params(
-                  result: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
+                  result: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -2292,7 +2290,7 @@ module Increase
                   actual_postal_code: T.nilable(String),
                   provided_line1: T.nilable(String),
                   provided_postal_code: T.nilable(String),
-                  result: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
+                  result: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -2515,7 +2513,7 @@ module Increase
               check_transfer_id: T.nilable(String),
               front_image_file_id: T.nilable(String),
               inbound_check_deposit_id: T.nilable(String),
-              reason: Increase::Models::DeclinedTransaction::Source::CheckDecline::Reason::TaggedSymbol
+              reason: Increase::Models::DeclinedTransaction::Source::CheckDecline::Reason::OrSymbol
             )
               .returns(T.attached_class)
           end
@@ -2735,9 +2733,9 @@ module Increase
             params(
               amount: Integer,
               check_deposit_id: String,
-              currency: Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Currency::TaggedSymbol,
+              currency: Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Currency::OrSymbol,
               declined_transaction_id: String,
-              reason: Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Reason::TaggedSymbol,
+              reason: Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Reason::OrSymbol,
               rejected_at: Time
             )
               .returns(T.attached_class)
@@ -3034,11 +3032,11 @@ module Increase
             params(
               amount: Integer,
               creditor_name: String,
-              currency: Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol,
+              currency: Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency::OrSymbol,
               debtor_account_number: String,
               debtor_name: String,
               debtor_routing_number: String,
-              reason: Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol,
+              reason: Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Reason::OrSymbol,
               remittance_information: T.nilable(String),
               transaction_identification: String,
               transfer_id: String
@@ -3253,7 +3251,7 @@ module Increase
           sig do
             params(
               inbound_wire_transfer_id: String,
-              reason: Increase::Models::DeclinedTransaction::Source::WireDecline::Reason::TaggedSymbol
+              reason: Increase::Models::DeclinedTransaction::Source::WireDecline::Reason::OrSymbol
             )
               .returns(T.attached_class)
           end

@@ -65,10 +65,10 @@ module Increase
       sig do
         params(
           id: String,
-          ach_debit_status: Increase::Models::Group::ACHDebitStatus::TaggedSymbol,
-          activation_status: Increase::Models::Group::ActivationStatus::TaggedSymbol,
+          ach_debit_status: Increase::Models::Group::ACHDebitStatus::OrSymbol,
+          activation_status: Increase::Models::Group::ActivationStatus::OrSymbol,
           created_at: Time,
-          type: Increase::Models::Group::Type::TaggedSymbol
+          type: Increase::Models::Group::Type::OrSymbol
         )
           .returns(T.attached_class)
       end

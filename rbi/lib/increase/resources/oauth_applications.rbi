@@ -21,10 +21,10 @@ module Increase
       # List OAuth Applications
       sig do
         params(
-          created_at: Increase::Models::OAuthApplicationListParams::CreatedAt,
+          created_at: T.any(Increase::Models::OAuthApplicationListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
-          status: Increase::Models::OAuthApplicationListParams::Status,
+          status: T.any(Increase::Models::OAuthApplicationListParams::Status, Increase::Util::AnyHash),
           request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::OAuthApplication])

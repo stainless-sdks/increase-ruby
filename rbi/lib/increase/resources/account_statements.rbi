@@ -24,7 +24,7 @@ module Increase
           account_id: String,
           cursor: String,
           limit: Integer,
-          statement_period_start: Increase::Models::AccountStatementListParams::StatementPeriodStart,
+          statement_period_start: T.any(Increase::Models::AccountStatementListParams::StatementPeriodStart, Increase::Util::AnyHash),
           request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::AccountStatement])

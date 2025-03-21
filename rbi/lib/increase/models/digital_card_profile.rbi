@@ -158,9 +158,9 @@ module Increase
           description: String,
           idempotency_key: T.nilable(String),
           issuer_name: String,
-          status: Increase::Models::DigitalCardProfile::Status::TaggedSymbol,
+          status: Increase::Models::DigitalCardProfile::Status::OrSymbol,
           text_color: T.any(Increase::Models::DigitalCardProfile::TextColor, Increase::Util::AnyHash),
-          type: Increase::Models::DigitalCardProfile::Type::TaggedSymbol
+          type: Increase::Models::DigitalCardProfile::Type::OrSymbol
         )
           .returns(T.attached_class)
       end

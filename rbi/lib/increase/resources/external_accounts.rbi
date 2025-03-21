@@ -80,7 +80,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           routing_number: String,
-          status: Increase::Models::ExternalAccountListParams::Status,
+          status: T.any(Increase::Models::ExternalAccountListParams::Status, Increase::Util::AnyHash),
           request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::ExternalAccount])

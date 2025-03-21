@@ -309,9 +309,9 @@ module Increase
           automatically_resolves_at: Time,
           created_at: Time,
           decline: T.nilable(T.any(Increase::Models::InboundACHTransfer::Decline, Increase::Util::AnyHash)),
-          direction: Increase::Models::InboundACHTransfer::Direction::TaggedSymbol,
+          direction: Increase::Models::InboundACHTransfer::Direction::OrSymbol,
           effective_date: Date,
-          expected_settlement_schedule: Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule::TaggedSymbol,
+          expected_settlement_schedule: Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule::OrSymbol,
           international_addenda: T.nilable(T.any(Increase::Models::InboundACHTransfer::InternationalAddenda, Increase::Util::AnyHash)),
           notification_of_change: T.nilable(T.any(Increase::Models::InboundACHTransfer::NotificationOfChange, Increase::Util::AnyHash)),
           originator_company_descriptive_date: T.nilable(String),
@@ -322,11 +322,11 @@ module Increase
           originator_routing_number: String,
           receiver_id_number: T.nilable(String),
           receiver_name: T.nilable(String),
-          standard_entry_class_code: Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol,
-          status: Increase::Models::InboundACHTransfer::Status::TaggedSymbol,
+          standard_entry_class_code: Increase::Models::InboundACHTransfer::StandardEntryClassCode::OrSymbol,
+          status: Increase::Models::InboundACHTransfer::Status::OrSymbol,
           trace_number: String,
           transfer_return: T.nilable(T.any(Increase::Models::InboundACHTransfer::TransferReturn, Increase::Util::AnyHash)),
-          type: Increase::Models::InboundACHTransfer::Type::TaggedSymbol
+          type: Increase::Models::InboundACHTransfer::Type::OrSymbol
         )
           .returns(T.attached_class)
       end
@@ -459,7 +459,7 @@ module Increase
         # Additional information sent from the originator.
         sig do
           params(
-            category: Increase::Models::InboundACHTransfer::Addenda::Category::TaggedSymbol,
+            category: Increase::Models::InboundACHTransfer::Addenda::Category::OrSymbol,
             freeform: T.nilable(T.any(Increase::Models::InboundACHTransfer::Addenda::Freeform, Increase::Util::AnyHash))
           )
             .returns(T.attached_class)
@@ -512,7 +512,9 @@ module Increase
 
           # Unstructured `payment_related_information` passed through by the originator.
           sig do
-            params(entries: T::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry])
+            params(
+              entries: T::Array[T.any(Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry, Increase::Util::AnyHash)]
+            )
               .returns(T.attached_class)
           end
           def self.new(entries:)
@@ -579,7 +581,7 @@ module Increase
           params(
             declined_at: Time,
             declined_transaction_id: String,
-            reason: Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol
+            reason: Increase::Models::InboundACHTransfer::Decline::Reason::OrSymbol
           )
             .returns(T.attached_class)
         end
@@ -1123,16 +1125,16 @@ module Increase
           params(
             destination_country_code: String,
             destination_currency_code: String,
-            foreign_exchange_indicator: Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeIndicator::TaggedSymbol,
+            foreign_exchange_indicator: Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeIndicator::OrSymbol,
             foreign_exchange_reference: T.nilable(String),
-            foreign_exchange_reference_indicator: Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator::TaggedSymbol,
+            foreign_exchange_reference_indicator: Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator::OrSymbol,
             foreign_payment_amount: Integer,
             foreign_trace_number: T.nilable(String),
-            international_transaction_type_code: Increase::Models::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode::TaggedSymbol,
+            international_transaction_type_code: Increase::Models::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode::OrSymbol,
             originating_currency_code: String,
             originating_depository_financial_institution_branch_country: String,
             originating_depository_financial_institution_id: String,
-            originating_depository_financial_institution_id_qualifier: Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier::TaggedSymbol,
+            originating_depository_financial_institution_id_qualifier: Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier::OrSymbol,
             originating_depository_financial_institution_name: String,
             originator_city: String,
             originator_country: String,
@@ -1152,7 +1154,7 @@ module Increase
             receiving_company_or_individual_name: String,
             receiving_depository_financial_institution_country: String,
             receiving_depository_financial_institution_id: String,
-            receiving_depository_financial_institution_id_qualifier: Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier::TaggedSymbol,
+            receiving_depository_financial_institution_id_qualifier: Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier::OrSymbol,
             receiving_depository_financial_institution_name: String
           )
             .returns(T.attached_class)
@@ -1804,7 +1806,7 @@ module Increase
         # If your transfer is returned, this will contain details of the return.
         sig do
           params(
-            reason: Increase::Models::InboundACHTransfer::TransferReturn::Reason::TaggedSymbol,
+            reason: Increase::Models::InboundACHTransfer::TransferReturn::Reason::OrSymbol,
             returned_at: Time,
             transaction_id: String
           )

@@ -70,11 +70,11 @@ module Increase
       sig do
         params(
           id: String,
-          category: Increase::Models::Document::Category::TaggedSymbol,
+          category: Increase::Models::Document::Category::OrSymbol,
           created_at: Time,
           entity_id: T.nilable(String),
           file_id: String,
-          type: Increase::Models::Document::Type::TaggedSymbol
+          type: Increase::Models::Document::Type::OrSymbol
         )
           .returns(T.attached_class)
       end

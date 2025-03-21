@@ -95,9 +95,9 @@ module Increase
           file_id: String,
           lockbox_id: T.nilable(String),
           recipient_name: T.nilable(String),
-          rejection_reason: T.nilable(Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol),
-          status: Increase::Models::InboundMailItem::Status::TaggedSymbol,
-          type: Increase::Models::InboundMailItem::Type::TaggedSymbol
+          rejection_reason: T.nilable(Increase::Models::InboundMailItem::RejectionReason::OrSymbol),
+          status: Increase::Models::InboundMailItem::Status::OrSymbol,
+          type: Increase::Models::InboundMailItem::Type::OrSymbol
         )
           .returns(T.attached_class)
       end

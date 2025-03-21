@@ -68,10 +68,10 @@ module Increase
       sig do
         params(
           id: String,
-          ach_transfers: T::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer],
+          ach_transfers: T::Array[T.any(Increase::Models::ProofOfAuthorizationRequest::ACHTransfer, Increase::Util::AnyHash)],
           created_at: Time,
           due_on: Time,
-          type: Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol,
+          type: Increase::Models::ProofOfAuthorizationRequest::Type::OrSymbol,
           updated_at: Time
         )
           .returns(T.attached_class)

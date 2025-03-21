@@ -26,7 +26,10 @@ module Increase
             merchant_country: String,
             merchant_descriptor: String,
             merchant_state: String,
-            network_details: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
+            network_details: T.any(
+              Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
+              Increase::Util::AnyHash
+            ),
             physical_card_id: String,
             terminal_id: String,
             request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))

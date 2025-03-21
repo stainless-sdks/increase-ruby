@@ -23,7 +23,7 @@ module Increase
         params(
           account_id: String,
           check_transfer_id: String,
-          created_at: Increase::Models::InboundCheckDepositListParams::CreatedAt,
+          created_at: T.any(Increase::Models::InboundCheckDepositListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
           request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))

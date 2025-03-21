@@ -104,12 +104,12 @@ module Increase
           id: String,
           created_at: Time,
           description: T.nilable(String),
-          direction: Increase::Models::File::Direction::TaggedSymbol,
+          direction: Increase::Models::File::Direction::OrSymbol,
           filename: T.nilable(String),
           idempotency_key: T.nilable(String),
           mime_type: String,
-          purpose: Increase::Models::File::Purpose::TaggedSymbol,
-          type: Increase::Models::File::Type::TaggedSymbol
+          purpose: Increase::Models::File::Purpose::OrSymbol,
+          type: Increase::Models::File::Type::OrSymbol
         )
           .returns(T.attached_class)
       end

@@ -46,11 +46,11 @@ module Increase
       # List Card Disputes
       sig do
         params(
-          created_at: Increase::Models::CardDisputeListParams::CreatedAt,
+          created_at: T.any(Increase::Models::CardDisputeListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::Models::CardDisputeListParams::Status,
+          status: T.any(Increase::Models::CardDisputeListParams::Status, Increase::Util::AnyHash),
           request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::CardDispute])

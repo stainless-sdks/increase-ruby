@@ -276,19 +276,19 @@ module Increase
           check_number: String,
           created_at: Time,
           created_by: T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy, Increase::Util::AnyHash)),
-          currency: Increase::Models::CheckTransfer::Currency::TaggedSymbol,
-          fulfillment_method: Increase::Models::CheckTransfer::FulfillmentMethod::TaggedSymbol,
+          currency: Increase::Models::CheckTransfer::Currency::OrSymbol,
+          fulfillment_method: Increase::Models::CheckTransfer::FulfillmentMethod::OrSymbol,
           idempotency_key: T.nilable(String),
           mailing: T.nilable(T.any(Increase::Models::CheckTransfer::Mailing, Increase::Util::AnyHash)),
           pending_transaction_id: T.nilable(String),
           physical_check: T.nilable(T.any(Increase::Models::CheckTransfer::PhysicalCheck, Increase::Util::AnyHash)),
           routing_number: String,
           source_account_number_id: T.nilable(String),
-          status: Increase::Models::CheckTransfer::Status::TaggedSymbol,
+          status: Increase::Models::CheckTransfer::Status::OrSymbol,
           stop_payment_request: T.nilable(T.any(Increase::Models::CheckTransfer::StopPaymentRequest, Increase::Util::AnyHash)),
           submission: T.nilable(T.any(Increase::Models::CheckTransfer::Submission, Increase::Util::AnyHash)),
           third_party: T.nilable(T.any(Increase::Models::CheckTransfer::ThirdParty, Increase::Util::AnyHash)),
-          type: Increase::Models::CheckTransfer::Type::TaggedSymbol
+          type: Increase::Models::CheckTransfer::Type::OrSymbol
         )
           .returns(T.attached_class)
       end
@@ -473,7 +473,7 @@ module Increase
         sig do
           params(
             api_key: T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy::APIKey, Increase::Util::AnyHash)),
-            category: Increase::Models::CheckTransfer::CreatedBy::Category::TaggedSymbol,
+            category: Increase::Models::CheckTransfer::CreatedBy::Category::OrSymbol,
             oauth_application: T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash)),
             user: T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy::User, Increase::Util::AnyHash))
           )
@@ -781,9 +781,9 @@ module Increase
             note: T.nilable(String),
             recipient_name: String,
             return_address: T.nilable(T.any(Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress, Increase::Util::AnyHash)),
-            shipping_method: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod::TaggedSymbol),
+            shipping_method: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod::OrSymbol),
             signature_text: T.nilable(String),
-            tracking_updates: T::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate]
+            tracking_updates: T::Array[T.any(Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate, Increase::Util::AnyHash)]
           )
             .returns(T.attached_class)
         end
@@ -1049,7 +1049,7 @@ module Increase
 
           sig do
             params(
-              category: Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category::TaggedSymbol,
+              category: Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category::OrSymbol,
               created_at: Time,
               postal_code: String
             )
@@ -1206,10 +1206,10 @@ module Increase
         #   details.
         sig do
           params(
-            reason: Increase::Models::CheckTransfer::StopPaymentRequest::Reason::TaggedSymbol,
+            reason: Increase::Models::CheckTransfer::StopPaymentRequest::Reason::OrSymbol,
             requested_at: Time,
             transfer_id: String,
-            type: Increase::Models::CheckTransfer::StopPaymentRequest::Type::TaggedSymbol
+            type: Increase::Models::CheckTransfer::StopPaymentRequest::Type::OrSymbol
           )
             .returns(T.attached_class)
         end

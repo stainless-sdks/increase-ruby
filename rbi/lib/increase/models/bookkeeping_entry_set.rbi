@@ -84,10 +84,10 @@ module Increase
           id: String,
           created_at: Time,
           date: Time,
-          entries: T::Array[Increase::Models::BookkeepingEntrySet::Entry],
+          entries: T::Array[T.any(Increase::Models::BookkeepingEntrySet::Entry, Increase::Util::AnyHash)],
           idempotency_key: T.nilable(String),
           transaction_id: T.nilable(String),
-          type: Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol
+          type: Increase::Models::BookkeepingEntrySet::Type::OrSymbol
         )
           .returns(T.attached_class)
       end

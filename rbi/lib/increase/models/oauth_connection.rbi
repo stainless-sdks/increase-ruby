@@ -85,8 +85,8 @@ module Increase
           deleted_at: T.nilable(Time),
           group_id: String,
           oauth_application_id: String,
-          status: Increase::Models::OAuthConnection::Status::TaggedSymbol,
-          type: Increase::Models::OAuthConnection::Type::TaggedSymbol
+          status: Increase::Models::OAuthConnection::Status::OrSymbol,
+          type: Increase::Models::OAuthConnection::Type::OrSymbol
         )
           .returns(T.attached_class)
       end

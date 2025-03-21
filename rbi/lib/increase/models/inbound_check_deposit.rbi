@@ -223,22 +223,22 @@ module Increase
           accepted_at: T.nilable(Time),
           account_id: String,
           account_number_id: T.nilable(String),
-          adjustments: T::Array[Increase::Models::InboundCheckDeposit::Adjustment],
+          adjustments: T::Array[T.any(Increase::Models::InboundCheckDeposit::Adjustment, Increase::Util::AnyHash)],
           amount: Integer,
           back_image_file_id: T.nilable(String),
           bank_of_first_deposit_routing_number: T.nilable(String),
           check_number: T.nilable(String),
           check_transfer_id: T.nilable(String),
           created_at: Time,
-          currency: Increase::Models::InboundCheckDeposit::Currency::TaggedSymbol,
+          currency: Increase::Models::InboundCheckDeposit::Currency::OrSymbol,
           declined_at: T.nilable(Time),
           declined_transaction_id: T.nilable(String),
           deposit_return: T.nilable(T.any(Increase::Models::InboundCheckDeposit::DepositReturn, Increase::Util::AnyHash)),
           front_image_file_id: T.nilable(String),
-          payee_name_analysis: Increase::Models::InboundCheckDeposit::PayeeNameAnalysis::TaggedSymbol,
-          status: Increase::Models::InboundCheckDeposit::Status::TaggedSymbol,
+          payee_name_analysis: Increase::Models::InboundCheckDeposit::PayeeNameAnalysis::OrSymbol,
+          status: Increase::Models::InboundCheckDeposit::Status::OrSymbol,
           transaction_id: T.nilable(String),
-          type: Increase::Models::InboundCheckDeposit::Type::TaggedSymbol
+          type: Increase::Models::InboundCheckDeposit::Type::OrSymbol
         )
           .returns(T.attached_class)
       end
@@ -340,7 +340,7 @@ module Increase
           params(
             adjusted_at: Time,
             amount: Integer,
-            reason: Increase::Models::InboundCheckDeposit::Adjustment::Reason::TaggedSymbol,
+            reason: Increase::Models::InboundCheckDeposit::Adjustment::Reason::OrSymbol,
             transaction_id: String
           )
             .returns(T.attached_class)
@@ -461,7 +461,7 @@ module Increase
         #   return.
         sig do
           params(
-            reason: Increase::Models::InboundCheckDeposit::DepositReturn::Reason::TaggedSymbol,
+            reason: Increase::Models::InboundCheckDeposit::DepositReturn::Reason::OrSymbol,
             returned_at: Time,
             transaction_id: String
           )

@@ -101,9 +101,9 @@ module Increase
           created_at: Time,
           idempotency_key: T.nilable(String),
           oauth_connection_id: T.nilable(String),
-          selected_event_category: T.nilable(Increase::Models::EventSubscription::SelectedEventCategory::TaggedSymbol),
-          status: Increase::Models::EventSubscription::Status::TaggedSymbol,
-          type: Increase::Models::EventSubscription::Type::TaggedSymbol,
+          selected_event_category: T.nilable(Increase::Models::EventSubscription::SelectedEventCategory::OrSymbol),
+          status: Increase::Models::EventSubscription::Status::OrSymbol,
+          type: Increase::Models::EventSubscription::Type::OrSymbol,
           url: String
         )
           .returns(T.attached_class)

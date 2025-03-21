@@ -300,7 +300,7 @@ module Increase
           created_at: Time,
           created_by: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::CreatedBy, Increase::Util::AnyHash)),
           creditor_name: String,
-          currency: Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol,
+          currency: Increase::Models::RealTimePaymentsTransfer::Currency::OrSymbol,
           debtor_name: T.nilable(String),
           destination_account_number: String,
           destination_routing_number: String,
@@ -310,10 +310,10 @@ module Increase
           rejection: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Rejection, Increase::Util::AnyHash)),
           remittance_information: String,
           source_account_number_id: String,
-          status: Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol,
+          status: Increase::Models::RealTimePaymentsTransfer::Status::OrSymbol,
           submission: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Submission, Increase::Util::AnyHash)),
           transaction_id: T.nilable(String),
-          type: Increase::Models::RealTimePaymentsTransfer::Type::TaggedSymbol,
+          type: Increase::Models::RealTimePaymentsTransfer::Type::OrSymbol,
           ultimate_creditor_name: T.nilable(String),
           ultimate_debtor_name: T.nilable(String)
         )
@@ -537,7 +537,7 @@ module Increase
         sig do
           params(
             api_key: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey, Increase::Util::AnyHash)),
-            category: Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::TaggedSymbol,
+            category: Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::OrSymbol,
             oauth_application: T.nilable(
               T.any(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash)
             ),
@@ -722,7 +722,7 @@ module Increase
         sig do
           params(
             reject_reason_additional_information: T.nilable(String),
-            reject_reason_code: Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol,
+            reject_reason_code: Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::OrSymbol,
             rejected_at: T.nilable(Time)
           )
             .returns(T.attached_class)

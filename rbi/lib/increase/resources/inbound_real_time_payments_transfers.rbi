@@ -23,7 +23,7 @@ module Increase
         params(
           account_id: String,
           account_number_id: String,
-          created_at: Increase::Models::InboundRealTimePaymentsTransferListParams::CreatedAt,
+          created_at: T.any(Increase::Models::InboundRealTimePaymentsTransferListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
           request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))

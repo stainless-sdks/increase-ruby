@@ -415,7 +415,9 @@ module Increase
 
           # Unstructured `payment_related_information` passed through with the transfer.
           sig do
-            params(entries: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry])
+            params(
+              entries: T::Array[T.any(Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry, Increase::Util::AnyHash)]
+            )
               .returns(T.attached_class)
           end
           def self.new(entries:)
@@ -470,7 +472,12 @@ module Increase
           #   [support@increase.com](mailto:support@increase.com) for more information.
           sig do
             params(
-              invoices: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
+              invoices: T::Array[
+              T.any(
+                Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice,
+                Increase::Util::AnyHash
+              )
+              ]
             )
               .returns(T.attached_class)
           end

@@ -114,8 +114,8 @@ module Increase
           idempotency_key: T.nilable(String),
           physical_card_profile_id: T.nilable(String),
           shipment: T.any(Increase::Models::PhysicalCard::Shipment, Increase::Util::AnyHash),
-          status: Increase::Models::PhysicalCard::Status::TaggedSymbol,
-          type: Increase::Models::PhysicalCard::Type::TaggedSymbol
+          status: Increase::Models::PhysicalCard::Status::OrSymbol,
+          type: Increase::Models::PhysicalCard::Type::OrSymbol
         )
           .returns(T.attached_class)
       end
@@ -233,8 +233,8 @@ module Increase
         sig do
           params(
             address: T.any(Increase::Models::PhysicalCard::Shipment::Address, Increase::Util::AnyHash),
-            method_: Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol,
-            status: Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol,
+            method_: Increase::Models::PhysicalCard::Shipment::Method::OrSymbol,
+            status: Increase::Models::PhysicalCard::Shipment::Status::OrSymbol,
             tracking: T.nilable(T.any(Increase::Models::PhysicalCard::Shipment::Tracking, Increase::Util::AnyHash))
           )
             .returns(T.attached_class)

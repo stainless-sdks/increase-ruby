@@ -183,14 +183,14 @@ module Increase
           company_entry_description: T.nilable(String),
           company_name: T.nilable(String),
           created_at: Time,
-          credit_debit_indicator: T.nilable(Increase::Models::ACHPrenotification::CreditDebitIndicator::TaggedSymbol),
+          credit_debit_indicator: T.nilable(Increase::Models::ACHPrenotification::CreditDebitIndicator::OrSymbol),
           effective_date: T.nilable(Time),
           idempotency_key: T.nilable(String),
-          notifications_of_change: T::Array[Increase::Models::ACHPrenotification::NotificationsOfChange],
+          notifications_of_change: T::Array[T.any(Increase::Models::ACHPrenotification::NotificationsOfChange, Increase::Util::AnyHash)],
           prenotification_return: T.nilable(T.any(Increase::Models::ACHPrenotification::PrenotificationReturn, Increase::Util::AnyHash)),
           routing_number: String,
-          status: Increase::Models::ACHPrenotification::Status::TaggedSymbol,
-          type: Increase::Models::ACHPrenotification::Type::TaggedSymbol
+          status: Increase::Models::ACHPrenotification::Status::OrSymbol,
+          type: Increase::Models::ACHPrenotification::Type::OrSymbol
         )
           .returns(T.attached_class)
       end
@@ -300,7 +300,7 @@ module Increase
 
         sig do
           params(
-            change_code: Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode::TaggedSymbol,
+            change_code: Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode::OrSymbol,
             corrected_data: String,
             created_at: Time
           )
@@ -503,7 +503,7 @@ module Increase
         sig do
           params(
             created_at: Time,
-            return_reason_code: Increase::Models::ACHPrenotification::PrenotificationReturn::ReturnReasonCode::TaggedSymbol
+            return_reason_code: Increase::Models::ACHPrenotification::PrenotificationReturn::ReturnReasonCode::OrSymbol
           )
             .returns(T.attached_class)
         end

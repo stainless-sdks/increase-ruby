@@ -150,8 +150,8 @@ module Increase
           idempotency_key: T.nilable(String),
           loss: T.nilable(T.any(Increase::Models::CardDispute::Loss, Increase::Util::AnyHash)),
           rejection: T.nilable(T.any(Increase::Models::CardDispute::Rejection, Increase::Util::AnyHash)),
-          status: Increase::Models::CardDispute::Status::TaggedSymbol,
-          type: Increase::Models::CardDispute::Type::TaggedSymbol,
+          status: Increase::Models::CardDispute::Status::OrSymbol,
+          type: Increase::Models::CardDispute::Type::OrSymbol,
           win: T.nilable(T.any(Increase::Models::CardDispute::Win, Increase::Util::AnyHash))
         )
           .returns(T.attached_class)

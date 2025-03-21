@@ -41,7 +41,7 @@ module Increase
         params(
           balance: Integer,
           bookkeeping_account_id: String,
-          type: Increase::Models::BookkeepingBalanceLookup::Type::TaggedSymbol
+          type: Increase::Models::BookkeepingBalanceLookup::Type::OrSymbol
         )
           .returns(T.attached_class)
       end

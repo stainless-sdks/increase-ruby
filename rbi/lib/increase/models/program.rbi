@@ -102,13 +102,13 @@ module Increase
       sig do
         params(
           id: String,
-          bank: Increase::Models::Program::Bank::TaggedSymbol,
+          bank: Increase::Models::Program::Bank::OrSymbol,
           billing_account_id: T.nilable(String),
           created_at: Time,
           default_digital_card_profile_id: T.nilable(String),
           interest_rate: String,
           name: String,
-          type: Increase::Models::Program::Type::TaggedSymbol,
+          type: Increase::Models::Program::Type::OrSymbol,
           updated_at: Time
         )
           .returns(T.attached_class)

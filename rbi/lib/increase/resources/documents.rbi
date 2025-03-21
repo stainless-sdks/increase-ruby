@@ -21,8 +21,8 @@ module Increase
       # List Documents
       sig do
         params(
-          category: Increase::Models::DocumentListParams::Category,
-          created_at: Increase::Models::DocumentListParams::CreatedAt,
+          category: T.any(Increase::Models::DocumentListParams::Category, Increase::Util::AnyHash),
+          created_at: T.any(Increase::Models::DocumentListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           entity_id: String,
           limit: Integer,

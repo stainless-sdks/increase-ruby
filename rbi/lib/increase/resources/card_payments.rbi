@@ -23,7 +23,7 @@ module Increase
         params(
           account_id: String,
           card_id: String,
-          created_at: Increase::Models::CardPaymentListParams::CreatedAt,
+          created_at: T.any(Increase::Models::CardPaymentListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
           request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))

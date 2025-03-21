@@ -88,10 +88,10 @@ module Increase
           id: String,
           card_id: String,
           created_at: Time,
-          status: Increase::Models::DigitalWalletToken::Status::TaggedSymbol,
-          token_requestor: Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol,
-          type: Increase::Models::DigitalWalletToken::Type::TaggedSymbol,
-          updates: T::Array[Increase::Models::DigitalWalletToken::Update]
+          status: Increase::Models::DigitalWalletToken::Status::OrSymbol,
+          token_requestor: Increase::Models::DigitalWalletToken::TokenRequestor::OrSymbol,
+          type: Increase::Models::DigitalWalletToken::Type::OrSymbol,
+          updates: T::Array[T.any(Increase::Models::DigitalWalletToken::Update, Increase::Util::AnyHash)]
         )
           .returns(T.attached_class)
       end
@@ -210,7 +210,7 @@ module Increase
         end
 
         sig do
-          params(status: Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol, timestamp: Time)
+          params(status: Increase::Models::DigitalWalletToken::Update::Status::OrSymbol, timestamp: Time)
             .returns(T.attached_class)
         end
         def self.new(status:, timestamp:)

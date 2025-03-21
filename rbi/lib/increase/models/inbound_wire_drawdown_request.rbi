@@ -248,7 +248,7 @@ module Increase
           originator_to_beneficiary_information_line3: T.nilable(String),
           originator_to_beneficiary_information_line4: T.nilable(String),
           recipient_account_number_id: String,
-          type: Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol
+          type: Increase::Models::InboundWireDrawdownRequest::Type::OrSymbol
         )
           .returns(T.attached_class)
       end

@@ -63,7 +63,7 @@ module Increase
           entity_id: String,
           file_id: String,
           idempotency_key: T.nilable(String),
-          type: Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol
+          type: Increase::Models::EntitySupplementalDocument::Type::OrSymbol
         )
           .returns(T.attached_class)
       end

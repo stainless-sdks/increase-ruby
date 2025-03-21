@@ -10,7 +10,7 @@ module Increase
           amount: Integer,
           statement_descriptor: String,
           account_number: String,
-          addenda: Increase::Models::ACHTransferCreateParams::Addenda,
+          addenda: T.any(Increase::Models::ACHTransferCreateParams::Addenda, Increase::Util::AnyHash),
           company_descriptive_date: String,
           company_discretionary_data: String,
           company_entry_description: String,
@@ -20,7 +20,7 @@ module Increase
           funding: Increase::Models::ACHTransferCreateParams::Funding::OrSymbol,
           individual_id: String,
           individual_name: String,
-          preferred_effective_date: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate,
+          preferred_effective_date: T.any(Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate, Increase::Util::AnyHash),
           require_approval: T::Boolean,
           routing_number: String,
           standard_entry_class_code: Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::OrSymbol,
@@ -110,7 +110,7 @@ module Increase
       sig do
         params(
           account_id: String,
-          created_at: Increase::Models::ACHTransferListParams::CreatedAt,
+          created_at: T.any(Increase::Models::ACHTransferListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           external_account_id: String,
           idempotency_key: String,

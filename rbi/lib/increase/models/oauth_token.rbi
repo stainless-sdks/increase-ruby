@@ -44,8 +44,8 @@ module Increase
       sig do
         params(
           access_token: String,
-          token_type: Increase::Models::OAuthToken::TokenType::TaggedSymbol,
-          type: Increase::Models::OAuthToken::Type::TaggedSymbol
+          token_type: Increase::Models::OAuthToken::TokenType::OrSymbol,
+          type: Increase::Models::OAuthToken::Type::OrSymbol
         )
           .returns(T.attached_class)
       end

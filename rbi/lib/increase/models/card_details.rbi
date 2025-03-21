@@ -70,7 +70,7 @@ module Increase
           expiration_month: Integer,
           expiration_year: Integer,
           primary_account_number: String,
-          type: Increase::Models::CardDetails::Type::TaggedSymbol,
+          type: Increase::Models::CardDetails::Type::OrSymbol,
           verification_code: String
         )
           .returns(T.attached_class)

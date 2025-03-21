@@ -8,8 +8,8 @@ module Increase
         params(
           account_id: String,
           name: String,
-          inbound_ach: Increase::Models::AccountNumberCreateParams::InboundACH,
-          inbound_checks: Increase::Models::AccountNumberCreateParams::InboundChecks,
+          inbound_ach: T.any(Increase::Models::AccountNumberCreateParams::InboundACH, Increase::Util::AnyHash),
+          inbound_checks: T.any(Increase::Models::AccountNumberCreateParams::InboundChecks, Increase::Util::AnyHash),
           request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::AccountNumber)
@@ -47,8 +47,8 @@ module Increase
       sig do
         params(
           account_number_id: String,
-          inbound_ach: Increase::Models::AccountNumberUpdateParams::InboundACH,
-          inbound_checks: Increase::Models::AccountNumberUpdateParams::InboundChecks,
+          inbound_ach: T.any(Increase::Models::AccountNumberUpdateParams::InboundACH, Increase::Util::AnyHash),
+          inbound_checks: T.any(Increase::Models::AccountNumberUpdateParams::InboundChecks, Increase::Util::AnyHash),
           name: String,
           status: Increase::Models::AccountNumberUpdateParams::Status::OrSymbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
@@ -75,12 +75,12 @@ module Increase
       sig do
         params(
           account_id: String,
-          ach_debit_status: Increase::Models::AccountNumberListParams::ACHDebitStatus,
-          created_at: Increase::Models::AccountNumberListParams::CreatedAt,
+          ach_debit_status: T.any(Increase::Models::AccountNumberListParams::ACHDebitStatus, Increase::Util::AnyHash),
+          created_at: T.any(Increase::Models::AccountNumberListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::Models::AccountNumberListParams::Status,
+          status: T.any(Increase::Models::AccountNumberListParams::Status, Increase::Util::AnyHash),
           request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::AccountNumber])

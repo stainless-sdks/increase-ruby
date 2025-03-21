@@ -84,7 +84,7 @@ module Increase
           expires_at: Time,
           file_id: String,
           idempotency_key: T.nilable(String),
-          type: Increase::Models::FileLink::Type::TaggedSymbol,
+          type: Increase::Models::FileLink::Type::OrSymbol,
           unauthenticated_url: String
         )
           .returns(T.attached_class)

@@ -22,7 +22,7 @@ module Increase
       sig do
         params(
           card_payment_id: String,
-          created_at: Increase::Models::CardPurchaseSupplementListParams::CreatedAt,
+          created_at: T.any(Increase::Models::CardPurchaseSupplementListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
           request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))

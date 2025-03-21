@@ -416,27 +416,27 @@ module Increase
           company_name: T.nilable(String),
           created_at: Time,
           created_by: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy, Increase::Util::AnyHash)),
-          currency: Increase::Models::ACHTransfer::Currency::TaggedSymbol,
-          destination_account_holder: Increase::Models::ACHTransfer::DestinationAccountHolder::TaggedSymbol,
+          currency: Increase::Models::ACHTransfer::Currency::OrSymbol,
+          destination_account_holder: Increase::Models::ACHTransfer::DestinationAccountHolder::OrSymbol,
           external_account_id: T.nilable(String),
-          funding: Increase::Models::ACHTransfer::Funding::TaggedSymbol,
+          funding: Increase::Models::ACHTransfer::Funding::OrSymbol,
           idempotency_key: T.nilable(String),
           inbound_funds_hold: T.nilable(T.any(Increase::Models::ACHTransfer::InboundFundsHold, Increase::Util::AnyHash)),
           individual_id: T.nilable(String),
           individual_name: T.nilable(String),
-          network: Increase::Models::ACHTransfer::Network::TaggedSymbol,
-          notifications_of_change: T::Array[Increase::Models::ACHTransfer::NotificationsOfChange],
+          network: Increase::Models::ACHTransfer::Network::OrSymbol,
+          notifications_of_change: T::Array[T.any(Increase::Models::ACHTransfer::NotificationsOfChange, Increase::Util::AnyHash)],
           pending_transaction_id: T.nilable(String),
           preferred_effective_date: T.any(Increase::Models::ACHTransfer::PreferredEffectiveDate, Increase::Util::AnyHash),
           return_: T.nilable(T.any(Increase::Models::ACHTransfer::Return, Increase::Util::AnyHash)),
           routing_number: String,
           settlement: T.nilable(T.any(Increase::Models::ACHTransfer::Settlement, Increase::Util::AnyHash)),
-          standard_entry_class_code: Increase::Models::ACHTransfer::StandardEntryClassCode::TaggedSymbol,
+          standard_entry_class_code: Increase::Models::ACHTransfer::StandardEntryClassCode::OrSymbol,
           statement_descriptor: String,
-          status: Increase::Models::ACHTransfer::Status::TaggedSymbol,
+          status: Increase::Models::ACHTransfer::Status::OrSymbol,
           submission: T.nilable(T.any(Increase::Models::ACHTransfer::Submission, Increase::Util::AnyHash)),
           transaction_id: T.nilable(String),
-          type: Increase::Models::ACHTransfer::Type::TaggedSymbol
+          type: Increase::Models::ACHTransfer::Type::OrSymbol
         )
           .returns(T.attached_class)
       end
@@ -597,7 +597,7 @@ module Increase
         # Additional information that will be sent to the recipient.
         sig do
           params(
-            category: Increase::Models::ACHTransfer::Addenda::Category::TaggedSymbol,
+            category: Increase::Models::ACHTransfer::Addenda::Category::OrSymbol,
             freeform: T.nilable(T.any(Increase::Models::ACHTransfer::Addenda::Freeform, Increase::Util::AnyHash)),
             payment_order_remittance_advice: T.nilable(
               T.any(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice, Increase::Util::AnyHash)
@@ -661,7 +661,9 @@ module Increase
 
           # Unstructured `payment_related_information` passed through with the transfer.
           sig do
-            params(entries: T::Array[Increase::Models::ACHTransfer::Addenda::Freeform::Entry])
+            params(
+              entries: T::Array[T.any(Increase::Models::ACHTransfer::Addenda::Freeform::Entry, Increase::Util::AnyHash)]
+            )
               .returns(T.attached_class)
           end
           def self.new(entries:)
@@ -707,7 +709,14 @@ module Increase
           # Structured ASC X12 820 remittance advice records. Please reach out to
           #   [support@increase.com](mailto:support@increase.com) for more information.
           sig do
-            params(invoices: T::Array[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice])
+            params(
+              invoices: T::Array[
+              T.any(
+                Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice,
+                Increase::Util::AnyHash
+              )
+              ]
+            )
               .returns(T.attached_class)
           end
           def self.new(invoices:)
@@ -874,7 +883,7 @@ module Increase
         sig do
           params(
             api_key: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy::APIKey, Increase::Util::AnyHash)),
-            category: Increase::Models::ACHTransfer::CreatedBy::Category::TaggedSymbol,
+            category: Increase::Models::ACHTransfer::CreatedBy::Category::OrSymbol,
             oauth_application: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash)),
             user: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy::User, Increase::Util::AnyHash))
           )
@@ -1174,12 +1183,12 @@ module Increase
             amount: Integer,
             automatically_releases_at: Time,
             created_at: Time,
-            currency: Increase::Models::ACHTransfer::InboundFundsHold::Currency::TaggedSymbol,
+            currency: Increase::Models::ACHTransfer::InboundFundsHold::Currency::OrSymbol,
             held_transaction_id: T.nilable(String),
             pending_transaction_id: T.nilable(String),
             released_at: T.nilable(Time),
-            status: Increase::Models::ACHTransfer::InboundFundsHold::Status::TaggedSymbol,
-            type: Increase::Models::ACHTransfer::InboundFundsHold::Type::TaggedSymbol
+            status: Increase::Models::ACHTransfer::InboundFundsHold::Status::OrSymbol,
+            type: Increase::Models::ACHTransfer::InboundFundsHold::Type::OrSymbol
           )
             .returns(T.attached_class)
         end
@@ -1347,7 +1356,7 @@ module Increase
 
         sig do
           params(
-            change_code: Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol,
+            change_code: Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::OrSymbol,
             corrected_data: String,
             created_at: Time
           )
@@ -1558,7 +1567,7 @@ module Increase
         sig do
           params(
             date: T.nilable(Date),
-            settlement_schedule: T.nilable(Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol)
+            settlement_schedule: T.nilable(Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule::OrSymbol)
           )
             .returns(T.attached_class)
         end
@@ -1679,7 +1688,7 @@ module Increase
           params(
             created_at: Time,
             raw_return_reason_code: String,
-            return_reason_code: Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol,
+            return_reason_code: Increase::Models::ACHTransfer::Return::ReturnReasonCode::OrSymbol,
             trace_number: String,
             transaction_id: String,
             transfer_id: String
@@ -2276,7 +2285,7 @@ module Increase
           params(
             effective_date: Date,
             expected_funds_settlement_at: Time,
-            expected_settlement_schedule: Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule::TaggedSymbol,
+            expected_settlement_schedule: Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule::OrSymbol,
             submitted_at: Time,
             trace_number: String
           )

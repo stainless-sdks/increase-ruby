@@ -21,7 +21,7 @@ module Increase
       # List Inbound Mail Items
       sig do
         params(
-          created_at: Increase::Models::InboundMailItemListParams::CreatedAt,
+          created_at: T.any(Increase::Models::InboundMailItemListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
           lockbox_id: String,
