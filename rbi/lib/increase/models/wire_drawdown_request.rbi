@@ -232,9 +232,9 @@ module Increase
           recipient_address_line3: T.nilable(String),
           recipient_name: T.nilable(String),
           recipient_routing_number: String,
-          status: Increase::Models::WireDrawdownRequest::Status::TaggedSymbol,
+          status: Increase::Models::WireDrawdownRequest::Status::OrSymbol,
           submission: T.nilable(T.any(Increase::Models::WireDrawdownRequest::Submission, Increase::Util::AnyHash)),
-          type: Increase::Models::WireDrawdownRequest::Type::TaggedSymbol
+          type: Increase::Models::WireDrawdownRequest::Type::OrSymbol
         )
           .returns(T.attached_class)
       end

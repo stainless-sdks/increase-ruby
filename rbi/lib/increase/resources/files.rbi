@@ -46,11 +46,11 @@ module Increase
       # List Files
       sig do
         params(
-          created_at: Increase::Models::FileListParams::CreatedAt,
+          created_at: T.any(Increase::Models::FileListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          purpose: Increase::Models::FileListParams::Purpose,
+          purpose: T.any(Increase::Models::FileListParams::Purpose, Increase::Util::AnyHash),
           request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::File])

@@ -23,10 +23,10 @@ module Increase
         params(
           account_id: String,
           account_number_id: String,
-          created_at: Increase::Models::InboundWireTransferListParams::CreatedAt,
+          created_at: T.any(Increase::Models::InboundWireTransferListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
-          status: Increase::Models::InboundWireTransferListParams::Status,
+          status: T.any(Increase::Models::InboundWireTransferListParams::Status, Increase::Util::AnyHash),
           request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::InboundWireTransfer])

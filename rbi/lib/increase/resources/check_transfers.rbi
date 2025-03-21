@@ -10,9 +10,9 @@ module Increase
           amount: Integer,
           fulfillment_method: Increase::Models::CheckTransferCreateParams::FulfillmentMethod::OrSymbol,
           source_account_number_id: String,
-          physical_check: Increase::Models::CheckTransferCreateParams::PhysicalCheck,
+          physical_check: T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck, Increase::Util::AnyHash),
           require_approval: T::Boolean,
-          third_party: Increase::Models::CheckTransferCreateParams::ThirdParty,
+          third_party: T.any(Increase::Models::CheckTransferCreateParams::ThirdParty, Increase::Util::AnyHash),
           request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::CheckTransfer)
@@ -60,11 +60,11 @@ module Increase
       sig do
         params(
           account_id: String,
-          created_at: Increase::Models::CheckTransferListParams::CreatedAt,
+          created_at: T.any(Increase::Models::CheckTransferListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::Models::CheckTransferListParams::Status,
+          status: T.any(Increase::Models::CheckTransferListParams::Status, Increase::Util::AnyHash),
           request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::CheckTransfer])

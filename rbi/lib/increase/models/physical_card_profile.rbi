@@ -135,13 +135,13 @@ module Increase
           carrier_image_file_id: T.nilable(String),
           contact_phone: T.nilable(String),
           created_at: Time,
-          creator: Increase::Models::PhysicalCardProfile::Creator::TaggedSymbol,
+          creator: Increase::Models::PhysicalCardProfile::Creator::OrSymbol,
           description: String,
           front_image_file_id: T.nilable(String),
           idempotency_key: T.nilable(String),
           is_default: T::Boolean,
-          status: Increase::Models::PhysicalCardProfile::Status::TaggedSymbol,
-          type: Increase::Models::PhysicalCardProfile::Type::TaggedSymbol
+          status: Increase::Models::PhysicalCardProfile::Status::OrSymbol,
+          type: Increase::Models::PhysicalCardProfile::Type::OrSymbol
         )
           .returns(T.attached_class)
       end

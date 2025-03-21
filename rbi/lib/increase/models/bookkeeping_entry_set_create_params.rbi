@@ -39,7 +39,7 @@ module Increase
 
       sig do
         params(
-          entries: T::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry],
+          entries: T::Array[T.any(Increase::Models::BookkeepingEntrySetCreateParams::Entry, Increase::Util::AnyHash)],
           date: Time,
           transaction_id: String,
           request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)

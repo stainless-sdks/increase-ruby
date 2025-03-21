@@ -73,9 +73,9 @@ module Increase
           id: String,
           associated_object_id: String,
           associated_object_type: String,
-          category: Increase::Models::Event::Category::TaggedSymbol,
+          category: Increase::Models::Event::Category::OrSymbol,
           created_at: Time,
-          type: Increase::Models::Event::Type::TaggedSymbol
+          type: Increase::Models::Event::Type::OrSymbol
         )
           .returns(T.attached_class)
       end

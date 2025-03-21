@@ -57,11 +57,9 @@ module Increase
         # The results of a Digital Wallet Token simulation.
         sig do
           params(
-            decline_reason: T.nilable(
-              Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason::TaggedSymbol
-            ),
+            decline_reason: T.nilable(Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason::OrSymbol),
             digital_wallet_token_id: T.nilable(String),
-            type: Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type::TaggedSymbol
+            type: Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type::OrSymbol
           )
             .returns(T.attached_class)
         end

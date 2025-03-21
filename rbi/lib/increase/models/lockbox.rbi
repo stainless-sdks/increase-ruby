@@ -109,8 +109,8 @@ module Increase
           description: T.nilable(String),
           idempotency_key: T.nilable(String),
           recipient_name: T.nilable(String),
-          status: Increase::Models::Lockbox::Status::TaggedSymbol,
-          type: Increase::Models::Lockbox::Type::TaggedSymbol
+          status: Increase::Models::Lockbox::Status::OrSymbol,
+          type: Increase::Models::Lockbox::Type::OrSymbol
         )
           .returns(T.attached_class)
       end

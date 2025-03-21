@@ -7,8 +7,8 @@ module Increase
       sig do
         params(
           card_id: String,
-          cardholder: Increase::Models::PhysicalCardCreateParams::Cardholder,
-          shipment: Increase::Models::PhysicalCardCreateParams::Shipment,
+          cardholder: T.any(Increase::Models::PhysicalCardCreateParams::Cardholder, Increase::Util::AnyHash),
+          shipment: T.any(Increase::Models::PhysicalCardCreateParams::Shipment, Increase::Util::AnyHash),
           physical_card_profile_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
@@ -65,7 +65,7 @@ module Increase
       sig do
         params(
           card_id: String,
-          created_at: Increase::Models::PhysicalCardListParams::CreatedAt,
+          created_at: T.any(Increase::Models::PhysicalCardListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,

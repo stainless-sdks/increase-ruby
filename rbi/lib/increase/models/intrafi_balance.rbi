@@ -76,11 +76,11 @@ module Increase
       sig do
         params(
           id: String,
-          balances: T::Array[Increase::Models::IntrafiBalance::Balance],
-          currency: Increase::Models::IntrafiBalance::Currency::TaggedSymbol,
+          balances: T::Array[T.any(Increase::Models::IntrafiBalance::Balance, Increase::Util::AnyHash)],
+          currency: Increase::Models::IntrafiBalance::Currency::OrSymbol,
           effective_date: Date,
           total_balance: Integer,
-          type: Increase::Models::IntrafiBalance::Type::TaggedSymbol
+          type: Increase::Models::IntrafiBalance::Type::OrSymbol
         )
           .returns(T.attached_class)
       end

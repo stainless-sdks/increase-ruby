@@ -50,7 +50,7 @@ module Increase
           params(
             declined_transaction: T.nilable(T.any(Increase::Models::DeclinedTransaction, Increase::Util::AnyHash)),
             pending_transaction: T.nilable(T.any(Increase::Models::PendingTransaction, Increase::Util::AnyHash)),
-            type: Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::TaggedSymbol
+            type: Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::OrSymbol
           )
             .returns(T.attached_class)
         end
