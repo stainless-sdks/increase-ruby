@@ -87,8 +87,12 @@ module Increase
       end
 
       sig do
-        params(_: T::Array[Increase::Models::EntityCreateParams::SupplementalDocument])
-          .returns(T::Array[Increase::Models::EntityCreateParams::SupplementalDocument])
+        params(
+          _: T::Array[T.any(Increase::Models::EntityCreateParams::SupplementalDocument, Increase::Util::AnyHash)]
+        )
+          .returns(
+            T::Array[T.any(Increase::Models::EntityCreateParams::SupplementalDocument, Increase::Util::AnyHash)]
+          )
       end
       def supplemental_documents=(_)
       end
@@ -127,7 +131,7 @@ module Increase
           government_authority: T.any(Increase::Models::EntityCreateParams::GovernmentAuthority, Increase::Util::AnyHash),
           joint: T.any(Increase::Models::EntityCreateParams::Joint, Increase::Util::AnyHash),
           natural_person: T.any(Increase::Models::EntityCreateParams::NaturalPerson, Increase::Util::AnyHash),
-          supplemental_documents: T::Array[Increase::Models::EntityCreateParams::SupplementalDocument],
+          supplemental_documents: T::Array[T.any(Increase::Models::EntityCreateParams::SupplementalDocument, Increase::Util::AnyHash)],
           third_party_verification: T.any(Increase::Models::EntityCreateParams::ThirdPartyVerification, Increase::Util::AnyHash),
           trust: T.any(Increase::Models::EntityCreateParams::Trust, Increase::Util::AnyHash),
           request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
@@ -279,7 +283,7 @@ module Increase
         sig do
           params(
             address: T.any(Increase::Models::EntityCreateParams::Corporation::Address, Increase::Util::AnyHash),
-            beneficial_owners: T::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner],
+            beneficial_owners: T::Array[T.any(Increase::Models::EntityCreateParams::Corporation::BeneficialOwner, Increase::Util::AnyHash)],
             name: String,
             tax_identifier: String,
             incorporation_state: String,
@@ -1139,7 +1143,12 @@ module Increase
         sig do
           params(
             address: T.any(Increase::Models::EntityCreateParams::GovernmentAuthority::Address, Increase::Util::AnyHash),
-            authorized_persons: T::Array[Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson],
+            authorized_persons: T::Array[
+            T.any(
+              Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson,
+              Increase::Util::AnyHash
+            )
+            ],
             category: Increase::Models::EntityCreateParams::GovernmentAuthority::Category::OrSymbol,
             name: String,
             tax_identifier: String,
@@ -1300,7 +1309,10 @@ module Increase
         # Details of the joint entity to create. Required if `structure` is equal to
         #   `joint`.
         sig do
-          params(individuals: T::Array[Increase::Models::EntityCreateParams::Joint::Individual], name: String)
+          params(
+            individuals: T::Array[T.any(Increase::Models::EntityCreateParams::Joint::Individual, Increase::Util::AnyHash)],
+            name: String
+          )
             .returns(T.attached_class)
         end
         def self.new(individuals:, name: nil)
@@ -2538,7 +2550,7 @@ module Increase
             address: T.any(Increase::Models::EntityCreateParams::Trust::Address, Increase::Util::AnyHash),
             category: Increase::Models::EntityCreateParams::Trust::Category::OrSymbol,
             name: String,
-            trustees: T::Array[Increase::Models::EntityCreateParams::Trust::Trustee],
+            trustees: T::Array[T.any(Increase::Models::EntityCreateParams::Trust::Trustee, Increase::Util::AnyHash)],
             formation_document_file_id: String,
             formation_state: String,
             grantor: T.any(Increase::Models::EntityCreateParams::Trust::Grantor, Increase::Util::AnyHash),

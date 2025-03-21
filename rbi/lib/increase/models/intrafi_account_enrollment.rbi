@@ -92,8 +92,8 @@ module Increase
           created_at: Time,
           idempotency_key: T.nilable(String),
           intrafi_id: String,
-          status: Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol,
-          type: Increase::Models::IntrafiAccountEnrollment::Type::TaggedSymbol
+          status: Increase::Models::IntrafiAccountEnrollment::Status::OrSymbol,
+          type: Increase::Models::IntrafiAccountEnrollment::Type::OrSymbol
         )
           .returns(T.attached_class)
       end

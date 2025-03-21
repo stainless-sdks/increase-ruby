@@ -192,12 +192,12 @@ module Increase
           idempotency_key: T.nilable(String),
           joint: T.nilable(T.any(Increase::Models::Entity::Joint, Increase::Util::AnyHash)),
           natural_person: T.nilable(T.any(Increase::Models::Entity::NaturalPerson, Increase::Util::AnyHash)),
-          status: Increase::Models::Entity::Status::TaggedSymbol,
-          structure: Increase::Models::Entity::Structure::TaggedSymbol,
-          supplemental_documents: T::Array[Increase::Models::EntitySupplementalDocument],
+          status: Increase::Models::Entity::Status::OrSymbol,
+          structure: Increase::Models::Entity::Structure::OrSymbol,
+          supplemental_documents: T::Array[T.any(Increase::Models::EntitySupplementalDocument, Increase::Util::AnyHash)],
           third_party_verification: T.nilable(T.any(Increase::Models::Entity::ThirdPartyVerification, Increase::Util::AnyHash)),
           trust: T.nilable(T.any(Increase::Models::Entity::Trust, Increase::Util::AnyHash)),
-          type: Increase::Models::Entity::Type::TaggedSymbol
+          type: Increase::Models::Entity::Type::OrSymbol
         )
           .returns(T.attached_class)
       end
@@ -323,7 +323,7 @@ module Increase
         sig do
           params(
             address: T.any(Increase::Models::Entity::Corporation::Address, Increase::Util::AnyHash),
-            beneficial_owners: T::Array[Increase::Models::Entity::Corporation::BeneficialOwner],
+            beneficial_owners: T::Array[T.any(Increase::Models::Entity::Corporation::BeneficialOwner, Increase::Util::AnyHash)],
             incorporation_state: T.nilable(String),
             industry_code: T.nilable(String),
             name: String,
@@ -474,7 +474,7 @@ module Increase
               beneficial_owner_id: String,
               company_title: T.nilable(String),
               individual: T.any(Increase::Models::Entity::Corporation::BeneficialOwner::Individual, Increase::Util::AnyHash),
-              prong: Increase::Models::Entity::Corporation::BeneficialOwner::Prong::TaggedSymbol
+              prong: Increase::Models::Entity::Corporation::BeneficialOwner::Prong::OrSymbol
             )
               .returns(T.attached_class)
           end
@@ -695,7 +695,7 @@ module Increase
               # A means of verifying the person's identity.
               sig do
                 params(
-                  method_: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol,
+                  method_: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method::OrSymbol,
                   number_last4: String
                 )
                   .returns(T.attached_class)
@@ -872,8 +872,8 @@ module Increase
         sig do
           params(
             address: T.any(Increase::Models::Entity::GovernmentAuthority::Address, Increase::Util::AnyHash),
-            authorized_persons: T::Array[Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson],
-            category: Increase::Models::Entity::GovernmentAuthority::Category::TaggedSymbol,
+            authorized_persons: T::Array[T.any(Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson, Increase::Util::AnyHash)],
+            category: Increase::Models::Entity::GovernmentAuthority::Category::OrSymbol,
             name: String,
             tax_identifier: T.nilable(String),
             website: T.nilable(String)
@@ -1041,7 +1041,10 @@ module Increase
 
         # Details of the joint entity. Will be present if `structure` is equal to `joint`.
         sig do
-          params(individuals: T::Array[Increase::Models::Entity::Joint::Individual], name: String)
+          params(
+            individuals: T::Array[T.any(Increase::Models::Entity::Joint::Individual, Increase::Util::AnyHash)],
+            name: String
+          )
             .returns(T.attached_class)
         end
         def self.new(individuals:, name:)
@@ -1216,7 +1219,7 @@ module Increase
             # A means of verifying the person's identity.
             sig do
               params(
-                method_: Increase::Models::Entity::Joint::Individual::Identification::Method::TaggedSymbol,
+                method_: Increase::Models::Entity::Joint::Individual::Identification::Method::OrSymbol,
                 number_last4: String
               )
                 .returns(T.attached_class)
@@ -1450,7 +1453,7 @@ module Increase
           # A means of verifying the person's identity.
           sig do
             params(
-              method_: Increase::Models::Entity::NaturalPerson::Identification::Method::TaggedSymbol,
+              method_: Increase::Models::Entity::NaturalPerson::Identification::Method::OrSymbol,
               number_last4: String
             )
               .returns(T.attached_class)
@@ -1587,7 +1590,7 @@ module Increase
         # A reference to data stored in a third-party verification service. Your
         #   integration may or may not use this field.
         sig do
-          params(reference: String, vendor: Increase::Models::Entity::ThirdPartyVerification::Vendor::TaggedSymbol)
+          params(reference: String, vendor: Increase::Models::Entity::ThirdPartyVerification::Vendor::OrSymbol)
             .returns(T.attached_class)
         end
         def self.new(reference:, vendor:)
@@ -1714,13 +1717,13 @@ module Increase
         sig do
           params(
             address: T.any(Increase::Models::Entity::Trust::Address, Increase::Util::AnyHash),
-            category: Increase::Models::Entity::Trust::Category::TaggedSymbol,
+            category: Increase::Models::Entity::Trust::Category::OrSymbol,
             formation_document_file_id: T.nilable(String),
             formation_state: T.nilable(String),
             grantor: T.nilable(T.any(Increase::Models::Entity::Trust::Grantor, Increase::Util::AnyHash)),
             name: String,
             tax_identifier: T.nilable(String),
-            trustees: T::Array[Increase::Models::Entity::Trust::Trustee]
+            trustees: T::Array[T.any(Increase::Models::Entity::Trust::Trustee, Increase::Util::AnyHash)]
           )
             .returns(T.attached_class)
         end
@@ -2010,7 +2013,7 @@ module Increase
             # A means of verifying the person's identity.
             sig do
               params(
-                method_: Increase::Models::Entity::Trust::Grantor::Identification::Method::TaggedSymbol,
+                method_: Increase::Models::Entity::Trust::Grantor::Identification::Method::OrSymbol,
                 number_last4: String
               )
                 .returns(T.attached_class)
@@ -2102,7 +2105,7 @@ module Increase
           sig do
             params(
               individual: T.nilable(T.any(Increase::Models::Entity::Trust::Trustee::Individual, Increase::Util::AnyHash)),
-              structure: Increase::Models::Entity::Trust::Trustee::Structure::TaggedSymbol
+              structure: Increase::Models::Entity::Trust::Trustee::Structure::OrSymbol
             )
               .returns(T.attached_class)
           end
@@ -2292,7 +2295,7 @@ module Increase
               # A means of verifying the person's identity.
               sig do
                 params(
-                  method_: Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method::TaggedSymbol,
+                  method_: Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method::OrSymbol,
                   number_last4: String
                 )
                   .returns(T.attached_class)

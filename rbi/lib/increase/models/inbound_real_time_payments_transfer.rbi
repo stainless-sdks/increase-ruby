@@ -184,15 +184,15 @@ module Increase
           confirmation: T.nilable(T.any(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation, Increase::Util::AnyHash)),
           created_at: Time,
           creditor_name: String,
-          currency: Increase::Models::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol,
+          currency: Increase::Models::InboundRealTimePaymentsTransfer::Currency::OrSymbol,
           debtor_account_number: String,
           debtor_name: String,
           debtor_routing_number: String,
           decline: T.nilable(T.any(Increase::Models::InboundRealTimePaymentsTransfer::Decline, Increase::Util::AnyHash)),
           remittance_information: T.nilable(String),
-          status: Increase::Models::InboundRealTimePaymentsTransfer::Status::TaggedSymbol,
+          status: Increase::Models::InboundRealTimePaymentsTransfer::Status::OrSymbol,
           transaction_identification: String,
-          type: Increase::Models::InboundRealTimePaymentsTransfer::Type::TaggedSymbol
+          type: Increase::Models::InboundRealTimePaymentsTransfer::Type::OrSymbol
         )
           .returns(T.attached_class)
       end
@@ -342,7 +342,7 @@ module Increase
           params(
             declined_at: Time,
             declined_transaction_id: String,
-            reason: Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason::TaggedSymbol
+            reason: Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason::OrSymbol
           )
             .returns(T.attached_class)
         end

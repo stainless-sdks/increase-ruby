@@ -72,7 +72,7 @@ module Increase
           amount: Integer,
           created_at: Time,
           entry_set_id: String,
-          type: Increase::Models::BookkeepingEntry::Type::TaggedSymbol
+          type: Increase::Models::BookkeepingEntry::Type::OrSymbol
         )
           .returns(T.attached_class)
       end

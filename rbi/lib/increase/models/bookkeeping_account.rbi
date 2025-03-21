@@ -82,11 +82,11 @@ module Increase
         params(
           id: String,
           account_id: T.nilable(String),
-          compliance_category: T.nilable(Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol),
+          compliance_category: T.nilable(Increase::Models::BookkeepingAccount::ComplianceCategory::OrSymbol),
           entity_id: T.nilable(String),
           idempotency_key: T.nilable(String),
           name: String,
-          type: Increase::Models::BookkeepingAccount::Type::TaggedSymbol
+          type: Increase::Models::BookkeepingAccount::Type::OrSymbol
         )
           .returns(T.attached_class)
       end

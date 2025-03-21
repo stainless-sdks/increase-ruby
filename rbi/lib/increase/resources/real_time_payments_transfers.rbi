@@ -74,7 +74,7 @@ module Increase
       sig do
         params(
           account_id: String,
-          created_at: Increase::Models::RealTimePaymentsTransferListParams::CreatedAt,
+          created_at: T.any(Increase::Models::RealTimePaymentsTransferListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           external_account_id: String,
           idempotency_key: String,

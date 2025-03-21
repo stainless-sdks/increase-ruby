@@ -24,7 +24,7 @@ module Increase
           cursor: String,
           limit: Integer,
           oauth_application_id: String,
-          status: Increase::Models::OAuthConnectionListParams::Status,
+          status: T.any(Increase::Models::OAuthConnectionListParams::Status, Increase::Util::AnyHash),
           request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::OAuthConnection])

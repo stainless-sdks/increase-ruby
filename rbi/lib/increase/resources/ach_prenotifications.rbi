@@ -75,7 +75,7 @@ module Increase
       # List ACH Prenotifications
       sig do
         params(
-          created_at: Increase::Models::ACHPrenotificationListParams::CreatedAt,
+          created_at: T.any(Increase::Models::ACHPrenotificationListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,

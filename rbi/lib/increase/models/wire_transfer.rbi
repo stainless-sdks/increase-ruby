@@ -318,11 +318,11 @@ module Increase
           cancellation: T.nilable(T.any(Increase::Models::WireTransfer::Cancellation, Increase::Util::AnyHash)),
           created_at: Time,
           created_by: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy, Increase::Util::AnyHash)),
-          currency: Increase::Models::WireTransfer::Currency::TaggedSymbol,
+          currency: Increase::Models::WireTransfer::Currency::OrSymbol,
           external_account_id: T.nilable(String),
           idempotency_key: T.nilable(String),
           message_to_recipient: T.nilable(String),
-          network: Increase::Models::WireTransfer::Network::TaggedSymbol,
+          network: Increase::Models::WireTransfer::Network::OrSymbol,
           originator_address_line1: T.nilable(String),
           originator_address_line2: T.nilable(String),
           originator_address_line3: T.nilable(String),
@@ -331,10 +331,10 @@ module Increase
           reversal: T.nilable(T.any(Increase::Models::WireTransfer::Reversal, Increase::Util::AnyHash)),
           routing_number: String,
           source_account_number_id: T.nilable(String),
-          status: Increase::Models::WireTransfer::Status::TaggedSymbol,
+          status: Increase::Models::WireTransfer::Status::OrSymbol,
           submission: T.nilable(T.any(Increase::Models::WireTransfer::Submission, Increase::Util::AnyHash)),
           transaction_id: T.nilable(String),
-          type: Increase::Models::WireTransfer::Type::TaggedSymbol
+          type: Increase::Models::WireTransfer::Type::OrSymbol
         )
           .returns(T.attached_class)
       end
@@ -531,7 +531,7 @@ module Increase
         sig do
           params(
             api_key: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::APIKey, Increase::Util::AnyHash)),
-            category: Increase::Models::WireTransfer::CreatedBy::Category::TaggedSymbol,
+            category: Increase::Models::WireTransfer::CreatedBy::Category::OrSymbol,
             oauth_application: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash)),
             user: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::User, Increase::Util::AnyHash))
           )

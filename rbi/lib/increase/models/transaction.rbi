@@ -124,12 +124,12 @@ module Increase
           account_id: String,
           amount: Integer,
           created_at: Time,
-          currency: Increase::Models::Transaction::Currency::TaggedSymbol,
+          currency: Increase::Models::Transaction::Currency::OrSymbol,
           description: String,
           route_id: T.nilable(String),
-          route_type: T.nilable(Increase::Models::Transaction::RouteType::TaggedSymbol),
+          route_type: T.nilable(Increase::Models::Transaction::RouteType::OrSymbol),
           source: T.any(Increase::Models::Transaction::Source, Increase::Util::AnyHash),
-          type: Increase::Models::Transaction::Type::TaggedSymbol
+          type: Increase::Models::Transaction::Type::OrSymbol
         )
           .returns(T.attached_class)
       end
@@ -810,7 +810,7 @@ module Increase
             card_revenue_payment: T.nilable(T.any(Increase::Models::Transaction::Source::CardRevenuePayment, Increase::Util::AnyHash)),
             card_settlement: T.nilable(T.any(Increase::Models::Transaction::Source::CardSettlement, Increase::Util::AnyHash)),
             cashback_payment: T.nilable(T.any(Increase::Models::Transaction::Source::CashbackPayment, Increase::Util::AnyHash)),
-            category: Increase::Models::Transaction::Source::Category::TaggedSymbol,
+            category: Increase::Models::Transaction::Source::Category::OrSymbol,
             check_deposit_acceptance: T.nilable(T.any(Increase::Models::Transaction::Source::CheckDepositAcceptance, Increase::Util::AnyHash)),
             check_deposit_return: T.nilable(T.any(Increase::Models::Transaction::Source::CheckDepositReturn, Increase::Util::AnyHash)),
             check_transfer_deposit: T.nilable(T.any(Increase::Models::Transaction::Source::CheckTransferDeposit, Increase::Util::AnyHash)),
@@ -995,7 +995,7 @@ module Increase
           sig do
             params(
               amount: Integer,
-              currency: Increase::Models::Transaction::Source::AccountTransferIntention::Currency::TaggedSymbol,
+              currency: Increase::Models::Transaction::Source::AccountTransferIntention::Currency::OrSymbol,
               description: String,
               destination_account_id: String,
               source_account_id: String,
@@ -1244,7 +1244,7 @@ module Increase
             params(
               created_at: Time,
               raw_return_reason_code: String,
-              return_reason_code: Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol,
+              return_reason_code: Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::OrSymbol,
               trace_number: String,
               transaction_id: String,
               transfer_id: String
@@ -2122,7 +2122,7 @@ module Increase
               amount: Integer,
               card_payment_id: String,
               cashback: T.nilable(T.any(Increase::Models::Transaction::Source::CardRefund::Cashback, Increase::Util::AnyHash)),
-              currency: Increase::Models::Transaction::Source::CardRefund::Currency::TaggedSymbol,
+              currency: Increase::Models::Transaction::Source::CardRefund::Currency::OrSymbol,
               interchange: T.nilable(T.any(Increase::Models::Transaction::Source::CardRefund::Interchange, Increase::Util::AnyHash)),
               merchant_acceptor_id: String,
               merchant_category_code: String,
@@ -2138,7 +2138,7 @@ module Increase
                 T.any(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails, Increase::Util::AnyHash)
               ),
               transaction_id: String,
-              type: Increase::Models::Transaction::Source::CardRefund::Type::TaggedSymbol
+              type: Increase::Models::Transaction::Source::CardRefund::Type::OrSymbol
             )
               .returns(T.attached_class)
           end
@@ -2223,7 +2223,7 @@ module Increase
             sig do
               params(
                 amount: String,
-                currency: Increase::Models::Transaction::Source::CardRefund::Cashback::Currency::TaggedSymbol
+                currency: Increase::Models::Transaction::Source::CardRefund::Cashback::Currency::OrSymbol
               )
                 .returns(T.attached_class)
             end
@@ -2354,7 +2354,7 @@ module Increase
               params(
                 amount: String,
                 code: T.nilable(String),
-                currency: Increase::Models::Transaction::Source::CardRefund::Interchange::Currency::TaggedSymbol
+                currency: Increase::Models::Transaction::Source::CardRefund::Interchange::Currency::OrSymbol
               )
                 .returns(T.attached_class)
             end
@@ -2647,7 +2647,7 @@ module Increase
                 national_tax_currency: T.nilable(String),
                 purchase_identifier: T.nilable(String),
                 purchase_identifier_format: T.nilable(
-                  Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
+                  Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::OrSymbol
                 ),
                 travel: T.nilable(
                   T.any(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel, Increase::Util::AnyHash)
@@ -2887,14 +2887,14 @@ module Increase
                   daily_rental_rate_currency: T.nilable(String),
                   days_rented: T.nilable(Integer),
                   extra_charges: T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
+                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges::OrSymbol
                   ),
                   fuel_charges_amount: T.nilable(Integer),
                   fuel_charges_currency: T.nilable(String),
                   insurance_charges_amount: T.nilable(Integer),
                   insurance_charges_currency: T.nilable(String),
                   no_show_indicator: T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
+                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::OrSymbol
                   ),
                   one_way_drop_off_charges_amount: T.nilable(Integer),
                   one_way_drop_off_charges_currency: T.nilable(String),
@@ -3261,14 +3261,14 @@ module Increase
                   daily_room_rate_amount: T.nilable(Integer),
                   daily_room_rate_currency: T.nilable(String),
                   extra_charges: T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
+                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges::OrSymbol
                   ),
                   folio_cash_advances_amount: T.nilable(Integer),
                   folio_cash_advances_currency: T.nilable(String),
                   food_beverage_charges_amount: T.nilable(Integer),
                   food_beverage_charges_currency: T.nilable(String),
                   no_show_indicator: T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
+                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::OrSymbol
                   ),
                   prepaid_expenses_amount: T.nilable(Integer),
                   prepaid_expenses_currency: T.nilable(String),
@@ -3711,21 +3711,28 @@ module Increase
                   ),
                   computerized_reservation_system: T.nilable(String),
                   credit_reason_indicator: T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::OrSymbol
                   ),
                   departure_date: T.nilable(Date),
                   origination_city_airport_code: T.nilable(String),
                   passenger_name: T.nilable(String),
                   restricted_ticket_indicator: T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
+                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::OrSymbol
                   ),
                   ticket_change_indicator: T.nilable(
-                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
+                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::OrSymbol
                   ),
                   ticket_number: T.nilable(String),
                   travel_agency_code: T.nilable(String),
                   travel_agency_name: T.nilable(String),
-                  trip_legs: T.nilable(T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg])
+                  trip_legs: T.nilable(
+                    T::Array[
+                    T.any(
+                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg,
+                      Increase::Util::AnyHash
+                    )
+                    ]
+                  )
                 )
                   .returns(T.attached_class)
               end
@@ -3854,10 +3861,15 @@ module Increase
                   params(
                     connected_ticket_document_number: T.nilable(String),
                     credit_reason_indicator: T.nilable(
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
+                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::OrSymbol
                     ),
                     passenger_name_or_description: T.nilable(String),
-                    services: T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service],
+                    services: T::Array[
+                    T.any(
+                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service,
+                      Increase::Util::AnyHash
+                    )
+                    ],
                     ticket_document_number: T.nilable(String)
                   )
                     .returns(T.attached_class)
@@ -3985,7 +3997,7 @@ module Increase
                   sig do
                     params(
                       category: T.nilable(
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::OrSymbol
                       ),
                       sub_category: T.nilable(String)
                     )
@@ -4455,7 +4467,7 @@ module Increase
                     flight_number: T.nilable(String),
                     service_class: T.nilable(String),
                     stop_over_code: T.nilable(
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
+                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::OrSymbol
                     )
                   )
                     .returns(T.attached_class)
@@ -4618,7 +4630,7 @@ module Increase
           sig do
             params(
               amount: Integer,
-              currency: Increase::Models::Transaction::Source::CardRevenuePayment::Currency::TaggedSymbol,
+              currency: Increase::Models::Transaction::Source::CardRevenuePayment::Currency::OrSymbol,
               period_end: Time,
               period_start: Time,
               transacted_on_account_id: T.nilable(String)
@@ -4934,7 +4946,7 @@ module Increase
               card_authorization: T.nilable(String),
               card_payment_id: String,
               cashback: T.nilable(T.any(Increase::Models::Transaction::Source::CardSettlement::Cashback, Increase::Util::AnyHash)),
-              currency: Increase::Models::Transaction::Source::CardSettlement::Currency::TaggedSymbol,
+              currency: Increase::Models::Transaction::Source::CardSettlement::Currency::OrSymbol,
               interchange: T.nilable(
                 T.any(Increase::Models::Transaction::Source::CardSettlement::Interchange, Increase::Util::AnyHash)
               ),
@@ -4953,7 +4965,7 @@ module Increase
                 T.any(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails, Increase::Util::AnyHash)
               ),
               transaction_id: String,
-              type: Increase::Models::Transaction::Source::CardSettlement::Type::TaggedSymbol
+              type: Increase::Models::Transaction::Source::CardSettlement::Type::OrSymbol
             )
               .returns(T.attached_class)
           end
@@ -5042,7 +5054,7 @@ module Increase
             sig do
               params(
                 amount: String,
-                currency: Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency::TaggedSymbol
+                currency: Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency::OrSymbol
               )
                 .returns(T.attached_class)
             end
@@ -5179,7 +5191,7 @@ module Increase
               params(
                 amount: String,
                 code: T.nilable(String),
-                currency: Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency::TaggedSymbol
+                currency: Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency::OrSymbol
               )
                 .returns(T.attached_class)
             end
@@ -5486,7 +5498,7 @@ module Increase
                 national_tax_currency: T.nilable(String),
                 purchase_identifier: T.nilable(String),
                 purchase_identifier_format: T.nilable(
-                  Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
+                  Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::OrSymbol
                 ),
                 travel: T.nilable(
                   T.any(
@@ -5729,14 +5741,14 @@ module Increase
                   daily_rental_rate_currency: T.nilable(String),
                   days_rented: T.nilable(Integer),
                   extra_charges: T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
+                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::OrSymbol
                   ),
                   fuel_charges_amount: T.nilable(Integer),
                   fuel_charges_currency: T.nilable(String),
                   insurance_charges_amount: T.nilable(Integer),
                   insurance_charges_currency: T.nilable(String),
                   no_show_indicator: T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
+                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::OrSymbol
                   ),
                   one_way_drop_off_charges_amount: T.nilable(Integer),
                   one_way_drop_off_charges_currency: T.nilable(String),
@@ -6107,14 +6119,14 @@ module Increase
                   daily_room_rate_amount: T.nilable(Integer),
                   daily_room_rate_currency: T.nilable(String),
                   extra_charges: T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
+                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::OrSymbol
                   ),
                   folio_cash_advances_amount: T.nilable(Integer),
                   folio_cash_advances_currency: T.nilable(String),
                   food_beverage_charges_amount: T.nilable(Integer),
                   food_beverage_charges_currency: T.nilable(String),
                   no_show_indicator: T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
+                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::OrSymbol
                   ),
                   prepaid_expenses_amount: T.nilable(Integer),
                   prepaid_expenses_currency: T.nilable(String),
@@ -6575,22 +6587,27 @@ module Increase
                   ),
                   computerized_reservation_system: T.nilable(String),
                   credit_reason_indicator: T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::OrSymbol
                   ),
                   departure_date: T.nilable(Date),
                   origination_city_airport_code: T.nilable(String),
                   passenger_name: T.nilable(String),
                   restricted_ticket_indicator: T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
+                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::OrSymbol
                   ),
                   ticket_change_indicator: T.nilable(
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
+                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::OrSymbol
                   ),
                   ticket_number: T.nilable(String),
                   travel_agency_code: T.nilable(String),
                   travel_agency_name: T.nilable(String),
                   trip_legs: T.nilable(
-                    T::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg]
+                    T::Array[
+                    T.any(
+                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg,
+                      Increase::Util::AnyHash
+                    )
+                    ]
                   )
                 )
                   .returns(T.attached_class)
@@ -6722,10 +6739,15 @@ module Increase
                   params(
                     connected_ticket_document_number: T.nilable(String),
                     credit_reason_indicator: T.nilable(
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
+                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::OrSymbol
                     ),
                     passenger_name_or_description: T.nilable(String),
-                    services: T::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service],
+                    services: T::Array[
+                    T.any(
+                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service,
+                      Increase::Util::AnyHash
+                    )
+                    ],
                     ticket_document_number: T.nilable(String)
                   )
                     .returns(T.attached_class)
@@ -6853,7 +6875,7 @@ module Increase
                   sig do
                     params(
                       category: T.nilable(
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::OrSymbol
                       ),
                       sub_category: T.nilable(String)
                     )
@@ -7323,7 +7345,7 @@ module Increase
                     flight_number: T.nilable(String),
                     service_class: T.nilable(String),
                     stop_over_code: T.nilable(
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
+                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::OrSymbol
                     )
                   )
                     .returns(T.attached_class)
@@ -7490,7 +7512,7 @@ module Increase
             params(
               accrued_on_card_id: T.nilable(String),
               amount: Integer,
-              currency: Increase::Models::Transaction::Source::CashbackPayment::Currency::TaggedSymbol,
+              currency: Increase::Models::Transaction::Source::CashbackPayment::Currency::OrSymbol,
               period_end: Time,
               period_start: Time
             )
@@ -7772,7 +7794,7 @@ module Increase
               amount: Integer,
               auxiliary_on_us: T.nilable(String),
               check_deposit_id: String,
-              currency: Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency::TaggedSymbol,
+              currency: Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency::OrSymbol,
               routing_number: String,
               serial_number: T.nilable(String)
             )
@@ -7912,8 +7934,8 @@ module Increase
             params(
               amount: Integer,
               check_deposit_id: String,
-              currency: Increase::Models::Transaction::Source::CheckDepositReturn::Currency::TaggedSymbol,
-              return_reason: Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol,
+              currency: Increase::Models::Transaction::Source::CheckDepositReturn::Currency::OrSymbol,
+              return_reason: Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::OrSymbol,
               returned_at: Time,
               transaction_id: String
             )
@@ -8265,7 +8287,7 @@ module Increase
               inbound_check_deposit_id: T.nilable(String),
               transaction_id: T.nilable(String),
               transfer_id: T.nilable(String),
-              type: Increase::Models::Transaction::Source::CheckTransferDeposit::Type::TaggedSymbol
+              type: Increase::Models::Transaction::Source::CheckTransferDeposit::Type::OrSymbol
             )
               .returns(T.attached_class)
           end
@@ -8373,7 +8395,7 @@ module Increase
           sig do
             params(
               amount: Integer,
-              currency: Increase::Models::Transaction::Source::FeePayment::Currency::TaggedSymbol,
+              currency: Increase::Models::Transaction::Source::FeePayment::Currency::OrSymbol,
               fee_period_start: Date,
               program_id: T.nilable(String)
             )
@@ -8649,7 +8671,7 @@ module Increase
             # Additional information sent from the originator.
             sig do
               params(
-                category: Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category::TaggedSymbol,
+                category: Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category::OrSymbol,
                 freeform: T.nilable(
                   T.any(
                     Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform,
@@ -8718,7 +8740,12 @@ module Increase
               # Unstructured `payment_related_information` passed through by the originator.
               sig do
                 params(
-                  entries: T::Array[Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry]
+                  entries: T::Array[
+                  T.any(
+                    Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry,
+                    Increase::Util::AnyHash
+                  )
+                  ]
                 )
                   .returns(T.attached_class)
               end
@@ -8819,7 +8846,7 @@ module Increase
             params(
               adjusted_transaction_id: String,
               amount: Integer,
-              reason: Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason::TaggedSymbol
+              reason: Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason::OrSymbol
             )
               .returns(T.attached_class)
           end
@@ -9023,7 +9050,7 @@ module Increase
             params(
               amount: Integer,
               creditor_name: String,
-              currency: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency::TaggedSymbol,
+              currency: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency::OrSymbol,
               debtor_account_number: String,
               debtor_name: String,
               debtor_routing_number: String,
@@ -9260,11 +9287,11 @@ module Increase
             params(
               amount: Integer,
               creditor_name: String,
-              currency: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol,
+              currency: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency::OrSymbol,
               debtor_account_number: String,
               debtor_name: String,
               debtor_routing_number: String,
-              reason: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol,
+              reason: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason::OrSymbol,
               remittance_information: T.nilable(String),
               transaction_identification: String,
               transfer_id: String
@@ -10018,7 +10045,7 @@ module Increase
             params(
               accrued_on_account_id: String,
               amount: Integer,
-              currency: Increase::Models::Transaction::Source::InterestPayment::Currency::TaggedSymbol,
+              currency: Increase::Models::Transaction::Source::InterestPayment::Currency::OrSymbol,
               period_end: Time,
               period_start: Time
             )
@@ -10121,8 +10148,8 @@ module Increase
           sig do
             params(
               amount: Integer,
-              currency: Increase::Models::Transaction::Source::InternalSource::Currency::TaggedSymbol,
-              reason: Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol
+              currency: Increase::Models::Transaction::Source::InternalSource::Currency::OrSymbol,
+              reason: Increase::Models::Transaction::Source::InternalSource::Reason::OrSymbol
             )
               .returns(T.attached_class)
           end

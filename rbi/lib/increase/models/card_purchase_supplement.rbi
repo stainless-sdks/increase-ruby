@@ -74,9 +74,9 @@ module Increase
           id: String,
           card_payment_id: T.nilable(String),
           invoice: T.nilable(T.any(Increase::Models::CardPurchaseSupplement::Invoice, Increase::Util::AnyHash)),
-          line_items: T.nilable(T::Array[Increase::Models::CardPurchaseSupplement::LineItem]),
+          line_items: T.nilable(T::Array[T.any(Increase::Models::CardPurchaseSupplement::LineItem, Increase::Util::AnyHash)]),
           transaction_id: String,
-          type: Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol
+          type: Increase::Models::CardPurchaseSupplement::Type::OrSymbol
         )
           .returns(T.attached_class)
       end
@@ -259,7 +259,7 @@ module Increase
           params(
             discount_amount: T.nilable(Integer),
             discount_currency: T.nilable(String),
-            discount_treatment_code: T.nilable(Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol),
+            discount_treatment_code: T.nilable(Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::OrSymbol),
             duty_tax_amount: T.nilable(Integer),
             duty_tax_currency: T.nilable(String),
             order_date: T.nilable(Date),
@@ -271,7 +271,7 @@ module Increase
             shipping_tax_amount: T.nilable(Integer),
             shipping_tax_currency: T.nilable(String),
             shipping_tax_rate: T.nilable(String),
-            tax_treatments: T.nilable(Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol),
+            tax_treatments: T.nilable(Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::OrSymbol),
             unique_value_added_tax_invoice_reference: T.nilable(String)
           )
             .returns(T.attached_class)
@@ -584,10 +584,10 @@ module Increase
         sig do
           params(
             id: String,
-            detail_indicator: T.nilable(Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol),
+            detail_indicator: T.nilable(Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::OrSymbol),
             discount_amount: T.nilable(Integer),
             discount_currency: T.nilable(String),
-            discount_treatment_code: T.nilable(Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol),
+            discount_treatment_code: T.nilable(Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::OrSymbol),
             item_commodity_code: T.nilable(String),
             item_descriptor: T.nilable(String),
             item_quantity: T.nilable(String),

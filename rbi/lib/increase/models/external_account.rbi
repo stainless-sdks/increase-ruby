@@ -126,16 +126,16 @@ module Increase
       sig do
         params(
           id: String,
-          account_holder: Increase::Models::ExternalAccount::AccountHolder::TaggedSymbol,
+          account_holder: Increase::Models::ExternalAccount::AccountHolder::OrSymbol,
           account_number: String,
           created_at: Time,
           description: String,
-          funding: Increase::Models::ExternalAccount::Funding::TaggedSymbol,
+          funding: Increase::Models::ExternalAccount::Funding::OrSymbol,
           idempotency_key: T.nilable(String),
           routing_number: String,
-          status: Increase::Models::ExternalAccount::Status::TaggedSymbol,
-          type: Increase::Models::ExternalAccount::Type::TaggedSymbol,
-          verification_status: Increase::Models::ExternalAccount::VerificationStatus::TaggedSymbol
+          status: Increase::Models::ExternalAccount::Status::OrSymbol,
+          type: Increase::Models::ExternalAccount::Type::OrSymbol,
+          verification_status: Increase::Models::ExternalAccount::VerificationStatus::OrSymbol
         )
           .returns(T.attached_class)
       end
