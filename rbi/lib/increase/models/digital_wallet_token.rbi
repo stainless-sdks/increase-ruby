@@ -5,80 +5,33 @@ module Increase
     class DigitalWalletToken < Increase::BaseModel
       # The Digital Wallet Token identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The identifier for the Card this Digital Wallet Token belongs to.
       sig { returns(String) }
-      def card_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def card_id=(_)
-      end
+      attr_accessor :card_id
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
       #   the Digital Wallet Token was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # This indicates if payments can be made with the Digital Wallet Token.
       sig { returns(Increase::Models::DigitalWalletToken::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Increase::Models::DigitalWalletToken::Status::TaggedSymbol)
-          .returns(Increase::Models::DigitalWalletToken::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # The digital wallet app being used.
       sig { returns(Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol) }
-      def token_requestor
-      end
-
-      sig do
-        params(_: Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol)
-          .returns(Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol)
-      end
-      def token_requestor=(_)
-      end
+      attr_accessor :token_requestor
 
       # A constant representing the object's type. For this resource it will always be
       #   `digital_wallet_token`.
       sig { returns(Increase::Models::DigitalWalletToken::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::DigitalWalletToken::Type::TaggedSymbol)
-          .returns(Increase::Models::DigitalWalletToken::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Updates to the Digital Wallet Token.
       sig { returns(T::Array[Increase::Models::DigitalWalletToken::Update]) }
-      def updates
-      end
-
-      sig do
-        params(_: T::Array[Increase::Models::DigitalWalletToken::Update])
-          .returns(T::Array[Increase::Models::DigitalWalletToken::Update])
-      end
-      def updates=(_)
-      end
+      attr_accessor :updates
 
       # A Digital Wallet Token is created when a user adds a Card to their Apple Pay or
       #   Google Pay app. The Digital Wallet Token can be used for purchases just like a
@@ -189,25 +142,12 @@ module Increase
       class Update < Increase::BaseModel
         # The status the update changed this Digital Wallet Token to.
         sig { returns(Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol) }
-        def status
-        end
-
-        sig do
-          params(_: Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol)
-            .returns(Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol)
-        end
-        def status=(_)
-        end
+        attr_accessor :status
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #   the update happened.
         sig { returns(Time) }
-        def timestamp
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def timestamp=(_)
-        end
+        attr_accessor :timestamp
 
         sig do
           params(status: Increase::Models::DigitalWalletToken::Update::Status::OrSymbol, timestamp: Time)

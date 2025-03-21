@@ -9,96 +9,70 @@ module Increase
 
         # The identifier of the Account Number the inbound ACH Transfer is for.
         sig { returns(String) }
-        def account_number_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def account_number_id=(_)
-        end
+        attr_accessor :account_number_id
 
         # The transfer amount in cents. A positive amount originates a credit transfer
         #   pushing funds to the receiving account. A negative amount originates a debit
         #   transfer pulling funds from the receiving account.
         sig { returns(Integer) }
-        def amount
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def amount=(_)
-        end
+        attr_accessor :amount
 
         # The description of the date of the transfer.
         sig { returns(T.nilable(String)) }
-        def company_descriptive_date
-        end
+        attr_reader :company_descriptive_date
 
-        sig { params(_: String).returns(String) }
-        def company_descriptive_date=(_)
-        end
+        sig { params(company_descriptive_date: String).void }
+        attr_writer :company_descriptive_date
 
         # Data associated with the transfer set by the sender.
         sig { returns(T.nilable(String)) }
-        def company_discretionary_data
-        end
+        attr_reader :company_discretionary_data
 
-        sig { params(_: String).returns(String) }
-        def company_discretionary_data=(_)
-        end
+        sig { params(company_discretionary_data: String).void }
+        attr_writer :company_discretionary_data
 
         # The description of the transfer set by the sender.
         sig { returns(T.nilable(String)) }
-        def company_entry_description
-        end
+        attr_reader :company_entry_description
 
-        sig { params(_: String).returns(String) }
-        def company_entry_description=(_)
-        end
+        sig { params(company_entry_description: String).void }
+        attr_writer :company_entry_description
 
         # The sender's company ID.
         sig { returns(T.nilable(String)) }
-        def company_id
-        end
+        attr_reader :company_id
 
-        sig { params(_: String).returns(String) }
-        def company_id=(_)
-        end
+        sig { params(company_id: String).void }
+        attr_writer :company_id
 
         # The name of the sender.
         sig { returns(T.nilable(String)) }
-        def company_name
-        end
+        attr_reader :company_name
 
-        sig { params(_: String).returns(String) }
-        def company_name=(_)
-        end
+        sig { params(company_name: String).void }
+        attr_writer :company_name
 
         # The ID of the receiver of the transfer.
         sig { returns(T.nilable(String)) }
-        def receiver_id_number
-        end
+        attr_reader :receiver_id_number
 
-        sig { params(_: String).returns(String) }
-        def receiver_id_number=(_)
-        end
+        sig { params(receiver_id_number: String).void }
+        attr_writer :receiver_id_number
 
         # The name of the receiver of the transfer.
         sig { returns(T.nilable(String)) }
-        def receiver_name
-        end
+        attr_reader :receiver_name
 
-        sig { params(_: String).returns(String) }
-        def receiver_name=(_)
-        end
+        sig { params(receiver_name: String).void }
+        attr_writer :receiver_name
 
         # The time at which the transfer should be resolved. If not provided will resolve
         #   immediately.
         sig { returns(T.nilable(Time)) }
-        def resolve_at
-        end
+        attr_reader :resolve_at
 
-        sig { params(_: Time).returns(Time) }
-        def resolve_at=(_)
-        end
+        sig { params(resolve_at: Time).void }
+        attr_writer :resolve_at
 
         # The standard entry class code for the transfer.
         sig do
@@ -106,15 +80,15 @@ module Increase
             T.nilable(Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::OrSymbol)
           )
         end
-        def standard_entry_class_code
-        end
+        attr_reader :standard_entry_class_code
 
         sig do
-          params(_: Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::OrSymbol)
-            .returns(Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::OrSymbol)
+          params(
+            standard_entry_class_code: Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::OrSymbol
+          )
+            .void
         end
-        def standard_entry_class_code=(_)
-        end
+        attr_writer :standard_entry_class_code
 
         sig do
           params(

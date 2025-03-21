@@ -9,24 +9,14 @@ module Increase
 
         # The status to move the dispute to.
         sig { returns(Increase::Models::Simulations::CardDisputeActionParams::Status::OrSymbol) }
-        def status
-        end
-
-        sig do
-          params(_: Increase::Models::Simulations::CardDisputeActionParams::Status::OrSymbol)
-            .returns(Increase::Models::Simulations::CardDisputeActionParams::Status::OrSymbol)
-        end
-        def status=(_)
-        end
+        attr_accessor :status
 
         # Why the dispute was rejected. Not required for accepting disputes.
         sig { returns(T.nilable(String)) }
-        def explanation
-        end
+        attr_reader :explanation
 
-        sig { params(_: String).returns(String) }
-        def explanation=(_)
-        end
+        sig { params(explanation: String).void }
+        attr_writer :explanation
 
         sig do
           params(

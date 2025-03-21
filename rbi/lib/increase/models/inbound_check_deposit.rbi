@@ -5,215 +5,105 @@ module Increase
     class InboundCheckDeposit < Increase::BaseModel
       # The deposit's identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # If the Inbound Check Deposit was accepted, the
       #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this
       #   took place.
       sig { returns(T.nilable(Time)) }
-      def accepted_at
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def accepted_at=(_)
-      end
+      attr_accessor :accepted_at
 
       # The Account the check is being deposited against.
       sig { returns(String) }
-      def account_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_id=(_)
-      end
+      attr_accessor :account_id
 
       # The Account Number the check is being deposited against.
       sig { returns(T.nilable(String)) }
-      def account_number_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def account_number_id=(_)
-      end
+      attr_accessor :account_number_id
 
       # If the deposit or the return was adjusted by the sending institution, this will
       #   contain details of the adjustments.
       sig { returns(T::Array[Increase::Models::InboundCheckDeposit::Adjustment]) }
-      def adjustments
-      end
-
-      sig do
-        params(_: T::Array[Increase::Models::InboundCheckDeposit::Adjustment])
-          .returns(T::Array[Increase::Models::InboundCheckDeposit::Adjustment])
-      end
-      def adjustments=(_)
-      end
+      attr_accessor :adjustments
 
       # The deposited amount in USD cents.
       sig { returns(Integer) }
-      def amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       # The ID for the File containing the image of the back of the check.
       sig { returns(T.nilable(String)) }
-      def back_image_file_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def back_image_file_id=(_)
-      end
+      attr_accessor :back_image_file_id
 
       # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
       #   bank depositing this check. In some rare cases, this is not transmitted via
       #   Check21 and the value will be null.
       sig { returns(T.nilable(String)) }
-      def bank_of_first_deposit_routing_number
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def bank_of_first_deposit_routing_number=(_)
-      end
+      attr_accessor :bank_of_first_deposit_routing_number
 
       # The check number printed on the check being deposited.
       sig { returns(T.nilable(String)) }
-      def check_number
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def check_number=(_)
-      end
+      attr_accessor :check_number
 
       # If this deposit is for an existing Check Transfer, the identifier of that Check
       #   Transfer.
       sig { returns(T.nilable(String)) }
-      def check_transfer_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def check_transfer_id=(_)
-      end
+      attr_accessor :check_transfer_id
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
       #   the deposit was attempted.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
       sig { returns(Increase::Models::InboundCheckDeposit::Currency::TaggedSymbol) }
-      def currency
-      end
-
-      sig do
-        params(_: Increase::Models::InboundCheckDeposit::Currency::TaggedSymbol)
-          .returns(Increase::Models::InboundCheckDeposit::Currency::TaggedSymbol)
-      end
-      def currency=(_)
-      end
+      attr_accessor :currency
 
       # If the Inbound Check Deposit was declined, the
       #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this
       #   took place.
       sig { returns(T.nilable(Time)) }
-      def declined_at
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def declined_at=(_)
-      end
+      attr_accessor :declined_at
 
       # If the deposit attempt has been rejected, the identifier of the Declined
       #   Transaction object created as a result of the failed deposit.
       sig { returns(T.nilable(String)) }
-      def declined_transaction_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def declined_transaction_id=(_)
-      end
+      attr_accessor :declined_transaction_id
 
       # If you requested a return of this deposit, this will contain details of the
       #   return.
       sig { returns(T.nilable(Increase::Models::InboundCheckDeposit::DepositReturn)) }
-      def deposit_return
-      end
+      attr_reader :deposit_return
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::InboundCheckDeposit::DepositReturn, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::InboundCheckDeposit::DepositReturn, Increase::Util::AnyHash)))
+        params(
+          deposit_return: T.nilable(T.any(Increase::Models::InboundCheckDeposit::DepositReturn, Increase::Util::AnyHash))
+        )
+          .void
       end
-      def deposit_return=(_)
-      end
+      attr_writer :deposit_return
 
       # The ID for the File containing the image of the front of the check.
       sig { returns(T.nilable(String)) }
-      def front_image_file_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def front_image_file_id=(_)
-      end
+      attr_accessor :front_image_file_id
 
       # Whether the details on the check match the recipient name of the check transfer.
       #   This is an optional feature, contact sales to enable.
       sig { returns(Increase::Models::InboundCheckDeposit::PayeeNameAnalysis::TaggedSymbol) }
-      def payee_name_analysis
-      end
-
-      sig do
-        params(_: Increase::Models::InboundCheckDeposit::PayeeNameAnalysis::TaggedSymbol)
-          .returns(Increase::Models::InboundCheckDeposit::PayeeNameAnalysis::TaggedSymbol)
-      end
-      def payee_name_analysis=(_)
-      end
+      attr_accessor :payee_name_analysis
 
       # The status of the Inbound Check Deposit.
       sig { returns(Increase::Models::InboundCheckDeposit::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Increase::Models::InboundCheckDeposit::Status::TaggedSymbol)
-          .returns(Increase::Models::InboundCheckDeposit::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # If the deposit attempt has been accepted, the identifier of the Transaction
       #   object created as a result of the successful deposit.
       sig { returns(T.nilable(String)) }
-      def transaction_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def transaction_id=(_)
-      end
+      attr_accessor :transaction_id
 
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_check_deposit`.
       sig { returns(Increase::Models::InboundCheckDeposit::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::InboundCheckDeposit::Type::TaggedSymbol)
-          .returns(Increase::Models::InboundCheckDeposit::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Inbound Check Deposits are records of third-parties attempting to deposit checks
       #   against your account.
@@ -299,42 +189,19 @@ module Increase
       class Adjustment < Increase::BaseModel
         # The time at which the return adjustment was received.
         sig { returns(Time) }
-        def adjusted_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def adjusted_at=(_)
-        end
+        attr_accessor :adjusted_at
 
         # The amount of the adjustment.
         sig { returns(Integer) }
-        def amount
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def amount=(_)
-        end
+        attr_accessor :amount
 
         # The reason for the adjustment.
         sig { returns(Increase::Models::InboundCheckDeposit::Adjustment::Reason::TaggedSymbol) }
-        def reason
-        end
-
-        sig do
-          params(_: Increase::Models::InboundCheckDeposit::Adjustment::Reason::TaggedSymbol)
-            .returns(Increase::Models::InboundCheckDeposit::Adjustment::Reason::TaggedSymbol)
-        end
-        def reason=(_)
-        end
+        attr_accessor :reason
 
         # The id of the transaction for the adjustment.
         sig { returns(String) }
-        def transaction_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def transaction_id=(_)
-        end
+        attr_accessor :transaction_id
 
         sig do
           params(
@@ -429,33 +296,15 @@ module Increase
       class DepositReturn < Increase::BaseModel
         # The reason the deposit was returned.
         sig { returns(Increase::Models::InboundCheckDeposit::DepositReturn::Reason::TaggedSymbol) }
-        def reason
-        end
-
-        sig do
-          params(_: Increase::Models::InboundCheckDeposit::DepositReturn::Reason::TaggedSymbol)
-            .returns(Increase::Models::InboundCheckDeposit::DepositReturn::Reason::TaggedSymbol)
-        end
-        def reason=(_)
-        end
+        attr_accessor :reason
 
         # The time at which the deposit was returned.
         sig { returns(Time) }
-        def returned_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def returned_at=(_)
-        end
+        attr_accessor :returned_at
 
         # The id of the transaction for the returned deposit.
         sig { returns(String) }
-        def transaction_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def transaction_id=(_)
-        end
+        attr_accessor :transaction_id
 
         # If you requested a return of this deposit, this will contain details of the
         #   return.

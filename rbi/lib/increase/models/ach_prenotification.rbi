@@ -5,171 +5,80 @@ module Increase
     class ACHPrenotification < Increase::BaseModel
       # The ACH Prenotification's identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The destination account number.
       sig { returns(String) }
-      def account_number
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_number=(_)
-      end
+      attr_accessor :account_number
 
       # Additional information for the recipient.
       sig { returns(T.nilable(String)) }
-      def addendum
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def addendum=(_)
-      end
+      attr_accessor :addendum
 
       # The description of the date of the notification.
       sig { returns(T.nilable(String)) }
-      def company_descriptive_date
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def company_descriptive_date=(_)
-      end
+      attr_accessor :company_descriptive_date
 
       # Optional data associated with the notification.
       sig { returns(T.nilable(String)) }
-      def company_discretionary_data
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def company_discretionary_data=(_)
-      end
+      attr_accessor :company_discretionary_data
 
       # The description of the notification.
       sig { returns(T.nilable(String)) }
-      def company_entry_description
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def company_entry_description=(_)
-      end
+      attr_accessor :company_entry_description
 
       # The name by which you know the company.
       sig { returns(T.nilable(String)) }
-      def company_name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def company_name=(_)
-      end
+      attr_accessor :company_name
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
       #   the prenotification was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # If the notification is for a future credit or debit.
       sig { returns(T.nilable(Increase::Models::ACHPrenotification::CreditDebitIndicator::TaggedSymbol)) }
-      def credit_debit_indicator
-      end
-
-      sig do
-        params(_: T.nilable(Increase::Models::ACHPrenotification::CreditDebitIndicator::TaggedSymbol))
-          .returns(T.nilable(Increase::Models::ACHPrenotification::CreditDebitIndicator::TaggedSymbol))
-      end
-      def credit_debit_indicator=(_)
-      end
+      attr_accessor :credit_debit_indicator
 
       # The effective date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
       sig { returns(T.nilable(Time)) }
-      def effective_date
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def effective_date=(_)
-      end
+      attr_accessor :effective_date
 
       # The idempotency key you chose for this object. This value is unique across
       #   Increase and is used to ensure that a request is only processed once. Learn more
       #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      def idempotency_key
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def idempotency_key=(_)
-      end
+      attr_accessor :idempotency_key
 
       # If the receiving bank notifies that future transfers should use different
       #   details, this will contain those details.
       sig { returns(T::Array[Increase::Models::ACHPrenotification::NotificationsOfChange]) }
-      def notifications_of_change
-      end
-
-      sig do
-        params(_: T::Array[Increase::Models::ACHPrenotification::NotificationsOfChange])
-          .returns(T::Array[Increase::Models::ACHPrenotification::NotificationsOfChange])
-      end
-      def notifications_of_change=(_)
-      end
+      attr_accessor :notifications_of_change
 
       # If your prenotification is returned, this will contain details of the return.
       sig { returns(T.nilable(Increase::Models::ACHPrenotification::PrenotificationReturn)) }
-      def prenotification_return
-      end
+      attr_reader :prenotification_return
 
       sig do
         params(
-          _: T.nilable(T.any(Increase::Models::ACHPrenotification::PrenotificationReturn, Increase::Util::AnyHash))
+          prenotification_return: T.nilable(T.any(Increase::Models::ACHPrenotification::PrenotificationReturn, Increase::Util::AnyHash))
         )
-          .returns(
-            T.nilable(T.any(Increase::Models::ACHPrenotification::PrenotificationReturn, Increase::Util::AnyHash))
-          )
+          .void
       end
-      def prenotification_return=(_)
-      end
+      attr_writer :prenotification_return
 
       # The American Bankers' Association (ABA) Routing Transit Number (RTN).
       sig { returns(String) }
-      def routing_number
-      end
-
-      sig { params(_: String).returns(String) }
-      def routing_number=(_)
-      end
+      attr_accessor :routing_number
 
       # The lifecycle status of the ACH Prenotification.
       sig { returns(Increase::Models::ACHPrenotification::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Increase::Models::ACHPrenotification::Status::TaggedSymbol)
-          .returns(Increase::Models::ACHPrenotification::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
       #   `ach_prenotification`.
       sig { returns(Increase::Models::ACHPrenotification::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::ACHPrenotification::Type::TaggedSymbol)
-          .returns(Increase::Models::ACHPrenotification::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # ACH Prenotifications are one way you can verify account and routing numbers by
       #   Automated Clearing House (ACH).
@@ -265,15 +174,7 @@ module Increase
         # The required type of change that is being signaled by the receiving financial
         #   institution.
         sig { returns(Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode::TaggedSymbol) }
-        def change_code
-        end
-
-        sig do
-          params(_: Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode::TaggedSymbol)
-            .returns(Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode::TaggedSymbol)
-        end
-        def change_code=(_)
-        end
+        attr_accessor :change_code
 
         # The corrected data that should be used in future ACHs to this account. This may
         #   contain the suggested new account number or routing number. When the
@@ -281,22 +182,12 @@ module Increase
         #   Numbers starting with a 2 encourage changing the `funding` parameter to
         #   checking; numbers starting with a 3 encourage changing to savings.
         sig { returns(String) }
-        def corrected_data
-        end
-
-        sig { params(_: String).returns(String) }
-        def corrected_data=(_)
-        end
+        attr_accessor :corrected_data
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #   the notification occurred.
         sig { returns(Time) }
-        def created_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def created_at=(_)
-        end
+        attr_accessor :created_at
 
         sig do
           params(
@@ -480,24 +371,11 @@ module Increase
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #   the Prenotification was returned.
         sig { returns(Time) }
-        def created_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def created_at=(_)
-        end
+        attr_accessor :created_at
 
         # Why the Prenotification was returned.
         sig { returns(Increase::Models::ACHPrenotification::PrenotificationReturn::ReturnReasonCode::TaggedSymbol) }
-        def return_reason_code
-        end
-
-        sig do
-          params(_: Increase::Models::ACHPrenotification::PrenotificationReturn::ReturnReasonCode::TaggedSymbol)
-            .returns(Increase::Models::ACHPrenotification::PrenotificationReturn::ReturnReasonCode::TaggedSymbol)
-        end
-        def return_reason_code=(_)
-        end
+        attr_accessor :return_reason_code
 
         # If your prenotification is returned, this will contain details of the return.
         sig do

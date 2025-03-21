@@ -8,39 +8,19 @@ module Increase
 
       # The identifier of the File containing the physical card's carrier image.
       sig { returns(String) }
-      def carrier_image_file_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def carrier_image_file_id=(_)
-      end
+      attr_accessor :carrier_image_file_id
 
       # A phone number the user can contact to receive support for their card.
       sig { returns(String) }
-      def contact_phone
-      end
-
-      sig { params(_: String).returns(String) }
-      def contact_phone=(_)
-      end
+      attr_accessor :contact_phone
 
       # A description you can use to identify the Card Profile.
       sig { returns(String) }
-      def description
-      end
-
-      sig { params(_: String).returns(String) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # The identifier of the File containing the physical card's front image.
       sig { returns(String) }
-      def front_image_file_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def front_image_file_id=(_)
-      end
+      attr_accessor :front_image_file_id
 
       sig do
         params(

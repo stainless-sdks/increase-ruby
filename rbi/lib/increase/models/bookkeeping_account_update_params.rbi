@@ -8,12 +8,7 @@ module Increase
 
       # The name you choose for the account.
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       sig do
         params(name: String, request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash))

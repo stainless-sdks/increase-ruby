@@ -8,34 +8,22 @@ module Increase
 
       # The bookkeeping entries.
       sig { returns(T::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry]) }
-      def entries
-      end
-
-      sig do
-        params(_: T::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry])
-          .returns(T::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry])
-      end
-      def entries=(_)
-      end
+      attr_accessor :entries
 
       # The date of the transaction. Optional if `transaction_id` is provided, in which
       #   case we use the `date` of that transaction. Required otherwise.
       sig { returns(T.nilable(Time)) }
-      def date
-      end
+      attr_reader :date
 
-      sig { params(_: Time).returns(Time) }
-      def date=(_)
-      end
+      sig { params(date: Time).void }
+      attr_writer :date
 
       # The identifier of the Transaction related to this entry set, if any.
       sig { returns(T.nilable(String)) }
-      def transaction_id
-      end
+      attr_reader :transaction_id
 
-      sig { params(_: String).returns(String) }
-      def transaction_id=(_)
-      end
+      sig { params(transaction_id: String).void }
+      attr_writer :transaction_id
 
       sig do
         params(
@@ -66,23 +54,13 @@ module Increase
       class Entry < Increase::BaseModel
         # The identifier for the Bookkeeping Account impacted by this entry.
         sig { returns(String) }
-        def account_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def account_id=(_)
-        end
+        attr_accessor :account_id
 
         # The entry amount in the minor unit of the account currency. For dollars, for
         #   example, this is cents. Debit entries have positive amounts; credit entries have
         #   negative amounts.
         sig { returns(Integer) }
-        def amount
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def amount=(_)
-        end
+        attr_accessor :amount
 
         sig { params(account_id: String, amount: Integer).returns(T.attached_class) }
         def self.new(account_id:, amount:)

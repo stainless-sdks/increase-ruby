@@ -8,54 +8,41 @@ module Increase
 
       # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
-      def cursor
-      end
+      attr_reader :cursor
 
-      sig { params(_: String).returns(String) }
-      def cursor=(_)
-      end
+      sig { params(cursor: String).void }
+      attr_writer :cursor
 
       # Filter records to the one with the specified `idempotency_key` you chose for
       #   that object. This value is unique across Increase and is used to ensure that a
       #   request is only processed once. Learn more about
       #   [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      def idempotency_key
-      end
+      attr_reader :idempotency_key
 
-      sig { params(_: String).returns(String) }
-      def idempotency_key=(_)
-      end
+      sig { params(idempotency_key: String).void }
+      attr_writer :idempotency_key
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       sig { returns(T.nilable(Integer)) }
-      def limit
-      end
+      attr_reader :limit
 
-      sig { params(_: Integer).returns(Integer) }
-      def limit=(_)
-      end
+      sig { params(limit: Integer).void }
+      attr_writer :limit
 
       # Filter External Accounts to those with the specified Routing Number.
       sig { returns(T.nilable(String)) }
-      def routing_number
-      end
+      attr_reader :routing_number
 
-      sig { params(_: String).returns(String) }
-      def routing_number=(_)
-      end
+      sig { params(routing_number: String).void }
+      attr_writer :routing_number
 
       sig { returns(T.nilable(Increase::Models::ExternalAccountListParams::Status)) }
-      def status
-      end
+      attr_reader :status
 
-      sig do
-        params(_: T.any(Increase::Models::ExternalAccountListParams::Status, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::ExternalAccountListParams::Status, Increase::Util::AnyHash))
-      end
-      def status=(_)
-      end
+      sig { params(status: T.any(Increase::Models::ExternalAccountListParams::Status, Increase::Util::AnyHash)).void }
+      attr_writer :status
 
       sig do
         params(
@@ -92,15 +79,10 @@ module Increase
         #   GET requests, this should be encoded as a comma-delimited string, such as
         #   `?in=one,two,three`.
         sig { returns(T.nilable(T::Array[Increase::Models::ExternalAccountListParams::Status::In::OrSymbol])) }
-        def in_
-        end
+        attr_reader :in_
 
-        sig do
-          params(_: T::Array[Increase::Models::ExternalAccountListParams::Status::In::OrSymbol])
-            .returns(T::Array[Increase::Models::ExternalAccountListParams::Status::In::OrSymbol])
-        end
-        def in_=(_)
-        end
+        sig { params(in_: T::Array[Increase::Models::ExternalAccountListParams::Status::In::OrSymbol]).void }
+        attr_writer :in_
 
         sig do
           params(in_: T::Array[Increase::Models::ExternalAccountListParams::Status::In::OrSymbol])

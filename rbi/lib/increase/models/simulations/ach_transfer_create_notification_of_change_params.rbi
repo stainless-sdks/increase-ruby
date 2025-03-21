@@ -9,26 +9,11 @@ module Increase
 
         # The reason for the notification of change.
         sig { returns(Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol) }
-        def change_code
-        end
-
-        sig do
-          params(
-            _: Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol
-          )
-            .returns(Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol)
-        end
-        def change_code=(_)
-        end
+        attr_accessor :change_code
 
         # The corrected data for the notification of change (e.g., a new routing number).
         sig { returns(String) }
-        def corrected_data
-        end
-
-        sig { params(_: String).returns(String) }
-        def corrected_data=(_)
-        end
+        attr_accessor :corrected_data
 
         sig do
           params(

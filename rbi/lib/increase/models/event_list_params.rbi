@@ -8,53 +8,37 @@ module Increase
 
       # Filter Events to those belonging to the object with the provided identifier.
       sig { returns(T.nilable(String)) }
-      def associated_object_id
-      end
+      attr_reader :associated_object_id
 
-      sig { params(_: String).returns(String) }
-      def associated_object_id=(_)
-      end
+      sig { params(associated_object_id: String).void }
+      attr_writer :associated_object_id
 
       sig { returns(T.nilable(Increase::Models::EventListParams::Category)) }
-      def category
-      end
+      attr_reader :category
 
-      sig do
-        params(_: T.any(Increase::Models::EventListParams::Category, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::EventListParams::Category, Increase::Util::AnyHash))
-      end
-      def category=(_)
-      end
+      sig { params(category: T.any(Increase::Models::EventListParams::Category, Increase::Util::AnyHash)).void }
+      attr_writer :category
 
       sig { returns(T.nilable(Increase::Models::EventListParams::CreatedAt)) }
-      def created_at
-      end
+      attr_reader :created_at
 
-      sig do
-        params(_: T.any(Increase::Models::EventListParams::CreatedAt, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::EventListParams::CreatedAt, Increase::Util::AnyHash))
-      end
-      def created_at=(_)
-      end
+      sig { params(created_at: T.any(Increase::Models::EventListParams::CreatedAt, Increase::Util::AnyHash)).void }
+      attr_writer :created_at
 
       # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
-      def cursor
-      end
+      attr_reader :cursor
 
-      sig { params(_: String).returns(String) }
-      def cursor=(_)
-      end
+      sig { params(cursor: String).void }
+      attr_writer :cursor
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       sig { returns(T.nilable(Integer)) }
-      def limit
-      end
+      attr_reader :limit
 
-      sig { params(_: Integer).returns(Integer) }
-      def limit=(_)
-      end
+      sig { params(limit: Integer).void }
+      attr_writer :limit
 
       sig do
         params(
@@ -91,15 +75,10 @@ module Increase
         #   requests, this should be encoded as a comma-delimited string, such as
         #   `?in=one,two,three`.
         sig { returns(T.nilable(T::Array[Increase::Models::EventListParams::Category::In::OrSymbol])) }
-        def in_
-        end
+        attr_reader :in_
 
-        sig do
-          params(_: T::Array[Increase::Models::EventListParams::Category::In::OrSymbol])
-            .returns(T::Array[Increase::Models::EventListParams::Category::In::OrSymbol])
-        end
-        def in_=(_)
-        end
+        sig { params(in_: T::Array[Increase::Models::EventListParams::Category::In::OrSymbol]).void }
+        attr_writer :in_
 
         sig { params(in_: T::Array[Increase::Models::EventListParams::Category::In::OrSymbol]).returns(T.attached_class) }
         def self.new(in_: nil)
@@ -531,42 +510,34 @@ module Increase
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
-        def after
-        end
+        attr_reader :after
 
-        sig { params(_: Time).returns(Time) }
-        def after=(_)
-        end
+        sig { params(after: Time).void }
+        attr_writer :after
 
         # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
-        def before
-        end
+        attr_reader :before
 
-        sig { params(_: Time).returns(Time) }
-        def before=(_)
-        end
+        sig { params(before: Time).void }
+        attr_writer :before
 
         # Return results on or after this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
-        def on_or_after
-        end
+        attr_reader :on_or_after
 
-        sig { params(_: Time).returns(Time) }
-        def on_or_after=(_)
-        end
+        sig { params(on_or_after: Time).void }
+        attr_writer :on_or_after
 
         # Return results on or before this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
-        def on_or_before
-        end
+        attr_reader :on_or_before
 
-        sig { params(_: Time).returns(Time) }
-        def on_or_before=(_)
-        end
+        sig { params(on_or_before: Time).void }
+        attr_writer :on_or_before
 
         sig do
           params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)

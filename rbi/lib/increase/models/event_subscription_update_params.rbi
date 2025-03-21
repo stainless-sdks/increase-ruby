@@ -8,15 +8,10 @@ module Increase
 
       # The status to update the Event Subscription with.
       sig { returns(T.nilable(Increase::Models::EventSubscriptionUpdateParams::Status::OrSymbol)) }
-      def status
-      end
+      attr_reader :status
 
-      sig do
-        params(_: Increase::Models::EventSubscriptionUpdateParams::Status::OrSymbol)
-          .returns(Increase::Models::EventSubscriptionUpdateParams::Status::OrSymbol)
-      end
-      def status=(_)
-      end
+      sig { params(status: Increase::Models::EventSubscriptionUpdateParams::Status::OrSymbol).void }
+      attr_writer :status
 
       sig do
         params(

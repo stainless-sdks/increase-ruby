@@ -5,142 +5,66 @@ module Increase
     class DigitalCardProfile < Increase::BaseModel
       # The Card Profile identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The identifier of the File containing the card's icon image.
       sig { returns(String) }
-      def app_icon_file_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def app_icon_file_id=(_)
-      end
+      attr_accessor :app_icon_file_id
 
       # The identifier of the File containing the card's front image.
       sig { returns(String) }
-      def background_image_file_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def background_image_file_id=(_)
-      end
+      attr_accessor :background_image_file_id
 
       # A user-facing description for the card itself.
       sig { returns(String) }
-      def card_description
-      end
-
-      sig { params(_: String).returns(String) }
-      def card_description=(_)
-      end
+      attr_accessor :card_description
 
       # An email address the user can contact to receive support for their card.
       sig { returns(T.nilable(String)) }
-      def contact_email
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def contact_email=(_)
-      end
+      attr_accessor :contact_email
 
       # A phone number the user can contact to receive support for their card.
       sig { returns(T.nilable(String)) }
-      def contact_phone
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def contact_phone=(_)
-      end
+      attr_accessor :contact_phone
 
       # A website the user can visit to view and receive support for their card.
       sig { returns(T.nilable(String)) }
-      def contact_website
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def contact_website=(_)
-      end
+      attr_accessor :contact_website
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
       #   the Card Dispute was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # A description you can use to identify the Card Profile.
       sig { returns(String) }
-      def description
-      end
-
-      sig { params(_: String).returns(String) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # The idempotency key you chose for this object. This value is unique across
       #   Increase and is used to ensure that a request is only processed once. Learn more
       #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      def idempotency_key
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def idempotency_key=(_)
-      end
+      attr_accessor :idempotency_key
 
       # A user-facing description for whoever is issuing the card.
       sig { returns(String) }
-      def issuer_name
-      end
-
-      sig { params(_: String).returns(String) }
-      def issuer_name=(_)
-      end
+      attr_accessor :issuer_name
 
       # The status of the Card Profile.
       sig { returns(Increase::Models::DigitalCardProfile::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Increase::Models::DigitalCardProfile::Status::TaggedSymbol)
-          .returns(Increase::Models::DigitalCardProfile::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # The Card's text color, specified as an RGB triple.
       sig { returns(Increase::Models::DigitalCardProfile::TextColor) }
-      def text_color
-      end
+      attr_reader :text_color
 
-      sig do
-        params(_: T.any(Increase::Models::DigitalCardProfile::TextColor, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::DigitalCardProfile::TextColor, Increase::Util::AnyHash))
-      end
-      def text_color=(_)
-      end
+      sig { params(text_color: T.any(Increase::Models::DigitalCardProfile::TextColor, Increase::Util::AnyHash)).void }
+      attr_writer :text_color
 
       # A constant representing the object's type. For this resource it will always be
       #   `digital_card_profile`.
       sig { returns(Increase::Models::DigitalCardProfile::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::DigitalCardProfile::Type::TaggedSymbol)
-          .returns(Increase::Models::DigitalCardProfile::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # This contains artwork and metadata relating to a Card's appearance in digital
       #   wallet apps like Apple Pay and Google Pay. For more information, see our guide
@@ -235,30 +159,15 @@ module Increase
       class TextColor < Increase::BaseModel
         # The value of the blue channel in the RGB color.
         sig { returns(Integer) }
-        def blue
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def blue=(_)
-        end
+        attr_accessor :blue
 
         # The value of the green channel in the RGB color.
         sig { returns(Integer) }
-        def green
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def green=(_)
-        end
+        attr_accessor :green
 
         # The value of the red channel in the RGB color.
         sig { returns(Integer) }
-        def red
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def red=(_)
-        end
+        attr_accessor :red
 
         # The Card's text color, specified as an RGB triple.
         sig { params(blue: Integer, green: Integer, red: Integer).returns(T.attached_class) }

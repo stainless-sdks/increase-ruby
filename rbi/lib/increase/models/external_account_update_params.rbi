@@ -8,48 +8,31 @@ module Increase
 
       # The type of entity that owns the External Account.
       sig { returns(T.nilable(Increase::Models::ExternalAccountUpdateParams::AccountHolder::OrSymbol)) }
-      def account_holder
-      end
+      attr_reader :account_holder
 
-      sig do
-        params(_: Increase::Models::ExternalAccountUpdateParams::AccountHolder::OrSymbol)
-          .returns(Increase::Models::ExternalAccountUpdateParams::AccountHolder::OrSymbol)
-      end
-      def account_holder=(_)
-      end
+      sig { params(account_holder: Increase::Models::ExternalAccountUpdateParams::AccountHolder::OrSymbol).void }
+      attr_writer :account_holder
 
       # The description you choose to give the external account.
       sig { returns(T.nilable(String)) }
-      def description
-      end
+      attr_reader :description
 
-      sig { params(_: String).returns(String) }
-      def description=(_)
-      end
+      sig { params(description: String).void }
+      attr_writer :description
 
       # The funding type of the External Account.
       sig { returns(T.nilable(Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol)) }
-      def funding
-      end
+      attr_reader :funding
 
-      sig do
-        params(_: Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol)
-          .returns(Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol)
-      end
-      def funding=(_)
-      end
+      sig { params(funding: Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol).void }
+      attr_writer :funding
 
       # The status of the External Account.
       sig { returns(T.nilable(Increase::Models::ExternalAccountUpdateParams::Status::OrSymbol)) }
-      def status
-      end
+      attr_reader :status
 
-      sig do
-        params(_: Increase::Models::ExternalAccountUpdateParams::Status::OrSymbol)
-          .returns(Increase::Models::ExternalAccountUpdateParams::Status::OrSymbol)
-      end
-      def status=(_)
-      end
+      sig { params(status: Increase::Models::ExternalAccountUpdateParams::Status::OrSymbol).void }
+      attr_writer :status
 
       sig do
         params(

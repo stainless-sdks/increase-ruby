@@ -5,87 +5,38 @@ module Increase
     class InboundMailItem < Increase::BaseModel
       # The Inbound Mail Item identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Inbound
       #   Mail Item was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # The identifier for the File containing the scanned contents of the mail item.
       sig { returns(String) }
-      def file_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def file_id=(_)
-      end
+      attr_accessor :file_id
 
       # The identifier for the Lockbox that received this mail item. For mail items that
       #   could not be processed due to an invalid address, this will be null.
       sig { returns(T.nilable(String)) }
-      def lockbox_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def lockbox_id=(_)
-      end
+      attr_accessor :lockbox_id
 
       # The recipient name as written on the mail item.
       sig { returns(T.nilable(String)) }
-      def recipient_name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def recipient_name=(_)
-      end
+      attr_accessor :recipient_name
 
       # If the mail item has been rejected, why it was rejected.
       sig { returns(T.nilable(Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol)) }
-      def rejection_reason
-      end
-
-      sig do
-        params(_: T.nilable(Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol))
-          .returns(T.nilable(Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol))
-      end
-      def rejection_reason=(_)
-      end
+      attr_accessor :rejection_reason
 
       # If the mail item has been processed.
       sig { returns(Increase::Models::InboundMailItem::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Increase::Models::InboundMailItem::Status::TaggedSymbol)
-          .returns(Increase::Models::InboundMailItem::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_mail_item`.
       sig { returns(Increase::Models::InboundMailItem::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::InboundMailItem::Type::TaggedSymbol)
-          .returns(Increase::Models::InboundMailItem::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Inbound Mail Items represent pieces of physical mail delivered to a Lockbox.
       sig do

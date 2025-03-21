@@ -13,46 +13,17 @@ module Increase
             )
           )
         end
-        def decline_reason
-        end
-
-        sig do
-          params(
-            _: T.nilable(
-              Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason::TaggedSymbol
-            )
-          )
-            .returns(
-              T.nilable(
-                Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason::TaggedSymbol
-              )
-            )
-        end
-        def decline_reason=(_)
-        end
+        attr_accessor :decline_reason
 
         # If the simulated tokenization attempt was accepted, this field contains the id
         #   of the Digital Wallet Token that was created.
         sig { returns(T.nilable(String)) }
-        def digital_wallet_token_id
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def digital_wallet_token_id=(_)
-        end
+        attr_accessor :digital_wallet_token_id
 
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_digital_wallet_token_request_simulation_result`.
         sig { returns(Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type::TaggedSymbol) }
-        def type
-        end
-
-        sig do
-          params(_: Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type::TaggedSymbol)
-            .returns(Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type::TaggedSymbol)
-        end
-        def type=(_)
-        end
+        attr_accessor :type
 
         # The results of a Digital Wallet Token simulation.
         sig do

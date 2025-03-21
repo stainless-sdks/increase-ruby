@@ -8,21 +8,11 @@ module Increase
 
       # The identifier of the Entity to associate with the supplemental document.
       sig { returns(String) }
-      def entity_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def entity_id=(_)
-      end
+      attr_accessor :entity_id
 
       # The identifier of the File containing the document.
       sig { returns(String) }
-      def file_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def file_id=(_)
-      end
+      attr_accessor :file_id
 
       sig do
         params(

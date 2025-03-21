@@ -8,62 +8,54 @@ module Increase
 
       # Filter Declined Transactions to ones belonging to the specified Account.
       sig { returns(T.nilable(String)) }
-      def account_id
-      end
+      attr_reader :account_id
 
-      sig { params(_: String).returns(String) }
-      def account_id=(_)
-      end
+      sig { params(account_id: String).void }
+      attr_writer :account_id
 
       sig { returns(T.nilable(Increase::Models::DeclinedTransactionListParams::Category)) }
-      def category
-      end
+      attr_reader :category
 
       sig do
-        params(_: T.any(Increase::Models::DeclinedTransactionListParams::Category, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::DeclinedTransactionListParams::Category, Increase::Util::AnyHash))
+        params(
+          category: T.any(Increase::Models::DeclinedTransactionListParams::Category, Increase::Util::AnyHash)
+        )
+          .void
       end
-      def category=(_)
-      end
+      attr_writer :category
 
       sig { returns(T.nilable(Increase::Models::DeclinedTransactionListParams::CreatedAt)) }
-      def created_at
-      end
+      attr_reader :created_at
 
       sig do
-        params(_: T.any(Increase::Models::DeclinedTransactionListParams::CreatedAt, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::DeclinedTransactionListParams::CreatedAt, Increase::Util::AnyHash))
+        params(
+          created_at: T.any(Increase::Models::DeclinedTransactionListParams::CreatedAt, Increase::Util::AnyHash)
+        )
+          .void
       end
-      def created_at=(_)
-      end
+      attr_writer :created_at
 
       # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
-      def cursor
-      end
+      attr_reader :cursor
 
-      sig { params(_: String).returns(String) }
-      def cursor=(_)
-      end
+      sig { params(cursor: String).void }
+      attr_writer :cursor
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       sig { returns(T.nilable(Integer)) }
-      def limit
-      end
+      attr_reader :limit
 
-      sig { params(_: Integer).returns(Integer) }
-      def limit=(_)
-      end
+      sig { params(limit: Integer).void }
+      attr_writer :limit
 
       # Filter Declined Transactions to those belonging to the specified route.
       sig { returns(T.nilable(String)) }
-      def route_id
-      end
+      attr_reader :route_id
 
-      sig { params(_: String).returns(String) }
-      def route_id=(_)
-      end
+      sig { params(route_id: String).void }
+      attr_writer :route_id
 
       sig do
         params(
@@ -109,15 +101,10 @@ module Increase
         # Return results whose value is in the provided list. For GET requests, this
         #   should be encoded as a comma-delimited string, such as `?in=one,two,three`.
         sig { returns(T.nilable(T::Array[Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol])) }
-        def in_
-        end
+        attr_reader :in_
 
-        sig do
-          params(_: T::Array[Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol])
-            .returns(T::Array[Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol])
-        end
-        def in_=(_)
-        end
+        sig { params(in_: T::Array[Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol]).void }
+        attr_writer :in_
 
         sig do
           params(in_: T::Array[Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol])
@@ -183,42 +170,34 @@ module Increase
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
-        def after
-        end
+        attr_reader :after
 
-        sig { params(_: Time).returns(Time) }
-        def after=(_)
-        end
+        sig { params(after: Time).void }
+        attr_writer :after
 
         # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
-        def before
-        end
+        attr_reader :before
 
-        sig { params(_: Time).returns(Time) }
-        def before=(_)
-        end
+        sig { params(before: Time).void }
+        attr_writer :before
 
         # Return results on or after this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
-        def on_or_after
-        end
+        attr_reader :on_or_after
 
-        sig { params(_: Time).returns(Time) }
-        def on_or_after=(_)
-        end
+        sig { params(on_or_after: Time).void }
+        attr_writer :on_or_after
 
         # Return results on or before this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
-        def on_or_before
-        end
+        attr_reader :on_or_before
 
-        sig { params(_: Time).returns(Time) }
-        def on_or_before=(_)
-        end
+        sig { params(on_or_before: Time).void }
+        attr_writer :on_or_before
 
         sig do
           params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)

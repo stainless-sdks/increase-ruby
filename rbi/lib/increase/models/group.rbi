@@ -5,58 +5,25 @@ module Increase
     class Group < Increase::BaseModel
       # The Group identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # If the Group is allowed to create ACH debits.
       sig { returns(Increase::Models::Group::ACHDebitStatus::TaggedSymbol) }
-      def ach_debit_status
-      end
-
-      sig do
-        params(_: Increase::Models::Group::ACHDebitStatus::TaggedSymbol)
-          .returns(Increase::Models::Group::ACHDebitStatus::TaggedSymbol)
-      end
-      def ach_debit_status=(_)
-      end
+      attr_accessor :ach_debit_status
 
       # If the Group is activated or not.
       sig { returns(Increase::Models::Group::ActivationStatus::TaggedSymbol) }
-      def activation_status
-      end
-
-      sig do
-        params(_: Increase::Models::Group::ActivationStatus::TaggedSymbol)
-          .returns(Increase::Models::Group::ActivationStatus::TaggedSymbol)
-      end
-      def activation_status=(_)
-      end
+      attr_accessor :activation_status
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Group
       #   was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # A constant representing the object's type. For this resource it will always be
       #   `group`.
       sig { returns(Increase::Models::Group::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::Group::Type::TaggedSymbol).returns(Increase::Models::Group::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Groups represent organizations using Increase. You can retrieve information
       #   about your own organization via the API. More commonly, OAuth platforms can

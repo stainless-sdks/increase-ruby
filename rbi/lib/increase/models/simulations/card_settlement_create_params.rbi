@@ -9,32 +9,20 @@ module Increase
 
         # The identifier of the Card to create a settlement on.
         sig { returns(String) }
-        def card_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def card_id=(_)
-        end
+        attr_accessor :card_id
 
         # The identifier of the Pending Transaction for the Card Authorization you wish to
         #   settle.
         sig { returns(String) }
-        def pending_transaction_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def pending_transaction_id=(_)
-        end
+        attr_accessor :pending_transaction_id
 
         # The amount to be settled. This defaults to the amount of the Pending Transaction
         #   being settled.
         sig { returns(T.nilable(Integer)) }
-        def amount
-        end
+        attr_reader :amount
 
-        sig { params(_: Integer).returns(Integer) }
-        def amount=(_)
-        end
+        sig { params(amount: Integer).void }
+        attr_writer :amount
 
         sig do
           params(

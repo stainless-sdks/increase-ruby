@@ -5,78 +5,37 @@ module Increase
     class IntrafiAccountEnrollment < Increase::BaseModel
       # The identifier of this enrollment at IntraFi.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The identifier of the Increase Account being swept into the network.
       sig { returns(String) }
-      def account_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_id=(_)
-      end
+      attr_accessor :account_id
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
       #   the enrollment was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # The idempotency key you chose for this object. This value is unique across
       #   Increase and is used to ensure that a request is only processed once. Learn more
       #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      def idempotency_key
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def idempotency_key=(_)
-      end
+      attr_accessor :idempotency_key
 
       # The identifier of the account in IntraFi's system. This identifier will be
       #   printed on any IntraFi statements or documents.
       sig { returns(String) }
-      def intrafi_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def intrafi_id=(_)
-      end
+      attr_accessor :intrafi_id
 
       # The status of the account in the network. An account takes about one business
       #   day to go from `pending_enrolling` to `enrolled`.
       sig { returns(Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol)
-          .returns(Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
       #   `intrafi_account_enrollment`.
       sig { returns(Increase::Models::IntrafiAccountEnrollment::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::IntrafiAccountEnrollment::Type::TaggedSymbol)
-          .returns(Increase::Models::IntrafiAccountEnrollment::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # IntraFi is a
       #   [network of financial institutions](https://www.intrafi.com/network-banks) that

@@ -8,76 +8,61 @@ module Increase
 
       # Filter Account Numbers to those belonging to the specified Account.
       sig { returns(T.nilable(String)) }
-      def account_id
-      end
+      attr_reader :account_id
 
-      sig { params(_: String).returns(String) }
-      def account_id=(_)
-      end
+      sig { params(account_id: String).void }
+      attr_writer :account_id
 
       sig { returns(T.nilable(Increase::Models::AccountNumberListParams::ACHDebitStatus)) }
-      def ach_debit_status
-      end
+      attr_reader :ach_debit_status
 
       sig do
-        params(_: T.any(Increase::Models::AccountNumberListParams::ACHDebitStatus, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::AccountNumberListParams::ACHDebitStatus, Increase::Util::AnyHash))
+        params(
+          ach_debit_status: T.any(Increase::Models::AccountNumberListParams::ACHDebitStatus, Increase::Util::AnyHash)
+        )
+          .void
       end
-      def ach_debit_status=(_)
-      end
+      attr_writer :ach_debit_status
 
       sig { returns(T.nilable(Increase::Models::AccountNumberListParams::CreatedAt)) }
-      def created_at
-      end
+      attr_reader :created_at
 
       sig do
-        params(_: T.any(Increase::Models::AccountNumberListParams::CreatedAt, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::AccountNumberListParams::CreatedAt, Increase::Util::AnyHash))
+        params(created_at: T.any(Increase::Models::AccountNumberListParams::CreatedAt, Increase::Util::AnyHash))
+          .void
       end
-      def created_at=(_)
-      end
+      attr_writer :created_at
 
       # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
-      def cursor
-      end
+      attr_reader :cursor
 
-      sig { params(_: String).returns(String) }
-      def cursor=(_)
-      end
+      sig { params(cursor: String).void }
+      attr_writer :cursor
 
       # Filter records to the one with the specified `idempotency_key` you chose for
       #   that object. This value is unique across Increase and is used to ensure that a
       #   request is only processed once. Learn more about
       #   [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      def idempotency_key
-      end
+      attr_reader :idempotency_key
 
-      sig { params(_: String).returns(String) }
-      def idempotency_key=(_)
-      end
+      sig { params(idempotency_key: String).void }
+      attr_writer :idempotency_key
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       sig { returns(T.nilable(Integer)) }
-      def limit
-      end
+      attr_reader :limit
 
-      sig { params(_: Integer).returns(Integer) }
-      def limit=(_)
-      end
+      sig { params(limit: Integer).void }
+      attr_writer :limit
 
       sig { returns(T.nilable(Increase::Models::AccountNumberListParams::Status)) }
-      def status
-      end
+      attr_reader :status
 
-      sig do
-        params(_: T.any(Increase::Models::AccountNumberListParams::Status, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::AccountNumberListParams::Status, Increase::Util::AnyHash))
-      end
-      def status=(_)
-      end
+      sig { params(status: T.any(Increase::Models::AccountNumberListParams::Status, Increase::Util::AnyHash)).void }
+      attr_writer :status
 
       sig do
         params(
@@ -126,15 +111,10 @@ module Increase
         # The ACH Debit status to retrieve Account Numbers for. For GET requests, this
         #   should be encoded as a comma-delimited string, such as `?in=one,two,three`.
         sig { returns(T.nilable(T::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::In::OrSymbol])) }
-        def in_
-        end
+        attr_reader :in_
 
-        sig do
-          params(_: T::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::In::OrSymbol])
-            .returns(T::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::In::OrSymbol])
-        end
-        def in_=(_)
-        end
+        sig { params(in_: T::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::In::OrSymbol]).void }
+        attr_writer :in_
 
         sig do
           params(in_: T::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::In::OrSymbol])
@@ -173,42 +153,34 @@ module Increase
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
-        def after
-        end
+        attr_reader :after
 
-        sig { params(_: Time).returns(Time) }
-        def after=(_)
-        end
+        sig { params(after: Time).void }
+        attr_writer :after
 
         # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
-        def before
-        end
+        attr_reader :before
 
-        sig { params(_: Time).returns(Time) }
-        def before=(_)
-        end
+        sig { params(before: Time).void }
+        attr_writer :before
 
         # Return results on or after this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
-        def on_or_after
-        end
+        attr_reader :on_or_after
 
-        sig { params(_: Time).returns(Time) }
-        def on_or_after=(_)
-        end
+        sig { params(on_or_after: Time).void }
+        attr_writer :on_or_after
 
         # Return results on or before this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
-        def on_or_before
-        end
+        attr_reader :on_or_before
 
-        sig { params(_: Time).returns(Time) }
-        def on_or_before=(_)
-        end
+        sig { params(on_or_before: Time).void }
+        attr_writer :on_or_before
 
         sig do
           params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
@@ -225,15 +197,10 @@ module Increase
         # The status to retrieve Account Numbers for. For GET requests, this should be
         #   encoded as a comma-delimited string, such as `?in=one,two,three`.
         sig { returns(T.nilable(T::Array[Increase::Models::AccountNumberListParams::Status::In::OrSymbol])) }
-        def in_
-        end
+        attr_reader :in_
 
-        sig do
-          params(_: T::Array[Increase::Models::AccountNumberListParams::Status::In::OrSymbol])
-            .returns(T::Array[Increase::Models::AccountNumberListParams::Status::In::OrSymbol])
-        end
-        def in_=(_)
-        end
+        sig { params(in_: T::Array[Increase::Models::AccountNumberListParams::Status::In::OrSymbol]).void }
+        attr_writer :in_
 
         sig do
           params(in_: T::Array[Increase::Models::AccountNumberListParams::Status::In::OrSymbol])

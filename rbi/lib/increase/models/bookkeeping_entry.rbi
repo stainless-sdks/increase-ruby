@@ -5,62 +5,29 @@ module Increase
     class BookkeepingEntry < Increase::BaseModel
       # The entry identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The identifier for the Account the Entry belongs to.
       sig { returns(String) }
-      def account_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_id=(_)
-      end
+      attr_accessor :account_id
 
       # The Entry amount in the minor unit of its currency. For dollars, for example,
       #   this is cents.
       sig { returns(Integer) }
-      def amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       # When the entry set was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # The identifier for the Account the Entry belongs to.
       sig { returns(String) }
-      def entry_set_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def entry_set_id=(_)
-      end
+      attr_accessor :entry_set_id
 
       # A constant representing the object's type. For this resource it will always be
       #   `bookkeeping_entry`.
       sig { returns(Increase::Models::BookkeepingEntry::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::BookkeepingEntry::Type::TaggedSymbol)
-          .returns(Increase::Models::BookkeepingEntry::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Entries are T-account entries recording debits and credits. Your compliance
       #   setup might require annotating money movements using this API. Learn more in our

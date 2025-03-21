@@ -5,90 +5,41 @@ module Increase
     class Export < Increase::BaseModel
       # The Export identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The category of the Export. We may add additional possible values for this enum
       #   over time; your application should be able to handle that gracefully.
       sig { returns(Increase::Models::Export::Category::TaggedSymbol) }
-      def category
-      end
-
-      sig do
-        params(_: Increase::Models::Export::Category::TaggedSymbol)
-          .returns(Increase::Models::Export::Category::TaggedSymbol)
-      end
-      def category=(_)
-      end
+      attr_accessor :category
 
       # The time the Export was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # A URL at which the Export's file can be downloaded. This will be present when
       #   the Export's status transitions to `complete`.
       sig { returns(T.nilable(String)) }
-      def file_download_url
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def file_download_url=(_)
-      end
+      attr_accessor :file_download_url
 
       # The File containing the contents of the Export. This will be present when the
       #   Export's status transitions to `complete`.
       sig { returns(T.nilable(String)) }
-      def file_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def file_id=(_)
-      end
+      attr_accessor :file_id
 
       # The idempotency key you chose for this object. This value is unique across
       #   Increase and is used to ensure that a request is only processed once. Learn more
       #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      def idempotency_key
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def idempotency_key=(_)
-      end
+      attr_accessor :idempotency_key
 
       # The status of the Export.
       sig { returns(Increase::Models::Export::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Increase::Models::Export::Status::TaggedSymbol)
-          .returns(Increase::Models::Export::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
       #   `export`.
       sig { returns(Increase::Models::Export::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::Export::Type::TaggedSymbol)
-          .returns(Increase::Models::Export::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Exports are batch summaries of your Increase data. You can make them from the
       #   API or dashboard. Since they can take a while, they are generated

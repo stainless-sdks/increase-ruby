@@ -6,37 +6,16 @@ module Increase
       # You may use this token in place of an API key to make OAuth requests on a user's
       #   behalf.
       sig { returns(String) }
-      def access_token
-      end
-
-      sig { params(_: String).returns(String) }
-      def access_token=(_)
-      end
+      attr_accessor :access_token
 
       # The type of OAuth token.
       sig { returns(Increase::Models::OAuthToken::TokenType::TaggedSymbol) }
-      def token_type
-      end
-
-      sig do
-        params(_: Increase::Models::OAuthToken::TokenType::TaggedSymbol)
-          .returns(Increase::Models::OAuthToken::TokenType::TaggedSymbol)
-      end
-      def token_type=(_)
-      end
+      attr_accessor :token_type
 
       # A constant representing the object's type. For this resource it will always be
       #   `oauth_token`.
       sig { returns(Increase::Models::OAuthToken::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::OAuthToken::Type::TaggedSymbol)
-          .returns(Increase::Models::OAuthToken::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # A token that is returned to your application when a user completes the OAuth
       #   flow and may be used to authenticate requests. Learn more about OAuth

@@ -8,42 +8,36 @@ module Increase
 
       # Filter Digital Wallet Tokens to ones belonging to the specified Card.
       sig { returns(T.nilable(String)) }
-      def card_id
-      end
+      attr_reader :card_id
 
-      sig { params(_: String).returns(String) }
-      def card_id=(_)
-      end
+      sig { params(card_id: String).void }
+      attr_writer :card_id
 
       sig { returns(T.nilable(Increase::Models::DigitalWalletTokenListParams::CreatedAt)) }
-      def created_at
-      end
+      attr_reader :created_at
 
       sig do
-        params(_: T.any(Increase::Models::DigitalWalletTokenListParams::CreatedAt, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::DigitalWalletTokenListParams::CreatedAt, Increase::Util::AnyHash))
+        params(
+          created_at: T.any(Increase::Models::DigitalWalletTokenListParams::CreatedAt, Increase::Util::AnyHash)
+        )
+          .void
       end
-      def created_at=(_)
-      end
+      attr_writer :created_at
 
       # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
-      def cursor
-      end
+      attr_reader :cursor
 
-      sig { params(_: String).returns(String) }
-      def cursor=(_)
-      end
+      sig { params(cursor: String).void }
+      attr_writer :cursor
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       sig { returns(T.nilable(Integer)) }
-      def limit
-      end
+      attr_reader :limit
 
-      sig { params(_: Integer).returns(Integer) }
-      def limit=(_)
-      end
+      sig { params(limit: Integer).void }
+      attr_writer :limit
 
       sig do
         params(
@@ -77,42 +71,34 @@ module Increase
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
-        def after
-        end
+        attr_reader :after
 
-        sig { params(_: Time).returns(Time) }
-        def after=(_)
-        end
+        sig { params(after: Time).void }
+        attr_writer :after
 
         # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
-        def before
-        end
+        attr_reader :before
 
-        sig { params(_: Time).returns(Time) }
-        def before=(_)
-        end
+        sig { params(before: Time).void }
+        attr_writer :before
 
         # Return results on or after this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
-        def on_or_after
-        end
+        attr_reader :on_or_after
 
-        sig { params(_: Time).returns(Time) }
-        def on_or_after=(_)
-        end
+        sig { params(on_or_after: Time).void }
+        attr_writer :on_or_after
 
         # Return results on or before this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
-        def on_or_before
-        end
+        attr_reader :on_or_before
 
-        sig { params(_: Time).returns(Time) }
-        def on_or_before=(_)
-        end
+        sig { params(on_or_before: Time).void }
+        attr_writer :on_or_before
 
         sig do
           params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)

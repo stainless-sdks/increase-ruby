@@ -8,23 +8,13 @@ module Increase
 
       # The Increase identifier for the account that will send the transfer.
       sig { returns(String) }
-      def account_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_id=(_)
-      end
+      attr_accessor :account_id
 
       # The transfer amount in USD cents. A positive amount originates a credit transfer
       #   pushing funds to the receiving account. A negative amount originates a debit
       #   transfer pulling funds from the receiving account.
       sig { returns(Integer) }
-      def amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       # A description you choose to give the transfer. This will be saved with the
       #   transfer details, displayed in the dashboard, and returned by the API. If
@@ -33,188 +23,146 @@ module Increase
       #   help the customer recognize the transfer. You are highly encouraged to pass
       #   `individual_name` and `company_name` instead of relying on this fallback.
       sig { returns(String) }
-      def statement_descriptor
-      end
-
-      sig { params(_: String).returns(String) }
-      def statement_descriptor=(_)
-      end
+      attr_accessor :statement_descriptor
 
       # The account number for the destination account.
       sig { returns(T.nilable(String)) }
-      def account_number
-      end
+      attr_reader :account_number
 
-      sig { params(_: String).returns(String) }
-      def account_number=(_)
-      end
+      sig { params(account_number: String).void }
+      attr_writer :account_number
 
       # Additional information that will be sent to the recipient. This is included in
       #   the transfer data sent to the receiving bank.
       sig { returns(T.nilable(Increase::Models::ACHTransferCreateParams::Addenda)) }
-      def addenda
-      end
+      attr_reader :addenda
 
-      sig do
-        params(_: T.any(Increase::Models::ACHTransferCreateParams::Addenda, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::ACHTransferCreateParams::Addenda, Increase::Util::AnyHash))
-      end
-      def addenda=(_)
-      end
+      sig { params(addenda: T.any(Increase::Models::ACHTransferCreateParams::Addenda, Increase::Util::AnyHash)).void }
+      attr_writer :addenda
 
       # The description of the date of the transfer, usually in the format `YYMMDD`.
       #   This is included in the transfer data sent to the receiving bank.
       sig { returns(T.nilable(String)) }
-      def company_descriptive_date
-      end
+      attr_reader :company_descriptive_date
 
-      sig { params(_: String).returns(String) }
-      def company_descriptive_date=(_)
-      end
+      sig { params(company_descriptive_date: String).void }
+      attr_writer :company_descriptive_date
 
       # The data you choose to associate with the transfer. This is included in the
       #   transfer data sent to the receiving bank.
       sig { returns(T.nilable(String)) }
-      def company_discretionary_data
-      end
+      attr_reader :company_discretionary_data
 
-      sig { params(_: String).returns(String) }
-      def company_discretionary_data=(_)
-      end
+      sig { params(company_discretionary_data: String).void }
+      attr_writer :company_discretionary_data
 
       # A description of the transfer. This is included in the transfer data sent to the
       #   receiving bank.
       sig { returns(T.nilable(String)) }
-      def company_entry_description
-      end
+      attr_reader :company_entry_description
 
-      sig { params(_: String).returns(String) }
-      def company_entry_description=(_)
-      end
+      sig { params(company_entry_description: String).void }
+      attr_writer :company_entry_description
 
       # The name by which the recipient knows you. This is included in the transfer data
       #   sent to the receiving bank.
       sig { returns(T.nilable(String)) }
-      def company_name
-      end
+      attr_reader :company_name
 
-      sig { params(_: String).returns(String) }
-      def company_name=(_)
-      end
+      sig { params(company_name: String).void }
+      attr_writer :company_name
 
       # The type of entity that owns the account to which the ACH Transfer is being
       #   sent.
       sig { returns(T.nilable(Increase::Models::ACHTransferCreateParams::DestinationAccountHolder::OrSymbol)) }
-      def destination_account_holder
-      end
+      attr_reader :destination_account_holder
 
       sig do
-        params(_: Increase::Models::ACHTransferCreateParams::DestinationAccountHolder::OrSymbol)
-          .returns(Increase::Models::ACHTransferCreateParams::DestinationAccountHolder::OrSymbol)
+        params(
+          destination_account_holder: Increase::Models::ACHTransferCreateParams::DestinationAccountHolder::OrSymbol
+        )
+          .void
       end
-      def destination_account_holder=(_)
-      end
+      attr_writer :destination_account_holder
 
       # The ID of an External Account to initiate a transfer to. If this parameter is
       #   provided, `account_number`, `routing_number`, and `funding` must be absent.
       sig { returns(T.nilable(String)) }
-      def external_account_id
-      end
+      attr_reader :external_account_id
 
-      sig { params(_: String).returns(String) }
-      def external_account_id=(_)
-      end
+      sig { params(external_account_id: String).void }
+      attr_writer :external_account_id
 
       # The type of the account to which the transfer will be sent.
       sig { returns(T.nilable(Increase::Models::ACHTransferCreateParams::Funding::OrSymbol)) }
-      def funding
-      end
+      attr_reader :funding
 
-      sig do
-        params(_: Increase::Models::ACHTransferCreateParams::Funding::OrSymbol)
-          .returns(Increase::Models::ACHTransferCreateParams::Funding::OrSymbol)
-      end
-      def funding=(_)
-      end
+      sig { params(funding: Increase::Models::ACHTransferCreateParams::Funding::OrSymbol).void }
+      attr_writer :funding
 
       # Your identifier for the transfer recipient.
       sig { returns(T.nilable(String)) }
-      def individual_id
-      end
+      attr_reader :individual_id
 
-      sig { params(_: String).returns(String) }
-      def individual_id=(_)
-      end
+      sig { params(individual_id: String).void }
+      attr_writer :individual_id
 
       # The name of the transfer recipient. This value is informational and not verified
       #   by the recipient's bank.
       sig { returns(T.nilable(String)) }
-      def individual_name
-      end
+      attr_reader :individual_name
 
-      sig { params(_: String).returns(String) }
-      def individual_name=(_)
-      end
+      sig { params(individual_name: String).void }
+      attr_writer :individual_name
 
       # Configuration for how the effective date of the transfer will be set. This
       #   determines same-day vs future-dated settlement timing. If not set, defaults to a
       #   `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
       #   must be set.
       sig { returns(T.nilable(Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate)) }
-      def preferred_effective_date
-      end
+      attr_reader :preferred_effective_date
 
       sig do
         params(
-          _: T.any(Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate, Increase::Util::AnyHash)
+          preferred_effective_date: T.any(Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate, Increase::Util::AnyHash)
         )
-          .returns(T.any(Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate, Increase::Util::AnyHash))
+          .void
       end
-      def preferred_effective_date=(_)
-      end
+      attr_writer :preferred_effective_date
 
       # Whether the transfer requires explicit approval via the dashboard or API.
       sig { returns(T.nilable(T::Boolean)) }
-      def require_approval
-      end
+      attr_reader :require_approval
 
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def require_approval=(_)
-      end
+      sig { params(require_approval: T::Boolean).void }
+      attr_writer :require_approval
 
       # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
       #   destination account.
       sig { returns(T.nilable(String)) }
-      def routing_number
-      end
+      attr_reader :routing_number
 
-      sig { params(_: String).returns(String) }
-      def routing_number=(_)
-      end
+      sig { params(routing_number: String).void }
+      attr_writer :routing_number
 
       # The Standard Entry Class (SEC) code to use for the transfer.
       sig { returns(T.nilable(Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::OrSymbol)) }
-      def standard_entry_class_code
-      end
+      attr_reader :standard_entry_class_code
 
       sig do
-        params(_: Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::OrSymbol)
-          .returns(Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::OrSymbol)
+        params(
+          standard_entry_class_code: Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::OrSymbol
+        )
+          .void
       end
-      def standard_entry_class_code=(_)
-      end
+      attr_writer :standard_entry_class_code
 
       # The timing of the transaction.
       sig { returns(T.nilable(Increase::Models::ACHTransferCreateParams::TransactionTiming::OrSymbol)) }
-      def transaction_timing
-      end
+      attr_reader :transaction_timing
 
-      sig do
-        params(_: Increase::Models::ACHTransferCreateParams::TransactionTiming::OrSymbol)
-          .returns(Increase::Models::ACHTransferCreateParams::TransactionTiming::OrSymbol)
-      end
-      def transaction_timing=(_)
-      end
+      sig { params(transaction_timing: Increase::Models::ACHTransferCreateParams::TransactionTiming::OrSymbol).void }
+      attr_writer :transaction_timing
 
       sig do
         params(
@@ -298,50 +246,35 @@ module Increase
       class Addenda < Increase::BaseModel
         # The type of addenda to pass with the transfer.
         sig { returns(Increase::Models::ACHTransferCreateParams::Addenda::Category::OrSymbol) }
-        def category
-        end
-
-        sig do
-          params(_: Increase::Models::ACHTransferCreateParams::Addenda::Category::OrSymbol)
-            .returns(Increase::Models::ACHTransferCreateParams::Addenda::Category::OrSymbol)
-        end
-        def category=(_)
-        end
+        attr_accessor :category
 
         # Unstructured `payment_related_information` passed through with the transfer.
         sig { returns(T.nilable(Increase::Models::ACHTransferCreateParams::Addenda::Freeform)) }
-        def freeform
-        end
+        attr_reader :freeform
 
         sig do
-          params(_: T.any(Increase::Models::ACHTransferCreateParams::Addenda::Freeform, Increase::Util::AnyHash))
-            .returns(T.any(Increase::Models::ACHTransferCreateParams::Addenda::Freeform, Increase::Util::AnyHash))
+          params(
+            freeform: T.any(Increase::Models::ACHTransferCreateParams::Addenda::Freeform, Increase::Util::AnyHash)
+          )
+            .void
         end
-        def freeform=(_)
-        end
+        attr_writer :freeform
 
         # Structured ASC X12 820 remittance advice records. Please reach out to
         #   [support@increase.com](mailto:support@increase.com) for more information.
         sig { returns(T.nilable(Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice)) }
-        def payment_order_remittance_advice
-        end
+        attr_reader :payment_order_remittance_advice
 
         sig do
           params(
-            _: T.any(
+            payment_order_remittance_advice: T.any(
               Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice,
               Increase::Util::AnyHash
             )
           )
-            .returns(
-              T.any(
-                Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice,
-                Increase::Util::AnyHash
-              )
-            )
+            .void
         end
-        def payment_order_remittance_advice=(_)
-        end
+        attr_writer :payment_order_remittance_advice
 
         # Additional information that will be sent to the recipient. This is included in
         #   the transfer data sent to the receiving bank.
@@ -403,15 +336,7 @@ module Increase
           #   [support@increase.com](mailto:support@increase.com) to send more than one
           #   addendum.
           sig { returns(T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry]) }
-          def entries
-          end
-
-          sig do
-            params(_: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry])
-              .returns(T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry])
-          end
-          def entries=(_)
-          end
+          attr_accessor :entries
 
           # Unstructured `payment_related_information` passed through with the transfer.
           sig do
@@ -430,12 +355,7 @@ module Increase
           class Entry < Increase::BaseModel
             # The payment related information passed in the addendum.
             sig { returns(String) }
-            def payment_related_information
-            end
-
-            sig { params(_: String).returns(String) }
-            def payment_related_information=(_)
-            end
+            attr_accessor :payment_related_information
 
             sig { params(payment_related_information: String).returns(T.attached_class) }
             def self.new(payment_related_information:)
@@ -454,19 +374,7 @@ module Increase
               T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
             )
           end
-          def invoices
-          end
-
-          sig do
-            params(
-              _: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
-            )
-              .returns(
-                T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
-              )
-          end
-          def invoices=(_)
-          end
+          attr_accessor :invoices
 
           # Structured ASC X12 820 remittance advice records. Please reach out to
           #   [support@increase.com](mailto:support@increase.com) for more information.
@@ -498,22 +406,12 @@ module Increase
           class Invoice < Increase::BaseModel
             # The invoice number for this reference, determined in advance with the receiver.
             sig { returns(String) }
-            def invoice_number
-            end
-
-            sig { params(_: String).returns(String) }
-            def invoice_number=(_)
-            end
+            attr_accessor :invoice_number
 
             # The amount that was paid for this invoice in the minor unit of its currency. For
             #   dollars, for example, this is cents.
             sig { returns(Integer) }
-            def paid_amount
-            end
-
-            sig { params(_: Integer).returns(Integer) }
-            def paid_amount=(_)
-            end
+            attr_accessor :paid_amount
 
             sig { params(invoice_number: String, paid_amount: Integer).returns(T.attached_class) }
             def self.new(invoice_number:, paid_amount:)
@@ -583,12 +481,10 @@ module Increase
         # A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to
         #   use as the effective date when submitting this transfer.
         sig { returns(T.nilable(Date)) }
-        def date
-        end
+        attr_reader :date
 
-        sig { params(_: Date).returns(Date) }
-        def date=(_)
-        end
+        sig { params(date: Date).void }
+        attr_writer :date
 
         # A schedule by which Increase will choose an effective date for the transfer.
         sig do
@@ -596,15 +492,15 @@ module Increase
             T.nilable(Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule::OrSymbol)
           )
         end
-        def settlement_schedule
-        end
+        attr_reader :settlement_schedule
 
         sig do
-          params(_: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule::OrSymbol)
-            .returns(Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule::OrSymbol)
+          params(
+            settlement_schedule: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule::OrSymbol
+          )
+            .void
         end
-        def settlement_schedule=(_)
-        end
+        attr_writer :settlement_schedule
 
         # Configuration for how the effective date of the transfer will be set. This
         #   determines same-day vs future-dated settlement timing. If not set, defaults to a

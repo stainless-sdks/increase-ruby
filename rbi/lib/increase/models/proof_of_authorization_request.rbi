@@ -5,64 +5,28 @@ module Increase
     class ProofOfAuthorizationRequest < Increase::BaseModel
       # The Proof of Authorization Request identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The ACH Transfers associated with the request.
       sig { returns(T::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer]) }
-      def ach_transfers
-      end
-
-      sig do
-        params(_: T::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer])
-          .returns(T::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer])
-      end
-      def ach_transfers=(_)
-      end
+      attr_accessor :ach_transfers
 
       # The time the Proof of Authorization Request was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # The time the Proof of Authorization Request is due.
       sig { returns(Time) }
-      def due_on
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def due_on=(_)
-      end
+      attr_accessor :due_on
 
       # A constant representing the object's type. For this resource it will always be
       #   `proof_of_authorization_request`.
       sig { returns(Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol)
-          .returns(Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # The time the Proof of Authorization Request was last updated.
       sig { returns(Time) }
-      def updated_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def updated_at=(_)
-      end
+      attr_accessor :updated_at
 
       # A request for proof of authorization for one or more ACH debit transfers.
       sig do
@@ -98,12 +62,7 @@ module Increase
       class ACHTransfer < Increase::BaseModel
         # The ACH Transfer identifier.
         sig { returns(String) }
-        def id
-        end
-
-        sig { params(_: String).returns(String) }
-        def id=(_)
-        end
+        attr_accessor :id
 
         sig { params(id: String).returns(T.attached_class) }
         def self.new(id:)

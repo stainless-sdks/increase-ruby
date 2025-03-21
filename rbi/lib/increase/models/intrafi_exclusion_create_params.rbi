@@ -8,21 +8,11 @@ module Increase
 
       # The name of the financial institution to be excluded.
       sig { returns(String) }
-      def bank_name
-      end
-
-      sig { params(_: String).returns(String) }
-      def bank_name=(_)
-      end
+      attr_accessor :bank_name
 
       # The identifier of the Entity whose deposits will be excluded.
       sig { returns(String) }
-      def entity_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def entity_id=(_)
-      end
+      attr_accessor :entity_id
 
       sig do
         params(

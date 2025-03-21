@@ -6,54 +6,26 @@ module Increase
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
       #   Supplemental Document was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # The Entity the supplemental document is attached to.
       sig { returns(String) }
-      def entity_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def entity_id=(_)
-      end
+      attr_accessor :entity_id
 
       # The File containing the document.
       sig { returns(String) }
-      def file_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def file_id=(_)
-      end
+      attr_accessor :file_id
 
       # The idempotency key you chose for this object. This value is unique across
       #   Increase and is used to ensure that a request is only processed once. Learn more
       #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      def idempotency_key
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def idempotency_key=(_)
-      end
+      attr_accessor :idempotency_key
 
       # A constant representing the object's type. For this resource it will always be
       #   `entity_supplemental_document`.
       sig { returns(Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol)
-          .returns(Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Supplemental Documents are uploaded files connected to an Entity during
       #   onboarding.
