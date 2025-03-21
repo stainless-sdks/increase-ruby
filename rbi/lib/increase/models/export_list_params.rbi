@@ -7,57 +7,75 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(T.nilable(Increase::Models::ExportListParams::Category)) }
-      attr_reader :category
+      def category
+      end
 
-      sig { params(category: T.any(Increase::Models::ExportListParams::Category, Increase::Util::AnyHash)).void }
-      attr_writer :category
+      sig do
+        params(_: Increase::Models::ExportListParams::Category)
+          .returns(Increase::Models::ExportListParams::Category)
+      end
+      def category=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::ExportListParams::CreatedAt)) }
-      attr_reader :created_at
+      def created_at
+      end
 
-      sig { params(created_at: T.any(Increase::Models::ExportListParams::CreatedAt, Increase::Util::AnyHash)).void }
-      attr_writer :created_at
+      sig do
+        params(_: Increase::Models::ExportListParams::CreatedAt)
+          .returns(Increase::Models::ExportListParams::CreatedAt)
+      end
+      def created_at=(_)
+      end
 
       # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
-      attr_reader :cursor
+      def cursor
+      end
 
-      sig { params(cursor: String).void }
-      attr_writer :cursor
+      sig { params(_: String).returns(String) }
+      def cursor=(_)
+      end
 
       # Filter records to the one with the specified `idempotency_key` you chose for
       #   that object. This value is unique across Increase and is used to ensure that a
       #   request is only processed once. Learn more about
       #   [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      attr_reader :idempotency_key
+      def idempotency_key
+      end
 
-      sig { params(idempotency_key: String).void }
-      attr_writer :idempotency_key
+      sig { params(_: String).returns(String) }
+      def idempotency_key=(_)
+      end
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::ExportListParams::Status)) }
-      attr_reader :status
+      def status
+      end
 
-      sig { params(status: T.any(Increase::Models::ExportListParams::Status, Increase::Util::AnyHash)).void }
-      attr_writer :status
+      sig { params(_: Increase::Models::ExportListParams::Status).returns(Increase::Models::ExportListParams::Status) }
+      def status=(_)
+      end
 
       sig do
         params(
-          category: T.any(Increase::Models::ExportListParams::Category, Increase::Util::AnyHash),
-          created_at: T.any(Increase::Models::ExportListParams::CreatedAt, Increase::Util::AnyHash),
+          category: Increase::Models::ExportListParams::Category,
+          created_at: Increase::Models::ExportListParams::CreatedAt,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: T.any(Increase::Models::ExportListParams::Status, Increase::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          status: Increase::Models::ExportListParams::Status,
+          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end
@@ -93,57 +111,47 @@ module Increase
         # Filter Exports for those with the specified category or categories. For GET
         #   requests, this should be encoded as a comma-delimited string, such as
         #   `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Increase::Models::ExportListParams::Category::In::OrSymbol])) }
-        attr_reader :in_
-
-        sig { params(in_: T::Array[Increase::Models::ExportListParams::Category::In::OrSymbol]).void }
-        attr_writer :in_
-
-        sig do
-          params(in_: T::Array[Increase::Models::ExportListParams::Category::In::OrSymbol]).returns(T.attached_class)
+        sig { returns(T.nilable(T::Array[Symbol])) }
+        def in_
         end
+
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        def in_=(_)
+        end
+
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Increase::Models::ExportListParams::Category::In::OrSymbol]}) }
+        sig { override.returns({in_: T::Array[Symbol]}) }
         def to_hash
         end
 
-        module In
-          extend Increase::Enum
+        class In < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExportListParams::Category::In) }
-          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ExportListParams::Category::In::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # Export an Open Financial Exchange (OFX) file of transactions and balances for a given time range and Account.
-          ACCOUNT_STATEMENT_OFX =
-            T.let(:account_statement_ofx, Increase::Models::ExportListParams::Category::In::TaggedSymbol)
+          ACCOUNT_STATEMENT_OFX = :account_statement_ofx
 
           # Export a CSV of all transactions for a given time range.
-          TRANSACTION_CSV = T.let(:transaction_csv, Increase::Models::ExportListParams::Category::In::TaggedSymbol)
+          TRANSACTION_CSV = :transaction_csv
 
           # Export a CSV of account balances for the dates in a given range.
-          BALANCE_CSV = T.let(:balance_csv, Increase::Models::ExportListParams::Category::In::TaggedSymbol)
+          BALANCE_CSV = :balance_csv
 
           # Export a CSV of bookkeeping account balances for the dates in a given range.
-          BOOKKEEPING_ACCOUNT_BALANCE_CSV =
-            T.let(:bookkeeping_account_balance_csv, Increase::Models::ExportListParams::Category::In::TaggedSymbol)
+          BOOKKEEPING_ACCOUNT_BALANCE_CSV = :bookkeeping_account_balance_csv
 
           # Export a CSV of entities with a given status.
-          ENTITY_CSV = T.let(:entity_csv, Increase::Models::ExportListParams::Category::In::TaggedSymbol)
+          ENTITY_CSV = :entity_csv
 
           # Export a CSV of vendors added to the third-party risk management dashboard.
-          VENDOR_CSV = T.let(:vendor_csv, Increase::Models::ExportListParams::Category::In::TaggedSymbol)
+          VENDOR_CSV = :vendor_csv
 
           # Certain dashboard tables are available as CSV exports. This export cannot be created via the API.
-          DASHBOARD_TABLE_CSV =
-            T.let(:dashboard_table_csv, Increase::Models::ExportListParams::Category::In::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::ExportListParams::Category::In::TaggedSymbol]) }
-            def values
-            end
-          end
+          DASHBOARD_TABLE_CSV = :dashboard_table_csv
         end
       end
 
@@ -151,34 +159,42 @@ module Increase
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :after
+        def after
+        end
 
-        sig { params(after: Time).void }
-        attr_writer :after
+        sig { params(_: Time).returns(Time) }
+        def after=(_)
+        end
 
         # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :before
+        def before
+        end
 
-        sig { params(before: Time).void }
-        attr_writer :before
+        sig { params(_: Time).returns(Time) }
+        def before=(_)
+        end
 
         # Return results on or after this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :on_or_after
+        def on_or_after
+        end
 
-        sig { params(on_or_after: Time).void }
-        attr_writer :on_or_after
+        sig { params(_: Time).returns(Time) }
+        def on_or_after=(_)
+        end
 
         # Return results on or before this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :on_or_before
+        def on_or_before
+        end
 
-        sig { params(on_or_before: Time).void }
-        attr_writer :on_or_before
+        sig { params(_: Time).returns(Time) }
+        def on_or_before=(_)
+        end
 
         sig do
           params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
@@ -195,40 +211,35 @@ module Increase
         # Filter Exports for those with the specified status or statuses. For GET
         #   requests, this should be encoded as a comma-delimited string, such as
         #   `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Increase::Models::ExportListParams::Status::In::OrSymbol])) }
-        attr_reader :in_
+        sig { returns(T.nilable(T::Array[Symbol])) }
+        def in_
+        end
 
-        sig { params(in_: T::Array[Increase::Models::ExportListParams::Status::In::OrSymbol]).void }
-        attr_writer :in_
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        def in_=(_)
+        end
 
-        sig { params(in_: T::Array[Increase::Models::ExportListParams::Status::In::OrSymbol]).returns(T.attached_class) }
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Increase::Models::ExportListParams::Status::In::OrSymbol]}) }
+        sig { override.returns({in_: T::Array[Symbol]}) }
         def to_hash
         end
 
-        module In
-          extend Increase::Enum
+        class In < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExportListParams::Status::In) }
-          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ExportListParams::Status::In::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # Increase is generating the export.
-          PENDING = T.let(:pending, Increase::Models::ExportListParams::Status::In::TaggedSymbol)
+          PENDING = :pending
 
           # The export has been successfully generated.
-          COMPLETE = T.let(:complete, Increase::Models::ExportListParams::Status::In::TaggedSymbol)
+          COMPLETE = :complete
 
           # The export failed to generate. Increase will reach out to you to resolve the issue.
-          FAILED = T.let(:failed, Increase::Models::ExportListParams::Status::In::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::ExportListParams::Status::In::TaggedSymbol]) }
-            def values
-            end
-          end
+          FAILED = :failed
         end
       end
     end

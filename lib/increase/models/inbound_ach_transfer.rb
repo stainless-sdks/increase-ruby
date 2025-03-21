@@ -294,20 +294,14 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The type of addendum.
-        module Category
-          extend Increase::Enum
-
+        class Category < Increase::Enum
           # Unstructured addendum.
           FREEFORM = :freeform
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
 
         class Freeform < Increase::BaseModel
@@ -374,10 +368,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The reason for the transfer decline.
-        module Reason
-          extend Increase::Enum
-
+        class Reason < Increase::Enum
           # The account number is canceled.
           ACH_ROUTE_CANCELED = :ach_route_canceled
 
@@ -432,19 +426,13 @@ module Increase
           CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 
+      # @abstract
+      #
       # The direction of the transfer.
-      module Direction
-        extend Increase::Enum
-
+      class Direction < Increase::Enum
         # Credit
         CREDIT = :credit
 
@@ -452,18 +440,12 @@ module Increase
         DEBIT = :debit
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # The settlement schedule the transfer is expected to follow.
-      module ExpectedSettlementSchedule
-        extend Increase::Enum
-
+      class ExpectedSettlementSchedule < Increase::Enum
         # The transfer is expected to settle same-day.
         SAME_DAY = :same_day
 
@@ -471,12 +453,6 @@ module Increase
         FUTURE_DATED = :future_dated
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
       class InternationalAddenda < Increase::BaseModel
@@ -782,10 +758,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # A description of how the foreign exchange rate was calculated.
-        module ForeignExchangeIndicator
-          extend Increase::Enum
-
+        class ForeignExchangeIndicator < Increase::Enum
           # The originator chose an amount in their own currency. The settled amount in USD was converted using the exchange rate.
           FIXED_TO_VARIABLE = :fixed_to_variable
 
@@ -796,19 +772,13 @@ module Increase
           FIXED_TO_FIXED = :fixed_to_fixed
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
 
+        # @abstract
+        #
         # An instruction of how to interpret the `foreign_exchange_reference` field for
         #   this Transaction.
-        module ForeignExchangeReferenceIndicator
-          extend Increase::Enum
-
+        class ForeignExchangeReferenceIndicator < Increase::Enum
           # The ACH file contains a foreign exchange rate.
           FOREIGN_EXCHANGE_RATE = :foreign_exchange_rate
 
@@ -819,18 +789,12 @@ module Increase
           BLANK = :blank
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
 
+        # @abstract
+        #
         # The type of transfer. Set by the originator.
-        module InternationalTransactionTypeCode
-          extend Increase::Enum
-
+        class InternationalTransactionTypeCode < Increase::Enum
           # Sent as `ANN` in the Nacha file.
           ANNUITY = :annuity
 
@@ -892,19 +856,13 @@ module Increase
           INTERNET_INITIATED = :internet_initiated
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
 
+        # @abstract
+        #
         # An instruction of how to interpret the
         #   `originating_depository_financial_institution_id` field for this Transaction.
-        module OriginatingDepositoryFinancialInstitutionIDQualifier
-          extend Increase::Enum
-
+        class OriginatingDepositoryFinancialInstitutionIDQualifier < Increase::Enum
           # A domestic clearing system number. In the US, for example, this is the American Banking Association (ABA) routing number.
           NATIONAL_CLEARING_SYSTEM_NUMBER = :national_clearing_system_number
 
@@ -915,19 +873,13 @@ module Increase
           IBAN = :iban
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
 
+        # @abstract
+        #
         # An instruction of how to interpret the
         #   `receiving_depository_financial_institution_id` field for this Transaction.
-        module ReceivingDepositoryFinancialInstitutionIDQualifier
-          extend Increase::Enum
-
+        class ReceivingDepositoryFinancialInstitutionIDQualifier < Increase::Enum
           # A domestic clearing system number. In the US, for example, this is the American Banking Association (ABA) routing number.
           NATIONAL_CLEARING_SYSTEM_NUMBER = :national_clearing_system_number
 
@@ -938,12 +890,6 @@ module Increase
           IBAN = :iban
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 
@@ -972,10 +918,10 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @abstract
+      #
       # The Standard Entry Class (SEC) code of the transfer.
-      module StandardEntryClassCode
-        extend Increase::Enum
-
+      class StandardEntryClassCode < Increase::Enum
         # Corporate Credit and Debit (CCD).
         CORPORATE_CREDIT_OR_DEBIT = :corporate_credit_or_debit
 
@@ -1025,18 +971,12 @@ module Increase
         INTERNATIONAL_ACH_TRANSACTION = :international_ach_transaction
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # The status of the transfer.
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The Inbound ACH Transfer is awaiting action, will transition automatically if no action is taken.
         PENDING = :pending
 
@@ -1050,12 +990,6 @@ module Increase
         RETURNED = :returned
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
       class TransferReturn < Increase::BaseModel
@@ -1088,10 +1022,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The reason for the transfer return.
-        module Reason
-          extend Increase::Enum
-
+        class Reason < Increase::Enum
           # The customer's account has insufficient funds. This reason is only allowed for debits. The Nacha return code is R01.
           INSUFFICIENT_FUNDS = :insufficient_funds
 
@@ -1125,29 +1059,17 @@ module Increase
           CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_ach_transfer`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         INBOUND_ACH_TRANSFER = :inbound_ach_transfer
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

@@ -3,7 +3,12 @@
 module Increase
   class Error < StandardError
     sig { returns(T.nilable(StandardError)) }
-    attr_accessor :cause
+    def cause
+    end
+
+    sig { params(_: T.nilable(StandardError)).returns(T.nilable(StandardError)) }
+    def cause=(_)
+    end
   end
 
   class ConversionError < Increase::Error
@@ -11,13 +16,28 @@ module Increase
 
   class APIError < Increase::Error
     sig { returns(URI::Generic) }
-    attr_accessor :url
+    def url
+    end
+
+    sig { params(_: URI::Generic).returns(URI::Generic) }
+    def url=(_)
+    end
 
     sig { returns(T.nilable(Integer)) }
-    attr_accessor :status
+    def status
+    end
+
+    sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+    def status=(_)
+    end
 
     sig { returns(T.nilable(T.anything)) }
-    attr_accessor :body
+    def body
+    end
+
+    sig { params(_: T.nilable(T.anything)).returns(T.nilable(T.anything)) }
+    def body=(_)
+    end
 
     # @api private
     sig do
@@ -37,10 +57,20 @@ module Increase
 
   class APIConnectionError < Increase::APIError
     sig { void }
-    attr_accessor :status
+    def status
+    end
+
+    sig { params(_: NilClass).void }
+    def status=(_)
+    end
 
     sig { void }
-    attr_accessor :body
+    def body
+    end
+
+    sig { params(_: NilClass).void }
+    def body=(_)
+    end
 
     # @api private
     sig do
@@ -92,7 +122,12 @@ module Increase
     end
 
     sig { returns(Integer) }
-    attr_accessor :status
+    def status
+    end
+
+    sig { params(_: Integer).returns(Integer) }
+    def status=(_)
+    end
 
     # @api private
     sig do

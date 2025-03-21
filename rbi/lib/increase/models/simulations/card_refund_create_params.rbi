@@ -10,12 +10,17 @@ module Increase
         # The identifier for the Transaction to refund. The Transaction's source must have
         #   a category of card_settlement.
         sig { returns(String) }
-        attr_accessor :transaction_id
+        def transaction_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def transaction_id=(_)
+        end
 
         sig do
           params(
             transaction_id: String,
-            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
           )
             .returns(T.attached_class)
         end

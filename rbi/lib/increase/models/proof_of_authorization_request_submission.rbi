@@ -5,78 +5,168 @@ module Increase
     class ProofOfAuthorizationRequestSubmission < Increase::BaseModel
       # The Proof of Authorization Request Submission identifier.
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       # File containing additional evidence.
       sig { returns(T.nilable(String)) }
-      attr_accessor :additional_evidence_file_id
+      def additional_evidence_file_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def additional_evidence_file_id=(_)
+      end
 
       # Terms of authorization.
       sig { returns(String) }
-      attr_accessor :authorization_terms
+      def authorization_terms
+      end
+
+      sig { params(_: String).returns(String) }
+      def authorization_terms=(_)
+      end
 
       # Time of authorization.
       sig { returns(Time) }
-      attr_accessor :authorized_at
+      def authorized_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def authorized_at=(_)
+      end
 
       # Company of the authorizer.
       sig { returns(T.nilable(String)) }
-      attr_accessor :authorizer_company
+      def authorizer_company
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def authorizer_company=(_)
+      end
 
       # Email of the authorizer.
       sig { returns(T.nilable(String)) }
-      attr_accessor :authorizer_email
+      def authorizer_email
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def authorizer_email=(_)
+      end
 
       # IP address of the authorizer.
       sig { returns(T.nilable(String)) }
-      attr_accessor :authorizer_ip_address
+      def authorizer_ip_address
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def authorizer_ip_address=(_)
+      end
 
       # Name of the authorizer.
       sig { returns(T.nilable(String)) }
-      attr_accessor :authorizer_name
+      def authorizer_name
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def authorizer_name=(_)
+      end
 
       # The time the Proof of Authorization Request Submission was created.
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       # Whether the customer has been offboarded.
       sig { returns(T.nilable(T::Boolean)) }
-      attr_accessor :customer_has_been_offboarded
+      def customer_has_been_offboarded
+      end
+
+      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+      def customer_has_been_offboarded=(_)
+      end
 
       # The idempotency key you chose for this object. This value is unique across
       #   Increase and is used to ensure that a request is only processed once. Learn more
       #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      attr_accessor :idempotency_key
+      def idempotency_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def idempotency_key=(_)
+      end
 
       # ID of the proof of authorization request.
       sig { returns(String) }
-      attr_accessor :proof_of_authorization_request_id
+      def proof_of_authorization_request_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def proof_of_authorization_request_id=(_)
+      end
 
       # Status of the proof of authorization request submission.
-      sig { returns(Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol) }
-      attr_accessor :status
+      sig { returns(Symbol) }
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       # A constant representing the object's type. For this resource it will always be
       #   `proof_of_authorization_request_submission`.
-      sig { returns(Increase::Models::ProofOfAuthorizationRequestSubmission::Type::TaggedSymbol) }
-      attr_accessor :type
+      sig { returns(Symbol) }
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       # The time the Proof of Authorization Request Submission was last updated.
       sig { returns(Time) }
-      attr_accessor :updated_at
+      def updated_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def updated_at=(_)
+      end
 
       # Whether account ownership was validated via credential (for instance, Plaid).
       sig { returns(T.nilable(T::Boolean)) }
-      attr_accessor :validated_account_ownership_via_credential
+      def validated_account_ownership_via_credential
+      end
+
+      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+      def validated_account_ownership_via_credential=(_)
+      end
 
       # Whether account ownership was validated with an account statement.
       sig { returns(T.nilable(T::Boolean)) }
-      attr_accessor :validated_account_ownership_with_account_statement
+      def validated_account_ownership_with_account_statement
+      end
+
+      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+      def validated_account_ownership_with_account_statement=(_)
+      end
 
       # Whether account ownership was validated with microdeposit.
       sig { returns(T.nilable(T::Boolean)) }
-      attr_accessor :validated_account_ownership_with_microdeposit
+      def validated_account_ownership_with_microdeposit
+      end
+
+      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+      def validated_account_ownership_with_microdeposit=(_)
+      end
 
       # Information submitted in response to a proof of authorization request. Per
       #   Nacha's guidance on proof of authorization, the originator must ensure that the
@@ -97,8 +187,8 @@ module Increase
           customer_has_been_offboarded: T.nilable(T::Boolean),
           idempotency_key: T.nilable(String),
           proof_of_authorization_request_id: String,
-          status: Increase::Models::ProofOfAuthorizationRequestSubmission::Status::OrSymbol,
-          type: Increase::Models::ProofOfAuthorizationRequestSubmission::Type::OrSymbol,
+          status: Symbol,
+          type: Symbol,
           updated_at: Time,
           validated_account_ownership_via_credential: T.nilable(T::Boolean),
           validated_account_ownership_with_account_statement: T.nilable(T::Boolean),
@@ -144,8 +234,8 @@ module Increase
               customer_has_been_offboarded: T.nilable(T::Boolean),
               idempotency_key: T.nilable(String),
               proof_of_authorization_request_id: String,
-              status: Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol,
-              type: Increase::Models::ProofOfAuthorizationRequestSubmission::Type::TaggedSymbol,
+              status: Symbol,
+              type: Symbol,
               updated_at: Time,
               validated_account_ownership_via_credential: T.nilable(T::Boolean),
               validated_account_ownership_with_account_statement: T.nilable(T::Boolean),
@@ -157,61 +247,35 @@ module Increase
       end
 
       # Status of the proof of authorization request submission.
-      module Status
-        extend Increase::Enum
+      class Status < Increase::Enum
+        abstract!
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The proof of authorization request submission is pending review.
-        PENDING_REVIEW =
-          T.let(:pending_review, Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol)
+        PENDING_REVIEW = :pending_review
 
         # The proof of authorization request submission was rejected.
-        REJECTED =
-          T.let(:rejected, Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol)
+        REJECTED = :rejected
 
         # The proof of authorization request submission was canceled and replaced with another.
-        CANCELED =
-          T.let(:canceled, Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol)
+        CANCELED = :canceled
 
         # The proof of authorization request submission is pending sending.
-        PENDING_SENDING =
-          T.let(:pending_sending, Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol)
+        PENDING_SENDING = :pending_sending
 
         # The proof of authorization request submission was sent.
-        SENT = T.let(:sent, Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol]) }
-          def values
-          end
-        end
+        SENT = :sent
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `proof_of_authorization_request_submission`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Type) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION =
-          T.let(
-            :proof_of_authorization_request_submission,
-            Increase::Models::ProofOfAuthorizationRequestSubmission::Type::TaggedSymbol
-          )
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::ProofOfAuthorizationRequestSubmission::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION = :proof_of_authorization_request_submission
       end
     end
   end

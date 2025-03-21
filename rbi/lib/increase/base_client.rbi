@@ -26,7 +26,7 @@ module Increase
           page: T.nilable(T::Class[Increase::BasePage[Increase::BaseModel]]),
           stream: T.nilable(T::Class[T.anything]),
           model: T.nilable(Increase::Converter::Input),
-          options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         }
       end
 
@@ -83,9 +83,13 @@ module Increase
       end
     end
 
-    # @api private
     sig { returns(T.anything) }
-    attr_accessor :requester
+    def requester
+    end
+
+    sig { params(_: T.anything).returns(T.anything) }
+    def requester=(_)
+    end
 
     # @api private
     sig do
@@ -125,7 +129,7 @@ module Increase
     # @api private
     sig do
       overridable
-        .params(req: Increase::BaseClient::RequestComponentsShape, opts: Increase::Util::AnyHash)
+        .params(req: Increase::BaseClient::RequestComponentsShape, opts: T::Hash[Symbol, T.anything])
         .returns(Increase::BaseClient::RequestInputShape)
     end
     private def build_request(req, opts)
@@ -171,7 +175,7 @@ module Increase
         page: T.nilable(T::Class[Increase::BasePage[Increase::BaseModel]]),
         stream: T.nilable(T::Class[T.anything]),
         model: T.nilable(Increase::Converter::Input),
-        options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+        options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
       )
         .returns(T.anything)
     end

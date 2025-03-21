@@ -9,7 +9,7 @@ module Increase
           account_id: String,
           description: String,
           recipient_name: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::Lockbox)
       end
@@ -28,7 +28,7 @@ module Increase
       sig do
         params(
           lockbox_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::Lockbox)
       end
@@ -45,8 +45,8 @@ module Increase
           lockbox_id: String,
           description: String,
           recipient_name: String,
-          status: Increase::Models::LockboxUpdateParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          status: Symbol,
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::Lockbox)
       end
@@ -67,11 +67,11 @@ module Increase
       sig do
         params(
           account_id: String,
-          created_at: T.any(Increase::Models::LockboxListParams::CreatedAt, Increase::Util::AnyHash),
+          created_at: Increase::Models::LockboxListParams::CreatedAt,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Page[Increase::Models::Lockbox])
       end

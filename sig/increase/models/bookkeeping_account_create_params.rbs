@@ -41,16 +41,14 @@ module Increase
 
       type compliance_category = :commingled_cash | :customer_balance
 
-      module ComplianceCategory
-        extend Increase::Enum
-
+      class ComplianceCategory < Increase::Enum
         # A cash in an commingled Increase Account.
         COMMINGLED_CASH: :commingled_cash
 
         # A customer balance.
         CUSTOMER_BALANCE: :customer_balance
 
-        def self?.values: -> ::Array[Increase::Models::BookkeepingAccountCreateParams::compliance_category]
+        def self.values: -> ::Array[Increase::Models::BookkeepingAccountCreateParams::compliance_category]
       end
     end
   end

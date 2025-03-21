@@ -23,9 +23,7 @@ module Increase
 
       type reason = :mail_delivery_failed | :not_authorized | :unknown
 
-      module Reason
-        extend Increase::Enum
-
+      class Reason < Increase::Enum
         # The check could not be delivered.
         MAIL_DELIVERY_FAILED: :mail_delivery_failed
 
@@ -35,7 +33,7 @@ module Increase
         # The check was stopped for another reason.
         UNKNOWN: :unknown
 
-        def self?.values: -> ::Array[Increase::Models::CheckTransferStopPaymentParams::reason]
+        def self.values: -> ::Array[Increase::Models::CheckTransferStopPaymentParams::reason]
       end
     end
   end

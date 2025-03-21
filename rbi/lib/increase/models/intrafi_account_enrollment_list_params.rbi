@@ -8,46 +8,54 @@ module Increase
 
       # Filter IntraFi Account Enrollments to the one belonging to an account.
       sig { returns(T.nilable(String)) }
-      attr_reader :account_id
+      def account_id
+      end
 
-      sig { params(account_id: String).void }
-      attr_writer :account_id
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
-      attr_reader :cursor
+      def cursor
+      end
 
-      sig { params(cursor: String).void }
-      attr_writer :cursor
+      sig { params(_: String).returns(String) }
+      def cursor=(_)
+      end
 
       # Filter records to the one with the specified `idempotency_key` you chose for
       #   that object. This value is unique across Increase and is used to ensure that a
       #   request is only processed once. Learn more about
       #   [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      attr_reader :idempotency_key
+      def idempotency_key
+      end
 
-      sig { params(idempotency_key: String).void }
-      attr_writer :idempotency_key
+      sig { params(_: String).returns(String) }
+      def idempotency_key=(_)
+      end
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::IntrafiAccountEnrollmentListParams::Status)) }
-      attr_reader :status
+      def status
+      end
 
       sig do
-        params(
-          status: T.any(Increase::Models::IntrafiAccountEnrollmentListParams::Status, Increase::Util::AnyHash)
-        )
-          .void
+        params(_: Increase::Models::IntrafiAccountEnrollmentListParams::Status)
+          .returns(Increase::Models::IntrafiAccountEnrollmentListParams::Status)
       end
-      attr_writer :status
+      def status=(_)
+      end
 
       sig do
         params(
@@ -55,8 +63,8 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: T.any(Increase::Models::IntrafiAccountEnrollmentListParams::Status, Increase::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          status: Increase::Models::IntrafiAccountEnrollmentListParams::Status,
+          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end
@@ -83,62 +91,41 @@ module Increase
         # Filter IntraFi Account Enrollments for those with the specified status or
         #   statuses. For GET requests, this should be encoded as a comma-delimited string,
         #   such as `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol])) }
-        attr_reader :in_
-
-        sig { params(in_: T::Array[Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol]).void }
-        attr_writer :in_
-
-        sig do
-          params(in_: T::Array[Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol])
-            .returns(T.attached_class)
+        sig { returns(T.nilable(T::Array[Symbol])) }
+        def in_
         end
+
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        def in_=(_)
+        end
+
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig do
-          override
-            .returns({in_: T::Array[Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol]})
-        end
+        sig { override.returns({in_: T::Array[Symbol]}) }
         def to_hash
         end
 
-        module In
-          extend Increase::Enum
+        class In < Increase::Enum
+          abstract!
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # The account is being added to the IntraFi network.
-          PENDING_ENROLLING =
-            T.let(:pending_enrolling, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol)
+          PENDING_ENROLLING = :pending_enrolling
 
           # The account has been enrolled with IntraFi.
-          ENROLLED =
-            T.let(:enrolled, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol)
+          ENROLLED = :enrolled
 
           # The account is being unenrolled from IntraFi's deposit sweep.
-          PENDING_UNENROLLING =
-            T.let(
-              :pending_unenrolling,
-              Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol
-            )
+          PENDING_UNENROLLING = :pending_unenrolling
 
           # The account was once enrolled, but is no longer enrolled at IntraFi.
-          UNENROLLED =
-            T.let(:unenrolled, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol)
+          UNENROLLED = :unenrolled
 
           # Something unexpected happened with this account. Contact Increase support.
-          REQUIRES_ATTENTION =
-            T.let(:requires_attention, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol]) }
-            def values
-            end
-          end
+          REQUIRES_ATTENTION = :requires_attention
         end
       end
     end

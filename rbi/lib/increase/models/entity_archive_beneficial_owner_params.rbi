@@ -9,12 +9,17 @@ module Increase
       # The identifying details of anyone controlling or owning 25% or more of the
       #   corporation.
       sig { returns(String) }
-      attr_accessor :beneficial_owner_id
+      def beneficial_owner_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def beneficial_owner_id=(_)
+      end
 
       sig do
         params(
           beneficial_owner_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end

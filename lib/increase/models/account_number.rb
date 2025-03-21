@@ -129,11 +129,11 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Whether ACH debits are allowed against this Account Number. Note that they will
         #   still be declined if this is `allowed` if the Account Number is not active.
-        module DebitStatus
-          extend Increase::Enum
-
+        class DebitStatus < Increase::Enum
           # ACH Debits are allowed.
           ALLOWED = :allowed
 
@@ -141,12 +141,6 @@ module Increase
           BLOCKED = :blocked
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 
@@ -167,10 +161,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # How Increase should process checks with this account number printed on them.
-        module Status
-          extend Increase::Enum
-
+        class Status < Increase::Enum
           # Checks with this Account Number will be processed even if they are not associated with a Check Transfer.
           ALLOWED = :allowed
 
@@ -178,19 +172,13 @@ module Increase
           CHECK_TRANSFERS_ONLY = :check_transfers_only
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 
+      # @abstract
+      #
       # This indicates if payments can be made to the Account Number.
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The account number is active.
         ACTIVE = :active
 
@@ -201,28 +189,16 @@ module Increase
         CANCELED = :canceled
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `account_number`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         ACCOUNT_NUMBER = :account_number
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

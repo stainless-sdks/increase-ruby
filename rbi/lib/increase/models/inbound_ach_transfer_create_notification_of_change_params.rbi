@@ -8,23 +8,27 @@ module Increase
 
       # The updated account number to send in the notification of change.
       sig { returns(T.nilable(String)) }
-      attr_reader :updated_account_number
+      def updated_account_number
+      end
 
-      sig { params(updated_account_number: String).void }
-      attr_writer :updated_account_number
+      sig { params(_: String).returns(String) }
+      def updated_account_number=(_)
+      end
 
       # The updated routing number to send in the notification of change.
       sig { returns(T.nilable(String)) }
-      attr_reader :updated_routing_number
+      def updated_routing_number
+      end
 
-      sig { params(updated_routing_number: String).void }
-      attr_writer :updated_routing_number
+      sig { params(_: String).returns(String) }
+      def updated_routing_number=(_)
+      end
 
       sig do
         params(
           updated_account_number: String,
           updated_routing_number: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end

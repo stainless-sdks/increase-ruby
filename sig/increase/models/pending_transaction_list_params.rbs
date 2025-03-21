@@ -93,9 +93,7 @@ module Increase
           | :inbound_wire_transfer_reversal
           | :other
 
-        module In
-          extend Increase::Enum
-
+        class In < Increase::Enum
           # Account Transfer Instruction: details will be under the `account_transfer_instruction` object.
           ACCOUNT_TRANSFER_INSTRUCTION: :account_transfer_instruction
 
@@ -126,7 +124,7 @@ module Increase
           # The Pending Transaction was made for an undocumented or deprecated reason.
           OTHER: :other
 
-          def self?.values: -> ::Array[Increase::Models::PendingTransactionListParams::Category::in_]
+          def self.values: -> ::Array[Increase::Models::PendingTransactionListParams::Category::in_]
         end
       end
 
@@ -180,16 +178,14 @@ module Increase
 
         type in_ = :pending | :complete
 
-        module In
-          extend Increase::Enum
-
+        class In < Increase::Enum
           # The Pending Transaction is still awaiting confirmation.
           PENDING: :pending
 
           # The Pending Transaction is confirmed. An associated Transaction exists for this object. The Pending Transaction will no longer count against your balance and can generally be hidden from UIs, etc.
           COMPLETE: :complete
 
-          def self?.values: -> ::Array[Increase::Models::PendingTransactionListParams::Status::in_]
+          def self.values: -> ::Array[Increase::Models::PendingTransactionListParams::Status::in_]
         end
       end
     end

@@ -5,86 +5,156 @@ module Increase
     class InboundRealTimePaymentsTransfer < Increase::BaseModel
       # The inbound Real-Time Payments transfer's identifier.
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       # The Account to which the transfer was sent.
       sig { returns(String) }
-      attr_accessor :account_id
+      def account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       # The identifier of the Account Number to which this transfer was sent.
       sig { returns(String) }
-      attr_accessor :account_number_id
+      def account_number_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_number_id=(_)
+      end
 
       # The amount in USD cents.
       sig { returns(Integer) }
-      attr_accessor :amount
+      def amount
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def amount=(_)
+      end
 
       # If your transfer is confirmed, this will contain details of the confirmation.
       sig { returns(T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation)) }
-      attr_reader :confirmation
+      def confirmation
+      end
 
       sig do
-        params(
-          confirmation: T.nilable(T.any(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation, Increase::Util::AnyHash))
-        )
-          .void
+        params(_: T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation))
+          .returns(T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation))
       end
-      attr_writer :confirmation
+      def confirmation=(_)
+      end
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
       #   the transfer was created.
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       # The name the sender of the transfer specified as the recipient of the transfer.
       sig { returns(String) }
-      attr_accessor :creditor_name
+      def creditor_name
+      end
+
+      sig { params(_: String).returns(String) }
+      def creditor_name=(_)
+      end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
       #   currency. This will always be "USD" for a Real-Time Payments transfer.
-      sig { returns(Increase::Models::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol) }
-      attr_accessor :currency
+      sig { returns(Symbol) }
+      def currency
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def currency=(_)
+      end
 
       # The account number of the account that sent the transfer.
       sig { returns(String) }
-      attr_accessor :debtor_account_number
+      def debtor_account_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def debtor_account_number=(_)
+      end
 
       # The name provided by the sender of the transfer.
       sig { returns(String) }
-      attr_accessor :debtor_name
+      def debtor_name
+      end
+
+      sig { params(_: String).returns(String) }
+      def debtor_name=(_)
+      end
 
       # The routing number of the account that sent the transfer.
       sig { returns(String) }
-      attr_accessor :debtor_routing_number
+      def debtor_routing_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def debtor_routing_number=(_)
+      end
 
       # If your transfer is declined, this will contain details of the decline.
       sig { returns(T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Decline)) }
-      attr_reader :decline
+      def decline
+      end
 
       sig do
-        params(
-          decline: T.nilable(T.any(Increase::Models::InboundRealTimePaymentsTransfer::Decline, Increase::Util::AnyHash))
-        )
-          .void
+        params(_: T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Decline))
+          .returns(T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Decline))
       end
-      attr_writer :decline
+      def decline=(_)
+      end
 
       # Additional information included with the transfer.
       sig { returns(T.nilable(String)) }
-      attr_accessor :remittance_information
+      def remittance_information
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def remittance_information=(_)
+      end
 
       # The lifecycle status of the transfer.
-      sig { returns(Increase::Models::InboundRealTimePaymentsTransfer::Status::TaggedSymbol) }
-      attr_accessor :status
+      sig { returns(Symbol) }
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       # The Real-Time Payments network identification of the transfer.
       sig { returns(String) }
-      attr_accessor :transaction_identification
+      def transaction_identification
+      end
+
+      sig { params(_: String).returns(String) }
+      def transaction_identification=(_)
+      end
 
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_real_time_payments_transfer`.
-      sig { returns(Increase::Models::InboundRealTimePaymentsTransfer::Type::TaggedSymbol) }
-      attr_accessor :type
+      sig { returns(Symbol) }
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       # An Inbound Real-Time Payments Transfer is a Real-Time Payments transfer
       #   initiated outside of Increase to your account.
@@ -94,18 +164,18 @@ module Increase
           account_id: String,
           account_number_id: String,
           amount: Integer,
-          confirmation: T.nilable(T.any(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation, Increase::Util::AnyHash)),
+          confirmation: T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation),
           created_at: Time,
           creditor_name: String,
-          currency: Increase::Models::InboundRealTimePaymentsTransfer::Currency::OrSymbol,
+          currency: Symbol,
           debtor_account_number: String,
           debtor_name: String,
           debtor_routing_number: String,
-          decline: T.nilable(T.any(Increase::Models::InboundRealTimePaymentsTransfer::Decline, Increase::Util::AnyHash)),
+          decline: T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Decline),
           remittance_information: T.nilable(String),
-          status: Increase::Models::InboundRealTimePaymentsTransfer::Status::OrSymbol,
+          status: Symbol,
           transaction_identification: String,
-          type: Increase::Models::InboundRealTimePaymentsTransfer::Type::OrSymbol
+          type: Symbol
         )
           .returns(T.attached_class)
       end
@@ -140,15 +210,15 @@ module Increase
               confirmation: T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation),
               created_at: Time,
               creditor_name: String,
-              currency: Increase::Models::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol,
+              currency: Symbol,
               debtor_account_number: String,
               debtor_name: String,
               debtor_routing_number: String,
               decline: T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Decline),
               remittance_information: T.nilable(String),
-              status: Increase::Models::InboundRealTimePaymentsTransfer::Status::TaggedSymbol,
+              status: Symbol,
               transaction_identification: String,
-              type: Increase::Models::InboundRealTimePaymentsTransfer::Type::TaggedSymbol
+              type: Symbol
             }
           )
       end
@@ -158,11 +228,21 @@ module Increase
       class Confirmation < Increase::BaseModel
         # The time at which the transfer was confirmed.
         sig { returns(Time) }
-        attr_accessor :confirmed_at
+        def confirmed_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def confirmed_at=(_)
+        end
 
         # The id of the transaction for the confirmed transfer.
         sig { returns(String) }
-        attr_accessor :transaction_id
+        def transaction_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def transaction_id=(_)
+        end
 
         # If your transfer is confirmed, this will contain details of the confirmation.
         sig { params(confirmed_at: Time, transaction_id: String).returns(T.attached_class) }
@@ -176,184 +256,122 @@ module Increase
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
       #   currency. This will always be "USD" for a Real-Time Payments transfer.
-      module Currency
-        extend Increase::Enum
+      class Currency < Increase::Enum
+        abstract!
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Currency) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # Canadian Dollar (CAD)
-        CAD = T.let(:CAD, Increase::Models::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol)
+        CAD = :CAD
 
         # Swiss Franc (CHF)
-        CHF = T.let(:CHF, Increase::Models::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol)
+        CHF = :CHF
 
         # Euro (EUR)
-        EUR = T.let(:EUR, Increase::Models::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol)
+        EUR = :EUR
 
         # British Pound (GBP)
-        GBP = T.let(:GBP, Increase::Models::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol)
+        GBP = :GBP
 
         # Japanese Yen (JPY)
-        JPY = T.let(:JPY, Increase::Models::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol)
+        JPY = :JPY
 
         # US Dollar (USD)
-        USD = T.let(:USD, Increase::Models::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol]) }
-          def values
-          end
-        end
+        USD = :USD
       end
 
       class Decline < Increase::BaseModel
         # The time at which the transfer was declined.
         sig { returns(Time) }
-        attr_accessor :declined_at
+        def declined_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def declined_at=(_)
+        end
 
         # The id of the transaction for the declined transfer.
         sig { returns(String) }
-        attr_accessor :declined_transaction_id
+        def declined_transaction_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def declined_transaction_id=(_)
+        end
 
         # The reason for the transfer decline.
-        sig { returns(Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason::TaggedSymbol) }
-        attr_accessor :reason
+        sig { returns(Symbol) }
+        def reason
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def reason=(_)
+        end
 
         # If your transfer is declined, this will contain details of the decline.
         sig do
-          params(
-            declined_at: Time,
-            declined_transaction_id: String,
-            reason: Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason::OrSymbol
-          )
-            .returns(T.attached_class)
+          params(declined_at: Time, declined_transaction_id: String, reason: Symbol).returns(T.attached_class)
         end
         def self.new(declined_at:, declined_transaction_id:, reason:)
         end
 
-        sig do
-          override
-            .returns(
-              {
-                declined_at: Time,
-                declined_transaction_id: String,
-                reason: Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason::TaggedSymbol
-              }
-            )
-        end
+        sig { override.returns({declined_at: Time, declined_transaction_id: String, reason: Symbol}) }
         def to_hash
         end
 
         # The reason for the transfer decline.
-        module Reason
-          extend Increase::Enum
+        class Reason < Increase::Enum
+          abstract!
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # The account number is canceled.
-          ACCOUNT_NUMBER_CANCELED =
-            T.let(
-              :account_number_canceled,
-              Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason::TaggedSymbol
-            )
+          ACCOUNT_NUMBER_CANCELED = :account_number_canceled
 
           # The account number is disabled.
-          ACCOUNT_NUMBER_DISABLED =
-            T.let(
-              :account_number_disabled,
-              Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason::TaggedSymbol
-            )
+          ACCOUNT_NUMBER_DISABLED = :account_number_disabled
 
           # Your account is restricted.
-          ACCOUNT_RESTRICTED =
-            T.let(
-              :account_restricted,
-              Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason::TaggedSymbol
-            )
+          ACCOUNT_RESTRICTED = :account_restricted
 
           # Your account is inactive.
-          GROUP_LOCKED =
-            T.let(:group_locked, Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason::TaggedSymbol)
+          GROUP_LOCKED = :group_locked
 
           # The account's entity is not active.
-          ENTITY_NOT_ACTIVE =
-            T.let(
-              :entity_not_active,
-              Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason::TaggedSymbol
-            )
+          ENTITY_NOT_ACTIVE = :entity_not_active
 
           # Your account is not enabled to receive Real-Time Payments transfers.
-          REAL_TIME_PAYMENTS_NOT_ENABLED =
-            T.let(
-              :real_time_payments_not_enabled,
-              Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason::TaggedSymbol
-            )
-
-          class << self
-            sig do
-              override
-                .returns(T::Array[Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason::TaggedSymbol])
-            end
-            def values
-            end
-          end
+          REAL_TIME_PAYMENTS_NOT_ENABLED = :real_time_payments_not_enabled
         end
       end
 
       # The lifecycle status of the transfer.
-      module Status
-        extend Increase::Enum
+      class Status < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Status::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The transfer is pending confirmation.
-        PENDING_CONFIRMING =
-          T.let(:pending_confirming, Increase::Models::InboundRealTimePaymentsTransfer::Status::TaggedSymbol)
+        PENDING_CONFIRMING = :pending_confirming
 
         # The transfer was not responded to in time.
-        TIMED_OUT = T.let(:timed_out, Increase::Models::InboundRealTimePaymentsTransfer::Status::TaggedSymbol)
+        TIMED_OUT = :timed_out
 
         # The transfer has been received successfully and is confirmed.
-        CONFIRMED = T.let(:confirmed, Increase::Models::InboundRealTimePaymentsTransfer::Status::TaggedSymbol)
+        CONFIRMED = :confirmed
 
         # The transfer has been declined.
-        DECLINED = T.let(:declined, Increase::Models::InboundRealTimePaymentsTransfer::Status::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::InboundRealTimePaymentsTransfer::Status::TaggedSymbol]) }
-          def values
-          end
-        end
+        DECLINED = :declined
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_real_time_payments_transfer`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Type) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        INBOUND_REAL_TIME_PAYMENTS_TRANSFER =
-          T.let(
-            :inbound_real_time_payments_transfer,
-            Increase::Models::InboundRealTimePaymentsTransfer::Type::TaggedSymbol
-          )
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::InboundRealTimePaymentsTransfer::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        INBOUND_REAL_TIME_PAYMENTS_TRANSFER = :inbound_real_time_payments_transfer
       end
     end
   end

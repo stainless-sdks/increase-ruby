@@ -8,29 +8,41 @@ module Increase
 
       # The bookkeeping entries.
       sig { returns(T::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry]) }
-      attr_accessor :entries
+      def entries
+      end
+
+      sig do
+        params(_: T::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry])
+          .returns(T::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry])
+      end
+      def entries=(_)
+      end
 
       # The date of the transaction. Optional if `transaction_id` is provided, in which
       #   case we use the `date` of that transaction. Required otherwise.
       sig { returns(T.nilable(Time)) }
-      attr_reader :date
+      def date
+      end
 
-      sig { params(date: Time).void }
-      attr_writer :date
+      sig { params(_: Time).returns(Time) }
+      def date=(_)
+      end
 
       # The identifier of the Transaction related to this entry set, if any.
       sig { returns(T.nilable(String)) }
-      attr_reader :transaction_id
+      def transaction_id
+      end
 
-      sig { params(transaction_id: String).void }
-      attr_writer :transaction_id
+      sig { params(_: String).returns(String) }
+      def transaction_id=(_)
+      end
 
       sig do
         params(
-          entries: T::Array[T.any(Increase::Models::BookkeepingEntrySetCreateParams::Entry, Increase::Util::AnyHash)],
+          entries: T::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry],
           date: Time,
           transaction_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end
@@ -54,13 +66,23 @@ module Increase
       class Entry < Increase::BaseModel
         # The identifier for the Bookkeeping Account impacted by this entry.
         sig { returns(String) }
-        attr_accessor :account_id
+        def account_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def account_id=(_)
+        end
 
         # The entry amount in the minor unit of the account currency. For dollars, for
         #   example, this is cents. Debit entries have positive amounts; credit entries have
         #   negative amounts.
         sig { returns(Integer) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def amount=(_)
+        end
 
         sig { params(account_id: String, amount: Integer).returns(T.attached_class) }
         def self.new(account_id:, amount:)

@@ -9,7 +9,7 @@ module Increase
         sig do
           params(
             inbound_funds_hold_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
           )
             .returns(Increase::Models::Simulations::InboundFundsHoldReleaseResponse)
         end

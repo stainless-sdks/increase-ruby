@@ -9,12 +9,17 @@ module Increase
 
         # The identifier of the Card Payment to expire.
         sig { returns(String) }
-        attr_accessor :card_payment_id
+        def card_payment_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def card_payment_id=(_)
+        end
 
         sig do
           params(
             card_payment_id: String,
-            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
           )
             .returns(T.attached_class)
         end

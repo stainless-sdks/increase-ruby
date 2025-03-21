@@ -164,9 +164,7 @@ module Increase
 
         type category = :api_key | :oauth_application | :user
 
-        module Category
-          extend Increase::Enum
-
+        class Category < Increase::Enum
           # An API key. Details will be under the `api_key` object.
           API_KEY: :api_key
 
@@ -176,7 +174,7 @@ module Increase
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER: :user
 
-          def self?.values: -> ::Array[Increase::Models::CheckTransfer::CreatedBy::category]
+          def self.values: -> ::Array[Increase::Models::CheckTransfer::CreatedBy::category]
         end
 
         type oauth_application = { name: String }
@@ -202,9 +200,7 @@ module Increase
 
       type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-      module Currency
-        extend Increase::Enum
-
+      class Currency < Increase::Enum
         # Canadian Dollar (CAD)
         CAD: :CAD
 
@@ -223,21 +219,19 @@ module Increase
         # US Dollar (USD)
         USD: :USD
 
-        def self?.values: -> ::Array[Increase::Models::CheckTransfer::currency]
+        def self.values: -> ::Array[Increase::Models::CheckTransfer::currency]
       end
 
       type fulfillment_method = :physical_check | :third_party
 
-      module FulfillmentMethod
-        extend Increase::Enum
-
+      class FulfillmentMethod < Increase::Enum
         # Increase will print and mail a physical check.
         PHYSICAL_CHECK: :physical_check
 
         # Increase will not print a check; you are responsible for printing and mailing a check with the provided account number, routing number, check number, and amount.
         THIRD_PARTY: :third_party
 
-        def self?.values: -> ::Array[Increase::Models::CheckTransfer::fulfillment_method]
+        def self.values: -> ::Array[Increase::Models::CheckTransfer::fulfillment_method]
       end
 
       type mailing =
@@ -373,16 +367,14 @@ module Increase
 
         type shipping_method = :usps_first_class | :fedex_overnight
 
-        module ShippingMethod
-          extend Increase::Enum
-
+        class ShippingMethod < Increase::Enum
           # USPS First Class
           USPS_FIRST_CLASS: :usps_first_class
 
           # FedEx Overnight
           FEDEX_OVERNIGHT: :fedex_overnight
 
-          def self?.values: -> ::Array[Increase::Models::CheckTransfer::PhysicalCheck::shipping_method]
+          def self.values: -> ::Array[Increase::Models::CheckTransfer::PhysicalCheck::shipping_method]
         end
 
         type tracking_update =
@@ -413,9 +405,7 @@ module Increase
             | :delivered
             | :returned_to_sender
 
-          module Category
-            extend Increase::Enum
-
+          class Category < Increase::Enum
             # The check is in transit.
             IN_TRANSIT: :in_transit
 
@@ -428,7 +418,7 @@ module Increase
             # Delivery failed and the check was returned to sender.
             RETURNED_TO_SENDER: :returned_to_sender
 
-            def self?.values: -> ::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::category]
+            def self.values: -> ::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::category]
           end
         end
       end
@@ -445,9 +435,7 @@ module Increase
         | :stopped
         | :returned
 
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The transfer is awaiting approval.
         PENDING_APPROVAL: :pending_approval
 
@@ -478,7 +466,7 @@ module Increase
         # The transfer has been returned.
         RETURNED: :returned
 
-        def self?.values: -> ::Array[Increase::Models::CheckTransfer::status]
+        def self.values: -> ::Array[Increase::Models::CheckTransfer::status]
       end
 
       type stop_payment_request =
@@ -513,9 +501,7 @@ module Increase
           | :not_authorized
           | :unknown
 
-        module Reason
-          extend Increase::Enum
-
+        class Reason < Increase::Enum
           # The check could not be delivered.
           MAIL_DELIVERY_FAILED: :mail_delivery_failed
 
@@ -528,17 +514,15 @@ module Increase
           # The check was stopped for another reason.
           UNKNOWN: :unknown
 
-          def self?.values: -> ::Array[Increase::Models::CheckTransfer::StopPaymentRequest::reason]
+          def self.values: -> ::Array[Increase::Models::CheckTransfer::StopPaymentRequest::reason]
         end
 
         type type_ = :check_transfer_stop_payment_request
 
-        module Type
-          extend Increase::Enum
-
+        class Type < Increase::Enum
           CHECK_TRANSFER_STOP_PAYMENT_REQUEST: :check_transfer_stop_payment_request
 
-          def self?.values: -> ::Array[Increase::Models::CheckTransfer::StopPaymentRequest::type_]
+          def self.values: -> ::Array[Increase::Models::CheckTransfer::StopPaymentRequest::type_]
         end
       end
 
@@ -564,12 +548,10 @@ module Increase
 
       type type_ = :check_transfer
 
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         CHECK_TRANSFER: :check_transfer
 
-        def self?.values: -> ::Array[Increase::Models::CheckTransfer::type_]
+        def self.values: -> ::Array[Increase::Models::CheckTransfer::type_]
       end
     end
   end

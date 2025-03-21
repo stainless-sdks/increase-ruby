@@ -8,32 +8,38 @@ module Increase
 
       # The identifier for the Bookkeeping Account to filter by.
       sig { returns(T.nilable(String)) }
-      attr_reader :account_id
+      def account_id
+      end
 
-      sig { params(account_id: String).void }
-      attr_writer :account_id
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
-      attr_reader :cursor
+      def cursor
+      end
 
-      sig { params(cursor: String).void }
-      attr_writer :cursor
+      sig { params(_: String).returns(String) }
+      def cursor=(_)
+      end
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       sig do
         params(
           account_id: String,
           cursor: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end

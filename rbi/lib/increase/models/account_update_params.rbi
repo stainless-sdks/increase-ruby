@@ -8,13 +8,15 @@ module Increase
 
       # The new name of the Account.
       sig { returns(T.nilable(String)) }
-      attr_reader :name
+      def name
+      end
 
-      sig { params(name: String).void }
-      attr_writer :name
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig do
-        params(name: String, request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+        params(name: String, request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
           .returns(T.attached_class)
       end
       def self.new(name: nil, request_options: {})

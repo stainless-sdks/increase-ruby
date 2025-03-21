@@ -9,10 +9,21 @@ module Increase
 
         # The identifier of the Card to be authorized.
         sig { returns(String) }
-        attr_accessor :card_id
+        def card_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def card_id=(_)
+        end
 
         sig do
-          params(card_id: String, request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          params(
+            card_id: String,
+            request_options: T.any(
+              Increase::RequestOptions,
+              T::Hash[Symbol, T.anything]
+            )
+          )
             .returns(T.attached_class)
         end
         def self.new(card_id:, request_options: {})

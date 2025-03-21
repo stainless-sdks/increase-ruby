@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           declined_transaction_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::DeclinedTransaction)
       end
@@ -22,12 +22,12 @@ module Increase
       sig do
         params(
           account_id: String,
-          category: T.any(Increase::Models::DeclinedTransactionListParams::Category, Increase::Util::AnyHash),
-          created_at: T.any(Increase::Models::DeclinedTransactionListParams::CreatedAt, Increase::Util::AnyHash),
+          category: Increase::Models::DeclinedTransactionListParams::Category,
+          created_at: Increase::Models::DeclinedTransactionListParams::CreatedAt,
           cursor: String,
           limit: Integer,
           route_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Page[Increase::Models::DeclinedTransaction])
       end

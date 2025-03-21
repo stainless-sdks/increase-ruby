@@ -9,26 +9,20 @@ module Increase
 
         # If set, the simulation will reject the transfer.
         sig { returns(T.nilable(Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection)) }
-        attr_reader :rejection
-
-        sig do
-          params(
-            rejection: T.any(
-              Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
-              Increase::Util::AnyHash
-            )
-          )
-            .void
+        def rejection
         end
-        attr_writer :rejection
+
+        sig do
+          params(_: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection)
+            .returns(Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection)
+        end
+        def rejection=(_)
+        end
 
         sig do
           params(
-            rejection: T.any(
-              Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
-              Increase::Util::AnyHash
-            ),
-            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+            rejection: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
           )
             .returns(T.attached_class)
         end
@@ -49,209 +43,91 @@ module Increase
 
         class Rejection < Increase::BaseModel
           # The reason code that the simulated rejection will have.
-          sig do
-            returns(
-              Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::OrSymbol
-            )
+          sig { returns(Symbol) }
+          def reject_reason_code
           end
-          attr_accessor :reject_reason_code
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def reject_reason_code=(_)
+          end
 
           # If set, the simulation will reject the transfer.
-          sig do
-            params(
-              reject_reason_code: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::OrSymbol
-            )
-              .returns(T.attached_class)
-          end
+          sig { params(reject_reason_code: Symbol).returns(T.attached_class) }
           def self.new(reject_reason_code:)
           end
 
-          sig do
-            override
-              .returns(
-                {
-                  reject_reason_code: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::OrSymbol
-                }
-              )
-          end
+          sig { override.returns({reject_reason_code: Symbol}) }
           def to_hash
           end
 
           # The reason code that the simulated rejection will have.
-          module RejectReasonCode
-            extend Increase::Enum
+          class RejectReasonCode < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias do
-                T.all(Symbol, Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode)
-              end
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
-                )
-              end
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # The destination account is closed. Corresponds to the Real-Time Payments reason code `AC04`.
-            ACCOUNT_CLOSED =
-              T.let(
-                :account_closed,
-                Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
-              )
+            ACCOUNT_CLOSED = :account_closed
 
             # The destination account is currently blocked from receiving transactions. Corresponds to the Real-Time Payments reason code `AC06`.
-            ACCOUNT_BLOCKED =
-              T.let(
-                :account_blocked,
-                Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
-              )
+            ACCOUNT_BLOCKED = :account_blocked
 
             # The destination account is ineligible to receive Real-Time Payments transfers. Corresponds to the Real-Time Payments reason code `AC14`.
-            INVALID_CREDITOR_ACCOUNT_TYPE =
-              T.let(
-                :invalid_creditor_account_type,
-                Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
-              )
+            INVALID_CREDITOR_ACCOUNT_TYPE = :invalid_creditor_account_type
 
             # The destination account does not exist. Corresponds to the Real-Time Payments reason code `AC03`.
-            INVALID_CREDITOR_ACCOUNT_NUMBER =
-              T.let(
-                :invalid_creditor_account_number,
-                Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
-              )
+            INVALID_CREDITOR_ACCOUNT_NUMBER = :invalid_creditor_account_number
 
             # The destination routing number is invalid. Corresponds to the Real-Time Payments reason code `RC04`.
-            INVALID_CREDITOR_FINANCIAL_INSTITUTION_IDENTIFIER =
-              T.let(
-                :invalid_creditor_financial_institution_identifier,
-                Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
-              )
+            INVALID_CREDITOR_FINANCIAL_INSTITUTION_IDENTIFIER = :invalid_creditor_financial_institution_identifier
 
             # The destination account holder is deceased. Corresponds to the Real-Time Payments reason code `MD07`.
-            END_CUSTOMER_DECEASED =
-              T.let(
-                :end_customer_deceased,
-                Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
-              )
+            END_CUSTOMER_DECEASED = :end_customer_deceased
 
             # The reason is provided as narrative information in the additional information field.
-            NARRATIVE =
-              T.let(
-                :narrative,
-                Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
-              )
+            NARRATIVE = :narrative
 
             # Real-Time Payments transfers are not allowed to the destination account. Corresponds to the Real-Time Payments reason code `AG01`.
-            TRANSACTION_FORBIDDEN =
-              T.let(
-                :transaction_forbidden,
-                Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
-              )
+            TRANSACTION_FORBIDDEN = :transaction_forbidden
 
             # Real-Time Payments transfers are not enabled for the destination account. Corresponds to the Real-Time Payments reason code `AG03`.
-            TRANSACTION_TYPE_NOT_SUPPORTED =
-              T.let(
-                :transaction_type_not_supported,
-                Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
-              )
+            TRANSACTION_TYPE_NOT_SUPPORTED = :transaction_type_not_supported
 
             # The amount of the transfer is different than expected by the recipient. Corresponds to the Real-Time Payments reason code `AM09`.
-            UNEXPECTED_AMOUNT =
-              T.let(
-                :unexpected_amount,
-                Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
-              )
+            UNEXPECTED_AMOUNT = :unexpected_amount
 
             # The amount is higher than the recipient is authorized to send or receive. Corresponds to the Real-Time Payments reason code `AM14`.
-            AMOUNT_EXCEEDS_BANK_LIMITS =
-              T.let(
-                :amount_exceeds_bank_limits,
-                Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
-              )
+            AMOUNT_EXCEEDS_BANK_LIMITS = :amount_exceeds_bank_limits
 
             # The creditor's address is required, but missing or invalid. Corresponds to the Real-Time Payments reason code `BE04`.
-            INVALID_CREDITOR_ADDRESS =
-              T.let(
-                :invalid_creditor_address,
-                Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
-              )
+            INVALID_CREDITOR_ADDRESS = :invalid_creditor_address
 
             # The specified creditor is unknown. Corresponds to the Real-Time Payments reason code `BE06`.
-            UNKNOWN_END_CUSTOMER =
-              T.let(
-                :unknown_end_customer,
-                Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
-              )
+            UNKNOWN_END_CUSTOMER = :unknown_end_customer
 
             # The debtor's address is required, but missing or invalid. Corresponds to the Real-Time Payments reason code `BE07`.
-            INVALID_DEBTOR_ADDRESS =
-              T.let(
-                :invalid_debtor_address,
-                Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
-              )
+            INVALID_DEBTOR_ADDRESS = :invalid_debtor_address
 
             # There was a timeout processing the transfer. Corresponds to the Real-Time Payments reason code `DS24`.
-            TIMEOUT =
-              T.let(
-                :timeout,
-                Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
-              )
+            TIMEOUT = :timeout
 
             # Real-Time Payments transfers are not enabled for the destination account. Corresponds to the Real-Time Payments reason code `NOAT`.
-            UNSUPPORTED_MESSAGE_FOR_RECIPIENT =
-              T.let(
-                :unsupported_message_for_recipient,
-                Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
-              )
+            UNSUPPORTED_MESSAGE_FOR_RECIPIENT = :unsupported_message_for_recipient
 
             # The destination financial institution is currently not connected to Real-Time Payments. Corresponds to the Real-Time Payments reason code `9912`.
-            RECIPIENT_CONNECTION_NOT_AVAILABLE =
-              T.let(
-                :recipient_connection_not_available,
-                Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
-              )
+            RECIPIENT_CONNECTION_NOT_AVAILABLE = :recipient_connection_not_available
 
             # Real-Time Payments is currently unavailable. Corresponds to the Real-Time Payments reason code `9948`.
-            REAL_TIME_PAYMENTS_SUSPENDED =
-              T.let(
-                :real_time_payments_suspended,
-                Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
-              )
+            REAL_TIME_PAYMENTS_SUSPENDED = :real_time_payments_suspended
 
             # The destination financial institution is currently signed off of Real-Time Payments. Corresponds to the Real-Time Payments reason code `9910`.
-            INSTRUCTED_AGENT_SIGNED_OFF =
-              T.let(
-                :instructed_agent_signed_off,
-                Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
-              )
+            INSTRUCTED_AGENT_SIGNED_OFF = :instructed_agent_signed_off
 
             # The transfer was rejected due to an internal Increase issue. We have been notified.
-            PROCESSING_ERROR =
-              T.let(
-                :processing_error,
-                Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
-              )
+            PROCESSING_ERROR = :processing_error
 
             # Some other error or issue has occurred.
-            OTHER =
-              T.let(
-                :other,
-                Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
-              )
-
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[
-                    Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
-                    ]
-                  )
-              end
-              def values
-              end
-            end
+            OTHER = :other
           end
         end
       end

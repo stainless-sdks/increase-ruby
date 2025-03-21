@@ -103,9 +103,7 @@ module Increase
 
         type in_ = :active | :disabled | :canceled
 
-        module In
-          extend Increase::Enum
-
+        class In < Increase::Enum
           # The card is active.
           ACTIVE: :active
 
@@ -115,7 +113,7 @@ module Increase
           # The card is permanently canceled.
           CANCELED: :canceled
 
-          def self?.values: -> ::Array[Increase::Models::CardListParams::Status::in_]
+          def self.values: -> ::Array[Increase::Models::CardListParams::Status::in_]
         end
       end
     end

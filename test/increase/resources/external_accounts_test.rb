@@ -88,8 +88,6 @@ class Increase::Test::Resources::ExternalAccountsTest < Increase::Test::Resource
     end
 
     row = response.to_enum.first
-    return if row.nil?
-
     assert_pattern do
       row => Increase::Models::ExternalAccount
     end

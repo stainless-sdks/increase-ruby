@@ -188,9 +188,7 @@ module Increase
 
         type category = :api_key | :oauth_application | :user
 
-        module Category
-          extend Increase::Enum
-
+        class Category < Increase::Enum
           # An API key. Details will be under the `api_key` object.
           API_KEY: :api_key
 
@@ -200,7 +198,7 @@ module Increase
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER: :user
 
-          def self?.values: -> ::Array[Increase::Models::WireTransfer::CreatedBy::category]
+          def self.values: -> ::Array[Increase::Models::WireTransfer::CreatedBy::category]
         end
 
         type oauth_application = { name: String }
@@ -226,9 +224,7 @@ module Increase
 
       type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-      module Currency
-        extend Increase::Enum
-
+      class Currency < Increase::Enum
         # Canadian Dollar (CAD)
         CAD: :CAD
 
@@ -247,17 +243,15 @@ module Increase
         # US Dollar (USD)
         USD: :USD
 
-        def self?.values: -> ::Array[Increase::Models::WireTransfer::currency]
+        def self.values: -> ::Array[Increase::Models::WireTransfer::currency]
       end
 
       type network = :wire
 
-      module Network
-        extend Increase::Enum
-
+      class Network < Increase::Enum
         WIRE: :wire
 
-        def self?.values: -> ::Array[Increase::Models::WireTransfer::network]
+        def self.values: -> ::Array[Increase::Models::WireTransfer::network]
       end
 
       type reversal =
@@ -350,9 +344,7 @@ module Increase
         | :submitted
         | :complete
 
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The transfer is pending approval.
         PENDING_APPROVAL: :pending_approval
 
@@ -380,7 +372,7 @@ module Increase
         # The transfer has been acknowledged by Fedwire and can be considered complete.
         COMPLETE: :complete
 
-        def self?.values: -> ::Array[Increase::Models::WireTransfer::status]
+        def self.values: -> ::Array[Increase::Models::WireTransfer::status]
       end
 
       type submission =
@@ -401,12 +393,10 @@ module Increase
 
       type type_ = :wire_transfer
 
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         WIRE_TRANSFER: :wire_transfer
 
-        def self?.values: -> ::Array[Increase::Models::WireTransfer::type_]
+        def self.values: -> ::Array[Increase::Models::WireTransfer::type_]
       end
     end
   end

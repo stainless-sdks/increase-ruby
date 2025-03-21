@@ -58,10 +58,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The type of entity that owns the External Account.
-      module AccountHolder
-        extend Increase::Enum
-
+      class AccountHolder < Increase::Enum
         # The External Account is owned by a business.
         BUSINESS = :business
 
@@ -72,18 +72,12 @@ module Increase
         UNKNOWN = :unknown
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # The type of the destination account. Defaults to `checking`.
-      module Funding
-        extend Increase::Enum
-
+      class Funding < Increase::Enum
         # A checking account.
         CHECKING = :checking
 
@@ -94,12 +88,6 @@ module Increase
         OTHER = :other
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

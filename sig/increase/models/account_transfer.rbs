@@ -140,9 +140,7 @@ module Increase
 
         type category = :api_key | :oauth_application | :user
 
-        module Category
-          extend Increase::Enum
-
+        class Category < Increase::Enum
           # An API key. Details will be under the `api_key` object.
           API_KEY: :api_key
 
@@ -152,7 +150,7 @@ module Increase
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER: :user
 
-          def self?.values: -> ::Array[Increase::Models::AccountTransfer::CreatedBy::category]
+          def self.values: -> ::Array[Increase::Models::AccountTransfer::CreatedBy::category]
         end
 
         type oauth_application = { name: String }
@@ -178,9 +176,7 @@ module Increase
 
       type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-      module Currency
-        extend Increase::Enum
-
+      class Currency < Increase::Enum
         # Canadian Dollar (CAD)
         CAD: :CAD
 
@@ -199,24 +195,20 @@ module Increase
         # US Dollar (USD)
         USD: :USD
 
-        def self?.values: -> ::Array[Increase::Models::AccountTransfer::currency]
+        def self.values: -> ::Array[Increase::Models::AccountTransfer::currency]
       end
 
       type network = :account
 
-      module Network
-        extend Increase::Enum
-
+      class Network < Increase::Enum
         ACCOUNT: :account
 
-        def self?.values: -> ::Array[Increase::Models::AccountTransfer::network]
+        def self.values: -> ::Array[Increase::Models::AccountTransfer::network]
       end
 
       type status = :pending_approval | :canceled | :complete
 
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The transfer is pending approval.
         PENDING_APPROVAL: :pending_approval
 
@@ -226,17 +218,15 @@ module Increase
         # The transfer has been completed.
         COMPLETE: :complete
 
-        def self?.values: -> ::Array[Increase::Models::AccountTransfer::status]
+        def self.values: -> ::Array[Increase::Models::AccountTransfer::status]
       end
 
       type type_ = :account_transfer
 
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         ACCOUNT_TRANSFER: :account_transfer
 
-        def self?.values: -> ::Array[Increase::Models::AccountTransfer::type_]
+        def self.values: -> ::Array[Increase::Models::AccountTransfer::type_]
       end
     end
   end

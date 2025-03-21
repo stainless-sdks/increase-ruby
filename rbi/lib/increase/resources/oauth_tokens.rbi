@@ -6,12 +6,12 @@ module Increase
       # Create an OAuth Token
       sig do
         params(
-          grant_type: Increase::Models::OAuthTokenCreateParams::GrantType::OrSymbol,
+          grant_type: Symbol,
           client_id: String,
           client_secret: String,
           code: String,
           production_token: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::OAuthToken)
       end

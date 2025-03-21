@@ -83,16 +83,14 @@ module Increase
 
         type in_ = :allowed | :blocked
 
-        module In
-          extend Increase::Enum
-
+        class In < Increase::Enum
           # ACH Debits are allowed.
           ALLOWED: :allowed
 
           # ACH Debits are blocked.
           BLOCKED: :blocked
 
-          def self?.values: -> ::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::in_]
+          def self.values: -> ::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::in_]
         end
       end
 
@@ -144,9 +142,7 @@ module Increase
 
         type in_ = :active | :disabled | :canceled
 
-        module In
-          extend Increase::Enum
-
+        class In < Increase::Enum
           # The account number is active.
           ACTIVE: :active
 
@@ -156,7 +152,7 @@ module Increase
           # The account number is permanently disabled.
           CANCELED: :canceled
 
-          def self?.values: -> ::Array[Increase::Models::AccountNumberListParams::Status::in_]
+          def self.values: -> ::Array[Increase::Models::AccountNumberListParams::Status::in_]
         end
       end
     end

@@ -5,38 +5,73 @@ module Increase
     class FileLink < Increase::BaseModel
       # The File Link identifier.
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the File
       #   Link was created.
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the File
       #   Link will expire.
       sig { returns(Time) }
-      attr_accessor :expires_at
+      def expires_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def expires_at=(_)
+      end
 
       # The identifier of the File the File Link points to.
       sig { returns(String) }
-      attr_accessor :file_id
+      def file_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def file_id=(_)
+      end
 
       # The idempotency key you chose for this object. This value is unique across
       #   Increase and is used to ensure that a request is only processed once. Learn more
       #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      attr_accessor :idempotency_key
+      def idempotency_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def idempotency_key=(_)
+      end
 
       # A constant representing the object's type. For this resource it will always be
       #   `file_link`.
-      sig { returns(Increase::Models::FileLink::Type::TaggedSymbol) }
-      attr_accessor :type
+      sig { returns(Symbol) }
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       # A URL where the File can be downloaded. The URL will expire after the
       #   `expires_at` time. This URL is unauthenticated and can be used to download the
       #   File without an Increase API key.
       sig { returns(String) }
-      attr_accessor :unauthenticated_url
+      def unauthenticated_url
+      end
+
+      sig { params(_: String).returns(String) }
+      def unauthenticated_url=(_)
+      end
 
       # File Links let you generate a URL that can be used to download a File.
       sig do
@@ -46,7 +81,7 @@ module Increase
           expires_at: Time,
           file_id: String,
           idempotency_key: T.nilable(String),
-          type: Increase::Models::FileLink::Type::OrSymbol,
+          type: Symbol,
           unauthenticated_url: String
         )
           .returns(T.attached_class)
@@ -63,7 +98,7 @@ module Increase
               expires_at: Time,
               file_id: String,
               idempotency_key: T.nilable(String),
-              type: Increase::Models::FileLink::Type::TaggedSymbol,
+              type: Symbol,
               unauthenticated_url: String
             }
           )
@@ -73,19 +108,12 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `file_link`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::FileLink::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::FileLink::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        FILE_LINK = T.let(:file_link, Increase::Models::FileLink::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::FileLink::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        FILE_LINK = :file_link
       end
     end
   end

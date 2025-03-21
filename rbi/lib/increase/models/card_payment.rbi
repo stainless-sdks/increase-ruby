@@ -5,44 +5,89 @@ module Increase
     class CardPayment < Increase::BaseModel
       # The Card Payment identifier.
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       # The identifier for the Account the Transaction belongs to.
       sig { returns(String) }
-      attr_accessor :account_id
+      def account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       # The Card identifier for this payment.
       sig { returns(String) }
-      attr_accessor :card_id
+      def card_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def card_id=(_)
+      end
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Card
       #   Payment was created.
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       # The Digital Wallet Token identifier for this payment.
       sig { returns(T.nilable(String)) }
-      attr_accessor :digital_wallet_token_id
+      def digital_wallet_token_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def digital_wallet_token_id=(_)
+      end
 
       # The interactions related to this card payment.
       sig { returns(T::Array[Increase::Models::CardPayment::Element]) }
-      attr_accessor :elements
+      def elements
+      end
+
+      sig do
+        params(_: T::Array[Increase::Models::CardPayment::Element])
+          .returns(T::Array[Increase::Models::CardPayment::Element])
+      end
+      def elements=(_)
+      end
 
       # The Physical Card identifier for this payment.
       sig { returns(T.nilable(String)) }
-      attr_accessor :physical_card_id
+      def physical_card_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def physical_card_id=(_)
+      end
 
       # The summarized state of this card payment.
       sig { returns(Increase::Models::CardPayment::State) }
-      attr_reader :state
+      def state
+      end
 
-      sig { params(state: T.any(Increase::Models::CardPayment::State, Increase::Util::AnyHash)).void }
-      attr_writer :state
+      sig { params(_: Increase::Models::CardPayment::State).returns(Increase::Models::CardPayment::State) }
+      def state=(_)
+      end
 
       # A constant representing the object's type. For this resource it will always be
       #   `card_payment`.
-      sig { returns(Increase::Models::CardPayment::Type::TaggedSymbol) }
-      attr_accessor :type
+      sig { returns(Symbol) }
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       # Card Payments group together interactions related to a single card payment, such
       #   as an authorization and its corresponding settlement.
@@ -53,10 +98,10 @@ module Increase
           card_id: String,
           created_at: Time,
           digital_wallet_token_id: T.nilable(String),
-          elements: T::Array[T.any(Increase::Models::CardPayment::Element, Increase::Util::AnyHash)],
+          elements: T::Array[Increase::Models::CardPayment::Element],
           physical_card_id: T.nilable(String),
-          state: T.any(Increase::Models::CardPayment::State, Increase::Util::AnyHash),
-          type: Increase::Models::CardPayment::Type::OrSymbol
+          state: Increase::Models::CardPayment::State,
+          type: Symbol
         )
           .returns(T.attached_class)
       end
@@ -85,7 +130,7 @@ module Increase
               elements: T::Array[Increase::Models::CardPayment::Element],
               physical_card_id: T.nilable(String),
               state: Increase::Models::CardPayment::State,
-              type: Increase::Models::CardPayment::Type::TaggedSymbol
+              type: Symbol
             }
           )
       end
@@ -97,89 +142,87 @@ module Increase
         #   and only if `category` is equal to `card_authentication`. Card Authentications
         #   are attempts to authenticate a transaction or a card with 3DS.
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthentication)) }
-        attr_reader :card_authentication
+        def card_authentication
+        end
 
         sig do
-          params(
-            card_authentication: T.nilable(T.any(Increase::Models::CardPayment::Element::CardAuthentication, Increase::Util::AnyHash))
-          )
-            .void
+          params(_: T.nilable(Increase::Models::CardPayment::Element::CardAuthentication))
+            .returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthentication))
         end
-        attr_writer :card_authentication
+        def card_authentication=(_)
+        end
 
         # A Card Authorization object. This field will be present in the JSON response if
         #   and only if `category` is equal to `card_authorization`. Card Authorizations are
         #   temporary holds placed on a customers funds with the intent to later clear a
         #   transaction.
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthorization)) }
-        attr_reader :card_authorization
+        def card_authorization
+        end
 
         sig do
-          params(
-            card_authorization: T.nilable(T.any(Increase::Models::CardPayment::Element::CardAuthorization, Increase::Util::AnyHash))
-          )
-            .void
+          params(_: T.nilable(Increase::Models::CardPayment::Element::CardAuthorization))
+            .returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthorization))
         end
-        attr_writer :card_authorization
+        def card_authorization=(_)
+        end
 
         # A Card Authorization Expiration object. This field will be present in the JSON
         #   response if and only if `category` is equal to `card_authorization_expiration`.
         #   Card Authorization Expirations are cancellations of authorizations that were
         #   never settled by the acquirer.
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthorizationExpiration)) }
-        attr_reader :card_authorization_expiration
+        def card_authorization_expiration
+        end
 
         sig do
-          params(
-            card_authorization_expiration: T.nilable(
-              T.any(Increase::Models::CardPayment::Element::CardAuthorizationExpiration, Increase::Util::AnyHash)
-            )
-          )
-            .void
+          params(_: T.nilable(Increase::Models::CardPayment::Element::CardAuthorizationExpiration))
+            .returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthorizationExpiration))
         end
-        attr_writer :card_authorization_expiration
+        def card_authorization_expiration=(_)
+        end
 
         # A Card Decline object. This field will be present in the JSON response if and
         #   only if `category` is equal to `card_decline`.
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardDecline)) }
-        attr_reader :card_decline
+        def card_decline
+        end
 
         sig do
-          params(
-            card_decline: T.nilable(T.any(Increase::Models::CardPayment::Element::CardDecline, Increase::Util::AnyHash))
-          )
-            .void
+          params(_: T.nilable(Increase::Models::CardPayment::Element::CardDecline))
+            .returns(T.nilable(Increase::Models::CardPayment::Element::CardDecline))
         end
-        attr_writer :card_decline
+        def card_decline=(_)
+        end
 
         # A Card Fuel Confirmation object. This field will be present in the JSON response
         #   if and only if `category` is equal to `card_fuel_confirmation`. Card Fuel
         #   Confirmations update the amount of a Card Authorization after a fuel pump
         #   transaction is completed.
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardFuelConfirmation)) }
-        attr_reader :card_fuel_confirmation
+        def card_fuel_confirmation
+        end
 
         sig do
-          params(
-            card_fuel_confirmation: T.nilable(T.any(Increase::Models::CardPayment::Element::CardFuelConfirmation, Increase::Util::AnyHash))
-          )
-            .void
+          params(_: T.nilable(Increase::Models::CardPayment::Element::CardFuelConfirmation))
+            .returns(T.nilable(Increase::Models::CardPayment::Element::CardFuelConfirmation))
         end
-        attr_writer :card_fuel_confirmation
+        def card_fuel_confirmation=(_)
+        end
 
         # A Card Increment object. This field will be present in the JSON response if and
         #   only if `category` is equal to `card_increment`. Card Increments increase the
         #   pending amount of an authorized transaction.
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardIncrement)) }
-        attr_reader :card_increment
+        def card_increment
+        end
 
         sig do
-          params(
-            card_increment: T.nilable(T.any(Increase::Models::CardPayment::Element::CardIncrement, Increase::Util::AnyHash))
-          )
-            .void
+          params(_: T.nilable(Increase::Models::CardPayment::Element::CardIncrement))
+            .returns(T.nilable(Increase::Models::CardPayment::Element::CardIncrement))
         end
-        attr_writer :card_increment
+        def card_increment=(_)
+        end
 
         # A Card Refund object. This field will be present in the JSON response if and
         #   only if `category` is equal to `card_refund`. Card Refunds move money back to
@@ -187,29 +230,29 @@ module Increase
         #   acquirer can also refund money directly to a card without relation to a
         #   transaction.
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund)) }
-        attr_reader :card_refund
+        def card_refund
+        end
 
         sig do
-          params(
-            card_refund: T.nilable(T.any(Increase::Models::CardPayment::Element::CardRefund, Increase::Util::AnyHash))
-          )
-            .void
+          params(_: T.nilable(Increase::Models::CardPayment::Element::CardRefund))
+            .returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund))
         end
-        attr_writer :card_refund
+        def card_refund=(_)
+        end
 
         # A Card Reversal object. This field will be present in the JSON response if and
         #   only if `category` is equal to `card_reversal`. Card Reversals cancel parts of
         #   or the entirety of an existing Card Authorization.
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardReversal)) }
-        attr_reader :card_reversal
+        def card_reversal
+        end
 
         sig do
-          params(
-            card_reversal: T.nilable(T.any(Increase::Models::CardPayment::Element::CardReversal, Increase::Util::AnyHash))
-          )
-            .void
+          params(_: T.nilable(Increase::Models::CardPayment::Element::CardReversal))
+            .returns(T.nilable(Increase::Models::CardPayment::Element::CardReversal))
         end
-        attr_writer :card_reversal
+        def card_reversal=(_)
+        end
 
         # A Card Settlement object. This field will be present in the JSON response if and
         #   only if `category` is equal to `card_settlement`. Card Settlements are card
@@ -217,61 +260,74 @@ module Increase
         #   preceded by an authorization, an acquirer can also directly clear a transaction
         #   without first authorizing it.
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement)) }
-        attr_reader :card_settlement
+        def card_settlement
+        end
 
         sig do
-          params(
-            card_settlement: T.nilable(T.any(Increase::Models::CardPayment::Element::CardSettlement, Increase::Util::AnyHash))
-          )
-            .void
+          params(_: T.nilable(Increase::Models::CardPayment::Element::CardSettlement))
+            .returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement))
         end
-        attr_writer :card_settlement
+        def card_settlement=(_)
+        end
 
         # A Card Validation object. This field will be present in the JSON response if and
         #   only if `category` is equal to `card_validation`. Card Validations are requests
         #   from a merchant to verify that a card number and optionally its address and/or
         #   Card Verification Value are valid.
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardValidation)) }
-        attr_reader :card_validation
+        def card_validation
+        end
 
         sig do
-          params(
-            card_validation: T.nilable(T.any(Increase::Models::CardPayment::Element::CardValidation, Increase::Util::AnyHash))
-          )
-            .void
+          params(_: T.nilable(Increase::Models::CardPayment::Element::CardValidation))
+            .returns(T.nilable(Increase::Models::CardPayment::Element::CardValidation))
         end
-        attr_writer :card_validation
+        def card_validation=(_)
+        end
 
         # The type of the resource. We may add additional possible values for this enum
         #   over time; your application should be able to handle such additions gracefully.
-        sig { returns(Increase::Models::CardPayment::Element::Category::TaggedSymbol) }
-        attr_accessor :category
+        sig { returns(Symbol) }
+        def category
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def category=(_)
+        end
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #   the card payment element was created.
         sig { returns(Time) }
-        attr_accessor :created_at
+        def created_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def created_at=(_)
+        end
 
         # If the category of this Transaction source is equal to `other`, this field will
         #   contain an empty object, otherwise it will contain null.
         sig { returns(T.nilable(T.anything)) }
-        attr_accessor :other
+        def other
+        end
+
+        sig { params(_: T.nilable(T.anything)).returns(T.nilable(T.anything)) }
+        def other=(_)
+        end
 
         sig do
           params(
-            card_authentication: T.nilable(T.any(Increase::Models::CardPayment::Element::CardAuthentication, Increase::Util::AnyHash)),
-            card_authorization: T.nilable(T.any(Increase::Models::CardPayment::Element::CardAuthorization, Increase::Util::AnyHash)),
-            card_authorization_expiration: T.nilable(
-              T.any(Increase::Models::CardPayment::Element::CardAuthorizationExpiration, Increase::Util::AnyHash)
-            ),
-            card_decline: T.nilable(T.any(Increase::Models::CardPayment::Element::CardDecline, Increase::Util::AnyHash)),
-            card_fuel_confirmation: T.nilable(T.any(Increase::Models::CardPayment::Element::CardFuelConfirmation, Increase::Util::AnyHash)),
-            card_increment: T.nilable(T.any(Increase::Models::CardPayment::Element::CardIncrement, Increase::Util::AnyHash)),
-            card_refund: T.nilable(T.any(Increase::Models::CardPayment::Element::CardRefund, Increase::Util::AnyHash)),
-            card_reversal: T.nilable(T.any(Increase::Models::CardPayment::Element::CardReversal, Increase::Util::AnyHash)),
-            card_settlement: T.nilable(T.any(Increase::Models::CardPayment::Element::CardSettlement, Increase::Util::AnyHash)),
-            card_validation: T.nilable(T.any(Increase::Models::CardPayment::Element::CardValidation, Increase::Util::AnyHash)),
-            category: Increase::Models::CardPayment::Element::Category::OrSymbol,
+            card_authentication: T.nilable(Increase::Models::CardPayment::Element::CardAuthentication),
+            card_authorization: T.nilable(Increase::Models::CardPayment::Element::CardAuthorization),
+            card_authorization_expiration: T.nilable(Increase::Models::CardPayment::Element::CardAuthorizationExpiration),
+            card_decline: T.nilable(Increase::Models::CardPayment::Element::CardDecline),
+            card_fuel_confirmation: T.nilable(Increase::Models::CardPayment::Element::CardFuelConfirmation),
+            card_increment: T.nilable(Increase::Models::CardPayment::Element::CardIncrement),
+            card_refund: T.nilable(Increase::Models::CardPayment::Element::CardRefund),
+            card_reversal: T.nilable(Increase::Models::CardPayment::Element::CardReversal),
+            card_settlement: T.nilable(Increase::Models::CardPayment::Element::CardSettlement),
+            card_validation: T.nilable(Increase::Models::CardPayment::Element::CardValidation),
+            category: Symbol,
             created_at: Time,
             other: T.nilable(T.anything)
           )
@@ -308,7 +364,7 @@ module Increase
                 card_reversal: T.nilable(Increase::Models::CardPayment::Element::CardReversal),
                 card_settlement: T.nilable(Increase::Models::CardPayment::Element::CardSettlement),
                 card_validation: T.nilable(Increase::Models::CardPayment::Element::CardValidation),
-                category: Increase::Models::CardPayment::Element::Category::TaggedSymbol,
+                category: Symbol,
                 created_at: Time,
                 other: T.nilable(T.anything)
               }
@@ -320,91 +376,165 @@ module Increase
         class CardAuthentication < Increase::BaseModel
           # The Card Authentication identifier.
           sig { returns(String) }
-          attr_accessor :id
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
 
           # The identifier of the Card.
           sig { returns(String) }
-          attr_accessor :card_id
+          def card_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def card_id=(_)
+          end
 
           # The ID of the Card Payment this transaction belongs to.
           sig { returns(String) }
-          attr_accessor :card_payment_id
+          def card_payment_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def card_payment_id=(_)
+          end
 
           # The category of the card authentication attempt.
-          sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthentication::Category::TaggedSymbol)) }
-          attr_accessor :category
+          sig { returns(T.nilable(Symbol)) }
+          def category
+          end
+
+          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          def category=(_)
+          end
 
           # Details about the challenge, if one was requested.
           sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthentication::Challenge)) }
-          attr_reader :challenge
+          def challenge
+          end
 
           sig do
-            params(
-              challenge: T.nilable(
-                T.any(Increase::Models::CardPayment::Element::CardAuthentication::Challenge, Increase::Util::AnyHash)
-              )
-            )
-              .void
+            params(_: T.nilable(Increase::Models::CardPayment::Element::CardAuthentication::Challenge))
+              .returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthentication::Challenge))
           end
-          attr_writer :challenge
+          def challenge=(_)
+          end
 
           # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Card
           #   Authentication was attempted.
           sig { returns(Time) }
-          attr_accessor :created_at
+          def created_at
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def created_at=(_)
+          end
 
           # The reason why this authentication attempt was denied, if it was.
-          sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol)) }
-          attr_accessor :deny_reason
+          sig { returns(T.nilable(Symbol)) }
+          def deny_reason
+          end
+
+          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          def deny_reason=(_)
+          end
 
           # The device channel of the card authentication attempt.
-          sig do
-            returns(
-              T.nilable(Increase::Models::CardPayment::Element::CardAuthentication::DeviceChannel::TaggedSymbol)
-            )
+          sig { returns(T.nilable(Symbol)) }
+          def device_channel
           end
-          attr_accessor :device_channel
+
+          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          def device_channel=(_)
+          end
 
           # The merchant identifier (commonly abbreviated as MID) of the merchant the card
           #   is transacting with.
           sig { returns(String) }
-          attr_accessor :merchant_acceptor_id
+          def merchant_acceptor_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_acceptor_id=(_)
+          end
 
           # The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
           #   card is transacting with.
           sig { returns(String) }
-          attr_accessor :merchant_category_code
+          def merchant_category_code
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_category_code=(_)
+          end
 
           # The country the merchant resides in.
           sig { returns(String) }
-          attr_accessor :merchant_country
+          def merchant_country
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_country=(_)
+          end
 
           # The name of the merchant.
           sig { returns(String) }
-          attr_accessor :merchant_name
+          def merchant_name
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_name=(_)
+          end
 
           # The purchase amount in minor units.
           sig { returns(T.nilable(Integer)) }
-          attr_accessor :purchase_amount
+          def purchase_amount
+          end
+
+          sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+          def purchase_amount=(_)
+          end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   authentication attempt's purchase currency.
           sig { returns(T.nilable(String)) }
-          attr_accessor :purchase_currency
+          def purchase_currency
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def purchase_currency=(_)
+          end
 
           # The identifier of the Real-Time Decision sent to approve or decline this
           #   authentication attempt.
           sig { returns(T.nilable(String)) }
-          attr_accessor :real_time_decision_id
+          def real_time_decision_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def real_time_decision_id=(_)
+          end
 
           # The status of the card authentication.
-          sig { returns(Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol) }
-          attr_accessor :status
+          sig { returns(Symbol) }
+          def status
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def status=(_)
+          end
 
           # A constant representing the object's type. For this resource it will always be
           #   `card_authentication`.
-          sig { returns(Increase::Models::CardPayment::Element::CardAuthentication::Type::TaggedSymbol) }
-          attr_accessor :type
+          sig { returns(Symbol) }
+          def type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def type=(_)
+          end
 
           # A Card Authentication object. This field will be present in the JSON response if
           #   and only if `category` is equal to `card_authentication`. Card Authentications
@@ -414,13 +544,11 @@ module Increase
               id: String,
               card_id: String,
               card_payment_id: String,
-              category: T.nilable(Increase::Models::CardPayment::Element::CardAuthentication::Category::OrSymbol),
-              challenge: T.nilable(
-                T.any(Increase::Models::CardPayment::Element::CardAuthentication::Challenge, Increase::Util::AnyHash)
-              ),
+              category: T.nilable(Symbol),
+              challenge: T.nilable(Increase::Models::CardPayment::Element::CardAuthentication::Challenge),
               created_at: Time,
-              deny_reason: T.nilable(Increase::Models::CardPayment::Element::CardAuthentication::DenyReason::OrSymbol),
-              device_channel: T.nilable(Increase::Models::CardPayment::Element::CardAuthentication::DeviceChannel::OrSymbol),
+              deny_reason: T.nilable(Symbol),
+              device_channel: T.nilable(Symbol),
               merchant_acceptor_id: String,
               merchant_category_code: String,
               merchant_country: String,
@@ -428,8 +556,8 @@ module Increase
               purchase_amount: T.nilable(Integer),
               purchase_currency: T.nilable(String),
               real_time_decision_id: T.nilable(String),
-              status: Increase::Models::CardPayment::Element::CardAuthentication::Status::OrSymbol,
-              type: Increase::Models::CardPayment::Element::CardAuthentication::Type::OrSymbol
+              status: Symbol,
+              type: Symbol
             )
               .returns(T.attached_class)
           end
@@ -461,11 +589,11 @@ module Increase
                   id: String,
                   card_id: String,
                   card_payment_id: String,
-                  category: T.nilable(Increase::Models::CardPayment::Element::CardAuthentication::Category::TaggedSymbol),
+                  category: T.nilable(Symbol),
                   challenge: T.nilable(Increase::Models::CardPayment::Element::CardAuthentication::Challenge),
                   created_at: Time,
-                  deny_reason: T.nilable(Increase::Models::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol),
-                  device_channel: T.nilable(Increase::Models::CardPayment::Element::CardAuthentication::DeviceChannel::TaggedSymbol),
+                  deny_reason: T.nilable(Symbol),
+                  device_channel: T.nilable(Symbol),
                   merchant_acceptor_id: String,
                   merchant_category_code: String,
                   merchant_country: String,
@@ -473,8 +601,8 @@ module Increase
                   purchase_amount: T.nilable(Integer),
                   purchase_currency: T.nilable(String),
                   real_time_decision_id: T.nilable(String),
-                  status: Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol,
-                  type: Increase::Models::CardPayment::Element::CardAuthentication::Type::TaggedSymbol
+                  status: Symbol,
+                  type: Symbol
                 }
               )
           end
@@ -482,77 +610,76 @@ module Increase
           end
 
           # The category of the card authentication attempt.
-          module Category
-            extend Increase::Enum
+          class Category < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardAuthentication::Category) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardAuthentication::Category::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # The authentication attempt is for a payment.
-            PAYMENT_AUTHENTICATION =
-              T.let(
-                :payment_authentication,
-                Increase::Models::CardPayment::Element::CardAuthentication::Category::TaggedSymbol
-              )
+            PAYMENT_AUTHENTICATION = :payment_authentication
 
             # The authentication attempt is not for a payment.
-            NON_PAYMENT_AUTHENTICATION =
-              T.let(
-                :non_payment_authentication,
-                Increase::Models::CardPayment::Element::CardAuthentication::Category::TaggedSymbol
-              )
-
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Category::TaggedSymbol])
-              end
-              def values
-              end
-            end
+            NON_PAYMENT_AUTHENTICATION = :non_payment_authentication
           end
 
           class Challenge < Increase::BaseModel
             # Details about the challenge verification attempts, if any happened.
             sig { returns(T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt]) }
-            attr_accessor :attempts
+            def attempts
+            end
+
+            sig do
+              params(_: T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt])
+                .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt])
+            end
+            def attempts=(_)
+            end
 
             # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Card
             #   Authentication Challenge was started.
             sig { returns(Time) }
-            attr_accessor :created_at
+            def created_at
+            end
+
+            sig { params(_: Time).returns(Time) }
+            def created_at=(_)
+            end
 
             # The one-time code used for the Card Authentication Challenge.
             sig { returns(String) }
-            attr_accessor :one_time_code
+            def one_time_code
+            end
+
+            sig { params(_: String).returns(String) }
+            def one_time_code=(_)
+            end
 
             # The method used to verify the Card Authentication Challenge.
-            sig do
-              returns(
-                Increase::Models::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod::TaggedSymbol
-              )
+            sig { returns(Symbol) }
+            def verification_method
             end
-            attr_accessor :verification_method
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def verification_method=(_)
+            end
 
             # E.g., the email address or phone number used for the Card Authentication
             #   Challenge.
             sig { returns(T.nilable(String)) }
-            attr_accessor :verification_value
+            def verification_value
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def verification_value=(_)
+            end
 
             # Details about the challenge, if one was requested.
             sig do
               params(
-                attempts: T::Array[
-                T.any(
-                  Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt,
-                  Increase::Util::AnyHash
-                )
-                ],
+                attempts: T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt],
                 created_at: Time,
                 one_time_code: String,
-                verification_method: Increase::Models::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod::OrSymbol,
+                verification_method: Symbol,
                 verification_value: T.nilable(String)
               )
                 .returns(T.attached_class)
@@ -567,7 +694,7 @@ module Increase
                     attempts: T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt],
                     created_at: Time,
                     one_time_code: String,
-                    verification_method: Increase::Models::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod::TaggedSymbol,
+                    verification_method: Symbol,
                     verification_value: T.nilable(String)
                   }
                 )
@@ -579,466 +706,415 @@ module Increase
               # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time of the Card
               #   Authentication Challenge Attempt.
               sig { returns(Time) }
-              attr_accessor :created_at
+              def created_at
+              end
+
+              sig { params(_: Time).returns(Time) }
+              def created_at=(_)
+              end
 
               # The outcome of the Card Authentication Challenge Attempt.
-              sig do
-                returns(
-                  Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome::TaggedSymbol
-                )
+              sig { returns(Symbol) }
+              def outcome
               end
-              attr_accessor :outcome
 
-              sig do
-                params(
-                  created_at: Time,
-                  outcome: Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome::OrSymbol
-                )
-                  .returns(T.attached_class)
+              sig { params(_: Symbol).returns(Symbol) }
+              def outcome=(_)
               end
+
+              sig { params(created_at: Time, outcome: Symbol).returns(T.attached_class) }
               def self.new(created_at:, outcome:)
               end
 
-              sig do
-                override
-                  .returns(
-                    {
-                      created_at: Time,
-                      outcome: Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome::TaggedSymbol
-                    }
-                  )
-              end
+              sig { override.returns({created_at: Time, outcome: Symbol}) }
               def to_hash
               end
 
               # The outcome of the Card Authentication Challenge Attempt.
-              module Outcome
-                extend Increase::Enum
+              class Outcome < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome) }
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # The attempt was successful.
-                SUCCESSFUL =
-                  T.let(
-                    :successful,
-                    Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome::TaggedSymbol
-                  )
+                SUCCESSFUL = :successful
 
                 # The attempt was unsuccessful.
-                FAILED =
-                  T.let(
-                    :failed,
-                    Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome::TaggedSymbol]
-                      )
-                  end
-                  def values
-                  end
-                end
+                FAILED = :failed
               end
             end
 
             # The method used to verify the Card Authentication Challenge.
-            module VerificationMethod
-              extend Increase::Enum
+            class VerificationMethod < Increase::Enum
+              abstract!
 
-              TaggedSymbol =
-                T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod) }
-              OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    Increase::Models::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod::TaggedSymbol
-                  )
-                end
+              Value = type_template(:out) { {fixed: Symbol} }
 
               # The one-time code was sent via text message.
-              TEXT_MESSAGE =
-                T.let(
-                  :text_message,
-                  Increase::Models::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod::TaggedSymbol
-                )
+              TEXT_MESSAGE = :text_message
 
               # The one-time code was sent via email.
-              EMAIL =
-                T.let(
-                  :email,
-                  Increase::Models::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod::TaggedSymbol
-                )
+              EMAIL = :email
 
               # The one-time code was not successfully delievered.
-              NONE_AVAILABLE =
-                T.let(
-                  :none_available,
-                  Increase::Models::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod::TaggedSymbol
-                )
-
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod::TaggedSymbol]
-                    )
-                end
-                def values
-                end
-              end
+              NONE_AVAILABLE = :none_available
             end
           end
 
           # The reason why this authentication attempt was denied, if it was.
-          module DenyReason
-            extend Increase::Enum
+          class DenyReason < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardAuthentication::DenyReason) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # The group was locked.
-            GROUP_LOCKED =
-              T.let(:group_locked, Increase::Models::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol)
+            GROUP_LOCKED = :group_locked
 
             # The card was not active.
-            CARD_NOT_ACTIVE =
-              T.let(
-                :card_not_active,
-                Increase::Models::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol
-              )
+            CARD_NOT_ACTIVE = :card_not_active
 
             # The entity was not active.
-            ENTITY_NOT_ACTIVE =
-              T.let(
-                :entity_not_active,
-                Increase::Models::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol
-              )
+            ENTITY_NOT_ACTIVE = :entity_not_active
 
             # The transaction was not allowed.
-            TRANSACTION_NOT_ALLOWED =
-              T.let(
-                :transaction_not_allowed,
-                Increase::Models::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol
-              )
+            TRANSACTION_NOT_ALLOWED = :transaction_not_allowed
 
             # The webhook was denied.
-            WEBHOOK_DENIED =
-              T.let(
-                :webhook_denied,
-                Increase::Models::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol
-              )
+            WEBHOOK_DENIED = :webhook_denied
 
             # The webhook timed out.
-            WEBHOOK_TIMED_OUT =
-              T.let(
-                :webhook_timed_out,
-                Increase::Models::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol
-              )
-
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol])
-              end
-              def values
-              end
-            end
+            WEBHOOK_TIMED_OUT = :webhook_timed_out
           end
 
           # The device channel of the card authentication attempt.
-          module DeviceChannel
-            extend Increase::Enum
+          class DeviceChannel < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardAuthentication::DeviceChannel) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardAuthentication::DeviceChannel::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # The authentication attempt was made from an app.
-            APP =
-              T.let(:app, Increase::Models::CardPayment::Element::CardAuthentication::DeviceChannel::TaggedSymbol)
+            APP = :app
 
             # The authentication attempt was made from a browser.
-            BROWSER =
-              T.let(:browser, Increase::Models::CardPayment::Element::CardAuthentication::DeviceChannel::TaggedSymbol)
+            BROWSER = :browser
 
             # The authentication attempt was initiated by the 3DS Requestor.
-            THREE_DS_REQUESTOR_INITIATED =
-              T.let(
-                :three_ds_requestor_initiated,
-                Increase::Models::CardPayment::Element::CardAuthentication::DeviceChannel::TaggedSymbol
-              )
-
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthentication::DeviceChannel::TaggedSymbol])
-              end
-              def values
-              end
-            end
+            THREE_DS_REQUESTOR_INITIATED = :three_ds_requestor_initiated
           end
 
           # The status of the card authentication.
-          module Status
-            extend Increase::Enum
+          class Status < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardAuthentication::Status) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # The authentication attempt was denied.
-            DENIED = T.let(:denied, Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol)
+            DENIED = :denied
 
             # The authentication attempt was authenticated with a challenge.
-            AUTHENTICATED_WITH_CHALLENGE =
-              T.let(
-                :authenticated_with_challenge,
-                Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
-              )
+            AUTHENTICATED_WITH_CHALLENGE = :authenticated_with_challenge
 
             # The authentication attempt was authenticated without a challenge.
-            AUTHENTICATED_WITHOUT_CHALLENGE =
-              T.let(
-                :authenticated_without_challenge,
-                Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
-              )
+            AUTHENTICATED_WITHOUT_CHALLENGE = :authenticated_without_challenge
 
             # The authentication attempt is awaiting a challenge.
-            AWAITING_CHALLENGE =
-              T.let(
-                :awaiting_challenge,
-                Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
-              )
+            AWAITING_CHALLENGE = :awaiting_challenge
 
             # The authentication attempt is validating a challenge.
-            VALIDATING_CHALLENGE =
-              T.let(
-                :validating_challenge,
-                Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
-              )
+            VALIDATING_CHALLENGE = :validating_challenge
 
             # The authentication attempt was canceled.
-            CANCELED =
-              T.let(:canceled, Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol)
+            CANCELED = :canceled
 
             # The authentication attempt timed out while awaiting a challenge.
-            TIMED_OUT_AWAITING_CHALLENGE =
-              T.let(
-                :timed_out_awaiting_challenge,
-                Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
-              )
+            TIMED_OUT_AWAITING_CHALLENGE = :timed_out_awaiting_challenge
 
             # The authentication attempt errored.
-            ERRORED =
-              T.let(:errored, Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol)
+            ERRORED = :errored
 
             # The authentication attempt exceeded the attempt threshold.
-            EXCEEDED_ATTEMPT_THRESHOLD =
-              T.let(
-                :exceeded_attempt_threshold,
-                Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
-              )
-
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol])
-              end
-              def values
-              end
-            end
+            EXCEEDED_ATTEMPT_THRESHOLD = :exceeded_attempt_threshold
           end
 
           # A constant representing the object's type. For this resource it will always be
           #   `card_authentication`.
-          module Type
-            extend Increase::Enum
+          class Type < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardAuthentication::Type) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardAuthentication::Type::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            CARD_AUTHENTICATION =
-              T.let(
-                :card_authentication,
-                Increase::Models::CardPayment::Element::CardAuthentication::Type::TaggedSymbol
-              )
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Type::TaggedSymbol]) }
-              def values
-              end
-            end
+            CARD_AUTHENTICATION = :card_authentication
           end
         end
 
         class CardAuthorization < Increase::BaseModel
           # The Card Authorization identifier.
           sig { returns(String) }
-          attr_accessor :id
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
 
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
-          sig { returns(Increase::Models::CardPayment::Element::CardAuthorization::Actioner::TaggedSymbol) }
-          attr_accessor :actioner
+          sig { returns(Symbol) }
+          def actioner
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def actioner=(_)
+          end
 
           # The pending amount in the minor unit of the transaction's currency. For dollars,
           #   for example, this is cents.
           sig { returns(Integer) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: Integer).returns(Integer) }
+          def amount=(_)
+          end
 
           # The ID of the Card Payment this transaction belongs to.
           sig { returns(String) }
-          attr_accessor :card_payment_id
+          def card_payment_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def card_payment_id=(_)
+          end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
-          sig { returns(Increase::Models::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol) }
-          attr_accessor :currency
+          sig { returns(Symbol) }
+          def currency
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def currency=(_)
+          end
 
           # If the authorization was made via a Digital Wallet Token (such as an Apple Pay
           #   purchase), the identifier of the token that was used.
           sig { returns(T.nilable(String)) }
-          attr_accessor :digital_wallet_token_id
+          def digital_wallet_token_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def digital_wallet_token_id=(_)
+          end
 
           # The direction describes the direction the funds will move, either from the
           #   cardholder to the merchant or from the merchant to the cardholder.
-          sig { returns(Increase::Models::CardPayment::Element::CardAuthorization::Direction::TaggedSymbol) }
-          attr_accessor :direction
+          sig { returns(Symbol) }
+          def direction
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def direction=(_)
+          end
 
           # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) when this authorization
           #   will expire and the pending transaction will be released.
           sig { returns(Time) }
-          attr_accessor :expires_at
+          def expires_at
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def expires_at=(_)
+          end
 
           # The merchant identifier (commonly abbreviated as MID) of the merchant the card
           #   is transacting with.
           sig { returns(String) }
-          attr_accessor :merchant_acceptor_id
+          def merchant_acceptor_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_acceptor_id=(_)
+          end
 
           # The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
           #   card is transacting with.
           sig { returns(String) }
-          attr_accessor :merchant_category_code
+          def merchant_category_code
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_category_code=(_)
+          end
 
           # The city the merchant resides in.
           sig { returns(T.nilable(String)) }
-          attr_accessor :merchant_city
+          def merchant_city
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def merchant_city=(_)
+          end
 
           # The country the merchant resides in.
           sig { returns(String) }
-          attr_accessor :merchant_country
+          def merchant_country
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_country=(_)
+          end
 
           # The merchant descriptor of the merchant the card is transacting with.
           sig { returns(String) }
-          attr_accessor :merchant_descriptor
+          def merchant_descriptor
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_descriptor=(_)
+          end
 
           # The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
           #   ZIP code, where the first 5 and last 4 are separated by a dash.
           sig { returns(T.nilable(String)) }
-          attr_accessor :merchant_postal_code
+          def merchant_postal_code
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def merchant_postal_code=(_)
+          end
 
           # The state the merchant resides in.
           sig { returns(T.nilable(String)) }
-          attr_accessor :merchant_state
+          def merchant_state
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def merchant_state=(_)
+          end
 
           # Fields specific to the `network`.
           sig { returns(Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails) }
-          attr_reader :network_details
+          def network_details
+          end
 
           sig do
-            params(
-              network_details: T.any(Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails, Increase::Util::AnyHash)
-            )
-              .void
+            params(_: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails)
+              .returns(Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails)
           end
-          attr_writer :network_details
+          def network_details=(_)
+          end
 
           # Network-specific identifiers for a specific request or transaction.
           sig { returns(Increase::Models::CardPayment::Element::CardAuthorization::NetworkIdentifiers) }
-          attr_reader :network_identifiers
+          def network_identifiers
+          end
 
           sig do
-            params(
-              network_identifiers: T.any(
-                Increase::Models::CardPayment::Element::CardAuthorization::NetworkIdentifiers,
-                Increase::Util::AnyHash
-              )
-            )
-              .void
+            params(_: Increase::Models::CardPayment::Element::CardAuthorization::NetworkIdentifiers)
+              .returns(Increase::Models::CardPayment::Element::CardAuthorization::NetworkIdentifiers)
           end
-          attr_writer :network_identifiers
+          def network_identifiers=(_)
+          end
 
           # The risk score generated by the card network. For Visa this is the Visa Advanced
           #   Authorization risk score, from 0 to 99, where 99 is the riskiest.
           sig { returns(T.nilable(Integer)) }
-          attr_accessor :network_risk_score
+          def network_risk_score
+          end
+
+          sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+          def network_risk_score=(_)
+          end
 
           # The identifier of the Pending Transaction associated with this Transaction.
           sig { returns(T.nilable(String)) }
-          attr_accessor :pending_transaction_id
+          def pending_transaction_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def pending_transaction_id=(_)
+          end
 
           # If the authorization was made in-person with a physical card, the Physical Card
           #   that was used.
           sig { returns(T.nilable(String)) }
-          attr_accessor :physical_card_id
+          def physical_card_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def physical_card_id=(_)
+          end
 
           # The pending amount in the minor unit of the transaction's presentment currency.
           sig { returns(Integer) }
-          attr_accessor :presentment_amount
+          def presentment_amount
+          end
+
+          sig { params(_: Integer).returns(Integer) }
+          def presentment_amount=(_)
+          end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's presentment currency.
           sig { returns(String) }
-          attr_accessor :presentment_currency
+          def presentment_currency
+          end
+
+          sig { params(_: String).returns(String) }
+          def presentment_currency=(_)
+          end
 
           # The processing category describes the intent behind the authorization, such as
           #   whether it was used for bill payments or an automatic fuel dispenser.
-          sig { returns(Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol) }
-          attr_accessor :processing_category
+          sig { returns(Symbol) }
+          def processing_category
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def processing_category=(_)
+          end
 
           # The identifier of the Real-Time Decision sent to approve or decline this
           #   transaction.
           sig { returns(T.nilable(String)) }
-          attr_accessor :real_time_decision_id
+          def real_time_decision_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def real_time_decision_id=(_)
+          end
 
           # The terminal identifier (commonly abbreviated as TID) of the terminal the card
           #   is transacting with.
           sig { returns(T.nilable(String)) }
-          attr_accessor :terminal_id
+          def terminal_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def terminal_id=(_)
+          end
 
           # A constant representing the object's type. For this resource it will always be
           #   `card_authorization`.
-          sig { returns(Increase::Models::CardPayment::Element::CardAuthorization::Type::TaggedSymbol) }
-          attr_accessor :type
+          sig { returns(Symbol) }
+          def type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def type=(_)
+          end
 
           # Fields related to verification of cardholder-provided values.
           sig { returns(Increase::Models::CardPayment::Element::CardAuthorization::Verification) }
-          attr_reader :verification
+          def verification
+          end
 
           sig do
-            params(
-              verification: T.any(Increase::Models::CardPayment::Element::CardAuthorization::Verification, Increase::Util::AnyHash)
-            )
-              .void
+            params(_: Increase::Models::CardPayment::Element::CardAuthorization::Verification)
+              .returns(Increase::Models::CardPayment::Element::CardAuthorization::Verification)
           end
-          attr_writer :verification
+          def verification=(_)
+          end
 
           # A Card Authorization object. This field will be present in the JSON response if
           #   and only if `category` is equal to `card_authorization`. Card Authorizations are
@@ -1047,12 +1123,12 @@ module Increase
           sig do
             params(
               id: String,
-              actioner: Increase::Models::CardPayment::Element::CardAuthorization::Actioner::OrSymbol,
+              actioner: Symbol,
               amount: Integer,
               card_payment_id: String,
-              currency: Increase::Models::CardPayment::Element::CardAuthorization::Currency::OrSymbol,
+              currency: Symbol,
               digital_wallet_token_id: T.nilable(String),
-              direction: Increase::Models::CardPayment::Element::CardAuthorization::Direction::OrSymbol,
+              direction: Symbol,
               expires_at: Time,
               merchant_acceptor_id: String,
               merchant_category_code: String,
@@ -1061,21 +1137,18 @@ module Increase
               merchant_descriptor: String,
               merchant_postal_code: T.nilable(String),
               merchant_state: T.nilable(String),
-              network_details: T.any(Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails, Increase::Util::AnyHash),
-              network_identifiers: T.any(
-                Increase::Models::CardPayment::Element::CardAuthorization::NetworkIdentifiers,
-                Increase::Util::AnyHash
-              ),
+              network_details: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails,
+              network_identifiers: Increase::Models::CardPayment::Element::CardAuthorization::NetworkIdentifiers,
               network_risk_score: T.nilable(Integer),
               pending_transaction_id: T.nilable(String),
               physical_card_id: T.nilable(String),
               presentment_amount: Integer,
               presentment_currency: String,
-              processing_category: Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory::OrSymbol,
+              processing_category: Symbol,
               real_time_decision_id: T.nilable(String),
               terminal_id: T.nilable(String),
-              type: Increase::Models::CardPayment::Element::CardAuthorization::Type::OrSymbol,
-              verification: T.any(Increase::Models::CardPayment::Element::CardAuthorization::Verification, Increase::Util::AnyHash)
+              type: Symbol,
+              verification: Increase::Models::CardPayment::Element::CardAuthorization::Verification
             )
               .returns(T.attached_class)
           end
@@ -1115,12 +1188,12 @@ module Increase
               .returns(
                 {
                   id: String,
-                  actioner: Increase::Models::CardPayment::Element::CardAuthorization::Actioner::TaggedSymbol,
+                  actioner: Symbol,
                   amount: Integer,
                   card_payment_id: String,
-                  currency: Increase::Models::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol,
+                  currency: Symbol,
                   digital_wallet_token_id: T.nilable(String),
-                  direction: Increase::Models::CardPayment::Element::CardAuthorization::Direction::TaggedSymbol,
+                  direction: Symbol,
                   expires_at: Time,
                   merchant_acceptor_id: String,
                   merchant_category_code: String,
@@ -1136,10 +1209,10 @@ module Increase
                   physical_card_id: T.nilable(String),
                   presentment_amount: Integer,
                   presentment_currency: String,
-                  processing_category: Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol,
+                  processing_category: Symbol,
                   real_time_decision_id: T.nilable(String),
                   terminal_id: T.nilable(String),
-                  type: Increase::Models::CardPayment::Element::CardAuthorization::Type::TaggedSymbol,
+                  type: Symbol,
                   verification: Increase::Models::CardPayment::Element::CardAuthorization::Verification
                 }
               )
@@ -1149,133 +1222,88 @@ module Increase
 
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
-          module Actioner
-            extend Increase::Enum
+          class Actioner < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardAuthorization::Actioner) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardAuthorization::Actioner::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # This object was actioned by the user through a real-time decision.
-            USER = T.let(:user, Increase::Models::CardPayment::Element::CardAuthorization::Actioner::TaggedSymbol)
+            USER = :user
 
             # This object was actioned by Increase without user intervention.
-            INCREASE =
-              T.let(:increase, Increase::Models::CardPayment::Element::CardAuthorization::Actioner::TaggedSymbol)
+            INCREASE = :increase
 
             # This object was actioned by the network, through stand-in processing.
-            NETWORK =
-              T.let(:network, Increase::Models::CardPayment::Element::CardAuthorization::Actioner::TaggedSymbol)
-
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthorization::Actioner::TaggedSymbol])
-              end
-              def values
-              end
-            end
+            NETWORK = :network
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
-          module Currency
-            extend Increase::Enum
+          class Currency < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardAuthorization::Currency) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
-            CAD = T.let(:CAD, Increase::Models::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol)
+            CAD = :CAD
 
             # Swiss Franc (CHF)
-            CHF = T.let(:CHF, Increase::Models::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol)
+            CHF = :CHF
 
             # Euro (EUR)
-            EUR = T.let(:EUR, Increase::Models::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol)
+            EUR = :EUR
 
             # British Pound (GBP)
-            GBP = T.let(:GBP, Increase::Models::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol)
+            GBP = :GBP
 
             # Japanese Yen (JPY)
-            JPY = T.let(:JPY, Increase::Models::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol)
+            JPY = :JPY
 
             # US Dollar (USD)
-            USD = T.let(:USD, Increase::Models::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol)
-
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol])
-              end
-              def values
-              end
-            end
+            USD = :USD
           end
 
           # The direction describes the direction the funds will move, either from the
           #   cardholder to the merchant or from the merchant to the cardholder.
-          module Direction
-            extend Increase::Enum
+          class Direction < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardAuthorization::Direction) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardAuthorization::Direction::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # A regular card authorization where funds are debited from the cardholder.
-            SETTLEMENT =
-              T.let(:settlement, Increase::Models::CardPayment::Element::CardAuthorization::Direction::TaggedSymbol)
+            SETTLEMENT = :settlement
 
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
-            REFUND =
-              T.let(:refund, Increase::Models::CardPayment::Element::CardAuthorization::Direction::TaggedSymbol)
-
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthorization::Direction::TaggedSymbol])
-              end
-              def values
-              end
-            end
+            REFUND = :refund
           end
 
           class NetworkDetails < Increase::BaseModel
             # The payment network used to process this card authorization.
-            sig { returns(Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Category::TaggedSymbol) }
-            attr_accessor :category
+            sig { returns(Symbol) }
+            def category
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def category=(_)
+            end
 
             # Fields specific to the `visa` network.
             sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa)) }
-            attr_reader :visa
+            def visa
+            end
 
             sig do
-              params(
-                visa: T.nilable(
-                  T.any(
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa,
-                    Increase::Util::AnyHash
-                  )
-                )
-              )
-                .void
+              params(_: T.nilable(Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa))
+                .returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa))
             end
-            attr_writer :visa
+            def visa=(_)
+            end
 
             # Fields specific to the `network`.
             sig do
               params(
-                category: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Category::OrSymbol,
-                visa: T.nilable(
-                  T.any(
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa,
-                    Increase::Util::AnyHash
-                  )
-                )
+                category: Symbol,
+                visa: T.nilable(Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa)
               )
                 .returns(T.attached_class)
             end
@@ -1286,7 +1314,7 @@ module Increase
               override
                 .returns(
                   {
-                    category: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Category::TaggedSymbol,
+                    category: Symbol,
                     visa: T.nilable(Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa)
                   }
                 )
@@ -1295,85 +1323,53 @@ module Increase
             end
 
             # The payment network used to process this card authorization.
-            module Category
-              extend Increase::Enum
+            class Category < Increase::Enum
+              abstract!
 
-              TaggedSymbol =
-                T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Category) }
-              OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Category::TaggedSymbol
-                  )
-                end
+              Value = type_template(:out) { {fixed: Symbol} }
 
               # Visa
-              VISA =
-                T.let(
-                  :visa,
-                  Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Category::TaggedSymbol
-                )
-
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Category::TaggedSymbol]
-                    )
-                end
-                def values
-                end
-              end
+              VISA = :visa
             end
 
             class Visa < Increase::BaseModel
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
               #   transactions, identifies the type of mail or telephone order.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
-                )
+              sig { returns(T.nilable(Symbol)) }
+              def electronic_commerce_indicator
               end
-              attr_accessor :electronic_commerce_indicator
+
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+              def electronic_commerce_indicator=(_)
+              end
 
               # The method used to enter the cardholder's primary account number and card
               #   expiration date.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
-                )
+              sig { returns(T.nilable(Symbol)) }
+              def point_of_service_entry_mode
               end
-              attr_accessor :point_of_service_entry_mode
+
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+              def point_of_service_entry_mode=(_)
+              end
 
               # Only present when `actioner: network`. Describes why a card authorization was
               #   approved or declined by Visa through stand-in processing.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
-                )
+              sig { returns(T.nilable(Symbol)) }
+              def stand_in_processing_reason
               end
-              attr_accessor :stand_in_processing_reason
+
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+              def stand_in_processing_reason=(_)
+              end
 
               # Fields specific to the `visa` network.
               sig do
                 params(
-                  electronic_commerce_indicator: T.nilable(
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::OrSymbol
-                  ),
-                  point_of_service_entry_mode: T.nilable(
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::OrSymbol
-                  ),
-                  stand_in_processing_reason: T.nilable(
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::OrSymbol
-                  )
+                  electronic_commerce_indicator: T.nilable(Symbol),
+                  point_of_service_entry_mode: T.nilable(Symbol),
+                  stand_in_processing_reason: T.nilable(Symbol)
                 )
                   .returns(T.attached_class)
               end
@@ -1384,15 +1380,9 @@ module Increase
                 override
                   .returns(
                     {
-                      electronic_commerce_indicator: T.nilable(
-                        Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                      ),
-                      point_of_service_entry_mode: T.nilable(
-                        Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                      ),
-                      stand_in_processing_reason: T.nilable(
-                        Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                      )
+                      electronic_commerce_indicator: T.nilable(Symbol),
+                      point_of_service_entry_mode: T.nilable(Symbol),
+                      stand_in_processing_reason: T.nilable(Symbol)
                     }
                   )
               end
@@ -1402,270 +1392,104 @@ module Increase
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
               #   transactions, identifies the type of mail or telephone order.
-              module ElectronicCommerceIndicator
-                extend Increase::Enum
+              class ElectronicCommerceIndicator < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
-                MAIL_PHONE_ORDER =
-                  T.let(
-                    :mail_phone_order,
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                MAIL_PHONE_ORDER = :mail_phone_order
 
                 # Recurring transaction: Payment indicator used to indicate a recurring transaction that originates from an acquirer in the US region.
-                RECURRING =
-                  T.let(
-                    :recurring,
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                RECURRING = :recurring
 
                 # Installment payment: Payment indicator used to indicate one purchase of goods or services that is billed to the account in multiple charges over a period of time agreed upon by the cardholder and merchant from transactions that originate from an acquirer in the US region.
-                INSTALLMENT =
-                  T.let(
-                    :installment,
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                INSTALLMENT = :installment
 
                 # Unknown classification: other mail order: Use to indicate that the type of mail/telephone order is unknown.
-                UNKNOWN_MAIL_PHONE_ORDER =
-                  T.let(
-                    :unknown_mail_phone_order,
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                UNKNOWN_MAIL_PHONE_ORDER = :unknown_mail_phone_order
 
                 # Secure electronic commerce transaction: Use to indicate that the electronic commerce transaction has been authenticated using e.g., 3-D Secure
-                SECURE_ELECTRONIC_COMMERCE =
-                  T.let(
-                    :secure_electronic_commerce,
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                SECURE_ELECTRONIC_COMMERCE = :secure_electronic_commerce
 
                 # Non-authenticated security transaction at a 3-D Secure-capable merchant, and merchant attempted to authenticate the cardholder using 3-D Secure: Use to identify an electronic commerce transaction where the merchant attempted to authenticate the cardholder using 3-D Secure, but was unable to complete the authentication because the issuer or cardholder does not participate in the 3-D Secure program.
                 NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT =
-                  T.let(
-                    :non_authenticated_security_transaction_at_3ds_capable_merchant,
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                  :non_authenticated_security_transaction_at_3ds_capable_merchant
 
                 # Non-authenticated security transaction: Use to identify an electronic commerce transaction that uses data encryption for security however , cardholder authentication is not performed using 3-D Secure.
-                NON_AUTHENTICATED_SECURITY_TRANSACTION =
-                  T.let(
-                    :non_authenticated_security_transaction,
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                NON_AUTHENTICATED_SECURITY_TRANSACTION = :non_authenticated_security_transaction
 
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
-                NON_SECURE_TRANSACTION =
-                  T.let(
-                    :non_secure_transaction,
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                NON_SECURE_TRANSACTION = :non_secure_transaction
               end
 
               # The method used to enter the cardholder's primary account number and card
               #   expiration date.
-              module PointOfServiceEntryMode
-                extend Increase::Enum
+              class PointOfServiceEntryMode < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # Unknown
-                UNKNOWN =
-                  T.let(
-                    :unknown,
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                UNKNOWN = :unknown
 
                 # Manual key entry
-                MANUAL =
-                  T.let(
-                    :manual,
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                MANUAL = :manual
 
                 # Magnetic stripe read, without card verification value
-                MAGNETIC_STRIPE_NO_CVV =
-                  T.let(
-                    :magnetic_stripe_no_cvv,
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                MAGNETIC_STRIPE_NO_CVV = :magnetic_stripe_no_cvv
 
                 # Optical code
-                OPTICAL_CODE =
-                  T.let(
-                    :optical_code,
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                OPTICAL_CODE = :optical_code
 
                 # Contact chip card
-                INTEGRATED_CIRCUIT_CARD =
-                  T.let(
-                    :integrated_circuit_card,
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                INTEGRATED_CIRCUIT_CARD = :integrated_circuit_card
 
                 # Contactless read of chip card
-                CONTACTLESS =
-                  T.let(
-                    :contactless,
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                CONTACTLESS = :contactless
 
                 # Transaction initiated using a credential that has previously been stored on file
-                CREDENTIAL_ON_FILE =
-                  T.let(
-                    :credential_on_file,
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                CREDENTIAL_ON_FILE = :credential_on_file
 
                 # Magnetic stripe read
-                MAGNETIC_STRIPE =
-                  T.let(
-                    :magnetic_stripe,
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                MAGNETIC_STRIPE = :magnetic_stripe
 
                 # Contactless read of magnetic stripe data
-                CONTACTLESS_MAGNETIC_STRIPE =
-                  T.let(
-                    :contactless_magnetic_stripe,
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                CONTACTLESS_MAGNETIC_STRIPE = :contactless_magnetic_stripe
 
                 # Contact chip card, without card verification value
-                INTEGRATED_CIRCUIT_CARD_NO_CVV =
-                  T.let(
-                    :integrated_circuit_card_no_cvv,
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
               end
 
               # Only present when `actioner: network`. Describes why a card authorization was
               #   approved or declined by Visa through stand-in processing.
-              module StandInProcessingReason
-                extend Increase::Enum
+              class StandInProcessingReason < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # Increase failed to process the authorization in a timely manner.
-                ISSUER_ERROR =
-                  T.let(
-                    :issuer_error,
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
+                ISSUER_ERROR = :issuer_error
 
                 # The physical card read had an invalid CVV, dCVV, or authorization request cryptogram.
-                INVALID_PHYSICAL_CARD =
-                  T.let(
-                    :invalid_physical_card,
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
+                INVALID_PHYSICAL_CARD = :invalid_physical_card
 
                 # The 3DS cardholder authentication verification value was invalid.
                 INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE =
-                  T.let(
-                    :invalid_cardholder_authentication_verification_value,
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
+                  :invalid_cardholder_authentication_verification_value
 
                 # An internal Visa error occurred. Visa uses this reason code for certain expected occurrences as well, such as Application Transaction Counter (ATC) replays.
-                INTERNAL_VISA_ERROR =
-                  T.let(
-                    :internal_visa_error,
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
+                INTERNAL_VISA_ERROR = :internal_visa_error
 
                 # The merchant has enabled Visa's Transaction Advisory Service and requires further authentication to perform the transaction. In practice this is often utilized at fuel pumps to tell the cardholder to see the cashier.
                 MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED =
-                  T.let(
-                    :merchant_transaction_advisory_service_authentication_required,
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
+                  :merchant_transaction_advisory_service_authentication_required
 
                 # The transaction was blocked by Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior, such as card testing.
-                PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK =
-                  T.let(
-                    :payment_fraud_disruption_acquirer_block,
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
+                PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK = :payment_fraud_disruption_acquirer_block
 
                 # An unspecific reason for stand-in processing.
-                OTHER =
-                  T.let(
-                    :other,
-                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                OTHER = :other
               end
             end
           end
@@ -1675,17 +1499,32 @@ module Increase
             #   Expected to be unique per acquirer within a window of time. For some card
             #   networks the retrieval reference number includes the trace counter.
             sig { returns(T.nilable(String)) }
-            attr_accessor :retrieval_reference_number
+            def retrieval_reference_number
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def retrieval_reference_number=(_)
+            end
 
             # A counter used to verify an individual authorization. Expected to be unique per
             #   acquirer within a window of time.
             sig { returns(T.nilable(String)) }
-            attr_accessor :trace_number
+            def trace_number
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def trace_number=(_)
+            end
 
             # A globally unique transaction identifier provided by the card network, used
             #   across multiple life-cycle requests.
             sig { returns(T.nilable(String)) }
-            attr_accessor :transaction_id
+            def transaction_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def transaction_id=(_)
+            end
 
             # Network-specific identifiers for a specific request or transaction.
             sig do
@@ -1715,132 +1554,72 @@ module Increase
 
           # The processing category describes the intent behind the authorization, such as
           #   whether it was used for bill payments or an automatic fuel dispenser.
-          module ProcessingCategory
-            extend Increase::Enum
+          class ProcessingCategory < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
-            ACCOUNT_FUNDING =
-              T.let(
-                :account_funding,
-                Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol
-              )
+            ACCOUNT_FUNDING = :account_funding
 
             # Automatic fuel dispenser authorizations occur when a card is used at a gas pump, prior to the actual transaction amount being known. They are followed by an advice message that updates the amount of the pending transaction.
-            AUTOMATIC_FUEL_DISPENSER =
-              T.let(
-                :automatic_fuel_dispenser,
-                Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol
-              )
+            AUTOMATIC_FUEL_DISPENSER = :automatic_fuel_dispenser
 
             # A transaction used to pay a bill.
-            BILL_PAYMENT =
-              T.let(
-                :bill_payment,
-                Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol
-              )
+            BILL_PAYMENT = :bill_payment
 
             # A regular purchase.
-            PURCHASE =
-              T.let(
-                :purchase,
-                Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol
-              )
+            PURCHASE = :purchase
 
             # Quasi-cash transactions represent purchases of items which may be convertible to cash.
-            QUASI_CASH =
-              T.let(
-                :quasi_cash,
-                Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol
-              )
+            QUASI_CASH = :quasi_cash
 
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
-            REFUND =
-              T.let(
-                :refund,
-                Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol
-              )
-
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol]
-                  )
-              end
-              def values
-              end
-            end
+            REFUND = :refund
           end
 
           # A constant representing the object's type. For this resource it will always be
           #   `card_authorization`.
-          module Type
-            extend Increase::Enum
+          class Type < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardAuthorization::Type) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardAuthorization::Type::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            CARD_AUTHORIZATION =
-              T.let(:card_authorization, Increase::Models::CardPayment::Element::CardAuthorization::Type::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardAuthorization::Type::TaggedSymbol]) }
-              def values
-              end
-            end
+            CARD_AUTHORIZATION = :card_authorization
           end
 
           class Verification < Increase::BaseModel
             # Fields related to verification of the Card Verification Code, a 3-digit code on
             #   the back of the card.
             sig { returns(Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode) }
-            attr_reader :card_verification_code
+            def card_verification_code
+            end
 
             sig do
-              params(
-                card_verification_code: T.any(
-                  Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode,
-                  Increase::Util::AnyHash
-                )
-              )
-                .void
+              params(_: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode)
+                .returns(Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode)
             end
-            attr_writer :card_verification_code
+            def card_verification_code=(_)
+            end
 
             # Cardholder address provided in the authorization request and the address on file
             #   we verified it against.
             sig { returns(Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress) }
-            attr_reader :cardholder_address
+            def cardholder_address
+            end
 
             sig do
-              params(
-                cardholder_address: T.any(
-                  Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress,
-                  Increase::Util::AnyHash
-                )
-              )
-                .void
+              params(_: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress)
+                .returns(Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress)
             end
-            attr_writer :cardholder_address
+            def cardholder_address=(_)
+            end
 
             # Fields related to verification of cardholder-provided values.
             sig do
               params(
-                card_verification_code: T.any(
-                  Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode,
-                  Increase::Util::AnyHash
-                ),
-                cardholder_address: T.any(
-                  Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress,
-                  Increase::Util::AnyHash
-                )
+                card_verification_code: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode,
+                cardholder_address: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress
               )
                 .returns(T.attached_class)
             end
@@ -1861,112 +1640,87 @@ module Increase
 
             class CardVerificationCode < Increase::BaseModel
               # The result of verifying the Card Verification Code.
-              sig do
-                returns(
-                  Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
-                )
+              sig { returns(Symbol) }
+              def result
               end
-              attr_accessor :result
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def result=(_)
+              end
 
               # Fields related to verification of the Card Verification Code, a 3-digit code on
               #   the back of the card.
-              sig do
-                params(
-                  result: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::OrSymbol
-                )
-                  .returns(T.attached_class)
-              end
+              sig { params(result: Symbol).returns(T.attached_class) }
               def self.new(result:)
               end
 
-              sig do
-                override
-                  .returns(
-                    {
-                      result: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
-                    }
-                  )
-              end
+              sig { override.returns({result: Symbol}) }
               def to_hash
               end
 
               # The result of verifying the Card Verification Code.
-              module Result
-                extend Increase::Enum
+              class Result < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # No card verification code was provided in the authorization request.
-                NOT_CHECKED =
-                  T.let(
-                    :not_checked,
-                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
-                  )
+                NOT_CHECKED = :not_checked
 
                 # The card verification code matched the one on file.
-                MATCH =
-                  T.let(
-                    :match,
-                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
-                  )
+                MATCH = :match
 
                 # The card verification code did not match the one on file.
-                NO_MATCH =
-                  T.let(
-                    :no_match,
-                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                NO_MATCH = :no_match
               end
             end
 
             class CardholderAddress < Increase::BaseModel
               # Line 1 of the address on file for the cardholder.
               sig { returns(T.nilable(String)) }
-              attr_accessor :actual_line1
+              def actual_line1
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def actual_line1=(_)
+              end
 
               # The postal code of the address on file for the cardholder.
               sig { returns(T.nilable(String)) }
-              attr_accessor :actual_postal_code
+              def actual_postal_code
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def actual_postal_code=(_)
+              end
 
               # The cardholder address line 1 provided for verification in the authorization
               #   request.
               sig { returns(T.nilable(String)) }
-              attr_accessor :provided_line1
+              def provided_line1
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def provided_line1=(_)
+              end
 
               # The postal code provided for verification in the authorization request.
               sig { returns(T.nilable(String)) }
-              attr_accessor :provided_postal_code
+              def provided_postal_code
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def provided_postal_code=(_)
+              end
 
               # The address verification result returned to the card network.
-              sig do
-                returns(
-                  Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
-                )
+              sig { returns(Symbol) }
+              def result
               end
-              attr_accessor :result
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def result=(_)
+              end
 
               # Cardholder address provided in the authorization request and the address on file
               #   we verified it against.
@@ -1976,7 +1730,7 @@ module Increase
                   actual_postal_code: T.nilable(String),
                   provided_line1: T.nilable(String),
                   provided_postal_code: T.nilable(String),
-                  result: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::OrSymbol
+                  result: Symbol
                 )
                   .returns(T.attached_class)
               end
@@ -1991,7 +1745,7 @@ module Increase
                       actual_postal_code: T.nilable(String),
                       provided_line1: T.nilable(String),
                       provided_postal_code: T.nilable(String),
-                      result: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
+                      result: Symbol
                     }
                   )
               end
@@ -1999,75 +1753,28 @@ module Increase
               end
 
               # The address verification result returned to the card network.
-              module Result
-                extend Increase::Enum
+              class Result < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # No adress was provided in the authorization request.
-                NOT_CHECKED =
-                  T.let(
-                    :not_checked,
-                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
-                  )
+                NOT_CHECKED = :not_checked
 
                 # Postal code matches, but the street address was not verified.
-                POSTAL_CODE_MATCH_ADDRESS_NOT_CHECKED =
-                  T.let(
-                    :postal_code_match_address_not_checked,
-                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
-                  )
+                POSTAL_CODE_MATCH_ADDRESS_NOT_CHECKED = :postal_code_match_address_not_checked
 
                 # Postal code matches, but the street address does not match.
-                POSTAL_CODE_MATCH_ADDRESS_NO_MATCH =
-                  T.let(
-                    :postal_code_match_address_no_match,
-                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
-                  )
+                POSTAL_CODE_MATCH_ADDRESS_NO_MATCH = :postal_code_match_address_no_match
 
                 # Postal code does not match, but the street address matches.
-                POSTAL_CODE_NO_MATCH_ADDRESS_MATCH =
-                  T.let(
-                    :postal_code_no_match_address_match,
-                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
-                  )
+                POSTAL_CODE_NO_MATCH_ADDRESS_MATCH = :postal_code_no_match_address_match
 
                 # Postal code and street address match.
-                MATCH =
-                  T.let(
-                    :match,
-                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
-                  )
+                MATCH = :match
 
                 # Postal code and street address do not match.
-                NO_MATCH =
-                  T.let(
-                    :no_match,
-                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                NO_MATCH = :no_match
               end
             end
           end
@@ -2076,30 +1783,60 @@ module Increase
         class CardAuthorizationExpiration < Increase::BaseModel
           # The Card Authorization Expiration identifier.
           sig { returns(String) }
-          attr_accessor :id
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
 
           # The identifier for the Card Authorization this reverses.
           sig { returns(String) }
-          attr_accessor :card_authorization_id
+          def card_authorization_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def card_authorization_id=(_)
+          end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
           #   currency.
-          sig { returns(Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol) }
-          attr_accessor :currency
+          sig { returns(Symbol) }
+          def currency
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def currency=(_)
+          end
 
           # The amount of this authorization expiration in the minor unit of the
           #   transaction's currency. For dollars, for example, this is cents.
           sig { returns(Integer) }
-          attr_accessor :expired_amount
+          def expired_amount
+          end
+
+          sig { params(_: Integer).returns(Integer) }
+          def expired_amount=(_)
+          end
 
           # The card network used to process this card authorization.
-          sig { returns(Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Network::TaggedSymbol) }
-          attr_accessor :network
+          sig { returns(Symbol) }
+          def network
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def network=(_)
+          end
 
           # A constant representing the object's type. For this resource it will always be
           #   `card_authorization_expiration`.
-          sig { returns(Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Type::TaggedSymbol) }
-          attr_accessor :type
+          sig { returns(Symbol) }
+          def type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def type=(_)
+          end
 
           # A Card Authorization Expiration object. This field will be present in the JSON
           #   response if and only if `category` is equal to `card_authorization_expiration`.
@@ -2109,10 +1846,10 @@ module Increase
             params(
               id: String,
               card_authorization_id: String,
-              currency: Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency::OrSymbol,
+              currency: Symbol,
               expired_amount: Integer,
-              network: Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Network::OrSymbol,
-              type: Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Type::OrSymbol
+              network: Symbol,
+              type: Symbol
             )
               .returns(T.attached_class)
           end
@@ -2125,10 +1862,10 @@ module Increase
                 {
                   id: String,
                   card_authorization_id: String,
-                  currency: Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol,
+                  currency: Symbol,
                   expired_amount: Integer,
-                  network: Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Network::TaggedSymbol,
-                  type: Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Type::TaggedSymbol
+                  network: Symbol,
+                  type: Symbol
                 }
               )
           end
@@ -2137,266 +1874,331 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
           #   currency.
-          module Currency
-            extend Increase::Enum
+          class Currency < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
-            CAD =
-              T.let(:CAD, Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol)
+            CAD = :CAD
 
             # Swiss Franc (CHF)
-            CHF =
-              T.let(:CHF, Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol)
+            CHF = :CHF
 
             # Euro (EUR)
-            EUR =
-              T.let(:EUR, Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol)
+            EUR = :EUR
 
             # British Pound (GBP)
-            GBP =
-              T.let(:GBP, Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol)
+            GBP = :GBP
 
             # Japanese Yen (JPY)
-            JPY =
-              T.let(:JPY, Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol)
+            JPY = :JPY
 
             # US Dollar (USD)
-            USD =
-              T.let(:USD, Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol)
-
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol]
-                  )
-              end
-              def values
-              end
-            end
+            USD = :USD
           end
 
           # The card network used to process this card authorization.
-          module Network
-            extend Increase::Enum
+          class Network < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Network) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Network::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Visa
-            VISA =
-              T.let(:visa, Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Network::TaggedSymbol)
-
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Network::TaggedSymbol]
-                  )
-              end
-              def values
-              end
-            end
+            VISA = :visa
           end
 
           # A constant representing the object's type. For this resource it will always be
           #   `card_authorization_expiration`.
-          module Type
-            extend Increase::Enum
+          class Type < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Type) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Type::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            CARD_AUTHORIZATION_EXPIRATION =
-              T.let(
-                :card_authorization_expiration,
-                Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Type::TaggedSymbol
-              )
-
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Type::TaggedSymbol])
-              end
-              def values
-              end
-            end
+            CARD_AUTHORIZATION_EXPIRATION = :card_authorization_expiration
           end
         end
 
         class CardDecline < Increase::BaseModel
           # The Card Decline identifier.
           sig { returns(String) }
-          attr_accessor :id
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
 
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
-          sig { returns(Increase::Models::CardPayment::Element::CardDecline::Actioner::TaggedSymbol) }
-          attr_accessor :actioner
+          sig { returns(Symbol) }
+          def actioner
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def actioner=(_)
+          end
 
           # The declined amount in the minor unit of the destination account currency. For
           #   dollars, for example, this is cents.
           sig { returns(Integer) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: Integer).returns(Integer) }
+          def amount=(_)
+          end
 
           # The ID of the Card Payment this transaction belongs to.
           sig { returns(String) }
-          attr_accessor :card_payment_id
+          def card_payment_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def card_payment_id=(_)
+          end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
           #   account currency.
-          sig { returns(Increase::Models::CardPayment::Element::CardDecline::Currency::TaggedSymbol) }
-          attr_accessor :currency
+          sig { returns(Symbol) }
+          def currency
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def currency=(_)
+          end
 
           # The identifier of the declined transaction created for this Card Decline.
           sig { returns(String) }
-          attr_accessor :declined_transaction_id
+          def declined_transaction_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def declined_transaction_id=(_)
+          end
 
           # If the authorization was made via a Digital Wallet Token (such as an Apple Pay
           #   purchase), the identifier of the token that was used.
           sig { returns(T.nilable(String)) }
-          attr_accessor :digital_wallet_token_id
+          def digital_wallet_token_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def digital_wallet_token_id=(_)
+          end
 
           # The direction describes the direction the funds will move, either from the
           #   cardholder to the merchant or from the merchant to the cardholder.
-          sig { returns(Increase::Models::CardPayment::Element::CardDecline::Direction::TaggedSymbol) }
-          attr_accessor :direction
+          sig { returns(Symbol) }
+          def direction
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def direction=(_)
+          end
 
           # The merchant identifier (commonly abbreviated as MID) of the merchant the card
           #   is transacting with.
           sig { returns(String) }
-          attr_accessor :merchant_acceptor_id
+          def merchant_acceptor_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_acceptor_id=(_)
+          end
 
           # The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
           #   card is transacting with.
           sig { returns(String) }
-          attr_accessor :merchant_category_code
+          def merchant_category_code
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_category_code=(_)
+          end
 
           # The city the merchant resides in.
           sig { returns(T.nilable(String)) }
-          attr_accessor :merchant_city
+          def merchant_city
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def merchant_city=(_)
+          end
 
           # The country the merchant resides in.
           sig { returns(String) }
-          attr_accessor :merchant_country
+          def merchant_country
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_country=(_)
+          end
 
           # The merchant descriptor of the merchant the card is transacting with.
           sig { returns(String) }
-          attr_accessor :merchant_descriptor
+          def merchant_descriptor
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_descriptor=(_)
+          end
 
           # The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
           #   ZIP code, where the first 5 and last 4 are separated by a dash.
           sig { returns(T.nilable(String)) }
-          attr_accessor :merchant_postal_code
+          def merchant_postal_code
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def merchant_postal_code=(_)
+          end
 
           # The state the merchant resides in.
           sig { returns(T.nilable(String)) }
-          attr_accessor :merchant_state
+          def merchant_state
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def merchant_state=(_)
+          end
 
           # Fields specific to the `network`.
           sig { returns(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails) }
-          attr_reader :network_details
+          def network_details
+          end
 
           sig do
-            params(
-              network_details: T.any(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails, Increase::Util::AnyHash)
-            )
-              .void
+            params(_: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails)
+              .returns(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails)
           end
-          attr_writer :network_details
+          def network_details=(_)
+          end
 
           # Network-specific identifiers for a specific request or transaction.
           sig { returns(Increase::Models::CardPayment::Element::CardDecline::NetworkIdentifiers) }
-          attr_reader :network_identifiers
+          def network_identifiers
+          end
 
           sig do
-            params(
-              network_identifiers: T.any(Increase::Models::CardPayment::Element::CardDecline::NetworkIdentifiers, Increase::Util::AnyHash)
-            )
-              .void
+            params(_: Increase::Models::CardPayment::Element::CardDecline::NetworkIdentifiers)
+              .returns(Increase::Models::CardPayment::Element::CardDecline::NetworkIdentifiers)
           end
-          attr_writer :network_identifiers
+          def network_identifiers=(_)
+          end
 
           # The risk score generated by the card network. For Visa this is the Visa Advanced
           #   Authorization risk score, from 0 to 99, where 99 is the riskiest.
           sig { returns(T.nilable(Integer)) }
-          attr_accessor :network_risk_score
+          def network_risk_score
+          end
+
+          sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+          def network_risk_score=(_)
+          end
 
           # If the authorization was made in-person with a physical card, the Physical Card
           #   that was used.
           sig { returns(T.nilable(String)) }
-          attr_accessor :physical_card_id
+          def physical_card_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def physical_card_id=(_)
+          end
 
           # The declined amount in the minor unit of the transaction's presentment currency.
           sig { returns(Integer) }
-          attr_accessor :presentment_amount
+          def presentment_amount
+          end
+
+          sig { params(_: Integer).returns(Integer) }
+          def presentment_amount=(_)
+          end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's presentment currency.
           sig { returns(String) }
-          attr_accessor :presentment_currency
+          def presentment_currency
+          end
+
+          sig { params(_: String).returns(String) }
+          def presentment_currency=(_)
+          end
 
           # The processing category describes the intent behind the authorization, such as
           #   whether it was used for bill payments or an automatic fuel dispenser.
-          sig { returns(Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol) }
-          attr_accessor :processing_category
+          sig { returns(Symbol) }
+          def processing_category
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def processing_category=(_)
+          end
 
           # The identifier of the Real-Time Decision sent to approve or decline this
           #   transaction.
           sig { returns(T.nilable(String)) }
-          attr_accessor :real_time_decision_id
+          def real_time_decision_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def real_time_decision_id=(_)
+          end
 
           # This is present if a specific decline reason was given in the real-time
           #   decision.
-          sig do
-            returns(
-              T.nilable(Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol)
-            )
+          sig { returns(T.nilable(Symbol)) }
+          def real_time_decision_reason
           end
-          attr_accessor :real_time_decision_reason
+
+          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          def real_time_decision_reason=(_)
+          end
 
           # Why the transaction was declined.
-          sig { returns(Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol) }
-          attr_accessor :reason
+          sig { returns(Symbol) }
+          def reason
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def reason=(_)
+          end
 
           # The terminal identifier (commonly abbreviated as TID) of the terminal the card
           #   is transacting with.
           sig { returns(T.nilable(String)) }
-          attr_accessor :terminal_id
+          def terminal_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def terminal_id=(_)
+          end
 
           # Fields related to verification of cardholder-provided values.
           sig { returns(Increase::Models::CardPayment::Element::CardDecline::Verification) }
-          attr_reader :verification
+          def verification
+          end
 
           sig do
-            params(
-              verification: T.any(Increase::Models::CardPayment::Element::CardDecline::Verification, Increase::Util::AnyHash)
-            )
-              .void
+            params(_: Increase::Models::CardPayment::Element::CardDecline::Verification)
+              .returns(Increase::Models::CardPayment::Element::CardDecline::Verification)
           end
-          attr_writer :verification
+          def verification=(_)
+          end
 
           # A Card Decline object. This field will be present in the JSON response if and
           #   only if `category` is equal to `card_decline`.
           sig do
             params(
               id: String,
-              actioner: Increase::Models::CardPayment::Element::CardDecline::Actioner::OrSymbol,
+              actioner: Symbol,
               amount: Integer,
               card_payment_id: String,
-              currency: Increase::Models::CardPayment::Element::CardDecline::Currency::OrSymbol,
+              currency: Symbol,
               declined_transaction_id: String,
               digital_wallet_token_id: T.nilable(String),
-              direction: Increase::Models::CardPayment::Element::CardDecline::Direction::OrSymbol,
+              direction: Symbol,
               merchant_acceptor_id: String,
               merchant_category_code: String,
               merchant_city: T.nilable(String),
@@ -2404,18 +2206,18 @@ module Increase
               merchant_descriptor: String,
               merchant_postal_code: T.nilable(String),
               merchant_state: T.nilable(String),
-              network_details: T.any(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails, Increase::Util::AnyHash),
-              network_identifiers: T.any(Increase::Models::CardPayment::Element::CardDecline::NetworkIdentifiers, Increase::Util::AnyHash),
+              network_details: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails,
+              network_identifiers: Increase::Models::CardPayment::Element::CardDecline::NetworkIdentifiers,
               network_risk_score: T.nilable(Integer),
               physical_card_id: T.nilable(String),
               presentment_amount: Integer,
               presentment_currency: String,
-              processing_category: Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory::OrSymbol,
+              processing_category: Symbol,
               real_time_decision_id: T.nilable(String),
-              real_time_decision_reason: T.nilable(Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason::OrSymbol),
-              reason: Increase::Models::CardPayment::Element::CardDecline::Reason::OrSymbol,
+              real_time_decision_reason: T.nilable(Symbol),
+              reason: Symbol,
               terminal_id: T.nilable(String),
-              verification: T.any(Increase::Models::CardPayment::Element::CardDecline::Verification, Increase::Util::AnyHash)
+              verification: Increase::Models::CardPayment::Element::CardDecline::Verification
             )
               .returns(T.attached_class)
           end
@@ -2455,13 +2257,13 @@ module Increase
               .returns(
                 {
                   id: String,
-                  actioner: Increase::Models::CardPayment::Element::CardDecline::Actioner::TaggedSymbol,
+                  actioner: Symbol,
                   amount: Integer,
                   card_payment_id: String,
-                  currency: Increase::Models::CardPayment::Element::CardDecline::Currency::TaggedSymbol,
+                  currency: Symbol,
                   declined_transaction_id: String,
                   digital_wallet_token_id: T.nilable(String),
-                  direction: Increase::Models::CardPayment::Element::CardDecline::Direction::TaggedSymbol,
+                  direction: Symbol,
                   merchant_acceptor_id: String,
                   merchant_category_code: String,
                   merchant_city: T.nilable(String),
@@ -2475,10 +2277,10 @@ module Increase
                   physical_card_id: T.nilable(String),
                   presentment_amount: Integer,
                   presentment_currency: String,
-                  processing_category: Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol,
+                  processing_category: Symbol,
                   real_time_decision_id: T.nilable(String),
-                  real_time_decision_reason: T.nilable(Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol),
-                  reason: Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol,
+                  real_time_decision_reason: T.nilable(Symbol),
+                  reason: Symbol,
                   terminal_id: T.nilable(String),
                   verification: Increase::Models::CardPayment::Element::CardDecline::Verification
                 }
@@ -2489,115 +2291,88 @@ module Increase
 
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
-          module Actioner
-            extend Increase::Enum
+          class Actioner < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardDecline::Actioner) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardDecline::Actioner::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # This object was actioned by the user through a real-time decision.
-            USER = T.let(:user, Increase::Models::CardPayment::Element::CardDecline::Actioner::TaggedSymbol)
+            USER = :user
 
             # This object was actioned by Increase without user intervention.
-            INCREASE = T.let(:increase, Increase::Models::CardPayment::Element::CardDecline::Actioner::TaggedSymbol)
+            INCREASE = :increase
 
             # This object was actioned by the network, through stand-in processing.
-            NETWORK = T.let(:network, Increase::Models::CardPayment::Element::CardDecline::Actioner::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardDecline::Actioner::TaggedSymbol]) }
-              def values
-              end
-            end
+            NETWORK = :network
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
           #   account currency.
-          module Currency
-            extend Increase::Enum
+          class Currency < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardDecline::Currency) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardDecline::Currency::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
-            CAD = T.let(:CAD, Increase::Models::CardPayment::Element::CardDecline::Currency::TaggedSymbol)
+            CAD = :CAD
 
             # Swiss Franc (CHF)
-            CHF = T.let(:CHF, Increase::Models::CardPayment::Element::CardDecline::Currency::TaggedSymbol)
+            CHF = :CHF
 
             # Euro (EUR)
-            EUR = T.let(:EUR, Increase::Models::CardPayment::Element::CardDecline::Currency::TaggedSymbol)
+            EUR = :EUR
 
             # British Pound (GBP)
-            GBP = T.let(:GBP, Increase::Models::CardPayment::Element::CardDecline::Currency::TaggedSymbol)
+            GBP = :GBP
 
             # Japanese Yen (JPY)
-            JPY = T.let(:JPY, Increase::Models::CardPayment::Element::CardDecline::Currency::TaggedSymbol)
+            JPY = :JPY
 
             # US Dollar (USD)
-            USD = T.let(:USD, Increase::Models::CardPayment::Element::CardDecline::Currency::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardDecline::Currency::TaggedSymbol]) }
-              def values
-              end
-            end
+            USD = :USD
           end
 
           # The direction describes the direction the funds will move, either from the
           #   cardholder to the merchant or from the merchant to the cardholder.
-          module Direction
-            extend Increase::Enum
+          class Direction < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardDecline::Direction) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardDecline::Direction::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # A regular card authorization where funds are debited from the cardholder.
-            SETTLEMENT =
-              T.let(:settlement, Increase::Models::CardPayment::Element::CardDecline::Direction::TaggedSymbol)
+            SETTLEMENT = :settlement
 
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
-            REFUND = T.let(:refund, Increase::Models::CardPayment::Element::CardDecline::Direction::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardDecline::Direction::TaggedSymbol]) }
-              def values
-              end
-            end
+            REFUND = :refund
           end
 
           class NetworkDetails < Increase::BaseModel
             # The payment network used to process this card authorization.
-            sig { returns(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category::TaggedSymbol) }
-            attr_accessor :category
+            sig { returns(Symbol) }
+            def category
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def category=(_)
+            end
 
             # Fields specific to the `visa` network.
             sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa)) }
-            attr_reader :visa
+            def visa
+            end
 
             sig do
-              params(
-                visa: T.nilable(
-                  T.any(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa, Increase::Util::AnyHash)
-                )
-              )
-                .void
+              params(_: T.nilable(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa))
+                .returns(T.nilable(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa))
             end
-            attr_writer :visa
+            def visa=(_)
+            end
 
             # Fields specific to the `network`.
             sig do
               params(
-                category: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category::OrSymbol,
-                visa: T.nilable(
-                  T.any(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa, Increase::Util::AnyHash)
-                )
+                category: Symbol,
+                visa: T.nilable(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa)
               )
                 .returns(T.attached_class)
             end
@@ -2607,87 +2382,60 @@ module Increase
             sig do
               override
                 .returns(
-                  {
-                    category: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category::TaggedSymbol,
-                    visa: T.nilable(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa)
-                  }
+                  {category: Symbol, visa: T.nilable(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa)}
                 )
             end
             def to_hash
             end
 
             # The payment network used to process this card authorization.
-            module Category
-              extend Increase::Enum
+            class Category < Increase::Enum
+              abstract!
 
-              TaggedSymbol =
-                T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category) }
-              OrSymbol =
-                T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category::TaggedSymbol) }
+              Value = type_template(:out) { {fixed: Symbol} }
 
               # Visa
-              VISA =
-                T.let(:visa, Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category::TaggedSymbol)
-
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category::TaggedSymbol]
-                    )
-                end
-                def values
-                end
-              end
+              VISA = :visa
             end
 
             class Visa < Increase::BaseModel
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
               #   transactions, identifies the type of mail or telephone order.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
-                )
+              sig { returns(T.nilable(Symbol)) }
+              def electronic_commerce_indicator
               end
-              attr_accessor :electronic_commerce_indicator
+
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+              def electronic_commerce_indicator=(_)
+              end
 
               # The method used to enter the cardholder's primary account number and card
               #   expiration date.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
-                )
+              sig { returns(T.nilable(Symbol)) }
+              def point_of_service_entry_mode
               end
-              attr_accessor :point_of_service_entry_mode
+
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+              def point_of_service_entry_mode=(_)
+              end
 
               # Only present when `actioner: network`. Describes why a card authorization was
               #   approved or declined by Visa through stand-in processing.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
-                )
+              sig { returns(T.nilable(Symbol)) }
+              def stand_in_processing_reason
               end
-              attr_accessor :stand_in_processing_reason
+
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+              def stand_in_processing_reason=(_)
+              end
 
               # Fields specific to the `visa` network.
               sig do
                 params(
-                  electronic_commerce_indicator: T.nilable(
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::OrSymbol
-                  ),
-                  point_of_service_entry_mode: T.nilable(
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::OrSymbol
-                  ),
-                  stand_in_processing_reason: T.nilable(
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::OrSymbol
-                  )
+                  electronic_commerce_indicator: T.nilable(Symbol),
+                  point_of_service_entry_mode: T.nilable(Symbol),
+                  stand_in_processing_reason: T.nilable(Symbol)
                 )
                   .returns(T.attached_class)
               end
@@ -2698,15 +2446,9 @@ module Increase
                 override
                   .returns(
                     {
-                      electronic_commerce_indicator: T.nilable(
-                        Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                      ),
-                      point_of_service_entry_mode: T.nilable(
-                        Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                      ),
-                      stand_in_processing_reason: T.nilable(
-                        Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                      )
+                      electronic_commerce_indicator: T.nilable(Symbol),
+                      point_of_service_entry_mode: T.nilable(Symbol),
+                      stand_in_processing_reason: T.nilable(Symbol)
                     }
                   )
               end
@@ -2716,270 +2458,104 @@ module Increase
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
               #   transactions, identifies the type of mail or telephone order.
-              module ElectronicCommerceIndicator
-                extend Increase::Enum
+              class ElectronicCommerceIndicator < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
-                MAIL_PHONE_ORDER =
-                  T.let(
-                    :mail_phone_order,
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                MAIL_PHONE_ORDER = :mail_phone_order
 
                 # Recurring transaction: Payment indicator used to indicate a recurring transaction that originates from an acquirer in the US region.
-                RECURRING =
-                  T.let(
-                    :recurring,
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                RECURRING = :recurring
 
                 # Installment payment: Payment indicator used to indicate one purchase of goods or services that is billed to the account in multiple charges over a period of time agreed upon by the cardholder and merchant from transactions that originate from an acquirer in the US region.
-                INSTALLMENT =
-                  T.let(
-                    :installment,
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                INSTALLMENT = :installment
 
                 # Unknown classification: other mail order: Use to indicate that the type of mail/telephone order is unknown.
-                UNKNOWN_MAIL_PHONE_ORDER =
-                  T.let(
-                    :unknown_mail_phone_order,
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                UNKNOWN_MAIL_PHONE_ORDER = :unknown_mail_phone_order
 
                 # Secure electronic commerce transaction: Use to indicate that the electronic commerce transaction has been authenticated using e.g., 3-D Secure
-                SECURE_ELECTRONIC_COMMERCE =
-                  T.let(
-                    :secure_electronic_commerce,
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                SECURE_ELECTRONIC_COMMERCE = :secure_electronic_commerce
 
                 # Non-authenticated security transaction at a 3-D Secure-capable merchant, and merchant attempted to authenticate the cardholder using 3-D Secure: Use to identify an electronic commerce transaction where the merchant attempted to authenticate the cardholder using 3-D Secure, but was unable to complete the authentication because the issuer or cardholder does not participate in the 3-D Secure program.
                 NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT =
-                  T.let(
-                    :non_authenticated_security_transaction_at_3ds_capable_merchant,
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                  :non_authenticated_security_transaction_at_3ds_capable_merchant
 
                 # Non-authenticated security transaction: Use to identify an electronic commerce transaction that uses data encryption for security however , cardholder authentication is not performed using 3-D Secure.
-                NON_AUTHENTICATED_SECURITY_TRANSACTION =
-                  T.let(
-                    :non_authenticated_security_transaction,
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                NON_AUTHENTICATED_SECURITY_TRANSACTION = :non_authenticated_security_transaction
 
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
-                NON_SECURE_TRANSACTION =
-                  T.let(
-                    :non_secure_transaction,
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                NON_SECURE_TRANSACTION = :non_secure_transaction
               end
 
               # The method used to enter the cardholder's primary account number and card
               #   expiration date.
-              module PointOfServiceEntryMode
-                extend Increase::Enum
+              class PointOfServiceEntryMode < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # Unknown
-                UNKNOWN =
-                  T.let(
-                    :unknown,
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                UNKNOWN = :unknown
 
                 # Manual key entry
-                MANUAL =
-                  T.let(
-                    :manual,
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                MANUAL = :manual
 
                 # Magnetic stripe read, without card verification value
-                MAGNETIC_STRIPE_NO_CVV =
-                  T.let(
-                    :magnetic_stripe_no_cvv,
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                MAGNETIC_STRIPE_NO_CVV = :magnetic_stripe_no_cvv
 
                 # Optical code
-                OPTICAL_CODE =
-                  T.let(
-                    :optical_code,
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                OPTICAL_CODE = :optical_code
 
                 # Contact chip card
-                INTEGRATED_CIRCUIT_CARD =
-                  T.let(
-                    :integrated_circuit_card,
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                INTEGRATED_CIRCUIT_CARD = :integrated_circuit_card
 
                 # Contactless read of chip card
-                CONTACTLESS =
-                  T.let(
-                    :contactless,
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                CONTACTLESS = :contactless
 
                 # Transaction initiated using a credential that has previously been stored on file
-                CREDENTIAL_ON_FILE =
-                  T.let(
-                    :credential_on_file,
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                CREDENTIAL_ON_FILE = :credential_on_file
 
                 # Magnetic stripe read
-                MAGNETIC_STRIPE =
-                  T.let(
-                    :magnetic_stripe,
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                MAGNETIC_STRIPE = :magnetic_stripe
 
                 # Contactless read of magnetic stripe data
-                CONTACTLESS_MAGNETIC_STRIPE =
-                  T.let(
-                    :contactless_magnetic_stripe,
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                CONTACTLESS_MAGNETIC_STRIPE = :contactless_magnetic_stripe
 
                 # Contact chip card, without card verification value
-                INTEGRATED_CIRCUIT_CARD_NO_CVV =
-                  T.let(
-                    :integrated_circuit_card_no_cvv,
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
               end
 
               # Only present when `actioner: network`. Describes why a card authorization was
               #   approved or declined by Visa through stand-in processing.
-              module StandInProcessingReason
-                extend Increase::Enum
+              class StandInProcessingReason < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # Increase failed to process the authorization in a timely manner.
-                ISSUER_ERROR =
-                  T.let(
-                    :issuer_error,
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
+                ISSUER_ERROR = :issuer_error
 
                 # The physical card read had an invalid CVV, dCVV, or authorization request cryptogram.
-                INVALID_PHYSICAL_CARD =
-                  T.let(
-                    :invalid_physical_card,
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
+                INVALID_PHYSICAL_CARD = :invalid_physical_card
 
                 # The 3DS cardholder authentication verification value was invalid.
                 INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE =
-                  T.let(
-                    :invalid_cardholder_authentication_verification_value,
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
+                  :invalid_cardholder_authentication_verification_value
 
                 # An internal Visa error occurred. Visa uses this reason code for certain expected occurrences as well, such as Application Transaction Counter (ATC) replays.
-                INTERNAL_VISA_ERROR =
-                  T.let(
-                    :internal_visa_error,
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
+                INTERNAL_VISA_ERROR = :internal_visa_error
 
                 # The merchant has enabled Visa's Transaction Advisory Service and requires further authentication to perform the transaction. In practice this is often utilized at fuel pumps to tell the cardholder to see the cashier.
                 MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED =
-                  T.let(
-                    :merchant_transaction_advisory_service_authentication_required,
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
+                  :merchant_transaction_advisory_service_authentication_required
 
                 # The transaction was blocked by Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior, such as card testing.
-                PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK =
-                  T.let(
-                    :payment_fraud_disruption_acquirer_block,
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
+                PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK = :payment_fraud_disruption_acquirer_block
 
                 # An unspecific reason for stand-in processing.
-                OTHER =
-                  T.let(
-                    :other,
-                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                OTHER = :other
               end
             end
           end
@@ -2989,17 +2565,32 @@ module Increase
             #   Expected to be unique per acquirer within a window of time. For some card
             #   networks the retrieval reference number includes the trace counter.
             sig { returns(T.nilable(String)) }
-            attr_accessor :retrieval_reference_number
+            def retrieval_reference_number
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def retrieval_reference_number=(_)
+            end
 
             # A counter used to verify an individual authorization. Expected to be unique per
             #   acquirer within a window of time.
             sig { returns(T.nilable(String)) }
-            attr_accessor :trace_number
+            def trace_number
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def trace_number=(_)
+            end
 
             # A globally unique transaction identifier provided by the card network, used
             #   across multiple life-cycle requests.
             sig { returns(T.nilable(String)) }
-            attr_accessor :transaction_id
+            def transaction_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def transaction_id=(_)
+            end
 
             # Network-specific identifiers for a specific request or transaction.
             sig do
@@ -3029,258 +2620,146 @@ module Increase
 
           # The processing category describes the intent behind the authorization, such as
           #   whether it was used for bill payments or an automatic fuel dispenser.
-          module ProcessingCategory
-            extend Increase::Enum
+          class ProcessingCategory < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
-            ACCOUNT_FUNDING =
-              T.let(
-                :account_funding,
-                Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol
-              )
+            ACCOUNT_FUNDING = :account_funding
 
             # Automatic fuel dispenser authorizations occur when a card is used at a gas pump, prior to the actual transaction amount being known. They are followed by an advice message that updates the amount of the pending transaction.
-            AUTOMATIC_FUEL_DISPENSER =
-              T.let(
-                :automatic_fuel_dispenser,
-                Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol
-              )
+            AUTOMATIC_FUEL_DISPENSER = :automatic_fuel_dispenser
 
             # A transaction used to pay a bill.
-            BILL_PAYMENT =
-              T.let(
-                :bill_payment,
-                Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol
-              )
+            BILL_PAYMENT = :bill_payment
 
             # A regular purchase.
-            PURCHASE =
-              T.let(:purchase, Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol)
+            PURCHASE = :purchase
 
             # Quasi-cash transactions represent purchases of items which may be convertible to cash.
-            QUASI_CASH =
-              T.let(:quasi_cash, Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol)
+            QUASI_CASH = :quasi_cash
 
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
-            REFUND =
-              T.let(:refund, Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol)
-
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol])
-              end
-              def values
-              end
-            end
+            REFUND = :refund
           end
 
           # This is present if a specific decline reason was given in the real-time
           #   decision.
-          module RealTimeDecisionReason
-            extend Increase::Enum
+          class RealTimeDecisionReason < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # The cardholder does not have sufficient funds to cover the transaction. The merchant may attempt to process the transaction again.
-            INSUFFICIENT_FUNDS =
-              T.let(
-                :insufficient_funds,
-                Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol
-              )
+            INSUFFICIENT_FUNDS = :insufficient_funds
 
             # This type of transaction is not allowed for this card. This transaction should not be retried.
-            TRANSACTION_NEVER_ALLOWED =
-              T.let(
-                :transaction_never_allowed,
-                Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol
-              )
+            TRANSACTION_NEVER_ALLOWED = :transaction_never_allowed
 
             # The transaction amount exceeds the cardholder's approval limit. The merchant may attempt to process the transaction again.
-            EXCEEDS_APPROVAL_LIMIT =
-              T.let(
-                :exceeds_approval_limit,
-                Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol
-              )
+            EXCEEDS_APPROVAL_LIMIT = :exceeds_approval_limit
 
             # The card has been temporarily disabled or not yet activated. The merchant may attempt to process the transaction again.
-            CARD_TEMPORARILY_DISABLED =
-              T.let(
-                :card_temporarily_disabled,
-                Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol
-              )
+            CARD_TEMPORARILY_DISABLED = :card_temporarily_disabled
 
             # The transaction is suspected to be fraudulent. The merchant may attempt to process the transaction again.
-            SUSPECTED_FRAUD =
-              T.let(
-                :suspected_fraud,
-                Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol
-              )
+            SUSPECTED_FRAUD = :suspected_fraud
 
             # The transaction was declined for another reason. The merchant may attempt to process the transaction again. This should be used sparingly.
-            OTHER =
-              T.let(:other, Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol)
-
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol]
-                  )
-              end
-              def values
-              end
-            end
+            OTHER = :other
           end
 
           # Why the transaction was declined.
-          module Reason
-            extend Increase::Enum
+          class Reason < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardDecline::Reason) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # The account has been closed.
-            ACCOUNT_CLOSED =
-              T.let(:account_closed, Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol)
+            ACCOUNT_CLOSED = :account_closed
 
             # The Card was not active.
-            CARD_NOT_ACTIVE =
-              T.let(:card_not_active, Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol)
+            CARD_NOT_ACTIVE = :card_not_active
 
             # The Card has been canceled.
-            CARD_CANCELED =
-              T.let(:card_canceled, Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol)
+            CARD_CANCELED = :card_canceled
 
             # The Physical Card was not active.
-            PHYSICAL_CARD_NOT_ACTIVE =
-              T.let(
-                :physical_card_not_active,
-                Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol
-              )
+            PHYSICAL_CARD_NOT_ACTIVE = :physical_card_not_active
 
             # The account's entity was not active.
-            ENTITY_NOT_ACTIVE =
-              T.let(:entity_not_active, Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol)
+            ENTITY_NOT_ACTIVE = :entity_not_active
 
             # The account was inactive.
-            GROUP_LOCKED =
-              T.let(:group_locked, Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol)
+            GROUP_LOCKED = :group_locked
 
             # The Card's Account did not have a sufficient available balance.
-            INSUFFICIENT_FUNDS =
-              T.let(:insufficient_funds, Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol)
+            INSUFFICIENT_FUNDS = :insufficient_funds
 
             # The given CVV2 did not match the card's value.
-            CVV2_MISMATCH =
-              T.let(:cvv2_mismatch, Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol)
+            CVV2_MISMATCH = :cvv2_mismatch
 
             # The given expiration date did not match the card's value. Only applies when a CVV2 is present.
-            CARD_EXPIRATION_MISMATCH =
-              T.let(
-                :card_expiration_mismatch,
-                Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol
-              )
+            CARD_EXPIRATION_MISMATCH = :card_expiration_mismatch
 
             # The attempted card transaction is not allowed per Increase's terms.
-            TRANSACTION_NOT_ALLOWED =
-              T.let(:transaction_not_allowed, Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol)
+            TRANSACTION_NOT_ALLOWED = :transaction_not_allowed
 
             # The transaction was blocked by a Limit.
-            BREACHES_LIMIT =
-              T.let(:breaches_limit, Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol)
+            BREACHES_LIMIT = :breaches_limit
 
             # Your application declined the transaction via webhook.
-            WEBHOOK_DECLINED =
-              T.let(:webhook_declined, Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol)
+            WEBHOOK_DECLINED = :webhook_declined
 
             # Your application webhook did not respond without the required timeout.
-            WEBHOOK_TIMED_OUT =
-              T.let(:webhook_timed_out, Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol)
+            WEBHOOK_TIMED_OUT = :webhook_timed_out
 
             # Declined by stand-in processing.
-            DECLINED_BY_STAND_IN_PROCESSING =
-              T.let(
-                :declined_by_stand_in_processing,
-                Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol
-              )
+            DECLINED_BY_STAND_IN_PROCESSING = :declined_by_stand_in_processing
 
             # The card read had an invalid CVV, dCVV, or authorization request cryptogram.
-            INVALID_PHYSICAL_CARD =
-              T.let(:invalid_physical_card, Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol)
+            INVALID_PHYSICAL_CARD = :invalid_physical_card
 
             # The original card authorization for this incremental authorization does not exist.
-            MISSING_ORIGINAL_AUTHORIZATION =
-              T.let(
-                :missing_original_authorization,
-                Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol
-              )
+            MISSING_ORIGINAL_AUTHORIZATION = :missing_original_authorization
 
             # The transaction was suspected to be fraudulent. Please reach out to support@increase.com for more information.
-            SUSPECTED_FRAUD =
-              T.let(:suspected_fraud, Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol]) }
-              def values
-              end
-            end
+            SUSPECTED_FRAUD = :suspected_fraud
           end
 
           class Verification < Increase::BaseModel
             # Fields related to verification of the Card Verification Code, a 3-digit code on
             #   the back of the card.
             sig { returns(Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode) }
-            attr_reader :card_verification_code
+            def card_verification_code
+            end
 
             sig do
-              params(
-                card_verification_code: T.any(
-                  Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode,
-                  Increase::Util::AnyHash
-                )
-              )
-                .void
+              params(_: Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode)
+                .returns(Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode)
             end
-            attr_writer :card_verification_code
+            def card_verification_code=(_)
+            end
 
             # Cardholder address provided in the authorization request and the address on file
             #   we verified it against.
             sig { returns(Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress) }
-            attr_reader :cardholder_address
+            def cardholder_address
+            end
 
             sig do
-              params(
-                cardholder_address: T.any(
-                  Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress,
-                  Increase::Util::AnyHash
-                )
-              )
-                .void
+              params(_: Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress)
+                .returns(Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress)
             end
-            attr_writer :cardholder_address
+            def cardholder_address=(_)
+            end
 
             # Fields related to verification of cardholder-provided values.
             sig do
               params(
-                card_verification_code: T.any(
-                  Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode,
-                  Increase::Util::AnyHash
-                ),
-                cardholder_address: T.any(
-                  Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress,
-                  Increase::Util::AnyHash
-                )
+                card_verification_code: Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode,
+                cardholder_address: Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress
               )
                 .returns(T.attached_class)
             end
@@ -3301,112 +2780,87 @@ module Increase
 
             class CardVerificationCode < Increase::BaseModel
               # The result of verifying the Card Verification Code.
-              sig do
-                returns(
-                  Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
-                )
+              sig { returns(Symbol) }
+              def result
               end
-              attr_accessor :result
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def result=(_)
+              end
 
               # Fields related to verification of the Card Verification Code, a 3-digit code on
               #   the back of the card.
-              sig do
-                params(
-                  result: Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::OrSymbol
-                )
-                  .returns(T.attached_class)
-              end
+              sig { params(result: Symbol).returns(T.attached_class) }
               def self.new(result:)
               end
 
-              sig do
-                override
-                  .returns(
-                    {
-                      result: Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
-                    }
-                  )
-              end
+              sig { override.returns({result: Symbol}) }
               def to_hash
               end
 
               # The result of verifying the Card Verification Code.
-              module Result
-                extend Increase::Enum
+              class Result < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # No card verification code was provided in the authorization request.
-                NOT_CHECKED =
-                  T.let(
-                    :not_checked,
-                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
-                  )
+                NOT_CHECKED = :not_checked
 
                 # The card verification code matched the one on file.
-                MATCH =
-                  T.let(
-                    :match,
-                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
-                  )
+                MATCH = :match
 
                 # The card verification code did not match the one on file.
-                NO_MATCH =
-                  T.let(
-                    :no_match,
-                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                NO_MATCH = :no_match
               end
             end
 
             class CardholderAddress < Increase::BaseModel
               # Line 1 of the address on file for the cardholder.
               sig { returns(T.nilable(String)) }
-              attr_accessor :actual_line1
+              def actual_line1
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def actual_line1=(_)
+              end
 
               # The postal code of the address on file for the cardholder.
               sig { returns(T.nilable(String)) }
-              attr_accessor :actual_postal_code
+              def actual_postal_code
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def actual_postal_code=(_)
+              end
 
               # The cardholder address line 1 provided for verification in the authorization
               #   request.
               sig { returns(T.nilable(String)) }
-              attr_accessor :provided_line1
+              def provided_line1
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def provided_line1=(_)
+              end
 
               # The postal code provided for verification in the authorization request.
               sig { returns(T.nilable(String)) }
-              attr_accessor :provided_postal_code
+              def provided_postal_code
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def provided_postal_code=(_)
+              end
 
               # The address verification result returned to the card network.
-              sig do
-                returns(
-                  Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
-                )
+              sig { returns(Symbol) }
+              def result
               end
-              attr_accessor :result
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def result=(_)
+              end
 
               # Cardholder address provided in the authorization request and the address on file
               #   we verified it against.
@@ -3416,7 +2870,7 @@ module Increase
                   actual_postal_code: T.nilable(String),
                   provided_line1: T.nilable(String),
                   provided_postal_code: T.nilable(String),
-                  result: Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::OrSymbol
+                  result: Symbol
                 )
                   .returns(T.attached_class)
               end
@@ -3431,7 +2885,7 @@ module Increase
                       actual_postal_code: T.nilable(String),
                       provided_line1: T.nilable(String),
                       provided_postal_code: T.nilable(String),
-                      result: Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
+                      result: Symbol
                     }
                   )
               end
@@ -3439,73 +2893,28 @@ module Increase
               end
 
               # The address verification result returned to the card network.
-              module Result
-                extend Increase::Enum
+              class Result < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # No adress was provided in the authorization request.
-                NOT_CHECKED =
-                  T.let(
-                    :not_checked,
-                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
-                  )
+                NOT_CHECKED = :not_checked
 
                 # Postal code matches, but the street address was not verified.
-                POSTAL_CODE_MATCH_ADDRESS_NOT_CHECKED =
-                  T.let(
-                    :postal_code_match_address_not_checked,
-                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
-                  )
+                POSTAL_CODE_MATCH_ADDRESS_NOT_CHECKED = :postal_code_match_address_not_checked
 
                 # Postal code matches, but the street address does not match.
-                POSTAL_CODE_MATCH_ADDRESS_NO_MATCH =
-                  T.let(
-                    :postal_code_match_address_no_match,
-                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
-                  )
+                POSTAL_CODE_MATCH_ADDRESS_NO_MATCH = :postal_code_match_address_no_match
 
                 # Postal code does not match, but the street address matches.
-                POSTAL_CODE_NO_MATCH_ADDRESS_MATCH =
-                  T.let(
-                    :postal_code_no_match_address_match,
-                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
-                  )
+                POSTAL_CODE_NO_MATCH_ADDRESS_MATCH = :postal_code_no_match_address_match
 
                 # Postal code and street address match.
-                MATCH =
-                  T.let(
-                    :match,
-                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
-                  )
+                MATCH = :match
 
                 # Postal code and street address do not match.
-                NO_MATCH =
-                  T.let(
-                    :no_match,
-                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol]
-                      )
-                  end
-                  def values
-                  end
-                end
+                NO_MATCH = :no_match
               end
             end
           end
@@ -3514,50 +2923,82 @@ module Increase
         class CardFuelConfirmation < Increase::BaseModel
           # The Card Fuel Confirmation identifier.
           sig { returns(String) }
-          attr_accessor :id
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
 
           # The identifier for the Card Authorization this updates.
           sig { returns(String) }
-          attr_accessor :card_authorization_id
+          def card_authorization_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def card_authorization_id=(_)
+          end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
           #   currency.
-          sig { returns(Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol) }
-          attr_accessor :currency
+          sig { returns(Symbol) }
+          def currency
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def currency=(_)
+          end
 
           # The card network used to process this card authorization.
-          sig { returns(Increase::Models::CardPayment::Element::CardFuelConfirmation::Network::TaggedSymbol) }
-          attr_accessor :network
+          sig { returns(Symbol) }
+          def network
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def network=(_)
+          end
 
           # Network-specific identifiers for a specific request or transaction.
           sig { returns(Increase::Models::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers) }
-          attr_reader :network_identifiers
+          def network_identifiers
+          end
 
           sig do
-            params(
-              network_identifiers: T.any(
-                Increase::Models::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers,
-                Increase::Util::AnyHash
-              )
-            )
-              .void
+            params(_: Increase::Models::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers)
+              .returns(Increase::Models::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers)
           end
-          attr_writer :network_identifiers
+          def network_identifiers=(_)
+          end
 
           # The identifier of the Pending Transaction associated with this Card Fuel
           #   Confirmation.
           sig { returns(T.nilable(String)) }
-          attr_accessor :pending_transaction_id
+          def pending_transaction_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def pending_transaction_id=(_)
+          end
 
           # A constant representing the object's type. For this resource it will always be
           #   `card_fuel_confirmation`.
-          sig { returns(Increase::Models::CardPayment::Element::CardFuelConfirmation::Type::TaggedSymbol) }
-          attr_accessor :type
+          sig { returns(Symbol) }
+          def type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def type=(_)
+          end
 
           # The updated authorization amount after this fuel confirmation, in the minor unit
           #   of the transaction's currency. For dollars, for example, this is cents.
           sig { returns(Integer) }
-          attr_accessor :updated_authorization_amount
+          def updated_authorization_amount
+          end
+
+          sig { params(_: Integer).returns(Integer) }
+          def updated_authorization_amount=(_)
+          end
 
           # A Card Fuel Confirmation object. This field will be present in the JSON response
           #   if and only if `category` is equal to `card_fuel_confirmation`. Card Fuel
@@ -3567,14 +3008,11 @@ module Increase
             params(
               id: String,
               card_authorization_id: String,
-              currency: Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency::OrSymbol,
-              network: Increase::Models::CardPayment::Element::CardFuelConfirmation::Network::OrSymbol,
-              network_identifiers: T.any(
-                Increase::Models::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers,
-                Increase::Util::AnyHash
-              ),
+              currency: Symbol,
+              network: Symbol,
+              network_identifiers: Increase::Models::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers,
               pending_transaction_id: T.nilable(String),
-              type: Increase::Models::CardPayment::Element::CardFuelConfirmation::Type::OrSymbol,
+              type: Symbol,
               updated_authorization_amount: Integer
             )
               .returns(T.attached_class)
@@ -3597,11 +3035,11 @@ module Increase
                 {
                   id: String,
                   card_authorization_id: String,
-                  currency: Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol,
-                  network: Increase::Models::CardPayment::Element::CardFuelConfirmation::Network::TaggedSymbol,
+                  currency: Symbol,
+                  network: Symbol,
                   network_identifiers: Increase::Models::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers,
                   pending_transaction_id: T.nilable(String),
-                  type: Increase::Models::CardPayment::Element::CardFuelConfirmation::Type::TaggedSymbol,
+                  type: Symbol,
                   updated_authorization_amount: Integer
                 }
               )
@@ -3611,62 +3049,38 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
           #   currency.
-          module Currency
-            extend Increase::Enum
+          class Currency < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
-            CAD = T.let(:CAD, Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol)
+            CAD = :CAD
 
             # Swiss Franc (CHF)
-            CHF = T.let(:CHF, Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol)
+            CHF = :CHF
 
             # Euro (EUR)
-            EUR = T.let(:EUR, Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol)
+            EUR = :EUR
 
             # British Pound (GBP)
-            GBP = T.let(:GBP, Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol)
+            GBP = :GBP
 
             # Japanese Yen (JPY)
-            JPY = T.let(:JPY, Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol)
+            JPY = :JPY
 
             # US Dollar (USD)
-            USD = T.let(:USD, Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol)
-
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol])
-              end
-              def values
-              end
-            end
+            USD = :USD
           end
 
           # The card network used to process this card authorization.
-          module Network
-            extend Increase::Enum
+          class Network < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardFuelConfirmation::Network) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardFuelConfirmation::Network::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Visa
-            VISA = T.let(:visa, Increase::Models::CardPayment::Element::CardFuelConfirmation::Network::TaggedSymbol)
-
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::CardPayment::Element::CardFuelConfirmation::Network::TaggedSymbol])
-              end
-              def values
-              end
-            end
+            VISA = :visa
           end
 
           class NetworkIdentifiers < Increase::BaseModel
@@ -3674,17 +3088,32 @@ module Increase
             #   Expected to be unique per acquirer within a window of time. For some card
             #   networks the retrieval reference number includes the trace counter.
             sig { returns(T.nilable(String)) }
-            attr_accessor :retrieval_reference_number
+            def retrieval_reference_number
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def retrieval_reference_number=(_)
+            end
 
             # A counter used to verify an individual authorization. Expected to be unique per
             #   acquirer within a window of time.
             sig { returns(T.nilable(String)) }
-            attr_accessor :trace_number
+            def trace_number
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def trace_number=(_)
+            end
 
             # A globally unique transaction identifier provided by the card network, used
             #   across multiple life-cycle requests.
             sig { returns(T.nilable(String)) }
-            attr_accessor :transaction_id
+            def transaction_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def transaction_id=(_)
+            end
 
             # Network-specific identifiers for a specific request or transaction.
             sig do
@@ -3714,94 +3143,133 @@ module Increase
 
           # A constant representing the object's type. For this resource it will always be
           #   `card_fuel_confirmation`.
-          module Type
-            extend Increase::Enum
+          class Type < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardFuelConfirmation::Type) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardFuelConfirmation::Type::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            CARD_FUEL_CONFIRMATION =
-              T.let(
-                :card_fuel_confirmation,
-                Increase::Models::CardPayment::Element::CardFuelConfirmation::Type::TaggedSymbol
-              )
-
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::CardPayment::Element::CardFuelConfirmation::Type::TaggedSymbol])
-              end
-              def values
-              end
-            end
+            CARD_FUEL_CONFIRMATION = :card_fuel_confirmation
           end
         end
 
         class CardIncrement < Increase::BaseModel
           # The Card Increment identifier.
           sig { returns(String) }
-          attr_accessor :id
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
 
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
-          sig { returns(Increase::Models::CardPayment::Element::CardIncrement::Actioner::TaggedSymbol) }
-          attr_accessor :actioner
+          sig { returns(Symbol) }
+          def actioner
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def actioner=(_)
+          end
 
           # The amount of this increment in the minor unit of the transaction's currency.
           #   For dollars, for example, this is cents.
           sig { returns(Integer) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: Integer).returns(Integer) }
+          def amount=(_)
+          end
 
           # The identifier for the Card Authorization this increments.
           sig { returns(String) }
-          attr_accessor :card_authorization_id
+          def card_authorization_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def card_authorization_id=(_)
+          end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
           #   currency.
-          sig { returns(Increase::Models::CardPayment::Element::CardIncrement::Currency::TaggedSymbol) }
-          attr_accessor :currency
+          sig { returns(Symbol) }
+          def currency
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def currency=(_)
+          end
 
           # The card network used to process this card authorization.
-          sig { returns(Increase::Models::CardPayment::Element::CardIncrement::Network::TaggedSymbol) }
-          attr_accessor :network
+          sig { returns(Symbol) }
+          def network
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def network=(_)
+          end
 
           # Network-specific identifiers for a specific request or transaction.
           sig { returns(Increase::Models::CardPayment::Element::CardIncrement::NetworkIdentifiers) }
-          attr_reader :network_identifiers
+          def network_identifiers
+          end
 
           sig do
-            params(
-              network_identifiers: T.any(Increase::Models::CardPayment::Element::CardIncrement::NetworkIdentifiers, Increase::Util::AnyHash)
-            )
-              .void
+            params(_: Increase::Models::CardPayment::Element::CardIncrement::NetworkIdentifiers)
+              .returns(Increase::Models::CardPayment::Element::CardIncrement::NetworkIdentifiers)
           end
-          attr_writer :network_identifiers
+          def network_identifiers=(_)
+          end
 
           # The risk score generated by the card network. For Visa this is the Visa Advanced
           #   Authorization risk score, from 0 to 99, where 99 is the riskiest.
           sig { returns(T.nilable(Integer)) }
-          attr_accessor :network_risk_score
+          def network_risk_score
+          end
+
+          sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+          def network_risk_score=(_)
+          end
 
           # The identifier of the Pending Transaction associated with this Card Increment.
           sig { returns(T.nilable(String)) }
-          attr_accessor :pending_transaction_id
+          def pending_transaction_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def pending_transaction_id=(_)
+          end
 
           # The identifier of the Real-Time Decision sent to approve or decline this
           #   incremental authorization.
           sig { returns(T.nilable(String)) }
-          attr_accessor :real_time_decision_id
+          def real_time_decision_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def real_time_decision_id=(_)
+          end
 
           # A constant representing the object's type. For this resource it will always be
           #   `card_increment`.
-          sig { returns(Increase::Models::CardPayment::Element::CardIncrement::Type::TaggedSymbol) }
-          attr_accessor :type
+          sig { returns(Symbol) }
+          def type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def type=(_)
+          end
 
           # The updated authorization amount after this increment, in the minor unit of the
           #   transaction's currency. For dollars, for example, this is cents.
           sig { returns(Integer) }
-          attr_accessor :updated_authorization_amount
+          def updated_authorization_amount
+          end
+
+          sig { params(_: Integer).returns(Integer) }
+          def updated_authorization_amount=(_)
+          end
 
           # A Card Increment object. This field will be present in the JSON response if and
           #   only if `category` is equal to `card_increment`. Card Increments increase the
@@ -3809,16 +3277,16 @@ module Increase
           sig do
             params(
               id: String,
-              actioner: Increase::Models::CardPayment::Element::CardIncrement::Actioner::OrSymbol,
+              actioner: Symbol,
               amount: Integer,
               card_authorization_id: String,
-              currency: Increase::Models::CardPayment::Element::CardIncrement::Currency::OrSymbol,
-              network: Increase::Models::CardPayment::Element::CardIncrement::Network::OrSymbol,
-              network_identifiers: T.any(Increase::Models::CardPayment::Element::CardIncrement::NetworkIdentifiers, Increase::Util::AnyHash),
+              currency: Symbol,
+              network: Symbol,
+              network_identifiers: Increase::Models::CardPayment::Element::CardIncrement::NetworkIdentifiers,
               network_risk_score: T.nilable(Integer),
               pending_transaction_id: T.nilable(String),
               real_time_decision_id: T.nilable(String),
-              type: Increase::Models::CardPayment::Element::CardIncrement::Type::OrSymbol,
+              type: Symbol,
               updated_authorization_amount: Integer
             )
               .returns(T.attached_class)
@@ -3844,16 +3312,16 @@ module Increase
               .returns(
                 {
                   id: String,
-                  actioner: Increase::Models::CardPayment::Element::CardIncrement::Actioner::TaggedSymbol,
+                  actioner: Symbol,
                   amount: Integer,
                   card_authorization_id: String,
-                  currency: Increase::Models::CardPayment::Element::CardIncrement::Currency::TaggedSymbol,
-                  network: Increase::Models::CardPayment::Element::CardIncrement::Network::TaggedSymbol,
+                  currency: Symbol,
+                  network: Symbol,
                   network_identifiers: Increase::Models::CardPayment::Element::CardIncrement::NetworkIdentifiers,
                   network_risk_score: T.nilable(Integer),
                   pending_transaction_id: T.nilable(String),
                   real_time_decision_id: T.nilable(String),
-                  type: Increase::Models::CardPayment::Element::CardIncrement::Type::TaggedSymbol,
+                  type: Symbol,
                   updated_authorization_amount: Integer
                 }
               )
@@ -3863,83 +3331,55 @@ module Increase
 
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
-          module Actioner
-            extend Increase::Enum
+          class Actioner < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardIncrement::Actioner) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardIncrement::Actioner::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # This object was actioned by the user through a real-time decision.
-            USER = T.let(:user, Increase::Models::CardPayment::Element::CardIncrement::Actioner::TaggedSymbol)
+            USER = :user
 
             # This object was actioned by Increase without user intervention.
-            INCREASE =
-              T.let(:increase, Increase::Models::CardPayment::Element::CardIncrement::Actioner::TaggedSymbol)
+            INCREASE = :increase
 
             # This object was actioned by the network, through stand-in processing.
-            NETWORK = T.let(:network, Increase::Models::CardPayment::Element::CardIncrement::Actioner::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardIncrement::Actioner::TaggedSymbol]) }
-              def values
-              end
-            end
+            NETWORK = :network
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
           #   currency.
-          module Currency
-            extend Increase::Enum
+          class Currency < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardIncrement::Currency) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardIncrement::Currency::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
-            CAD = T.let(:CAD, Increase::Models::CardPayment::Element::CardIncrement::Currency::TaggedSymbol)
+            CAD = :CAD
 
             # Swiss Franc (CHF)
-            CHF = T.let(:CHF, Increase::Models::CardPayment::Element::CardIncrement::Currency::TaggedSymbol)
+            CHF = :CHF
 
             # Euro (EUR)
-            EUR = T.let(:EUR, Increase::Models::CardPayment::Element::CardIncrement::Currency::TaggedSymbol)
+            EUR = :EUR
 
             # British Pound (GBP)
-            GBP = T.let(:GBP, Increase::Models::CardPayment::Element::CardIncrement::Currency::TaggedSymbol)
+            GBP = :GBP
 
             # Japanese Yen (JPY)
-            JPY = T.let(:JPY, Increase::Models::CardPayment::Element::CardIncrement::Currency::TaggedSymbol)
+            JPY = :JPY
 
             # US Dollar (USD)
-            USD = T.let(:USD, Increase::Models::CardPayment::Element::CardIncrement::Currency::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardIncrement::Currency::TaggedSymbol]) }
-              def values
-              end
-            end
+            USD = :USD
           end
 
           # The card network used to process this card authorization.
-          module Network
-            extend Increase::Enum
+          class Network < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardIncrement::Network) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardIncrement::Network::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Visa
-            VISA = T.let(:visa, Increase::Models::CardPayment::Element::CardIncrement::Network::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardIncrement::Network::TaggedSymbol]) }
-              def values
-              end
-            end
+            VISA = :visa
           end
 
           class NetworkIdentifiers < Increase::BaseModel
@@ -3947,17 +3387,32 @@ module Increase
             #   Expected to be unique per acquirer within a window of time. For some card
             #   networks the retrieval reference number includes the trace counter.
             sig { returns(T.nilable(String)) }
-            attr_accessor :retrieval_reference_number
+            def retrieval_reference_number
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def retrieval_reference_number=(_)
+            end
 
             # A counter used to verify an individual authorization. Expected to be unique per
             #   acquirer within a window of time.
             sig { returns(T.nilable(String)) }
-            attr_accessor :trace_number
+            def trace_number
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def trace_number=(_)
+            end
 
             # A globally unique transaction identifier provided by the card network, used
             #   across multiple life-cycle requests.
             sig { returns(T.nilable(String)) }
-            attr_accessor :transaction_id
+            def transaction_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def transaction_id=(_)
+            end
 
             # Network-specific identifiers for a specific request or transaction.
             sig do
@@ -3987,142 +3442,205 @@ module Increase
 
           # A constant representing the object's type. For this resource it will always be
           #   `card_increment`.
-          module Type
-            extend Increase::Enum
+          class Type < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardIncrement::Type) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardIncrement::Type::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            CARD_INCREMENT =
-              T.let(:card_increment, Increase::Models::CardPayment::Element::CardIncrement::Type::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardIncrement::Type::TaggedSymbol]) }
-              def values
-              end
-            end
+            CARD_INCREMENT = :card_increment
           end
         end
 
         class CardRefund < Increase::BaseModel
           # The Card Refund identifier.
           sig { returns(String) }
-          attr_accessor :id
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
 
           # The amount in the minor unit of the transaction's settlement currency. For
           #   dollars, for example, this is cents.
           sig { returns(Integer) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: Integer).returns(Integer) }
+          def amount=(_)
+          end
 
           # The ID of the Card Payment this transaction belongs to.
           sig { returns(String) }
-          attr_accessor :card_payment_id
+          def card_payment_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def card_payment_id=(_)
+          end
 
           # Cashback debited for this transaction, if eligible. Cashback is paid out in
           #   aggregate, monthly.
           sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::Cashback)) }
-          attr_reader :cashback
+          def cashback
+          end
 
           sig do
-            params(
-              cashback: T.nilable(T.any(Increase::Models::CardPayment::Element::CardRefund::Cashback, Increase::Util::AnyHash))
-            )
-              .void
+            params(_: T.nilable(Increase::Models::CardPayment::Element::CardRefund::Cashback))
+              .returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::Cashback))
           end
-          attr_writer :cashback
+          def cashback=(_)
+          end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's settlement currency.
-          sig { returns(Increase::Models::CardPayment::Element::CardRefund::Currency::TaggedSymbol) }
-          attr_accessor :currency
+          sig { returns(Symbol) }
+          def currency
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def currency=(_)
+          end
 
           # Interchange assessed as a part of this transaciton.
           sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::Interchange)) }
-          attr_reader :interchange
+          def interchange
+          end
 
           sig do
-            params(
-              interchange: T.nilable(T.any(Increase::Models::CardPayment::Element::CardRefund::Interchange, Increase::Util::AnyHash))
-            )
-              .void
+            params(_: T.nilable(Increase::Models::CardPayment::Element::CardRefund::Interchange))
+              .returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::Interchange))
           end
-          attr_writer :interchange
+          def interchange=(_)
+          end
 
           # The merchant identifier (commonly abbreviated as MID) of the merchant the card
           #   is transacting with.
           sig { returns(String) }
-          attr_accessor :merchant_acceptor_id
+          def merchant_acceptor_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_acceptor_id=(_)
+          end
 
           # The 4-digit MCC describing the merchant's business.
           sig { returns(String) }
-          attr_accessor :merchant_category_code
+          def merchant_category_code
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_category_code=(_)
+          end
 
           # The city the merchant resides in.
           sig { returns(String) }
-          attr_accessor :merchant_city
+          def merchant_city
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_city=(_)
+          end
 
           # The country the merchant resides in.
           sig { returns(String) }
-          attr_accessor :merchant_country
+          def merchant_country
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_country=(_)
+          end
 
           # The name of the merchant.
           sig { returns(String) }
-          attr_accessor :merchant_name
+          def merchant_name
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_name=(_)
+          end
 
           # The merchant's postal code. For US merchants this is always a 5-digit ZIP code.
           sig { returns(T.nilable(String)) }
-          attr_accessor :merchant_postal_code
+          def merchant_postal_code
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def merchant_postal_code=(_)
+          end
 
           # The state the merchant resides in.
           sig { returns(T.nilable(String)) }
-          attr_accessor :merchant_state
+          def merchant_state
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def merchant_state=(_)
+          end
 
           # Network-specific identifiers for this refund.
           sig { returns(Increase::Models::CardPayment::Element::CardRefund::NetworkIdentifiers) }
-          attr_reader :network_identifiers
+          def network_identifiers
+          end
 
           sig do
-            params(
-              network_identifiers: T.any(Increase::Models::CardPayment::Element::CardRefund::NetworkIdentifiers, Increase::Util::AnyHash)
-            )
-              .void
+            params(_: Increase::Models::CardPayment::Element::CardRefund::NetworkIdentifiers)
+              .returns(Increase::Models::CardPayment::Element::CardRefund::NetworkIdentifiers)
           end
-          attr_writer :network_identifiers
+          def network_identifiers=(_)
+          end
 
           # The amount in the minor unit of the transaction's presentment currency.
           sig { returns(Integer) }
-          attr_accessor :presentment_amount
+          def presentment_amount
+          end
+
+          sig { params(_: Integer).returns(Integer) }
+          def presentment_amount=(_)
+          end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's presentment currency.
           sig { returns(String) }
-          attr_accessor :presentment_currency
+          def presentment_currency
+          end
+
+          sig { params(_: String).returns(String) }
+          def presentment_currency=(_)
+          end
 
           # Additional details about the card purchase, such as tax and industry-specific
           #   fields.
           sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails)) }
-          attr_reader :purchase_details
+          def purchase_details
+          end
 
           sig do
-            params(
-              purchase_details: T.nilable(
-                T.any(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails, Increase::Util::AnyHash)
-              )
-            )
-              .void
+            params(_: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails))
+              .returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails))
           end
-          attr_writer :purchase_details
+          def purchase_details=(_)
+          end
 
           # The identifier of the Transaction associated with this Transaction.
           sig { returns(String) }
-          attr_accessor :transaction_id
+          def transaction_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def transaction_id=(_)
+          end
 
           # A constant representing the object's type. For this resource it will always be
           #   `card_refund`.
-          sig { returns(Increase::Models::CardPayment::Element::CardRefund::Type::TaggedSymbol) }
-          attr_accessor :type
+          sig { returns(Symbol) }
+          def type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def type=(_)
+          end
 
           # A Card Refund object. This field will be present in the JSON response if and
           #   only if `category` is equal to `card_refund`. Card Refunds move money back to
@@ -4134,9 +3652,9 @@ module Increase
               id: String,
               amount: Integer,
               card_payment_id: String,
-              cashback: T.nilable(T.any(Increase::Models::CardPayment::Element::CardRefund::Cashback, Increase::Util::AnyHash)),
-              currency: Increase::Models::CardPayment::Element::CardRefund::Currency::OrSymbol,
-              interchange: T.nilable(T.any(Increase::Models::CardPayment::Element::CardRefund::Interchange, Increase::Util::AnyHash)),
+              cashback: T.nilable(Increase::Models::CardPayment::Element::CardRefund::Cashback),
+              currency: Symbol,
+              interchange: T.nilable(Increase::Models::CardPayment::Element::CardRefund::Interchange),
               merchant_acceptor_id: String,
               merchant_category_code: String,
               merchant_city: String,
@@ -4144,14 +3662,12 @@ module Increase
               merchant_name: String,
               merchant_postal_code: T.nilable(String),
               merchant_state: T.nilable(String),
-              network_identifiers: T.any(Increase::Models::CardPayment::Element::CardRefund::NetworkIdentifiers, Increase::Util::AnyHash),
+              network_identifiers: Increase::Models::CardPayment::Element::CardRefund::NetworkIdentifiers,
               presentment_amount: Integer,
               presentment_currency: String,
-              purchase_details: T.nilable(
-                T.any(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails, Increase::Util::AnyHash)
-              ),
+              purchase_details: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails),
               transaction_id: String,
-              type: Increase::Models::CardPayment::Element::CardRefund::Type::OrSymbol
+              type: Symbol
             )
               .returns(T.attached_class)
           end
@@ -4186,7 +3702,7 @@ module Increase
                   amount: Integer,
                   card_payment_id: String,
                   cashback: T.nilable(Increase::Models::CardPayment::Element::CardRefund::Cashback),
-                  currency: Increase::Models::CardPayment::Element::CardRefund::Currency::TaggedSymbol,
+                  currency: Symbol,
                   interchange: T.nilable(Increase::Models::CardPayment::Element::CardRefund::Interchange),
                   merchant_acceptor_id: String,
                   merchant_category_code: String,
@@ -4200,7 +3716,7 @@ module Increase
                   presentment_currency: String,
                   purchase_details: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails),
                   transaction_id: String,
-                  type: Increase::Models::CardPayment::Element::CardRefund::Type::TaggedSymbol
+                  type: Symbol
                 }
               )
           end
@@ -4212,107 +3728,82 @@ module Increase
             #   a positive number if it will be credited to you (e.g., settlements) and a
             #   negative number if it will be debited (e.g., refunds).
             sig { returns(String) }
-            attr_accessor :amount
+            def amount
+            end
+
+            sig { params(_: String).returns(String) }
+            def amount=(_)
+            end
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
-            sig { returns(Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol) }
-            attr_accessor :currency
+            sig { returns(Symbol) }
+            def currency
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def currency=(_)
+            end
 
             # Cashback debited for this transaction, if eligible. Cashback is paid out in
             #   aggregate, monthly.
-            sig do
-              params(
-                amount: String,
-                currency: Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency::OrSymbol
-              )
-                .returns(T.attached_class)
-            end
+            sig { params(amount: String, currency: Symbol).returns(T.attached_class) }
             def self.new(amount:, currency:)
             end
 
-            sig do
-              override
-                .returns(
-                  {
-                    amount: String,
-                    currency: Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol
-                  }
-                )
-            end
+            sig { override.returns({amount: String, currency: Symbol}) }
             def to_hash
             end
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
-            module Currency
-              extend Increase::Enum
+            class Currency < Increase::Enum
+              abstract!
 
-              TaggedSymbol =
-                T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency) }
-              OrSymbol =
-                T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol) }
+              Value = type_template(:out) { {fixed: Symbol} }
 
               # Canadian Dollar (CAD)
-              CAD = T.let(:CAD, Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol)
+              CAD = :CAD
 
               # Swiss Franc (CHF)
-              CHF = T.let(:CHF, Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol)
+              CHF = :CHF
 
               # Euro (EUR)
-              EUR = T.let(:EUR, Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol)
+              EUR = :EUR
 
               # British Pound (GBP)
-              GBP = T.let(:GBP, Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol)
+              GBP = :GBP
 
               # Japanese Yen (JPY)
-              JPY = T.let(:JPY, Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol)
+              JPY = :JPY
 
               # US Dollar (USD)
-              USD = T.let(:USD, Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol)
-
-              class << self
-                sig do
-                  override
-                    .returns(T::Array[Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol])
-                end
-                def values
-                end
-              end
+              USD = :USD
             end
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's settlement currency.
-          module Currency
-            extend Increase::Enum
+          class Currency < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardRefund::Currency) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardRefund::Currency::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
-            CAD = T.let(:CAD, Increase::Models::CardPayment::Element::CardRefund::Currency::TaggedSymbol)
+            CAD = :CAD
 
             # Swiss Franc (CHF)
-            CHF = T.let(:CHF, Increase::Models::CardPayment::Element::CardRefund::Currency::TaggedSymbol)
+            CHF = :CHF
 
             # Euro (EUR)
-            EUR = T.let(:EUR, Increase::Models::CardPayment::Element::CardRefund::Currency::TaggedSymbol)
+            EUR = :EUR
 
             # British Pound (GBP)
-            GBP = T.let(:GBP, Increase::Models::CardPayment::Element::CardRefund::Currency::TaggedSymbol)
+            GBP = :GBP
 
             # Japanese Yen (JPY)
-            JPY = T.let(:JPY, Increase::Models::CardPayment::Element::CardRefund::Currency::TaggedSymbol)
+            JPY = :JPY
 
             # US Dollar (USD)
-            USD = T.let(:USD, Increase::Models::CardPayment::Element::CardRefund::Currency::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardRefund::Currency::TaggedSymbol]) }
-              def values
-              end
-            end
+            USD = :USD
           end
 
           class Interchange < Increase::BaseModel
@@ -4320,84 +3811,67 @@ module Increase
             #   is a positive number if it is credited to Increase (e.g., settlements) and a
             #   negative number if it is debited (e.g., refunds).
             sig { returns(String) }
-            attr_accessor :amount
+            def amount
+            end
+
+            sig { params(_: String).returns(String) }
+            def amount=(_)
+            end
 
             # The card network specific interchange code.
             sig { returns(T.nilable(String)) }
-            attr_accessor :code
+            def code
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def code=(_)
+            end
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   reimbursement.
-            sig { returns(Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol) }
-            attr_accessor :currency
+            sig { returns(Symbol) }
+            def currency
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def currency=(_)
+            end
 
             # Interchange assessed as a part of this transaciton.
             sig do
-              params(
-                amount: String,
-                code: T.nilable(String),
-                currency: Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency::OrSymbol
-              )
-                .returns(T.attached_class)
+              params(amount: String, code: T.nilable(String), currency: Symbol).returns(T.attached_class)
             end
             def self.new(amount:, code:, currency:)
             end
 
-            sig do
-              override
-                .returns(
-                  {
-                    amount: String,
-                    code: T.nilable(String),
-                    currency: Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol
-                  }
-                )
-            end
+            sig { override.returns({amount: String, code: T.nilable(String), currency: Symbol}) }
             def to_hash
             end
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   reimbursement.
-            module Currency
-              extend Increase::Enum
+            class Currency < Increase::Enum
+              abstract!
 
-              TaggedSymbol =
-                T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency) }
-              OrSymbol =
-                T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol) }
+              Value = type_template(:out) { {fixed: Symbol} }
 
               # Canadian Dollar (CAD)
-              CAD =
-                T.let(:CAD, Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol)
+              CAD = :CAD
 
               # Swiss Franc (CHF)
-              CHF =
-                T.let(:CHF, Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol)
+              CHF = :CHF
 
               # Euro (EUR)
-              EUR =
-                T.let(:EUR, Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol)
+              EUR = :EUR
 
               # British Pound (GBP)
-              GBP =
-                T.let(:GBP, Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol)
+              GBP = :GBP
 
               # Japanese Yen (JPY)
-              JPY =
-                T.let(:JPY, Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol)
+              JPY = :JPY
 
               # US Dollar (USD)
-              USD =
-                T.let(:USD, Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol)
-
-              class << self
-                sig do
-                  override
-                    .returns(T::Array[Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol])
-                end
-                def values
-                end
-              end
+              USD = :USD
             end
           end
 
@@ -4405,16 +3879,31 @@ module Increase
             # A network assigned business ID that identifies the acquirer that processed this
             #   transaction.
             sig { returns(String) }
-            attr_accessor :acquirer_business_id
+            def acquirer_business_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def acquirer_business_id=(_)
+            end
 
             # A globally unique identifier for this settlement.
             sig { returns(String) }
-            attr_accessor :acquirer_reference_number
+            def acquirer_reference_number
+            end
+
+            sig { params(_: String).returns(String) }
+            def acquirer_reference_number=(_)
+            end
 
             # A globally unique transaction identifier provided by the card network, used
             #   across multiple life-cycle requests.
             sig { returns(T.nilable(String)) }
-            attr_accessor :transaction_id
+            def transaction_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def transaction_id=(_)
+            end
 
             # Network-specific identifiers for this refund.
             sig do
@@ -4445,122 +3934,119 @@ module Increase
           class PurchaseDetails < Increase::BaseModel
             # Fields specific to car rentals.
             sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental)) }
-            attr_reader :car_rental
+            def car_rental
+            end
 
             sig do
-              params(
-                car_rental: T.nilable(
-                  T.any(
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental,
-                    Increase::Util::AnyHash
-                  )
-                )
-              )
-                .void
+              params(_: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental))
+                .returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental))
             end
-            attr_writer :car_rental
+            def car_rental=(_)
+            end
 
             # An identifier from the merchant for the customer or consumer.
             sig { returns(T.nilable(String)) }
-            attr_accessor :customer_reference_identifier
+            def customer_reference_identifier
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def customer_reference_identifier=(_)
+            end
 
             # The state or provincial tax amount in minor units.
             sig { returns(T.nilable(Integer)) }
-            attr_accessor :local_tax_amount
+            def local_tax_amount
+            end
+
+            sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+            def local_tax_amount=(_)
+            end
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
             #   assessed.
             sig { returns(T.nilable(String)) }
-            attr_accessor :local_tax_currency
+            def local_tax_currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def local_tax_currency=(_)
+            end
 
             # Fields specific to lodging.
             sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging)) }
-            attr_reader :lodging
+            def lodging
+            end
 
             sig do
-              params(
-                lodging: T.nilable(
-                  T.any(
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging,
-                    Increase::Util::AnyHash
-                  )
-                )
-              )
-                .void
+              params(_: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging))
+                .returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging))
             end
-            attr_writer :lodging
+            def lodging=(_)
+            end
 
             # The national tax amount in minor units.
             sig { returns(T.nilable(Integer)) }
-            attr_accessor :national_tax_amount
+            def national_tax_amount
+            end
+
+            sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+            def national_tax_amount=(_)
+            end
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
             #   assessed.
             sig { returns(T.nilable(String)) }
-            attr_accessor :national_tax_currency
+            def national_tax_currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def national_tax_currency=(_)
+            end
 
             # An identifier from the merchant for the purchase to the issuer and cardholder.
             sig { returns(T.nilable(String)) }
-            attr_accessor :purchase_identifier
+            def purchase_identifier
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def purchase_identifier=(_)
+            end
 
             # The format of the purchase identifier.
-            sig do
-              returns(
-                T.nilable(
-                  Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                )
-              )
+            sig { returns(T.nilable(Symbol)) }
+            def purchase_identifier_format
             end
-            attr_accessor :purchase_identifier_format
+
+            sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+            def purchase_identifier_format=(_)
+            end
 
             # Fields specific to travel.
             sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel)) }
-            attr_reader :travel
+            def travel
+            end
 
             sig do
-              params(
-                travel: T.nilable(
-                  T.any(
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel,
-                    Increase::Util::AnyHash
-                  )
-                )
-              )
-                .void
+              params(_: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel))
+                .returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel))
             end
-            attr_writer :travel
+            def travel=(_)
+            end
 
             # Additional details about the card purchase, such as tax and industry-specific
             #   fields.
             sig do
               params(
-                car_rental: T.nilable(
-                  T.any(
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental,
-                    Increase::Util::AnyHash
-                  )
-                ),
+                car_rental: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental),
                 customer_reference_identifier: T.nilable(String),
                 local_tax_amount: T.nilable(Integer),
                 local_tax_currency: T.nilable(String),
-                lodging: T.nilable(
-                  T.any(
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging,
-                    Increase::Util::AnyHash
-                  )
-                ),
+                lodging: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging),
                 national_tax_amount: T.nilable(Integer),
                 national_tax_currency: T.nilable(String),
                 purchase_identifier: T.nilable(String),
-                purchase_identifier_format: T.nilable(
-                  Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::OrSymbol
-                ),
-                travel: T.nilable(
-                  T.any(
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel,
-                    Increase::Util::AnyHash
-                  )
-                )
+                purchase_identifier_format: T.nilable(Symbol),
+                travel: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel)
               )
                 .returns(T.attached_class)
             end
@@ -4590,9 +4076,7 @@ module Increase
                     national_tax_amount: T.nilable(Integer),
                     national_tax_currency: T.nilable(String),
                     purchase_identifier: T.nilable(String),
-                    purchase_identifier_format: T.nilable(
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                    ),
+                    purchase_identifier_format: T.nilable(Symbol),
                     travel: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel)
                   }
                 )
@@ -4603,87 +4087,155 @@ module Increase
             class CarRental < Increase::BaseModel
               # Code indicating the vehicle's class.
               sig { returns(T.nilable(String)) }
-              attr_accessor :car_class_code
+              def car_class_code
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def car_class_code=(_)
+              end
 
               # Date the customer picked up the car or, in the case of a no-show or pre-pay
               #   transaction, the scheduled pick up date.
               sig { returns(T.nilable(Date)) }
-              attr_accessor :checkout_date
+              def checkout_date
+              end
+
+              sig { params(_: T.nilable(Date)).returns(T.nilable(Date)) }
+              def checkout_date=(_)
+              end
 
               # Daily rate being charged for the vehicle.
               sig { returns(T.nilable(Integer)) }
-              attr_accessor :daily_rental_rate_amount
+              def daily_rental_rate_amount
+              end
+
+              sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+              def daily_rental_rate_amount=(_)
+              end
 
               # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily rental
               #   rate.
               sig { returns(T.nilable(String)) }
-              attr_accessor :daily_rental_rate_currency
+              def daily_rental_rate_currency
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def daily_rental_rate_currency=(_)
+              end
 
               # Number of days the vehicle was rented.
               sig { returns(T.nilable(Integer)) }
-              attr_accessor :days_rented
+              def days_rented
+              end
+
+              sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+              def days_rented=(_)
+              end
 
               # Additional charges (gas, late fee, etc.) being billed.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
-                )
+              sig { returns(T.nilable(Symbol)) }
+              def extra_charges
               end
-              attr_accessor :extra_charges
+
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+              def extra_charges=(_)
+              end
 
               # Fuel charges for the vehicle.
               sig { returns(T.nilable(Integer)) }
-              attr_accessor :fuel_charges_amount
+              def fuel_charges_amount
+              end
+
+              sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+              def fuel_charges_amount=(_)
+              end
 
               # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel charges
               #   assessed.
               sig { returns(T.nilable(String)) }
-              attr_accessor :fuel_charges_currency
+              def fuel_charges_currency
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def fuel_charges_currency=(_)
+              end
 
               # Any insurance being charged for the vehicle.
               sig { returns(T.nilable(Integer)) }
-              attr_accessor :insurance_charges_amount
+              def insurance_charges_amount
+              end
+
+              sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+              def insurance_charges_amount=(_)
+              end
 
               # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance
               #   charges assessed.
               sig { returns(T.nilable(String)) }
-              attr_accessor :insurance_charges_currency
+              def insurance_charges_currency
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def insurance_charges_currency=(_)
+              end
 
               # An indicator that the cardholder is being billed for a reserved vehicle that was
               #   not actually rented (that is, a "no-show" charge).
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                  )
-                )
+              sig { returns(T.nilable(Symbol)) }
+              def no_show_indicator
               end
-              attr_accessor :no_show_indicator
+
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+              def no_show_indicator=(_)
+              end
 
               # Charges for returning the vehicle at a different location than where it was
               #   picked up.
               sig { returns(T.nilable(Integer)) }
-              attr_accessor :one_way_drop_off_charges_amount
+              def one_way_drop_off_charges_amount
+              end
+
+              sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+              def one_way_drop_off_charges_amount=(_)
+              end
 
               # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the one-way
               #   drop-off charges assessed.
               sig { returns(T.nilable(String)) }
-              attr_accessor :one_way_drop_off_charges_currency
+              def one_way_drop_off_charges_currency
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def one_way_drop_off_charges_currency=(_)
+              end
 
               # Name of the person renting the vehicle.
               sig { returns(T.nilable(String)) }
-              attr_accessor :renter_name
+              def renter_name
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def renter_name=(_)
+              end
 
               # Weekly rate being charged for the vehicle.
               sig { returns(T.nilable(Integer)) }
-              attr_accessor :weekly_rental_rate_amount
+              def weekly_rental_rate_amount
+              end
+
+              sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+              def weekly_rental_rate_amount=(_)
+              end
 
               # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly
               #   rental rate.
               sig { returns(T.nilable(String)) }
-              attr_accessor :weekly_rental_rate_currency
+              def weekly_rental_rate_currency
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def weekly_rental_rate_currency=(_)
+              end
 
               # Fields specific to car rentals.
               sig do
@@ -4693,16 +4245,12 @@ module Increase
                   daily_rental_rate_amount: T.nilable(Integer),
                   daily_rental_rate_currency: T.nilable(String),
                   days_rented: T.nilable(Integer),
-                  extra_charges: T.nilable(
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::OrSymbol
-                  ),
+                  extra_charges: T.nilable(Symbol),
                   fuel_charges_amount: T.nilable(Integer),
                   fuel_charges_currency: T.nilable(String),
                   insurance_charges_amount: T.nilable(Integer),
                   insurance_charges_currency: T.nilable(String),
-                  no_show_indicator: T.nilable(
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::OrSymbol
-                  ),
+                  no_show_indicator: T.nilable(Symbol),
                   one_way_drop_off_charges_amount: T.nilable(Integer),
                   one_way_drop_off_charges_currency: T.nilable(String),
                   renter_name: T.nilable(String),
@@ -4740,16 +4288,12 @@ module Increase
                       daily_rental_rate_amount: T.nilable(Integer),
                       daily_rental_rate_currency: T.nilable(String),
                       days_rented: T.nilable(Integer),
-                      extra_charges: T.nilable(
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                      ),
+                      extra_charges: T.nilable(Symbol),
                       fuel_charges_amount: T.nilable(Integer),
                       fuel_charges_currency: T.nilable(String),
                       insurance_charges_amount: T.nilable(Integer),
                       insurance_charges_currency: T.nilable(String),
-                      no_show_indicator: T.nilable(
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                      ),
+                      no_show_indicator: T.nilable(Symbol),
                       one_way_drop_off_charges_amount: T.nilable(Integer),
                       one_way_drop_off_charges_currency: T.nilable(String),
                       renter_name: T.nilable(String),
@@ -4762,204 +4306,196 @@ module Increase
               end
 
               # Additional charges (gas, late fee, etc.) being billed.
-              module ExtraCharges
-                extend Increase::Enum
+              class ExtraCharges < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # No extra charge
-                NO_EXTRA_CHARGE =
-                  T.let(
-                    :no_extra_charge,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
+                NO_EXTRA_CHARGE = :no_extra_charge
 
                 # Gas
-                GAS =
-                  T.let(
-                    :gas,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
+                GAS = :gas
 
                 # Extra mileage
-                EXTRA_MILEAGE =
-                  T.let(
-                    :extra_mileage,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
+                EXTRA_MILEAGE = :extra_mileage
 
                 # Late return
-                LATE_RETURN =
-                  T.let(
-                    :late_return,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
+                LATE_RETURN = :late_return
 
                 # One way service fee
-                ONE_WAY_SERVICE_FEE =
-                  T.let(
-                    :one_way_service_fee,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
+                ONE_WAY_SERVICE_FEE = :one_way_service_fee
 
                 # Parking violation
-                PARKING_VIOLATION =
-                  T.let(
-                    :parking_violation,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol]
-                      )
-                  end
-                  def values
-                  end
-                end
+                PARKING_VIOLATION = :parking_violation
               end
 
               # An indicator that the cardholder is being billed for a reserved vehicle that was
               #   not actually rented (that is, a "no-show" charge).
-              module NoShowIndicator
-                extend Increase::Enum
+              class NoShowIndicator < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # Not applicable
-                NOT_APPLICABLE =
-                  T.let(
-                    :not_applicable,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                  )
+                NOT_APPLICABLE = :not_applicable
 
                 # No show for specialized vehicle
-                NO_SHOW_FOR_SPECIALIZED_VEHICLE =
-                  T.let(
-                    :no_show_for_specialized_vehicle,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                NO_SHOW_FOR_SPECIALIZED_VEHICLE = :no_show_for_specialized_vehicle
               end
             end
 
             class Lodging < Increase::BaseModel
               # Date the customer checked in.
               sig { returns(T.nilable(Date)) }
-              attr_accessor :check_in_date
+              def check_in_date
+              end
+
+              sig { params(_: T.nilable(Date)).returns(T.nilable(Date)) }
+              def check_in_date=(_)
+              end
 
               # Daily rate being charged for the room.
               sig { returns(T.nilable(Integer)) }
-              attr_accessor :daily_room_rate_amount
+              def daily_room_rate_amount
+              end
+
+              sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+              def daily_room_rate_amount=(_)
+              end
 
               # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room
               #   rate.
               sig { returns(T.nilable(String)) }
-              attr_accessor :daily_room_rate_currency
+              def daily_room_rate_currency
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def daily_room_rate_currency=(_)
+              end
 
               # Additional charges (phone, late check-out, etc.) being billed.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
-                )
+              sig { returns(T.nilable(Symbol)) }
+              def extra_charges
               end
-              attr_accessor :extra_charges
+
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+              def extra_charges=(_)
+              end
 
               # Folio cash advances for the room.
               sig { returns(T.nilable(Integer)) }
-              attr_accessor :folio_cash_advances_amount
+              def folio_cash_advances_amount
+              end
+
+              sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+              def folio_cash_advances_amount=(_)
+              end
 
               # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the folio cash
               #   advances.
               sig { returns(T.nilable(String)) }
-              attr_accessor :folio_cash_advances_currency
+              def folio_cash_advances_currency
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def folio_cash_advances_currency=(_)
+              end
 
               # Food and beverage charges for the room.
               sig { returns(T.nilable(Integer)) }
-              attr_accessor :food_beverage_charges_amount
+              def food_beverage_charges_amount
+              end
+
+              sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+              def food_beverage_charges_amount=(_)
+              end
 
               # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
               #   beverage charges.
               sig { returns(T.nilable(String)) }
-              attr_accessor :food_beverage_charges_currency
+              def food_beverage_charges_currency
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def food_beverage_charges_currency=(_)
+              end
 
               # Indicator that the cardholder is being billed for a reserved room that was not
               #   actually used.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                  )
-                )
+              sig { returns(T.nilable(Symbol)) }
+              def no_show_indicator
               end
-              attr_accessor :no_show_indicator
+
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+              def no_show_indicator=(_)
+              end
 
               # Prepaid expenses being charged for the room.
               sig { returns(T.nilable(Integer)) }
-              attr_accessor :prepaid_expenses_amount
+              def prepaid_expenses_amount
+              end
+
+              sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+              def prepaid_expenses_amount=(_)
+              end
 
               # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the prepaid
               #   expenses.
               sig { returns(T.nilable(String)) }
-              attr_accessor :prepaid_expenses_currency
+              def prepaid_expenses_currency
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def prepaid_expenses_currency=(_)
+              end
 
               # Number of nights the room was rented.
               sig { returns(T.nilable(Integer)) }
-              attr_accessor :room_nights
+              def room_nights
+              end
+
+              sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+              def room_nights=(_)
+              end
 
               # Total room tax being charged.
               sig { returns(T.nilable(Integer)) }
-              attr_accessor :total_room_tax_amount
+              def total_room_tax_amount
+              end
+
+              sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+              def total_room_tax_amount=(_)
+              end
 
               # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total room
               #   tax.
               sig { returns(T.nilable(String)) }
-              attr_accessor :total_room_tax_currency
+              def total_room_tax_currency
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def total_room_tax_currency=(_)
+              end
 
               # Total tax being charged for the room.
               sig { returns(T.nilable(Integer)) }
-              attr_accessor :total_tax_amount
+              def total_tax_amount
+              end
+
+              sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+              def total_tax_amount=(_)
+              end
 
               # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax
               #   assessed.
               sig { returns(T.nilable(String)) }
-              attr_accessor :total_tax_currency
+              def total_tax_currency
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def total_tax_currency=(_)
+              end
 
               # Fields specific to lodging.
               sig do
@@ -4967,16 +4503,12 @@ module Increase
                   check_in_date: T.nilable(Date),
                   daily_room_rate_amount: T.nilable(Integer),
                   daily_room_rate_currency: T.nilable(String),
-                  extra_charges: T.nilable(
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::OrSymbol
-                  ),
+                  extra_charges: T.nilable(Symbol),
                   folio_cash_advances_amount: T.nilable(Integer),
                   folio_cash_advances_currency: T.nilable(String),
                   food_beverage_charges_amount: T.nilable(Integer),
                   food_beverage_charges_currency: T.nilable(String),
-                  no_show_indicator: T.nilable(
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::OrSymbol
-                  ),
+                  no_show_indicator: T.nilable(Symbol),
                   prepaid_expenses_amount: T.nilable(Integer),
                   prepaid_expenses_currency: T.nilable(String),
                   room_nights: T.nilable(Integer),
@@ -5014,16 +4546,12 @@ module Increase
                       check_in_date: T.nilable(Date),
                       daily_room_rate_amount: T.nilable(Integer),
                       daily_room_rate_currency: T.nilable(String),
-                      extra_charges: T.nilable(
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                      ),
+                      extra_charges: T.nilable(Symbol),
                       folio_cash_advances_amount: T.nilable(Integer),
                       folio_cash_advances_currency: T.nilable(String),
                       food_beverage_charges_amount: T.nilable(Integer),
                       food_beverage_charges_currency: T.nilable(String),
-                      no_show_indicator: T.nilable(
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                      ),
+                      no_show_indicator: T.nilable(Symbol),
                       prepaid_expenses_amount: T.nilable(Integer),
                       prepaid_expenses_currency: T.nilable(String),
                       room_nights: T.nilable(Integer),
@@ -5038,266 +4566,174 @@ module Increase
               end
 
               # Additional charges (phone, late check-out, etc.) being billed.
-              module ExtraCharges
-                extend Increase::Enum
+              class ExtraCharges < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges) }
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # No extra charge
-                NO_EXTRA_CHARGE =
-                  T.let(
-                    :no_extra_charge,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
+                NO_EXTRA_CHARGE = :no_extra_charge
 
                 # Restaurant
-                RESTAURANT =
-                  T.let(
-                    :restaurant,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
+                RESTAURANT = :restaurant
 
                 # Gift shop
-                GIFT_SHOP =
-                  T.let(
-                    :gift_shop,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
+                GIFT_SHOP = :gift_shop
 
                 # Mini bar
-                MINI_BAR =
-                  T.let(
-                    :mini_bar,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
+                MINI_BAR = :mini_bar
 
                 # Telephone
-                TELEPHONE =
-                  T.let(
-                    :telephone,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
+                TELEPHONE = :telephone
 
                 # Other
-                OTHER =
-                  T.let(
-                    :other,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
+                OTHER = :other
 
                 # Laundry
-                LAUNDRY =
-                  T.let(
-                    :laundry,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol]
-                      )
-                  end
-                  def values
-                  end
-                end
+                LAUNDRY = :laundry
               end
 
               # Indicator that the cardholder is being billed for a reserved room that was not
               #   actually used.
-              module NoShowIndicator
-                extend Increase::Enum
+              class NoShowIndicator < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # Not applicable
-                NOT_APPLICABLE =
-                  T.let(
-                    :not_applicable,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                  )
+                NOT_APPLICABLE = :not_applicable
 
                 # No show
-                NO_SHOW =
-                  T.let(
-                    :no_show,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                NO_SHOW = :no_show
               end
             end
 
             # The format of the purchase identifier.
-            module PurchaseIdentifierFormat
-              extend Increase::Enum
+            class PurchaseIdentifierFormat < Increase::Enum
+              abstract!
 
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat)
-                end
-              OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                  )
-                end
+              Value = type_template(:out) { {fixed: Symbol} }
 
               # Free text
-              FREE_TEXT =
-                T.let(
-                  :free_text,
-                  Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                )
+              FREE_TEXT = :free_text
 
               # Order number
-              ORDER_NUMBER =
-                T.let(
-                  :order_number,
-                  Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                )
+              ORDER_NUMBER = :order_number
 
               # Rental agreement number
-              RENTAL_AGREEMENT_NUMBER =
-                T.let(
-                  :rental_agreement_number,
-                  Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                )
+              RENTAL_AGREEMENT_NUMBER = :rental_agreement_number
 
               # Hotel folio number
-              HOTEL_FOLIO_NUMBER =
-                T.let(
-                  :hotel_folio_number,
-                  Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                )
+              HOTEL_FOLIO_NUMBER = :hotel_folio_number
 
               # Invoice number
-              INVOICE_NUMBER =
-                T.let(
-                  :invoice_number,
-                  Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                )
-
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
-              end
+              INVOICE_NUMBER = :invoice_number
             end
 
             class Travel < Increase::BaseModel
               # Ancillary purchases in addition to the airfare.
               sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary)) }
-              attr_reader :ancillary
+              def ancillary
+              end
 
               sig do
                 params(
-                  ancillary: T.nilable(
-                    T.any(
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary,
-                      Increase::Util::AnyHash
-                    )
-                  )
+                  _: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary)
                 )
-                  .void
+                  .returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary))
               end
-              attr_writer :ancillary
+              def ancillary=(_)
+              end
 
               # Indicates the computerized reservation system used to book the ticket.
               sig { returns(T.nilable(String)) }
-              attr_accessor :computerized_reservation_system
+              def computerized_reservation_system
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def computerized_reservation_system=(_)
+              end
 
               # Indicates the reason for a credit to the cardholder.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
-                )
+              sig { returns(T.nilable(Symbol)) }
+              def credit_reason_indicator
               end
-              attr_accessor :credit_reason_indicator
+
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+              def credit_reason_indicator=(_)
+              end
 
               # Date of departure.
               sig { returns(T.nilable(Date)) }
-              attr_accessor :departure_date
+              def departure_date
+              end
+
+              sig { params(_: T.nilable(Date)).returns(T.nilable(Date)) }
+              def departure_date=(_)
+              end
 
               # Code for the originating city or airport.
               sig { returns(T.nilable(String)) }
-              attr_accessor :origination_city_airport_code
+              def origination_city_airport_code
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def origination_city_airport_code=(_)
+              end
 
               # Name of the passenger.
               sig { returns(T.nilable(String)) }
-              attr_accessor :passenger_name
+              def passenger_name
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def passenger_name=(_)
+              end
 
               # Indicates whether this ticket is non-refundable.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                  )
-                )
+              sig { returns(T.nilable(Symbol)) }
+              def restricted_ticket_indicator
               end
-              attr_accessor :restricted_ticket_indicator
+
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+              def restricted_ticket_indicator=(_)
+              end
 
               # Indicates why a ticket was changed.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                  )
-                )
+              sig { returns(T.nilable(Symbol)) }
+              def ticket_change_indicator
               end
-              attr_accessor :ticket_change_indicator
+
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+              def ticket_change_indicator=(_)
+              end
 
               # Ticket number.
               sig { returns(T.nilable(String)) }
-              attr_accessor :ticket_number
+              def ticket_number
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def ticket_number=(_)
+              end
 
               # Code for the travel agency if the ticket was issued by a travel agency.
               sig { returns(T.nilable(String)) }
-              attr_accessor :travel_agency_code
+              def travel_agency_code
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def travel_agency_code=(_)
+              end
 
               # Name of the travel agency if the ticket was issued by a travel agency.
               sig { returns(T.nilable(String)) }
-              attr_accessor :travel_agency_name
+              def travel_agency_name
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def travel_agency_name=(_)
+              end
 
               # Fields specific to each leg of the journey.
               sig do
@@ -5305,41 +4741,35 @@ module Increase
                   T.nilable(T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg])
                 )
               end
-              attr_accessor :trip_legs
+              def trip_legs
+              end
+
+              sig do
+                params(
+                  _: T.nilable(T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg])
+                )
+                  .returns(
+                    T.nilable(T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg])
+                  )
+              end
+              def trip_legs=(_)
+              end
 
               # Fields specific to travel.
               sig do
                 params(
-                  ancillary: T.nilable(
-                    T.any(
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary,
-                      Increase::Util::AnyHash
-                    )
-                  ),
+                  ancillary: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary),
                   computerized_reservation_system: T.nilable(String),
-                  credit_reason_indicator: T.nilable(
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::OrSymbol
-                  ),
+                  credit_reason_indicator: T.nilable(Symbol),
                   departure_date: T.nilable(Date),
                   origination_city_airport_code: T.nilable(String),
                   passenger_name: T.nilable(String),
-                  restricted_ticket_indicator: T.nilable(
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::OrSymbol
-                  ),
-                  ticket_change_indicator: T.nilable(
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::OrSymbol
-                  ),
+                  restricted_ticket_indicator: T.nilable(Symbol),
+                  ticket_change_indicator: T.nilable(Symbol),
                   ticket_number: T.nilable(String),
                   travel_agency_code: T.nilable(String),
                   travel_agency_name: T.nilable(String),
-                  trip_legs: T.nilable(
-                    T::Array[
-                    T.any(
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg,
-                      Increase::Util::AnyHash
-                    )
-                    ]
-                  )
+                  trip_legs: T.nilable(T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg])
                 )
                   .returns(T.attached_class)
               end
@@ -5365,18 +4795,12 @@ module Increase
                     {
                       ancillary: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary),
                       computerized_reservation_system: T.nilable(String),
-                      credit_reason_indicator: T.nilable(
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                      ),
+                      credit_reason_indicator: T.nilable(Symbol),
                       departure_date: T.nilable(Date),
                       origination_city_airport_code: T.nilable(String),
                       passenger_name: T.nilable(String),
-                      restricted_ticket_indicator: T.nilable(
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                      ),
-                      ticket_change_indicator: T.nilable(
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                      ),
+                      restricted_ticket_indicator: T.nilable(Symbol),
+                      ticket_change_indicator: T.nilable(Symbol),
                       ticket_number: T.nilable(String),
                       travel_agency_code: T.nilable(String),
                       travel_agency_name: T.nilable(String),
@@ -5392,21 +4816,30 @@ module Increase
                 #   baggage fee for a passenger transport ticket, this field should contain the
                 #   ticket document number for the other purchase.
                 sig { returns(T.nilable(String)) }
-                attr_accessor :connected_ticket_document_number
+                def connected_ticket_document_number
+                end
+
+                sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+                def connected_ticket_document_number=(_)
+                end
 
                 # Indicates the reason for a credit to the cardholder.
-                sig do
-                  returns(
-                    T.nilable(
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                    )
-                  )
+                sig { returns(T.nilable(Symbol)) }
+                def credit_reason_indicator
                 end
-                attr_accessor :credit_reason_indicator
+
+                sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+                def credit_reason_indicator=(_)
+                end
 
                 # Name of the passenger or description of the ancillary purchase.
                 sig { returns(T.nilable(String)) }
-                attr_accessor :passenger_name_or_description
+                def passenger_name_or_description
+                end
+
+                sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+                def passenger_name_or_description=(_)
+                end
 
                 # Additional travel charges, such as baggage fees.
                 sig do
@@ -5414,26 +4847,36 @@ module Increase
                     T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service]
                   )
                 end
-                attr_accessor :services
+                def services
+                end
+
+                sig do
+                  params(
+                    _: T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service]
+                  )
+                    .returns(
+                      T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service]
+                    )
+                end
+                def services=(_)
+                end
 
                 # Ticket document number.
                 sig { returns(T.nilable(String)) }
-                attr_accessor :ticket_document_number
+                def ticket_document_number
+                end
+
+                sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+                def ticket_document_number=(_)
+                end
 
                 # Ancillary purchases in addition to the airfare.
                 sig do
                   params(
                     connected_ticket_document_number: T.nilable(String),
-                    credit_reason_indicator: T.nilable(
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::OrSymbol
-                    ),
+                    credit_reason_indicator: T.nilable(Symbol),
                     passenger_name_or_description: T.nilable(String),
-                    services: T::Array[
-                    T.any(
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service,
-                      Increase::Util::AnyHash
-                    )
-                    ],
+                    services: T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service],
                     ticket_document_number: T.nilable(String)
                   )
                     .returns(T.attached_class)
@@ -5452,9 +4895,7 @@ module Increase
                     .returns(
                       {
                         connected_ticket_document_number: T.nilable(String),
-                        credit_reason_indicator: T.nilable(
-                          Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                        ),
+                        credit_reason_indicator: T.nilable(Symbol),
                         passenger_name_or_description: T.nilable(String),
                         services: T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service],
                         ticket_document_number: T.nilable(String)
@@ -5465,501 +4906,249 @@ module Increase
                 end
 
                 # Indicates the reason for a credit to the cardholder.
-                module CreditReasonIndicator
-                  extend Increase::Enum
+                class CreditReasonIndicator < Increase::Enum
+                  abstract!
 
-                  TaggedSymbol =
-                    T.type_alias do
-                      T.all(Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator)
-                    end
-                  OrSymbol =
-                    T.type_alias do
-                      T.any(
-                        Symbol,
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                      )
-                    end
+                  Value = type_template(:out) { {fixed: Symbol} }
 
                   # No credit
-                  NO_CREDIT =
-                    T.let(
-                      :no_credit,
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                    )
+                  NO_CREDIT = :no_credit
 
                   # Passenger transport ancillary purchase cancellation
                   PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
-                    T.let(
-                      :passenger_transport_ancillary_purchase_cancellation,
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                    )
+                    :passenger_transport_ancillary_purchase_cancellation
 
                   # Airline ticket and passenger transport ancillary purchase cancellation
                   AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
-                    T.let(
-                      :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                    )
+                    :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
 
                   # Other
-                  OTHER =
-                    T.let(
-                      :other,
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                    )
-
-                  class << self
-                    sig do
-                      override
-                        .returns(
-                          T::Array[
-                          Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                          ]
-                        )
-                    end
-                    def values
-                    end
-                  end
+                  OTHER = :other
                 end
 
                 class Service < Increase::BaseModel
                   # Category of the ancillary service.
-                  sig do
-                    returns(
-                      T.nilable(
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
-                    )
+                  sig { returns(T.nilable(Symbol)) }
+                  def category
                   end
-                  attr_accessor :category
+
+                  sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+                  def category=(_)
+                  end
 
                   # Sub-category of the ancillary service, free-form.
                   sig { returns(T.nilable(String)) }
-                  attr_accessor :sub_category
+                  def sub_category
+                  end
+
+                  sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+                  def sub_category=(_)
+                  end
 
                   sig do
                     params(
-                      category: T.nilable(
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::OrSymbol
-                      ),
+                      category: T.nilable(Symbol),
                       sub_category: T.nilable(String)
-                    )
-                      .returns(T.attached_class)
+                    ).returns(T.attached_class)
                   end
                   def self.new(category:, sub_category:)
                   end
 
-                  sig do
-                    override
-                      .returns(
-                        {
-                          category: T.nilable(
-                            Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                          ),
-                          sub_category: T.nilable(String)
-                        }
-                      )
-                  end
+                  sig { override.returns({category: T.nilable(Symbol), sub_category: T.nilable(String)}) }
                   def to_hash
                   end
 
                   # Category of the ancillary service.
-                  module Category
-                    extend Increase::Enum
+                  class Category < Increase::Enum
+                    abstract!
 
-                    TaggedSymbol =
-                      T.type_alias do
-                        T.all(Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category)
-                      end
-                    OrSymbol =
-                      T.type_alias do
-                        T.any(
-                          Symbol,
-                          Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                        )
-                      end
+                    Value = type_template(:out) { {fixed: Symbol} }
 
                     # None
-                    NONE =
-                      T.let(
-                        :none,
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    NONE = :none
 
                     # Bundled service
-                    BUNDLED_SERVICE =
-                      T.let(
-                        :bundled_service,
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    BUNDLED_SERVICE = :bundled_service
 
                     # Baggage fee
-                    BAGGAGE_FEE =
-                      T.let(
-                        :baggage_fee,
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    BAGGAGE_FEE = :baggage_fee
 
                     # Change fee
-                    CHANGE_FEE =
-                      T.let(
-                        :change_fee,
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    CHANGE_FEE = :change_fee
 
                     # Cargo
-                    CARGO =
-                      T.let(
-                        :cargo,
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    CARGO = :cargo
 
                     # Carbon offset
-                    CARBON_OFFSET =
-                      T.let(
-                        :carbon_offset,
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    CARBON_OFFSET = :carbon_offset
 
                     # Frequent flyer
-                    FREQUENT_FLYER =
-                      T.let(
-                        :frequent_flyer,
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    FREQUENT_FLYER = :frequent_flyer
 
                     # Gift card
-                    GIFT_CARD =
-                      T.let(
-                        :gift_card,
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    GIFT_CARD = :gift_card
 
                     # Ground transport
-                    GROUND_TRANSPORT =
-                      T.let(
-                        :ground_transport,
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    GROUND_TRANSPORT = :ground_transport
 
                     # In-flight entertainment
-                    IN_FLIGHT_ENTERTAINMENT =
-                      T.let(
-                        :in_flight_entertainment,
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    IN_FLIGHT_ENTERTAINMENT = :in_flight_entertainment
 
                     # Lounge
-                    LOUNGE =
-                      T.let(
-                        :lounge,
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    LOUNGE = :lounge
 
                     # Medical
-                    MEDICAL =
-                      T.let(
-                        :medical,
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    MEDICAL = :medical
 
                     # Meal beverage
-                    MEAL_BEVERAGE =
-                      T.let(
-                        :meal_beverage,
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    MEAL_BEVERAGE = :meal_beverage
 
                     # Other
-                    OTHER =
-                      T.let(
-                        :other,
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    OTHER = :other
 
                     # Passenger assist fee
-                    PASSENGER_ASSIST_FEE =
-                      T.let(
-                        :passenger_assist_fee,
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    PASSENGER_ASSIST_FEE = :passenger_assist_fee
 
                     # Pets
-                    PETS =
-                      T.let(
-                        :pets,
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    PETS = :pets
 
                     # Seat fees
-                    SEAT_FEES =
-                      T.let(
-                        :seat_fees,
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    SEAT_FEES = :seat_fees
 
                     # Standby
-                    STANDBY =
-                      T.let(
-                        :standby,
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    STANDBY = :standby
 
                     # Service fee
-                    SERVICE_FEE =
-                      T.let(
-                        :service_fee,
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    SERVICE_FEE = :service_fee
 
                     # Store
-                    STORE =
-                      T.let(
-                        :store,
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    STORE = :store
 
                     # Travel service
-                    TRAVEL_SERVICE =
-                      T.let(
-                        :travel_service,
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    TRAVEL_SERVICE = :travel_service
 
                     # Unaccompanied travel
-                    UNACCOMPANIED_TRAVEL =
-                      T.let(
-                        :unaccompanied_travel,
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    UNACCOMPANIED_TRAVEL = :unaccompanied_travel
 
                     # Upgrades
-                    UPGRADES =
-                      T.let(
-                        :upgrades,
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    UPGRADES = :upgrades
 
                     # Wi-fi
-                    WIFI =
-                      T.let(
-                        :wifi,
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
-
-                    class << self
-                      sig do
-                        override
-                          .returns(
-                            T::Array[
-                            Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                            ]
-                          )
-                      end
-                      def values
-                      end
-                    end
+                    WIFI = :wifi
                   end
                 end
               end
 
               # Indicates the reason for a credit to the cardholder.
-              module CreditReasonIndicator
-                extend Increase::Enum
+              class CreditReasonIndicator < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # No credit
-                NO_CREDIT =
-                  T.let(
-                    :no_credit,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
+                NO_CREDIT = :no_credit
 
                 # Passenger transport ancillary purchase cancellation
                 PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
-                  T.let(
-                    :passenger_transport_ancillary_purchase_cancellation,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
+                  :passenger_transport_ancillary_purchase_cancellation
 
                 # Airline ticket and passenger transport ancillary purchase cancellation
                 AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
-                  T.let(
-                    :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
+                  :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
 
                 # Airline ticket cancellation
-                AIRLINE_TICKET_CANCELLATION =
-                  T.let(
-                    :airline_ticket_cancellation,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
+                AIRLINE_TICKET_CANCELLATION = :airline_ticket_cancellation
 
                 # Other
-                OTHER =
-                  T.let(
-                    :other,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
+                OTHER = :other
 
                 # Partial refund of airline ticket
-                PARTIAL_REFUND_OF_AIRLINE_TICKET =
-                  T.let(
-                    :partial_refund_of_airline_ticket,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                PARTIAL_REFUND_OF_AIRLINE_TICKET = :partial_refund_of_airline_ticket
               end
 
               # Indicates whether this ticket is non-refundable.
-              module RestrictedTicketIndicator
-                extend Increase::Enum
+              class RestrictedTicketIndicator < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # No restrictions
-                NO_RESTRICTIONS =
-                  T.let(
-                    :no_restrictions,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                  )
+                NO_RESTRICTIONS = :no_restrictions
 
                 # Restricted non-refundable ticket
-                RESTRICTED_NON_REFUNDABLE_TICKET =
-                  T.let(
-                    :restricted_non_refundable_ticket,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                RESTRICTED_NON_REFUNDABLE_TICKET = :restricted_non_refundable_ticket
               end
 
               # Indicates why a ticket was changed.
-              module TicketChangeIndicator
-                extend Increase::Enum
+              class TicketChangeIndicator < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # None
-                NONE =
-                  T.let(
-                    :none,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                  )
+                NONE = :none
 
                 # Change to existing ticket
-                CHANGE_TO_EXISTING_TICKET =
-                  T.let(
-                    :change_to_existing_ticket,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                  )
+                CHANGE_TO_EXISTING_TICKET = :change_to_existing_ticket
 
                 # New ticket
-                NEW_TICKET =
-                  T.let(
-                    :new_ticket,
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                NEW_TICKET = :new_ticket
               end
 
               class TripLeg < Increase::BaseModel
                 # Carrier code (e.g., United Airlines, Jet Blue, etc.).
                 sig { returns(T.nilable(String)) }
-                attr_accessor :carrier_code
+                def carrier_code
+                end
+
+                sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+                def carrier_code=(_)
+                end
 
                 # Code for the destination city or airport.
                 sig { returns(T.nilable(String)) }
-                attr_accessor :destination_city_airport_code
+                def destination_city_airport_code
+                end
+
+                sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+                def destination_city_airport_code=(_)
+                end
 
                 # Fare basis code.
                 sig { returns(T.nilable(String)) }
-                attr_accessor :fare_basis_code
+                def fare_basis_code
+                end
+
+                sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+                def fare_basis_code=(_)
+                end
 
                 # Flight number.
                 sig { returns(T.nilable(String)) }
-                attr_accessor :flight_number
+                def flight_number
+                end
+
+                sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+                def flight_number=(_)
+                end
 
                 # Service class (e.g., first class, business class, etc.).
                 sig { returns(T.nilable(String)) }
-                attr_accessor :service_class
+                def service_class
+                end
+
+                sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+                def service_class=(_)
+                end
 
                 # Indicates whether a stopover is allowed on this ticket.
-                sig do
-                  returns(
-                    T.nilable(
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                    )
-                  )
+                sig { returns(T.nilable(Symbol)) }
+                def stop_over_code
                 end
-                attr_accessor :stop_over_code
+
+                sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+                def stop_over_code=(_)
+                end
 
                 sig do
                   params(
@@ -5968,9 +5157,7 @@ module Increase
                     fare_basis_code: T.nilable(String),
                     flight_number: T.nilable(String),
                     service_class: T.nilable(String),
-                    stop_over_code: T.nilable(
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::OrSymbol
-                    )
+                    stop_over_code: T.nilable(Symbol)
                   )
                     .returns(T.attached_class)
                 end
@@ -5993,9 +5180,7 @@ module Increase
                         fare_basis_code: T.nilable(String),
                         flight_number: T.nilable(String),
                         service_class: T.nilable(String),
-                        stop_over_code: T.nilable(
-                          Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                        )
+                        stop_over_code: T.nilable(Symbol)
                       }
                     )
                 end
@@ -6003,54 +5188,19 @@ module Increase
                 end
 
                 # Indicates whether a stopover is allowed on this ticket.
-                module StopOverCode
-                  extend Increase::Enum
+                class StopOverCode < Increase::Enum
+                  abstract!
 
-                  TaggedSymbol =
-                    T.type_alias do
-                      T.all(Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode)
-                    end
-                  OrSymbol =
-                    T.type_alias do
-                      T.any(
-                        Symbol,
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                      )
-                    end
+                  Value = type_template(:out) { {fixed: Symbol} }
 
                   # None
-                  NONE =
-                    T.let(
-                      :none,
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                    )
+                  NONE = :none
 
                   # Stop over allowed
-                  STOP_OVER_ALLOWED =
-                    T.let(
-                      :stop_over_allowed,
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                    )
+                  STOP_OVER_ALLOWED = :stop_over_allowed
 
                   # Stop over not allowed
-                  STOP_OVER_NOT_ALLOWED =
-                    T.let(
-                      :stop_over_not_allowed,
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                    )
-
-                  class << self
-                    sig do
-                      override
-                        .returns(
-                          T::Array[
-                          Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                          ]
-                        )
-                    end
-                    def values
-                    end
-                  end
+                  STOP_OVER_NOT_ALLOWED = :stop_over_not_allowed
                 end
               end
             end
@@ -6058,111 +5208,188 @@ module Increase
 
           # A constant representing the object's type. For this resource it will always be
           #   `card_refund`.
-          module Type
-            extend Increase::Enum
+          class Type < Increase::Enum
+            abstract!
 
-            TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardRefund::Type) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardRefund::Type::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            CARD_REFUND = T.let(:card_refund, Increase::Models::CardPayment::Element::CardRefund::Type::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardRefund::Type::TaggedSymbol]) }
-              def values
-              end
-            end
+            CARD_REFUND = :card_refund
           end
         end
 
         class CardReversal < Increase::BaseModel
           # The Card Reversal identifier.
           sig { returns(String) }
-          attr_accessor :id
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
 
           # The identifier for the Card Authorization this reverses.
           sig { returns(String) }
-          attr_accessor :card_authorization_id
+          def card_authorization_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def card_authorization_id=(_)
+          end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
           #   currency.
-          sig { returns(Increase::Models::CardPayment::Element::CardReversal::Currency::TaggedSymbol) }
-          attr_accessor :currency
+          sig { returns(Symbol) }
+          def currency
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def currency=(_)
+          end
 
           # The merchant identifier (commonly abbreviated as MID) of the merchant the card
           #   is transacting with.
           sig { returns(String) }
-          attr_accessor :merchant_acceptor_id
+          def merchant_acceptor_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_acceptor_id=(_)
+          end
 
           # The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
           #   card is transacting with.
           sig { returns(String) }
-          attr_accessor :merchant_category_code
+          def merchant_category_code
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_category_code=(_)
+          end
 
           # The city the merchant resides in.
           sig { returns(T.nilable(String)) }
-          attr_accessor :merchant_city
+          def merchant_city
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def merchant_city=(_)
+          end
 
           # The country the merchant resides in.
           sig { returns(T.nilable(String)) }
-          attr_accessor :merchant_country
+          def merchant_country
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def merchant_country=(_)
+          end
 
           # The merchant descriptor of the merchant the card is transacting with.
           sig { returns(String) }
-          attr_accessor :merchant_descriptor
+          def merchant_descriptor
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_descriptor=(_)
+          end
 
           # The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
           #   ZIP code, where the first 5 and last 4 are separated by a dash.
           sig { returns(T.nilable(String)) }
-          attr_accessor :merchant_postal_code
+          def merchant_postal_code
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def merchant_postal_code=(_)
+          end
 
           # The state the merchant resides in.
           sig { returns(T.nilable(String)) }
-          attr_accessor :merchant_state
+          def merchant_state
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def merchant_state=(_)
+          end
 
           # The card network used to process this card authorization.
-          sig { returns(Increase::Models::CardPayment::Element::CardReversal::Network::TaggedSymbol) }
-          attr_accessor :network
+          sig { returns(Symbol) }
+          def network
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def network=(_)
+          end
 
           # Network-specific identifiers for a specific request or transaction.
           sig { returns(Increase::Models::CardPayment::Element::CardReversal::NetworkIdentifiers) }
-          attr_reader :network_identifiers
+          def network_identifiers
+          end
 
           sig do
-            params(
-              network_identifiers: T.any(Increase::Models::CardPayment::Element::CardReversal::NetworkIdentifiers, Increase::Util::AnyHash)
-            )
-              .void
+            params(_: Increase::Models::CardPayment::Element::CardReversal::NetworkIdentifiers)
+              .returns(Increase::Models::CardPayment::Element::CardReversal::NetworkIdentifiers)
           end
-          attr_writer :network_identifiers
+          def network_identifiers=(_)
+          end
 
           # The identifier of the Pending Transaction associated with this Card Reversal.
           sig { returns(T.nilable(String)) }
-          attr_accessor :pending_transaction_id
+          def pending_transaction_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def pending_transaction_id=(_)
+          end
 
           # The amount of this reversal in the minor unit of the transaction's currency. For
           #   dollars, for example, this is cents.
           sig { returns(Integer) }
-          attr_accessor :reversal_amount
+          def reversal_amount
+          end
+
+          sig { params(_: Integer).returns(Integer) }
+          def reversal_amount=(_)
+          end
 
           # Why this reversal was initiated.
-          sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardReversal::ReversalReason::TaggedSymbol)) }
-          attr_accessor :reversal_reason
+          sig { returns(T.nilable(Symbol)) }
+          def reversal_reason
+          end
+
+          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          def reversal_reason=(_)
+          end
 
           # The terminal identifier (commonly abbreviated as TID) of the terminal the card
           #   is transacting with.
           sig { returns(T.nilable(String)) }
-          attr_accessor :terminal_id
+          def terminal_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def terminal_id=(_)
+          end
 
           # A constant representing the object's type. For this resource it will always be
           #   `card_reversal`.
-          sig { returns(Increase::Models::CardPayment::Element::CardReversal::Type::TaggedSymbol) }
-          attr_accessor :type
+          sig { returns(Symbol) }
+          def type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def type=(_)
+          end
 
           # The amount left pending on the Card Authorization in the minor unit of the
           #   transaction's currency. For dollars, for example, this is cents.
           sig { returns(Integer) }
-          attr_accessor :updated_authorization_amount
+          def updated_authorization_amount
+          end
+
+          sig { params(_: Integer).returns(Integer) }
+          def updated_authorization_amount=(_)
+          end
 
           # A Card Reversal object. This field will be present in the JSON response if and
           #   only if `category` is equal to `card_reversal`. Card Reversals cancel parts of
@@ -6171,7 +5398,7 @@ module Increase
             params(
               id: String,
               card_authorization_id: String,
-              currency: Increase::Models::CardPayment::Element::CardReversal::Currency::OrSymbol,
+              currency: Symbol,
               merchant_acceptor_id: String,
               merchant_category_code: String,
               merchant_city: T.nilable(String),
@@ -6179,13 +5406,13 @@ module Increase
               merchant_descriptor: String,
               merchant_postal_code: T.nilable(String),
               merchant_state: T.nilable(String),
-              network: Increase::Models::CardPayment::Element::CardReversal::Network::OrSymbol,
-              network_identifiers: T.any(Increase::Models::CardPayment::Element::CardReversal::NetworkIdentifiers, Increase::Util::AnyHash),
+              network: Symbol,
+              network_identifiers: Increase::Models::CardPayment::Element::CardReversal::NetworkIdentifiers,
               pending_transaction_id: T.nilable(String),
               reversal_amount: Integer,
-              reversal_reason: T.nilable(Increase::Models::CardPayment::Element::CardReversal::ReversalReason::OrSymbol),
+              reversal_reason: T.nilable(Symbol),
               terminal_id: T.nilable(String),
-              type: Increase::Models::CardPayment::Element::CardReversal::Type::OrSymbol,
+              type: Symbol,
               updated_authorization_amount: Integer
             )
               .returns(T.attached_class)
@@ -6218,7 +5445,7 @@ module Increase
                 {
                   id: String,
                   card_authorization_id: String,
-                  currency: Increase::Models::CardPayment::Element::CardReversal::Currency::TaggedSymbol,
+                  currency: Symbol,
                   merchant_acceptor_id: String,
                   merchant_category_code: String,
                   merchant_city: T.nilable(String),
@@ -6226,13 +5453,13 @@ module Increase
                   merchant_descriptor: String,
                   merchant_postal_code: T.nilable(String),
                   merchant_state: T.nilable(String),
-                  network: Increase::Models::CardPayment::Element::CardReversal::Network::TaggedSymbol,
+                  network: Symbol,
                   network_identifiers: Increase::Models::CardPayment::Element::CardReversal::NetworkIdentifiers,
                   pending_transaction_id: T.nilable(String),
                   reversal_amount: Integer,
-                  reversal_reason: T.nilable(Increase::Models::CardPayment::Element::CardReversal::ReversalReason::TaggedSymbol),
+                  reversal_reason: T.nilable(Symbol),
                   terminal_id: T.nilable(String),
-                  type: Increase::Models::CardPayment::Element::CardReversal::Type::TaggedSymbol,
+                  type: Symbol,
                   updated_authorization_amount: Integer
                 }
               )
@@ -6242,56 +5469,38 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
           #   currency.
-          module Currency
-            extend Increase::Enum
+          class Currency < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardReversal::Currency) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardReversal::Currency::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
-            CAD = T.let(:CAD, Increase::Models::CardPayment::Element::CardReversal::Currency::TaggedSymbol)
+            CAD = :CAD
 
             # Swiss Franc (CHF)
-            CHF = T.let(:CHF, Increase::Models::CardPayment::Element::CardReversal::Currency::TaggedSymbol)
+            CHF = :CHF
 
             # Euro (EUR)
-            EUR = T.let(:EUR, Increase::Models::CardPayment::Element::CardReversal::Currency::TaggedSymbol)
+            EUR = :EUR
 
             # British Pound (GBP)
-            GBP = T.let(:GBP, Increase::Models::CardPayment::Element::CardReversal::Currency::TaggedSymbol)
+            GBP = :GBP
 
             # Japanese Yen (JPY)
-            JPY = T.let(:JPY, Increase::Models::CardPayment::Element::CardReversal::Currency::TaggedSymbol)
+            JPY = :JPY
 
             # US Dollar (USD)
-            USD = T.let(:USD, Increase::Models::CardPayment::Element::CardReversal::Currency::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardReversal::Currency::TaggedSymbol]) }
-              def values
-              end
-            end
+            USD = :USD
           end
 
           # The card network used to process this card authorization.
-          module Network
-            extend Increase::Enum
+          class Network < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardReversal::Network) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardReversal::Network::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Visa
-            VISA = T.let(:visa, Increase::Models::CardPayment::Element::CardReversal::Network::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardReversal::Network::TaggedSymbol]) }
-              def values
-              end
-            end
+            VISA = :visa
           end
 
           class NetworkIdentifiers < Increase::BaseModel
@@ -6299,17 +5508,32 @@ module Increase
             #   Expected to be unique per acquirer within a window of time. For some card
             #   networks the retrieval reference number includes the trace counter.
             sig { returns(T.nilable(String)) }
-            attr_accessor :retrieval_reference_number
+            def retrieval_reference_number
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def retrieval_reference_number=(_)
+            end
 
             # A counter used to verify an individual authorization. Expected to be unique per
             #   acquirer within a window of time.
             sig { returns(T.nilable(String)) }
-            attr_accessor :trace_number
+            def trace_number
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def trace_number=(_)
+            end
 
             # A globally unique transaction identifier provided by the card network, used
             #   across multiple life-cycle requests.
             sig { returns(T.nilable(String)) }
-            attr_accessor :transaction_id
+            def transaction_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def transaction_id=(_)
+            end
 
             # Network-specific identifiers for a specific request or transaction.
             sig do
@@ -6338,202 +5562,244 @@ module Increase
           end
 
           # Why this reversal was initiated.
-          module ReversalReason
-            extend Increase::Enum
+          class ReversalReason < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardReversal::ReversalReason) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardReversal::ReversalReason::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # The Card Reversal was initiated at the customer's request.
-            REVERSED_BY_CUSTOMER =
-              T.let(
-                :reversed_by_customer,
-                Increase::Models::CardPayment::Element::CardReversal::ReversalReason::TaggedSymbol
-              )
+            REVERSED_BY_CUSTOMER = :reversed_by_customer
 
             # The Card Reversal was initiated by the network or acquirer.
-            REVERSED_BY_NETWORK_OR_ACQUIRER =
-              T.let(
-                :reversed_by_network_or_acquirer,
-                Increase::Models::CardPayment::Element::CardReversal::ReversalReason::TaggedSymbol
-              )
+            REVERSED_BY_NETWORK_OR_ACQUIRER = :reversed_by_network_or_acquirer
 
             # The Card Reversal was initiated by the point of sale device.
-            REVERSED_BY_POINT_OF_SALE =
-              T.let(
-                :reversed_by_point_of_sale,
-                Increase::Models::CardPayment::Element::CardReversal::ReversalReason::TaggedSymbol
-              )
+            REVERSED_BY_POINT_OF_SALE = :reversed_by_point_of_sale
 
             # The Card Reversal was a partial reversal, for any reason.
-            PARTIAL_REVERSAL =
-              T.let(
-                :partial_reversal,
-                Increase::Models::CardPayment::Element::CardReversal::ReversalReason::TaggedSymbol
-              )
-
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::CardPayment::Element::CardReversal::ReversalReason::TaggedSymbol])
-              end
-              def values
-              end
-            end
+            PARTIAL_REVERSAL = :partial_reversal
           end
 
           # A constant representing the object's type. For this resource it will always be
           #   `card_reversal`.
-          module Type
-            extend Increase::Enum
+          class Type < Increase::Enum
+            abstract!
 
-            TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardReversal::Type) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardReversal::Type::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            CARD_REVERSAL =
-              T.let(:card_reversal, Increase::Models::CardPayment::Element::CardReversal::Type::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardReversal::Type::TaggedSymbol]) }
-              def values
-              end
-            end
+            CARD_REVERSAL = :card_reversal
           end
         end
 
         class CardSettlement < Increase::BaseModel
           # The Card Settlement identifier.
           sig { returns(String) }
-          attr_accessor :id
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
 
           # The amount in the minor unit of the transaction's settlement currency. For
           #   dollars, for example, this is cents.
           sig { returns(Integer) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: Integer).returns(Integer) }
+          def amount=(_)
+          end
 
           # The Card Authorization that was created prior to this Card Settlement, if one
           #   exists.
           sig { returns(T.nilable(String)) }
-          attr_accessor :card_authorization
+          def card_authorization
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def card_authorization=(_)
+          end
 
           # The ID of the Card Payment this transaction belongs to.
           sig { returns(String) }
-          attr_accessor :card_payment_id
+          def card_payment_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def card_payment_id=(_)
+          end
 
           # Cashback earned on this transaction, if eligible. Cashback is paid out in
           #   aggregate, monthly.
           sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::Cashback)) }
-          attr_reader :cashback
+          def cashback
+          end
 
           sig do
-            params(
-              cashback: T.nilable(
-                T.any(Increase::Models::CardPayment::Element::CardSettlement::Cashback, Increase::Util::AnyHash)
-              )
-            )
-              .void
+            params(_: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::Cashback))
+              .returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::Cashback))
           end
-          attr_writer :cashback
+          def cashback=(_)
+          end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's settlement currency.
-          sig { returns(Increase::Models::CardPayment::Element::CardSettlement::Currency::TaggedSymbol) }
-          attr_accessor :currency
+          sig { returns(Symbol) }
+          def currency
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def currency=(_)
+          end
 
           # Interchange assessed as a part of this transaction.
           sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::Interchange)) }
-          attr_reader :interchange
+          def interchange
+          end
 
           sig do
-            params(
-              interchange: T.nilable(
-                T.any(Increase::Models::CardPayment::Element::CardSettlement::Interchange, Increase::Util::AnyHash)
-              )
-            )
-              .void
+            params(_: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::Interchange))
+              .returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::Interchange))
           end
-          attr_writer :interchange
+          def interchange=(_)
+          end
 
           # The merchant identifier (commonly abbreviated as MID) of the merchant the card
           #   is transacting with.
           sig { returns(String) }
-          attr_accessor :merchant_acceptor_id
+          def merchant_acceptor_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_acceptor_id=(_)
+          end
 
           # The 4-digit MCC describing the merchant's business.
           sig { returns(String) }
-          attr_accessor :merchant_category_code
+          def merchant_category_code
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_category_code=(_)
+          end
 
           # The city the merchant resides in.
           sig { returns(String) }
-          attr_accessor :merchant_city
+          def merchant_city
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_city=(_)
+          end
 
           # The country the merchant resides in.
           sig { returns(String) }
-          attr_accessor :merchant_country
+          def merchant_country
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_country=(_)
+          end
 
           # The name of the merchant.
           sig { returns(String) }
-          attr_accessor :merchant_name
+          def merchant_name
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_name=(_)
+          end
 
           # The merchant's postal code. For US merchants this is always a 5-digit ZIP code.
           sig { returns(T.nilable(String)) }
-          attr_accessor :merchant_postal_code
+          def merchant_postal_code
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def merchant_postal_code=(_)
+          end
 
           # The state the merchant resides in.
           sig { returns(T.nilable(String)) }
-          attr_accessor :merchant_state
+          def merchant_state
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def merchant_state=(_)
+          end
 
           # Network-specific identifiers for this refund.
           sig { returns(Increase::Models::CardPayment::Element::CardSettlement::NetworkIdentifiers) }
-          attr_reader :network_identifiers
+          def network_identifiers
+          end
 
           sig do
-            params(
-              network_identifiers: T.any(Increase::Models::CardPayment::Element::CardSettlement::NetworkIdentifiers, Increase::Util::AnyHash)
-            )
-              .void
+            params(_: Increase::Models::CardPayment::Element::CardSettlement::NetworkIdentifiers)
+              .returns(Increase::Models::CardPayment::Element::CardSettlement::NetworkIdentifiers)
           end
-          attr_writer :network_identifiers
+          def network_identifiers=(_)
+          end
 
           # The identifier of the Pending Transaction associated with this Transaction.
           sig { returns(T.nilable(String)) }
-          attr_accessor :pending_transaction_id
+          def pending_transaction_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def pending_transaction_id=(_)
+          end
 
           # The amount in the minor unit of the transaction's presentment currency.
           sig { returns(Integer) }
-          attr_accessor :presentment_amount
+          def presentment_amount
+          end
+
+          sig { params(_: Integer).returns(Integer) }
+          def presentment_amount=(_)
+          end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's presentment currency.
           sig { returns(String) }
-          attr_accessor :presentment_currency
+          def presentment_currency
+          end
+
+          sig { params(_: String).returns(String) }
+          def presentment_currency=(_)
+          end
 
           # Additional details about the card purchase, such as tax and industry-specific
           #   fields.
           sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails)) }
-          attr_reader :purchase_details
+          def purchase_details
+          end
 
           sig do
-            params(
-              purchase_details: T.nilable(
-                T.any(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails, Increase::Util::AnyHash)
-              )
-            )
-              .void
+            params(_: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails))
+              .returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails))
           end
-          attr_writer :purchase_details
+          def purchase_details=(_)
+          end
 
           # The identifier of the Transaction associated with this Transaction.
           sig { returns(String) }
-          attr_accessor :transaction_id
+          def transaction_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def transaction_id=(_)
+          end
 
           # A constant representing the object's type. For this resource it will always be
           #   `card_settlement`.
-          sig { returns(Increase::Models::CardPayment::Element::CardSettlement::Type::TaggedSymbol) }
-          attr_accessor :type
+          sig { returns(Symbol) }
+          def type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def type=(_)
+          end
 
           # A Card Settlement object. This field will be present in the JSON response if and
           #   only if `category` is equal to `card_settlement`. Card Settlements are card
@@ -6546,13 +5812,9 @@ module Increase
               amount: Integer,
               card_authorization: T.nilable(String),
               card_payment_id: String,
-              cashback: T.nilable(
-                T.any(Increase::Models::CardPayment::Element::CardSettlement::Cashback, Increase::Util::AnyHash)
-              ),
-              currency: Increase::Models::CardPayment::Element::CardSettlement::Currency::OrSymbol,
-              interchange: T.nilable(
-                T.any(Increase::Models::CardPayment::Element::CardSettlement::Interchange, Increase::Util::AnyHash)
-              ),
+              cashback: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::Cashback),
+              currency: Symbol,
+              interchange: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::Interchange),
               merchant_acceptor_id: String,
               merchant_category_code: String,
               merchant_city: String,
@@ -6560,15 +5822,13 @@ module Increase
               merchant_name: String,
               merchant_postal_code: T.nilable(String),
               merchant_state: T.nilable(String),
-              network_identifiers: T.any(Increase::Models::CardPayment::Element::CardSettlement::NetworkIdentifiers, Increase::Util::AnyHash),
+              network_identifiers: Increase::Models::CardPayment::Element::CardSettlement::NetworkIdentifiers,
               pending_transaction_id: T.nilable(String),
               presentment_amount: Integer,
               presentment_currency: String,
-              purchase_details: T.nilable(
-                T.any(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails, Increase::Util::AnyHash)
-              ),
+              purchase_details: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails),
               transaction_id: String,
-              type: Increase::Models::CardPayment::Element::CardSettlement::Type::OrSymbol
+              type: Symbol
             )
               .returns(T.attached_class)
           end
@@ -6606,7 +5866,7 @@ module Increase
                   card_authorization: T.nilable(String),
                   card_payment_id: String,
                   cashback: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::Cashback),
-                  currency: Increase::Models::CardPayment::Element::CardSettlement::Currency::TaggedSymbol,
+                  currency: Symbol,
                   interchange: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::Interchange),
                   merchant_acceptor_id: String,
                   merchant_category_code: String,
@@ -6621,7 +5881,7 @@ module Increase
                   presentment_currency: String,
                   purchase_details: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails),
                   transaction_id: String,
-                  type: Increase::Models::CardPayment::Element::CardSettlement::Type::TaggedSymbol
+                  type: Symbol
                 }
               )
           end
@@ -6633,115 +5893,82 @@ module Increase
             #   a positive number if it will be credited to you (e.g., settlements) and a
             #   negative number if it will be debited (e.g., refunds).
             sig { returns(String) }
-            attr_accessor :amount
+            def amount
+            end
+
+            sig { params(_: String).returns(String) }
+            def amount=(_)
+            end
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
-            sig { returns(Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol) }
-            attr_accessor :currency
+            sig { returns(Symbol) }
+            def currency
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def currency=(_)
+            end
 
             # Cashback earned on this transaction, if eligible. Cashback is paid out in
             #   aggregate, monthly.
-            sig do
-              params(
-                amount: String,
-                currency: Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency::OrSymbol
-              )
-                .returns(T.attached_class)
-            end
+            sig { params(amount: String, currency: Symbol).returns(T.attached_class) }
             def self.new(amount:, currency:)
             end
 
-            sig do
-              override
-                .returns(
-                  {
-                    amount: String,
-                    currency: Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol
-                  }
-                )
-            end
+            sig { override.returns({amount: String, currency: Symbol}) }
             def to_hash
             end
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
-            module Currency
-              extend Increase::Enum
+            class Currency < Increase::Enum
+              abstract!
 
-              TaggedSymbol =
-                T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency) }
-              OrSymbol =
-                T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol) }
+              Value = type_template(:out) { {fixed: Symbol} }
 
               # Canadian Dollar (CAD)
-              CAD =
-                T.let(:CAD, Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol)
+              CAD = :CAD
 
               # Swiss Franc (CHF)
-              CHF =
-                T.let(:CHF, Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol)
+              CHF = :CHF
 
               # Euro (EUR)
-              EUR =
-                T.let(:EUR, Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol)
+              EUR = :EUR
 
               # British Pound (GBP)
-              GBP =
-                T.let(:GBP, Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol)
+              GBP = :GBP
 
               # Japanese Yen (JPY)
-              JPY =
-                T.let(:JPY, Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol)
+              JPY = :JPY
 
               # US Dollar (USD)
-              USD =
-                T.let(:USD, Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol)
-
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol]
-                    )
-                end
-                def values
-                end
-              end
+              USD = :USD
             end
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's settlement currency.
-          module Currency
-            extend Increase::Enum
+          class Currency < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardSettlement::Currency) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardSettlement::Currency::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
-            CAD = T.let(:CAD, Increase::Models::CardPayment::Element::CardSettlement::Currency::TaggedSymbol)
+            CAD = :CAD
 
             # Swiss Franc (CHF)
-            CHF = T.let(:CHF, Increase::Models::CardPayment::Element::CardSettlement::Currency::TaggedSymbol)
+            CHF = :CHF
 
             # Euro (EUR)
-            EUR = T.let(:EUR, Increase::Models::CardPayment::Element::CardSettlement::Currency::TaggedSymbol)
+            EUR = :EUR
 
             # British Pound (GBP)
-            GBP = T.let(:GBP, Increase::Models::CardPayment::Element::CardSettlement::Currency::TaggedSymbol)
+            GBP = :GBP
 
             # Japanese Yen (JPY)
-            JPY = T.let(:JPY, Increase::Models::CardPayment::Element::CardSettlement::Currency::TaggedSymbol)
+            JPY = :JPY
 
             # US Dollar (USD)
-            USD = T.let(:USD, Increase::Models::CardPayment::Element::CardSettlement::Currency::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardSettlement::Currency::TaggedSymbol]) }
-              def values
-              end
-            end
+            USD = :USD
           end
 
           class Interchange < Increase::BaseModel
@@ -6749,86 +5976,67 @@ module Increase
             #   is a positive number if it is credited to Increase (e.g., settlements) and a
             #   negative number if it is debited (e.g., refunds).
             sig { returns(String) }
-            attr_accessor :amount
+            def amount
+            end
+
+            sig { params(_: String).returns(String) }
+            def amount=(_)
+            end
 
             # The card network specific interchange code.
             sig { returns(T.nilable(String)) }
-            attr_accessor :code
+            def code
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def code=(_)
+            end
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   reimbursement.
-            sig { returns(Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol) }
-            attr_accessor :currency
+            sig { returns(Symbol) }
+            def currency
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def currency=(_)
+            end
 
             # Interchange assessed as a part of this transaction.
             sig do
-              params(
-                amount: String,
-                code: T.nilable(String),
-                currency: Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency::OrSymbol
-              )
-                .returns(T.attached_class)
+              params(amount: String, code: T.nilable(String), currency: Symbol).returns(T.attached_class)
             end
             def self.new(amount:, code:, currency:)
             end
 
-            sig do
-              override
-                .returns(
-                  {
-                    amount: String,
-                    code: T.nilable(String),
-                    currency: Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol
-                  }
-                )
-            end
+            sig { override.returns({amount: String, code: T.nilable(String), currency: Symbol}) }
             def to_hash
             end
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   reimbursement.
-            module Currency
-              extend Increase::Enum
+            class Currency < Increase::Enum
+              abstract!
 
-              TaggedSymbol =
-                T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency) }
-              OrSymbol =
-                T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol) }
+              Value = type_template(:out) { {fixed: Symbol} }
 
               # Canadian Dollar (CAD)
-              CAD =
-                T.let(:CAD, Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol)
+              CAD = :CAD
 
               # Swiss Franc (CHF)
-              CHF =
-                T.let(:CHF, Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol)
+              CHF = :CHF
 
               # Euro (EUR)
-              EUR =
-                T.let(:EUR, Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol)
+              EUR = :EUR
 
               # British Pound (GBP)
-              GBP =
-                T.let(:GBP, Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol)
+              GBP = :GBP
 
               # Japanese Yen (JPY)
-              JPY =
-                T.let(:JPY, Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol)
+              JPY = :JPY
 
               # US Dollar (USD)
-              USD =
-                T.let(:USD, Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol)
-
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol]
-                    )
-                end
-                def values
-                end
-              end
+              USD = :USD
             end
           end
 
@@ -6836,16 +6044,31 @@ module Increase
             # A network assigned business ID that identifies the acquirer that processed this
             #   transaction.
             sig { returns(String) }
-            attr_accessor :acquirer_business_id
+            def acquirer_business_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def acquirer_business_id=(_)
+            end
 
             # A globally unique identifier for this settlement.
             sig { returns(String) }
-            attr_accessor :acquirer_reference_number
+            def acquirer_reference_number
+            end
+
+            sig { params(_: String).returns(String) }
+            def acquirer_reference_number=(_)
+            end
 
             # A globally unique transaction identifier provided by the card network, used
             #   across multiple life-cycle requests.
             sig { returns(T.nilable(String)) }
-            attr_accessor :transaction_id
+            def transaction_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def transaction_id=(_)
+            end
 
             # Network-specific identifiers for this refund.
             sig do
@@ -6876,122 +6099,119 @@ module Increase
           class PurchaseDetails < Increase::BaseModel
             # Fields specific to car rentals.
             sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental)) }
-            attr_reader :car_rental
+            def car_rental
+            end
 
             sig do
-              params(
-                car_rental: T.nilable(
-                  T.any(
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental,
-                    Increase::Util::AnyHash
-                  )
-                )
-              )
-                .void
+              params(_: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental))
+                .returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental))
             end
-            attr_writer :car_rental
+            def car_rental=(_)
+            end
 
             # An identifier from the merchant for the customer or consumer.
             sig { returns(T.nilable(String)) }
-            attr_accessor :customer_reference_identifier
+            def customer_reference_identifier
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def customer_reference_identifier=(_)
+            end
 
             # The state or provincial tax amount in minor units.
             sig { returns(T.nilable(Integer)) }
-            attr_accessor :local_tax_amount
+            def local_tax_amount
+            end
+
+            sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+            def local_tax_amount=(_)
+            end
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
             #   assessed.
             sig { returns(T.nilable(String)) }
-            attr_accessor :local_tax_currency
+            def local_tax_currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def local_tax_currency=(_)
+            end
 
             # Fields specific to lodging.
             sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging)) }
-            attr_reader :lodging
+            def lodging
+            end
 
             sig do
-              params(
-                lodging: T.nilable(
-                  T.any(
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging,
-                    Increase::Util::AnyHash
-                  )
-                )
-              )
-                .void
+              params(_: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging))
+                .returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging))
             end
-            attr_writer :lodging
+            def lodging=(_)
+            end
 
             # The national tax amount in minor units.
             sig { returns(T.nilable(Integer)) }
-            attr_accessor :national_tax_amount
+            def national_tax_amount
+            end
+
+            sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+            def national_tax_amount=(_)
+            end
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
             #   assessed.
             sig { returns(T.nilable(String)) }
-            attr_accessor :national_tax_currency
+            def national_tax_currency
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def national_tax_currency=(_)
+            end
 
             # An identifier from the merchant for the purchase to the issuer and cardholder.
             sig { returns(T.nilable(String)) }
-            attr_accessor :purchase_identifier
+            def purchase_identifier
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def purchase_identifier=(_)
+            end
 
             # The format of the purchase identifier.
-            sig do
-              returns(
-                T.nilable(
-                  Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                )
-              )
+            sig { returns(T.nilable(Symbol)) }
+            def purchase_identifier_format
             end
-            attr_accessor :purchase_identifier_format
+
+            sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+            def purchase_identifier_format=(_)
+            end
 
             # Fields specific to travel.
             sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel)) }
-            attr_reader :travel
+            def travel
+            end
 
             sig do
-              params(
-                travel: T.nilable(
-                  T.any(
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel,
-                    Increase::Util::AnyHash
-                  )
-                )
-              )
-                .void
+              params(_: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel))
+                .returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel))
             end
-            attr_writer :travel
+            def travel=(_)
+            end
 
             # Additional details about the card purchase, such as tax and industry-specific
             #   fields.
             sig do
               params(
-                car_rental: T.nilable(
-                  T.any(
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental,
-                    Increase::Util::AnyHash
-                  )
-                ),
+                car_rental: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental),
                 customer_reference_identifier: T.nilable(String),
                 local_tax_amount: T.nilable(Integer),
                 local_tax_currency: T.nilable(String),
-                lodging: T.nilable(
-                  T.any(
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging,
-                    Increase::Util::AnyHash
-                  )
-                ),
+                lodging: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging),
                 national_tax_amount: T.nilable(Integer),
                 national_tax_currency: T.nilable(String),
                 purchase_identifier: T.nilable(String),
-                purchase_identifier_format: T.nilable(
-                  Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::OrSymbol
-                ),
-                travel: T.nilable(
-                  T.any(
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel,
-                    Increase::Util::AnyHash
-                  )
-                )
+                purchase_identifier_format: T.nilable(Symbol),
+                travel: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel)
               )
                 .returns(T.attached_class)
             end
@@ -7021,9 +6241,7 @@ module Increase
                     national_tax_amount: T.nilable(Integer),
                     national_tax_currency: T.nilable(String),
                     purchase_identifier: T.nilable(String),
-                    purchase_identifier_format: T.nilable(
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                    ),
+                    purchase_identifier_format: T.nilable(Symbol),
                     travel: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel)
                   }
                 )
@@ -7034,87 +6252,155 @@ module Increase
             class CarRental < Increase::BaseModel
               # Code indicating the vehicle's class.
               sig { returns(T.nilable(String)) }
-              attr_accessor :car_class_code
+              def car_class_code
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def car_class_code=(_)
+              end
 
               # Date the customer picked up the car or, in the case of a no-show or pre-pay
               #   transaction, the scheduled pick up date.
               sig { returns(T.nilable(Date)) }
-              attr_accessor :checkout_date
+              def checkout_date
+              end
+
+              sig { params(_: T.nilable(Date)).returns(T.nilable(Date)) }
+              def checkout_date=(_)
+              end
 
               # Daily rate being charged for the vehicle.
               sig { returns(T.nilable(Integer)) }
-              attr_accessor :daily_rental_rate_amount
+              def daily_rental_rate_amount
+              end
+
+              sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+              def daily_rental_rate_amount=(_)
+              end
 
               # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily rental
               #   rate.
               sig { returns(T.nilable(String)) }
-              attr_accessor :daily_rental_rate_currency
+              def daily_rental_rate_currency
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def daily_rental_rate_currency=(_)
+              end
 
               # Number of days the vehicle was rented.
               sig { returns(T.nilable(Integer)) }
-              attr_accessor :days_rented
+              def days_rented
+              end
+
+              sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+              def days_rented=(_)
+              end
 
               # Additional charges (gas, late fee, etc.) being billed.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
-                )
+              sig { returns(T.nilable(Symbol)) }
+              def extra_charges
               end
-              attr_accessor :extra_charges
+
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+              def extra_charges=(_)
+              end
 
               # Fuel charges for the vehicle.
               sig { returns(T.nilable(Integer)) }
-              attr_accessor :fuel_charges_amount
+              def fuel_charges_amount
+              end
+
+              sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+              def fuel_charges_amount=(_)
+              end
 
               # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel charges
               #   assessed.
               sig { returns(T.nilable(String)) }
-              attr_accessor :fuel_charges_currency
+              def fuel_charges_currency
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def fuel_charges_currency=(_)
+              end
 
               # Any insurance being charged for the vehicle.
               sig { returns(T.nilable(Integer)) }
-              attr_accessor :insurance_charges_amount
+              def insurance_charges_amount
+              end
+
+              sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+              def insurance_charges_amount=(_)
+              end
 
               # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance
               #   charges assessed.
               sig { returns(T.nilable(String)) }
-              attr_accessor :insurance_charges_currency
+              def insurance_charges_currency
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def insurance_charges_currency=(_)
+              end
 
               # An indicator that the cardholder is being billed for a reserved vehicle that was
               #   not actually rented (that is, a "no-show" charge).
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                  )
-                )
+              sig { returns(T.nilable(Symbol)) }
+              def no_show_indicator
               end
-              attr_accessor :no_show_indicator
+
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+              def no_show_indicator=(_)
+              end
 
               # Charges for returning the vehicle at a different location than where it was
               #   picked up.
               sig { returns(T.nilable(Integer)) }
-              attr_accessor :one_way_drop_off_charges_amount
+              def one_way_drop_off_charges_amount
+              end
+
+              sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+              def one_way_drop_off_charges_amount=(_)
+              end
 
               # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the one-way
               #   drop-off charges assessed.
               sig { returns(T.nilable(String)) }
-              attr_accessor :one_way_drop_off_charges_currency
+              def one_way_drop_off_charges_currency
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def one_way_drop_off_charges_currency=(_)
+              end
 
               # Name of the person renting the vehicle.
               sig { returns(T.nilable(String)) }
-              attr_accessor :renter_name
+              def renter_name
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def renter_name=(_)
+              end
 
               # Weekly rate being charged for the vehicle.
               sig { returns(T.nilable(Integer)) }
-              attr_accessor :weekly_rental_rate_amount
+              def weekly_rental_rate_amount
+              end
+
+              sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+              def weekly_rental_rate_amount=(_)
+              end
 
               # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly
               #   rental rate.
               sig { returns(T.nilable(String)) }
-              attr_accessor :weekly_rental_rate_currency
+              def weekly_rental_rate_currency
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def weekly_rental_rate_currency=(_)
+              end
 
               # Fields specific to car rentals.
               sig do
@@ -7124,16 +6410,12 @@ module Increase
                   daily_rental_rate_amount: T.nilable(Integer),
                   daily_rental_rate_currency: T.nilable(String),
                   days_rented: T.nilable(Integer),
-                  extra_charges: T.nilable(
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::OrSymbol
-                  ),
+                  extra_charges: T.nilable(Symbol),
                   fuel_charges_amount: T.nilable(Integer),
                   fuel_charges_currency: T.nilable(String),
                   insurance_charges_amount: T.nilable(Integer),
                   insurance_charges_currency: T.nilable(String),
-                  no_show_indicator: T.nilable(
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::OrSymbol
-                  ),
+                  no_show_indicator: T.nilable(Symbol),
                   one_way_drop_off_charges_amount: T.nilable(Integer),
                   one_way_drop_off_charges_currency: T.nilable(String),
                   renter_name: T.nilable(String),
@@ -7171,16 +6453,12 @@ module Increase
                       daily_rental_rate_amount: T.nilable(Integer),
                       daily_rental_rate_currency: T.nilable(String),
                       days_rented: T.nilable(Integer),
-                      extra_charges: T.nilable(
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                      ),
+                      extra_charges: T.nilable(Symbol),
                       fuel_charges_amount: T.nilable(Integer),
                       fuel_charges_currency: T.nilable(String),
                       insurance_charges_amount: T.nilable(Integer),
                       insurance_charges_currency: T.nilable(String),
-                      no_show_indicator: T.nilable(
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                      ),
+                      no_show_indicator: T.nilable(Symbol),
                       one_way_drop_off_charges_amount: T.nilable(Integer),
                       one_way_drop_off_charges_currency: T.nilable(String),
                       renter_name: T.nilable(String),
@@ -7193,206 +6471,196 @@ module Increase
               end
 
               # Additional charges (gas, late fee, etc.) being billed.
-              module ExtraCharges
-                extend Increase::Enum
+              class ExtraCharges < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # No extra charge
-                NO_EXTRA_CHARGE =
-                  T.let(
-                    :no_extra_charge,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
+                NO_EXTRA_CHARGE = :no_extra_charge
 
                 # Gas
-                GAS =
-                  T.let(
-                    :gas,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
+                GAS = :gas
 
                 # Extra mileage
-                EXTRA_MILEAGE =
-                  T.let(
-                    :extra_mileage,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
+                EXTRA_MILEAGE = :extra_mileage
 
                 # Late return
-                LATE_RETURN =
-                  T.let(
-                    :late_return,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
+                LATE_RETURN = :late_return
 
                 # One way service fee
-                ONE_WAY_SERVICE_FEE =
-                  T.let(
-                    :one_way_service_fee,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
+                ONE_WAY_SERVICE_FEE = :one_way_service_fee
 
                 # Parking violation
-                PARKING_VIOLATION =
-                  T.let(
-                    :parking_violation,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                PARKING_VIOLATION = :parking_violation
               end
 
               # An indicator that the cardholder is being billed for a reserved vehicle that was
               #   not actually rented (that is, a "no-show" charge).
-              module NoShowIndicator
-                extend Increase::Enum
+              class NoShowIndicator < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # Not applicable
-                NOT_APPLICABLE =
-                  T.let(
-                    :not_applicable,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                  )
+                NOT_APPLICABLE = :not_applicable
 
                 # No show for specialized vehicle
-                NO_SHOW_FOR_SPECIALIZED_VEHICLE =
-                  T.let(
-                    :no_show_for_specialized_vehicle,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                NO_SHOW_FOR_SPECIALIZED_VEHICLE = :no_show_for_specialized_vehicle
               end
             end
 
             class Lodging < Increase::BaseModel
               # Date the customer checked in.
               sig { returns(T.nilable(Date)) }
-              attr_accessor :check_in_date
+              def check_in_date
+              end
+
+              sig { params(_: T.nilable(Date)).returns(T.nilable(Date)) }
+              def check_in_date=(_)
+              end
 
               # Daily rate being charged for the room.
               sig { returns(T.nilable(Integer)) }
-              attr_accessor :daily_room_rate_amount
+              def daily_room_rate_amount
+              end
+
+              sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+              def daily_room_rate_amount=(_)
+              end
 
               # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room
               #   rate.
               sig { returns(T.nilable(String)) }
-              attr_accessor :daily_room_rate_currency
+              def daily_room_rate_currency
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def daily_room_rate_currency=(_)
+              end
 
               # Additional charges (phone, late check-out, etc.) being billed.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
-                )
+              sig { returns(T.nilable(Symbol)) }
+              def extra_charges
               end
-              attr_accessor :extra_charges
+
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+              def extra_charges=(_)
+              end
 
               # Folio cash advances for the room.
               sig { returns(T.nilable(Integer)) }
-              attr_accessor :folio_cash_advances_amount
+              def folio_cash_advances_amount
+              end
+
+              sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+              def folio_cash_advances_amount=(_)
+              end
 
               # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the folio cash
               #   advances.
               sig { returns(T.nilable(String)) }
-              attr_accessor :folio_cash_advances_currency
+              def folio_cash_advances_currency
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def folio_cash_advances_currency=(_)
+              end
 
               # Food and beverage charges for the room.
               sig { returns(T.nilable(Integer)) }
-              attr_accessor :food_beverage_charges_amount
+              def food_beverage_charges_amount
+              end
+
+              sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+              def food_beverage_charges_amount=(_)
+              end
 
               # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
               #   beverage charges.
               sig { returns(T.nilable(String)) }
-              attr_accessor :food_beverage_charges_currency
+              def food_beverage_charges_currency
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def food_beverage_charges_currency=(_)
+              end
 
               # Indicator that the cardholder is being billed for a reserved room that was not
               #   actually used.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                  )
-                )
+              sig { returns(T.nilable(Symbol)) }
+              def no_show_indicator
               end
-              attr_accessor :no_show_indicator
+
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+              def no_show_indicator=(_)
+              end
 
               # Prepaid expenses being charged for the room.
               sig { returns(T.nilable(Integer)) }
-              attr_accessor :prepaid_expenses_amount
+              def prepaid_expenses_amount
+              end
+
+              sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+              def prepaid_expenses_amount=(_)
+              end
 
               # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the prepaid
               #   expenses.
               sig { returns(T.nilable(String)) }
-              attr_accessor :prepaid_expenses_currency
+              def prepaid_expenses_currency
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def prepaid_expenses_currency=(_)
+              end
 
               # Number of nights the room was rented.
               sig { returns(T.nilable(Integer)) }
-              attr_accessor :room_nights
+              def room_nights
+              end
+
+              sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+              def room_nights=(_)
+              end
 
               # Total room tax being charged.
               sig { returns(T.nilable(Integer)) }
-              attr_accessor :total_room_tax_amount
+              def total_room_tax_amount
+              end
+
+              sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+              def total_room_tax_amount=(_)
+              end
 
               # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total room
               #   tax.
               sig { returns(T.nilable(String)) }
-              attr_accessor :total_room_tax_currency
+              def total_room_tax_currency
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def total_room_tax_currency=(_)
+              end
 
               # Total tax being charged for the room.
               sig { returns(T.nilable(Integer)) }
-              attr_accessor :total_tax_amount
+              def total_tax_amount
+              end
+
+              sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+              def total_tax_amount=(_)
+              end
 
               # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax
               #   assessed.
               sig { returns(T.nilable(String)) }
-              attr_accessor :total_tax_currency
+              def total_tax_currency
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def total_tax_currency=(_)
+              end
 
               # Fields specific to lodging.
               sig do
@@ -7400,16 +6668,12 @@ module Increase
                   check_in_date: T.nilable(Date),
                   daily_room_rate_amount: T.nilable(Integer),
                   daily_room_rate_currency: T.nilable(String),
-                  extra_charges: T.nilable(
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::OrSymbol
-                  ),
+                  extra_charges: T.nilable(Symbol),
                   folio_cash_advances_amount: T.nilable(Integer),
                   folio_cash_advances_currency: T.nilable(String),
                   food_beverage_charges_amount: T.nilable(Integer),
                   food_beverage_charges_currency: T.nilable(String),
-                  no_show_indicator: T.nilable(
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::OrSymbol
-                  ),
+                  no_show_indicator: T.nilable(Symbol),
                   prepaid_expenses_amount: T.nilable(Integer),
                   prepaid_expenses_currency: T.nilable(String),
                   room_nights: T.nilable(Integer),
@@ -7447,16 +6711,12 @@ module Increase
                       check_in_date: T.nilable(Date),
                       daily_room_rate_amount: T.nilable(Integer),
                       daily_room_rate_currency: T.nilable(String),
-                      extra_charges: T.nilable(
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                      ),
+                      extra_charges: T.nilable(Symbol),
                       folio_cash_advances_amount: T.nilable(Integer),
                       folio_cash_advances_currency: T.nilable(String),
                       food_beverage_charges_amount: T.nilable(Integer),
                       food_beverage_charges_currency: T.nilable(String),
-                      no_show_indicator: T.nilable(
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                      ),
+                      no_show_indicator: T.nilable(Symbol),
                       prepaid_expenses_amount: T.nilable(Integer),
                       prepaid_expenses_currency: T.nilable(String),
                       room_nights: T.nilable(Integer),
@@ -7471,193 +6731,68 @@ module Increase
               end
 
               # Additional charges (phone, late check-out, etc.) being billed.
-              module ExtraCharges
-                extend Increase::Enum
+              class ExtraCharges < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # No extra charge
-                NO_EXTRA_CHARGE =
-                  T.let(
-                    :no_extra_charge,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
+                NO_EXTRA_CHARGE = :no_extra_charge
 
                 # Restaurant
-                RESTAURANT =
-                  T.let(
-                    :restaurant,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
+                RESTAURANT = :restaurant
 
                 # Gift shop
-                GIFT_SHOP =
-                  T.let(
-                    :gift_shop,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
+                GIFT_SHOP = :gift_shop
 
                 # Mini bar
-                MINI_BAR =
-                  T.let(
-                    :mini_bar,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
+                MINI_BAR = :mini_bar
 
                 # Telephone
-                TELEPHONE =
-                  T.let(
-                    :telephone,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
+                TELEPHONE = :telephone
 
                 # Other
-                OTHER =
-                  T.let(
-                    :other,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
+                OTHER = :other
 
                 # Laundry
-                LAUNDRY =
-                  T.let(
-                    :laundry,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                LAUNDRY = :laundry
               end
 
               # Indicator that the cardholder is being billed for a reserved room that was not
               #   actually used.
-              module NoShowIndicator
-                extend Increase::Enum
+              class NoShowIndicator < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # Not applicable
-                NOT_APPLICABLE =
-                  T.let(
-                    :not_applicable,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                  )
+                NOT_APPLICABLE = :not_applicable
 
                 # No show
-                NO_SHOW =
-                  T.let(
-                    :no_show,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                NO_SHOW = :no_show
               end
             end
 
             # The format of the purchase identifier.
-            module PurchaseIdentifierFormat
-              extend Increase::Enum
+            class PurchaseIdentifierFormat < Increase::Enum
+              abstract!
 
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat)
-                end
-              OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                  )
-                end
+              Value = type_template(:out) { {fixed: Symbol} }
 
               # Free text
-              FREE_TEXT =
-                T.let(
-                  :free_text,
-                  Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                )
+              FREE_TEXT = :free_text
 
               # Order number
-              ORDER_NUMBER =
-                T.let(
-                  :order_number,
-                  Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                )
+              ORDER_NUMBER = :order_number
 
               # Rental agreement number
-              RENTAL_AGREEMENT_NUMBER =
-                T.let(
-                  :rental_agreement_number,
-                  Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                )
+              RENTAL_AGREEMENT_NUMBER = :rental_agreement_number
 
               # Hotel folio number
-              HOTEL_FOLIO_NUMBER =
-                T.let(
-                  :hotel_folio_number,
-                  Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                )
+              HOTEL_FOLIO_NUMBER = :hotel_folio_number
 
               # Invoice number
-              INVOICE_NUMBER =
-                T.let(
-                  :invoice_number,
-                  Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                )
-
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                      ]
-                    )
-                end
-                def values
-                end
-              end
+              INVOICE_NUMBER = :invoice_number
             end
 
             class Travel < Increase::BaseModel
@@ -7667,78 +6802,109 @@ module Increase
                   T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary)
                 )
               end
-              attr_reader :ancillary
+              def ancillary
+              end
 
               sig do
                 params(
-                  ancillary: T.nilable(
-                    T.any(
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary,
-                      Increase::Util::AnyHash
-                    )
-                  )
+                  _: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary)
                 )
-                  .void
+                  .returns(
+                    T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary)
+                  )
               end
-              attr_writer :ancillary
+              def ancillary=(_)
+              end
 
               # Indicates the computerized reservation system used to book the ticket.
               sig { returns(T.nilable(String)) }
-              attr_accessor :computerized_reservation_system
+              def computerized_reservation_system
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def computerized_reservation_system=(_)
+              end
 
               # Indicates the reason for a credit to the cardholder.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
-                )
+              sig { returns(T.nilable(Symbol)) }
+              def credit_reason_indicator
               end
-              attr_accessor :credit_reason_indicator
+
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+              def credit_reason_indicator=(_)
+              end
 
               # Date of departure.
               sig { returns(T.nilable(Date)) }
-              attr_accessor :departure_date
+              def departure_date
+              end
+
+              sig { params(_: T.nilable(Date)).returns(T.nilable(Date)) }
+              def departure_date=(_)
+              end
 
               # Code for the originating city or airport.
               sig { returns(T.nilable(String)) }
-              attr_accessor :origination_city_airport_code
+              def origination_city_airport_code
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def origination_city_airport_code=(_)
+              end
 
               # Name of the passenger.
               sig { returns(T.nilable(String)) }
-              attr_accessor :passenger_name
+              def passenger_name
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def passenger_name=(_)
+              end
 
               # Indicates whether this ticket is non-refundable.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                  )
-                )
+              sig { returns(T.nilable(Symbol)) }
+              def restricted_ticket_indicator
               end
-              attr_accessor :restricted_ticket_indicator
+
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+              def restricted_ticket_indicator=(_)
+              end
 
               # Indicates why a ticket was changed.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                  )
-                )
+              sig { returns(T.nilable(Symbol)) }
+              def ticket_change_indicator
               end
-              attr_accessor :ticket_change_indicator
+
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+              def ticket_change_indicator=(_)
+              end
 
               # Ticket number.
               sig { returns(T.nilable(String)) }
-              attr_accessor :ticket_number
+              def ticket_number
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def ticket_number=(_)
+              end
 
               # Code for the travel agency if the ticket was issued by a travel agency.
               sig { returns(T.nilable(String)) }
-              attr_accessor :travel_agency_code
+              def travel_agency_code
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def travel_agency_code=(_)
+              end
 
               # Name of the travel agency if the ticket was issued by a travel agency.
               sig { returns(T.nilable(String)) }
-              attr_accessor :travel_agency_name
+              def travel_agency_name
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def travel_agency_name=(_)
+              end
 
               # Fields specific to each leg of the journey.
               sig do
@@ -7748,40 +6914,40 @@ module Increase
                   )
                 )
               end
-              attr_accessor :trip_legs
+              def trip_legs
+              end
+
+              sig do
+                params(
+                  _: T.nilable(
+                    T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg]
+                  )
+                )
+                  .returns(
+                    T.nilable(
+                      T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg]
+                    )
+                  )
+              end
+              def trip_legs=(_)
+              end
 
               # Fields specific to travel.
               sig do
                 params(
-                  ancillary: T.nilable(
-                    T.any(
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary,
-                      Increase::Util::AnyHash
-                    )
-                  ),
+                  ancillary: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary),
                   computerized_reservation_system: T.nilable(String),
-                  credit_reason_indicator: T.nilable(
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::OrSymbol
-                  ),
+                  credit_reason_indicator: T.nilable(Symbol),
                   departure_date: T.nilable(Date),
                   origination_city_airport_code: T.nilable(String),
                   passenger_name: T.nilable(String),
-                  restricted_ticket_indicator: T.nilable(
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::OrSymbol
-                  ),
-                  ticket_change_indicator: T.nilable(
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::OrSymbol
-                  ),
+                  restricted_ticket_indicator: T.nilable(Symbol),
+                  ticket_change_indicator: T.nilable(Symbol),
                   ticket_number: T.nilable(String),
                   travel_agency_code: T.nilable(String),
                   travel_agency_name: T.nilable(String),
                   trip_legs: T.nilable(
-                    T::Array[
-                    T.any(
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg,
-                      Increase::Util::AnyHash
-                    )
-                    ]
+                    T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg]
                   )
                 )
                   .returns(T.attached_class)
@@ -7808,18 +6974,12 @@ module Increase
                     {
                       ancillary: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary),
                       computerized_reservation_system: T.nilable(String),
-                      credit_reason_indicator: T.nilable(
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                      ),
+                      credit_reason_indicator: T.nilable(Symbol),
                       departure_date: T.nilable(Date),
                       origination_city_airport_code: T.nilable(String),
                       passenger_name: T.nilable(String),
-                      restricted_ticket_indicator: T.nilable(
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                      ),
-                      ticket_change_indicator: T.nilable(
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                      ),
+                      restricted_ticket_indicator: T.nilable(Symbol),
+                      ticket_change_indicator: T.nilable(Symbol),
                       ticket_number: T.nilable(String),
                       travel_agency_code: T.nilable(String),
                       travel_agency_name: T.nilable(String),
@@ -7837,21 +6997,30 @@ module Increase
                 #   baggage fee for a passenger transport ticket, this field should contain the
                 #   ticket document number for the other purchase.
                 sig { returns(T.nilable(String)) }
-                attr_accessor :connected_ticket_document_number
+                def connected_ticket_document_number
+                end
+
+                sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+                def connected_ticket_document_number=(_)
+                end
 
                 # Indicates the reason for a credit to the cardholder.
-                sig do
-                  returns(
-                    T.nilable(
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                    )
-                  )
+                sig { returns(T.nilable(Symbol)) }
+                def credit_reason_indicator
                 end
-                attr_accessor :credit_reason_indicator
+
+                sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+                def credit_reason_indicator=(_)
+                end
 
                 # Name of the passenger or description of the ancillary purchase.
                 sig { returns(T.nilable(String)) }
-                attr_accessor :passenger_name_or_description
+                def passenger_name_or_description
+                end
+
+                sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+                def passenger_name_or_description=(_)
+                end
 
                 # Additional travel charges, such as baggage fees.
                 sig do
@@ -7859,26 +7028,36 @@ module Increase
                     T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service]
                   )
                 end
-                attr_accessor :services
+                def services
+                end
+
+                sig do
+                  params(
+                    _: T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service]
+                  )
+                    .returns(
+                      T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service]
+                    )
+                end
+                def services=(_)
+                end
 
                 # Ticket document number.
                 sig { returns(T.nilable(String)) }
-                attr_accessor :ticket_document_number
+                def ticket_document_number
+                end
+
+                sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+                def ticket_document_number=(_)
+                end
 
                 # Ancillary purchases in addition to the airfare.
                 sig do
                   params(
                     connected_ticket_document_number: T.nilable(String),
-                    credit_reason_indicator: T.nilable(
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::OrSymbol
-                    ),
+                    credit_reason_indicator: T.nilable(Symbol),
                     passenger_name_or_description: T.nilable(String),
-                    services: T::Array[
-                    T.any(
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service,
-                      Increase::Util::AnyHash
-                    )
-                    ],
+                    services: T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service],
                     ticket_document_number: T.nilable(String)
                   )
                     .returns(T.attached_class)
@@ -7897,9 +7076,7 @@ module Increase
                     .returns(
                       {
                         connected_ticket_document_number: T.nilable(String),
-                        credit_reason_indicator: T.nilable(
-                          Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                        ),
+                        credit_reason_indicator: T.nilable(Symbol),
                         passenger_name_or_description: T.nilable(String),
                         services: T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service],
                         ticket_document_number: T.nilable(String)
@@ -7910,501 +7087,249 @@ module Increase
                 end
 
                 # Indicates the reason for a credit to the cardholder.
-                module CreditReasonIndicator
-                  extend Increase::Enum
+                class CreditReasonIndicator < Increase::Enum
+                  abstract!
 
-                  TaggedSymbol =
-                    T.type_alias do
-                      T.all(Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator)
-                    end
-                  OrSymbol =
-                    T.type_alias do
-                      T.any(
-                        Symbol,
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                      )
-                    end
+                  Value = type_template(:out) { {fixed: Symbol} }
 
                   # No credit
-                  NO_CREDIT =
-                    T.let(
-                      :no_credit,
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                    )
+                  NO_CREDIT = :no_credit
 
                   # Passenger transport ancillary purchase cancellation
                   PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
-                    T.let(
-                      :passenger_transport_ancillary_purchase_cancellation,
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                    )
+                    :passenger_transport_ancillary_purchase_cancellation
 
                   # Airline ticket and passenger transport ancillary purchase cancellation
                   AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
-                    T.let(
-                      :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                    )
+                    :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
 
                   # Other
-                  OTHER =
-                    T.let(
-                      :other,
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                    )
-
-                  class << self
-                    sig do
-                      override
-                        .returns(
-                          T::Array[
-                          Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                          ]
-                        )
-                    end
-                    def values
-                    end
-                  end
+                  OTHER = :other
                 end
 
                 class Service < Increase::BaseModel
                   # Category of the ancillary service.
-                  sig do
-                    returns(
-                      T.nilable(
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
-                    )
+                  sig { returns(T.nilable(Symbol)) }
+                  def category
                   end
-                  attr_accessor :category
+
+                  sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+                  def category=(_)
+                  end
 
                   # Sub-category of the ancillary service, free-form.
                   sig { returns(T.nilable(String)) }
-                  attr_accessor :sub_category
+                  def sub_category
+                  end
+
+                  sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+                  def sub_category=(_)
+                  end
 
                   sig do
                     params(
-                      category: T.nilable(
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::OrSymbol
-                      ),
+                      category: T.nilable(Symbol),
                       sub_category: T.nilable(String)
-                    )
-                      .returns(T.attached_class)
+                    ).returns(T.attached_class)
                   end
                   def self.new(category:, sub_category:)
                   end
 
-                  sig do
-                    override
-                      .returns(
-                        {
-                          category: T.nilable(
-                            Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                          ),
-                          sub_category: T.nilable(String)
-                        }
-                      )
-                  end
+                  sig { override.returns({category: T.nilable(Symbol), sub_category: T.nilable(String)}) }
                   def to_hash
                   end
 
                   # Category of the ancillary service.
-                  module Category
-                    extend Increase::Enum
+                  class Category < Increase::Enum
+                    abstract!
 
-                    TaggedSymbol =
-                      T.type_alias do
-                        T.all(Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category)
-                      end
-                    OrSymbol =
-                      T.type_alias do
-                        T.any(
-                          Symbol,
-                          Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                        )
-                      end
+                    Value = type_template(:out) { {fixed: Symbol} }
 
                     # None
-                    NONE =
-                      T.let(
-                        :none,
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    NONE = :none
 
                     # Bundled service
-                    BUNDLED_SERVICE =
-                      T.let(
-                        :bundled_service,
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    BUNDLED_SERVICE = :bundled_service
 
                     # Baggage fee
-                    BAGGAGE_FEE =
-                      T.let(
-                        :baggage_fee,
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    BAGGAGE_FEE = :baggage_fee
 
                     # Change fee
-                    CHANGE_FEE =
-                      T.let(
-                        :change_fee,
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    CHANGE_FEE = :change_fee
 
                     # Cargo
-                    CARGO =
-                      T.let(
-                        :cargo,
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    CARGO = :cargo
 
                     # Carbon offset
-                    CARBON_OFFSET =
-                      T.let(
-                        :carbon_offset,
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    CARBON_OFFSET = :carbon_offset
 
                     # Frequent flyer
-                    FREQUENT_FLYER =
-                      T.let(
-                        :frequent_flyer,
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    FREQUENT_FLYER = :frequent_flyer
 
                     # Gift card
-                    GIFT_CARD =
-                      T.let(
-                        :gift_card,
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    GIFT_CARD = :gift_card
 
                     # Ground transport
-                    GROUND_TRANSPORT =
-                      T.let(
-                        :ground_transport,
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    GROUND_TRANSPORT = :ground_transport
 
                     # In-flight entertainment
-                    IN_FLIGHT_ENTERTAINMENT =
-                      T.let(
-                        :in_flight_entertainment,
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    IN_FLIGHT_ENTERTAINMENT = :in_flight_entertainment
 
                     # Lounge
-                    LOUNGE =
-                      T.let(
-                        :lounge,
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    LOUNGE = :lounge
 
                     # Medical
-                    MEDICAL =
-                      T.let(
-                        :medical,
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    MEDICAL = :medical
 
                     # Meal beverage
-                    MEAL_BEVERAGE =
-                      T.let(
-                        :meal_beverage,
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    MEAL_BEVERAGE = :meal_beverage
 
                     # Other
-                    OTHER =
-                      T.let(
-                        :other,
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    OTHER = :other
 
                     # Passenger assist fee
-                    PASSENGER_ASSIST_FEE =
-                      T.let(
-                        :passenger_assist_fee,
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    PASSENGER_ASSIST_FEE = :passenger_assist_fee
 
                     # Pets
-                    PETS =
-                      T.let(
-                        :pets,
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    PETS = :pets
 
                     # Seat fees
-                    SEAT_FEES =
-                      T.let(
-                        :seat_fees,
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    SEAT_FEES = :seat_fees
 
                     # Standby
-                    STANDBY =
-                      T.let(
-                        :standby,
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    STANDBY = :standby
 
                     # Service fee
-                    SERVICE_FEE =
-                      T.let(
-                        :service_fee,
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    SERVICE_FEE = :service_fee
 
                     # Store
-                    STORE =
-                      T.let(
-                        :store,
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    STORE = :store
 
                     # Travel service
-                    TRAVEL_SERVICE =
-                      T.let(
-                        :travel_service,
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    TRAVEL_SERVICE = :travel_service
 
                     # Unaccompanied travel
-                    UNACCOMPANIED_TRAVEL =
-                      T.let(
-                        :unaccompanied_travel,
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    UNACCOMPANIED_TRAVEL = :unaccompanied_travel
 
                     # Upgrades
-                    UPGRADES =
-                      T.let(
-                        :upgrades,
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
+                    UPGRADES = :upgrades
 
                     # Wi-fi
-                    WIFI =
-                      T.let(
-                        :wifi,
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                      )
-
-                    class << self
-                      sig do
-                        override
-                          .returns(
-                            T::Array[
-                            Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                            ]
-                          )
-                      end
-                      def values
-                      end
-                    end
+                    WIFI = :wifi
                   end
                 end
               end
 
               # Indicates the reason for a credit to the cardholder.
-              module CreditReasonIndicator
-                extend Increase::Enum
+              class CreditReasonIndicator < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # No credit
-                NO_CREDIT =
-                  T.let(
-                    :no_credit,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
+                NO_CREDIT = :no_credit
 
                 # Passenger transport ancillary purchase cancellation
                 PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
-                  T.let(
-                    :passenger_transport_ancillary_purchase_cancellation,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
+                  :passenger_transport_ancillary_purchase_cancellation
 
                 # Airline ticket and passenger transport ancillary purchase cancellation
                 AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
-                  T.let(
-                    :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
+                  :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
 
                 # Airline ticket cancellation
-                AIRLINE_TICKET_CANCELLATION =
-                  T.let(
-                    :airline_ticket_cancellation,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
+                AIRLINE_TICKET_CANCELLATION = :airline_ticket_cancellation
 
                 # Other
-                OTHER =
-                  T.let(
-                    :other,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
+                OTHER = :other
 
                 # Partial refund of airline ticket
-                PARTIAL_REFUND_OF_AIRLINE_TICKET =
-                  T.let(
-                    :partial_refund_of_airline_ticket,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                PARTIAL_REFUND_OF_AIRLINE_TICKET = :partial_refund_of_airline_ticket
               end
 
               # Indicates whether this ticket is non-refundable.
-              module RestrictedTicketIndicator
-                extend Increase::Enum
+              class RestrictedTicketIndicator < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # No restrictions
-                NO_RESTRICTIONS =
-                  T.let(
-                    :no_restrictions,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                  )
+                NO_RESTRICTIONS = :no_restrictions
 
                 # Restricted non-refundable ticket
-                RESTRICTED_NON_REFUNDABLE_TICKET =
-                  T.let(
-                    :restricted_non_refundable_ticket,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                RESTRICTED_NON_REFUNDABLE_TICKET = :restricted_non_refundable_ticket
               end
 
               # Indicates why a ticket was changed.
-              module TicketChangeIndicator
-                extend Increase::Enum
+              class TicketChangeIndicator < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # None
-                NONE =
-                  T.let(
-                    :none,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                  )
+                NONE = :none
 
                 # Change to existing ticket
-                CHANGE_TO_EXISTING_TICKET =
-                  T.let(
-                    :change_to_existing_ticket,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                  )
+                CHANGE_TO_EXISTING_TICKET = :change_to_existing_ticket
 
                 # New ticket
-                NEW_TICKET =
-                  T.let(
-                    :new_ticket,
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                NEW_TICKET = :new_ticket
               end
 
               class TripLeg < Increase::BaseModel
                 # Carrier code (e.g., United Airlines, Jet Blue, etc.).
                 sig { returns(T.nilable(String)) }
-                attr_accessor :carrier_code
+                def carrier_code
+                end
+
+                sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+                def carrier_code=(_)
+                end
 
                 # Code for the destination city or airport.
                 sig { returns(T.nilable(String)) }
-                attr_accessor :destination_city_airport_code
+                def destination_city_airport_code
+                end
+
+                sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+                def destination_city_airport_code=(_)
+                end
 
                 # Fare basis code.
                 sig { returns(T.nilable(String)) }
-                attr_accessor :fare_basis_code
+                def fare_basis_code
+                end
+
+                sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+                def fare_basis_code=(_)
+                end
 
                 # Flight number.
                 sig { returns(T.nilable(String)) }
-                attr_accessor :flight_number
+                def flight_number
+                end
+
+                sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+                def flight_number=(_)
+                end
 
                 # Service class (e.g., first class, business class, etc.).
                 sig { returns(T.nilable(String)) }
-                attr_accessor :service_class
+                def service_class
+                end
+
+                sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+                def service_class=(_)
+                end
 
                 # Indicates whether a stopover is allowed on this ticket.
-                sig do
-                  returns(
-                    T.nilable(
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                    )
-                  )
+                sig { returns(T.nilable(Symbol)) }
+                def stop_over_code
                 end
-                attr_accessor :stop_over_code
+
+                sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+                def stop_over_code=(_)
+                end
 
                 sig do
                   params(
@@ -8413,9 +7338,7 @@ module Increase
                     fare_basis_code: T.nilable(String),
                     flight_number: T.nilable(String),
                     service_class: T.nilable(String),
-                    stop_over_code: T.nilable(
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::OrSymbol
-                    )
+                    stop_over_code: T.nilable(Symbol)
                   )
                     .returns(T.attached_class)
                 end
@@ -8438,9 +7361,7 @@ module Increase
                         fare_basis_code: T.nilable(String),
                         flight_number: T.nilable(String),
                         service_class: T.nilable(String),
-                        stop_over_code: T.nilable(
-                          Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                        )
+                        stop_over_code: T.nilable(Symbol)
                       }
                     )
                 end
@@ -8448,54 +7369,19 @@ module Increase
                 end
 
                 # Indicates whether a stopover is allowed on this ticket.
-                module StopOverCode
-                  extend Increase::Enum
+                class StopOverCode < Increase::Enum
+                  abstract!
 
-                  TaggedSymbol =
-                    T.type_alias do
-                      T.all(Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode)
-                    end
-                  OrSymbol =
-                    T.type_alias do
-                      T.any(
-                        Symbol,
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                      )
-                    end
+                  Value = type_template(:out) { {fixed: Symbol} }
 
                   # None
-                  NONE =
-                    T.let(
-                      :none,
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                    )
+                  NONE = :none
 
                   # Stop over allowed
-                  STOP_OVER_ALLOWED =
-                    T.let(
-                      :stop_over_allowed,
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                    )
+                  STOP_OVER_ALLOWED = :stop_over_allowed
 
                   # Stop over not allowed
-                  STOP_OVER_NOT_ALLOWED =
-                    T.let(
-                      :stop_over_not_allowed,
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                    )
-
-                  class << self
-                    sig do
-                      override
-                        .returns(
-                          T::Array[
-                          Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                          ]
-                        )
-                    end
-                    def values
-                    end
-                  end
+                  STOP_OVER_NOT_ALLOWED = :stop_over_not_allowed
                 end
               end
             end
@@ -8503,140 +7389,215 @@ module Increase
 
           # A constant representing the object's type. For this resource it will always be
           #   `card_settlement`.
-          module Type
-            extend Increase::Enum
+          class Type < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardSettlement::Type) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardSettlement::Type::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            CARD_SETTLEMENT =
-              T.let(:card_settlement, Increase::Models::CardPayment::Element::CardSettlement::Type::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardSettlement::Type::TaggedSymbol]) }
-              def values
-              end
-            end
+            CARD_SETTLEMENT = :card_settlement
           end
         end
 
         class CardValidation < Increase::BaseModel
           # The Card Validation identifier.
           sig { returns(String) }
-          attr_accessor :id
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
 
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
-          sig { returns(Increase::Models::CardPayment::Element::CardValidation::Actioner::TaggedSymbol) }
-          attr_accessor :actioner
+          sig { returns(Symbol) }
+          def actioner
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def actioner=(_)
+          end
 
           # The ID of the Card Payment this transaction belongs to.
           sig { returns(String) }
-          attr_accessor :card_payment_id
+          def card_payment_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def card_payment_id=(_)
+          end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
-          sig { returns(Increase::Models::CardPayment::Element::CardValidation::Currency::TaggedSymbol) }
-          attr_accessor :currency
+          sig { returns(Symbol) }
+          def currency
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def currency=(_)
+          end
 
           # If the authorization was made via a Digital Wallet Token (such as an Apple Pay
           #   purchase), the identifier of the token that was used.
           sig { returns(T.nilable(String)) }
-          attr_accessor :digital_wallet_token_id
+          def digital_wallet_token_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def digital_wallet_token_id=(_)
+          end
 
           # The merchant identifier (commonly abbreviated as MID) of the merchant the card
           #   is transacting with.
           sig { returns(String) }
-          attr_accessor :merchant_acceptor_id
+          def merchant_acceptor_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_acceptor_id=(_)
+          end
 
           # The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
           #   card is transacting with.
           sig { returns(String) }
-          attr_accessor :merchant_category_code
+          def merchant_category_code
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_category_code=(_)
+          end
 
           # The city the merchant resides in.
           sig { returns(T.nilable(String)) }
-          attr_accessor :merchant_city
+          def merchant_city
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def merchant_city=(_)
+          end
 
           # The country the merchant resides in.
           sig { returns(String) }
-          attr_accessor :merchant_country
+          def merchant_country
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_country=(_)
+          end
 
           # The merchant descriptor of the merchant the card is transacting with.
           sig { returns(String) }
-          attr_accessor :merchant_descriptor
+          def merchant_descriptor
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_descriptor=(_)
+          end
 
           # The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
           #   ZIP code, where the first 5 and last 4 are separated by a dash.
           sig { returns(T.nilable(String)) }
-          attr_accessor :merchant_postal_code
+          def merchant_postal_code
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def merchant_postal_code=(_)
+          end
 
           # The state the merchant resides in.
           sig { returns(T.nilable(String)) }
-          attr_accessor :merchant_state
+          def merchant_state
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def merchant_state=(_)
+          end
 
           # Fields specific to the `network`.
           sig { returns(Increase::Models::CardPayment::Element::CardValidation::NetworkDetails) }
-          attr_reader :network_details
+          def network_details
+          end
 
           sig do
-            params(
-              network_details: T.any(Increase::Models::CardPayment::Element::CardValidation::NetworkDetails, Increase::Util::AnyHash)
-            )
-              .void
+            params(_: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails)
+              .returns(Increase::Models::CardPayment::Element::CardValidation::NetworkDetails)
           end
-          attr_writer :network_details
+          def network_details=(_)
+          end
 
           # Network-specific identifiers for a specific request or transaction.
           sig { returns(Increase::Models::CardPayment::Element::CardValidation::NetworkIdentifiers) }
-          attr_reader :network_identifiers
+          def network_identifiers
+          end
 
           sig do
-            params(
-              network_identifiers: T.any(Increase::Models::CardPayment::Element::CardValidation::NetworkIdentifiers, Increase::Util::AnyHash)
-            )
-              .void
+            params(_: Increase::Models::CardPayment::Element::CardValidation::NetworkIdentifiers)
+              .returns(Increase::Models::CardPayment::Element::CardValidation::NetworkIdentifiers)
           end
-          attr_writer :network_identifiers
+          def network_identifiers=(_)
+          end
 
           # The risk score generated by the card network. For Visa this is the Visa Advanced
           #   Authorization risk score, from 0 to 99, where 99 is the riskiest.
           sig { returns(T.nilable(Integer)) }
-          attr_accessor :network_risk_score
+          def network_risk_score
+          end
+
+          sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+          def network_risk_score=(_)
+          end
 
           # If the authorization was made in-person with a physical card, the Physical Card
           #   that was used.
           sig { returns(T.nilable(String)) }
-          attr_accessor :physical_card_id
+          def physical_card_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def physical_card_id=(_)
+          end
 
           # The identifier of the Real-Time Decision sent to approve or decline this
           #   transaction.
           sig { returns(T.nilable(String)) }
-          attr_accessor :real_time_decision_id
+          def real_time_decision_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def real_time_decision_id=(_)
+          end
 
           # The terminal identifier (commonly abbreviated as TID) of the terminal the card
           #   is transacting with.
           sig { returns(T.nilable(String)) }
-          attr_accessor :terminal_id
+          def terminal_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def terminal_id=(_)
+          end
 
           # A constant representing the object's type. For this resource it will always be
           #   `card_validation`.
-          sig { returns(Increase::Models::CardPayment::Element::CardValidation::Type::TaggedSymbol) }
-          attr_accessor :type
+          sig { returns(Symbol) }
+          def type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def type=(_)
+          end
 
           # Fields related to verification of cardholder-provided values.
           sig { returns(Increase::Models::CardPayment::Element::CardValidation::Verification) }
-          attr_reader :verification
+          def verification
+          end
 
           sig do
-            params(
-              verification: T.any(Increase::Models::CardPayment::Element::CardValidation::Verification, Increase::Util::AnyHash)
-            )
-              .void
+            params(_: Increase::Models::CardPayment::Element::CardValidation::Verification)
+              .returns(Increase::Models::CardPayment::Element::CardValidation::Verification)
           end
-          attr_writer :verification
+          def verification=(_)
+          end
 
           # A Card Validation object. This field will be present in the JSON response if and
           #   only if `category` is equal to `card_validation`. Card Validations are requests
@@ -8645,9 +7606,9 @@ module Increase
           sig do
             params(
               id: String,
-              actioner: Increase::Models::CardPayment::Element::CardValidation::Actioner::OrSymbol,
+              actioner: Symbol,
               card_payment_id: String,
-              currency: Increase::Models::CardPayment::Element::CardValidation::Currency::OrSymbol,
+              currency: Symbol,
               digital_wallet_token_id: T.nilable(String),
               merchant_acceptor_id: String,
               merchant_category_code: String,
@@ -8656,14 +7617,14 @@ module Increase
               merchant_descriptor: String,
               merchant_postal_code: T.nilable(String),
               merchant_state: T.nilable(String),
-              network_details: T.any(Increase::Models::CardPayment::Element::CardValidation::NetworkDetails, Increase::Util::AnyHash),
-              network_identifiers: T.any(Increase::Models::CardPayment::Element::CardValidation::NetworkIdentifiers, Increase::Util::AnyHash),
+              network_details: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails,
+              network_identifiers: Increase::Models::CardPayment::Element::CardValidation::NetworkIdentifiers,
               network_risk_score: T.nilable(Integer),
               physical_card_id: T.nilable(String),
               real_time_decision_id: T.nilable(String),
               terminal_id: T.nilable(String),
-              type: Increase::Models::CardPayment::Element::CardValidation::Type::OrSymbol,
-              verification: T.any(Increase::Models::CardPayment::Element::CardValidation::Verification, Increase::Util::AnyHash)
+              type: Symbol,
+              verification: Increase::Models::CardPayment::Element::CardValidation::Verification
             )
               .returns(T.attached_class)
           end
@@ -8696,9 +7657,9 @@ module Increase
               .returns(
                 {
                   id: String,
-                  actioner: Increase::Models::CardPayment::Element::CardValidation::Actioner::TaggedSymbol,
+                  actioner: Symbol,
                   card_payment_id: String,
-                  currency: Increase::Models::CardPayment::Element::CardValidation::Currency::TaggedSymbol,
+                  currency: Symbol,
                   digital_wallet_token_id: T.nilable(String),
                   merchant_acceptor_id: String,
                   merchant_category_code: String,
@@ -8713,7 +7674,7 @@ module Increase
                   physical_card_id: T.nilable(String),
                   real_time_decision_id: T.nilable(String),
                   terminal_id: T.nilable(String),
-                  type: Increase::Models::CardPayment::Element::CardValidation::Type::TaggedSymbol,
+                  type: Symbol,
                   verification: Increase::Models::CardPayment::Element::CardValidation::Verification
                 }
               )
@@ -8723,98 +7684,74 @@ module Increase
 
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
-          module Actioner
-            extend Increase::Enum
+          class Actioner < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardValidation::Actioner) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardValidation::Actioner::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # This object was actioned by the user through a real-time decision.
-            USER = T.let(:user, Increase::Models::CardPayment::Element::CardValidation::Actioner::TaggedSymbol)
+            USER = :user
 
             # This object was actioned by Increase without user intervention.
-            INCREASE =
-              T.let(:increase, Increase::Models::CardPayment::Element::CardValidation::Actioner::TaggedSymbol)
+            INCREASE = :increase
 
             # This object was actioned by the network, through stand-in processing.
-            NETWORK = T.let(:network, Increase::Models::CardPayment::Element::CardValidation::Actioner::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardValidation::Actioner::TaggedSymbol]) }
-              def values
-              end
-            end
+            NETWORK = :network
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
-          module Currency
-            extend Increase::Enum
+          class Currency < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardValidation::Currency) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardValidation::Currency::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
             # Canadian Dollar (CAD)
-            CAD = T.let(:CAD, Increase::Models::CardPayment::Element::CardValidation::Currency::TaggedSymbol)
+            CAD = :CAD
 
             # Swiss Franc (CHF)
-            CHF = T.let(:CHF, Increase::Models::CardPayment::Element::CardValidation::Currency::TaggedSymbol)
+            CHF = :CHF
 
             # Euro (EUR)
-            EUR = T.let(:EUR, Increase::Models::CardPayment::Element::CardValidation::Currency::TaggedSymbol)
+            EUR = :EUR
 
             # British Pound (GBP)
-            GBP = T.let(:GBP, Increase::Models::CardPayment::Element::CardValidation::Currency::TaggedSymbol)
+            GBP = :GBP
 
             # Japanese Yen (JPY)
-            JPY = T.let(:JPY, Increase::Models::CardPayment::Element::CardValidation::Currency::TaggedSymbol)
+            JPY = :JPY
 
             # US Dollar (USD)
-            USD = T.let(:USD, Increase::Models::CardPayment::Element::CardValidation::Currency::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardValidation::Currency::TaggedSymbol]) }
-              def values
-              end
-            end
+            USD = :USD
           end
 
           class NetworkDetails < Increase::BaseModel
             # The payment network used to process this card authorization.
-            sig { returns(Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Category::TaggedSymbol) }
-            attr_accessor :category
+            sig { returns(Symbol) }
+            def category
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def category=(_)
+            end
 
             # Fields specific to the `visa` network.
             sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa)) }
-            attr_reader :visa
+            def visa
+            end
 
             sig do
-              params(
-                visa: T.nilable(
-                  T.any(
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa,
-                    Increase::Util::AnyHash
-                  )
-                )
-              )
-                .void
+              params(_: T.nilable(Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa))
+                .returns(T.nilable(Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa))
             end
-            attr_writer :visa
+            def visa=(_)
+            end
 
             # Fields specific to the `network`.
             sig do
               params(
-                category: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Category::OrSymbol,
-                visa: T.nilable(
-                  T.any(
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa,
-                    Increase::Util::AnyHash
-                  )
-                )
+                category: Symbol,
+                visa: T.nilable(Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa)
               )
                 .returns(T.attached_class)
             end
@@ -8825,7 +7762,7 @@ module Increase
               override
                 .returns(
                   {
-                    category: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Category::TaggedSymbol,
+                    category: Symbol,
                     visa: T.nilable(Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa)
                   }
                 )
@@ -8834,85 +7771,53 @@ module Increase
             end
 
             # The payment network used to process this card authorization.
-            module Category
-              extend Increase::Enum
+            class Category < Increase::Enum
+              abstract!
 
-              TaggedSymbol =
-                T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Category) }
-              OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Category::TaggedSymbol
-                  )
-                end
+              Value = type_template(:out) { {fixed: Symbol} }
 
               # Visa
-              VISA =
-                T.let(
-                  :visa,
-                  Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Category::TaggedSymbol
-                )
-
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Category::TaggedSymbol]
-                    )
-                end
-                def values
-                end
-              end
+              VISA = :visa
             end
 
             class Visa < Increase::BaseModel
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
               #   transactions, identifies the type of mail or telephone order.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
-                )
+              sig { returns(T.nilable(Symbol)) }
+              def electronic_commerce_indicator
               end
-              attr_accessor :electronic_commerce_indicator
+
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+              def electronic_commerce_indicator=(_)
+              end
 
               # The method used to enter the cardholder's primary account number and card
               #   expiration date.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
-                )
+              sig { returns(T.nilable(Symbol)) }
+              def point_of_service_entry_mode
               end
-              attr_accessor :point_of_service_entry_mode
+
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+              def point_of_service_entry_mode=(_)
+              end
 
               # Only present when `actioner: network`. Describes why a card authorization was
               #   approved or declined by Visa through stand-in processing.
-              sig do
-                returns(
-                  T.nilable(
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
-                )
+              sig { returns(T.nilable(Symbol)) }
+              def stand_in_processing_reason
               end
-              attr_accessor :stand_in_processing_reason
+
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+              def stand_in_processing_reason=(_)
+              end
 
               # Fields specific to the `visa` network.
               sig do
                 params(
-                  electronic_commerce_indicator: T.nilable(
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::OrSymbol
-                  ),
-                  point_of_service_entry_mode: T.nilable(
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::OrSymbol
-                  ),
-                  stand_in_processing_reason: T.nilable(
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::OrSymbol
-                  )
+                  electronic_commerce_indicator: T.nilable(Symbol),
+                  point_of_service_entry_mode: T.nilable(Symbol),
+                  stand_in_processing_reason: T.nilable(Symbol)
                 )
                   .returns(T.attached_class)
               end
@@ -8923,15 +7828,9 @@ module Increase
                 override
                   .returns(
                     {
-                      electronic_commerce_indicator: T.nilable(
-                        Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                      ),
-                      point_of_service_entry_mode: T.nilable(
-                        Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                      ),
-                      stand_in_processing_reason: T.nilable(
-                        Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                      )
+                      electronic_commerce_indicator: T.nilable(Symbol),
+                      point_of_service_entry_mode: T.nilable(Symbol),
+                      stand_in_processing_reason: T.nilable(Symbol)
                     }
                   )
               end
@@ -8941,270 +7840,104 @@ module Increase
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
               #   transactions, identifies the type of mail or telephone order.
-              module ElectronicCommerceIndicator
-                extend Increase::Enum
+              class ElectronicCommerceIndicator < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
-                MAIL_PHONE_ORDER =
-                  T.let(
-                    :mail_phone_order,
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                MAIL_PHONE_ORDER = :mail_phone_order
 
                 # Recurring transaction: Payment indicator used to indicate a recurring transaction that originates from an acquirer in the US region.
-                RECURRING =
-                  T.let(
-                    :recurring,
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                RECURRING = :recurring
 
                 # Installment payment: Payment indicator used to indicate one purchase of goods or services that is billed to the account in multiple charges over a period of time agreed upon by the cardholder and merchant from transactions that originate from an acquirer in the US region.
-                INSTALLMENT =
-                  T.let(
-                    :installment,
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                INSTALLMENT = :installment
 
                 # Unknown classification: other mail order: Use to indicate that the type of mail/telephone order is unknown.
-                UNKNOWN_MAIL_PHONE_ORDER =
-                  T.let(
-                    :unknown_mail_phone_order,
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                UNKNOWN_MAIL_PHONE_ORDER = :unknown_mail_phone_order
 
                 # Secure electronic commerce transaction: Use to indicate that the electronic commerce transaction has been authenticated using e.g., 3-D Secure
-                SECURE_ELECTRONIC_COMMERCE =
-                  T.let(
-                    :secure_electronic_commerce,
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                SECURE_ELECTRONIC_COMMERCE = :secure_electronic_commerce
 
                 # Non-authenticated security transaction at a 3-D Secure-capable merchant, and merchant attempted to authenticate the cardholder using 3-D Secure: Use to identify an electronic commerce transaction where the merchant attempted to authenticate the cardholder using 3-D Secure, but was unable to complete the authentication because the issuer or cardholder does not participate in the 3-D Secure program.
                 NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT =
-                  T.let(
-                    :non_authenticated_security_transaction_at_3ds_capable_merchant,
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                  :non_authenticated_security_transaction_at_3ds_capable_merchant
 
                 # Non-authenticated security transaction: Use to identify an electronic commerce transaction that uses data encryption for security however , cardholder authentication is not performed using 3-D Secure.
-                NON_AUTHENTICATED_SECURITY_TRANSACTION =
-                  T.let(
-                    :non_authenticated_security_transaction,
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
+                NON_AUTHENTICATED_SECURITY_TRANSACTION = :non_authenticated_security_transaction
 
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
-                NON_SECURE_TRANSACTION =
-                  T.let(
-                    :non_secure_transaction,
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                NON_SECURE_TRANSACTION = :non_secure_transaction
               end
 
               # The method used to enter the cardholder's primary account number and card
               #   expiration date.
-              module PointOfServiceEntryMode
-                extend Increase::Enum
+              class PointOfServiceEntryMode < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # Unknown
-                UNKNOWN =
-                  T.let(
-                    :unknown,
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                UNKNOWN = :unknown
 
                 # Manual key entry
-                MANUAL =
-                  T.let(
-                    :manual,
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                MANUAL = :manual
 
                 # Magnetic stripe read, without card verification value
-                MAGNETIC_STRIPE_NO_CVV =
-                  T.let(
-                    :magnetic_stripe_no_cvv,
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                MAGNETIC_STRIPE_NO_CVV = :magnetic_stripe_no_cvv
 
                 # Optical code
-                OPTICAL_CODE =
-                  T.let(
-                    :optical_code,
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                OPTICAL_CODE = :optical_code
 
                 # Contact chip card
-                INTEGRATED_CIRCUIT_CARD =
-                  T.let(
-                    :integrated_circuit_card,
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                INTEGRATED_CIRCUIT_CARD = :integrated_circuit_card
 
                 # Contactless read of chip card
-                CONTACTLESS =
-                  T.let(
-                    :contactless,
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                CONTACTLESS = :contactless
 
                 # Transaction initiated using a credential that has previously been stored on file
-                CREDENTIAL_ON_FILE =
-                  T.let(
-                    :credential_on_file,
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                CREDENTIAL_ON_FILE = :credential_on_file
 
                 # Magnetic stripe read
-                MAGNETIC_STRIPE =
-                  T.let(
-                    :magnetic_stripe,
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                MAGNETIC_STRIPE = :magnetic_stripe
 
                 # Contactless read of magnetic stripe data
-                CONTACTLESS_MAGNETIC_STRIPE =
-                  T.let(
-                    :contactless_magnetic_stripe,
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
+                CONTACTLESS_MAGNETIC_STRIPE = :contactless_magnetic_stripe
 
                 # Contact chip card, without card verification value
-                INTEGRATED_CIRCUIT_CARD_NO_CVV =
-                  T.let(
-                    :integrated_circuit_card_no_cvv,
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
               end
 
               # Only present when `actioner: network`. Describes why a card authorization was
               #   approved or declined by Visa through stand-in processing.
-              module StandInProcessingReason
-                extend Increase::Enum
+              class StandInProcessingReason < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # Increase failed to process the authorization in a timely manner.
-                ISSUER_ERROR =
-                  T.let(
-                    :issuer_error,
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
+                ISSUER_ERROR = :issuer_error
 
                 # The physical card read had an invalid CVV, dCVV, or authorization request cryptogram.
-                INVALID_PHYSICAL_CARD =
-                  T.let(
-                    :invalid_physical_card,
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
+                INVALID_PHYSICAL_CARD = :invalid_physical_card
 
                 # The 3DS cardholder authentication verification value was invalid.
                 INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE =
-                  T.let(
-                    :invalid_cardholder_authentication_verification_value,
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
+                  :invalid_cardholder_authentication_verification_value
 
                 # An internal Visa error occurred. Visa uses this reason code for certain expected occurrences as well, such as Application Transaction Counter (ATC) replays.
-                INTERNAL_VISA_ERROR =
-                  T.let(
-                    :internal_visa_error,
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
+                INTERNAL_VISA_ERROR = :internal_visa_error
 
                 # The merchant has enabled Visa's Transaction Advisory Service and requires further authentication to perform the transaction. In practice this is often utilized at fuel pumps to tell the cardholder to see the cashier.
                 MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED =
-                  T.let(
-                    :merchant_transaction_advisory_service_authentication_required,
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
+                  :merchant_transaction_advisory_service_authentication_required
 
                 # The transaction was blocked by Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior, such as card testing.
-                PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK =
-                  T.let(
-                    :payment_fraud_disruption_acquirer_block,
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
+                PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK = :payment_fraud_disruption_acquirer_block
 
                 # An unspecific reason for stand-in processing.
-                OTHER =
-                  T.let(
-                    :other,
-                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                OTHER = :other
               end
             end
           end
@@ -9214,17 +7947,32 @@ module Increase
             #   Expected to be unique per acquirer within a window of time. For some card
             #   networks the retrieval reference number includes the trace counter.
             sig { returns(T.nilable(String)) }
-            attr_accessor :retrieval_reference_number
+            def retrieval_reference_number
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def retrieval_reference_number=(_)
+            end
 
             # A counter used to verify an individual authorization. Expected to be unique per
             #   acquirer within a window of time.
             sig { returns(T.nilable(String)) }
-            attr_accessor :trace_number
+            def trace_number
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def trace_number=(_)
+            end
 
             # A globally unique transaction identifier provided by the card network, used
             #   across multiple life-cycle requests.
             sig { returns(T.nilable(String)) }
-            attr_accessor :transaction_id
+            def transaction_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def transaction_id=(_)
+            end
 
             # Network-specific identifiers for a specific request or transaction.
             sig do
@@ -9254,68 +8002,46 @@ module Increase
 
           # A constant representing the object's type. For this resource it will always be
           #   `card_validation`.
-          module Type
-            extend Increase::Enum
+          class Type < Increase::Enum
+            abstract!
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::CardValidation::Type) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::CardValidation::Type::TaggedSymbol) }
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            CARD_VALIDATION =
-              T.let(:card_validation, Increase::Models::CardPayment::Element::CardValidation::Type::TaggedSymbol)
-
-            class << self
-              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardValidation::Type::TaggedSymbol]) }
-              def values
-              end
-            end
+            CARD_VALIDATION = :card_validation
           end
 
           class Verification < Increase::BaseModel
             # Fields related to verification of the Card Verification Code, a 3-digit code on
             #   the back of the card.
             sig { returns(Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode) }
-            attr_reader :card_verification_code
+            def card_verification_code
+            end
 
             sig do
-              params(
-                card_verification_code: T.any(
-                  Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode,
-                  Increase::Util::AnyHash
-                )
-              )
-                .void
+              params(_: Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode)
+                .returns(Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode)
             end
-            attr_writer :card_verification_code
+            def card_verification_code=(_)
+            end
 
             # Cardholder address provided in the authorization request and the address on file
             #   we verified it against.
             sig { returns(Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress) }
-            attr_reader :cardholder_address
+            def cardholder_address
+            end
 
             sig do
-              params(
-                cardholder_address: T.any(
-                  Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress,
-                  Increase::Util::AnyHash
-                )
-              )
-                .void
+              params(_: Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress)
+                .returns(Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress)
             end
-            attr_writer :cardholder_address
+            def cardholder_address=(_)
+            end
 
             # Fields related to verification of cardholder-provided values.
             sig do
               params(
-                card_verification_code: T.any(
-                  Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode,
-                  Increase::Util::AnyHash
-                ),
-                cardholder_address: T.any(
-                  Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress,
-                  Increase::Util::AnyHash
-                )
+                card_verification_code: Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode,
+                cardholder_address: Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress
               )
                 .returns(T.attached_class)
             end
@@ -9336,112 +8062,87 @@ module Increase
 
             class CardVerificationCode < Increase::BaseModel
               # The result of verifying the Card Verification Code.
-              sig do
-                returns(
-                  Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::TaggedSymbol
-                )
+              sig { returns(Symbol) }
+              def result
               end
-              attr_accessor :result
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def result=(_)
+              end
 
               # Fields related to verification of the Card Verification Code, a 3-digit code on
               #   the back of the card.
-              sig do
-                params(
-                  result: Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::OrSymbol
-                )
-                  .returns(T.attached_class)
-              end
+              sig { params(result: Symbol).returns(T.attached_class) }
               def self.new(result:)
               end
 
-              sig do
-                override
-                  .returns(
-                    {
-                      result: Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::TaggedSymbol
-                    }
-                  )
-              end
+              sig { override.returns({result: Symbol}) }
               def to_hash
               end
 
               # The result of verifying the Card Verification Code.
-              module Result
-                extend Increase::Enum
+              class Result < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # No card verification code was provided in the authorization request.
-                NOT_CHECKED =
-                  T.let(
-                    :not_checked,
-                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::TaggedSymbol
-                  )
+                NOT_CHECKED = :not_checked
 
                 # The card verification code matched the one on file.
-                MATCH =
-                  T.let(
-                    :match,
-                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::TaggedSymbol
-                  )
+                MATCH = :match
 
                 # The card verification code did not match the one on file.
-                NO_MATCH =
-                  T.let(
-                    :no_match,
-                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                NO_MATCH = :no_match
               end
             end
 
             class CardholderAddress < Increase::BaseModel
               # Line 1 of the address on file for the cardholder.
               sig { returns(T.nilable(String)) }
-              attr_accessor :actual_line1
+              def actual_line1
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def actual_line1=(_)
+              end
 
               # The postal code of the address on file for the cardholder.
               sig { returns(T.nilable(String)) }
-              attr_accessor :actual_postal_code
+              def actual_postal_code
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def actual_postal_code=(_)
+              end
 
               # The cardholder address line 1 provided for verification in the authorization
               #   request.
               sig { returns(T.nilable(String)) }
-              attr_accessor :provided_line1
+              def provided_line1
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def provided_line1=(_)
+              end
 
               # The postal code provided for verification in the authorization request.
               sig { returns(T.nilable(String)) }
-              attr_accessor :provided_postal_code
+              def provided_postal_code
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def provided_postal_code=(_)
+              end
 
               # The address verification result returned to the card network.
-              sig do
-                returns(
-                  Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
-                )
+              sig { returns(Symbol) }
+              def result
               end
-              attr_accessor :result
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def result=(_)
+              end
 
               # Cardholder address provided in the authorization request and the address on file
               #   we verified it against.
@@ -9451,7 +8152,7 @@ module Increase
                   actual_postal_code: T.nilable(String),
                   provided_line1: T.nilable(String),
                   provided_postal_code: T.nilable(String),
-                  result: Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::OrSymbol
+                  result: Symbol
                 )
                   .returns(T.attached_class)
               end
@@ -9466,7 +8167,7 @@ module Increase
                       actual_postal_code: T.nilable(String),
                       provided_line1: T.nilable(String),
                       provided_postal_code: T.nilable(String),
-                      result: Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
+                      result: Symbol
                     }
                   )
               end
@@ -9474,75 +8175,28 @@ module Increase
               end
 
               # The address verification result returned to the card network.
-              module Result
-                extend Increase::Enum
+              class Result < Increase::Enum
+                abstract!
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
-                    )
-                  end
+                Value = type_template(:out) { {fixed: Symbol} }
 
                 # No adress was provided in the authorization request.
-                NOT_CHECKED =
-                  T.let(
-                    :not_checked,
-                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
-                  )
+                NOT_CHECKED = :not_checked
 
                 # Postal code matches, but the street address was not verified.
-                POSTAL_CODE_MATCH_ADDRESS_NOT_CHECKED =
-                  T.let(
-                    :postal_code_match_address_not_checked,
-                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
-                  )
+                POSTAL_CODE_MATCH_ADDRESS_NOT_CHECKED = :postal_code_match_address_not_checked
 
                 # Postal code matches, but the street address does not match.
-                POSTAL_CODE_MATCH_ADDRESS_NO_MATCH =
-                  T.let(
-                    :postal_code_match_address_no_match,
-                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
-                  )
+                POSTAL_CODE_MATCH_ADDRESS_NO_MATCH = :postal_code_match_address_no_match
 
                 # Postal code does not match, but the street address matches.
-                POSTAL_CODE_NO_MATCH_ADDRESS_MATCH =
-                  T.let(
-                    :postal_code_no_match_address_match,
-                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
-                  )
+                POSTAL_CODE_NO_MATCH_ADDRESS_MATCH = :postal_code_no_match_address_match
 
                 # Postal code and street address match.
-                MATCH =
-                  T.let(
-                    :match,
-                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
-                  )
+                MATCH = :match
 
                 # Postal code and street address do not match.
-                NO_MATCH =
-                  T.let(
-                    :no_match,
-                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
-                  )
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
-                end
+                NO_MATCH = :no_match
               end
             end
           end
@@ -9550,54 +8204,43 @@ module Increase
 
         # The type of the resource. We may add additional possible values for this enum
         #   over time; your application should be able to handle such additions gracefully.
-        module Category
-          extend Increase::Enum
+        class Category < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Element::Category) }
-          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Element::Category::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # Card Authorization: details will be under the `card_authorization` object.
-          CARD_AUTHORIZATION =
-            T.let(:card_authorization, Increase::Models::CardPayment::Element::Category::TaggedSymbol)
+          CARD_AUTHORIZATION = :card_authorization
 
           # Card Authentication: details will be under the `card_authentication` object.
-          CARD_AUTHENTICATION =
-            T.let(:card_authentication, Increase::Models::CardPayment::Element::Category::TaggedSymbol)
+          CARD_AUTHENTICATION = :card_authentication
 
           # Card Validation: details will be under the `card_validation` object.
-          CARD_VALIDATION = T.let(:card_validation, Increase::Models::CardPayment::Element::Category::TaggedSymbol)
+          CARD_VALIDATION = :card_validation
 
           # Card Decline: details will be under the `card_decline` object.
-          CARD_DECLINE = T.let(:card_decline, Increase::Models::CardPayment::Element::Category::TaggedSymbol)
+          CARD_DECLINE = :card_decline
 
           # Card Reversal: details will be under the `card_reversal` object.
-          CARD_REVERSAL = T.let(:card_reversal, Increase::Models::CardPayment::Element::Category::TaggedSymbol)
+          CARD_REVERSAL = :card_reversal
 
           # Card Authorization Expiration: details will be under the `card_authorization_expiration` object.
-          CARD_AUTHORIZATION_EXPIRATION =
-            T.let(:card_authorization_expiration, Increase::Models::CardPayment::Element::Category::TaggedSymbol)
+          CARD_AUTHORIZATION_EXPIRATION = :card_authorization_expiration
 
           # Card Increment: details will be under the `card_increment` object.
-          CARD_INCREMENT = T.let(:card_increment, Increase::Models::CardPayment::Element::Category::TaggedSymbol)
+          CARD_INCREMENT = :card_increment
 
           # Card Settlement: details will be under the `card_settlement` object.
-          CARD_SETTLEMENT = T.let(:card_settlement, Increase::Models::CardPayment::Element::Category::TaggedSymbol)
+          CARD_SETTLEMENT = :card_settlement
 
           # Card Refund: details will be under the `card_refund` object.
-          CARD_REFUND = T.let(:card_refund, Increase::Models::CardPayment::Element::Category::TaggedSymbol)
+          CARD_REFUND = :card_refund
 
           # Card Fuel Confirmation: details will be under the `card_fuel_confirmation` object.
-          CARD_FUEL_CONFIRMATION =
-            T.let(:card_fuel_confirmation, Increase::Models::CardPayment::Element::Category::TaggedSymbol)
+          CARD_FUEL_CONFIRMATION = :card_fuel_confirmation
 
           # Unknown card payment element.
-          OTHER = T.let(:other, Increase::Models::CardPayment::Element::Category::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::CardPayment::Element::Category::TaggedSymbol]) }
-            def values
-            end
-          end
+          OTHER = :other
         end
       end
 
@@ -9605,27 +8248,52 @@ module Increase
         # The total authorized amount in the minor unit of the transaction's currency. For
         #   dollars, for example, this is cents.
         sig { returns(Integer) }
-        attr_accessor :authorized_amount
+        def authorized_amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def authorized_amount=(_)
+        end
 
         # The total amount from fuel confirmations in the minor unit of the transaction's
         #   currency. For dollars, for example, this is cents.
         sig { returns(Integer) }
-        attr_accessor :fuel_confirmed_amount
+        def fuel_confirmed_amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def fuel_confirmed_amount=(_)
+        end
 
         # The total incrementally updated authorized amount in the minor unit of the
         #   transaction's currency. For dollars, for example, this is cents.
         sig { returns(Integer) }
-        attr_accessor :incremented_amount
+        def incremented_amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def incremented_amount=(_)
+        end
 
         # The total reversed amount in the minor unit of the transaction's currency. For
         #   dollars, for example, this is cents.
         sig { returns(Integer) }
-        attr_accessor :reversed_amount
+        def reversed_amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def reversed_amount=(_)
+        end
 
         # The total settled or refunded amount in the minor unit of the transaction's
         #   currency. For dollars, for example, this is cents.
         sig { returns(Integer) }
-        attr_accessor :settled_amount
+        def settled_amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def settled_amount=(_)
+        end
 
         # The summarized state of this card payment.
         sig do
@@ -9659,19 +8327,12 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `card_payment`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CardPayment::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        CARD_PAYMENT = T.let(:card_payment, Increase::Models::CardPayment::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::CardPayment::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        CARD_PAYMENT = :card_payment
       end
     end
   end

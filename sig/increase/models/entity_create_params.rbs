@@ -84,9 +84,7 @@ module Increase
       type structure =
         :corporation | :natural_person | :joint | :trust | :government_authority
 
-      module Structure
-        extend Increase::Enum
-
+      class Structure < Increase::Enum
         # A corporation.
         CORPORATION: :corporation
 
@@ -102,7 +100,7 @@ module Increase
         # A government authority.
         GOVERNMENT_AUTHORITY: :government_authority
 
-        def self?.values: -> ::Array[Increase::Models::EntityCreateParams::structure]
+        def self.values: -> ::Array[Increase::Models::EntityCreateParams::structure]
       end
 
       type corporation =
@@ -320,9 +318,7 @@ module Increase
                 | :drivers_license
                 | :other
 
-              module Method
-                extend Increase::Enum
-
+              class Method < Increase::Enum
                 # A social security number.
                 SOCIAL_SECURITY_NUMBER: :social_security_number
 
@@ -338,7 +334,7 @@ module Increase
                 # Another identifying document.
                 OTHER: :other
 
-                def self?.values: -> ::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::method_]
+                def self.values: -> ::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::method_]
               end
 
               type drivers_license =
@@ -428,16 +424,14 @@ module Increase
 
           type prong = :ownership | :control
 
-          module Prong
-            extend Increase::Enum
-
+          class Prong < Increase::Enum
             # A person with 25% or greater direct or indirect ownership of the entity.
             OWNERSHIP: :ownership
 
             # A person who manages, directs, or has significant control of the entity.
             CONTROL: :control
 
-            def self?.values: -> ::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::prong]
+            def self.values: -> ::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::prong]
           end
         end
       end
@@ -523,13 +517,11 @@ module Increase
 
         type category = :municipality
 
-        module Category
-          extend Increase::Enum
-
+        class Category < Increase::Enum
           # The Public Entity is a Municipality.
           MUNICIPALITY: :municipality
 
-          def self?.values: -> ::Array[Increase::Models::EntityCreateParams::GovernmentAuthority::category]
+          def self.values: -> ::Array[Increase::Models::EntityCreateParams::GovernmentAuthority::category]
         end
       end
 
@@ -667,9 +659,7 @@ module Increase
               | :drivers_license
               | :other
 
-            module Method
-              extend Increase::Enum
-
+            class Method < Increase::Enum
               # A social security number.
               SOCIAL_SECURITY_NUMBER: :social_security_number
 
@@ -685,7 +675,7 @@ module Increase
               # Another identifying document.
               OTHER: :other
 
-              def self?.values: -> ::Array[Increase::Models::EntityCreateParams::Joint::Individual::Identification::method_]
+              def self.values: -> ::Array[Increase::Models::EntityCreateParams::Joint::Individual::Identification::method_]
             end
 
             type drivers_license =
@@ -888,9 +878,7 @@ module Increase
             | :drivers_license
             | :other
 
-          module Method
-            extend Increase::Enum
-
+          class Method < Increase::Enum
             # A social security number.
             SOCIAL_SECURITY_NUMBER: :social_security_number
 
@@ -906,7 +894,7 @@ module Increase
             # Another identifying document.
             OTHER: :other
 
-            def self?.values: -> ::Array[Increase::Models::EntityCreateParams::NaturalPerson::Identification::method_]
+            def self.values: -> ::Array[Increase::Models::EntityCreateParams::NaturalPerson::Identification::method_]
           end
 
           type drivers_license =
@@ -1024,16 +1012,14 @@ module Increase
 
         type vendor = :alloy | :middesk
 
-        module Vendor
-          extend Increase::Enum
-
+        class Vendor < Increase::Enum
           # Alloy. See https://alloy.com for more information.
           ALLOY: :alloy
 
           # Middesk. See https://middesk.com for more information.
           MIDDESK: :middesk
 
-          def self?.values: -> ::Array[Increase::Models::EntityCreateParams::ThirdPartyVerification::vendor]
+          def self.values: -> ::Array[Increase::Models::EntityCreateParams::ThirdPartyVerification::vendor]
         end
       end
 
@@ -1124,16 +1110,14 @@ module Increase
 
         type category = :revocable | :irrevocable
 
-        module Category
-          extend Increase::Enum
-
+        class Category < Increase::Enum
           # The trust is revocable by the grantor.
           REVOCABLE: :revocable
 
           # The trust cannot be revoked.
           IRREVOCABLE: :irrevocable
 
-          def self?.values: -> ::Array[Increase::Models::EntityCreateParams::Trust::category]
+          def self.values: -> ::Array[Increase::Models::EntityCreateParams::Trust::category]
         end
 
         type trustee =
@@ -1160,13 +1144,11 @@ module Increase
 
           type structure = :individual
 
-          module Structure
-            extend Increase::Enum
-
+          class Structure < Increase::Enum
             # The trustee is an individual.
             INDIVIDUAL: :individual
 
-            def self?.values: -> ::Array[Increase::Models::EntityCreateParams::Trust::Trustee::structure]
+            def self.values: -> ::Array[Increase::Models::EntityCreateParams::Trust::Trustee::structure]
           end
 
           type individual =
@@ -1283,9 +1265,7 @@ module Increase
                 | :drivers_license
                 | :other
 
-              module Method
-                extend Increase::Enum
-
+              class Method < Increase::Enum
                 # A social security number.
                 SOCIAL_SECURITY_NUMBER: :social_security_number
 
@@ -1301,7 +1281,7 @@ module Increase
                 # Another identifying document.
                 OTHER: :other
 
-                def self?.values: -> ::Array[Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::method_]
+                def self.values: -> ::Array[Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::method_]
               end
 
               type drivers_license =
@@ -1504,9 +1484,7 @@ module Increase
               | :drivers_license
               | :other
 
-            module Method
-              extend Increase::Enum
-
+            class Method < Increase::Enum
               # A social security number.
               SOCIAL_SECURITY_NUMBER: :social_security_number
 
@@ -1522,7 +1500,7 @@ module Increase
               # Another identifying document.
               OTHER: :other
 
-              def self?.values: -> ::Array[Increase::Models::EntityCreateParams::Trust::Grantor::Identification::method_]
+              def self.values: -> ::Array[Increase::Models::EntityCreateParams::Trust::Grantor::Identification::method_]
             end
 
             type drivers_license =

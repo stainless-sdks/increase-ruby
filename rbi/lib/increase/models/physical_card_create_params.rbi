@@ -8,40 +8,54 @@ module Increase
 
       # The underlying card representing this physical card.
       sig { returns(String) }
-      attr_accessor :card_id
+      def card_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def card_id=(_)
+      end
 
       # Details about the cardholder, as it will appear on the physical card.
       sig { returns(Increase::Models::PhysicalCardCreateParams::Cardholder) }
-      attr_reader :cardholder
+      def cardholder
+      end
 
       sig do
-        params(cardholder: T.any(Increase::Models::PhysicalCardCreateParams::Cardholder, Increase::Util::AnyHash))
-          .void
+        params(_: Increase::Models::PhysicalCardCreateParams::Cardholder)
+          .returns(Increase::Models::PhysicalCardCreateParams::Cardholder)
       end
-      attr_writer :cardholder
+      def cardholder=(_)
+      end
 
       # The details used to ship this physical card.
       sig { returns(Increase::Models::PhysicalCardCreateParams::Shipment) }
-      attr_reader :shipment
+      def shipment
+      end
 
-      sig { params(shipment: T.any(Increase::Models::PhysicalCardCreateParams::Shipment, Increase::Util::AnyHash)).void }
-      attr_writer :shipment
+      sig do
+        params(_: Increase::Models::PhysicalCardCreateParams::Shipment)
+          .returns(Increase::Models::PhysicalCardCreateParams::Shipment)
+      end
+      def shipment=(_)
+      end
 
       # The physical card profile to use for this physical card. The latest default
       #   physical card profile will be used if not provided.
       sig { returns(T.nilable(String)) }
-      attr_reader :physical_card_profile_id
+      def physical_card_profile_id
+      end
 
-      sig { params(physical_card_profile_id: String).void }
-      attr_writer :physical_card_profile_id
+      sig { params(_: String).returns(String) }
+      def physical_card_profile_id=(_)
+      end
 
       sig do
         params(
           card_id: String,
-          cardholder: T.any(Increase::Models::PhysicalCardCreateParams::Cardholder, Increase::Util::AnyHash),
-          shipment: T.any(Increase::Models::PhysicalCardCreateParams::Shipment, Increase::Util::AnyHash),
+          cardholder: Increase::Models::PhysicalCardCreateParams::Cardholder,
+          shipment: Increase::Models::PhysicalCardCreateParams::Shipment,
           physical_card_profile_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end
@@ -66,11 +80,21 @@ module Increase
       class Cardholder < Increase::BaseModel
         # The cardholder's first name.
         sig { returns(String) }
-        attr_accessor :first_name
+        def first_name
+        end
+
+        sig { params(_: String).returns(String) }
+        def first_name=(_)
+        end
 
         # The cardholder's last name.
         sig { returns(String) }
-        attr_accessor :last_name
+        def last_name
+        end
+
+        sig { params(_: String).returns(String) }
+        def last_name=(_)
+        end
 
         # Details about the cardholder, as it will appear on the physical card.
         sig { params(first_name: String, last_name: String).returns(T.attached_class) }
@@ -85,39 +109,35 @@ module Increase
       class Shipment < Increase::BaseModel
         # The address to where the card should be shipped.
         sig { returns(Increase::Models::PhysicalCardCreateParams::Shipment::Address) }
-        attr_reader :address
+        def address
+        end
 
         sig do
-          params(
-            address: T.any(Increase::Models::PhysicalCardCreateParams::Shipment::Address, Increase::Util::AnyHash)
-          )
-            .void
+          params(_: Increase::Models::PhysicalCardCreateParams::Shipment::Address)
+            .returns(Increase::Models::PhysicalCardCreateParams::Shipment::Address)
         end
-        attr_writer :address
+        def address=(_)
+        end
 
         # The shipping method to use.
-        sig { returns(Increase::Models::PhysicalCardCreateParams::Shipment::Method::OrSymbol) }
-        attr_accessor :method_
+        sig { returns(Symbol) }
+        def method_
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def method_=(_)
+        end
 
         # The details used to ship this physical card.
         sig do
-          params(
-            address: T.any(Increase::Models::PhysicalCardCreateParams::Shipment::Address, Increase::Util::AnyHash),
-            method_: Increase::Models::PhysicalCardCreateParams::Shipment::Method::OrSymbol
-          )
+          params(address: Increase::Models::PhysicalCardCreateParams::Shipment::Address, method_: Symbol)
             .returns(T.attached_class)
         end
         def self.new(address:, method_:)
         end
 
         sig do
-          override
-            .returns(
-              {
-                address: Increase::Models::PhysicalCardCreateParams::Shipment::Address,
-                method_: Increase::Models::PhysicalCardCreateParams::Shipment::Method::OrSymbol
-              }
-            )
+          override.returns({address: Increase::Models::PhysicalCardCreateParams::Shipment::Address, method_: Symbol})
         end
         def to_hash
         end
@@ -125,44 +145,75 @@ module Increase
         class Address < Increase::BaseModel
           # The city of the shipping address.
           sig { returns(String) }
-          attr_accessor :city
+          def city
+          end
+
+          sig { params(_: String).returns(String) }
+          def city=(_)
+          end
 
           # The first line of the shipping address.
           sig { returns(String) }
-          attr_accessor :line1
+          def line1
+          end
+
+          sig { params(_: String).returns(String) }
+          def line1=(_)
+          end
 
           # The name of the recipient.
           sig { returns(String) }
-          attr_accessor :name
+          def name
+          end
+
+          sig { params(_: String).returns(String) }
+          def name=(_)
+          end
 
           # The postal code of the shipping address.
           sig { returns(String) }
-          attr_accessor :postal_code
+          def postal_code
+          end
+
+          sig { params(_: String).returns(String) }
+          def postal_code=(_)
+          end
 
           # The US state of the shipping address.
           sig { returns(String) }
-          attr_accessor :state
+          def state
+          end
+
+          sig { params(_: String).returns(String) }
+          def state=(_)
+          end
 
           # The second line of the shipping address.
           sig { returns(T.nilable(String)) }
-          attr_reader :line2
+          def line2
+          end
 
-          sig { params(line2: String).void }
-          attr_writer :line2
+          sig { params(_: String).returns(String) }
+          def line2=(_)
+          end
 
           # The third line of the shipping address.
           sig { returns(T.nilable(String)) }
-          attr_reader :line3
+          def line3
+          end
 
-          sig { params(line3: String).void }
-          attr_writer :line3
+          sig { params(_: String).returns(String) }
+          def line3=(_)
+          end
 
           # The phone number of the recipient.
           sig { returns(T.nilable(String)) }
-          attr_reader :phone_number
+          def phone_number
+          end
 
-          sig { params(phone_number: String).void }
-          attr_writer :phone_number
+          sig { params(_: String).returns(String) }
+          def phone_number=(_)
+          end
 
           # The address to where the card should be shipped.
           sig do
@@ -201,33 +252,19 @@ module Increase
         end
 
         # The shipping method to use.
-        module Method
-          extend Increase::Enum
+        class Method < Increase::Enum
+          abstract!
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardCreateParams::Shipment::Method) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # USPS Post with tracking.
-          USPS = T.let(:usps, Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol)
+          USPS = :usps
 
           # FedEx Priority Overnight, no signature.
-          FEDEX_PRIORITY_OVERNIGHT =
-            T.let(
-              :fedex_priority_overnight,
-              Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol
-            )
+          FEDEX_PRIORITY_OVERNIGHT = :fedex_priority_overnight
 
           # FedEx 2-day.
-          FEDEX_2_DAY =
-            T.let(:fedex_2_day, Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol]) }
-            def values
-            end
-          end
+          FEDEX_2_DAY = :fedex_2_day
         end
       end
     end

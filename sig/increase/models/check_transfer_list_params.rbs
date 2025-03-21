@@ -113,9 +113,7 @@ module Increase
           | :stopped
           | :returned
 
-        module In
-          extend Increase::Enum
-
+        class In < Increase::Enum
           # The transfer is awaiting approval.
           PENDING_APPROVAL: :pending_approval
 
@@ -146,7 +144,7 @@ module Increase
           # The transfer has been returned.
           RETURNED: :returned
 
-          def self?.values: -> ::Array[Increase::Models::CheckTransferListParams::Status::in_]
+          def self.values: -> ::Array[Increase::Models::CheckTransferListParams::Status::in_]
         end
       end
     end

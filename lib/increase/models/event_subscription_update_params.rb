@@ -25,10 +25,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The status to update the Event Subscription with.
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The subscription is active and Events will be delivered normally.
         ACTIVE = :active
 
@@ -39,12 +39,6 @@ module Increase
         DELETED = :deleted
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

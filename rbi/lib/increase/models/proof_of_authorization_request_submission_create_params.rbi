@@ -8,60 +8,111 @@ module Increase
 
       # Terms of authorization.
       sig { returns(String) }
-      attr_accessor :authorization_terms
+      def authorization_terms
+      end
+
+      sig { params(_: String).returns(String) }
+      def authorization_terms=(_)
+      end
 
       # Time of authorization.
       sig { returns(Time) }
-      attr_accessor :authorized_at
+      def authorized_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def authorized_at=(_)
+      end
 
       # Email of the authorizer.
       sig { returns(String) }
-      attr_accessor :authorizer_email
+      def authorizer_email
+      end
+
+      sig { params(_: String).returns(String) }
+      def authorizer_email=(_)
+      end
 
       # Name of the authorizer.
       sig { returns(String) }
-      attr_accessor :authorizer_name
+      def authorizer_name
+      end
+
+      sig { params(_: String).returns(String) }
+      def authorizer_name=(_)
+      end
 
       # Whether the customer has been offboarded or suspended.
       sig { returns(T::Boolean) }
-      attr_accessor :customer_has_been_offboarded
+      def customer_has_been_offboarded
+      end
+
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def customer_has_been_offboarded=(_)
+      end
 
       # ID of the proof of authorization request.
       sig { returns(String) }
-      attr_accessor :proof_of_authorization_request_id
+      def proof_of_authorization_request_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def proof_of_authorization_request_id=(_)
+      end
 
       # Whether the account ownership was validated via credential (e.g. Plaid).
       sig { returns(T::Boolean) }
-      attr_accessor :validated_account_ownership_via_credential
+      def validated_account_ownership_via_credential
+      end
+
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def validated_account_ownership_via_credential=(_)
+      end
 
       # Whether the account ownership was validated with an account statement.
       sig { returns(T::Boolean) }
-      attr_accessor :validated_account_ownership_with_account_statement
+      def validated_account_ownership_with_account_statement
+      end
+
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def validated_account_ownership_with_account_statement=(_)
+      end
 
       # Whether the account ownership was validated with a microdeposit.
       sig { returns(T::Boolean) }
-      attr_accessor :validated_account_ownership_with_microdeposit
+      def validated_account_ownership_with_microdeposit
+      end
+
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def validated_account_ownership_with_microdeposit=(_)
+      end
 
       # File containing additional evidence.
       sig { returns(T.nilable(String)) }
-      attr_reader :additional_evidence_file_id
+      def additional_evidence_file_id
+      end
 
-      sig { params(additional_evidence_file_id: String).void }
-      attr_writer :additional_evidence_file_id
+      sig { params(_: String).returns(String) }
+      def additional_evidence_file_id=(_)
+      end
 
       # Company of the authorizer.
       sig { returns(T.nilable(String)) }
-      attr_reader :authorizer_company
+      def authorizer_company
+      end
 
-      sig { params(authorizer_company: String).void }
-      attr_writer :authorizer_company
+      sig { params(_: String).returns(String) }
+      def authorizer_company=(_)
+      end
 
       # IP address of the authorizer.
       sig { returns(T.nilable(String)) }
-      attr_reader :authorizer_ip_address
+      def authorizer_ip_address
+      end
 
-      sig { params(authorizer_ip_address: String).void }
-      attr_writer :authorizer_ip_address
+      sig { params(_: String).returns(String) }
+      def authorizer_ip_address=(_)
+      end
 
       sig do
         params(
@@ -77,7 +128,7 @@ module Increase
           additional_evidence_file_id: String,
           authorizer_company: String,
           authorizer_ip_address: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end

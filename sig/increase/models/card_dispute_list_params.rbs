@@ -103,9 +103,7 @@ module Increase
           | :lost
           | :won
 
-        module In
-          extend Increase::Enum
-
+        class In < Increase::Enum
           # The Card Dispute is pending review.
           PENDING_REVIEWING: :pending_reviewing
 
@@ -124,7 +122,7 @@ module Increase
           # The Card Dispute has been won and no further action can be taken.
           WON: :won
 
-          def self?.values: -> ::Array[Increase::Models::CardDisputeListParams::Status::in_]
+          def self.values: -> ::Array[Increase::Models::CardDisputeListParams::Status::in_]
         end
       end
     end

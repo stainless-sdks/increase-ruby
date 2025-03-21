@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           proof_of_authorization_request_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::ProofOfAuthorizationRequest)
       end
@@ -21,10 +21,10 @@ module Increase
       # List Proof of Authorization Requests
       sig do
         params(
-          created_at: T.any(Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt, Increase::Util::AnyHash),
+          created_at: Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt,
           cursor: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Page[Increase::Models::ProofOfAuthorizationRequest])
       end

@@ -14,8 +14,8 @@ module Increase
           contact_email: String,
           contact_phone: String,
           contact_website: String,
-          text_color: T.any(Increase::Models::DigitalCardProfileCreateParams::TextColor, Increase::Util::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          text_color: Increase::Models::DigitalCardProfileCreateParams::TextColor,
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::DigitalCardProfile)
       end
@@ -46,7 +46,7 @@ module Increase
       sig do
         params(
           digital_card_profile_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::DigitalCardProfile)
       end
@@ -63,8 +63,8 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: T.any(Increase::Models::DigitalCardProfileListParams::Status, Increase::Util::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          status: Increase::Models::DigitalCardProfileListParams::Status,
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Page[Increase::Models::DigitalCardProfile])
       end
@@ -88,7 +88,7 @@ module Increase
       sig do
         params(
           digital_card_profile_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::DigitalCardProfile)
       end
@@ -111,8 +111,8 @@ module Increase
           contact_website: String,
           description: String,
           issuer_name: String,
-          text_color: T.any(Increase::Models::DigitalCardProfileCloneParams::TextColor, Increase::Util::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          text_color: Increase::Models::DigitalCardProfileCloneParams::TextColor,
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::DigitalCardProfile)
       end

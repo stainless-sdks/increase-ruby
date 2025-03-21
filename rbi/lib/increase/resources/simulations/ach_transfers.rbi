@@ -13,7 +13,7 @@ module Increase
         sig do
           params(
             ach_transfer_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
           )
             .returns(Increase::Models::ACHTransfer)
         end
@@ -29,9 +29,9 @@ module Increase
         sig do
           params(
             ach_transfer_id: String,
-            change_code: Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol,
+            change_code: Symbol,
             corrected_data: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
           )
             .returns(Increase::Models::ACHTransfer)
         end
@@ -53,8 +53,8 @@ module Increase
         sig do
           params(
             ach_transfer_id: String,
-            reason: Increase::Models::Simulations::ACHTransferReturnParams::Reason::OrSymbol,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+            reason: Symbol,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
           )
             .returns(Increase::Models::ACHTransfer)
         end
@@ -75,7 +75,7 @@ module Increase
         sig do
           params(
             ach_transfer_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
           )
             .returns(Increase::Models::ACHTransfer)
         end
@@ -95,7 +95,7 @@ module Increase
         sig do
           params(
             ach_transfer_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
           )
             .returns(Increase::Models::ACHTransfer)
         end

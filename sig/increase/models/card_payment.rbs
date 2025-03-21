@@ -188,16 +188,14 @@ module Increase
 
           type category = :payment_authentication | :non_payment_authentication
 
-          module Category
-            extend Increase::Enum
-
+          class Category < Increase::Enum
             # The authentication attempt is for a payment.
             PAYMENT_AUTHENTICATION: :payment_authentication
 
             # The authentication attempt is not for a payment.
             NON_PAYMENT_AUTHENTICATION: :non_payment_authentication
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthentication::category]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthentication::category]
           end
 
           type challenge =
@@ -250,24 +248,20 @@ module Increase
 
               type outcome = :successful | :failed
 
-              module Outcome
-                extend Increase::Enum
-
+              class Outcome < Increase::Enum
                 # The attempt was successful.
                 SUCCESSFUL: :successful
 
                 # The attempt was unsuccessful.
                 FAILED: :failed
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::outcome]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::outcome]
               end
             end
 
             type verification_method = :text_message | :email | :none_available
 
-            module VerificationMethod
-              extend Increase::Enum
-
+            class VerificationMethod < Increase::Enum
               # The one-time code was sent via text message.
               TEXT_MESSAGE: :text_message
 
@@ -277,7 +271,7 @@ module Increase
               # The one-time code was not successfully delievered.
               NONE_AVAILABLE: :none_available
 
-              def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::verification_method]
+              def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::verification_method]
             end
           end
 
@@ -289,9 +283,7 @@ module Increase
             | :webhook_denied
             | :webhook_timed_out
 
-          module DenyReason
-            extend Increase::Enum
-
+          class DenyReason < Increase::Enum
             # The group was locked.
             GROUP_LOCKED: :group_locked
 
@@ -310,14 +302,12 @@ module Increase
             # The webhook timed out.
             WEBHOOK_TIMED_OUT: :webhook_timed_out
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthentication::deny_reason]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthentication::deny_reason]
           end
 
           type device_channel = :app | :browser | :three_ds_requestor_initiated
 
-          module DeviceChannel
-            extend Increase::Enum
-
+          class DeviceChannel < Increase::Enum
             # The authentication attempt was made from an app.
             APP: :app
 
@@ -327,7 +317,7 @@ module Increase
             # The authentication attempt was initiated by the 3DS Requestor.
             THREE_DS_REQUESTOR_INITIATED: :three_ds_requestor_initiated
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthentication::device_channel]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthentication::device_channel]
           end
 
           type status =
@@ -341,9 +331,7 @@ module Increase
             | :errored
             | :exceeded_attempt_threshold
 
-          module Status
-            extend Increase::Enum
-
+          class Status < Increase::Enum
             # The authentication attempt was denied.
             DENIED: :denied
 
@@ -371,17 +359,15 @@ module Increase
             # The authentication attempt exceeded the attempt threshold.
             EXCEEDED_ATTEMPT_THRESHOLD: :exceeded_attempt_threshold
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthentication::status]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthentication::status]
           end
 
           type type_ = :card_authentication
 
-          module Type
-            extend Increase::Enum
-
+          class Type < Increase::Enum
             CARD_AUTHENTICATION: :card_authentication
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthentication::type_]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthentication::type_]
           end
         end
 
@@ -505,9 +491,7 @@ module Increase
 
           type actioner = :user | :increase | :network
 
-          module Actioner
-            extend Increase::Enum
-
+          class Actioner < Increase::Enum
             # This object was actioned by the user through a real-time decision.
             USER: :user
 
@@ -517,14 +501,12 @@ module Increase
             # This object was actioned by the network, through stand-in processing.
             NETWORK: :network
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::actioner]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::actioner]
           end
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          module Currency
-            extend Increase::Enum
-
+          class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -543,21 +525,19 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::currency]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::currency]
           end
 
           type direction = :settlement | :refund
 
-          module Direction
-            extend Increase::Enum
-
+          class Direction < Increase::Enum
             # A regular card authorization where funds are debited from the cardholder.
             SETTLEMENT: :settlement
 
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND: :refund
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::direction]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::direction]
           end
 
           type network_details =
@@ -580,13 +560,11 @@ module Increase
 
             type category = :visa
 
-            module Category
-              extend Increase::Enum
-
+            class Category < Increase::Enum
               # Visa
               VISA: :visa
 
-              def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::category]
+              def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::category]
             end
 
             type visa =
@@ -621,9 +599,7 @@ module Increase
                 | :non_authenticated_security_transaction
                 | :non_secure_transaction
 
-              module ElectronicCommerceIndicator
-                extend Increase::Enum
-
+              class ElectronicCommerceIndicator < Increase::Enum
                 # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
                 MAIL_PHONE_ORDER: :mail_phone_order
 
@@ -648,7 +624,7 @@ module Increase
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
                 NON_SECURE_TRANSACTION: :non_secure_transaction
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::electronic_commerce_indicator]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::electronic_commerce_indicator]
               end
 
               type point_of_service_entry_mode =
@@ -663,9 +639,7 @@ module Increase
                 | :contactless_magnetic_stripe
                 | :integrated_circuit_card_no_cvv
 
-              module PointOfServiceEntryMode
-                extend Increase::Enum
-
+              class PointOfServiceEntryMode < Increase::Enum
                 # Unknown
                 UNKNOWN: :unknown
 
@@ -696,7 +670,7 @@ module Increase
                 # Contact chip card, without card verification value
                 INTEGRATED_CIRCUIT_CARD_NO_CVV: :integrated_circuit_card_no_cvv
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::point_of_service_entry_mode]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::point_of_service_entry_mode]
               end
 
               type stand_in_processing_reason =
@@ -708,9 +682,7 @@ module Increase
                 | :payment_fraud_disruption_acquirer_block
                 | :other
 
-              module StandInProcessingReason
-                extend Increase::Enum
-
+              class StandInProcessingReason < Increase::Enum
                 # Increase failed to process the authorization in a timely manner.
                 ISSUER_ERROR: :issuer_error
 
@@ -732,7 +704,7 @@ module Increase
                 # An unspecific reason for stand-in processing.
                 OTHER: :other
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::stand_in_processing_reason]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::stand_in_processing_reason]
               end
             end
           end
@@ -768,9 +740,7 @@ module Increase
             | :quasi_cash
             | :refund
 
-          module ProcessingCategory
-            extend Increase::Enum
-
+          class ProcessingCategory < Increase::Enum
             # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
             ACCOUNT_FUNDING: :account_funding
 
@@ -789,17 +759,15 @@ module Increase
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND: :refund
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::processing_category]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::processing_category]
           end
 
           type type_ = :card_authorization
 
-          module Type
-            extend Increase::Enum
-
+          class Type < Increase::Enum
             CARD_AUTHORIZATION: :card_authorization
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::type_]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::type_]
           end
 
           type verification =
@@ -836,9 +804,7 @@ module Increase
 
               type result = :not_checked | :match | :no_match
 
-              module Result
-                extend Increase::Enum
-
+              class Result < Increase::Enum
                 # No card verification code was provided in the authorization request.
                 NOT_CHECKED: :not_checked
 
@@ -848,7 +814,7 @@ module Increase
                 # The card verification code did not match the one on file.
                 NO_MATCH: :no_match
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::result]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::result]
               end
             end
 
@@ -890,9 +856,7 @@ module Increase
                 | :match
                 | :no_match
 
-              module Result
-                extend Increase::Enum
-
+              class Result < Increase::Enum
                 # No adress was provided in the authorization request.
                 NOT_CHECKED: :not_checked
 
@@ -911,7 +875,7 @@ module Increase
                 # Postal code and street address do not match.
                 NO_MATCH: :no_match
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::result]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::result]
               end
             end
           end
@@ -953,9 +917,7 @@ module Increase
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          module Currency
-            extend Increase::Enum
-
+          class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -974,28 +936,24 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorizationExpiration::currency]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorizationExpiration::currency]
           end
 
           type network = :visa
 
-          module Network
-            extend Increase::Enum
-
+          class Network < Increase::Enum
             # Visa
             VISA: :visa
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorizationExpiration::network]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorizationExpiration::network]
           end
 
           type type_ = :card_authorization_expiration
 
-          module Type
-            extend Increase::Enum
-
+          class Type < Increase::Enum
             CARD_AUTHORIZATION_EXPIRATION: :card_authorization_expiration
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorizationExpiration::type_]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorizationExpiration::type_]
           end
         end
 
@@ -1119,9 +1077,7 @@ module Increase
 
           type actioner = :user | :increase | :network
 
-          module Actioner
-            extend Increase::Enum
-
+          class Actioner < Increase::Enum
             # This object was actioned by the user through a real-time decision.
             USER: :user
 
@@ -1131,14 +1087,12 @@ module Increase
             # This object was actioned by the network, through stand-in processing.
             NETWORK: :network
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::actioner]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::actioner]
           end
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          module Currency
-            extend Increase::Enum
-
+          class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -1157,21 +1111,19 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::currency]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::currency]
           end
 
           type direction = :settlement | :refund
 
-          module Direction
-            extend Increase::Enum
-
+          class Direction < Increase::Enum
             # A regular card authorization where funds are debited from the cardholder.
             SETTLEMENT: :settlement
 
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND: :refund
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::direction]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::direction]
           end
 
           type network_details =
@@ -1194,13 +1146,11 @@ module Increase
 
             type category = :visa
 
-            module Category
-              extend Increase::Enum
-
+            class Category < Increase::Enum
               # Visa
               VISA: :visa
 
-              def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::category]
+              def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::category]
             end
 
             type visa =
@@ -1235,9 +1185,7 @@ module Increase
                 | :non_authenticated_security_transaction
                 | :non_secure_transaction
 
-              module ElectronicCommerceIndicator
-                extend Increase::Enum
-
+              class ElectronicCommerceIndicator < Increase::Enum
                 # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
                 MAIL_PHONE_ORDER: :mail_phone_order
 
@@ -1262,7 +1210,7 @@ module Increase
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
                 NON_SECURE_TRANSACTION: :non_secure_transaction
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::electronic_commerce_indicator]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::electronic_commerce_indicator]
               end
 
               type point_of_service_entry_mode =
@@ -1277,9 +1225,7 @@ module Increase
                 | :contactless_magnetic_stripe
                 | :integrated_circuit_card_no_cvv
 
-              module PointOfServiceEntryMode
-                extend Increase::Enum
-
+              class PointOfServiceEntryMode < Increase::Enum
                 # Unknown
                 UNKNOWN: :unknown
 
@@ -1310,7 +1256,7 @@ module Increase
                 # Contact chip card, without card verification value
                 INTEGRATED_CIRCUIT_CARD_NO_CVV: :integrated_circuit_card_no_cvv
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::point_of_service_entry_mode]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::point_of_service_entry_mode]
               end
 
               type stand_in_processing_reason =
@@ -1322,9 +1268,7 @@ module Increase
                 | :payment_fraud_disruption_acquirer_block
                 | :other
 
-              module StandInProcessingReason
-                extend Increase::Enum
-
+              class StandInProcessingReason < Increase::Enum
                 # Increase failed to process the authorization in a timely manner.
                 ISSUER_ERROR: :issuer_error
 
@@ -1346,7 +1290,7 @@ module Increase
                 # An unspecific reason for stand-in processing.
                 OTHER: :other
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::stand_in_processing_reason]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::stand_in_processing_reason]
               end
             end
           end
@@ -1382,9 +1326,7 @@ module Increase
             | :quasi_cash
             | :refund
 
-          module ProcessingCategory
-            extend Increase::Enum
-
+          class ProcessingCategory < Increase::Enum
             # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
             ACCOUNT_FUNDING: :account_funding
 
@@ -1403,7 +1345,7 @@ module Increase
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND: :refund
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::processing_category]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::processing_category]
           end
 
           type real_time_decision_reason =
@@ -1414,9 +1356,7 @@ module Increase
             | :suspected_fraud
             | :other
 
-          module RealTimeDecisionReason
-            extend Increase::Enum
-
+          class RealTimeDecisionReason < Increase::Enum
             # The cardholder does not have sufficient funds to cover the transaction. The merchant may attempt to process the transaction again.
             INSUFFICIENT_FUNDS: :insufficient_funds
 
@@ -1435,7 +1375,7 @@ module Increase
             # The transaction was declined for another reason. The merchant may attempt to process the transaction again. This should be used sparingly.
             OTHER: :other
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::real_time_decision_reason]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::real_time_decision_reason]
           end
 
           type reason =
@@ -1457,9 +1397,7 @@ module Increase
             | :missing_original_authorization
             | :suspected_fraud
 
-          module Reason
-            extend Increase::Enum
-
+          class Reason < Increase::Enum
             # The account has been closed.
             ACCOUNT_CLOSED: :account_closed
 
@@ -1511,7 +1449,7 @@ module Increase
             # The transaction was suspected to be fraudulent. Please reach out to support@increase.com for more information.
             SUSPECTED_FRAUD: :suspected_fraud
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::reason]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::reason]
           end
 
           type verification =
@@ -1548,9 +1486,7 @@ module Increase
 
               type result = :not_checked | :match | :no_match
 
-              module Result
-                extend Increase::Enum
-
+              class Result < Increase::Enum
                 # No card verification code was provided in the authorization request.
                 NOT_CHECKED: :not_checked
 
@@ -1560,7 +1496,7 @@ module Increase
                 # The card verification code did not match the one on file.
                 NO_MATCH: :no_match
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::result]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::result]
               end
             end
 
@@ -1602,9 +1538,7 @@ module Increase
                 | :match
                 | :no_match
 
-              module Result
-                extend Increase::Enum
-
+              class Result < Increase::Enum
                 # No adress was provided in the authorization request.
                 NOT_CHECKED: :not_checked
 
@@ -1623,7 +1557,7 @@ module Increase
                 # Postal code and street address do not match.
                 NO_MATCH: :no_match
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::result]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::result]
               end
             end
           end
@@ -1673,9 +1607,7 @@ module Increase
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          module Currency
-            extend Increase::Enum
-
+          class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -1694,18 +1626,16 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardFuelConfirmation::currency]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardFuelConfirmation::currency]
           end
 
           type network = :visa
 
-          module Network
-            extend Increase::Enum
-
+          class Network < Increase::Enum
             # Visa
             VISA: :visa
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardFuelConfirmation::network]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardFuelConfirmation::network]
           end
 
           type network_identifiers =
@@ -1733,12 +1663,10 @@ module Increase
 
           type type_ = :card_fuel_confirmation
 
-          module Type
-            extend Increase::Enum
-
+          class Type < Increase::Enum
             CARD_FUEL_CONFIRMATION: :card_fuel_confirmation
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardFuelConfirmation::type_]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardFuelConfirmation::type_]
           end
         end
 
@@ -1802,9 +1730,7 @@ module Increase
 
           type actioner = :user | :increase | :network
 
-          module Actioner
-            extend Increase::Enum
-
+          class Actioner < Increase::Enum
             # This object was actioned by the user through a real-time decision.
             USER: :user
 
@@ -1814,14 +1740,12 @@ module Increase
             # This object was actioned by the network, through stand-in processing.
             NETWORK: :network
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardIncrement::actioner]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardIncrement::actioner]
           end
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          module Currency
-            extend Increase::Enum
-
+          class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -1840,18 +1764,16 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardIncrement::currency]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardIncrement::currency]
           end
 
           type network = :visa
 
-          module Network
-            extend Increase::Enum
-
+          class Network < Increase::Enum
             # Visa
             VISA: :visa
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardIncrement::network]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardIncrement::network]
           end
 
           type network_identifiers =
@@ -1879,12 +1801,10 @@ module Increase
 
           type type_ = :card_increment
 
-          module Type
-            extend Increase::Enum
-
+          class Type < Increase::Enum
             CARD_INCREMENT: :card_increment
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardIncrement::type_]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardIncrement::type_]
           end
         end
 
@@ -1994,9 +1914,7 @@ module Increase
 
             type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-            module Currency
-              extend Increase::Enum
-
+            class Currency < Increase::Enum
               # Canadian Dollar (CAD)
               CAD: :CAD
 
@@ -2015,15 +1933,13 @@ module Increase
               # US Dollar (USD)
               USD: :USD
 
-              def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::Cashback::currency]
+              def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::Cashback::currency]
             end
           end
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          module Currency
-            extend Increase::Enum
-
+          class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -2042,7 +1958,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::currency]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::currency]
           end
 
           type interchange =
@@ -2069,9 +1985,7 @@ module Increase
 
             type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-            module Currency
-              extend Increase::Enum
-
+            class Currency < Increase::Enum
               # Canadian Dollar (CAD)
               CAD: :CAD
 
@@ -2090,7 +2004,7 @@ module Increase
               # US Dollar (USD)
               USD: :USD
 
-              def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::Interchange::currency]
+              def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::Interchange::currency]
             end
           end
 
@@ -2249,9 +2163,7 @@ module Increase
                 | :one_way_service_fee
                 | :parking_violation
 
-              module ExtraCharges
-                extend Increase::Enum
-
+              class ExtraCharges < Increase::Enum
                 # No extra charge
                 NO_EXTRA_CHARGE: :no_extra_charge
 
@@ -2270,22 +2182,20 @@ module Increase
                 # Parking violation
                 PARKING_VIOLATION: :parking_violation
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::extra_charges]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::extra_charges]
               end
 
               type no_show_indicator =
                 :not_applicable | :no_show_for_specialized_vehicle
 
-              module NoShowIndicator
-                extend Increase::Enum
-
+              class NoShowIndicator < Increase::Enum
                 # Not applicable
                 NOT_APPLICABLE: :not_applicable
 
                 # No show for specialized vehicle
                 NO_SHOW_FOR_SPECIALIZED_VEHICLE: :no_show_for_specialized_vehicle
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::no_show_indicator]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::no_show_indicator]
               end
             end
 
@@ -2372,9 +2282,7 @@ module Increase
                 | :other
                 | :laundry
 
-              module ExtraCharges
-                extend Increase::Enum
-
+              class ExtraCharges < Increase::Enum
                 # No extra charge
                 NO_EXTRA_CHARGE: :no_extra_charge
 
@@ -2396,21 +2304,19 @@ module Increase
                 # Laundry
                 LAUNDRY: :laundry
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::extra_charges]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::extra_charges]
               end
 
               type no_show_indicator = :not_applicable | :no_show
 
-              module NoShowIndicator
-                extend Increase::Enum
-
+              class NoShowIndicator < Increase::Enum
                 # Not applicable
                 NOT_APPLICABLE: :not_applicable
 
                 # No show
                 NO_SHOW: :no_show
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::no_show_indicator]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::no_show_indicator]
               end
             end
 
@@ -2421,9 +2327,7 @@ module Increase
               | :hotel_folio_number
               | :invoice_number
 
-            module PurchaseIdentifierFormat
-              extend Increase::Enum
-
+            class PurchaseIdentifierFormat < Increase::Enum
               # Free text
               FREE_TEXT: :free_text
 
@@ -2439,7 +2343,7 @@ module Increase
               # Invoice number
               INVOICE_NUMBER: :invoice_number
 
-              def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::purchase_identifier_format]
+              def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::purchase_identifier_format]
             end
 
             type travel =
@@ -2536,9 +2440,7 @@ module Increase
                   | :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
                   | :other
 
-                module CreditReasonIndicator
-                  extend Increase::Enum
-
+                class CreditReasonIndicator < Increase::Enum
                   # No credit
                   NO_CREDIT: :no_credit
 
@@ -2551,7 +2453,7 @@ module Increase
                   # Other
                   OTHER: :other
 
-                  def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::credit_reason_indicator]
+                  def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::credit_reason_indicator]
                 end
 
                 type service =
@@ -2598,9 +2500,7 @@ module Increase
                     | :upgrades
                     | :wifi
 
-                  module Category
-                    extend Increase::Enum
-
+                  class Category < Increase::Enum
                     # None
                     NONE: :none
 
@@ -2673,7 +2573,7 @@ module Increase
                     # Wi-fi
                     WIFI: :wifi
 
-                    def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::category]
+                    def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::category]
                   end
                 end
               end
@@ -2686,9 +2586,7 @@ module Increase
                 | :other
                 | :partial_refund_of_airline_ticket
 
-              module CreditReasonIndicator
-                extend Increase::Enum
-
+              class CreditReasonIndicator < Increase::Enum
                 # No credit
                 NO_CREDIT: :no_credit
 
@@ -2707,30 +2605,26 @@ module Increase
                 # Partial refund of airline ticket
                 PARTIAL_REFUND_OF_AIRLINE_TICKET: :partial_refund_of_airline_ticket
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::credit_reason_indicator]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::credit_reason_indicator]
               end
 
               type restricted_ticket_indicator =
                 :no_restrictions | :restricted_non_refundable_ticket
 
-              module RestrictedTicketIndicator
-                extend Increase::Enum
-
+              class RestrictedTicketIndicator < Increase::Enum
                 # No restrictions
                 NO_RESTRICTIONS: :no_restrictions
 
                 # Restricted non-refundable ticket
                 RESTRICTED_NON_REFUNDABLE_TICKET: :restricted_non_refundable_ticket
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::restricted_ticket_indicator]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::restricted_ticket_indicator]
               end
 
               type ticket_change_indicator =
                 :none | :change_to_existing_ticket | :new_ticket
 
-              module TicketChangeIndicator
-                extend Increase::Enum
-
+              class TicketChangeIndicator < Increase::Enum
                 # None
                 NONE: :none
 
@@ -2740,7 +2634,7 @@ module Increase
                 # New ticket
                 NEW_TICKET: :new_ticket
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::ticket_change_indicator]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::ticket_change_indicator]
               end
 
               type trip_leg =
@@ -2780,9 +2674,7 @@ module Increase
                 type stop_over_code =
                   :none | :stop_over_allowed | :stop_over_not_allowed
 
-                module StopOverCode
-                  extend Increase::Enum
-
+                class StopOverCode < Increase::Enum
                   # None
                   NONE: :none
 
@@ -2792,7 +2684,7 @@ module Increase
                   # Stop over not allowed
                   STOP_OVER_NOT_ALLOWED: :stop_over_not_allowed
 
-                  def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::stop_over_code]
+                  def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::stop_over_code]
                 end
               end
             end
@@ -2800,12 +2692,10 @@ module Increase
 
           type type_ = :card_refund
 
-          module Type
-            extend Increase::Enum
-
+          class Type < Increase::Enum
             CARD_REFUND: :card_refund
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::type_]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::type_]
           end
         end
 
@@ -2893,9 +2783,7 @@ module Increase
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          module Currency
-            extend Increase::Enum
-
+          class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -2914,18 +2802,16 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardReversal::currency]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardReversal::currency]
           end
 
           type network = :visa
 
-          module Network
-            extend Increase::Enum
-
+          class Network < Increase::Enum
             # Visa
             VISA: :visa
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardReversal::network]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardReversal::network]
           end
 
           type network_identifiers =
@@ -2957,9 +2843,7 @@ module Increase
             | :reversed_by_point_of_sale
             | :partial_reversal
 
-          module ReversalReason
-            extend Increase::Enum
-
+          class ReversalReason < Increase::Enum
             # The Card Reversal was initiated at the customer's request.
             REVERSED_BY_CUSTOMER: :reversed_by_customer
 
@@ -2972,17 +2856,15 @@ module Increase
             # The Card Reversal was a partial reversal, for any reason.
             PARTIAL_REVERSAL: :partial_reversal
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardReversal::reversal_reason]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardReversal::reversal_reason]
           end
 
           type type_ = :card_reversal
 
-          module Type
-            extend Increase::Enum
-
+          class Type < Increase::Enum
             CARD_REVERSAL: :card_reversal
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardReversal::type_]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardReversal::type_]
           end
         end
 
@@ -3100,9 +2982,7 @@ module Increase
 
             type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-            module Currency
-              extend Increase::Enum
-
+            class Currency < Increase::Enum
               # Canadian Dollar (CAD)
               CAD: :CAD
 
@@ -3121,15 +3001,13 @@ module Increase
               # US Dollar (USD)
               USD: :USD
 
-              def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::Cashback::currency]
+              def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::Cashback::currency]
             end
           end
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          module Currency
-            extend Increase::Enum
-
+          class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -3148,7 +3026,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::currency]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::currency]
           end
 
           type interchange =
@@ -3175,9 +3053,7 @@ module Increase
 
             type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-            module Currency
-              extend Increase::Enum
-
+            class Currency < Increase::Enum
               # Canadian Dollar (CAD)
               CAD: :CAD
 
@@ -3196,7 +3072,7 @@ module Increase
               # US Dollar (USD)
               USD: :USD
 
-              def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::Interchange::currency]
+              def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::Interchange::currency]
             end
           end
 
@@ -3355,9 +3231,7 @@ module Increase
                 | :one_way_service_fee
                 | :parking_violation
 
-              module ExtraCharges
-                extend Increase::Enum
-
+              class ExtraCharges < Increase::Enum
                 # No extra charge
                 NO_EXTRA_CHARGE: :no_extra_charge
 
@@ -3376,22 +3250,20 @@ module Increase
                 # Parking violation
                 PARKING_VIOLATION: :parking_violation
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::extra_charges]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::extra_charges]
               end
 
               type no_show_indicator =
                 :not_applicable | :no_show_for_specialized_vehicle
 
-              module NoShowIndicator
-                extend Increase::Enum
-
+              class NoShowIndicator < Increase::Enum
                 # Not applicable
                 NOT_APPLICABLE: :not_applicable
 
                 # No show for specialized vehicle
                 NO_SHOW_FOR_SPECIALIZED_VEHICLE: :no_show_for_specialized_vehicle
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::no_show_indicator]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::no_show_indicator]
               end
             end
 
@@ -3478,9 +3350,7 @@ module Increase
                 | :other
                 | :laundry
 
-              module ExtraCharges
-                extend Increase::Enum
-
+              class ExtraCharges < Increase::Enum
                 # No extra charge
                 NO_EXTRA_CHARGE: :no_extra_charge
 
@@ -3502,21 +3372,19 @@ module Increase
                 # Laundry
                 LAUNDRY: :laundry
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::extra_charges]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::extra_charges]
               end
 
               type no_show_indicator = :not_applicable | :no_show
 
-              module NoShowIndicator
-                extend Increase::Enum
-
+              class NoShowIndicator < Increase::Enum
                 # Not applicable
                 NOT_APPLICABLE: :not_applicable
 
                 # No show
                 NO_SHOW: :no_show
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::no_show_indicator]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::no_show_indicator]
               end
             end
 
@@ -3527,9 +3395,7 @@ module Increase
               | :hotel_folio_number
               | :invoice_number
 
-            module PurchaseIdentifierFormat
-              extend Increase::Enum
-
+            class PurchaseIdentifierFormat < Increase::Enum
               # Free text
               FREE_TEXT: :free_text
 
@@ -3545,7 +3411,7 @@ module Increase
               # Invoice number
               INVOICE_NUMBER: :invoice_number
 
-              def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::purchase_identifier_format]
+              def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::purchase_identifier_format]
             end
 
             type travel =
@@ -3642,9 +3508,7 @@ module Increase
                   | :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
                   | :other
 
-                module CreditReasonIndicator
-                  extend Increase::Enum
-
+                class CreditReasonIndicator < Increase::Enum
                   # No credit
                   NO_CREDIT: :no_credit
 
@@ -3657,7 +3521,7 @@ module Increase
                   # Other
                   OTHER: :other
 
-                  def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::credit_reason_indicator]
+                  def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::credit_reason_indicator]
                 end
 
                 type service =
@@ -3704,9 +3568,7 @@ module Increase
                     | :upgrades
                     | :wifi
 
-                  module Category
-                    extend Increase::Enum
-
+                  class Category < Increase::Enum
                     # None
                     NONE: :none
 
@@ -3779,7 +3641,7 @@ module Increase
                     # Wi-fi
                     WIFI: :wifi
 
-                    def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::category]
+                    def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::category]
                   end
                 end
               end
@@ -3792,9 +3654,7 @@ module Increase
                 | :other
                 | :partial_refund_of_airline_ticket
 
-              module CreditReasonIndicator
-                extend Increase::Enum
-
+              class CreditReasonIndicator < Increase::Enum
                 # No credit
                 NO_CREDIT: :no_credit
 
@@ -3813,30 +3673,26 @@ module Increase
                 # Partial refund of airline ticket
                 PARTIAL_REFUND_OF_AIRLINE_TICKET: :partial_refund_of_airline_ticket
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::credit_reason_indicator]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::credit_reason_indicator]
               end
 
               type restricted_ticket_indicator =
                 :no_restrictions | :restricted_non_refundable_ticket
 
-              module RestrictedTicketIndicator
-                extend Increase::Enum
-
+              class RestrictedTicketIndicator < Increase::Enum
                 # No restrictions
                 NO_RESTRICTIONS: :no_restrictions
 
                 # Restricted non-refundable ticket
                 RESTRICTED_NON_REFUNDABLE_TICKET: :restricted_non_refundable_ticket
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::restricted_ticket_indicator]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::restricted_ticket_indicator]
               end
 
               type ticket_change_indicator =
                 :none | :change_to_existing_ticket | :new_ticket
 
-              module TicketChangeIndicator
-                extend Increase::Enum
-
+              class TicketChangeIndicator < Increase::Enum
                 # None
                 NONE: :none
 
@@ -3846,7 +3702,7 @@ module Increase
                 # New ticket
                 NEW_TICKET: :new_ticket
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::ticket_change_indicator]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::ticket_change_indicator]
               end
 
               type trip_leg =
@@ -3886,9 +3742,7 @@ module Increase
                 type stop_over_code =
                   :none | :stop_over_allowed | :stop_over_not_allowed
 
-                module StopOverCode
-                  extend Increase::Enum
-
+                class StopOverCode < Increase::Enum
                   # None
                   NONE: :none
 
@@ -3898,7 +3752,7 @@ module Increase
                   # Stop over not allowed
                   STOP_OVER_NOT_ALLOWED: :stop_over_not_allowed
 
-                  def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::stop_over_code]
+                  def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::stop_over_code]
                 end
               end
             end
@@ -3906,12 +3760,10 @@ module Increase
 
           type type_ = :card_settlement
 
-          module Type
-            extend Increase::Enum
-
+          class Type < Increase::Enum
             CARD_SETTLEMENT: :card_settlement
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::type_]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::type_]
           end
         end
 
@@ -4007,9 +3859,7 @@ module Increase
 
           type actioner = :user | :increase | :network
 
-          module Actioner
-            extend Increase::Enum
-
+          class Actioner < Increase::Enum
             # This object was actioned by the user through a real-time decision.
             USER: :user
 
@@ -4019,14 +3869,12 @@ module Increase
             # This object was actioned by the network, through stand-in processing.
             NETWORK: :network
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardValidation::actioner]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardValidation::actioner]
           end
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-          module Currency
-            extend Increase::Enum
-
+          class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD: :CAD
 
@@ -4045,7 +3893,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardValidation::currency]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardValidation::currency]
           end
 
           type network_details =
@@ -4068,13 +3916,11 @@ module Increase
 
             type category = :visa
 
-            module Category
-              extend Increase::Enum
-
+            class Category < Increase::Enum
               # Visa
               VISA: :visa
 
-              def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::category]
+              def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::category]
             end
 
             type visa =
@@ -4109,9 +3955,7 @@ module Increase
                 | :non_authenticated_security_transaction
                 | :non_secure_transaction
 
-              module ElectronicCommerceIndicator
-                extend Increase::Enum
-
+              class ElectronicCommerceIndicator < Increase::Enum
                 # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
                 MAIL_PHONE_ORDER: :mail_phone_order
 
@@ -4136,7 +3980,7 @@ module Increase
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
                 NON_SECURE_TRANSACTION: :non_secure_transaction
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::electronic_commerce_indicator]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::electronic_commerce_indicator]
               end
 
               type point_of_service_entry_mode =
@@ -4151,9 +3995,7 @@ module Increase
                 | :contactless_magnetic_stripe
                 | :integrated_circuit_card_no_cvv
 
-              module PointOfServiceEntryMode
-                extend Increase::Enum
-
+              class PointOfServiceEntryMode < Increase::Enum
                 # Unknown
                 UNKNOWN: :unknown
 
@@ -4184,7 +4026,7 @@ module Increase
                 # Contact chip card, without card verification value
                 INTEGRATED_CIRCUIT_CARD_NO_CVV: :integrated_circuit_card_no_cvv
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::point_of_service_entry_mode]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::point_of_service_entry_mode]
               end
 
               type stand_in_processing_reason =
@@ -4196,9 +4038,7 @@ module Increase
                 | :payment_fraud_disruption_acquirer_block
                 | :other
 
-              module StandInProcessingReason
-                extend Increase::Enum
-
+              class StandInProcessingReason < Increase::Enum
                 # Increase failed to process the authorization in a timely manner.
                 ISSUER_ERROR: :issuer_error
 
@@ -4220,7 +4060,7 @@ module Increase
                 # An unspecific reason for stand-in processing.
                 OTHER: :other
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::stand_in_processing_reason]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::stand_in_processing_reason]
               end
             end
           end
@@ -4250,12 +4090,10 @@ module Increase
 
           type type_ = :card_validation
 
-          module Type
-            extend Increase::Enum
-
+          class Type < Increase::Enum
             CARD_VALIDATION: :card_validation
 
-            def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardValidation::type_]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardValidation::type_]
           end
 
           type verification =
@@ -4292,9 +4130,7 @@ module Increase
 
               type result = :not_checked | :match | :no_match
 
-              module Result
-                extend Increase::Enum
-
+              class Result < Increase::Enum
                 # No card verification code was provided in the authorization request.
                 NOT_CHECKED: :not_checked
 
@@ -4304,7 +4140,7 @@ module Increase
                 # The card verification code did not match the one on file.
                 NO_MATCH: :no_match
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::result]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::result]
               end
             end
 
@@ -4346,9 +4182,7 @@ module Increase
                 | :match
                 | :no_match
 
-              module Result
-                extend Increase::Enum
-
+              class Result < Increase::Enum
                 # No adress was provided in the authorization request.
                 NOT_CHECKED: :not_checked
 
@@ -4367,7 +4201,7 @@ module Increase
                 # Postal code and street address do not match.
                 NO_MATCH: :no_match
 
-                def self?.values: -> ::Array[Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::result]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::result]
               end
             end
           end
@@ -4386,9 +4220,7 @@ module Increase
           | :card_fuel_confirmation
           | :other
 
-        module Category
-          extend Increase::Enum
-
+        class Category < Increase::Enum
           # Card Authorization: details will be under the `card_authorization` object.
           CARD_AUTHORIZATION: :card_authorization
 
@@ -4422,7 +4254,7 @@ module Increase
           # Unknown card payment element.
           OTHER: :other
 
-          def self?.values: -> ::Array[Increase::Models::CardPayment::Element::category]
+          def self.values: -> ::Array[Increase::Models::CardPayment::Element::category]
         end
       end
 
@@ -4459,12 +4291,10 @@ module Increase
 
       type type_ = :card_payment
 
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         CARD_PAYMENT: :card_payment
 
-        def self?.values: -> ::Array[Increase::Models::CardPayment::type_]
+        def self.values: -> ::Array[Increase::Models::CardPayment::type_]
       end
     end
   end

@@ -9,22 +9,37 @@ module Increase
 
         # The identifier of the Account Number the Inbound Check Deposit will be against.
         sig { returns(String) }
-        attr_accessor :account_number_id
+        def account_number_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def account_number_id=(_)
+        end
 
         # The check amount in cents.
         sig { returns(Integer) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def amount=(_)
+        end
 
         # The check number on the check to be deposited.
         sig { returns(String) }
-        attr_accessor :check_number
+        def check_number
+        end
+
+        sig { params(_: String).returns(String) }
+        def check_number=(_)
+        end
 
         sig do
           params(
             account_number_id: String,
             amount: Integer,
             check_number: String,
-            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
           )
             .returns(T.attached_class)
         end

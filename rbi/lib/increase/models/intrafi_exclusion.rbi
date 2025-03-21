@@ -5,48 +5,98 @@ module Increase
     class IntrafiExclusion < Increase::BaseModel
       # The identifier of this exclusion request.
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       # The name of the excluded institution.
       sig { returns(String) }
-      attr_accessor :bank_name
+      def bank_name
+      end
+
+      sig { params(_: String).returns(String) }
+      def bank_name=(_)
+      end
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
       #   the exclusion was created.
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       # The entity for which this institution is excluded.
       sig { returns(String) }
-      attr_accessor :entity_id
+      def entity_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def entity_id=(_)
+      end
 
       # When this was exclusion was confirmed by IntraFi.
       sig { returns(T.nilable(Time)) }
-      attr_accessor :excluded_at
+      def excluded_at
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def excluded_at=(_)
+      end
 
       # The Federal Deposit Insurance Corporation's certificate number for the
       #   institution.
       sig { returns(T.nilable(String)) }
-      attr_accessor :fdic_certificate_number
+      def fdic_certificate_number
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def fdic_certificate_number=(_)
+      end
 
       # The idempotency key you chose for this object. This value is unique across
       #   Increase and is used to ensure that a request is only processed once. Learn more
       #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      attr_accessor :idempotency_key
+      def idempotency_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def idempotency_key=(_)
+      end
 
       # The status of the exclusion request.
-      sig { returns(Increase::Models::IntrafiExclusion::Status::TaggedSymbol) }
-      attr_accessor :status
+      sig { returns(Symbol) }
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       # When this was exclusion was submitted to IntraFi by Increase.
       sig { returns(T.nilable(Time)) }
-      attr_accessor :submitted_at
+      def submitted_at
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def submitted_at=(_)
+      end
 
       # A constant representing the object's type. For this resource it will always be
       #   `intrafi_exclusion`.
-      sig { returns(Increase::Models::IntrafiExclusion::Type::TaggedSymbol) }
-      attr_accessor :type
+      sig { returns(Symbol) }
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       # Certain institutions may be excluded per Entity when sweeping funds into the
       #   IntraFi network. This is useful when an Entity already has deposits at a
@@ -61,9 +111,9 @@ module Increase
           excluded_at: T.nilable(Time),
           fdic_certificate_number: T.nilable(String),
           idempotency_key: T.nilable(String),
-          status: Increase::Models::IntrafiExclusion::Status::OrSymbol,
+          status: Symbol,
           submitted_at: T.nilable(Time),
-          type: Increase::Models::IntrafiExclusion::Type::OrSymbol
+          type: Symbol
         )
           .returns(T.attached_class)
       end
@@ -92,9 +142,9 @@ module Increase
               excluded_at: T.nilable(Time),
               fdic_certificate_number: T.nilable(String),
               idempotency_key: T.nilable(String),
-              status: Increase::Models::IntrafiExclusion::Status::TaggedSymbol,
+              status: Symbol,
               submitted_at: T.nilable(Time),
-              type: Increase::Models::IntrafiExclusion::Type::TaggedSymbol
+              type: Symbol
             }
           )
       end
@@ -102,43 +152,29 @@ module Increase
       end
 
       # The status of the exclusion request.
-      module Status
-        extend Increase::Enum
+      class Status < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiExclusion::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::IntrafiExclusion::Status::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
         # The exclusion is being added to the IntraFi network.
-        PENDING = T.let(:pending, Increase::Models::IntrafiExclusion::Status::TaggedSymbol)
+        PENDING = :pending
 
         # The exclusion has been added to the IntraFi network.
-        COMPLETED = T.let(:completed, Increase::Models::IntrafiExclusion::Status::TaggedSymbol)
+        COMPLETED = :completed
 
         # The exclusion has been removed from the IntraFi network.
-        ARCHIVED = T.let(:archived, Increase::Models::IntrafiExclusion::Status::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::IntrafiExclusion::Status::TaggedSymbol]) }
-          def values
-          end
-        end
+        ARCHIVED = :archived
       end
 
       # A constant representing the object's type. For this resource it will always be
       #   `intrafi_exclusion`.
-      module Type
-        extend Increase::Enum
+      class Type < Increase::Enum
+        abstract!
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiExclusion::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::IntrafiExclusion::Type::TaggedSymbol) }
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        INTRAFI_EXCLUSION = T.let(:intrafi_exclusion, Increase::Models::IntrafiExclusion::Type::TaggedSymbol)
-
-        class << self
-          sig { override.returns(T::Array[Increase::Models::IntrafiExclusion::Type::TaggedSymbol]) }
-          def values
-          end
-        end
+        INTRAFI_EXCLUSION = :intrafi_exclusion
       end
     end
   end

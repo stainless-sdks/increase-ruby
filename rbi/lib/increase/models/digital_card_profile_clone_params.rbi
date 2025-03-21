@@ -8,71 +8,87 @@ module Increase
 
       # The identifier of the File containing the card's icon image.
       sig { returns(T.nilable(String)) }
-      attr_reader :app_icon_file_id
+      def app_icon_file_id
+      end
 
-      sig { params(app_icon_file_id: String).void }
-      attr_writer :app_icon_file_id
+      sig { params(_: String).returns(String) }
+      def app_icon_file_id=(_)
+      end
 
       # The identifier of the File containing the card's front image.
       sig { returns(T.nilable(String)) }
-      attr_reader :background_image_file_id
+      def background_image_file_id
+      end
 
-      sig { params(background_image_file_id: String).void }
-      attr_writer :background_image_file_id
+      sig { params(_: String).returns(String) }
+      def background_image_file_id=(_)
+      end
 
       # A user-facing description for the card itself.
       sig { returns(T.nilable(String)) }
-      attr_reader :card_description
+      def card_description
+      end
 
-      sig { params(card_description: String).void }
-      attr_writer :card_description
+      sig { params(_: String).returns(String) }
+      def card_description=(_)
+      end
 
       # An email address the user can contact to receive support for their card.
       sig { returns(T.nilable(String)) }
-      attr_reader :contact_email
+      def contact_email
+      end
 
-      sig { params(contact_email: String).void }
-      attr_writer :contact_email
+      sig { params(_: String).returns(String) }
+      def contact_email=(_)
+      end
 
       # A phone number the user can contact to receive support for their card.
       sig { returns(T.nilable(String)) }
-      attr_reader :contact_phone
+      def contact_phone
+      end
 
-      sig { params(contact_phone: String).void }
-      attr_writer :contact_phone
+      sig { params(_: String).returns(String) }
+      def contact_phone=(_)
+      end
 
       # A website the user can visit to view and receive support for their card.
       sig { returns(T.nilable(String)) }
-      attr_reader :contact_website
+      def contact_website
+      end
 
-      sig { params(contact_website: String).void }
-      attr_writer :contact_website
+      sig { params(_: String).returns(String) }
+      def contact_website=(_)
+      end
 
       # A description you can use to identify the Card Profile.
       sig { returns(T.nilable(String)) }
-      attr_reader :description
+      def description
+      end
 
-      sig { params(description: String).void }
-      attr_writer :description
+      sig { params(_: String).returns(String) }
+      def description=(_)
+      end
 
       # A user-facing description for whoever is issuing the card.
       sig { returns(T.nilable(String)) }
-      attr_reader :issuer_name
+      def issuer_name
+      end
 
-      sig { params(issuer_name: String).void }
-      attr_writer :issuer_name
+      sig { params(_: String).returns(String) }
+      def issuer_name=(_)
+      end
 
       # The Card's text color, specified as an RGB triple. The default is white.
       sig { returns(T.nilable(Increase::Models::DigitalCardProfileCloneParams::TextColor)) }
-      attr_reader :text_color
+      def text_color
+      end
 
       sig do
-        params(
-          text_color: T.any(Increase::Models::DigitalCardProfileCloneParams::TextColor, Increase::Util::AnyHash)
-        )
-          .void
+        params(_: Increase::Models::DigitalCardProfileCloneParams::TextColor)
+          .returns(Increase::Models::DigitalCardProfileCloneParams::TextColor)
       end
-      attr_writer :text_color
+      def text_color=(_)
+      end
 
       sig do
         params(
@@ -84,8 +100,8 @@ module Increase
           contact_website: String,
           description: String,
           issuer_name: String,
-          text_color: T.any(Increase::Models::DigitalCardProfileCloneParams::TextColor, Increase::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          text_color: Increase::Models::DigitalCardProfileCloneParams::TextColor,
+          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end
@@ -126,15 +142,30 @@ module Increase
       class TextColor < Increase::BaseModel
         # The value of the blue channel in the RGB color.
         sig { returns(Integer) }
-        attr_accessor :blue
+        def blue
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def blue=(_)
+        end
 
         # The value of the green channel in the RGB color.
         sig { returns(Integer) }
-        attr_accessor :green
+        def green
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def green=(_)
+        end
 
         # The value of the red channel in the RGB color.
         sig { returns(Integer) }
-        attr_accessor :red
+        def red
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def red=(_)
+        end
 
         # The Card's text color, specified as an RGB triple. The default is white.
         sig { params(blue: Integer, green: Integer, red: Integer).returns(T.attached_class) }

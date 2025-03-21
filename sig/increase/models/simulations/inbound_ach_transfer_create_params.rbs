@@ -98,9 +98,7 @@ module Increase
           | :destroyed_check
           | :international_ach_transaction
 
-        module StandardEntryClassCode
-          extend Increase::Enum
-
+        class StandardEntryClassCode < Increase::Enum
           # Corporate Credit and Debit (CCD).
           CORPORATE_CREDIT_OR_DEBIT: :corporate_credit_or_debit
 
@@ -149,7 +147,7 @@ module Increase
           # International ACH Transaction (IAT).
           INTERNATIONAL_ACH_TRANSACTION: :international_ach_transaction
 
-          def self?.values: -> ::Array[Increase::Models::Simulations::InboundACHTransferCreateParams::standard_entry_class_code]
+          def self.values: -> ::Array[Increase::Models::Simulations::InboundACHTransferCreateParams::standard_entry_class_code]
         end
       end
     end

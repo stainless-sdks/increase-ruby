@@ -87,8 +87,6 @@ class Increase::Test::Resources::ProofOfAuthorizationRequestSubmissionsTest < In
     end
 
     row = response.to_enum.first
-    return if row.nil?
-
     assert_pattern do
       row => Increase::Models::ProofOfAuthorizationRequestSubmission
     end

@@ -30,10 +30,10 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The reason for the notification of change.
-        module ChangeCode
-          extend Increase::Enum
-
+        class ChangeCode < Increase::Enum
           # The account number was incorrect.
           INCORRECT_ACCOUNT_NUMBER = :incorrect_account_number
 
@@ -98,12 +98,6 @@ module Increase
             :incorrect_transaction_code_by_originating_depository_financial_institution
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
     end

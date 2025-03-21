@@ -8,69 +8,84 @@ module Increase
 
       # Filter pending transactions to those belonging to the specified Account.
       sig { returns(T.nilable(String)) }
-      attr_reader :account_id
+      def account_id
+      end
 
-      sig { params(account_id: String).void }
-      attr_writer :account_id
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::PendingTransactionListParams::Category)) }
-      attr_reader :category
+      def category
+      end
 
       sig do
-        params(category: T.any(Increase::Models::PendingTransactionListParams::Category, Increase::Util::AnyHash))
-          .void
+        params(_: Increase::Models::PendingTransactionListParams::Category)
+          .returns(Increase::Models::PendingTransactionListParams::Category)
       end
-      attr_writer :category
+      def category=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::PendingTransactionListParams::CreatedAt)) }
-      attr_reader :created_at
+      def created_at
+      end
 
       sig do
-        params(
-          created_at: T.any(Increase::Models::PendingTransactionListParams::CreatedAt, Increase::Util::AnyHash)
-        )
-          .void
+        params(_: Increase::Models::PendingTransactionListParams::CreatedAt)
+          .returns(Increase::Models::PendingTransactionListParams::CreatedAt)
       end
-      attr_writer :created_at
+      def created_at=(_)
+      end
 
       # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
-      attr_reader :cursor
+      def cursor
+      end
 
-      sig { params(cursor: String).void }
-      attr_writer :cursor
+      sig { params(_: String).returns(String) }
+      def cursor=(_)
+      end
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       # Filter pending transactions to those belonging to the specified Route.
       sig { returns(T.nilable(String)) }
-      attr_reader :route_id
+      def route_id
+      end
 
-      sig { params(route_id: String).void }
-      attr_writer :route_id
+      sig { params(_: String).returns(String) }
+      def route_id=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::PendingTransactionListParams::Status)) }
-      attr_reader :status
+      def status
+      end
 
-      sig { params(status: T.any(Increase::Models::PendingTransactionListParams::Status, Increase::Util::AnyHash)).void }
-      attr_writer :status
+      sig do
+        params(_: Increase::Models::PendingTransactionListParams::Status)
+          .returns(Increase::Models::PendingTransactionListParams::Status)
+      end
+      def status=(_)
+      end
 
       sig do
         params(
           account_id: String,
-          category: T.any(Increase::Models::PendingTransactionListParams::Category, Increase::Util::AnyHash),
-          created_at: T.any(Increase::Models::PendingTransactionListParams::CreatedAt, Increase::Util::AnyHash),
+          category: Increase::Models::PendingTransactionListParams::Category,
+          created_at: Increase::Models::PendingTransactionListParams::CreatedAt,
           cursor: String,
           limit: Integer,
           route_id: String,
-          status: T.any(Increase::Models::PendingTransactionListParams::Status, Increase::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          status: Increase::Models::PendingTransactionListParams::Status,
+          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end
@@ -107,96 +122,56 @@ module Increase
       class Category < Increase::BaseModel
         # Return results whose value is in the provided list. For GET requests, this
         #   should be encoded as a comma-delimited string, such as `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Increase::Models::PendingTransactionListParams::Category::In::OrSymbol])) }
-        attr_reader :in_
-
-        sig { params(in_: T::Array[Increase::Models::PendingTransactionListParams::Category::In::OrSymbol]).void }
-        attr_writer :in_
-
-        sig do
-          params(in_: T::Array[Increase::Models::PendingTransactionListParams::Category::In::OrSymbol])
-            .returns(T.attached_class)
+        sig { returns(T.nilable(T::Array[Symbol])) }
+        def in_
         end
+
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        def in_=(_)
+        end
+
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Increase::Models::PendingTransactionListParams::Category::In::OrSymbol]}) }
+        sig { override.returns({in_: T::Array[Symbol]}) }
         def to_hash
         end
 
-        module In
-          extend Increase::Enum
+        class In < Increase::Enum
+          abstract!
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::PendingTransactionListParams::Category::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # Account Transfer Instruction: details will be under the `account_transfer_instruction` object.
-          ACCOUNT_TRANSFER_INSTRUCTION =
-            T.let(
-              :account_transfer_instruction,
-              Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
-            )
+          ACCOUNT_TRANSFER_INSTRUCTION = :account_transfer_instruction
 
           # ACH Transfer Instruction: details will be under the `ach_transfer_instruction` object.
-          ACH_TRANSFER_INSTRUCTION =
-            T.let(
-              :ach_transfer_instruction,
-              Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
-            )
+          ACH_TRANSFER_INSTRUCTION = :ach_transfer_instruction
 
           # Card Authorization: details will be under the `card_authorization` object.
-          CARD_AUTHORIZATION =
-            T.let(:card_authorization, Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol)
+          CARD_AUTHORIZATION = :card_authorization
 
           # Check Deposit Instruction: details will be under the `check_deposit_instruction` object.
-          CHECK_DEPOSIT_INSTRUCTION =
-            T.let(
-              :check_deposit_instruction,
-              Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
-            )
+          CHECK_DEPOSIT_INSTRUCTION = :check_deposit_instruction
 
           # Check Transfer Instruction: details will be under the `check_transfer_instruction` object.
-          CHECK_TRANSFER_INSTRUCTION =
-            T.let(
-              :check_transfer_instruction,
-              Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
-            )
+          CHECK_TRANSFER_INSTRUCTION = :check_transfer_instruction
 
           # Inbound Funds Hold: details will be under the `inbound_funds_hold` object.
-          INBOUND_FUNDS_HOLD =
-            T.let(:inbound_funds_hold, Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol)
+          INBOUND_FUNDS_HOLD = :inbound_funds_hold
 
           # Real-Time Payments Transfer Instruction: details will be under the `real_time_payments_transfer_instruction` object.
-          REAL_TIME_PAYMENTS_TRANSFER_INSTRUCTION =
-            T.let(
-              :real_time_payments_transfer_instruction,
-              Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
-            )
+          REAL_TIME_PAYMENTS_TRANSFER_INSTRUCTION = :real_time_payments_transfer_instruction
 
           # Wire Transfer Instruction: details will be under the `wire_transfer_instruction` object.
-          WIRE_TRANSFER_INSTRUCTION =
-            T.let(
-              :wire_transfer_instruction,
-              Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
-            )
+          WIRE_TRANSFER_INSTRUCTION = :wire_transfer_instruction
 
           # Inbound Wire Transfer Reversal: details will be under the `inbound_wire_transfer_reversal` object.
-          INBOUND_WIRE_TRANSFER_REVERSAL =
-            T.let(
-              :inbound_wire_transfer_reversal,
-              Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
-            )
+          INBOUND_WIRE_TRANSFER_REVERSAL = :inbound_wire_transfer_reversal
 
           # The Pending Transaction was made for an undocumented or deprecated reason.
-          OTHER = T.let(:other, Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol]) }
-            def values
-            end
-          end
+          OTHER = :other
         end
       end
 
@@ -204,34 +179,42 @@ module Increase
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :after
+        def after
+        end
 
-        sig { params(after: Time).void }
-        attr_writer :after
+        sig { params(_: Time).returns(Time) }
+        def after=(_)
+        end
 
         # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :before
+        def before
+        end
 
-        sig { params(before: Time).void }
-        attr_writer :before
+        sig { params(_: Time).returns(Time) }
+        def before=(_)
+        end
 
         # Return results on or after this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :on_or_after
+        def on_or_after
+        end
 
-        sig { params(on_or_after: Time).void }
-        attr_writer :on_or_after
+        sig { params(_: Time).returns(Time) }
+        def on_or_after=(_)
+        end
 
         # Return results on or before this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :on_or_before
+        def on_or_before
+        end
 
-        sig { params(on_or_before: Time).void }
-        attr_writer :on_or_before
+        sig { params(_: Time).returns(Time) }
+        def on_or_before=(_)
+        end
 
         sig do
           params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
@@ -249,41 +232,32 @@ module Increase
         #   Pending Transactions in with status `pending` will be returned. For GET
         #   requests, this should be encoded as a comma-delimited string, such as
         #   `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Increase::Models::PendingTransactionListParams::Status::In::OrSymbol])) }
-        attr_reader :in_
-
-        sig { params(in_: T::Array[Increase::Models::PendingTransactionListParams::Status::In::OrSymbol]).void }
-        attr_writer :in_
-
-        sig do
-          params(in_: T::Array[Increase::Models::PendingTransactionListParams::Status::In::OrSymbol])
-            .returns(T.attached_class)
+        sig { returns(T.nilable(T::Array[Symbol])) }
+        def in_
         end
+
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        def in_=(_)
+        end
+
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Increase::Models::PendingTransactionListParams::Status::In::OrSymbol]}) }
+        sig { override.returns({in_: T::Array[Symbol]}) }
         def to_hash
         end
 
-        module In
-          extend Increase::Enum
+        class In < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PendingTransactionListParams::Status::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::PendingTransactionListParams::Status::In::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # The Pending Transaction is still awaiting confirmation.
-          PENDING = T.let(:pending, Increase::Models::PendingTransactionListParams::Status::In::TaggedSymbol)
+          PENDING = :pending
 
           # The Pending Transaction is confirmed. An associated Transaction exists for this object. The Pending Transaction will no longer count against your balance and can generally be hidden from UIs, etc.
-          COMPLETE = T.let(:complete, Increase::Models::PendingTransactionListParams::Status::In::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::PendingTransactionListParams::Status::In::TaggedSymbol]) }
-            def values
-            end
-          end
+          COMPLETE = :complete
         end
       end
     end

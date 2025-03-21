@@ -8,59 +8,72 @@ module Increase
 
       # Filter Inbound ACH Transfers to ones belonging to the specified Account.
       sig { returns(T.nilable(String)) }
-      attr_reader :account_id
+      def account_id
+      end
 
-      sig { params(account_id: String).void }
-      attr_writer :account_id
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       # Filter Inbound ACH Transfers to ones belonging to the specified Account Number.
       sig { returns(T.nilable(String)) }
-      attr_reader :account_number_id
+      def account_number_id
+      end
 
-      sig { params(account_number_id: String).void }
-      attr_writer :account_number_id
+      sig { params(_: String).returns(String) }
+      def account_number_id=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::InboundACHTransferListParams::CreatedAt)) }
-      attr_reader :created_at
+      def created_at
+      end
 
       sig do
-        params(
-          created_at: T.any(Increase::Models::InboundACHTransferListParams::CreatedAt, Increase::Util::AnyHash)
-        )
-          .void
+        params(_: Increase::Models::InboundACHTransferListParams::CreatedAt)
+          .returns(Increase::Models::InboundACHTransferListParams::CreatedAt)
       end
-      attr_writer :created_at
+      def created_at=(_)
+      end
 
       # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
-      attr_reader :cursor
+      def cursor
+      end
 
-      sig { params(cursor: String).void }
-      attr_writer :cursor
+      sig { params(_: String).returns(String) }
+      def cursor=(_)
+      end
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::InboundACHTransferListParams::Status)) }
-      attr_reader :status
+      def status
+      end
 
-      sig { params(status: T.any(Increase::Models::InboundACHTransferListParams::Status, Increase::Util::AnyHash)).void }
-      attr_writer :status
+      sig do
+        params(_: Increase::Models::InboundACHTransferListParams::Status)
+          .returns(Increase::Models::InboundACHTransferListParams::Status)
+      end
+      def status=(_)
+      end
 
       sig do
         params(
           account_id: String,
           account_number_id: String,
-          created_at: T.any(Increase::Models::InboundACHTransferListParams::CreatedAt, Increase::Util::AnyHash),
+          created_at: Increase::Models::InboundACHTransferListParams::CreatedAt,
           cursor: String,
           limit: Integer,
-          status: T.any(Increase::Models::InboundACHTransferListParams::Status, Increase::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          status: Increase::Models::InboundACHTransferListParams::Status,
+          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end
@@ -96,34 +109,42 @@ module Increase
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :after
+        def after
+        end
 
-        sig { params(after: Time).void }
-        attr_writer :after
+        sig { params(_: Time).returns(Time) }
+        def after=(_)
+        end
 
         # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :before
+        def before
+        end
 
-        sig { params(before: Time).void }
-        attr_writer :before
+        sig { params(_: Time).returns(Time) }
+        def before=(_)
+        end
 
         # Return results on or after this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :on_or_after
+        def on_or_after
+        end
 
-        sig { params(on_or_after: Time).void }
-        attr_writer :on_or_after
+        sig { params(_: Time).returns(Time) }
+        def on_or_after=(_)
+        end
 
         # Return results on or before this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :on_or_before
+        def on_or_before
+        end
 
-        sig { params(on_or_before: Time).void }
-        attr_writer :on_or_before
+        sig { params(_: Time).returns(Time) }
+        def on_or_before=(_)
+        end
 
         sig do
           params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
@@ -140,47 +161,38 @@ module Increase
         # Filter Inbound ACH Transfers to those with the specified status. For GET
         #   requests, this should be encoded as a comma-delimited string, such as
         #   `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Increase::Models::InboundACHTransferListParams::Status::In::OrSymbol])) }
-        attr_reader :in_
-
-        sig { params(in_: T::Array[Increase::Models::InboundACHTransferListParams::Status::In::OrSymbol]).void }
-        attr_writer :in_
-
-        sig do
-          params(in_: T::Array[Increase::Models::InboundACHTransferListParams::Status::In::OrSymbol])
-            .returns(T.attached_class)
+        sig { returns(T.nilable(T::Array[Symbol])) }
+        def in_
         end
+
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        def in_=(_)
+        end
+
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Increase::Models::InboundACHTransferListParams::Status::In::OrSymbol]}) }
+        sig { override.returns({in_: T::Array[Symbol]}) }
         def to_hash
         end
 
-        module In
-          extend Increase::Enum
+        class In < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundACHTransferListParams::Status::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # The Inbound ACH Transfer is awaiting action, will transition automatically if no action is taken.
-          PENDING = T.let(:pending, Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol)
+          PENDING = :pending
 
           # The Inbound ACH Transfer has been declined.
-          DECLINED = T.let(:declined, Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol)
+          DECLINED = :declined
 
           # The Inbound ACH Transfer is accepted.
-          ACCEPTED = T.let(:accepted, Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol)
+          ACCEPTED = :accepted
 
           # The Inbound ACH Transfer has been returned.
-          RETURNED = T.let(:returned, Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol]) }
-            def values
-            end
-          end
+          RETURNED = :returned
         end
       end
     end

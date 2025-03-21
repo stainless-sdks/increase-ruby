@@ -11,12 +11,17 @@ module Increase
       #   `Software Publishers`. A full list of classification codes is available
       #   [here](https://increase.com/documentation/data-dictionary#north-american-industry-classification-system-codes).
       sig { returns(String) }
-      attr_accessor :industry_code
+      def industry_code
+      end
+
+      sig { params(_: String).returns(String) }
+      def industry_code=(_)
+      end
 
       sig do
         params(
           industry_code: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end

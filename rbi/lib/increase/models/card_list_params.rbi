@@ -8,57 +8,71 @@ module Increase
 
       # Filter Cards to ones belonging to the specified Account.
       sig { returns(T.nilable(String)) }
-      attr_reader :account_id
+      def account_id
+      end
 
-      sig { params(account_id: String).void }
-      attr_writer :account_id
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::CardListParams::CreatedAt)) }
-      attr_reader :created_at
+      def created_at
+      end
 
-      sig { params(created_at: T.any(Increase::Models::CardListParams::CreatedAt, Increase::Util::AnyHash)).void }
-      attr_writer :created_at
+      sig do
+        params(_: Increase::Models::CardListParams::CreatedAt).returns(Increase::Models::CardListParams::CreatedAt)
+      end
+      def created_at=(_)
+      end
 
       # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
-      attr_reader :cursor
+      def cursor
+      end
 
-      sig { params(cursor: String).void }
-      attr_writer :cursor
+      sig { params(_: String).returns(String) }
+      def cursor=(_)
+      end
 
       # Filter records to the one with the specified `idempotency_key` you chose for
       #   that object. This value is unique across Increase and is used to ensure that a
       #   request is only processed once. Learn more about
       #   [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      attr_reader :idempotency_key
+      def idempotency_key
+      end
 
-      sig { params(idempotency_key: String).void }
-      attr_writer :idempotency_key
+      sig { params(_: String).returns(String) }
+      def idempotency_key=(_)
+      end
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::CardListParams::Status)) }
-      attr_reader :status
+      def status
+      end
 
-      sig { params(status: T.any(Increase::Models::CardListParams::Status, Increase::Util::AnyHash)).void }
-      attr_writer :status
+      sig { params(_: Increase::Models::CardListParams::Status).returns(Increase::Models::CardListParams::Status) }
+      def status=(_)
+      end
 
       sig do
         params(
           account_id: String,
-          created_at: T.any(Increase::Models::CardListParams::CreatedAt, Increase::Util::AnyHash),
+          created_at: Increase::Models::CardListParams::CreatedAt,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: T.any(Increase::Models::CardListParams::Status, Increase::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          status: Increase::Models::CardListParams::Status,
+          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end
@@ -94,34 +108,42 @@ module Increase
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :after
+        def after
+        end
 
-        sig { params(after: Time).void }
-        attr_writer :after
+        sig { params(_: Time).returns(Time) }
+        def after=(_)
+        end
 
         # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :before
+        def before
+        end
 
-        sig { params(before: Time).void }
-        attr_writer :before
+        sig { params(_: Time).returns(Time) }
+        def before=(_)
+        end
 
         # Return results on or after this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :on_or_after
+        def on_or_after
+        end
 
-        sig { params(on_or_after: Time).void }
-        attr_writer :on_or_after
+        sig { params(_: Time).returns(Time) }
+        def on_or_after=(_)
+        end
 
         # Return results on or before this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :on_or_before
+        def on_or_before
+        end
 
-        sig { params(on_or_before: Time).void }
-        attr_writer :on_or_before
+        sig { params(_: Time).returns(Time) }
+        def on_or_before=(_)
+        end
 
         sig do
           params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
@@ -137,40 +159,35 @@ module Increase
       class Status < Increase::BaseModel
         # Filter Cards by status. For GET requests, this should be encoded as a
         #   comma-delimited string, such as `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Increase::Models::CardListParams::Status::In::OrSymbol])) }
-        attr_reader :in_
+        sig { returns(T.nilable(T::Array[Symbol])) }
+        def in_
+        end
 
-        sig { params(in_: T::Array[Increase::Models::CardListParams::Status::In::OrSymbol]).void }
-        attr_writer :in_
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        def in_=(_)
+        end
 
-        sig { params(in_: T::Array[Increase::Models::CardListParams::Status::In::OrSymbol]).returns(T.attached_class) }
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Increase::Models::CardListParams::Status::In::OrSymbol]}) }
+        sig { override.returns({in_: T::Array[Symbol]}) }
         def to_hash
         end
 
-        module In
-          extend Increase::Enum
+        class In < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardListParams::Status::In) }
-          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CardListParams::Status::In::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # The card is active.
-          ACTIVE = T.let(:active, Increase::Models::CardListParams::Status::In::TaggedSymbol)
+          ACTIVE = :active
 
           # The card is temporarily disabled.
-          DISABLED = T.let(:disabled, Increase::Models::CardListParams::Status::In::TaggedSymbol)
+          DISABLED = :disabled
 
           # The card is permanently canceled.
-          CANCELED = T.let(:canceled, Increase::Models::CardListParams::Status::In::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::CardListParams::Status::In::TaggedSymbol]) }
-            def values
-            end
-          end
+          CANCELED = :canceled
         end
       end
     end

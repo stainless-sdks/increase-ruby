@@ -122,9 +122,7 @@ module Increase
 
         type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-        module Currency
-          extend Increase::Enum
-
+        class Currency < Increase::Enum
           # Canadian Dollar (CAD)
           CAD: :CAD
 
@@ -143,7 +141,7 @@ module Increase
           # US Dollar (USD)
           USD: :USD
 
-          def self?.values: -> ::Array[Increase::Models::CheckDeposit::DepositAcceptance::currency]
+          def self.values: -> ::Array[Increase::Models::CheckDeposit::DepositAcceptance::currency]
         end
       end
 
@@ -183,9 +181,7 @@ module Increase
 
         type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-        module Currency
-          extend Increase::Enum
-
+        class Currency < Increase::Enum
           # Canadian Dollar (CAD)
           CAD: :CAD
 
@@ -204,7 +200,7 @@ module Increase
           # US Dollar (USD)
           USD: :USD
 
-          def self?.values: -> ::Array[Increase::Models::CheckDeposit::DepositRejection::currency]
+          def self.values: -> ::Array[Increase::Models::CheckDeposit::DepositRejection::currency]
         end
 
         type reason =
@@ -220,9 +216,7 @@ module Increase
           | :requested_by_user
           | :unknown
 
-        module Reason
-          extend Increase::Enum
-
+        class Reason < Increase::Enum
           # The check's image is incomplete.
           INCOMPLETE_IMAGE: :incomplete_image
 
@@ -256,7 +250,7 @@ module Increase
           # The check was rejected for an unknown reason.
           UNKNOWN: :unknown
 
-          def self?.values: -> ::Array[Increase::Models::CheckDeposit::DepositRejection::reason]
+          def self.values: -> ::Array[Increase::Models::CheckDeposit::DepositRejection::reason]
         end
       end
 
@@ -296,9 +290,7 @@ module Increase
 
         type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-        module Currency
-          extend Increase::Enum
-
+        class Currency < Increase::Enum
           # Canadian Dollar (CAD)
           CAD: :CAD
 
@@ -317,7 +309,7 @@ module Increase
           # US Dollar (USD)
           USD: :USD
 
-          def self?.values: -> ::Array[Increase::Models::CheckDeposit::DepositReturn::currency]
+          def self.values: -> ::Array[Increase::Models::CheckDeposit::DepositReturn::currency]
         end
 
         type return_reason =
@@ -348,9 +340,7 @@ module Increase
           | :item_exceeds_dollar_limit
           | :branch_or_account_sold
 
-        module ReturnReason
-          extend Increase::Enum
-
+        class ReturnReason < Increase::Enum
           # The check doesn't allow ACH conversion.
           ACH_CONVERSION_NOT_SUPPORTED: :ach_conversion_not_supported
 
@@ -429,7 +419,7 @@ module Increase
           # The bank sold this account and no longer services this customer.
           BRANCH_OR_ACCOUNT_SOLD: :branch_or_account_sold
 
-          def self?.values: -> ::Array[Increase::Models::CheckDeposit::DepositReturn::return_reason]
+          def self.values: -> ::Array[Increase::Models::CheckDeposit::DepositReturn::return_reason]
         end
       end
 
@@ -504,9 +494,7 @@ module Increase
 
         type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
-        module Currency
-          extend Increase::Enum
-
+        class Currency < Increase::Enum
           # Canadian Dollar (CAD)
           CAD: :CAD
 
@@ -525,39 +513,33 @@ module Increase
           # US Dollar (USD)
           USD: :USD
 
-          def self?.values: -> ::Array[Increase::Models::CheckDeposit::InboundFundsHold::currency]
+          def self.values: -> ::Array[Increase::Models::CheckDeposit::InboundFundsHold::currency]
         end
 
         type status = :held | :complete
 
-        module Status
-          extend Increase::Enum
-
+        class Status < Increase::Enum
           # Funds are still being held.
           HELD: :held
 
           # Funds have been released.
           COMPLETE: :complete
 
-          def self?.values: -> ::Array[Increase::Models::CheckDeposit::InboundFundsHold::status]
+          def self.values: -> ::Array[Increase::Models::CheckDeposit::InboundFundsHold::status]
         end
 
         type type_ = :inbound_funds_hold
 
-        module Type
-          extend Increase::Enum
-
+        class Type < Increase::Enum
           INBOUND_FUNDS_HOLD: :inbound_funds_hold
 
-          def self?.values: -> ::Array[Increase::Models::CheckDeposit::InboundFundsHold::type_]
+          def self.values: -> ::Array[Increase::Models::CheckDeposit::InboundFundsHold::type_]
         end
       end
 
       type status = :pending | :submitted | :rejected | :returned
 
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The Check Deposit is pending review.
         PENDING: :pending
 
@@ -570,17 +552,15 @@ module Increase
         # The Check Deposit has been returned.
         RETURNED: :returned
 
-        def self?.values: -> ::Array[Increase::Models::CheckDeposit::status]
+        def self.values: -> ::Array[Increase::Models::CheckDeposit::status]
       end
 
       type type_ = :check_deposit
 
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         CHECK_DEPOSIT: :check_deposit
 
-        def self?.values: -> ::Array[Increase::Models::CheckDeposit::type_]
+        def self.values: -> ::Array[Increase::Models::CheckDeposit::type_]
       end
     end
   end

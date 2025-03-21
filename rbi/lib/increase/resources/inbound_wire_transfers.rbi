@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           inbound_wire_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::InboundWireTransfer)
       end
@@ -23,11 +23,11 @@ module Increase
         params(
           account_id: String,
           account_number_id: String,
-          created_at: T.any(Increase::Models::InboundWireTransferListParams::CreatedAt, Increase::Util::AnyHash),
+          created_at: Increase::Models::InboundWireTransferListParams::CreatedAt,
           cursor: String,
           limit: Integer,
-          status: T.any(Increase::Models::InboundWireTransferListParams::Status, Increase::Util::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          status: Increase::Models::InboundWireTransferListParams::Status,
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Page[Increase::Models::InboundWireTransfer])
       end

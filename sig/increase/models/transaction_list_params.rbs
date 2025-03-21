@@ -102,9 +102,7 @@ module Increase
           | :wire_transfer_intention
           | :other
 
-        module In
-          extend Increase::Enum
-
+        class In < Increase::Enum
           # Account Transfer Intention: details will be under the `account_transfer_intention` object.
           ACCOUNT_TRANSFER_INTENTION: :account_transfer_intention
 
@@ -192,7 +190,7 @@ module Increase
           # The Transaction was made for an undocumented or deprecated reason.
           OTHER: :other
 
-          def self?.values: -> ::Array[Increase::Models::TransactionListParams::Category::in_]
+          def self.values: -> ::Array[Increase::Models::TransactionListParams::Category::in_]
         end
       end
 

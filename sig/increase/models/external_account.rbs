@@ -56,9 +56,7 @@ module Increase
 
       type account_holder = :business | :individual | :unknown
 
-      module AccountHolder
-        extend Increase::Enum
-
+      class AccountHolder < Increase::Enum
         # The External Account is owned by a business.
         BUSINESS: :business
 
@@ -68,14 +66,12 @@ module Increase
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN: :unknown
 
-        def self?.values: -> ::Array[Increase::Models::ExternalAccount::account_holder]
+        def self.values: -> ::Array[Increase::Models::ExternalAccount::account_holder]
       end
 
       type funding = :checking | :savings | :other
 
-      module Funding
-        extend Increase::Enum
-
+      class Funding < Increase::Enum
         # A checking account.
         CHECKING: :checking
 
@@ -85,38 +81,32 @@ module Increase
         # A different type of account.
         OTHER: :other
 
-        def self?.values: -> ::Array[Increase::Models::ExternalAccount::funding]
+        def self.values: -> ::Array[Increase::Models::ExternalAccount::funding]
       end
 
       type status = :active | :archived
 
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The External Account is active.
         ACTIVE: :active
 
         # The External Account is archived and won't appear in the dashboard.
         ARCHIVED: :archived
 
-        def self?.values: -> ::Array[Increase::Models::ExternalAccount::status]
+        def self.values: -> ::Array[Increase::Models::ExternalAccount::status]
       end
 
       type type_ = :external_account
 
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         EXTERNAL_ACCOUNT: :external_account
 
-        def self?.values: -> ::Array[Increase::Models::ExternalAccount::type_]
+        def self.values: -> ::Array[Increase::Models::ExternalAccount::type_]
       end
 
       type verification_status = :unverified | :pending | :verified
 
-      module VerificationStatus
-        extend Increase::Enum
-
+      class VerificationStatus < Increase::Enum
         # The External Account has not been verified.
         UNVERIFIED: :unverified
 
@@ -126,7 +116,7 @@ module Increase
         # The External Account is verified.
         VERIFIED: :verified
 
-        def self?.values: -> ::Array[Increase::Models::ExternalAccount::verification_status]
+        def self.values: -> ::Array[Increase::Models::ExternalAccount::verification_status]
       end
     end
   end

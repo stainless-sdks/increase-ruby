@@ -7,47 +7,63 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(T.nilable(Increase::Models::DocumentListParams::Category)) }
-      attr_reader :category
+      def category
+      end
 
-      sig { params(category: T.any(Increase::Models::DocumentListParams::Category, Increase::Util::AnyHash)).void }
-      attr_writer :category
+      sig do
+        params(_: Increase::Models::DocumentListParams::Category)
+          .returns(Increase::Models::DocumentListParams::Category)
+      end
+      def category=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::DocumentListParams::CreatedAt)) }
-      attr_reader :created_at
+      def created_at
+      end
 
-      sig { params(created_at: T.any(Increase::Models::DocumentListParams::CreatedAt, Increase::Util::AnyHash)).void }
-      attr_writer :created_at
+      sig do
+        params(_: Increase::Models::DocumentListParams::CreatedAt)
+          .returns(Increase::Models::DocumentListParams::CreatedAt)
+      end
+      def created_at=(_)
+      end
 
       # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
-      attr_reader :cursor
+      def cursor
+      end
 
-      sig { params(cursor: String).void }
-      attr_writer :cursor
+      sig { params(_: String).returns(String) }
+      def cursor=(_)
+      end
 
       # Filter Documents to ones belonging to the specified Entity.
       sig { returns(T.nilable(String)) }
-      attr_reader :entity_id
+      def entity_id
+      end
 
-      sig { params(entity_id: String).void }
-      attr_writer :entity_id
+      sig { params(_: String).returns(String) }
+      def entity_id=(_)
+      end
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       sig do
         params(
-          category: T.any(Increase::Models::DocumentListParams::Category, Increase::Util::AnyHash),
-          created_at: T.any(Increase::Models::DocumentListParams::CreatedAt, Increase::Util::AnyHash),
+          category: Increase::Models::DocumentListParams::Category,
+          created_at: Increase::Models::DocumentListParams::CreatedAt,
           cursor: String,
           entity_id: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end
@@ -74,49 +90,38 @@ module Increase
         # Filter Documents for those with the specified category or categories. For GET
         #   requests, this should be encoded as a comma-delimited string, such as
         #   `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Increase::Models::DocumentListParams::Category::In::OrSymbol])) }
-        attr_reader :in_
-
-        sig { params(in_: T::Array[Increase::Models::DocumentListParams::Category::In::OrSymbol]).void }
-        attr_writer :in_
-
-        sig do
-          params(in_: T::Array[Increase::Models::DocumentListParams::Category::In::OrSymbol])
-            .returns(T.attached_class)
+        sig { returns(T.nilable(T::Array[Symbol])) }
+        def in_
         end
+
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        def in_=(_)
+        end
+
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Increase::Models::DocumentListParams::Category::In::OrSymbol]}) }
+        sig { override.returns({in_: T::Array[Symbol]}) }
         def to_hash
         end
 
-        module In
-          extend Increase::Enum
+        class In < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DocumentListParams::Category::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::DocumentListParams::Category::In::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # Internal Revenue Service Form 1099-INT.
-          FORM_1099_INT = T.let(:form_1099_int, Increase::Models::DocumentListParams::Category::In::TaggedSymbol)
+          FORM_1099_INT = :form_1099_int
 
           # Internal Revenue Service Form 1099-MISC.
-          FORM_1099_MISC = T.let(:form_1099_misc, Increase::Models::DocumentListParams::Category::In::TaggedSymbol)
+          FORM_1099_MISC = :form_1099_misc
 
           # A document submitted in response to a proof of authorization request for an ACH transfer.
-          PROOF_OF_AUTHORIZATION =
-            T.let(:proof_of_authorization, Increase::Models::DocumentListParams::Category::In::TaggedSymbol)
+          PROOF_OF_AUTHORIZATION = :proof_of_authorization
 
           # Company information, such a policies or procedures, typically submitted during our due diligence process.
-          COMPANY_INFORMATION =
-            T.let(:company_information, Increase::Models::DocumentListParams::Category::In::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::DocumentListParams::Category::In::TaggedSymbol]) }
-            def values
-            end
-          end
+          COMPANY_INFORMATION = :company_information
         end
       end
 
@@ -124,34 +129,42 @@ module Increase
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :after
+        def after
+        end
 
-        sig { params(after: Time).void }
-        attr_writer :after
+        sig { params(_: Time).returns(Time) }
+        def after=(_)
+        end
 
         # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :before
+        def before
+        end
 
-        sig { params(before: Time).void }
-        attr_writer :before
+        sig { params(_: Time).returns(Time) }
+        def before=(_)
+        end
 
         # Return results on or after this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :on_or_after
+        def on_or_after
+        end
 
-        sig { params(on_or_after: Time).void }
-        attr_writer :on_or_after
+        sig { params(_: Time).returns(Time) }
+        def on_or_after=(_)
+        end
 
         # Return results on or before this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :on_or_before
+        def on_or_before
+        end
 
-        sig { params(on_or_before: Time).void }
-        attr_writer :on_or_before
+        sig { params(_: Time).returns(Time) }
+        def on_or_before=(_)
+        end
 
         sig do
           params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)

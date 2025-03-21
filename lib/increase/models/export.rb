@@ -77,11 +77,11 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The category of the Export. We may add additional possible values for this enum
       #   over time; your application should be able to handle that gracefully.
-      module Category
-        extend Increase::Enum
-
+      class Category < Increase::Enum
         # Export an Open Financial Exchange (OFX) file of transactions and balances for a given time range and Account.
         ACCOUNT_STATEMENT_OFX = :account_statement_ofx
 
@@ -104,18 +104,12 @@ module Increase
         DASHBOARD_TABLE_CSV = :dashboard_table_csv
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # The status of the Export.
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # Increase is generating the export.
         PENDING = :pending
 
@@ -126,28 +120,16 @@ module Increase
         FAILED = :failed
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `export`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         EXPORT = :export
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

@@ -32,8 +32,6 @@ class Increase::Test::Resources::InboundMailItemsTest < Increase::Test::Resource
     end
 
     row = response.to_enum.first
-    return if row.nil?
-
     assert_pattern do
       row => Increase::Models::InboundMailItem
     end

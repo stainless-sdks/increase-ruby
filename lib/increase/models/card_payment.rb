@@ -406,10 +406,10 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The category of the card authentication attempt.
-          module Category
-            extend Increase::Enum
-
+          class Category < Increase::Enum
             # The authentication attempt is for a payment.
             PAYMENT_AUTHENTICATION = :payment_authentication
 
@@ -417,12 +417,6 @@ module Increase
             NON_PAYMENT_AUTHENTICATION = :non_payment_authentication
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
           class Challenge < Increase::BaseModel
@@ -496,10 +490,10 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # The outcome of the Card Authentication Challenge Attempt.
-              module Outcome
-                extend Increase::Enum
-
+              class Outcome < Increase::Enum
                 # The attempt was successful.
                 SUCCESSFUL = :successful
 
@@ -507,19 +501,13 @@ module Increase
                 FAILED = :failed
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
             end
 
+            # @abstract
+            #
             # The method used to verify the Card Authentication Challenge.
-            module VerificationMethod
-              extend Increase::Enum
-
+            class VerificationMethod < Increase::Enum
               # The one-time code was sent via text message.
               TEXT_MESSAGE = :text_message
 
@@ -530,19 +518,13 @@ module Increase
               NONE_AVAILABLE = :none_available
 
               finalize!
-
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
             end
           end
 
+          # @abstract
+          #
           # The reason why this authentication attempt was denied, if it was.
-          module DenyReason
-            extend Increase::Enum
-
+          class DenyReason < Increase::Enum
             # The group was locked.
             GROUP_LOCKED = :group_locked
 
@@ -562,18 +544,12 @@ module Increase
             WEBHOOK_TIMED_OUT = :webhook_timed_out
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
+          # @abstract
+          #
           # The device channel of the card authentication attempt.
-          module DeviceChannel
-            extend Increase::Enum
-
+          class DeviceChannel < Increase::Enum
             # The authentication attempt was made from an app.
             APP = :app
 
@@ -584,18 +560,12 @@ module Increase
             THREE_DS_REQUESTOR_INITIATED = :three_ds_requestor_initiated
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
+          # @abstract
+          #
           # The status of the card authentication.
-          module Status
-            extend Increase::Enum
-
+          class Status < Increase::Enum
             # The authentication attempt was denied.
             DENIED = :denied
 
@@ -624,28 +594,16 @@ module Increase
             EXCEEDED_ATTEMPT_THRESHOLD = :exceeded_attempt_threshold
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
+          # @abstract
+          #
           # A constant representing the object's type. For this resource it will always be
           #   `card_authentication`.
-          module Type
-            extend Increase::Enum
-
+          class Type < Increase::Enum
             CARD_AUTHENTICATION = :card_authentication
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
         end
 
@@ -900,11 +858,11 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
-          module Actioner
-            extend Increase::Enum
-
+          class Actioner < Increase::Enum
             # This object was actioned by the user through a real-time decision.
             USER = :user
 
@@ -915,19 +873,13 @@ module Increase
             NETWORK = :network
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
-          module Currency
-            extend Increase::Enum
-
+          class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -947,19 +899,13 @@ module Increase
             USD = :USD
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
+          # @abstract
+          #
           # The direction describes the direction the funds will move, either from the
           #   cardholder to the merchant or from the merchant to the cardholder.
-          module Direction
-            extend Increase::Enum
-
+          class Direction < Increase::Enum
             # A regular card authorization where funds are debited from the cardholder.
             SETTLEMENT = :settlement
 
@@ -967,12 +913,6 @@ module Increase
             REFUND = :refund
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
           class NetworkDetails < Increase::BaseModel
@@ -1001,20 +941,14 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # The payment network used to process this card authorization.
-            module Category
-              extend Increase::Enum
-
+            class Category < Increase::Enum
               # Visa
               VISA = :visa
 
               finalize!
-
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
             end
 
             class Visa < Increase::BaseModel
@@ -1057,12 +991,12 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
               #   transactions, identifies the type of mail or telephone order.
-              module ElectronicCommerceIndicator
-                extend Increase::Enum
-
+              class ElectronicCommerceIndicator < Increase::Enum
                 # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
                 MAIL_PHONE_ORDER = :mail_phone_order
 
@@ -1089,19 +1023,13 @@ module Increase
                 NON_SECURE_TRANSACTION = :non_secure_transaction
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
 
+              # @abstract
+              #
               # The method used to enter the cardholder's primary account number and card
               #   expiration date.
-              module PointOfServiceEntryMode
-                extend Increase::Enum
-
+              class PointOfServiceEntryMode < Increase::Enum
                 # Unknown
                 UNKNOWN = :unknown
 
@@ -1133,19 +1061,13 @@ module Increase
                 INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
 
+              # @abstract
+              #
               # Only present when `actioner: network`. Describes why a card authorization was
               #   approved or declined by Visa through stand-in processing.
-              module StandInProcessingReason
-                extend Increase::Enum
-
+              class StandInProcessingReason < Increase::Enum
                 # Increase failed to process the authorization in a timely manner.
                 ISSUER_ERROR = :issuer_error
 
@@ -1170,12 +1092,6 @@ module Increase
                 OTHER = :other
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
             end
           end
@@ -1215,11 +1131,11 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @abstract
+          #
           # The processing category describes the intent behind the authorization, such as
           #   whether it was used for bill payments or an automatic fuel dispenser.
-          module ProcessingCategory
-            extend Increase::Enum
-
+          class ProcessingCategory < Increase::Enum
             # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
             ACCOUNT_FUNDING = :account_funding
 
@@ -1239,28 +1155,16 @@ module Increase
             REFUND = :refund
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
+          # @abstract
+          #
           # A constant representing the object's type. For this resource it will always be
           #   `card_authorization`.
-          module Type
-            extend Increase::Enum
-
+          class Type < Increase::Enum
             CARD_AUTHORIZATION = :card_authorization
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
           class Verification < Increase::BaseModel
@@ -1308,10 +1212,10 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # The result of verifying the Card Verification Code.
-              module Result
-                extend Increase::Enum
-
+              class Result < Increase::Enum
                 # No card verification code was provided in the authorization request.
                 NOT_CHECKED = :not_checked
 
@@ -1322,12 +1226,6 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
             end
 
@@ -1378,10 +1276,10 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # The address verification result returned to the card network.
-              module Result
-                extend Increase::Enum
-
+              class Result < Increase::Enum
                 # No adress was provided in the authorization request.
                 NOT_CHECKED = :not_checked
 
@@ -1401,12 +1299,6 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
             end
           end
@@ -1471,11 +1363,11 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
           #   currency.
-          module Currency
-            extend Increase::Enum
-
+          class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -1495,44 +1387,26 @@ module Increase
             USD = :USD
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
+          # @abstract
+          #
           # The card network used to process this card authorization.
-          module Network
-            extend Increase::Enum
-
+          class Network < Increase::Enum
             # Visa
             VISA = :visa
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
+          # @abstract
+          #
           # A constant representing the object's type. For this resource it will always be
           #   `card_authorization_expiration`.
-          module Type
-            extend Increase::Enum
-
+          class Type < Increase::Enum
             CARD_AUTHORIZATION_EXPIRATION = :card_authorization_expiration
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
         end
 
@@ -1785,11 +1659,11 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
-          module Actioner
-            extend Increase::Enum
-
+          class Actioner < Increase::Enum
             # This object was actioned by the user through a real-time decision.
             USER = :user
 
@@ -1800,19 +1674,13 @@ module Increase
             NETWORK = :network
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
           #   account currency.
-          module Currency
-            extend Increase::Enum
-
+          class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -1832,19 +1700,13 @@ module Increase
             USD = :USD
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
+          # @abstract
+          #
           # The direction describes the direction the funds will move, either from the
           #   cardholder to the merchant or from the merchant to the cardholder.
-          module Direction
-            extend Increase::Enum
-
+          class Direction < Increase::Enum
             # A regular card authorization where funds are debited from the cardholder.
             SETTLEMENT = :settlement
 
@@ -1852,12 +1714,6 @@ module Increase
             REFUND = :refund
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
           class NetworkDetails < Increase::BaseModel
@@ -1886,20 +1742,14 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # The payment network used to process this card authorization.
-            module Category
-              extend Increase::Enum
-
+            class Category < Increase::Enum
               # Visa
               VISA = :visa
 
               finalize!
-
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
             end
 
             class Visa < Increase::BaseModel
@@ -1942,12 +1792,12 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
               #   transactions, identifies the type of mail or telephone order.
-              module ElectronicCommerceIndicator
-                extend Increase::Enum
-
+              class ElectronicCommerceIndicator < Increase::Enum
                 # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
                 MAIL_PHONE_ORDER = :mail_phone_order
 
@@ -1974,19 +1824,13 @@ module Increase
                 NON_SECURE_TRANSACTION = :non_secure_transaction
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
 
+              # @abstract
+              #
               # The method used to enter the cardholder's primary account number and card
               #   expiration date.
-              module PointOfServiceEntryMode
-                extend Increase::Enum
-
+              class PointOfServiceEntryMode < Increase::Enum
                 # Unknown
                 UNKNOWN = :unknown
 
@@ -2018,19 +1862,13 @@ module Increase
                 INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
 
+              # @abstract
+              #
               # Only present when `actioner: network`. Describes why a card authorization was
               #   approved or declined by Visa through stand-in processing.
-              module StandInProcessingReason
-                extend Increase::Enum
-
+              class StandInProcessingReason < Increase::Enum
                 # Increase failed to process the authorization in a timely manner.
                 ISSUER_ERROR = :issuer_error
 
@@ -2055,12 +1893,6 @@ module Increase
                 OTHER = :other
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
             end
           end
@@ -2100,11 +1932,11 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @abstract
+          #
           # The processing category describes the intent behind the authorization, such as
           #   whether it was used for bill payments or an automatic fuel dispenser.
-          module ProcessingCategory
-            extend Increase::Enum
-
+          class ProcessingCategory < Increase::Enum
             # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
             ACCOUNT_FUNDING = :account_funding
 
@@ -2124,19 +1956,13 @@ module Increase
             REFUND = :refund
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
+          # @abstract
+          #
           # This is present if a specific decline reason was given in the real-time
           #   decision.
-          module RealTimeDecisionReason
-            extend Increase::Enum
-
+          class RealTimeDecisionReason < Increase::Enum
             # The cardholder does not have sufficient funds to cover the transaction. The merchant may attempt to process the transaction again.
             INSUFFICIENT_FUNDS = :insufficient_funds
 
@@ -2156,18 +1982,12 @@ module Increase
             OTHER = :other
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
+          # @abstract
+          #
           # Why the transaction was declined.
-          module Reason
-            extend Increase::Enum
-
+          class Reason < Increase::Enum
             # The account has been closed.
             ACCOUNT_CLOSED = :account_closed
 
@@ -2220,12 +2040,6 @@ module Increase
             SUSPECTED_FRAUD = :suspected_fraud
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
           class Verification < Increase::BaseModel
@@ -2273,10 +2087,10 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # The result of verifying the Card Verification Code.
-              module Result
-                extend Increase::Enum
-
+              class Result < Increase::Enum
                 # No card verification code was provided in the authorization request.
                 NOT_CHECKED = :not_checked
 
@@ -2287,12 +2101,6 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
             end
 
@@ -2343,10 +2151,10 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # The address verification result returned to the card network.
-              module Result
-                extend Increase::Enum
-
+              class Result < Increase::Enum
                 # No adress was provided in the authorization request.
                 NOT_CHECKED = :not_checked
 
@@ -2366,12 +2174,6 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
             end
           end
@@ -2462,11 +2264,11 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
           #   currency.
-          module Currency
-            extend Increase::Enum
-
+          class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -2486,28 +2288,16 @@ module Increase
             USD = :USD
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
+          # @abstract
+          #
           # The card network used to process this card authorization.
-          module Network
-            extend Increase::Enum
-
+          class Network < Increase::Enum
             # Visa
             VISA = :visa
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
           class NetworkIdentifiers < Increase::BaseModel
@@ -2545,20 +2335,14 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @abstract
+          #
           # A constant representing the object's type. For this resource it will always be
           #   `card_fuel_confirmation`.
-          module Type
-            extend Increase::Enum
-
+          class Type < Increase::Enum
             CARD_FUEL_CONFIRMATION = :card_fuel_confirmation
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
         end
 
@@ -2681,11 +2465,11 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
-          module Actioner
-            extend Increase::Enum
-
+          class Actioner < Increase::Enum
             # This object was actioned by the user through a real-time decision.
             USER = :user
 
@@ -2696,19 +2480,13 @@ module Increase
             NETWORK = :network
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
           #   currency.
-          module Currency
-            extend Increase::Enum
-
+          class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -2728,28 +2506,16 @@ module Increase
             USD = :USD
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
+          # @abstract
+          #
           # The card network used to process this card authorization.
-          module Network
-            extend Increase::Enum
-
+          class Network < Increase::Enum
             # Visa
             VISA = :visa
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
           class NetworkIdentifiers < Increase::BaseModel
@@ -2787,20 +2553,14 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @abstract
+          #
           # A constant representing the object's type. For this resource it will always be
           #   `card_increment`.
-          module Type
-            extend Increase::Enum
-
+          class Type < Increase::Enum
             CARD_INCREMENT = :card_increment
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
         end
 
@@ -3009,10 +2769,10 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
-            module Currency
-              extend Increase::Enum
-
+            class Currency < Increase::Enum
               # Canadian Dollar (CAD)
               CAD = :CAD
 
@@ -3032,20 +2792,14 @@ module Increase
               USD = :USD
 
               finalize!
-
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
             end
           end
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's settlement currency.
-          module Currency
-            extend Increase::Enum
-
+          class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -3065,12 +2819,6 @@ module Increase
             USD = :USD
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
           class Interchange < Increase::BaseModel
@@ -3106,11 +2854,11 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   reimbursement.
-            module Currency
-              extend Increase::Enum
-
+            class Currency < Increase::Enum
               # Canadian Dollar (CAD)
               CAD = :CAD
 
@@ -3130,12 +2878,6 @@ module Increase
               USD = :USD
 
               finalize!
-
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
             end
           end
 
@@ -3429,10 +3171,10 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # Additional charges (gas, late fee, etc.) being billed.
-              module ExtraCharges
-                extend Increase::Enum
-
+              class ExtraCharges < Increase::Enum
                 # No extra charge
                 NO_EXTRA_CHARGE = :no_extra_charge
 
@@ -3452,19 +3194,13 @@ module Increase
                 PARKING_VIOLATION = :parking_violation
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
 
+              # @abstract
+              #
               # An indicator that the cardholder is being billed for a reserved vehicle that was
               #   not actually rented (that is, a "no-show" charge).
-              module NoShowIndicator
-                extend Increase::Enum
-
+              class NoShowIndicator < Increase::Enum
                 # Not applicable
                 NOT_APPLICABLE = :not_applicable
 
@@ -3472,12 +3208,6 @@ module Increase
                 NO_SHOW_FOR_SPECIALIZED_VEHICLE = :no_show_for_specialized_vehicle
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
             end
 
@@ -3633,10 +3363,10 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # Additional charges (phone, late check-out, etc.) being billed.
-              module ExtraCharges
-                extend Increase::Enum
-
+              class ExtraCharges < Increase::Enum
                 # No extra charge
                 NO_EXTRA_CHARGE = :no_extra_charge
 
@@ -3659,19 +3389,13 @@ module Increase
                 LAUNDRY = :laundry
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
 
+              # @abstract
+              #
               # Indicator that the cardholder is being billed for a reserved room that was not
               #   actually used.
-              module NoShowIndicator
-                extend Increase::Enum
-
+              class NoShowIndicator < Increase::Enum
                 # Not applicable
                 NOT_APPLICABLE = :not_applicable
 
@@ -3679,19 +3403,13 @@ module Increase
                 NO_SHOW = :no_show
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
             end
 
+            # @abstract
+            #
             # The format of the purchase identifier.
-            module PurchaseIdentifierFormat
-              extend Increase::Enum
-
+            class PurchaseIdentifierFormat < Increase::Enum
               # Free text
               FREE_TEXT = :free_text
 
@@ -3708,12 +3426,6 @@ module Increase
               INVOICE_NUMBER = :invoice_number
 
               finalize!
-
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
             end
 
             class Travel < Increase::BaseModel
@@ -3893,10 +3605,10 @@ module Increase
 
                 # def initialize: (Hash | Increase::BaseModel) -> void
 
+                # @abstract
+                #
                 # Indicates the reason for a credit to the cardholder.
-                module CreditReasonIndicator
-                  extend Increase::Enum
-
+                class CreditReasonIndicator < Increase::Enum
                   # No credit
                   NO_CREDIT = :no_credit
 
@@ -3912,12 +3624,6 @@ module Increase
                   OTHER = :other
 
                   finalize!
-
-                  class << self
-                    # @!parse
-                    #   # @return [Array<Symbol>]
-                    #   def values; end
-                  end
                 end
 
                 class Service < Increase::BaseModel
@@ -3943,10 +3649,10 @@ module Increase
 
                   # def initialize: (Hash | Increase::BaseModel) -> void
 
+                  # @abstract
+                  #
                   # Category of the ancillary service.
-                  module Category
-                    extend Increase::Enum
-
+                  class Category < Increase::Enum
                     # None
                     NONE = :none
 
@@ -4020,20 +3726,14 @@ module Increase
                     WIFI = :wifi
 
                     finalize!
-
-                    class << self
-                      # @!parse
-                      #   # @return [Array<Symbol>]
-                      #   def values; end
-                    end
                   end
                 end
               end
 
+              # @abstract
+              #
               # Indicates the reason for a credit to the cardholder.
-              module CreditReasonIndicator
-                extend Increase::Enum
-
+              class CreditReasonIndicator < Increase::Enum
                 # No credit
                 NO_CREDIT = :no_credit
 
@@ -4055,18 +3755,12 @@ module Increase
                 PARTIAL_REFUND_OF_AIRLINE_TICKET = :partial_refund_of_airline_ticket
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
 
+              # @abstract
+              #
               # Indicates whether this ticket is non-refundable.
-              module RestrictedTicketIndicator
-                extend Increase::Enum
-
+              class RestrictedTicketIndicator < Increase::Enum
                 # No restrictions
                 NO_RESTRICTIONS = :no_restrictions
 
@@ -4074,18 +3768,12 @@ module Increase
                 RESTRICTED_NON_REFUNDABLE_TICKET = :restricted_non_refundable_ticket
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
 
+              # @abstract
+              #
               # Indicates why a ticket was changed.
-              module TicketChangeIndicator
-                extend Increase::Enum
-
+              class TicketChangeIndicator < Increase::Enum
                 # None
                 NONE = :none
 
@@ -4096,12 +3784,6 @@ module Increase
                 NEW_TICKET = :new_ticket
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
 
               class TripLeg < Increase::BaseModel
@@ -4165,10 +3847,10 @@ module Increase
 
                 # def initialize: (Hash | Increase::BaseModel) -> void
 
+                # @abstract
+                #
                 # Indicates whether a stopover is allowed on this ticket.
-                module StopOverCode
-                  extend Increase::Enum
-
+                class StopOverCode < Increase::Enum
                   # None
                   NONE = :none
 
@@ -4179,31 +3861,19 @@ module Increase
                   STOP_OVER_NOT_ALLOWED = :stop_over_not_allowed
 
                   finalize!
-
-                  class << self
-                    # @!parse
-                    #   # @return [Array<Symbol>]
-                    #   def values; end
-                  end
                 end
               end
             end
           end
 
+          # @abstract
+          #
           # A constant representing the object's type. For this resource it will always be
           #   `card_refund`.
-          module Type
-            extend Increase::Enum
-
+          class Type < Increase::Enum
             CARD_REFUND = :card_refund
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
         end
 
@@ -4377,11 +4047,11 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
           #   currency.
-          module Currency
-            extend Increase::Enum
-
+          class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -4401,28 +4071,16 @@ module Increase
             USD = :USD
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
+          # @abstract
+          #
           # The card network used to process this card authorization.
-          module Network
-            extend Increase::Enum
-
+          class Network < Increase::Enum
             # Visa
             VISA = :visa
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
           class NetworkIdentifiers < Increase::BaseModel
@@ -4460,10 +4118,10 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @abstract
+          #
           # Why this reversal was initiated.
-          module ReversalReason
-            extend Increase::Enum
-
+          class ReversalReason < Increase::Enum
             # The Card Reversal was initiated at the customer's request.
             REVERSED_BY_CUSTOMER = :reversed_by_customer
 
@@ -4477,28 +4135,16 @@ module Increase
             PARTIAL_REVERSAL = :partial_reversal
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
+          # @abstract
+          #
           # A constant representing the object's type. For this resource it will always be
           #   `card_reversal`.
-          module Type
-            extend Increase::Enum
-
+          class Type < Increase::Enum
             CARD_REVERSAL = :card_reversal
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
         end
 
@@ -4727,10 +4373,10 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
-            module Currency
-              extend Increase::Enum
-
+            class Currency < Increase::Enum
               # Canadian Dollar (CAD)
               CAD = :CAD
 
@@ -4750,20 +4396,14 @@ module Increase
               USD = :USD
 
               finalize!
-
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
             end
           end
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's settlement currency.
-          module Currency
-            extend Increase::Enum
-
+          class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -4783,12 +4423,6 @@ module Increase
             USD = :USD
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
           class Interchange < Increase::BaseModel
@@ -4825,11 +4459,11 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   reimbursement.
-            module Currency
-              extend Increase::Enum
-
+            class Currency < Increase::Enum
               # Canadian Dollar (CAD)
               CAD = :CAD
 
@@ -4849,12 +4483,6 @@ module Increase
               USD = :USD
 
               finalize!
-
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
             end
           end
 
@@ -5148,10 +4776,10 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # Additional charges (gas, late fee, etc.) being billed.
-              module ExtraCharges
-                extend Increase::Enum
-
+              class ExtraCharges < Increase::Enum
                 # No extra charge
                 NO_EXTRA_CHARGE = :no_extra_charge
 
@@ -5171,19 +4799,13 @@ module Increase
                 PARKING_VIOLATION = :parking_violation
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
 
+              # @abstract
+              #
               # An indicator that the cardholder is being billed for a reserved vehicle that was
               #   not actually rented (that is, a "no-show" charge).
-              module NoShowIndicator
-                extend Increase::Enum
-
+              class NoShowIndicator < Increase::Enum
                 # Not applicable
                 NOT_APPLICABLE = :not_applicable
 
@@ -5191,12 +4813,6 @@ module Increase
                 NO_SHOW_FOR_SPECIALIZED_VEHICLE = :no_show_for_specialized_vehicle
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
             end
 
@@ -5352,10 +4968,10 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # Additional charges (phone, late check-out, etc.) being billed.
-              module ExtraCharges
-                extend Increase::Enum
-
+              class ExtraCharges < Increase::Enum
                 # No extra charge
                 NO_EXTRA_CHARGE = :no_extra_charge
 
@@ -5378,19 +4994,13 @@ module Increase
                 LAUNDRY = :laundry
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
 
+              # @abstract
+              #
               # Indicator that the cardholder is being billed for a reserved room that was not
               #   actually used.
-              module NoShowIndicator
-                extend Increase::Enum
-
+              class NoShowIndicator < Increase::Enum
                 # Not applicable
                 NOT_APPLICABLE = :not_applicable
 
@@ -5398,19 +5008,13 @@ module Increase
                 NO_SHOW = :no_show
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
             end
 
+            # @abstract
+            #
             # The format of the purchase identifier.
-            module PurchaseIdentifierFormat
-              extend Increase::Enum
-
+            class PurchaseIdentifierFormat < Increase::Enum
               # Free text
               FREE_TEXT = :free_text
 
@@ -5427,12 +5031,6 @@ module Increase
               INVOICE_NUMBER = :invoice_number
 
               finalize!
-
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
             end
 
             class Travel < Increase::BaseModel
@@ -5612,10 +5210,10 @@ module Increase
 
                 # def initialize: (Hash | Increase::BaseModel) -> void
 
+                # @abstract
+                #
                 # Indicates the reason for a credit to the cardholder.
-                module CreditReasonIndicator
-                  extend Increase::Enum
-
+                class CreditReasonIndicator < Increase::Enum
                   # No credit
                   NO_CREDIT = :no_credit
 
@@ -5631,12 +5229,6 @@ module Increase
                   OTHER = :other
 
                   finalize!
-
-                  class << self
-                    # @!parse
-                    #   # @return [Array<Symbol>]
-                    #   def values; end
-                  end
                 end
 
                 class Service < Increase::BaseModel
@@ -5662,10 +5254,10 @@ module Increase
 
                   # def initialize: (Hash | Increase::BaseModel) -> void
 
+                  # @abstract
+                  #
                   # Category of the ancillary service.
-                  module Category
-                    extend Increase::Enum
-
+                  class Category < Increase::Enum
                     # None
                     NONE = :none
 
@@ -5739,20 +5331,14 @@ module Increase
                     WIFI = :wifi
 
                     finalize!
-
-                    class << self
-                      # @!parse
-                      #   # @return [Array<Symbol>]
-                      #   def values; end
-                    end
                   end
                 end
               end
 
+              # @abstract
+              #
               # Indicates the reason for a credit to the cardholder.
-              module CreditReasonIndicator
-                extend Increase::Enum
-
+              class CreditReasonIndicator < Increase::Enum
                 # No credit
                 NO_CREDIT = :no_credit
 
@@ -5774,18 +5360,12 @@ module Increase
                 PARTIAL_REFUND_OF_AIRLINE_TICKET = :partial_refund_of_airline_ticket
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
 
+              # @abstract
+              #
               # Indicates whether this ticket is non-refundable.
-              module RestrictedTicketIndicator
-                extend Increase::Enum
-
+              class RestrictedTicketIndicator < Increase::Enum
                 # No restrictions
                 NO_RESTRICTIONS = :no_restrictions
 
@@ -5793,18 +5373,12 @@ module Increase
                 RESTRICTED_NON_REFUNDABLE_TICKET = :restricted_non_refundable_ticket
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
 
+              # @abstract
+              #
               # Indicates why a ticket was changed.
-              module TicketChangeIndicator
-                extend Increase::Enum
-
+              class TicketChangeIndicator < Increase::Enum
                 # None
                 NONE = :none
 
@@ -5815,12 +5389,6 @@ module Increase
                 NEW_TICKET = :new_ticket
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
 
               class TripLeg < Increase::BaseModel
@@ -5884,10 +5452,10 @@ module Increase
 
                 # def initialize: (Hash | Increase::BaseModel) -> void
 
+                # @abstract
+                #
                 # Indicates whether a stopover is allowed on this ticket.
-                module StopOverCode
-                  extend Increase::Enum
-
+                class StopOverCode < Increase::Enum
                   # None
                   NONE = :none
 
@@ -5898,31 +5466,19 @@ module Increase
                   STOP_OVER_NOT_ALLOWED = :stop_over_not_allowed
 
                   finalize!
-
-                  class << self
-                    # @!parse
-                    #   # @return [Array<Symbol>]
-                    #   def values; end
-                  end
                 end
               end
             end
           end
 
+          # @abstract
+          #
           # A constant representing the object's type. For this resource it will always be
           #   `card_settlement`.
-          module Type
-            extend Increase::Enum
-
+          class Type < Increase::Enum
             CARD_SETTLEMENT = :card_settlement
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
         end
 
@@ -6114,11 +5670,11 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
-          module Actioner
-            extend Increase::Enum
-
+          class Actioner < Increase::Enum
             # This object was actioned by the user through a real-time decision.
             USER = :user
 
@@ -6129,19 +5685,13 @@ module Increase
             NETWORK = :network
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
-          module Currency
-            extend Increase::Enum
-
+          class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
 
@@ -6161,12 +5711,6 @@ module Increase
             USD = :USD
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
           class NetworkDetails < Increase::BaseModel
@@ -6195,20 +5739,14 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # The payment network used to process this card authorization.
-            module Category
-              extend Increase::Enum
-
+            class Category < Increase::Enum
               # Visa
               VISA = :visa
 
               finalize!
-
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
             end
 
             class Visa < Increase::BaseModel
@@ -6251,12 +5789,12 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
               #   transactions, identifies the type of mail or telephone order.
-              module ElectronicCommerceIndicator
-                extend Increase::Enum
-
+              class ElectronicCommerceIndicator < Increase::Enum
                 # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
                 MAIL_PHONE_ORDER = :mail_phone_order
 
@@ -6283,19 +5821,13 @@ module Increase
                 NON_SECURE_TRANSACTION = :non_secure_transaction
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
 
+              # @abstract
+              #
               # The method used to enter the cardholder's primary account number and card
               #   expiration date.
-              module PointOfServiceEntryMode
-                extend Increase::Enum
-
+              class PointOfServiceEntryMode < Increase::Enum
                 # Unknown
                 UNKNOWN = :unknown
 
@@ -6327,19 +5859,13 @@ module Increase
                 INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
 
+              # @abstract
+              #
               # Only present when `actioner: network`. Describes why a card authorization was
               #   approved or declined by Visa through stand-in processing.
-              module StandInProcessingReason
-                extend Increase::Enum
-
+              class StandInProcessingReason < Increase::Enum
                 # Increase failed to process the authorization in a timely manner.
                 ISSUER_ERROR = :issuer_error
 
@@ -6364,12 +5890,6 @@ module Increase
                 OTHER = :other
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
             end
           end
@@ -6409,20 +5929,14 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @abstract
+          #
           # A constant representing the object's type. For this resource it will always be
           #   `card_validation`.
-          module Type
-            extend Increase::Enum
-
+          class Type < Increase::Enum
             CARD_VALIDATION = :card_validation
 
             finalize!
-
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
           end
 
           class Verification < Increase::BaseModel
@@ -6470,10 +5984,10 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # The result of verifying the Card Verification Code.
-              module Result
-                extend Increase::Enum
-
+              class Result < Increase::Enum
                 # No card verification code was provided in the authorization request.
                 NOT_CHECKED = :not_checked
 
@@ -6484,12 +5998,6 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
             end
 
@@ -6540,10 +6048,10 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # The address verification result returned to the card network.
-              module Result
-                extend Increase::Enum
-
+              class Result < Increase::Enum
                 # No adress was provided in the authorization request.
                 NOT_CHECKED = :not_checked
 
@@ -6563,22 +6071,16 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
-
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
               end
             end
           end
         end
 
+        # @abstract
+        #
         # The type of the resource. We may add additional possible values for this enum
         #   over time; your application should be able to handle such additions gracefully.
-        module Category
-          extend Increase::Enum
-
+        class Category < Increase::Enum
           # Card Authorization: details will be under the `card_authorization` object.
           CARD_AUTHORIZATION = :card_authorization
 
@@ -6613,12 +6115,6 @@ module Increase
           OTHER = :other
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
 
@@ -6672,20 +6168,14 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `card_payment`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         CARD_PAYMENT = :card_payment
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

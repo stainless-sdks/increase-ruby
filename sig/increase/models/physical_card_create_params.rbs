@@ -114,9 +114,7 @@ module Increase
 
         type method_ = :usps | :fedex_priority_overnight | :fedex_2_day
 
-        module Method
-          extend Increase::Enum
-
+        class Method < Increase::Enum
           # USPS Post with tracking.
           USPS: :usps
 
@@ -126,7 +124,7 @@ module Increase
           # FedEx 2-day.
           FEDEX_2_DAY: :fedex_2_day
 
-          def self?.values: -> ::Array[Increase::Models::PhysicalCardCreateParams::Shipment::method_]
+          def self.values: -> ::Array[Increase::Models::PhysicalCardCreateParams::Shipment::method_]
         end
       end
     end

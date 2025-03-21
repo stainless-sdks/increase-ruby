@@ -27,11 +27,11 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The reason why the Federal Reserve or destination bank returned this transfer.
         #   Defaults to `no_account`.
-        module Reason
-          extend Increase::Enum
-
+        class Reason < Increase::Enum
           # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
           INSUFFICIENT_FUND = :insufficient_fund
 
@@ -246,12 +246,6 @@ module Increase
           UNTIMELY_RETURN = :untimely_return
 
           finalize!
-
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
         end
       end
     end

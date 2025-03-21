@@ -103,10 +103,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The status of the exclusion request.
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # The exclusion is being added to the IntraFi network.
         PENDING = :pending
 
@@ -117,28 +117,16 @@ module Increase
         ARCHIVED = :archived
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `intrafi_exclusion`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         INTRAFI_EXCLUSION = :intrafi_exclusion
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

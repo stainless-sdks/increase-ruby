@@ -4,13 +4,21 @@ module Increase
   # @api private
   module RequestParameters
     # Options to specify HTTP behaviour for this request.
-    sig { returns(T.any(Increase::RequestOptions, Increase::Util::AnyHash)) }
-    attr_accessor :request_options
+    sig { returns(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])) }
+    def request_options
+    end
+
+    sig do
+      params(_: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+        .returns(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+    end
+    def request_options=(_)
+    end
 
     # @api private
     module Converter
       # @api private
-      sig { params(params: T.anything).returns([T.anything, Increase::Util::AnyHash]) }
+      sig { params(params: T.anything).returns([T.anything, T::Hash[Symbol, T.anything]]) }
       def dump_request(params)
       end
     end
@@ -30,33 +38,69 @@ module Increase
     # Idempotency key to send with request and all associated retries. Will only be
     #   sent for write requests.
     sig { returns(T.nilable(String)) }
-    attr_accessor :idempotency_key
+    def idempotency_key
+    end
+
+    sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+    def idempotency_key=(_)
+    end
 
     # Extra query params to send with the request. These are `.merge`’d into any
     #   `query` given at the client level.
     sig { returns(T.nilable(T::Hash[String, T.nilable(T.any(T::Array[String], String))])) }
-    attr_accessor :extra_query
+    def extra_query
+    end
+
+    sig do
+      params(_: T.nilable(T::Hash[String, T.nilable(T.any(T::Array[String], String))]))
+        .returns(T.nilable(T::Hash[String, T.nilable(T.any(T::Array[String], String))]))
+    end
+    def extra_query=(_)
+    end
 
     # Extra headers to send with the request. These are `.merged`’d into any
     #   `extra_headers` given at the client level.
     sig { returns(T.nilable(T::Hash[String, T.nilable(String)])) }
-    attr_accessor :extra_headers
+    def extra_headers
+    end
+
+    sig do
+      params(_: T.nilable(T::Hash[String, T.nilable(String)]))
+        .returns(T.nilable(T::Hash[String, T.nilable(String)]))
+    end
+    def extra_headers=(_)
+    end
 
     # Extra data to send with the request. These are deep merged into any data
     #   generated as part of the normal request.
-    sig { returns(T.nilable(T.anything)) }
-    attr_accessor :extra_body
+    sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+    def extra_body
+    end
+
+    sig { params(_: T.nilable(T::Hash[Symbol, T.anything])).returns(T.nilable(T::Hash[Symbol, T.anything])) }
+    def extra_body=(_)
+    end
 
     # Maximum number of retries to attempt after a failed initial request.
     sig { returns(T.nilable(Integer)) }
-    attr_accessor :max_retries
+    def max_retries
+    end
+
+    sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+    def max_retries=(_)
+    end
 
     # Request timeout in seconds.
     sig { returns(T.nilable(Float)) }
-    attr_accessor :timeout
+    def timeout
+    end
+
+    sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
+    def timeout=(_)
+    end
 
     # Returns a new instance of RequestOptions.
-    sig { params(values: Increase::Util::AnyHash).returns(T.attached_class) }
+    sig { params(values: T::Hash[Symbol, T.anything]).returns(T.attached_class) }
     def self.new(values = {})
     end
   end

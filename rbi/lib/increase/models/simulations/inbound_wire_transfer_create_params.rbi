@@ -9,131 +9,171 @@ module Increase
 
         # The identifier of the Account Number the inbound Wire Transfer is for.
         sig { returns(String) }
-        attr_accessor :account_number_id
+        def account_number_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def account_number_id=(_)
+        end
 
         # The transfer amount in cents. Must be positive.
         sig { returns(Integer) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def amount=(_)
+        end
 
         # The sending bank will set beneficiary_address_line1 in production. You can
         #   simulate any value here.
         sig { returns(T.nilable(String)) }
-        attr_reader :beneficiary_address_line1
+        def beneficiary_address_line1
+        end
 
-        sig { params(beneficiary_address_line1: String).void }
-        attr_writer :beneficiary_address_line1
+        sig { params(_: String).returns(String) }
+        def beneficiary_address_line1=(_)
+        end
 
         # The sending bank will set beneficiary_address_line2 in production. You can
         #   simulate any value here.
         sig { returns(T.nilable(String)) }
-        attr_reader :beneficiary_address_line2
+        def beneficiary_address_line2
+        end
 
-        sig { params(beneficiary_address_line2: String).void }
-        attr_writer :beneficiary_address_line2
+        sig { params(_: String).returns(String) }
+        def beneficiary_address_line2=(_)
+        end
 
         # The sending bank will set beneficiary_address_line3 in production. You can
         #   simulate any value here.
         sig { returns(T.nilable(String)) }
-        attr_reader :beneficiary_address_line3
+        def beneficiary_address_line3
+        end
 
-        sig { params(beneficiary_address_line3: String).void }
-        attr_writer :beneficiary_address_line3
+        sig { params(_: String).returns(String) }
+        def beneficiary_address_line3=(_)
+        end
 
         # The sending bank will set beneficiary_name in production. You can simulate any
         #   value here.
         sig { returns(T.nilable(String)) }
-        attr_reader :beneficiary_name
+        def beneficiary_name
+        end
 
-        sig { params(beneficiary_name: String).void }
-        attr_writer :beneficiary_name
+        sig { params(_: String).returns(String) }
+        def beneficiary_name=(_)
+        end
 
         # The sending bank will set beneficiary_reference in production. You can simulate
         #   any value here.
         sig { returns(T.nilable(String)) }
-        attr_reader :beneficiary_reference
+        def beneficiary_reference
+        end
 
-        sig { params(beneficiary_reference: String).void }
-        attr_writer :beneficiary_reference
+        sig { params(_: String).returns(String) }
+        def beneficiary_reference=(_)
+        end
 
         # The sending bank will set originator_address_line1 in production. You can
         #   simulate any value here.
         sig { returns(T.nilable(String)) }
-        attr_reader :originator_address_line1
+        def originator_address_line1
+        end
 
-        sig { params(originator_address_line1: String).void }
-        attr_writer :originator_address_line1
+        sig { params(_: String).returns(String) }
+        def originator_address_line1=(_)
+        end
 
         # The sending bank will set originator_address_line2 in production. You can
         #   simulate any value here.
         sig { returns(T.nilable(String)) }
-        attr_reader :originator_address_line2
+        def originator_address_line2
+        end
 
-        sig { params(originator_address_line2: String).void }
-        attr_writer :originator_address_line2
+        sig { params(_: String).returns(String) }
+        def originator_address_line2=(_)
+        end
 
         # The sending bank will set originator_address_line3 in production. You can
         #   simulate any value here.
         sig { returns(T.nilable(String)) }
-        attr_reader :originator_address_line3
+        def originator_address_line3
+        end
 
-        sig { params(originator_address_line3: String).void }
-        attr_writer :originator_address_line3
+        sig { params(_: String).returns(String) }
+        def originator_address_line3=(_)
+        end
 
         # The sending bank will set originator_name in production. You can simulate any
         #   value here.
         sig { returns(T.nilable(String)) }
-        attr_reader :originator_name
+        def originator_name
+        end
 
-        sig { params(originator_name: String).void }
-        attr_writer :originator_name
+        sig { params(_: String).returns(String) }
+        def originator_name=(_)
+        end
 
         # The sending bank will set originator_routing_number in production. You can
         #   simulate any value here.
         sig { returns(T.nilable(String)) }
-        attr_reader :originator_routing_number
+        def originator_routing_number
+        end
 
-        sig { params(originator_routing_number: String).void }
-        attr_writer :originator_routing_number
+        sig { params(_: String).returns(String) }
+        def originator_routing_number=(_)
+        end
 
         # The sending bank will set originator_to_beneficiary_information_line1 in
         #   production. You can simulate any value here.
         sig { returns(T.nilable(String)) }
-        attr_reader :originator_to_beneficiary_information_line1
+        def originator_to_beneficiary_information_line1
+        end
 
-        sig { params(originator_to_beneficiary_information_line1: String).void }
-        attr_writer :originator_to_beneficiary_information_line1
+        sig { params(_: String).returns(String) }
+        def originator_to_beneficiary_information_line1=(_)
+        end
 
         # The sending bank will set originator_to_beneficiary_information_line2 in
         #   production. You can simulate any value here.
         sig { returns(T.nilable(String)) }
-        attr_reader :originator_to_beneficiary_information_line2
+        def originator_to_beneficiary_information_line2
+        end
 
-        sig { params(originator_to_beneficiary_information_line2: String).void }
-        attr_writer :originator_to_beneficiary_information_line2
+        sig { params(_: String).returns(String) }
+        def originator_to_beneficiary_information_line2=(_)
+        end
 
         # The sending bank will set originator_to_beneficiary_information_line3 in
         #   production. You can simulate any value here.
         sig { returns(T.nilable(String)) }
-        attr_reader :originator_to_beneficiary_information_line3
+        def originator_to_beneficiary_information_line3
+        end
 
-        sig { params(originator_to_beneficiary_information_line3: String).void }
-        attr_writer :originator_to_beneficiary_information_line3
+        sig { params(_: String).returns(String) }
+        def originator_to_beneficiary_information_line3=(_)
+        end
 
         # The sending bank will set originator_to_beneficiary_information_line4 in
         #   production. You can simulate any value here.
         sig { returns(T.nilable(String)) }
-        attr_reader :originator_to_beneficiary_information_line4
+        def originator_to_beneficiary_information_line4
+        end
 
-        sig { params(originator_to_beneficiary_information_line4: String).void }
-        attr_writer :originator_to_beneficiary_information_line4
+        sig { params(_: String).returns(String) }
+        def originator_to_beneficiary_information_line4=(_)
+        end
 
         # The sending bank will set sender_reference in production. You can simulate any
         #   value here.
         sig { returns(T.nilable(String)) }
-        attr_reader :sender_reference
+        def sender_reference
+        end
 
-        sig { params(sender_reference: String).void }
-        attr_writer :sender_reference
+        sig { params(_: String).returns(String) }
+        def sender_reference=(_)
+        end
 
         sig do
           params(
@@ -154,7 +194,7 @@ module Increase
             originator_to_beneficiary_information_line3: String,
             originator_to_beneficiary_information_line4: String,
             sender_reference: String,
-            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
           )
             .returns(T.attached_class)
         end

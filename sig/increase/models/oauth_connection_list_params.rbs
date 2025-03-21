@@ -61,16 +61,14 @@ module Increase
 
         type in_ = :active | :inactive
 
-        module In
-          extend Increase::Enum
-
+        class In < Increase::Enum
           # The OAuth connection is active.
           ACTIVE: :active
 
           # The OAuth connection is permanently deactivated.
           INACTIVE: :inactive
 
-          def self?.values: -> ::Array[Increase::Models::OAuthConnectionListParams::Status::in_]
+          def self.values: -> ::Array[Increase::Models::OAuthConnectionListParams::Status::in_]
         end
       end
     end

@@ -155,9 +155,7 @@ module Increase
           | :"wire_transfer.created"
           | :"wire_transfer.updated"
 
-        module In
-          extend Increase::Enum
-
+        class In < Increase::Enum
           # Occurs whenever an Account is created.
           ACCOUNT_CREATED: :"account.created"
 
@@ -422,7 +420,7 @@ module Increase
           # Occurs whenever a Wire Transfer is updated.
           WIRE_TRANSFER_UPDATED: :"wire_transfer.updated"
 
-          def self?.values: -> ::Array[Increase::Models::EventListParams::Category::in_]
+          def self.values: -> ::Array[Increase::Models::EventListParams::Category::in_]
         end
       end
 

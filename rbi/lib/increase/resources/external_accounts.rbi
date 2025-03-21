@@ -9,9 +9,9 @@ module Increase
           account_number: String,
           description: String,
           routing_number: String,
-          account_holder: Increase::Models::ExternalAccountCreateParams::AccountHolder::OrSymbol,
-          funding: Increase::Models::ExternalAccountCreateParams::Funding::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          account_holder: Symbol,
+          funding: Symbol,
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::ExternalAccount)
       end
@@ -35,7 +35,7 @@ module Increase
       sig do
         params(
           external_account_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::ExternalAccount)
       end
@@ -50,11 +50,11 @@ module Increase
       sig do
         params(
           external_account_id: String,
-          account_holder: Increase::Models::ExternalAccountUpdateParams::AccountHolder::OrSymbol,
+          account_holder: Symbol,
           description: String,
-          funding: Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol,
-          status: Increase::Models::ExternalAccountUpdateParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          funding: Symbol,
+          status: Symbol,
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::ExternalAccount)
       end
@@ -80,8 +80,8 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           routing_number: String,
-          status: T.any(Increase::Models::ExternalAccountListParams::Status, Increase::Util::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          status: Increase::Models::ExternalAccountListParams::Status,
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Page[Increase::Models::ExternalAccount])
       end

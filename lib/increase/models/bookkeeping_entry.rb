@@ -57,20 +57,14 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `bookkeeping_entry`.
-      module Type
-        extend Increase::Enum
-
+      class Type < Increase::Enum
         BOOKKEEPING_ENTRY = :bookkeeping_entry
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

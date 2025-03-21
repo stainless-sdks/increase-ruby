@@ -8,26 +8,33 @@ module Increase
 
       # The Account the card should belong to.
       sig { returns(String) }
-      attr_accessor :account_id
+      def account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       # The card's billing address.
       sig { returns(T.nilable(Increase::Models::CardCreateParams::BillingAddress)) }
-      attr_reader :billing_address
+      def billing_address
+      end
 
       sig do
-        params(
-          billing_address: T.any(Increase::Models::CardCreateParams::BillingAddress, Increase::Util::AnyHash)
-        )
-          .void
+        params(_: Increase::Models::CardCreateParams::BillingAddress)
+          .returns(Increase::Models::CardCreateParams::BillingAddress)
       end
-      attr_writer :billing_address
+      def billing_address=(_)
+      end
 
       # The description you choose to give the card.
       sig { returns(T.nilable(String)) }
-      attr_reader :description
+      def description
+      end
 
-      sig { params(description: String).void }
-      attr_writer :description
+      sig { params(_: String).returns(String) }
+      def description=(_)
+      end
 
       # The contact information used in the two-factor steps for digital wallet card
       #   creation. To add the card to a digital wallet, you may supply an email or phone
@@ -35,30 +42,34 @@ module Increase
       #   Decision with the category `digital_wallet_token_requested` or
       #   `digital_wallet_authentication_requested`.
       sig { returns(T.nilable(Increase::Models::CardCreateParams::DigitalWallet)) }
-      attr_reader :digital_wallet
+      def digital_wallet
+      end
 
       sig do
-        params(digital_wallet: T.any(Increase::Models::CardCreateParams::DigitalWallet, Increase::Util::AnyHash))
-          .void
+        params(_: Increase::Models::CardCreateParams::DigitalWallet)
+          .returns(Increase::Models::CardCreateParams::DigitalWallet)
       end
-      attr_writer :digital_wallet
+      def digital_wallet=(_)
+      end
 
       # The Entity the card belongs to. You only need to supply this in rare situations
       #   when the card is not for the Account holder.
       sig { returns(T.nilable(String)) }
-      attr_reader :entity_id
+      def entity_id
+      end
 
-      sig { params(entity_id: String).void }
-      attr_writer :entity_id
+      sig { params(_: String).returns(String) }
+      def entity_id=(_)
+      end
 
       sig do
         params(
           account_id: String,
-          billing_address: T.any(Increase::Models::CardCreateParams::BillingAddress, Increase::Util::AnyHash),
+          billing_address: Increase::Models::CardCreateParams::BillingAddress,
           description: String,
-          digital_wallet: T.any(Increase::Models::CardCreateParams::DigitalWallet, Increase::Util::AnyHash),
+          digital_wallet: Increase::Models::CardCreateParams::DigitalWallet,
           entity_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end
@@ -91,26 +102,48 @@ module Increase
       class BillingAddress < Increase::BaseModel
         # The city of the billing address.
         sig { returns(String) }
-        attr_accessor :city
+        def city
+        end
+
+        sig { params(_: String).returns(String) }
+        def city=(_)
+        end
 
         # The first line of the billing address.
         sig { returns(String) }
-        attr_accessor :line1
+        def line1
+        end
+
+        sig { params(_: String).returns(String) }
+        def line1=(_)
+        end
 
         # The postal code of the billing address.
         sig { returns(String) }
-        attr_accessor :postal_code
+        def postal_code
+        end
+
+        sig { params(_: String).returns(String) }
+        def postal_code=(_)
+        end
 
         # The US state of the billing address.
         sig { returns(String) }
-        attr_accessor :state
+        def state
+        end
+
+        sig { params(_: String).returns(String) }
+        def state=(_)
+        end
 
         # The second line of the billing address.
         sig { returns(T.nilable(String)) }
-        attr_reader :line2
+        def line2
+        end
 
-        sig { params(line2: String).void }
-        attr_writer :line2
+        sig { params(_: String).returns(String) }
+        def line2=(_)
+        end
 
         # The card's billing address.
         sig do
@@ -130,26 +163,32 @@ module Increase
       class DigitalWallet < Increase::BaseModel
         # The digital card profile assigned to this digital card.
         sig { returns(T.nilable(String)) }
-        attr_reader :digital_card_profile_id
+        def digital_card_profile_id
+        end
 
-        sig { params(digital_card_profile_id: String).void }
-        attr_writer :digital_card_profile_id
+        sig { params(_: String).returns(String) }
+        def digital_card_profile_id=(_)
+        end
 
         # An email address that can be used to contact and verify the cardholder via
         #   one-time passcode over email.
         sig { returns(T.nilable(String)) }
-        attr_reader :email
+        def email
+        end
 
-        sig { params(email: String).void }
-        attr_writer :email
+        sig { params(_: String).returns(String) }
+        def email=(_)
+        end
 
         # A phone number that can be used to contact and verify the cardholder via
         #   one-time passcode over SMS.
         sig { returns(T.nilable(String)) }
-        attr_reader :phone
+        def phone
+        end
 
-        sig { params(phone: String).void }
-        attr_writer :phone
+        sig { params(_: String).returns(String) }
+        def phone=(_)
+        end
 
         # The contact information used in the two-factor steps for digital wallet card
         #   creation. To add the card to a digital wallet, you may supply an email or phone

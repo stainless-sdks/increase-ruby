@@ -41,10 +41,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # What the File will be used for in Increase's systems.
-      module Purpose
-        extend Increase::Enum
-
+      class Purpose < Increase::Enum
         # An image of the front of a check, used for check deposits.
         CHECK_IMAGE_FRONT = :check_image_front
 
@@ -97,12 +97,6 @@ module Increase
         PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION = :proof_of_authorization_request_submission
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end

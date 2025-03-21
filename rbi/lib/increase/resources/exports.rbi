@@ -6,14 +6,14 @@ module Increase
       # Create an Export
       sig do
         params(
-          category: Increase::Models::ExportCreateParams::Category::OrSymbol,
-          account_statement_ofx: T.any(Increase::Models::ExportCreateParams::AccountStatementOfx, Increase::Util::AnyHash),
-          balance_csv: T.any(Increase::Models::ExportCreateParams::BalanceCsv, Increase::Util::AnyHash),
-          bookkeeping_account_balance_csv: T.any(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv, Increase::Util::AnyHash),
-          entity_csv: T.any(Increase::Models::ExportCreateParams::EntityCsv, Increase::Util::AnyHash),
-          transaction_csv: T.any(Increase::Models::ExportCreateParams::TransactionCsv, Increase::Util::AnyHash),
+          category: Symbol,
+          account_statement_ofx: Increase::Models::ExportCreateParams::AccountStatementOfx,
+          balance_csv: Increase::Models::ExportCreateParams::BalanceCsv,
+          bookkeeping_account_balance_csv: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv,
+          entity_csv: Increase::Models::ExportCreateParams::EntityCsv,
+          transaction_csv: Increase::Models::ExportCreateParams::TransactionCsv,
           vendor_csv: T.anything,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::Export)
       end
@@ -44,7 +44,7 @@ module Increase
       sig do
         params(
           export_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Models::Export)
       end
@@ -58,13 +58,13 @@ module Increase
       # List Exports
       sig do
         params(
-          category: T.any(Increase::Models::ExportListParams::Category, Increase::Util::AnyHash),
-          created_at: T.any(Increase::Models::ExportListParams::CreatedAt, Increase::Util::AnyHash),
+          category: Increase::Models::ExportListParams::Category,
+          created_at: Increase::Models::ExportListParams::CreatedAt,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: T.any(Increase::Models::ExportListParams::Status, Increase::Util::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          status: Increase::Models::ExportListParams::Status,
+          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Page[Increase::Models::Export])
       end

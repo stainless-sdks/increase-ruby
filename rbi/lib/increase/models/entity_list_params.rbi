@@ -7,50 +7,63 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(T.nilable(Increase::Models::EntityListParams::CreatedAt)) }
-      attr_reader :created_at
+      def created_at
+      end
 
-      sig { params(created_at: T.any(Increase::Models::EntityListParams::CreatedAt, Increase::Util::AnyHash)).void }
-      attr_writer :created_at
+      sig do
+        params(_: Increase::Models::EntityListParams::CreatedAt)
+          .returns(Increase::Models::EntityListParams::CreatedAt)
+      end
+      def created_at=(_)
+      end
 
       # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
-      attr_reader :cursor
+      def cursor
+      end
 
-      sig { params(cursor: String).void }
-      attr_writer :cursor
+      sig { params(_: String).returns(String) }
+      def cursor=(_)
+      end
 
       # Filter records to the one with the specified `idempotency_key` you chose for
       #   that object. This value is unique across Increase and is used to ensure that a
       #   request is only processed once. Learn more about
       #   [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      attr_reader :idempotency_key
+      def idempotency_key
+      end
 
-      sig { params(idempotency_key: String).void }
-      attr_writer :idempotency_key
+      sig { params(_: String).returns(String) }
+      def idempotency_key=(_)
+      end
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::EntityListParams::Status)) }
-      attr_reader :status
+      def status
+      end
 
-      sig { params(status: T.any(Increase::Models::EntityListParams::Status, Increase::Util::AnyHash)).void }
-      attr_writer :status
+      sig { params(_: Increase::Models::EntityListParams::Status).returns(Increase::Models::EntityListParams::Status) }
+      def status=(_)
+      end
 
       sig do
         params(
-          created_at: T.any(Increase::Models::EntityListParams::CreatedAt, Increase::Util::AnyHash),
+          created_at: Increase::Models::EntityListParams::CreatedAt,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: T.any(Increase::Models::EntityListParams::Status, Increase::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          status: Increase::Models::EntityListParams::Status,
+          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end
@@ -77,34 +90,42 @@ module Increase
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :after
+        def after
+        end
 
-        sig { params(after: Time).void }
-        attr_writer :after
+        sig { params(_: Time).returns(Time) }
+        def after=(_)
+        end
 
         # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :before
+        def before
+        end
 
-        sig { params(before: Time).void }
-        attr_writer :before
+        sig { params(_: Time).returns(Time) }
+        def before=(_)
+        end
 
         # Return results on or after this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :on_or_after
+        def on_or_after
+        end
 
-        sig { params(on_or_after: Time).void }
-        attr_writer :on_or_after
+        sig { params(_: Time).returns(Time) }
+        def on_or_after=(_)
+        end
 
         # Return results on or before this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
-        attr_reader :on_or_before
+        def on_or_before
+        end
 
-        sig { params(on_or_before: Time).void }
-        attr_writer :on_or_before
+        sig { params(_: Time).returns(Time) }
+        def on_or_before=(_)
+        end
 
         sig do
           params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
@@ -121,40 +142,35 @@ module Increase
         # Filter Entities for those with the specified status or statuses. For GET
         #   requests, this should be encoded as a comma-delimited string, such as
         #   `?in=one,two,three`.
-        sig { returns(T.nilable(T::Array[Increase::Models::EntityListParams::Status::In::OrSymbol])) }
-        attr_reader :in_
+        sig { returns(T.nilable(T::Array[Symbol])) }
+        def in_
+        end
 
-        sig { params(in_: T::Array[Increase::Models::EntityListParams::Status::In::OrSymbol]).void }
-        attr_writer :in_
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        def in_=(_)
+        end
 
-        sig { params(in_: T::Array[Increase::Models::EntityListParams::Status::In::OrSymbol]).returns(T.attached_class) }
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
         def self.new(in_: nil)
         end
 
-        sig { override.returns({in_: T::Array[Increase::Models::EntityListParams::Status::In::OrSymbol]}) }
+        sig { override.returns({in_: T::Array[Symbol]}) }
         def to_hash
         end
 
-        module In
-          extend Increase::Enum
+        class In < Increase::Enum
+          abstract!
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EntityListParams::Status::In) }
-          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::EntityListParams::Status::In::TaggedSymbol) }
+          Value = type_template(:out) { {fixed: Symbol} }
 
           # The entity is active.
-          ACTIVE = T.let(:active, Increase::Models::EntityListParams::Status::In::TaggedSymbol)
+          ACTIVE = :active
 
           # The entity is archived, and can no longer be used to create accounts.
-          ARCHIVED = T.let(:archived, Increase::Models::EntityListParams::Status::In::TaggedSymbol)
+          ARCHIVED = :archived
 
           # The entity is temporarily disabled and cannot be used for financial activity.
-          DISABLED = T.let(:disabled, Increase::Models::EntityListParams::Status::In::TaggedSymbol)
-
-          class << self
-            sig { override.returns(T::Array[Increase::Models::EntityListParams::Status::In::TaggedSymbol]) }
-            def values
-            end
-          end
+          DISABLED = :disabled
         end
       end
     end

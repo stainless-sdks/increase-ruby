@@ -47,10 +47,10 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # This indicates if checks can be sent to the Lockbox.
-      module Status
-        extend Increase::Enum
-
+      class Status < Increase::Enum
         # This Lockbox is active. Checks mailed to it will be deposited automatically.
         ACTIVE = :active
 
@@ -58,12 +58,6 @@ module Increase
         INACTIVE = :inactive
 
         finalize!
-
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
       end
     end
   end
