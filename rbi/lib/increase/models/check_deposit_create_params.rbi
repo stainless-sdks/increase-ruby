@@ -8,48 +8,26 @@ module Increase
 
       # The identifier for the Account to deposit the check in.
       sig { returns(String) }
-      def account_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_id=(_)
-      end
+      attr_accessor :account_id
 
       # The deposit amount in USD cents.
       sig { returns(Integer) }
-      def amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       # The File containing the check's back image.
       sig { returns(String) }
-      def back_image_file_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def back_image_file_id=(_)
-      end
+      attr_accessor :back_image_file_id
 
       # The File containing the check's front image.
       sig { returns(String) }
-      def front_image_file_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def front_image_file_id=(_)
-      end
+      attr_accessor :front_image_file_id
 
       # The description you choose to give the Check Deposit, for display purposes only.
       sig { returns(T.nilable(String)) }
-      def description
-      end
+      attr_reader :description
 
-      sig { params(_: String).returns(String) }
-      def description=(_)
-      end
+      sig { params(description: String).void }
+      attr_writer :description
 
       sig do
         params(

@@ -5,75 +5,34 @@ module Increase
     class OAuthConnection < Increase::BaseModel
       # The OAuth Connection's identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
       #   Connection was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
       #   Connection was deleted.
       sig { returns(T.nilable(Time)) }
-      def deleted_at
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def deleted_at=(_)
-      end
+      attr_accessor :deleted_at
 
       # The identifier of the Group that has authorized your OAuth application.
       sig { returns(String) }
-      def group_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def group_id=(_)
-      end
+      attr_accessor :group_id
 
       # The identifier of the OAuth application this connection is for.
       sig { returns(String) }
-      def oauth_application_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def oauth_application_id=(_)
-      end
+      attr_accessor :oauth_application_id
 
       # Whether the connection is active.
       sig { returns(Increase::Models::OAuthConnection::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Increase::Models::OAuthConnection::Status::TaggedSymbol)
-          .returns(Increase::Models::OAuthConnection::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
       #   `oauth_connection`.
       sig { returns(Increase::Models::OAuthConnection::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::OAuthConnection::Type::TaggedSymbol)
-          .returns(Increase::Models::OAuthConnection::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # When a user authorizes your OAuth application, an OAuth Connection object is
       #   created. Learn more about OAuth

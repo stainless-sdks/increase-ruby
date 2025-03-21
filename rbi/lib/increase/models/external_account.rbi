@@ -5,121 +5,51 @@ module Increase
     class ExternalAccount < Increase::BaseModel
       # The External Account's identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The type of entity that owns the External Account.
       sig { returns(Increase::Models::ExternalAccount::AccountHolder::TaggedSymbol) }
-      def account_holder
-      end
-
-      sig do
-        params(_: Increase::Models::ExternalAccount::AccountHolder::TaggedSymbol)
-          .returns(Increase::Models::ExternalAccount::AccountHolder::TaggedSymbol)
-      end
-      def account_holder=(_)
-      end
+      attr_accessor :account_holder
 
       # The destination account number.
       sig { returns(String) }
-      def account_number
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_number=(_)
-      end
+      attr_accessor :account_number
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
       #   the External Account was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # The External Account's description for display purposes.
       sig { returns(String) }
-      def description
-      end
-
-      sig { params(_: String).returns(String) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # The type of the account to which the transfer will be sent.
       sig { returns(Increase::Models::ExternalAccount::Funding::TaggedSymbol) }
-      def funding
-      end
-
-      sig do
-        params(_: Increase::Models::ExternalAccount::Funding::TaggedSymbol)
-          .returns(Increase::Models::ExternalAccount::Funding::TaggedSymbol)
-      end
-      def funding=(_)
-      end
+      attr_accessor :funding
 
       # The idempotency key you chose for this object. This value is unique across
       #   Increase and is used to ensure that a request is only processed once. Learn more
       #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      def idempotency_key
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def idempotency_key=(_)
-      end
+      attr_accessor :idempotency_key
 
       # The American Bankers' Association (ABA) Routing Transit Number (RTN).
       sig { returns(String) }
-      def routing_number
-      end
-
-      sig { params(_: String).returns(String) }
-      def routing_number=(_)
-      end
+      attr_accessor :routing_number
 
       # The External Account's status.
       sig { returns(Increase::Models::ExternalAccount::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Increase::Models::ExternalAccount::Status::TaggedSymbol)
-          .returns(Increase::Models::ExternalAccount::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
       #   `external_account`.
       sig { returns(Increase::Models::ExternalAccount::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::ExternalAccount::Type::TaggedSymbol)
-          .returns(Increase::Models::ExternalAccount::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # If you have verified ownership of the External Account.
       sig { returns(Increase::Models::ExternalAccount::VerificationStatus::TaggedSymbol) }
-      def verification_status
-      end
-
-      sig do
-        params(_: Increase::Models::ExternalAccount::VerificationStatus::TaggedSymbol)
-          .returns(Increase::Models::ExternalAccount::VerificationStatus::TaggedSymbol)
-      end
-      def verification_status=(_)
-      end
+      attr_accessor :verification_status
 
       # External Accounts represent accounts at financial institutions other than
       #   Increase. You can use this API to store their details for reuse.

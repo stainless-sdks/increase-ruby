@@ -4,112 +4,85 @@ module Increase
   module Resources
     class Simulations
       sig { returns(Increase::Resources::Simulations::InterestPayments) }
-      def interest_payments
-      end
+      attr_reader :interest_payments
 
       sig { returns(Increase::Resources::Simulations::CardAuthorizations) }
-      def card_authorizations
-      end
+      attr_reader :card_authorizations
 
       sig { returns(Increase::Resources::Simulations::CardAuthorizationExpirations) }
-      def card_authorization_expirations
-      end
+      attr_reader :card_authorization_expirations
 
       sig { returns(Increase::Resources::Simulations::CardSettlements) }
-      def card_settlements
-      end
+      attr_reader :card_settlements
 
       sig { returns(Increase::Resources::Simulations::CardReversals) }
-      def card_reversals
-      end
+      attr_reader :card_reversals
 
       sig { returns(Increase::Resources::Simulations::CardIncrements) }
-      def card_increments
-      end
+      attr_reader :card_increments
 
       sig { returns(Increase::Resources::Simulations::CardFuelConfirmations) }
-      def card_fuel_confirmations
-      end
+      attr_reader :card_fuel_confirmations
 
       sig { returns(Increase::Resources::Simulations::CardRefunds) }
-      def card_refunds
-      end
+      attr_reader :card_refunds
 
       sig { returns(Increase::Resources::Simulations::CardDisputes) }
-      def card_disputes
-      end
+      attr_reader :card_disputes
 
       sig { returns(Increase::Resources::Simulations::PhysicalCards) }
-      def physical_cards
-      end
+      attr_reader :physical_cards
 
       sig { returns(Increase::Resources::Simulations::DigitalWalletTokenRequests) }
-      def digital_wallet_token_requests
-      end
+      attr_reader :digital_wallet_token_requests
 
       sig { returns(Increase::Resources::Simulations::InboundFundsHolds) }
-      def inbound_funds_holds
-      end
+      attr_reader :inbound_funds_holds
 
       sig { returns(Increase::Resources::Simulations::AccountTransfers) }
-      def account_transfers
-      end
+      attr_reader :account_transfers
 
       sig { returns(Increase::Resources::Simulations::ACHTransfers) }
-      def ach_transfers
-      end
+      attr_reader :ach_transfers
 
       sig { returns(Increase::Resources::Simulations::InboundACHTransfers) }
-      def inbound_ach_transfers
-      end
+      attr_reader :inbound_ach_transfers
 
       sig { returns(Increase::Resources::Simulations::WireTransfers) }
-      def wire_transfers
-      end
+      attr_reader :wire_transfers
 
       sig { returns(Increase::Resources::Simulations::InboundWireTransfers) }
-      def inbound_wire_transfers
-      end
+      attr_reader :inbound_wire_transfers
 
       sig { returns(Increase::Resources::Simulations::InboundWireDrawdownRequests) }
-      def inbound_wire_drawdown_requests
-      end
+      attr_reader :inbound_wire_drawdown_requests
 
       sig { returns(Increase::Resources::Simulations::CheckTransfers) }
-      def check_transfers
-      end
+      attr_reader :check_transfers
 
       sig { returns(Increase::Resources::Simulations::InboundCheckDeposits) }
-      def inbound_check_deposits
-      end
+      attr_reader :inbound_check_deposits
 
       sig { returns(Increase::Resources::Simulations::RealTimePaymentsTransfers) }
-      def real_time_payments_transfers
-      end
+      attr_reader :real_time_payments_transfers
 
       sig { returns(Increase::Resources::Simulations::InboundRealTimePaymentsTransfers) }
-      def inbound_real_time_payments_transfers
-      end
+      attr_reader :inbound_real_time_payments_transfers
 
       sig { returns(Increase::Resources::Simulations::CheckDeposits) }
-      def check_deposits
-      end
+      attr_reader :check_deposits
 
       sig { returns(Increase::Resources::Simulations::InboundMailItems) }
-      def inbound_mail_items
-      end
+      attr_reader :inbound_mail_items
 
       sig { returns(Increase::Resources::Simulations::Programs) }
-      def programs
-      end
+      attr_reader :programs
 
       sig { returns(Increase::Resources::Simulations::AccountStatements) }
-      def account_statements
-      end
+      attr_reader :account_statements
 
       sig { returns(Increase::Resources::Simulations::Documents) }
-      def documents
-      end
+      attr_reader :documents
 
       sig { params(client: Increase::Client).returns(T.attached_class) }
       def self.new(client:)

@@ -5,64 +5,29 @@ module Increase
     class Event < Increase::BaseModel
       # The Event identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The identifier of the object that generated this Event.
       sig { returns(String) }
-      def associated_object_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def associated_object_id=(_)
-      end
+      attr_accessor :associated_object_id
 
       # The type of the object that generated this Event.
       sig { returns(String) }
-      def associated_object_type
-      end
-
-      sig { params(_: String).returns(String) }
-      def associated_object_type=(_)
-      end
+      attr_accessor :associated_object_type
 
       # The category of the Event. We may add additional possible values for this enum
       #   over time; your application should be able to handle such additions gracefully.
       sig { returns(Increase::Models::Event::Category::TaggedSymbol) }
-      def category
-      end
-
-      sig do
-        params(_: Increase::Models::Event::Category::TaggedSymbol)
-          .returns(Increase::Models::Event::Category::TaggedSymbol)
-      end
-      def category=(_)
-      end
+      attr_accessor :category
 
       # The time the Event was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # A constant representing the object's type. For this resource it will always be
       #   `event`.
       sig { returns(Increase::Models::Event::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::Event::Type::TaggedSymbol).returns(Increase::Models::Event::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Events are records of things that happened to objects at Increase. Events are
       #   accessible via the List Events endpoint and can be delivered to your application

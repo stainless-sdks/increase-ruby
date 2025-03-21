@@ -10,21 +10,11 @@ module Increase
         # The amount of the fuel_confirmation in minor units in the card authorization's
         #   currency.
         sig { returns(Integer) }
-        def amount
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def amount=(_)
-        end
+        attr_accessor :amount
 
         # The identifier of the Card Payment to create a fuel_confirmation on.
         sig { returns(String) }
-        def card_payment_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def card_payment_id=(_)
-        end
+        attr_accessor :card_payment_id
 
         sig do
           params(

@@ -10,15 +10,10 @@ module Increase
         # The reason why the Federal Reserve or destination bank returned this transfer.
         #   Defaults to `no_account`.
         sig { returns(T.nilable(Increase::Models::Simulations::ACHTransferReturnParams::Reason::OrSymbol)) }
-        def reason
-        end
+        attr_reader :reason
 
-        sig do
-          params(_: Increase::Models::Simulations::ACHTransferReturnParams::Reason::OrSymbol)
-            .returns(Increase::Models::Simulations::ACHTransferReturnParams::Reason::OrSymbol)
-        end
-        def reason=(_)
-        end
+        sig { params(reason: Increase::Models::Simulations::ACHTransferReturnParams::Reason::OrSymbol).void }
+        attr_writer :reason
 
         sig do
           params(

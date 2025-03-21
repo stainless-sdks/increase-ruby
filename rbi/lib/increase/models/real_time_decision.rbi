@@ -5,143 +5,90 @@ module Increase
     class RealTimeDecision < Increase::BaseModel
       # The Real-Time Decision identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # Fields related to a 3DS authentication attempt.
       sig { returns(T.nilable(Increase::Models::RealTimeDecision::CardAuthentication)) }
-      def card_authentication
-      end
+      attr_reader :card_authentication
 
       sig do
         params(
-          _: T.nilable(T.any(Increase::Models::RealTimeDecision::CardAuthentication, Increase::Util::AnyHash))
+          card_authentication: T.nilable(T.any(Increase::Models::RealTimeDecision::CardAuthentication, Increase::Util::AnyHash))
         )
-          .returns(T.nilable(T.any(Increase::Models::RealTimeDecision::CardAuthentication, Increase::Util::AnyHash)))
+          .void
       end
-      def card_authentication=(_)
-      end
+      attr_writer :card_authentication
 
       # Fields related to a 3DS authentication attempt.
       sig { returns(T.nilable(Increase::Models::RealTimeDecision::CardAuthenticationChallenge)) }
-      def card_authentication_challenge
-      end
+      attr_reader :card_authentication_challenge
 
       sig do
         params(
-          _: T.nilable(T.any(Increase::Models::RealTimeDecision::CardAuthenticationChallenge, Increase::Util::AnyHash))
+          card_authentication_challenge: T.nilable(T.any(Increase::Models::RealTimeDecision::CardAuthenticationChallenge, Increase::Util::AnyHash))
         )
-          .returns(
-            T.nilable(T.any(Increase::Models::RealTimeDecision::CardAuthenticationChallenge, Increase::Util::AnyHash))
-          )
+          .void
       end
-      def card_authentication_challenge=(_)
-      end
+      attr_writer :card_authentication_challenge
 
       # Fields related to a card authorization.
       sig { returns(T.nilable(Increase::Models::RealTimeDecision::CardAuthorization)) }
-      def card_authorization
-      end
+      attr_reader :card_authorization
 
       sig do
         params(
-          _: T.nilable(T.any(Increase::Models::RealTimeDecision::CardAuthorization, Increase::Util::AnyHash))
+          card_authorization: T.nilable(T.any(Increase::Models::RealTimeDecision::CardAuthorization, Increase::Util::AnyHash))
         )
-          .returns(T.nilable(T.any(Increase::Models::RealTimeDecision::CardAuthorization, Increase::Util::AnyHash)))
+          .void
       end
-      def card_authorization=(_)
-      end
+      attr_writer :card_authorization
 
       # The category of the Real-Time Decision.
       sig { returns(Increase::Models::RealTimeDecision::Category::TaggedSymbol) }
-      def category
-      end
-
-      sig do
-        params(_: Increase::Models::RealTimeDecision::Category::TaggedSymbol)
-          .returns(Increase::Models::RealTimeDecision::Category::TaggedSymbol)
-      end
-      def category=(_)
-      end
+      attr_accessor :category
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
       #   the Real-Time Decision was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # Fields related to a digital wallet authentication attempt.
       sig { returns(T.nilable(Increase::Models::RealTimeDecision::DigitalWalletAuthentication)) }
-      def digital_wallet_authentication
-      end
+      attr_reader :digital_wallet_authentication
 
       sig do
         params(
-          _: T.nilable(T.any(Increase::Models::RealTimeDecision::DigitalWalletAuthentication, Increase::Util::AnyHash))
+          digital_wallet_authentication: T.nilable(T.any(Increase::Models::RealTimeDecision::DigitalWalletAuthentication, Increase::Util::AnyHash))
         )
-          .returns(
-            T.nilable(T.any(Increase::Models::RealTimeDecision::DigitalWalletAuthentication, Increase::Util::AnyHash))
-          )
+          .void
       end
-      def digital_wallet_authentication=(_)
-      end
+      attr_writer :digital_wallet_authentication
 
       # Fields related to a digital wallet token provisioning attempt.
       sig { returns(T.nilable(Increase::Models::RealTimeDecision::DigitalWalletToken)) }
-      def digital_wallet_token
-      end
+      attr_reader :digital_wallet_token
 
       sig do
         params(
-          _: T.nilable(T.any(Increase::Models::RealTimeDecision::DigitalWalletToken, Increase::Util::AnyHash))
+          digital_wallet_token: T.nilable(T.any(Increase::Models::RealTimeDecision::DigitalWalletToken, Increase::Util::AnyHash))
         )
-          .returns(T.nilable(T.any(Increase::Models::RealTimeDecision::DigitalWalletToken, Increase::Util::AnyHash)))
+          .void
       end
-      def digital_wallet_token=(_)
-      end
+      attr_writer :digital_wallet_token
 
       # The status of the Real-Time Decision.
       sig { returns(Increase::Models::RealTimeDecision::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Increase::Models::RealTimeDecision::Status::TaggedSymbol)
-          .returns(Increase::Models::RealTimeDecision::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
       #   your application can no longer respond to the Real-Time Decision.
       sig { returns(Time) }
-      def timeout_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def timeout_at=(_)
-      end
+      attr_accessor :timeout_at
 
       # A constant representing the object's type. For this resource it will always be
       #   `real_time_decision`.
       sig { returns(Increase::Models::RealTimeDecision::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::RealTimeDecision::Type::TaggedSymbol)
-          .returns(Increase::Models::RealTimeDecision::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Real Time Decisions are created when your application needs to take action in
       #   real-time to some event such as a card authorization. For more information, see
@@ -202,43 +149,20 @@ module Increase
       class CardAuthentication < Increase::BaseModel
         # The identifier of the Account the card belongs to.
         sig { returns(String) }
-        def account_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def account_id=(_)
-        end
+        attr_accessor :account_id
 
         # The identifier of the Card that is being tokenized.
         sig { returns(String) }
-        def card_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def card_id=(_)
-        end
+        attr_accessor :card_id
 
         # Whether or not the authentication attempt was approved.
         sig { returns(T.nilable(Increase::Models::RealTimeDecision::CardAuthentication::Decision::TaggedSymbol)) }
-        def decision
-        end
-
-        sig do
-          params(_: T.nilable(Increase::Models::RealTimeDecision::CardAuthentication::Decision::TaggedSymbol))
-            .returns(T.nilable(Increase::Models::RealTimeDecision::CardAuthentication::Decision::TaggedSymbol))
-        end
-        def decision=(_)
-        end
+        attr_accessor :decision
 
         # The identifier of the Card Payment this authentication attempt will belong to.
         #   Available in the API once the card authentication has completed.
         sig { returns(String) }
-        def upcoming_card_payment_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def upcoming_card_payment_id=(_)
-        end
+        attr_accessor :upcoming_card_payment_id
 
         # Fields related to a 3DS authentication attempt.
         sig do
@@ -297,54 +221,24 @@ module Increase
       class CardAuthenticationChallenge < Increase::BaseModel
         # The identifier of the Account the card belongs to.
         sig { returns(String) }
-        def account_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def account_id=(_)
-        end
+        attr_accessor :account_id
 
         # The identifier of the Card that is being tokenized.
         sig { returns(String) }
-        def card_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def card_id=(_)
-        end
+        attr_accessor :card_id
 
         # The identifier of the Card Payment this authentication challenge attempt belongs
         #   to.
         sig { returns(String) }
-        def card_payment_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def card_payment_id=(_)
-        end
+        attr_accessor :card_payment_id
 
         # The one-time code delivered to the cardholder.
         sig { returns(String) }
-        def one_time_code
-        end
-
-        sig { params(_: String).returns(String) }
-        def one_time_code=(_)
-        end
+        attr_accessor :one_time_code
 
         # Whether or not the challenge was delivered to the cardholder.
         sig { returns(T.nilable(Increase::Models::RealTimeDecision::CardAuthenticationChallenge::Result::TaggedSymbol)) }
-        def result
-        end
-
-        sig do
-          params(
-            _: T.nilable(Increase::Models::RealTimeDecision::CardAuthenticationChallenge::Result::TaggedSymbol)
-          )
-            .returns(T.nilable(Increase::Models::RealTimeDecision::CardAuthenticationChallenge::Result::TaggedSymbol))
-        end
-        def result=(_)
-        end
+        attr_accessor :result
 
         # Fields related to a 3DS authentication attempt.
         sig do
@@ -406,280 +300,150 @@ module Increase
       class CardAuthorization < Increase::BaseModel
         # The identifier of the Account the authorization will debit.
         sig { returns(String) }
-        def account_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def account_id=(_)
-        end
+        attr_accessor :account_id
 
         # The identifier of the Card that is being authorized.
         sig { returns(String) }
-        def card_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def card_id=(_)
-        end
+        attr_accessor :card_id
 
         # Whether or not the authorization was approved.
         sig { returns(T.nilable(Increase::Models::RealTimeDecision::CardAuthorization::Decision::TaggedSymbol)) }
-        def decision
-        end
-
-        sig do
-          params(_: T.nilable(Increase::Models::RealTimeDecision::CardAuthorization::Decision::TaggedSymbol))
-            .returns(T.nilable(Increase::Models::RealTimeDecision::CardAuthorization::Decision::TaggedSymbol))
-        end
-        def decision=(_)
-        end
+        attr_accessor :decision
 
         # If the authorization was made via a Digital Wallet Token (such as an Apple Pay
         #   purchase), the identifier of the token that was used.
         sig { returns(T.nilable(String)) }
-        def digital_wallet_token_id
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def digital_wallet_token_id=(_)
-        end
+        attr_accessor :digital_wallet_token_id
 
         # The direction describes the direction the funds will move, either from the
         #   cardholder to the merchant or from the merchant to the cardholder.
         sig { returns(Increase::Models::RealTimeDecision::CardAuthorization::Direction::TaggedSymbol) }
-        def direction
-        end
-
-        sig do
-          params(_: Increase::Models::RealTimeDecision::CardAuthorization::Direction::TaggedSymbol)
-            .returns(Increase::Models::RealTimeDecision::CardAuthorization::Direction::TaggedSymbol)
-        end
-        def direction=(_)
-        end
+        attr_accessor :direction
 
         # The merchant identifier (commonly abbreviated as MID) of the merchant the card
         #   is transacting with.
         sig { returns(String) }
-        def merchant_acceptor_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def merchant_acceptor_id=(_)
-        end
+        attr_accessor :merchant_acceptor_id
 
         # The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
         #   card is transacting with.
         sig { returns(String) }
-        def merchant_category_code
-        end
-
-        sig { params(_: String).returns(String) }
-        def merchant_category_code=(_)
-        end
+        attr_accessor :merchant_category_code
 
         # The city the merchant resides in.
         sig { returns(T.nilable(String)) }
-        def merchant_city
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def merchant_city=(_)
-        end
+        attr_accessor :merchant_city
 
         # The country the merchant resides in.
         sig { returns(String) }
-        def merchant_country
-        end
-
-        sig { params(_: String).returns(String) }
-        def merchant_country=(_)
-        end
+        attr_accessor :merchant_country
 
         # The merchant descriptor of the merchant the card is transacting with.
         sig { returns(String) }
-        def merchant_descriptor
-        end
-
-        sig { params(_: String).returns(String) }
-        def merchant_descriptor=(_)
-        end
+        attr_accessor :merchant_descriptor
 
         # The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
         #   ZIP code, where the first 5 and last 4 are separated by a dash.
         sig { returns(T.nilable(String)) }
-        def merchant_postal_code
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def merchant_postal_code=(_)
-        end
+        attr_accessor :merchant_postal_code
 
         # The state the merchant resides in.
         sig { returns(T.nilable(String)) }
-        def merchant_state
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def merchant_state=(_)
-        end
+        attr_accessor :merchant_state
 
         # Fields specific to the `network`.
         sig { returns(Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails) }
-        def network_details
-        end
+        attr_reader :network_details
 
         sig do
           params(
-            _: T.any(Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails, Increase::Util::AnyHash)
+            network_details: T.any(Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails, Increase::Util::AnyHash)
           )
-            .returns(
-              T.any(Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails, Increase::Util::AnyHash)
-            )
+            .void
         end
-        def network_details=(_)
-        end
+        attr_writer :network_details
 
         # Network-specific identifiers for a specific request or transaction.
         sig { returns(Increase::Models::RealTimeDecision::CardAuthorization::NetworkIdentifiers) }
-        def network_identifiers
-        end
+        attr_reader :network_identifiers
 
         sig do
           params(
-            _: T.any(Increase::Models::RealTimeDecision::CardAuthorization::NetworkIdentifiers, Increase::Util::AnyHash)
+            network_identifiers: T.any(Increase::Models::RealTimeDecision::CardAuthorization::NetworkIdentifiers, Increase::Util::AnyHash)
           )
-            .returns(
-              T.any(Increase::Models::RealTimeDecision::CardAuthorization::NetworkIdentifiers, Increase::Util::AnyHash)
-            )
+            .void
         end
-        def network_identifiers=(_)
-        end
+        attr_writer :network_identifiers
 
         # The risk score generated by the card network. For Visa this is the Visa Advanced
         #   Authorization risk score, from 0 to 99, where 99 is the riskiest.
         sig { returns(T.nilable(Integer)) }
-        def network_risk_score
-        end
-
-        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-        def network_risk_score=(_)
-        end
+        attr_accessor :network_risk_score
 
         # If the authorization was made in-person with a physical card, the Physical Card
         #   that was used.
         sig { returns(T.nilable(String)) }
-        def physical_card_id
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def physical_card_id=(_)
-        end
+        attr_accessor :physical_card_id
 
         # The amount of the attempted authorization in the currency the card user sees at
         #   the time of purchase, in the minor unit of that currency. For dollars, for
         #   example, this is cents.
         sig { returns(Integer) }
-        def presentment_amount
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def presentment_amount=(_)
-        end
+        attr_accessor :presentment_amount
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the currency the
         #   user sees at the time of purchase.
         sig { returns(String) }
-        def presentment_currency
-        end
-
-        sig { params(_: String).returns(String) }
-        def presentment_currency=(_)
-        end
+        attr_accessor :presentment_currency
 
         # The processing category describes the intent behind the authorization, such as
         #   whether it was used for bill payments or an automatic fuel dispenser.
         sig { returns(Increase::Models::RealTimeDecision::CardAuthorization::ProcessingCategory::TaggedSymbol) }
-        def processing_category
-        end
-
-        sig do
-          params(_: Increase::Models::RealTimeDecision::CardAuthorization::ProcessingCategory::TaggedSymbol)
-            .returns(Increase::Models::RealTimeDecision::CardAuthorization::ProcessingCategory::TaggedSymbol)
-        end
-        def processing_category=(_)
-        end
+        attr_accessor :processing_category
 
         # Fields specific to the type of request, such as an incremental authorization.
         sig { returns(Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails) }
-        def request_details
-        end
+        attr_reader :request_details
 
         sig do
           params(
-            _: T.any(Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails, Increase::Util::AnyHash)
+            request_details: T.any(Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails, Increase::Util::AnyHash)
           )
-            .returns(
-              T.any(Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails, Increase::Util::AnyHash)
-            )
+            .void
         end
-        def request_details=(_)
-        end
+        attr_writer :request_details
 
         # The amount of the attempted authorization in the currency it will be settled in.
         #   This currency is the same as that of the Account the card belongs to.
         sig { returns(Integer) }
-        def settlement_amount
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def settlement_amount=(_)
-        end
+        attr_accessor :settlement_amount
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the currency the
         #   transaction will be settled in.
         sig { returns(String) }
-        def settlement_currency
-        end
-
-        sig { params(_: String).returns(String) }
-        def settlement_currency=(_)
-        end
+        attr_accessor :settlement_currency
 
         # The terminal identifier (commonly abbreviated as TID) of the terminal the card
         #   is transacting with.
         sig { returns(T.nilable(String)) }
-        def terminal_id
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def terminal_id=(_)
-        end
+        attr_accessor :terminal_id
 
         # The identifier of the Card Payment this authorization will belong to. Available
         #   in the API once the card authorization has completed.
         sig { returns(String) }
-        def upcoming_card_payment_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def upcoming_card_payment_id=(_)
-        end
+        attr_accessor :upcoming_card_payment_id
 
         # Fields related to verification of cardholder-provided values.
         sig { returns(Increase::Models::RealTimeDecision::CardAuthorization::Verification) }
-        def verification
-        end
+        attr_reader :verification
 
         sig do
           params(
-            _: T.any(Increase::Models::RealTimeDecision::CardAuthorization::Verification, Increase::Util::AnyHash)
+            verification: T.any(Increase::Models::RealTimeDecision::CardAuthorization::Verification, Increase::Util::AnyHash)
           )
-            .returns(
-              T.any(Increase::Models::RealTimeDecision::CardAuthorization::Verification, Increase::Util::AnyHash)
-            )
+            .void
         end
-        def verification=(_)
-        end
+        attr_writer :verification
 
         # Fields related to a card authorization.
         sig do
@@ -825,41 +589,24 @@ module Increase
         class NetworkDetails < Increase::BaseModel
           # The payment network used to process this card authorization.
           sig { returns(Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category::TaggedSymbol) }
-          def category
-          end
-
-          sig do
-            params(_: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category::TaggedSymbol)
-              .returns(Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category::TaggedSymbol)
-          end
-          def category=(_)
-          end
+          attr_accessor :category
 
           # Fields specific to the `visa` network.
           sig { returns(T.nilable(Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa)) }
-          def visa
-          end
+          attr_reader :visa
 
           sig do
             params(
-              _: T.nilable(
+              visa: T.nilable(
                 T.any(
                   Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa,
                   Increase::Util::AnyHash
                 )
               )
             )
-              .returns(
-                T.nilable(
-                  T.any(
-                    Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa,
-                    Increase::Util::AnyHash
-                  )
-                )
-              )
+              .void
           end
-          def visa=(_)
-          end
+          attr_writer :visa
 
           # Fields specific to the `network`.
           sig do
@@ -933,23 +680,7 @@ module Increase
                 )
               )
             end
-            def electronic_commerce_indicator
-            end
-
-            sig do
-              params(
-                _: T.nilable(
-                  Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                )
-              )
-                .returns(
-                  T.nilable(
-                    Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                  )
-                )
-            end
-            def electronic_commerce_indicator=(_)
-            end
+            attr_accessor :electronic_commerce_indicator
 
             # The method used to enter the cardholder's primary account number and card
             #   expiration date.
@@ -960,23 +691,7 @@ module Increase
                 )
               )
             end
-            def point_of_service_entry_mode
-            end
-
-            sig do
-              params(
-                _: T.nilable(
-                  Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                )
-              )
-                .returns(
-                  T.nilable(
-                    Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                  )
-                )
-            end
-            def point_of_service_entry_mode=(_)
-            end
+            attr_accessor :point_of_service_entry_mode
 
             # Only present when `actioner: network`. Describes why a card authorization was
             #   approved or declined by Visa through stand-in processing.
@@ -987,23 +702,7 @@ module Increase
                 )
               )
             end
-            def stand_in_processing_reason
-            end
-
-            sig do
-              params(
-                _: T.nilable(
-                  Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                )
-              )
-                .returns(
-                  T.nilable(
-                    Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
-                )
-            end
-            def stand_in_processing_reason=(_)
-            end
+            attr_accessor :stand_in_processing_reason
 
             # Fields specific to the `visa` network.
             sig do
@@ -1318,32 +1017,17 @@ module Increase
           #   Expected to be unique per acquirer within a window of time. For some card
           #   networks the retrieval reference number includes the trace counter.
           sig { returns(T.nilable(String)) }
-          def retrieval_reference_number
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def retrieval_reference_number=(_)
-          end
+          attr_accessor :retrieval_reference_number
 
           # A counter used to verify an individual authorization. Expected to be unique per
           #   acquirer within a window of time.
           sig { returns(T.nilable(String)) }
-          def trace_number
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def trace_number=(_)
-          end
+          attr_accessor :trace_number
 
           # A globally unique transaction identifier provided by the card network, used
           #   across multiple life-cycle requests.
           sig { returns(T.nilable(String)) }
-          def transaction_id
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def transaction_id=(_)
-          end
+          attr_accessor :transaction_id
 
           # Network-specific identifiers for a specific request or transaction.
           sig do
@@ -1431,15 +1115,7 @@ module Increase
           # The type of this request (e.g., an initial authorization or an incremental
           #   authorization).
           sig { returns(Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category::TaggedSymbol) }
-          def category
-          end
-
-          sig do
-            params(_: Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category::TaggedSymbol)
-              .returns(Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category::TaggedSymbol)
-          end
-          def category=(_)
-          end
+          attr_accessor :category
 
           # Fields specific to the category `incremental_authorization`.
           sig do
@@ -1447,38 +1123,24 @@ module Increase
               T.nilable(Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization)
             )
           end
-          def incremental_authorization
-          end
+          attr_reader :incremental_authorization
 
           sig do
             params(
-              _: T.nilable(
+              incremental_authorization: T.nilable(
                 T.any(
                   Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization,
                   Increase::Util::AnyHash
                 )
               )
             )
-              .returns(
-                T.nilable(
-                  T.any(
-                    Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization,
-                    Increase::Util::AnyHash
-                  )
-                )
-              )
+              .void
           end
-          def incremental_authorization=(_)
-          end
+          attr_writer :incremental_authorization
 
           # Fields specific to the category `initial_authorization`.
           sig { returns(T.nilable(T.anything)) }
-          def initial_authorization
-          end
-
-          sig { params(_: T.nilable(T.anything)).returns(T.nilable(T.anything)) }
-          def initial_authorization=(_)
-          end
+          attr_accessor :initial_authorization
 
           # Fields specific to the type of request, such as an incremental authorization.
           sig do
@@ -1554,22 +1216,12 @@ module Increase
           class IncrementalAuthorization < Increase::BaseModel
             # The card payment for this authorization and increment.
             sig { returns(String) }
-            def card_payment_id
-            end
-
-            sig { params(_: String).returns(String) }
-            def card_payment_id=(_)
-            end
+            attr_accessor :card_payment_id
 
             # The identifier of the card authorization this request is attempting to
             #   increment.
             sig { returns(String) }
-            def original_card_authorization_id
-            end
-
-            sig { params(_: String).returns(String) }
-            def original_card_authorization_id=(_)
-            end
+            attr_accessor :original_card_authorization_id
 
             # Fields specific to the category `incremental_authorization`.
             sig do
@@ -1591,48 +1243,34 @@ module Increase
           # Fields related to verification of the Card Verification Code, a 3-digit code on
           #   the back of the card.
           sig { returns(Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode) }
-          def card_verification_code
-          end
+          attr_reader :card_verification_code
 
           sig do
             params(
-              _: T.any(
+              card_verification_code: T.any(
                 Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode,
                 Increase::Util::AnyHash
               )
             )
-              .returns(
-                T.any(
-                  Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode,
-                  Increase::Util::AnyHash
-                )
-              )
+              .void
           end
-          def card_verification_code=(_)
-          end
+          attr_writer :card_verification_code
 
           # Cardholder address provided in the authorization request and the address on file
           #   we verified it against.
           sig { returns(Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress) }
-          def cardholder_address
-          end
+          attr_reader :cardholder_address
 
           sig do
             params(
-              _: T.any(
+              cardholder_address: T.any(
                 Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress,
                 Increase::Util::AnyHash
               )
             )
-              .returns(
-                T.any(
-                  Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress,
-                  Increase::Util::AnyHash
-                )
-              )
+              .void
           end
-          def cardholder_address=(_)
-          end
+          attr_writer :cardholder_address
 
           # Fields related to verification of cardholder-provided values.
           sig do
@@ -1670,19 +1308,7 @@ module Increase
                 Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
               )
             end
-            def result
-            end
-
-            sig do
-              params(
-                _: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
-              )
-                .returns(
-                  Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
-                )
-            end
-            def result=(_)
-            end
+            attr_accessor :result
 
             # Fields related to verification of the Card Verification Code, a 3-digit code on
             #   the back of the card.
@@ -1761,40 +1387,20 @@ module Increase
           class CardholderAddress < Increase::BaseModel
             # Line 1 of the address on file for the cardholder.
             sig { returns(T.nilable(String)) }
-            def actual_line1
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def actual_line1=(_)
-            end
+            attr_accessor :actual_line1
 
             # The postal code of the address on file for the cardholder.
             sig { returns(T.nilable(String)) }
-            def actual_postal_code
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def actual_postal_code=(_)
-            end
+            attr_accessor :actual_postal_code
 
             # The cardholder address line 1 provided for verification in the authorization
             #   request.
             sig { returns(T.nilable(String)) }
-            def provided_line1
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def provided_line1=(_)
-            end
+            attr_accessor :provided_line1
 
             # The postal code provided for verification in the authorization request.
             sig { returns(T.nilable(String)) }
-            def provided_postal_code
-            end
-
-            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-            def provided_postal_code=(_)
-            end
+            attr_accessor :provided_postal_code
 
             # The address verification result returned to the card network.
             sig do
@@ -1802,19 +1408,7 @@ module Increase
                 Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
               )
             end
-            def result
-            end
-
-            sig do
-              params(
-                _: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
-              )
-                .returns(
-                  Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
-                )
-            end
-            def result=(_)
-            end
+            attr_accessor :result
 
             # Cardholder address provided in the authorization request and the address on file
             #   we verified it against.
@@ -1964,78 +1558,32 @@ module Increase
       class DigitalWalletAuthentication < Increase::BaseModel
         # The identifier of the Card that is being tokenized.
         sig { returns(String) }
-        def card_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def card_id=(_)
-        end
+        attr_accessor :card_id
 
         # The channel to send the card user their one-time passcode.
         sig { returns(Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel::TaggedSymbol) }
-        def channel
-        end
-
-        sig do
-          params(_: Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel::TaggedSymbol)
-            .returns(Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel::TaggedSymbol)
-        end
-        def channel=(_)
-        end
+        attr_accessor :channel
 
         # The digital wallet app being used.
         sig { returns(Increase::Models::RealTimeDecision::DigitalWalletAuthentication::DigitalWallet::TaggedSymbol) }
-        def digital_wallet
-        end
-
-        sig do
-          params(_: Increase::Models::RealTimeDecision::DigitalWalletAuthentication::DigitalWallet::TaggedSymbol)
-            .returns(Increase::Models::RealTimeDecision::DigitalWalletAuthentication::DigitalWallet::TaggedSymbol)
-        end
-        def digital_wallet=(_)
-        end
+        attr_accessor :digital_wallet
 
         # The email to send the one-time passcode to if `channel` is equal to `email`.
         sig { returns(T.nilable(String)) }
-        def email
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def email=(_)
-        end
+        attr_accessor :email
 
         # The one-time passcode to send the card user.
         sig { returns(String) }
-        def one_time_passcode
-        end
-
-        sig { params(_: String).returns(String) }
-        def one_time_passcode=(_)
-        end
+        attr_accessor :one_time_passcode
 
         # The phone number to send the one-time passcode to if `channel` is equal to
         #   `sms`.
         sig { returns(T.nilable(String)) }
-        def phone
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def phone=(_)
-        end
+        attr_accessor :phone
 
         # Whether your application successfully delivered the one-time passcode.
         sig { returns(T.nilable(Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Result::TaggedSymbol)) }
-        def result
-        end
-
-        sig do
-          params(
-            _: T.nilable(Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Result::TaggedSymbol)
-          )
-            .returns(T.nilable(Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Result::TaggedSymbol))
-        end
-        def result=(_)
-        end
+        attr_accessor :result
 
         # Fields related to a digital wallet authentication attempt.
         sig do
@@ -2181,48 +1729,22 @@ module Increase
       class DigitalWalletToken < Increase::BaseModel
         # The identifier of the Card that is being tokenized.
         sig { returns(String) }
-        def card_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def card_id=(_)
-        end
+        attr_accessor :card_id
 
         # The identifier of the Card Profile that was set via the real time decision. This
         #   will be null until the real time decision is responded to or if the real time
         #   decision did not set a card profile.
         sig { returns(T.nilable(String)) }
-        def card_profile_id
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def card_profile_id=(_)
-        end
+        attr_accessor :card_profile_id
 
         # Whether or not the provisioning request was approved. This will be null until
         #   the real time decision is responded to.
         sig { returns(T.nilable(Increase::Models::RealTimeDecision::DigitalWalletToken::Decision::TaggedSymbol)) }
-        def decision
-        end
-
-        sig do
-          params(_: T.nilable(Increase::Models::RealTimeDecision::DigitalWalletToken::Decision::TaggedSymbol))
-            .returns(T.nilable(Increase::Models::RealTimeDecision::DigitalWalletToken::Decision::TaggedSymbol))
-        end
-        def decision=(_)
-        end
+        attr_accessor :decision
 
         # The digital wallet app being used.
         sig { returns(Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet::TaggedSymbol) }
-        def digital_wallet
-        end
-
-        sig do
-          params(_: Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet::TaggedSymbol)
-            .returns(Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet::TaggedSymbol)
-        end
-        def digital_wallet=(_)
-        end
+        attr_accessor :digital_wallet
 
         # Fields related to a digital wallet token provisioning attempt.
         sig do

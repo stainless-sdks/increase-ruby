@@ -5,239 +5,108 @@ module Increase
     class InboundWireTransfer < Increase::BaseModel
       # The inbound wire transfer's identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The Account to which the transfer belongs.
       sig { returns(String) }
-      def account_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_id=(_)
-      end
+      attr_accessor :account_id
 
       # The identifier of the Account Number to which this transfer was sent.
       sig { returns(String) }
-      def account_number_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_number_id=(_)
-      end
+      attr_accessor :account_number_id
 
       # The amount in USD cents.
       sig { returns(Integer) }
-      def amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       # A free-form address field set by the sender.
       sig { returns(T.nilable(String)) }
-      def beneficiary_address_line1
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def beneficiary_address_line1=(_)
-      end
+      attr_accessor :beneficiary_address_line1
 
       # A free-form address field set by the sender.
       sig { returns(T.nilable(String)) }
-      def beneficiary_address_line2
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def beneficiary_address_line2=(_)
-      end
+      attr_accessor :beneficiary_address_line2
 
       # A free-form address field set by the sender.
       sig { returns(T.nilable(String)) }
-      def beneficiary_address_line3
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def beneficiary_address_line3=(_)
-      end
+      attr_accessor :beneficiary_address_line3
 
       # A name set by the sender.
       sig { returns(T.nilable(String)) }
-      def beneficiary_name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def beneficiary_name=(_)
-      end
+      attr_accessor :beneficiary_name
 
       # A free-form reference string set by the sender, to help identify the transfer.
       sig { returns(T.nilable(String)) }
-      def beneficiary_reference
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def beneficiary_reference=(_)
-      end
+      attr_accessor :beneficiary_reference
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
       #   the inbound wire transfer was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # An Increase-constructed description of the transfer.
       sig { returns(String) }
-      def description
-      end
-
-      sig { params(_: String).returns(String) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # A unique identifier available to the originating and receiving banks, commonly
       #   abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
       #   service and is helpful when debugging wires with the originating bank.
       sig { returns(T.nilable(String)) }
-      def input_message_accountability_data
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def input_message_accountability_data=(_)
-      end
+      attr_accessor :input_message_accountability_data
 
       # The address of the wire originator, set by the sending bank.
       sig { returns(T.nilable(String)) }
-      def originator_address_line1
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def originator_address_line1=(_)
-      end
+      attr_accessor :originator_address_line1
 
       # The address of the wire originator, set by the sending bank.
       sig { returns(T.nilable(String)) }
-      def originator_address_line2
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def originator_address_line2=(_)
-      end
+      attr_accessor :originator_address_line2
 
       # The address of the wire originator, set by the sending bank.
       sig { returns(T.nilable(String)) }
-      def originator_address_line3
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def originator_address_line3=(_)
-      end
+      attr_accessor :originator_address_line3
 
       # The originator of the wire, set by the sending bank.
       sig { returns(T.nilable(String)) }
-      def originator_name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def originator_name=(_)
-      end
+      attr_accessor :originator_name
 
       # The American Banking Association (ABA) routing number of the bank originating
       #   the transfer.
       sig { returns(T.nilable(String)) }
-      def originator_routing_number
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def originator_routing_number=(_)
-      end
+      attr_accessor :originator_routing_number
 
       # An Increase-created concatenation of the Originator-to-Beneficiary lines.
       sig { returns(T.nilable(String)) }
-      def originator_to_beneficiary_information
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def originator_to_beneficiary_information=(_)
-      end
+      attr_accessor :originator_to_beneficiary_information
 
       # A free-form message set by the wire originator.
       sig { returns(T.nilable(String)) }
-      def originator_to_beneficiary_information_line1
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def originator_to_beneficiary_information_line1=(_)
-      end
+      attr_accessor :originator_to_beneficiary_information_line1
 
       # A free-form message set by the wire originator.
       sig { returns(T.nilable(String)) }
-      def originator_to_beneficiary_information_line2
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def originator_to_beneficiary_information_line2=(_)
-      end
+      attr_accessor :originator_to_beneficiary_information_line2
 
       # A free-form message set by the wire originator.
       sig { returns(T.nilable(String)) }
-      def originator_to_beneficiary_information_line3
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def originator_to_beneficiary_information_line3=(_)
-      end
+      attr_accessor :originator_to_beneficiary_information_line3
 
       # A free-form message set by the wire originator.
       sig { returns(T.nilable(String)) }
-      def originator_to_beneficiary_information_line4
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def originator_to_beneficiary_information_line4=(_)
-      end
+      attr_accessor :originator_to_beneficiary_information_line4
 
       # The sending bank's reference number for the wire transfer.
       sig { returns(T.nilable(String)) }
-      def sender_reference
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def sender_reference=(_)
-      end
+      attr_accessor :sender_reference
 
       # The status of the transfer.
       sig { returns(Increase::Models::InboundWireTransfer::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Increase::Models::InboundWireTransfer::Status::TaggedSymbol)
-          .returns(Increase::Models::InboundWireTransfer::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_wire_transfer`.
       sig { returns(Increase::Models::InboundWireTransfer::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::InboundWireTransfer::Type::TaggedSymbol)
-          .returns(Increase::Models::InboundWireTransfer::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # An Inbound Wire Transfer is a wire transfer initiated outside of Increase to
       #   your account.

@@ -5,119 +5,58 @@ module Increase
     class AccountNumber < Increase::BaseModel
       # The Account Number identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The identifier for the account this Account Number belongs to.
       sig { returns(String) }
-      def account_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_id=(_)
-      end
+      attr_accessor :account_id
 
       # The account number.
       sig { returns(String) }
-      def account_number
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_number=(_)
-      end
+      attr_accessor :account_number
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
       #   Number was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # The idempotency key you chose for this object. This value is unique across
       #   Increase and is used to ensure that a request is only processed once. Learn more
       #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      def idempotency_key
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def idempotency_key=(_)
-      end
+      attr_accessor :idempotency_key
 
       # Properties related to how this Account Number handles inbound ACH transfers.
       sig { returns(Increase::Models::AccountNumber::InboundACH) }
-      def inbound_ach
-      end
+      attr_reader :inbound_ach
 
-      sig do
-        params(_: T.any(Increase::Models::AccountNumber::InboundACH, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::AccountNumber::InboundACH, Increase::Util::AnyHash))
-      end
-      def inbound_ach=(_)
-      end
+      sig { params(inbound_ach: T.any(Increase::Models::AccountNumber::InboundACH, Increase::Util::AnyHash)).void }
+      attr_writer :inbound_ach
 
       # Properties related to how this Account Number should handle inbound check
       #   withdrawals.
       sig { returns(Increase::Models::AccountNumber::InboundChecks) }
-      def inbound_checks
-      end
+      attr_reader :inbound_checks
 
-      sig do
-        params(_: T.any(Increase::Models::AccountNumber::InboundChecks, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::AccountNumber::InboundChecks, Increase::Util::AnyHash))
-      end
-      def inbound_checks=(_)
-      end
+      sig { params(inbound_checks: T.any(Increase::Models::AccountNumber::InboundChecks, Increase::Util::AnyHash)).void }
+      attr_writer :inbound_checks
 
       # The name you choose for the Account Number.
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # The American Bankers' Association (ABA) Routing Transit Number (RTN).
       sig { returns(String) }
-      def routing_number
-      end
-
-      sig { params(_: String).returns(String) }
-      def routing_number=(_)
-      end
+      attr_accessor :routing_number
 
       # This indicates if payments can be made to the Account Number.
       sig { returns(Increase::Models::AccountNumber::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Increase::Models::AccountNumber::Status::TaggedSymbol)
-          .returns(Increase::Models::AccountNumber::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
       #   `account_number`.
       sig { returns(Increase::Models::AccountNumber::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::AccountNumber::Type::TaggedSymbol)
-          .returns(Increase::Models::AccountNumber::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Each account can have multiple account and routing numbers. We recommend that
       #   you use a set per vendor. This is similar to how you use different passwords for
@@ -180,15 +119,7 @@ module Increase
         # Whether ACH debits are allowed against this Account Number. Note that they will
         #   still be declined if this is `allowed` if the Account Number is not active.
         sig { returns(Increase::Models::AccountNumber::InboundACH::DebitStatus::TaggedSymbol) }
-        def debit_status
-        end
-
-        sig do
-          params(_: Increase::Models::AccountNumber::InboundACH::DebitStatus::TaggedSymbol)
-            .returns(Increase::Models::AccountNumber::InboundACH::DebitStatus::TaggedSymbol)
-        end
-        def debit_status=(_)
-        end
+        attr_accessor :debit_status
 
         # Properties related to how this Account Number handles inbound ACH transfers.
         sig do
@@ -228,15 +159,7 @@ module Increase
       class InboundChecks < Increase::BaseModel
         # How Increase should process checks with this account number printed on them.
         sig { returns(Increase::Models::AccountNumber::InboundChecks::Status::TaggedSymbol) }
-        def status
-        end
-
-        sig do
-          params(_: Increase::Models::AccountNumber::InboundChecks::Status::TaggedSymbol)
-            .returns(Increase::Models::AccountNumber::InboundChecks::Status::TaggedSymbol)
-        end
-        def status=(_)
-        end
+        attr_accessor :status
 
         # Properties related to how this Account Number should handle inbound check
         #   withdrawals.

@@ -9,15 +9,7 @@ module Increase
 
         # The shipment status to move the Physical Card to.
         sig { returns(Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol) }
-        def shipment_status
-        end
-
-        sig do
-          params(_: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol)
-            .returns(Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol)
-        end
-        def shipment_status=(_)
-        end
+        attr_accessor :shipment_status
 
         sig do
           params(

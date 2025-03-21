@@ -10,33 +10,18 @@ module Increase
       #   [RFC 7578](https://datatracker.ietf.org/doc/html/rfc7578) which defines file
       #   transfers for the multipart/form-data protocol.
       sig { returns(T.any(IO, StringIO)) }
-      def file
-      end
-
-      sig { params(_: T.any(IO, StringIO)).returns(T.any(IO, StringIO)) }
-      def file=(_)
-      end
+      attr_accessor :file
 
       # What the File will be used for in Increase's systems.
       sig { returns(Increase::Models::FileCreateParams::Purpose::OrSymbol) }
-      def purpose
-      end
-
-      sig do
-        params(_: Increase::Models::FileCreateParams::Purpose::OrSymbol)
-          .returns(Increase::Models::FileCreateParams::Purpose::OrSymbol)
-      end
-      def purpose=(_)
-      end
+      attr_accessor :purpose
 
       # The description you choose to give the File.
       sig { returns(T.nilable(String)) }
-      def description
-      end
+      attr_reader :description
 
-      sig { params(_: String).returns(String) }
-      def description=(_)
-      end
+      sig { params(description: String).void }
+      attr_writer :description
 
       sig do
         params(

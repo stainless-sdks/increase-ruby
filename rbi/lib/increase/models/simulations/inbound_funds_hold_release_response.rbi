@@ -6,107 +6,48 @@ module Increase
       class InboundFundsHoldReleaseResponse < Increase::BaseModel
         # The Inbound Funds Hold identifier.
         sig { returns(String) }
-        def id
-        end
-
-        sig { params(_: String).returns(String) }
-        def id=(_)
-        end
+        attr_accessor :id
 
         # The held amount in the minor unit of the account's currency. For dollars, for
         #   example, this is cents.
         sig { returns(Integer) }
-        def amount
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def amount=(_)
-        end
+        attr_accessor :amount
 
         # When the hold will be released automatically. Certain conditions may cause it to
         #   be released before this time.
         sig { returns(Time) }
-        def automatically_releases_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def automatically_releases_at=(_)
-        end
+        attr_accessor :automatically_releases_at
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
         #   was created.
         sig { returns(Time) }
-        def created_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def created_at=(_)
-        end
+        attr_accessor :created_at
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
         #   currency.
         sig { returns(Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency::TaggedSymbol) }
-        def currency
-        end
-
-        sig do
-          params(_: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency::TaggedSymbol)
-            .returns(Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency::TaggedSymbol)
-        end
-        def currency=(_)
-        end
+        attr_accessor :currency
 
         # The ID of the Transaction for which funds were held.
         sig { returns(T.nilable(String)) }
-        def held_transaction_id
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def held_transaction_id=(_)
-        end
+        attr_accessor :held_transaction_id
 
         # The ID of the Pending Transaction representing the held funds.
         sig { returns(T.nilable(String)) }
-        def pending_transaction_id
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def pending_transaction_id=(_)
-        end
+        attr_accessor :pending_transaction_id
 
         # When the hold was released (if it has been released).
         sig { returns(T.nilable(Time)) }
-        def released_at
-        end
-
-        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-        def released_at=(_)
-        end
+        attr_accessor :released_at
 
         # The status of the hold.
         sig { returns(Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status::TaggedSymbol) }
-        def status
-        end
-
-        sig do
-          params(_: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status::TaggedSymbol)
-            .returns(Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status::TaggedSymbol)
-        end
-        def status=(_)
-        end
+        attr_accessor :status
 
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_funds_hold`.
         sig { returns(Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type::TaggedSymbol) }
-        def type
-        end
-
-        sig do
-          params(_: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type::TaggedSymbol)
-            .returns(Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type::TaggedSymbol)
-        end
-        def type=(_)
-        end
+        attr_accessor :type
 
         # We hold funds for certain transaction types to account for return windows where
         #   funds might still be clawed back by the sending institution.

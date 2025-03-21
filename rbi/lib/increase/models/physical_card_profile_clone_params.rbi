@@ -8,52 +8,44 @@ module Increase
 
       # The identifier of the File containing the physical card's carrier image.
       sig { returns(T.nilable(String)) }
-      def carrier_image_file_id
-      end
+      attr_reader :carrier_image_file_id
 
-      sig { params(_: String).returns(String) }
-      def carrier_image_file_id=(_)
-      end
+      sig { params(carrier_image_file_id: String).void }
+      attr_writer :carrier_image_file_id
 
       # A phone number the user can contact to receive support for their card.
       sig { returns(T.nilable(String)) }
-      def contact_phone
-      end
+      attr_reader :contact_phone
 
-      sig { params(_: String).returns(String) }
-      def contact_phone=(_)
-      end
+      sig { params(contact_phone: String).void }
+      attr_writer :contact_phone
 
       # A description you can use to identify the Card Profile.
       sig { returns(T.nilable(String)) }
-      def description
-      end
+      attr_reader :description
 
-      sig { params(_: String).returns(String) }
-      def description=(_)
-      end
+      sig { params(description: String).void }
+      attr_writer :description
 
       # The identifier of the File containing the physical card's front image.
       sig { returns(T.nilable(String)) }
-      def front_image_file_id
-      end
+      attr_reader :front_image_file_id
 
-      sig { params(_: String).returns(String) }
-      def front_image_file_id=(_)
-      end
+      sig { params(front_image_file_id: String).void }
+      attr_writer :front_image_file_id
 
       # Text printed on the front of the card. Reach out to
       #   [support@increase.com](mailto:support@increase.com) for more information.
       sig { returns(T.nilable(Increase::Models::PhysicalCardProfileCloneParams::FrontText)) }
-      def front_text
-      end
+      attr_reader :front_text
 
       sig do
-        params(_: T.any(Increase::Models::PhysicalCardProfileCloneParams::FrontText, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::PhysicalCardProfileCloneParams::FrontText, Increase::Util::AnyHash))
+        params(
+          front_text: T.any(Increase::Models::PhysicalCardProfileCloneParams::FrontText, Increase::Util::AnyHash)
+        )
+          .void
       end
-      def front_text=(_)
-      end
+      attr_writer :front_text
 
       sig do
         params(
@@ -95,23 +87,16 @@ module Increase
       class FrontText < Increase::BaseModel
         # The first line of text on the front of the card.
         sig { returns(String) }
-        def line1
-        end
-
-        sig { params(_: String).returns(String) }
-        def line1=(_)
-        end
+        attr_accessor :line1
 
         # The second line of text on the front of the card. Providing a second line moves
         #   the first line slightly higher and prints the second line in the spot where the
         #   first line would have otherwise been printed.
         sig { returns(T.nilable(String)) }
-        def line2
-        end
+        attr_reader :line2
 
-        sig { params(_: String).returns(String) }
-        def line2=(_)
-        end
+        sig { params(line2: String).void }
+        attr_writer :line2
 
         # Text printed on the front of the card. Reach out to
         #   [support@increase.com](mailto:support@increase.com) for more information.

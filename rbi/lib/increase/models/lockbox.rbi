@@ -5,98 +5,47 @@ module Increase
     class Lockbox < Increase::BaseModel
       # The Lockbox identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The identifier for the Account checks sent to this lockbox will be deposited
       #   into.
       sig { returns(String) }
-      def account_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_id=(_)
-      end
+      attr_accessor :account_id
 
       # The mailing address for the Lockbox.
       sig { returns(Increase::Models::Lockbox::Address) }
-      def address
-      end
+      attr_reader :address
 
-      sig do
-        params(_: T.any(Increase::Models::Lockbox::Address, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::Lockbox::Address, Increase::Util::AnyHash))
-      end
-      def address=(_)
-      end
+      sig { params(address: T.any(Increase::Models::Lockbox::Address, Increase::Util::AnyHash)).void }
+      attr_writer :address
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Lockbox
       #   was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # The description you choose for the Lockbox.
       sig { returns(T.nilable(String)) }
-      def description
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # The idempotency key you chose for this object. This value is unique across
       #   Increase and is used to ensure that a request is only processed once. Learn more
       #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      def idempotency_key
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def idempotency_key=(_)
-      end
+      attr_accessor :idempotency_key
 
       # The recipient name you choose for the Lockbox.
       sig { returns(T.nilable(String)) }
-      def recipient_name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def recipient_name=(_)
-      end
+      attr_accessor :recipient_name
 
       # This indicates if mail can be sent to this address.
       sig { returns(Increase::Models::Lockbox::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Increase::Models::Lockbox::Status::TaggedSymbol)
-          .returns(Increase::Models::Lockbox::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
       #   `lockbox`.
       sig { returns(Increase::Models::Lockbox::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::Lockbox::Type::TaggedSymbol)
-          .returns(Increase::Models::Lockbox::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Lockboxes are physical locations that can receive mail containing paper checks.
       #   Increase will automatically create a Check Deposit for checks received this way.
@@ -139,61 +88,31 @@ module Increase
       class Address < Increase::BaseModel
         # The city of the address.
         sig { returns(String) }
-        def city
-        end
-
-        sig { params(_: String).returns(String) }
-        def city=(_)
-        end
+        attr_accessor :city
 
         # The first line of the address.
         sig { returns(String) }
-        def line1
-        end
-
-        sig { params(_: String).returns(String) }
-        def line1=(_)
-        end
+        attr_accessor :line1
 
         # The second line of the address.
         sig { returns(String) }
-        def line2
-        end
-
-        sig { params(_: String).returns(String) }
-        def line2=(_)
-        end
+        attr_accessor :line2
 
         # The postal code of the address.
         sig { returns(String) }
-        def postal_code
-        end
-
-        sig { params(_: String).returns(String) }
-        def postal_code=(_)
-        end
+        attr_accessor :postal_code
 
         # The recipient line of the address. This will include the recipient name you
         #   provide when creating the address, as well as an ATTN suffix to help route the
         #   mail to your lockbox. Mail senders must include this ATTN line to receive mail
         #   at this Lockbox.
         sig { returns(T.nilable(String)) }
-        def recipient
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def recipient=(_)
-        end
+        attr_accessor :recipient
 
         # The two-letter United States Postal Service (USPS) abbreviation for the state of
         #   the address.
         sig { returns(String) }
-        def state
-        end
-
-        sig { params(_: String).returns(String) }
-        def state=(_)
-        end
+        attr_accessor :state
 
         # The mailing address for the Lockbox.
         sig do

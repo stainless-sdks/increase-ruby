@@ -5,70 +5,28 @@ module Increase
     class RoutingNumberListResponse < Increase::BaseModel
       # This routing number's support for ACH Transfers.
       sig { returns(Increase::Models::RoutingNumberListResponse::ACHTransfers::TaggedSymbol) }
-      def ach_transfers
-      end
-
-      sig do
-        params(_: Increase::Models::RoutingNumberListResponse::ACHTransfers::TaggedSymbol)
-          .returns(Increase::Models::RoutingNumberListResponse::ACHTransfers::TaggedSymbol)
-      end
-      def ach_transfers=(_)
-      end
+      attr_accessor :ach_transfers
 
       # The name of the financial institution belonging to a routing number.
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # This routing number's support for Real-Time Payments Transfers.
       sig { returns(Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers::TaggedSymbol) }
-      def real_time_payments_transfers
-      end
-
-      sig do
-        params(_: Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers::TaggedSymbol)
-          .returns(Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers::TaggedSymbol)
-      end
-      def real_time_payments_transfers=(_)
-      end
+      attr_accessor :real_time_payments_transfers
 
       # The nine digit routing number identifier.
       sig { returns(String) }
-      def routing_number
-      end
-
-      sig { params(_: String).returns(String) }
-      def routing_number=(_)
-      end
+      attr_accessor :routing_number
 
       # A constant representing the object's type. For this resource it will always be
       #   `routing_number`.
       sig { returns(Increase::Models::RoutingNumberListResponse::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::RoutingNumberListResponse::Type::TaggedSymbol)
-          .returns(Increase::Models::RoutingNumberListResponse::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # This routing number's support for Wire Transfers.
       sig { returns(Increase::Models::RoutingNumberListResponse::WireTransfers::TaggedSymbol) }
-      def wire_transfers
-      end
-
-      sig do
-        params(_: Increase::Models::RoutingNumberListResponse::WireTransfers::TaggedSymbol)
-          .returns(Increase::Models::RoutingNumberListResponse::WireTransfers::TaggedSymbol)
-      end
-      def wire_transfers=(_)
-      end
+      attr_accessor :wire_transfers
 
       # Routing numbers are used to identify your bank in a financial transaction.
       sig do

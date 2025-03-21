@@ -8,42 +8,33 @@ module Increase
 
       # The name you choose for the account.
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # The entity, if `compliance_category` is `commingled_cash`.
       sig { returns(T.nilable(String)) }
-      def account_id
-      end
+      attr_reader :account_id
 
-      sig { params(_: String).returns(String) }
-      def account_id=(_)
-      end
+      sig { params(account_id: String).void }
+      attr_writer :account_id
 
       # The account compliance category.
       sig { returns(T.nilable(Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol)) }
-      def compliance_category
-      end
+      attr_reader :compliance_category
 
       sig do
-        params(_: Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol)
-          .returns(Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol)
+        params(
+          compliance_category: Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol
+        )
+          .void
       end
-      def compliance_category=(_)
-      end
+      attr_writer :compliance_category
 
       # The entity, if `compliance_category` is `customer_balance`.
       sig { returns(T.nilable(String)) }
-      def entity_id
-      end
+      attr_reader :entity_id
 
-      sig { params(_: String).returns(String) }
-      def entity_id=(_)
-      end
+      sig { params(entity_id: String).void }
+      attr_writer :entity_id
 
       sig do
         params(

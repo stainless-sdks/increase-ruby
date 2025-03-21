@@ -8,46 +8,36 @@ module Increase
 
       # The Account the Account Number should belong to.
       sig { returns(String) }
-      def account_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_id=(_)
-      end
+      attr_accessor :account_id
 
       # The name you choose for the Account Number.
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # Options related to how this Account Number should handle inbound ACH transfers.
       sig { returns(T.nilable(Increase::Models::AccountNumberCreateParams::InboundACH)) }
-      def inbound_ach
-      end
+      attr_reader :inbound_ach
 
       sig do
-        params(_: T.any(Increase::Models::AccountNumberCreateParams::InboundACH, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::AccountNumberCreateParams::InboundACH, Increase::Util::AnyHash))
+        params(
+          inbound_ach: T.any(Increase::Models::AccountNumberCreateParams::InboundACH, Increase::Util::AnyHash)
+        )
+          .void
       end
-      def inbound_ach=(_)
-      end
+      attr_writer :inbound_ach
 
       # Options related to how this Account Number should handle inbound check
       #   withdrawals.
       sig { returns(T.nilable(Increase::Models::AccountNumberCreateParams::InboundChecks)) }
-      def inbound_checks
-      end
+      attr_reader :inbound_checks
 
       sig do
-        params(_: T.any(Increase::Models::AccountNumberCreateParams::InboundChecks, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::AccountNumberCreateParams::InboundChecks, Increase::Util::AnyHash))
+        params(
+          inbound_checks: T.any(Increase::Models::AccountNumberCreateParams::InboundChecks, Increase::Util::AnyHash)
+        )
+          .void
       end
-      def inbound_checks=(_)
-      end
+      attr_writer :inbound_checks
 
       sig do
         params(
@@ -82,15 +72,7 @@ module Increase
         #   will be declined if this is `allowed` but the Account Number is not active. If
         #   you do not specify this field, the default is `allowed`.
         sig { returns(Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::OrSymbol) }
-        def debit_status
-        end
-
-        sig do
-          params(_: Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::OrSymbol)
-            .returns(Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::OrSymbol)
-        end
-        def debit_status=(_)
-        end
+        attr_accessor :debit_status
 
         # Options related to how this Account Number should handle inbound ACH transfers.
         sig do
@@ -141,15 +123,7 @@ module Increase
         # How Increase should process checks with this account number printed on them. If
         #   you do not specify this field, the default is `check_transfers_only`.
         sig { returns(Increase::Models::AccountNumberCreateParams::InboundChecks::Status::OrSymbol) }
-        def status
-        end
-
-        sig do
-          params(_: Increase::Models::AccountNumberCreateParams::InboundChecks::Status::OrSymbol)
-            .returns(Increase::Models::AccountNumberCreateParams::InboundChecks::Status::OrSymbol)
-        end
-        def status=(_)
-        end
+        attr_accessor :status
 
         # Options related to how this Account Number should handle inbound check
         #   withdrawals.

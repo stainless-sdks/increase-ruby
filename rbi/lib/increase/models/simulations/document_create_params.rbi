@@ -9,12 +9,7 @@ module Increase
 
         # The identifier of the Account the tax document is for.
         sig { returns(String) }
-        def account_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def account_id=(_)
-        end
+        attr_accessor :account_id
 
         sig do
           params(

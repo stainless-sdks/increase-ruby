@@ -5,137 +5,74 @@ module Increase
     class CardDispute < Increase::BaseModel
       # The Card Dispute identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # If the Card Dispute's status is `accepted`, this will contain details of the
       #   successful dispute.
       sig { returns(T.nilable(Increase::Models::CardDispute::Acceptance)) }
-      def acceptance
-      end
+      attr_reader :acceptance
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::CardDispute::Acceptance, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::CardDispute::Acceptance, Increase::Util::AnyHash)))
+        params(acceptance: T.nilable(T.any(Increase::Models::CardDispute::Acceptance, Increase::Util::AnyHash)))
+          .void
       end
-      def acceptance=(_)
-      end
+      attr_writer :acceptance
 
       # The amount of the dispute, if provided, or the transaction amount otherwise.
       sig { returns(T.nilable(Integer)) }
-      def amount
-      end
-
-      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
       #   the Card Dispute was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # The identifier of the Transaction that was disputed.
       sig { returns(String) }
-      def disputed_transaction_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def disputed_transaction_id=(_)
-      end
+      attr_accessor :disputed_transaction_id
 
       # Why you disputed the Transaction in question.
       sig { returns(String) }
-      def explanation
-      end
-
-      sig { params(_: String).returns(String) }
-      def explanation=(_)
-      end
+      attr_accessor :explanation
 
       # The idempotency key you chose for this object. This value is unique across
       #   Increase and is used to ensure that a request is only processed once. Learn more
       #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      def idempotency_key
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def idempotency_key=(_)
-      end
+      attr_accessor :idempotency_key
 
       # If the Card Dispute's status is `lost`, this will contain details of the lost
       #   dispute.
       sig { returns(T.nilable(Increase::Models::CardDispute::Loss)) }
-      def loss
-      end
+      attr_reader :loss
 
-      sig do
-        params(_: T.nilable(T.any(Increase::Models::CardDispute::Loss, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::CardDispute::Loss, Increase::Util::AnyHash)))
-      end
-      def loss=(_)
-      end
+      sig { params(loss: T.nilable(T.any(Increase::Models::CardDispute::Loss, Increase::Util::AnyHash))).void }
+      attr_writer :loss
 
       # If the Card Dispute's status is `rejected`, this will contain details of the
       #   unsuccessful dispute.
       sig { returns(T.nilable(Increase::Models::CardDispute::Rejection)) }
-      def rejection
-      end
+      attr_reader :rejection
 
-      sig do
-        params(_: T.nilable(T.any(Increase::Models::CardDispute::Rejection, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::CardDispute::Rejection, Increase::Util::AnyHash)))
-      end
-      def rejection=(_)
-      end
+      sig { params(rejection: T.nilable(T.any(Increase::Models::CardDispute::Rejection, Increase::Util::AnyHash))).void }
+      attr_writer :rejection
 
       # The results of the Dispute investigation.
       sig { returns(Increase::Models::CardDispute::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Increase::Models::CardDispute::Status::TaggedSymbol)
-          .returns(Increase::Models::CardDispute::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
       #   `card_dispute`.
       sig { returns(Increase::Models::CardDispute::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::CardDispute::Type::TaggedSymbol)
-          .returns(Increase::Models::CardDispute::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # If the Card Dispute's status is `won`, this will contain details of the won
       #   dispute.
       sig { returns(T.nilable(Increase::Models::CardDispute::Win)) }
-      def win
-      end
+      attr_reader :win
 
-      sig do
-        params(_: T.nilable(T.any(Increase::Models::CardDispute::Win, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::CardDispute::Win, Increase::Util::AnyHash)))
-      end
-      def win=(_)
-      end
+      sig { params(win: T.nilable(T.any(Increase::Models::CardDispute::Win, Increase::Util::AnyHash))).void }
+      attr_writer :win
 
       # If unauthorized activity occurs on a card, you can create a Card Dispute and
       #   we'll return the funds if appropriate.
@@ -198,31 +135,16 @@ module Increase
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #   the Card Dispute was accepted.
         sig { returns(Time) }
-        def accepted_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def accepted_at=(_)
-        end
+        attr_accessor :accepted_at
 
         # The identifier of the Card Dispute that was accepted.
         sig { returns(String) }
-        def card_dispute_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def card_dispute_id=(_)
-        end
+        attr_accessor :card_dispute_id
 
         # The identifier of the Transaction that was created to return the disputed funds
         #   to your account.
         sig { returns(String) }
-        def transaction_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def transaction_id=(_)
-        end
+        attr_accessor :transaction_id
 
         # If the Card Dispute's status is `accepted`, this will contain details of the
         #   successful dispute.
@@ -240,41 +162,21 @@ module Increase
       class Loss < Increase::BaseModel
         # The identifier of the Card Dispute that was lost.
         sig { returns(String) }
-        def card_dispute_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def card_dispute_id=(_)
-        end
+        attr_accessor :card_dispute_id
 
         # Why the Card Dispute was lost.
         sig { returns(String) }
-        def explanation
-        end
-
-        sig { params(_: String).returns(String) }
-        def explanation=(_)
-        end
+        attr_accessor :explanation
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #   the Card Dispute was lost.
         sig { returns(Time) }
-        def lost_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def lost_at=(_)
-        end
+        attr_accessor :lost_at
 
         # The identifier of the Transaction that was created to debit the disputed funds
         #   from your account.
         sig { returns(String) }
-        def transaction_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def transaction_id=(_)
-        end
+        attr_accessor :transaction_id
 
         # If the Card Dispute's status is `lost`, this will contain details of the lost
         #   dispute.
@@ -302,31 +204,16 @@ module Increase
       class Rejection < Increase::BaseModel
         # The identifier of the Card Dispute that was rejected.
         sig { returns(String) }
-        def card_dispute_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def card_dispute_id=(_)
-        end
+        attr_accessor :card_dispute_id
 
         # Why the Card Dispute was rejected.
         sig { returns(String) }
-        def explanation
-        end
-
-        sig { params(_: String).returns(String) }
-        def explanation=(_)
-        end
+        attr_accessor :explanation
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #   the Card Dispute was rejected.
         sig { returns(Time) }
-        def rejected_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def rejected_at=(_)
-        end
+        attr_accessor :rejected_at
 
         # If the Card Dispute's status is `rejected`, this will contain details of the
         #   unsuccessful dispute.
@@ -394,22 +281,12 @@ module Increase
       class Win < Increase::BaseModel
         # The identifier of the Card Dispute that was won.
         sig { returns(String) }
-        def card_dispute_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def card_dispute_id=(_)
-        end
+        attr_accessor :card_dispute_id
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #   the Card Dispute was won.
         sig { returns(Time) }
-        def won_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def won_at=(_)
-        end
+        attr_accessor :won_at
 
         # If the Card Dispute's status is `won`, this will contain details of the won
         #   dispute.

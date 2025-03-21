@@ -8,111 +8,60 @@ module Increase
 
       # Terms of authorization.
       sig { returns(String) }
-      def authorization_terms
-      end
-
-      sig { params(_: String).returns(String) }
-      def authorization_terms=(_)
-      end
+      attr_accessor :authorization_terms
 
       # Time of authorization.
       sig { returns(Time) }
-      def authorized_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def authorized_at=(_)
-      end
+      attr_accessor :authorized_at
 
       # Email of the authorizer.
       sig { returns(String) }
-      def authorizer_email
-      end
-
-      sig { params(_: String).returns(String) }
-      def authorizer_email=(_)
-      end
+      attr_accessor :authorizer_email
 
       # Name of the authorizer.
       sig { returns(String) }
-      def authorizer_name
-      end
-
-      sig { params(_: String).returns(String) }
-      def authorizer_name=(_)
-      end
+      attr_accessor :authorizer_name
 
       # Whether the customer has been offboarded or suspended.
       sig { returns(T::Boolean) }
-      def customer_has_been_offboarded
-      end
-
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def customer_has_been_offboarded=(_)
-      end
+      attr_accessor :customer_has_been_offboarded
 
       # ID of the proof of authorization request.
       sig { returns(String) }
-      def proof_of_authorization_request_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def proof_of_authorization_request_id=(_)
-      end
+      attr_accessor :proof_of_authorization_request_id
 
       # Whether the account ownership was validated via credential (e.g. Plaid).
       sig { returns(T::Boolean) }
-      def validated_account_ownership_via_credential
-      end
-
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def validated_account_ownership_via_credential=(_)
-      end
+      attr_accessor :validated_account_ownership_via_credential
 
       # Whether the account ownership was validated with an account statement.
       sig { returns(T::Boolean) }
-      def validated_account_ownership_with_account_statement
-      end
-
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def validated_account_ownership_with_account_statement=(_)
-      end
+      attr_accessor :validated_account_ownership_with_account_statement
 
       # Whether the account ownership was validated with a microdeposit.
       sig { returns(T::Boolean) }
-      def validated_account_ownership_with_microdeposit
-      end
-
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def validated_account_ownership_with_microdeposit=(_)
-      end
+      attr_accessor :validated_account_ownership_with_microdeposit
 
       # File containing additional evidence.
       sig { returns(T.nilable(String)) }
-      def additional_evidence_file_id
-      end
+      attr_reader :additional_evidence_file_id
 
-      sig { params(_: String).returns(String) }
-      def additional_evidence_file_id=(_)
-      end
+      sig { params(additional_evidence_file_id: String).void }
+      attr_writer :additional_evidence_file_id
 
       # Company of the authorizer.
       sig { returns(T.nilable(String)) }
-      def authorizer_company
-      end
+      attr_reader :authorizer_company
 
-      sig { params(_: String).returns(String) }
-      def authorizer_company=(_)
-      end
+      sig { params(authorizer_company: String).void }
+      attr_writer :authorizer_company
 
       # IP address of the authorizer.
       sig { returns(T.nilable(String)) }
-      def authorizer_ip_address
-      end
+      attr_reader :authorizer_ip_address
 
-      sig { params(_: String).returns(String) }
-      def authorizer_ip_address=(_)
-      end
+      sig { params(authorizer_ip_address: String).void }
+      attr_writer :authorizer_ip_address
 
       sig do
         params(

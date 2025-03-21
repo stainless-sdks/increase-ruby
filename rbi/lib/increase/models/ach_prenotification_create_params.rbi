@@ -8,129 +8,98 @@ module Increase
 
       # The Increase identifier for the account that will send the transfer.
       sig { returns(String) }
-      def account_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_id=(_)
-      end
+      attr_accessor :account_id
 
       # The account number for the destination account.
       sig { returns(String) }
-      def account_number
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_number=(_)
-      end
+      attr_accessor :account_number
 
       # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
       #   destination account.
       sig { returns(String) }
-      def routing_number
-      end
-
-      sig { params(_: String).returns(String) }
-      def routing_number=(_)
-      end
+      attr_accessor :routing_number
 
       # Additional information that will be sent to the recipient.
       sig { returns(T.nilable(String)) }
-      def addendum
-      end
+      attr_reader :addendum
 
-      sig { params(_: String).returns(String) }
-      def addendum=(_)
-      end
+      sig { params(addendum: String).void }
+      attr_writer :addendum
 
       # The description of the date of the transfer.
       sig { returns(T.nilable(String)) }
-      def company_descriptive_date
-      end
+      attr_reader :company_descriptive_date
 
-      sig { params(_: String).returns(String) }
-      def company_descriptive_date=(_)
-      end
+      sig { params(company_descriptive_date: String).void }
+      attr_writer :company_descriptive_date
 
       # The data you choose to associate with the transfer.
       sig { returns(T.nilable(String)) }
-      def company_discretionary_data
-      end
+      attr_reader :company_discretionary_data
 
-      sig { params(_: String).returns(String) }
-      def company_discretionary_data=(_)
-      end
+      sig { params(company_discretionary_data: String).void }
+      attr_writer :company_discretionary_data
 
       # The description of the transfer you wish to be shown to the recipient.
       sig { returns(T.nilable(String)) }
-      def company_entry_description
-      end
+      attr_reader :company_entry_description
 
-      sig { params(_: String).returns(String) }
-      def company_entry_description=(_)
-      end
+      sig { params(company_entry_description: String).void }
+      attr_writer :company_entry_description
 
       # The name by which the recipient knows you.
       sig { returns(T.nilable(String)) }
-      def company_name
-      end
+      attr_reader :company_name
 
-      sig { params(_: String).returns(String) }
-      def company_name=(_)
-      end
+      sig { params(company_name: String).void }
+      attr_writer :company_name
 
       # Whether the Prenotification is for a future debit or credit.
       sig { returns(T.nilable(Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol)) }
-      def credit_debit_indicator
-      end
+      attr_reader :credit_debit_indicator
 
       sig do
-        params(_: Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol)
-          .returns(Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol)
+        params(
+          credit_debit_indicator: Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol
+        )
+          .void
       end
-      def credit_debit_indicator=(_)
-      end
+      attr_writer :credit_debit_indicator
 
       # The transfer effective date in
       #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
       sig { returns(T.nilable(Date)) }
-      def effective_date
-      end
+      attr_reader :effective_date
 
-      sig { params(_: Date).returns(Date) }
-      def effective_date=(_)
-      end
+      sig { params(effective_date: Date).void }
+      attr_writer :effective_date
 
       # Your identifier for the transfer recipient.
       sig { returns(T.nilable(String)) }
-      def individual_id
-      end
+      attr_reader :individual_id
 
-      sig { params(_: String).returns(String) }
-      def individual_id=(_)
-      end
+      sig { params(individual_id: String).void }
+      attr_writer :individual_id
 
       # The name of the transfer recipient. This value is information and not verified
       #   by the recipient's bank.
       sig { returns(T.nilable(String)) }
-      def individual_name
-      end
+      attr_reader :individual_name
 
-      sig { params(_: String).returns(String) }
-      def individual_name=(_)
-      end
+      sig { params(individual_name: String).void }
+      attr_writer :individual_name
 
       # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
       sig { returns(T.nilable(Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol)) }
-      def standard_entry_class_code
-      end
+      attr_reader :standard_entry_class_code
 
       sig do
-        params(_: Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol)
-          .returns(Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol)
+        params(
+          standard_entry_class_code: Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol
+        )
+          .void
       end
-      def standard_entry_class_code=(_)
-      end
+      attr_writer :standard_entry_class_code
 
       sig do
         params(

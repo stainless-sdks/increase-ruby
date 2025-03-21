@@ -8,31 +8,25 @@ module Increase
 
       # The identifier for the Bookkeeping Account to filter by.
       sig { returns(T.nilable(String)) }
-      def account_id
-      end
+      attr_reader :account_id
 
-      sig { params(_: String).returns(String) }
-      def account_id=(_)
-      end
+      sig { params(account_id: String).void }
+      attr_writer :account_id
 
       # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
-      def cursor
-      end
+      attr_reader :cursor
 
-      sig { params(_: String).returns(String) }
-      def cursor=(_)
-      end
+      sig { params(cursor: String).void }
+      attr_writer :cursor
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       sig { returns(T.nilable(Integer)) }
-      def limit
-      end
+      attr_reader :limit
 
-      sig { params(_: Integer).returns(Integer) }
-      def limit=(_)
-      end
+      sig { params(limit: Integer).void }
+      attr_writer :limit
 
       sig do
         params(

@@ -7,84 +7,62 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(T.nilable(Increase::Models::AccountListParams::CreatedAt)) }
-      def created_at
-      end
+      attr_reader :created_at
 
-      sig do
-        params(_: T.any(Increase::Models::AccountListParams::CreatedAt, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::AccountListParams::CreatedAt, Increase::Util::AnyHash))
-      end
-      def created_at=(_)
-      end
+      sig { params(created_at: T.any(Increase::Models::AccountListParams::CreatedAt, Increase::Util::AnyHash)).void }
+      attr_writer :created_at
 
       # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
-      def cursor
-      end
+      attr_reader :cursor
 
-      sig { params(_: String).returns(String) }
-      def cursor=(_)
-      end
+      sig { params(cursor: String).void }
+      attr_writer :cursor
 
       # Filter Accounts for those belonging to the specified Entity.
       sig { returns(T.nilable(String)) }
-      def entity_id
-      end
+      attr_reader :entity_id
 
-      sig { params(_: String).returns(String) }
-      def entity_id=(_)
-      end
+      sig { params(entity_id: String).void }
+      attr_writer :entity_id
 
       # Filter records to the one with the specified `idempotency_key` you chose for
       #   that object. This value is unique across Increase and is used to ensure that a
       #   request is only processed once. Learn more about
       #   [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      def idempotency_key
-      end
+      attr_reader :idempotency_key
 
-      sig { params(_: String).returns(String) }
-      def idempotency_key=(_)
-      end
+      sig { params(idempotency_key: String).void }
+      attr_writer :idempotency_key
 
       # Filter Accounts for those belonging to the specified Entity as informational.
       sig { returns(T.nilable(String)) }
-      def informational_entity_id
-      end
+      attr_reader :informational_entity_id
 
-      sig { params(_: String).returns(String) }
-      def informational_entity_id=(_)
-      end
+      sig { params(informational_entity_id: String).void }
+      attr_writer :informational_entity_id
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       sig { returns(T.nilable(Integer)) }
-      def limit
-      end
+      attr_reader :limit
 
-      sig { params(_: Integer).returns(Integer) }
-      def limit=(_)
-      end
+      sig { params(limit: Integer).void }
+      attr_writer :limit
 
       # Filter Accounts for those in a specific Program.
       sig { returns(T.nilable(String)) }
-      def program_id
-      end
+      attr_reader :program_id
 
-      sig { params(_: String).returns(String) }
-      def program_id=(_)
-      end
+      sig { params(program_id: String).void }
+      attr_writer :program_id
 
       sig { returns(T.nilable(Increase::Models::AccountListParams::Status)) }
-      def status
-      end
+      attr_reader :status
 
-      sig do
-        params(_: T.any(Increase::Models::AccountListParams::Status, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::AccountListParams::Status, Increase::Util::AnyHash))
-      end
-      def status=(_)
-      end
+      sig { params(status: T.any(Increase::Models::AccountListParams::Status, Increase::Util::AnyHash)).void }
+      attr_writer :status
 
       sig do
         params(
@@ -136,42 +114,34 @@ module Increase
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
-        def after
-        end
+        attr_reader :after
 
-        sig { params(_: Time).returns(Time) }
-        def after=(_)
-        end
+        sig { params(after: Time).void }
+        attr_writer :after
 
         # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
-        def before
-        end
+        attr_reader :before
 
-        sig { params(_: Time).returns(Time) }
-        def before=(_)
-        end
+        sig { params(before: Time).void }
+        attr_writer :before
 
         # Return results on or after this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
-        def on_or_after
-        end
+        attr_reader :on_or_after
 
-        sig { params(_: Time).returns(Time) }
-        def on_or_after=(_)
-        end
+        sig { params(on_or_after: Time).void }
+        attr_writer :on_or_after
 
         # Return results on or before this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
-        def on_or_before
-        end
+        attr_reader :on_or_before
 
-        sig { params(_: Time).returns(Time) }
-        def on_or_before=(_)
-        end
+        sig { params(on_or_before: Time).void }
+        attr_writer :on_or_before
 
         sig do
           params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
@@ -188,15 +158,10 @@ module Increase
         # Filter Accounts for those with the specified status. For GET requests, this
         #   should be encoded as a comma-delimited string, such as `?in=one,two,three`.
         sig { returns(T.nilable(T::Array[Increase::Models::AccountListParams::Status::In::OrSymbol])) }
-        def in_
-        end
+        attr_reader :in_
 
-        sig do
-          params(_: T::Array[Increase::Models::AccountListParams::Status::In::OrSymbol])
-            .returns(T::Array[Increase::Models::AccountListParams::Status::In::OrSymbol])
-        end
-        def in_=(_)
-        end
+        sig { params(in_: T::Array[Increase::Models::AccountListParams::Status::In::OrSymbol]).void }
+        attr_writer :in_
 
         sig { params(in_: T::Array[Increase::Models::AccountListParams::Status::In::OrSymbol]).returns(T.attached_class) }
         def self.new(in_: nil)

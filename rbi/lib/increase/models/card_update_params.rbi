@@ -8,60 +8,49 @@ module Increase
 
       # The card's updated billing address.
       sig { returns(T.nilable(Increase::Models::CardUpdateParams::BillingAddress)) }
-      def billing_address
-      end
+      attr_reader :billing_address
 
       sig do
-        params(_: T.any(Increase::Models::CardUpdateParams::BillingAddress, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::CardUpdateParams::BillingAddress, Increase::Util::AnyHash))
+        params(
+          billing_address: T.any(Increase::Models::CardUpdateParams::BillingAddress, Increase::Util::AnyHash)
+        )
+          .void
       end
-      def billing_address=(_)
-      end
+      attr_writer :billing_address
 
       # The description you choose to give the card.
       sig { returns(T.nilable(String)) }
-      def description
-      end
+      attr_reader :description
 
-      sig { params(_: String).returns(String) }
-      def description=(_)
-      end
+      sig { params(description: String).void }
+      attr_writer :description
 
       # The contact information used in the two-factor steps for digital wallet card
       #   creation. At least one field must be present to complete the digital wallet
       #   steps.
       sig { returns(T.nilable(Increase::Models::CardUpdateParams::DigitalWallet)) }
-      def digital_wallet
-      end
+      attr_reader :digital_wallet
 
       sig do
-        params(_: T.any(Increase::Models::CardUpdateParams::DigitalWallet, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::CardUpdateParams::DigitalWallet, Increase::Util::AnyHash))
+        params(digital_wallet: T.any(Increase::Models::CardUpdateParams::DigitalWallet, Increase::Util::AnyHash))
+          .void
       end
-      def digital_wallet=(_)
-      end
+      attr_writer :digital_wallet
 
       # The Entity the card belongs to. You only need to supply this in rare situations
       #   when the card is not for the Account holder.
       sig { returns(T.nilable(String)) }
-      def entity_id
-      end
+      attr_reader :entity_id
 
-      sig { params(_: String).returns(String) }
-      def entity_id=(_)
-      end
+      sig { params(entity_id: String).void }
+      attr_writer :entity_id
 
       # The status to update the Card with.
       sig { returns(T.nilable(Increase::Models::CardUpdateParams::Status::OrSymbol)) }
-      def status
-      end
+      attr_reader :status
 
-      sig do
-        params(_: Increase::Models::CardUpdateParams::Status::OrSymbol)
-          .returns(Increase::Models::CardUpdateParams::Status::OrSymbol)
-      end
-      def status=(_)
-      end
+      sig { params(status: Increase::Models::CardUpdateParams::Status::OrSymbol).void }
+      attr_writer :status
 
       sig do
         params(
@@ -103,48 +92,26 @@ module Increase
       class BillingAddress < Increase::BaseModel
         # The city of the billing address.
         sig { returns(String) }
-        def city
-        end
-
-        sig { params(_: String).returns(String) }
-        def city=(_)
-        end
+        attr_accessor :city
 
         # The first line of the billing address.
         sig { returns(String) }
-        def line1
-        end
-
-        sig { params(_: String).returns(String) }
-        def line1=(_)
-        end
+        attr_accessor :line1
 
         # The postal code of the billing address.
         sig { returns(String) }
-        def postal_code
-        end
-
-        sig { params(_: String).returns(String) }
-        def postal_code=(_)
-        end
+        attr_accessor :postal_code
 
         # The US state of the billing address.
         sig { returns(String) }
-        def state
-        end
-
-        sig { params(_: String).returns(String) }
-        def state=(_)
-        end
+        attr_accessor :state
 
         # The second line of the billing address.
         sig { returns(T.nilable(String)) }
-        def line2
-        end
+        attr_reader :line2
 
-        sig { params(_: String).returns(String) }
-        def line2=(_)
-        end
+        sig { params(line2: String).void }
+        attr_writer :line2
 
         # The card's updated billing address.
         sig do
@@ -164,32 +131,26 @@ module Increase
       class DigitalWallet < Increase::BaseModel
         # The digital card profile assigned to this digital card.
         sig { returns(T.nilable(String)) }
-        def digital_card_profile_id
-        end
+        attr_reader :digital_card_profile_id
 
-        sig { params(_: String).returns(String) }
-        def digital_card_profile_id=(_)
-        end
+        sig { params(digital_card_profile_id: String).void }
+        attr_writer :digital_card_profile_id
 
         # An email address that can be used to verify the cardholder via one-time passcode
         #   over email.
         sig { returns(T.nilable(String)) }
-        def email
-        end
+        attr_reader :email
 
-        sig { params(_: String).returns(String) }
-        def email=(_)
-        end
+        sig { params(email: String).void }
+        attr_writer :email
 
         # A phone number that can be used to verify the cardholder via one-time passcode
         #   over SMS.
         sig { returns(T.nilable(String)) }
-        def phone
-        end
+        attr_reader :phone
 
-        sig { params(_: String).returns(String) }
-        def phone=(_)
-        end
+        sig { params(phone: String).void }
+        attr_writer :phone
 
         # The contact information used in the two-factor steps for digital wallet card
         #   creation. At least one field must be present to complete the digital wallet

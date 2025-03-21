@@ -5,302 +5,156 @@ module Increase
     class WireTransfer < Increase::BaseModel
       # The wire transfer's identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The Account to which the transfer belongs.
       sig { returns(String) }
-      def account_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_id=(_)
-      end
+      attr_accessor :account_id
 
       # The destination account number.
       sig { returns(String) }
-      def account_number
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_number=(_)
-      end
+      attr_accessor :account_number
 
       # The transfer amount in USD cents.
       sig { returns(Integer) }
-      def amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       # If your account requires approvals for transfers and the transfer was approved,
       #   this will contain details of the approval.
       sig { returns(T.nilable(Increase::Models::WireTransfer::Approval)) }
-      def approval
-      end
+      attr_reader :approval
 
-      sig do
-        params(_: T.nilable(T.any(Increase::Models::WireTransfer::Approval, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::WireTransfer::Approval, Increase::Util::AnyHash)))
-      end
-      def approval=(_)
-      end
+      sig { params(approval: T.nilable(T.any(Increase::Models::WireTransfer::Approval, Increase::Util::AnyHash))).void }
+      attr_writer :approval
 
       # The beneficiary's address line 1.
       sig { returns(T.nilable(String)) }
-      def beneficiary_address_line1
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def beneficiary_address_line1=(_)
-      end
+      attr_accessor :beneficiary_address_line1
 
       # The beneficiary's address line 2.
       sig { returns(T.nilable(String)) }
-      def beneficiary_address_line2
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def beneficiary_address_line2=(_)
-      end
+      attr_accessor :beneficiary_address_line2
 
       # The beneficiary's address line 3.
       sig { returns(T.nilable(String)) }
-      def beneficiary_address_line3
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def beneficiary_address_line3=(_)
-      end
+      attr_accessor :beneficiary_address_line3
 
       # The beneficiary's name.
       sig { returns(T.nilable(String)) }
-      def beneficiary_name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def beneficiary_name=(_)
-      end
+      attr_accessor :beneficiary_name
 
       # If your account requires approvals for transfers and the transfer was not
       #   approved, this will contain details of the cancellation.
       sig { returns(T.nilable(Increase::Models::WireTransfer::Cancellation)) }
-      def cancellation
-      end
+      attr_reader :cancellation
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::WireTransfer::Cancellation, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::WireTransfer::Cancellation, Increase::Util::AnyHash)))
+        params(
+          cancellation: T.nilable(T.any(Increase::Models::WireTransfer::Cancellation, Increase::Util::AnyHash))
+        )
+          .void
       end
-      def cancellation=(_)
-      end
+      attr_writer :cancellation
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
       #   the transfer was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # What object created the transfer, either via the API or the dashboard.
       sig { returns(T.nilable(Increase::Models::WireTransfer::CreatedBy)) }
-      def created_by
-      end
+      attr_reader :created_by
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy, Increase::Util::AnyHash)))
+        params(created_by: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy, Increase::Util::AnyHash)))
+          .void
       end
-      def created_by=(_)
-      end
+      attr_writer :created_by
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
       #   currency. For wire transfers this is always equal to `usd`.
       sig { returns(Increase::Models::WireTransfer::Currency::TaggedSymbol) }
-      def currency
-      end
-
-      sig do
-        params(_: Increase::Models::WireTransfer::Currency::TaggedSymbol)
-          .returns(Increase::Models::WireTransfer::Currency::TaggedSymbol)
-      end
-      def currency=(_)
-      end
+      attr_accessor :currency
 
       # The identifier of the External Account the transfer was made to, if any.
       sig { returns(T.nilable(String)) }
-      def external_account_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def external_account_id=(_)
-      end
+      attr_accessor :external_account_id
 
       # The idempotency key you chose for this object. This value is unique across
       #   Increase and is used to ensure that a request is only processed once. Learn more
       #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      def idempotency_key
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def idempotency_key=(_)
-      end
+      attr_accessor :idempotency_key
 
       # The message that will show on the recipient's bank statement.
       sig { returns(T.nilable(String)) }
-      def message_to_recipient
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def message_to_recipient=(_)
-      end
+      attr_accessor :message_to_recipient
 
       # The transfer's network.
       sig { returns(Increase::Models::WireTransfer::Network::TaggedSymbol) }
-      def network
-      end
-
-      sig do
-        params(_: Increase::Models::WireTransfer::Network::TaggedSymbol)
-          .returns(Increase::Models::WireTransfer::Network::TaggedSymbol)
-      end
-      def network=(_)
-      end
+      attr_accessor :network
 
       # The originator's address line 1.
       sig { returns(T.nilable(String)) }
-      def originator_address_line1
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def originator_address_line1=(_)
-      end
+      attr_accessor :originator_address_line1
 
       # The originator's address line 2.
       sig { returns(T.nilable(String)) }
-      def originator_address_line2
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def originator_address_line2=(_)
-      end
+      attr_accessor :originator_address_line2
 
       # The originator's address line 3.
       sig { returns(T.nilable(String)) }
-      def originator_address_line3
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def originator_address_line3=(_)
-      end
+      attr_accessor :originator_address_line3
 
       # The originator's name.
       sig { returns(T.nilable(String)) }
-      def originator_name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def originator_name=(_)
-      end
+      attr_accessor :originator_name
 
       # The ID for the pending transaction representing the transfer. A pending
       #   transaction is created when the transfer
       #   [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
       #   by someone else in your organization.
       sig { returns(T.nilable(String)) }
-      def pending_transaction_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def pending_transaction_id=(_)
-      end
+      attr_accessor :pending_transaction_id
 
       # If your transfer is reversed, this will contain details of the reversal.
       sig { returns(T.nilable(Increase::Models::WireTransfer::Reversal)) }
-      def reversal
-      end
+      attr_reader :reversal
 
-      sig do
-        params(_: T.nilable(T.any(Increase::Models::WireTransfer::Reversal, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::WireTransfer::Reversal, Increase::Util::AnyHash)))
-      end
-      def reversal=(_)
-      end
+      sig { params(reversal: T.nilable(T.any(Increase::Models::WireTransfer::Reversal, Increase::Util::AnyHash))).void }
+      attr_writer :reversal
 
       # The American Bankers' Association (ABA) Routing Transit Number (RTN).
       sig { returns(String) }
-      def routing_number
-      end
-
-      sig { params(_: String).returns(String) }
-      def routing_number=(_)
-      end
+      attr_accessor :routing_number
 
       # The Account Number that was passed to the wire's recipient.
       sig { returns(T.nilable(String)) }
-      def source_account_number_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def source_account_number_id=(_)
-      end
+      attr_accessor :source_account_number_id
 
       # The lifecycle status of the transfer.
       sig { returns(Increase::Models::WireTransfer::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Increase::Models::WireTransfer::Status::TaggedSymbol)
-          .returns(Increase::Models::WireTransfer::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # After the transfer is submitted to Fedwire, this will contain supplemental
       #   details.
       sig { returns(T.nilable(Increase::Models::WireTransfer::Submission)) }
-      def submission
-      end
+      attr_reader :submission
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::WireTransfer::Submission, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::WireTransfer::Submission, Increase::Util::AnyHash)))
+        params(submission: T.nilable(T.any(Increase::Models::WireTransfer::Submission, Increase::Util::AnyHash)))
+          .void
       end
-      def submission=(_)
-      end
+      attr_writer :submission
 
       # The ID for the transaction funding the transfer.
       sig { returns(T.nilable(String)) }
-      def transaction_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def transaction_id=(_)
-      end
+      attr_accessor :transaction_id
 
       # A constant representing the object's type. For this resource it will always be
       #   `wire_transfer`.
       sig { returns(Increase::Models::WireTransfer::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::WireTransfer::Type::TaggedSymbol)
-          .returns(Increase::Models::WireTransfer::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Wire transfers move funds between your Increase account and any other account
       #   accessible by Fedwire.
@@ -414,22 +268,12 @@ module Increase
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #   the transfer was approved.
         sig { returns(Time) }
-        def approved_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def approved_at=(_)
-        end
+        attr_accessor :approved_at
 
         # If the Transfer was approved by a user in the dashboard, the email address of
         #   that user.
         sig { returns(T.nilable(String)) }
-        def approved_by
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def approved_by=(_)
-        end
+        attr_accessor :approved_by
 
         # If your account requires approvals for transfers and the transfer was approved,
         #   this will contain details of the approval.
@@ -446,22 +290,12 @@ module Increase
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #   the Transfer was canceled.
         sig { returns(Time) }
-        def canceled_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def canceled_at=(_)
-        end
+        attr_accessor :canceled_at
 
         # If the Transfer was canceled by a user in the dashboard, the email address of
         #   that user.
         sig { returns(T.nilable(String)) }
-        def canceled_by
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def canceled_by=(_)
-        end
+        attr_accessor :canceled_by
 
         # If your account requires approvals for transfers and the transfer was not
         #   approved, this will contain details of the cancellation.
@@ -477,55 +311,41 @@ module Increase
       class CreatedBy < Increase::BaseModel
         # If present, details about the API key that created the transfer.
         sig { returns(T.nilable(Increase::Models::WireTransfer::CreatedBy::APIKey)) }
-        def api_key
-        end
-
-        sig do
-          params(_: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::APIKey, Increase::Util::AnyHash)))
-            .returns(T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::APIKey, Increase::Util::AnyHash)))
-        end
-        def api_key=(_)
-        end
-
-        # The type of object that created this transfer.
-        sig { returns(Increase::Models::WireTransfer::CreatedBy::Category::TaggedSymbol) }
-        def category
-        end
-
-        sig do
-          params(_: Increase::Models::WireTransfer::CreatedBy::Category::TaggedSymbol)
-            .returns(Increase::Models::WireTransfer::CreatedBy::Category::TaggedSymbol)
-        end
-        def category=(_)
-        end
-
-        # If present, details about the OAuth Application that created the transfer.
-        sig { returns(T.nilable(Increase::Models::WireTransfer::CreatedBy::OAuthApplication)) }
-        def oauth_application
-        end
+        attr_reader :api_key
 
         sig do
           params(
-            _: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash))
+            api_key: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::APIKey, Increase::Util::AnyHash))
           )
-            .returns(
-              T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash))
-            )
+            .void
         end
-        def oauth_application=(_)
+        attr_writer :api_key
+
+        # The type of object that created this transfer.
+        sig { returns(Increase::Models::WireTransfer::CreatedBy::Category::TaggedSymbol) }
+        attr_accessor :category
+
+        # If present, details about the OAuth Application that created the transfer.
+        sig { returns(T.nilable(Increase::Models::WireTransfer::CreatedBy::OAuthApplication)) }
+        attr_reader :oauth_application
+
+        sig do
+          params(
+            oauth_application: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash))
+          )
+            .void
         end
+        attr_writer :oauth_application
 
         # If present, details about the User that created the transfer.
         sig { returns(T.nilable(Increase::Models::WireTransfer::CreatedBy::User)) }
-        def user
-        end
+        attr_reader :user
 
         sig do
-          params(_: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::User, Increase::Util::AnyHash)))
-            .returns(T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::User, Increase::Util::AnyHash)))
+          params(user: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::User, Increase::Util::AnyHash)))
+            .void
         end
-        def user=(_)
-        end
+        attr_writer :user
 
         # What object created the transfer, either via the API or the dashboard.
         sig do
@@ -557,12 +377,7 @@ module Increase
         class APIKey < Increase::BaseModel
           # The description set for the API key when it was created.
           sig { returns(T.nilable(String)) }
-          def description
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def description=(_)
-          end
+          attr_accessor :description
 
           # If present, details about the API key that created the transfer.
           sig { params(description: T.nilable(String)).returns(T.attached_class) }
@@ -602,12 +417,7 @@ module Increase
         class OAuthApplication < Increase::BaseModel
           # The name of the OAuth Application.
           sig { returns(String) }
-          def name
-          end
-
-          sig { params(_: String).returns(String) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           # If present, details about the OAuth Application that created the transfer.
           sig { params(name: String).returns(T.attached_class) }
@@ -622,12 +432,7 @@ module Increase
         class User < Increase::BaseModel
           # The email address of the User.
           sig { returns(String) }
-          def email
-          end
-
-          sig { params(_: String).returns(String) }
-          def email=(_)
-          end
+          attr_accessor :email
 
           # If present, details about the User that created the transfer.
           sig { params(email: String).returns(T.attached_class) }
@@ -692,161 +497,76 @@ module Increase
       class Reversal < Increase::BaseModel
         # The amount that was reversed in USD cents.
         sig { returns(Integer) }
-        def amount
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def amount=(_)
-        end
+        attr_accessor :amount
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #   the reversal was created.
         sig { returns(Time) }
-        def created_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def created_at=(_)
-        end
+        attr_accessor :created_at
 
         # The description on the reversal message from Fedwire, set by the reversing bank.
         sig { returns(String) }
-        def description
-        end
-
-        sig { params(_: String).returns(String) }
-        def description=(_)
-        end
+        attr_accessor :description
 
         # Additional financial institution information included in the wire reversal.
         sig { returns(T.nilable(String)) }
-        def financial_institution_to_financial_institution_information
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def financial_institution_to_financial_institution_information=(_)
-        end
+        attr_accessor :financial_institution_to_financial_institution_information
 
         # The Fedwire cycle date for the wire reversal. The "Fedwire day" begins at 9:00
         #   PM Eastern Time on the evening before the `cycle date`.
         sig { returns(Date) }
-        def input_cycle_date
-        end
-
-        sig { params(_: Date).returns(Date) }
-        def input_cycle_date=(_)
-        end
+        attr_accessor :input_cycle_date
 
         # The Fedwire transaction identifier.
         sig { returns(String) }
-        def input_message_accountability_data
-        end
-
-        sig { params(_: String).returns(String) }
-        def input_message_accountability_data=(_)
-        end
+        attr_accessor :input_message_accountability_data
 
         # The Fedwire sequence number.
         sig { returns(String) }
-        def input_sequence_number
-        end
-
-        sig { params(_: String).returns(String) }
-        def input_sequence_number=(_)
-        end
+        attr_accessor :input_sequence_number
 
         # The Fedwire input source identifier.
         sig { returns(String) }
-        def input_source
-        end
-
-        sig { params(_: String).returns(String) }
-        def input_source=(_)
-        end
+        attr_accessor :input_source
 
         # The American Banking Association (ABA) routing number of the bank originating
         #   the transfer.
         sig { returns(T.nilable(String)) }
-        def originator_routing_number
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def originator_routing_number=(_)
-        end
+        attr_accessor :originator_routing_number
 
         # The Fedwire cycle date for the wire transfer that is being reversed by this
         #   message.
         sig { returns(Date) }
-        def previous_message_input_cycle_date
-        end
-
-        sig { params(_: Date).returns(Date) }
-        def previous_message_input_cycle_date=(_)
-        end
+        attr_accessor :previous_message_input_cycle_date
 
         # The Fedwire transaction identifier for the wire transfer that was reversed.
         sig { returns(String) }
-        def previous_message_input_message_accountability_data
-        end
-
-        sig { params(_: String).returns(String) }
-        def previous_message_input_message_accountability_data=(_)
-        end
+        attr_accessor :previous_message_input_message_accountability_data
 
         # The Fedwire sequence number for the wire transfer that was reversed.
         sig { returns(String) }
-        def previous_message_input_sequence_number
-        end
-
-        sig { params(_: String).returns(String) }
-        def previous_message_input_sequence_number=(_)
-        end
+        attr_accessor :previous_message_input_sequence_number
 
         # The Fedwire input source identifier for the wire transfer that was reversed.
         sig { returns(String) }
-        def previous_message_input_source
-        end
-
-        sig { params(_: String).returns(String) }
-        def previous_message_input_source=(_)
-        end
+        attr_accessor :previous_message_input_source
 
         # Information included in the wire reversal for the receiving financial
         #   institution.
         sig { returns(T.nilable(String)) }
-        def receiver_financial_institution_information
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def receiver_financial_institution_information=(_)
-        end
+        attr_accessor :receiver_financial_institution_information
 
         # The sending bank's reference number for the wire reversal.
         sig { returns(T.nilable(String)) }
-        def sender_reference
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def sender_reference=(_)
-        end
+        attr_accessor :sender_reference
 
         # The ID for the Transaction associated with the transfer reversal.
         sig { returns(String) }
-        def transaction_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def transaction_id=(_)
-        end
+        attr_accessor :transaction_id
 
         # The ID for the Wire Transfer that is being reversed.
         sig { returns(String) }
-        def wire_transfer_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def wire_transfer_id=(_)
-        end
+        attr_accessor :wire_transfer_id
 
         # If your transfer is reversed, this will contain details of the reversal.
         sig do
@@ -964,21 +684,11 @@ module Increase
       class Submission < Increase::BaseModel
         # The accountability data for the submission.
         sig { returns(String) }
-        def input_message_accountability_data
-        end
-
-        sig { params(_: String).returns(String) }
-        def input_message_accountability_data=(_)
-        end
+        attr_accessor :input_message_accountability_data
 
         # When this wire transfer was submitted to Fedwire.
         sig { returns(Time) }
-        def submitted_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def submitted_at=(_)
-        end
+        attr_accessor :submitted_at
 
         # After the transfer is submitted to Fedwire, this will contain supplemental
         #   details.

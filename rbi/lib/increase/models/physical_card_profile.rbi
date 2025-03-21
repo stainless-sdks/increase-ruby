@@ -5,125 +5,56 @@ module Increase
     class PhysicalCardProfile < Increase::BaseModel
       # The Card Profile identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The identifier of the File containing the physical card's back image.
       sig { returns(T.nilable(String)) }
-      def back_image_file_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def back_image_file_id=(_)
-      end
+      attr_accessor :back_image_file_id
 
       # The identifier of the File containing the physical card's carrier image.
       sig { returns(T.nilable(String)) }
-      def carrier_image_file_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def carrier_image_file_id=(_)
-      end
+      attr_accessor :carrier_image_file_id
 
       # A phone number the user can contact to receive support for their card.
       sig { returns(T.nilable(String)) }
-      def contact_phone
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def contact_phone=(_)
-      end
+      attr_accessor :contact_phone
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
       #   the Card Dispute was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # The creator of this Physical Card Profile.
       sig { returns(Increase::Models::PhysicalCardProfile::Creator::TaggedSymbol) }
-      def creator
-      end
-
-      sig do
-        params(_: Increase::Models::PhysicalCardProfile::Creator::TaggedSymbol)
-          .returns(Increase::Models::PhysicalCardProfile::Creator::TaggedSymbol)
-      end
-      def creator=(_)
-      end
+      attr_accessor :creator
 
       # A description you can use to identify the Physical Card Profile.
       sig { returns(String) }
-      def description
-      end
-
-      sig { params(_: String).returns(String) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # The identifier of the File containing the physical card's front image.
       sig { returns(T.nilable(String)) }
-      def front_image_file_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def front_image_file_id=(_)
-      end
+      attr_accessor :front_image_file_id
 
       # The idempotency key you chose for this object. This value is unique across
       #   Increase and is used to ensure that a request is only processed once. Learn more
       #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      def idempotency_key
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def idempotency_key=(_)
-      end
+      attr_accessor :idempotency_key
 
       # Whether this Physical Card Profile is the default for all cards in its Increase
       #   group.
       sig { returns(T::Boolean) }
-      def is_default
-      end
-
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def is_default=(_)
-      end
+      attr_accessor :is_default
 
       # The status of the Physical Card Profile.
       sig { returns(Increase::Models::PhysicalCardProfile::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Increase::Models::PhysicalCardProfile::Status::TaggedSymbol)
-          .returns(Increase::Models::PhysicalCardProfile::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
       #   `physical_card_profile`.
       sig { returns(Increase::Models::PhysicalCardProfile::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::PhysicalCardProfile::Type::TaggedSymbol)
-          .returns(Increase::Models::PhysicalCardProfile::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # This contains artwork and metadata relating to a Physical Card's appearance. For
       #   more information, see our guide on

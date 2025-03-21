@@ -10,66 +10,46 @@ module Increase
         # The identifier of the Account Number the inbound Real-Time Payments Transfer is
         #   for.
         sig { returns(String) }
-        def account_number_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def account_number_id=(_)
-        end
+        attr_accessor :account_number_id
 
         # The transfer amount in USD cents. Must be positive.
         sig { returns(Integer) }
-        def amount
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def amount=(_)
-        end
+        attr_accessor :amount
 
         # The account number of the account that sent the transfer.
         sig { returns(T.nilable(String)) }
-        def debtor_account_number
-        end
+        attr_reader :debtor_account_number
 
-        sig { params(_: String).returns(String) }
-        def debtor_account_number=(_)
-        end
+        sig { params(debtor_account_number: String).void }
+        attr_writer :debtor_account_number
 
         # The name provided by the sender of the transfer.
         sig { returns(T.nilable(String)) }
-        def debtor_name
-        end
+        attr_reader :debtor_name
 
-        sig { params(_: String).returns(String) }
-        def debtor_name=(_)
-        end
+        sig { params(debtor_name: String).void }
+        attr_writer :debtor_name
 
         # The routing number of the account that sent the transfer.
         sig { returns(T.nilable(String)) }
-        def debtor_routing_number
-        end
+        attr_reader :debtor_routing_number
 
-        sig { params(_: String).returns(String) }
-        def debtor_routing_number=(_)
-        end
+        sig { params(debtor_routing_number: String).void }
+        attr_writer :debtor_routing_number
 
         # Additional information included with the transfer.
         sig { returns(T.nilable(String)) }
-        def remittance_information
-        end
+        attr_reader :remittance_information
 
-        sig { params(_: String).returns(String) }
-        def remittance_information=(_)
-        end
+        sig { params(remittance_information: String).void }
+        attr_writer :remittance_information
 
         # The identifier of a pending Request for Payment that this transfer will fulfill.
         sig { returns(T.nilable(String)) }
-        def request_for_payment_id
-        end
+        attr_reader :request_for_payment_id
 
-        sig { params(_: String).returns(String) }
-        def request_for_payment_id=(_)
-        end
+        sig { params(request_for_payment_id: String).void }
+        attr_writer :request_for_payment_id
 
         sig do
           params(

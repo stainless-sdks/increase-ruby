@@ -5,197 +5,126 @@ module Increase
     class CheckDeposit < Increase::BaseModel
       # The deposit's identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The Account the check was deposited into.
       sig { returns(String) }
-      def account_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_id=(_)
-      end
+      attr_accessor :account_id
 
       # The deposited amount in USD cents.
       sig { returns(Integer) }
-      def amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       # The ID for the File containing the image of the back of the check.
       sig { returns(T.nilable(String)) }
-      def back_image_file_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def back_image_file_id=(_)
-      end
+      attr_accessor :back_image_file_id
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
       #   the transfer was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # If your deposit is successfully parsed and accepted by Increase, this will
       #   contain details of the parsed check.
       sig { returns(T.nilable(Increase::Models::CheckDeposit::DepositAcceptance)) }
-      def deposit_acceptance
-      end
+      attr_reader :deposit_acceptance
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::CheckDeposit::DepositAcceptance, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::CheckDeposit::DepositAcceptance, Increase::Util::AnyHash)))
+        params(
+          deposit_acceptance: T.nilable(T.any(Increase::Models::CheckDeposit::DepositAcceptance, Increase::Util::AnyHash))
+        )
+          .void
       end
-      def deposit_acceptance=(_)
-      end
+      attr_writer :deposit_acceptance
 
       # If your deposit is rejected by Increase, this will contain details as to why it
       #   was rejected.
       sig { returns(T.nilable(Increase::Models::CheckDeposit::DepositRejection)) }
-      def deposit_rejection
-      end
+      attr_reader :deposit_rejection
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::CheckDeposit::DepositRejection, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::CheckDeposit::DepositRejection, Increase::Util::AnyHash)))
+        params(
+          deposit_rejection: T.nilable(T.any(Increase::Models::CheckDeposit::DepositRejection, Increase::Util::AnyHash))
+        )
+          .void
       end
-      def deposit_rejection=(_)
-      end
+      attr_writer :deposit_rejection
 
       # If your deposit is returned, this will contain details as to why it was
       #   returned.
       sig { returns(T.nilable(Increase::Models::CheckDeposit::DepositReturn)) }
-      def deposit_return
-      end
+      attr_reader :deposit_return
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::CheckDeposit::DepositReturn, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::CheckDeposit::DepositReturn, Increase::Util::AnyHash)))
+        params(
+          deposit_return: T.nilable(T.any(Increase::Models::CheckDeposit::DepositReturn, Increase::Util::AnyHash))
+        )
+          .void
       end
-      def deposit_return=(_)
-      end
+      attr_writer :deposit_return
 
       # After the check is parsed, it is submitted to the Check21 network for
       #   processing. This will contain details of the submission.
       sig { returns(T.nilable(Increase::Models::CheckDeposit::DepositSubmission)) }
-      def deposit_submission
-      end
+      attr_reader :deposit_submission
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::CheckDeposit::DepositSubmission, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::CheckDeposit::DepositSubmission, Increase::Util::AnyHash)))
+        params(
+          deposit_submission: T.nilable(T.any(Increase::Models::CheckDeposit::DepositSubmission, Increase::Util::AnyHash))
+        )
+          .void
       end
-      def deposit_submission=(_)
-      end
+      attr_writer :deposit_submission
 
       # The description of the Check Deposit, for display purposes only.
       sig { returns(T.nilable(String)) }
-      def description
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # The ID for the File containing the image of the front of the check.
       sig { returns(String) }
-      def front_image_file_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def front_image_file_id=(_)
-      end
+      attr_accessor :front_image_file_id
 
       # The idempotency key you chose for this object. This value is unique across
       #   Increase and is used to ensure that a request is only processed once. Learn more
       #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      def idempotency_key
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def idempotency_key=(_)
-      end
+      attr_accessor :idempotency_key
 
       # Increase will sometimes hold the funds for Check Deposits. If funds are held,
       #   this sub-object will contain details of the hold.
       sig { returns(T.nilable(Increase::Models::CheckDeposit::InboundFundsHold)) }
-      def inbound_funds_hold
-      end
+      attr_reader :inbound_funds_hold
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::CheckDeposit::InboundFundsHold, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::CheckDeposit::InboundFundsHold, Increase::Util::AnyHash)))
+        params(
+          inbound_funds_hold: T.nilable(T.any(Increase::Models::CheckDeposit::InboundFundsHold, Increase::Util::AnyHash))
+        )
+          .void
       end
-      def inbound_funds_hold=(_)
-      end
+      attr_writer :inbound_funds_hold
 
       # If the Check Deposit was the result of an Inbound Mail Item, this will contain
       #   the identifier of the Inbound Mail Item.
       sig { returns(T.nilable(String)) }
-      def inbound_mail_item_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def inbound_mail_item_id=(_)
-      end
+      attr_accessor :inbound_mail_item_id
 
       # If the Check Deposit was the result of an Inbound Mail Item, this will contain
       #   the identifier of the Lockbox that received it.
       sig { returns(T.nilable(String)) }
-      def lockbox_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def lockbox_id=(_)
-      end
+      attr_accessor :lockbox_id
 
       # The status of the Check Deposit.
       sig { returns(Increase::Models::CheckDeposit::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Increase::Models::CheckDeposit::Status::TaggedSymbol)
-          .returns(Increase::Models::CheckDeposit::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # The ID for the Transaction created by the deposit.
       sig { returns(T.nilable(String)) }
-      def transaction_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def transaction_id=(_)
-      end
+      attr_accessor :transaction_id
 
       # A constant representing the object's type. For this resource it will always be
       #   `check_deposit`.
       sig { returns(Increase::Models::CheckDeposit::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::CheckDeposit::Type::TaggedSymbol)
-          .returns(Increase::Models::CheckDeposit::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Check Deposits allow you to deposit images of paper checks into your account.
       sig do
@@ -274,73 +203,35 @@ module Increase
       class DepositAcceptance < Increase::BaseModel
         # The account number printed on the check.
         sig { returns(String) }
-        def account_number
-        end
-
-        sig { params(_: String).returns(String) }
-        def account_number=(_)
-        end
+        attr_accessor :account_number
 
         # The amount to be deposited in the minor unit of the transaction's currency. For
         #   dollars, for example, this is cents.
         sig { returns(Integer) }
-        def amount
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def amount=(_)
-        end
+        attr_accessor :amount
 
         # An additional line of metadata printed on the check. This typically includes the
         #   check number for business checks.
         sig { returns(T.nilable(String)) }
-        def auxiliary_on_us
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def auxiliary_on_us=(_)
-        end
+        attr_accessor :auxiliary_on_us
 
         # The ID of the Check Deposit that was accepted.
         sig { returns(String) }
-        def check_deposit_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def check_deposit_id=(_)
-        end
+        attr_accessor :check_deposit_id
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
         #   transaction's currency.
         sig { returns(Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol) }
-        def currency
-        end
-
-        sig do
-          params(_: Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol)
-            .returns(Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol)
-        end
-        def currency=(_)
-        end
+        attr_accessor :currency
 
         # The routing number printed on the check.
         sig { returns(String) }
-        def routing_number
-        end
-
-        sig { params(_: String).returns(String) }
-        def routing_number=(_)
-        end
+        attr_accessor :routing_number
 
         # The check serial number, if present, for consumer checks. For business checks,
         #   the serial number is usually in the `auxiliary_on_us` field.
         sig { returns(T.nilable(String)) }
-        def serial_number
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def serial_number=(_)
-        end
+        attr_accessor :serial_number
 
         # If your deposit is successfully parsed and accepted by Increase, this will
         #   contain details of the parsed check.
@@ -416,65 +307,29 @@ module Increase
         # The rejected amount in the minor unit of check's currency. For dollars, for
         #   example, this is cents.
         sig { returns(Integer) }
-        def amount
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def amount=(_)
-        end
+        attr_accessor :amount
 
         # The identifier of the Check Deposit that was rejected.
         sig { returns(String) }
-        def check_deposit_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def check_deposit_id=(_)
-        end
+        attr_accessor :check_deposit_id
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
         #   currency.
         sig { returns(Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol) }
-        def currency
-        end
-
-        sig do
-          params(_: Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol)
-            .returns(Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol)
-        end
-        def currency=(_)
-        end
+        attr_accessor :currency
 
         # The identifier of the associated declined transaction.
         sig { returns(String) }
-        def declined_transaction_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def declined_transaction_id=(_)
-        end
+        attr_accessor :declined_transaction_id
 
         # Why the check deposit was rejected.
         sig { returns(Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol) }
-        def reason
-        end
-
-        sig do
-          params(_: Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol)
-            .returns(Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol)
-        end
-        def reason=(_)
-        end
+        attr_accessor :reason
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #   the check deposit was rejected.
         sig { returns(Time) }
-        def rejected_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def rejected_at=(_)
-        end
+        attr_accessor :rejected_at
 
         # If your deposit is rejected by Increase, this will contain details as to why it
         #   was rejected.
@@ -609,67 +464,31 @@ module Increase
       class DepositReturn < Increase::BaseModel
         # The returned amount in USD cents.
         sig { returns(Integer) }
-        def amount
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def amount=(_)
-        end
+        attr_accessor :amount
 
         # The identifier of the Check Deposit that was returned.
         sig { returns(String) }
-        def check_deposit_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def check_deposit_id=(_)
-        end
+        attr_accessor :check_deposit_id
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
         #   transaction's currency.
         sig { returns(Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol) }
-        def currency
-        end
-
-        sig do
-          params(_: Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol)
-            .returns(Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol)
-        end
-        def currency=(_)
-        end
+        attr_accessor :currency
 
         # Why this check was returned by the bank holding the account it was drawn
         #   against.
         sig { returns(Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol) }
-        def return_reason
-        end
-
-        sig do
-          params(_: Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
-            .returns(Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
-        end
-        def return_reason=(_)
-        end
+        attr_accessor :return_reason
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #   the check deposit was returned.
         sig { returns(Time) }
-        def returned_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def returned_at=(_)
-        end
+        attr_accessor :returned_at
 
         # The identifier of the transaction that reversed the original check deposit
         #   transaction.
         sig { returns(String) }
-        def transaction_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def transaction_id=(_)
-        end
+        attr_accessor :transaction_id
 
         # If your deposit is returned, this will contain details as to why it was
         #   returned.
@@ -878,33 +697,18 @@ module Increase
         # The ID for the File containing the check back image that was submitted to the
         #   Check21 network.
         sig { returns(String) }
-        def back_file_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def back_file_id=(_)
-        end
+        attr_accessor :back_file_id
 
         # The ID for the File containing the check front image that was submitted to the
         #   Check21 network.
         sig { returns(String) }
-        def front_file_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def front_file_id=(_)
-        end
+        attr_accessor :front_file_id
 
         # When the check deposit was submitted to the Check21 network for processing.
         #   During business days, this happens within a few hours of the check being
         #   accepted by Increase.
         sig { returns(Time) }
-        def submitted_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def submitted_at=(_)
-        end
+        attr_accessor :submitted_at
 
         # After the check is parsed, it is submitted to the Check21 network for
         #   processing. This will contain details of the submission.
@@ -922,107 +726,48 @@ module Increase
       class InboundFundsHold < Increase::BaseModel
         # The Inbound Funds Hold identifier.
         sig { returns(String) }
-        def id
-        end
-
-        sig { params(_: String).returns(String) }
-        def id=(_)
-        end
+        attr_accessor :id
 
         # The held amount in the minor unit of the account's currency. For dollars, for
         #   example, this is cents.
         sig { returns(Integer) }
-        def amount
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def amount=(_)
-        end
+        attr_accessor :amount
 
         # When the hold will be released automatically. Certain conditions may cause it to
         #   be released before this time.
         sig { returns(Time) }
-        def automatically_releases_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def automatically_releases_at=(_)
-        end
+        attr_accessor :automatically_releases_at
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
         #   was created.
         sig { returns(Time) }
-        def created_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def created_at=(_)
-        end
+        attr_accessor :created_at
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
         #   currency.
         sig { returns(Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol) }
-        def currency
-        end
-
-        sig do
-          params(_: Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol)
-            .returns(Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol)
-        end
-        def currency=(_)
-        end
+        attr_accessor :currency
 
         # The ID of the Transaction for which funds were held.
         sig { returns(T.nilable(String)) }
-        def held_transaction_id
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def held_transaction_id=(_)
-        end
+        attr_accessor :held_transaction_id
 
         # The ID of the Pending Transaction representing the held funds.
         sig { returns(T.nilable(String)) }
-        def pending_transaction_id
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def pending_transaction_id=(_)
-        end
+        attr_accessor :pending_transaction_id
 
         # When the hold was released (if it has been released).
         sig { returns(T.nilable(Time)) }
-        def released_at
-        end
-
-        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-        def released_at=(_)
-        end
+        attr_accessor :released_at
 
         # The status of the hold.
         sig { returns(Increase::Models::CheckDeposit::InboundFundsHold::Status::TaggedSymbol) }
-        def status
-        end
-
-        sig do
-          params(_: Increase::Models::CheckDeposit::InboundFundsHold::Status::TaggedSymbol)
-            .returns(Increase::Models::CheckDeposit::InboundFundsHold::Status::TaggedSymbol)
-        end
-        def status=(_)
-        end
+        attr_accessor :status
 
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_funds_hold`.
         sig { returns(Increase::Models::CheckDeposit::InboundFundsHold::Type::TaggedSymbol) }
-        def type
-        end
-
-        sig do
-          params(_: Increase::Models::CheckDeposit::InboundFundsHold::Type::TaggedSymbol)
-            .returns(Increase::Models::CheckDeposit::InboundFundsHold::Type::TaggedSymbol)
-        end
-        def type=(_)
-        end
+        attr_accessor :type
 
         # Increase will sometimes hold the funds for Check Deposits. If funds are held,
         #   this sub-object will contain details of the hold.

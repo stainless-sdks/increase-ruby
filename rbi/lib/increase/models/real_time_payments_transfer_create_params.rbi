@@ -9,108 +9,74 @@ module Increase
       # The transfer amount in USD cents. For Real-Time Payments transfers, must be
       #   positive.
       sig { returns(Integer) }
-      def amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       # The name of the transfer's recipient.
       sig { returns(String) }
-      def creditor_name
-      end
-
-      sig { params(_: String).returns(String) }
-      def creditor_name=(_)
-      end
+      attr_accessor :creditor_name
 
       # Unstructured information that will show on the recipient's bank statement.
       sig { returns(String) }
-      def remittance_information
-      end
-
-      sig { params(_: String).returns(String) }
-      def remittance_information=(_)
-      end
+      attr_accessor :remittance_information
 
       # The identifier of the Account Number from which to send the transfer.
       sig { returns(String) }
-      def source_account_number_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def source_account_number_id=(_)
-      end
+      attr_accessor :source_account_number_id
 
       # The name of the transfer's sender. If not provided, defaults to the name of the
       #   account's entity.
       sig { returns(T.nilable(String)) }
-      def debtor_name
-      end
+      attr_reader :debtor_name
 
-      sig { params(_: String).returns(String) }
-      def debtor_name=(_)
-      end
+      sig { params(debtor_name: String).void }
+      attr_writer :debtor_name
 
       # The destination account number.
       sig { returns(T.nilable(String)) }
-      def destination_account_number
-      end
+      attr_reader :destination_account_number
 
-      sig { params(_: String).returns(String) }
-      def destination_account_number=(_)
-      end
+      sig { params(destination_account_number: String).void }
+      attr_writer :destination_account_number
 
       # The destination American Bankers' Association (ABA) Routing Transit Number
       #   (RTN).
       sig { returns(T.nilable(String)) }
-      def destination_routing_number
-      end
+      attr_reader :destination_routing_number
 
-      sig { params(_: String).returns(String) }
-      def destination_routing_number=(_)
-      end
+      sig { params(destination_routing_number: String).void }
+      attr_writer :destination_routing_number
 
       # The ID of an External Account to initiate a transfer to. If this parameter is
       #   provided, `destination_account_number` and `destination_routing_number` must be
       #   absent.
       sig { returns(T.nilable(String)) }
-      def external_account_id
-      end
+      attr_reader :external_account_id
 
-      sig { params(_: String).returns(String) }
-      def external_account_id=(_)
-      end
+      sig { params(external_account_id: String).void }
+      attr_writer :external_account_id
 
       # Whether the transfer requires explicit approval via the dashboard or API.
       sig { returns(T.nilable(T::Boolean)) }
-      def require_approval
-      end
+      attr_reader :require_approval
 
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def require_approval=(_)
-      end
+      sig { params(require_approval: T::Boolean).void }
+      attr_writer :require_approval
 
       # The name of the ultimate recipient of the transfer. Set this if the creditor is
       #   an intermediary receiving the payment for someone else.
       sig { returns(T.nilable(String)) }
-      def ultimate_creditor_name
-      end
+      attr_reader :ultimate_creditor_name
 
-      sig { params(_: String).returns(String) }
-      def ultimate_creditor_name=(_)
-      end
+      sig { params(ultimate_creditor_name: String).void }
+      attr_writer :ultimate_creditor_name
 
       # The name of the ultimate sender of the transfer. Set this if the funds are being
       #   sent on behalf of someone who is not the account holder at Increase.
       sig { returns(T.nilable(String)) }
-      def ultimate_debtor_name
-      end
+      attr_reader :ultimate_debtor_name
 
-      sig { params(_: String).returns(String) }
-      def ultimate_debtor_name=(_)
-      end
+      sig { params(ultimate_debtor_name: String).void }
+      attr_writer :ultimate_debtor_name
 
       sig do
         params(

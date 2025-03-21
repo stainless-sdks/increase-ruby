@@ -8,45 +8,36 @@ module Increase
 
       # The URL you'd like us to send webhooks to.
       sig { returns(String) }
-      def url
-      end
-
-      sig { params(_: String).returns(String) }
-      def url=(_)
-      end
+      attr_accessor :url
 
       # If specified, this subscription will only receive webhooks for Events associated
       #   with the specified OAuth Connection.
       sig { returns(T.nilable(String)) }
-      def oauth_connection_id
-      end
+      attr_reader :oauth_connection_id
 
-      sig { params(_: String).returns(String) }
-      def oauth_connection_id=(_)
-      end
+      sig { params(oauth_connection_id: String).void }
+      attr_writer :oauth_connection_id
 
       # If specified, this subscription will only receive webhooks for Events with the
       #   specified `category`.
       sig { returns(T.nilable(Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol)) }
-      def selected_event_category
-      end
+      attr_reader :selected_event_category
 
       sig do
-        params(_: Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol)
-          .returns(Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol)
+        params(
+          selected_event_category: Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol
+        )
+          .void
       end
-      def selected_event_category=(_)
-      end
+      attr_writer :selected_event_category
 
       # The key that will be used to sign webhooks. If no value is passed, a random
       #   string will be used as default.
       sig { returns(T.nilable(String)) }
-      def shared_secret
-      end
+      attr_reader :shared_secret
 
-      sig { params(_: String).returns(String) }
-      def shared_secret=(_)
-      end
+      sig { params(shared_secret: String).void }
+      attr_writer :shared_secret
 
       sig do
         params(

@@ -5,104 +5,48 @@ module Increase
     class IntrafiExclusion < Increase::BaseModel
       # The identifier of this exclusion request.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The name of the excluded institution.
       sig { returns(String) }
-      def bank_name
-      end
-
-      sig { params(_: String).returns(String) }
-      def bank_name=(_)
-      end
+      attr_accessor :bank_name
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
       #   the exclusion was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # The entity for which this institution is excluded.
       sig { returns(String) }
-      def entity_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def entity_id=(_)
-      end
+      attr_accessor :entity_id
 
       # When this was exclusion was confirmed by IntraFi.
       sig { returns(T.nilable(Time)) }
-      def excluded_at
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def excluded_at=(_)
-      end
+      attr_accessor :excluded_at
 
       # The Federal Deposit Insurance Corporation's certificate number for the
       #   institution.
       sig { returns(T.nilable(String)) }
-      def fdic_certificate_number
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def fdic_certificate_number=(_)
-      end
+      attr_accessor :fdic_certificate_number
 
       # The idempotency key you chose for this object. This value is unique across
       #   Increase and is used to ensure that a request is only processed once. Learn more
       #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      def idempotency_key
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def idempotency_key=(_)
-      end
+      attr_accessor :idempotency_key
 
       # The status of the exclusion request.
       sig { returns(Increase::Models::IntrafiExclusion::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Increase::Models::IntrafiExclusion::Status::TaggedSymbol)
-          .returns(Increase::Models::IntrafiExclusion::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # When this was exclusion was submitted to IntraFi by Increase.
       sig { returns(T.nilable(Time)) }
-      def submitted_at
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def submitted_at=(_)
-      end
+      attr_accessor :submitted_at
 
       # A constant representing the object's type. For this resource it will always be
       #   `intrafi_exclusion`.
       sig { returns(Increase::Models::IntrafiExclusion::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::IntrafiExclusion::Type::TaggedSymbol)
-          .returns(Increase::Models::IntrafiExclusion::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Certain institutions may be excluded per Entity when sweeping funds into the
       #   IntraFi network. This is useful when an Entity already has deposits at a

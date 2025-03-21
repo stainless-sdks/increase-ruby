@@ -8,12 +8,10 @@ module Increase
 
       # The moment to query the balance at. If not set, returns the current balances.
       sig { returns(T.nilable(Time)) }
-      def at_time
-      end
+      attr_reader :at_time
 
-      sig { params(_: Time).returns(Time) }
-      def at_time=(_)
-      end
+      sig { params(at_time: Time).void }
+      attr_writer :at_time
 
       sig do
         params(at_time: Time, request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash))

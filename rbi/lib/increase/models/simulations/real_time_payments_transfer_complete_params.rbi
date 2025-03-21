@@ -9,25 +9,18 @@ module Increase
 
         # If set, the simulation will reject the transfer.
         sig { returns(T.nilable(Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection)) }
-        def rejection
-        end
+        attr_reader :rejection
 
         sig do
           params(
-            _: T.any(
+            rejection: T.any(
               Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
               Increase::Util::AnyHash
             )
           )
-            .returns(
-              T.any(
-                Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
-                Increase::Util::AnyHash
-              )
-            )
+            .void
         end
-        def rejection=(_)
-        end
+        attr_writer :rejection
 
         sig do
           params(
@@ -61,19 +54,7 @@ module Increase
               Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::OrSymbol
             )
           end
-          def reject_reason_code
-          end
-
-          sig do
-            params(
-              _: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::OrSymbol
-            )
-              .returns(
-                Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::OrSymbol
-              )
-          end
-          def reject_reason_code=(_)
-          end
+          attr_accessor :reject_reason_code
 
           # If set, the simulation will reject the transfer.
           sig do

@@ -5,67 +5,36 @@ module Increase
     class CardPurchaseSupplement < Increase::BaseModel
       # The Card Purchase Supplement identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The ID of the Card Payment this transaction belongs to.
       sig { returns(T.nilable(String)) }
-      def card_payment_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def card_payment_id=(_)
-      end
+      attr_accessor :card_payment_id
 
       # Invoice-level information about the payment.
       sig { returns(T.nilable(Increase::Models::CardPurchaseSupplement::Invoice)) }
-      def invoice
-      end
+      attr_reader :invoice
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::CardPurchaseSupplement::Invoice, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::CardPurchaseSupplement::Invoice, Increase::Util::AnyHash)))
+        params(
+          invoice: T.nilable(T.any(Increase::Models::CardPurchaseSupplement::Invoice, Increase::Util::AnyHash))
+        )
+          .void
       end
-      def invoice=(_)
-      end
+      attr_writer :invoice
 
       # Line item information, such as individual products purchased.
       sig { returns(T.nilable(T::Array[Increase::Models::CardPurchaseSupplement::LineItem])) }
-      def line_items
-      end
-
-      sig do
-        params(_: T.nilable(T::Array[Increase::Models::CardPurchaseSupplement::LineItem]))
-          .returns(T.nilable(T::Array[Increase::Models::CardPurchaseSupplement::LineItem]))
-      end
-      def line_items=(_)
-      end
+      attr_accessor :line_items
 
       # The ID of the transaction.
       sig { returns(String) }
-      def transaction_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def transaction_id=(_)
-      end
+      attr_accessor :transaction_id
 
       # A constant representing the object's type. For this resource it will always be
       #   `card_purchase_supplement`.
       sig { returns(Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol)
-          .returns(Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Additional information about a card purchase (e.g., settlement or refund), such
       #   as level 3 line item data.
@@ -102,157 +71,69 @@ module Increase
       class Invoice < Increase::BaseModel
         # Discount given to cardholder.
         sig { returns(T.nilable(Integer)) }
-        def discount_amount
-        end
-
-        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-        def discount_amount=(_)
-        end
+        attr_accessor :discount_amount
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the discount.
         sig { returns(T.nilable(String)) }
-        def discount_currency
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def discount_currency=(_)
-        end
+        attr_accessor :discount_currency
 
         # Indicates how the merchant applied the discount.
         sig { returns(T.nilable(Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol)) }
-        def discount_treatment_code
-        end
-
-        sig do
-          params(
-            _: T.nilable(Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol)
-          )
-            .returns(T.nilable(Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol))
-        end
-        def discount_treatment_code=(_)
-        end
+        attr_accessor :discount_treatment_code
 
         # Amount of duty taxes.
         sig { returns(T.nilable(Integer)) }
-        def duty_tax_amount
-        end
-
-        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-        def duty_tax_amount=(_)
-        end
+        attr_accessor :duty_tax_amount
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the duty tax.
         sig { returns(T.nilable(String)) }
-        def duty_tax_currency
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def duty_tax_currency=(_)
-        end
+        attr_accessor :duty_tax_currency
 
         # Date the order was taken.
         sig { returns(T.nilable(Date)) }
-        def order_date
-        end
-
-        sig { params(_: T.nilable(Date)).returns(T.nilable(Date)) }
-        def order_date=(_)
-        end
+        attr_accessor :order_date
 
         # The shipping cost.
         sig { returns(T.nilable(Integer)) }
-        def shipping_amount
-        end
-
-        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-        def shipping_amount=(_)
-        end
+        attr_accessor :shipping_amount
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping
         #   cost.
         sig { returns(T.nilable(String)) }
-        def shipping_currency
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def shipping_currency=(_)
-        end
+        attr_accessor :shipping_currency
 
         # Country code of the shipping destination.
         sig { returns(T.nilable(String)) }
-        def shipping_destination_country_code
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def shipping_destination_country_code=(_)
-        end
+        attr_accessor :shipping_destination_country_code
 
         # Postal code of the shipping destination.
         sig { returns(T.nilable(String)) }
-        def shipping_destination_postal_code
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def shipping_destination_postal_code=(_)
-        end
+        attr_accessor :shipping_destination_postal_code
 
         # Postal code of the location being shipped from.
         sig { returns(T.nilable(String)) }
-        def shipping_source_postal_code
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def shipping_source_postal_code=(_)
-        end
+        attr_accessor :shipping_source_postal_code
 
         # Taxes paid for freight and shipping.
         sig { returns(T.nilable(Integer)) }
-        def shipping_tax_amount
-        end
-
-        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-        def shipping_tax_amount=(_)
-        end
+        attr_accessor :shipping_tax_amount
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping
         #   tax.
         sig { returns(T.nilable(String)) }
-        def shipping_tax_currency
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def shipping_tax_currency=(_)
-        end
+        attr_accessor :shipping_tax_currency
 
         # Tax rate for freight and shipping.
         sig { returns(T.nilable(String)) }
-        def shipping_tax_rate
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def shipping_tax_rate=(_)
-        end
+        attr_accessor :shipping_tax_rate
 
         # Indicates how the merchant applied taxes.
         sig { returns(T.nilable(Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol)) }
-        def tax_treatments
-        end
-
-        sig do
-          params(_: T.nilable(Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol))
-            .returns(T.nilable(Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol))
-        end
-        def tax_treatments=(_)
-        end
+        attr_accessor :tax_treatments
 
         # Value added tax invoice reference number.
         sig { returns(T.nilable(String)) }
-        def unique_value_added_tax_invoice_reference
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def unique_value_added_tax_invoice_reference=(_)
-        end
+        attr_accessor :unique_value_added_tax_invoice_reference
 
         # Invoice-level information about the payment.
         sig do
@@ -414,42 +295,19 @@ module Increase
       class LineItem < Increase::BaseModel
         # The Card Purchase Supplement Line Item identifier.
         sig { returns(String) }
-        def id
-        end
-
-        sig { params(_: String).returns(String) }
-        def id=(_)
-        end
+        attr_accessor :id
 
         # Indicates the type of line item.
         sig { returns(T.nilable(Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol)) }
-        def detail_indicator
-        end
-
-        sig do
-          params(_: T.nilable(Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol))
-            .returns(T.nilable(Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol))
-        end
-        def detail_indicator=(_)
-        end
+        attr_accessor :detail_indicator
 
         # Discount amount for this specific line item.
         sig { returns(T.nilable(Integer)) }
-        def discount_amount
-        end
-
-        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-        def discount_amount=(_)
-        end
+        attr_accessor :discount_amount
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the discount.
         sig { returns(T.nilable(String)) }
-        def discount_currency
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def discount_currency=(_)
-        end
+        attr_accessor :discount_currency
 
         # Indicates how the merchant applied the discount for this specific line item.
         sig do
@@ -457,129 +315,57 @@ module Increase
             T.nilable(Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol)
           )
         end
-        def discount_treatment_code
-        end
-
-        sig do
-          params(
-            _: T.nilable(Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol)
-          )
-            .returns(
-              T.nilable(Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol)
-            )
-        end
-        def discount_treatment_code=(_)
-        end
+        attr_accessor :discount_treatment_code
 
         # Code used to categorize the purchase item.
         sig { returns(T.nilable(String)) }
-        def item_commodity_code
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def item_commodity_code=(_)
-        end
+        attr_accessor :item_commodity_code
 
         # Description of the purchase item.
         sig { returns(T.nilable(String)) }
-        def item_descriptor
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def item_descriptor=(_)
-        end
+        attr_accessor :item_descriptor
 
         # The number of units of the product being purchased.
         sig { returns(T.nilable(String)) }
-        def item_quantity
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def item_quantity=(_)
-        end
+        attr_accessor :item_quantity
 
         # Code used to categorize the product being purchased.
         sig { returns(T.nilable(String)) }
-        def product_code
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def product_code=(_)
-        end
+        attr_accessor :product_code
 
         # Sales tax amount for this line item.
         sig { returns(T.nilable(Integer)) }
-        def sales_tax_amount
-        end
-
-        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-        def sales_tax_amount=(_)
-        end
+        attr_accessor :sales_tax_amount
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the sales tax
         #   assessed.
         sig { returns(T.nilable(String)) }
-        def sales_tax_currency
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def sales_tax_currency=(_)
-        end
+        attr_accessor :sales_tax_currency
 
         # Sales tax rate for this line item.
         sig { returns(T.nilable(String)) }
-        def sales_tax_rate
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def sales_tax_rate=(_)
-        end
+        attr_accessor :sales_tax_rate
 
         # Total amount of all line items.
         sig { returns(T.nilable(Integer)) }
-        def total_amount
-        end
-
-        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-        def total_amount=(_)
-        end
+        attr_accessor :total_amount
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total
         #   amount.
         sig { returns(T.nilable(String)) }
-        def total_amount_currency
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def total_amount_currency=(_)
-        end
+        attr_accessor :total_amount_currency
 
         # Cost of line item per unit of measure, in major units.
         sig { returns(T.nilable(String)) }
-        def unit_cost
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def unit_cost=(_)
-        end
+        attr_accessor :unit_cost
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the unit cost.
         sig { returns(T.nilable(String)) }
-        def unit_cost_currency
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def unit_cost_currency=(_)
-        end
+        attr_accessor :unit_cost_currency
 
         # Code indicating unit of measure (gallons, etc.).
         sig { returns(T.nilable(String)) }
-        def unit_of_measure_code
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def unit_of_measure_code=(_)
-        end
+        attr_accessor :unit_of_measure_code
 
         sig do
           params(
