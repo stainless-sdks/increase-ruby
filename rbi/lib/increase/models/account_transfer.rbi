@@ -320,8 +320,10 @@ module Increase
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER = T.let(:user, Increase::Models::AccountTransfer::CreatedBy::Category::TaggedSymbol)
 
-          sig { override.returns(T::Array[Increase::Models::AccountTransfer::CreatedBy::Category::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::AccountTransfer::CreatedBy::Category::TaggedSymbol]) }
+            def values
+            end
           end
         end
 
@@ -382,8 +384,10 @@ module Increase
         # US Dollar (USD)
         USD = T.let(:USD, Increase::Models::AccountTransfer::Currency::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::AccountTransfer::Currency::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::AccountTransfer::Currency::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -396,8 +400,10 @@ module Increase
 
         ACCOUNT = T.let(:account, Increase::Models::AccountTransfer::Network::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::AccountTransfer::Network::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::AccountTransfer::Network::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -417,8 +423,10 @@ module Increase
         # The transfer has been completed.
         COMPLETE = T.let(:complete, Increase::Models::AccountTransfer::Status::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::AccountTransfer::Status::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::AccountTransfer::Status::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -432,8 +440,10 @@ module Increase
 
         ACCOUNT_TRANSFER = T.let(:account_transfer, Increase::Models::AccountTransfer::Type::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::AccountTransfer::Type::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::AccountTransfer::Type::TaggedSymbol]) }
+          def values
+          end
         end
       end
     end

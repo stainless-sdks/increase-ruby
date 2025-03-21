@@ -82,8 +82,10 @@ module Increase
         # The OAuth connection is permanently deactivated.
         INACTIVE = T.let(:inactive, Increase::Models::OAuthConnection::Status::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::OAuthConnection::Status::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::OAuthConnection::Status::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -97,8 +99,10 @@ module Increase
 
         OAUTH_CONNECTION = T.let(:oauth_connection, Increase::Models::OAuthConnection::Type::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::OAuthConnection::Type::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::OAuthConnection::Type::TaggedSymbol]) }
+          def values
+          end
         end
       end
     end

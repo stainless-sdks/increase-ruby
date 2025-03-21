@@ -118,8 +118,10 @@ module Increase
           # The Physical Card Profile has been archived.
           ARCHIVED = T.let(:archived, Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol)
 
-          sig { override.returns(T::Array[Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol]) }
+            def values
+            end
           end
         end
       end
