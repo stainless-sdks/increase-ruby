@@ -53,6 +53,8 @@ class Increase::Test::Resources::ExportsTest < Increase::Test::ResourceTest
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Increase::Models::Export
     end

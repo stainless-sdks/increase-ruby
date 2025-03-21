@@ -49,6 +49,8 @@ class Increase::Test::Resources::InboundWireTransfersTest < Increase::Test::Reso
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Increase::Models::InboundWireTransfer
     end

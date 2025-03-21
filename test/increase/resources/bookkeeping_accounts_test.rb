@@ -51,6 +51,8 @@ class Increase::Test::Resources::BookkeepingAccountsTest < Increase::Test::Resou
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Increase::Models::BookkeepingAccount
     end

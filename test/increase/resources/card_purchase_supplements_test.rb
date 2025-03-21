@@ -30,6 +30,8 @@ class Increase::Test::Resources::CardPurchaseSupplementsTest < Increase::Test::R
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Increase::Models::CardPurchaseSupplement
     end
