@@ -8,30 +8,21 @@ module Increase
 
       # The Account checks sent to this Lockbox should be deposited into.
       sig { returns(String) }
-      def account_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_id=(_)
-      end
+      attr_accessor :account_id
 
       # The description you choose for the Lockbox, for display purposes.
       sig { returns(T.nilable(String)) }
-      def description
-      end
+      attr_reader :description
 
-      sig { params(_: String).returns(String) }
-      def description=(_)
-      end
+      sig { params(description: String).void }
+      attr_writer :description
 
       # The name of the recipient that will receive mail at this location.
       sig { returns(T.nilable(String)) }
-      def recipient_name
-      end
+      attr_reader :recipient_name
 
-      sig { params(_: String).returns(String) }
-      def recipient_name=(_)
-      end
+      sig { params(recipient_name: String).void }
+      attr_writer :recipient_name
 
       sig do
         params(

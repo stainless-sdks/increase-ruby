@@ -8,80 +8,55 @@ module Increase
 
       # The identifier for the account that will send the transfer.
       sig { returns(String) }
-      def account_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_id=(_)
-      end
+      attr_accessor :account_id
 
       # The transfer amount in USD cents.
       sig { returns(Integer) }
-      def amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       # Whether Increase will print and mail the check or if you will do it yourself.
       sig { returns(Increase::Models::CheckTransferCreateParams::FulfillmentMethod::OrSymbol) }
-      def fulfillment_method
-      end
-
-      sig do
-        params(_: Increase::Models::CheckTransferCreateParams::FulfillmentMethod::OrSymbol)
-          .returns(Increase::Models::CheckTransferCreateParams::FulfillmentMethod::OrSymbol)
-      end
-      def fulfillment_method=(_)
-      end
+      attr_accessor :fulfillment_method
 
       # The identifier of the Account Number from which to send the transfer and print
       #   on the check.
       sig { returns(String) }
-      def source_account_number_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def source_account_number_id=(_)
-      end
+      attr_accessor :source_account_number_id
 
       # Details relating to the physical check that Increase will print and mail. This
       #   is required if `fulfillment_method` is equal to `physical_check`. It must not be
       #   included if any other `fulfillment_method` is provided.
       sig { returns(T.nilable(Increase::Models::CheckTransferCreateParams::PhysicalCheck)) }
-      def physical_check
-      end
+      attr_reader :physical_check
 
       sig do
-        params(_: T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck, Increase::Util::AnyHash))
+        params(
+          physical_check: T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck, Increase::Util::AnyHash)
+        )
+          .void
       end
-      def physical_check=(_)
-      end
+      attr_writer :physical_check
 
       # Whether the transfer requires explicit approval via the dashboard or API.
       sig { returns(T.nilable(T::Boolean)) }
-      def require_approval
-      end
+      attr_reader :require_approval
 
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def require_approval=(_)
-      end
+      sig { params(require_approval: T::Boolean).void }
+      attr_writer :require_approval
 
       # Details relating to the custom fulfillment you will perform. This is required if
       #   `fulfillment_method` is equal to `third_party`. It must not be included if any
       #   other `fulfillment_method` is provided.
       sig { returns(T.nilable(Increase::Models::CheckTransferCreateParams::ThirdParty)) }
-      def third_party
-      end
+      attr_reader :third_party
 
       sig do
-        params(_: T.any(Increase::Models::CheckTransferCreateParams::ThirdParty, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::CheckTransferCreateParams::ThirdParty, Increase::Util::AnyHash))
+        params(
+          third_party: T.any(Increase::Models::CheckTransferCreateParams::ThirdParty, Increase::Util::AnyHash)
+        )
+          .void
       end
-      def third_party=(_)
-      end
+      attr_writer :third_party
 
       sig do
         params(
@@ -153,85 +128,61 @@ module Increase
       class PhysicalCheck < Increase::BaseModel
         # Details for where Increase will mail the check.
         sig { returns(Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress) }
-        def mailing_address
-        end
+        attr_reader :mailing_address
 
         sig do
           params(
-            _: T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress, Increase::Util::AnyHash)
+            mailing_address: T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress, Increase::Util::AnyHash)
           )
-            .returns(
-              T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress, Increase::Util::AnyHash)
-            )
+            .void
         end
-        def mailing_address=(_)
-        end
+        attr_writer :mailing_address
 
         # The descriptor that will be printed on the memo field on the check.
         sig { returns(String) }
-        def memo
-        end
-
-        sig { params(_: String).returns(String) }
-        def memo=(_)
-        end
+        attr_accessor :memo
 
         # The name that will be printed on the check in the 'To:' field.
         sig { returns(String) }
-        def recipient_name
-        end
-
-        sig { params(_: String).returns(String) }
-        def recipient_name=(_)
-        end
+        attr_accessor :recipient_name
 
         # The check number Increase should print on the check. This should not contain
         #   leading zeroes and must be unique across the `source_account_number`. If this is
         #   omitted, Increase will generate a check number for you.
         sig { returns(T.nilable(String)) }
-        def check_number
-        end
+        attr_reader :check_number
 
-        sig { params(_: String).returns(String) }
-        def check_number=(_)
-        end
+        sig { params(check_number: String).void }
+        attr_writer :check_number
 
         # The descriptor that will be printed on the letter included with the check.
         sig { returns(T.nilable(String)) }
-        def note
-        end
+        attr_reader :note
 
-        sig { params(_: String).returns(String) }
-        def note=(_)
-        end
+        sig { params(note: String).void }
+        attr_writer :note
 
         # The return address to be printed on the check. If omitted this will default to
         #   an Increase-owned address that will mark checks as delivery failed and shred
         #   them.
         sig { returns(T.nilable(Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress)) }
-        def return_address
-        end
+        attr_reader :return_address
 
         sig do
           params(
-            _: T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress, Increase::Util::AnyHash)
+            return_address: T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress, Increase::Util::AnyHash)
           )
-            .returns(
-              T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress, Increase::Util::AnyHash)
-            )
+            .void
         end
-        def return_address=(_)
-        end
+        attr_writer :return_address
 
         # The text that will appear as the signature on the check in cursive font. If not
         #   provided, the check will be printed with 'No signature required'.
         sig { returns(T.nilable(String)) }
-        def signature_text
-        end
+        attr_reader :signature_text
 
-        sig { params(_: String).returns(String) }
-        def signature_text=(_)
-        end
+        sig { params(signature_text: String).void }
+        attr_writer :signature_text
 
         # Details relating to the physical check that Increase will print and mail. This
         #   is required if `fulfillment_method` is equal to `physical_check`. It must not be
@@ -279,48 +230,26 @@ module Increase
         class MailingAddress < Increase::BaseModel
           # The city component of the check's destination address.
           sig { returns(String) }
-          def city
-          end
-
-          sig { params(_: String).returns(String) }
-          def city=(_)
-          end
+          attr_accessor :city
 
           # The first line of the address component of the check's destination address.
           sig { returns(String) }
-          def line1
-          end
-
-          sig { params(_: String).returns(String) }
-          def line1=(_)
-          end
+          attr_accessor :line1
 
           # The postal code component of the check's destination address.
           sig { returns(String) }
-          def postal_code
-          end
-
-          sig { params(_: String).returns(String) }
-          def postal_code=(_)
-          end
+          attr_accessor :postal_code
 
           # The US state component of the check's destination address.
           sig { returns(String) }
-          def state
-          end
-
-          sig { params(_: String).returns(String) }
-          def state=(_)
-          end
+          attr_accessor :state
 
           # The second line of the address component of the check's destination address.
           sig { returns(T.nilable(String)) }
-          def line2
-          end
+          attr_reader :line2
 
-          sig { params(_: String).returns(String) }
-          def line2=(_)
-          end
+          sig { params(line2: String).void }
+          attr_writer :line2
 
           # Details for where Increase will mail the check.
           sig do
@@ -340,57 +269,30 @@ module Increase
         class ReturnAddress < Increase::BaseModel
           # The city of the return address.
           sig { returns(String) }
-          def city
-          end
-
-          sig { params(_: String).returns(String) }
-          def city=(_)
-          end
+          attr_accessor :city
 
           # The first line of the return address.
           sig { returns(String) }
-          def line1
-          end
-
-          sig { params(_: String).returns(String) }
-          def line1=(_)
-          end
+          attr_accessor :line1
 
           # The name of the return address.
           sig { returns(String) }
-          def name
-          end
-
-          sig { params(_: String).returns(String) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           # The postal code of the return address.
           sig { returns(String) }
-          def postal_code
-          end
-
-          sig { params(_: String).returns(String) }
-          def postal_code=(_)
-          end
+          attr_accessor :postal_code
 
           # The US state of the return address.
           sig { returns(String) }
-          def state
-          end
-
-          sig { params(_: String).returns(String) }
-          def state=(_)
-          end
+          attr_accessor :state
 
           # The second line of the return address.
           sig { returns(T.nilable(String)) }
-          def line2
-          end
+          attr_reader :line2
 
-          sig { params(_: String).returns(String) }
-          def line2=(_)
-          end
+          sig { params(line2: String).void }
+          attr_writer :line2
 
           # The return address to be printed on the check. If omitted this will default to
           #   an Increase-owned address that will mark checks as delivery failed and shred
@@ -430,12 +332,10 @@ module Increase
         #   zeroes. If this is omitted, Increase will generate a check number for you; you
         #   should inspect the response and use that check number.
         sig { returns(T.nilable(String)) }
-        def check_number
-        end
+        attr_reader :check_number
 
-        sig { params(_: String).returns(String) }
-        def check_number=(_)
-        end
+        sig { params(check_number: String).void }
+        attr_writer :check_number
 
         # Details relating to the custom fulfillment you will perform. This is required if
         #   `fulfillment_method` is equal to `third_party`. It must not be included if any

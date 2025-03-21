@@ -8,43 +8,32 @@ module Increase
 
       # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
-      def cursor
-      end
+      attr_reader :cursor
 
-      sig { params(_: String).returns(String) }
-      def cursor=(_)
-      end
+      sig { params(cursor: String).void }
+      attr_writer :cursor
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       sig { returns(T.nilable(Integer)) }
-      def limit
-      end
+      attr_reader :limit
 
-      sig { params(_: Integer).returns(Integer) }
-      def limit=(_)
-      end
+      sig { params(limit: Integer).void }
+      attr_writer :limit
 
       # Filter results to only include OAuth Connections for a specific OAuth
       #   Application.
       sig { returns(T.nilable(String)) }
-      def oauth_application_id
-      end
+      attr_reader :oauth_application_id
 
-      sig { params(_: String).returns(String) }
-      def oauth_application_id=(_)
-      end
+      sig { params(oauth_application_id: String).void }
+      attr_writer :oauth_application_id
 
       sig { returns(T.nilable(Increase::Models::OAuthConnectionListParams::Status)) }
-      def status
-      end
+      attr_reader :status
 
-      sig do
-        params(_: T.any(Increase::Models::OAuthConnectionListParams::Status, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::OAuthConnectionListParams::Status, Increase::Util::AnyHash))
-      end
-      def status=(_)
-      end
+      sig { params(status: T.any(Increase::Models::OAuthConnectionListParams::Status, Increase::Util::AnyHash)).void }
+      attr_writer :status
 
       sig do
         params(
@@ -79,15 +68,10 @@ module Increase
         #   `active` ones. For GET requests, this should be encoded as a comma-delimited
         #   string, such as `?in=one,two,three`.
         sig { returns(T.nilable(T::Array[Increase::Models::OAuthConnectionListParams::Status::In::OrSymbol])) }
-        def in_
-        end
+        attr_reader :in_
 
-        sig do
-          params(_: T::Array[Increase::Models::OAuthConnectionListParams::Status::In::OrSymbol])
-            .returns(T::Array[Increase::Models::OAuthConnectionListParams::Status::In::OrSymbol])
-        end
-        def in_=(_)
-        end
+        sig { params(in_: T::Array[Increase::Models::OAuthConnectionListParams::Status::In::OrSymbol]).void }
+        attr_writer :in_
 
         sig do
           params(in_: T::Array[Increase::Models::OAuthConnectionListParams::Status::In::OrSymbol])

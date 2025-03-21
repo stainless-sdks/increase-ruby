@@ -5,262 +5,161 @@ module Increase
     class CheckTransfer < Increase::BaseModel
       # The Check transfer's identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The identifier of the Account from which funds will be transferred.
       sig { returns(String) }
-      def account_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_id=(_)
-      end
+      attr_accessor :account_id
 
       # The account number printed on the check.
       sig { returns(String) }
-      def account_number
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_number=(_)
-      end
+      attr_accessor :account_number
 
       # The transfer amount in USD cents.
       sig { returns(Integer) }
-      def amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       # If your account requires approvals for transfers and the transfer was approved,
       #   this will contain details of the approval.
       sig { returns(T.nilable(Increase::Models::CheckTransfer::Approval)) }
-      def approval
-      end
+      attr_reader :approval
 
-      sig do
-        params(_: T.nilable(T.any(Increase::Models::CheckTransfer::Approval, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::CheckTransfer::Approval, Increase::Util::AnyHash)))
-      end
-      def approval=(_)
-      end
+      sig { params(approval: T.nilable(T.any(Increase::Models::CheckTransfer::Approval, Increase::Util::AnyHash))).void }
+      attr_writer :approval
 
       # If the Check Transfer was successfully deposited, this will contain the
       #   identifier of the Inbound Check Deposit object with details of the deposit.
       sig { returns(T.nilable(String)) }
-      def approved_inbound_check_deposit_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def approved_inbound_check_deposit_id=(_)
-      end
+      attr_accessor :approved_inbound_check_deposit_id
 
       # If your account requires approvals for transfers and the transfer was not
       #   approved, this will contain details of the cancellation.
       sig { returns(T.nilable(Increase::Models::CheckTransfer::Cancellation)) }
-      def cancellation
-      end
+      attr_reader :cancellation
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::CheckTransfer::Cancellation, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::CheckTransfer::Cancellation, Increase::Util::AnyHash)))
+        params(
+          cancellation: T.nilable(T.any(Increase::Models::CheckTransfer::Cancellation, Increase::Util::AnyHash))
+        )
+          .void
       end
-      def cancellation=(_)
-      end
+      attr_writer :cancellation
 
       # The check number printed on the check.
       sig { returns(String) }
-      def check_number
-      end
-
-      sig { params(_: String).returns(String) }
-      def check_number=(_)
-      end
+      attr_accessor :check_number
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
       #   the transfer was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # What object created the transfer, either via the API or the dashboard.
       sig { returns(T.nilable(Increase::Models::CheckTransfer::CreatedBy)) }
-      def created_by
-      end
+      attr_reader :created_by
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy, Increase::Util::AnyHash)))
+        params(created_by: T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy, Increase::Util::AnyHash)))
+          .void
       end
-      def created_by=(_)
-      end
+      attr_writer :created_by
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
       #   currency.
       sig { returns(Increase::Models::CheckTransfer::Currency::TaggedSymbol) }
-      def currency
-      end
-
-      sig do
-        params(_: Increase::Models::CheckTransfer::Currency::TaggedSymbol)
-          .returns(Increase::Models::CheckTransfer::Currency::TaggedSymbol)
-      end
-      def currency=(_)
-      end
+      attr_accessor :currency
 
       # Whether Increase will print and mail the check or if you will do it yourself.
       sig { returns(Increase::Models::CheckTransfer::FulfillmentMethod::TaggedSymbol) }
-      def fulfillment_method
-      end
-
-      sig do
-        params(_: Increase::Models::CheckTransfer::FulfillmentMethod::TaggedSymbol)
-          .returns(Increase::Models::CheckTransfer::FulfillmentMethod::TaggedSymbol)
-      end
-      def fulfillment_method=(_)
-      end
+      attr_accessor :fulfillment_method
 
       # The idempotency key you chose for this object. This value is unique across
       #   Increase and is used to ensure that a request is only processed once. Learn more
       #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      def idempotency_key
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def idempotency_key=(_)
-      end
+      attr_accessor :idempotency_key
 
       # If the check has been mailed by Increase, this will contain details of the
       #   shipment.
       sig { returns(T.nilable(Increase::Models::CheckTransfer::Mailing)) }
-      def mailing
-      end
+      attr_reader :mailing
 
-      sig do
-        params(_: T.nilable(T.any(Increase::Models::CheckTransfer::Mailing, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::CheckTransfer::Mailing, Increase::Util::AnyHash)))
-      end
-      def mailing=(_)
-      end
+      sig { params(mailing: T.nilable(T.any(Increase::Models::CheckTransfer::Mailing, Increase::Util::AnyHash))).void }
+      attr_writer :mailing
 
       # The ID for the pending transaction representing the transfer. A pending
       #   transaction is created when the transfer
       #   [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
       #   by someone else in your organization.
       sig { returns(T.nilable(String)) }
-      def pending_transaction_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def pending_transaction_id=(_)
-      end
+      attr_accessor :pending_transaction_id
 
       # Details relating to the physical check that Increase will print and mail. Will
       #   be present if and only if `fulfillment_method` is equal to `physical_check`.
       sig { returns(T.nilable(Increase::Models::CheckTransfer::PhysicalCheck)) }
-      def physical_check
-      end
+      attr_reader :physical_check
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::CheckTransfer::PhysicalCheck, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::CheckTransfer::PhysicalCheck, Increase::Util::AnyHash)))
+        params(
+          physical_check: T.nilable(T.any(Increase::Models::CheckTransfer::PhysicalCheck, Increase::Util::AnyHash))
+        )
+          .void
       end
-      def physical_check=(_)
-      end
+      attr_writer :physical_check
 
       # The routing number printed on the check.
       sig { returns(String) }
-      def routing_number
-      end
-
-      sig { params(_: String).returns(String) }
-      def routing_number=(_)
-      end
+      attr_accessor :routing_number
 
       # The identifier of the Account Number from which to send the transfer and print
       #   on the check.
       sig { returns(T.nilable(String)) }
-      def source_account_number_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def source_account_number_id=(_)
-      end
+      attr_accessor :source_account_number_id
 
       # The lifecycle status of the transfer.
       sig { returns(Increase::Models::CheckTransfer::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Increase::Models::CheckTransfer::Status::TaggedSymbol)
-          .returns(Increase::Models::CheckTransfer::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # After a stop-payment is requested on the check, this will contain supplemental
       #   details.
       sig { returns(T.nilable(Increase::Models::CheckTransfer::StopPaymentRequest)) }
-      def stop_payment_request
-      end
+      attr_reader :stop_payment_request
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::CheckTransfer::StopPaymentRequest, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::CheckTransfer::StopPaymentRequest, Increase::Util::AnyHash)))
+        params(
+          stop_payment_request: T.nilable(T.any(Increase::Models::CheckTransfer::StopPaymentRequest, Increase::Util::AnyHash))
+        )
+          .void
       end
-      def stop_payment_request=(_)
-      end
+      attr_writer :stop_payment_request
 
       # After the transfer is submitted, this will contain supplemental details.
       sig { returns(T.nilable(Increase::Models::CheckTransfer::Submission)) }
-      def submission
-      end
+      attr_reader :submission
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::CheckTransfer::Submission, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::CheckTransfer::Submission, Increase::Util::AnyHash)))
+        params(submission: T.nilable(T.any(Increase::Models::CheckTransfer::Submission, Increase::Util::AnyHash)))
+          .void
       end
-      def submission=(_)
-      end
+      attr_writer :submission
 
       # Details relating to the custom fulfillment you will perform. Will be present if
       #   and only if `fulfillment_method` is equal to `third_party`.
       sig { returns(T.nilable(Increase::Models::CheckTransfer::ThirdParty)) }
-      def third_party
-      end
+      attr_reader :third_party
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::CheckTransfer::ThirdParty, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::CheckTransfer::ThirdParty, Increase::Util::AnyHash)))
+        params(
+          third_party: T.nilable(T.any(Increase::Models::CheckTransfer::ThirdParty, Increase::Util::AnyHash))
+        )
+          .void
       end
-      def third_party=(_)
-      end
+      attr_writer :third_party
 
       # A constant representing the object's type. For this resource it will always be
       #   `check_transfer`.
       sig { returns(Increase::Models::CheckTransfer::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::CheckTransfer::Type::TaggedSymbol)
-          .returns(Increase::Models::CheckTransfer::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Check Transfers move funds from your Increase account by mailing a physical
       #   check.
@@ -356,22 +255,12 @@ module Increase
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #   the transfer was approved.
         sig { returns(Time) }
-        def approved_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def approved_at=(_)
-        end
+        attr_accessor :approved_at
 
         # If the Transfer was approved by a user in the dashboard, the email address of
         #   that user.
         sig { returns(T.nilable(String)) }
-        def approved_by
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def approved_by=(_)
-        end
+        attr_accessor :approved_by
 
         # If your account requires approvals for transfers and the transfer was approved,
         #   this will contain details of the approval.
@@ -388,22 +277,12 @@ module Increase
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #   the Transfer was canceled.
         sig { returns(Time) }
-        def canceled_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def canceled_at=(_)
-        end
+        attr_accessor :canceled_at
 
         # If the Transfer was canceled by a user in the dashboard, the email address of
         #   that user.
         sig { returns(T.nilable(String)) }
-        def canceled_by
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def canceled_by=(_)
-        end
+        attr_accessor :canceled_by
 
         # If your account requires approvals for transfers and the transfer was not
         #   approved, this will contain details of the cancellation.
@@ -419,55 +298,41 @@ module Increase
       class CreatedBy < Increase::BaseModel
         # If present, details about the API key that created the transfer.
         sig { returns(T.nilable(Increase::Models::CheckTransfer::CreatedBy::APIKey)) }
-        def api_key
-        end
-
-        sig do
-          params(_: T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy::APIKey, Increase::Util::AnyHash)))
-            .returns(T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy::APIKey, Increase::Util::AnyHash)))
-        end
-        def api_key=(_)
-        end
-
-        # The type of object that created this transfer.
-        sig { returns(Increase::Models::CheckTransfer::CreatedBy::Category::TaggedSymbol) }
-        def category
-        end
-
-        sig do
-          params(_: Increase::Models::CheckTransfer::CreatedBy::Category::TaggedSymbol)
-            .returns(Increase::Models::CheckTransfer::CreatedBy::Category::TaggedSymbol)
-        end
-        def category=(_)
-        end
-
-        # If present, details about the OAuth Application that created the transfer.
-        sig { returns(T.nilable(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication)) }
-        def oauth_application
-        end
+        attr_reader :api_key
 
         sig do
           params(
-            _: T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash))
+            api_key: T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy::APIKey, Increase::Util::AnyHash))
           )
-            .returns(
-              T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash))
-            )
+            .void
         end
-        def oauth_application=(_)
+        attr_writer :api_key
+
+        # The type of object that created this transfer.
+        sig { returns(Increase::Models::CheckTransfer::CreatedBy::Category::TaggedSymbol) }
+        attr_accessor :category
+
+        # If present, details about the OAuth Application that created the transfer.
+        sig { returns(T.nilable(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication)) }
+        attr_reader :oauth_application
+
+        sig do
+          params(
+            oauth_application: T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash))
+          )
+            .void
         end
+        attr_writer :oauth_application
 
         # If present, details about the User that created the transfer.
         sig { returns(T.nilable(Increase::Models::CheckTransfer::CreatedBy::User)) }
-        def user
-        end
+        attr_reader :user
 
         sig do
-          params(_: T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy::User, Increase::Util::AnyHash)))
-            .returns(T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy::User, Increase::Util::AnyHash)))
+          params(user: T.nilable(T.any(Increase::Models::CheckTransfer::CreatedBy::User, Increase::Util::AnyHash)))
+            .void
         end
-        def user=(_)
-        end
+        attr_writer :user
 
         # What object created the transfer, either via the API or the dashboard.
         sig do
@@ -499,12 +364,7 @@ module Increase
         class APIKey < Increase::BaseModel
           # The description set for the API key when it was created.
           sig { returns(T.nilable(String)) }
-          def description
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def description=(_)
-          end
+          attr_accessor :description
 
           # If present, details about the API key that created the transfer.
           sig { params(description: T.nilable(String)).returns(T.attached_class) }
@@ -544,12 +404,7 @@ module Increase
         class OAuthApplication < Increase::BaseModel
           # The name of the OAuth Application.
           sig { returns(String) }
-          def name
-          end
-
-          sig { params(_: String).returns(String) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           # If present, details about the OAuth Application that created the transfer.
           sig { params(name: String).returns(T.attached_class) }
@@ -564,12 +419,7 @@ module Increase
         class User < Increase::BaseModel
           # The email address of the User.
           sig { returns(String) }
-          def email
-          end
-
-          sig { params(_: String).returns(String) }
-          def email=(_)
-          end
+          attr_accessor :email
 
           # If present, details about the User that created the transfer.
           sig { params(email: String).returns(T.attached_class) }
@@ -640,31 +490,16 @@ module Increase
         # The ID of the file corresponding to an image of the check that was mailed, if
         #   available.
         sig { returns(T.nilable(String)) }
-        def image_id
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def image_id=(_)
-        end
+        attr_accessor :image_id
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #   the check was mailed.
         sig { returns(Time) }
-        def mailed_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def mailed_at=(_)
-        end
+        attr_accessor :mailed_at
 
         # The tracking number of the shipment, if available for the shipping method.
         sig { returns(T.nilable(String)) }
-        def tracking_number
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def tracking_number=(_)
-        end
+        attr_accessor :tracking_number
 
         # If the check has been mailed by Increase, this will contain details of the
         #   shipment.
@@ -685,92 +520,52 @@ module Increase
       class PhysicalCheck < Increase::BaseModel
         # Details for where Increase will mail the check.
         sig { returns(Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress) }
-        def mailing_address
-        end
-
-        sig do
-          params(_: T.any(Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress, Increase::Util::AnyHash))
-            .returns(T.any(Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress, Increase::Util::AnyHash))
-        end
-        def mailing_address=(_)
-        end
-
-        # The descriptor that will be printed on the memo field on the check.
-        sig { returns(T.nilable(String)) }
-        def memo
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def memo=(_)
-        end
-
-        # The descriptor that will be printed on the letter included with the check.
-        sig { returns(T.nilable(String)) }
-        def note
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def note=(_)
-        end
-
-        # The name that will be printed on the check.
-        sig { returns(String) }
-        def recipient_name
-        end
-
-        sig { params(_: String).returns(String) }
-        def recipient_name=(_)
-        end
-
-        # The return address to be printed on the check.
-        sig { returns(T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress)) }
-        def return_address
-        end
+        attr_reader :mailing_address
 
         sig do
           params(
-            _: T.nilable(T.any(Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress, Increase::Util::AnyHash))
+            mailing_address: T.any(Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress, Increase::Util::AnyHash)
           )
-            .returns(
-              T.nilable(T.any(Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress, Increase::Util::AnyHash))
-            )
+            .void
         end
-        def return_address=(_)
+        attr_writer :mailing_address
+
+        # The descriptor that will be printed on the memo field on the check.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :memo
+
+        # The descriptor that will be printed on the letter included with the check.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :note
+
+        # The name that will be printed on the check.
+        sig { returns(String) }
+        attr_accessor :recipient_name
+
+        # The return address to be printed on the check.
+        sig { returns(T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress)) }
+        attr_reader :return_address
+
+        sig do
+          params(
+            return_address: T.nilable(T.any(Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress, Increase::Util::AnyHash))
+          )
+            .void
         end
+        attr_writer :return_address
 
         # The shipping method for the check.
         sig { returns(T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod::TaggedSymbol)) }
-        def shipping_method
-        end
-
-        sig do
-          params(_: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod::TaggedSymbol))
-            .returns(T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod::TaggedSymbol))
-        end
-        def shipping_method=(_)
-        end
+        attr_accessor :shipping_method
 
         # The text that will appear as the signature on the check in cursive font. If
         #   blank, the check will be printed with 'No signature required'.
         sig { returns(T.nilable(String)) }
-        def signature_text
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def signature_text=(_)
-        end
+        attr_accessor :signature_text
 
         # Tracking updates relating to the physical check's delivery.
         sig { returns(T::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate]) }
-        def tracking_updates
-        end
-
-        sig do
-          params(_: T::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate])
-            .returns(T::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate])
-        end
-        def tracking_updates=(_)
-        end
+        attr_accessor :tracking_updates
 
         # Details relating to the physical check that Increase will print and mail. Will
         #   be present if and only if `fulfillment_method` is equal to `physical_check`.
@@ -820,57 +615,27 @@ module Increase
         class MailingAddress < Increase::BaseModel
           # The city of the check's destination.
           sig { returns(T.nilable(String)) }
-          def city
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def city=(_)
-          end
+          attr_accessor :city
 
           # The street address of the check's destination.
           sig { returns(T.nilable(String)) }
-          def line1
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def line1=(_)
-          end
+          attr_accessor :line1
 
           # The second line of the address of the check's destination.
           sig { returns(T.nilable(String)) }
-          def line2
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def line2=(_)
-          end
+          attr_accessor :line2
 
           # The name component of the check's mailing address.
           sig { returns(T.nilable(String)) }
-          def name
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           # The postal code of the check's destination.
           sig { returns(T.nilable(String)) }
-          def postal_code
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def postal_code=(_)
-          end
+          attr_accessor :postal_code
 
           # The state of the check's destination.
           sig { returns(T.nilable(String)) }
-          def state
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def state=(_)
-          end
+          attr_accessor :state
 
           # Details for where Increase will mail the check.
           sig do
@@ -907,57 +672,27 @@ module Increase
         class ReturnAddress < Increase::BaseModel
           # The city of the check's destination.
           sig { returns(T.nilable(String)) }
-          def city
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def city=(_)
-          end
+          attr_accessor :city
 
           # The street address of the check's destination.
           sig { returns(T.nilable(String)) }
-          def line1
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def line1=(_)
-          end
+          attr_accessor :line1
 
           # The second line of the address of the check's destination.
           sig { returns(T.nilable(String)) }
-          def line2
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def line2=(_)
-          end
+          attr_accessor :line2
 
           # The name component of the check's return address.
           sig { returns(T.nilable(String)) }
-          def name
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           # The postal code of the check's destination.
           sig { returns(T.nilable(String)) }
-          def postal_code
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def postal_code=(_)
-          end
+          attr_accessor :postal_code
 
           # The state of the check's destination.
           sig { returns(T.nilable(String)) }
-          def state
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def state=(_)
-          end
+          attr_accessor :state
 
           # The return address to be printed on the check.
           sig do
@@ -1018,34 +753,16 @@ module Increase
         class TrackingUpdate < Increase::BaseModel
           # The type of tracking event.
           sig { returns(Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category::TaggedSymbol) }
-          def category
-          end
-
-          sig do
-            params(_: Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category::TaggedSymbol)
-              .returns(Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category::TaggedSymbol)
-          end
-          def category=(_)
-          end
+          attr_accessor :category
 
           # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
           #   the tracking event took place.
           sig { returns(Time) }
-          def created_at
-          end
-
-          sig { params(_: Time).returns(Time) }
-          def created_at=(_)
-          end
+          attr_accessor :created_at
 
           # The postal code where the event took place.
           sig { returns(String) }
-          def postal_code
-          end
-
-          sig { params(_: String).returns(String) }
-          def postal_code=(_)
-          end
+          attr_accessor :postal_code
 
           sig do
             params(
@@ -1161,46 +878,20 @@ module Increase
       class StopPaymentRequest < Increase::BaseModel
         # The reason why this transfer was stopped.
         sig { returns(Increase::Models::CheckTransfer::StopPaymentRequest::Reason::TaggedSymbol) }
-        def reason
-        end
-
-        sig do
-          params(_: Increase::Models::CheckTransfer::StopPaymentRequest::Reason::TaggedSymbol)
-            .returns(Increase::Models::CheckTransfer::StopPaymentRequest::Reason::TaggedSymbol)
-        end
-        def reason=(_)
-        end
+        attr_accessor :reason
 
         # The time the stop-payment was requested.
         sig { returns(Time) }
-        def requested_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def requested_at=(_)
-        end
+        attr_accessor :requested_at
 
         # The ID of the check transfer that was stopped.
         sig { returns(String) }
-        def transfer_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def transfer_id=(_)
-        end
+        attr_accessor :transfer_id
 
         # A constant representing the object's type. For this resource it will always be
         #   `check_transfer_stop_payment_request`.
         sig { returns(Increase::Models::CheckTransfer::StopPaymentRequest::Type::TaggedSymbol) }
-        def type
-        end
-
-        sig do
-          params(_: Increase::Models::CheckTransfer::StopPaymentRequest::Type::TaggedSymbol)
-            .returns(Increase::Models::CheckTransfer::StopPaymentRequest::Type::TaggedSymbol)
-        end
-        def type=(_)
-        end
+        attr_accessor :type
 
         # After a stop-payment is requested on the check, this will contain supplemental
         #   details.
@@ -1287,12 +978,7 @@ module Increase
       class Submission < Increase::BaseModel
         # When this check transfer was submitted to our check printer.
         sig { returns(Time) }
-        def submitted_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def submitted_at=(_)
-        end
+        attr_accessor :submitted_at
 
         # After the transfer is submitted, this will contain supplemental details.
         sig { params(submitted_at: Time).returns(T.attached_class) }
@@ -1307,12 +993,7 @@ module Increase
       class ThirdParty < Increase::BaseModel
         # The check number that will be printed on the check.
         sig { returns(T.nilable(String)) }
-        def check_number
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def check_number=(_)
-        end
+        attr_accessor :check_number
 
         # Details relating to the custom fulfillment you will perform. Will be present if
         #   and only if `fulfillment_method` is equal to `third_party`.

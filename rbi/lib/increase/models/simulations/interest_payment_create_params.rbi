@@ -9,48 +9,32 @@ module Increase
 
         # The identifier of the Account the Interest Payment should be paid to is for.
         sig { returns(String) }
-        def account_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def account_id=(_)
-        end
+        attr_accessor :account_id
 
         # The interest amount in cents. Must be positive.
         sig { returns(Integer) }
-        def amount
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def amount=(_)
-        end
+        attr_accessor :amount
 
         # The identifier of the Account the Interest accrued on. Defaults to `account_id`.
         sig { returns(T.nilable(String)) }
-        def accrued_on_account_id
-        end
+        attr_reader :accrued_on_account_id
 
-        sig { params(_: String).returns(String) }
-        def accrued_on_account_id=(_)
-        end
+        sig { params(accrued_on_account_id: String).void }
+        attr_writer :accrued_on_account_id
 
         # The end of the interest period. If not provided, defaults to the current time.
         sig { returns(T.nilable(Time)) }
-        def period_end
-        end
+        attr_reader :period_end
 
-        sig { params(_: Time).returns(Time) }
-        def period_end=(_)
-        end
+        sig { params(period_end: Time).void }
+        attr_writer :period_end
 
         # The start of the interest period. If not provided, defaults to the current time.
         sig { returns(T.nilable(Time)) }
-        def period_start
-        end
+        attr_reader :period_start
 
-        sig { params(_: Time).returns(Time) }
-        def period_start=(_)
-        end
+        sig { params(period_start: Time).void }
+        attr_writer :period_start
 
         sig do
           params(

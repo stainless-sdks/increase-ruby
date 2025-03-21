@@ -5,287 +5,169 @@ module Increase
     class RealTimePaymentsTransfer < Increase::BaseModel
       # The Real-Time Payments Transfer's identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The Account from which the transfer was sent.
       sig { returns(String) }
-      def account_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_id=(_)
-      end
+      attr_accessor :account_id
 
       # If the transfer is acknowledged by the recipient bank, this will contain
       #   supplemental details.
       sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Acknowledgement)) }
-      def acknowledgement
-      end
+      attr_reader :acknowledgement
 
       sig do
         params(
-          _: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Acknowledgement, Increase::Util::AnyHash))
+          acknowledgement: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Acknowledgement, Increase::Util::AnyHash))
         )
-          .returns(
-            T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Acknowledgement, Increase::Util::AnyHash))
-          )
+          .void
       end
-      def acknowledgement=(_)
-      end
+      attr_writer :acknowledgement
 
       # The transfer amount in USD cents.
       sig { returns(Integer) }
-      def amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       # If your account requires approvals for transfers and the transfer was approved,
       #   this will contain details of the approval.
       sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Approval)) }
-      def approval
-      end
+      attr_reader :approval
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Approval, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Approval, Increase::Util::AnyHash)))
+        params(
+          approval: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Approval, Increase::Util::AnyHash))
+        )
+          .void
       end
-      def approval=(_)
-      end
+      attr_writer :approval
 
       # If your account requires approvals for transfers and the transfer was not
       #   approved, this will contain details of the cancellation.
       sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Cancellation)) }
-      def cancellation
-      end
+      attr_reader :cancellation
 
       sig do
         params(
-          _: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Cancellation, Increase::Util::AnyHash))
+          cancellation: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Cancellation, Increase::Util::AnyHash))
         )
-          .returns(
-            T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Cancellation, Increase::Util::AnyHash))
-          )
+          .void
       end
-      def cancellation=(_)
-      end
+      attr_writer :cancellation
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
       #   the transfer was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # What object created the transfer, either via the API or the dashboard.
       sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy)) }
-      def created_by
-      end
+      attr_reader :created_by
 
       sig do
         params(
-          _: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::CreatedBy, Increase::Util::AnyHash))
+          created_by: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::CreatedBy, Increase::Util::AnyHash))
         )
-          .returns(T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::CreatedBy, Increase::Util::AnyHash)))
+          .void
       end
-      def created_by=(_)
-      end
+      attr_writer :created_by
 
       # The name of the transfer's recipient. This is set by the sender when creating
       #   the transfer.
       sig { returns(String) }
-      def creditor_name
-      end
-
-      sig { params(_: String).returns(String) }
-      def creditor_name=(_)
-      end
+      attr_accessor :creditor_name
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
       #   currency. For real-time payments transfers this is always equal to `USD`.
       sig { returns(Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol) }
-      def currency
-      end
-
-      sig do
-        params(_: Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol)
-          .returns(Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol)
-      end
-      def currency=(_)
-      end
+      attr_accessor :currency
 
       # The name of the transfer's sender. If not provided, defaults to the name of the
       #   account's entity.
       sig { returns(T.nilable(String)) }
-      def debtor_name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def debtor_name=(_)
-      end
+      attr_accessor :debtor_name
 
       # The destination account number.
       sig { returns(String) }
-      def destination_account_number
-      end
-
-      sig { params(_: String).returns(String) }
-      def destination_account_number=(_)
-      end
+      attr_accessor :destination_account_number
 
       # The destination American Bankers' Association (ABA) Routing Transit Number
       #   (RTN).
       sig { returns(String) }
-      def destination_routing_number
-      end
-
-      sig { params(_: String).returns(String) }
-      def destination_routing_number=(_)
-      end
+      attr_accessor :destination_routing_number
 
       # The identifier of the External Account the transfer was made to, if any.
       sig { returns(T.nilable(String)) }
-      def external_account_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def external_account_id=(_)
-      end
+      attr_accessor :external_account_id
 
       # The idempotency key you chose for this object. This value is unique across
       #   Increase and is used to ensure that a request is only processed once. Learn more
       #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      def idempotency_key
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def idempotency_key=(_)
-      end
+      attr_accessor :idempotency_key
 
       # The ID for the pending transaction representing the transfer. A pending
       #   transaction is created when the transfer
       #   [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
       #   by someone else in your organization.
       sig { returns(T.nilable(String)) }
-      def pending_transaction_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def pending_transaction_id=(_)
-      end
+      attr_accessor :pending_transaction_id
 
       # If the transfer is rejected by Real-Time Payments or the destination financial
       #   institution, this will contain supplemental details.
       sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Rejection)) }
-      def rejection
-      end
+      attr_reader :rejection
 
       sig do
         params(
-          _: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Rejection, Increase::Util::AnyHash))
+          rejection: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Rejection, Increase::Util::AnyHash))
         )
-          .returns(T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Rejection, Increase::Util::AnyHash)))
+          .void
       end
-      def rejection=(_)
-      end
+      attr_writer :rejection
 
       # Unstructured information that will show on the recipient's bank statement.
       sig { returns(String) }
-      def remittance_information
-      end
-
-      sig { params(_: String).returns(String) }
-      def remittance_information=(_)
-      end
+      attr_accessor :remittance_information
 
       # The Account Number the recipient will see as having sent the transfer.
       sig { returns(String) }
-      def source_account_number_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def source_account_number_id=(_)
-      end
+      attr_accessor :source_account_number_id
 
       # The lifecycle status of the transfer.
       sig { returns(Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol)
-          .returns(Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # After the transfer is submitted to Real-Time Payments, this will contain
       #   supplemental details.
       sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Submission)) }
-      def submission
-      end
+      attr_reader :submission
 
       sig do
         params(
-          _: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Submission, Increase::Util::AnyHash))
+          submission: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Submission, Increase::Util::AnyHash))
         )
-          .returns(T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::Submission, Increase::Util::AnyHash)))
+          .void
       end
-      def submission=(_)
-      end
+      attr_writer :submission
 
       # The Transaction funding the transfer once it is complete.
       sig { returns(T.nilable(String)) }
-      def transaction_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def transaction_id=(_)
-      end
+      attr_accessor :transaction_id
 
       # A constant representing the object's type. For this resource it will always be
       #   `real_time_payments_transfer`.
       sig { returns(Increase::Models::RealTimePaymentsTransfer::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::RealTimePaymentsTransfer::Type::TaggedSymbol)
-          .returns(Increase::Models::RealTimePaymentsTransfer::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # The name of the ultimate recipient of the transfer. Set this if the creditor is
       #   an intermediary receiving the payment for someone else.
       sig { returns(T.nilable(String)) }
-      def ultimate_creditor_name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def ultimate_creditor_name=(_)
-      end
+      attr_accessor :ultimate_creditor_name
 
       # The name of the ultimate sender of the transfer. Set this if the funds are being
       #   sent on behalf of someone who is not the account holder at Increase.
       sig { returns(T.nilable(String)) }
-      def ultimate_debtor_name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def ultimate_debtor_name=(_)
-      end
+      attr_accessor :ultimate_debtor_name
 
       # Real-Time Payments transfers move funds, within seconds, between your Increase
       #   account and any other account on the Real-Time Payments network.
@@ -386,12 +268,7 @@ module Increase
       class Acknowledgement < Increase::BaseModel
         # When the transfer was acknowledged.
         sig { returns(Time) }
-        def acknowledged_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def acknowledged_at=(_)
-        end
+        attr_accessor :acknowledged_at
 
         # If the transfer is acknowledged by the recipient bank, this will contain
         #   supplemental details.
@@ -408,22 +285,12 @@ module Increase
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #   the transfer was approved.
         sig { returns(Time) }
-        def approved_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def approved_at=(_)
-        end
+        attr_accessor :approved_at
 
         # If the Transfer was approved by a user in the dashboard, the email address of
         #   that user.
         sig { returns(T.nilable(String)) }
-        def approved_by
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def approved_by=(_)
-        end
+        attr_accessor :approved_by
 
         # If your account requires approvals for transfers and the transfer was approved,
         #   this will contain details of the approval.
@@ -440,22 +307,12 @@ module Increase
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #   the Transfer was canceled.
         sig { returns(Time) }
-        def canceled_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def canceled_at=(_)
-        end
+        attr_accessor :canceled_at
 
         # If the Transfer was canceled by a user in the dashboard, the email address of
         #   that user.
         sig { returns(T.nilable(String)) }
-        def canceled_by
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def canceled_by=(_)
-        end
+        attr_accessor :canceled_by
 
         # If your account requires approvals for transfers and the transfer was not
         #   approved, this will contain details of the cancellation.
@@ -471,67 +328,45 @@ module Increase
       class CreatedBy < Increase::BaseModel
         # If present, details about the API key that created the transfer.
         sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey)) }
-        def api_key
-        end
+        attr_reader :api_key
 
         sig do
           params(
-            _: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey, Increase::Util::AnyHash))
+            api_key: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey, Increase::Util::AnyHash))
           )
-            .returns(
-              T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey, Increase::Util::AnyHash))
-            )
+            .void
         end
-        def api_key=(_)
-        end
+        attr_writer :api_key
 
         # The type of object that created this transfer.
         sig { returns(Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::TaggedSymbol) }
-        def category
-        end
-
-        sig do
-          params(_: Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::TaggedSymbol)
-            .returns(Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::TaggedSymbol)
-        end
-        def category=(_)
-        end
+        attr_accessor :category
 
         # If present, details about the OAuth Application that created the transfer.
         sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication)) }
-        def oauth_application
-        end
+        attr_reader :oauth_application
 
         sig do
           params(
-            _: T.nilable(
+            oauth_application: T.nilable(
               T.any(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash)
             )
           )
-            .returns(
-              T.nilable(
-                T.any(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash)
-              )
-            )
+            .void
         end
-        def oauth_application=(_)
-        end
+        attr_writer :oauth_application
 
         # If present, details about the User that created the transfer.
         sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User)) }
-        def user
-        end
+        attr_reader :user
 
         sig do
           params(
-            _: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User, Increase::Util::AnyHash))
+            user: T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User, Increase::Util::AnyHash))
           )
-            .returns(
-              T.nilable(T.any(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User, Increase::Util::AnyHash))
-            )
+            .void
         end
-        def user=(_)
-        end
+        attr_writer :user
 
         # What object created the transfer, either via the API or the dashboard.
         sig do
@@ -565,12 +400,7 @@ module Increase
         class APIKey < Increase::BaseModel
           # The description set for the API key when it was created.
           sig { returns(T.nilable(String)) }
-          def description
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def description=(_)
-          end
+          attr_accessor :description
 
           # If present, details about the API key that created the transfer.
           sig { params(description: T.nilable(String)).returns(T.attached_class) }
@@ -611,12 +441,7 @@ module Increase
         class OAuthApplication < Increase::BaseModel
           # The name of the OAuth Application.
           sig { returns(String) }
-          def name
-          end
-
-          sig { params(_: String).returns(String) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           # If present, details about the OAuth Application that created the transfer.
           sig { params(name: String).returns(T.attached_class) }
@@ -631,12 +456,7 @@ module Increase
         class User < Increase::BaseModel
           # The email address of the User.
           sig { returns(String) }
-          def email
-          end
-
-          sig { params(_: String).returns(String) }
-          def email=(_)
-          end
+          attr_accessor :email
 
           # If present, details about the User that created the transfer.
           sig { params(email: String).returns(T.attached_class) }
@@ -687,35 +507,17 @@ module Increase
         # Additional information about the rejection provided by the recipient bank when
         #   the `reject_reason_code` is `NARRATIVE`.
         sig { returns(T.nilable(String)) }
-        def reject_reason_additional_information
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def reject_reason_additional_information=(_)
-        end
+        attr_accessor :reject_reason_additional_information
 
         # The reason the transfer was rejected as provided by the recipient bank or the
         #   Real-Time Payments network.
         sig { returns(Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol) }
-        def reject_reason_code
-        end
-
-        sig do
-          params(_: Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol)
-            .returns(Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol)
-        end
-        def reject_reason_code=(_)
-        end
+        attr_accessor :reject_reason_code
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #   the transfer was rejected.
         sig { returns(T.nilable(Time)) }
-        def rejected_at
-        end
-
-        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-        def rejected_at=(_)
-        end
+        attr_accessor :rejected_at
 
         # If the transfer is rejected by Real-Time Payments or the destination financial
         #   institution, this will contain supplemental details.
@@ -949,21 +751,11 @@ module Increase
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #   the transfer was submitted to The Clearing House.
         sig { returns(T.nilable(Time)) }
-        def submitted_at
-        end
-
-        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-        def submitted_at=(_)
-        end
+        attr_accessor :submitted_at
 
         # The Real-Time Payments network identification of the transfer.
         sig { returns(String) }
-        def transaction_identification
-        end
-
-        sig { params(_: String).returns(String) }
-        def transaction_identification=(_)
-        end
+        attr_accessor :transaction_identification
 
         # After the transfer is submitted to Real-Time Payments, this will contain
         #   supplemental details.

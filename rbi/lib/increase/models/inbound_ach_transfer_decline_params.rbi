@@ -10,15 +10,10 @@ module Increase
       #   return codes will be `payment_stopped` for debits and
       #   `credit_entry_refused_by_receiver` for credits.
       sig { returns(T.nilable(Increase::Models::InboundACHTransferDeclineParams::Reason::OrSymbol)) }
-      def reason
-      end
+      attr_reader :reason
 
-      sig do
-        params(_: Increase::Models::InboundACHTransferDeclineParams::Reason::OrSymbol)
-          .returns(Increase::Models::InboundACHTransferDeclineParams::Reason::OrSymbol)
-      end
-      def reason=(_)
-      end
+      sig { params(reason: Increase::Models::InboundACHTransferDeclineParams::Reason::OrSymbol).void }
+      attr_writer :reason
 
       sig do
         params(

@@ -9,30 +9,15 @@ module Increase
 
         # The identifier of the Account Number the Inbound Check Deposit will be against.
         sig { returns(String) }
-        def account_number_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def account_number_id=(_)
-        end
+        attr_accessor :account_number_id
 
         # The check amount in cents.
         sig { returns(Integer) }
-        def amount
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def amount=(_)
-        end
+        attr_accessor :amount
 
         # The check number on the check to be deposited.
         sig { returns(String) }
-        def check_number
-        end
-
-        sig { params(_: String).returns(String) }
-        def check_number=(_)
-        end
+        attr_accessor :check_number
 
         sig do
           params(

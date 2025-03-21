@@ -9,189 +9,125 @@ module Increase
 
         # The amount being requested in cents.
         sig { returns(Integer) }
-        def amount
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def amount=(_)
-        end
+        attr_accessor :amount
 
         # The drawdown request's beneficiary's account number.
         sig { returns(String) }
-        def beneficiary_account_number
-        end
-
-        sig { params(_: String).returns(String) }
-        def beneficiary_account_number=(_)
-        end
+        attr_accessor :beneficiary_account_number
 
         # The drawdown request's beneficiary's routing number.
         sig { returns(String) }
-        def beneficiary_routing_number
-        end
-
-        sig { params(_: String).returns(String) }
-        def beneficiary_routing_number=(_)
-        end
+        attr_accessor :beneficiary_routing_number
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
         #   requested. Will always be "USD".
         sig { returns(String) }
-        def currency
-        end
-
-        sig { params(_: String).returns(String) }
-        def currency=(_)
-        end
+        attr_accessor :currency
 
         # A message from the drawdown request's originator.
         sig { returns(String) }
-        def message_to_recipient
-        end
-
-        sig { params(_: String).returns(String) }
-        def message_to_recipient=(_)
-        end
+        attr_accessor :message_to_recipient
 
         # The drawdown request's originator's account number.
         sig { returns(String) }
-        def originator_account_number
-        end
-
-        sig { params(_: String).returns(String) }
-        def originator_account_number=(_)
-        end
+        attr_accessor :originator_account_number
 
         # The drawdown request's originator's routing number.
         sig { returns(String) }
-        def originator_routing_number
-        end
-
-        sig { params(_: String).returns(String) }
-        def originator_routing_number=(_)
-        end
+        attr_accessor :originator_routing_number
 
         # The Account Number to which the recipient of this request is being requested to
         #   send funds from.
         sig { returns(String) }
-        def recipient_account_number_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def recipient_account_number_id=(_)
-        end
+        attr_accessor :recipient_account_number_id
 
         # Line 1 of the drawdown request's beneficiary's address.
         sig { returns(T.nilable(String)) }
-        def beneficiary_address_line1
-        end
+        attr_reader :beneficiary_address_line1
 
-        sig { params(_: String).returns(String) }
-        def beneficiary_address_line1=(_)
-        end
+        sig { params(beneficiary_address_line1: String).void }
+        attr_writer :beneficiary_address_line1
 
         # Line 2 of the drawdown request's beneficiary's address.
         sig { returns(T.nilable(String)) }
-        def beneficiary_address_line2
-        end
+        attr_reader :beneficiary_address_line2
 
-        sig { params(_: String).returns(String) }
-        def beneficiary_address_line2=(_)
-        end
+        sig { params(beneficiary_address_line2: String).void }
+        attr_writer :beneficiary_address_line2
 
         # Line 3 of the drawdown request's beneficiary's address.
         sig { returns(T.nilable(String)) }
-        def beneficiary_address_line3
-        end
+        attr_reader :beneficiary_address_line3
 
-        sig { params(_: String).returns(String) }
-        def beneficiary_address_line3=(_)
-        end
+        sig { params(beneficiary_address_line3: String).void }
+        attr_writer :beneficiary_address_line3
 
         # The drawdown request's beneficiary's name.
         sig { returns(T.nilable(String)) }
-        def beneficiary_name
-        end
+        attr_reader :beneficiary_name
 
-        sig { params(_: String).returns(String) }
-        def beneficiary_name=(_)
-        end
+        sig { params(beneficiary_name: String).void }
+        attr_writer :beneficiary_name
 
         # Line 1 of the drawdown request's originator's address.
         sig { returns(T.nilable(String)) }
-        def originator_address_line1
-        end
+        attr_reader :originator_address_line1
 
-        sig { params(_: String).returns(String) }
-        def originator_address_line1=(_)
-        end
+        sig { params(originator_address_line1: String).void }
+        attr_writer :originator_address_line1
 
         # Line 2 of the drawdown request's originator's address.
         sig { returns(T.nilable(String)) }
-        def originator_address_line2
-        end
+        attr_reader :originator_address_line2
 
-        sig { params(_: String).returns(String) }
-        def originator_address_line2=(_)
-        end
+        sig { params(originator_address_line2: String).void }
+        attr_writer :originator_address_line2
 
         # Line 3 of the drawdown request's originator's address.
         sig { returns(T.nilable(String)) }
-        def originator_address_line3
-        end
+        attr_reader :originator_address_line3
 
-        sig { params(_: String).returns(String) }
-        def originator_address_line3=(_)
-        end
+        sig { params(originator_address_line3: String).void }
+        attr_writer :originator_address_line3
 
         # The drawdown request's originator's name.
         sig { returns(T.nilable(String)) }
-        def originator_name
-        end
+        attr_reader :originator_name
 
-        sig { params(_: String).returns(String) }
-        def originator_name=(_)
-        end
+        sig { params(originator_name: String).void }
+        attr_writer :originator_name
 
         # Line 1 of the information conveyed from the originator of the message to the
         #   beneficiary.
         sig { returns(T.nilable(String)) }
-        def originator_to_beneficiary_information_line1
-        end
+        attr_reader :originator_to_beneficiary_information_line1
 
-        sig { params(_: String).returns(String) }
-        def originator_to_beneficiary_information_line1=(_)
-        end
+        sig { params(originator_to_beneficiary_information_line1: String).void }
+        attr_writer :originator_to_beneficiary_information_line1
 
         # Line 2 of the information conveyed from the originator of the message to the
         #   beneficiary.
         sig { returns(T.nilable(String)) }
-        def originator_to_beneficiary_information_line2
-        end
+        attr_reader :originator_to_beneficiary_information_line2
 
-        sig { params(_: String).returns(String) }
-        def originator_to_beneficiary_information_line2=(_)
-        end
+        sig { params(originator_to_beneficiary_information_line2: String).void }
+        attr_writer :originator_to_beneficiary_information_line2
 
         # Line 3 of the information conveyed from the originator of the message to the
         #   beneficiary.
         sig { returns(T.nilable(String)) }
-        def originator_to_beneficiary_information_line3
-        end
+        attr_reader :originator_to_beneficiary_information_line3
 
-        sig { params(_: String).returns(String) }
-        def originator_to_beneficiary_information_line3=(_)
-        end
+        sig { params(originator_to_beneficiary_information_line3: String).void }
+        attr_writer :originator_to_beneficiary_information_line3
 
         # Line 4 of the information conveyed from the originator of the message to the
         #   beneficiary.
         sig { returns(T.nilable(String)) }
-        def originator_to_beneficiary_information_line4
-        end
+        attr_reader :originator_to_beneficiary_information_line4
 
-        sig { params(_: String).returns(String) }
-        def originator_to_beneficiary_information_line4=(_)
-        end
+        sig { params(originator_to_beneficiary_information_line4: String).void }
+        attr_writer :originator_to_beneficiary_information_line4
 
         sig do
           params(

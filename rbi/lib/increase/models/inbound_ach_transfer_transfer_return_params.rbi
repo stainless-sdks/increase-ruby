@@ -9,15 +9,7 @@ module Increase
       # The reason why this transfer will be returned. The most usual return codes are
       #   `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
       sig { returns(Increase::Models::InboundACHTransferTransferReturnParams::Reason::OrSymbol) }
-      def reason
-      end
-
-      sig do
-        params(_: Increase::Models::InboundACHTransferTransferReturnParams::Reason::OrSymbol)
-          .returns(Increase::Models::InboundACHTransferTransferReturnParams::Reason::OrSymbol)
-      end
-      def reason=(_)
-      end
+      attr_accessor :reason
 
       sig do
         params(

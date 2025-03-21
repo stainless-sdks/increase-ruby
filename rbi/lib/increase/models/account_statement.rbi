@@ -5,91 +5,43 @@ module Increase
     class AccountStatement < Increase::BaseModel
       # The Account Statement identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The identifier for the Account this Account Statement belongs to.
       sig { returns(String) }
-      def account_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_id=(_)
-      end
+      attr_accessor :account_id
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
       #   Statement was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # The Account's balance at the start of its statement period.
       sig { returns(Integer) }
-      def ending_balance
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def ending_balance=(_)
-      end
+      attr_accessor :ending_balance
 
       # The identifier of the File containing a PDF of the statement.
       sig { returns(String) }
-      def file_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def file_id=(_)
-      end
+      attr_accessor :file_id
 
       # The Account's balance at the start of its statement period.
       sig { returns(Integer) }
-      def starting_balance
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def starting_balance=(_)
-      end
+      attr_accessor :starting_balance
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the end
       #   of the period the Account Statement covers.
       sig { returns(Time) }
-      def statement_period_end
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def statement_period_end=(_)
-      end
+      attr_accessor :statement_period_end
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the
       #   start of the period the Account Statement covers.
       sig { returns(Time) }
-      def statement_period_start
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def statement_period_start=(_)
-      end
+      attr_accessor :statement_period_start
 
       # A constant representing the object's type. For this resource it will always be
       #   `account_statement`.
       sig { returns(Increase::Models::AccountStatement::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::AccountStatement::Type::TaggedSymbol)
-          .returns(Increase::Models::AccountStatement::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Account Statements are generated monthly for every active Account. You can
       #   access the statement's data via the API or retrieve a PDF with its details via

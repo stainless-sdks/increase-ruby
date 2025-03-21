@@ -5,75 +5,34 @@ module Increase
     class BookkeepingAccount < Increase::BaseModel
       # The account identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The API Account associated with this bookkeeping account.
       sig { returns(T.nilable(String)) }
-      def account_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def account_id=(_)
-      end
+      attr_accessor :account_id
 
       # The compliance category of the account.
       sig { returns(T.nilable(Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol)) }
-      def compliance_category
-      end
-
-      sig do
-        params(_: T.nilable(Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol))
-          .returns(T.nilable(Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol))
-      end
-      def compliance_category=(_)
-      end
+      attr_accessor :compliance_category
 
       # The Entity associated with this bookkeeping account.
       sig { returns(T.nilable(String)) }
-      def entity_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def entity_id=(_)
-      end
+      attr_accessor :entity_id
 
       # The idempotency key you chose for this object. This value is unique across
       #   Increase and is used to ensure that a request is only processed once. Learn more
       #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      def idempotency_key
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def idempotency_key=(_)
-      end
+      attr_accessor :idempotency_key
 
       # The name you choose for the account.
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # A constant representing the object's type. For this resource it will always be
       #   `bookkeeping_account`.
       sig { returns(Increase::Models::BookkeepingAccount::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::BookkeepingAccount::Type::TaggedSymbol)
-          .returns(Increase::Models::BookkeepingAccount::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Accounts are T-accounts. They can store accounting entries. Your compliance
       #   setup might require annotating money movements using this API. Learn more in our

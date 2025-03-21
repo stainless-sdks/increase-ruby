@@ -5,70 +5,31 @@ module Increase
     class IntrafiBalance < Increase::BaseModel
       # The identifier of this balance.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # Each entry represents a balance held at a different bank. IntraFi separates the
       #   total balance across many participating banks in the network.
       sig { returns(T::Array[Increase::Models::IntrafiBalance::Balance]) }
-      def balances
-      end
-
-      sig do
-        params(_: T::Array[Increase::Models::IntrafiBalance::Balance])
-          .returns(T::Array[Increase::Models::IntrafiBalance::Balance])
-      end
-      def balances=(_)
-      end
+      attr_accessor :balances
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account
       #   currency.
       sig { returns(Increase::Models::IntrafiBalance::Currency::TaggedSymbol) }
-      def currency
-      end
-
-      sig do
-        params(_: Increase::Models::IntrafiBalance::Currency::TaggedSymbol)
-          .returns(Increase::Models::IntrafiBalance::Currency::TaggedSymbol)
-      end
-      def currency=(_)
-      end
+      attr_accessor :currency
 
       # The date this balance reflects.
       sig { returns(Date) }
-      def effective_date
-      end
-
-      sig { params(_: Date).returns(Date) }
-      def effective_date=(_)
-      end
+      attr_accessor :effective_date
 
       # The total balance, in minor units of `currency`. Increase reports this balance
       #   to IntraFi daily.
       sig { returns(Integer) }
-      def total_balance
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def total_balance=(_)
-      end
+      attr_accessor :total_balance
 
       # A constant representing the object's type. For this resource it will always be
       #   `intrafi_balance`.
       sig { returns(Increase::Models::IntrafiBalance::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::IntrafiBalance::Type::TaggedSymbol)
-          .returns(Increase::Models::IntrafiBalance::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # When using IntraFi, each account's balance over the standard FDIC insurance
       #   amount are swept to various other institutions. Funds are rebalanced across
@@ -106,57 +67,33 @@ module Increase
       class Balance < Increase::BaseModel
         # The identifier of this balance.
         sig { returns(String) }
-        def id
-        end
-
-        sig { params(_: String).returns(String) }
-        def id=(_)
-        end
+        attr_accessor :id
 
         # The balance, in minor units of `currency`, held with this bank.
         sig { returns(Integer) }
-        def balance
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def balance=(_)
-        end
+        attr_accessor :balance
 
         # The name of the bank holding these funds.
         sig { returns(String) }
-        def bank
-        end
-
-        sig { params(_: String).returns(String) }
-        def bank=(_)
-        end
+        attr_accessor :bank
 
         # The primary location of the bank.
         sig { returns(T.nilable(Increase::Models::IntrafiBalance::Balance::BankLocation)) }
-        def bank_location
-        end
+        attr_reader :bank_location
 
         sig do
           params(
-            _: T.nilable(T.any(Increase::Models::IntrafiBalance::Balance::BankLocation, Increase::Util::AnyHash))
+            bank_location: T.nilable(T.any(Increase::Models::IntrafiBalance::Balance::BankLocation, Increase::Util::AnyHash))
           )
-            .returns(
-              T.nilable(T.any(Increase::Models::IntrafiBalance::Balance::BankLocation, Increase::Util::AnyHash))
-            )
+            .void
         end
-        def bank_location=(_)
-        end
+        attr_writer :bank_location
 
         # The Federal Deposit Insurance Corporation (FDIC) certificate number of the bank.
         #   Because many banks have the same or similar names, this can be used to uniquely
         #   identify the institution.
         sig { returns(String) }
-        def fdic_certificate_number
-        end
-
-        sig { params(_: String).returns(String) }
-        def fdic_certificate_number=(_)
-        end
+        attr_accessor :fdic_certificate_number
 
         sig do
           params(
@@ -189,21 +126,11 @@ module Increase
         class BankLocation < Increase::BaseModel
           # The bank's city.
           sig { returns(String) }
-          def city
-          end
-
-          sig { params(_: String).returns(String) }
-          def city=(_)
-          end
+          attr_accessor :city
 
           # The bank's state.
           sig { returns(String) }
-          def state
-          end
-
-          sig { params(_: String).returns(String) }
-          def state=(_)
-          end
+          attr_accessor :state
 
           # The primary location of the bank.
           sig { params(city: String, state: String).returns(T.attached_class) }

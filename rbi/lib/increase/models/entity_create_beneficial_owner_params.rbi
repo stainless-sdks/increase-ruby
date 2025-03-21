@@ -9,19 +9,15 @@ module Increase
       # The identifying details of anyone controlling or owning 25% or more of the
       #   corporation.
       sig { returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner) }
-      def beneficial_owner
-      end
+      attr_reader :beneficial_owner
 
       sig do
         params(
-          _: T.any(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner, Increase::Util::AnyHash)
+          beneficial_owner: T.any(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner, Increase::Util::AnyHash)
         )
-          .returns(
-            T.any(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner, Increase::Util::AnyHash)
-          )
+          .void
       end
-      def beneficial_owner=(_)
-      end
+      attr_writer :beneficial_owner
 
       sig do
         params(
@@ -48,48 +44,31 @@ module Increase
       class BeneficialOwner < Increase::BaseModel
         # Personal details for the beneficial owner.
         sig { returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual) }
-        def individual
-        end
+        attr_reader :individual
 
         sig do
           params(
-            _: T.any(
+            individual: T.any(
               Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual,
               Increase::Util::AnyHash
             )
           )
-            .returns(
-              T.any(
-                Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual,
-                Increase::Util::AnyHash
-              )
-            )
+            .void
         end
-        def individual=(_)
-        end
+        attr_writer :individual
 
         # Why this person is considered a beneficial owner of the entity. At least one
         #   option is required, if a person is both a control person and owner, submit an
         #   array containing both.
         sig { returns(T::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol]) }
-        def prongs
-        end
-
-        sig do
-          params(_: T::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol])
-            .returns(T::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol])
-        end
-        def prongs=(_)
-        end
+        attr_accessor :prongs
 
         # This person's role or title within the entity.
         sig { returns(T.nilable(String)) }
-        def company_title
-        end
+        attr_reader :company_title
 
-        sig { params(_: String).returns(String) }
-        def company_title=(_)
-        end
+        sig { params(company_title: String).void }
+        attr_writer :company_title
 
         # The identifying details of anyone controlling or owning 25% or more of the
         #   corporation.
@@ -124,77 +103,51 @@ module Increase
           # The individual's physical address. Mail receiving locations like PO Boxes and
           #   PMB's are disallowed.
           sig { returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address) }
-          def address
-          end
+          attr_reader :address
 
           sig do
             params(
-              _: T.any(
+              address: T.any(
                 Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address,
                 Increase::Util::AnyHash
               )
             )
-              .returns(
-                T.any(
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address,
-                  Increase::Util::AnyHash
-                )
-              )
+              .void
           end
-          def address=(_)
-          end
+          attr_writer :address
 
           # The person's date of birth in YYYY-MM-DD format.
           sig { returns(Date) }
-          def date_of_birth
-          end
-
-          sig { params(_: Date).returns(Date) }
-          def date_of_birth=(_)
-          end
+          attr_accessor :date_of_birth
 
           # A means of verifying the person's identity.
           sig { returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification) }
-          def identification
-          end
+          attr_reader :identification
 
           sig do
             params(
-              _: T.any(
+              identification: T.any(
                 Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification,
                 Increase::Util::AnyHash
               )
             )
-              .returns(
-                T.any(
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification,
-                  Increase::Util::AnyHash
-                )
-              )
+              .void
           end
-          def identification=(_)
-          end
+          attr_writer :identification
 
           # The person's legal name.
           sig { returns(String) }
-          def name
-          end
-
-          sig { params(_: String).returns(String) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           # The identification method for an individual can only be a passport, driver's
           #   license, or other document if you've confirmed the individual does not have a US
           #   tax id (either a Social Security Number or Individual Taxpayer Identification
           #   Number).
           sig { returns(T.nilable(T::Boolean)) }
-          def confirmed_no_us_tax_id
-          end
+          attr_reader :confirmed_no_us_tax_id
 
-          sig { params(_: T::Boolean).returns(T::Boolean) }
-          def confirmed_no_us_tax_id=(_)
-          end
+          sig { params(confirmed_no_us_tax_id: T::Boolean).void }
+          attr_writer :confirmed_no_us_tax_id
 
           # Personal details for the beneficial owner.
           sig do
@@ -234,49 +187,27 @@ module Increase
           class Address < Increase::BaseModel
             # The city of the address.
             sig { returns(String) }
-            def city
-            end
-
-            sig { params(_: String).returns(String) }
-            def city=(_)
-            end
+            attr_accessor :city
 
             # The first line of the address. This is usually the street number and street.
             sig { returns(String) }
-            def line1
-            end
-
-            sig { params(_: String).returns(String) }
-            def line1=(_)
-            end
+            attr_accessor :line1
 
             # The two-letter United States Postal Service (USPS) abbreviation for the state of
             #   the address.
             sig { returns(String) }
-            def state
-            end
-
-            sig { params(_: String).returns(String) }
-            def state=(_)
-            end
+            attr_accessor :state
 
             # The ZIP code of the address.
             sig { returns(String) }
-            def zip
-            end
-
-            sig { params(_: String).returns(String) }
-            def zip=(_)
-            end
+            attr_accessor :zip
 
             # The second line of the address. This might be the floor or room number.
             sig { returns(T.nilable(String)) }
-            def line2
-            end
+            attr_reader :line2
 
-            sig { params(_: String).returns(String) }
-            def line2=(_)
-            end
+            sig { params(line2: String).void }
+            attr_writer :line2
 
             # The individual's physical address. Mail receiving locations like PO Boxes and
             #   PMB's are disallowed.
@@ -304,29 +235,12 @@ module Increase
                 Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol
               )
             end
-            def method_
-            end
-
-            sig do
-              params(
-                _: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol
-              )
-                .returns(
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol
-                )
-            end
-            def method_=(_)
-            end
+            attr_accessor :method_
 
             # An identification number that can be used to verify the individual's identity,
             #   such as a social security number.
             sig { returns(String) }
-            def number
-            end
-
-            sig { params(_: String).returns(String) }
-            def number=(_)
-            end
+            attr_accessor :number
 
             # Information about the United States driver's license used for identification.
             #   Required if `method` is equal to `drivers_license`.
@@ -337,25 +251,18 @@ module Increase
                 )
               )
             end
-            def drivers_license
-            end
+            attr_reader :drivers_license
 
             sig do
               params(
-                _: T.any(
+                drivers_license: T.any(
                   Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense,
                   Increase::Util::AnyHash
                 )
               )
-                .returns(
-                  T.any(
-                    Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense,
-                    Increase::Util::AnyHash
-                  )
-                )
+                .void
             end
-            def drivers_license=(_)
-            end
+            attr_writer :drivers_license
 
             # Information about the identification document provided. Required if `method` is
             #   equal to `other`.
@@ -366,25 +273,18 @@ module Increase
                 )
               )
             end
-            def other
-            end
+            attr_reader :other
 
             sig do
               params(
-                _: T.any(
+                other: T.any(
                   Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other,
                   Increase::Util::AnyHash
                 )
               )
-                .returns(
-                  T.any(
-                    Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other,
-                    Increase::Util::AnyHash
-                  )
-                )
+                .void
             end
-            def other=(_)
-            end
+            attr_writer :other
 
             # Information about the passport used for identification. Required if `method` is
             #   equal to `passport`.
@@ -395,25 +295,18 @@ module Increase
                 )
               )
             end
-            def passport
-            end
+            attr_reader :passport
 
             sig do
               params(
-                _: T.any(
+                passport: T.any(
                   Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport,
                   Increase::Util::AnyHash
                 )
               )
-                .returns(
-                  T.any(
-                    Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport,
-                    Increase::Util::AnyHash
-                  )
-                )
+                .void
             end
-            def passport=(_)
-            end
+            attr_writer :passport
 
             # A means of verifying the person's identity.
             sig do
@@ -521,39 +414,22 @@ module Increase
             class DriversLicense < Increase::BaseModel
               # The driver's license's expiration date in YYYY-MM-DD format.
               sig { returns(Date) }
-              def expiration_date
-              end
-
-              sig { params(_: Date).returns(Date) }
-              def expiration_date=(_)
-              end
+              attr_accessor :expiration_date
 
               # The identifier of the File containing the front of the driver's license.
               sig { returns(String) }
-              def file_id
-              end
-
-              sig { params(_: String).returns(String) }
-              def file_id=(_)
-              end
+              attr_accessor :file_id
 
               # The state that issued the provided driver's license.
               sig { returns(String) }
-              def state
-              end
-
-              sig { params(_: String).returns(String) }
-              def state=(_)
-              end
+              attr_accessor :state
 
               # The identifier of the File containing the back of the driver's license.
               sig { returns(T.nilable(String)) }
-              def back_file_id
-              end
+              attr_reader :back_file_id
 
-              sig { params(_: String).returns(String) }
-              def back_file_id=(_)
-              end
+              sig { params(back_file_id: String).void }
+              attr_writer :back_file_id
 
               # Information about the United States driver's license used for identification.
               #   Required if `method` is equal to `drivers_license`.
@@ -582,49 +458,30 @@ module Increase
               # The two-character ISO 3166-1 code representing the country that issued the
               #   document.
               sig { returns(String) }
-              def country
-              end
-
-              sig { params(_: String).returns(String) }
-              def country=(_)
-              end
+              attr_accessor :country
 
               # A description of the document submitted.
               sig { returns(String) }
-              def description
-              end
-
-              sig { params(_: String).returns(String) }
-              def description=(_)
-              end
+              attr_accessor :description
 
               # The identifier of the File containing the front of the document.
               sig { returns(String) }
-              def file_id
-              end
-
-              sig { params(_: String).returns(String) }
-              def file_id=(_)
-              end
+              attr_accessor :file_id
 
               # The identifier of the File containing the back of the document. Not every
               #   document has a reverse side.
               sig { returns(T.nilable(String)) }
-              def back_file_id
-              end
+              attr_reader :back_file_id
 
-              sig { params(_: String).returns(String) }
-              def back_file_id=(_)
-              end
+              sig { params(back_file_id: String).void }
+              attr_writer :back_file_id
 
               # The document's expiration date in YYYY-MM-DD format.
               sig { returns(T.nilable(Date)) }
-              def expiration_date
-              end
+              attr_reader :expiration_date
 
-              sig { params(_: Date).returns(Date) }
-              def expiration_date=(_)
-              end
+              sig { params(expiration_date: Date).void }
+              attr_writer :expiration_date
 
               # Information about the identification document provided. Required if `method` is
               #   equal to `other`.
@@ -660,30 +517,15 @@ module Increase
             class Passport < Increase::BaseModel
               # The country that issued the passport.
               sig { returns(String) }
-              def country
-              end
-
-              sig { params(_: String).returns(String) }
-              def country=(_)
-              end
+              attr_accessor :country
 
               # The passport's expiration date in YYYY-MM-DD format.
               sig { returns(Date) }
-              def expiration_date
-              end
-
-              sig { params(_: Date).returns(Date) }
-              def expiration_date=(_)
-              end
+              attr_accessor :expiration_date
 
               # The identifier of the File containing the passport.
               sig { returns(String) }
-              def file_id
-              end
-
-              sig { params(_: String).returns(String) }
-              def file_id=(_)
-              end
+              attr_accessor :file_id
 
               # Information about the passport used for identification. Required if `method` is
               #   equal to `passport`.

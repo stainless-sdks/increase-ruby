@@ -8,15 +8,7 @@ module Increase
 
       # The status to update the Physical Card to.
       sig { returns(Increase::Models::PhysicalCardUpdateParams::Status::OrSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Increase::Models::PhysicalCardUpdateParams::Status::OrSymbol)
-          .returns(Increase::Models::PhysicalCardUpdateParams::Status::OrSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       sig do
         params(

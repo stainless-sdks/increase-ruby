@@ -8,92 +8,68 @@ module Increase
 
       # The type of Export to create.
       sig { returns(Increase::Models::ExportCreateParams::Category::OrSymbol) }
-      def category
-      end
-
-      sig do
-        params(_: Increase::Models::ExportCreateParams::Category::OrSymbol)
-          .returns(Increase::Models::ExportCreateParams::Category::OrSymbol)
-      end
-      def category=(_)
-      end
+      attr_accessor :category
 
       # Options for the created export. Required if `category` is equal to
       #   `account_statement_ofx`.
       sig { returns(T.nilable(Increase::Models::ExportCreateParams::AccountStatementOfx)) }
-      def account_statement_ofx
-      end
+      attr_reader :account_statement_ofx
 
       sig do
-        params(_: T.any(Increase::Models::ExportCreateParams::AccountStatementOfx, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::ExportCreateParams::AccountStatementOfx, Increase::Util::AnyHash))
+        params(
+          account_statement_ofx: T.any(Increase::Models::ExportCreateParams::AccountStatementOfx, Increase::Util::AnyHash)
+        )
+          .void
       end
-      def account_statement_ofx=(_)
-      end
+      attr_writer :account_statement_ofx
 
       # Options for the created export. Required if `category` is equal to
       #   `balance_csv`.
       sig { returns(T.nilable(Increase::Models::ExportCreateParams::BalanceCsv)) }
-      def balance_csv
-      end
+      attr_reader :balance_csv
 
-      sig do
-        params(_: T.any(Increase::Models::ExportCreateParams::BalanceCsv, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::ExportCreateParams::BalanceCsv, Increase::Util::AnyHash))
-      end
-      def balance_csv=(_)
-      end
+      sig { params(balance_csv: T.any(Increase::Models::ExportCreateParams::BalanceCsv, Increase::Util::AnyHash)).void }
+      attr_writer :balance_csv
 
       # Options for the created export. Required if `category` is equal to
       #   `bookkeeping_account_balance_csv`.
       sig { returns(T.nilable(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv)) }
-      def bookkeeping_account_balance_csv
-      end
+      attr_reader :bookkeeping_account_balance_csv
 
       sig do
         params(
-          _: T.any(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv, Increase::Util::AnyHash)
+          bookkeeping_account_balance_csv: T.any(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv, Increase::Util::AnyHash)
         )
-          .returns(
-            T.any(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv, Increase::Util::AnyHash)
-          )
+          .void
       end
-      def bookkeeping_account_balance_csv=(_)
-      end
+      attr_writer :bookkeeping_account_balance_csv
 
       # Options for the created export. Required if `category` is equal to `entity_csv`.
       sig { returns(T.nilable(Increase::Models::ExportCreateParams::EntityCsv)) }
-      def entity_csv
-      end
+      attr_reader :entity_csv
 
-      sig do
-        params(_: T.any(Increase::Models::ExportCreateParams::EntityCsv, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::ExportCreateParams::EntityCsv, Increase::Util::AnyHash))
-      end
-      def entity_csv=(_)
-      end
+      sig { params(entity_csv: T.any(Increase::Models::ExportCreateParams::EntityCsv, Increase::Util::AnyHash)).void }
+      attr_writer :entity_csv
 
       # Options for the created export. Required if `category` is equal to
       #   `transaction_csv`.
       sig { returns(T.nilable(Increase::Models::ExportCreateParams::TransactionCsv)) }
-      def transaction_csv
-      end
+      attr_reader :transaction_csv
 
       sig do
-        params(_: T.any(Increase::Models::ExportCreateParams::TransactionCsv, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::ExportCreateParams::TransactionCsv, Increase::Util::AnyHash))
+        params(
+          transaction_csv: T.any(Increase::Models::ExportCreateParams::TransactionCsv, Increase::Util::AnyHash)
+        )
+          .void
       end
-      def transaction_csv=(_)
-      end
+      attr_writer :transaction_csv
 
       # Options for the created export. Required if `category` is equal to `vendor_csv`.
       sig { returns(T.nilable(T.anything)) }
-      def vendor_csv
-      end
+      attr_reader :vendor_csv
 
-      sig { params(_: T.anything).returns(T.anything) }
-      def vendor_csv=(_)
-      end
+      sig { params(vendor_csv: T.anything).void }
+      attr_writer :vendor_csv
 
       sig do
         params(
@@ -175,28 +151,19 @@ module Increase
       class AccountStatementOfx < Increase::BaseModel
         # The Account to create a statement for.
         sig { returns(String) }
-        def account_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def account_id=(_)
-        end
+        attr_accessor :account_id
 
         # Filter results by time range on the `created_at` attribute.
         sig { returns(T.nilable(Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt)) }
-        def created_at
-        end
+        attr_reader :created_at
 
         sig do
           params(
-            _: T.any(Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt, Increase::Util::AnyHash)
+            created_at: T.any(Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt, Increase::Util::AnyHash)
           )
-            .returns(
-              T.any(Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt, Increase::Util::AnyHash)
-            )
+            .void
         end
-        def created_at=(_)
-        end
+        attr_writer :created_at
 
         # Options for the created export. Required if `category` is equal to
         #   `account_statement_ofx`.
@@ -223,42 +190,34 @@ module Increase
           # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
           #   timestamp.
           sig { returns(T.nilable(Time)) }
-          def after
-          end
+          attr_reader :after
 
-          sig { params(_: Time).returns(Time) }
-          def after=(_)
-          end
+          sig { params(after: Time).void }
+          attr_writer :after
 
           # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
           #   timestamp.
           sig { returns(T.nilable(Time)) }
-          def before
-          end
+          attr_reader :before
 
-          sig { params(_: Time).returns(Time) }
-          def before=(_)
-          end
+          sig { params(before: Time).void }
+          attr_writer :before
 
           # Return results on or after this
           #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           sig { returns(T.nilable(Time)) }
-          def on_or_after
-          end
+          attr_reader :on_or_after
 
-          sig { params(_: Time).returns(Time) }
-          def on_or_after=(_)
-          end
+          sig { params(on_or_after: Time).void }
+          attr_writer :on_or_after
 
           # Return results on or before this
           #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           sig { returns(T.nilable(Time)) }
-          def on_or_before
-          end
+          attr_reader :on_or_before
 
-          sig { params(_: Time).returns(Time) }
-          def on_or_before=(_)
-          end
+          sig { params(on_or_before: Time).void }
+          attr_writer :on_or_before
 
           # Filter results by time range on the `created_at` attribute.
           sig do
@@ -276,33 +235,29 @@ module Increase
       class BalanceCsv < Increase::BaseModel
         # Filter exported Transactions to the specified Account.
         sig { returns(T.nilable(String)) }
-        def account_id
-        end
+        attr_reader :account_id
 
-        sig { params(_: String).returns(String) }
-        def account_id=(_)
-        end
+        sig { params(account_id: String).void }
+        attr_writer :account_id
 
         # Filter results by time range on the `created_at` attribute.
         sig { returns(T.nilable(Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt)) }
-        def created_at
-        end
+        attr_reader :created_at
 
         sig do
-          params(_: T.any(Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt, Increase::Util::AnyHash))
-            .returns(T.any(Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt, Increase::Util::AnyHash))
+          params(
+            created_at: T.any(Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt, Increase::Util::AnyHash)
+          )
+            .void
         end
-        def created_at=(_)
-        end
+        attr_writer :created_at
 
         # Filter exported Transactions to the specified Program.
         sig { returns(T.nilable(String)) }
-        def program_id
-        end
+        attr_reader :program_id
 
-        sig { params(_: String).returns(String) }
-        def program_id=(_)
-        end
+        sig { params(program_id: String).void }
+        attr_writer :program_id
 
         # Options for the created export. Required if `category` is equal to
         #   `balance_csv`.
@@ -334,42 +289,34 @@ module Increase
           # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
           #   timestamp.
           sig { returns(T.nilable(Time)) }
-          def after
-          end
+          attr_reader :after
 
-          sig { params(_: Time).returns(Time) }
-          def after=(_)
-          end
+          sig { params(after: Time).void }
+          attr_writer :after
 
           # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
           #   timestamp.
           sig { returns(T.nilable(Time)) }
-          def before
-          end
+          attr_reader :before
 
-          sig { params(_: Time).returns(Time) }
-          def before=(_)
-          end
+          sig { params(before: Time).void }
+          attr_writer :before
 
           # Return results on or after this
           #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           sig { returns(T.nilable(Time)) }
-          def on_or_after
-          end
+          attr_reader :on_or_after
 
-          sig { params(_: Time).returns(Time) }
-          def on_or_after=(_)
-          end
+          sig { params(on_or_after: Time).void }
+          attr_writer :on_or_after
 
           # Return results on or before this
           #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           sig { returns(T.nilable(Time)) }
-          def on_or_before
-          end
+          attr_reader :on_or_before
 
-          sig { params(_: Time).returns(Time) }
-          def on_or_before=(_)
-          end
+          sig { params(on_or_before: Time).void }
+          attr_writer :on_or_before
 
           # Filter results by time range on the `created_at` attribute.
           sig do
@@ -387,34 +334,25 @@ module Increase
       class BookkeepingAccountBalanceCsv < Increase::BaseModel
         # Filter exported Transactions to the specified Bookkeeping Account.
         sig { returns(T.nilable(String)) }
-        def bookkeeping_account_id
-        end
+        attr_reader :bookkeeping_account_id
 
-        sig { params(_: String).returns(String) }
-        def bookkeeping_account_id=(_)
-        end
+        sig { params(bookkeeping_account_id: String).void }
+        attr_writer :bookkeeping_account_id
 
         # Filter results by time range on the `created_at` attribute.
         sig { returns(T.nilable(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt)) }
-        def created_at
-        end
+        attr_reader :created_at
 
         sig do
           params(
-            _: T.any(
+            created_at: T.any(
               Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt,
               Increase::Util::AnyHash
             )
           )
-            .returns(
-              T.any(
-                Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt,
-                Increase::Util::AnyHash
-              )
-            )
+            .void
         end
-        def created_at=(_)
-        end
+        attr_writer :created_at
 
         # Options for the created export. Required if `category` is equal to
         #   `bookkeeping_account_balance_csv`.
@@ -447,42 +385,34 @@ module Increase
           # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
           #   timestamp.
           sig { returns(T.nilable(Time)) }
-          def after
-          end
+          attr_reader :after
 
-          sig { params(_: Time).returns(Time) }
-          def after=(_)
-          end
+          sig { params(after: Time).void }
+          attr_writer :after
 
           # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
           #   timestamp.
           sig { returns(T.nilable(Time)) }
-          def before
-          end
+          attr_reader :before
 
-          sig { params(_: Time).returns(Time) }
-          def before=(_)
-          end
+          sig { params(before: Time).void }
+          attr_writer :before
 
           # Return results on or after this
           #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           sig { returns(T.nilable(Time)) }
-          def on_or_after
-          end
+          attr_reader :on_or_after
 
-          sig { params(_: Time).returns(Time) }
-          def on_or_after=(_)
-          end
+          sig { params(on_or_after: Time).void }
+          attr_writer :on_or_after
 
           # Return results on or before this
           #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           sig { returns(T.nilable(Time)) }
-          def on_or_before
-          end
+          attr_reader :on_or_before
 
-          sig { params(_: Time).returns(Time) }
-          def on_or_before=(_)
-          end
+          sig { params(on_or_before: Time).void }
+          attr_writer :on_or_before
 
           # Filter results by time range on the `created_at` attribute.
           sig do
@@ -500,15 +430,13 @@ module Increase
       class EntityCsv < Increase::BaseModel
         # Entity statuses to filter by.
         sig { returns(T.nilable(Increase::Models::ExportCreateParams::EntityCsv::Status)) }
-        def status
-        end
+        attr_reader :status
 
         sig do
-          params(_: T.any(Increase::Models::ExportCreateParams::EntityCsv::Status, Increase::Util::AnyHash))
-            .returns(T.any(Increase::Models::ExportCreateParams::EntityCsv::Status, Increase::Util::AnyHash))
+          params(status: T.any(Increase::Models::ExportCreateParams::EntityCsv::Status, Increase::Util::AnyHash))
+            .void
         end
-        def status=(_)
-        end
+        attr_writer :status
 
         # Options for the created export. Required if `category` is equal to `entity_csv`.
         sig do
@@ -526,15 +454,7 @@ module Increase
           # Entity statuses to filter by. For GET requests, this should be encoded as a
           #   comma-delimited string, such as `?in=one,two,three`.
           sig { returns(T::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::In::OrSymbol]) }
-          def in_
-          end
-
-          sig do
-            params(_: T::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::In::OrSymbol])
-              .returns(T::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::In::OrSymbol])
-          end
-          def in_=(_)
-          end
+          attr_accessor :in_
 
           # Entity statuses to filter by.
           sig do
@@ -577,33 +497,29 @@ module Increase
       class TransactionCsv < Increase::BaseModel
         # Filter exported Transactions to the specified Account.
         sig { returns(T.nilable(String)) }
-        def account_id
-        end
+        attr_reader :account_id
 
-        sig { params(_: String).returns(String) }
-        def account_id=(_)
-        end
+        sig { params(account_id: String).void }
+        attr_writer :account_id
 
         # Filter results by time range on the `created_at` attribute.
         sig { returns(T.nilable(Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt)) }
-        def created_at
-        end
+        attr_reader :created_at
 
         sig do
-          params(_: T.any(Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt, Increase::Util::AnyHash))
-            .returns(T.any(Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt, Increase::Util::AnyHash))
+          params(
+            created_at: T.any(Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt, Increase::Util::AnyHash)
+          )
+            .void
         end
-        def created_at=(_)
-        end
+        attr_writer :created_at
 
         # Filter exported Transactions to the specified Program.
         sig { returns(T.nilable(String)) }
-        def program_id
-        end
+        attr_reader :program_id
 
-        sig { params(_: String).returns(String) }
-        def program_id=(_)
-        end
+        sig { params(program_id: String).void }
+        attr_writer :program_id
 
         # Options for the created export. Required if `category` is equal to
         #   `transaction_csv`.
@@ -635,42 +551,34 @@ module Increase
           # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
           #   timestamp.
           sig { returns(T.nilable(Time)) }
-          def after
-          end
+          attr_reader :after
 
-          sig { params(_: Time).returns(Time) }
-          def after=(_)
-          end
+          sig { params(after: Time).void }
+          attr_writer :after
 
           # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
           #   timestamp.
           sig { returns(T.nilable(Time)) }
-          def before
-          end
+          attr_reader :before
 
-          sig { params(_: Time).returns(Time) }
-          def before=(_)
-          end
+          sig { params(before: Time).void }
+          attr_writer :before
 
           # Return results on or after this
           #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           sig { returns(T.nilable(Time)) }
-          def on_or_after
-          end
+          attr_reader :on_or_after
 
-          sig { params(_: Time).returns(Time) }
-          def on_or_after=(_)
-          end
+          sig { params(on_or_after: Time).void }
+          attr_writer :on_or_after
 
           # Return results on or before this
           #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           sig { returns(T.nilable(Time)) }
-          def on_or_before
-          end
+          attr_reader :on_or_before
 
-          sig { params(_: Time).returns(Time) }
-          def on_or_before=(_)
-          end
+          sig { params(on_or_before: Time).void }
+          attr_writer :on_or_before
 
           # Filter results by time range on the `created_at` attribute.
           sig do

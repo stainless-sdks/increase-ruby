@@ -8,55 +8,30 @@ module Increase
 
       # The account number for the destination account.
       sig { returns(String) }
-      def account_number
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_number=(_)
-      end
+      attr_accessor :account_number
 
       # The name you choose for the Account.
       sig { returns(String) }
-      def description
-      end
-
-      sig { params(_: String).returns(String) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
       #   destination account.
       sig { returns(String) }
-      def routing_number
-      end
-
-      sig { params(_: String).returns(String) }
-      def routing_number=(_)
-      end
+      attr_accessor :routing_number
 
       # The type of entity that owns the External Account.
       sig { returns(T.nilable(Increase::Models::ExternalAccountCreateParams::AccountHolder::OrSymbol)) }
-      def account_holder
-      end
+      attr_reader :account_holder
 
-      sig do
-        params(_: Increase::Models::ExternalAccountCreateParams::AccountHolder::OrSymbol)
-          .returns(Increase::Models::ExternalAccountCreateParams::AccountHolder::OrSymbol)
-      end
-      def account_holder=(_)
-      end
+      sig { params(account_holder: Increase::Models::ExternalAccountCreateParams::AccountHolder::OrSymbol).void }
+      attr_writer :account_holder
 
       # The type of the destination account. Defaults to `checking`.
       sig { returns(T.nilable(Increase::Models::ExternalAccountCreateParams::Funding::OrSymbol)) }
-      def funding
-      end
+      attr_reader :funding
 
-      sig do
-        params(_: Increase::Models::ExternalAccountCreateParams::Funding::OrSymbol)
-          .returns(Increase::Models::ExternalAccountCreateParams::Funding::OrSymbol)
-      end
-      def funding=(_)
-      end
+      sig { params(funding: Increase::Models::ExternalAccountCreateParams::Funding::OrSymbol).void }
+      attr_writer :funding
 
       sig do
         params(

@@ -5,100 +5,49 @@ module Increase
     class PhysicalCard < Increase::BaseModel
       # The physical card identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The identifier for the Card this Physical Card represents.
       sig { returns(String) }
-      def card_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def card_id=(_)
-      end
+      attr_accessor :card_id
 
       # Details about the cardholder, as it appears on the printed card.
       sig { returns(Increase::Models::PhysicalCard::Cardholder) }
-      def cardholder
-      end
+      attr_reader :cardholder
 
-      sig do
-        params(_: T.any(Increase::Models::PhysicalCard::Cardholder, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::PhysicalCard::Cardholder, Increase::Util::AnyHash))
-      end
-      def cardholder=(_)
-      end
+      sig { params(cardholder: T.any(Increase::Models::PhysicalCard::Cardholder, Increase::Util::AnyHash)).void }
+      attr_writer :cardholder
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
       #   the Physical Card was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # The idempotency key you chose for this object. This value is unique across
       #   Increase and is used to ensure that a request is only processed once. Learn more
       #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      def idempotency_key
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def idempotency_key=(_)
-      end
+      attr_accessor :idempotency_key
 
       # The Physical Card Profile used for this Physical Card.
       sig { returns(T.nilable(String)) }
-      def physical_card_profile_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def physical_card_profile_id=(_)
-      end
+      attr_accessor :physical_card_profile_id
 
       # The details used to ship this physical card.
       sig { returns(Increase::Models::PhysicalCard::Shipment) }
-      def shipment
-      end
+      attr_reader :shipment
 
-      sig do
-        params(_: T.any(Increase::Models::PhysicalCard::Shipment, Increase::Util::AnyHash))
-          .returns(T.any(Increase::Models::PhysicalCard::Shipment, Increase::Util::AnyHash))
-      end
-      def shipment=(_)
-      end
+      sig { params(shipment: T.any(Increase::Models::PhysicalCard::Shipment, Increase::Util::AnyHash)).void }
+      attr_writer :shipment
 
       # The status of the Physical Card.
       sig { returns(Increase::Models::PhysicalCard::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Increase::Models::PhysicalCard::Status::TaggedSymbol)
-          .returns(Increase::Models::PhysicalCard::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
       #   `physical_card`.
       sig { returns(Increase::Models::PhysicalCard::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::PhysicalCard::Type::TaggedSymbol)
-          .returns(Increase::Models::PhysicalCard::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Custom physical Visa cards that are shipped to your customers. The artwork is
       #   configurable by a connected [Card Profile](/documentation/api#card-profiles).
@@ -154,21 +103,11 @@ module Increase
       class Cardholder < Increase::BaseModel
         # The cardholder's first name.
         sig { returns(String) }
-        def first_name
-        end
-
-        sig { params(_: String).returns(String) }
-        def first_name=(_)
-        end
+        attr_accessor :first_name
 
         # The cardholder's last name.
         sig { returns(String) }
-        def last_name
-        end
-
-        sig { params(_: String).returns(String) }
-        def last_name=(_)
-        end
+        attr_accessor :last_name
 
         # Details about the cardholder, as it appears on the printed card.
         sig { params(first_name: String, last_name: String).returns(T.attached_class) }
@@ -183,51 +122,30 @@ module Increase
       class Shipment < Increase::BaseModel
         # The location to where the card's packing label is addressed.
         sig { returns(Increase::Models::PhysicalCard::Shipment::Address) }
-        def address
-        end
+        attr_reader :address
 
-        sig do
-          params(_: T.any(Increase::Models::PhysicalCard::Shipment::Address, Increase::Util::AnyHash))
-            .returns(T.any(Increase::Models::PhysicalCard::Shipment::Address, Increase::Util::AnyHash))
-        end
-        def address=(_)
-        end
+        sig { params(address: T.any(Increase::Models::PhysicalCard::Shipment::Address, Increase::Util::AnyHash)).void }
+        attr_writer :address
 
         # The shipping method.
         sig { returns(Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol) }
-        def method_
-        end
-
-        sig do
-          params(_: Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol)
-            .returns(Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol)
-        end
-        def method_=(_)
-        end
+        attr_accessor :method_
 
         # The status of this shipment.
         sig { returns(Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol) }
-        def status
-        end
-
-        sig do
-          params(_: Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol)
-            .returns(Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol)
-        end
-        def status=(_)
-        end
+        attr_accessor :status
 
         # Tracking details for the shipment.
         sig { returns(T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking)) }
-        def tracking
-        end
+        attr_reader :tracking
 
         sig do
-          params(_: T.nilable(T.any(Increase::Models::PhysicalCard::Shipment::Tracking, Increase::Util::AnyHash)))
-            .returns(T.nilable(T.any(Increase::Models::PhysicalCard::Shipment::Tracking, Increase::Util::AnyHash)))
+          params(
+            tracking: T.nilable(T.any(Increase::Models::PhysicalCard::Shipment::Tracking, Increase::Util::AnyHash))
+          )
+            .void
         end
-        def tracking=(_)
-        end
+        attr_writer :tracking
 
         # The details used to ship this physical card.
         sig do
@@ -259,66 +177,31 @@ module Increase
         class Address < Increase::BaseModel
           # The city of the shipping address.
           sig { returns(String) }
-          def city
-          end
-
-          sig { params(_: String).returns(String) }
-          def city=(_)
-          end
+          attr_accessor :city
 
           # The first line of the shipping address.
           sig { returns(String) }
-          def line1
-          end
-
-          sig { params(_: String).returns(String) }
-          def line1=(_)
-          end
+          attr_accessor :line1
 
           # The second line of the shipping address.
           sig { returns(T.nilable(String)) }
-          def line2
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def line2=(_)
-          end
+          attr_accessor :line2
 
           # The third line of the shipping address.
           sig { returns(T.nilable(String)) }
-          def line3
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def line3=(_)
-          end
+          attr_accessor :line3
 
           # The name of the recipient.
           sig { returns(String) }
-          def name
-          end
-
-          sig { params(_: String).returns(String) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           # The postal code of the shipping address.
           sig { returns(String) }
-          def postal_code
-          end
-
-          sig { params(_: String).returns(String) }
-          def postal_code=(_)
-          end
+          attr_accessor :postal_code
 
           # The US state of the shipping address.
           sig { returns(String) }
-          def state
-          end
-
-          sig { params(_: String).returns(String) }
-          def state=(_)
-          end
+          attr_accessor :state
 
           # The location to where the card's packing label is addressed.
           sig do
@@ -416,41 +299,21 @@ module Increase
         class Tracking < Increase::BaseModel
           # The tracking number.
           sig { returns(String) }
-          def number
-          end
-
-          sig { params(_: String).returns(String) }
-          def number=(_)
-          end
+          attr_accessor :number
 
           # For returned shipments, the tracking number of the return shipment.
           sig { returns(T.nilable(String)) }
-          def return_number
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def return_number=(_)
-          end
+          attr_accessor :return_number
 
           # For returned shipments, this describes why the package was returned.
           sig { returns(T.nilable(String)) }
-          def return_reason
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def return_reason=(_)
-          end
+          attr_accessor :return_reason
 
           # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
           #   the fulfillment provider marked the card as ready for pick-up by the shipment
           #   carrier.
           sig { returns(Time) }
-          def shipped_at
-          end
-
-          sig { params(_: Time).returns(Time) }
-          def shipped_at=(_)
-          end
+          attr_accessor :shipped_at
 
           # Tracking details for the shipment.
           sig do

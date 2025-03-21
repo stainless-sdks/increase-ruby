@@ -5,95 +5,44 @@ module Increase
     class Program < Increase::BaseModel
       # The Program identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The Bank the Program is with.
       sig { returns(Increase::Models::Program::Bank::TaggedSymbol) }
-      def bank
-      end
-
-      sig do
-        params(_: Increase::Models::Program::Bank::TaggedSymbol)
-          .returns(Increase::Models::Program::Bank::TaggedSymbol)
-      end
-      def bank=(_)
-      end
+      attr_accessor :bank
 
       # The Program billing account.
       sig { returns(T.nilable(String)) }
-      def billing_account_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def billing_account_id=(_)
-      end
+      attr_accessor :billing_account_id
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
       #   was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # The default configuration for digital cards attached to this Program.
       sig { returns(T.nilable(String)) }
-      def default_digital_card_profile_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def default_digital_card_profile_id=(_)
-      end
+      attr_accessor :default_digital_card_profile_id
 
       # The Interest Rate currently being earned on the accounts in this program, as a
       #   string containing a decimal number. For example, a 1% interest rate would be
       #   represented as "0.01".
       sig { returns(String) }
-      def interest_rate
-      end
-
-      sig { params(_: String).returns(String) }
-      def interest_rate=(_)
-      end
+      attr_accessor :interest_rate
 
       # The name of the Program.
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # A constant representing the object's type. For this resource it will always be
       #   `program`.
       sig { returns(Increase::Models::Program::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::Program::Type::TaggedSymbol)
-          .returns(Increase::Models::Program::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
       #   was last updated.
       sig { returns(Time) }
-      def updated_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def updated_at=(_)
-      end
+      attr_accessor :updated_at
 
       # Programs determine the compliance and commercial terms of Accounts. By default,
       #   you have a Commercial Banking program for managing your own funds. If you are

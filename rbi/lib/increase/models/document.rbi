@@ -5,65 +5,29 @@ module Increase
     class Document < Increase::BaseModel
       # The Document identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The type of document.
       sig { returns(Increase::Models::Document::Category::TaggedSymbol) }
-      def category
-      end
-
-      sig do
-        params(_: Increase::Models::Document::Category::TaggedSymbol)
-          .returns(Increase::Models::Document::Category::TaggedSymbol)
-      end
-      def category=(_)
-      end
+      attr_accessor :category
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
       #   Document was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # The identifier of the Entity the document was generated for.
       sig { returns(T.nilable(String)) }
-      def entity_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def entity_id=(_)
-      end
+      attr_accessor :entity_id
 
       # The identifier of the File containing the Document's contents.
       sig { returns(String) }
-      def file_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def file_id=(_)
-      end
+      attr_accessor :file_id
 
       # A constant representing the object's type. For this resource it will always be
       #   `document`.
       sig { returns(Increase::Models::Document::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::Document::Type::TaggedSymbol)
-          .returns(Increase::Models::Document::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Increase generates certain documents / forms automatically for your application;
       #   they can be listed here.

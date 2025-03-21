@@ -8,33 +8,24 @@ module Increase
 
       # The description you choose for the Lockbox.
       sig { returns(T.nilable(String)) }
-      def description
-      end
+      attr_reader :description
 
-      sig { params(_: String).returns(String) }
-      def description=(_)
-      end
+      sig { params(description: String).void }
+      attr_writer :description
 
       # The recipient name you choose for the Lockbox.
       sig { returns(T.nilable(String)) }
-      def recipient_name
-      end
+      attr_reader :recipient_name
 
-      sig { params(_: String).returns(String) }
-      def recipient_name=(_)
-      end
+      sig { params(recipient_name: String).void }
+      attr_writer :recipient_name
 
       # This indicates if checks can be sent to the Lockbox.
       sig { returns(T.nilable(Increase::Models::LockboxUpdateParams::Status::OrSymbol)) }
-      def status
-      end
+      attr_reader :status
 
-      sig do
-        params(_: Increase::Models::LockboxUpdateParams::Status::OrSymbol)
-          .returns(Increase::Models::LockboxUpdateParams::Status::OrSymbol)
-      end
-      def status=(_)
-      end
+      sig { params(status: Increase::Models::LockboxUpdateParams::Status::OrSymbol).void }
+      attr_writer :status
 
       sig do
         params(

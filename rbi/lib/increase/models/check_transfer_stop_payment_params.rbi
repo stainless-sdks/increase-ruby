@@ -8,15 +8,10 @@ module Increase
 
       # The reason why this transfer should be stopped.
       sig { returns(T.nilable(Increase::Models::CheckTransferStopPaymentParams::Reason::OrSymbol)) }
-      def reason
-      end
+      attr_reader :reason
 
-      sig do
-        params(_: Increase::Models::CheckTransferStopPaymentParams::Reason::OrSymbol)
-          .returns(Increase::Models::CheckTransferStopPaymentParams::Reason::OrSymbol)
-      end
-      def reason=(_)
-      end
+      sig { params(reason: Increase::Models::CheckTransferStopPaymentParams::Reason::OrSymbol).void }
+      attr_writer :reason
 
       sig do
         params(

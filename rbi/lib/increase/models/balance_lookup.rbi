@@ -5,45 +5,22 @@ module Increase
     class BalanceLookup < Increase::BaseModel
       # The identifier for the account for which the balance was queried.
       sig { returns(String) }
-      def account_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_id=(_)
-      end
+      attr_accessor :account_id
 
       # The Account's available balance, representing the current balance less any open
       #   Pending Transactions on the Account.
       sig { returns(Integer) }
-      def available_balance
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def available_balance=(_)
-      end
+      attr_accessor :available_balance
 
       # The Account's current balance, representing the sum of all posted Transactions
       #   on the Account.
       sig { returns(Integer) }
-      def current_balance
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def current_balance=(_)
-      end
+      attr_accessor :current_balance
 
       # A constant representing the object's type. For this resource it will always be
       #   `balance_lookup`.
       sig { returns(Increase::Models::BalanceLookup::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::BalanceLookup::Type::TaggedSymbol)
-          .returns(Increase::Models::BalanceLookup::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Represents a request to lookup the balance of an Account at a given point in
       #   time.

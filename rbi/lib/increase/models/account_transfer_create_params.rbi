@@ -8,49 +8,27 @@ module Increase
 
       # The identifier for the account that will send the transfer.
       sig { returns(String) }
-      def account_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_id=(_)
-      end
+      attr_accessor :account_id
 
       # The transfer amount in the minor unit of the account currency. For dollars, for
       #   example, this is cents.
       sig { returns(Integer) }
-      def amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       # The description you choose to give the transfer.
       sig { returns(String) }
-      def description
-      end
-
-      sig { params(_: String).returns(String) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # The identifier for the account that will receive the transfer.
       sig { returns(String) }
-      def destination_account_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def destination_account_id=(_)
-      end
+      attr_accessor :destination_account_id
 
       # Whether the transfer requires explicit approval via the dashboard or API.
       sig { returns(T.nilable(T::Boolean)) }
-      def require_approval
-      end
+      attr_reader :require_approval
 
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def require_approval=(_)
-      end
+      sig { params(require_approval: T::Boolean).void }
+      attr_writer :require_approval
 
       sig do
         params(

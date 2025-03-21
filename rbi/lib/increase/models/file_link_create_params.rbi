@@ -8,22 +8,15 @@ module Increase
 
       # The File to create a File Link for.
       sig { returns(String) }
-      def file_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def file_id=(_)
-      end
+      attr_accessor :file_id
 
       # The time at which the File Link will expire. The default is 1 hour from the time
       #   of the request. The maxiumum is 1 day from the time of the request.
       sig { returns(T.nilable(Time)) }
-      def expires_at
-      end
+      attr_reader :expires_at
 
-      sig { params(_: Time).returns(Time) }
-      def expires_at=(_)
-      end
+      sig { params(expires_at: Time).void }
+      attr_writer :expires_at
 
       sig do
         params(

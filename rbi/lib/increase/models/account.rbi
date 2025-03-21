@@ -5,162 +5,75 @@ module Increase
     class Account < Increase::BaseModel
       # The Account identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The bank the Account is with.
       sig { returns(Increase::Models::Account::Bank::TaggedSymbol) }
-      def bank
-      end
-
-      sig do
-        params(_: Increase::Models::Account::Bank::TaggedSymbol)
-          .returns(Increase::Models::Account::Bank::TaggedSymbol)
-      end
-      def bank=(_)
-      end
+      attr_accessor :bank
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
       #   was closed.
       sig { returns(T.nilable(Time)) }
-      def closed_at
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def closed_at=(_)
-      end
+      attr_accessor :closed_at
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
       #   was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
       #   currency.
       sig { returns(Increase::Models::Account::Currency::TaggedSymbol) }
-      def currency
-      end
-
-      sig do
-        params(_: Increase::Models::Account::Currency::TaggedSymbol)
-          .returns(Increase::Models::Account::Currency::TaggedSymbol)
-      end
-      def currency=(_)
-      end
+      attr_accessor :currency
 
       # The identifier for the Entity the Account belongs to.
       sig { returns(T.nilable(String)) }
-      def entity_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def entity_id=(_)
-      end
+      attr_accessor :entity_id
 
       # The idempotency key you chose for this object. This value is unique across
       #   Increase and is used to ensure that a request is only processed once. Learn more
       #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      def idempotency_key
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def idempotency_key=(_)
-      end
+      attr_accessor :idempotency_key
 
       # The identifier of an Entity that, while not owning the Account, is associated
       #   with its activity.
       sig { returns(T.nilable(String)) }
-      def informational_entity_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def informational_entity_id=(_)
-      end
+      attr_accessor :informational_entity_id
 
       # The interest accrued but not yet paid, expressed as a string containing a
       #   floating-point value.
       sig { returns(String) }
-      def interest_accrued
-      end
-
-      sig { params(_: String).returns(String) }
-      def interest_accrued=(_)
-      end
+      attr_accessor :interest_accrued
 
       # The latest [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which
       #   interest was accrued.
       sig { returns(T.nilable(Date)) }
-      def interest_accrued_at
-      end
-
-      sig { params(_: T.nilable(Date)).returns(T.nilable(Date)) }
-      def interest_accrued_at=(_)
-      end
+      attr_accessor :interest_accrued_at
 
       # The Interest Rate currently being earned on the account, as a string containing
       #   a decimal number. For example, a 1% interest rate would be represented as
       #   "0.01".
       sig { returns(String) }
-      def interest_rate
-      end
-
-      sig { params(_: String).returns(String) }
-      def interest_rate=(_)
-      end
+      attr_accessor :interest_rate
 
       # The name you choose for the Account.
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # The identifier of the Program determining the compliance and commercial terms of
       #   this Account.
       sig { returns(String) }
-      def program_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def program_id=(_)
-      end
+      attr_accessor :program_id
 
       # The status of the Account.
       sig { returns(Increase::Models::Account::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Increase::Models::Account::Status::TaggedSymbol)
-          .returns(Increase::Models::Account::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
       #   `account`.
       sig { returns(Increase::Models::Account::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::Account::Type::TaggedSymbol)
-          .returns(Increase::Models::Account::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Accounts are your bank accounts with Increase. They store money, receive
       #   transfers, and send payments. They earn interest and have depository insurance.

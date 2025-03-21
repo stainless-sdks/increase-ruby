@@ -9,22 +9,15 @@ module Increase
 
         # The identifier of the Card Payment to create a reversal on.
         sig { returns(String) }
-        def card_payment_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def card_payment_id=(_)
-        end
+        attr_accessor :card_payment_id
 
         # The amount of the reversal in minor units in the card authorization's currency.
         #   This defaults to the authorization amount.
         sig { returns(T.nilable(Integer)) }
-        def amount
-        end
+        attr_reader :amount
 
-        sig { params(_: Integer).returns(Integer) }
-        def amount=(_)
-        end
+        sig { params(amount: Integer).void }
+        attr_writer :amount
 
         sig do
           params(

@@ -5,174 +5,78 @@ module Increase
     class ProofOfAuthorizationRequestSubmission < Increase::BaseModel
       # The Proof of Authorization Request Submission identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # File containing additional evidence.
       sig { returns(T.nilable(String)) }
-      def additional_evidence_file_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def additional_evidence_file_id=(_)
-      end
+      attr_accessor :additional_evidence_file_id
 
       # Terms of authorization.
       sig { returns(String) }
-      def authorization_terms
-      end
-
-      sig { params(_: String).returns(String) }
-      def authorization_terms=(_)
-      end
+      attr_accessor :authorization_terms
 
       # Time of authorization.
       sig { returns(Time) }
-      def authorized_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def authorized_at=(_)
-      end
+      attr_accessor :authorized_at
 
       # Company of the authorizer.
       sig { returns(T.nilable(String)) }
-      def authorizer_company
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def authorizer_company=(_)
-      end
+      attr_accessor :authorizer_company
 
       # Email of the authorizer.
       sig { returns(T.nilable(String)) }
-      def authorizer_email
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def authorizer_email=(_)
-      end
+      attr_accessor :authorizer_email
 
       # IP address of the authorizer.
       sig { returns(T.nilable(String)) }
-      def authorizer_ip_address
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def authorizer_ip_address=(_)
-      end
+      attr_accessor :authorizer_ip_address
 
       # Name of the authorizer.
       sig { returns(T.nilable(String)) }
-      def authorizer_name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def authorizer_name=(_)
-      end
+      attr_accessor :authorizer_name
 
       # The time the Proof of Authorization Request Submission was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # Whether the customer has been offboarded.
       sig { returns(T.nilable(T::Boolean)) }
-      def customer_has_been_offboarded
-      end
-
-      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-      def customer_has_been_offboarded=(_)
-      end
+      attr_accessor :customer_has_been_offboarded
 
       # The idempotency key you chose for this object. This value is unique across
       #   Increase and is used to ensure that a request is only processed once. Learn more
       #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      def idempotency_key
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def idempotency_key=(_)
-      end
+      attr_accessor :idempotency_key
 
       # ID of the proof of authorization request.
       sig { returns(String) }
-      def proof_of_authorization_request_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def proof_of_authorization_request_id=(_)
-      end
+      attr_accessor :proof_of_authorization_request_id
 
       # Status of the proof of authorization request submission.
       sig { returns(Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol)
-          .returns(Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
       #   `proof_of_authorization_request_submission`.
       sig { returns(Increase::Models::ProofOfAuthorizationRequestSubmission::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::ProofOfAuthorizationRequestSubmission::Type::TaggedSymbol)
-          .returns(Increase::Models::ProofOfAuthorizationRequestSubmission::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # The time the Proof of Authorization Request Submission was last updated.
       sig { returns(Time) }
-      def updated_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def updated_at=(_)
-      end
+      attr_accessor :updated_at
 
       # Whether account ownership was validated via credential (for instance, Plaid).
       sig { returns(T.nilable(T::Boolean)) }
-      def validated_account_ownership_via_credential
-      end
-
-      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-      def validated_account_ownership_via_credential=(_)
-      end
+      attr_accessor :validated_account_ownership_via_credential
 
       # Whether account ownership was validated with an account statement.
       sig { returns(T.nilable(T::Boolean)) }
-      def validated_account_ownership_with_account_statement
-      end
-
-      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-      def validated_account_ownership_with_account_statement=(_)
-      end
+      attr_accessor :validated_account_ownership_with_account_statement
 
       # Whether account ownership was validated with microdeposit.
       sig { returns(T.nilable(T::Boolean)) }
-      def validated_account_ownership_with_microdeposit
-      end
-
-      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-      def validated_account_ownership_with_microdeposit=(_)
-      end
+      attr_accessor :validated_account_ownership_with_microdeposit
 
       # Information submitted in response to a proof of authorization request. Per
       #   Nacha's guidance on proof of authorization, the originator must ensure that the

@@ -8,15 +8,7 @@ module Increase
 
       # The reason to return the Inbound Check Deposit.
       sig { returns(Increase::Models::InboundCheckDepositReturnParams::Reason::OrSymbol) }
-      def reason
-      end
-
-      sig do
-        params(_: Increase::Models::InboundCheckDepositReturnParams::Reason::OrSymbol)
-          .returns(Increase::Models::InboundCheckDepositReturnParams::Reason::OrSymbol)
-      end
-      def reason=(_)
-      end
+      attr_accessor :reason
 
       sig do
         params(

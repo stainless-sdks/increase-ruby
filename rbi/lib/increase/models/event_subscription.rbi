@@ -5,89 +5,40 @@ module Increase
     class EventSubscription < Increase::BaseModel
       # The event subscription identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The time the event subscription was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # The idempotency key you chose for this object. This value is unique across
       #   Increase and is used to ensure that a request is only processed once. Learn more
       #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
-      def idempotency_key
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def idempotency_key=(_)
-      end
+      attr_accessor :idempotency_key
 
       # If specified, this subscription will only receive webhooks for Events associated
       #   with this OAuth Connection.
       sig { returns(T.nilable(String)) }
-      def oauth_connection_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def oauth_connection_id=(_)
-      end
+      attr_accessor :oauth_connection_id
 
       # If specified, this subscription will only receive webhooks for Events with the
       #   specified `category`.
       sig { returns(T.nilable(Increase::Models::EventSubscription::SelectedEventCategory::TaggedSymbol)) }
-      def selected_event_category
-      end
-
-      sig do
-        params(_: T.nilable(Increase::Models::EventSubscription::SelectedEventCategory::TaggedSymbol))
-          .returns(T.nilable(Increase::Models::EventSubscription::SelectedEventCategory::TaggedSymbol))
-      end
-      def selected_event_category=(_)
-      end
+      attr_accessor :selected_event_category
 
       # This indicates if we'll send notifications to this subscription.
       sig { returns(Increase::Models::EventSubscription::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Increase::Models::EventSubscription::Status::TaggedSymbol)
-          .returns(Increase::Models::EventSubscription::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
       #   `event_subscription`.
       sig { returns(Increase::Models::EventSubscription::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::EventSubscription::Type::TaggedSymbol)
-          .returns(Increase::Models::EventSubscription::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # The webhook url where we'll send notifications.
       sig { returns(String) }
-      def url
-      end
-
-      sig { params(_: String).returns(String) }
-      def url=(_)
-      end
+      attr_accessor :url
 
       # Webhooks are event notifications we send to you by HTTPS POST requests. Event
       #   Subscriptions are how you configure your application to listen for them. You can

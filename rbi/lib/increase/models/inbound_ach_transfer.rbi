@@ -5,296 +5,164 @@ module Increase
     class InboundACHTransfer < Increase::BaseModel
       # The inbound ACH transfer's identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # If your transfer is accepted, this will contain details of the acceptance.
       sig { returns(T.nilable(Increase::Models::InboundACHTransfer::Acceptance)) }
-      def acceptance
-      end
+      attr_reader :acceptance
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::InboundACHTransfer::Acceptance, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::InboundACHTransfer::Acceptance, Increase::Util::AnyHash)))
+        params(
+          acceptance: T.nilable(T.any(Increase::Models::InboundACHTransfer::Acceptance, Increase::Util::AnyHash))
+        )
+          .void
       end
-      def acceptance=(_)
-      end
+      attr_writer :acceptance
 
       # The Account to which the transfer belongs.
       sig { returns(String) }
-      def account_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_id=(_)
-      end
+      attr_accessor :account_id
 
       # The identifier of the Account Number to which this transfer was sent.
       sig { returns(String) }
-      def account_number_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def account_number_id=(_)
-      end
+      attr_accessor :account_number_id
 
       # Additional information sent from the originator.
       sig { returns(T.nilable(Increase::Models::InboundACHTransfer::Addenda)) }
-      def addenda
-      end
+      attr_reader :addenda
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::InboundACHTransfer::Addenda, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::InboundACHTransfer::Addenda, Increase::Util::AnyHash)))
+        params(addenda: T.nilable(T.any(Increase::Models::InboundACHTransfer::Addenda, Increase::Util::AnyHash)))
+          .void
       end
-      def addenda=(_)
-      end
+      attr_writer :addenda
 
       # The transfer amount in USD cents.
       sig { returns(Integer) }
-      def amount
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def amount=(_)
-      end
+      attr_accessor :amount
 
       # The time at which the transfer will be automatically resolved.
       sig { returns(Time) }
-      def automatically_resolves_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def automatically_resolves_at=(_)
-      end
+      attr_accessor :automatically_resolves_at
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
       #   the inbound ACH transfer was created.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # If your transfer is declined, this will contain details of the decline.
       sig { returns(T.nilable(Increase::Models::InboundACHTransfer::Decline)) }
-      def decline
-      end
+      attr_reader :decline
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::InboundACHTransfer::Decline, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::InboundACHTransfer::Decline, Increase::Util::AnyHash)))
+        params(decline: T.nilable(T.any(Increase::Models::InboundACHTransfer::Decline, Increase::Util::AnyHash)))
+          .void
       end
-      def decline=(_)
-      end
+      attr_writer :decline
 
       # The direction of the transfer.
       sig { returns(Increase::Models::InboundACHTransfer::Direction::TaggedSymbol) }
-      def direction
-      end
-
-      sig do
-        params(_: Increase::Models::InboundACHTransfer::Direction::TaggedSymbol)
-          .returns(Increase::Models::InboundACHTransfer::Direction::TaggedSymbol)
-      end
-      def direction=(_)
-      end
+      attr_accessor :direction
 
       # The effective date of the transfer. This is sent by the sending bank and is a
       #   factor in determining funds availability.
       sig { returns(Date) }
-      def effective_date
-      end
-
-      sig { params(_: Date).returns(Date) }
-      def effective_date=(_)
-      end
+      attr_accessor :effective_date
 
       # The settlement schedule the transfer is expected to follow.
       sig { returns(Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule::TaggedSymbol) }
-      def expected_settlement_schedule
-      end
-
-      sig do
-        params(_: Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule::TaggedSymbol)
-          .returns(Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule::TaggedSymbol)
-      end
-      def expected_settlement_schedule=(_)
-      end
+      attr_accessor :expected_settlement_schedule
 
       # If the Inbound ACH Transfer has a Standard Entry Class Code of IAT, this will
       #   contain fields pertaining to the International ACH Transaction.
       sig { returns(T.nilable(Increase::Models::InboundACHTransfer::InternationalAddenda)) }
-      def international_addenda
-      end
+      attr_reader :international_addenda
 
       sig do
         params(
-          _: T.nilable(T.any(Increase::Models::InboundACHTransfer::InternationalAddenda, Increase::Util::AnyHash))
+          international_addenda: T.nilable(T.any(Increase::Models::InboundACHTransfer::InternationalAddenda, Increase::Util::AnyHash))
         )
-          .returns(
-            T.nilable(T.any(Increase::Models::InboundACHTransfer::InternationalAddenda, Increase::Util::AnyHash))
-          )
+          .void
       end
-      def international_addenda=(_)
-      end
+      attr_writer :international_addenda
 
       # If you initiate a notification of change in response to the transfer, this will
       #   contain its details.
       sig { returns(T.nilable(Increase::Models::InboundACHTransfer::NotificationOfChange)) }
-      def notification_of_change
-      end
+      attr_reader :notification_of_change
 
       sig do
         params(
-          _: T.nilable(T.any(Increase::Models::InboundACHTransfer::NotificationOfChange, Increase::Util::AnyHash))
+          notification_of_change: T.nilable(T.any(Increase::Models::InboundACHTransfer::NotificationOfChange, Increase::Util::AnyHash))
         )
-          .returns(
-            T.nilable(T.any(Increase::Models::InboundACHTransfer::NotificationOfChange, Increase::Util::AnyHash))
-          )
+          .void
       end
-      def notification_of_change=(_)
-      end
+      attr_writer :notification_of_change
 
       # The descriptive date of the transfer.
       sig { returns(T.nilable(String)) }
-      def originator_company_descriptive_date
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def originator_company_descriptive_date=(_)
-      end
+      attr_accessor :originator_company_descriptive_date
 
       # The additional information included with the transfer.
       sig { returns(T.nilable(String)) }
-      def originator_company_discretionary_data
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def originator_company_discretionary_data=(_)
-      end
+      attr_accessor :originator_company_discretionary_data
 
       # The description of the transfer.
       sig { returns(String) }
-      def originator_company_entry_description
-      end
-
-      sig { params(_: String).returns(String) }
-      def originator_company_entry_description=(_)
-      end
+      attr_accessor :originator_company_entry_description
 
       # The id of the company that initiated the transfer.
       sig { returns(String) }
-      def originator_company_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def originator_company_id=(_)
-      end
+      attr_accessor :originator_company_id
 
       # The name of the company that initiated the transfer.
       sig { returns(String) }
-      def originator_company_name
-      end
-
-      sig { params(_: String).returns(String) }
-      def originator_company_name=(_)
-      end
+      attr_accessor :originator_company_name
 
       # The American Banking Association (ABA) routing number of the bank originating
       #   the transfer.
       sig { returns(String) }
-      def originator_routing_number
-      end
-
-      sig { params(_: String).returns(String) }
-      def originator_routing_number=(_)
-      end
+      attr_accessor :originator_routing_number
 
       # The id of the receiver of the transfer.
       sig { returns(T.nilable(String)) }
-      def receiver_id_number
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def receiver_id_number=(_)
-      end
+      attr_accessor :receiver_id_number
 
       # The name of the receiver of the transfer.
       sig { returns(T.nilable(String)) }
-      def receiver_name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def receiver_name=(_)
-      end
+      attr_accessor :receiver_name
 
       # The Standard Entry Class (SEC) code of the transfer.
       sig { returns(Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol) }
-      def standard_entry_class_code
-      end
-
-      sig do
-        params(_: Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol)
-          .returns(Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol)
-      end
-      def standard_entry_class_code=(_)
-      end
+      attr_accessor :standard_entry_class_code
 
       # The status of the transfer.
       sig { returns(Increase::Models::InboundACHTransfer::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Increase::Models::InboundACHTransfer::Status::TaggedSymbol)
-          .returns(Increase::Models::InboundACHTransfer::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # A 15 digit number set by the sending bank and transmitted to the receiving bank.
       #   Along with the amount, date, and originating routing number, this can be used to
       #   identify the ACH transfer. ACH trace numbers are not unique, but are
       #   [used to correlate returns](https://increase.com/documentation/ach-returns#ach-returns).
       sig { returns(String) }
-      def trace_number
-      end
-
-      sig { params(_: String).returns(String) }
-      def trace_number=(_)
-      end
+      attr_accessor :trace_number
 
       # If your transfer is returned, this will contain details of the return.
       sig { returns(T.nilable(Increase::Models::InboundACHTransfer::TransferReturn)) }
-      def transfer_return
-      end
+      attr_reader :transfer_return
 
       sig do
-        params(_: T.nilable(T.any(Increase::Models::InboundACHTransfer::TransferReturn, Increase::Util::AnyHash)))
-          .returns(T.nilable(T.any(Increase::Models::InboundACHTransfer::TransferReturn, Increase::Util::AnyHash)))
+        params(
+          transfer_return: T.nilable(T.any(Increase::Models::InboundACHTransfer::TransferReturn, Increase::Util::AnyHash))
+        )
+          .void
       end
-      def transfer_return=(_)
-      end
+      attr_writer :transfer_return
 
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_ach_transfer`.
       sig { returns(Increase::Models::InboundACHTransfer::Type::TaggedSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Increase::Models::InboundACHTransfer::Type::TaggedSymbol)
-          .returns(Increase::Models::InboundACHTransfer::Type::TaggedSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # An Inbound ACH Transfer is an ACH transfer initiated outside of Increase to your
       #   account.
@@ -401,21 +269,11 @@ module Increase
       class Acceptance < Increase::BaseModel
         # The time at which the transfer was accepted.
         sig { returns(Time) }
-        def accepted_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def accepted_at=(_)
-        end
+        attr_accessor :accepted_at
 
         # The id of the transaction for the accepted transfer.
         sig { returns(String) }
-        def transaction_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def transaction_id=(_)
-        end
+        attr_accessor :transaction_id
 
         # If your transfer is accepted, this will contain details of the acceptance.
         sig { params(accepted_at: Time, transaction_id: String).returns(T.attached_class) }
@@ -430,31 +288,19 @@ module Increase
       class Addenda < Increase::BaseModel
         # The type of addendum.
         sig { returns(Increase::Models::InboundACHTransfer::Addenda::Category::TaggedSymbol) }
-        def category
-        end
-
-        sig do
-          params(_: Increase::Models::InboundACHTransfer::Addenda::Category::TaggedSymbol)
-            .returns(Increase::Models::InboundACHTransfer::Addenda::Category::TaggedSymbol)
-        end
-        def category=(_)
-        end
+        attr_accessor :category
 
         # Unstructured `payment_related_information` passed through by the originator.
         sig { returns(T.nilable(Increase::Models::InboundACHTransfer::Addenda::Freeform)) }
-        def freeform
-        end
+        attr_reader :freeform
 
         sig do
           params(
-            _: T.nilable(T.any(Increase::Models::InboundACHTransfer::Addenda::Freeform, Increase::Util::AnyHash))
+            freeform: T.nilable(T.any(Increase::Models::InboundACHTransfer::Addenda::Freeform, Increase::Util::AnyHash))
           )
-            .returns(
-              T.nilable(T.any(Increase::Models::InboundACHTransfer::Addenda::Freeform, Increase::Util::AnyHash))
-            )
+            .void
         end
-        def freeform=(_)
-        end
+        attr_writer :freeform
 
         # Additional information sent from the originator.
         sig do
@@ -500,15 +346,7 @@ module Increase
         class Freeform < Increase::BaseModel
           # Each entry represents an addendum received from the originator.
           sig { returns(T::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry]) }
-          def entries
-          end
-
-          sig do
-            params(_: T::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry])
-              .returns(T::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry])
-          end
-          def entries=(_)
-          end
+          attr_accessor :entries
 
           # Unstructured `payment_related_information` passed through by the originator.
           sig do
@@ -527,12 +365,7 @@ module Increase
           class Entry < Increase::BaseModel
             # The payment related information passed in the addendum.
             sig { returns(String) }
-            def payment_related_information
-            end
-
-            sig { params(_: String).returns(String) }
-            def payment_related_information=(_)
-            end
+            attr_accessor :payment_related_information
 
             sig { params(payment_related_information: String).returns(T.attached_class) }
             def self.new(payment_related_information:)
@@ -548,33 +381,15 @@ module Increase
       class Decline < Increase::BaseModel
         # The time at which the transfer was declined.
         sig { returns(Time) }
-        def declined_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def declined_at=(_)
-        end
+        attr_accessor :declined_at
 
         # The id of the transaction for the declined transfer.
         sig { returns(String) }
-        def declined_transaction_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def declined_transaction_id=(_)
-        end
+        attr_accessor :declined_transaction_id
 
         # The reason for the transfer decline.
         sig { returns(Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol) }
-        def reason
-        end
-
-        sig do
-          params(_: Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol)
-            .returns(Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol)
-        end
-        def reason=(_)
-        end
+        attr_accessor :reason
 
         # If your transfer is declined, this will contain details of the decline.
         sig do
@@ -750,22 +565,12 @@ module Increase
         # The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2
         #   country code of the destination country.
         sig { returns(String) }
-        def destination_country_code
-        end
-
-        sig { params(_: String).returns(String) }
-        def destination_country_code=(_)
-        end
+        attr_accessor :destination_country_code
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for the
         #   destination bank account.
         sig { returns(String) }
-        def destination_currency_code
-        end
-
-        sig { params(_: String).returns(String) }
-        def destination_currency_code=(_)
-        end
+        attr_accessor :destination_currency_code
 
         # A description of how the foreign exchange rate was calculated.
         sig do
@@ -773,29 +578,12 @@ module Increase
             Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeIndicator::TaggedSymbol
           )
         end
-        def foreign_exchange_indicator
-        end
-
-        sig do
-          params(
-            _: Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeIndicator::TaggedSymbol
-          )
-            .returns(
-              Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeIndicator::TaggedSymbol
-            )
-        end
-        def foreign_exchange_indicator=(_)
-        end
+        attr_accessor :foreign_exchange_indicator
 
         # Depending on the `foreign_exchange_reference_indicator`, an exchange rate or a
         #   reference to a well-known rate.
         sig { returns(T.nilable(String)) }
-        def foreign_exchange_reference
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def foreign_exchange_reference=(_)
-        end
+        attr_accessor :foreign_exchange_reference
 
         # An instruction of how to interpret the `foreign_exchange_reference` field for
         #   this Transaction.
@@ -804,38 +592,16 @@ module Increase
             Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator::TaggedSymbol
           )
         end
-        def foreign_exchange_reference_indicator
-        end
-
-        sig do
-          params(
-            _: Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator::TaggedSymbol
-          )
-            .returns(
-              Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator::TaggedSymbol
-            )
-        end
-        def foreign_exchange_reference_indicator=(_)
-        end
+        attr_accessor :foreign_exchange_reference_indicator
 
         # The amount in the minor unit of the foreign payment currency. For dollars, for
         #   example, this is cents.
         sig { returns(Integer) }
-        def foreign_payment_amount
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def foreign_payment_amount=(_)
-        end
+        attr_accessor :foreign_payment_amount
 
         # A reference number in the foreign banking infrastructure.
         sig { returns(T.nilable(String)) }
-        def foreign_trace_number
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def foreign_trace_number=(_)
-        end
+        attr_accessor :foreign_trace_number
 
         # The type of transfer. Set by the originator.
         sig do
@@ -843,50 +609,23 @@ module Increase
             Increase::Models::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode::TaggedSymbol
           )
         end
-        def international_transaction_type_code
-        end
-
-        sig do
-          params(
-            _: Increase::Models::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode::TaggedSymbol
-          )
-            .returns(
-              Increase::Models::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode::TaggedSymbol
-            )
-        end
-        def international_transaction_type_code=(_)
-        end
+        attr_accessor :international_transaction_type_code
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for the
         #   originating bank account.
         sig { returns(String) }
-        def originating_currency_code
-        end
-
-        sig { params(_: String).returns(String) }
-        def originating_currency_code=(_)
-        end
+        attr_accessor :originating_currency_code
 
         # The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2
         #   country code of the originating branch country.
         sig { returns(String) }
-        def originating_depository_financial_institution_branch_country
-        end
-
-        sig { params(_: String).returns(String) }
-        def originating_depository_financial_institution_branch_country=(_)
-        end
+        attr_accessor :originating_depository_financial_institution_branch_country
 
         # An identifier for the originating bank. One of an International Bank Account
         #   Number (IBAN) bank identifier, SWIFT Bank Identification Code (BIC), or a
         #   domestic identifier like a US Routing Number.
         sig { returns(String) }
-        def originating_depository_financial_institution_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def originating_depository_financial_institution_id=(_)
-        end
+        attr_accessor :originating_depository_financial_institution_id
 
         # An instruction of how to interpret the
         #   `originating_depository_financial_institution_id` field for this Transaction.
@@ -895,199 +634,92 @@ module Increase
             Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier::TaggedSymbol
           )
         end
-        def originating_depository_financial_institution_id_qualifier
-        end
-
-        sig do
-          params(
-            _: Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier::TaggedSymbol
-          )
-            .returns(
-              Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier::TaggedSymbol
-            )
-        end
-        def originating_depository_financial_institution_id_qualifier=(_)
-        end
+        attr_accessor :originating_depository_financial_institution_id_qualifier
 
         # The name of the originating bank. Sometimes this will refer to an American bank
         #   and obscure the correspondent foreign bank.
         sig { returns(String) }
-        def originating_depository_financial_institution_name
-        end
-
-        sig { params(_: String).returns(String) }
-        def originating_depository_financial_institution_name=(_)
-        end
+        attr_accessor :originating_depository_financial_institution_name
 
         # A portion of the originator address. This may be incomplete.
         sig { returns(String) }
-        def originator_city
-        end
-
-        sig { params(_: String).returns(String) }
-        def originator_city=(_)
-        end
+        attr_accessor :originator_city
 
         # A portion of the originator address. The
         #   [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2 country
         #   code of the originator country.
         sig { returns(String) }
-        def originator_country
-        end
-
-        sig { params(_: String).returns(String) }
-        def originator_country=(_)
-        end
+        attr_accessor :originator_country
 
         # An identifier for the originating company. This is generally stable across
         #   multiple ACH transfers.
         sig { returns(String) }
-        def originator_identification
-        end
-
-        sig { params(_: String).returns(String) }
-        def originator_identification=(_)
-        end
+        attr_accessor :originator_identification
 
         # Either the name of the originator or an intermediary money transmitter.
         sig { returns(String) }
-        def originator_name
-        end
-
-        sig { params(_: String).returns(String) }
-        def originator_name=(_)
-        end
+        attr_accessor :originator_name
 
         # A portion of the originator address. This may be incomplete.
         sig { returns(T.nilable(String)) }
-        def originator_postal_code
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def originator_postal_code=(_)
-        end
+        attr_accessor :originator_postal_code
 
         # A portion of the originator address. This may be incomplete.
         sig { returns(T.nilable(String)) }
-        def originator_state_or_province
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def originator_state_or_province=(_)
-        end
+        attr_accessor :originator_state_or_province
 
         # A portion of the originator address. This may be incomplete.
         sig { returns(String) }
-        def originator_street_address
-        end
-
-        sig { params(_: String).returns(String) }
-        def originator_street_address=(_)
-        end
+        attr_accessor :originator_street_address
 
         # A description field set by the originator.
         sig { returns(T.nilable(String)) }
-        def payment_related_information
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def payment_related_information=(_)
-        end
+        attr_accessor :payment_related_information
 
         # A description field set by the originator.
         sig { returns(T.nilable(String)) }
-        def payment_related_information2
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def payment_related_information2=(_)
-        end
+        attr_accessor :payment_related_information2
 
         # A portion of the receiver address. This may be incomplete.
         sig { returns(String) }
-        def receiver_city
-        end
-
-        sig { params(_: String).returns(String) }
-        def receiver_city=(_)
-        end
+        attr_accessor :receiver_city
 
         # A portion of the receiver address. The
         #   [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2 country
         #   code of the receiver country.
         sig { returns(String) }
-        def receiver_country
-        end
-
-        sig { params(_: String).returns(String) }
-        def receiver_country=(_)
-        end
+        attr_accessor :receiver_country
 
         # An identification number the originator uses for the receiver.
         sig { returns(T.nilable(String)) }
-        def receiver_identification_number
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def receiver_identification_number=(_)
-        end
+        attr_accessor :receiver_identification_number
 
         # A portion of the receiver address. This may be incomplete.
         sig { returns(T.nilable(String)) }
-        def receiver_postal_code
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def receiver_postal_code=(_)
-        end
+        attr_accessor :receiver_postal_code
 
         # A portion of the receiver address. This may be incomplete.
         sig { returns(T.nilable(String)) }
-        def receiver_state_or_province
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def receiver_state_or_province=(_)
-        end
+        attr_accessor :receiver_state_or_province
 
         # A portion of the receiver address. This may be incomplete.
         sig { returns(String) }
-        def receiver_street_address
-        end
-
-        sig { params(_: String).returns(String) }
-        def receiver_street_address=(_)
-        end
+        attr_accessor :receiver_street_address
 
         # The name of the receiver of the transfer. This is not verified by Increase.
         sig { returns(String) }
-        def receiving_company_or_individual_name
-        end
-
-        sig { params(_: String).returns(String) }
-        def receiving_company_or_individual_name=(_)
-        end
+        attr_accessor :receiving_company_or_individual_name
 
         # The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2
         #   country code of the receiving bank country.
         sig { returns(String) }
-        def receiving_depository_financial_institution_country
-        end
-
-        sig { params(_: String).returns(String) }
-        def receiving_depository_financial_institution_country=(_)
-        end
+        attr_accessor :receiving_depository_financial_institution_country
 
         # An identifier for the receiving bank. One of an International Bank Account
         #   Number (IBAN) bank identifier, SWIFT Bank Identification Code (BIC), or a
         #   domestic identifier like a US Routing Number.
         sig { returns(String) }
-        def receiving_depository_financial_institution_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def receiving_depository_financial_institution_id=(_)
-        end
+        attr_accessor :receiving_depository_financial_institution_id
 
         # An instruction of how to interpret the
         #   `receiving_depository_financial_institution_id` field for this Transaction.
@@ -1096,28 +728,11 @@ module Increase
             Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier::TaggedSymbol
           )
         end
-        def receiving_depository_financial_institution_id_qualifier
-        end
-
-        sig do
-          params(
-            _: Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier::TaggedSymbol
-          )
-            .returns(
-              Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier::TaggedSymbol
-            )
-        end
-        def receiving_depository_financial_institution_id_qualifier=(_)
-        end
+        attr_accessor :receiving_depository_financial_institution_id_qualifier
 
         # The name of the receiving bank, as set by the sending financial institution.
         sig { returns(String) }
-        def receiving_depository_financial_institution_name
-        end
-
-        sig { params(_: String).returns(String) }
-        def receiving_depository_financial_institution_name=(_)
-        end
+        attr_accessor :receiving_depository_financial_institution_name
 
         # If the Inbound ACH Transfer has a Standard Entry Class Code of IAT, this will
         #   contain fields pertaining to the International ACH Transaction.
@@ -1614,21 +1229,11 @@ module Increase
       class NotificationOfChange < Increase::BaseModel
         # The new account number provided in the notification of change.
         sig { returns(T.nilable(String)) }
-        def updated_account_number
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def updated_account_number=(_)
-        end
+        attr_accessor :updated_account_number
 
         # The new account number provided in the notification of change.
         sig { returns(T.nilable(String)) }
-        def updated_routing_number
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def updated_routing_number=(_)
-        end
+        attr_accessor :updated_routing_number
 
         # If you initiate a notification of change in response to the transfer, this will
         #   contain its details.
@@ -1775,33 +1380,15 @@ module Increase
       class TransferReturn < Increase::BaseModel
         # The reason for the transfer return.
         sig { returns(Increase::Models::InboundACHTransfer::TransferReturn::Reason::TaggedSymbol) }
-        def reason
-        end
-
-        sig do
-          params(_: Increase::Models::InboundACHTransfer::TransferReturn::Reason::TaggedSymbol)
-            .returns(Increase::Models::InboundACHTransfer::TransferReturn::Reason::TaggedSymbol)
-        end
-        def reason=(_)
-        end
+        attr_accessor :reason
 
         # The time at which the transfer was returned.
         sig { returns(Time) }
-        def returned_at
-        end
-
-        sig { params(_: Time).returns(Time) }
-        def returned_at=(_)
-        end
+        attr_accessor :returned_at
 
         # The id of the transaction for the returned transfer.
         sig { returns(String) }
-        def transaction_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def transaction_id=(_)
-        end
+        attr_accessor :transaction_id
 
         # If your transfer is returned, this will contain details of the return.
         sig do

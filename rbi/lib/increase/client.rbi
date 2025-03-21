@@ -17,224 +17,169 @@ module Increase
       )
 
     sig { returns(String) }
-    def api_key
-    end
+    attr_reader :api_key
 
     sig { returns(Increase::Resources::Accounts) }
-    def accounts
-    end
+    attr_reader :accounts
 
     sig { returns(Increase::Resources::AccountNumbers) }
-    def account_numbers
-    end
+    attr_reader :account_numbers
 
     sig { returns(Increase::Resources::Cards) }
-    def cards
-    end
+    attr_reader :cards
 
     sig { returns(Increase::Resources::CardPayments) }
-    def card_payments
-    end
+    attr_reader :card_payments
 
     sig { returns(Increase::Resources::CardPurchaseSupplements) }
-    def card_purchase_supplements
-    end
+    attr_reader :card_purchase_supplements
 
     sig { returns(Increase::Resources::CardDisputes) }
-    def card_disputes
-    end
+    attr_reader :card_disputes
 
     sig { returns(Increase::Resources::PhysicalCards) }
-    def physical_cards
-    end
+    attr_reader :physical_cards
 
     sig { returns(Increase::Resources::DigitalCardProfiles) }
-    def digital_card_profiles
-    end
+    attr_reader :digital_card_profiles
 
     sig { returns(Increase::Resources::PhysicalCardProfiles) }
-    def physical_card_profiles
-    end
+    attr_reader :physical_card_profiles
 
     sig { returns(Increase::Resources::DigitalWalletTokens) }
-    def digital_wallet_tokens
-    end
+    attr_reader :digital_wallet_tokens
 
     sig { returns(Increase::Resources::Transactions) }
-    def transactions
-    end
+    attr_reader :transactions
 
     sig { returns(Increase::Resources::PendingTransactions) }
-    def pending_transactions
-    end
+    attr_reader :pending_transactions
 
     sig { returns(Increase::Resources::DeclinedTransactions) }
-    def declined_transactions
-    end
+    attr_reader :declined_transactions
 
     sig { returns(Increase::Resources::AccountTransfers) }
-    def account_transfers
-    end
+    attr_reader :account_transfers
 
     sig { returns(Increase::Resources::ACHTransfers) }
-    def ach_transfers
-    end
+    attr_reader :ach_transfers
 
     sig { returns(Increase::Resources::ACHPrenotifications) }
-    def ach_prenotifications
-    end
+    attr_reader :ach_prenotifications
 
     sig { returns(Increase::Resources::InboundACHTransfers) }
-    def inbound_ach_transfers
-    end
+    attr_reader :inbound_ach_transfers
 
     sig { returns(Increase::Resources::WireTransfers) }
-    def wire_transfers
-    end
+    attr_reader :wire_transfers
 
     sig { returns(Increase::Resources::InboundWireTransfers) }
-    def inbound_wire_transfers
-    end
+    attr_reader :inbound_wire_transfers
 
     sig { returns(Increase::Resources::WireDrawdownRequests) }
-    def wire_drawdown_requests
-    end
+    attr_reader :wire_drawdown_requests
 
     sig { returns(Increase::Resources::InboundWireDrawdownRequests) }
-    def inbound_wire_drawdown_requests
-    end
+    attr_reader :inbound_wire_drawdown_requests
 
     sig { returns(Increase::Resources::CheckTransfers) }
-    def check_transfers
-    end
+    attr_reader :check_transfers
 
     sig { returns(Increase::Resources::InboundCheckDeposits) }
-    def inbound_check_deposits
-    end
+    attr_reader :inbound_check_deposits
 
     sig { returns(Increase::Resources::RealTimePaymentsTransfers) }
-    def real_time_payments_transfers
-    end
+    attr_reader :real_time_payments_transfers
 
     sig { returns(Increase::Resources::InboundRealTimePaymentsTransfers) }
-    def inbound_real_time_payments_transfers
-    end
+    attr_reader :inbound_real_time_payments_transfers
 
     sig { returns(Increase::Resources::CheckDeposits) }
-    def check_deposits
-    end
+    attr_reader :check_deposits
 
     sig { returns(Increase::Resources::Lockboxes) }
-    def lockboxes
-    end
+    attr_reader :lockboxes
 
     sig { returns(Increase::Resources::InboundMailItems) }
-    def inbound_mail_items
-    end
+    attr_reader :inbound_mail_items
 
     sig { returns(Increase::Resources::RoutingNumbers) }
-    def routing_numbers
-    end
+    attr_reader :routing_numbers
 
     sig { returns(Increase::Resources::ExternalAccounts) }
-    def external_accounts
-    end
+    attr_reader :external_accounts
 
     sig { returns(Increase::Resources::Entities) }
-    def entities
-    end
+    attr_reader :entities
 
     sig { returns(Increase::Resources::SupplementalDocuments) }
-    def supplemental_documents
-    end
+    attr_reader :supplemental_documents
 
     sig { returns(Increase::Resources::Programs) }
-    def programs
-    end
+    attr_reader :programs
 
     sig { returns(Increase::Resources::ProofOfAuthorizationRequests) }
-    def proof_of_authorization_requests
-    end
+    attr_reader :proof_of_authorization_requests
 
     sig { returns(Increase::Resources::ProofOfAuthorizationRequestSubmissions) }
-    def proof_of_authorization_request_submissions
-    end
+    attr_reader :proof_of_authorization_request_submissions
 
     sig { returns(Increase::Resources::AccountStatements) }
-    def account_statements
-    end
+    attr_reader :account_statements
 
     sig { returns(Increase::Resources::Files) }
-    def files
-    end
+    attr_reader :files
 
     sig { returns(Increase::Resources::FileLinks) }
-    def file_links
-    end
+    attr_reader :file_links
 
     sig { returns(Increase::Resources::Documents) }
-    def documents
-    end
+    attr_reader :documents
 
     sig { returns(Increase::Resources::Exports) }
-    def exports
-    end
+    attr_reader :exports
 
     sig { returns(Increase::Resources::Events) }
-    def events
-    end
+    attr_reader :events
 
     sig { returns(Increase::Resources::EventSubscriptions) }
-    def event_subscriptions
-    end
+    attr_reader :event_subscriptions
 
     sig { returns(Increase::Resources::RealTimeDecisions) }
-    def real_time_decisions
-    end
+    attr_reader :real_time_decisions
 
     sig { returns(Increase::Resources::BookkeepingAccounts) }
-    def bookkeeping_accounts
-    end
+    attr_reader :bookkeeping_accounts
 
     sig { returns(Increase::Resources::BookkeepingEntrySets) }
-    def bookkeeping_entry_sets
-    end
+    attr_reader :bookkeeping_entry_sets
 
     sig { returns(Increase::Resources::BookkeepingEntries) }
-    def bookkeeping_entries
-    end
+    attr_reader :bookkeeping_entries
 
     sig { returns(Increase::Resources::Groups) }
-    def groups
-    end
+    attr_reader :groups
 
     sig { returns(Increase::Resources::OAuthApplications) }
-    def oauth_applications
-    end
+    attr_reader :oauth_applications
 
     sig { returns(Increase::Resources::OAuthConnections) }
-    def oauth_connections
-    end
+    attr_reader :oauth_connections
 
     sig { returns(Increase::Resources::OAuthTokens) }
-    def oauth_tokens
-    end
+    attr_reader :oauth_tokens
 
     sig { returns(Increase::Resources::IntrafiAccountEnrollments) }
-    def intrafi_account_enrollments
-    end
+    attr_reader :intrafi_account_enrollments
 
     sig { returns(Increase::Resources::IntrafiBalances) }
-    def intrafi_balances
-    end
+    attr_reader :intrafi_balances
 
     sig { returns(Increase::Resources::IntrafiExclusions) }
-    def intrafi_exclusions
-    end
+    attr_reader :intrafi_exclusions
 
     sig { returns(Increase::Resources::Simulations) }
-    def simulations
-    end
+    attr_reader :simulations
 
     # @api private
     sig { override.returns(T::Hash[String, String]) }

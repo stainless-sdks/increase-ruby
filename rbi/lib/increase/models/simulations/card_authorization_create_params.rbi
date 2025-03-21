@@ -9,175 +9,134 @@ module Increase
 
         # The authorization amount in cents.
         sig { returns(Integer) }
-        def amount
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def amount=(_)
-        end
+        attr_accessor :amount
 
         # The identifier of a Card Payment with a `card_authentication` if you want to
         #   simulate an authenticated authorization.
         sig { returns(T.nilable(String)) }
-        def authenticated_card_payment_id
-        end
+        attr_reader :authenticated_card_payment_id
 
-        sig { params(_: String).returns(String) }
-        def authenticated_card_payment_id=(_)
-        end
+        sig { params(authenticated_card_payment_id: String).void }
+        attr_writer :authenticated_card_payment_id
 
         # The identifier of the Card to be authorized.
         sig { returns(T.nilable(String)) }
-        def card_id
-        end
+        attr_reader :card_id
 
-        sig { params(_: String).returns(String) }
-        def card_id=(_)
-        end
+        sig { params(card_id: String).void }
+        attr_writer :card_id
 
         # Forces a card decline with a specific reason. No real time decision will be
         #   sent.
         sig { returns(T.nilable(Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::OrSymbol)) }
-        def decline_reason
-        end
+        attr_reader :decline_reason
 
         sig do
-          params(_: Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::OrSymbol)
-            .returns(Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::OrSymbol)
+          params(
+            decline_reason: Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::OrSymbol
+          )
+            .void
         end
-        def decline_reason=(_)
-        end
+        attr_writer :decline_reason
 
         # The identifier of the Digital Wallet Token to be authorized.
         sig { returns(T.nilable(String)) }
-        def digital_wallet_token_id
-        end
+        attr_reader :digital_wallet_token_id
 
-        sig { params(_: String).returns(String) }
-        def digital_wallet_token_id=(_)
-        end
+        sig { params(digital_wallet_token_id: String).void }
+        attr_writer :digital_wallet_token_id
 
         # The direction describes the direction the funds will move, either from the
         #   cardholder to the merchant or from the merchant to the cardholder.
         sig { returns(T.nilable(Increase::Models::Simulations::CardAuthorizationCreateParams::Direction::OrSymbol)) }
-        def direction
-        end
+        attr_reader :direction
 
-        sig do
-          params(_: Increase::Models::Simulations::CardAuthorizationCreateParams::Direction::OrSymbol)
-            .returns(Increase::Models::Simulations::CardAuthorizationCreateParams::Direction::OrSymbol)
-        end
-        def direction=(_)
-        end
+        sig { params(direction: Increase::Models::Simulations::CardAuthorizationCreateParams::Direction::OrSymbol).void }
+        attr_writer :direction
 
         # The identifier of the Event Subscription to use. If provided, will override the
         #   default real time event subscription. Because you can only create one real time
         #   decision event subscription, you can use this field to route events to any
         #   specified event subscription for testing purposes.
         sig { returns(T.nilable(String)) }
-        def event_subscription_id
-        end
+        attr_reader :event_subscription_id
 
-        sig { params(_: String).returns(String) }
-        def event_subscription_id=(_)
-        end
+        sig { params(event_subscription_id: String).void }
+        attr_writer :event_subscription_id
 
         # The merchant identifier (commonly abbreviated as MID) of the merchant the card
         #   is transacting with.
         sig { returns(T.nilable(String)) }
-        def merchant_acceptor_id
-        end
+        attr_reader :merchant_acceptor_id
 
-        sig { params(_: String).returns(String) }
-        def merchant_acceptor_id=(_)
-        end
+        sig { params(merchant_acceptor_id: String).void }
+        attr_writer :merchant_acceptor_id
 
         # The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
         #   card is transacting with.
         sig { returns(T.nilable(String)) }
-        def merchant_category_code
-        end
+        attr_reader :merchant_category_code
 
-        sig { params(_: String).returns(String) }
-        def merchant_category_code=(_)
-        end
+        sig { params(merchant_category_code: String).void }
+        attr_writer :merchant_category_code
 
         # The city the merchant resides in.
         sig { returns(T.nilable(String)) }
-        def merchant_city
-        end
+        attr_reader :merchant_city
 
-        sig { params(_: String).returns(String) }
-        def merchant_city=(_)
-        end
+        sig { params(merchant_city: String).void }
+        attr_writer :merchant_city
 
         # The country the merchant resides in.
         sig { returns(T.nilable(String)) }
-        def merchant_country
-        end
+        attr_reader :merchant_country
 
-        sig { params(_: String).returns(String) }
-        def merchant_country=(_)
-        end
+        sig { params(merchant_country: String).void }
+        attr_writer :merchant_country
 
         # The merchant descriptor of the merchant the card is transacting with.
         sig { returns(T.nilable(String)) }
-        def merchant_descriptor
-        end
+        attr_reader :merchant_descriptor
 
-        sig { params(_: String).returns(String) }
-        def merchant_descriptor=(_)
-        end
+        sig { params(merchant_descriptor: String).void }
+        attr_writer :merchant_descriptor
 
         # The state the merchant resides in.
         sig { returns(T.nilable(String)) }
-        def merchant_state
-        end
+        attr_reader :merchant_state
 
-        sig { params(_: String).returns(String) }
-        def merchant_state=(_)
-        end
+        sig { params(merchant_state: String).void }
+        attr_writer :merchant_state
 
         # Fields specific to a given card network.
         sig { returns(T.nilable(Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails)) }
-        def network_details
-        end
+        attr_reader :network_details
 
         sig do
           params(
-            _: T.any(
+            network_details: T.any(
               Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
               Increase::Util::AnyHash
             )
           )
-            .returns(
-              T.any(
-                Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
-                Increase::Util::AnyHash
-              )
-            )
+            .void
         end
-        def network_details=(_)
-        end
+        attr_writer :network_details
 
         # The identifier of the Physical Card to be authorized.
         sig { returns(T.nilable(String)) }
-        def physical_card_id
-        end
+        attr_reader :physical_card_id
 
-        sig { params(_: String).returns(String) }
-        def physical_card_id=(_)
-        end
+        sig { params(physical_card_id: String).void }
+        attr_writer :physical_card_id
 
         # The terminal identifier (commonly abbreviated as TID) of the terminal the card
         #   is transacting with.
         sig { returns(T.nilable(String)) }
-        def terminal_id
-        end
+        attr_reader :terminal_id
 
-        sig { params(_: String).returns(String) }
-        def terminal_id=(_)
-        end
+        sig { params(terminal_id: String).void }
+        attr_writer :terminal_id
 
         sig do
           params(
@@ -424,25 +383,18 @@ module Increase
         class NetworkDetails < Increase::BaseModel
           # Fields specific to the Visa network.
           sig { returns(Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa) }
-          def visa
-          end
+          attr_reader :visa
 
           sig do
             params(
-              _: T.any(
+              visa: T.any(
                 Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa,
                 Increase::Util::AnyHash
               )
             )
-              .returns(
-                T.any(
-                  Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa,
-                  Increase::Util::AnyHash
-                )
-              )
+              .void
           end
-          def visa=(_)
-          end
+          attr_writer :visa
 
           # Fields specific to a given card network.
           sig do
@@ -473,19 +425,15 @@ module Increase
                 )
               )
             end
-            def stand_in_processing_reason
-            end
+            attr_reader :stand_in_processing_reason
 
             sig do
               params(
-                _: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::OrSymbol
+                stand_in_processing_reason: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::OrSymbol
               )
-                .returns(
-                  Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::OrSymbol
-                )
+                .void
             end
-            def stand_in_processing_reason=(_)
-            end
+            attr_writer :stand_in_processing_reason
 
             # Fields specific to the Visa network.
             sig do
