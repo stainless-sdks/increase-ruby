@@ -606,10 +606,8 @@ module Increase
         WIRE_TRANSFER_UPDATED =
           T.let(:"wire_transfer.updated", Increase::Models::EventSubscription::SelectedEventCategory::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::EventSubscription::SelectedEventCategory::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::EventSubscription::SelectedEventCategory::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -633,10 +631,8 @@ module Increase
         REQUIRES_ATTENTION =
           T.let(:requires_attention, Increase::Models::EventSubscription::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::EventSubscription::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::EventSubscription::Status::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -650,10 +646,8 @@ module Increase
 
         EVENT_SUBSCRIPTION = T.let(:event_subscription, Increase::Models::EventSubscription::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::EventSubscription::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::EventSubscription::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end

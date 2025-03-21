@@ -186,15 +186,13 @@ module Increase
               Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::TaggedSymbol]
-                )
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(
+                T::Array[Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::TaggedSymbol]
+              )
+          end
+          def self.values
           end
         end
       end

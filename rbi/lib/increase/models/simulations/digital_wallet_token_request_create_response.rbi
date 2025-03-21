@@ -95,15 +95,13 @@ module Increase
               Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason::TaggedSymbol]
-                )
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(
+                T::Array[Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason::TaggedSymbol]
+              )
+          end
+          def self.values
           end
         end
 
@@ -123,15 +121,13 @@ module Increase
               Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(
-                  T::Array[Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type::TaggedSymbol]
-                )
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(
+                T::Array[Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type::TaggedSymbol]
+              )
+          end
+          def self.values
           end
         end
       end

@@ -182,10 +182,8 @@ module Increase
         # The card is permanently canceled.
         CANCELED = T.let(:canceled, Increase::Models::CardUpdateParams::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::CardUpdateParams::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::CardUpdateParams::Status::TaggedSymbol]) }
+        def self.values
         end
       end
     end

@@ -54,10 +54,8 @@ module Increase
         # The check was stopped for another reason.
         UNKNOWN = T.let(:unknown, Increase::Models::CheckTransferStopPaymentParams::Reason::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::CheckTransferStopPaymentParams::Reason::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::CheckTransferStopPaymentParams::Reason::TaggedSymbol]) }
+        def self.values
         end
       end
     end

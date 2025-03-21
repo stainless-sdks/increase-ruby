@@ -66,10 +66,8 @@ module Increase
         # This Lockbox is inactive. Checks mailed to it will not be deposited.
         INACTIVE = T.let(:inactive, Increase::Models::LockboxUpdateParams::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::LockboxUpdateParams::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::LockboxUpdateParams::Status::TaggedSymbol]) }
+        def self.values
         end
       end
     end

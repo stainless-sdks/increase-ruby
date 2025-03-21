@@ -87,13 +87,11 @@ module Increase
             Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol
           )
 
-        class << self
-          sig do
-            override
-              .returns(T::Array[Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol])
-          end
-          def values
-          end
+        sig do
+          override
+            .returns(T::Array[Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol])
+        end
+        def self.values
         end
       end
     end

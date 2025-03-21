@@ -180,11 +180,9 @@ module Increase
 
         finalize!
 
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
@@ -205,11 +203,9 @@ module Increase
 
         finalize!
 
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
     end
   end

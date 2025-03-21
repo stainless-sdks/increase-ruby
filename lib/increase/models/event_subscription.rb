@@ -364,11 +364,9 @@ module Increase
 
         finalize!
 
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       # This indicates if we'll send notifications to this subscription.
@@ -389,11 +387,9 @@ module Increase
 
         finalize!
 
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -405,11 +401,9 @@ module Increase
 
         finalize!
 
-        class << self
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def values; end
-        end
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
     end
   end

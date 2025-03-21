@@ -108,13 +108,11 @@ module Increase
           BLOCKED =
             T.let(:blocked, Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::TaggedSymbol)
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::TaggedSymbol])
+          end
+          def self.values
           end
         end
       end
@@ -159,13 +157,11 @@ module Increase
               Increase::Models::AccountNumberCreateParams::InboundChecks::Status::TaggedSymbol
             )
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[Increase::Models::AccountNumberCreateParams::InboundChecks::Status::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[Increase::Models::AccountNumberCreateParams::InboundChecks::Status::TaggedSymbol])
+          end
+          def self.values
           end
         end
       end

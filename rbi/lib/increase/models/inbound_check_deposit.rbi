@@ -253,10 +253,8 @@ module Increase
           NON_CONFORMING_ITEM =
             T.let(:non_conforming_item, Increase::Models::InboundCheckDeposit::Adjustment::Reason::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Increase::Models::InboundCheckDeposit::Adjustment::Reason::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Increase::Models::InboundCheckDeposit::Adjustment::Reason::TaggedSymbol]) }
+          def self.values
           end
         end
       end
@@ -286,10 +284,8 @@ module Increase
         # US Dollar (USD)
         USD = T.let(:USD, Increase::Models::InboundCheckDeposit::Currency::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::InboundCheckDeposit::Currency::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::InboundCheckDeposit::Currency::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -361,10 +357,8 @@ module Increase
           ENDORSEMENT_IRREGULAR =
             T.let(:endorsement_irregular, Increase::Models::InboundCheckDeposit::DepositReturn::Reason::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Increase::Models::InboundCheckDeposit::DepositReturn::Reason::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Increase::Models::InboundCheckDeposit::DepositReturn::Reason::TaggedSymbol]) }
+          def self.values
           end
         end
       end
@@ -390,10 +384,8 @@ module Increase
         NOT_EVALUATED =
           T.let(:not_evaluated, Increase::Models::InboundCheckDeposit::PayeeNameAnalysis::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::InboundCheckDeposit::PayeeNameAnalysis::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::InboundCheckDeposit::PayeeNameAnalysis::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -420,10 +412,8 @@ module Increase
         REQUIRES_ATTENTION =
           T.let(:requires_attention, Increase::Models::InboundCheckDeposit::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::InboundCheckDeposit::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::InboundCheckDeposit::Status::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -438,10 +428,8 @@ module Increase
         INBOUND_CHECK_DEPOSIT =
           T.let(:inbound_check_deposit, Increase::Models::InboundCheckDeposit::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::InboundCheckDeposit::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::InboundCheckDeposit::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end

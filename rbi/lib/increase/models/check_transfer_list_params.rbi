@@ -199,10 +199,8 @@ module Increase
           # The transfer has been returned.
           RETURNED = T.let(:returned, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol]) }
+          def self.values
           end
         end
       end

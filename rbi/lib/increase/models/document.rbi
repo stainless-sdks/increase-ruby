@@ -81,10 +81,8 @@ module Increase
         # Company information, such a policies or procedures, typically submitted during our due diligence process.
         COMPANY_INFORMATION = T.let(:company_information, Increase::Models::Document::Category::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::Document::Category::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::Document::Category::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -98,10 +96,8 @@ module Increase
 
         DOCUMENT = T.let(:document, Increase::Models::Document::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Increase::Models::Document::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Increase::Models::Document::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end
