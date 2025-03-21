@@ -119,9 +119,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -157,9 +159,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -206,9 +210,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # The reason the card authorization was declined. This translates to a specific
@@ -236,9 +242,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -283,9 +291,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class Success < Increase::BaseModel

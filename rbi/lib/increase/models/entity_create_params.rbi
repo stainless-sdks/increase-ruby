@@ -166,8 +166,10 @@ module Increase
         GOVERNMENT_AUTHORITY =
           T.let(:government_authority, Increase::Models::EntityCreateParams::Structure::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::EntityCreateParams::Structure::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::EntityCreateParams::Structure::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -665,15 +667,17 @@ module Increase
                     Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
 
@@ -824,11 +828,13 @@ module Increase
             CONTROL =
               T.let(:control, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::TaggedSymbol)
 
-            sig do
-              override
-                .returns(T::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::TaggedSymbol])
-            end
-            def self.values
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::TaggedSymbol])
+              end
+              def values
+              end
             end
           end
         end
@@ -979,11 +985,13 @@ module Increase
           MUNICIPALITY =
             T.let(:municipality, Increase::Models::EntityCreateParams::GovernmentAuthority::Category::TaggedSymbol)
 
-          sig do
-            override
-              .returns(T::Array[Increase::Models::EntityCreateParams::GovernmentAuthority::Category::TaggedSymbol])
-          end
-          def self.values
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::EntityCreateParams::GovernmentAuthority::Category::TaggedSymbol])
+            end
+            def values
+            end
           end
         end
       end
@@ -1284,13 +1292,15 @@ module Increase
                   Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
                 )
 
-              sig do
-                override
-                  .returns(
-                    T::Array[Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol]
-                  )
-              end
-              def self.values
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol]
+                    )
+                end
+                def values
+                end
               end
             end
 
@@ -1677,13 +1687,15 @@ module Increase
             OTHER =
               T.let(:other, Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol)
 
-            sig do
-              override
-                .returns(
-                  T::Array[Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol]
-                )
-            end
-            def self.values
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol]
+                  )
+              end
+              def values
+              end
             end
           end
 
@@ -1869,11 +1881,13 @@ module Increase
           MIDDESK =
             T.let(:middesk, Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::TaggedSymbol)
 
-          sig do
-            override
-              .returns(T::Array[Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::TaggedSymbol])
-          end
-          def self.values
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::TaggedSymbol])
+            end
+            def values
+            end
           end
         end
       end
@@ -2036,8 +2050,10 @@ module Increase
           # The trust cannot be revoked.
           IRREVOCABLE = T.let(:irrevocable, Increase::Models::EntityCreateParams::Trust::Category::TaggedSymbol)
 
-          sig { override.returns(T::Array[Increase::Models::EntityCreateParams::Trust::Category::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::EntityCreateParams::Trust::Category::TaggedSymbol]) }
+            def values
+            end
           end
         end
 
@@ -2094,8 +2110,10 @@ module Increase
             INDIVIDUAL =
               T.let(:individual, Increase::Models::EntityCreateParams::Trust::Trustee::Structure::TaggedSymbol)
 
-            sig { override.returns(T::Array[Increase::Models::EntityCreateParams::Trust::Trustee::Structure::TaggedSymbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Increase::Models::EntityCreateParams::Trust::Trustee::Structure::TaggedSymbol]) }
+              def values
+              end
             end
           end
 
@@ -2388,13 +2406,15 @@ module Increase
                     Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
 
@@ -2784,13 +2804,15 @@ module Increase
               OTHER =
                 T.let(:other, Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol)
 
-              sig do
-                override
-                  .returns(
-                    T::Array[Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol]
-                  )
-              end
-              def self.values
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol]
+                    )
+                end
+                def values
+                end
               end
             end
 

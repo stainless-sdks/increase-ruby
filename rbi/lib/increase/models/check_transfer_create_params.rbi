@@ -118,8 +118,10 @@ module Increase
         THIRD_PARTY =
           T.let(:third_party, Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol]) }
+          def values
+          end
         end
       end
 

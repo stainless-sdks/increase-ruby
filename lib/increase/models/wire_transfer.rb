@@ -384,9 +384,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class OAuthApplication < Increase::BaseModel
@@ -449,9 +451,11 @@ module Increase
 
         finalize!
 
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The transfer's network.
@@ -462,9 +466,11 @@ module Increase
 
         finalize!
 
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Reversal < Increase::BaseModel
@@ -655,9 +661,11 @@ module Increase
 
         finalize!
 
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Submission < Increase::BaseModel
@@ -694,9 +702,11 @@ module Increase
 
         finalize!
 
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

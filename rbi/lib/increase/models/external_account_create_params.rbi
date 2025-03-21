@@ -82,8 +82,10 @@ module Increase
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN = T.let(:unknown, Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -104,8 +106,10 @@ module Increase
         # A different type of account.
         OTHER = T.let(:other, Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol]) }
+          def values
+          end
         end
       end
     end

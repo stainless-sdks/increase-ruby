@@ -74,8 +74,10 @@ module Increase
         NOT_SUPPORTED =
           T.let(:not_supported, Increase::Models::RoutingNumberListResponse::ACHTransfers::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::RoutingNumberListResponse::ACHTransfers::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::RoutingNumberListResponse::ACHTransfers::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -99,11 +101,13 @@ module Increase
             Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers::TaggedSymbol
           )
 
-        sig do
-          override
-            .returns(T::Array[Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers::TaggedSymbol])
-        end
-        def self.values
+        class << self
+          sig do
+            override
+              .returns(T::Array[Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers::TaggedSymbol])
+          end
+          def values
+          end
         end
       end
 
@@ -118,8 +122,10 @@ module Increase
 
         ROUTING_NUMBER = T.let(:routing_number, Increase::Models::RoutingNumberListResponse::Type::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::RoutingNumberListResponse::Type::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::RoutingNumberListResponse::Type::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -138,8 +144,10 @@ module Increase
         NOT_SUPPORTED =
           T.let(:not_supported, Increase::Models::RoutingNumberListResponse::WireTransfers::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::RoutingNumberListResponse::WireTransfers::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::RoutingNumberListResponse::WireTransfers::TaggedSymbol]) }
+          def values
+          end
         end
       end
     end

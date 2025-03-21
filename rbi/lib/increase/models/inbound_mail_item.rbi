@@ -92,8 +92,10 @@ module Increase
         LOCKBOX_NOT_ACTIVE =
           T.let(:lockbox_not_active, Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -113,8 +115,10 @@ module Increase
         # The mail item has been rejected.
         REJECTED = T.let(:rejected, Increase::Models::InboundMailItem::Status::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::InboundMailItem::Status::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::InboundMailItem::Status::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -128,8 +132,10 @@ module Increase
 
         INBOUND_MAIL_ITEM = T.let(:inbound_mail_item, Increase::Models::InboundMailItem::Type::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::InboundMailItem::Type::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::InboundMailItem::Type::TaggedSymbol]) }
+          def values
+          end
         end
       end
     end

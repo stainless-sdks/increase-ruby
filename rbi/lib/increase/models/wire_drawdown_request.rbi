@@ -208,8 +208,10 @@ module Increase
         # The drawdown request has been refused by the recipient.
         REFUSED = T.let(:refused, Increase::Models::WireDrawdownRequest::Status::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::WireDrawdownRequest::Status::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::WireDrawdownRequest::Status::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -241,8 +243,10 @@ module Increase
         WIRE_DRAWDOWN_REQUEST =
           T.let(:wire_drawdown_request, Increase::Models::WireDrawdownRequest::Type::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::WireDrawdownRequest::Type::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::WireDrawdownRequest::Type::TaggedSymbol]) }
+          def values
+          end
         end
       end
     end

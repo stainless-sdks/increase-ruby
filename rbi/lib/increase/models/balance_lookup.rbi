@@ -60,8 +60,10 @@ module Increase
 
         BALANCE_LOOKUP = T.let(:balance_lookup, Increase::Models::BalanceLookup::Type::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::BalanceLookup::Type::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::BalanceLookup::Type::TaggedSymbol]) }
+          def values
+          end
         end
       end
     end

@@ -54,8 +54,10 @@ module Increase
         BOOKKEEPING_BALANCE_LOOKUP =
           T.let(:bookkeeping_balance_lookup, Increase::Models::BookkeepingBalanceLookup::Type::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::BookkeepingBalanceLookup::Type::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::BookkeepingBalanceLookup::Type::TaggedSymbol]) }
+          def values
+          end
         end
       end
     end

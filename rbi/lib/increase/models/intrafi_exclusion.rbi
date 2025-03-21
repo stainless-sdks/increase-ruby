@@ -117,8 +117,10 @@ module Increase
         # The exclusion has been removed from the IntraFi network.
         ARCHIVED = T.let(:archived, Increase::Models::IntrafiExclusion::Status::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::IntrafiExclusion::Status::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::IntrafiExclusion::Status::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -132,8 +134,10 @@ module Increase
 
         INTRAFI_EXCLUSION = T.let(:intrafi_exclusion, Increase::Models::IntrafiExclusion::Type::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::IntrafiExclusion::Type::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::IntrafiExclusion::Type::TaggedSymbol]) }
+          def values
+          end
         end
       end
     end

@@ -310,9 +310,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class Freeform < Increase::BaseModel
@@ -409,9 +411,11 @@ module Increase
 
         finalize!
 
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The type of the account to which the transfer will be sent.
@@ -426,9 +430,11 @@ module Increase
 
         finalize!
 
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class PreferredEffectiveDate < Increase::BaseModel
@@ -479,9 +485,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -503,9 +511,11 @@ module Increase
 
         finalize!
 
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The timing of the transaction.
@@ -520,9 +530,11 @@ module Increase
 
         finalize!
 
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

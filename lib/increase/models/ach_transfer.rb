@@ -393,9 +393,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class Freeform < Increase::BaseModel
@@ -596,9 +598,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class OAuthApplication < Increase::BaseModel
@@ -661,9 +665,11 @@ module Increase
 
         finalize!
 
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The type of entity that owns the account to which the ACH Transfer is being
@@ -682,9 +688,11 @@ module Increase
 
         finalize!
 
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The type of the account to which the transfer will be sent.
@@ -699,9 +707,11 @@ module Increase
 
         finalize!
 
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class InboundFundsHold < Increase::BaseModel
@@ -828,9 +838,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # The status of the hold.
@@ -845,9 +857,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # A constant representing the object's type. For this resource it will always be
@@ -859,9 +873,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -873,9 +889,11 @@ module Increase
 
         finalize!
 
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class NotificationsOfChange < Increase::BaseModel
@@ -982,9 +1000,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -1032,9 +1052,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -1324,9 +1346,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -1367,9 +1391,11 @@ module Increase
 
         finalize!
 
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The lifecycle status of the transfer.
@@ -1405,9 +1431,11 @@ module Increase
 
         finalize!
 
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Submission < Increase::BaseModel
@@ -1494,9 +1522,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -1509,9 +1539,11 @@ module Increase
 
         finalize!
 
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

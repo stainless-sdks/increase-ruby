@@ -539,13 +539,15 @@ module Increase
                     Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
             end
@@ -567,8 +569,10 @@ module Increase
             # A person who manages, directs, or has significant control of the entity.
             CONTROL = T.let(:control, Increase::Models::Entity::Corporation::BeneficialOwner::Prong::TaggedSymbol)
 
-            sig { override.returns(T::Array[Increase::Models::Entity::Corporation::BeneficialOwner::Prong::TaggedSymbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Increase::Models::Entity::Corporation::BeneficialOwner::Prong::TaggedSymbol]) }
+              def values
+              end
             end
           end
         end
@@ -712,8 +716,10 @@ module Increase
           MUNICIPALITY =
             T.let(:municipality, Increase::Models::Entity::GovernmentAuthority::Category::TaggedSymbol)
 
-          sig { override.returns(T::Array[Increase::Models::Entity::GovernmentAuthority::Category::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::Entity::GovernmentAuthority::Category::TaggedSymbol]) }
+            def values
+            end
           end
         end
       end
@@ -908,11 +914,13 @@ module Increase
               # Another identifying document.
               OTHER = T.let(:other, Increase::Models::Entity::Joint::Individual::Identification::Method::TaggedSymbol)
 
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::Entity::Joint::Individual::Identification::Method::TaggedSymbol])
-              end
-              def self.values
+              class << self
+                sig do
+                  override
+                    .returns(T::Array[Increase::Models::Entity::Joint::Individual::Identification::Method::TaggedSymbol])
+                end
+                def values
+                end
               end
             end
           end
@@ -1084,8 +1092,10 @@ module Increase
             # Another identifying document.
             OTHER = T.let(:other, Increase::Models::Entity::NaturalPerson::Identification::Method::TaggedSymbol)
 
-            sig { override.returns(T::Array[Increase::Models::Entity::NaturalPerson::Identification::Method::TaggedSymbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Increase::Models::Entity::NaturalPerson::Identification::Method::TaggedSymbol]) }
+              def values
+              end
             end
           end
         end
@@ -1107,8 +1117,10 @@ module Increase
         # The entity is temporarily disabled and cannot be used for financial activity.
         DISABLED = T.let(:disabled, Increase::Models::Entity::Status::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::Entity::Status::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::Entity::Status::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -1134,8 +1146,10 @@ module Increase
         # A government authority.
         GOVERNMENT_AUTHORITY = T.let(:government_authority, Increase::Models::Entity::Structure::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::Entity::Structure::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::Entity::Structure::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -1180,8 +1194,10 @@ module Increase
           # Middesk. See https://middesk.com for more information.
           MIDDESK = T.let(:middesk, Increase::Models::Entity::ThirdPartyVerification::Vendor::TaggedSymbol)
 
-          sig { override.returns(T::Array[Increase::Models::Entity::ThirdPartyVerification::Vendor::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::Entity::ThirdPartyVerification::Vendor::TaggedSymbol]) }
+            def values
+            end
           end
         end
       end
@@ -1328,8 +1344,10 @@ module Increase
           # The trust cannot be revoked.
           IRREVOCABLE = T.let(:irrevocable, Increase::Models::Entity::Trust::Category::TaggedSymbol)
 
-          sig { override.returns(T::Array[Increase::Models::Entity::Trust::Category::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::Entity::Trust::Category::TaggedSymbol]) }
+            def values
+            end
           end
         end
 
@@ -1500,8 +1518,10 @@ module Increase
               # Another identifying document.
               OTHER = T.let(:other, Increase::Models::Entity::Trust::Grantor::Identification::Method::TaggedSymbol)
 
-              sig { override.returns(T::Array[Increase::Models::Entity::Trust::Grantor::Identification::Method::TaggedSymbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Increase::Models::Entity::Trust::Grantor::Identification::Method::TaggedSymbol]) }
+                def values
+                end
               end
             end
           end
@@ -1727,13 +1747,15 @@ module Increase
                 OTHER =
                   T.let(:other, Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method::TaggedSymbol)
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method::TaggedSymbol]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method::TaggedSymbol]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
             end
@@ -1750,8 +1772,10 @@ module Increase
             # The trustee is an individual.
             INDIVIDUAL = T.let(:individual, Increase::Models::Entity::Trust::Trustee::Structure::TaggedSymbol)
 
-            sig { override.returns(T::Array[Increase::Models::Entity::Trust::Trustee::Structure::TaggedSymbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Increase::Models::Entity::Trust::Trustee::Structure::TaggedSymbol]) }
+              def values
+              end
             end
           end
         end
@@ -1767,8 +1791,10 @@ module Increase
 
         ENTITY = T.let(:entity, Increase::Models::Entity::Type::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::Entity::Type::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::Entity::Type::TaggedSymbol]) }
+          def values
+          end
         end
       end
     end

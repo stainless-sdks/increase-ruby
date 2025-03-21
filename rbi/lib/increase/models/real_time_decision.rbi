@@ -210,8 +210,10 @@ module Increase
           # Deny the authentication attempt.
           DENY = T.let(:deny, Increase::Models::RealTimeDecision::CardAuthentication::Decision::TaggedSymbol)
 
-          sig { override.returns(T::Array[Increase::Models::RealTimeDecision::CardAuthentication::Decision::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::RealTimeDecision::CardAuthentication::Decision::TaggedSymbol]) }
+            def values
+            end
           end
         end
       end
@@ -284,11 +286,13 @@ module Increase
           FAILURE =
             T.let(:failure, Increase::Models::RealTimeDecision::CardAuthenticationChallenge::Result::TaggedSymbol)
 
-          sig do
-            override
-              .returns(T::Array[Increase::Models::RealTimeDecision::CardAuthenticationChallenge::Result::TaggedSymbol])
-          end
-          def self.values
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::RealTimeDecision::CardAuthenticationChallenge::Result::TaggedSymbol])
+            end
+            def values
+            end
           end
         end
       end
@@ -551,8 +555,10 @@ module Increase
           # Decline the authorization.
           DECLINE = T.let(:decline, Increase::Models::RealTimeDecision::CardAuthorization::Decision::TaggedSymbol)
 
-          sig { override.returns(T::Array[Increase::Models::RealTimeDecision::CardAuthorization::Decision::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::RealTimeDecision::CardAuthorization::Decision::TaggedSymbol]) }
+            def values
+            end
           end
         end
 
@@ -573,8 +579,10 @@ module Increase
           # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
           REFUND = T.let(:refund, Increase::Models::RealTimeDecision::CardAuthorization::Direction::TaggedSymbol)
 
-          sig { override.returns(T::Array[Increase::Models::RealTimeDecision::CardAuthorization::Direction::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::RealTimeDecision::CardAuthorization::Direction::TaggedSymbol]) }
+            def values
+            end
           end
         end
 
@@ -649,13 +657,15 @@ module Increase
                 Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category::TaggedSymbol
               )
 
-            sig do
-              override
-                .returns(
-                  T::Array[Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category::TaggedSymbol]
-                )
-            end
-            def self.values
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category::TaggedSymbol]
+                  )
+              end
+              def values
+              end
             end
           end
 
@@ -805,15 +815,17 @@ module Increase
                   Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                 )
 
-              sig do
-                override
-                  .returns(
-                    T::Array[
-                    Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                    ]
-                  )
-              end
-              def self.values
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                      ]
+                    )
+                end
+                def values
+                end
               end
             end
 
@@ -904,15 +916,17 @@ module Increase
                   Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                 )
 
-              sig do
-                override
-                  .returns(
-                    T::Array[
-                    Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                    ]
-                  )
-              end
-              def self.values
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                      ]
+                    )
+                end
+                def values
+                end
               end
             end
 
@@ -982,15 +996,17 @@ module Increase
                   Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                 )
 
-              sig do
-                override
-                  .returns(
-                    T::Array[
-                    Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                    ]
-                  )
-              end
-              def self.values
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                      ]
+                    )
+                end
+                def values
+                end
               end
             end
           end
@@ -1085,11 +1101,13 @@ module Increase
           REFUND =
             T.let(:refund, Increase::Models::RealTimeDecision::CardAuthorization::ProcessingCategory::TaggedSymbol)
 
-          sig do
-            override
-              .returns(T::Array[Increase::Models::RealTimeDecision::CardAuthorization::ProcessingCategory::TaggedSymbol])
-          end
-          def self.values
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::RealTimeDecision::CardAuthorization::ProcessingCategory::TaggedSymbol])
+            end
+            def values
+            end
           end
         end
 
@@ -1183,13 +1201,15 @@ module Increase
                 Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category::TaggedSymbol
               )
 
-            sig do
-              override
-                .returns(
-                  T::Array[Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category::TaggedSymbol]
-                )
-            end
-            def self.values
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category::TaggedSymbol]
+                  )
+              end
+              def values
+              end
             end
           end
 
@@ -1349,15 +1369,17 @@ module Increase
                   Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
                 )
 
-              sig do
-                override
-                  .returns(
-                    T::Array[
-                    Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
-                    ]
-                  )
-              end
-              def self.values
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
+                      ]
+                    )
+                end
+                def values
+                end
               end
             end
           end
@@ -1476,15 +1498,17 @@ module Increase
                   Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
                 )
 
-              sig do
-                override
-                  .returns(
-                    T::Array[
-                    Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
-                    ]
-                  )
-              end
-              def self.values
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
+                      ]
+                    )
+                end
+                def values
+                end
               end
             end
           end
@@ -1524,8 +1548,10 @@ module Increase
             Increase::Models::RealTimeDecision::Category::TaggedSymbol
           )
 
-        sig { override.returns(T::Array[Increase::Models::RealTimeDecision::Category::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::RealTimeDecision::Category::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -1608,11 +1634,13 @@ module Increase
           EMAIL =
             T.let(:email, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel::TaggedSymbol)
 
-          sig do
-            override
-              .returns(T::Array[Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel::TaggedSymbol])
-          end
-          def self.values
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel::TaggedSymbol])
+            end
+            def values
+            end
           end
         end
 
@@ -1658,13 +1686,15 @@ module Increase
               Increase::Models::RealTimeDecision::DigitalWalletAuthentication::DigitalWallet::TaggedSymbol
             )
 
-          sig do
-            override
-              .returns(
-                T::Array[Increase::Models::RealTimeDecision::DigitalWalletAuthentication::DigitalWallet::TaggedSymbol]
-              )
-          end
-          def self.values
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Increase::Models::RealTimeDecision::DigitalWalletAuthentication::DigitalWallet::TaggedSymbol]
+                )
+            end
+            def values
+            end
           end
         end
 
@@ -1685,11 +1715,13 @@ module Increase
           FAILURE =
             T.let(:failure, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Result::TaggedSymbol)
 
-          sig do
-            override
-              .returns(T::Array[Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Result::TaggedSymbol])
-          end
-          def self.values
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Result::TaggedSymbol])
+            end
+            def values
+            end
           end
         end
       end
@@ -1757,8 +1789,10 @@ module Increase
           # Decline the provisioning request.
           DECLINE = T.let(:decline, Increase::Models::RealTimeDecision::DigitalWalletToken::Decision::TaggedSymbol)
 
-          sig { override.returns(T::Array[Increase::Models::RealTimeDecision::DigitalWalletToken::Decision::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::RealTimeDecision::DigitalWalletToken::Decision::TaggedSymbol]) }
+            def values
+            end
           end
         end
 
@@ -1787,11 +1821,13 @@ module Increase
           UNKNOWN =
             T.let(:unknown, Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet::TaggedSymbol)
 
-          sig do
-            override
-              .returns(T::Array[Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet::TaggedSymbol])
-          end
-          def self.values
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet::TaggedSymbol])
+            end
+            def values
+            end
           end
         end
       end
@@ -1812,8 +1848,10 @@ module Increase
         # Your webhook failed to respond to the authorization in time.
         TIMED_OUT = T.let(:timed_out, Increase::Models::RealTimeDecision::Status::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::RealTimeDecision::Status::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::RealTimeDecision::Status::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -1827,8 +1865,10 @@ module Increase
 
         REAL_TIME_DECISION = T.let(:real_time_decision, Increase::Models::RealTimeDecision::Type::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::RealTimeDecision::Type::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::RealTimeDecision::Type::TaggedSymbol]) }
+          def values
+          end
         end
       end
     end

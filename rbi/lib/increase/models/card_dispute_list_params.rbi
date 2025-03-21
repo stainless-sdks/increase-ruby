@@ -165,8 +165,10 @@ module Increase
           # The Card Dispute has been won and no further action can be taken.
           WON = T.let(:won, Increase::Models::CardDisputeListParams::Status::In::TaggedSymbol)
 
-          sig { override.returns(T::Array[Increase::Models::CardDisputeListParams::Status::In::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::CardDisputeListParams::Status::In::TaggedSymbol]) }
+            def values
+            end
           end
         end
       end
