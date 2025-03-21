@@ -106,9 +106,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

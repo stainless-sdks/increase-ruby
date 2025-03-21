@@ -176,8 +176,10 @@ module Increase
           # The Inbound ACH Transfer has been returned.
           RETURNED = T.let(:returned, Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol)
 
-          sig { override.returns(T::Array[Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol]) }
+            def values
+            end
           end
         end
       end

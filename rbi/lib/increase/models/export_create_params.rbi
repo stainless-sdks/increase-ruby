@@ -141,8 +141,10 @@ module Increase
         # Export a CSV of vendors added to the third-party risk management dashboard.
         VENDOR_CSV = T.let(:vendor_csv, Increase::Models::ExportCreateParams::Category::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::ExportCreateParams::Category::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ExportCreateParams::Category::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -483,8 +485,10 @@ module Increase
             # The entity is temporarily disabled and cannot be used for financial activity.
             DISABLED = T.let(:disabled, Increase::Models::ExportCreateParams::EntityCsv::Status::In::TaggedSymbol)
 
-            sig { override.returns(T::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::In::TaggedSymbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::In::TaggedSymbol]) }
+              def values
+              end
             end
           end
         end

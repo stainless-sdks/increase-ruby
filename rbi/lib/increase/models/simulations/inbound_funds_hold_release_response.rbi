@@ -128,11 +128,13 @@ module Increase
           # US Dollar (USD)
           USD = T.let(:USD, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency::TaggedSymbol)
 
-          sig do
-            override
-              .returns(T::Array[Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency::TaggedSymbol])
-          end
-          def self.values
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency::TaggedSymbol])
+            end
+            def values
+            end
           end
         end
 
@@ -152,11 +154,13 @@ module Increase
           COMPLETE =
             T.let(:complete, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status::TaggedSymbol)
 
-          sig do
-            override
-              .returns(T::Array[Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status::TaggedSymbol])
-          end
-          def self.values
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status::TaggedSymbol])
+            end
+            def values
+            end
           end
         end
 
@@ -176,11 +180,13 @@ module Increase
               Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type::TaggedSymbol
             )
 
-          sig do
-            override
-              .returns(T::Array[Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type::TaggedSymbol])
-          end
-          def self.values
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type::TaggedSymbol])
+            end
+            def values
+            end
           end
         end
       end

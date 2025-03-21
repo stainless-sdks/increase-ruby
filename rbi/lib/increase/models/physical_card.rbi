@@ -254,8 +254,10 @@ module Increase
           # FedEx 2-day.
           FEDEX_2_DAY = T.let(:fedex_2_day, Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol)
 
-          sig { override.returns(T::Array[Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol]) }
+            def values
+            end
           end
         end
 
@@ -287,8 +289,10 @@ module Increase
           # The physical card shipment was returned to the sender and destroyed by the production facility.
           RETURNED = T.let(:returned, Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol)
 
-          sig { override.returns(T::Array[Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol]) }
+            def values
+            end
           end
         end
 
@@ -356,8 +360,10 @@ module Increase
         # The physical card is permanently canceled.
         CANCELED = T.let(:canceled, Increase::Models::PhysicalCard::Status::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::PhysicalCard::Status::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::PhysicalCard::Status::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -371,8 +377,10 @@ module Increase
 
         PHYSICAL_CARD = T.let(:physical_card, Increase::Models::PhysicalCard::Type::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::PhysicalCard::Type::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::PhysicalCard::Type::TaggedSymbol]) }
+          def values
+          end
         end
       end
     end

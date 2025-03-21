@@ -277,9 +277,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # The direction describes the direction the funds will move, either from the
@@ -295,9 +297,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class NetworkDetails < Increase::BaseModel
@@ -366,9 +370,11 @@ module Increase
 
               finalize!
 
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
         end

@@ -168,9 +168,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -233,9 +235,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -483,9 +487,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # The direction describes the direction the funds will move, either from the
@@ -501,9 +507,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class NetworkDetails < Increase::BaseModel
@@ -541,9 +549,11 @@ module Increase
 
             finalize!
 
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           class Visa < Increase::BaseModel
@@ -619,9 +629,11 @@ module Increase
 
               finalize!
 
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
 
             # The method used to enter the cardholder's primary account number and card
@@ -661,9 +673,11 @@ module Increase
 
               finalize!
 
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
 
             # Only present when `actioner: network`. Describes why a card authorization was
@@ -696,9 +710,11 @@ module Increase
 
               finalize!
 
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
         end
@@ -763,9 +779,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class RequestDetails < Increase::BaseModel
@@ -815,9 +833,11 @@ module Increase
 
             finalize!
 
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           class IncrementalAuthorization < Increase::BaseModel
@@ -906,9 +926,11 @@ module Increase
 
               finalize!
 
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
 
@@ -983,9 +1005,11 @@ module Increase
 
               finalize!
 
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
         end
@@ -1012,9 +1036,11 @@ module Increase
 
         finalize!
 
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class DigitalWalletAuthentication < Increase::BaseModel
@@ -1091,9 +1117,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # The digital wallet app being used.
@@ -1114,9 +1142,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # Whether your application successfully delivered the one-time passcode.
@@ -1131,9 +1161,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -1193,9 +1225,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         # The digital wallet app being used.
@@ -1216,9 +1250,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -1237,9 +1273,11 @@ module Increase
 
         finalize!
 
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -1251,9 +1289,11 @@ module Increase
 
         finalize!
 
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

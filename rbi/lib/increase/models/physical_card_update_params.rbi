@@ -49,8 +49,10 @@ module Increase
         # The physical card is permanently canceled.
         CANCELED = T.let(:canceled, Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol]) }
+          def values
+          end
         end
       end
     end
