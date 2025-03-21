@@ -73,12 +73,12 @@ module Increase
       # Routing numbers are used to identify your bank in a financial transaction.
       sig do
         params(
-          ach_transfers: Increase::Models::RoutingNumberListResponse::ACHTransfers::TaggedSymbol,
+          ach_transfers: Increase::Models::RoutingNumberListResponse::ACHTransfers::OrSymbol,
           name: String,
-          real_time_payments_transfers: Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers::TaggedSymbol,
+          real_time_payments_transfers: Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers::OrSymbol,
           routing_number: String,
-          type: Increase::Models::RoutingNumberListResponse::Type::TaggedSymbol,
-          wire_transfers: Increase::Models::RoutingNumberListResponse::WireTransfers::TaggedSymbol
+          type: Increase::Models::RoutingNumberListResponse::Type::OrSymbol,
+          wire_transfers: Increase::Models::RoutingNumberListResponse::WireTransfers::OrSymbol
         )
           .returns(T.attached_class)
       end

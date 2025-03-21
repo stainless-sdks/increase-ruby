@@ -198,16 +198,16 @@ module Increase
           cancellation: T.nilable(T.any(Increase::Models::AccountTransfer::Cancellation, Increase::Util::AnyHash)),
           created_at: Time,
           created_by: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy, Increase::Util::AnyHash)),
-          currency: Increase::Models::AccountTransfer::Currency::TaggedSymbol,
+          currency: Increase::Models::AccountTransfer::Currency::OrSymbol,
           description: String,
           destination_account_id: String,
           destination_transaction_id: T.nilable(String),
           idempotency_key: T.nilable(String),
-          network: Increase::Models::AccountTransfer::Network::TaggedSymbol,
+          network: Increase::Models::AccountTransfer::Network::OrSymbol,
           pending_transaction_id: T.nilable(String),
-          status: Increase::Models::AccountTransfer::Status::TaggedSymbol,
+          status: Increase::Models::AccountTransfer::Status::OrSymbol,
           transaction_id: T.nilable(String),
-          type: Increase::Models::AccountTransfer::Type::TaggedSymbol
+          type: Increase::Models::AccountTransfer::Type::OrSymbol
         )
           .returns(T.attached_class)
       end
@@ -380,7 +380,7 @@ module Increase
         sig do
           params(
             api_key: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::APIKey, Increase::Util::AnyHash)),
-            category: Increase::Models::AccountTransfer::CreatedBy::Category::TaggedSymbol,
+            category: Increase::Models::AccountTransfer::CreatedBy::Category::OrSymbol,
             oauth_application: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash)),
             user: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::User, Increase::Util::AnyHash))
           )

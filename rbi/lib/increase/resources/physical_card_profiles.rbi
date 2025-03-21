@@ -48,7 +48,7 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::Models::PhysicalCardProfileListParams::Status,
+          status: T.any(Increase::Models::PhysicalCardProfileListParams::Status, Increase::Util::AnyHash),
           request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::PhysicalCardProfile])
@@ -92,7 +92,7 @@ module Increase
           contact_phone: String,
           description: String,
           front_image_file_id: String,
-          front_text: Increase::Models::PhysicalCardProfileCloneParams::FrontText,
+          front_text: T.any(Increase::Models::PhysicalCardProfileCloneParams::FrontText, Increase::Util::AnyHash),
           request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::PhysicalCardProfile)

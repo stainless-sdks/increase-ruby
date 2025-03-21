@@ -22,11 +22,17 @@ module Increase
       sig do
         params(
           real_time_decision_id: String,
-          card_authentication: Increase::Models::RealTimeDecisionActionParams::CardAuthentication,
-          card_authentication_challenge: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge,
-          card_authorization: Increase::Models::RealTimeDecisionActionParams::CardAuthorization,
-          digital_wallet_authentication: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
-          digital_wallet_token: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken,
+          card_authentication: T.any(Increase::Models::RealTimeDecisionActionParams::CardAuthentication, Increase::Util::AnyHash),
+          card_authentication_challenge: T.any(
+            Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge,
+            Increase::Util::AnyHash
+          ),
+          card_authorization: T.any(Increase::Models::RealTimeDecisionActionParams::CardAuthorization, Increase::Util::AnyHash),
+          digital_wallet_authentication: T.any(
+            Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
+            Increase::Util::AnyHash
+          ),
+          digital_wallet_token: T.any(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken, Increase::Util::AnyHash),
           request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::RealTimeDecision)

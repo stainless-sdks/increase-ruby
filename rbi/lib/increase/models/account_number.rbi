@@ -135,8 +135,8 @@ module Increase
           inbound_checks: T.any(Increase::Models::AccountNumber::InboundChecks, Increase::Util::AnyHash),
           name: String,
           routing_number: String,
-          status: Increase::Models::AccountNumber::Status::TaggedSymbol,
-          type: Increase::Models::AccountNumber::Type::TaggedSymbol
+          status: Increase::Models::AccountNumber::Status::OrSymbol,
+          type: Increase::Models::AccountNumber::Type::OrSymbol
         )
           .returns(T.attached_class)
       end
@@ -192,7 +192,7 @@ module Increase
 
         # Properties related to how this Account Number handles inbound ACH transfers.
         sig do
-          params(debit_status: Increase::Models::AccountNumber::InboundACH::DebitStatus::TaggedSymbol)
+          params(debit_status: Increase::Models::AccountNumber::InboundACH::DebitStatus::OrSymbol)
             .returns(T.attached_class)
         end
         def self.new(debit_status:)
@@ -240,10 +240,7 @@ module Increase
 
         # Properties related to how this Account Number should handle inbound check
         #   withdrawals.
-        sig do
-          params(status: Increase::Models::AccountNumber::InboundChecks::Status::TaggedSymbol)
-            .returns(T.attached_class)
-        end
+        sig { params(status: Increase::Models::AccountNumber::InboundChecks::Status::OrSymbol).returns(T.attached_class) }
         def self.new(status:)
         end
 

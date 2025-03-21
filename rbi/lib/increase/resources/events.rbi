@@ -22,8 +22,8 @@ module Increase
       sig do
         params(
           associated_object_id: String,
-          category: Increase::Models::EventListParams::Category,
-          created_at: Increase::Models::EventListParams::CreatedAt,
+          category: T.any(Increase::Models::EventListParams::Category, Increase::Util::AnyHash),
+          created_at: T.any(Increase::Models::EventListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
           request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))

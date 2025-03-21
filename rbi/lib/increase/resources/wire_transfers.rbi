@@ -88,7 +88,7 @@ module Increase
       sig do
         params(
           account_id: String,
-          created_at: Increase::Models::WireTransferListParams::CreatedAt,
+          created_at: T.any(Increase::Models::WireTransferListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           external_account_id: String,
           idempotency_key: String,

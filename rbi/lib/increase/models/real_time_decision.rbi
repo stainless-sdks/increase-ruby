@@ -153,13 +153,13 @@ module Increase
           card_authentication: T.nilable(T.any(Increase::Models::RealTimeDecision::CardAuthentication, Increase::Util::AnyHash)),
           card_authentication_challenge: T.nilable(T.any(Increase::Models::RealTimeDecision::CardAuthenticationChallenge, Increase::Util::AnyHash)),
           card_authorization: T.nilable(T.any(Increase::Models::RealTimeDecision::CardAuthorization, Increase::Util::AnyHash)),
-          category: Increase::Models::RealTimeDecision::Category::TaggedSymbol,
+          category: Increase::Models::RealTimeDecision::Category::OrSymbol,
           created_at: Time,
           digital_wallet_authentication: T.nilable(T.any(Increase::Models::RealTimeDecision::DigitalWalletAuthentication, Increase::Util::AnyHash)),
           digital_wallet_token: T.nilable(T.any(Increase::Models::RealTimeDecision::DigitalWalletToken, Increase::Util::AnyHash)),
-          status: Increase::Models::RealTimeDecision::Status::TaggedSymbol,
+          status: Increase::Models::RealTimeDecision::Status::OrSymbol,
           timeout_at: Time,
-          type: Increase::Models::RealTimeDecision::Type::TaggedSymbol
+          type: Increase::Models::RealTimeDecision::Type::OrSymbol
         )
           .returns(T.attached_class)
       end
@@ -245,7 +245,7 @@ module Increase
           params(
             account_id: String,
             card_id: String,
-            decision: T.nilable(Increase::Models::RealTimeDecision::CardAuthentication::Decision::TaggedSymbol),
+            decision: T.nilable(Increase::Models::RealTimeDecision::CardAuthentication::Decision::OrSymbol),
             upcoming_card_payment_id: String
           )
             .returns(T.attached_class)
@@ -353,7 +353,7 @@ module Increase
             card_id: String,
             card_payment_id: String,
             one_time_code: String,
-            result: T.nilable(Increase::Models::RealTimeDecision::CardAuthenticationChallenge::Result::TaggedSymbol)
+            result: T.nilable(Increase::Models::RealTimeDecision::CardAuthenticationChallenge::Result::OrSymbol)
           )
             .returns(T.attached_class)
         end
@@ -686,9 +686,9 @@ module Increase
           params(
             account_id: String,
             card_id: String,
-            decision: T.nilable(Increase::Models::RealTimeDecision::CardAuthorization::Decision::TaggedSymbol),
+            decision: T.nilable(Increase::Models::RealTimeDecision::CardAuthorization::Decision::OrSymbol),
             digital_wallet_token_id: T.nilable(String),
-            direction: Increase::Models::RealTimeDecision::CardAuthorization::Direction::TaggedSymbol,
+            direction: Increase::Models::RealTimeDecision::CardAuthorization::Direction::OrSymbol,
             merchant_acceptor_id: String,
             merchant_category_code: String,
             merchant_city: T.nilable(String),
@@ -702,7 +702,7 @@ module Increase
             physical_card_id: T.nilable(String),
             presentment_amount: Integer,
             presentment_currency: String,
-            processing_category: Increase::Models::RealTimeDecision::CardAuthorization::ProcessingCategory::TaggedSymbol,
+            processing_category: Increase::Models::RealTimeDecision::CardAuthorization::ProcessingCategory::OrSymbol,
             request_details: T.any(Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails, Increase::Util::AnyHash),
             settlement_amount: Integer,
             settlement_currency: String,
@@ -864,7 +864,7 @@ module Increase
           # Fields specific to the `network`.
           sig do
             params(
-              category: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category::TaggedSymbol,
+              category: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category::OrSymbol,
               visa: T.nilable(
                 T.any(
                   Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa,
@@ -1009,13 +1009,13 @@ module Increase
             sig do
               params(
                 electronic_commerce_indicator: T.nilable(
-                  Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                  Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::OrSymbol
                 ),
                 point_of_service_entry_mode: T.nilable(
-                  Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                  Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::OrSymbol
                 ),
                 stand_in_processing_reason: T.nilable(
-                  Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                  Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::OrSymbol
                 )
               )
                 .returns(T.attached_class)
@@ -1483,7 +1483,7 @@ module Increase
           # Fields specific to the type of request, such as an incremental authorization.
           sig do
             params(
-              category: Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category::TaggedSymbol,
+              category: Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category::OrSymbol,
               incremental_authorization: T.nilable(
                 T.any(
                   Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization,
@@ -1688,7 +1688,7 @@ module Increase
             #   the back of the card.
             sig do
               params(
-                result: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
+                result: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result::OrSymbol
               )
                 .returns(T.attached_class)
             end
@@ -1824,7 +1824,7 @@ module Increase
                 actual_postal_code: T.nilable(String),
                 provided_line1: T.nilable(String),
                 provided_postal_code: T.nilable(String),
-                result: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
+                result: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result::OrSymbol
               )
                 .returns(T.attached_class)
             end
@@ -2041,12 +2041,12 @@ module Increase
         sig do
           params(
             card_id: String,
-            channel: Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel::TaggedSymbol,
-            digital_wallet: Increase::Models::RealTimeDecision::DigitalWalletAuthentication::DigitalWallet::TaggedSymbol,
+            channel: Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel::OrSymbol,
+            digital_wallet: Increase::Models::RealTimeDecision::DigitalWalletAuthentication::DigitalWallet::OrSymbol,
             email: T.nilable(String),
             one_time_passcode: String,
             phone: T.nilable(String),
-            result: T.nilable(Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Result::TaggedSymbol)
+            result: T.nilable(Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Result::OrSymbol)
           )
             .returns(T.attached_class)
         end
@@ -2229,8 +2229,8 @@ module Increase
           params(
             card_id: String,
             card_profile_id: T.nilable(String),
-            decision: T.nilable(Increase::Models::RealTimeDecision::DigitalWalletToken::Decision::TaggedSymbol),
-            digital_wallet: Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet::TaggedSymbol
+            decision: T.nilable(Increase::Models::RealTimeDecision::DigitalWalletToken::Decision::OrSymbol),
+            digital_wallet: Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet::OrSymbol
           )
             .returns(T.attached_class)
         end

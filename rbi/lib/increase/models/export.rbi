@@ -98,13 +98,13 @@ module Increase
       sig do
         params(
           id: String,
-          category: Increase::Models::Export::Category::TaggedSymbol,
+          category: Increase::Models::Export::Category::OrSymbol,
           created_at: Time,
           file_download_url: T.nilable(String),
           file_id: T.nilable(String),
           idempotency_key: T.nilable(String),
-          status: Increase::Models::Export::Status::TaggedSymbol,
-          type: Increase::Models::Export::Type::TaggedSymbol
+          status: Increase::Models::Export::Status::OrSymbol,
+          type: Increase::Models::Export::Type::OrSymbol
         )
           .returns(T.attached_class)
       end
