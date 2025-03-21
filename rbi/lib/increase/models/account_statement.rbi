@@ -104,7 +104,7 @@ module Increase
           starting_balance: Integer,
           statement_period_end: Time,
           statement_period_start: Time,
-          type: Increase::Models::AccountStatement::Type::TaggedSymbol
+          type: Increase::Models::AccountStatement::Type::OrSymbol
         )
           .returns(T.attached_class)
       end

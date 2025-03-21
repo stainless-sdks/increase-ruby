@@ -65,14 +65,14 @@ module Increase
       # List Accounts
       sig do
         params(
-          created_at: Increase::Models::AccountListParams::CreatedAt,
+          created_at: T.any(Increase::Models::AccountListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           entity_id: String,
           idempotency_key: String,
           informational_entity_id: String,
           limit: Integer,
           program_id: String,
-          status: Increase::Models::AccountListParams::Status,
+          status: T.any(Increase::Models::AccountListParams::Status, Increase::Util::AnyHash),
           request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::Account])

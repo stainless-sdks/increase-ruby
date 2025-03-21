@@ -22,12 +22,12 @@ module Increase
       sig do
         params(
           account_id: String,
-          category: Increase::Models::PendingTransactionListParams::Category,
-          created_at: Increase::Models::PendingTransactionListParams::CreatedAt,
+          category: T.any(Increase::Models::PendingTransactionListParams::Category, Increase::Util::AnyHash),
+          created_at: T.any(Increase::Models::PendingTransactionListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
           route_id: String,
-          status: Increase::Models::PendingTransactionListParams::Status,
+          status: T.any(Increase::Models::PendingTransactionListParams::Status, Increase::Util::AnyHash),
           request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::PendingTransaction])

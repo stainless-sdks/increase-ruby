@@ -167,10 +167,10 @@ module Increase
       sig do
         params(
           id: String,
-          bank: Increase::Models::Account::Bank::TaggedSymbol,
+          bank: Increase::Models::Account::Bank::OrSymbol,
           closed_at: T.nilable(Time),
           created_at: Time,
-          currency: Increase::Models::Account::Currency::TaggedSymbol,
+          currency: Increase::Models::Account::Currency::OrSymbol,
           entity_id: T.nilable(String),
           idempotency_key: T.nilable(String),
           informational_entity_id: T.nilable(String),
@@ -179,8 +179,8 @@ module Increase
           interest_rate: String,
           name: String,
           program_id: String,
-          status: Increase::Models::Account::Status::TaggedSymbol,
-          type: Increase::Models::Account::Type::TaggedSymbol
+          status: Increase::Models::Account::Status::OrSymbol,
+          type: Increase::Models::Account::Type::OrSymbol
         )
           .returns(T.attached_class)
       end

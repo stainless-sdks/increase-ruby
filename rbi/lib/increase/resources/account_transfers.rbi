@@ -50,7 +50,7 @@ module Increase
       sig do
         params(
           account_id: String,
-          created_at: Increase::Models::AccountTransferListParams::CreatedAt,
+          created_at: T.any(Increase::Models::AccountTransferListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,

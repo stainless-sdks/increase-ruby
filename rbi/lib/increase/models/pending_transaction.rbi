@@ -147,13 +147,13 @@ module Increase
           amount: Integer,
           completed_at: T.nilable(Time),
           created_at: Time,
-          currency: Increase::Models::PendingTransaction::Currency::TaggedSymbol,
+          currency: Increase::Models::PendingTransaction::Currency::OrSymbol,
           description: String,
           route_id: T.nilable(String),
-          route_type: T.nilable(Increase::Models::PendingTransaction::RouteType::TaggedSymbol),
+          route_type: T.nilable(Increase::Models::PendingTransaction::RouteType::OrSymbol),
           source: T.any(Increase::Models::PendingTransaction::Source, Increase::Util::AnyHash),
-          status: Increase::Models::PendingTransaction::Status::TaggedSymbol,
-          type: Increase::Models::PendingTransaction::Type::TaggedSymbol
+          status: Increase::Models::PendingTransaction::Status::OrSymbol,
+          type: Increase::Models::PendingTransaction::Type::OrSymbol
         )
           .returns(T.attached_class)
       end
@@ -482,7 +482,7 @@ module Increase
               T.any(Increase::Models::PendingTransaction::Source::ACHTransferInstruction, Increase::Util::AnyHash)
             ),
             card_authorization: T.nilable(T.any(Increase::Models::PendingTransaction::Source::CardAuthorization, Increase::Util::AnyHash)),
-            category: Increase::Models::PendingTransaction::Source::Category::TaggedSymbol,
+            category: Increase::Models::PendingTransaction::Source::Category::OrSymbol,
             check_deposit_instruction: T.nilable(
               T.any(Increase::Models::PendingTransaction::Source::CheckDepositInstruction, Increase::Util::AnyHash)
             ),
@@ -582,7 +582,7 @@ module Increase
           sig do
             params(
               amount: Integer,
-              currency: Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol,
+              currency: Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency::OrSymbol,
               transfer_id: String
             )
               .returns(T.attached_class)
@@ -1026,12 +1026,12 @@ module Increase
           sig do
             params(
               id: String,
-              actioner: Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner::TaggedSymbol,
+              actioner: Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner::OrSymbol,
               amount: Integer,
               card_payment_id: String,
-              currency: Increase::Models::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol,
+              currency: Increase::Models::PendingTransaction::Source::CardAuthorization::Currency::OrSymbol,
               digital_wallet_token_id: T.nilable(String),
-              direction: Increase::Models::PendingTransaction::Source::CardAuthorization::Direction::TaggedSymbol,
+              direction: Increase::Models::PendingTransaction::Source::CardAuthorization::Direction::OrSymbol,
               expires_at: Time,
               merchant_acceptor_id: String,
               merchant_category_code: String,
@@ -1053,10 +1053,10 @@ module Increase
               physical_card_id: T.nilable(String),
               presentment_amount: Integer,
               presentment_currency: String,
-              processing_category: Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory::TaggedSymbol,
+              processing_category: Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory::OrSymbol,
               real_time_decision_id: T.nilable(String),
               terminal_id: T.nilable(String),
-              type: Increase::Models::PendingTransaction::Source::CardAuthorization::Type::TaggedSymbol,
+              type: Increase::Models::PendingTransaction::Source::CardAuthorization::Type::OrSymbol,
               verification: T.any(
                 Increase::Models::PendingTransaction::Source::CardAuthorization::Verification,
                 Increase::Util::AnyHash
@@ -1291,7 +1291,7 @@ module Increase
             # Fields specific to the `network`.
             sig do
               params(
-                category: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category::TaggedSymbol,
+                category: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category::OrSymbol,
                 visa: T.nilable(
                   T.any(
                     Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa,
@@ -1436,13 +1436,13 @@ module Increase
               sig do
                 params(
                   electronic_commerce_indicator: T.nilable(
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::OrSymbol
                   ),
                   point_of_service_entry_mode: T.nilable(
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::OrSymbol
                   ),
                   stand_in_processing_reason: T.nilable(
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::OrSymbol
                   )
                 )
                   .returns(T.attached_class)
@@ -1998,7 +1998,7 @@ module Increase
               #   the back of the card.
               sig do
                 params(
-                  result: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
+                  result: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -2134,7 +2134,7 @@ module Increase
                   actual_postal_code: T.nilable(String),
                   provided_line1: T.nilable(String),
                   provided_postal_code: T.nilable(String),
-                  result: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
+                  result: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -2351,7 +2351,7 @@ module Increase
               amount: Integer,
               back_image_file_id: T.nilable(String),
               check_deposit_id: T.nilable(String),
-              currency: Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol,
+              currency: Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency::OrSymbol,
               front_image_file_id: String
             )
               .returns(T.attached_class)
@@ -2463,7 +2463,7 @@ module Increase
           sig do
             params(
               amount: Integer,
-              currency: Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol,
+              currency: Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency::OrSymbol,
               transfer_id: String
             )
               .returns(T.attached_class)
@@ -2669,12 +2669,12 @@ module Increase
               amount: Integer,
               automatically_releases_at: Time,
               created_at: Time,
-              currency: Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol,
+              currency: Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency::OrSymbol,
               held_transaction_id: T.nilable(String),
               pending_transaction_id: T.nilable(String),
               released_at: T.nilable(Time),
-              status: Increase::Models::PendingTransaction::Source::InboundFundsHold::Status::TaggedSymbol,
-              type: Increase::Models::PendingTransaction::Source::InboundFundsHold::Type::TaggedSymbol
+              status: Increase::Models::PendingTransaction::Source::InboundFundsHold::Status::OrSymbol,
+              type: Increase::Models::PendingTransaction::Source::InboundFundsHold::Type::OrSymbol
             )
               .returns(T.attached_class)
           end

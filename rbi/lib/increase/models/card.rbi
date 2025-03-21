@@ -152,8 +152,8 @@ module Increase
           expiration_year: Integer,
           idempotency_key: T.nilable(String),
           last4: String,
-          status: Increase::Models::Card::Status::TaggedSymbol,
-          type: Increase::Models::Card::Type::TaggedSymbol
+          status: Increase::Models::Card::Status::OrSymbol,
+          type: Increase::Models::Card::Type::OrSymbol
         )
           .returns(T.attached_class)
       end

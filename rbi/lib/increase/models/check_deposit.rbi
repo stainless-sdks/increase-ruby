@@ -215,9 +215,9 @@ module Increase
           inbound_funds_hold: T.nilable(T.any(Increase::Models::CheckDeposit::InboundFundsHold, Increase::Util::AnyHash)),
           inbound_mail_item_id: T.nilable(String),
           lockbox_id: T.nilable(String),
-          status: Increase::Models::CheckDeposit::Status::TaggedSymbol,
+          status: Increase::Models::CheckDeposit::Status::OrSymbol,
           transaction_id: T.nilable(String),
-          type: Increase::Models::CheckDeposit::Type::TaggedSymbol
+          type: Increase::Models::CheckDeposit::Type::OrSymbol
         )
           .returns(T.attached_class)
       end
@@ -350,7 +350,7 @@ module Increase
             amount: Integer,
             auxiliary_on_us: T.nilable(String),
             check_deposit_id: String,
-            currency: Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol,
+            currency: Increase::Models::CheckDeposit::DepositAcceptance::Currency::OrSymbol,
             routing_number: String,
             serial_number: T.nilable(String)
           )
@@ -482,9 +482,9 @@ module Increase
           params(
             amount: Integer,
             check_deposit_id: String,
-            currency: Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol,
+            currency: Increase::Models::CheckDeposit::DepositRejection::Currency::OrSymbol,
             declined_transaction_id: String,
-            reason: Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol,
+            reason: Increase::Models::CheckDeposit::DepositRejection::Reason::OrSymbol,
             rejected_at: Time
           )
             .returns(T.attached_class)
@@ -677,8 +677,8 @@ module Increase
           params(
             amount: Integer,
             check_deposit_id: String,
-            currency: Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol,
-            return_reason: Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol,
+            currency: Increase::Models::CheckDeposit::DepositReturn::Currency::OrSymbol,
+            return_reason: Increase::Models::CheckDeposit::DepositReturn::ReturnReason::OrSymbol,
             returned_at: Time,
             transaction_id: String
           )
@@ -1032,12 +1032,12 @@ module Increase
             amount: Integer,
             automatically_releases_at: Time,
             created_at: Time,
-            currency: Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol,
+            currency: Increase::Models::CheckDeposit::InboundFundsHold::Currency::OrSymbol,
             held_transaction_id: T.nilable(String),
             pending_transaction_id: T.nilable(String),
             released_at: T.nilable(Time),
-            status: Increase::Models::CheckDeposit::InboundFundsHold::Status::TaggedSymbol,
-            type: Increase::Models::CheckDeposit::InboundFundsHold::Type::TaggedSymbol
+            status: Increase::Models::CheckDeposit::InboundFundsHold::Status::OrSymbol,
+            type: Increase::Models::CheckDeposit::InboundFundsHold::Type::OrSymbol
           )
             .returns(T.attached_class)
         end
