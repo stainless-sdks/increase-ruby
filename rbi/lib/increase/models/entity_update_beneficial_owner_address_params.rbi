@@ -35,9 +35,9 @@ module Increase
 
       sig do
         params(
-          address: Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
+          address: T.any(Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address, Increase::Util::AnyHash),
           beneficial_owner_id: String,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

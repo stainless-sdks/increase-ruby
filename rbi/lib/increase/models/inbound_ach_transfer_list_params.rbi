@@ -69,11 +69,11 @@ module Increase
         params(
           account_id: String,
           account_number_id: String,
-          created_at: Increase::Models::InboundACHTransferListParams::CreatedAt,
+          created_at: T.any(Increase::Models::InboundACHTransferListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
-          status: Increase::Models::InboundACHTransferListParams::Status,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          status: T.any(Increase::Models::InboundACHTransferListParams::Status, Increase::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

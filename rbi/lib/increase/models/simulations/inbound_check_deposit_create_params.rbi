@@ -39,7 +39,7 @@ module Increase
             account_number_id: String,
             amount: Integer,
             check_number: String,
-            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

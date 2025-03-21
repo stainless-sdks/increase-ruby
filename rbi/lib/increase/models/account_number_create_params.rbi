@@ -53,9 +53,9 @@ module Increase
         params(
           account_id: String,
           name: String,
-          inbound_ach: Increase::Models::AccountNumberCreateParams::InboundACH,
-          inbound_checks: Increase::Models::AccountNumberCreateParams::InboundChecks,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          inbound_ach: T.any(Increase::Models::AccountNumberCreateParams::InboundACH, Increase::Util::AnyHash),
+          inbound_checks: T.any(Increase::Models::AccountNumberCreateParams::InboundChecks, Increase::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

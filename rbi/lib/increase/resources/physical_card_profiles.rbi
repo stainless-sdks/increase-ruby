@@ -10,7 +10,7 @@ module Increase
           contact_phone: String,
           description: String,
           front_image_file_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::PhysicalCardProfile)
       end
@@ -31,7 +31,7 @@ module Increase
       sig do
         params(
           physical_card_profile_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::PhysicalCardProfile)
       end
@@ -49,7 +49,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           status: Increase::Models::PhysicalCardProfileListParams::Status,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::PhysicalCardProfile])
       end
@@ -73,7 +73,7 @@ module Increase
       sig do
         params(
           physical_card_profile_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::PhysicalCardProfile)
       end
@@ -93,7 +93,7 @@ module Increase
           description: String,
           front_image_file_id: String,
           front_text: Increase::Models::PhysicalCardProfileCloneParams::FrontText,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::PhysicalCardProfile)
       end

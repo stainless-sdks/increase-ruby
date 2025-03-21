@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           real_time_decision_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::RealTimeDecision)
       end
@@ -27,7 +27,7 @@ module Increase
           card_authorization: Increase::Models::RealTimeDecisionActionParams::CardAuthorization,
           digital_wallet_authentication: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
           digital_wallet_token: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::RealTimeDecision)
       end

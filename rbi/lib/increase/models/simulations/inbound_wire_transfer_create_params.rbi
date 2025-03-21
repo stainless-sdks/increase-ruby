@@ -194,7 +194,7 @@ module Increase
             originator_to_beneficiary_information_line3: String,
             originator_to_beneficiary_information_line4: String,
             sender_reference: String,
-            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

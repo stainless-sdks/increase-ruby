@@ -59,7 +59,7 @@ module Increase
             accrued_on_account_id: String,
             period_end: Time,
             period_start: Time,
-            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

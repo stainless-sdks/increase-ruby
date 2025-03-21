@@ -146,7 +146,7 @@ module Increase
           recipient_address_line1: String,
           recipient_address_line2: String,
           recipient_address_line3: String,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

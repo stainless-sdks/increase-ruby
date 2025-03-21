@@ -150,13 +150,13 @@ module Increase
       sig do
         params(
           id: String,
-          card_authentication: T.nilable(Increase::Models::RealTimeDecision::CardAuthentication),
-          card_authentication_challenge: T.nilable(Increase::Models::RealTimeDecision::CardAuthenticationChallenge),
-          card_authorization: T.nilable(Increase::Models::RealTimeDecision::CardAuthorization),
+          card_authentication: T.nilable(T.any(Increase::Models::RealTimeDecision::CardAuthentication, Increase::Util::AnyHash)),
+          card_authentication_challenge: T.nilable(T.any(Increase::Models::RealTimeDecision::CardAuthenticationChallenge, Increase::Util::AnyHash)),
+          card_authorization: T.nilable(T.any(Increase::Models::RealTimeDecision::CardAuthorization, Increase::Util::AnyHash)),
           category: Increase::Models::RealTimeDecision::Category::TaggedSymbol,
           created_at: Time,
-          digital_wallet_authentication: T.nilable(Increase::Models::RealTimeDecision::DigitalWalletAuthentication),
-          digital_wallet_token: T.nilable(Increase::Models::RealTimeDecision::DigitalWalletToken),
+          digital_wallet_authentication: T.nilable(T.any(Increase::Models::RealTimeDecision::DigitalWalletAuthentication, Increase::Util::AnyHash)),
+          digital_wallet_token: T.nilable(T.any(Increase::Models::RealTimeDecision::DigitalWalletToken, Increase::Util::AnyHash)),
           status: Increase::Models::RealTimeDecision::Status::TaggedSymbol,
           timeout_at: Time,
           type: Increase::Models::RealTimeDecision::Type::TaggedSymbol
@@ -696,19 +696,19 @@ module Increase
             merchant_descriptor: String,
             merchant_postal_code: T.nilable(String),
             merchant_state: T.nilable(String),
-            network_details: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails,
-            network_identifiers: Increase::Models::RealTimeDecision::CardAuthorization::NetworkIdentifiers,
+            network_details: T.any(Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails, Increase::Util::AnyHash),
+            network_identifiers: T.any(Increase::Models::RealTimeDecision::CardAuthorization::NetworkIdentifiers, Increase::Util::AnyHash),
             network_risk_score: T.nilable(Integer),
             physical_card_id: T.nilable(String),
             presentment_amount: Integer,
             presentment_currency: String,
             processing_category: Increase::Models::RealTimeDecision::CardAuthorization::ProcessingCategory::TaggedSymbol,
-            request_details: Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails,
+            request_details: T.any(Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails, Increase::Util::AnyHash),
             settlement_amount: Integer,
             settlement_currency: String,
             terminal_id: T.nilable(String),
             upcoming_card_payment_id: String,
-            verification: Increase::Models::RealTimeDecision::CardAuthorization::Verification
+            verification: T.any(Increase::Models::RealTimeDecision::CardAuthorization::Verification, Increase::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -865,7 +865,12 @@ module Increase
           sig do
             params(
               category: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category::TaggedSymbol,
-              visa: T.nilable(Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa)
+              visa: T.nilable(
+                T.any(
+                  Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa,
+                  Increase::Util::AnyHash
+                )
+              )
             )
               .returns(T.attached_class)
           end
@@ -1479,7 +1484,12 @@ module Increase
           sig do
             params(
               category: Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category::TaggedSymbol,
-              incremental_authorization: T.nilable(Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization),
+              incremental_authorization: T.nilable(
+                T.any(
+                  Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization,
+                  Increase::Util::AnyHash
+                )
+              ),
               initial_authorization: T.nilable(T.anything)
             )
               .returns(T.attached_class)
@@ -1627,8 +1637,14 @@ module Increase
           # Fields related to verification of cardholder-provided values.
           sig do
             params(
-              card_verification_code: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode,
-              cardholder_address: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress
+              card_verification_code: T.any(
+                Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode,
+                Increase::Util::AnyHash
+              ),
+              cardholder_address: T.any(
+                Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress,
+                Increase::Util::AnyHash
+              )
             )
               .returns(T.attached_class)
           end

@@ -61,12 +61,12 @@ module Increase
 
       sig do
         params(
-          created_at: Increase::Models::FileListParams::CreatedAt,
+          created_at: T.any(Increase::Models::FileListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          purpose: Increase::Models::FileListParams::Purpose,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          purpose: T.any(Increase::Models::FileListParams::Purpose, Increase::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

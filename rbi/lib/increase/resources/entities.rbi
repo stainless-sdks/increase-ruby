@@ -15,7 +15,7 @@ module Increase
           supplemental_documents: T::Array[Increase::Models::EntityCreateParams::SupplementalDocument],
           third_party_verification: Increase::Models::EntityCreateParams::ThirdPartyVerification,
           trust: Increase::Models::EntityCreateParams::Trust,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::Entity)
       end
@@ -54,7 +54,7 @@ module Increase
       sig do
         params(
           entity_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::Entity)
       end
@@ -73,7 +73,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           status: Increase::Models::EntityListParams::Status,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::Entity])
       end
@@ -98,7 +98,7 @@ module Increase
       sig do
         params(
           entity_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::Entity)
       end
@@ -115,7 +115,7 @@ module Increase
         params(
           entity_id: String,
           beneficial_owner_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::Entity)
       end
@@ -137,7 +137,7 @@ module Increase
         params(
           entity_id: String,
           confirmed_at: Time,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::Entity)
       end
@@ -156,7 +156,7 @@ module Increase
         params(
           entity_id: String,
           beneficial_owner: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::Entity)
       end
@@ -175,7 +175,7 @@ module Increase
         params(
           entity_id: String,
           address: Increase::Models::EntityUpdateAddressParams::Address,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::Entity)
       end
@@ -195,7 +195,7 @@ module Increase
           entity_id: String,
           address: Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
           beneficial_owner_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::Entity)
       end
@@ -218,7 +218,7 @@ module Increase
         params(
           entity_id: String,
           industry_code: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::Entity)
       end

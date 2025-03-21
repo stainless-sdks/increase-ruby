@@ -233,7 +233,7 @@ module Increase
           currency: Increase::Models::InboundCheckDeposit::Currency::TaggedSymbol,
           declined_at: T.nilable(Time),
           declined_transaction_id: T.nilable(String),
-          deposit_return: T.nilable(Increase::Models::InboundCheckDeposit::DepositReturn),
+          deposit_return: T.nilable(T.any(Increase::Models::InboundCheckDeposit::DepositReturn, Increase::Util::AnyHash)),
           front_image_file_id: T.nilable(String),
           payee_name_analysis: Increase::Models::InboundCheckDeposit::PayeeNameAnalysis::TaggedSymbol,
           status: Increase::Models::InboundCheckDeposit::Status::TaggedSymbol,

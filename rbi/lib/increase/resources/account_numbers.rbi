@@ -10,7 +10,7 @@ module Increase
           name: String,
           inbound_ach: Increase::Models::AccountNumberCreateParams::InboundACH,
           inbound_checks: Increase::Models::AccountNumberCreateParams::InboundChecks,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::AccountNumber)
       end
@@ -32,7 +32,7 @@ module Increase
       sig do
         params(
           account_number_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::AccountNumber)
       end
@@ -51,7 +51,7 @@ module Increase
           inbound_checks: Increase::Models::AccountNumberUpdateParams::InboundChecks,
           name: String,
           status: Increase::Models::AccountNumberUpdateParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::AccountNumber)
       end
@@ -81,7 +81,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           status: Increase::Models::AccountNumberListParams::Status,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::AccountNumber])
       end

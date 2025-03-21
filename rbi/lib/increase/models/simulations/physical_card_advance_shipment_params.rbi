@@ -22,7 +22,7 @@ module Increase
         sig do
           params(
             shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol,
-            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

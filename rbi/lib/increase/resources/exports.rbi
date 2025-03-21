@@ -13,7 +13,7 @@ module Increase
           entity_csv: Increase::Models::ExportCreateParams::EntityCsv,
           transaction_csv: Increase::Models::ExportCreateParams::TransactionCsv,
           vendor_csv: T.anything,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::Export)
       end
@@ -44,7 +44,7 @@ module Increase
       sig do
         params(
           export_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::Export)
       end
@@ -64,7 +64,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           status: Increase::Models::ExportListParams::Status,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::Export])
       end

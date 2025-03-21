@@ -142,17 +142,17 @@ module Increase
       sig do
         params(
           id: String,
-          acceptance: T.nilable(Increase::Models::CardDispute::Acceptance),
+          acceptance: T.nilable(T.any(Increase::Models::CardDispute::Acceptance, Increase::Util::AnyHash)),
           amount: T.nilable(Integer),
           created_at: Time,
           disputed_transaction_id: String,
           explanation: String,
           idempotency_key: T.nilable(String),
-          loss: T.nilable(Increase::Models::CardDispute::Loss),
-          rejection: T.nilable(Increase::Models::CardDispute::Rejection),
+          loss: T.nilable(T.any(Increase::Models::CardDispute::Loss, Increase::Util::AnyHash)),
+          rejection: T.nilable(T.any(Increase::Models::CardDispute::Rejection, Increase::Util::AnyHash)),
           status: Increase::Models::CardDispute::Status::TaggedSymbol,
           type: Increase::Models::CardDispute::Type::TaggedSymbol,
-          win: T.nilable(Increase::Models::CardDispute::Win)
+          win: T.nilable(T.any(Increase::Models::CardDispute::Win, Increase::Util::AnyHash))
         )
           .returns(T.attached_class)
       end

@@ -58,12 +58,12 @@ module Increase
 
       sig do
         params(
-          category: Increase::Models::DocumentListParams::Category,
-          created_at: Increase::Models::DocumentListParams::CreatedAt,
+          category: T.any(Increase::Models::DocumentListParams::Category, Increase::Util::AnyHash),
+          created_at: T.any(Increase::Models::DocumentListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           entity_id: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

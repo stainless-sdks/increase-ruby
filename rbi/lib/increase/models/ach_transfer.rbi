@@ -405,36 +405,36 @@ module Increase
           id: String,
           account_id: String,
           account_number: String,
-          acknowledgement: T.nilable(Increase::Models::ACHTransfer::Acknowledgement),
-          addenda: T.nilable(Increase::Models::ACHTransfer::Addenda),
+          acknowledgement: T.nilable(T.any(Increase::Models::ACHTransfer::Acknowledgement, Increase::Util::AnyHash)),
+          addenda: T.nilable(T.any(Increase::Models::ACHTransfer::Addenda, Increase::Util::AnyHash)),
           amount: Integer,
-          approval: T.nilable(Increase::Models::ACHTransfer::Approval),
-          cancellation: T.nilable(Increase::Models::ACHTransfer::Cancellation),
+          approval: T.nilable(T.any(Increase::Models::ACHTransfer::Approval, Increase::Util::AnyHash)),
+          cancellation: T.nilable(T.any(Increase::Models::ACHTransfer::Cancellation, Increase::Util::AnyHash)),
           company_descriptive_date: T.nilable(String),
           company_discretionary_data: T.nilable(String),
           company_entry_description: T.nilable(String),
           company_name: T.nilable(String),
           created_at: Time,
-          created_by: T.nilable(Increase::Models::ACHTransfer::CreatedBy),
+          created_by: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy, Increase::Util::AnyHash)),
           currency: Increase::Models::ACHTransfer::Currency::TaggedSymbol,
           destination_account_holder: Increase::Models::ACHTransfer::DestinationAccountHolder::TaggedSymbol,
           external_account_id: T.nilable(String),
           funding: Increase::Models::ACHTransfer::Funding::TaggedSymbol,
           idempotency_key: T.nilable(String),
-          inbound_funds_hold: T.nilable(Increase::Models::ACHTransfer::InboundFundsHold),
+          inbound_funds_hold: T.nilable(T.any(Increase::Models::ACHTransfer::InboundFundsHold, Increase::Util::AnyHash)),
           individual_id: T.nilable(String),
           individual_name: T.nilable(String),
           network: Increase::Models::ACHTransfer::Network::TaggedSymbol,
           notifications_of_change: T::Array[Increase::Models::ACHTransfer::NotificationsOfChange],
           pending_transaction_id: T.nilable(String),
-          preferred_effective_date: Increase::Models::ACHTransfer::PreferredEffectiveDate,
-          return_: T.nilable(Increase::Models::ACHTransfer::Return),
+          preferred_effective_date: T.any(Increase::Models::ACHTransfer::PreferredEffectiveDate, Increase::Util::AnyHash),
+          return_: T.nilable(T.any(Increase::Models::ACHTransfer::Return, Increase::Util::AnyHash)),
           routing_number: String,
-          settlement: T.nilable(Increase::Models::ACHTransfer::Settlement),
+          settlement: T.nilable(T.any(Increase::Models::ACHTransfer::Settlement, Increase::Util::AnyHash)),
           standard_entry_class_code: Increase::Models::ACHTransfer::StandardEntryClassCode::TaggedSymbol,
           statement_descriptor: String,
           status: Increase::Models::ACHTransfer::Status::TaggedSymbol,
-          submission: T.nilable(Increase::Models::ACHTransfer::Submission),
+          submission: T.nilable(T.any(Increase::Models::ACHTransfer::Submission, Increase::Util::AnyHash)),
           transaction_id: T.nilable(String),
           type: Increase::Models::ACHTransfer::Type::TaggedSymbol
         )
@@ -598,8 +598,10 @@ module Increase
         sig do
           params(
             category: Increase::Models::ACHTransfer::Addenda::Category::TaggedSymbol,
-            freeform: T.nilable(Increase::Models::ACHTransfer::Addenda::Freeform),
-            payment_order_remittance_advice: T.nilable(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice)
+            freeform: T.nilable(T.any(Increase::Models::ACHTransfer::Addenda::Freeform, Increase::Util::AnyHash)),
+            payment_order_remittance_advice: T.nilable(
+              T.any(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice, Increase::Util::AnyHash)
+            )
           )
             .returns(T.attached_class)
         end
@@ -871,10 +873,10 @@ module Increase
         # What object created the transfer, either via the API or the dashboard.
         sig do
           params(
-            api_key: T.nilable(Increase::Models::ACHTransfer::CreatedBy::APIKey),
+            api_key: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy::APIKey, Increase::Util::AnyHash)),
             category: Increase::Models::ACHTransfer::CreatedBy::Category::TaggedSymbol,
-            oauth_application: T.nilable(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication),
-            user: T.nilable(Increase::Models::ACHTransfer::CreatedBy::User)
+            oauth_application: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash)),
+            user: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy::User, Increase::Util::AnyHash))
           )
             .returns(T.attached_class)
         end

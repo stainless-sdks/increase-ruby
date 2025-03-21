@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           inbound_check_deposit_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::InboundCheckDeposit)
       end
@@ -26,7 +26,7 @@ module Increase
           created_at: Increase::Models::InboundCheckDepositListParams::CreatedAt,
           cursor: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::InboundCheckDeposit])
       end
@@ -50,7 +50,7 @@ module Increase
       sig do
         params(
           inbound_check_deposit_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::InboundCheckDeposit)
       end
@@ -66,7 +66,7 @@ module Increase
         params(
           inbound_check_deposit_id: String,
           reason: Increase::Models::InboundCheckDepositReturnParams::Reason::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::InboundCheckDeposit)
       end

@@ -11,7 +11,7 @@ module Increase
         sig do
           params(
             wire_transfer_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
           )
             .returns(Increase::Models::WireTransfer)
         end
@@ -28,7 +28,7 @@ module Increase
         sig do
           params(
             wire_transfer_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
           )
             .returns(Increase::Models::WireTransfer)
         end

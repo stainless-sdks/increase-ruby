@@ -47,11 +47,11 @@ module Increase
 
       sig do
         params(
-          created_at: Increase::Models::InboundMailItemListParams::CreatedAt,
+          created_at: T.any(Increase::Models::InboundMailItemListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
           lockbox_id: String,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

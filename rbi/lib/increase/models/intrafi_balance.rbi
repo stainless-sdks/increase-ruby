@@ -163,7 +163,7 @@ module Increase
             id: String,
             balance: Integer,
             bank: String,
-            bank_location: T.nilable(Increase::Models::IntrafiBalance::Balance::BankLocation),
+            bank_location: T.nilable(T.any(Increase::Models::IntrafiBalance::Balance::BankLocation, Increase::Util::AnyHash)),
             fdic_certificate_number: String
           )
             .returns(T.attached_class)

@@ -11,7 +11,7 @@ module Increase
           routing_number: String,
           account_holder: Increase::Models::ExternalAccountCreateParams::AccountHolder::OrSymbol,
           funding: Increase::Models::ExternalAccountCreateParams::Funding::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::ExternalAccount)
       end
@@ -35,7 +35,7 @@ module Increase
       sig do
         params(
           external_account_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::ExternalAccount)
       end
@@ -54,7 +54,7 @@ module Increase
           description: String,
           funding: Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol,
           status: Increase::Models::ExternalAccountUpdateParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::ExternalAccount)
       end
@@ -81,7 +81,7 @@ module Increase
           limit: Integer,
           routing_number: String,
           status: Increase::Models::ExternalAccountListParams::Status,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::ExternalAccount])
       end

@@ -61,12 +61,12 @@ module Increase
 
       sig do
         params(
-          created_at: Increase::Models::EntityListParams::CreatedAt,
+          created_at: T.any(Increase::Models::EntityListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::Models::EntityListParams::Status,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          status: T.any(Increase::Models::EntityListParams::Status, Increase::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -59,11 +59,11 @@ module Increase
       sig do
         params(
           associated_object_id: String,
-          category: Increase::Models::EventListParams::Category,
-          created_at: Increase::Models::EventListParams::CreatedAt,
+          category: T.any(Increase::Models::EventListParams::Category, Increase::Util::AnyHash),
+          created_at: T.any(Increase::Models::EventListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -29,7 +29,7 @@ module Increase
             network_details: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
             physical_card_id: String,
             terminal_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
           )
             .returns(Increase::Models::Simulations::CardAuthorizationCreateResponse)
         end

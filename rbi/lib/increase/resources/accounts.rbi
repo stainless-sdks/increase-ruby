@@ -10,7 +10,7 @@ module Increase
           entity_id: String,
           informational_entity_id: String,
           program_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::Account)
       end
@@ -33,7 +33,7 @@ module Increase
       sig do
         params(
           account_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::Account)
       end
@@ -49,7 +49,7 @@ module Increase
         params(
           account_id: String,
           name: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::Account)
       end
@@ -73,7 +73,7 @@ module Increase
           limit: Integer,
           program_id: String,
           status: Increase::Models::AccountListParams::Status,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::Account])
       end
@@ -106,7 +106,7 @@ module Increase
         params(
           account_id: String,
           at_time: Time,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::BalanceLookup)
       end
@@ -123,7 +123,7 @@ module Increase
       sig do
         params(
           account_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::Account)
       end

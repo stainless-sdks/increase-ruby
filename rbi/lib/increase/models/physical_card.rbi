@@ -109,11 +109,11 @@ module Increase
         params(
           id: String,
           card_id: String,
-          cardholder: Increase::Models::PhysicalCard::Cardholder,
+          cardholder: T.any(Increase::Models::PhysicalCard::Cardholder, Increase::Util::AnyHash),
           created_at: Time,
           idempotency_key: T.nilable(String),
           physical_card_profile_id: T.nilable(String),
-          shipment: Increase::Models::PhysicalCard::Shipment,
+          shipment: T.any(Increase::Models::PhysicalCard::Shipment, Increase::Util::AnyHash),
           status: Increase::Models::PhysicalCard::Status::TaggedSymbol,
           type: Increase::Models::PhysicalCard::Type::TaggedSymbol
         )
@@ -232,10 +232,10 @@ module Increase
         # The details used to ship this physical card.
         sig do
           params(
-            address: Increase::Models::PhysicalCard::Shipment::Address,
+            address: T.any(Increase::Models::PhysicalCard::Shipment::Address, Increase::Util::AnyHash),
             method_: Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol,
             status: Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol,
-            tracking: T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking)
+            tracking: T.nilable(T.any(Increase::Models::PhysicalCard::Shipment::Tracking, Increase::Util::AnyHash))
           )
             .returns(T.attached_class)
         end

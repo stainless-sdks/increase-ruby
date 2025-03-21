@@ -100,8 +100,8 @@ module Increase
           contact_website: String,
           description: String,
           issuer_name: String,
-          text_color: Increase::Models::DigitalCardProfileCloneParams::TextColor,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          text_color: T.any(Increase::Models::DigitalCardProfileCloneParams::TextColor, Increase::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
