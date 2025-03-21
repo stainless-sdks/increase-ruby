@@ -139,8 +139,10 @@ module Increase
           DASHBOARD_TABLE_CSV =
             T.let(:dashboard_table_csv, Increase::Models::ExportListParams::Category::In::TaggedSymbol)
 
-          sig { override.returns(T::Array[Increase::Models::ExportListParams::Category::In::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::ExportListParams::Category::In::TaggedSymbol]) }
+            def values
+            end
           end
         end
       end
@@ -222,8 +224,10 @@ module Increase
           # The export failed to generate. Increase will reach out to you to resolve the issue.
           FAILED = T.let(:failed, Increase::Models::ExportListParams::Status::In::TaggedSymbol)
 
-          sig { override.returns(T::Array[Increase::Models::ExportListParams::Status::In::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::ExportListParams::Status::In::TaggedSymbol]) }
+            def values
+            end
           end
         end
       end

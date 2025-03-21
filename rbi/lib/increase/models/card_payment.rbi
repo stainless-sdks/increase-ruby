@@ -504,11 +504,13 @@ module Increase
                 Increase::Models::CardPayment::Element::CardAuthentication::Category::TaggedSymbol
               )
 
-            sig do
-              override
-                .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Category::TaggedSymbol])
-            end
-            def self.values
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Category::TaggedSymbol])
+              end
+              def values
+              end
             end
           end
 
@@ -637,13 +639,15 @@ module Increase
                     Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome::TaggedSymbol]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome::TaggedSymbol]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
             end
@@ -683,13 +687,15 @@ module Increase
                   Increase::Models::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod::TaggedSymbol
                 )
 
-              sig do
-                override
-                  .returns(
-                    T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod::TaggedSymbol]
-                  )
-              end
-              def self.values
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod::TaggedSymbol]
+                    )
+                end
+                def values
+                end
               end
             end
           end
@@ -742,11 +748,13 @@ module Increase
                 Increase::Models::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol
               )
 
-            sig do
-              override
-                .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol])
-            end
-            def self.values
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol])
+              end
+              def values
+              end
             end
           end
 
@@ -774,11 +782,13 @@ module Increase
                 Increase::Models::CardPayment::Element::CardAuthentication::DeviceChannel::TaggedSymbol
               )
 
-            sig do
-              override
-                .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthentication::DeviceChannel::TaggedSymbol])
-            end
-            def self.values
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthentication::DeviceChannel::TaggedSymbol])
+              end
+              def values
+              end
             end
           end
 
@@ -844,11 +854,13 @@ module Increase
                 Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
               )
 
-            sig do
-              override
-                .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol])
-            end
-            def self.values
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol])
+              end
+              def values
+              end
             end
           end
 
@@ -868,8 +880,10 @@ module Increase
                 Increase::Models::CardPayment::Element::CardAuthentication::Type::TaggedSymbol
               )
 
-            sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Type::TaggedSymbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Type::TaggedSymbol]) }
+              def values
+              end
             end
           end
         end
@@ -1154,11 +1168,13 @@ module Increase
             NETWORK =
               T.let(:network, Increase::Models::CardPayment::Element::CardAuthorization::Actioner::TaggedSymbol)
 
-            sig do
-              override
-                .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthorization::Actioner::TaggedSymbol])
-            end
-            def self.values
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthorization::Actioner::TaggedSymbol])
+              end
+              def values
+              end
             end
           end
 
@@ -1190,11 +1206,13 @@ module Increase
             # US Dollar (USD)
             USD = T.let(:USD, Increase::Models::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol)
 
-            sig do
-              override
-                .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol])
-            end
-            def self.values
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol])
+              end
+              def values
+              end
             end
           end
 
@@ -1216,11 +1234,13 @@ module Increase
             REFUND =
               T.let(:refund, Increase::Models::CardPayment::Element::CardAuthorization::Direction::TaggedSymbol)
 
-            sig do
-              override
-                .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthorization::Direction::TaggedSymbol])
-            end
-            def self.values
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthorization::Direction::TaggedSymbol])
+              end
+              def values
+              end
             end
           end
 
@@ -1295,13 +1315,15 @@ module Increase
                   Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Category::TaggedSymbol
                 )
 
-              sig do
-                override
-                  .returns(
-                    T::Array[Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Category::TaggedSymbol]
-                  )
-              end
-              def self.values
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Category::TaggedSymbol]
+                    )
+                end
+                def values
+                end
               end
             end
 
@@ -1451,15 +1473,17 @@ module Increase
                     Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
 
@@ -1550,15 +1574,17 @@ module Increase
                     Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
 
@@ -1628,15 +1654,17 @@ module Increase
                     Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
             end
@@ -1737,13 +1765,15 @@ module Increase
                 Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol
               )
 
-            sig do
-              override
-                .returns(
-                  T::Array[Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol]
-                )
-            end
-            def self.values
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol]
+                  )
+              end
+              def values
+              end
             end
           end
 
@@ -1760,8 +1790,10 @@ module Increase
             CARD_AUTHORIZATION =
               T.let(:card_authorization, Increase::Models::CardPayment::Element::CardAuthorization::Type::TaggedSymbol)
 
-            sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardAuthorization::Type::TaggedSymbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardAuthorization::Type::TaggedSymbol]) }
+              def values
+              end
             end
           end
 
@@ -1895,15 +1927,17 @@ module Increase
                     Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
             end
@@ -2022,15 +2056,17 @@ module Increase
                     Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
             end
@@ -2133,13 +2169,15 @@ module Increase
             USD =
               T.let(:USD, Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol)
 
-            sig do
-              override
-                .returns(
-                  T::Array[Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol]
-                )
-            end
-            def self.values
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol]
+                  )
+              end
+              def values
+              end
             end
           end
 
@@ -2156,13 +2194,15 @@ module Increase
             VISA =
               T.let(:visa, Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Network::TaggedSymbol)
 
-            sig do
-              override
-                .returns(
-                  T::Array[Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Network::TaggedSymbol]
-                )
-            end
-            def self.values
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Network::TaggedSymbol]
+                  )
+              end
+              def values
+              end
             end
           end
 
@@ -2182,11 +2222,13 @@ module Increase
                 Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Type::TaggedSymbol
               )
 
-            sig do
-              override
-                .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Type::TaggedSymbol])
-            end
-            def self.values
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Type::TaggedSymbol])
+              end
+              def values
+              end
             end
           end
         end
@@ -2464,8 +2506,10 @@ module Increase
             # This object was actioned by the network, through stand-in processing.
             NETWORK = T.let(:network, Increase::Models::CardPayment::Element::CardDecline::Actioner::TaggedSymbol)
 
-            sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardDecline::Actioner::TaggedSymbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardDecline::Actioner::TaggedSymbol]) }
+              def values
+              end
             end
           end
 
@@ -2497,8 +2541,10 @@ module Increase
             # US Dollar (USD)
             USD = T.let(:USD, Increase::Models::CardPayment::Element::CardDecline::Currency::TaggedSymbol)
 
-            sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardDecline::Currency::TaggedSymbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardDecline::Currency::TaggedSymbol]) }
+              def values
+              end
             end
           end
 
@@ -2519,8 +2565,10 @@ module Increase
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND = T.let(:refund, Increase::Models::CardPayment::Element::CardDecline::Direction::TaggedSymbol)
 
-            sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardDecline::Direction::TaggedSymbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardDecline::Direction::TaggedSymbol]) }
+              def values
+              end
             end
           end
 
@@ -2581,13 +2629,15 @@ module Increase
               VISA =
                 T.let(:visa, Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category::TaggedSymbol)
 
-              sig do
-                override
-                  .returns(
-                    T::Array[Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category::TaggedSymbol]
-                  )
-              end
-              def self.values
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category::TaggedSymbol]
+                    )
+                end
+                def values
+                end
               end
             end
 
@@ -2737,15 +2787,17 @@ module Increase
                     Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
 
@@ -2836,15 +2888,17 @@ module Increase
                     Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
 
@@ -2914,15 +2968,17 @@ module Increase
                     Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
             end
@@ -3014,11 +3070,13 @@ module Increase
             REFUND =
               T.let(:refund, Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol)
 
-            sig do
-              override
-                .returns(T::Array[Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol])
-            end
-            def self.values
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol])
+              end
+              def values
+              end
             end
           end
 
@@ -3071,13 +3129,15 @@ module Increase
             OTHER =
               T.let(:other, Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol)
 
-            sig do
-              override
-                .returns(
-                  T::Array[Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol]
-                )
-            end
-            def self.values
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol]
+                  )
+              end
+              def values
+              end
             end
           end
 
@@ -3170,8 +3230,10 @@ module Increase
             SUSPECTED_FRAUD =
               T.let(:suspected_fraud, Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol)
 
-            sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol]) }
+              def values
+              end
             end
           end
 
@@ -3305,15 +3367,17 @@ module Increase
                     Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
             end
@@ -3432,13 +3496,15 @@ module Increase
                     Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
             end
@@ -3571,11 +3637,13 @@ module Increase
             # US Dollar (USD)
             USD = T.let(:USD, Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol)
 
-            sig do
-              override
-                .returns(T::Array[Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol])
-            end
-            def self.values
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol])
+              end
+              def values
+              end
             end
           end
 
@@ -3591,11 +3659,13 @@ module Increase
             # Visa
             VISA = T.let(:visa, Increase::Models::CardPayment::Element::CardFuelConfirmation::Network::TaggedSymbol)
 
-            sig do
-              override
-                .returns(T::Array[Increase::Models::CardPayment::Element::CardFuelConfirmation::Network::TaggedSymbol])
-            end
-            def self.values
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::CardPayment::Element::CardFuelConfirmation::Network::TaggedSymbol])
+              end
+              def values
+              end
             end
           end
 
@@ -3658,11 +3728,13 @@ module Increase
                 Increase::Models::CardPayment::Element::CardFuelConfirmation::Type::TaggedSymbol
               )
 
-            sig do
-              override
-                .returns(T::Array[Increase::Models::CardPayment::Element::CardFuelConfirmation::Type::TaggedSymbol])
-            end
-            def self.values
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::CardPayment::Element::CardFuelConfirmation::Type::TaggedSymbol])
+              end
+              def values
+              end
             end
           end
         end
@@ -3809,8 +3881,10 @@ module Increase
             # This object was actioned by the network, through stand-in processing.
             NETWORK = T.let(:network, Increase::Models::CardPayment::Element::CardIncrement::Actioner::TaggedSymbol)
 
-            sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardIncrement::Actioner::TaggedSymbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardIncrement::Actioner::TaggedSymbol]) }
+              def values
+              end
             end
           end
 
@@ -3842,8 +3916,10 @@ module Increase
             # US Dollar (USD)
             USD = T.let(:USD, Increase::Models::CardPayment::Element::CardIncrement::Currency::TaggedSymbol)
 
-            sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardIncrement::Currency::TaggedSymbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardIncrement::Currency::TaggedSymbol]) }
+              def values
+              end
             end
           end
 
@@ -3859,8 +3935,10 @@ module Increase
             # Visa
             VISA = T.let(:visa, Increase::Models::CardPayment::Element::CardIncrement::Network::TaggedSymbol)
 
-            sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardIncrement::Network::TaggedSymbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardIncrement::Network::TaggedSymbol]) }
+              def values
+              end
             end
           end
 
@@ -3920,8 +3998,10 @@ module Increase
             CARD_INCREMENT =
               T.let(:card_increment, Increase::Models::CardPayment::Element::CardIncrement::Type::TaggedSymbol)
 
-            sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardIncrement::Type::TaggedSymbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardIncrement::Type::TaggedSymbol]) }
+              def values
+              end
             end
           end
         end
@@ -4189,11 +4269,13 @@ module Increase
               # US Dollar (USD)
               USD = T.let(:USD, Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol)
 
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol])
-              end
-              def self.values
+              class << self
+                sig do
+                  override
+                    .returns(T::Array[Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol])
+                end
+                def values
+                end
               end
             end
           end
@@ -4226,8 +4308,10 @@ module Increase
             # US Dollar (USD)
             USD = T.let(:USD, Increase::Models::CardPayment::Element::CardRefund::Currency::TaggedSymbol)
 
-            sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardRefund::Currency::TaggedSymbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardRefund::Currency::TaggedSymbol]) }
+              def values
+              end
             end
           end
 
@@ -4306,11 +4390,13 @@ module Increase
               USD =
                 T.let(:USD, Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol)
 
-              sig do
-                override
-                  .returns(T::Array[Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol])
-              end
-              def self.values
+              class << self
+                sig do
+                  override
+                    .returns(T::Array[Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol])
+                end
+                def values
+                end
               end
             end
           end
@@ -4733,13 +4819,15 @@ module Increase
                     Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
 
@@ -4774,15 +4862,17 @@ module Increase
                     Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
             end
@@ -5010,13 +5100,15 @@ module Increase
                     Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
 
@@ -5051,15 +5143,17 @@ module Increase
                     Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
             end
@@ -5115,15 +5209,17 @@ module Increase
                   Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
                 )
 
-              sig do
-                override
-                  .returns(
-                    T::Array[
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                    ]
-                  )
-              end
-              def self.values
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
+                      ]
+                    )
+                end
+                def values
+                end
               end
             end
 
@@ -5412,15 +5508,17 @@ module Increase
                       Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
                     )
 
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def self.values
+                  class << self
+                    sig do
+                      override
+                        .returns(
+                          T::Array[
+                          Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
+                          ]
+                        )
+                    end
+                    def values
+                    end
                   end
                 end
 
@@ -5649,15 +5747,17 @@ module Increase
                         Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
-                    sig do
-                      override
-                        .returns(
-                          T::Array[
-                          Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                          ]
-                        )
-                    end
-                    def self.values
+                    class << self
+                      sig do
+                        override
+                          .returns(
+                            T::Array[
+                            Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                            ]
+                          )
+                      end
+                      def values
+                      end
                     end
                   end
                 end
@@ -5721,15 +5821,17 @@ module Increase
                     Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
 
@@ -5763,15 +5865,17 @@ module Increase
                     Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
 
@@ -5812,15 +5916,17 @@ module Increase
                     Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
 
@@ -5933,15 +6039,17 @@ module Increase
                       Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
                     )
 
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def self.values
+                  class << self
+                    sig do
+                      override
+                        .returns(
+                          T::Array[
+                          Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
+                          ]
+                        )
+                    end
+                    def values
+                    end
                   end
                 end
               end
@@ -5959,8 +6067,10 @@ module Increase
 
             CARD_REFUND = T.let(:card_refund, Increase::Models::CardPayment::Element::CardRefund::Type::TaggedSymbol)
 
-            sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardRefund::Type::TaggedSymbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardRefund::Type::TaggedSymbol]) }
+              def values
+              end
             end
           end
         end
@@ -6158,8 +6268,10 @@ module Increase
             # US Dollar (USD)
             USD = T.let(:USD, Increase::Models::CardPayment::Element::CardReversal::Currency::TaggedSymbol)
 
-            sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardReversal::Currency::TaggedSymbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardReversal::Currency::TaggedSymbol]) }
+              def values
+              end
             end
           end
 
@@ -6175,8 +6287,10 @@ module Increase
             # Visa
             VISA = T.let(:visa, Increase::Models::CardPayment::Element::CardReversal::Network::TaggedSymbol)
 
-            sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardReversal::Network::TaggedSymbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardReversal::Network::TaggedSymbol]) }
+              def values
+              end
             end
           end
 
@@ -6260,11 +6374,13 @@ module Increase
                 Increase::Models::CardPayment::Element::CardReversal::ReversalReason::TaggedSymbol
               )
 
-            sig do
-              override
-                .returns(T::Array[Increase::Models::CardPayment::Element::CardReversal::ReversalReason::TaggedSymbol])
-            end
-            def self.values
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::CardPayment::Element::CardReversal::ReversalReason::TaggedSymbol])
+              end
+              def values
+              end
             end
           end
 
@@ -6280,8 +6396,10 @@ module Increase
             CARD_REVERSAL =
               T.let(:card_reversal, Increase::Models::CardPayment::Element::CardReversal::Type::TaggedSymbol)
 
-            sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardReversal::Type::TaggedSymbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardReversal::Type::TaggedSymbol]) }
+              def values
+              end
             end
           end
         end
@@ -6578,13 +6696,15 @@ module Increase
               USD =
                 T.let(:USD, Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol)
 
-              sig do
-                override
-                  .returns(
-                    T::Array[Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol]
-                  )
-              end
-              def self.values
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol]
+                    )
+                end
+                def values
+                end
               end
             end
           end
@@ -6617,8 +6737,10 @@ module Increase
             # US Dollar (USD)
             USD = T.let(:USD, Increase::Models::CardPayment::Element::CardSettlement::Currency::TaggedSymbol)
 
-            sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardSettlement::Currency::TaggedSymbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardSettlement::Currency::TaggedSymbol]) }
+              def values
+              end
             end
           end
 
@@ -6697,13 +6819,15 @@ module Increase
               USD =
                 T.let(:USD, Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol)
 
-              sig do
-                override
-                  .returns(
-                    T::Array[Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol]
-                  )
-              end
-              def self.values
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol]
+                    )
+                end
+                def values
+                end
               end
             end
           end
@@ -7126,15 +7250,17 @@ module Increase
                     Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
 
@@ -7169,15 +7295,17 @@ module Increase
                     Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
             end
@@ -7407,15 +7535,17 @@ module Increase
                     Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
 
@@ -7450,15 +7580,17 @@ module Increase
                     Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
             end
@@ -7514,15 +7646,17 @@ module Increase
                   Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
                 )
 
-              sig do
-                override
-                  .returns(
-                    T::Array[
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
-                    ]
-                  )
-              end
-              def self.values
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
+                      ]
+                    )
+                end
+                def values
+                end
               end
             end
 
@@ -7819,15 +7953,17 @@ module Increase
                       Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
                     )
 
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def self.values
+                  class << self
+                    sig do
+                      override
+                        .returns(
+                          T::Array[
+                          Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
+                          ]
+                        )
+                    end
+                    def values
+                    end
                   end
                 end
 
@@ -8056,15 +8192,17 @@ module Increase
                         Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
-                    sig do
-                      override
-                        .returns(
-                          T::Array[
-                          Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
-                          ]
-                        )
-                    end
-                    def self.values
+                    class << self
+                      sig do
+                        override
+                          .returns(
+                            T::Array[
+                            Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                            ]
+                          )
+                      end
+                      def values
+                      end
                     end
                   end
                 end
@@ -8128,15 +8266,17 @@ module Increase
                     Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
 
@@ -8170,15 +8310,17 @@ module Increase
                     Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
 
@@ -8219,15 +8361,17 @@ module Increase
                     Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
 
@@ -8340,15 +8484,17 @@ module Increase
                       Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
                     )
 
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def self.values
+                  class << self
+                    sig do
+                      override
+                        .returns(
+                          T::Array[
+                          Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
+                          ]
+                        )
+                    end
+                    def values
+                    end
                   end
                 end
               end
@@ -8368,8 +8514,10 @@ module Increase
             CARD_SETTLEMENT =
               T.let(:card_settlement, Increase::Models::CardPayment::Element::CardSettlement::Type::TaggedSymbol)
 
-            sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardSettlement::Type::TaggedSymbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardSettlement::Type::TaggedSymbol]) }
+              def values
+              end
             end
           end
         end
@@ -8593,8 +8741,10 @@ module Increase
             # This object was actioned by the network, through stand-in processing.
             NETWORK = T.let(:network, Increase::Models::CardPayment::Element::CardValidation::Actioner::TaggedSymbol)
 
-            sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardValidation::Actioner::TaggedSymbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardValidation::Actioner::TaggedSymbol]) }
+              def values
+              end
             end
           end
 
@@ -8626,8 +8776,10 @@ module Increase
             # US Dollar (USD)
             USD = T.let(:USD, Increase::Models::CardPayment::Element::CardValidation::Currency::TaggedSymbol)
 
-            sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardValidation::Currency::TaggedSymbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardValidation::Currency::TaggedSymbol]) }
+              def values
+              end
             end
           end
 
@@ -8702,13 +8854,15 @@ module Increase
                   Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Category::TaggedSymbol
                 )
 
-              sig do
-                override
-                  .returns(
-                    T::Array[Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Category::TaggedSymbol]
-                  )
-              end
-              def self.values
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Category::TaggedSymbol]
+                    )
+                end
+                def values
+                end
               end
             end
 
@@ -8858,15 +9012,17 @@ module Increase
                     Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
 
@@ -8957,15 +9113,17 @@ module Increase
                     Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
 
@@ -9035,15 +9193,17 @@ module Increase
                     Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
             end
@@ -9105,8 +9265,10 @@ module Increase
             CARD_VALIDATION =
               T.let(:card_validation, Increase::Models::CardPayment::Element::CardValidation::Type::TaggedSymbol)
 
-            sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardValidation::Type::TaggedSymbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardValidation::Type::TaggedSymbol]) }
+              def values
+              end
             end
           end
 
@@ -9240,15 +9402,17 @@ module Increase
                     Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
             end
@@ -9367,15 +9531,17 @@ module Increase
                     Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
                   )
 
-                sig do
-                  override
-                    .returns(
-                      T::Array[
-                      Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
-                      ]
-                    )
-                end
-                def self.values
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def values
+                  end
                 end
               end
             end
@@ -9427,8 +9593,10 @@ module Increase
           # Unknown card payment element.
           OTHER = T.let(:other, Increase::Models::CardPayment::Element::Category::TaggedSymbol)
 
-          sig { override.returns(T::Array[Increase::Models::CardPayment::Element::Category::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::CardPayment::Element::Category::TaggedSymbol]) }
+            def values
+            end
           end
         end
       end
@@ -9499,8 +9667,10 @@ module Increase
 
         CARD_PAYMENT = T.let(:card_payment, Increase::Models::CardPayment::Type::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::CardPayment::Type::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::CardPayment::Type::TaggedSymbol]) }
+          def values
+          end
         end
       end
     end

@@ -121,8 +121,10 @@ module Increase
             Increase::Models::FileCreateParams::Purpose::TaggedSymbol
           )
 
-        sig { override.returns(T::Array[Increase::Models::FileCreateParams::Purpose::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::FileCreateParams::Purpose::TaggedSymbol]) }
+          def values
+          end
         end
       end
     end

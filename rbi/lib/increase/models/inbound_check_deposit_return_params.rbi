@@ -60,8 +60,10 @@ module Increase
         ENDORSEMENT_IRREGULAR =
           T.let(:endorsement_irregular, Increase::Models::InboundCheckDepositReturnParams::Reason::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::InboundCheckDepositReturnParams::Reason::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::InboundCheckDepositReturnParams::Reason::TaggedSymbol]) }
+          def values
+          end
         end
       end
     end

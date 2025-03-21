@@ -105,9 +105,11 @@ module Increase
 
         finalize!
 
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The status of the Export.
@@ -125,9 +127,11 @@ module Increase
 
         finalize!
 
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -139,9 +143,11 @@ module Increase
 
         finalize!
 
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

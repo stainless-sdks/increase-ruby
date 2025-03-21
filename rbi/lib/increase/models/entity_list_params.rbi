@@ -150,8 +150,10 @@ module Increase
           # The entity is temporarily disabled and cannot be used for financial activity.
           DISABLED = T.let(:disabled, Increase::Models::EntityListParams::Status::In::TaggedSymbol)
 
-          sig { override.returns(T::Array[Increase::Models::EntityListParams::Status::In::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::EntityListParams::Status::In::TaggedSymbol]) }
+            def values
+            end
           end
         end
       end

@@ -103,8 +103,10 @@ module Increase
         REQUIRES_ATTENTION =
           T.let(:requires_attention, Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -119,8 +121,10 @@ module Increase
         INTRAFI_ACCOUNT_ENROLLMENT =
           T.let(:intrafi_account_enrollment, Increase::Models::IntrafiAccountEnrollment::Type::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::IntrafiAccountEnrollment::Type::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::IntrafiAccountEnrollment::Type::TaggedSymbol]) }
+          def values
+          end
         end
       end
     end

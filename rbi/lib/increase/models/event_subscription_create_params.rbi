@@ -693,11 +693,13 @@ module Increase
             Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol
           )
 
-        sig do
-          override
-            .returns(T::Array[Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol])
-        end
-        def self.values
+        class << self
+          sig do
+            override
+              .returns(T::Array[Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol])
+          end
+          def values
+          end
         end
       end
     end
