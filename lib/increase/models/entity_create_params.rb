@@ -153,9 +153,11 @@ module Increase
 
         finalize!
 
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Corporation < Increase::BaseModel
@@ -525,9 +527,11 @@ module Increase
 
                 finalize!
 
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               class DriversLicense < Increase::BaseModel
@@ -674,9 +678,11 @@ module Increase
 
             finalize!
 
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
       end
@@ -814,9 +820,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -1034,9 +1042,11 @@ module Increase
 
               finalize!
 
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
 
             class DriversLicense < Increase::BaseModel
@@ -1363,9 +1373,11 @@ module Increase
 
             finalize!
 
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           class DriversLicense < Increase::BaseModel
@@ -1552,9 +1564,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -1722,9 +1736,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class Trustee < Increase::BaseModel
@@ -1762,9 +1778,11 @@ module Increase
 
             finalize!
 
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           class Individual < Increase::BaseModel
@@ -1958,9 +1976,11 @@ module Increase
 
                 finalize!
 
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               class DriversLicense < Increase::BaseModel
@@ -2284,9 +2304,11 @@ module Increase
 
               finalize!
 
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
 
             class DriversLicense < Increase::BaseModel

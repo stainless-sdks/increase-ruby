@@ -110,8 +110,10 @@ module Increase
         # Grasshopper Bank
         GRASSHOPPER_BANK = T.let(:grasshopper_bank, Increase::Models::Program::Bank::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::Program::Bank::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::Program::Bank::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -125,8 +127,10 @@ module Increase
 
         PROGRAM = T.let(:program, Increase::Models::Program::Type::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::Program::Type::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::Program::Type::TaggedSymbol]) }
+          def values
+          end
         end
       end
     end

@@ -240,15 +240,17 @@ module Increase
                 Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
               )
 
-            sig do
-              override
-                .returns(
-                  T::Array[
-                  Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
-                  ]
-                )
-            end
-            def self.values
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[
+                    Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
+                    ]
+                  )
+              end
+              def values
+              end
             end
           end
         end

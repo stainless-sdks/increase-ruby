@@ -133,9 +133,11 @@ module Increase
 
         finalize!
 
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The type of the route this Transaction came through.
@@ -153,9 +155,11 @@ module Increase
 
         finalize!
 
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Source < Increase::BaseModel
@@ -624,9 +628,11 @@ module Increase
 
             finalize!
 
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -992,9 +998,11 @@ module Increase
 
             finalize!
 
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -1304,9 +1312,11 @@ module Increase
 
               finalize!
 
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
 
@@ -1335,9 +1345,11 @@ module Increase
 
             finalize!
 
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           class Interchange < Increase::BaseModel
@@ -1398,9 +1410,11 @@ module Increase
 
               finalize!
 
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
 
@@ -1718,9 +1732,11 @@ module Increase
 
                 finalize!
 
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               # An indicator that the cardholder is being billed for a reserved vehicle that was
@@ -1736,9 +1752,11 @@ module Increase
 
                 finalize!
 
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
 
@@ -1921,9 +1939,11 @@ module Increase
 
                 finalize!
 
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               # Indicator that the cardholder is being billed for a reserved room that was not
@@ -1939,9 +1959,11 @@ module Increase
 
                 finalize!
 
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
 
@@ -1966,9 +1988,11 @@ module Increase
 
               finalize!
 
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
 
             class Travel < Increase::BaseModel
@@ -2168,9 +2192,11 @@ module Increase
 
                   finalize!
 
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def self.values; end
+                  class << self
+                    # @!parse
+                    #   # @return [Array<Symbol>]
+                    #   def values; end
+                  end
                 end
 
                 class Service < Increase::BaseModel
@@ -2274,9 +2300,11 @@ module Increase
 
                     finalize!
 
-                    # @!parse
-                    #   # @return [Array<Symbol>]
-                    #   def self.values; end
+                    class << self
+                      # @!parse
+                      #   # @return [Array<Symbol>]
+                      #   def values; end
+                    end
                   end
                 end
               end
@@ -2307,9 +2335,11 @@ module Increase
 
                 finalize!
 
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               # Indicates whether this ticket is non-refundable.
@@ -2324,9 +2354,11 @@ module Increase
 
                 finalize!
 
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               # Indicates why a ticket was changed.
@@ -2344,9 +2376,11 @@ module Increase
 
                 finalize!
 
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               class TripLeg < Increase::BaseModel
@@ -2425,9 +2459,11 @@ module Increase
 
                   finalize!
 
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def self.values; end
+                  class << self
+                    # @!parse
+                    #   # @return [Array<Symbol>]
+                    #   def values; end
+                  end
                 end
               end
             end
@@ -2442,9 +2478,11 @@ module Increase
 
             finalize!
 
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -2521,9 +2559,11 @@ module Increase
 
             finalize!
 
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -2775,9 +2815,11 @@ module Increase
 
               finalize!
 
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
 
@@ -2806,9 +2848,11 @@ module Increase
 
             finalize!
 
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           class Interchange < Increase::BaseModel
@@ -2870,9 +2914,11 @@ module Increase
 
               finalize!
 
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
 
@@ -3190,9 +3236,11 @@ module Increase
 
                 finalize!
 
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               # An indicator that the cardholder is being billed for a reserved vehicle that was
@@ -3208,9 +3256,11 @@ module Increase
 
                 finalize!
 
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
 
@@ -3393,9 +3443,11 @@ module Increase
 
                 finalize!
 
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               # Indicator that the cardholder is being billed for a reserved room that was not
@@ -3411,9 +3463,11 @@ module Increase
 
                 finalize!
 
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
 
@@ -3438,9 +3492,11 @@ module Increase
 
               finalize!
 
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
 
             class Travel < Increase::BaseModel
@@ -3640,9 +3696,11 @@ module Increase
 
                   finalize!
 
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def self.values; end
+                  class << self
+                    # @!parse
+                    #   # @return [Array<Symbol>]
+                    #   def values; end
+                  end
                 end
 
                 class Service < Increase::BaseModel
@@ -3746,9 +3804,11 @@ module Increase
 
                     finalize!
 
-                    # @!parse
-                    #   # @return [Array<Symbol>]
-                    #   def self.values; end
+                    class << self
+                      # @!parse
+                      #   # @return [Array<Symbol>]
+                      #   def values; end
+                    end
                   end
                 end
               end
@@ -3779,9 +3839,11 @@ module Increase
 
                 finalize!
 
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               # Indicates whether this ticket is non-refundable.
@@ -3796,9 +3858,11 @@ module Increase
 
                 finalize!
 
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               # Indicates why a ticket was changed.
@@ -3816,9 +3880,11 @@ module Increase
 
                 finalize!
 
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               class TripLeg < Increase::BaseModel
@@ -3897,9 +3963,11 @@ module Increase
 
                   finalize!
 
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def self.values; end
+                  class << self
+                    # @!parse
+                    #   # @return [Array<Symbol>]
+                    #   def values; end
+                  end
                 end
               end
             end
@@ -3914,9 +3982,11 @@ module Increase
 
             finalize!
 
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -3994,9 +4064,11 @@ module Increase
 
             finalize!
 
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -4094,9 +4166,11 @@ module Increase
 
           finalize!
 
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         class CheckDepositAcceptance < Increase::BaseModel
@@ -4201,9 +4275,11 @@ module Increase
 
             finalize!
 
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -4293,9 +4369,11 @@ module Increase
 
             finalize!
 
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           # Why this check was returned by the bank holding the account it was drawn
@@ -4383,9 +4461,11 @@ module Increase
 
             finalize!
 
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -4484,9 +4564,11 @@ module Increase
 
             finalize!
 
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -4556,9 +4638,11 @@ module Increase
 
             finalize!
 
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -4707,9 +4791,11 @@ module Increase
 
               finalize!
 
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
 
             class Freeform < Increase::BaseModel
@@ -4819,9 +4905,11 @@ module Increase
 
             finalize!
 
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -4970,9 +5058,11 @@ module Increase
 
             finalize!
 
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -5102,9 +5192,11 @@ module Increase
 
             finalize!
 
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           # Why the transfer was declined.
@@ -5131,9 +5223,11 @@ module Increase
 
             finalize!
 
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -5563,9 +5657,11 @@ module Increase
 
             finalize!
 
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -5629,9 +5725,11 @@ module Increase
 
             finalize!
 
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           # An Internal Source is a transaction between you and Increase. This describes the
@@ -5686,9 +5784,11 @@ module Increase
 
             finalize!
 
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -5826,9 +5926,11 @@ module Increase
 
         finalize!
 
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

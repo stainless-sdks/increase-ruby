@@ -324,8 +324,10 @@ module Increase
               Increase::Models::ACHTransferCreateParams::Addenda::Category::TaggedSymbol
             )
 
-          sig { override.returns(T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Category::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Category::TaggedSymbol]) }
+            def values
+            end
           end
         end
 
@@ -444,11 +446,13 @@ module Increase
         UNKNOWN =
           T.let(:unknown, Increase::Models::ACHTransferCreateParams::DestinationAccountHolder::TaggedSymbol)
 
-        sig do
-          override
-            .returns(T::Array[Increase::Models::ACHTransferCreateParams::DestinationAccountHolder::TaggedSymbol])
-        end
-        def self.values
+        class << self
+          sig do
+            override
+              .returns(T::Array[Increase::Models::ACHTransferCreateParams::DestinationAccountHolder::TaggedSymbol])
+          end
+          def values
+          end
         end
       end
 
@@ -466,8 +470,10 @@ module Increase
         # A savings account.
         SAVINGS = T.let(:savings, Increase::Models::ACHTransferCreateParams::Funding::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::ACHTransferCreateParams::Funding::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ACHTransferCreateParams::Funding::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -550,13 +556,15 @@ module Increase
               Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol
             )
 
-          sig do
-            override
-              .returns(
-                T::Array[Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol]
-              )
-          end
-          def self.values
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol]
+                )
+            end
+            def values
+            end
           end
         end
       end
@@ -598,10 +606,12 @@ module Increase
             Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::TaggedSymbol
           )
 
-        sig do
-          override.returns(T::Array[Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::TaggedSymbol])
-        end
-        def self.values
+        class << self
+          sig do
+            override.returns(T::Array[Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::TaggedSymbol])
+          end
+          def values
+          end
         end
       end
 
@@ -622,8 +632,10 @@ module Increase
         ASYNCHRONOUS =
           T.let(:asynchronous, Increase::Models::ACHTransferCreateParams::TransactionTiming::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::ACHTransferCreateParams::TransactionTiming::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ACHTransferCreateParams::TransactionTiming::TaggedSymbol]) }
+          def values
+          end
         end
       end
     end
