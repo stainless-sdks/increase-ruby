@@ -397,15 +397,17 @@ module Increase
                   Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                 )
 
-              sig do
-                override
-                  .returns(
-                    T::Array[
-                    Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
-                    ]
-                  )
-              end
-              def self.values
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
+                      ]
+                    )
+                end
+                def values
+                end
               end
             end
 
@@ -559,13 +561,15 @@ module Increase
           CONTROL =
             T.let(:control, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::TaggedSymbol)
 
-          sig do
-            override
-              .returns(
-                T::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::TaggedSymbol]
-              )
-          end
-          def self.values
+          class << self
+            sig do
+              override
+                .returns(
+                  T::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::TaggedSymbol]
+                )
+            end
+            def values
+            end
           end
         end
       end

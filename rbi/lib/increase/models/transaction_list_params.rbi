@@ -245,8 +245,10 @@ module Increase
           # The Transaction was made for an undocumented or deprecated reason.
           OTHER = T.let(:other, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
 
-          sig { override.returns(T::Array[Increase::Models::TransactionListParams::Category::In::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::TransactionListParams::Category::In::TaggedSymbol]) }
+            def values
+            end
           end
         end
       end

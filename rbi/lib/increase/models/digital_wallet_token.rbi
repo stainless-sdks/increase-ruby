@@ -87,8 +87,10 @@ module Increase
         # The digital wallet token has been permanently canceled.
         DEACTIVATED = T.let(:deactivated, Increase::Models::DigitalWalletToken::Status::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::DigitalWalletToken::Status::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::DigitalWalletToken::Status::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -112,8 +114,10 @@ module Increase
         # Unknown
         UNKNOWN = T.let(:unknown, Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -128,8 +132,10 @@ module Increase
         DIGITAL_WALLET_TOKEN =
           T.let(:digital_wallet_token, Increase::Models::DigitalWalletToken::Type::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::DigitalWalletToken::Type::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::DigitalWalletToken::Type::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -177,8 +183,10 @@ module Increase
           # The digital wallet token has been permanently canceled.
           DEACTIVATED = T.let(:deactivated, Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol)
 
-          sig { override.returns(T::Array[Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol]) }
+            def values
+            end
           end
         end
       end

@@ -450,8 +450,10 @@ module Increase
           # Unknown addenda type.
           OTHER = T.let(:other, Increase::Models::ACHTransfer::Addenda::Category::TaggedSymbol)
 
-          sig { override.returns(T::Array[Increase::Models::ACHTransfer::Addenda::Category::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::ACHTransfer::Addenda::Category::TaggedSymbol]) }
+            def values
+            end
           end
         end
 
@@ -683,8 +685,10 @@ module Increase
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER = T.let(:user, Increase::Models::ACHTransfer::CreatedBy::Category::TaggedSymbol)
 
-          sig { override.returns(T::Array[Increase::Models::ACHTransfer::CreatedBy::Category::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::ACHTransfer::CreatedBy::Category::TaggedSymbol]) }
+            def values
+            end
           end
         end
 
@@ -745,8 +749,10 @@ module Increase
         # US Dollar (USD)
         USD = T.let(:USD, Increase::Models::ACHTransfer::Currency::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::ACHTransfer::Currency::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ACHTransfer::Currency::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -768,8 +774,10 @@ module Increase
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN = T.let(:unknown, Increase::Models::ACHTransfer::DestinationAccountHolder::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::ACHTransfer::DestinationAccountHolder::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ACHTransfer::DestinationAccountHolder::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -786,8 +794,10 @@ module Increase
         # A savings account.
         SAVINGS = T.let(:savings, Increase::Models::ACHTransfer::Funding::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::ACHTransfer::Funding::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ACHTransfer::Funding::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -915,8 +925,10 @@ module Increase
           # US Dollar (USD)
           USD = T.let(:USD, Increase::Models::ACHTransfer::InboundFundsHold::Currency::TaggedSymbol)
 
-          sig { override.returns(T::Array[Increase::Models::ACHTransfer::InboundFundsHold::Currency::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::ACHTransfer::InboundFundsHold::Currency::TaggedSymbol]) }
+            def values
+            end
           end
         end
 
@@ -934,8 +946,10 @@ module Increase
           # Funds have been released.
           COMPLETE = T.let(:complete, Increase::Models::ACHTransfer::InboundFundsHold::Status::TaggedSymbol)
 
-          sig { override.returns(T::Array[Increase::Models::ACHTransfer::InboundFundsHold::Status::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::ACHTransfer::InboundFundsHold::Status::TaggedSymbol]) }
+            def values
+            end
           end
         end
 
@@ -951,8 +965,10 @@ module Increase
           INBOUND_FUNDS_HOLD =
             T.let(:inbound_funds_hold, Increase::Models::ACHTransfer::InboundFundsHold::Type::TaggedSymbol)
 
-          sig { override.returns(T::Array[Increase::Models::ACHTransfer::InboundFundsHold::Type::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::ACHTransfer::InboundFundsHold::Type::TaggedSymbol]) }
+            def values
+            end
           end
         end
       end
@@ -966,8 +982,10 @@ module Increase
 
         ACH = T.let(:ach, Increase::Models::ACHTransfer::Network::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::ACHTransfer::Network::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ACHTransfer::Network::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -1157,8 +1175,10 @@ module Increase
               Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol
             )
 
-          sig { override.returns(T::Array[Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol]) }
+            def values
+            end
           end
         end
       end
@@ -1226,11 +1246,13 @@ module Increase
               Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol
             )
 
-          sig do
-            override
-              .returns(T::Array[Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol])
-          end
-          def self.values
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol])
+            end
+            def values
+            end
           end
         end
       end
@@ -1691,8 +1713,10 @@ module Increase
           UNTIMELY_RETURN =
             T.let(:untimely_return, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
-          sig { override.returns(T::Array[Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol]) }
+            def values
+            end
           end
         end
       end
@@ -1741,8 +1765,10 @@ module Increase
         INTERNET_INITIATED =
           T.let(:internet_initiated, Increase::Models::ACHTransfer::StandardEntryClassCode::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::ACHTransfer::StandardEntryClassCode::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ACHTransfer::StandardEntryClassCode::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -1781,8 +1807,10 @@ module Increase
         # The transfer has been returned.
         RETURNED = T.let(:returned, Increase::Models::ACHTransfer::Status::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::ACHTransfer::Status::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ACHTransfer::Status::TaggedSymbol]) }
+          def values
+          end
         end
       end
 
@@ -1877,11 +1905,13 @@ module Increase
           FUTURE_DATED =
             T.let(:future_dated, Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule::TaggedSymbol)
 
-          sig do
-            override
-              .returns(T::Array[Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule::TaggedSymbol])
-          end
-          def self.values
+          class << self
+            sig do
+              override
+                .returns(T::Array[Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule::TaggedSymbol])
+            end
+            def values
+            end
           end
         end
       end
@@ -1896,8 +1926,10 @@ module Increase
 
         ACH_TRANSFER = T.let(:ach_transfer, Increase::Models::ACHTransfer::Type::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::ACHTransfer::Type::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::ACHTransfer::Type::TaggedSymbol]) }
+          def values
+          end
         end
       end
     end

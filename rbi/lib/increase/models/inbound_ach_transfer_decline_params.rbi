@@ -105,8 +105,10 @@ module Increase
             Increase::Models::InboundACHTransferDeclineParams::Reason::TaggedSymbol
           )
 
-        sig { override.returns(T::Array[Increase::Models::InboundACHTransferDeclineParams::Reason::TaggedSymbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Increase::Models::InboundACHTransferDeclineParams::Reason::TaggedSymbol]) }
+          def values
+          end
         end
       end
     end
