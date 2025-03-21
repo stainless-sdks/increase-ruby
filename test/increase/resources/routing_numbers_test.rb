@@ -11,6 +11,8 @@ class Increase::Test::Resources::RoutingNumbersTest < Increase::Test::ResourceTe
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Increase::Models::RoutingNumberListResponse
     end

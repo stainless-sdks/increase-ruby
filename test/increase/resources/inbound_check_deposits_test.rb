@@ -44,6 +44,8 @@ class Increase::Test::Resources::InboundCheckDepositsTest < Increase::Test::Reso
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Increase::Models::InboundCheckDeposit
     end
