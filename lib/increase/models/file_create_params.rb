@@ -57,8 +57,11 @@ module Increase
         # An image to be printed on the bottom or voucher of a check that you've requested Increase print.
         CHECK_VOUCHER_IMAGE = :check_voucher_image
 
-        # An image to be printed on an additional page and mailed with a check that you've requested Increase print.
+        # A document to be printed on an additional page and mailed with a check that you've requested Increase print.
         CHECK_ATTACHMENT_IMAGE = :check_attachment_image
+
+        # A document to be printed on an additional page and mailed with a check that you've requested Increase print.
+        CHECK_ATTACHMENT = :check_attachment
 
         # IRS Form SS-4.
         FORM_SS_4 = :form_ss_4
