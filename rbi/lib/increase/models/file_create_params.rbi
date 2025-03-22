@@ -70,9 +70,12 @@ module Increase
         CHECK_VOUCHER_IMAGE =
           T.let(:check_voucher_image, Increase::Models::FileCreateParams::Purpose::TaggedSymbol)
 
-        # An image to be printed on an additional page and mailed with a check that you've requested Increase print.
+        # A document to be printed on an additional page and mailed with a check that you've requested Increase print.
         CHECK_ATTACHMENT_IMAGE =
           T.let(:check_attachment_image, Increase::Models::FileCreateParams::Purpose::TaggedSymbol)
+
+        # A document to be printed on an additional page and mailed with a check that you've requested Increase print.
+        CHECK_ATTACHMENT = T.let(:check_attachment, Increase::Models::FileCreateParams::Purpose::TaggedSymbol)
 
         # IRS Form SS-4.
         FORM_SS_4 = T.let(:form_ss_4, Increase::Models::FileCreateParams::Purpose::TaggedSymbol)
