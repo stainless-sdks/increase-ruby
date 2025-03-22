@@ -128,12 +128,6 @@ module Increase
         # An image of a check that was mailed to a recipient.
         MAILED_CHECK_IMAGE = T.let(:mailed_check_image, Increase::Models::File::Purpose::TaggedSymbol)
 
-        # An image to be printed on the bottom or voucher of a check that you've requested Increase print.
-        CHECK_VOUCHER_IMAGE = T.let(:check_voucher_image, Increase::Models::File::Purpose::TaggedSymbol)
-
-        # A document to be printed on an additional page and mailed with a check that you've requested Increase print.
-        CHECK_ATTACHMENT_IMAGE = T.let(:check_attachment_image, Increase::Models::File::Purpose::TaggedSymbol)
-
         # A document to be printed on an additional page and mailed with a check that you've requested Increase print.
         CHECK_ATTACHMENT = T.let(:check_attachment, Increase::Models::File::Purpose::TaggedSymbol)
 
