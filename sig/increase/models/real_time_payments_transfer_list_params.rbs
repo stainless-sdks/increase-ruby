@@ -7,7 +7,8 @@ module Increase
         cursor: String,
         external_account_id: String,
         idempotency_key: String,
-        limit: Integer
+        limit: Integer,
+        status: Increase::Models::RealTimePaymentsTransferListParams::Status
       }
       & Increase::request_parameters
 
@@ -41,6 +42,12 @@ module Increase
 
       def limit=: (Integer) -> Integer
 
+      attr_reader status: Increase::Models::RealTimePaymentsTransferListParams::Status?
+
+      def status=: (
+        Increase::Models::RealTimePaymentsTransferListParams::Status
+      ) -> Increase::Models::RealTimePaymentsTransferListParams::Status
+
       def initialize: (
         ?account_id: String,
         ?created_at: Increase::Models::RealTimePaymentsTransferListParams::CreatedAt,
@@ -48,6 +55,7 @@ module Increase
         ?external_account_id: String,
         ?idempotency_key: String,
         ?limit: Integer,
+        ?status: Increase::Models::RealTimePaymentsTransferListParams::Status,
         ?request_options: Increase::request_opts
       ) -> void
 
@@ -81,6 +89,65 @@ module Increase
         ) -> void
 
         def to_hash: -> Increase::Models::RealTimePaymentsTransferListParams::created_at
+      end
+
+      type status =
+        {
+          in_: ::Array[Increase::Models::RealTimePaymentsTransferListParams::Status::in_]
+        }
+
+      class Status < Increase::BaseModel
+        attr_reader in_: ::Array[Increase::Models::RealTimePaymentsTransferListParams::Status::in_]?
+
+        def in_=: (
+          ::Array[Increase::Models::RealTimePaymentsTransferListParams::Status::in_]
+        ) -> ::Array[Increase::Models::RealTimePaymentsTransferListParams::Status::in_]
+
+        def initialize: (
+          ?in_: ::Array[Increase::Models::RealTimePaymentsTransferListParams::Status::in_]
+        ) -> void
+
+        def to_hash: -> Increase::Models::RealTimePaymentsTransferListParams::status
+
+        type in_ =
+          :pending_approval
+          | :canceled
+          | :pending_reviewing
+          | :requires_attention
+          | :rejected
+          | :pending_submission
+          | :submitted
+          | :complete
+
+        module In
+          extend Increase::Enum
+
+          # The transfer is pending approval.
+          PENDING_APPROVAL: :pending_approval
+
+          # The transfer has been canceled.
+          CANCELED: :canceled
+
+          # The transfer is pending review by Increase.
+          PENDING_REVIEWING: :pending_reviewing
+
+          # The transfer requires attention from an Increase operator.
+          REQUIRES_ATTENTION: :requires_attention
+
+          # The transfer was rejected by the network or the recipient's bank.
+          REJECTED: :rejected
+
+          # The transfer is queued to be submitted to Real-Time Payments.
+          PENDING_SUBMISSION: :pending_submission
+
+          # The transfer has been submitted and is pending a response from Real-Time Payments.
+          SUBMITTED: :submitted
+
+          # The transfer has been sent successfully and is complete.
+          COMPLETE: :complete
+
+          def self?.values: -> ::Array[Increase::Models::RealTimePaymentsTransferListParams::Status::in_]
+        end
       end
     end
   end

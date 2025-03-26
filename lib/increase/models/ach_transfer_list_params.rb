@@ -70,6 +70,15 @@ module Increase
       #   # @return [Integer]
       #   attr_writer :limit
 
+      # @!attribute [r] status
+      #
+      #   @return [Increase::Models::ACHTransferListParams::Status, nil]
+      optional :status, -> { Increase::Models::ACHTransferListParams::Status }
+
+      # @!parse
+      #   # @return [Increase::Models::ACHTransferListParams::Status]
+      #   attr_writer :status
+
       # @!parse
       #   # @param account_id [String]
       #   # @param created_at [Increase::Models::ACHTransferListParams::CreatedAt]
@@ -77,6 +86,7 @@ module Increase
       #   # @param external_account_id [String]
       #   # @param idempotency_key [String]
       #   # @param limit [Integer]
+      #   # @param status [Increase::Models::ACHTransferListParams::Status]
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
@@ -86,6 +96,7 @@ module Increase
       #     external_account_id: nil,
       #     idempotency_key: nil,
       #     limit: nil,
+      #     status: nil,
       #     request_options: {},
       #     **
       #   )
@@ -148,6 +159,65 @@ module Increase
         #   def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil, **) = super
 
         # def initialize: (Hash | Increase::BaseModel) -> void
+      end
+
+      class Status < Increase::BaseModel
+        # @!attribute [r] in_
+        #   Return results whose value is in the provided list. For GET requests, this
+        #     should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+        #
+        #   @return [Array<Symbol, Increase::Models::ACHTransferListParams::Status::In>, nil]
+        optional :in_,
+                 -> { Increase::ArrayOf[enum: Increase::Models::ACHTransferListParams::Status::In] },
+                 api_name: :in
+
+        # @!parse
+        #   # @return [Array<Symbol, Increase::Models::ACHTransferListParams::Status::In>]
+        #   attr_writer :in_
+
+        # @!parse
+        #   # @param in_ [Array<Symbol, Increase::Models::ACHTransferListParams::Status::In>]
+        #   #
+        #   def initialize(in_: nil, **) = super
+
+        # def initialize: (Hash | Increase::BaseModel) -> void
+
+        module In
+          extend Increase::Enum
+
+          # The transfer is pending approval.
+          PENDING_APPROVAL = :pending_approval
+
+          # The transfer belongs to a Transfer Session that is pending confirmation.
+          PENDING_TRANSFER_SESSION_CONFIRMATION = :pending_transfer_session_confirmation
+
+          # The transfer has been canceled.
+          CANCELED = :canceled
+
+          # The transfer is pending submission to the Federal Reserve.
+          PENDING_SUBMISSION = :pending_submission
+
+          # The transfer is pending review by Increase.
+          PENDING_REVIEWING = :pending_reviewing
+
+          # The transfer requires attention from an Increase operator.
+          REQUIRES_ATTENTION = :requires_attention
+
+          # The transfer has been rejected.
+          REJECTED = :rejected
+
+          # The transfer is complete.
+          SUBMITTED = :submitted
+
+          # The transfer has been returned.
+          RETURNED = :returned
+
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
+        end
       end
     end
   end

@@ -115,6 +115,7 @@ module Increase
           external_account_id: String,
           idempotency_key: String,
           limit: Integer,
+          status: T.any(Increase::Models::ACHTransferListParams::Status, Increase::Util::AnyHash),
           request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Page[Increase::Models::ACHTransfer])
@@ -135,6 +136,7 @@ module Increase
         # Limit the size of the list that is returned. The default (and maximum) is 100
         #   objects.
         limit: nil,
+        status: nil,
         request_options: {}
       )
       end
