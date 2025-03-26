@@ -57,6 +57,17 @@ module Increase
       sig { params(limit: Integer).void }
       attr_writer :limit
 
+      sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransferListParams::Status)) }
+      attr_reader :status
+
+      sig do
+        params(
+          status: T.any(Increase::Models::RealTimePaymentsTransferListParams::Status, Increase::Util::AnyHash)
+        )
+          .void
+      end
+      attr_writer :status
+
       sig do
         params(
           account_id: String,
@@ -65,6 +76,7 @@ module Increase
           external_account_id: String,
           idempotency_key: String,
           limit: Integer,
+          status: T.any(Increase::Models::RealTimePaymentsTransferListParams::Status, Increase::Util::AnyHash),
           request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
@@ -76,6 +88,7 @@ module Increase
         external_account_id: nil,
         idempotency_key: nil,
         limit: nil,
+        status: nil,
         request_options: {}
       )
       end
@@ -90,6 +103,7 @@ module Increase
               external_account_id: String,
               idempotency_key: String,
               limit: Integer,
+              status: Increase::Models::RealTimePaymentsTransferListParams::Status,
               request_options: Increase::RequestOptions
             }
           )
@@ -138,6 +152,75 @@ module Increase
 
         sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
         def to_hash
+        end
+      end
+
+      class Status < Increase::BaseModel
+        # Return results whose value is in the provided list. For GET requests, this
+        #   should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+        sig { returns(T.nilable(T::Array[Increase::Models::RealTimePaymentsTransferListParams::Status::In::OrSymbol])) }
+        attr_reader :in_
+
+        sig { params(in_: T::Array[Increase::Models::RealTimePaymentsTransferListParams::Status::In::OrSymbol]).void }
+        attr_writer :in_
+
+        sig do
+          params(in_: T::Array[Increase::Models::RealTimePaymentsTransferListParams::Status::In::OrSymbol])
+            .returns(T.attached_class)
+        end
+        def self.new(in_: nil)
+        end
+
+        sig do
+          override
+            .returns({in_: T::Array[Increase::Models::RealTimePaymentsTransferListParams::Status::In::OrSymbol]})
+        end
+        def to_hash
+        end
+
+        module In
+          extend Increase::Enum
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransferListParams::Status::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol) }
+
+          # The transfer is pending approval.
+          PENDING_APPROVAL =
+            T.let(:pending_approval, Increase::Models::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol)
+
+          # The transfer has been canceled.
+          CANCELED =
+            T.let(:canceled, Increase::Models::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol)
+
+          # The transfer is pending review by Increase.
+          PENDING_REVIEWING =
+            T.let(:pending_reviewing, Increase::Models::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol)
+
+          # The transfer requires attention from an Increase operator.
+          REQUIRES_ATTENTION =
+            T.let(:requires_attention, Increase::Models::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol)
+
+          # The transfer was rejected by the network or the recipient's bank.
+          REJECTED =
+            T.let(:rejected, Increase::Models::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol)
+
+          # The transfer is queued to be submitted to Real-Time Payments.
+          PENDING_SUBMISSION =
+            T.let(:pending_submission, Increase::Models::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol)
+
+          # The transfer has been submitted and is pending a response from Real-Time Payments.
+          SUBMITTED =
+            T.let(:submitted, Increase::Models::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol)
+
+          # The transfer has been sent successfully and is complete.
+          COMPLETE =
+            T.let(:complete, Increase::Models::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol)
+
+          sig { override.returns(T::Array[Increase::Models::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol]) }
+          def self.values
+          end
         end
       end
     end

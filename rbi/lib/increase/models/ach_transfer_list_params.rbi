@@ -51,6 +51,12 @@ module Increase
       sig { params(limit: Integer).void }
       attr_writer :limit
 
+      sig { returns(T.nilable(Increase::Models::ACHTransferListParams::Status)) }
+      attr_reader :status
+
+      sig { params(status: T.any(Increase::Models::ACHTransferListParams::Status, Increase::Util::AnyHash)).void }
+      attr_writer :status
+
       sig do
         params(
           account_id: String,
@@ -59,6 +65,7 @@ module Increase
           external_account_id: String,
           idempotency_key: String,
           limit: Integer,
+          status: T.any(Increase::Models::ACHTransferListParams::Status, Increase::Util::AnyHash),
           request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
@@ -70,6 +77,7 @@ module Increase
         external_account_id: nil,
         idempotency_key: nil,
         limit: nil,
+        status: nil,
         request_options: {}
       )
       end
@@ -84,6 +92,7 @@ module Increase
               external_account_id: String,
               idempotency_key: String,
               limit: Integer,
+              status: Increase::Models::ACHTransferListParams::Status,
               request_options: Increase::RequestOptions
             }
           )
@@ -132,6 +141,74 @@ module Increase
 
         sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
         def to_hash
+        end
+      end
+
+      class Status < Increase::BaseModel
+        # Return results whose value is in the provided list. For GET requests, this
+        #   should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+        sig { returns(T.nilable(T::Array[Increase::Models::ACHTransferListParams::Status::In::OrSymbol])) }
+        attr_reader :in_
+
+        sig { params(in_: T::Array[Increase::Models::ACHTransferListParams::Status::In::OrSymbol]).void }
+        attr_writer :in_
+
+        sig do
+          params(in_: T::Array[Increase::Models::ACHTransferListParams::Status::In::OrSymbol])
+            .returns(T.attached_class)
+        end
+        def self.new(in_: nil)
+        end
+
+        sig { override.returns({in_: T::Array[Increase::Models::ACHTransferListParams::Status::In::OrSymbol]}) }
+        def to_hash
+        end
+
+        module In
+          extend Increase::Enum
+
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransferListParams::Status::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::ACHTransferListParams::Status::In::TaggedSymbol) }
+
+          # The transfer is pending approval.
+          PENDING_APPROVAL =
+            T.let(:pending_approval, Increase::Models::ACHTransferListParams::Status::In::TaggedSymbol)
+
+          # The transfer belongs to a Transfer Session that is pending confirmation.
+          PENDING_TRANSFER_SESSION_CONFIRMATION =
+            T.let(
+              :pending_transfer_session_confirmation,
+              Increase::Models::ACHTransferListParams::Status::In::TaggedSymbol
+            )
+
+          # The transfer has been canceled.
+          CANCELED = T.let(:canceled, Increase::Models::ACHTransferListParams::Status::In::TaggedSymbol)
+
+          # The transfer is pending submission to the Federal Reserve.
+          PENDING_SUBMISSION =
+            T.let(:pending_submission, Increase::Models::ACHTransferListParams::Status::In::TaggedSymbol)
+
+          # The transfer is pending review by Increase.
+          PENDING_REVIEWING =
+            T.let(:pending_reviewing, Increase::Models::ACHTransferListParams::Status::In::TaggedSymbol)
+
+          # The transfer requires attention from an Increase operator.
+          REQUIRES_ATTENTION =
+            T.let(:requires_attention, Increase::Models::ACHTransferListParams::Status::In::TaggedSymbol)
+
+          # The transfer has been rejected.
+          REJECTED = T.let(:rejected, Increase::Models::ACHTransferListParams::Status::In::TaggedSymbol)
+
+          # The transfer is complete.
+          SUBMITTED = T.let(:submitted, Increase::Models::ACHTransferListParams::Status::In::TaggedSymbol)
+
+          # The transfer has been returned.
+          RETURNED = T.let(:returned, Increase::Models::ACHTransferListParams::Status::In::TaggedSymbol)
+
+          sig { override.returns(T::Array[Increase::Models::ACHTransferListParams::Status::In::TaggedSymbol]) }
+          def self.values
+          end
         end
       end
     end
