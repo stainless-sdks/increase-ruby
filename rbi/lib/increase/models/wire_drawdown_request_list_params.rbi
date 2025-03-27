@@ -92,11 +92,6 @@ module Increase
         module In
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::WireDrawdownRequestListParams::Status::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol) }
-
           # The drawdown request is queued to be submitted to Fedwire.
           PENDING_SUBMISSION =
             T.let(:pending_submission, Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol)
@@ -110,6 +105,11 @@ module Increase
 
           # The drawdown request has been refused by the recipient.
           REFUSED = T.let(:refused, Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol)
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::WireDrawdownRequestListParams::Status::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol]) }
           def self.values

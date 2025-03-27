@@ -127,11 +127,6 @@ module Increase
         module In
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::PendingTransactionListParams::Category::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol) }
-
           # Account Transfer Instruction: details will be under the `account_transfer_instruction` object.
           ACCOUNT_TRANSFER_INSTRUCTION =
             T.let(
@@ -191,6 +186,11 @@ module Increase
 
           # The Pending Transaction was made for an undocumented or deprecated reason.
           OTHER = T.let(:other, Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol)
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::PendingTransactionListParams::Category::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol]) }
           def self.values
@@ -267,15 +267,15 @@ module Increase
         module In
           extend Increase::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PendingTransactionListParams::Status::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::PendingTransactionListParams::Status::In::TaggedSymbol) }
-
           # The Pending Transaction is still awaiting confirmation.
           PENDING = T.let(:pending, Increase::Models::PendingTransactionListParams::Status::In::TaggedSymbol)
 
           # The Pending Transaction is confirmed. An associated Transaction exists for this object. The Pending Transaction will no longer count against your balance and can generally be hidden from UIs, etc.
           COMPLETE = T.let(:complete, Increase::Models::PendingTransactionListParams::Status::In::TaggedSymbol)
+
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PendingTransactionListParams::Status::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::PendingTransactionListParams::Status::In::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::PendingTransactionListParams::Status::In::TaggedSymbol]) }
           def self.values

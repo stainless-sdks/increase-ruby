@@ -98,15 +98,15 @@ module Increase
         module In
           extend Increase::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountListParams::Status::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountListParams::Status::In::TaggedSymbol) }
-
           # The External Account is active.
           ACTIVE = T.let(:active, Increase::Models::ExternalAccountListParams::Status::In::TaggedSymbol)
 
           # The External Account is archived and won't appear in the dashboard.
           ARCHIVED = T.let(:archived, Increase::Models::ExternalAccountListParams::Status::In::TaggedSymbol)
+
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountListParams::Status::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountListParams::Status::In::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::ExternalAccountListParams::Status::In::TaggedSymbol]) }
           def self.values

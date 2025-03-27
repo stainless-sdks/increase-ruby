@@ -77,10 +77,6 @@ module Increase
       module RejectionReason
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundMailItem::RejectionReason) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol) }
-
         # The mail item does not match any lockbox.
         NO_MATCHING_LOCKBOX =
           T.let(:no_matching_lockbox, Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol)
@@ -92,6 +88,10 @@ module Increase
         LOCKBOX_NOT_ACTIVE =
           T.let(:lockbox_not_active, Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol)
 
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundMailItem::RejectionReason) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol) }
+
         sig { override.returns(T::Array[Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol]) }
         def self.values
         end
@@ -101,9 +101,6 @@ module Increase
       module Status
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundMailItem::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::InboundMailItem::Status::TaggedSymbol) }
-
         # The mail item is pending processing.
         PENDING = T.let(:pending, Increase::Models::InboundMailItem::Status::TaggedSymbol)
 
@@ -112,6 +109,9 @@ module Increase
 
         # The mail item has been rejected.
         REJECTED = T.let(:rejected, Increase::Models::InboundMailItem::Status::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundMailItem::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::InboundMailItem::Status::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::InboundMailItem::Status::TaggedSymbol]) }
         def self.values
@@ -123,10 +123,10 @@ module Increase
       module Type
         extend Increase::Enum
 
+        INBOUND_MAIL_ITEM = T.let(:inbound_mail_item, Increase::Models::InboundMailItem::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundMailItem::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::InboundMailItem::Type::TaggedSymbol) }
-
-        INBOUND_MAIL_ITEM = T.let(:inbound_mail_item, Increase::Models::InboundMailItem::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::InboundMailItem::Type::TaggedSymbol]) }
         def self.values

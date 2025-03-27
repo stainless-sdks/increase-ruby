@@ -39,10 +39,6 @@ module Increase
       module Status
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EventSubscriptionUpdateParams::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::EventSubscriptionUpdateParams::Status::TaggedSymbol) }
-
         # The subscription is active and Events will be delivered normally.
         ACTIVE = T.let(:active, Increase::Models::EventSubscriptionUpdateParams::Status::TaggedSymbol)
 
@@ -51,6 +47,10 @@ module Increase
 
         # The subscription is permanently disabled and Events will not be delivered.
         DELETED = T.let(:deleted, Increase::Models::EventSubscriptionUpdateParams::Status::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EventSubscriptionUpdateParams::Status) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::EventSubscriptionUpdateParams::Status::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::EventSubscriptionUpdateParams::Status::TaggedSymbol]) }
         def self.values

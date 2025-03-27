@@ -63,16 +63,16 @@ module Increase
       module ACHTransfers
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RoutingNumberListResponse::ACHTransfers) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::RoutingNumberListResponse::ACHTransfers::TaggedSymbol) }
-
         # The routing number can receive this transfer type.
         SUPPORTED = T.let(:supported, Increase::Models::RoutingNumberListResponse::ACHTransfers::TaggedSymbol)
 
         # The routing number cannot receive this transfer type.
         NOT_SUPPORTED =
           T.let(:not_supported, Increase::Models::RoutingNumberListResponse::ACHTransfers::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RoutingNumberListResponse::ACHTransfers) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::RoutingNumberListResponse::ACHTransfers::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::RoutingNumberListResponse::ACHTransfers::TaggedSymbol]) }
         def self.values
@@ -82,11 +82,6 @@ module Increase
       # This routing number's support for Real-Time Payments Transfers.
       module RealTimePaymentsTransfers
         extend Increase::Enum
-
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers::TaggedSymbol) }
 
         # The routing number can receive this transfer type.
         SUPPORTED =
@@ -98,6 +93,11 @@ module Increase
             :not_supported,
             Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers::TaggedSymbol
           )
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers::TaggedSymbol) }
 
         sig do
           override
@@ -112,11 +112,11 @@ module Increase
       module Type
         extend Increase::Enum
 
+        ROUTING_NUMBER = T.let(:routing_number, Increase::Models::RoutingNumberListResponse::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RoutingNumberListResponse::Type) }
         OrSymbol =
           T.type_alias { T.any(Symbol, Increase::Models::RoutingNumberListResponse::Type::TaggedSymbol) }
-
-        ROUTING_NUMBER = T.let(:routing_number, Increase::Models::RoutingNumberListResponse::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::RoutingNumberListResponse::Type::TaggedSymbol]) }
         def self.values
@@ -127,16 +127,16 @@ module Increase
       module WireTransfers
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RoutingNumberListResponse::WireTransfers) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::RoutingNumberListResponse::WireTransfers::TaggedSymbol) }
-
         # The routing number can receive this transfer type.
         SUPPORTED = T.let(:supported, Increase::Models::RoutingNumberListResponse::WireTransfers::TaggedSymbol)
 
         # The routing number cannot receive this transfer type.
         NOT_SUPPORTED =
           T.let(:not_supported, Increase::Models::RoutingNumberListResponse::WireTransfers::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RoutingNumberListResponse::WireTransfers) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::RoutingNumberListResponse::WireTransfers::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::RoutingNumberListResponse::WireTransfers::TaggedSymbol]) }
         def self.values

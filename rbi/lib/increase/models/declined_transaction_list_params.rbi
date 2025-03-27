@@ -120,11 +120,6 @@ module Increase
         module In
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::DeclinedTransactionListParams::Category::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol) }
-
           # ACH Decline: details will be under the `ach_decline` object.
           ACH_DECLINE =
             T.let(:ach_decline, Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol)
@@ -157,6 +152,11 @@ module Increase
 
           # The Declined Transaction was made for an undocumented or deprecated reason.
           OTHER = T.let(:other, Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol)
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::DeclinedTransactionListParams::Category::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol]) }
           def self.values

@@ -309,11 +309,6 @@ module Increase
         module Category
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::ACHTransferCreateParams::Addenda::Category) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::ACHTransferCreateParams::Addenda::Category::TaggedSymbol) }
-
           # Unstructured `payment_related_information` passed through with the transfer.
           FREEFORM = T.let(:freeform, Increase::Models::ACHTransferCreateParams::Addenda::Category::TaggedSymbol)
 
@@ -323,6 +318,11 @@ module Increase
               :payment_order_remittance_advice,
               Increase::Models::ACHTransferCreateParams::Addenda::Category::TaggedSymbol
             )
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::ACHTransferCreateParams::Addenda::Category) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::ACHTransferCreateParams::Addenda::Category::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Category::TaggedSymbol]) }
           def self.values
@@ -427,11 +427,6 @@ module Increase
       module DestinationAccountHolder
         extend Increase::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::ACHTransferCreateParams::DestinationAccountHolder) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ACHTransferCreateParams::DestinationAccountHolder::TaggedSymbol) }
-
         # The External Account is owned by a business.
         BUSINESS =
           T.let(:business, Increase::Models::ACHTransferCreateParams::DestinationAccountHolder::TaggedSymbol)
@@ -443,6 +438,11 @@ module Increase
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN =
           T.let(:unknown, Increase::Models::ACHTransferCreateParams::DestinationAccountHolder::TaggedSymbol)
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::ACHTransferCreateParams::DestinationAccountHolder) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::ACHTransferCreateParams::DestinationAccountHolder::TaggedSymbol) }
 
         sig do
           override
@@ -456,15 +456,15 @@ module Increase
       module Funding
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransferCreateParams::Funding) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ACHTransferCreateParams::Funding::TaggedSymbol) }
-
         # A checking account.
         CHECKING = T.let(:checking, Increase::Models::ACHTransferCreateParams::Funding::TaggedSymbol)
 
         # A savings account.
         SAVINGS = T.let(:savings, Increase::Models::ACHTransferCreateParams::Funding::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransferCreateParams::Funding) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::ACHTransferCreateParams::Funding::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::ACHTransferCreateParams::Funding::TaggedSymbol]) }
         def self.values
@@ -526,16 +526,6 @@ module Increase
         module SettlementSchedule
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule) }
-          OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol
-              )
-            end
-
           # The chosen effective date will be the same as the ACH processing date on which the transfer is submitted. This is necessary, but not sufficient for the transfer to be settled same-day: it must also be submitted before the last same-day cutoff and be less than or equal to $1,000.000.00.
           SAME_DAY =
             T.let(
@@ -549,6 +539,16 @@ module Increase
               :future_dated,
               Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol
             )
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule) }
+          OrSymbol =
+            T.type_alias do
+              T.any(
+                Symbol,
+                Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol
+              )
+            end
 
           sig do
             override
@@ -564,11 +564,6 @@ module Increase
       # The Standard Entry Class (SEC) code to use for the transfer.
       module StandardEntryClassCode
         extend Increase::Enum
-
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::ACHTransferCreateParams::StandardEntryClassCode) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::TaggedSymbol) }
 
         # Corporate Credit and Debit (CCD).
         CORPORATE_CREDIT_OR_DEBIT =
@@ -598,6 +593,11 @@ module Increase
             Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::TaggedSymbol
           )
 
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::ACHTransferCreateParams::StandardEntryClassCode) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::TaggedSymbol) }
+
         sig do
           override.returns(T::Array[Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::TaggedSymbol])
         end
@@ -609,11 +609,6 @@ module Increase
       module TransactionTiming
         extend Increase::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::ACHTransferCreateParams::TransactionTiming) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ACHTransferCreateParams::TransactionTiming::TaggedSymbol) }
-
         # A Transaction will be created immediately.
         SYNCHRONOUS =
           T.let(:synchronous, Increase::Models::ACHTransferCreateParams::TransactionTiming::TaggedSymbol)
@@ -621,6 +616,11 @@ module Increase
         # A Transaction will be created when the funds settle at the Federal Reserve.
         ASYNCHRONOUS =
           T.let(:asynchronous, Increase::Models::ACHTransferCreateParams::TransactionTiming::TaggedSymbol)
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::ACHTransferCreateParams::TransactionTiming) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::ACHTransferCreateParams::TransactionTiming::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::ACHTransferCreateParams::TransactionTiming::TaggedSymbol]) }
         def self.values

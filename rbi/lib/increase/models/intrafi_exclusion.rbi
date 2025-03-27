@@ -105,9 +105,6 @@ module Increase
       module Status
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiExclusion::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::IntrafiExclusion::Status::TaggedSymbol) }
-
         # The exclusion is being added to the IntraFi network.
         PENDING = T.let(:pending, Increase::Models::IntrafiExclusion::Status::TaggedSymbol)
 
@@ -116,6 +113,9 @@ module Increase
 
         # The exclusion has been removed from the IntraFi network.
         ARCHIVED = T.let(:archived, Increase::Models::IntrafiExclusion::Status::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiExclusion::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::IntrafiExclusion::Status::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::IntrafiExclusion::Status::TaggedSymbol]) }
         def self.values
@@ -127,10 +127,10 @@ module Increase
       module Type
         extend Increase::Enum
 
+        INTRAFI_EXCLUSION = T.let(:intrafi_exclusion, Increase::Models::IntrafiExclusion::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiExclusion::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::IntrafiExclusion::Type::TaggedSymbol) }
-
-        INTRAFI_EXCLUSION = T.let(:intrafi_exclusion, Increase::Models::IntrafiExclusion::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::IntrafiExclusion::Type::TaggedSymbol]) }
         def self.values

@@ -53,9 +53,6 @@ module Increase
       module Purpose
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::FileCreateParams::Purpose) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::FileCreateParams::Purpose::TaggedSymbol) }
-
         # An image of the front of a check, used for check deposits.
         CHECK_IMAGE_FRONT = T.let(:check_image_front, Increase::Models::FileCreateParams::Purpose::TaggedSymbol)
 
@@ -115,6 +112,9 @@ module Increase
             :proof_of_authorization_request_submission,
             Increase::Models::FileCreateParams::Purpose::TaggedSymbol
           )
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::FileCreateParams::Purpose) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::FileCreateParams::Purpose::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::FileCreateParams::Purpose::TaggedSymbol]) }
         def self.values

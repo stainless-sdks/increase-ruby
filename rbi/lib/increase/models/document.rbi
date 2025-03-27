@@ -65,9 +65,6 @@ module Increase
       module Category
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Document::Category) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Document::Category::TaggedSymbol) }
-
         # Internal Revenue Service Form 1099-INT.
         FORM_1099_INT = T.let(:form_1099_int, Increase::Models::Document::Category::TaggedSymbol)
 
@@ -81,6 +78,9 @@ module Increase
         # Company information, such a policies or procedures, typically submitted during our due diligence process.
         COMPANY_INFORMATION = T.let(:company_information, Increase::Models::Document::Category::TaggedSymbol)
 
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Document::Category) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Document::Category::TaggedSymbol) }
+
         sig { override.returns(T::Array[Increase::Models::Document::Category::TaggedSymbol]) }
         def self.values
         end
@@ -91,10 +91,10 @@ module Increase
       module Type
         extend Increase::Enum
 
+        DOCUMENT = T.let(:document, Increase::Models::Document::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Document::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Document::Type::TaggedSymbol) }
-
-        DOCUMENT = T.let(:document, Increase::Models::Document::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Document::Type::TaggedSymbol]) }
         def self.values

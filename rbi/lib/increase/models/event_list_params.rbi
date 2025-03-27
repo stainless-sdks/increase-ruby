@@ -91,9 +91,6 @@ module Increase
         module In
           extend Increase::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EventListParams::Category::In) }
-          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::EventListParams::Category::In::TaggedSymbol) }
-
           # Occurs whenever an Account is created.
           ACCOUNT_CREATED =
             T.let(:"account.created", Increase::Models::EventListParams::Category::In::TaggedSymbol)
@@ -497,6 +494,9 @@ module Increase
           # Occurs whenever a Wire Transfer is updated.
           WIRE_TRANSFER_UPDATED =
             T.let(:"wire_transfer.updated", Increase::Models::EventListParams::Category::In::TaggedSymbol)
+
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EventListParams::Category::In) }
+          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::EventListParams::Category::In::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::EventListParams::Category::In::TaggedSymbol]) }
           def self.values

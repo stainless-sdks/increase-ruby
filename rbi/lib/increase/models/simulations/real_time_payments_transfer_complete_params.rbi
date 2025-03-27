@@ -81,18 +81,6 @@ module Increase
           module RejectReasonCode
             extend Increase::Enum
 
-            TaggedSymbol =
-              T.type_alias do
-                T.all(Symbol, Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode)
-              end
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
-                )
-              end
-
             # The destination account is closed. Corresponds to the Real-Time Payments reason code `AC04`.
             ACCOUNT_CLOSED =
               T.let(
@@ -239,6 +227,18 @@ module Increase
                 :other,
                 Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
               )
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(Symbol, Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode)
+              end
+            OrSymbol =
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
+                )
+              end
 
             sig do
               override

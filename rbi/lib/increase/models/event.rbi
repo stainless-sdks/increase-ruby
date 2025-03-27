@@ -68,9 +68,6 @@ module Increase
       module Category
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Event::Category) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Event::Category::TaggedSymbol) }
-
         # Occurs whenever an Account is created.
         ACCOUNT_CREATED = T.let(:"account.created", Increase::Models::Event::Category::TaggedSymbol)
 
@@ -412,6 +409,9 @@ module Increase
         # Occurs whenever a Wire Transfer is updated.
         WIRE_TRANSFER_UPDATED = T.let(:"wire_transfer.updated", Increase::Models::Event::Category::TaggedSymbol)
 
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Event::Category) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Event::Category::TaggedSymbol) }
+
         sig { override.returns(T::Array[Increase::Models::Event::Category::TaggedSymbol]) }
         def self.values
         end
@@ -422,10 +422,10 @@ module Increase
       module Type
         extend Increase::Enum
 
+        EVENT = T.let(:event, Increase::Models::Event::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Event::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Event::Type::TaggedSymbol) }
-
-        EVENT = T.let(:event, Increase::Models::Event::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Event::Type::TaggedSymbol]) }
         def self.values

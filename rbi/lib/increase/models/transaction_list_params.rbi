@@ -111,10 +111,6 @@ module Increase
         module In
           extend Increase::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::TransactionListParams::Category::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::TransactionListParams::Category::In::TaggedSymbol) }
-
           # Account Transfer Intention: details will be under the `account_transfer_intention` object.
           ACCOUNT_TRANSFER_INTENTION =
             T.let(:account_transfer_intention, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
@@ -244,6 +240,10 @@ module Increase
 
           # The Transaction was made for an undocumented or deprecated reason.
           OTHER = T.let(:other, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
+
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::TransactionListParams::Category::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::TransactionListParams::Category::In::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::TransactionListParams::Category::In::TaggedSymbol]) }
           def self.values

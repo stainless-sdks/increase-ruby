@@ -130,16 +130,16 @@ module Increase
         module In
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::AccountNumberListParams::ACHDebitStatus::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::AccountNumberListParams::ACHDebitStatus::In::TaggedSymbol) }
-
           # ACH Debits are allowed.
           ALLOWED = T.let(:allowed, Increase::Models::AccountNumberListParams::ACHDebitStatus::In::TaggedSymbol)
 
           # ACH Debits are blocked.
           BLOCKED = T.let(:blocked, Increase::Models::AccountNumberListParams::ACHDebitStatus::In::TaggedSymbol)
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::AccountNumberListParams::ACHDebitStatus::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::AccountNumberListParams::ACHDebitStatus::In::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::In::TaggedSymbol]) }
           def self.values
@@ -214,10 +214,6 @@ module Increase
         module In
           extend Increase::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountNumberListParams::Status::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::AccountNumberListParams::Status::In::TaggedSymbol) }
-
           # The account number is active.
           ACTIVE = T.let(:active, Increase::Models::AccountNumberListParams::Status::In::TaggedSymbol)
 
@@ -226,6 +222,10 @@ module Increase
 
           # The account number is permanently disabled.
           CANCELED = T.let(:canceled, Increase::Models::AccountNumberListParams::Status::In::TaggedSymbol)
+
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountNumberListParams::Status::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::AccountNumberListParams::Status::In::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::AccountNumberListParams::Status::In::TaggedSymbol]) }
           def self.values

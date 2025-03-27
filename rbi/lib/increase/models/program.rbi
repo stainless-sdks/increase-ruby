@@ -98,9 +98,6 @@ module Increase
       module Bank
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Program::Bank) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Program::Bank::TaggedSymbol) }
-
         # Core Bank
         CORE_BANK = T.let(:core_bank, Increase::Models::Program::Bank::TaggedSymbol)
 
@@ -109,6 +106,9 @@ module Increase
 
         # Grasshopper Bank
         GRASSHOPPER_BANK = T.let(:grasshopper_bank, Increase::Models::Program::Bank::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Program::Bank) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Program::Bank::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::Program::Bank::TaggedSymbol]) }
         def self.values
@@ -120,10 +120,10 @@ module Increase
       module Type
         extend Increase::Enum
 
+        PROGRAM = T.let(:program, Increase::Models::Program::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Program::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Program::Type::TaggedSymbol) }
-
-        PROGRAM = T.let(:program, Increase::Models::Program::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Program::Type::TaggedSymbol]) }
         def self.values

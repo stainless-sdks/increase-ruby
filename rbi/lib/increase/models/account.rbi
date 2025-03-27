@@ -145,9 +145,6 @@ module Increase
       module Bank
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Account::Bank) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Account::Bank::TaggedSymbol) }
-
         # Core Bank
         CORE_BANK = T.let(:core_bank, Increase::Models::Account::Bank::TaggedSymbol)
 
@@ -156,6 +153,9 @@ module Increase
 
         # Grasshopper Bank
         GRASSHOPPER_BANK = T.let(:grasshopper_bank, Increase::Models::Account::Bank::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Account::Bank) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Account::Bank::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::Account::Bank::TaggedSymbol]) }
         def self.values
@@ -166,9 +166,6 @@ module Increase
       #   currency.
       module Currency
         extend Increase::Enum
-
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Account::Currency) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Account::Currency::TaggedSymbol) }
 
         # Canadian Dollar (CAD)
         CAD = T.let(:CAD, Increase::Models::Account::Currency::TaggedSymbol)
@@ -188,6 +185,9 @@ module Increase
         # US Dollar (USD)
         USD = T.let(:USD, Increase::Models::Account::Currency::TaggedSymbol)
 
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Account::Currency) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Account::Currency::TaggedSymbol) }
+
         sig { override.returns(T::Array[Increase::Models::Account::Currency::TaggedSymbol]) }
         def self.values
         end
@@ -197,14 +197,14 @@ module Increase
       module Status
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Account::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Account::Status::TaggedSymbol) }
-
         # Closed Accounts on which no new activity can occur.
         CLOSED = T.let(:closed, Increase::Models::Account::Status::TaggedSymbol)
 
         # Open Accounts that are ready to use.
         OPEN = T.let(:open, Increase::Models::Account::Status::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Account::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Account::Status::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::Account::Status::TaggedSymbol]) }
         def self.values
@@ -216,10 +216,10 @@ module Increase
       module Type
         extend Increase::Enum
 
+        ACCOUNT = T.let(:account, Increase::Models::Account::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Account::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Account::Type::TaggedSymbol) }
-
-        ACCOUNT = T.let(:account, Increase::Models::Account::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Account::Type::TaggedSymbol]) }
         def self.values

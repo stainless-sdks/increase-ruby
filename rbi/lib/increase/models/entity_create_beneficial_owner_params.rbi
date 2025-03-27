@@ -350,18 +350,6 @@ module Increase
             module Method
               extend Increase::Enum
 
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(Symbol, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method)
-                end
-              OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
-                  )
-                end
-
               # A social security number.
               SOCIAL_SECURITY_NUMBER =
                 T.let(
@@ -396,6 +384,18 @@ module Increase
                   :other,
                   Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                 )
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(Symbol, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method)
+                end
+              OrSymbol =
+                T.type_alias do
+                  T.any(
+                    Symbol,
+                    Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
+                  )
+                end
 
               sig do
                 override
@@ -543,11 +543,6 @@ module Increase
         module Prong
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::TaggedSymbol) }
-
           # A person with 25% or greater direct or indirect ownership of the entity.
           OWNERSHIP =
             T.let(
@@ -558,6 +553,11 @@ module Increase
           # A person who manages, directs, or has significant control of the entity.
           CONTROL =
             T.let(:control, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::TaggedSymbol)
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::TaggedSymbol) }
 
           sig do
             override

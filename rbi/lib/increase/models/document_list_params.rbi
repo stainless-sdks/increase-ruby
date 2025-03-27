@@ -94,10 +94,6 @@ module Increase
         module In
           extend Increase::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DocumentListParams::Category::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::DocumentListParams::Category::In::TaggedSymbol) }
-
           # Internal Revenue Service Form 1099-INT.
           FORM_1099_INT = T.let(:form_1099_int, Increase::Models::DocumentListParams::Category::In::TaggedSymbol)
 
@@ -111,6 +107,10 @@ module Increase
           # Company information, such a policies or procedures, typically submitted during our due diligence process.
           COMPANY_INFORMATION =
             T.let(:company_information, Increase::Models::DocumentListParams::Category::In::TaggedSymbol)
+
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DocumentListParams::Category::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::DocumentListParams::Category::In::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::DocumentListParams::Category::In::TaggedSymbol]) }
           def self.values

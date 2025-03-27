@@ -150,14 +150,14 @@ module Increase
       module Status
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Lockbox::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Lockbox::Status::TaggedSymbol) }
-
         # This Lockbox is active. Checks mailed to it will be deposited automatically.
         ACTIVE = T.let(:active, Increase::Models::Lockbox::Status::TaggedSymbol)
 
         # This Lockbox is inactive. Checks mailed to it will not be deposited.
         INACTIVE = T.let(:inactive, Increase::Models::Lockbox::Status::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Lockbox::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Lockbox::Status::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::Lockbox::Status::TaggedSymbol]) }
         def self.values
@@ -169,10 +169,10 @@ module Increase
       module Type
         extend Increase::Enum
 
+        LOCKBOX = T.let(:lockbox, Increase::Models::Lockbox::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Lockbox::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Lockbox::Type::TaggedSymbol) }
-
-        LOCKBOX = T.let(:lockbox, Increase::Models::Lockbox::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Lockbox::Type::TaggedSymbol]) }
         def self.values

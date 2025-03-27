@@ -232,9 +232,6 @@ module Increase
       module Status
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardDispute::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CardDispute::Status::TaggedSymbol) }
-
         # The Card Dispute is pending review.
         PENDING_REVIEWING = T.let(:pending_reviewing, Increase::Models::CardDispute::Status::TaggedSymbol)
 
@@ -254,6 +251,9 @@ module Increase
         # The Card Dispute has been won and no further action can be taken.
         WON = T.let(:won, Increase::Models::CardDispute::Status::TaggedSymbol)
 
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardDispute::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CardDispute::Status::TaggedSymbol) }
+
         sig { override.returns(T::Array[Increase::Models::CardDispute::Status::TaggedSymbol]) }
         def self.values
         end
@@ -264,10 +264,10 @@ module Increase
       module Type
         extend Increase::Enum
 
+        CARD_DISPUTE = T.let(:card_dispute, Increase::Models::CardDispute::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardDispute::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CardDispute::Type::TaggedSymbol) }
-
-        CARD_DISPUTE = T.let(:card_dispute, Increase::Models::CardDispute::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::CardDispute::Type::TaggedSymbol]) }
         def self.values

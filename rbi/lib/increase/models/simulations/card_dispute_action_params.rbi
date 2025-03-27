@@ -46,11 +46,6 @@ module Increase
         module Status
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::Simulations::CardDisputeActionParams::Status) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::Simulations::CardDisputeActionParams::Status::TaggedSymbol) }
-
           # Increase has requested more information related to the Card Dispute from you.
           PENDING_USER_INFORMATION =
             T.let(
@@ -69,6 +64,11 @@ module Increase
 
           # The Card Dispute has been won and no further action can be taken.
           WON = T.let(:won, Increase::Models::Simulations::CardDisputeActionParams::Status::TaggedSymbol)
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::Simulations::CardDisputeActionParams::Status) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::Simulations::CardDisputeActionParams::Status::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::Simulations::CardDisputeActionParams::Status::TaggedSymbol]) }
           def self.values

@@ -192,9 +192,6 @@ module Increase
       module Status
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::WireDrawdownRequest::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::WireDrawdownRequest::Status::TaggedSymbol) }
-
         # The drawdown request is queued to be submitted to Fedwire.
         PENDING_SUBMISSION =
           T.let(:pending_submission, Increase::Models::WireDrawdownRequest::Status::TaggedSymbol)
@@ -207,6 +204,9 @@ module Increase
 
         # The drawdown request has been refused by the recipient.
         REFUSED = T.let(:refused, Increase::Models::WireDrawdownRequest::Status::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::WireDrawdownRequest::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::WireDrawdownRequest::Status::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::WireDrawdownRequest::Status::TaggedSymbol]) }
         def self.values
@@ -235,11 +235,11 @@ module Increase
       module Type
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::WireDrawdownRequest::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::WireDrawdownRequest::Type::TaggedSymbol) }
-
         WIRE_DRAWDOWN_REQUEST =
           T.let(:wire_drawdown_request, Increase::Models::WireDrawdownRequest::Type::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::WireDrawdownRequest::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::WireDrawdownRequest::Type::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::WireDrawdownRequest::Type::TaggedSymbol]) }
         def self.values

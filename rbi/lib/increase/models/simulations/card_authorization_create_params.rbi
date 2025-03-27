@@ -216,11 +216,6 @@ module Increase
         module DeclineReason
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol) }
-
           # The account has been closed.
           ACCOUNT_CLOSED =
             T.let(
@@ -340,6 +335,11 @@ module Increase
               Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
             )
 
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol) }
+
           sig do
             override
               .returns(
@@ -355,11 +355,6 @@ module Increase
         module Direction
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::Direction) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::Direction::TaggedSymbol) }
-
           # A regular card authorization where funds are debited from the cardholder.
           SETTLEMENT =
             T.let(:settlement, Increase::Models::Simulations::CardAuthorizationCreateParams::Direction::TaggedSymbol)
@@ -367,6 +362,11 @@ module Increase
           # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
           REFUND =
             T.let(:refund, Increase::Models::Simulations::CardAuthorizationCreateParams::Direction::TaggedSymbol)
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::Direction) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::Direction::TaggedSymbol) }
 
           sig do
             override
@@ -456,18 +456,6 @@ module Increase
             module StandInProcessingReason
               extend Increase::Enum
 
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason)
-                end
-              OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                  )
-                end
-
               # Increase failed to process the authorization in a timely manner.
               ISSUER_ERROR =
                 T.let(
@@ -516,6 +504,18 @@ module Increase
                   :other,
                   Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                 )
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason)
+                end
+              OrSymbol =
+                T.type_alias do
+                  T.any(
+                    Symbol,
+                    Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                  )
+                end
 
               sig do
                 override

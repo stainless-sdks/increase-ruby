@@ -68,11 +68,6 @@ module Increase
       module ComplianceCategory
         extend Increase::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol) }
-
         # A cash in an commingled Increase Account.
         COMMINGLED_CASH =
           T.let(
@@ -86,6 +81,11 @@ module Increase
             :customer_balance,
             Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol
           )
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol) }
 
         sig do
           override

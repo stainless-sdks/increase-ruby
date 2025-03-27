@@ -393,10 +393,6 @@ module Increase
         module Category
           extend Increase::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::WireTransfer::CreatedBy::Category) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::WireTransfer::CreatedBy::Category::TaggedSymbol) }
-
           # An API key. Details will be under the `api_key` object.
           API_KEY = T.let(:api_key, Increase::Models::WireTransfer::CreatedBy::Category::TaggedSymbol)
 
@@ -406,6 +402,10 @@ module Increase
 
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER = T.let(:user, Increase::Models::WireTransfer::CreatedBy::Category::TaggedSymbol)
+
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::WireTransfer::CreatedBy::Category) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::WireTransfer::CreatedBy::Category::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::WireTransfer::CreatedBy::Category::TaggedSymbol]) }
           def self.values
@@ -448,9 +448,6 @@ module Increase
       module Currency
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::WireTransfer::Currency) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::WireTransfer::Currency::TaggedSymbol) }
-
         # Canadian Dollar (CAD)
         CAD = T.let(:CAD, Increase::Models::WireTransfer::Currency::TaggedSymbol)
 
@@ -469,6 +466,9 @@ module Increase
         # US Dollar (USD)
         USD = T.let(:USD, Increase::Models::WireTransfer::Currency::TaggedSymbol)
 
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::WireTransfer::Currency) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::WireTransfer::Currency::TaggedSymbol) }
+
         sig { override.returns(T::Array[Increase::Models::WireTransfer::Currency::TaggedSymbol]) }
         def self.values
         end
@@ -478,10 +478,10 @@ module Increase
       module Network
         extend Increase::Enum
 
+        WIRE = T.let(:wire, Increase::Models::WireTransfer::Network::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::WireTransfer::Network) }
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::WireTransfer::Network::TaggedSymbol) }
-
-        WIRE = T.let(:wire, Increase::Models::WireTransfer::Network::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::WireTransfer::Network::TaggedSymbol]) }
         def self.values
@@ -638,9 +638,6 @@ module Increase
       module Status
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::WireTransfer::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::WireTransfer::Status::TaggedSymbol) }
-
         # The transfer is pending approval.
         PENDING_APPROVAL = T.let(:pending_approval, Increase::Models::WireTransfer::Status::TaggedSymbol)
 
@@ -667,6 +664,9 @@ module Increase
 
         # The transfer has been acknowledged by Fedwire and can be considered complete.
         COMPLETE = T.let(:complete, Increase::Models::WireTransfer::Status::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::WireTransfer::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::WireTransfer::Status::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::WireTransfer::Status::TaggedSymbol]) }
         def self.values
@@ -700,10 +700,10 @@ module Increase
       module Type
         extend Increase::Enum
 
+        WIRE_TRANSFER = T.let(:wire_transfer, Increase::Models::WireTransfer::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::WireTransfer::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::WireTransfer::Type::TaggedSymbol) }
-
-        WIRE_TRANSFER = T.let(:wire_transfer, Increase::Models::WireTransfer::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::WireTransfer::Type::TaggedSymbol]) }
         def self.values

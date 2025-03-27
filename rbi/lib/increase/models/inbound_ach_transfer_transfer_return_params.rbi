@@ -38,11 +38,6 @@ module Increase
       module Reason
         extend Increase::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::InboundACHTransferTransferReturnParams::Reason) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol) }
-
         # The customer's account has insufficient funds. This reason is only allowed for debits. The Nacha return code is R01.
         INSUFFICIENT_FUNDS =
           T.let(:insufficient_funds, Increase::Models::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol)
@@ -103,6 +98,11 @@ module Increase
             :corporate_customer_advised_not_authorized,
             Increase::Models::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol
           )
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::InboundACHTransferTransferReturnParams::Reason) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol]) }
         def self.values

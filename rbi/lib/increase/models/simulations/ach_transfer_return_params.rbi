@@ -42,11 +42,6 @@ module Increase
         module Reason
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::Simulations::ACHTransferReturnParams::Reason) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol) }
-
           # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
           INSUFFICIENT_FUND =
             T.let(:insufficient_fund, Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol)
@@ -482,6 +477,11 @@ module Increase
           # Code R68. A rare return reason. The return was sent too late.
           UNTIMELY_RETURN =
             T.let(:untimely_return, Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol)
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::Simulations::ACHTransferReturnParams::Reason) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol]) }
           def self.values

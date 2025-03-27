@@ -229,9 +229,6 @@ module Increase
       module Status
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Card::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Card::Status::TaggedSymbol) }
-
         # The card is active.
         ACTIVE = T.let(:active, Increase::Models::Card::Status::TaggedSymbol)
 
@@ -240,6 +237,9 @@ module Increase
 
         # The card is permanently canceled.
         CANCELED = T.let(:canceled, Increase::Models::Card::Status::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Card::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Card::Status::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::Card::Status::TaggedSymbol]) }
         def self.values
@@ -251,10 +251,10 @@ module Increase
       module Type
         extend Increase::Enum
 
+        CARD = T.let(:card, Increase::Models::Card::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Card::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Card::Type::TaggedSymbol) }
-
-        CARD = T.let(:card, Increase::Models::Card::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Card::Type::TaggedSymbol]) }
         def self.values

@@ -380,10 +380,6 @@ module Increase
         module Category
           extend Increase::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckTransfer::CreatedBy::Category) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::CheckTransfer::CreatedBy::Category::TaggedSymbol) }
-
           # An API key. Details will be under the `api_key` object.
           API_KEY = T.let(:api_key, Increase::Models::CheckTransfer::CreatedBy::Category::TaggedSymbol)
 
@@ -393,6 +389,10 @@ module Increase
 
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER = T.let(:user, Increase::Models::CheckTransfer::CreatedBy::Category::TaggedSymbol)
+
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckTransfer::CreatedBy::Category) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CheckTransfer::CreatedBy::Category::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::CheckTransfer::CreatedBy::Category::TaggedSymbol]) }
           def self.values
@@ -435,9 +435,6 @@ module Increase
       module Currency
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckTransfer::Currency) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CheckTransfer::Currency::TaggedSymbol) }
-
         # Canadian Dollar (CAD)
         CAD = T.let(:CAD, Increase::Models::CheckTransfer::Currency::TaggedSymbol)
 
@@ -456,6 +453,9 @@ module Increase
         # US Dollar (USD)
         USD = T.let(:USD, Increase::Models::CheckTransfer::Currency::TaggedSymbol)
 
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckTransfer::Currency) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CheckTransfer::Currency::TaggedSymbol) }
+
         sig { override.returns(T::Array[Increase::Models::CheckTransfer::Currency::TaggedSymbol]) }
         def self.values
         end
@@ -465,15 +465,15 @@ module Increase
       module FulfillmentMethod
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckTransfer::FulfillmentMethod) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::CheckTransfer::FulfillmentMethod::TaggedSymbol) }
-
         # Increase will print and mail a physical check.
         PHYSICAL_CHECK = T.let(:physical_check, Increase::Models::CheckTransfer::FulfillmentMethod::TaggedSymbol)
 
         # Increase will not print a check; you are responsible for printing and mailing a check with the provided account number, routing number, check number, and amount.
         THIRD_PARTY = T.let(:third_party, Increase::Models::CheckTransfer::FulfillmentMethod::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckTransfer::FulfillmentMethod) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::CheckTransfer::FulfillmentMethod::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::CheckTransfer::FulfillmentMethod::TaggedSymbol]) }
         def self.values
@@ -724,11 +724,6 @@ module Increase
         module ShippingMethod
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod::TaggedSymbol) }
-
           # USPS First Class
           USPS_FIRST_CLASS =
             T.let(:usps_first_class, Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod::TaggedSymbol)
@@ -736,6 +731,11 @@ module Increase
           # FedEx Overnight
           FEDEX_OVERNIGHT =
             T.let(:fedex_overnight, Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod::TaggedSymbol)
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod::TaggedSymbol]) }
           def self.values
@@ -784,11 +784,6 @@ module Increase
           module Category
             extend Increase::Enum
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category::TaggedSymbol) }
-
             # The check is in transit.
             IN_TRANSIT =
               T.let(:in_transit, Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category::TaggedSymbol)
@@ -811,6 +806,11 @@ module Increase
                 Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category::TaggedSymbol
               )
 
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category::TaggedSymbol) }
+
             sig do
               override
                 .returns(T::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category::TaggedSymbol])
@@ -824,9 +824,6 @@ module Increase
       # The lifecycle status of the transfer.
       module Status
         extend Increase::Enum
-
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckTransfer::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CheckTransfer::Status::TaggedSymbol) }
 
         # The transfer is awaiting approval.
         PENDING_APPROVAL = T.let(:pending_approval, Increase::Models::CheckTransfer::Status::TaggedSymbol)
@@ -857,6 +854,9 @@ module Increase
 
         # The transfer has been returned.
         RETURNED = T.let(:returned, Increase::Models::CheckTransfer::Status::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckTransfer::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CheckTransfer::Status::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::CheckTransfer::Status::TaggedSymbol]) }
         def self.values
@@ -913,11 +913,6 @@ module Increase
         module Reason
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::CheckTransfer::StopPaymentRequest::Reason) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::CheckTransfer::StopPaymentRequest::Reason::TaggedSymbol) }
-
           # The check could not be delivered.
           MAIL_DELIVERY_FAILED =
             T.let(:mail_delivery_failed, Increase::Models::CheckTransfer::StopPaymentRequest::Reason::TaggedSymbol)
@@ -933,6 +928,11 @@ module Increase
           # The check was stopped for another reason.
           UNKNOWN = T.let(:unknown, Increase::Models::CheckTransfer::StopPaymentRequest::Reason::TaggedSymbol)
 
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::CheckTransfer::StopPaymentRequest::Reason) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CheckTransfer::StopPaymentRequest::Reason::TaggedSymbol) }
+
           sig { override.returns(T::Array[Increase::Models::CheckTransfer::StopPaymentRequest::Reason::TaggedSymbol]) }
           def self.values
           end
@@ -943,15 +943,15 @@ module Increase
         module Type
           extend Increase::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckTransfer::StopPaymentRequest::Type) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::CheckTransfer::StopPaymentRequest::Type::TaggedSymbol) }
-
           CHECK_TRANSFER_STOP_PAYMENT_REQUEST =
             T.let(
               :check_transfer_stop_payment_request,
               Increase::Models::CheckTransfer::StopPaymentRequest::Type::TaggedSymbol
             )
+
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckTransfer::StopPaymentRequest::Type) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CheckTransfer::StopPaymentRequest::Type::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::CheckTransfer::StopPaymentRequest::Type::TaggedSymbol]) }
           def self.values
@@ -995,10 +995,10 @@ module Increase
       module Type
         extend Increase::Enum
 
+        CHECK_TRANSFER = T.let(:check_transfer, Increase::Models::CheckTransfer::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckTransfer::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CheckTransfer::Type::TaggedSymbol) }
-
-        CHECK_TRANSFER = T.let(:check_transfer, Increase::Models::CheckTransfer::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::CheckTransfer::Type::TaggedSymbol]) }
         def self.values

@@ -67,10 +67,10 @@ module Increase
       module Type
         extend Increase::Enum
 
+        BOOKKEEPING_ENTRY = T.let(:bookkeeping_entry, Increase::Models::BookkeepingEntry::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::BookkeepingEntry::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::BookkeepingEntry::Type::TaggedSymbol) }
-
-        BOOKKEEPING_ENTRY = T.let(:bookkeeping_entry, Increase::Models::BookkeepingEntry::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::BookkeepingEntry::Type::TaggedSymbol]) }
         def self.values

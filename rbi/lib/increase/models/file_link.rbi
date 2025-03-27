@@ -76,10 +76,10 @@ module Increase
       module Type
         extend Increase::Enum
 
+        FILE_LINK = T.let(:file_link, Increase::Models::FileLink::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::FileLink::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::FileLink::Type::TaggedSymbol) }
-
-        FILE_LINK = T.let(:file_link, Increase::Models::FileLink::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::FileLink::Type::TaggedSymbol]) }
         def self.values

@@ -36,10 +36,6 @@ module Increase
       module Reason
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundCheckDepositReturnParams::Reason) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::InboundCheckDepositReturnParams::Reason::TaggedSymbol) }
-
         # The check was altered or fictitious.
         ALTERED_OR_FICTITIOUS =
           T.let(:altered_or_fictitious, Increase::Models::InboundCheckDepositReturnParams::Reason::TaggedSymbol)
@@ -59,6 +55,10 @@ module Increase
         # The check was not endorsed by the payee.
         ENDORSEMENT_IRREGULAR =
           T.let(:endorsement_irregular, Increase::Models::InboundCheckDepositReturnParams::Reason::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundCheckDepositReturnParams::Reason) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::InboundCheckDepositReturnParams::Reason::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::InboundCheckDepositReturnParams::Reason::TaggedSymbol]) }
         def self.values

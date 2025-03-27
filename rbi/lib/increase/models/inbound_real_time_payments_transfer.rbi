@@ -179,11 +179,6 @@ module Increase
       module Currency
         extend Increase::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Currency) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol) }
-
         # Canadian Dollar (CAD)
         CAD = T.let(:CAD, Increase::Models::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol)
 
@@ -201,6 +196,11 @@ module Increase
 
         # US Dollar (USD)
         USD = T.let(:USD, Increase::Models::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol)
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Currency) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol]) }
         def self.values
@@ -249,11 +249,6 @@ module Increase
         module Reason
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason::TaggedSymbol) }
-
           # The account number is canceled.
           ACCOUNT_NUMBER_CANCELED =
             T.let(
@@ -293,6 +288,11 @@ module Increase
               Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason::TaggedSymbol
             )
 
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason::TaggedSymbol) }
+
           sig do
             override
               .returns(T::Array[Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason::TaggedSymbol])
@@ -305,10 +305,6 @@ module Increase
       # The lifecycle status of the transfer.
       module Status
         extend Increase::Enum
-
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Status::TaggedSymbol) }
 
         # The transfer is pending confirmation.
         PENDING_CONFIRMING =
@@ -323,6 +319,10 @@ module Increase
         # The transfer has been declined.
         DECLINED = T.let(:declined, Increase::Models::InboundRealTimePaymentsTransfer::Status::TaggedSymbol)
 
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Status) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Status::TaggedSymbol) }
+
         sig { override.returns(T::Array[Increase::Models::InboundRealTimePaymentsTransfer::Status::TaggedSymbol]) }
         def self.values
         end
@@ -333,15 +333,15 @@ module Increase
       module Type
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Type) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Type::TaggedSymbol) }
-
         INBOUND_REAL_TIME_PAYMENTS_TRANSFER =
           T.let(
             :inbound_real_time_payments_transfer,
             Increase::Models::InboundRealTimePaymentsTransfer::Type::TaggedSymbol
           )
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Type) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Type::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::InboundRealTimePaymentsTransfer::Type::TaggedSymbol]) }
         def self.values

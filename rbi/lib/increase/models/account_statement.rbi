@@ -97,10 +97,10 @@ module Increase
       module Type
         extend Increase::Enum
 
+        ACCOUNT_STATEMENT = T.let(:account_statement, Increase::Models::AccountStatement::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountStatement::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::AccountStatement::Type::TaggedSymbol) }
-
-        ACCOUNT_STATEMENT = T.let(:account_statement, Increase::Models::AccountStatement::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::AccountStatement::Type::TaggedSymbol]) }
         def self.values

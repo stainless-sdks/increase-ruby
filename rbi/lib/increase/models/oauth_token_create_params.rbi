@@ -79,10 +79,6 @@ module Increase
       module GrantType
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthTokenCreateParams::GrantType) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::OAuthTokenCreateParams::GrantType::TaggedSymbol) }
-
         # An OAuth authorization code.
         AUTHORIZATION_CODE =
           T.let(:authorization_code, Increase::Models::OAuthTokenCreateParams::GrantType::TaggedSymbol)
@@ -90,6 +86,10 @@ module Increase
         # An OAuth production token.
         PRODUCTION_TOKEN =
           T.let(:production_token, Increase::Models::OAuthTokenCreateParams::GrantType::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthTokenCreateParams::GrantType) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::OAuthTokenCreateParams::GrantType::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::OAuthTokenCreateParams::GrantType::TaggedSymbol]) }
         def self.values

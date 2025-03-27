@@ -416,11 +416,6 @@ module Increase
         module Category
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::TaggedSymbol) }
-
           # An API key. Details will be under the `api_key` object.
           API_KEY = T.let(:api_key, Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::TaggedSymbol)
 
@@ -430,6 +425,11 @@ module Increase
 
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER = T.let(:user, Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::TaggedSymbol)
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::TaggedSymbol]) }
           def self.values
@@ -472,10 +472,6 @@ module Increase
       module Currency
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransfer::Currency) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol) }
-
         # Canadian Dollar (CAD)
         CAD = T.let(:CAD, Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol)
 
@@ -493,6 +489,10 @@ module Increase
 
         # US Dollar (USD)
         USD = T.let(:USD, Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransfer::Currency) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol]) }
         def self.values
@@ -545,11 +545,6 @@ module Increase
         #   Real-Time Payments network.
         module RejectReasonCode
           extend Increase::Enum
-
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol) }
 
           # The destination account is closed. Corresponds to the Real-Time Payments reason code `AC04`.
           ACCOUNT_CLOSED =
@@ -689,6 +684,11 @@ module Increase
           OTHER =
             T.let(:other, Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol)
 
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol) }
+
           sig do
             override
               .returns(T::Array[Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol])
@@ -701,10 +701,6 @@ module Increase
       # The lifecycle status of the transfer.
       module Status
         extend Increase::Enum
-
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransfer::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol) }
 
         # The transfer is pending approval.
         PENDING_APPROVAL =
@@ -733,6 +729,10 @@ module Increase
 
         # The transfer has been sent successfully and is complete.
         COMPLETE = T.let(:complete, Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransfer::Status) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol]) }
         def self.values
@@ -767,11 +767,11 @@ module Increase
       module Type
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransfer::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::RealTimePaymentsTransfer::Type::TaggedSymbol) }
-
         REAL_TIME_PAYMENTS_TRANSFER =
           T.let(:real_time_payments_transfer, Increase::Models::RealTimePaymentsTransfer::Type::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransfer::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::RealTimePaymentsTransfer::Type::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::RealTimePaymentsTransfer::Type::TaggedSymbol]) }
         def self.values

@@ -163,11 +163,6 @@ module Increase
         module In
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::InboundWireTransferListParams::Status::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::InboundWireTransferListParams::Status::In::TaggedSymbol) }
-
           # The Inbound Wire Transfer is awaiting action, will transition automatically if no action is taken.
           PENDING = T.let(:pending, Increase::Models::InboundWireTransferListParams::Status::In::TaggedSymbol)
 
@@ -179,6 +174,11 @@ module Increase
 
           # The Inbound Wire Transfer was reversed.
           REVERSED = T.let(:reversed, Increase::Models::InboundWireTransferListParams::Status::In::TaggedSymbol)
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::InboundWireTransferListParams::Status::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::InboundWireTransferListParams::Status::In::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::InboundWireTransferListParams::Status::In::TaggedSymbol]) }
           def self.values

@@ -73,10 +73,6 @@ module Increase
       module ComplianceCategory
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::BookkeepingAccount::ComplianceCategory) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol) }
-
         # A cash in an commingled Increase Account.
         COMMINGLED_CASH =
           T.let(:commingled_cash, Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol)
@@ -84,6 +80,10 @@ module Increase
         # A customer balance.
         CUSTOMER_BALANCE =
           T.let(:customer_balance, Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::BookkeepingAccount::ComplianceCategory) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol]) }
         def self.values
@@ -95,11 +95,11 @@ module Increase
       module Type
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::BookkeepingAccount::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::BookkeepingAccount::Type::TaggedSymbol) }
-
         BOOKKEEPING_ACCOUNT =
           T.let(:bookkeeping_account, Increase::Models::BookkeepingAccount::Type::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::BookkeepingAccount::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::BookkeepingAccount::Type::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::BookkeepingAccount::Type::TaggedSymbol]) }
         def self.values

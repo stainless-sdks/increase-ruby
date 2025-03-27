@@ -89,10 +89,6 @@ module Increase
         module In
           extend Increase::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalCardProfileListParams::Status::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::DigitalCardProfileListParams::Status::In::TaggedSymbol) }
-
           # The Card Profile is awaiting review from Increase and/or processing by card networks.
           PENDING = T.let(:pending, Increase::Models::DigitalCardProfileListParams::Status::In::TaggedSymbol)
 
@@ -104,6 +100,10 @@ module Increase
 
           # The Card Profile is no longer in use.
           ARCHIVED = T.let(:archived, Increase::Models::DigitalCardProfileListParams::Status::In::TaggedSymbol)
+
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalCardProfileListParams::Status::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::DigitalCardProfileListParams::Status::In::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::DigitalCardProfileListParams::Status::In::TaggedSymbol]) }
           def self.values

@@ -66,17 +66,17 @@ module Increase
       module AccountHolder
         extend Increase::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountUpdateParams::AccountHolder) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountUpdateParams::AccountHolder::TaggedSymbol) }
-
         # The External Account is owned by a business.
         BUSINESS = T.let(:business, Increase::Models::ExternalAccountUpdateParams::AccountHolder::TaggedSymbol)
 
         # The External Account is owned by an individual.
         INDIVIDUAL =
           T.let(:individual, Increase::Models::ExternalAccountUpdateParams::AccountHolder::TaggedSymbol)
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountUpdateParams::AccountHolder) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountUpdateParams::AccountHolder::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::ExternalAccountUpdateParams::AccountHolder::TaggedSymbol]) }
         def self.values
@@ -87,10 +87,6 @@ module Increase
       module Funding
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountUpdateParams::Funding) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountUpdateParams::Funding::TaggedSymbol) }
-
         # A checking account.
         CHECKING = T.let(:checking, Increase::Models::ExternalAccountUpdateParams::Funding::TaggedSymbol)
 
@@ -99,6 +95,10 @@ module Increase
 
         # A different type of account.
         OTHER = T.let(:other, Increase::Models::ExternalAccountUpdateParams::Funding::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountUpdateParams::Funding) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountUpdateParams::Funding::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::ExternalAccountUpdateParams::Funding::TaggedSymbol]) }
         def self.values
@@ -109,15 +109,15 @@ module Increase
       module Status
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountUpdateParams::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountUpdateParams::Status::TaggedSymbol) }
-
         # The External Account is active.
         ACTIVE = T.let(:active, Increase::Models::ExternalAccountUpdateParams::Status::TaggedSymbol)
 
         # The External Account is archived and won't appear in the dashboard.
         ARCHIVED = T.let(:archived, Increase::Models::ExternalAccountUpdateParams::Status::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountUpdateParams::Status) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountUpdateParams::Status::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::ExternalAccountUpdateParams::Status::TaggedSymbol]) }
         def self.values

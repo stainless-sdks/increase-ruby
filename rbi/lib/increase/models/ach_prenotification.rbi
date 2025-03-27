@@ -153,15 +153,15 @@ module Increase
       module CreditDebitIndicator
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotification::CreditDebitIndicator) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ACHPrenotification::CreditDebitIndicator::TaggedSymbol) }
-
         # The Prenotification is for an anticipated credit.
         CREDIT = T.let(:credit, Increase::Models::ACHPrenotification::CreditDebitIndicator::TaggedSymbol)
 
         # The Prenotification is for an anticipated debit.
         DEBIT = T.let(:debit, Increase::Models::ACHPrenotification::CreditDebitIndicator::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotification::CreditDebitIndicator) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::ACHPrenotification::CreditDebitIndicator::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::ACHPrenotification::CreditDebitIndicator::TaggedSymbol]) }
         def self.values
@@ -215,11 +215,6 @@ module Increase
         #   institution.
         module ChangeCode
           extend Increase::Enum
-
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode::TaggedSymbol) }
 
           # The account number was incorrect.
           INCORRECT_ACCOUNT_NUMBER =
@@ -354,6 +349,11 @@ module Increase
               Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode::TaggedSymbol
             )
 
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode::TaggedSymbol) }
+
           sig do
             override
               .returns(T::Array[Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode::TaggedSymbol])
@@ -399,11 +399,6 @@ module Increase
         # Why the Prenotification was returned.
         module ReturnReasonCode
           extend Increase::Enum
-
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotification::PrenotificationReturn::ReturnReasonCode) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::ACHPrenotification::PrenotificationReturn::ReturnReasonCode::TaggedSymbol) }
 
           # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
           INSUFFICIENT_FUND =
@@ -895,6 +890,11 @@ module Increase
               Increase::Models::ACHPrenotification::PrenotificationReturn::ReturnReasonCode::TaggedSymbol
             )
 
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotification::PrenotificationReturn::ReturnReasonCode) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::ACHPrenotification::PrenotificationReturn::ReturnReasonCode::TaggedSymbol) }
+
           sig do
             override
               .returns(
@@ -910,9 +910,6 @@ module Increase
       module Status
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotification::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ACHPrenotification::Status::TaggedSymbol) }
-
         # The Prenotification is pending submission.
         PENDING_SUBMITTING =
           T.let(:pending_submitting, Increase::Models::ACHPrenotification::Status::TaggedSymbol)
@@ -927,6 +924,9 @@ module Increase
         # The Prenotification is complete.
         SUBMITTED = T.let(:submitted, Increase::Models::ACHPrenotification::Status::TaggedSymbol)
 
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotification::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ACHPrenotification::Status::TaggedSymbol) }
+
         sig { override.returns(T::Array[Increase::Models::ACHPrenotification::Status::TaggedSymbol]) }
         def self.values
         end
@@ -937,11 +937,11 @@ module Increase
       module Type
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotification::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ACHPrenotification::Type::TaggedSymbol) }
-
         ACH_PRENOTIFICATION =
           T.let(:ach_prenotification, Increase::Models::ACHPrenotification::Type::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotification::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ACHPrenotification::Type::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::ACHPrenotification::Type::TaggedSymbol]) }
         def self.values

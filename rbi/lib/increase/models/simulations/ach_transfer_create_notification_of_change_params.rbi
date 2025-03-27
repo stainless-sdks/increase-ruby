@@ -43,16 +43,6 @@ module Increase
         module ChangeCode
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode) }
-          OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::TaggedSymbol
-              )
-            end
-
           # The account number was incorrect.
           INCORRECT_ACCOUNT_NUMBER =
             T.let(
@@ -185,6 +175,16 @@ module Increase
               :incorrect_transaction_code_by_originating_depository_financial_institution,
               Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::TaggedSymbol
             )
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode) }
+          OrSymbol =
+            T.type_alias do
+              T.any(
+                Symbol,
+                Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::TaggedSymbol
+              )
+            end
 
           sig do
             override

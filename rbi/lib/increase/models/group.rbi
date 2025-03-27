@@ -61,14 +61,14 @@ module Increase
       module ACHDebitStatus
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Group::ACHDebitStatus) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Group::ACHDebitStatus::TaggedSymbol) }
-
         # The Group cannot make ACH debits.
         DISABLED = T.let(:disabled, Increase::Models::Group::ACHDebitStatus::TaggedSymbol)
 
         # The Group can make ACH debits.
         ENABLED = T.let(:enabled, Increase::Models::Group::ACHDebitStatus::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Group::ACHDebitStatus) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Group::ACHDebitStatus::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::Group::ACHDebitStatus::TaggedSymbol]) }
         def self.values
@@ -79,14 +79,14 @@ module Increase
       module ActivationStatus
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Group::ActivationStatus) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Group::ActivationStatus::TaggedSymbol) }
-
         # The Group is not activated.
         UNACTIVATED = T.let(:unactivated, Increase::Models::Group::ActivationStatus::TaggedSymbol)
 
         # The Group is activated.
         ACTIVATED = T.let(:activated, Increase::Models::Group::ActivationStatus::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Group::ActivationStatus) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Group::ActivationStatus::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::Group::ActivationStatus::TaggedSymbol]) }
         def self.values
@@ -98,10 +98,10 @@ module Increase
       module Type
         extend Increase::Enum
 
+        GROUP = T.let(:group, Increase::Models::Group::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Group::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Group::Type::TaggedSymbol) }
-
-        GROUP = T.let(:group, Increase::Models::Group::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Group::Type::TaggedSymbol]) }
         def self.values

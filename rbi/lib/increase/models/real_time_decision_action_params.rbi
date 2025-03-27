@@ -147,11 +147,6 @@ module Increase
         module Decision
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::TaggedSymbol) }
-
           # Approve the authentication attempt without triggering a challenge.
           APPROVE =
             T.let(
@@ -169,6 +164,11 @@ module Increase
           # Deny the authentication attempt.
           DENY =
             T.let(:deny, Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::TaggedSymbol)
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::TaggedSymbol) }
 
           sig do
             override
@@ -212,16 +212,6 @@ module Increase
         module Result
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result) }
-          OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::TaggedSymbol
-              )
-            end
-
           # Your application successfully delivered the one-time code to the cardholder.
           SUCCESS =
             T.let(
@@ -235,6 +225,16 @@ module Increase
               :failure,
               Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::TaggedSymbol
             )
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result) }
+          OrSymbol =
+            T.type_alias do
+              T.any(
+                Symbol,
+                Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::TaggedSymbol
+              )
+            end
 
           sig do
             override
@@ -297,11 +297,6 @@ module Increase
         module Decision
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::TaggedSymbol) }
-
           # Approve the authorization.
           APPROVE =
             T.let(:approve, Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::TaggedSymbol)
@@ -309,6 +304,11 @@ module Increase
           # Decline the authorization.
           DECLINE =
             T.let(:decline, Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::TaggedSymbol)
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::TaggedSymbol) }
 
           sig do
             override
@@ -324,16 +324,6 @@ module Increase
         #   decline code that is sent to the card network.
         module DeclineReason
           extend Increase::Enum
-
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason) }
-          OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
-              )
-            end
 
           # The cardholder does not have sufficient funds to cover the transaction. The merchant may attempt to process the transaction again.
           INSUFFICIENT_FUNDS =
@@ -376,6 +366,16 @@ module Increase
               :other,
               Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
             )
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason) }
+          OrSymbol =
+            T.type_alias do
+              T.any(
+                Symbol,
+                Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
+              )
+            end
 
           sig do
             override
@@ -438,16 +438,6 @@ module Increase
         module Result
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result) }
-          OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::TaggedSymbol
-              )
-            end
-
           # Your application successfully delivered the one-time passcode to the cardholder.
           SUCCESS =
             T.let(
@@ -461,6 +451,16 @@ module Increase
               :failure,
               Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::TaggedSymbol
             )
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result) }
+          OrSymbol =
+            T.type_alias do
+              T.any(
+                Symbol,
+                Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::TaggedSymbol
+              )
+            end
 
           sig do
             override

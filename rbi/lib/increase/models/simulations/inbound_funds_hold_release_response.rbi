@@ -105,11 +105,6 @@ module Increase
         module Currency
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency::TaggedSymbol) }
-
           # Canadian Dollar (CAD)
           CAD = T.let(:CAD, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency::TaggedSymbol)
 
@@ -128,6 +123,11 @@ module Increase
           # US Dollar (USD)
           USD = T.let(:USD, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency::TaggedSymbol)
 
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency::TaggedSymbol) }
+
           sig do
             override
               .returns(T::Array[Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency::TaggedSymbol])
@@ -140,17 +140,17 @@ module Increase
         module Status
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status::TaggedSymbol) }
-
           # Funds are still being held.
           HELD = T.let(:held, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status::TaggedSymbol)
 
           # Funds have been released.
           COMPLETE =
             T.let(:complete, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status::TaggedSymbol)
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status::TaggedSymbol) }
 
           sig do
             override
@@ -165,16 +165,16 @@ module Increase
         module Type
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type::TaggedSymbol) }
-
           INBOUND_FUNDS_HOLD =
             T.let(
               :inbound_funds_hold,
               Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type::TaggedSymbol
             )
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type::TaggedSymbol) }
 
           sig do
             override

@@ -36,10 +36,6 @@ module Increase
       module Status
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardUpdateParams::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol) }
-
         # The physical card is active.
         ACTIVE = T.let(:active, Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol)
 
@@ -48,6 +44,10 @@ module Increase
 
         # The physical card is permanently canceled.
         CANCELED = T.let(:canceled, Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardUpdateParams::Status) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol]) }
         def self.values

@@ -174,14 +174,14 @@ module Increase
         module In
           extend Increase::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountListParams::Status::In) }
-          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::AccountListParams::Status::In::TaggedSymbol) }
-
           # Closed Accounts on which no new activity can occur.
           CLOSED = T.let(:closed, Increase::Models::AccountListParams::Status::In::TaggedSymbol)
 
           # Open Accounts that are ready to use.
           OPEN = T.let(:open, Increase::Models::AccountListParams::Status::In::TaggedSymbol)
+
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountListParams::Status::In) }
+          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::AccountListParams::Status::In::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::AccountListParams::Status::In::TaggedSymbol]) }
           def self.values

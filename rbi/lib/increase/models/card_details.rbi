@@ -66,10 +66,10 @@ module Increase
       module Type
         extend Increase::Enum
 
+        CARD_DETAILS = T.let(:card_details, Increase::Models::CardDetails::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardDetails::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CardDetails::Type::TaggedSymbol) }
-
-        CARD_DETAILS = T.let(:card_details, Increase::Models::CardDetails::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::CardDetails::Type::TaggedSymbol]) }
         def self.values

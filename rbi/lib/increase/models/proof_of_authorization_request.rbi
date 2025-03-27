@@ -78,12 +78,12 @@ module Increase
       module Type
         extend Increase::Enum
 
+        PROOF_OF_AUTHORIZATION_REQUEST =
+          T.let(:proof_of_authorization_request, Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ProofOfAuthorizationRequest::Type) }
         OrSymbol =
           T.type_alias { T.any(Symbol, Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol) }
-
-        PROOF_OF_AUTHORIZATION_REQUEST =
-          T.let(:proof_of_authorization_request, Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol]) }
         def self.values

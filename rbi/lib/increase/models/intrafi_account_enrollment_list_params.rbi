@@ -106,11 +106,6 @@ module Increase
         module In
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol) }
-
           # The account is being added to the IntraFi network.
           PENDING_ENROLLING =
             T.let(:pending_enrolling, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol)
@@ -133,6 +128,11 @@ module Increase
           # Something unexpected happened with this account. Contact Increase support.
           REQUIRES_ATTENTION =
             T.let(:requires_attention, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol)
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol]) }
           def self.values

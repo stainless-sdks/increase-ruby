@@ -118,14 +118,14 @@ module Increase
       module Creator
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardProfile::Creator) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::PhysicalCardProfile::Creator::TaggedSymbol) }
-
         # This Physical Card Profile was created by Increase.
         INCREASE = T.let(:increase, Increase::Models::PhysicalCardProfile::Creator::TaggedSymbol)
 
         # This Physical Card Profile was created by you.
         USER = T.let(:user, Increase::Models::PhysicalCardProfile::Creator::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardProfile::Creator) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::PhysicalCardProfile::Creator::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::PhysicalCardProfile::Creator::TaggedSymbol]) }
         def self.values
@@ -135,9 +135,6 @@ module Increase
       # The status of the Physical Card Profile.
       module Status
         extend Increase::Enum
-
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardProfile::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::PhysicalCardProfile::Status::TaggedSymbol) }
 
         # The Card Profile has not yet been processed by Increase.
         PENDING_CREATING = T.let(:pending_creating, Increase::Models::PhysicalCardProfile::Status::TaggedSymbol)
@@ -159,6 +156,9 @@ module Increase
         # The Physical Card Profile has been archived.
         ARCHIVED = T.let(:archived, Increase::Models::PhysicalCardProfile::Status::TaggedSymbol)
 
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardProfile::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::PhysicalCardProfile::Status::TaggedSymbol) }
+
         sig { override.returns(T::Array[Increase::Models::PhysicalCardProfile::Status::TaggedSymbol]) }
         def self.values
         end
@@ -169,11 +169,11 @@ module Increase
       module Type
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardProfile::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::PhysicalCardProfile::Type::TaggedSymbol) }
-
         PHYSICAL_CARD_PROFILE =
           T.let(:physical_card_profile, Increase::Models::PhysicalCardProfile::Type::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardProfile::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::PhysicalCardProfile::Type::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::PhysicalCardProfile::Type::TaggedSymbol]) }
         def self.values

@@ -95,11 +95,6 @@ module Increase
         module DebitStatus
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::TaggedSymbol) }
-
           # ACH Debits are allowed.
           ALLOWED =
             T.let(:allowed, Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::TaggedSymbol)
@@ -107,6 +102,11 @@ module Increase
           # ACH Debits are blocked.
           BLOCKED =
             T.let(:blocked, Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::TaggedSymbol)
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::TaggedSymbol) }
 
           sig do
             override
@@ -141,11 +141,6 @@ module Increase
         module Status
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::AccountNumberCreateParams::InboundChecks::Status) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::AccountNumberCreateParams::InboundChecks::Status::TaggedSymbol) }
-
           # Checks with this Account Number will be processed even if they are not associated with a Check Transfer.
           ALLOWED =
             T.let(:allowed, Increase::Models::AccountNumberCreateParams::InboundChecks::Status::TaggedSymbol)
@@ -156,6 +151,11 @@ module Increase
               :check_transfers_only,
               Increase::Models::AccountNumberCreateParams::InboundChecks::Status::TaggedSymbol
             )
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::AccountNumberCreateParams::InboundChecks::Status) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::AccountNumberCreateParams::InboundChecks::Status::TaggedSymbol) }
 
           sig do
             override

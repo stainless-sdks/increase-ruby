@@ -81,10 +81,6 @@ module Increase
       module Status
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiAccountEnrollment::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol) }
-
         # The account is being added to the IntraFi network.
         PENDING_ENROLLING =
           T.let(:pending_enrolling, Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol)
@@ -103,6 +99,10 @@ module Increase
         REQUIRES_ATTENTION =
           T.let(:requires_attention, Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol)
 
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiAccountEnrollment::Status) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol) }
+
         sig { override.returns(T::Array[Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol]) }
         def self.values
         end
@@ -113,11 +113,11 @@ module Increase
       module Type
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiAccountEnrollment::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::IntrafiAccountEnrollment::Type::TaggedSymbol) }
-
         INTRAFI_ACCOUNT_ENROLLMENT =
           T.let(:intrafi_account_enrollment, Increase::Models::IntrafiAccountEnrollment::Type::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiAccountEnrollment::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::IntrafiAccountEnrollment::Type::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::IntrafiAccountEnrollment::Type::TaggedSymbol]) }
         def self.values

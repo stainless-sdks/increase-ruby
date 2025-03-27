@@ -85,10 +85,6 @@ module Increase
       module SelectedEventCategory
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EventSubscription::SelectedEventCategory) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::EventSubscription::SelectedEventCategory::TaggedSymbol) }
-
         # Occurs whenever an Account is created.
         ACCOUNT_CREATED =
           T.let(:"account.created", Increase::Models::EventSubscription::SelectedEventCategory::TaggedSymbol)
@@ -606,6 +602,10 @@ module Increase
         WIRE_TRANSFER_UPDATED =
           T.let(:"wire_transfer.updated", Increase::Models::EventSubscription::SelectedEventCategory::TaggedSymbol)
 
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EventSubscription::SelectedEventCategory) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::EventSubscription::SelectedEventCategory::TaggedSymbol) }
+
         sig { override.returns(T::Array[Increase::Models::EventSubscription::SelectedEventCategory::TaggedSymbol]) }
         def self.values
         end
@@ -614,9 +614,6 @@ module Increase
       # This indicates if we'll send notifications to this subscription.
       module Status
         extend Increase::Enum
-
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EventSubscription::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::EventSubscription::Status::TaggedSymbol) }
 
         # The subscription is active and Events will be delivered normally.
         ACTIVE = T.let(:active, Increase::Models::EventSubscription::Status::TaggedSymbol)
@@ -631,6 +628,9 @@ module Increase
         REQUIRES_ATTENTION =
           T.let(:requires_attention, Increase::Models::EventSubscription::Status::TaggedSymbol)
 
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EventSubscription::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::EventSubscription::Status::TaggedSymbol) }
+
         sig { override.returns(T::Array[Increase::Models::EventSubscription::Status::TaggedSymbol]) }
         def self.values
         end
@@ -641,10 +641,10 @@ module Increase
       module Type
         extend Increase::Enum
 
+        EVENT_SUBSCRIPTION = T.let(:event_subscription, Increase::Models::EventSubscription::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EventSubscription::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::EventSubscription::Type::TaggedSymbol) }
-
-        EVENT_SUBSCRIPTION = T.let(:event_subscription, Increase::Models::EventSubscription::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::EventSubscription::Type::TaggedSymbol]) }
         def self.values

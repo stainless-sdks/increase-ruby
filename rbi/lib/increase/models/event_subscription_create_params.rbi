@@ -72,11 +72,6 @@ module Increase
       module SelectedEventCategory
         extend Increase::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol) }
-
         # Occurs whenever an Account is created.
         ACCOUNT_CREATED =
           T.let(
@@ -692,6 +687,11 @@ module Increase
             :"wire_transfer.updated",
             Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol
           )
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol) }
 
         sig do
           override

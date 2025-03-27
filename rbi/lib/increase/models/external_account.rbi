@@ -109,9 +109,6 @@ module Increase
       module AccountHolder
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccount::AccountHolder) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ExternalAccount::AccountHolder::TaggedSymbol) }
-
         # The External Account is owned by a business.
         BUSINESS = T.let(:business, Increase::Models::ExternalAccount::AccountHolder::TaggedSymbol)
 
@@ -120,6 +117,9 @@ module Increase
 
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN = T.let(:unknown, Increase::Models::ExternalAccount::AccountHolder::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccount::AccountHolder) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ExternalAccount::AccountHolder::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::ExternalAccount::AccountHolder::TaggedSymbol]) }
         def self.values
@@ -130,9 +130,6 @@ module Increase
       module Funding
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccount::Funding) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ExternalAccount::Funding::TaggedSymbol) }
-
         # A checking account.
         CHECKING = T.let(:checking, Increase::Models::ExternalAccount::Funding::TaggedSymbol)
 
@@ -141,6 +138,9 @@ module Increase
 
         # A different type of account.
         OTHER = T.let(:other, Increase::Models::ExternalAccount::Funding::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccount::Funding) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ExternalAccount::Funding::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::ExternalAccount::Funding::TaggedSymbol]) }
         def self.values
@@ -151,14 +151,14 @@ module Increase
       module Status
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccount::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ExternalAccount::Status::TaggedSymbol) }
-
         # The External Account is active.
         ACTIVE = T.let(:active, Increase::Models::ExternalAccount::Status::TaggedSymbol)
 
         # The External Account is archived and won't appear in the dashboard.
         ARCHIVED = T.let(:archived, Increase::Models::ExternalAccount::Status::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccount::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ExternalAccount::Status::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::ExternalAccount::Status::TaggedSymbol]) }
         def self.values
@@ -170,10 +170,10 @@ module Increase
       module Type
         extend Increase::Enum
 
+        EXTERNAL_ACCOUNT = T.let(:external_account, Increase::Models::ExternalAccount::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccount::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ExternalAccount::Type::TaggedSymbol) }
-
-        EXTERNAL_ACCOUNT = T.let(:external_account, Increase::Models::ExternalAccount::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ExternalAccount::Type::TaggedSymbol]) }
         def self.values
@@ -184,10 +184,6 @@ module Increase
       module VerificationStatus
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccount::VerificationStatus) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ExternalAccount::VerificationStatus::TaggedSymbol) }
-
         # The External Account has not been verified.
         UNVERIFIED = T.let(:unverified, Increase::Models::ExternalAccount::VerificationStatus::TaggedSymbol)
 
@@ -196,6 +192,10 @@ module Increase
 
         # The External Account is verified.
         VERIFIED = T.let(:verified, Increase::Models::ExternalAccount::VerificationStatus::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccount::VerificationStatus) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::ExternalAccount::VerificationStatus::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::ExternalAccount::VerificationStatus::TaggedSymbol]) }
         def self.values

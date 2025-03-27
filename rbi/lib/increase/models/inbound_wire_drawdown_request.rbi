@@ -199,12 +199,12 @@ module Increase
       module Type
         extend Increase::Enum
 
+        INBOUND_WIRE_DRAWDOWN_REQUEST =
+          T.let(:inbound_wire_drawdown_request, Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundWireDrawdownRequest::Type) }
         OrSymbol =
           T.type_alias { T.any(Symbol, Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol) }
-
-        INBOUND_WIRE_DRAWDOWN_REQUEST =
-          T.let(:inbound_wire_drawdown_request, Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol]) }
         def self.values

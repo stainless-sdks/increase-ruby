@@ -112,9 +112,6 @@ module Increase
         module In
           extend Increase::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExportListParams::Category::In) }
-          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ExportListParams::Category::In::TaggedSymbol) }
-
           # Export an Open Financial Exchange (OFX) file of transactions and balances for a given time range and Account.
           ACCOUNT_STATEMENT_OFX =
             T.let(:account_statement_ofx, Increase::Models::ExportListParams::Category::In::TaggedSymbol)
@@ -138,6 +135,9 @@ module Increase
           # Certain dashboard tables are available as CSV exports. This export cannot be created via the API.
           DASHBOARD_TABLE_CSV =
             T.let(:dashboard_table_csv, Increase::Models::ExportListParams::Category::In::TaggedSymbol)
+
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExportListParams::Category::In) }
+          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ExportListParams::Category::In::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::ExportListParams::Category::In::TaggedSymbol]) }
           def self.values
@@ -210,9 +210,6 @@ module Increase
         module In
           extend Increase::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExportListParams::Status::In) }
-          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ExportListParams::Status::In::TaggedSymbol) }
-
           # Increase is generating the export.
           PENDING = T.let(:pending, Increase::Models::ExportListParams::Status::In::TaggedSymbol)
 
@@ -221,6 +218,9 @@ module Increase
 
           # The export failed to generate. Increase will reach out to you to resolve the issue.
           FAILED = T.let(:failed, Increase::Models::ExportListParams::Status::In::TaggedSymbol)
+
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExportListParams::Status::In) }
+          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ExportListParams::Status::In::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::ExportListParams::Status::In::TaggedSymbol]) }
           def self.values

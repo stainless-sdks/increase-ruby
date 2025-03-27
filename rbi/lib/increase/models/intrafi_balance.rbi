@@ -148,9 +148,6 @@ module Increase
       module Currency
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiBalance::Currency) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::IntrafiBalance::Currency::TaggedSymbol) }
-
         # Canadian Dollar (CAD)
         CAD = T.let(:CAD, Increase::Models::IntrafiBalance::Currency::TaggedSymbol)
 
@@ -169,6 +166,9 @@ module Increase
         # US Dollar (USD)
         USD = T.let(:USD, Increase::Models::IntrafiBalance::Currency::TaggedSymbol)
 
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiBalance::Currency) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::IntrafiBalance::Currency::TaggedSymbol) }
+
         sig { override.returns(T::Array[Increase::Models::IntrafiBalance::Currency::TaggedSymbol]) }
         def self.values
         end
@@ -179,10 +179,10 @@ module Increase
       module Type
         extend Increase::Enum
 
+        INTRAFI_BALANCE = T.let(:intrafi_balance, Increase::Models::IntrafiBalance::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiBalance::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::IntrafiBalance::Type::TaggedSymbol) }
-
-        INTRAFI_BALANCE = T.let(:intrafi_balance, Increase::Models::IntrafiBalance::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::IntrafiBalance::Type::TaggedSymbol]) }
         def self.values

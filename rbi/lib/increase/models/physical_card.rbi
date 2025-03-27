@@ -241,9 +241,6 @@ module Increase
         module Method
           extend Increase::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCard::Shipment::Method) }
-          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol) }
-
           # USPS Post with tracking.
           USPS = T.let(:usps, Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol)
 
@@ -254,6 +251,9 @@ module Increase
           # FedEx 2-day.
           FEDEX_2_DAY = T.let(:fedex_2_day, Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol)
 
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCard::Shipment::Method) }
+          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol) }
+
           sig { override.returns(T::Array[Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol]) }
           def self.values
           end
@@ -262,9 +262,6 @@ module Increase
         # The status of this shipment.
         module Status
           extend Increase::Enum
-
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCard::Shipment::Status) }
-          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol) }
 
           # The physical card has not yet been shipped.
           PENDING = T.let(:pending, Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol)
@@ -286,6 +283,9 @@ module Increase
 
           # The physical card shipment was returned to the sender and destroyed by the production facility.
           RETURNED = T.let(:returned, Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol)
+
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCard::Shipment::Status) }
+          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol]) }
           def self.values
@@ -344,9 +344,6 @@ module Increase
       module Status
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCard::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::PhysicalCard::Status::TaggedSymbol) }
-
         # The physical card is active.
         ACTIVE = T.let(:active, Increase::Models::PhysicalCard::Status::TaggedSymbol)
 
@@ -355,6 +352,9 @@ module Increase
 
         # The physical card is permanently canceled.
         CANCELED = T.let(:canceled, Increase::Models::PhysicalCard::Status::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCard::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::PhysicalCard::Status::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::PhysicalCard::Status::TaggedSymbol]) }
         def self.values
@@ -366,10 +366,10 @@ module Increase
       module Type
         extend Increase::Enum
 
+        PHYSICAL_CARD = T.let(:physical_card, Increase::Models::PhysicalCard::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCard::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::PhysicalCard::Type::TaggedSymbol) }
-
-        PHYSICAL_CARD = T.let(:physical_card, Increase::Models::PhysicalCard::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::PhysicalCard::Type::TaggedSymbol]) }
         def self.values

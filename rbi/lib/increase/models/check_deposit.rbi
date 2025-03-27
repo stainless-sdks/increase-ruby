@@ -272,11 +272,6 @@ module Increase
         module Currency
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::DepositAcceptance::Currency) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol) }
-
           # Canadian Dollar (CAD)
           CAD = T.let(:CAD, Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol)
 
@@ -294,6 +289,11 @@ module Increase
 
           # US Dollar (USD)
           USD = T.let(:USD, Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol)
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::DepositAcceptance::Currency) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol]) }
           def self.values
@@ -366,10 +366,6 @@ module Increase
         module Currency
           extend Increase::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::DepositRejection::Currency) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol) }
-
           # Canadian Dollar (CAD)
           CAD = T.let(:CAD, Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol)
 
@@ -388,6 +384,10 @@ module Increase
           # US Dollar (USD)
           USD = T.let(:USD, Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol)
 
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::DepositRejection::Currency) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol) }
+
           sig { override.returns(T::Array[Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol]) }
           def self.values
           end
@@ -396,10 +396,6 @@ module Increase
         # Why the check deposit was rejected.
         module Reason
           extend Increase::Enum
-
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::DepositRejection::Reason) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol) }
 
           # The check's image is incomplete.
           INCOMPLETE_IMAGE =
@@ -448,6 +444,10 @@ module Increase
 
           # The check was rejected for an unknown reason.
           UNKNOWN = T.let(:unknown, Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol)
+
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::DepositRejection::Reason) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol]) }
           def self.values
@@ -521,10 +521,6 @@ module Increase
         module Currency
           extend Increase::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::DepositReturn::Currency) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol) }
-
           # Canadian Dollar (CAD)
           CAD = T.let(:CAD, Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol)
 
@@ -543,6 +539,10 @@ module Increase
           # US Dollar (USD)
           USD = T.let(:USD, Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol)
 
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::DepositReturn::Currency) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol) }
+
           sig { override.returns(T::Array[Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol]) }
           def self.values
           end
@@ -552,11 +552,6 @@ module Increase
         #   against.
         module ReturnReason
           extend Increase::Enum
-
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::DepositReturn::ReturnReason) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol) }
 
           # The check doesn't allow ACH conversion.
           ACH_CONVERSION_NOT_SUPPORTED =
@@ -676,6 +671,11 @@ module Increase
           # The bank sold this account and no longer services this customer.
           BRANCH_OR_ACCOUNT_SOLD =
             T.let(:branch_or_account_sold, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::DepositReturn::ReturnReason) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol]) }
           def self.values
@@ -815,10 +815,6 @@ module Increase
         module Currency
           extend Increase::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Currency) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol) }
-
           # Canadian Dollar (CAD)
           CAD = T.let(:CAD, Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol)
 
@@ -837,6 +833,10 @@ module Increase
           # US Dollar (USD)
           USD = T.let(:USD, Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol)
 
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Currency) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol) }
+
           sig { override.returns(T::Array[Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol]) }
           def self.values
           end
@@ -846,15 +846,15 @@ module Increase
         module Status
           extend Increase::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Status) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Status::TaggedSymbol) }
-
           # Funds are still being held.
           HELD = T.let(:held, Increase::Models::CheckDeposit::InboundFundsHold::Status::TaggedSymbol)
 
           # Funds have been released.
           COMPLETE = T.let(:complete, Increase::Models::CheckDeposit::InboundFundsHold::Status::TaggedSymbol)
+
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Status) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Status::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::CheckDeposit::InboundFundsHold::Status::TaggedSymbol]) }
           def self.values
@@ -866,12 +866,12 @@ module Increase
         module Type
           extend Increase::Enum
 
+          INBOUND_FUNDS_HOLD =
+            T.let(:inbound_funds_hold, Increase::Models::CheckDeposit::InboundFundsHold::Type::TaggedSymbol)
+
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Type) }
           OrSymbol =
             T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Type::TaggedSymbol) }
-
-          INBOUND_FUNDS_HOLD =
-            T.let(:inbound_funds_hold, Increase::Models::CheckDeposit::InboundFundsHold::Type::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::CheckDeposit::InboundFundsHold::Type::TaggedSymbol]) }
           def self.values
@@ -882,9 +882,6 @@ module Increase
       # The status of the Check Deposit.
       module Status
         extend Increase::Enum
-
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::Status::TaggedSymbol) }
 
         # The Check Deposit is pending review.
         PENDING = T.let(:pending, Increase::Models::CheckDeposit::Status::TaggedSymbol)
@@ -898,6 +895,9 @@ module Increase
         # The Check Deposit has been returned.
         RETURNED = T.let(:returned, Increase::Models::CheckDeposit::Status::TaggedSymbol)
 
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::Status::TaggedSymbol) }
+
         sig { override.returns(T::Array[Increase::Models::CheckDeposit::Status::TaggedSymbol]) }
         def self.values
         end
@@ -908,10 +908,10 @@ module Increase
       module Type
         extend Increase::Enum
 
+        CHECK_DEPOSIT = T.let(:check_deposit, Increase::Models::CheckDeposit::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::Type::TaggedSymbol) }
-
-        CHECK_DEPOSIT = T.let(:check_deposit, Increase::Models::CheckDeposit::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::CheckDeposit::Type::TaggedSymbol]) }
         def self.values

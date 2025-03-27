@@ -39,10 +39,6 @@ module Increase
       module Reason
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason::TaggedSymbol) }
-
         # The check could not be delivered.
         MAIL_DELIVERY_FAILED =
           T.let(:mail_delivery_failed, Increase::Models::CheckTransferStopPaymentParams::Reason::TaggedSymbol)
@@ -53,6 +49,10 @@ module Increase
 
         # The check was stopped for another reason.
         UNKNOWN = T.let(:unknown, Increase::Models::CheckTransferStopPaymentParams::Reason::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::CheckTransferStopPaymentParams::Reason::TaggedSymbol]) }
         def self.values

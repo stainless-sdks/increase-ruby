@@ -204,11 +204,6 @@ module Increase
         module Method
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardCreateParams::Shipment::Method) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol) }
-
           # USPS Post with tracking.
           USPS = T.let(:usps, Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol)
 
@@ -222,6 +217,11 @@ module Increase
           # FedEx 2-day.
           FEDEX_2_DAY =
             T.let(:fedex_2_day, Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol)
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardCreateParams::Shipment::Method) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol]) }
           def self.values

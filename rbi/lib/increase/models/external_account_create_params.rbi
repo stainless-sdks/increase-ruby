@@ -67,11 +67,6 @@ module Increase
       module AccountHolder
         extend Increase::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountCreateParams::AccountHolder) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol) }
-
         # The External Account is owned by a business.
         BUSINESS = T.let(:business, Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol)
 
@@ -82,6 +77,11 @@ module Increase
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN = T.let(:unknown, Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol)
 
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountCreateParams::AccountHolder) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol) }
+
         sig { override.returns(T::Array[Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol]) }
         def self.values
         end
@@ -91,10 +91,6 @@ module Increase
       module Funding
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountCreateParams::Funding) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol) }
-
         # A checking account.
         CHECKING = T.let(:checking, Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol)
 
@@ -103,6 +99,10 @@ module Increase
 
         # A different type of account.
         OTHER = T.let(:other, Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountCreateParams::Funding) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol]) }
         def self.values

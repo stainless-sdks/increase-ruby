@@ -138,9 +138,6 @@ module Increase
         module In
           extend Increase::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EntityListParams::Status::In) }
-          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::EntityListParams::Status::In::TaggedSymbol) }
-
           # The entity is active.
           ACTIVE = T.let(:active, Increase::Models::EntityListParams::Status::In::TaggedSymbol)
 
@@ -149,6 +146,9 @@ module Increase
 
           # The entity is temporarily disabled and cannot be used for financial activity.
           DISABLED = T.let(:disabled, Increase::Models::EntityListParams::Status::In::TaggedSymbol)
+
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EntityListParams::Status::In) }
+          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::EntityListParams::Status::In::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::EntityListParams::Status::In::TaggedSymbol]) }
           def self.values

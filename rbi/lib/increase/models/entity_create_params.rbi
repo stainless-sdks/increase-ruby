@@ -147,9 +147,6 @@ module Increase
       module Structure
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::Structure) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::Structure::TaggedSymbol) }
-
         # A corporation.
         CORPORATION = T.let(:corporation, Increase::Models::EntityCreateParams::Structure::TaggedSymbol)
 
@@ -165,6 +162,9 @@ module Increase
         # A government authority.
         GOVERNMENT_AUTHORITY =
           T.let(:government_authority, Increase::Models::EntityCreateParams::Structure::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::Structure) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::Structure::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::EntityCreateParams::Structure::TaggedSymbol]) }
         def self.values
@@ -618,18 +618,6 @@ module Increase
               module Method
                 extend Increase::Enum
 
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method)
-                  end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
-                    )
-                  end
-
                 # A social security number.
                 SOCIAL_SECURITY_NUMBER =
                   T.let(
@@ -664,6 +652,18 @@ module Increase
                     :other,
                     Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                   )
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method)
+                  end
+                OrSymbol =
+                  T.type_alias do
+                    T.any(
+                      Symbol,
+                      Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
+                    )
+                  end
 
                 sig do
                   override
@@ -811,11 +811,6 @@ module Increase
           module Prong
             extend Increase::Enum
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::TaggedSymbol) }
-
             # A person with 25% or greater direct or indirect ownership of the entity.
             OWNERSHIP =
               T.let(:ownership, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::TaggedSymbol)
@@ -823,6 +818,11 @@ module Increase
             # A person who manages, directs, or has significant control of the entity.
             CONTROL =
               T.let(:control, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::TaggedSymbol)
+
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::TaggedSymbol) }
 
             sig do
               override
@@ -970,14 +970,14 @@ module Increase
         module Category
           extend Increase::Enum
 
+          # The Public Entity is a Municipality.
+          MUNICIPALITY =
+            T.let(:municipality, Increase::Models::EntityCreateParams::GovernmentAuthority::Category::TaggedSymbol)
+
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::GovernmentAuthority::Category) }
           OrSymbol =
             T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::GovernmentAuthority::Category::TaggedSymbol) }
-
-          # The Public Entity is a Municipality.
-          MUNICIPALITY =
-            T.let(:municipality, Increase::Models::EntityCreateParams::GovernmentAuthority::Category::TaggedSymbol)
 
           sig do
             override
@@ -1239,16 +1239,6 @@ module Increase
             module Method
               extend Increase::Enum
 
-              TaggedSymbol =
-                T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method) }
-              OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
-                  )
-                end
-
               # A social security number.
               SOCIAL_SECURITY_NUMBER =
                 T.let(
@@ -1283,6 +1273,16 @@ module Increase
                   :other,
                   Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
                 )
+
+              TaggedSymbol =
+                T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method) }
+              OrSymbol =
+                T.type_alias do
+                  T.any(
+                    Symbol,
+                    Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
+                  )
+                end
 
               sig do
                 override
@@ -1640,11 +1640,6 @@ module Increase
           module Method
             extend Increase::Enum
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol) }
-
             # A social security number.
             SOCIAL_SECURITY_NUMBER =
               T.let(
@@ -1676,6 +1671,11 @@ module Increase
             # Another identifying document.
             OTHER =
               T.let(:other, Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol)
+
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol) }
 
             sig do
               override
@@ -1857,17 +1857,17 @@ module Increase
         module Vendor
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::TaggedSymbol) }
-
           # Alloy. See https://alloy.com for more information.
           ALLOY = T.let(:alloy, Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::TaggedSymbol)
 
           # Middesk. See https://middesk.com for more information.
           MIDDESK =
             T.let(:middesk, Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::TaggedSymbol)
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::TaggedSymbol) }
 
           sig do
             override
@@ -2026,15 +2026,15 @@ module Increase
         module Category
           extend Increase::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::Trust::Category) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::Trust::Category::TaggedSymbol) }
-
           # The trust is revocable by the grantor.
           REVOCABLE = T.let(:revocable, Increase::Models::EntityCreateParams::Trust::Category::TaggedSymbol)
 
           # The trust cannot be revoked.
           IRREVOCABLE = T.let(:irrevocable, Increase::Models::EntityCreateParams::Trust::Category::TaggedSymbol)
+
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::Trust::Category) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::Trust::Category::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::EntityCreateParams::Trust::Category::TaggedSymbol]) }
           def self.values
@@ -2085,14 +2085,14 @@ module Increase
           module Structure
             extend Increase::Enum
 
+            # The trustee is an individual.
+            INDIVIDUAL =
+              T.let(:individual, Increase::Models::EntityCreateParams::Trust::Trustee::Structure::TaggedSymbol)
+
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::Trust::Trustee::Structure) }
             OrSymbol =
               T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::Trust::Trustee::Structure::TaggedSymbol) }
-
-            # The trustee is an individual.
-            INDIVIDUAL =
-              T.let(:individual, Increase::Models::EntityCreateParams::Trust::Trustee::Structure::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::EntityCreateParams::Trust::Trustee::Structure::TaggedSymbol]) }
             def self.values
@@ -2343,16 +2343,6 @@ module Increase
               module Method
                 extend Increase::Enum
 
-                TaggedSymbol =
-                  T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method) }
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
-                    )
-                  end
-
                 # A social security number.
                 SOCIAL_SECURITY_NUMBER =
                   T.let(
@@ -2387,6 +2377,16 @@ module Increase
                     :other,
                     Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
                   )
+
+                TaggedSymbol =
+                  T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method) }
+                OrSymbol =
+                  T.type_alias do
+                    T.any(
+                      Symbol,
+                      Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
+                    )
+                  end
 
                 sig do
                   override
@@ -2747,11 +2747,6 @@ module Increase
             module Method
               extend Increase::Enum
 
-              TaggedSymbol =
-                T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method) }
-              OrSymbol =
-                T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol) }
-
               # A social security number.
               SOCIAL_SECURITY_NUMBER =
                 T.let(
@@ -2783,6 +2778,11 @@ module Increase
               # Another identifying document.
               OTHER =
                 T.let(:other, Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol)
+
+              TaggedSymbol =
+                T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method) }
+              OrSymbol =
+                T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol) }
 
               sig do
                 override

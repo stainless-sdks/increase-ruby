@@ -306,10 +306,6 @@ module Increase
         module Category
           extend Increase::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountTransfer::CreatedBy::Category) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::AccountTransfer::CreatedBy::Category::TaggedSymbol) }
-
           # An API key. Details will be under the `api_key` object.
           API_KEY = T.let(:api_key, Increase::Models::AccountTransfer::CreatedBy::Category::TaggedSymbol)
 
@@ -319,6 +315,10 @@ module Increase
 
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER = T.let(:user, Increase::Models::AccountTransfer::CreatedBy::Category::TaggedSymbol)
+
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountTransfer::CreatedBy::Category) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::AccountTransfer::CreatedBy::Category::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::AccountTransfer::CreatedBy::Category::TaggedSymbol]) }
           def self.values
@@ -361,9 +361,6 @@ module Increase
       module Currency
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountTransfer::Currency) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::AccountTransfer::Currency::TaggedSymbol) }
-
         # Canadian Dollar (CAD)
         CAD = T.let(:CAD, Increase::Models::AccountTransfer::Currency::TaggedSymbol)
 
@@ -382,6 +379,9 @@ module Increase
         # US Dollar (USD)
         USD = T.let(:USD, Increase::Models::AccountTransfer::Currency::TaggedSymbol)
 
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountTransfer::Currency) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::AccountTransfer::Currency::TaggedSymbol) }
+
         sig { override.returns(T::Array[Increase::Models::AccountTransfer::Currency::TaggedSymbol]) }
         def self.values
         end
@@ -391,10 +391,10 @@ module Increase
       module Network
         extend Increase::Enum
 
+        ACCOUNT = T.let(:account, Increase::Models::AccountTransfer::Network::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountTransfer::Network) }
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::AccountTransfer::Network::TaggedSymbol) }
-
-        ACCOUNT = T.let(:account, Increase::Models::AccountTransfer::Network::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::AccountTransfer::Network::TaggedSymbol]) }
         def self.values
@@ -405,9 +405,6 @@ module Increase
       module Status
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountTransfer::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::AccountTransfer::Status::TaggedSymbol) }
-
         # The transfer is pending approval.
         PENDING_APPROVAL = T.let(:pending_approval, Increase::Models::AccountTransfer::Status::TaggedSymbol)
 
@@ -416,6 +413,9 @@ module Increase
 
         # The transfer has been completed.
         COMPLETE = T.let(:complete, Increase::Models::AccountTransfer::Status::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountTransfer::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::AccountTransfer::Status::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::AccountTransfer::Status::TaggedSymbol]) }
         def self.values
@@ -427,10 +427,10 @@ module Increase
       module Type
         extend Increase::Enum
 
+        ACCOUNT_TRANSFER = T.let(:account_transfer, Increase::Models::AccountTransfer::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountTransfer::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::AccountTransfer::Type::TaggedSymbol) }
-
-        ACCOUNT_TRANSFER = T.let(:account_transfer, Increase::Models::AccountTransfer::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::AccountTransfer::Type::TaggedSymbol]) }
         def self.values

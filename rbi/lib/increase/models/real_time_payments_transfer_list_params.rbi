@@ -181,11 +181,6 @@ module Increase
         module In
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransferListParams::Status::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol) }
-
           # The transfer is pending approval.
           PENDING_APPROVAL =
             T.let(:pending_approval, Increase::Models::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol)
@@ -217,6 +212,11 @@ module Increase
           # The transfer has been sent successfully and is complete.
           COMPLETE =
             T.let(:complete, Increase::Models::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol)
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransferListParams::Status::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol]) }
           def self.values

@@ -57,16 +57,6 @@ module Increase
         module DeclineReason
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason) }
-          OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason::TaggedSymbol
-              )
-            end
-
           # The card is not active.
           CARD_NOT_ACTIVE =
             T.let(
@@ -95,6 +85,16 @@ module Increase
               Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason::TaggedSymbol
             )
 
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason) }
+          OrSymbol =
+            T.type_alias do
+              T.any(
+                Symbol,
+                Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason::TaggedSymbol
+              )
+            end
+
           sig do
             override
               .returns(
@@ -110,16 +110,16 @@ module Increase
         module Type
           extend Increase::Enum
 
-          TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type::TaggedSymbol) }
-
           INBOUND_DIGITAL_WALLET_TOKEN_REQUEST_SIMULATION_RESULT =
             T.let(
               :inbound_digital_wallet_token_request_simulation_result,
               Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type::TaggedSymbol
             )
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type::TaggedSymbol) }
 
           sig do
             override

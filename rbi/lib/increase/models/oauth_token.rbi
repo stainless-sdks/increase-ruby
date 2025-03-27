@@ -48,10 +48,10 @@ module Increase
       module TokenType
         extend Increase::Enum
 
+        BEARER = T.let(:bearer, Increase::Models::OAuthToken::TokenType::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthToken::TokenType) }
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::OAuthToken::TokenType::TaggedSymbol) }
-
-        BEARER = T.let(:bearer, Increase::Models::OAuthToken::TokenType::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::OAuthToken::TokenType::TaggedSymbol]) }
         def self.values
@@ -63,10 +63,10 @@ module Increase
       module Type
         extend Increase::Enum
 
+        OAUTH_TOKEN = T.let(:oauth_token, Increase::Models::OAuthToken::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthToken::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::OAuthToken::Type::TaggedSymbol) }
-
-        OAUTH_TOKEN = T.let(:oauth_token, Increase::Models::OAuthToken::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::OAuthToken::Type::TaggedSymbol]) }
         def self.values

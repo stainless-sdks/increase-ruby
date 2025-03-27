@@ -160,11 +160,6 @@ module Increase
       module Status
         extend Increase::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol) }
-
         # The proof of authorization request submission is pending review.
         PENDING_REVIEW =
           T.let(:pending_review, Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol)
@@ -184,6 +179,11 @@ module Increase
         # The proof of authorization request submission was sent.
         SENT = T.let(:sent, Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol)
 
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Status) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol) }
+
         sig { override.returns(T::Array[Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol]) }
         def self.values
         end
@@ -194,16 +194,16 @@ module Increase
       module Type
         extend Increase::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Type) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Type::TaggedSymbol) }
-
         PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION =
           T.let(
             :proof_of_authorization_request_submission,
             Increase::Models::ProofOfAuthorizationRequestSubmission::Type::TaggedSymbol
           )
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Type) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Type::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::ProofOfAuthorizationRequestSubmission::Type::TaggedSymbol]) }
         def self.values

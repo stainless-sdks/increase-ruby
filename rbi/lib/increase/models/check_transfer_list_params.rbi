@@ -161,10 +161,6 @@ module Increase
         module In
           extend Increase::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckTransferListParams::Status::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol) }
-
           # The transfer is awaiting approval.
           PENDING_APPROVAL =
             T.let(:pending_approval, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol)
@@ -198,6 +194,10 @@ module Increase
 
           # The transfer has been returned.
           RETURNED = T.let(:returned, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol)
+
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckTransferListParams::Status::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol]) }
           def self.values

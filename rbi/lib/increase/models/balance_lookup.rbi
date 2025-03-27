@@ -55,10 +55,10 @@ module Increase
       module Type
         extend Increase::Enum
 
+        BALANCE_LOOKUP = T.let(:balance_lookup, Increase::Models::BalanceLookup::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::BalanceLookup::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::BalanceLookup::Type::TaggedSymbol) }
-
-        BALANCE_LOOKUP = T.let(:balance_lookup, Increase::Models::BalanceLookup::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::BalanceLookup::Type::TaggedSymbol]) }
         def self.values

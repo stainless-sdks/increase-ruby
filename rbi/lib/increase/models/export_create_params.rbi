@@ -118,9 +118,6 @@ module Increase
       module Category
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExportCreateParams::Category) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ExportCreateParams::Category::TaggedSymbol) }
-
         # Export an Open Financial Exchange (OFX) file of transactions and balances for a given time range and Account.
         ACCOUNT_STATEMENT_OFX =
           T.let(:account_statement_ofx, Increase::Models::ExportCreateParams::Category::TaggedSymbol)
@@ -140,6 +137,9 @@ module Increase
 
         # Export a CSV of vendors added to the third-party risk management dashboard.
         VENDOR_CSV = T.let(:vendor_csv, Increase::Models::ExportCreateParams::Category::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExportCreateParams::Category) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ExportCreateParams::Category::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::ExportCreateParams::Category::TaggedSymbol]) }
         def self.values
@@ -469,11 +469,6 @@ module Increase
           module In
             extend Increase::Enum
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Increase::Models::ExportCreateParams::EntityCsv::Status::In) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::ExportCreateParams::EntityCsv::Status::In::TaggedSymbol) }
-
             # The entity is active.
             ACTIVE = T.let(:active, Increase::Models::ExportCreateParams::EntityCsv::Status::In::TaggedSymbol)
 
@@ -482,6 +477,11 @@ module Increase
 
             # The entity is temporarily disabled and cannot be used for financial activity.
             DISABLED = T.let(:disabled, Increase::Models::ExportCreateParams::EntityCsv::Status::In::TaggedSymbol)
+
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, Increase::Models::ExportCreateParams::EntityCsv::Status::In) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Increase::Models::ExportCreateParams::EntityCsv::Status::In::TaggedSymbol) }
 
             sig { override.returns(T::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::In::TaggedSymbol]) }
             def self.values

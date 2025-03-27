@@ -72,9 +72,6 @@ module Increase
       module Status
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalWalletToken::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::DigitalWalletToken::Status::TaggedSymbol) }
-
         # The digital wallet token is active.
         ACTIVE = T.let(:active, Increase::Models::DigitalWalletToken::Status::TaggedSymbol)
 
@@ -87,6 +84,9 @@ module Increase
         # The digital wallet token has been permanently canceled.
         DEACTIVATED = T.let(:deactivated, Increase::Models::DigitalWalletToken::Status::TaggedSymbol)
 
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalWalletToken::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::DigitalWalletToken::Status::TaggedSymbol) }
+
         sig { override.returns(T::Array[Increase::Models::DigitalWalletToken::Status::TaggedSymbol]) }
         def self.values
         end
@@ -95,10 +95,6 @@ module Increase
       # The digital wallet app being used.
       module TokenRequestor
         extend Increase::Enum
-
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalWalletToken::TokenRequestor) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol) }
 
         # Apple Pay
         APPLE_PAY = T.let(:apple_pay, Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol)
@@ -112,6 +108,10 @@ module Increase
         # Unknown
         UNKNOWN = T.let(:unknown, Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol)
 
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalWalletToken::TokenRequestor) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol) }
+
         sig { override.returns(T::Array[Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol]) }
         def self.values
         end
@@ -122,11 +122,11 @@ module Increase
       module Type
         extend Increase::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalWalletToken::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::DigitalWalletToken::Type::TaggedSymbol) }
-
         DIGITAL_WALLET_TOKEN =
           T.let(:digital_wallet_token, Increase::Models::DigitalWalletToken::Type::TaggedSymbol)
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalWalletToken::Type) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::DigitalWalletToken::Type::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::DigitalWalletToken::Type::TaggedSymbol]) }
         def self.values
@@ -161,10 +161,6 @@ module Increase
         module Status
           extend Increase::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalWalletToken::Update::Status) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol) }
-
           # The digital wallet token is active.
           ACTIVE = T.let(:active, Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol)
 
@@ -176,6 +172,10 @@ module Increase
 
           # The digital wallet token has been permanently canceled.
           DEACTIVATED = T.let(:deactivated, Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol)
+
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalWalletToken::Update::Status) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol]) }
           def self.values

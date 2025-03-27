@@ -133,15 +133,15 @@ module Increase
         module In
           extend Increase::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthApplicationListParams::Status::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::OAuthApplicationListParams::Status::In::TaggedSymbol) }
-
           # The application is active and can be used by your users.
           ACTIVE = T.let(:active, Increase::Models::OAuthApplicationListParams::Status::In::TaggedSymbol)
 
           # The application is deleted.
           DELETED = T.let(:deleted, Increase::Models::OAuthApplicationListParams::Status::In::TaggedSymbol)
+
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthApplicationListParams::Status::In) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Increase::Models::OAuthApplicationListParams::Status::In::TaggedSymbol) }
 
           sig { override.returns(T::Array[Increase::Models::OAuthApplicationListParams::Status::In::TaggedSymbol]) }
           def self.values

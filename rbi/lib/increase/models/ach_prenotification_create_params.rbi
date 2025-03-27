@@ -166,11 +166,6 @@ module Increase
       module CreditDebitIndicator
         extend Increase::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol) }
-
         # The Prenotification is for an anticipated credit.
         CREDIT =
           T.let(:credit, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol)
@@ -178,6 +173,11 @@ module Increase
         # The Prenotification is for an anticipated debit.
         DEBIT =
           T.let(:debit, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol)
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol) }
 
         sig do
           override
@@ -190,11 +190,6 @@ module Increase
       # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
       module StandardEntryClassCode
         extend Increase::Enum
-
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol) }
 
         # Corporate Credit and Debit (CCD).
         CORPORATE_CREDIT_OR_DEBIT =
@@ -223,6 +218,11 @@ module Increase
             :internet_initiated,
             Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol
           )
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol) }
 
         sig do
           override

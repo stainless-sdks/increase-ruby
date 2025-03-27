@@ -62,12 +62,12 @@ module Increase
       module Type
         extend Increase::Enum
 
+        ENTITY_SUPPLEMENTAL_DOCUMENT =
+          T.let(:entity_supplemental_document, Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol)
+
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EntitySupplementalDocument::Type) }
         OrSymbol =
           T.type_alias { T.any(Symbol, Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol) }
-
-        ENTITY_SUPPLEMENTAL_DOCUMENT =
-          T.let(:entity_supplemental_document, Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol]) }
         def self.values

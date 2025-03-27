@@ -105,11 +105,6 @@ module Increase
       module FulfillmentMethod
         extend Increase::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::CheckTransferCreateParams::FulfillmentMethod) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol) }
-
         # Increase will print and mail a physical check.
         PHYSICAL_CHECK =
           T.let(:physical_check, Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol)
@@ -117,6 +112,11 @@ module Increase
         # Increase will not print a check; you are responsible for printing and mailing a check with the provided account number, routing number, check number, and amount.
         THIRD_PARTY =
           T.let(:third_party, Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol)
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::CheckTransferCreateParams::FulfillmentMethod) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol) }
 
         sig { override.returns(T::Array[Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol]) }
         def self.values
