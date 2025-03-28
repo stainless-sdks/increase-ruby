@@ -75,7 +75,7 @@ module Increase
       def coerce_boolean(input)
         case input.is_a?(String) ? input.downcase : input
         in Numeric
-          input.nonzero?
+          !input.zero?
         in "true"
           true
         in "false"
@@ -165,12 +165,14 @@ module Increase
       private def deep_merge_lr(lhs, rhs, concat: false)
         case [lhs, rhs, concat]
         in [Hash, Hash, _]
-          rhs_cleaned = rhs.reject { _2 == Increase::Util::OMIT }
+          # rubocop:disable Style/YodaCondition
+          rhs_cleaned = rhs.reject { |_, val| OMIT == val }
           lhs
-            .reject { |key, _| rhs[key] == Increase::Util::OMIT }
+            .reject { |key, _| OMIT == rhs[key] }
             .merge(rhs_cleaned) do |_, old_val, new_val|
               deep_merge_lr(old_val, new_val, concat: concat)
             end
+          # rubocop:enable Style/YodaCondition
         in [Array, Array, true]
           lhs.concat(rhs)
         else
