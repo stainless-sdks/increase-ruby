@@ -11,7 +11,7 @@ CLEAN.push(*%w[.idea/ .ruby-lsp/ .yardoc/])
 
 xargs = %w[xargs --no-run-if-empty --null --max-procs=0 --max-args=300 --]
 
-multitask(default: [:test])
+task(default: [:test])
 
 multitask(:test) do
   rb = 
