@@ -323,14 +323,27 @@ module Increase
         #   # @return [String]
         #   attr_writer :check_number
 
+        # @!attribute [r] recipient_name
+        #   The pay-to name you will print on the check. If provided, this is used for
+        #     [Positive Pay](/documentation/positive-pay). If this is omitted, Increase will
+        #     be unable to validate the payee name when the check is deposited.
+        #
+        #   @return [String, nil]
+        optional :recipient_name, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :recipient_name
+
         # @!parse
         #   # Details relating to the custom fulfillment you will perform. This is required if
         #   #   `fulfillment_method` is equal to `third_party`. It must not be included if any
         #   #   other `fulfillment_method` is provided.
         #   #
         #   # @param check_number [String]
+        #   # @param recipient_name [String]
         #   #
-        #   def initialize(check_number: nil, **) = super
+        #   def initialize(check_number: nil, recipient_name: nil, **) = super
 
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
