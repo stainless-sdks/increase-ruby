@@ -335,14 +335,23 @@ module Increase
         sig { params(check_number: String).void }
         attr_writer :check_number
 
+        # The pay-to name you will print on the check. If provided, this is used for
+        #   [Positive Pay](/documentation/positive-pay). If this is omitted, Increase will
+        #   be unable to validate the payee name when the check is deposited.
+        sig { returns(T.nilable(String)) }
+        attr_reader :recipient_name
+
+        sig { params(recipient_name: String).void }
+        attr_writer :recipient_name
+
         # Details relating to the custom fulfillment you will perform. This is required if
         #   `fulfillment_method` is equal to `third_party`. It must not be included if any
         #   other `fulfillment_method` is provided.
-        sig { params(check_number: String).returns(T.attached_class) }
-        def self.new(check_number: nil)
+        sig { params(check_number: String, recipient_name: String).returns(T.attached_class) }
+        def self.new(check_number: nil, recipient_name: nil)
         end
 
-        sig { override.returns({check_number: String}) }
+        sig { override.returns({check_number: String, recipient_name: String}) }
         def to_hash
         end
       end
