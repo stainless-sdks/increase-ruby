@@ -36,7 +36,6 @@ require "connection_pool"
 # Package files.
 require_relative "increase/version"
 require_relative "increase/util"
-require_relative "increase/extern"
 require_relative "increase/base_model"
 require_relative "increase/base_page"
 require_relative "increase/request_options"
