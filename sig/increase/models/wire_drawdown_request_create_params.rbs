@@ -19,7 +19,7 @@ module Increase
       & Increase::request_parameters
 
     class WireDrawdownRequestCreateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       attr_accessor account_number_id: String

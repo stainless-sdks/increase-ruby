@@ -5,7 +5,7 @@ module Increase
     module Simulations
       class WireTransferReverseParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::RequestParameters::Converter
+        #   extend Increase::Type::RequestParameters::Converter
         include Increase::RequestParameters
 
         # @!parse

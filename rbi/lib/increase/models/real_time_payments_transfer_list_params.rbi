@@ -3,7 +3,7 @@
 module Increase
   module Models
     class RealTimePaymentsTransferListParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter Real-Time Payments Transfers to those belonging to the specified Account.

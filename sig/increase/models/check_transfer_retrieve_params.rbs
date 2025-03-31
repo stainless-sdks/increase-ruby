@@ -3,7 +3,7 @@ module Increase
     type check_transfer_retrieve_params = {  } & Increase::request_parameters
 
     class CheckTransferRetrieveParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       def initialize: (?request_options: Increase::request_opts) -> void

@@ -18,7 +18,7 @@ module Increase
       & Increase::request_parameters
 
     class ProofOfAuthorizationRequestSubmissionCreateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       attr_accessor authorization_terms: String

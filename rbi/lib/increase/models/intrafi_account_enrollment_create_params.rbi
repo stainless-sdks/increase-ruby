@@ -3,7 +3,7 @@
 module Increase
   module Models
     class IntrafiAccountEnrollmentCreateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The identifier for the account to be added to IntraFi.

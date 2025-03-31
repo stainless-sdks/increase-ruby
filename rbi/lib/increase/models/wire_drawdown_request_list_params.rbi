@@ -3,7 +3,7 @@
 module Increase
   module Models
     class WireDrawdownRequestListParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Return the page of entries after this one.

@@ -3,7 +3,7 @@
 module Increase
   module Models
     class FileLinkCreateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The File to create a File Link for.

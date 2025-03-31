@@ -3,7 +3,7 @@
 module Increase
   module Models
     class IntrafiAccountEnrollmentListParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter IntraFi Account Enrollments to the one belonging to an account.

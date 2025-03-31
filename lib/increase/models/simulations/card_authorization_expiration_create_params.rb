@@ -5,7 +5,7 @@ module Increase
     module Simulations
       class CardAuthorizationExpirationCreateParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::RequestParameters::Converter
+        #   extend Increase::Type::RequestParameters::Converter
         include Increase::RequestParameters
 
         # @!attribute card_payment_id
