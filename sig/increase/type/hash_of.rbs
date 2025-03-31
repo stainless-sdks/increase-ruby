@@ -1,6 +1,6 @@
 module Increase
   module Type
-    class HashOf
+    class HashOf[Elem]
       include Increase::Type::Converter
 
       def self.[]: (
@@ -21,7 +21,7 @@ module Increase
 
       def dump: (::Hash[top, top] | top value) -> (::Hash[Symbol, top] | top)
 
-      def item_type: -> top
+      def item_type: -> Elem
 
       def nilable?: -> bool
 
