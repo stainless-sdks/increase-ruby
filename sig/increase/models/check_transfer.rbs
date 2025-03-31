@@ -552,12 +552,14 @@ module Increase
         def to_hash: -> Increase::Models::CheckTransfer::submission
       end
 
-      type third_party = { check_number: String? }
+      type third_party = { check_number: String?, recipient_name: String? }
 
       class ThirdParty < Increase::BaseModel
         attr_accessor check_number: String?
 
-        def initialize: (check_number: String?) -> void
+        attr_accessor recipient_name: String?
+
+        def initialize: (check_number: String?, recipient_name: String?) -> void
 
         def to_hash: -> Increase::Models::CheckTransfer::third_party
       end

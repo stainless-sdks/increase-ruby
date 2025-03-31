@@ -975,17 +975,23 @@ module Increase
       end
 
       class ThirdParty < Increase::BaseModel
-        # The check number that will be printed on the check.
+        # The check number that you will print on the check.
         sig { returns(T.nilable(String)) }
         attr_accessor :check_number
 
+        # The name that you will print on the check.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :recipient_name
+
         # Details relating to the custom fulfillment you will perform. Will be present if
         #   and only if `fulfillment_method` is equal to `third_party`.
-        sig { params(check_number: T.nilable(String)).returns(T.attached_class) }
-        def self.new(check_number:)
+        sig do
+          params(check_number: T.nilable(String), recipient_name: T.nilable(String)).returns(T.attached_class)
+        end
+        def self.new(check_number:, recipient_name:)
         end
 
-        sig { override.returns({check_number: T.nilable(String)}) }
+        sig { override.returns({check_number: T.nilable(String), recipient_name: T.nilable(String)}) }
         def to_hash
         end
       end
