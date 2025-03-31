@@ -3,7 +3,7 @@
 module Increase
   module Models
     class PendingTransactionListParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter pending transactions to those belonging to the specified Account.

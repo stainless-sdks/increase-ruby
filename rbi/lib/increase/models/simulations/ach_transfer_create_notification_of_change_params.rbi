@@ -4,7 +4,7 @@ module Increase
   module Models
     module Simulations
       class ACHTransferCreateNotificationOfChangeParams < Increase::BaseModel
-        extend Increase::RequestParameters::Converter
+        extend Increase::Type::RequestParameters::Converter
         include Increase::RequestParameters
 
         # The reason for the notification of change.

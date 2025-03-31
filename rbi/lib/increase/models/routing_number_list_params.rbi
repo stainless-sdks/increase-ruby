@@ -3,7 +3,7 @@
 module Increase
   module Models
     class RoutingNumberListParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter financial institutions by routing number.

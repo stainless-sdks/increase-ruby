@@ -11,7 +11,7 @@ module Increase
       & Increase::request_parameters
 
     class CardUpdateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       attr_reader billing_address: Increase::Models::CardUpdateParams::BillingAddress?

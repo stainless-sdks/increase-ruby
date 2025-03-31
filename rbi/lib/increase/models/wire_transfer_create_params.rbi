@@ -3,7 +3,7 @@
 module Increase
   module Models
     class WireTransferCreateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The identifier for the account that will send the transfer.

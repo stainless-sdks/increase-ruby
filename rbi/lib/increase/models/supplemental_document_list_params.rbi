@@ -3,7 +3,7 @@
 module Increase
   module Models
     class SupplementalDocumentListParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The identifier of the Entity to list supplemental documents for.

@@ -3,7 +3,7 @@
 module Increase
   module Models
     class WireDrawdownRequestCreateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The Account Number to which the recipient should send funds.

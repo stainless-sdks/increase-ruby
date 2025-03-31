@@ -3,7 +3,7 @@
 module Increase
   module Models
     class FileListParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       sig { returns(T.nilable(Increase::Models::FileListParams::CreatedAt)) }

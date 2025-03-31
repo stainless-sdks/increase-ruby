@@ -11,7 +11,7 @@ module Increase
       & Increase::request_parameters
 
     class CheckDepositListParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       attr_reader account_id: String?

@@ -4,7 +4,7 @@ module Increase
       { cursor: String, limit: Integer } & Increase::request_parameters
 
     class InboundWireDrawdownRequestListParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       attr_reader cursor: String?

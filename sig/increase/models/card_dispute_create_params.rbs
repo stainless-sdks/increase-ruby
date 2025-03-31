@@ -5,7 +5,7 @@ module Increase
       & Increase::request_parameters
 
     class CardDisputeCreateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       attr_accessor disputed_transaction_id: String

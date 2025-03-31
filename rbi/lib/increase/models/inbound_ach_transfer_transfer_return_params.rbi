@@ -3,7 +3,7 @@
 module Increase
   module Models
     class InboundACHTransferTransferReturnParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The reason why this transfer will be returned. The most usual return codes are

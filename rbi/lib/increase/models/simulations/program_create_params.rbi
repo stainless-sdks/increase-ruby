@@ -4,7 +4,7 @@ module Increase
   module Models
     module Simulations
       class ProgramCreateParams < Increase::BaseModel
-        extend Increase::RequestParameters::Converter
+        extend Increase::Type::RequestParameters::Converter
         include Increase::RequestParameters
 
         # The name of the program being added.

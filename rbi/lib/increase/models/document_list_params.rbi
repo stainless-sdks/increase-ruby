@@ -3,7 +3,7 @@
 module Increase
   module Models
     class DocumentListParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       sig { returns(T.nilable(Increase::Models::DocumentListParams::Category)) }

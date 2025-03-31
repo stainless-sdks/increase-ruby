@@ -8,7 +8,7 @@ module Increase
         & Increase::request_parameters
 
       class ACHTransferReturnParams < Increase::BaseModel
-        extend Increase::RequestParameters::Converter
+        extend Increase::Type::RequestParameters::Converter
         include Increase::RequestParameters
 
         attr_reader reason: Increase::Models::Simulations::ACHTransferReturnParams::reason?

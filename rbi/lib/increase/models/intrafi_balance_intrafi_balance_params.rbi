@@ -3,7 +3,7 @@
 module Increase
   module Models
     class IntrafiBalanceIntrafiBalanceParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       sig do

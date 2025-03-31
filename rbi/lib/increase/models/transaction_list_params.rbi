@@ -3,7 +3,7 @@
 module Increase
   module Models
     class TransactionListParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter Transactions for those belonging to the specified Account.
