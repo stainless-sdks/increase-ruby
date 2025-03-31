@@ -3,7 +3,7 @@
 module Increase
   module Models
     class BookkeepingAccountCreateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The name you choose for the account.

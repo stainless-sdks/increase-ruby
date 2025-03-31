@@ -5,7 +5,7 @@ module Increase
       & Increase::request_parameters
 
     class EventSubscriptionUpdateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       attr_reader status: Increase::Models::EventSubscriptionUpdateParams::status?

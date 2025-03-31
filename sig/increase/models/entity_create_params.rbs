@@ -15,7 +15,7 @@ module Increase
       & Increase::request_parameters
 
     class EntityCreateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       attr_accessor structure: Increase::Models::EntityCreateParams::structure

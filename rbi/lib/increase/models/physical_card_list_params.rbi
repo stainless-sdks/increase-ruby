@@ -3,7 +3,7 @@
 module Increase
   module Models
     class PhysicalCardListParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter Physical Cards to ones belonging to the specified Card.

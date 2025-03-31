@@ -4,7 +4,7 @@ module Increase
   module Models
     class EventSubscriptionCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::RequestParameters::Converter
+      #   extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # @!attribute url

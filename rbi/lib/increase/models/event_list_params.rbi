@@ -3,7 +3,7 @@
 module Increase
   module Models
     class EventListParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter Events to those belonging to the object with the provided identifier.

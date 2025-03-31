@@ -23,7 +23,7 @@ module Increase
   #
   #   accounts => Array
   class Page
-    include Increase::BasePage
+    include Increase::Type::BasePage
 
     # @return [Array<Object>, nil]
     attr_accessor :data
@@ -33,7 +33,7 @@ module Increase
 
     # @api private
     #
-    # @param client [Increase::BaseClient]
+    # @param client [Increase::Transport::BaseClient]
     # @param req [Hash{Symbol=>Object}]
     # @param headers [Hash{String=>String}, Net::HTTPHeader]
     # @param page_data [Hash{Symbol=>Object}]
@@ -43,7 +43,7 @@ module Increase
 
       case page_data
       in {data: Array | nil => data}
-        @data = data&.map { Increase::Converter.coerce(model, _1) }
+        @data = data&.map { Increase::Type::Converter.coerce(model, _1) }
       else
       end
 

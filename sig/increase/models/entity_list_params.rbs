@@ -11,7 +11,7 @@ module Increase
       & Increase::request_parameters
 
     class EntityListParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       attr_reader created_at: Increase::Models::EntityListParams::CreatedAt?

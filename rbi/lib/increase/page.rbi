@@ -2,7 +2,7 @@
 
 module Increase
   class Page
-    include Increase::BasePage
+    include Increase::Type::BasePage
 
     Elem = type_member
 

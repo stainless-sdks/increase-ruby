@@ -3,7 +3,7 @@
 module Increase
   module Models
     class CardDisputeCreateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The Transaction you wish to dispute. This Transaction must have a `source_type`

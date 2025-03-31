@@ -3,7 +3,7 @@
 module Increase
   module Models
     class PhysicalCardCreateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The underlying card representing this physical card.

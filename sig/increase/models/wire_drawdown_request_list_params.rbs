@@ -10,7 +10,7 @@ module Increase
       & Increase::request_parameters
 
     class WireDrawdownRequestListParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       attr_reader cursor: String?

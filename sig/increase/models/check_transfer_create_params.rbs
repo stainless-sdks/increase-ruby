@@ -13,7 +13,7 @@ module Increase
       & Increase::request_parameters
 
     class CheckTransferCreateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       attr_accessor account_id: String

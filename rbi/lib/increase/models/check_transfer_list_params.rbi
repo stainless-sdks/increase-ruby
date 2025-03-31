@@ -3,7 +3,7 @@
 module Increase
   module Models
     class CheckTransferListParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter Check Transfers to those that originated from the specified Account.

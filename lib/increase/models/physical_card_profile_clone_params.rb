@@ -4,7 +4,7 @@ module Increase
   module Models
     class PhysicalCardProfileCloneParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::RequestParameters::Converter
+      #   extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # @!attribute [r] carrier_image_file_id

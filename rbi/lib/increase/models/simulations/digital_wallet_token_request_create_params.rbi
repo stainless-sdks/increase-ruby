@@ -4,7 +4,7 @@ module Increase
   module Models
     module Simulations
       class DigitalWalletTokenRequestCreateParams < Increase::BaseModel
-        extend Increase::RequestParameters::Converter
+        extend Increase::Type::RequestParameters::Converter
         include Increase::RequestParameters
 
         # The identifier of the Card to be authorized.

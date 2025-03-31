@@ -3,7 +3,7 @@
 module Increase
   module Models
     class AccountBalanceParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The moment to query the balance at. If not set, returns the current balances.

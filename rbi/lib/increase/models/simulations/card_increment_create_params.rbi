@@ -4,7 +4,7 @@ module Increase
   module Models
     module Simulations
       class CardIncrementCreateParams < Increase::BaseModel
-        extend Increase::RequestParameters::Converter
+        extend Increase::Type::RequestParameters::Converter
         include Increase::RequestParameters
 
         # The amount of the increment in minor units in the card authorization's currency.
