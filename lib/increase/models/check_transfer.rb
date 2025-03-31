@@ -856,18 +856,25 @@ module Increase
 
       class ThirdParty < Increase::BaseModel
         # @!attribute check_number
-        #   The check number that will be printed on the check.
+        #   The check number that you will print on the check.
         #
         #   @return [String, nil]
         required :check_number, String, nil?: true
+
+        # @!attribute recipient_name
+        #   The name that you will print on the check.
+        #
+        #   @return [String, nil]
+        required :recipient_name, String, nil?: true
 
         # @!parse
         #   # Details relating to the custom fulfillment you will perform. Will be present if
         #   #   and only if `fulfillment_method` is equal to `third_party`.
         #   #
         #   # @param check_number [String, nil]
+        #   # @param recipient_name [String, nil]
         #   #
-        #   def initialize(check_number:, **) = super
+        #   def initialize(check_number:, recipient_name:, **) = super
 
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
