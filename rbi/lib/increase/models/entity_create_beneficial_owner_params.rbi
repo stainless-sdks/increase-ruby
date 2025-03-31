@@ -3,7 +3,7 @@
 module Increase
   module Models
     class EntityCreateBeneficialOwnerParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The identifying details of anyone controlling or owning 25% or more of the

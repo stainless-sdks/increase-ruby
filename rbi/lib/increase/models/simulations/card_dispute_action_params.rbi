@@ -4,7 +4,7 @@ module Increase
   module Models
     module Simulations
       class CardDisputeActionParams < Increase::BaseModel
-        extend Increase::RequestParameters::Converter
+        extend Increase::Type::RequestParameters::Converter
         include Increase::RequestParameters
 
         # The status to move the dispute to.

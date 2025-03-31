@@ -13,7 +13,7 @@ module Increase
       & Increase::request_parameters
 
     class ExportCreateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       attr_accessor category: Increase::Models::ExportCreateParams::category

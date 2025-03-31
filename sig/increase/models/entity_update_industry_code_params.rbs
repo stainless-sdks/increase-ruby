@@ -4,7 +4,7 @@ module Increase
       { industry_code: String } & Increase::request_parameters
 
     class EntityUpdateIndustryCodeParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       attr_accessor industry_code: String

@@ -9,7 +9,7 @@ module Increase
       & Increase::request_parameters
 
     class BookkeepingEntrySetCreateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       attr_accessor entries: ::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry]

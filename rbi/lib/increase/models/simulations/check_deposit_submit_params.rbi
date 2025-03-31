@@ -4,7 +4,7 @@ module Increase
   module Models
     module Simulations
       class CheckDepositSubmitParams < Increase::BaseModel
-        extend Increase::RequestParameters::Converter
+        extend Increase::Type::RequestParameters::Converter
         include Increase::RequestParameters
 
         sig do

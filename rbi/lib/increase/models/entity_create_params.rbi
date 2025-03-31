@@ -3,7 +3,7 @@
 module Increase
   module Models
     class EntityCreateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The type of Entity to create.

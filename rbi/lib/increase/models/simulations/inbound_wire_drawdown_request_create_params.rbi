@@ -4,7 +4,7 @@ module Increase
   module Models
     module Simulations
       class InboundWireDrawdownRequestCreateParams < Increase::BaseModel
-        extend Increase::RequestParameters::Converter
+        extend Increase::Type::RequestParameters::Converter
         include Increase::RequestParameters
 
         # The amount being requested in cents.

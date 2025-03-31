@@ -3,7 +3,7 @@
 module Increase
   module Models
     class SupplementalDocumentCreateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The identifier of the Entity to associate with the supplemental document.

@@ -4,7 +4,7 @@ module Increase
   module Models
     class ProgramListParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::RequestParameters::Converter
+      #   extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # @!attribute [r] cursor

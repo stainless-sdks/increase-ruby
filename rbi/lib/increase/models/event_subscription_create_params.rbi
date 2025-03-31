@@ -3,7 +3,7 @@
 module Increase
   module Models
     class EventSubscriptionCreateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The URL you'd like us to send webhooks to.

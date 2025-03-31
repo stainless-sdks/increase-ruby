@@ -4,7 +4,7 @@ module Increase
   module Models
     class ProofOfAuthorizationRequestRetrieveParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::RequestParameters::Converter
+      #   extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # @!parse

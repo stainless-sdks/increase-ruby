@@ -3,7 +3,7 @@
 module Increase
   module Models
     class InboundACHTransferListParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter Inbound ACH Transfers to ones belonging to the specified Account.

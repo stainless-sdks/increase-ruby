@@ -3,7 +3,7 @@
 module Increase
   module Models
     class InboundWireDrawdownRequestRetrieveParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       sig do

@@ -15,7 +15,7 @@ module Increase
       & Increase::request_parameters
 
     class DigitalCardProfileCloneParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       attr_reader app_icon_file_id: String?

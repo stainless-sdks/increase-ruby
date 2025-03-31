@@ -8,7 +8,7 @@ module Increase
         & Increase::request_parameters
 
       class PhysicalCardAdvanceShipmentParams < Increase::BaseModel
-        extend Increase::RequestParameters::Converter
+        extend Increase::Type::RequestParameters::Converter
         include Increase::RequestParameters
 
         attr_accessor shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status

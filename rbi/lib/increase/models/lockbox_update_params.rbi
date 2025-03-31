@@ -3,7 +3,7 @@
 module Increase
   module Models
     class LockboxUpdateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The description you choose for the Lockbox.

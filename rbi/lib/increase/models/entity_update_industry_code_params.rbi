@@ -3,7 +3,7 @@
 module Increase
   module Models
     class EntityUpdateIndustryCodeParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The North American Industry Classification System (NAICS) code for the

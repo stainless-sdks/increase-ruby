@@ -3,7 +3,7 @@
 module Increase
   module Models
     class CheckDepositCreateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The identifier for the Account to deposit the check in.

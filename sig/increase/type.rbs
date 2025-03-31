@@ -1,0 +1,22 @@
+module Increase
+  class Unknown = Increase::Type::Unknown
+
+  class BooleanModel = Increase::Type::BooleanModel
+
+  module Enum = Increase::Type::Enum
+
+  module Union = Increase::Type::Union
+
+  class ArrayOf = Increase::Type::ArrayOf
+
+  class HashOf = Increase::Type::HashOf
+
+  class BaseModel = Increase::Type::BaseModel
+
+  type request_parameters = Increase::Type::request_parameters
+
+  module RequestParameters = Increase::Type::RequestParameters
+
+  module Type
+  end
+end

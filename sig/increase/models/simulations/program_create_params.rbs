@@ -5,7 +5,7 @@ module Increase
         { name: String } & Increase::request_parameters
 
       class ProgramCreateParams < Increase::BaseModel
-        extend Increase::RequestParameters::Converter
+        extend Increase::Type::RequestParameters::Converter
         include Increase::RequestParameters
 
         attr_accessor name: String

@@ -3,7 +3,7 @@
 module Increase
   module Models
     class CardCreateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The Account the card should belong to.

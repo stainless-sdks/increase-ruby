@@ -5,7 +5,7 @@ module Increase
       & Increase::request_parameters
 
     class InboundACHTransferCreateNotificationOfChangeParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       attr_reader updated_account_number: String?

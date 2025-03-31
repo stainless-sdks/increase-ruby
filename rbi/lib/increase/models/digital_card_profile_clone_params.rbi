@@ -3,7 +3,7 @@
 module Increase
   module Models
     class DigitalCardProfileCloneParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The identifier of the File containing the card's icon image.

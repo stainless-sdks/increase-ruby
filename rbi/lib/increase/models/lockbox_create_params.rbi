@@ -3,7 +3,7 @@
 module Increase
   module Models
     class LockboxCreateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The Account checks sent to this Lockbox should be deposited into.

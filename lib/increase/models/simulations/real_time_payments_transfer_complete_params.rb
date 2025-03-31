@@ -5,7 +5,7 @@ module Increase
     module Simulations
       class RealTimePaymentsTransferCompleteParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::RequestParameters::Converter
+        #   extend Increase::Type::RequestParameters::Converter
         include Increase::RequestParameters
 
         # @!attribute [r] rejection

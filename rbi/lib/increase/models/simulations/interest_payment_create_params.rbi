@@ -4,7 +4,7 @@ module Increase
   module Models
     module Simulations
       class InterestPaymentCreateParams < Increase::BaseModel
-        extend Increase::RequestParameters::Converter
+        extend Increase::Type::RequestParameters::Converter
         include Increase::RequestParameters
 
         # The identifier of the Account the Interest Payment should be paid to is for.

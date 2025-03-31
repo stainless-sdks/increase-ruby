@@ -3,7 +3,7 @@
 module Increase
   module Models
     class BookkeepingEntryListParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The identifier for the Bookkeeping Account to filter by.

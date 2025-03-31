@@ -8,7 +8,7 @@ module Increase
         & Increase::request_parameters
 
       class RealTimePaymentsTransferCompleteParams < Increase::BaseModel
-        extend Increase::RequestParameters::Converter
+        extend Increase::Type::RequestParameters::Converter
         include Increase::RequestParameters
 
         attr_reader rejection: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection?

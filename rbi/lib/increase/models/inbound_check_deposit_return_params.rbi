@@ -3,7 +3,7 @@
 module Increase
   module Models
     class InboundCheckDepositReturnParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The reason to return the Inbound Check Deposit.

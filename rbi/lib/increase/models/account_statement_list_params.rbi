@@ -3,7 +3,7 @@
 module Increase
   module Models
     class AccountStatementListParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter Account Statements to those belonging to the specified Account.

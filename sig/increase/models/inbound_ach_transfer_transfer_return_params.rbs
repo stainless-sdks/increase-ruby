@@ -7,7 +7,7 @@ module Increase
       & Increase::request_parameters
 
     class InboundACHTransferTransferReturnParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       attr_accessor reason: Increase::Models::InboundACHTransferTransferReturnParams::reason

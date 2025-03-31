@@ -4,7 +4,7 @@ module Increase
       { confirmed_at: Time } & Increase::request_parameters
 
     class EntityConfirmParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       attr_reader confirmed_at: Time?

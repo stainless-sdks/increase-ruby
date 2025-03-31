@@ -25,7 +25,7 @@ module Increase
       & Increase::request_parameters
 
     class ACHTransferCreateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       attr_accessor account_id: String

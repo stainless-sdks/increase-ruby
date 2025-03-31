@@ -3,7 +3,7 @@
 module Increase
   module Models
     class IntrafiExclusionCreateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The name of the financial institution to be excluded.

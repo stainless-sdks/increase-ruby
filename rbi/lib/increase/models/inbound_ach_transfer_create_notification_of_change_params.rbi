@@ -3,7 +3,7 @@
 module Increase
   module Models
     class InboundACHTransferCreateNotificationOfChangeParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The updated account number to send in the notification of change.

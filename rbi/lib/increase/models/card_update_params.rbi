@@ -3,7 +3,7 @@
 module Increase
   module Models
     class CardUpdateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The card's updated billing address.

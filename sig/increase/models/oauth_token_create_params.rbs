@@ -11,7 +11,7 @@ module Increase
       & Increase::request_parameters
 
     class OAuthTokenCreateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       attr_accessor grant_type: Increase::Models::OAuthTokenCreateParams::grant_type

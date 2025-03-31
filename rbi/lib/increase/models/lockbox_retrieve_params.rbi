@@ -3,7 +3,7 @@
 module Increase
   module Models
     class LockboxRetrieveParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       sig do

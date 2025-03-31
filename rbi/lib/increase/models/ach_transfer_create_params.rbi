@@ -3,7 +3,7 @@
 module Increase
   module Models
     class ACHTransferCreateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The Increase identifier for the account that will send the transfer.

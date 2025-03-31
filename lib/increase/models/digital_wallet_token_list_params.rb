@@ -4,7 +4,7 @@ module Increase
   module Models
     class DigitalWalletTokenListParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::RequestParameters::Converter
+      #   extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # @!attribute [r] card_id

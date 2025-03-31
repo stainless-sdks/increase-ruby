@@ -1,6 +1,6 @@
 module Increase
   class Page[Elem]
-    include Increase::BasePage[Elem]
+    include Increase::Type::BasePage[Elem]
 
     attr_accessor data: ::Array[Elem]?
 

@@ -4,7 +4,7 @@ module Increase
       { bank_name: String, entity_id: String } & Increase::request_parameters
 
     class IntrafiExclusionCreateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       attr_accessor bank_name: String

@@ -3,7 +3,7 @@
 module Increase
   module Models
     class ProofOfAuthorizationRequestSubmissionCreateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Terms of authorization.

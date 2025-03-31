@@ -3,7 +3,7 @@
 module Increase
   module Models
     class FileCreateParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The file contents. This should follow the specifications of

@@ -8,7 +8,7 @@ module Increase
       & Increase::request_parameters
 
     class EntityUpdateBeneficialOwnerAddressParams < Increase::BaseModel
-      extend Increase::RequestParameters::Converter
+      extend Increase::Type::RequestParameters::Converter
       include Increase::RequestParameters
 
       attr_accessor address: Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address
