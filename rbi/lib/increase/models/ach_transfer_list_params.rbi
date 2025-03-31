@@ -3,7 +3,7 @@
 module Increase
   module Models
     class ACHTransferListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter ACH Transfers to those that originated from the specified Account.

@@ -3,7 +3,7 @@
 module Increase
   module Models
     class InboundCheckDepositListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter Inbound Check Deposits to those belonging to the specified Account.

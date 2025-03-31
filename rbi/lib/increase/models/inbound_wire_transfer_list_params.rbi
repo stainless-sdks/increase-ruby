@@ -3,7 +3,7 @@
 module Increase
   module Models
     class InboundWireTransferListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter Inbound Wire Transfers to ones belonging to the specified Account.

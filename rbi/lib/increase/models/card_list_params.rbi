@@ -3,7 +3,7 @@
 module Increase
   module Models
     class CardListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter Cards to ones belonging to the specified Account.

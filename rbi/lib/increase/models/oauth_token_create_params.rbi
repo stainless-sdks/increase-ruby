@@ -3,7 +3,7 @@
 module Increase
   module Models
     class OAuthTokenCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The credential you request in exchange for the code. In Production, this is

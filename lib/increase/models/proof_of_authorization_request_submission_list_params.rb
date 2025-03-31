@@ -4,7 +4,7 @@ module Increase
   module Models
     class ProofOfAuthorizationRequestSubmissionListParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
+      #   extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # @!attribute [r] cursor

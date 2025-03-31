@@ -3,7 +3,7 @@
 module Increase
   module Models
     class CheckDepositListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter Check Deposits to those belonging to the specified Account.

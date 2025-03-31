@@ -4,7 +4,7 @@ module Increase
   module Models
     module Simulations
       class CardAuthorizationCreateParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
+        extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
         # The authorization amount in cents.

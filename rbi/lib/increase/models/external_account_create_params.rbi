@@ -3,7 +3,7 @@
 module Increase
   module Models
     class ExternalAccountCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The account number for the destination account.

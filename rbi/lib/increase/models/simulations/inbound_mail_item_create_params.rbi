@@ -4,7 +4,7 @@ module Increase
   module Models
     module Simulations
       class InboundMailItemCreateParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
+        extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
         # The amount of the check to be simulated, in cents.

@@ -4,7 +4,7 @@ module Increase
   module Models
     class ExternalAccountRetrieveParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
+      #   extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # @!parse
