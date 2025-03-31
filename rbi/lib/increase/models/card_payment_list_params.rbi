@@ -3,7 +3,7 @@
 module Increase
   module Models
     class CardPaymentListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter Card Payments to ones belonging to the specified Account.

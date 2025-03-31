@@ -3,7 +3,7 @@
 module Increase
   module Models
     class CheckTransferStopPaymentParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The reason why this transfer should be stopped.

@@ -3,7 +3,7 @@
 module Increase
   module Models
     class AccountNumberCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The Account the Account Number should belong to.

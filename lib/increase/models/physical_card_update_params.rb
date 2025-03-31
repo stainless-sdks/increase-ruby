@@ -4,7 +4,7 @@ module Increase
   module Models
     class PhysicalCardUpdateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
+      #   extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # @!attribute status

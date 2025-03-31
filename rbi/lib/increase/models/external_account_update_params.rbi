@@ -3,7 +3,7 @@
 module Increase
   module Models
     class ExternalAccountUpdateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The type of entity that owns the External Account.

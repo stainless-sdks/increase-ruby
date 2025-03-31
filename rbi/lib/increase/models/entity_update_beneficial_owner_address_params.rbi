@@ -3,7 +3,7 @@
 module Increase
   module Models
     class EntityUpdateBeneficialOwnerAddressParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The individual's physical address. Mail receiving locations like PO Boxes and

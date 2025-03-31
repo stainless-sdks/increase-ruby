@@ -3,7 +3,7 @@
 module Increase
   module Models
     class ProgramListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Return the page of entries after this one.

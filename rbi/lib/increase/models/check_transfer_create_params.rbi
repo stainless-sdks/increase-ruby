@@ -3,7 +3,7 @@
 module Increase
   module Models
     class CheckTransferCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The identifier for the account that will send the transfer.

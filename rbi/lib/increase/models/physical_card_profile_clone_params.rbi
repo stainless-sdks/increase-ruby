@@ -3,7 +3,7 @@
 module Increase
   module Models
     class PhysicalCardProfileCloneParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The identifier of the File containing the physical card's carrier image.

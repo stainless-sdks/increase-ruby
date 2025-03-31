@@ -3,7 +3,7 @@
 module Increase
   module Models
     class AccountUpdateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The new name of the Account.

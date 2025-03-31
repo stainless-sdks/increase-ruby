@@ -4,7 +4,7 @@ module Increase
   module Models
     class EntityArchiveBeneficialOwnerParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
+      #   extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # @!attribute beneficial_owner_id

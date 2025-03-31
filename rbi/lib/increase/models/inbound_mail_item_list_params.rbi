@@ -3,7 +3,7 @@
 module Increase
   module Models
     class InboundMailItemListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       sig { returns(T.nilable(Increase::Models::InboundMailItemListParams::CreatedAt)) }

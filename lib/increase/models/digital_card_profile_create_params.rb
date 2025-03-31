@@ -4,7 +4,7 @@ module Increase
   module Models
     class DigitalCardProfileCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
+      #   extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # @!attribute app_icon_file_id

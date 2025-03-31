@@ -3,7 +3,7 @@
 module Increase
   module Models
     class LockboxListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter Lockboxes to those associated with the provided Account.

@@ -3,7 +3,7 @@
 module Increase
   module Models
     class CardPurchaseSupplementListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter Card Purchase Supplements to ones belonging to the specified Card
