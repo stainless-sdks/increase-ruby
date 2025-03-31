@@ -2,16 +2,13 @@ module Increase
   module Converter
     type input = Increase::Converter | Class
 
-    type state =
-      {
-        strictness: bool | :strong,
-        exactness: { yes: Integer, no: Integer, maybe: Integer },
-        branched: Integer
-      }
-
-    def coerce: (top value, state: Increase::Converter::state) -> top
+    def coerce: (top value) -> top
 
     def dump: (top value) -> top
+
+    def try_strict_coerce: (
+      top value
+    ) -> ([true, top, nil] | [false, bool, Integer])
 
     def self.type_info: (
       {
@@ -23,13 +20,14 @@ module Increase
       | Increase::Converter::input spec
     ) -> (^-> top)
 
-    def self.coerce: (
-      Increase::Converter::input target,
-      top value,
-      ?state: Increase::Converter::state
-    ) -> top
+    def self.coerce: (Increase::Converter::input target, top value) -> top
 
     def self.dump: (Increase::Converter::input target, top value) -> top
+
+    def self.try_strict_coerce: (
+      Increase::Converter::input target,
+      top value
+    ) -> top
   end
 
   class Unknown
@@ -39,9 +37,13 @@ module Increase
 
     def self.==: (top other) -> bool
 
-    def self.coerce: (top value, state: Increase::Converter::state) -> top
+    def self.coerce: (top value) -> top
 
     def self.dump: (top value) -> top
+
+    def self.try_strict_coerce: (
+      top value
+    ) -> ([true, top, nil] | [false, bool, Integer])
   end
 
   class BooleanModel
@@ -51,12 +53,13 @@ module Increase
 
     def self.==: (top other) -> bool
 
-    def self.coerce: (
-      bool | top value,
-      state: Increase::Converter::state
-    ) -> (bool | top)
+    def self.coerce: (bool | top value) -> (bool | top)
 
     def self.dump: (bool | top value) -> (bool | top)
+
+    def self.try_strict_coerce: (
+      top value
+    ) -> ([true, top, nil] | [false, bool, Integer])
   end
 
   module Enum
@@ -70,12 +73,13 @@ module Increase
 
     def ==: (top other) -> bool
 
-    def coerce: (
-      String | Symbol | top value,
-      state: Increase::Converter::state
-    ) -> (Symbol | top)
+    def coerce: (String | Symbol | top value) -> (Symbol | top)
 
     def dump: (Symbol | top value) -> (Symbol | top)
+
+    def try_strict_coerce: (
+      top value
+    ) -> ([true, top, nil] | [false, bool, Integer])
   end
 
   module Union
@@ -105,9 +109,13 @@ module Increase
 
     def ==: (top other) -> bool
 
-    def coerce: (top value, state: Increase::Converter::state) -> top
+    def coerce: (top value) -> top
 
     def dump: (top value) -> top
+
+    def try_strict_coerce: (
+      top value
+    ) -> ([true, top, nil] | [false, bool, Integer])
   end
 
   class ArrayOf
@@ -124,16 +132,15 @@ module Increase
 
     def ==: (top other) -> bool
 
-    def coerce: (
-      Enumerable[top] | top value,
-      state: Increase::Converter::state
-    ) -> (::Array[top] | top)
+    def coerce: (Enumerable[top] | top value) -> (::Array[top] | top)
 
     def dump: (Enumerable[top] | top value) -> (::Array[top] | top)
 
-    def item_type: -> top
+    def try_strict_coerce: (
+      top value
+    ) -> ([true, top, nil] | [false, bool, Integer])
 
-    def nilable?: -> bool
+    def item_type: -> top
 
     def initialize: (
       ::Hash[Symbol, top]
@@ -157,16 +164,15 @@ module Increase
 
     def ==: (top other) -> bool
 
-    def coerce: (
-      ::Hash[top, top] | top value,
-      state: Increase::Converter::state
-    ) -> (::Hash[Symbol, top] | top)
+    def coerce: (::Hash[top, top] | top value) -> (::Hash[Symbol, top] | top)
 
     def dump: (::Hash[top, top] | top value) -> (::Hash[Symbol, top] | top)
 
-    def item_type: -> top
+    def try_strict_coerce: (
+      top value
+    ) -> ([true, top, nil] | [false, bool, Integer])
 
-    def nilable?: -> bool
+    def item_type: -> top
 
     def initialize: (
       ::Hash[Symbol, top]
@@ -179,14 +185,17 @@ module Increase
   class BaseModel
     extend Increase::Converter
 
-    type known_field =
-      { mode: (:coerce | :dump)?, required: bool, nilable: bool }
+    type known_field = { mode: (:coerce | :dump)?, required: bool }
 
     def self.known_fields: -> ::Hash[Symbol, (Increase::BaseModel::known_field
     & { type_fn: (^-> Increase::Converter::input) })]
 
+    def self.reverse_map: -> ::Hash[Symbol, Symbol]
+
     def self.fields: -> ::Hash[Symbol, (Increase::BaseModel::known_field
     & { type: Increase::Converter::input })]
+
+    def self.defaults: -> ::Hash[Symbol, (^-> Class)]
 
     private def self.add_field: (
       Symbol name_sym,
@@ -222,16 +231,17 @@ module Increase
 
     private def self.response_only: { -> void } -> void
 
-    def self.==: (top other) -> bool
-
     def ==: (top other) -> bool
 
     def self.coerce: (
-      Increase::BaseModel | ::Hash[top, top] | top value,
-      state: Increase::Converter::state
+      Increase::BaseModel | ::Hash[top, top] | top value
     ) -> (instance | top)
 
     def self.dump: (instance | top value) -> (::Hash[top, top] | top)
+
+    def self.try_strict_coerce: (
+      top value
+    ) -> ([true, top, nil] | [false, bool, Integer])
 
     def []: (Symbol key) -> top?
 
@@ -242,6 +252,8 @@ module Increase
     def deconstruct_keys: (::Array[Symbol]? keys) -> ::Hash[Symbol, top]
 
     def initialize: (?::Hash[Symbol, top] | self data) -> void
+
+    def to_s: -> String
 
     def inspect: -> String
   end

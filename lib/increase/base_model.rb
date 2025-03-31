@@ -9,34 +9,22 @@ module Increase
     #
     # @param value [Object]
     #
-    # @param state [Hash{Symbol=>Object}] .
-    #
-    #   @option state [Boolean, :strong] :strictness
-    #
-    #   @option state [Hash{Symbol=>Object}] :exactness
-    #
-    #   @option state [Integer] :branched
-    #
     # @return [Object]
-    def coerce(value, state:) = (raise NotImplementedError)
+    def coerce(value) = value
 
     # @api private
     #
     # @param value [Object]
     #
     # @return [Object]
-    def dump(value)
-      case value
-      in Array
-        value.map { Increase::Unknown.dump(_1) }
-      in Hash
-        value.transform_values { Increase::Unknown.dump(_1) }
-      in Increase::BaseModel
-        value.class.dump(value)
-      else
-        value
-      end
-    end
+    def dump(value) = value
+
+    # @api private
+    #
+    # @param value [Object]
+    #
+    # @return [Array(true, Object, nil), Array(false, Boolean, Integer)]
+    def try_strict_coerce(value) = (raise NotImplementedError)
 
     # rubocop:enable Lint/UnusedMethodArgument
 
@@ -56,14 +44,14 @@ module Increase
       # @return [Proc]
       def type_info(spec)
         case spec
-        in Proc
-          spec
         in Hash
           type_info(spec.slice(:const, :enum, :union).first&.last)
+        in Proc
+          spec
+        in Increase::Converter | Module | Symbol
+          -> { spec }
         in true | false
           -> { Increase::BooleanModel }
-        in Increase::Converter | Class | Symbol
-          -> { spec }
         in NilClass | Integer | Float
           -> { spec.class }
         end
@@ -78,117 +66,41 @@ module Increase
       #      converted value
       #   3. otherwise, the given `value` unaltered
       #
-      #   The coercion process is subject to improvement between minor release versions.
-      #   See https://docs.pydantic.dev/latest/concepts/unions/#smart-mode
-      #
       # @param target [Increase::Converter, Class]
-      #
       # @param value [Object]
       #
-      # @param state [Hash{Symbol=>Object}] The `strictness` is one of `true`, `false`, or `:strong`. This informs the
-      #   coercion strategy when we have to decide between multiple possible conversion
-      #   targets:
-      #
-      #   - `true`: the conversion must be exact, with minimum coercion.
-      #   - `false`: the conversion can be approximate, with some coercion.
-      #   - `:strong`: the conversion must be exact, with no coercion, and raise an error
-      #     if not possible.
-      #
-      #   The `exactness` is `Hash` with keys being one of `yes`, `no`, or `maybe`. For
-      #   any given conversion attempt, the exactness will be updated based on how closely
-      #   the value recursively matches the target type:
-      #
-      #   - `yes`: the value can be converted to the target type with minimum coercion.
-      #   - `maybe`: the value can be converted to the target type with some reasonable
-      #     coercion.
-      #   - `no`: the value cannot be converted to the target type.
-      #
-      #   See implementation below for more details.
-      #
-      #   @option state [Boolean, :strong] :strictness
-      #
-      #   @option state [Hash{Symbol=>Object}] :exactness
-      #
-      #   @option state [Integer] :branched
-      #
       # @return [Object]
-      def coerce(target, value, state: {strictness: true, exactness: {yes: 0, no: 0, maybe: 0}, branched: 0})
-        strictness, exactness = state.fetch_values(:strictness, :exactness)
-
+      def coerce(target, value)
         case target
         in Increase::Converter
-          return target.coerce(value, state: state)
-        in Class
-          if value.is_a?(target)
-            exactness[:yes] += 1
-            return value
+          target.coerce(value)
+        in Symbol
+          case value
+          in Symbol | String if (val = value.to_sym) == target
+            val
+          else
+            value
           end
-
+        in Module
           case target
           in -> { _1 <= NilClass }
-            exactness[value.nil? ? :yes : :maybe] += 1
-            return nil
+            nil
           in -> { _1 <= Integer }
-            if value.is_a?(Integer)
-              exactness[:yes] += 1
-              return value
-            elsif strictness == :strong
-              message = "no implicit conversion of #{value.class} into #{target.inspect}"
-              raise TypeError.new(message)
-            else
-              Kernel.then do
-                return Integer(value).tap { exactness[:maybe] += 1 }
-              rescue ArgumentError, TypeError
-              end
-            end
+            value.is_a?(Numeric) ? Integer(value) : value
           in -> { _1 <= Float }
-            if value.is_a?(Numeric)
-              exactness[:yes] += 1
-              return Float(value)
-            elsif strictness == :strong
-              message = "no implicit conversion of #{value.class} into #{target.inspect}"
-              raise TypeError.new(message)
-            else
-              Kernel.then do
-                return Float(value).tap { exactness[:maybe] += 1 }
-              rescue ArgumentError, TypeError
-              end
-            end
+            value.is_a?(Numeric) ? Float(value) : value
+          in -> { _1 <= Symbol }
+            value.is_a?(String) ? value.to_sym : value
           in -> { _1 <= String }
-            case value
-            in String | Symbol | Numeric
-              exactness[value.is_a?(Numeric) ? :maybe : :yes] += 1
-              return value.to_s
-            else
-              if strictness == :strong
-                message = "no implicit conversion of #{value.class} into #{target.inspect}"
-                raise TypeError.new(message)
-              end
-            end
+            value.is_a?(Symbol) ? value.to_s : value
           in -> { _1 <= Date || _1 <= Time }
-            Kernel.then do
-              return target.parse(value).tap { exactness[:yes] += 1 }
-            rescue ArgumentError, TypeError => e
-              raise e if strictness == :strong
-            end
-          in -> { _1 <= IO } if value.is_a?(String)
-            exactness[:yes] += 1
-            return StringIO.new(value.b)
+            value.is_a?(String) ? target.parse(value) : value
+          in -> { _1 <= IO }
+            value.is_a?(String) ? StringIO.new(value) : value
           else
+            value
           end
-        in Symbol
-          if (value.is_a?(Symbol) || value.is_a?(String)) && value.to_sym == target
-            exactness[:yes] += 1
-            return target
-          elsif strictness == :strong
-            message = "cannot convert non-matching #{value.class} into #{target.inspect}"
-            raise ArgumentError.new(message)
-          end
-        else
         end
-
-        exactness[:no] += 1
-        value
       end
 
       # @api private
@@ -198,7 +110,64 @@ module Increase
       #
       # @return [Object]
       def dump(target, value)
-        target.is_a?(Increase::Converter) ? target.dump(value) : Increase::Unknown.dump(value)
+        case target
+        in Increase::Converter
+          target.dump(value)
+        else
+          value
+        end
+      end
+
+      # @api private
+      #
+      # The underlying algorithm for computing maximal compatibility is subject to
+      #   future improvements.
+      #
+      #   Similar to `#.coerce`, used to determine the best union variant to decode into.
+      #
+      #   1. determine if strict-ish coercion is possible
+      #   2. return either result of successful coercion or if loose coercion is possible
+      #   3. return a score for recursively tallied count for fields that can be coerced
+      #
+      # @param target [Increase::Converter, Class]
+      # @param value [Object]
+      #
+      # @return [Object]
+      def try_strict_coerce(target, value)
+        case target
+        in Increase::Converter
+          target.try_strict_coerce(value)
+        in Symbol
+          case value
+          in Symbol | String if (val = value.to_sym) == target
+            [true, val, 1]
+          else
+            [false, false, 0]
+          end
+        in Module
+          case [target, value]
+          in [-> { _1 <= NilClass }, _]
+            [true, nil, value.nil? ? 1 : 0]
+          in [-> { _1 <= Integer }, Numeric]
+            [true, Integer(value), 1]
+          in [-> { _1 <= Float }, Numeric]
+            [true, Float(value), 1]
+          in [-> { _1 <= Symbol }, String]
+            [true, value.to_sym, 1]
+          in [-> { _1 <= String }, Symbol]
+            [true, value.to_s, 1]
+          in [-> { _1 <= Date || _1 <= Time }, String]
+            Kernel.then do
+              [true, target.parse(value), 1]
+            rescue ArgumentError
+              [false, false, 0]
+            end
+          in [_, ^target]
+            [true, value, 1]
+          else
+            [false, false, 0]
+          end
+        end
       end
     end
   end
@@ -224,23 +193,13 @@ module Increase
     def self.==(other) = other.is_a?(Class) && other <= Increase::Unknown
 
     class << self
-      # @api private
-      #
-      # @param value [Object]
-      #
-      # @param state [Hash{Symbol=>Object}] .
-      #
-      #   @option state [Boolean, :strong] :strictness
-      #
-      #   @option state [Hash{Symbol=>Object}] :exactness
-      #
-      #   @option state [Integer] :branched
-      #
-      # @return [Object]
-      def coerce(value, state:)
-        state.fetch(:exactness)[:yes] += 1
-        value
-      end
+      # @!parse
+      #   # @api private
+      #   #
+      #   # @param value [Object]
+      #   #
+      #   # @return [Object]
+      #   def coerce(value) = super
 
       # @!parse
       #   # @api private
@@ -249,6 +208,16 @@ module Increase
       #   #
       #   # @return [Object]
       #   def dump(value) = super
+
+      # @api private
+      #
+      # @param value [Object]
+      #
+      # @return [Array(true, Object, nil), Array(false, Boolean, Integer)]
+      def try_strict_coerce(value)
+        # prevent unknown variant from being chosen during the first coercion pass
+        [false, true, 0]
+      end
     end
 
     # rubocop:enable Lint/UnusedMethodArgument
@@ -273,23 +242,13 @@ module Increase
     def self.==(other) = other.is_a?(Class) && other <= Increase::BooleanModel
 
     class << self
-      # @api private
-      #
-      # @param value [Boolean, Object]
-      #
-      # @param state [Hash{Symbol=>Object}] .
-      #
-      #   @option state [Boolean, :strong] :strictness
-      #
-      #   @option state [Hash{Symbol=>Object}] :exactness
-      #
-      #   @option state [Integer] :branched
-      #
-      # @return [Boolean, Object]
-      def coerce(value, state:)
-        state.fetch(:exactness)[value == true || value == false ? :yes : :no] += 1
-        value
-      end
+      # @!parse
+      #   # @api private
+      #   #
+      #   # @param value [Boolean, Object]
+      #   #
+      #   # @return [Boolean, Object]
+      #   def coerce(value) = super
 
       # @!parse
       #   # @api private
@@ -298,6 +257,20 @@ module Increase
       #   #
       #   # @return [Boolean, Object]
       #   def dump(value) = super
+
+      # @api private
+      #
+      # @param value [Object]
+      #
+      # @return [Array(true, Object, nil), Array(false, Boolean, Integer)]
+      def try_strict_coerce(value)
+        case value
+        in true | false
+          [true, value, 1]
+        else
+          [false, false, 0]
+        end
+      end
     end
   end
 
@@ -335,34 +308,19 @@ module Increase
     #
     # @return [Boolean]
     def ==(other)
-      other.is_a?(Module) && other.singleton_class <= Increase::Enum && other.values.to_set == values.to_set
+      other.is_a?(Module) && other.singleton_class.ancestors.include?(Increase::Enum) && other.values.to_set == values.to_set
     end
 
     # @api private
     #
-    # Unlike with primitives, `Enum` additionally validates that the value is a member
-    #   of the enum.
-    #
     # @param value [String, Symbol, Object]
     #
-    # @param state [Hash{Symbol=>Object}] .
-    #
-    #   @option state [Boolean, :strong] :strictness
-    #
-    #   @option state [Hash{Symbol=>Object}] :exactness
-    #
-    #   @option state [Integer] :branched
-    #
     # @return [Symbol, Object]
-    def coerce(value, state:)
-      exactness = state.fetch(:exactness)
-      val = value.is_a?(String) ? value.to_sym : value
-
-      if values.include?(val)
-        exactness[:yes] += 1
+    def coerce(value)
+      case value
+      in Symbol | String if values.include?(val = value.to_sym)
         val
       else
-        exactness[values.first&.class == val.class ? :maybe : :no] += 1
         value
       end
     end
@@ -374,6 +332,27 @@ module Increase
     #   #
     #   # @return [Symbol, Object]
     #   def dump(value) = super
+
+    # @api private
+    #
+    # @param value [Object]
+    #
+    # @return [Array(true, Object, nil), Array(false, Boolean, Integer)]
+    def try_strict_coerce(value)
+      return [true, value, 1] if values.include?(value)
+
+      case value
+      in Symbol | String if values.include?(val = value.to_sym)
+        [true, val, 1]
+      else
+        case [value, values.first]
+        in [true | false, true | false] | [Integer, Integer] | [Symbol | String, Symbol]
+          [false, true, 0]
+        else
+          [false, false, 0]
+        end
+      end
+    end
   end
 
   # @api private
@@ -397,7 +376,9 @@ module Increase
     # All of the specified variants for this union.
     #
     # @return [Array<Object>]
-    def variants = derefed_variants.map(&:last)
+    def variants
+      derefed_variants.map(&:last)
+    end
 
     # @api private
     #
@@ -427,7 +408,7 @@ module Increase
         case key
         in Symbol
           [key, Increase::Converter.type_info(spec)]
-        in Proc | Increase::Converter | Class | Hash
+        in Proc | Increase::Converter | Module | Hash
           [nil, Increase::Converter.type_info(key)]
         end
 
@@ -444,14 +425,16 @@ module Increase
       in [_, Increase::BaseModel]
         value.class
       in [Symbol, Hash]
-        key = value.fetch(@discriminator) do
-          value.fetch(@discriminator.to_s, Increase::Util::OMIT)
-        end
-
-        return nil if key == Increase::Util::OMIT
+        key =
+          if value.key?(@discriminator)
+            value.fetch(@discriminator)
+          elsif value.key?((discriminator = @discriminator.to_s))
+            value.fetch(discriminator)
+          end
 
         key = key.to_sym if key.is_a?(String)
-        known_variants.find { |k,| k == key }&.last&.call
+        _, resolved = known_variants.find { |k,| k == key }
+        resolved.nil? ? Increase::Unknown : resolved.call
       else
         nil
       end
@@ -473,63 +456,36 @@ module Increase
     #
     # @return [Boolean]
     def ==(other)
-      other.is_a?(Module) && other.singleton_class <= Increase::Union && other.derefed_variants == derefed_variants
+      other.is_a?(Module) && other.singleton_class.ancestors.include?(Increase::Union) && other.derefed_variants == derefed_variants
     end
 
     # @api private
     #
     # @param value [Object]
     #
-    # @param state [Hash{Symbol=>Object}] .
-    #
-    #   @option state [Boolean, :strong] :strictness
-    #
-    #   @option state [Hash{Symbol=>Object}] :exactness
-    #
-    #   @option state [Integer] :branched
-    #
     # @return [Object]
-    def coerce(value, state:)
-      if (target = resolve_variant(value))
-        return Increase::Converter.coerce(target, value, state: state)
+    def coerce(value)
+      if (variant = resolve_variant(value))
+        return Increase::Converter.coerce(variant, value)
       end
 
-      strictness = state.fetch(:strictness)
-      exactness = state.fetch(:exactness)
-      state[:strictness] = strictness == :strong ? true : strictness
+      matches = []
 
-      alternatives = []
       known_variants.each do |_, variant_fn|
-        target = variant_fn.call
-        exact = state[:exactness] = {yes: 0, no: 0, maybe: 0}
-        state[:branched] += 1
+        variant = variant_fn.call
 
-        coerced = Increase::Converter.coerce(target, value, state: state)
-        yes, no, maybe = exact.values
-        if (no + maybe).zero? || (!strictness && yes.positive?)
-          exact.each { exactness[_1] += _2 }
-          state[:exactness] = exactness
+        case Increase::Converter.try_strict_coerce(variant, value)
+        in [true, coerced, _]
           return coerced
-        elsif maybe.positive?
-          alternatives << [[-yes, -maybe, no], exact, coerced]
+        in [false, true, score]
+          matches << [score, variant]
+        in [false, false, _]
+          nil
         end
       end
 
-      case alternatives.sort_by(&:first)
-      in []
-        exactness[:no] += 1
-        if strictness == :strong
-          message = "no possible conversion of #{value.class} into a variant of #{target.inspect}"
-          raise ArgumentError.new(message)
-        end
-        value
-      in [[_, exact, coerced], *]
-        exact.each { exactness[_1] += _2 }
-        coerced
-      end
-        .tap { state[:exactness] = exactness }
-    ensure
-      state[:strictness] = strictness
+      _, variant = matches.sort! { _2.first <=> _1.first }.find { |score,| !score.zero? }
+      variant.nil? ? value : Increase::Converter.coerce(variant, value)
     end
 
     # @api private
@@ -538,16 +494,49 @@ module Increase
     #
     # @return [Object]
     def dump(value)
-      if (target = resolve_variant(value))
-        return Increase::Converter.dump(target, value)
+      if (variant = resolve_variant(value))
+        return Increase::Converter.dump(variant, value)
       end
 
-      known_variants.each do
-        target = _2.call
-        return Increase::Converter.dump(target, value) if target === value
+      known_variants.each do |_, variant_fn|
+        variant = variant_fn.call
+        if variant === value
+          return Increase::Converter.dump(variant, value)
+        end
+      end
+      value
+    end
+
+    # @api private
+    #
+    # @param value [Object]
+    #
+    # @return [Array(true, Object, nil), Array(false, Boolean, Integer)]
+    def try_strict_coerce(value)
+      # TODO(ruby) this will result in super linear decoding behaviour for nested unions
+      # follow up with a decoding context that captures current strictness levels
+      if (variant = resolve_variant(value))
+        return Converter.try_strict_coerce(variant, value)
       end
 
-      super
+      coercible = false
+      max_score = 0
+
+      known_variants.each do |_, variant_fn|
+        variant = variant_fn.call
+
+        case Increase::Converter.try_strict_coerce(variant, value)
+        in [true, coerced, score]
+          return [true, coerced, score]
+        in [false, true, score]
+          coercible = true
+          max_score = [max_score, score].max
+        in [false, false, _]
+          nil
+        end
+      end
+
+      [false, coercible, max_score]
     end
 
     # rubocop:enable Style/CaseEquality
@@ -578,46 +567,36 @@ module Increase
     # @param other [Object]
     #
     # @return [Boolean]
-    def ===(other) = other.is_a?(Array) && other.all?(item_type)
+    def ===(other)
+      type = item_type
+      case other
+      in Array
+        # rubocop:disable Style/CaseEquality
+        other.all? { type === _1 }
+        # rubocop:enable Style/CaseEquality
+      else
+        false
+      end
+    end
 
     # @param other [Object]
     #
     # @return [Boolean]
-    def ==(other) = other.is_a?(Increase::ArrayOf) && other.nilable? == nilable? && other.item_type == item_type
+    def ==(other) = other.is_a?(Increase::ArrayOf) && other.item_type == item_type
 
     # @api private
     #
     # @param value [Enumerable, Object]
     #
-    # @param state [Hash{Symbol=>Object}] .
-    #
-    #   @option state [Boolean, :strong] :strictness
-    #
-    #   @option state [Hash{Symbol=>Object}] :exactness
-    #
-    #   @option state [Integer] :branched
-    #
     # @return [Array<Object>, Object]
-    def coerce(value, state:)
-      exactness = state.fetch(:exactness)
-
-      unless value.is_a?(Array)
-        exactness[:no] += 1
-        return value
+    def coerce(value)
+      type = item_type
+      case value
+      in Enumerable unless value.is_a?(Hash)
+        value.map { Increase::Converter.coerce(type, _1) }
+      else
+        value
       end
-
-      target = item_type
-      exactness[:yes] += 1
-      value
-        .map do |item|
-          case [nilable?, item]
-          in [true, nil]
-            exactness[:yes] += 1
-            nil
-          else
-            Increase::Converter.coerce(target, item, state: state)
-          end
-        end
     end
 
     # @api private
@@ -626,19 +605,57 @@ module Increase
     #
     # @return [Array<Object>, Object]
     def dump(value)
-      target = item_type
-      value.is_a?(Array) ? value.map { Increase::Converter.dump(target, _1) } : super
+      type = item_type
+      case value
+      in Enumerable unless value.is_a?(Hash)
+        value.map { Increase::Converter.dump(type, _1) }.to_a
+      else
+        value
+      end
+    end
+
+    # @api private
+    #
+    # @param value [Object]
+    #
+    # @return [Array(true, Object, nil), Array(false, Boolean, Integer)]
+    def try_strict_coerce(value)
+      case value
+      in Array
+        type = item_type
+        great_success = true
+        tally = 0
+
+        mapped =
+          value.map do |item|
+            case Increase::Converter.try_strict_coerce(type, item)
+            in [true, coerced, score]
+              tally += score
+              coerced
+            in [false, true, score]
+              great_success = false
+              tally += score
+              item
+            in [false, false, _]
+              great_success &&= item.nil?
+              item
+            end
+          end
+
+        if great_success
+          [true, mapped, tally]
+        else
+          [false, true, tally]
+        end
+      else
+        [false, false, 0]
+      end
     end
 
     # @api private
     #
     # @return [Increase::Converter, Class]
     protected def item_type = @item_type_fn.call
-
-    # @api private
-    #
-    # @return [Boolean]
-    protected def nilable? = @nilable
 
     # @api private
     #
@@ -655,7 +672,6 @@ module Increase
     #   @option spec [Boolean] :"nil?"
     def initialize(type_info, spec = {})
       @item_type_fn = Increase::Converter.type_info(type_info || spec)
-      @nilable = spec[:nil?]
     end
   end
 
@@ -703,46 +719,24 @@ module Increase
     # @param other [Object]
     #
     # @return [Boolean]
-    def ==(other) = other.is_a?(Increase::HashOf) && other.nilable? == nilable? && other.item_type == item_type
+    def ==(other) = other.is_a?(Increase::HashOf) && other.item_type == item_type
 
     # @api private
     #
     # @param value [Hash{Object=>Object}, Object]
     #
-    # @param state [Hash{Symbol=>Object}] .
-    #
-    #   @option state [Boolean, :strong] :strictness
-    #
-    #   @option state [Hash{Symbol=>Object}] :exactness
-    #
-    #   @option state [Integer] :branched
-    #
     # @return [Hash{Symbol=>Object}, Object]
-    def coerce(value, state:)
-      exactness = state.fetch(:exactness)
-
-      unless value.is_a?(Hash)
-        exactness[:no] += 1
-        return value
-      end
-
-      target = item_type
-      exactness[:yes] += 1
-      value
-        .to_h do |key, val|
-          k = key.is_a?(String) ? key.to_sym : key
-          v =
-            case [nilable?, val]
-            in [true, nil]
-              exactness[:yes] += 1
-              nil
-            else
-              Increase::Converter.coerce(target, val, state: state)
-            end
-
-          exactness[:no] += 1 unless k.is_a?(Symbol)
-          [k, v]
+    def coerce(value)
+      type = item_type
+      case value
+      in Hash
+        value.to_h do |key, val|
+          coerced = Increase::Converter.coerce(type, val)
+          [key.is_a?(String) ? key.to_sym : key, coerced]
         end
+      else
+        value
+      end
     end
 
     # @api private
@@ -751,19 +745,59 @@ module Increase
     #
     # @return [Hash{Symbol=>Object}, Object]
     def dump(value)
-      target = item_type
-      value.is_a?(Hash) ? value.transform_values { Increase::Converter.dump(target, _1) } : super
+      type = item_type
+      case value
+      in Hash
+        value.transform_values do |val|
+          Increase::Converter.dump(type, val)
+        end
+      else
+        value
+      end
+    end
+
+    # @api private
+    #
+    # @param value [Object]
+    #
+    # @return [Array(true, Object, nil), Array(false, Boolean, Integer)]
+    def try_strict_coerce(value)
+      case value
+      in Hash
+        type = item_type
+        great_success = true
+        tally = 0
+
+        mapped =
+          value.transform_values do |val|
+            case Increase::Converter.try_strict_coerce(type, val)
+            in [true, coerced, score]
+              tally += score
+              coerced
+            in [false, true, score]
+              great_success = false
+              tally += score
+              val
+            in [false, false, _]
+              great_success &&= val.nil?
+              val
+            end
+          end
+
+        if great_success
+          [true, mapped, tally]
+        else
+          [false, true, tally]
+        end
+      else
+        [false, false, 0]
+      end
     end
 
     # @api private
     #
     # @return [Increase::Converter, Class]
     protected def item_type = @item_type_fn.call
-
-    # @api private
-    #
-    # @return [Boolean]
-    protected def nilable? = @nilable
 
     # @api private
     #
@@ -780,7 +814,6 @@ module Increase
     #   @option spec [Boolean] :"nil?"
     def initialize(type_info, spec = {})
       @item_type_fn = Increase::Converter.type_info(type_info || spec)
-      @nilable = spec[:nil?]
     end
   end
 
@@ -809,12 +842,24 @@ module Increase
 
       # @api private
       #
+      # @return [Hash{Symbol=>Symbol}]
+      def reverse_map
+        @reverse_map ||= (self < Increase::BaseModel ? superclass.reverse_map.dup : {})
+      end
+
+      # @api private
+      #
       # @return [Hash{Symbol=>Hash{Symbol=>Object}}]
       def fields
         known_fields.transform_values do |field|
           {**field.except(:type_fn), type: field.fetch(:type_fn).call}
         end
       end
+
+      # @api private
+      #
+      # @return [Hash{Symbol=>Proc}]
+      def defaults = (@defaults ||= {})
 
       # @api private
       #
@@ -836,40 +881,38 @@ module Increase
       private def add_field(name_sym, required:, type_info:, spec:)
         type_fn, info =
           case type_info
-          in Proc | Increase::Converter | Class
+          in Proc | Module | Increase::Converter
             [Increase::Converter.type_info({**spec, union: type_info}), spec]
           in Hash
             [Increase::Converter.type_info(type_info), type_info]
           end
 
+        fallback = info[:const]
+        defaults[name_sym] = fallback if required && !info[:nil?] && info.key?(:const)
+
+        key = info[:api_name]&.tap { reverse_map[_1] = name_sym } || name_sym
         setter = "#{name_sym}="
-        api_name = info.fetch(:api_name, name_sym)
-        nilable = info[:nil?]
-        const = required && !nilable ? info.fetch(:const, Increase::Util::OMIT) : Increase::Util::OMIT
 
-        [name_sym, setter].each { undef_method(_1) } if known_fields.key?(name_sym)
+        if known_fields.key?(name_sym)
+          [name_sym, setter].each { undef_method(_1) }
+        end
 
-        known_fields[name_sym] =
-          {
-            mode: @mode,
-            api_name: api_name,
-            required: required,
-            nilable: nilable,
-            const: const,
-            type_fn: type_fn
-          }
+        known_fields[name_sym] = {mode: @mode, key: key, required: required, type_fn: type_fn}
 
-        define_method(setter) { @data.store(name_sym, _1) }
+        define_method(setter) do |val|
+          @data[key] = val
+        end
 
         define_method(name_sym) do
-          target = type_fn.call
-          value = @data.fetch(name_sym) { const == Increase::Util::OMIT ? nil : const }
-          state = {strictness: :strong, exactness: {yes: 0, no: 0, maybe: 0}, branched: 0}
-          (nilable || !required) && value.nil? ? nil : Increase::Converter.coerce(target, value, state: state)
+          field_type = type_fn.call
+          value = @data.fetch(key) { self.class.defaults[key] }
+          Increase::Converter.coerce(field_type, value)
         rescue StandardError
-          cls = self.class.name.split("::").last
-          message = "Failed to parse #{cls}.#{__method__} from #{value.class} to #{target.inspect}. To get the unparsed API response, use #{cls}[:#{__method__}]."
-          raise Increase::ConversionError.new(message)
+          name = self.class.name.split("::").last
+          raise Increase::ConversionError.new(
+            "Failed to parse #{name}.#{name_sym} as #{field_type.inspect}. " \
+            "To get the unparsed API response, use #{name}[:#{key}]."
+          )
         end
       end
 
@@ -935,86 +978,33 @@ module Increase
       ensure
         @mode = nil
       end
-
-      # @param other [Object]
-      #
-      # @return [Boolean]
-      def ==(other) = other.is_a?(Class) && other <= Increase::BaseModel && other.fields == fields
     end
 
     # @param other [Object]
     #
     # @return [Boolean]
-    def ==(other) = self.class == other.class && @data == other.to_h
+    def ==(other)
+      case other
+      in Increase::BaseModel
+        self.class.fields == other.class.fields && @data == other.to_h
+      else
+        false
+      end
+    end
 
     class << self
       # @api private
       #
       # @param value [Increase::BaseModel, Hash{Object=>Object}, Object]
       #
-      # @param state [Hash{Symbol=>Object}] .
-      #
-      #   @option state [Boolean, :strong] :strictness
-      #
-      #   @option state [Hash{Symbol=>Object}] :exactness
-      #
-      #   @option state [Integer] :branched
-      #
       # @return [Increase::BaseModel, Object]
-      def coerce(value, state:)
-        exactness = state.fetch(:exactness)
-
-        if value.is_a?(self.class)
-          exactness[:yes] += 1
-          return value
+      def coerce(value)
+        case Increase::Util.coerce_hash(value)
+        in Hash => coerced
+          new(coerced)
+        else
+          value
         end
-
-        unless (val = Increase::Util.coerce_hash(value)).is_a?(Hash)
-          exactness[:no] += 1
-          return value
-        end
-        exactness[:yes] += 1
-
-        keys = val.keys.to_set
-        instance = new
-        data = instance.to_h
-
-        fields.each do |name, field|
-          mode, required, target = field.fetch_values(:mode, :required, :type)
-          api_name, nilable, const = field.fetch_values(:api_name, :nilable, :const)
-
-          unless val.key?(api_name)
-            if const != Increase::Util::OMIT
-              exactness[:yes] += 1
-            elsif required && mode != :dump
-              exactness[nilable ? :maybe : :no] += 1
-            else
-              exactness[:yes] += 1
-            end
-            next
-          end
-
-          item = val.fetch(api_name)
-          keys.delete(api_name)
-
-          converted =
-            if item.nil? && (nilable || !required)
-              exactness[nilable ? :yes : :maybe] += 1
-              nil
-            else
-              coerced = Increase::Converter.coerce(target, item, state: state)
-              case target
-              in Increase::Converter | Symbol
-                coerced
-              else
-                item
-              end
-            end
-          data.store(name, converted)
-        end
-
-        keys.each { data.store(_1, val.fetch(_1)) }
-        instance
       end
 
       # @api private
@@ -1024,35 +1014,84 @@ module Increase
       # @return [Hash{Object=>Object}, Object]
       def dump(value)
         unless (coerced = Increase::Util.coerce_hash(value)).is_a?(Hash)
-          return super
+          return value
         end
 
-        acc = {}
-
-        coerced.each do |key, val|
-          name = key.is_a?(String) ? key.to_sym : key
+        values = coerced.filter_map do |key, val|
+          name = key.to_sym
           case (field = known_fields[name])
           in nil
-            acc.store(name, super(val))
+            [name, val]
           else
-            mode, api_name, type_fn = field.fetch_values(:mode, :api_name, :type_fn)
+            mode, type_fn, api_name = field.fetch_values(:mode, :type_fn, :key)
             case mode
             in :coerce
               next
             else
               target = type_fn.call
-              acc.store(api_name, Increase::Converter.dump(target, val))
+              [api_name, Increase::Converter.dump(target, val)]
             end
+          end
+        end.to_h
+
+        defaults.each do |key, val|
+          next if values.key?(key)
+
+          values[key] = val
+        end
+
+        values
+      end
+
+      # @api private
+      #
+      # @param value [Object]
+      #
+      # @return [Array(true, Object, nil), Array(false, Boolean, Integer)]
+      def try_strict_coerce(value)
+        case value
+        in Hash | Increase::BaseModel
+          value = value.to_h
+        else
+          return [false, false, 0]
+        end
+
+        keys = value.keys.to_set
+        great_success = true
+        tally = 0
+        acc = {}
+
+        known_fields.each_value do |field|
+          mode, required, type_fn, api_name = field.fetch_values(:mode, :required, :type_fn, :key)
+          keys.delete(api_name)
+
+          case [required && mode != :dump, value.key?(api_name)]
+          in [_, true]
+            target = type_fn.call
+            item = value.fetch(api_name)
+            case Increase::Converter.try_strict_coerce(target, item)
+            in [true, coerced, score]
+              tally += score
+              acc[api_name] = coerced
+            in [false, true, score]
+              great_success = false
+              tally += score
+              acc[api_name] = item
+            in [false, false, _]
+              great_success &&= item.nil?
+            end
+          in [true, false]
+            great_success = false
+          in [false, false]
+            nil
           end
         end
 
-        known_fields.each_value do |field|
-          mode, api_name, const = field.fetch_values(:mode, :api_name, :const)
-          next if mode == :coerce || acc.key?(api_name) || const == Increase::Util::OMIT
-          acc.store(api_name, const)
+        keys.each do |key|
+          acc[key] = value.fetch(key)
         end
 
-        acc
+        great_success ? [true, new(acc), tally] : [false, true, tally]
       end
     end
 
@@ -1092,15 +1131,14 @@ module Increase
     #
     # @return [Hash{Symbol=>Object}]
     def deconstruct_keys(keys)
-      (keys || self.class.known_fields.keys)
-        .filter_map do |k|
-          unless self.class.known_fields.key?(k)
-            next
-          end
-
-          [k, public_send(k)]
+      (keys || self.class.known_fields.keys).filter_map do |k|
+        unless self.class.known_fields.key?(k)
+          next
         end
-        .to_h
+
+        [k, method(k).call]
+      end
+      .to_h
     end
 
     # Create a new instance of a model.
@@ -1109,20 +1147,34 @@ module Increase
     def initialize(data = {})
       case Increase::Util.coerce_hash(data)
       in Hash => coerced
-        @data = coerced
+        @data = coerced.to_h do |key, value|
+          name = key.to_sym
+          mapped = self.class.reverse_map.fetch(name, name)
+          type = self.class.fields[mapped]&.fetch(:type)
+          stored =
+            case [type, value]
+            in [Module, Hash] if type <= Increase::BaseModel
+              type.new(value)
+            in [Increase::ArrayOf, Array] | [Increase::HashOf, Hash]
+              type.coerce(value)
+            else
+              value
+            end
+          [name, stored]
+        end
       else
         raise ArgumentError.new("Expected a #{Hash} or #{Increase::BaseModel}, got #{data.inspect}")
       end
     end
 
     # @return [String]
+    def to_s = @data.to_s
+
+    # @return [String]
     def inspect
-      rows = self.class.known_fields.keys.map do
-        "#{_1}=#{@data.key?(_1) ? public_send(_1) : ''}"
-      rescue Increase::ConversionError
-        "#{_1}=#{@data.fetch(_1)}"
-      end
-      "#<#{self.class.name}:0x#{object_id.to_s(16)} #{rows.join(' ')}>"
+      "#<#{self.class.name}:0x#{object_id.to_s(16)} #{deconstruct_keys(nil).map do |k, v|
+        "#{k}=#{v.inspect}"
+      end.join(' ')}>"
     end
   end
 end

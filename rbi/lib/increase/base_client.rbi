@@ -84,7 +84,7 @@ module Increase
     end
 
     # @api private
-    sig { returns(Increase::PooledNetRequester) }
+    sig { returns(T.anything) }
     attr_accessor :requester
 
     # @api private
