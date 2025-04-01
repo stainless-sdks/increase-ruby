@@ -5,9 +5,9 @@ module Increase
     class Groups
       # Returns details for the currently authenticated Group.
       #
-      # @param params [Increase::Models::GroupRetrieveParams, Hash{Symbol=>Object}] .
+      # @overload retrieve(request_options: {})
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::Group]
       #

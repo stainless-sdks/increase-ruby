@@ -5,11 +5,10 @@ module Increase
     class ProofOfAuthorizationRequests
       # Retrieve a Proof of Authorization Request
       #
-      # @param proof_of_authorization_request_id [String] The identifier of the Proof of Authorization Request.
+      # @overload retrieve(proof_of_authorization_request_id, request_options: {})
       #
-      # @param params [Increase::Models::ProofOfAuthorizationRequestRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param proof_of_authorization_request_id [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::ProofOfAuthorizationRequest]
       #
@@ -25,16 +24,12 @@ module Increase
 
       # List Proof of Authorization Requests
       #
-      # @param params [Increase::Models::ProofOfAuthorizationRequestListParams, Hash{Symbol=>Object}] .
+      # @overload list(created_at: nil, cursor: nil, limit: nil, request_options: {})
       #
-      #   @option params [Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt] :created_at
-      #
-      #   @option params [String] :cursor Return the page of entries after this one.
-      #
-      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #     objects.
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param created_at [Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt]
+      # @param cursor [String]
+      # @param limit [Integer]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Page<Increase::Models::ProofOfAuthorizationRequest>]
       #

@@ -5,20 +5,14 @@ module Increase
     class ExternalAccounts
       # Create an External Account
       #
-      # @param params [Increase::Models::ExternalAccountCreateParams, Hash{Symbol=>Object}] .
+      # @overload create(account_number:, description:, routing_number:, account_holder: nil, funding: nil, request_options: {})
       #
-      #   @option params [String] :account_number The account number for the destination account.
-      #
-      #   @option params [String] :description The name you choose for the Account.
-      #
-      #   @option params [String] :routing_number The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      #     destination account.
-      #
-      #   @option params [Symbol, Increase::Models::ExternalAccountCreateParams::AccountHolder] :account_holder The type of entity that owns the External Account.
-      #
-      #   @option params [Symbol, Increase::Models::ExternalAccountCreateParams::Funding] :funding The type of the destination account. Defaults to `checking`.
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param account_number [String]
+      # @param description [String]
+      # @param routing_number [String]
+      # @param account_holder [Symbol, Increase::Models::ExternalAccountCreateParams::AccountHolder]
+      # @param funding [Symbol, Increase::Models::ExternalAccountCreateParams::Funding]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::ExternalAccount]
       #
@@ -36,11 +30,10 @@ module Increase
 
       # Retrieve an External Account
       #
-      # @param external_account_id [String] The identifier of the External Account.
+      # @overload retrieve(external_account_id, request_options: {})
       #
-      # @param params [Increase::Models::ExternalAccountRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param external_account_id [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::ExternalAccount]
       #
@@ -56,19 +49,14 @@ module Increase
 
       # Update an External Account
       #
-      # @param external_account_id [String] The external account identifier.
+      # @overload update(external_account_id, account_holder: nil, description: nil, funding: nil, status: nil, request_options: {})
       #
-      # @param params [Increase::Models::ExternalAccountUpdateParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Symbol, Increase::Models::ExternalAccountUpdateParams::AccountHolder] :account_holder The type of entity that owns the External Account.
-      #
-      #   @option params [String] :description The description you choose to give the external account.
-      #
-      #   @option params [Symbol, Increase::Models::ExternalAccountUpdateParams::Funding] :funding The funding type of the External Account.
-      #
-      #   @option params [Symbol, Increase::Models::ExternalAccountUpdateParams::Status] :status The status of the External Account.
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param external_account_id [String]
+      # @param account_holder [Symbol, Increase::Models::ExternalAccountUpdateParams::AccountHolder]
+      # @param description [String]
+      # @param funding [Symbol, Increase::Models::ExternalAccountUpdateParams::Funding]
+      # @param status [Symbol, Increase::Models::ExternalAccountUpdateParams::Status]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::ExternalAccount]
       #
@@ -86,23 +74,14 @@ module Increase
 
       # List External Accounts
       #
-      # @param params [Increase::Models::ExternalAccountListParams, Hash{Symbol=>Object}] .
+      # @overload list(cursor: nil, idempotency_key: nil, limit: nil, routing_number: nil, status: nil, request_options: {})
       #
-      #   @option params [String] :cursor Return the page of entries after this one.
-      #
-      #   @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
-      #     that object. This value is unique across Increase and is used to ensure that a
-      #     request is only processed once. Learn more about
-      #     [idempotency](https://increase.com/documentation/idempotency-keys).
-      #
-      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #     objects.
-      #
-      #   @option params [String] :routing_number Filter External Accounts to those with the specified Routing Number.
-      #
-      #   @option params [Increase::Models::ExternalAccountListParams::Status] :status
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param cursor [String]
+      # @param idempotency_key [String]
+      # @param limit [Integer]
+      # @param routing_number [String]
+      # @param status [Increase::Models::ExternalAccountListParams::Status]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Page<Increase::Models::ExternalAccount>]
       #

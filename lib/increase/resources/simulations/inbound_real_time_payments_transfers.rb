@@ -8,24 +8,16 @@ module Increase
         #   [Inbound Real-Time Payments Transfer](#inbound-real-time-payments-transfers) to
         #   your account. Real-Time Payments are a beta feature.
         #
-        # @param params [Increase::Models::Simulations::InboundRealTimePaymentsTransferCreateParams, Hash{Symbol=>Object}] .
+        # @overload create(account_number_id:, amount:, debtor_account_number: nil, debtor_name: nil, debtor_routing_number: nil, remittance_information: nil, request_for_payment_id: nil, request_options: {})
         #
-        #   @option params [String] :account_number_id The identifier of the Account Number the inbound Real-Time Payments Transfer is
-        #     for.
-        #
-        #   @option params [Integer] :amount The transfer amount in USD cents. Must be positive.
-        #
-        #   @option params [String] :debtor_account_number The account number of the account that sent the transfer.
-        #
-        #   @option params [String] :debtor_name The name provided by the sender of the transfer.
-        #
-        #   @option params [String] :debtor_routing_number The routing number of the account that sent the transfer.
-        #
-        #   @option params [String] :remittance_information Additional information included with the transfer.
-        #
-        #   @option params [String] :request_for_payment_id The identifier of a pending Request for Payment that this transfer will fulfill.
-        #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param account_number_id [String]
+        # @param amount [Integer]
+        # @param debtor_account_number [String]
+        # @param debtor_name [String]
+        # @param debtor_routing_number [String]
+        # @param remittance_information [String]
+        # @param request_for_payment_id [String]
+        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::InboundRealTimePaymentsTransfer]
         #

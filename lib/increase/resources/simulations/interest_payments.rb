@@ -7,19 +7,14 @@ module Increase
         # Simulates an interest payment to your account. In production, this happens
         #   automatically on the first of each month.
         #
-        # @param params [Increase::Models::Simulations::InterestPaymentCreateParams, Hash{Symbol=>Object}] .
+        # @overload create(account_id:, amount:, accrued_on_account_id: nil, period_end: nil, period_start: nil, request_options: {})
         #
-        #   @option params [String] :account_id The identifier of the Account the Interest Payment should be paid to is for.
-        #
-        #   @option params [Integer] :amount The interest amount in cents. Must be positive.
-        #
-        #   @option params [String] :accrued_on_account_id The identifier of the Account the Interest accrued on. Defaults to `account_id`.
-        #
-        #   @option params [Time] :period_end The end of the interest period. If not provided, defaults to the current time.
-        #
-        #   @option params [Time] :period_start The start of the interest period. If not provided, defaults to the current time.
-        #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param account_id [String]
+        # @param amount [Integer]
+        # @param accrued_on_account_id [String]
+        # @param period_end [Time]
+        # @param period_start [Time]
+        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::Transaction]
         #

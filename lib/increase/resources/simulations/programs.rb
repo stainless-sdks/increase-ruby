@@ -9,11 +9,10 @@ module Increase
         #   operates more than one program, `program_id` is a required field when creating
         #   accounts.
         #
-        # @param params [Increase::Models::Simulations::ProgramCreateParams, Hash{Symbol=>Object}] .
+        # @overload create(name:, request_options: {})
         #
-        #   @option params [String] :name The name of the program being added.
-        #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param name [String]
+        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::Program]
         #

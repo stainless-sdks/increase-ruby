@@ -5,16 +5,12 @@ module Increase
     class BookkeepingEntrySets
       # Create a Bookkeeping Entry Set
       #
-      # @param params [Increase::Models::BookkeepingEntrySetCreateParams, Hash{Symbol=>Object}] .
+      # @overload create(entries:, date: nil, transaction_id: nil, request_options: {})
       #
-      #   @option params [Array<Increase::Models::BookkeepingEntrySetCreateParams::Entry>] :entries The bookkeeping entries.
-      #
-      #   @option params [Time] :date The date of the transaction. Optional if `transaction_id` is provided, in which
-      #     case we use the `date` of that transaction. Required otherwise.
-      #
-      #   @option params [String] :transaction_id The identifier of the Transaction related to this entry set, if any.
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param entries [Array<Increase::Models::BookkeepingEntrySetCreateParams::Entry>]
+      # @param date [Time]
+      # @param transaction_id [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::BookkeepingEntrySet]
       #
@@ -32,11 +28,10 @@ module Increase
 
       # Retrieve a Bookkeeping Entry Set
       #
-      # @param bookkeeping_entry_set_id [String] The identifier of the Bookkeeping Entry Set.
+      # @overload retrieve(bookkeeping_entry_set_id, request_options: {})
       #
-      # @param params [Increase::Models::BookkeepingEntrySetRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param bookkeeping_entry_set_id [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::BookkeepingEntrySet]
       #
@@ -52,21 +47,13 @@ module Increase
 
       # List Bookkeeping Entry Sets
       #
-      # @param params [Increase::Models::BookkeepingEntrySetListParams, Hash{Symbol=>Object}] .
+      # @overload list(cursor: nil, idempotency_key: nil, limit: nil, transaction_id: nil, request_options: {})
       #
-      #   @option params [String] :cursor Return the page of entries after this one.
-      #
-      #   @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
-      #     that object. This value is unique across Increase and is used to ensure that a
-      #     request is only processed once. Learn more about
-      #     [idempotency](https://increase.com/documentation/idempotency-keys).
-      #
-      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #     objects.
-      #
-      #   @option params [String] :transaction_id Filter to the Bookkeeping Entry Set that maps to this Transaction.
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param cursor [String]
+      # @param idempotency_key [String]
+      # @param limit [Integer]
+      # @param transaction_id [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Page<Increase::Models::BookkeepingEntrySet>]
       #

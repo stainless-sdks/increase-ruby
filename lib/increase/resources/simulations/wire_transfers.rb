@@ -9,11 +9,10 @@ module Increase
         #   [Transaction](#transaction) to account for the returned funds. This Wire
         #   Transfer must first have a `status` of `complete`.
         #
-        # @param wire_transfer_id [String] The identifier of the Wire Transfer you wish to reverse.
+        # @overload reverse(wire_transfer_id, request_options: {})
         #
-        # @param params [Increase::Models::Simulations::WireTransferReverseParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param wire_transfer_id [String]
+        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::WireTransfer]
         #
@@ -31,11 +30,10 @@ module Increase
         #   Reserve. This transfer must first have a `status` of `pending_approval` or
         #   `pending_creating`.
         #
-        # @param wire_transfer_id [String] The identifier of the Wire Transfer you wish to submit.
+        # @overload submit(wire_transfer_id, request_options: {})
         #
-        # @param params [Increase::Models::Simulations::WireTransferSubmitParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param wire_transfer_id [String]
+        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::WireTransfer]
         #

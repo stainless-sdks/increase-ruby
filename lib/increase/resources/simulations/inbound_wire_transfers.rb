@@ -6,58 +6,26 @@ module Increase
       class InboundWireTransfers
         # Simulates an [Inbound Wire Transfer](#inbound-wire-transfers) to your account.
         #
-        # @param params [Increase::Models::Simulations::InboundWireTransferCreateParams, Hash{Symbol=>Object}] .
+        # @overload create(account_number_id:, amount:, beneficiary_address_line1: nil, beneficiary_address_line2: nil, beneficiary_address_line3: nil, beneficiary_name: nil, beneficiary_reference: nil, originator_address_line1: nil, originator_address_line2: nil, originator_address_line3: nil, originator_name: nil, originator_routing_number: nil, originator_to_beneficiary_information_line1: nil, originator_to_beneficiary_information_line2: nil, originator_to_beneficiary_information_line3: nil, originator_to_beneficiary_information_line4: nil, sender_reference: nil, request_options: {})
         #
-        #   @option params [String] :account_number_id The identifier of the Account Number the inbound Wire Transfer is for.
-        #
-        #   @option params [Integer] :amount The transfer amount in cents. Must be positive.
-        #
-        #   @option params [String] :beneficiary_address_line1 The sending bank will set beneficiary_address_line1 in production. You can
-        #     simulate any value here.
-        #
-        #   @option params [String] :beneficiary_address_line2 The sending bank will set beneficiary_address_line2 in production. You can
-        #     simulate any value here.
-        #
-        #   @option params [String] :beneficiary_address_line3 The sending bank will set beneficiary_address_line3 in production. You can
-        #     simulate any value here.
-        #
-        #   @option params [String] :beneficiary_name The sending bank will set beneficiary_name in production. You can simulate any
-        #     value here.
-        #
-        #   @option params [String] :beneficiary_reference The sending bank will set beneficiary_reference in production. You can simulate
-        #     any value here.
-        #
-        #   @option params [String] :originator_address_line1 The sending bank will set originator_address_line1 in production. You can
-        #     simulate any value here.
-        #
-        #   @option params [String] :originator_address_line2 The sending bank will set originator_address_line2 in production. You can
-        #     simulate any value here.
-        #
-        #   @option params [String] :originator_address_line3 The sending bank will set originator_address_line3 in production. You can
-        #     simulate any value here.
-        #
-        #   @option params [String] :originator_name The sending bank will set originator_name in production. You can simulate any
-        #     value here.
-        #
-        #   @option params [String] :originator_routing_number The sending bank will set originator_routing_number in production. You can
-        #     simulate any value here.
-        #
-        #   @option params [String] :originator_to_beneficiary_information_line1 The sending bank will set originator_to_beneficiary_information_line1 in
-        #     production. You can simulate any value here.
-        #
-        #   @option params [String] :originator_to_beneficiary_information_line2 The sending bank will set originator_to_beneficiary_information_line2 in
-        #     production. You can simulate any value here.
-        #
-        #   @option params [String] :originator_to_beneficiary_information_line3 The sending bank will set originator_to_beneficiary_information_line3 in
-        #     production. You can simulate any value here.
-        #
-        #   @option params [String] :originator_to_beneficiary_information_line4 The sending bank will set originator_to_beneficiary_information_line4 in
-        #     production. You can simulate any value here.
-        #
-        #   @option params [String] :sender_reference The sending bank will set sender_reference in production. You can simulate any
-        #     value here.
-        #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param account_number_id [String]
+        # @param amount [Integer]
+        # @param beneficiary_address_line1 [String]
+        # @param beneficiary_address_line2 [String]
+        # @param beneficiary_address_line3 [String]
+        # @param beneficiary_name [String]
+        # @param beneficiary_reference [String]
+        # @param originator_address_line1 [String]
+        # @param originator_address_line2 [String]
+        # @param originator_address_line3 [String]
+        # @param originator_name [String]
+        # @param originator_routing_number [String]
+        # @param originator_to_beneficiary_information_line1 [String]
+        # @param originator_to_beneficiary_information_line2 [String]
+        # @param originator_to_beneficiary_information_line3 [String]
+        # @param originator_to_beneficiary_information_line4 [String]
+        # @param sender_reference [String]
+        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::InboundWireTransfer]
         #

@@ -5,11 +5,10 @@ module Increase
     class InboundRealTimePaymentsTransfers
       # Retrieve an Inbound Real-Time Payments Transfer
       #
-      # @param inbound_real_time_payments_transfer_id [String] The identifier of the Inbound Real-Time Payments Transfer to get details for.
+      # @overload retrieve(inbound_real_time_payments_transfer_id, request_options: {})
       #
-      # @param params [Increase::Models::InboundRealTimePaymentsTransferRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param inbound_real_time_payments_transfer_id [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::InboundRealTimePaymentsTransfer]
       #
@@ -25,22 +24,14 @@ module Increase
 
       # List Inbound Real-Time Payments Transfers
       #
-      # @param params [Increase::Models::InboundRealTimePaymentsTransferListParams, Hash{Symbol=>Object}] .
+      # @overload list(account_id: nil, account_number_id: nil, created_at: nil, cursor: nil, limit: nil, request_options: {})
       #
-      #   @option params [String] :account_id Filter Inbound Real-Time Payments Transfers to those belonging to the specified
-      #     Account.
-      #
-      #   @option params [String] :account_number_id Filter Inbound Real-Time Payments Transfers to ones belonging to the specified
-      #     Account Number.
-      #
-      #   @option params [Increase::Models::InboundRealTimePaymentsTransferListParams::CreatedAt] :created_at
-      #
-      #   @option params [String] :cursor Return the page of entries after this one.
-      #
-      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #     objects.
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param account_id [String]
+      # @param account_number_id [String]
+      # @param created_at [Increase::Models::InboundRealTimePaymentsTransferListParams::CreatedAt]
+      # @param cursor [String]
+      # @param limit [Integer]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Page<Increase::Models::InboundRealTimePaymentsTransfer>]
       #

@@ -8,14 +8,11 @@ module Increase
         #   happens asynchronously right after a fuel pump transaction is completed. A fuel
         #   confirmation can only happen once per authorization.
         #
-        # @param params [Increase::Models::Simulations::CardFuelConfirmationCreateParams, Hash{Symbol=>Object}] .
+        # @overload create(amount:, card_payment_id:, request_options: {})
         #
-        #   @option params [Integer] :amount The amount of the fuel_confirmation in minor units in the card authorization's
-        #     currency.
-        #
-        #   @option params [String] :card_payment_id The identifier of the Card Payment to create a fuel_confirmation on.
-        #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param amount [Integer]
+        # @param card_payment_id [String]
+        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::CardPayment]
         #

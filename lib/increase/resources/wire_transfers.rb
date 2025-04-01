@@ -5,47 +5,25 @@ module Increase
     class WireTransfers
       # Create a Wire Transfer
       #
-      # @param params [Increase::Models::WireTransferCreateParams, Hash{Symbol=>Object}] .
+      # @overload create(account_id:, amount:, beneficiary_name:, message_to_recipient:, account_number: nil, beneficiary_address_line1: nil, beneficiary_address_line2: nil, beneficiary_address_line3: nil, external_account_id: nil, originator_address_line1: nil, originator_address_line2: nil, originator_address_line3: nil, originator_name: nil, require_approval: nil, routing_number: nil, source_account_number_id: nil, request_options: {})
       #
-      #   @option params [String] :account_id The identifier for the account that will send the transfer.
-      #
-      #   @option params [Integer] :amount The transfer amount in USD cents.
-      #
-      #   @option params [String] :beneficiary_name The beneficiary's name.
-      #
-      #   @option params [String] :message_to_recipient The message that will show on the recipient's bank statement.
-      #
-      #   @option params [String] :account_number The account number for the destination account.
-      #
-      #   @option params [String] :beneficiary_address_line1 The beneficiary's address line 1.
-      #
-      #   @option params [String] :beneficiary_address_line2 The beneficiary's address line 2.
-      #
-      #   @option params [String] :beneficiary_address_line3 The beneficiary's address line 3.
-      #
-      #   @option params [String] :external_account_id The ID of an External Account to initiate a transfer to. If this parameter is
-      #     provided, `account_number` and `routing_number` must be absent.
-      #
-      #   @option params [String] :originator_address_line1 The originator's address line 1. This is only necessary if you're transferring
-      #     from a commingled account. Otherwise, we'll use the associated entity's details.
-      #
-      #   @option params [String] :originator_address_line2 The originator's address line 2. This is only necessary if you're transferring
-      #     from a commingled account. Otherwise, we'll use the associated entity's details.
-      #
-      #   @option params [String] :originator_address_line3 The originator's address line 3. This is only necessary if you're transferring
-      #     from a commingled account. Otherwise, we'll use the associated entity's details.
-      #
-      #   @option params [String] :originator_name The originator's name. This is only necessary if you're transferring from a
-      #     commingled account. Otherwise, we'll use the associated entity's details.
-      #
-      #   @option params [Boolean] :require_approval Whether the transfer requires explicit approval via the dashboard or API.
-      #
-      #   @option params [String] :routing_number The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      #     destination account.
-      #
-      #   @option params [String] :source_account_number_id The ID of an Account Number that will be passed to the wire's recipient
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param account_id [String]
+      # @param amount [Integer]
+      # @param beneficiary_name [String]
+      # @param message_to_recipient [String]
+      # @param account_number [String]
+      # @param beneficiary_address_line1 [String]
+      # @param beneficiary_address_line2 [String]
+      # @param beneficiary_address_line3 [String]
+      # @param external_account_id [String]
+      # @param originator_address_line1 [String]
+      # @param originator_address_line2 [String]
+      # @param originator_address_line3 [String]
+      # @param originator_name [String]
+      # @param require_approval [Boolean]
+      # @param routing_number [String]
+      # @param source_account_number_id [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::WireTransfer]
       #
@@ -63,11 +41,10 @@ module Increase
 
       # Retrieve a Wire Transfer
       #
-      # @param wire_transfer_id [String] The identifier of the Wire Transfer.
+      # @overload retrieve(wire_transfer_id, request_options: {})
       #
-      # @param params [Increase::Models::WireTransferRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param wire_transfer_id [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::WireTransfer]
       #
@@ -83,25 +60,15 @@ module Increase
 
       # List Wire Transfers
       #
-      # @param params [Increase::Models::WireTransferListParams, Hash{Symbol=>Object}] .
+      # @overload list(account_id: nil, created_at: nil, cursor: nil, external_account_id: nil, idempotency_key: nil, limit: nil, request_options: {})
       #
-      #   @option params [String] :account_id Filter Wire Transfers to those belonging to the specified Account.
-      #
-      #   @option params [Increase::Models::WireTransferListParams::CreatedAt] :created_at
-      #
-      #   @option params [String] :cursor Return the page of entries after this one.
-      #
-      #   @option params [String] :external_account_id Filter Wire Transfers to those made to the specified External Account.
-      #
-      #   @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
-      #     that object. This value is unique across Increase and is used to ensure that a
-      #     request is only processed once. Learn more about
-      #     [idempotency](https://increase.com/documentation/idempotency-keys).
-      #
-      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #     objects.
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param account_id [String]
+      # @param created_at [Increase::Models::WireTransferListParams::CreatedAt]
+      # @param cursor [String]
+      # @param external_account_id [String]
+      # @param idempotency_key [String]
+      # @param limit [Integer]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Page<Increase::Models::WireTransfer>]
       #
@@ -120,11 +87,10 @@ module Increase
 
       # Approve a Wire Transfer
       #
-      # @param wire_transfer_id [String] The identifier of the Wire Transfer to approve.
+      # @overload approve(wire_transfer_id, request_options: {})
       #
-      # @param params [Increase::Models::WireTransferApproveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param wire_transfer_id [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::WireTransfer]
       #
@@ -140,11 +106,10 @@ module Increase
 
       # Cancel a pending Wire Transfer
       #
-      # @param wire_transfer_id [String] The identifier of the pending Wire Transfer to cancel.
+      # @overload cancel(wire_transfer_id, request_options: {})
       #
-      # @param params [Increase::Models::WireTransferCancelParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param wire_transfer_id [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::WireTransfer]
       #
