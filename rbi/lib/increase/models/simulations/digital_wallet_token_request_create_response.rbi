@@ -63,6 +63,7 @@ module Increase
             T.type_alias do
               T.any(
                 Symbol,
+                String,
                 Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason::TaggedSymbol
               )
             end
@@ -113,7 +114,13 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type::TaggedSymbol
+              )
+            end
 
           INBOUND_DIGITAL_WALLET_TOKEN_REQUEST_SIMULATION_RESULT =
             T.let(

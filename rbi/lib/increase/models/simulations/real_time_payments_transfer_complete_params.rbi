@@ -89,6 +89,7 @@ module Increase
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
                 )
               end

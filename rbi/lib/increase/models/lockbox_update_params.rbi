@@ -58,7 +58,8 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::LockboxUpdateParams::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::LockboxUpdateParams::Status::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::LockboxUpdateParams::Status::TaggedSymbol) }
 
         # This Lockbox is active. Checks mailed to it will be deposited automatically.
         ACTIVE = T.let(:active, Increase::Models::LockboxUpdateParams::Status::TaggedSymbol)

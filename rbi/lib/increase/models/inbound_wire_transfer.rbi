@@ -209,7 +209,8 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundWireTransfer::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::InboundWireTransfer::Status::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::InboundWireTransfer::Status::TaggedSymbol) }
 
         # The Inbound Wire Transfer is awaiting action, will transition automatically if no action is taken.
         PENDING = T.let(:pending, Increase::Models::InboundWireTransfer::Status::TaggedSymbol)
@@ -234,7 +235,8 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundWireTransfer::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::InboundWireTransfer::Type::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::InboundWireTransfer::Type::TaggedSymbol) }
 
         INBOUND_WIRE_TRANSFER =
           T.let(:inbound_wire_transfer, Increase::Models::InboundWireTransfer::Type::TaggedSymbol)

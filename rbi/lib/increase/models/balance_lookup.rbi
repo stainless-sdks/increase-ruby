@@ -56,7 +56,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::BalanceLookup::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::BalanceLookup::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::BalanceLookup::Type::TaggedSymbol) }
 
         BALANCE_LOOKUP = T.let(:balance_lookup, Increase::Models::BalanceLookup::Type::TaggedSymbol)
 

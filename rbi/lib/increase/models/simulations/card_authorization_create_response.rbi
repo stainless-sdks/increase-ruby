@@ -70,7 +70,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::Simulations::CardAuthorizationCreateResponse::Type) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::TaggedSymbol) }
 
           INBOUND_CARD_AUTHORIZATION_SIMULATION_RESULT =
             T.let(

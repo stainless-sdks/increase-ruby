@@ -130,7 +130,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::PendingTransactionListParams::Category::In) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol) }
 
           # Account Transfer Instruction: details will be under the `account_transfer_instruction` object.
           ACCOUNT_TRANSFER_INSTRUCTION =
@@ -269,7 +269,7 @@ module Increase
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PendingTransactionListParams::Status::In) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::PendingTransactionListParams::Status::In::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Increase::Models::PendingTransactionListParams::Status::In::TaggedSymbol) }
 
           # The Pending Transaction is still awaiting confirmation.
           PENDING = T.let(:pending, Increase::Models::PendingTransactionListParams::Status::In::TaggedSymbol)

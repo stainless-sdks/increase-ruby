@@ -43,6 +43,7 @@ module Increase
             T.type_alias do
               T.any(
                 Symbol,
+                String,
                 Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::TaggedSymbol
               )
             end

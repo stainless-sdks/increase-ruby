@@ -95,7 +95,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Export::Category) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Export::Category::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::Export::Category::TaggedSymbol) }
 
         # Export an Open Financial Exchange (OFX) file of transactions and balances for a given time range and Account.
         ACCOUNT_STATEMENT_OFX = T.let(:account_statement_ofx, Increase::Models::Export::Category::TaggedSymbol)
@@ -129,7 +129,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Export::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Export::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::Export::Status::TaggedSymbol) }
 
         # Increase is generating the export.
         PENDING = T.let(:pending, Increase::Models::Export::Status::TaggedSymbol)
@@ -151,7 +151,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Export::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Export::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::Export::Type::TaggedSymbol) }
 
         EXPORT = T.let(:export, Increase::Models::Export::Type::TaggedSymbol)
 
