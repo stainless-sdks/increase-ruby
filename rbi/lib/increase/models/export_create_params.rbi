@@ -119,8 +119,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExportCreateParams::Category) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Increase::Models::ExportCreateParams::Category::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ExportCreateParams::Category::TaggedSymbol) }
 
         # Export an Open Financial Exchange (OFX) file of transactions and balances for a given time range and Account.
         ACCOUNT_STATEMENT_OFX =
@@ -473,7 +472,7 @@ module Increase
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::ExportCreateParams::EntityCsv::Status::In) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, String, Increase::Models::ExportCreateParams::EntityCsv::Status::In::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, Increase::Models::ExportCreateParams::EntityCsv::Status::In::TaggedSymbol) }
 
             # The entity is active.
             ACTIVE = T.let(:active, Increase::Models::ExportCreateParams::EntityCsv::Status::In::TaggedSymbol)
