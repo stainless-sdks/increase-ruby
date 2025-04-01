@@ -55,7 +55,14 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(grant_type:, client_id: nil, client_secret: nil, code: nil, production_token: nil, request_options: {})
+      def self.new(
+        grant_type:,
+        client_id: nil,
+        client_secret: nil,
+        code: nil,
+        production_token: nil,
+        request_options: {}
+      )
       end
 
       sig do

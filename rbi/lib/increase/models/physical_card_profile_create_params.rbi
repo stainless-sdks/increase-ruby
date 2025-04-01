@@ -32,7 +32,13 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(carrier_image_file_id:, contact_phone:, description:, front_image_file_id:, request_options: {})
+      def self.new(
+        carrier_image_file_id:,
+        contact_phone:,
+        description:,
+        front_image_file_id:,
+        request_options: {}
+      )
       end
 
       sig do

@@ -1277,7 +1277,14 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(created_at:, raw_return_reason_code:, return_reason_code:, trace_number:, transaction_id:, transfer_id:)
+        def self.new(
+          created_at:,
+          raw_return_reason_code:,
+          return_reason_code:,
+          trace_number:,
+          transaction_id:,
+          transfer_id:
+        )
         end
 
         sig do
