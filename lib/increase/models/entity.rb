@@ -331,10 +331,16 @@ module Increase
 
             class Address < Increase::BaseModel
               # @!attribute city
-              #   The city of the address.
+              #   The city, district, town, or village of the address.
+              #
+              #   @return [String, nil]
+              required :city, String, nil?: true
+
+              # @!attribute country
+              #   The two-letter ISO 3166-1 alpha-2 code for the country of the address.
               #
               #   @return [String]
-              required :city, String
+              required :country, String
 
               # @!attribute line1
               #   The first line of the address.
@@ -349,28 +355,29 @@ module Increase
               required :line2, String, nil?: true
 
               # @!attribute state
-              #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-              #     the address.
+              #   The two-letter United States Postal Service (USPS) abbreviation for the US
+              #     state, province, or region of the address.
               #
-              #   @return [String]
-              required :state, String
+              #   @return [String, nil]
+              required :state, String, nil?: true
 
               # @!attribute zip
-              #   The ZIP code of the address.
+              #   The ZIP or postal code of the address.
               #
-              #   @return [String]
-              required :zip, String
+              #   @return [String, nil]
+              required :zip, String, nil?: true
 
               # @!parse
               #   # The person's address.
               #   #
-              #   # @param city [String]
+              #   # @param city [String, nil]
+              #   # @param country [String]
               #   # @param line1 [String]
               #   # @param line2 [String, nil]
-              #   # @param state [String]
-              #   # @param zip [String]
+              #   # @param state [String, nil]
+              #   # @param zip [String, nil]
               #   #
-              #   def initialize(city:, line1:, line2:, state:, zip:, **) = super
+              #   def initialize(city:, country:, line1:, line2:, state:, zip:, **) = super
 
               # def initialize: (Hash | Increase::BaseModel) -> void
             end

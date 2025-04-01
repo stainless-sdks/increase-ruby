@@ -185,22 +185,21 @@ module Increase
           end
 
           class Address < Increase::BaseModel
-            # The city of the address.
+            # The two-letter ISO 3166-1 alpha-2 code for the country of the address.
             sig { returns(String) }
-            attr_accessor :city
+            attr_accessor :country
 
             # The first line of the address. This is usually the street number and street.
             sig { returns(String) }
             attr_accessor :line1
 
-            # The two-letter United States Postal Service (USPS) abbreviation for the state of
-            #   the address.
-            sig { returns(String) }
-            attr_accessor :state
+            # The city, district, town, or village of the address. Required in certain
+            #   countries.
+            sig { returns(T.nilable(String)) }
+            attr_reader :city
 
-            # The ZIP code of the address.
-            sig { returns(String) }
-            attr_accessor :zip
+            sig { params(city: String).void }
+            attr_writer :city
 
             # The second line of the address. This might be the floor or room number.
             sig { returns(T.nilable(String)) }
@@ -209,21 +208,42 @@ module Increase
             sig { params(line2: String).void }
             attr_writer :line2
 
+            # The two-letter United States Postal Service (USPS) abbreviation for the US
+            #   state, province, or region of the address. Required in certain countries.
+            sig { returns(T.nilable(String)) }
+            attr_reader :state
+
+            sig { params(state: String).void }
+            attr_writer :state
+
+            # The ZIP or postal code of the address. Required in certain countries.
+            sig { returns(T.nilable(String)) }
+            attr_reader :zip
+
+            sig { params(zip: String).void }
+            attr_writer :zip
+
             # The individual's physical address. Mail receiving locations like PO Boxes and
             #   PMB's are disallowed.
             sig do
-              params(
-                city: String,
-                line1: String,
-                state: String,
-                zip: String,
-                line2: String
-              ).returns(T.attached_class)
+              params(country: String, line1: String, city: String, line2: String, state: String, zip: String)
+                .returns(T.attached_class)
             end
-            def self.new(city:, line1:, state:, zip:, line2: nil)
+            def self.new(country:, line1:, city: nil, line2: nil, state: nil, zip: nil)
             end
 
-            sig { override.returns({city: String, line1: String, state: String, zip: String, line2: String}) }
+            sig do
+              override.returns(
+                {
+                  country: String,
+                  line1: String,
+                  city: String,
+                  line2: String,
+                  state: String,
+                  zip: String
+                }
+              )
+            end
             def to_hash
             end
           end
