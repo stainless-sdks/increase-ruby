@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::PhysicalCards#create
     class PhysicalCardCreateParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter
@@ -96,6 +97,7 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @see Increase::Models::PhysicalCardCreateParams::Shipment#address
         class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the shipping address.
@@ -175,6 +177,8 @@ module Increase
         end
 
         # The shipping method to use.
+        #
+        # @see Increase::Models::PhysicalCardCreateParams::Shipment#method_
         module Method
           extend Increase::Enum
 

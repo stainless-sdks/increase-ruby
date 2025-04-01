@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::AccountStatements#list
     class AccountStatementListParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

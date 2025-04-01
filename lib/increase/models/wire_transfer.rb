@@ -259,6 +259,7 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @see Increase::Models::WireTransfer#approval
       class Approval < Increase::BaseModel
         # @!attribute approved_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -286,6 +287,7 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @see Increase::Models::WireTransfer#cancellation
       class Cancellation < Increase::BaseModel
         # @!attribute canceled_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -313,6 +315,7 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @see Increase::Models::WireTransfer#created_by
       class CreatedBy < Increase::BaseModel
         # @!attribute api_key
         #   If present, details about the API key that created the transfer.
@@ -352,6 +355,7 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @see Increase::Models::WireTransfer::CreatedBy#api_key
         class APIKey < Increase::BaseModel
           # @!attribute description
           #   The description set for the API key when it was created.
@@ -370,6 +374,8 @@ module Increase
         end
 
         # The type of object that created this transfer.
+        #
+        # @see Increase::Models::WireTransfer::CreatedBy#category
         module Category
           extend Increase::Enum
 
@@ -389,6 +395,7 @@ module Increase
           #   def self.values; end
         end
 
+        # @see Increase::Models::WireTransfer::CreatedBy#oauth_application
         class OAuthApplication < Increase::BaseModel
           # @!attribute name
           #   The name of the OAuth Application.
@@ -406,6 +413,7 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @see Increase::Models::WireTransfer::CreatedBy#user
         class User < Increase::BaseModel
           # @!attribute email
           #   The email address of the User.
@@ -426,6 +434,8 @@ module Increase
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
       #   currency. For wire transfers this is always equal to `usd`.
+      #
+      # @see Increase::Models::WireTransfer#currency
       module Currency
         extend Increase::Enum
 
@@ -455,6 +465,8 @@ module Increase
       end
 
       # The transfer's network.
+      #
+      # @see Increase::Models::WireTransfer#network
       module Network
         extend Increase::Enum
 
@@ -467,6 +479,7 @@ module Increase
         #   def self.values; end
       end
 
+      # @see Increase::Models::WireTransfer#reversal
       class Reversal < Increase::BaseModel
         # @!attribute amount
         #   The amount that was reversed in USD cents.
@@ -623,6 +636,8 @@ module Increase
       end
 
       # The lifecycle status of the transfer.
+      #
+      # @see Increase::Models::WireTransfer#status
       module Status
         extend Increase::Enum
 
@@ -660,6 +675,7 @@ module Increase
         #   def self.values; end
       end
 
+      # @see Increase::Models::WireTransfer#submission
       class Submission < Increase::BaseModel
         # @!attribute input_message_accountability_data
         #   The accountability data for the submission.
@@ -687,6 +703,8 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `wire_transfer`.
+      #
+      # @see Increase::Models::WireTransfer#type
       module Type
         extend Increase::Enum
 

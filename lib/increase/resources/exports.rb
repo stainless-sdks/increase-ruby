@@ -28,6 +28,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Export]
+      #
+      # @see Increase::Models::ExportCreateParams
       def create(params)
         parsed, options = Increase::Models::ExportCreateParams.dump_request(params)
         @client.request(
@@ -48,6 +50,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Export]
+      #
+      # @see Increase::Models::ExportRetrieveParams
       def retrieve(export_id, params = {})
         @client.request(
           method: :get,
@@ -80,6 +84,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::Export>]
+      #
+      # @see Increase::Models::ExportListParams
       def list(params = {})
         parsed, options = Increase::Models::ExportListParams.dump_request(params)
         @client.request(
@@ -92,6 +98,8 @@ module Increase
         )
       end
 
+      # @api private
+      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

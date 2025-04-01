@@ -112,6 +112,7 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @see Increase::Models::AccountNumber#inbound_ach
       class InboundACH < Increase::BaseModel
         # @!attribute debit_status
         #   Whether ACH debits are allowed against this Account Number. Note that they will
@@ -131,6 +132,8 @@ module Increase
 
         # Whether ACH debits are allowed against this Account Number. Note that they will
         #   still be declined if this is `allowed` if the Account Number is not active.
+        #
+        # @see Increase::Models::AccountNumber::InboundACH#debit_status
         module DebitStatus
           extend Increase::Enum
 
@@ -148,6 +151,7 @@ module Increase
         end
       end
 
+      # @see Increase::Models::AccountNumber#inbound_checks
       class InboundChecks < Increase::BaseModel
         # @!attribute status
         #   How Increase should process checks with this account number printed on them.
@@ -166,6 +170,8 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # How Increase should process checks with this account number printed on them.
+        #
+        # @see Increase::Models::AccountNumber::InboundChecks#status
         module Status
           extend Increase::Enum
 
@@ -184,6 +190,8 @@ module Increase
       end
 
       # This indicates if payments can be made to the Account Number.
+      #
+      # @see Increase::Models::AccountNumber#status
       module Status
         extend Increase::Enum
 
@@ -205,6 +213,8 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `account_number`.
+      #
+      # @see Increase::Models::AccountNumber#type
       module Type
         extend Increase::Enum
 

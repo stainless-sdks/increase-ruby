@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::WireDrawdownRequests#list
     class WireDrawdownRequestListParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

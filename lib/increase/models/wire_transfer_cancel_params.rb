@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::WireTransfers#cancel
     class WireTransferCancelParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

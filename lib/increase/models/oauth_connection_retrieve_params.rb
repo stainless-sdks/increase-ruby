@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::OAuthConnections#retrieve
     class OAuthConnectionRetrieveParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

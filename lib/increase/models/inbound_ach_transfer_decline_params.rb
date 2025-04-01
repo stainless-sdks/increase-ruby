@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::InboundACHTransfers#decline
     class InboundACHTransferDeclineParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

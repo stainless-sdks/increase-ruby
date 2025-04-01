@@ -58,6 +58,8 @@ module Increase
         #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::InboundWireDrawdownRequest]
+        #
+        # @see Increase::Models::Simulations::InboundWireDrawdownRequestCreateParams
         def create(params)
           parsed, options =
             Increase::Models::Simulations::InboundWireDrawdownRequestCreateParams.dump_request(params)
@@ -70,6 +72,8 @@ module Increase
           )
         end
 
+        # @api private
+        #
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client

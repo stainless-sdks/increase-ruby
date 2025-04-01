@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::Cards#retrieve
     class CardRetrieveParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

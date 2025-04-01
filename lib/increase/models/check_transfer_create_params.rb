@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::CheckTransfers#create
     class CheckTransferCreateParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter
@@ -202,6 +203,7 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @see Increase::Models::CheckTransferCreateParams::PhysicalCheck#mailing_address
         class MailingAddress < Increase::BaseModel
           # @!attribute city
           #   The city component of the check's destination address.
@@ -251,6 +253,7 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @see Increase::Models::CheckTransferCreateParams::PhysicalCheck#return_address
         class ReturnAddress < Increase::BaseModel
           # @!attribute city
           #   The city of the return address.

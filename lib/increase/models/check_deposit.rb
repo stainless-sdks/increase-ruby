@@ -170,6 +170,7 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @see Increase::Models::CheckDeposit#deposit_acceptance
       class DepositAcceptance < Increase::BaseModel
         # @!attribute account_number
         #   The account number printed on the check.
@@ -246,6 +247,8 @@ module Increase
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
         #   transaction's currency.
+        #
+        # @see Increase::Models::CheckDeposit::DepositAcceptance#currency
         module Currency
           extend Increase::Enum
 
@@ -275,6 +278,7 @@ module Increase
         end
       end
 
+      # @see Increase::Models::CheckDeposit#deposit_rejection
       class DepositRejection < Increase::BaseModel
         # @!attribute amount
         #   The rejected amount in the minor unit of check's currency. For dollars, for
@@ -332,6 +336,8 @@ module Increase
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
         #   currency.
+        #
+        # @see Increase::Models::CheckDeposit::DepositRejection#currency
         module Currency
           extend Increase::Enum
 
@@ -361,6 +367,8 @@ module Increase
         end
 
         # Why the check deposit was rejected.
+        #
+        # @see Increase::Models::CheckDeposit::DepositRejection#reason
         module Reason
           extend Increase::Enum
 
@@ -405,6 +413,7 @@ module Increase
         end
       end
 
+      # @see Increase::Models::CheckDeposit#deposit_return
       class DepositReturn < Increase::BaseModel
         # @!attribute amount
         #   The returned amount in USD cents.
@@ -463,6 +472,8 @@ module Increase
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
         #   transaction's currency.
+        #
+        # @see Increase::Models::CheckDeposit::DepositReturn#currency
         module Currency
           extend Increase::Enum
 
@@ -493,6 +504,8 @@ module Increase
 
         # Why this check was returned by the bank holding the account it was drawn
         #   against.
+        #
+        # @see Increase::Models::CheckDeposit::DepositReturn#return_reason
         module ReturnReason
           extend Increase::Enum
 
@@ -582,6 +595,7 @@ module Increase
         end
       end
 
+      # @see Increase::Models::CheckDeposit#deposit_submission
       class DepositSubmission < Increase::BaseModel
         # @!attribute back_file_id
         #   The ID for the File containing the check back image that was submitted to the
@@ -618,6 +632,7 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @see Increase::Models::CheckDeposit#inbound_funds_hold
       class InboundFundsHold < Increase::BaseModel
         # @!attribute id
         #   The Inbound Funds Hold identifier.
@@ -719,6 +734,8 @@ module Increase
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
         #   currency.
+        #
+        # @see Increase::Models::CheckDeposit::InboundFundsHold#currency
         module Currency
           extend Increase::Enum
 
@@ -748,6 +765,8 @@ module Increase
         end
 
         # The status of the hold.
+        #
+        # @see Increase::Models::CheckDeposit::InboundFundsHold#status
         module Status
           extend Increase::Enum
 
@@ -766,6 +785,8 @@ module Increase
 
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_funds_hold`.
+        #
+        # @see Increase::Models::CheckDeposit::InboundFundsHold#type
         module Type
           extend Increase::Enum
 
@@ -780,6 +801,8 @@ module Increase
       end
 
       # The status of the Check Deposit.
+      #
+      # @see Increase::Models::CheckDeposit#status
       module Status
         extend Increase::Enum
 
@@ -804,6 +827,8 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `check_deposit`.
+      #
+      # @see Increase::Models::CheckDeposit#type
       module Type
         extend Increase::Enum
 

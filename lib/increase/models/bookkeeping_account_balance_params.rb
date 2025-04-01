@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::BookkeepingAccounts#balance
     class BookkeepingAccountBalanceParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

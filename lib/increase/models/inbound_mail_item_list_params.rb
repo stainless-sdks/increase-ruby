@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::InboundMailItems#list
     class InboundMailItemListParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

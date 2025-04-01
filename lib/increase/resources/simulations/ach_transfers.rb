@@ -18,6 +18,8 @@ module Increase
         #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::ACHTransfer]
+        #
+        # @see Increase::Models::Simulations::ACHTransferAcknowledgeParams
         def acknowledge(ach_transfer_id, params = {})
           @client.request(
             method: :post,
@@ -42,6 +44,8 @@ module Increase
         #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::ACHTransfer]
+        #
+        # @see Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams
         def create_notification_of_change(ach_transfer_id, params)
           parsed, options =
             Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams.dump_request(params)
@@ -68,6 +72,8 @@ module Increase
         #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::ACHTransfer]
+        #
+        # @see Increase::Models::Simulations::ACHTransferReturnParams
         def return_(ach_transfer_id, params = {})
           parsed, options = Increase::Models::Simulations::ACHTransferReturnParams.dump_request(params)
           @client.request(
@@ -93,6 +99,8 @@ module Increase
         #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::ACHTransfer]
+        #
+        # @see Increase::Models::Simulations::ACHTransferSettleParams
         def settle(ach_transfer_id, params = {})
           @client.request(
             method: :post,
@@ -116,6 +124,8 @@ module Increase
         #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::ACHTransfer]
+        #
+        # @see Increase::Models::Simulations::ACHTransferSubmitParams
         def submit(ach_transfer_id, params = {})
           @client.request(
             method: :post,
@@ -125,6 +135,8 @@ module Increase
           )
         end
 
+        # @api private
+        #
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client

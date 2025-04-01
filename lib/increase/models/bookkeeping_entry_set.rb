@@ -97,6 +97,8 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `bookkeeping_entry_set`.
+      #
+      # @see Increase::Models::BookkeepingEntrySet#type
       module Type
         extend Increase::Enum
 

@@ -93,6 +93,8 @@ module Increase
 
       # If specified, this subscription will only receive webhooks for Events with the
       #   specified `category`.
+      #
+      # @see Increase::Models::EventSubscription#selected_event_category
       module SelectedEventCategory
         extend Increase::Enum
 
@@ -370,6 +372,8 @@ module Increase
       end
 
       # This indicates if we'll send notifications to this subscription.
+      #
+      # @see Increase::Models::EventSubscription#status
       module Status
         extend Increase::Enum
 
@@ -394,6 +398,8 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `event_subscription`.
+      #
+      # @see Increase::Models::EventSubscription#type
       module Type
         extend Increase::Enum
 

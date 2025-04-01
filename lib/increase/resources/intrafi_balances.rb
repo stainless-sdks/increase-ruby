@@ -12,6 +12,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::IntrafiBalance]
+      #
+      # @see Increase::Models::IntrafiBalanceIntrafiBalanceParams
       def intrafi_balance(account_id, params = {})
         @client.request(
           method: :get,
@@ -21,6 +23,8 @@ module Increase
         )
       end
 
+      # @api private
+      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

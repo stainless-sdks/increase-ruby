@@ -37,6 +37,8 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `bookkeeping_balance_lookup`.
+      #
+      # @see Increase::Models::BookkeepingBalanceLookup#type
       module Type
         extend Increase::Enum
 

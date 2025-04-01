@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::Entities#create_beneficial_owner
     class EntityCreateBeneficialOwnerParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter
@@ -61,6 +62,7 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @see Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner#individual
         class Individual < Increase::BaseModel
           # @!attribute address
           #   The individual's physical address. Mail receiving locations like PO Boxes and
@@ -115,6 +117,7 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @see Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual#address
           class Address < Increase::BaseModel
             # @!attribute country
             #   The two-letter ISO 3166-1 alpha-2 code for the country of the address.
@@ -186,6 +189,7 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @see Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual#identification
           class Identification < Increase::BaseModel
             # @!attribute method_
             #   A method that can be used to verify the individual's identity.
@@ -252,6 +256,8 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
 
             # A method that can be used to verify the individual's identity.
+            #
+            # @see Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification#method_
             module Method
               extend Increase::Enum
 
@@ -277,6 +283,7 @@ module Increase
               #   def self.values; end
             end
 
+            # @see Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification#drivers_license
             class DriversLicense < Increase::BaseModel
               # @!attribute expiration_date
               #   The driver's license's expiration date in YYYY-MM-DD format.
@@ -320,6 +327,7 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
             end
 
+            # @see Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification#other
             class Other < Increase::BaseModel
               # @!attribute country
               #   The two-character ISO 3166-1 code representing the country that issued the
@@ -376,6 +384,7 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
             end
 
+            # @see Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification#passport
             class Passport < Increase::BaseModel
               # @!attribute country
               #   The country that issued the passport.

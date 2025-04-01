@@ -65,6 +65,8 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # This indicates if payments can be made with the Digital Wallet Token.
+      #
+      # @see Increase::Models::DigitalWalletToken#status
       module Status
         extend Increase::Enum
 
@@ -88,6 +90,8 @@ module Increase
       end
 
       # The digital wallet app being used.
+      #
+      # @see Increase::Models::DigitalWalletToken#token_requestor
       module TokenRequestor
         extend Increase::Enum
 
@@ -112,6 +116,8 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `digital_wallet_token`.
+      #
+      # @see Increase::Models::DigitalWalletToken#type
       module Type
         extend Increase::Enum
 
@@ -147,6 +153,8 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # The status the update changed this Digital Wallet Token to.
+        #
+        # @see Increase::Models::DigitalWalletToken::Update#status
         module Status
           extend Increase::Enum
 

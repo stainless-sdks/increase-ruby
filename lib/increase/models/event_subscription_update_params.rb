@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::EventSubscriptions#update
     class EventSubscriptionUpdateParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter
