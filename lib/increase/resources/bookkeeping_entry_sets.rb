@@ -40,7 +40,7 @@ module Increase
       def retrieve(bookkeeping_entry_set_id, params = {})
         @client.request(
           method: :get,
-          path: ["bookkeeping_entry_sets/%0s", bookkeeping_entry_set_id],
+          path: ["bookkeeping_entry_sets/%1$s", bookkeeping_entry_set_id],
           model: Increase::Models::BookkeepingEntrySet,
           options: params[:request_options]
         )

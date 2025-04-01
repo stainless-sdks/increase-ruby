@@ -21,7 +21,7 @@ module Increase
           parsed, options = Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams.dump_request(params)
           @client.request(
             method: :post,
-            path: ["simulations/physical_cards/%0s/advance_shipment", physical_card_id],
+            path: ["simulations/physical_cards/%1$s/advance_shipment", physical_card_id],
             body: parsed,
             model: Increase::Models::PhysicalCard,
             options: options

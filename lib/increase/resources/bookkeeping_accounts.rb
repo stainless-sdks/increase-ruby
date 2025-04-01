@@ -44,7 +44,7 @@ module Increase
         parsed, options = Increase::Models::BookkeepingAccountUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["bookkeeping_accounts/%0s", bookkeeping_account_id],
+          path: ["bookkeeping_accounts/%1$s", bookkeeping_account_id],
           body: parsed,
           model: Increase::Models::BookkeepingAccount,
           options: options
@@ -95,7 +95,7 @@ module Increase
         parsed, options = Increase::Models::BookkeepingAccountBalanceParams.dump_request(params)
         @client.request(
           method: :get,
-          path: ["bookkeeping_accounts/%0s/balance", bookkeeping_account_id],
+          path: ["bookkeeping_accounts/%1$s/balance", bookkeeping_account_id],
           query: parsed,
           model: Increase::Models::BookkeepingBalanceLookup,
           options: options

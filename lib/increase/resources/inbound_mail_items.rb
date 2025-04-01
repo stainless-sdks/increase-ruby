@@ -15,7 +15,7 @@ module Increase
       def retrieve(inbound_mail_item_id, params = {})
         @client.request(
           method: :get,
-          path: ["inbound_mail_items/%0s", inbound_mail_item_id],
+          path: ["inbound_mail_items/%1$s", inbound_mail_item_id],
           model: Increase::Models::InboundMailItem,
           options: params[:request_options]
         )

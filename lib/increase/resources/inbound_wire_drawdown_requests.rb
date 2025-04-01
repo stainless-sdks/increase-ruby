@@ -15,7 +15,7 @@ module Increase
       def retrieve(inbound_wire_drawdown_request_id, params = {})
         @client.request(
           method: :get,
-          path: ["inbound_wire_drawdown_requests/%0s", inbound_wire_drawdown_request_id],
+          path: ["inbound_wire_drawdown_requests/%1$s", inbound_wire_drawdown_request_id],
           model: Increase::Models::InboundWireDrawdownRequest,
           options: params[:request_options]
         )

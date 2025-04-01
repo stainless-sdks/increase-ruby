@@ -44,7 +44,7 @@ module Increase
       def retrieve(event_subscription_id, params = {})
         @client.request(
           method: :get,
-          path: ["event_subscriptions/%0s", event_subscription_id],
+          path: ["event_subscriptions/%1$s", event_subscription_id],
           model: Increase::Models::EventSubscription,
           options: params[:request_options]
         )
@@ -65,7 +65,7 @@ module Increase
         parsed, options = Increase::Models::EventSubscriptionUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["event_subscriptions/%0s", event_subscription_id],
+          path: ["event_subscriptions/%1$s", event_subscription_id],
           body: parsed,
           model: Increase::Models::EventSubscription,
           options: options

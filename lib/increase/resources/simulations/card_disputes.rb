@@ -24,7 +24,7 @@ module Increase
           parsed, options = Increase::Models::Simulations::CardDisputeActionParams.dump_request(params)
           @client.request(
             method: :post,
-            path: ["simulations/card_disputes/%0s/action", card_dispute_id],
+            path: ["simulations/card_disputes/%1$s/action", card_dispute_id],
             body: parsed,
             model: Increase::Models::CardDispute,
             options: options

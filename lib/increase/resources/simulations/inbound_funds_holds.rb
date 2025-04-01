@@ -17,7 +17,7 @@ module Increase
         def release(inbound_funds_hold_id, params = {})
           @client.request(
             method: :post,
-            path: ["simulations/inbound_funds_holds/%0s/release", inbound_funds_hold_id],
+            path: ["simulations/inbound_funds_holds/%1$s/release", inbound_funds_hold_id],
             model: Increase::Models::Simulations::InboundFundsHoldReleaseResponse,
             options: params[:request_options]
           )

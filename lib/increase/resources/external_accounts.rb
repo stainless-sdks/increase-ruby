@@ -44,7 +44,7 @@ module Increase
       def retrieve(external_account_id, params = {})
         @client.request(
           method: :get,
-          path: ["external_accounts/%0s", external_account_id],
+          path: ["external_accounts/%1$s", external_account_id],
           model: Increase::Models::ExternalAccount,
           options: params[:request_options]
         )
@@ -71,7 +71,7 @@ module Increase
         parsed, options = Increase::Models::ExternalAccountUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["external_accounts/%0s", external_account_id],
+          path: ["external_accounts/%1$s", external_account_id],
           body: parsed,
           model: Increase::Models::ExternalAccount,
           options: options

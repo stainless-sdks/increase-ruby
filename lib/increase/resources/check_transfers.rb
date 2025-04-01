@@ -52,7 +52,7 @@ module Increase
       def retrieve(check_transfer_id, params = {})
         @client.request(
           method: :get,
-          path: ["check_transfers/%0s", check_transfer_id],
+          path: ["check_transfers/%1$s", check_transfer_id],
           model: Increase::Models::CheckTransfer,
           options: params[:request_options]
         )
@@ -105,7 +105,7 @@ module Increase
       def approve(check_transfer_id, params = {})
         @client.request(
           method: :post,
-          path: ["check_transfers/%0s/approve", check_transfer_id],
+          path: ["check_transfers/%1$s/approve", check_transfer_id],
           model: Increase::Models::CheckTransfer,
           options: params[:request_options]
         )
@@ -123,7 +123,7 @@ module Increase
       def cancel(check_transfer_id, params = {})
         @client.request(
           method: :post,
-          path: ["check_transfers/%0s/cancel", check_transfer_id],
+          path: ["check_transfers/%1$s/cancel", check_transfer_id],
           model: Increase::Models::CheckTransfer,
           options: params[:request_options]
         )
@@ -144,7 +144,7 @@ module Increase
         parsed, options = Increase::Models::CheckTransferStopPaymentParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["check_transfers/%0s/stop_payment", check_transfer_id],
+          path: ["check_transfers/%1$s/stop_payment", check_transfer_id],
           body: parsed,
           model: Increase::Models::CheckTransfer,
           options: options

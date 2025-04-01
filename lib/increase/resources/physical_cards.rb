@@ -42,7 +42,7 @@ module Increase
       def retrieve(physical_card_id, params = {})
         @client.request(
           method: :get,
-          path: ["physical_cards/%0s", physical_card_id],
+          path: ["physical_cards/%1$s", physical_card_id],
           model: Increase::Models::PhysicalCard,
           options: params[:request_options]
         )
@@ -63,7 +63,7 @@ module Increase
         parsed, options = Increase::Models::PhysicalCardUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["physical_cards/%0s", physical_card_id],
+          path: ["physical_cards/%1$s", physical_card_id],
           body: parsed,
           model: Increase::Models::PhysicalCard,
           options: options

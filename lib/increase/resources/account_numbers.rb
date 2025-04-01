@@ -42,7 +42,7 @@ module Increase
       def retrieve(account_number_id, params = {})
         @client.request(
           method: :get,
-          path: ["account_numbers/%0s", account_number_id],
+          path: ["account_numbers/%1$s", account_number_id],
           model: Increase::Models::AccountNumber,
           options: params[:request_options]
         )
@@ -70,7 +70,7 @@ module Increase
         parsed, options = Increase::Models::AccountNumberUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["account_numbers/%0s", account_number_id],
+          path: ["account_numbers/%1$s", account_number_id],
           body: parsed,
           model: Increase::Models::AccountNumber,
           options: options

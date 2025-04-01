@@ -19,7 +19,7 @@ module Increase
         def mail(check_transfer_id, params = {})
           @client.request(
             method: :post,
-            path: ["simulations/check_transfers/%0s/mail", check_transfer_id],
+            path: ["simulations/check_transfers/%1$s/mail", check_transfer_id],
             model: Increase::Models::CheckTransfer,
             options: params[:request_options]
           )
