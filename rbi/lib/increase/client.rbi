@@ -189,9 +189,9 @@ module Increase
     # Creates and returns a new client for interacting with the API.
     sig do
       params(
+        api_key: T.nilable(String),
         environment: NilClass,
         base_url: T.nilable(String),
-        api_key: T.nilable(String),
         max_retries: Integer,
         timeout: Float,
         initial_retry_delay: Float,
@@ -201,6 +201,8 @@ module Increase
         .returns(T.attached_class)
     end
     def self.new(
+      # Defaults to `ENV["INCREASE_API_KEY"]`
+      api_key: ENV["INCREASE_API_KEY"],
       # Specifies the environment to use for the API.
       #
       #   Each environment maps to a different base URL:
@@ -210,8 +212,6 @@ module Increase
       environment: nil,
       # Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
       base_url: nil,
-      # Defaults to `ENV["INCREASE_API_KEY"]`
-      api_key: ENV["INCREASE_API_KEY"],
       # Max number of retries to attempt after a failed retryable request.
       max_retries: DEFAULT_MAX_RETRIES,
       timeout: DEFAULT_TIMEOUT_IN_SECONDS,
