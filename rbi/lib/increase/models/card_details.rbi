@@ -42,7 +42,14 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(card_id:, expiration_month:, expiration_year:, primary_account_number:, type:, verification_code:)
+      def self.new(
+        card_id:,
+        expiration_month:,
+        expiration_year:,
+        primary_account_number:,
+        type:,
+        verification_code:
+      )
       end
 
       sig do

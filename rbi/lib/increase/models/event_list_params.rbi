@@ -51,7 +51,14 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(associated_object_id: nil, category: nil, created_at: nil, cursor: nil, limit: nil, request_options: {})
+      def self.new(
+        associated_object_id: nil,
+        category: nil,
+        created_at: nil,
+        cursor: nil,
+        limit: nil,
+        request_options: {}
+      )
       end
 
       sig do

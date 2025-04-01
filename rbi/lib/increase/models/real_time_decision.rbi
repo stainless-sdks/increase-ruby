@@ -709,7 +709,11 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:)
+            def self.new(
+              electronic_commerce_indicator:,
+              point_of_service_entry_mode:,
+              stand_in_processing_reason:
+            )
             end
 
             sig do

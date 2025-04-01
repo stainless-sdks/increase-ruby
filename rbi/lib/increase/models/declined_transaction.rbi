@@ -74,7 +74,18 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, account_id:, amount:, created_at:, currency:, description:, route_id:, route_type:, source:, type:)
+      def self.new(
+        id:,
+        account_id:,
+        amount:,
+        created_at:,
+        currency:,
+        description:,
+        route_id:,
+        route_type:,
+        source:,
+        type:
+      )
       end
 
       sig do
@@ -1035,7 +1046,11 @@ module Increase
                 )
                   .returns(T.attached_class)
               end
-              def self.new(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:)
+              def self.new(
+                electronic_commerce_indicator:,
+                point_of_service_entry_mode:,
+                stand_in_processing_reason:
+              )
               end
 
               sig do
@@ -1792,7 +1807,13 @@ module Increase
                 )
                   .returns(T.attached_class)
               end
-              def self.new(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:)
+              def self.new(
+                actual_line1:,
+                actual_postal_code:,
+                provided_line1:,
+                provided_postal_code:,
+                result:
+              )
               end
 
               sig do
