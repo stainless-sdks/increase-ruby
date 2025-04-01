@@ -19,7 +19,7 @@ module Increase
         def reverse(wire_transfer_id, params = {})
           @client.request(
             method: :post,
-            path: ["simulations/wire_transfers/%0s/reverse", wire_transfer_id],
+            path: ["simulations/wire_transfers/%1$s/reverse", wire_transfer_id],
             model: Increase::Models::WireTransfer,
             options: params[:request_options]
           )
@@ -39,7 +39,7 @@ module Increase
         def submit(wire_transfer_id, params = {})
           @client.request(
             method: :post,
-            path: ["simulations/wire_transfers/%0s/submit", wire_transfer_id],
+            path: ["simulations/wire_transfers/%1$s/submit", wire_transfer_id],
             model: Increase::Models::WireTransfer,
             options: params[:request_options]
           )

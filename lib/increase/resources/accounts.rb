@@ -43,7 +43,7 @@ module Increase
       def retrieve(account_id, params = {})
         @client.request(
           method: :get,
-          path: ["accounts/%0s", account_id],
+          path: ["accounts/%1$s", account_id],
           model: Increase::Models::Account,
           options: params[:request_options]
         )
@@ -64,7 +64,7 @@ module Increase
         parsed, options = Increase::Models::AccountUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["accounts/%0s", account_id],
+          path: ["accounts/%1$s", account_id],
           body: parsed,
           model: Increase::Models::Account,
           options: options
@@ -126,7 +126,7 @@ module Increase
         parsed, options = Increase::Models::AccountBalanceParams.dump_request(params)
         @client.request(
           method: :get,
-          path: ["accounts/%0s/balance", account_id],
+          path: ["accounts/%1$s/balance", account_id],
           query: parsed,
           model: Increase::Models::BalanceLookup,
           options: options
@@ -145,7 +145,7 @@ module Increase
       def close(account_id, params = {})
         @client.request(
           method: :post,
-          path: ["accounts/%0s/close", account_id],
+          path: ["accounts/%1$s/close", account_id],
           model: Increase::Models::Account,
           options: params[:request_options]
         )

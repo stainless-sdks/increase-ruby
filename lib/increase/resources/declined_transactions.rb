@@ -15,7 +15,7 @@ module Increase
       def retrieve(declined_transaction_id, params = {})
         @client.request(
           method: :get,
-          path: ["declined_transactions/%0s", declined_transaction_id],
+          path: ["declined_transactions/%1$s", declined_transaction_id],
           model: Increase::Models::DeclinedTransaction,
           options: params[:request_options]
         )

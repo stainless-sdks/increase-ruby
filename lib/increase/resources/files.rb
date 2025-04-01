@@ -44,7 +44,7 @@ module Increase
       def retrieve(file_id, params = {})
         @client.request(
           method: :get,
-          path: ["files/%0s", file_id],
+          path: ["files/%1$s", file_id],
           model: Increase::Models::File,
           options: params[:request_options]
         )

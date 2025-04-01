@@ -15,7 +15,7 @@ module Increase
       def retrieve(proof_of_authorization_request_id, params = {})
         @client.request(
           method: :get,
-          path: ["proof_of_authorization_requests/%0s", proof_of_authorization_request_id],
+          path: ["proof_of_authorization_requests/%1$s", proof_of_authorization_request_id],
           model: Increase::Models::ProofOfAuthorizationRequest,
           options: params[:request_options]
         )

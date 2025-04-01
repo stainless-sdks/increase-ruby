@@ -21,7 +21,7 @@ module Increase
         def acknowledge(ach_transfer_id, params = {})
           @client.request(
             method: :post,
-            path: ["simulations/ach_transfers/%0s/acknowledge", ach_transfer_id],
+            path: ["simulations/ach_transfers/%1$s/acknowledge", ach_transfer_id],
             model: Increase::Models::ACHTransfer,
             options: params[:request_options]
           )
@@ -47,7 +47,7 @@ module Increase
             Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams.dump_request(params)
           @client.request(
             method: :post,
-            path: ["simulations/ach_transfers/%0s/create_notification_of_change", ach_transfer_id],
+            path: ["simulations/ach_transfers/%1$s/create_notification_of_change", ach_transfer_id],
             body: parsed,
             model: Increase::Models::ACHTransfer,
             options: options
@@ -72,7 +72,7 @@ module Increase
           parsed, options = Increase::Models::Simulations::ACHTransferReturnParams.dump_request(params)
           @client.request(
             method: :post,
-            path: ["simulations/ach_transfers/%0s/return", ach_transfer_id],
+            path: ["simulations/ach_transfers/%1$s/return", ach_transfer_id],
             body: parsed,
             model: Increase::Models::ACHTransfer,
             options: options
@@ -96,7 +96,7 @@ module Increase
         def settle(ach_transfer_id, params = {})
           @client.request(
             method: :post,
-            path: ["simulations/ach_transfers/%0s/settle", ach_transfer_id],
+            path: ["simulations/ach_transfers/%1$s/settle", ach_transfer_id],
             model: Increase::Models::ACHTransfer,
             options: params[:request_options]
           )
@@ -119,7 +119,7 @@ module Increase
         def submit(ach_transfer_id, params = {})
           @client.request(
             method: :post,
-            path: ["simulations/ach_transfers/%0s/submit", ach_transfer_id],
+            path: ["simulations/ach_transfers/%1$s/submit", ach_transfer_id],
             model: Increase::Models::ACHTransfer,
             options: params[:request_options]
           )

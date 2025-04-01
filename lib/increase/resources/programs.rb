@@ -15,7 +15,7 @@ module Increase
       def retrieve(program_id, params = {})
         @client.request(
           method: :get,
-          path: ["programs/%0s", program_id],
+          path: ["programs/%1$s", program_id],
           model: Increase::Models::Program,
           options: params[:request_options]
         )
