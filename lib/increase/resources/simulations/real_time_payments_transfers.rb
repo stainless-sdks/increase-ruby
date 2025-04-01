@@ -23,7 +23,7 @@ module Increase
             Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams.dump_request(params)
           @client.request(
             method: :post,
-            path: ["simulations/real_time_payments_transfers/%0s/complete", real_time_payments_transfer_id],
+            path: ["simulations/real_time_payments_transfers/%1$s/complete", real_time_payments_transfer_id],
             body: parsed,
             model: Increase::Models::RealTimePaymentsTransfer,
             options: options

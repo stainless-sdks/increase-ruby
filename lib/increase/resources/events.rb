@@ -15,7 +15,7 @@ module Increase
       def retrieve(event_id, params = {})
         @client.request(
           method: :get,
-          path: ["events/%0s", event_id],
+          path: ["events/%1$s", event_id],
           model: Increase::Models::Event,
           options: params[:request_options]
         )

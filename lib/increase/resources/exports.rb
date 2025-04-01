@@ -51,7 +51,7 @@ module Increase
       def retrieve(export_id, params = {})
         @client.request(
           method: :get,
-          path: ["exports/%0s", export_id],
+          path: ["exports/%1$s", export_id],
           model: Increase::Models::Export,
           options: params[:request_options]
         )

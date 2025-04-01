@@ -71,7 +71,7 @@ module Increase
       def retrieve(wire_transfer_id, params = {})
         @client.request(
           method: :get,
-          path: ["wire_transfers/%0s", wire_transfer_id],
+          path: ["wire_transfers/%1$s", wire_transfer_id],
           model: Increase::Models::WireTransfer,
           options: params[:request_options]
         )
@@ -124,7 +124,7 @@ module Increase
       def approve(wire_transfer_id, params = {})
         @client.request(
           method: :post,
-          path: ["wire_transfers/%0s/approve", wire_transfer_id],
+          path: ["wire_transfers/%1$s/approve", wire_transfer_id],
           model: Increase::Models::WireTransfer,
           options: params[:request_options]
         )
@@ -142,7 +142,7 @@ module Increase
       def cancel(wire_transfer_id, params = {})
         @client.request(
           method: :post,
-          path: ["wire_transfers/%0s/cancel", wire_transfer_id],
+          path: ["wire_transfers/%1$s/cancel", wire_transfer_id],
           model: Increase::Models::WireTransfer,
           options: params[:request_options]
         )

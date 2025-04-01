@@ -15,7 +15,7 @@ module Increase
       def retrieve(oauth_application_id, params = {})
         @client.request(
           method: :get,
-          path: ["oauth_applications/%0s", oauth_application_id],
+          path: ["oauth_applications/%1$s", oauth_application_id],
           model: Increase::Models::OAuthApplication,
           options: params[:request_options]
         )

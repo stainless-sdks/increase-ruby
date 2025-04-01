@@ -15,7 +15,7 @@ module Increase
       def retrieve(pending_transaction_id, params = {})
         @client.request(
           method: :get,
-          path: ["pending_transactions/%0s", pending_transaction_id],
+          path: ["pending_transactions/%1$s", pending_transaction_id],
           model: Increase::Models::PendingTransaction,
           options: params[:request_options]
         )

@@ -39,7 +39,7 @@ module Increase
       def retrieve(lockbox_id, params = {})
         @client.request(
           method: :get,
-          path: ["lockboxes/%0s", lockbox_id],
+          path: ["lockboxes/%1$s", lockbox_id],
           model: Increase::Models::Lockbox,
           options: params[:request_options]
         )
@@ -64,7 +64,7 @@ module Increase
         parsed, options = Increase::Models::LockboxUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["lockboxes/%0s", lockbox_id],
+          path: ["lockboxes/%1$s", lockbox_id],
           body: parsed,
           model: Increase::Models::Lockbox,
           options: options

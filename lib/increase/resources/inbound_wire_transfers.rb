@@ -15,7 +15,7 @@ module Increase
       def retrieve(inbound_wire_transfer_id, params = {})
         @client.request(
           method: :get,
-          path: ["inbound_wire_transfers/%0s", inbound_wire_transfer_id],
+          path: ["inbound_wire_transfers/%1$s", inbound_wire_transfer_id],
           model: Increase::Models::InboundWireTransfer,
           options: params[:request_options]
         )

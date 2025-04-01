@@ -43,7 +43,7 @@ module Increase
       def retrieve(check_deposit_id, params = {})
         @client.request(
           method: :get,
-          path: ["check_deposits/%0s", check_deposit_id],
+          path: ["check_deposits/%1$s", check_deposit_id],
           model: Increase::Models::CheckDeposit,
           options: params[:request_options]
         )
