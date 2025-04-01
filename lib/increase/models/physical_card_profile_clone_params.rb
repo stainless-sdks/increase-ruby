@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::PhysicalCardProfiles#clone_
     class PhysicalCardProfileCloneParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

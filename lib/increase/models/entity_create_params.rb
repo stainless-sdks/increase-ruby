@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::Entities#create
     class EntityCreateParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter
@@ -247,6 +248,7 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @see Increase::Models::EntityCreateParams::Corporation#address
         class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the address.
@@ -334,6 +336,7 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @see Increase::Models::EntityCreateParams::Corporation::BeneficialOwner#individual
           class Individual < Increase::BaseModel
             # @!attribute address
             #   The individual's physical address. Mail receiving locations like PO Boxes and
@@ -388,6 +391,7 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @see Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual#address
             class Address < Increase::BaseModel
               # @!attribute country
               #   The two-letter ISO 3166-1 alpha-2 code for the country of the address.
@@ -459,6 +463,7 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
             end
 
+            # @see Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual#identification
             class Identification < Increase::BaseModel
               # @!attribute method_
               #   A method that can be used to verify the individual's identity.
@@ -525,6 +530,8 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
 
               # A method that can be used to verify the individual's identity.
+              #
+              # @see Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification#method_
               module Method
                 extend Increase::Enum
 
@@ -550,6 +557,7 @@ module Increase
                 #   def self.values; end
               end
 
+              # @see Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification#drivers_license
               class DriversLicense < Increase::BaseModel
                 # @!attribute expiration_date
                 #   The driver's license's expiration date in YYYY-MM-DD format.
@@ -593,6 +601,7 @@ module Increase
                 # def initialize: (Hash | Increase::BaseModel) -> void
               end
 
+              # @see Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification#other
               class Other < Increase::BaseModel
                 # @!attribute country
                 #   The two-character ISO 3166-1 code representing the country that issued the
@@ -649,6 +658,7 @@ module Increase
                 # def initialize: (Hash | Increase::BaseModel) -> void
               end
 
+              # @see Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification#passport
               class Passport < Increase::BaseModel
                 # @!attribute country
                 #   The country that issued the passport.
@@ -759,6 +769,7 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @see Increase::Models::EntityCreateParams::GovernmentAuthority#address
         class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the address.
@@ -826,6 +837,8 @@ module Increase
         end
 
         # The category of the government authority.
+        #
+        # @see Increase::Models::EntityCreateParams::GovernmentAuthority#category
         module Category
           extend Increase::Enum
 
@@ -918,6 +931,7 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @see Increase::Models::EntityCreateParams::Joint::Individual#address
           class Address < Increase::BaseModel
             # @!attribute city
             #   The city of the address.
@@ -969,6 +983,7 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @see Increase::Models::EntityCreateParams::Joint::Individual#identification
           class Identification < Increase::BaseModel
             # @!attribute method_
             #   A method that can be used to verify the individual's identity.
@@ -1034,6 +1049,8 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
 
             # A method that can be used to verify the individual's identity.
+            #
+            # @see Increase::Models::EntityCreateParams::Joint::Individual::Identification#method_
             module Method
               extend Increase::Enum
 
@@ -1059,6 +1076,7 @@ module Increase
               #   def self.values; end
             end
 
+            # @see Increase::Models::EntityCreateParams::Joint::Individual::Identification#drivers_license
             class DriversLicense < Increase::BaseModel
               # @!attribute expiration_date
               #   The driver's license's expiration date in YYYY-MM-DD format.
@@ -1102,6 +1120,7 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
             end
 
+            # @see Increase::Models::EntityCreateParams::Joint::Individual::Identification#other
             class Other < Increase::BaseModel
               # @!attribute country
               #   The two-character ISO 3166-1 code representing the country that issued the
@@ -1158,6 +1177,7 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
             end
 
+            # @see Increase::Models::EntityCreateParams::Joint::Individual::Identification#passport
             class Passport < Increase::BaseModel
               # @!attribute country
               #   The country that issued the passport.
@@ -1248,6 +1268,7 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @see Increase::Models::EntityCreateParams::NaturalPerson#address
         class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the address.
@@ -1299,6 +1320,7 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @see Increase::Models::EntityCreateParams::NaturalPerson#identification
         class Identification < Increase::BaseModel
           # @!attribute method_
           #   A method that can be used to verify the individual's identity.
@@ -1363,6 +1385,8 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
 
           # A method that can be used to verify the individual's identity.
+          #
+          # @see Increase::Models::EntityCreateParams::NaturalPerson::Identification#method_
           module Method
             extend Increase::Enum
 
@@ -1388,6 +1412,7 @@ module Increase
             #   def self.values; end
           end
 
+          # @see Increase::Models::EntityCreateParams::NaturalPerson::Identification#drivers_license
           class DriversLicense < Increase::BaseModel
             # @!attribute expiration_date
             #   The driver's license's expiration date in YYYY-MM-DD format.
@@ -1431,6 +1456,7 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @see Increase::Models::EntityCreateParams::NaturalPerson::Identification#other
           class Other < Increase::BaseModel
             # @!attribute country
             #   The two-character ISO 3166-1 code representing the country that issued the
@@ -1487,6 +1513,7 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @see Increase::Models::EntityCreateParams::NaturalPerson::Identification#passport
           class Passport < Increase::BaseModel
             # @!attribute country
             #   The country that issued the passport.
@@ -1561,6 +1588,8 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # The vendor that was used to perform the verification.
+        #
+        # @see Increase::Models::EntityCreateParams::ThirdPartyVerification#vendor
         module Vendor
           extend Increase::Enum
 
@@ -1677,6 +1706,7 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @see Increase::Models::EntityCreateParams::Trust#address
         class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the address.
@@ -1731,6 +1761,8 @@ module Increase
         # Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require
         #   their own Employer Identification Number. Revocable trusts require information
         #   about the individual `grantor` who created the trust.
+        #
+        # @see Increase::Models::EntityCreateParams::Trust#category
         module Category
           extend Increase::Enum
 
@@ -1774,6 +1806,8 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
 
           # The structure of the trustee.
+          #
+          # @see Increase::Models::EntityCreateParams::Trust::Trustee#structure
           module Structure
             extend Increase::Enum
 
@@ -1787,6 +1821,7 @@ module Increase
             #   def self.values; end
           end
 
+          # @see Increase::Models::EntityCreateParams::Trust::Trustee#individual
           class Individual < Increase::BaseModel
             # @!attribute address
             #   The individual's physical address. Mail receiving locations like PO Boxes and
@@ -1841,6 +1876,7 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @see Increase::Models::EntityCreateParams::Trust::Trustee::Individual#address
             class Address < Increase::BaseModel
               # @!attribute city
               #   The city of the address.
@@ -1892,6 +1928,7 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
             end
 
+            # @see Increase::Models::EntityCreateParams::Trust::Trustee::Individual#identification
             class Identification < Increase::BaseModel
               # @!attribute method_
               #   A method that can be used to verify the individual's identity.
@@ -1958,6 +1995,8 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
 
               # A method that can be used to verify the individual's identity.
+              #
+              # @see Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification#method_
               module Method
                 extend Increase::Enum
 
@@ -1983,6 +2022,7 @@ module Increase
                 #   def self.values; end
               end
 
+              # @see Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification#drivers_license
               class DriversLicense < Increase::BaseModel
                 # @!attribute expiration_date
                 #   The driver's license's expiration date in YYYY-MM-DD format.
@@ -2026,6 +2066,7 @@ module Increase
                 # def initialize: (Hash | Increase::BaseModel) -> void
               end
 
+              # @see Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification#other
               class Other < Increase::BaseModel
                 # @!attribute country
                 #   The two-character ISO 3166-1 code representing the country that issued the
@@ -2082,6 +2123,7 @@ module Increase
                 # def initialize: (Hash | Increase::BaseModel) -> void
               end
 
+              # @see Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification#passport
               class Passport < Increase::BaseModel
                 # @!attribute country
                 #   The country that issued the passport.
@@ -2117,6 +2159,7 @@ module Increase
           end
         end
 
+        # @see Increase::Models::EntityCreateParams::Trust#grantor
         class Grantor < Increase::BaseModel
           # @!attribute address
           #   The individual's physical address. Mail receiving locations like PO Boxes and
@@ -2169,6 +2212,7 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @see Increase::Models::EntityCreateParams::Trust::Grantor#address
           class Address < Increase::BaseModel
             # @!attribute city
             #   The city of the address.
@@ -2220,6 +2264,7 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @see Increase::Models::EntityCreateParams::Trust::Grantor#identification
           class Identification < Increase::BaseModel
             # @!attribute method_
             #   A method that can be used to verify the individual's identity.
@@ -2284,6 +2329,8 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
 
             # A method that can be used to verify the individual's identity.
+            #
+            # @see Increase::Models::EntityCreateParams::Trust::Grantor::Identification#method_
             module Method
               extend Increase::Enum
 
@@ -2309,6 +2356,7 @@ module Increase
               #   def self.values; end
             end
 
+            # @see Increase::Models::EntityCreateParams::Trust::Grantor::Identification#drivers_license
             class DriversLicense < Increase::BaseModel
               # @!attribute expiration_date
               #   The driver's license's expiration date in YYYY-MM-DD format.
@@ -2352,6 +2400,7 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
             end
 
+            # @see Increase::Models::EntityCreateParams::Trust::Grantor::Identification#other
             class Other < Increase::BaseModel
               # @!attribute country
               #   The two-character ISO 3166-1 code representing the country that issued the
@@ -2408,6 +2457,7 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
             end
 
+            # @see Increase::Models::EntityCreateParams::Trust::Grantor::Identification#passport
             class Passport < Increase::BaseModel
               # @!attribute country
               #   The country that issued the passport.

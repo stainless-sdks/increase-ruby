@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::DigitalCardProfiles#list
     class DigitalCardProfileListParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

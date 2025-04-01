@@ -12,6 +12,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::CardPayment]
+      #
+      # @see Increase::Models::CardPaymentRetrieveParams
       def retrieve(card_payment_id, params = {})
         @client.request(
           method: :get,
@@ -39,6 +41,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::CardPayment>]
+      #
+      # @see Increase::Models::CardPaymentListParams
       def list(params = {})
         parsed, options = Increase::Models::CardPaymentListParams.dump_request(params)
         @client.request(
@@ -51,6 +55,8 @@ module Increase
         )
       end
 
+      # @api private
+      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

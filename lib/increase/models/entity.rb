@@ -147,6 +147,7 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @see Increase::Models::Entity#corporation
       class Corporation < Increase::BaseModel
         # @!attribute address
         #   The corporation's address.
@@ -210,6 +211,7 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @see Increase::Models::Entity::Corporation#address
         class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the address.
@@ -291,6 +293,7 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @see Increase::Models::Entity::Corporation::BeneficialOwner#individual
           class Individual < Increase::BaseModel
             # @!attribute address
             #   The person's address.
@@ -329,6 +332,7 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @see Increase::Models::Entity::Corporation::BeneficialOwner::Individual#address
             class Address < Increase::BaseModel
               # @!attribute city
               #   The city, district, town, or village of the address.
@@ -382,6 +386,7 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
             end
 
+            # @see Increase::Models::Entity::Corporation::BeneficialOwner::Individual#identification
             class Identification < Increase::BaseModel
               # @!attribute method_
               #   A method that can be used to verify the individual's identity.
@@ -409,6 +414,8 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
 
               # A method that can be used to verify the individual's identity.
+              #
+              # @see Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification#method_
               module Method
                 extend Increase::Enum
 
@@ -437,6 +444,8 @@ module Increase
           end
 
           # Why this person is considered a beneficial owner of the entity.
+          #
+          # @see Increase::Models::Entity::Corporation::BeneficialOwner#prong
           module Prong
             extend Increase::Enum
 
@@ -455,6 +464,7 @@ module Increase
         end
       end
 
+      # @see Increase::Models::Entity#government_authority
       class GovernmentAuthority < Increase::BaseModel
         # @!attribute address
         #   The government authority's address.
@@ -508,6 +518,7 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @see Increase::Models::Entity::GovernmentAuthority#address
         class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the address.
@@ -577,6 +588,8 @@ module Increase
         end
 
         # The category of the government authority.
+        #
+        # @see Increase::Models::Entity::GovernmentAuthority#category
         module Category
           extend Increase::Enum
 
@@ -591,6 +604,7 @@ module Increase
         end
       end
 
+      # @see Increase::Models::Entity#joint
       class Joint < Increase::BaseModel
         # @!attribute individuals
         #   The two individuals that share control of the entity.
@@ -649,6 +663,7 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @see Increase::Models::Entity::Joint::Individual#address
           class Address < Increase::BaseModel
             # @!attribute city
             #   The city of the address.
@@ -695,6 +710,7 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @see Increase::Models::Entity::Joint::Individual#identification
           class Identification < Increase::BaseModel
             # @!attribute method_
             #   A method that can be used to verify the individual's identity.
@@ -722,6 +738,8 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
 
             # A method that can be used to verify the individual's identity.
+            #
+            # @see Increase::Models::Entity::Joint::Individual::Identification#method_
             module Method
               extend Increase::Enum
 
@@ -750,6 +768,7 @@ module Increase
         end
       end
 
+      # @see Increase::Models::Entity#natural_person
       class NaturalPerson < Increase::BaseModel
         # @!attribute address
         #   The person's address.
@@ -788,6 +807,7 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @see Increase::Models::Entity::NaturalPerson#address
         class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the address.
@@ -834,6 +854,7 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @see Increase::Models::Entity::NaturalPerson#identification
         class Identification < Increase::BaseModel
           # @!attribute method_
           #   A method that can be used to verify the individual's identity.
@@ -861,6 +882,8 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
 
           # A method that can be used to verify the individual's identity.
+          #
+          # @see Increase::Models::Entity::NaturalPerson::Identification#method_
           module Method
             extend Increase::Enum
 
@@ -889,6 +912,8 @@ module Increase
       end
 
       # The status of the entity.
+      #
+      # @see Increase::Models::Entity#status
       module Status
         extend Increase::Enum
 
@@ -909,6 +934,8 @@ module Increase
       end
 
       # The entity's legal structure.
+      #
+      # @see Increase::Models::Entity#structure
       module Structure
         extend Increase::Enum
 
@@ -934,6 +961,7 @@ module Increase
         #   def self.values; end
       end
 
+      # @see Increase::Models::Entity#third_party_verification
       class ThirdPartyVerification < Increase::BaseModel
         # @!attribute reference
         #   The reference identifier for the third party verification.
@@ -959,6 +987,8 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # The vendor that was used to perform the verification.
+        #
+        # @see Increase::Models::Entity::ThirdPartyVerification#vendor
         module Vendor
           extend Increase::Enum
 
@@ -976,6 +1006,7 @@ module Increase
         end
       end
 
+      # @see Increase::Models::Entity#trust
       class Trust < Increase::BaseModel
         # @!attribute address
         #   The trust's address.
@@ -1054,6 +1085,7 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @see Increase::Models::Entity::Trust#address
         class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the address.
@@ -1101,6 +1133,8 @@ module Increase
         end
 
         # Whether the trust is `revocable` or `irrevocable`.
+        #
+        # @see Increase::Models::Entity::Trust#category
         module Category
           extend Increase::Enum
 
@@ -1117,6 +1151,7 @@ module Increase
           #   def self.values; end
         end
 
+        # @see Increase::Models::Entity::Trust#grantor
         class Grantor < Increase::BaseModel
           # @!attribute address
           #   The person's address.
@@ -1154,6 +1189,7 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @see Increase::Models::Entity::Trust::Grantor#address
           class Address < Increase::BaseModel
             # @!attribute city
             #   The city of the address.
@@ -1200,6 +1236,7 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @see Increase::Models::Entity::Trust::Grantor#identification
           class Identification < Increase::BaseModel
             # @!attribute method_
             #   A method that can be used to verify the individual's identity.
@@ -1227,6 +1264,8 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
 
             # A method that can be used to verify the individual's identity.
+            #
+            # @see Increase::Models::Entity::Trust::Grantor::Identification#method_
             module Method
               extend Increase::Enum
 
@@ -1276,6 +1315,7 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @see Increase::Models::Entity::Trust::Trustee#individual
           class Individual < Increase::BaseModel
             # @!attribute address
             #   The person's address.
@@ -1314,6 +1354,7 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @see Increase::Models::Entity::Trust::Trustee::Individual#address
             class Address < Increase::BaseModel
               # @!attribute city
               #   The city of the address.
@@ -1360,6 +1401,7 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
             end
 
+            # @see Increase::Models::Entity::Trust::Trustee::Individual#identification
             class Identification < Increase::BaseModel
               # @!attribute method_
               #   A method that can be used to verify the individual's identity.
@@ -1387,6 +1429,8 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
 
               # A method that can be used to verify the individual's identity.
+              #
+              # @see Increase::Models::Entity::Trust::Trustee::Individual::Identification#method_
               module Method
                 extend Increase::Enum
 
@@ -1415,6 +1459,8 @@ module Increase
           end
 
           # The structure of the trustee. Will always be equal to `individual`.
+          #
+          # @see Increase::Models::Entity::Trust::Trustee#structure
           module Structure
             extend Increase::Enum
 
@@ -1432,6 +1478,8 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `entity`.
+      #
+      # @see Increase::Models::Entity#type
       module Type
         extend Increase::Enum
 

@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::RoutingNumbers#list
     class RoutingNumberListParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

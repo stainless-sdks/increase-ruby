@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::Documents#list
     class DocumentListParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

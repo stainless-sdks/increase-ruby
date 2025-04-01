@@ -3,6 +3,7 @@
 module Increase
   module Models
     module Simulations
+      # @see Increase::Resources::Simulations::WireTransfers#reverse
       class WireTransferReverseParams < Increase::BaseModel
         # @!parse
         #   extend Increase::Type::RequestParameters::Converter

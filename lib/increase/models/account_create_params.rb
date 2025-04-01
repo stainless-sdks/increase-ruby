@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::Accounts#create
     class AccountCreateParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

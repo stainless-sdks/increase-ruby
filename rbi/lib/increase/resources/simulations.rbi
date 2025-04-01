@@ -84,6 +84,7 @@ module Increase
       sig { returns(Increase::Resources::Simulations::Documents) }
       attr_reader :documents
 
+      # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
       def self.new(client:)
       end

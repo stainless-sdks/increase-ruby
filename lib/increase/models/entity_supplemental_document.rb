@@ -53,6 +53,8 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `entity_supplemental_document`.
+      #
+      # @see Increase::Models::EntitySupplementalDocument#type
       module Type
         extend Increase::Enum
 

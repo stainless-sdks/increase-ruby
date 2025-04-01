@@ -45,6 +45,8 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `balance_lookup`.
+      #
+      # @see Increase::Models::BalanceLookup#type
       module Type
         extend Increase::Enum
 

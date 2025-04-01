@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::CheckTransfers#stop_payment
     class CheckTransferStopPaymentParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

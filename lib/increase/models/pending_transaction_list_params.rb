@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::PendingTransactions#list
     class PendingTransactionListParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

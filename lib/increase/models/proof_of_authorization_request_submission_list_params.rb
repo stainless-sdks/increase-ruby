@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::ProofOfAuthorizationRequestSubmissions#list
     class ProofOfAuthorizationRequestSubmissionListParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

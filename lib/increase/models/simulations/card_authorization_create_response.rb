@@ -40,6 +40,8 @@ module Increase
 
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_card_authorization_simulation_result`.
+        #
+        # @see Increase::Models::Simulations::CardAuthorizationCreateResponse#type
         module Type
           extend Increase::Enum
 

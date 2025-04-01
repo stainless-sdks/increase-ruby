@@ -17,6 +17,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::BookkeepingEntrySet]
+      #
+      # @see Increase::Models::BookkeepingEntrySetCreateParams
       def create(params)
         parsed, options = Increase::Models::BookkeepingEntrySetCreateParams.dump_request(params)
         @client.request(
@@ -37,6 +39,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::BookkeepingEntrySet]
+      #
+      # @see Increase::Models::BookkeepingEntrySetRetrieveParams
       def retrieve(bookkeeping_entry_set_id, params = {})
         @client.request(
           method: :get,
@@ -65,6 +69,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::BookkeepingEntrySet>]
+      #
+      # @see Increase::Models::BookkeepingEntrySetListParams
       def list(params = {})
         parsed, options = Increase::Models::BookkeepingEntrySetListParams.dump_request(params)
         @client.request(
@@ -77,6 +83,8 @@ module Increase
         )
       end
 
+      # @api private
+      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

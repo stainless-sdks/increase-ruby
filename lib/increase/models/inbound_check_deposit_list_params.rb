@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::InboundCheckDeposits#list
     class InboundCheckDepositListParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

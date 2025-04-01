@@ -20,6 +20,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::CardDispute]
+      #
+      # @see Increase::Models::CardDisputeCreateParams
       def create(params)
         parsed, options = Increase::Models::CardDisputeCreateParams.dump_request(params)
         @client.request(
@@ -40,6 +42,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::CardDispute]
+      #
+      # @see Increase::Models::CardDisputeRetrieveParams
       def retrieve(card_dispute_id, params = {})
         @client.request(
           method: :get,
@@ -70,6 +74,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::CardDispute>]
+      #
+      # @see Increase::Models::CardDisputeListParams
       def list(params = {})
         parsed, options = Increase::Models::CardDisputeListParams.dump_request(params)
         @client.request(
@@ -82,6 +88,8 @@ module Increase
         )
       end
 
+      # @api private
+      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

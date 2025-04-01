@@ -16,6 +16,8 @@ module Increase
         #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::AccountTransfer]
+        #
+        # @see Increase::Models::Simulations::AccountTransferCompleteParams
         def complete(account_transfer_id, params = {})
           @client.request(
             method: :post,
@@ -25,6 +27,8 @@ module Increase
           )
         end
 
+        # @api private
+        #
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client

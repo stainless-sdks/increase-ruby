@@ -39,6 +39,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::ACHPrenotification]
+      #
+      # @see Increase::Models::ACHPrenotificationCreateParams
       def create(params)
         parsed, options = Increase::Models::ACHPrenotificationCreateParams.dump_request(params)
         @client.request(
@@ -59,6 +61,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::ACHPrenotification]
+      #
+      # @see Increase::Models::ACHPrenotificationRetrieveParams
       def retrieve(ach_prenotification_id, params = {})
         @client.request(
           method: :get,
@@ -87,6 +91,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::ACHPrenotification>]
+      #
+      # @see Increase::Models::ACHPrenotificationListParams
       def list(params = {})
         parsed, options = Increase::Models::ACHPrenotificationListParams.dump_request(params)
         @client.request(
@@ -99,6 +105,8 @@ module Increase
         )
       end
 
+      # @api private
+      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

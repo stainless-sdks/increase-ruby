@@ -3,6 +3,7 @@
 module Increase
   module Models
     module Simulations
+      # @see Increase::Resources::Simulations::ACHTransfers#create_notification_of_change
       class ACHTransferCreateNotificationOfChangeParams < Increase::BaseModel
         # @!parse
         #   extend Increase::Type::RequestParameters::Converter

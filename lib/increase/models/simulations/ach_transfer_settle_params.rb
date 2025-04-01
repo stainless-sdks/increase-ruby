@@ -3,6 +3,7 @@
 module Increase
   module Models
     module Simulations
+      # @see Increase::Resources::Simulations::ACHTransfers#settle
       class ACHTransferSettleParams < Increase::BaseModel
         # @!parse
         #   extend Increase::Type::RequestParameters::Converter

@@ -3,6 +3,7 @@
 module Increase
   module Models
     module Simulations
+      # @see Increase::Resources::Simulations::CardAuthorizations#create
       class CardAuthorizationCreateParams < Increase::BaseModel
         # @!parse
         #   extend Increase::Type::RequestParameters::Converter
@@ -316,6 +317,7 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @see Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails#visa
           class Visa < Increase::BaseModel
             # @!attribute [r] stand_in_processing_reason
             #   The reason code for the stand-in processing.
@@ -338,6 +340,8 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
 
             # The reason code for the stand-in processing.
+            #
+            # @see Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa#stand_in_processing_reason
             module StandInProcessingReason
               extend Increase::Enum
 

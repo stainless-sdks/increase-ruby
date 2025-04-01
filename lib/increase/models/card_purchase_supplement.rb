@@ -57,6 +57,7 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @see Increase::Models::CardPurchaseSupplement#invoice
       class Invoice < Increase::BaseModel
         # @!attribute discount_amount
         #   Discount given to cardholder.
@@ -205,6 +206,8 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # Indicates how the merchant applied the discount.
+        #
+        # @see Increase::Models::CardPurchaseSupplement::Invoice#discount_treatment_code
         module DiscountTreatmentCode
           extend Increase::Enum
 
@@ -225,6 +228,8 @@ module Increase
         end
 
         # Indicates how the merchant applied taxes.
+        #
+        # @see Increase::Models::CardPurchaseSupplement::Invoice#tax_treatments
         module TaxTreatments
           extend Increase::Enum
 
@@ -405,6 +410,8 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # Indicates the type of line item.
+        #
+        # @see Increase::Models::CardPurchaseSupplement::LineItem#detail_indicator
         module DetailIndicator
           extend Increase::Enum
 
@@ -425,6 +432,8 @@ module Increase
         end
 
         # Indicates how the merchant applied the discount for this specific line item.
+        #
+        # @see Increase::Models::CardPurchaseSupplement::LineItem#discount_treatment_code
         module DiscountTreatmentCode
           extend Increase::Enum
 
@@ -447,6 +456,8 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `card_purchase_supplement`.
+      #
+      # @see Increase::Models::CardPurchaseSupplement#type
       module Type
         extend Increase::Enum
 

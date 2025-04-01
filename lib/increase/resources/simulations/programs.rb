@@ -16,6 +16,8 @@ module Increase
         #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::Program]
+        #
+        # @see Increase::Models::Simulations::ProgramCreateParams
         def create(params)
           parsed, options = Increase::Models::Simulations::ProgramCreateParams.dump_request(params)
           @client.request(
@@ -27,6 +29,8 @@ module Increase
           )
         end
 
+        # @api private
+        #
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client

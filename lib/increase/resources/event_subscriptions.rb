@@ -21,6 +21,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::EventSubscription]
+      #
+      # @see Increase::Models::EventSubscriptionCreateParams
       def create(params)
         parsed, options = Increase::Models::EventSubscriptionCreateParams.dump_request(params)
         @client.request(
@@ -41,6 +43,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::EventSubscription]
+      #
+      # @see Increase::Models::EventSubscriptionRetrieveParams
       def retrieve(event_subscription_id, params = {})
         @client.request(
           method: :get,
@@ -61,6 +65,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::EventSubscription]
+      #
+      # @see Increase::Models::EventSubscriptionUpdateParams
       def update(event_subscription_id, params = {})
         parsed, options = Increase::Models::EventSubscriptionUpdateParams.dump_request(params)
         @client.request(
@@ -89,6 +95,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::EventSubscription>]
+      #
+      # @see Increase::Models::EventSubscriptionListParams
       def list(params = {})
         parsed, options = Increase::Models::EventSubscriptionListParams.dump_request(params)
         @client.request(
@@ -101,6 +109,8 @@ module Increase
         )
       end
 
+      # @api private
+      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

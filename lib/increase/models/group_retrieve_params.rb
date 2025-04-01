@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::Groups#retrieve
     class GroupRetrieveParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

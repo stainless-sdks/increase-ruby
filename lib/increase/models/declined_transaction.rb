@@ -110,6 +110,8 @@ module Increase
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Declined
       #   Transaction's currency. This will match the currency on the Declined
       #   Transaction's Account.
+      #
+      # @see Increase::Models::DeclinedTransaction#currency
       module Currency
         extend Increase::Enum
 
@@ -139,6 +141,8 @@ module Increase
       end
 
       # The type of the route this Declined Transaction came through.
+      #
+      # @see Increase::Models::DeclinedTransaction#route_type
       module RouteType
         extend Increase::Enum
 
@@ -158,6 +162,7 @@ module Increase
         #   def self.values; end
       end
 
+      # @see Increase::Models::DeclinedTransaction#source
       class Source < Increase::BaseModel
         # @!attribute ach_decline
         #   An ACH Decline object. This field will be present in the JSON response if and
@@ -252,6 +257,7 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @see Increase::Models::DeclinedTransaction::Source#ach_decline
         class ACHDecline < Increase::BaseModel
           # @!attribute id
           #   The ACH Decline's identifier.
@@ -364,6 +370,8 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
 
           # Why the ACH transfer was declined.
+          #
+          # @see Increase::Models::DeclinedTransaction::Source::ACHDecline#reason
           module Reason
             extend Increase::Enum
 
@@ -429,6 +437,8 @@ module Increase
 
           # A constant representing the object's type. For this resource it will always be
           #   `ach_decline`.
+          #
+          # @see Increase::Models::DeclinedTransaction::Source::ACHDecline#type
           module Type
             extend Increase::Enum
 
@@ -442,6 +452,7 @@ module Increase
           end
         end
 
+        # @see Increase::Models::DeclinedTransaction::Source#card_decline
         class CardDecline < Increase::BaseModel
           # @!attribute id
           #   The Card Decline identifier.
@@ -694,6 +705,8 @@ module Increase
 
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
+          #
+          # @see Increase::Models::DeclinedTransaction::Source::CardDecline#actioner
           module Actioner
             extend Increase::Enum
 
@@ -715,6 +728,8 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
           #   account currency.
+          #
+          # @see Increase::Models::DeclinedTransaction::Source::CardDecline#currency
           module Currency
             extend Increase::Enum
 
@@ -745,6 +760,8 @@ module Increase
 
           # The direction describes the direction the funds will move, either from the
           #   cardholder to the merchant or from the merchant to the cardholder.
+          #
+          # @see Increase::Models::DeclinedTransaction::Source::CardDecline#direction
           module Direction
             extend Increase::Enum
 
@@ -761,6 +778,7 @@ module Increase
             #   def self.values; end
           end
 
+          # @see Increase::Models::DeclinedTransaction::Source::CardDecline#network_details
           class NetworkDetails < Increase::BaseModel
             # @!attribute category
             #   The payment network used to process this card authorization.
@@ -788,6 +806,8 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
 
             # The payment network used to process this card authorization.
+            #
+            # @see Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails#category
             module Category
               extend Increase::Enum
 
@@ -801,6 +821,7 @@ module Increase
               #   def self.values; end
             end
 
+            # @see Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails#visa
             class Visa < Increase::BaseModel
               # @!attribute electronic_commerce_indicator
               #   For electronic commerce transactions, this identifies the level of security used
@@ -844,6 +865,8 @@ module Increase
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
               #   transactions, identifies the type of mail or telephone order.
+              #
+              # @see Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa#electronic_commerce_indicator
               module ElectronicCommerceIndicator
                 extend Increase::Enum
 
@@ -881,6 +904,8 @@ module Increase
 
               # The method used to enter the cardholder's primary account number and card
               #   expiration date.
+              #
+              # @see Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa#point_of_service_entry_mode
               module PointOfServiceEntryMode
                 extend Increase::Enum
 
@@ -923,6 +948,8 @@ module Increase
 
               # Only present when `actioner: network`. Describes why a card authorization was
               #   approved or declined by Visa through stand-in processing.
+              #
+              # @see Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa#stand_in_processing_reason
               module StandInProcessingReason
                 extend Increase::Enum
 
@@ -958,6 +985,7 @@ module Increase
             end
           end
 
+          # @see Increase::Models::DeclinedTransaction::Source::CardDecline#network_identifiers
           class NetworkIdentifiers < Increase::BaseModel
             # @!attribute retrieval_reference_number
             #   A life-cycle identifier used across e.g., an authorization and a reversal.
@@ -995,6 +1023,8 @@ module Increase
 
           # The processing category describes the intent behind the authorization, such as
           #   whether it was used for bill payments or an automatic fuel dispenser.
+          #
+          # @see Increase::Models::DeclinedTransaction::Source::CardDecline#processing_category
           module ProcessingCategory
             extend Increase::Enum
 
@@ -1025,6 +1055,8 @@ module Increase
 
           # This is present if a specific decline reason was given in the real-time
           #   decision.
+          #
+          # @see Increase::Models::DeclinedTransaction::Source::CardDecline#real_time_decision_reason
           module RealTimeDecisionReason
             extend Increase::Enum
 
@@ -1054,6 +1086,8 @@ module Increase
           end
 
           # Why the transaction was declined.
+          #
+          # @see Increase::Models::DeclinedTransaction::Source::CardDecline#reason
           module Reason
             extend Increase::Enum
 
@@ -1115,6 +1149,7 @@ module Increase
             #   def self.values; end
           end
 
+          # @see Increase::Models::DeclinedTransaction::Source::CardDecline#verification
           class Verification < Increase::BaseModel
             # @!attribute card_verification_code
             #   Fields related to verification of the Card Verification Code, a 3-digit code on
@@ -1142,6 +1177,7 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @see Increase::Models::DeclinedTransaction::Source::CardDecline::Verification#card_verification_code
             class CardVerificationCode < Increase::BaseModel
               # @!attribute result
               #   The result of verifying the Card Verification Code.
@@ -1161,6 +1197,8 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
 
               # The result of verifying the Card Verification Code.
+              #
+              # @see Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode#result
               module Result
                 extend Increase::Enum
 
@@ -1181,6 +1219,7 @@ module Increase
               end
             end
 
+            # @see Increase::Models::DeclinedTransaction::Source::CardDecline::Verification#cardholder_address
             class CardholderAddress < Increase::BaseModel
               # @!attribute actual_line1
               #   Line 1 of the address on file for the cardholder.
@@ -1229,6 +1268,8 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
 
               # The address verification result returned to the card network.
+              #
+              # @see Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress#result
               module Result
                 extend Increase::Enum
 
@@ -1262,6 +1303,8 @@ module Increase
 
         # The type of the resource. We may add additional possible values for this enum
         #   over time; your application should be able to handle such additions gracefully.
+        #
+        # @see Increase::Models::DeclinedTransaction::Source#category
         module Category
           extend Increase::Enum
 
@@ -1293,6 +1336,7 @@ module Increase
           #   def self.values; end
         end
 
+        # @see Increase::Models::DeclinedTransaction::Source#check_decline
         class CheckDecline < Increase::BaseModel
           # @!attribute amount
           #   The declined amount in USD cents.
@@ -1368,6 +1412,8 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
 
           # Why the check was declined.
+          #
+          # @see Increase::Models::DeclinedTransaction::Source::CheckDecline#reason
           module Reason
             extend Increase::Enum
 
@@ -1430,6 +1476,7 @@ module Increase
           end
         end
 
+        # @see Increase::Models::DeclinedTransaction::Source#check_deposit_rejection
         class CheckDepositRejection < Increase::BaseModel
           # @!attribute amount
           #   The rejected amount in the minor unit of check's currency. For dollars, for
@@ -1489,6 +1536,8 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
           #   currency.
+          #
+          # @see Increase::Models::DeclinedTransaction::Source::CheckDepositRejection#currency
           module Currency
             extend Increase::Enum
 
@@ -1518,6 +1567,8 @@ module Increase
           end
 
           # Why the check deposit was rejected.
+          #
+          # @see Increase::Models::DeclinedTransaction::Source::CheckDepositRejection#reason
           module Reason
             extend Increase::Enum
 
@@ -1562,6 +1613,7 @@ module Increase
           end
         end
 
+        # @see Increase::Models::DeclinedTransaction::Source#inbound_real_time_payments_transfer_decline
         class InboundRealTimePaymentsTransferDecline < Increase::BaseModel
           # @!attribute amount
           #   The declined amount in the minor unit of the destination account currency. For
@@ -1665,6 +1717,8 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
           #   transfer's currency. This will always be "USD" for a Real-Time Payments
           #   transfer.
+          #
+          # @see Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline#currency
           module Currency
             extend Increase::Enum
 
@@ -1694,6 +1748,8 @@ module Increase
           end
 
           # Why the transfer was declined.
+          #
+          # @see Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline#reason
           module Reason
             extend Increase::Enum
 
@@ -1723,6 +1779,7 @@ module Increase
           end
         end
 
+        # @see Increase::Models::DeclinedTransaction::Source#wire_decline
         class WireDecline < Increase::BaseModel
           # @!attribute inbound_wire_transfer_id
           #   The identifier of the Inbound Wire Transfer that was declined.
@@ -1748,6 +1805,8 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
 
           # Why the wire transfer was declined.
+          #
+          # @see Increase::Models::DeclinedTransaction::Source::WireDecline#reason
           module Reason
             extend Increase::Enum
 
@@ -1780,6 +1839,8 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `declined_transaction`.
+      #
+      # @see Increase::Models::DeclinedTransaction#type
       module Type
         extend Increase::Enum
 
