@@ -5,43 +5,22 @@ module Increase
     class WireDrawdownRequests
       # Create a Wire Drawdown Request
       #
-      # @param params [Increase::Models::WireDrawdownRequestCreateParams, Hash{Symbol=>Object}] .
+      # @overload create(account_number_id:, amount:, message_to_recipient:, recipient_account_number:, recipient_name:, recipient_routing_number:, originator_address_line1: nil, originator_address_line2: nil, originator_address_line3: nil, originator_name: nil, recipient_address_line1: nil, recipient_address_line2: nil, recipient_address_line3: nil, request_options: {})
       #
-      #   @option params [String] :account_number_id The Account Number to which the recipient should send funds.
-      #
-      #   @option params [Integer] :amount The amount requested from the recipient, in USD cents.
-      #
-      #   @option params [String] :message_to_recipient A message the recipient will see as part of the request.
-      #
-      #   @option params [String] :recipient_account_number The drawdown request's recipient's account number.
-      #
-      #   @option params [String] :recipient_name The drawdown request's recipient's name.
-      #
-      #   @option params [String] :recipient_routing_number The drawdown request's recipient's routing number.
-      #
-      #   @option params [String] :originator_address_line1 The drawdown request originator's address line 1. This is only necessary if
-      #     you're requesting a payment to a commingled account. Otherwise, we'll use the
-      #     associated entity's details.
-      #
-      #   @option params [String] :originator_address_line2 The drawdown request originator's address line 2. This is only necessary if
-      #     you're requesting a payment to a commingled account. Otherwise, we'll use the
-      #     associated entity's details.
-      #
-      #   @option params [String] :originator_address_line3 The drawdown request originator's address line 3. This is only necessary if
-      #     you're requesting a payment to a commingled account. Otherwise, we'll use the
-      #     associated entity's details.
-      #
-      #   @option params [String] :originator_name The drawdown request originator's name. This is only necessary if you're
-      #     requesting a payment to a commingled account. Otherwise, we'll use the
-      #     associated entity's details.
-      #
-      #   @option params [String] :recipient_address_line1 Line 1 of the drawdown request's recipient's address.
-      #
-      #   @option params [String] :recipient_address_line2 Line 2 of the drawdown request's recipient's address.
-      #
-      #   @option params [String] :recipient_address_line3 Line 3 of the drawdown request's recipient's address.
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param account_number_id [String]
+      # @param amount [Integer]
+      # @param message_to_recipient [String]
+      # @param recipient_account_number [String]
+      # @param recipient_name [String]
+      # @param recipient_routing_number [String]
+      # @param originator_address_line1 [String]
+      # @param originator_address_line2 [String]
+      # @param originator_address_line3 [String]
+      # @param originator_name [String]
+      # @param recipient_address_line1 [String]
+      # @param recipient_address_line2 [String]
+      # @param recipient_address_line3 [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::WireDrawdownRequest]
       #
@@ -59,11 +38,10 @@ module Increase
 
       # Retrieve a Wire Drawdown Request
       #
-      # @param wire_drawdown_request_id [String] The identifier of the Wire Drawdown Request to retrieve.
+      # @overload retrieve(wire_drawdown_request_id, request_options: {})
       #
-      # @param params [Increase::Models::WireDrawdownRequestRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param wire_drawdown_request_id [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::WireDrawdownRequest]
       #
@@ -79,21 +57,13 @@ module Increase
 
       # List Wire Drawdown Requests
       #
-      # @param params [Increase::Models::WireDrawdownRequestListParams, Hash{Symbol=>Object}] .
+      # @overload list(cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
       #
-      #   @option params [String] :cursor Return the page of entries after this one.
-      #
-      #   @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
-      #     that object. This value is unique across Increase and is used to ensure that a
-      #     request is only processed once. Learn more about
-      #     [idempotency](https://increase.com/documentation/idempotency-keys).
-      #
-      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #     objects.
-      #
-      #   @option params [Increase::Models::WireDrawdownRequestListParams::Status] :status
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param cursor [String]
+      # @param idempotency_key [String]
+      # @param limit [Integer]
+      # @param status [Increase::Models::WireDrawdownRequestListParams::Status]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Page<Increase::Models::WireDrawdownRequest>]
       #

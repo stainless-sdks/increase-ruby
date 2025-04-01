@@ -5,11 +5,10 @@ module Increase
     class RealTimeDecisions
       # Retrieve a Real-Time Decision
       #
-      # @param real_time_decision_id [String] The identifier of the Real-Time Decision.
+      # @overload retrieve(real_time_decision_id, request_options: {})
       #
-      # @param params [Increase::Models::RealTimeDecisionRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param real_time_decision_id [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::RealTimeDecision]
       #
@@ -25,26 +24,15 @@ module Increase
 
       # Action a Real-Time Decision
       #
-      # @param real_time_decision_id [String] The identifier of the Real-Time Decision.
+      # @overload action(real_time_decision_id, card_authentication: nil, card_authentication_challenge: nil, card_authorization: nil, digital_wallet_authentication: nil, digital_wallet_token: nil, request_options: {})
       #
-      # @param params [Increase::Models::RealTimeDecisionActionParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Increase::Models::RealTimeDecisionActionParams::CardAuthentication] :card_authentication If the Real-Time Decision relates to a 3DS card authentication attempt, this
-      #     object contains your response to the authentication.
-      #
-      #   @option params [Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge] :card_authentication_challenge If the Real-Time Decision relates to 3DS card authentication challenge delivery,
-      #     this object contains your response.
-      #
-      #   @option params [Increase::Models::RealTimeDecisionActionParams::CardAuthorization] :card_authorization If the Real-Time Decision relates to a card authorization attempt, this object
-      #     contains your response to the authorization.
-      #
-      #   @option params [Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication] :digital_wallet_authentication If the Real-Time Decision relates to a digital wallet authentication attempt,
-      #     this object contains your response to the authentication.
-      #
-      #   @option params [Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken] :digital_wallet_token If the Real-Time Decision relates to a digital wallet token provisioning
-      #     attempt, this object contains your response to the attempt.
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param real_time_decision_id [String]
+      # @param card_authentication [Increase::Models::RealTimeDecisionActionParams::CardAuthentication]
+      # @param card_authentication_challenge [Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge]
+      # @param card_authorization [Increase::Models::RealTimeDecisionActionParams::CardAuthorization]
+      # @param digital_wallet_authentication [Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication]
+      # @param digital_wallet_token [Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::RealTimeDecision]
       #

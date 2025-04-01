@@ -5,11 +5,10 @@ module Increase
     class Transactions
       # Retrieve a Transaction
       #
-      # @param transaction_id [String] The identifier of the Transaction to retrieve.
+      # @overload retrieve(transaction_id, request_options: {})
       #
-      # @param params [Increase::Models::TransactionRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param transaction_id [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::Transaction]
       #
@@ -25,23 +24,15 @@ module Increase
 
       # List Transactions
       #
-      # @param params [Increase::Models::TransactionListParams, Hash{Symbol=>Object}] .
+      # @overload list(account_id: nil, category: nil, created_at: nil, cursor: nil, limit: nil, route_id: nil, request_options: {})
       #
-      #   @option params [String] :account_id Filter Transactions for those belonging to the specified Account.
-      #
-      #   @option params [Increase::Models::TransactionListParams::Category] :category
-      #
-      #   @option params [Increase::Models::TransactionListParams::CreatedAt] :created_at
-      #
-      #   @option params [String] :cursor Return the page of entries after this one.
-      #
-      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #     objects.
-      #
-      #   @option params [String] :route_id Filter Transactions for those belonging to the specified route. This could be a
-      #     Card ID or an Account Number ID.
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param account_id [String]
+      # @param category [Increase::Models::TransactionListParams::Category]
+      # @param created_at [Increase::Models::TransactionListParams::CreatedAt]
+      # @param cursor [String]
+      # @param limit [Integer]
+      # @param route_id [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Page<Increase::Models::Transaction>]
       #

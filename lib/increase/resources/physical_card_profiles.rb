@@ -5,17 +5,13 @@ module Increase
     class PhysicalCardProfiles
       # Create a Physical Card Profile
       #
-      # @param params [Increase::Models::PhysicalCardProfileCreateParams, Hash{Symbol=>Object}] .
+      # @overload create(carrier_image_file_id:, contact_phone:, description:, front_image_file_id:, request_options: {})
       #
-      #   @option params [String] :carrier_image_file_id The identifier of the File containing the physical card's carrier image.
-      #
-      #   @option params [String] :contact_phone A phone number the user can contact to receive support for their card.
-      #
-      #   @option params [String] :description A description you can use to identify the Card Profile.
-      #
-      #   @option params [String] :front_image_file_id The identifier of the File containing the physical card's front image.
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param carrier_image_file_id [String]
+      # @param contact_phone [String]
+      # @param description [String]
+      # @param front_image_file_id [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::PhysicalCardProfile]
       #
@@ -33,11 +29,10 @@ module Increase
 
       # Retrieve a Card Profile
       #
-      # @param physical_card_profile_id [String] The identifier of the Card Profile.
+      # @overload retrieve(physical_card_profile_id, request_options: {})
       #
-      # @param params [Increase::Models::PhysicalCardProfileRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param physical_card_profile_id [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::PhysicalCardProfile]
       #
@@ -53,21 +48,13 @@ module Increase
 
       # List Physical Card Profiles
       #
-      # @param params [Increase::Models::PhysicalCardProfileListParams, Hash{Symbol=>Object}] .
+      # @overload list(cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
       #
-      #   @option params [String] :cursor Return the page of entries after this one.
-      #
-      #   @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
-      #     that object. This value is unique across Increase and is used to ensure that a
-      #     request is only processed once. Learn more about
-      #     [idempotency](https://increase.com/documentation/idempotency-keys).
-      #
-      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #     objects.
-      #
-      #   @option params [Increase::Models::PhysicalCardProfileListParams::Status] :status
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param cursor [String]
+      # @param idempotency_key [String]
+      # @param limit [Integer]
+      # @param status [Increase::Models::PhysicalCardProfileListParams::Status]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Page<Increase::Models::PhysicalCardProfile>]
       #
@@ -86,11 +73,10 @@ module Increase
 
       # Archive a Physical Card Profile
       #
-      # @param physical_card_profile_id [String] The identifier of the Physical Card Profile to archive.
+      # @overload archive(physical_card_profile_id, request_options: {})
       #
-      # @param params [Increase::Models::PhysicalCardProfileArchiveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param physical_card_profile_id [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::PhysicalCardProfile]
       #
@@ -106,22 +92,15 @@ module Increase
 
       # Clone a Physical Card Profile
       #
-      # @param physical_card_profile_id [String] The identifier of the Physical Card Profile to clone.
+      # @overload clone_(physical_card_profile_id, carrier_image_file_id: nil, contact_phone: nil, description: nil, front_image_file_id: nil, front_text: nil, request_options: {})
       #
-      # @param params [Increase::Models::PhysicalCardProfileCloneParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [String] :carrier_image_file_id The identifier of the File containing the physical card's carrier image.
-      #
-      #   @option params [String] :contact_phone A phone number the user can contact to receive support for their card.
-      #
-      #   @option params [String] :description A description you can use to identify the Card Profile.
-      #
-      #   @option params [String] :front_image_file_id The identifier of the File containing the physical card's front image.
-      #
-      #   @option params [Increase::Models::PhysicalCardProfileCloneParams::FrontText] :front_text Text printed on the front of the card. Reach out to
-      #     [support@increase.com](mailto:support@increase.com) for more information.
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param physical_card_profile_id [String]
+      # @param carrier_image_file_id [String]
+      # @param contact_phone [String]
+      # @param description [String]
+      # @param front_image_file_id [String]
+      # @param front_text [Increase::Models::PhysicalCardProfileCloneParams::FrontText]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::PhysicalCardProfile]
       #

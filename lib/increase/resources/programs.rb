@@ -5,11 +5,10 @@ module Increase
     class Programs
       # Retrieve a Program
       #
-      # @param program_id [String] The identifier of the Program to retrieve.
+      # @overload retrieve(program_id, request_options: {})
       #
-      # @param params [Increase::Models::ProgramRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param program_id [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::Program]
       #
@@ -25,14 +24,11 @@ module Increase
 
       # List Programs
       #
-      # @param params [Increase::Models::ProgramListParams, Hash{Symbol=>Object}] .
+      # @overload list(cursor: nil, limit: nil, request_options: {})
       #
-      #   @option params [String] :cursor Return the page of entries after this one.
-      #
-      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #     objects.
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param cursor [String]
+      # @param limit [Integer]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Page<Increase::Models::Program>]
       #

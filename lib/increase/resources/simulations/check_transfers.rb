@@ -9,11 +9,10 @@ module Increase
         #   This transfer must first have a `status` of `pending_approval` or
         #   `pending_submission`.
         #
-        # @param check_transfer_id [String] The identifier of the Check Transfer you wish to mail.
+        # @overload mail(check_transfer_id, request_options: {})
         #
-        # @param params [Increase::Models::Simulations::CheckTransferMailParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param check_transfer_id [String]
+        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::CheckTransfer]
         #

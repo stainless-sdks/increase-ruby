@@ -9,15 +9,12 @@ module Increase
         #   moving a Card Dispute into a rejected or accepted state. A Card Dispute can only
         #   be actioned one time and must have a status of `pending_reviewing`.
         #
-        # @param card_dispute_id [String] The dispute you would like to action.
+        # @overload action(card_dispute_id, status:, explanation: nil, request_options: {})
         #
-        # @param params [Increase::Models::Simulations::CardDisputeActionParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Symbol, Increase::Models::Simulations::CardDisputeActionParams::Status] :status The status to move the dispute to.
-        #
-        #   @option params [String] :explanation Why the dispute was rejected. Not required for accepting disputes.
-        #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param card_dispute_id [String]
+        # @param status [Symbol, Increase::Models::Simulations::CardDisputeActionParams::Status]
+        # @param explanation [String]
+        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::CardDispute]
         #

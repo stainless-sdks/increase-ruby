@@ -5,11 +5,10 @@ module Increase
     class Documents
       # Retrieve a Document
       #
-      # @param document_id [String] The identifier of the Document to retrieve.
+      # @overload retrieve(document_id, request_options: {})
       #
-      # @param params [Increase::Models::DocumentRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param document_id [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::Document]
       #
@@ -25,20 +24,14 @@ module Increase
 
       # List Documents
       #
-      # @param params [Increase::Models::DocumentListParams, Hash{Symbol=>Object}] .
+      # @overload list(category: nil, created_at: nil, cursor: nil, entity_id: nil, limit: nil, request_options: {})
       #
-      #   @option params [Increase::Models::DocumentListParams::Category] :category
-      #
-      #   @option params [Increase::Models::DocumentListParams::CreatedAt] :created_at
-      #
-      #   @option params [String] :cursor Return the page of entries after this one.
-      #
-      #   @option params [String] :entity_id Filter Documents to ones belonging to the specified Entity.
-      #
-      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #     objects.
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param category [Increase::Models::DocumentListParams::Category]
+      # @param created_at [Increase::Models::DocumentListParams::CreatedAt]
+      # @param cursor [String]
+      # @param entity_id [String]
+      # @param limit [Integer]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Page<Increase::Models::Document>]
       #

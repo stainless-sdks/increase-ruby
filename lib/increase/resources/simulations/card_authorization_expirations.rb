@@ -6,11 +6,10 @@ module Increase
       class CardAuthorizationExpirations
         # Simulates expiring a Card Authorization immediately.
         #
-        # @param params [Increase::Models::Simulations::CardAuthorizationExpirationCreateParams, Hash{Symbol=>Object}] .
+        # @overload create(card_payment_id:, request_options: {})
         #
-        #   @option params [String] :card_payment_id The identifier of the Card Payment to expire.
-        #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param card_payment_id [String]
+        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::CardPayment]
         #
