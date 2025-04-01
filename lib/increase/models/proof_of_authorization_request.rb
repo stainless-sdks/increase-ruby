@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::ProofOfAuthorizationRequests#retrieve
     class ProofOfAuthorizationRequest < Increase::BaseModel
       # @!attribute id
       #   The Proof of Authorization Request identifier.

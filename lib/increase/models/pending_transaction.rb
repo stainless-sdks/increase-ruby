@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::PendingTransactions#retrieve
     class PendingTransaction < Increase::BaseModel
       # @!attribute id
       #   The Pending Transaction identifier.

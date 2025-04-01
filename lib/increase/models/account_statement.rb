@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::AccountStatements#retrieve
     class AccountStatement < Increase::BaseModel
       # @!attribute id
       #   The Account Statement identifier.

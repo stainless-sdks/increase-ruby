@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::Lockboxes#create
     class Lockbox < Increase::BaseModel
       # @!attribute id
       #   The Lockbox identifier.

@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::ProofOfAuthorizationRequestSubmissions#create
     class ProofOfAuthorizationRequestSubmission < Increase::BaseModel
       # @!attribute id
       #   The Proof of Authorization Request Submission identifier.

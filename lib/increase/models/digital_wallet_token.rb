@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::DigitalWalletTokens#retrieve
     class DigitalWalletToken < Increase::BaseModel
       # @!attribute id
       #   The Digital Wallet Token identifier.
