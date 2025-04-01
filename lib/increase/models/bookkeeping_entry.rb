@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::BookkeepingEntries#retrieve
     class BookkeepingEntry < Increase::BaseModel
       # @!attribute id
       #   The entry identifier.

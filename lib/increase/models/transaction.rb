@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::Transactions#retrieve
     class Transaction < Increase::BaseModel
       # @!attribute id
       #   The Transaction identifier.

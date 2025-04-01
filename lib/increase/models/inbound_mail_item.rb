@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::InboundMailItems#retrieve
     class InboundMailItem < Increase::BaseModel
       # @!attribute id
       #   The Inbound Mail Item identifier.

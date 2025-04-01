@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::Cards#create
     class Card < Increase::BaseModel
       # @!attribute id
       #   The card identifier.

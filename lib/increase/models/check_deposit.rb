@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::CheckDeposits#create
     class CheckDeposit < Increase::BaseModel
       # @!attribute id
       #   The deposit's identifier.

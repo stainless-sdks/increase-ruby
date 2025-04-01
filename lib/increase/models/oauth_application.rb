@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::OAuthApplications#retrieve
     class OAuthApplication < Increase::BaseModel
       # @!attribute id
       #   The OAuth Application's identifier.

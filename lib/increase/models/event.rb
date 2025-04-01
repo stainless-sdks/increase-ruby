@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::Events#retrieve
     class Event < Increase::BaseModel
       # @!attribute id
       #   The Event identifier.

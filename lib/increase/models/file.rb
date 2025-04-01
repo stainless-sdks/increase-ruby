@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::Files#create
     class File < Increase::BaseModel
       # @!attribute id
       #   The File's identifier.

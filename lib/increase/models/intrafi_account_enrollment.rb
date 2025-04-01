@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::IntrafiAccountEnrollments#create
     class IntrafiAccountEnrollment < Increase::BaseModel
       # @!attribute id
       #   The identifier of this enrollment at IntraFi.

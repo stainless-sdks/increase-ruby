@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::ACHPrenotifications#create
     class ACHPrenotification < Increase::BaseModel
       # @!attribute id
       #   The ACH Prenotification's identifier.

@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::BookkeepingAccounts#balance
     class BookkeepingBalanceLookup < Increase::BaseModel
       # @!attribute balance
       #   The Bookkeeping Account's current balance, representing the sum of all

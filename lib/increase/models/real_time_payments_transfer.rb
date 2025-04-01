@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::RealTimePaymentsTransfers#create
     class RealTimePaymentsTransfer < Increase::BaseModel
       # @!attribute id
       #   The Real-Time Payments Transfer's identifier.
