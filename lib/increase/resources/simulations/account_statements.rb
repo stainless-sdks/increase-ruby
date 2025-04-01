@@ -7,10 +7,11 @@ module Increase
         # Simulates an [Account Statement](#account-statements) being created for an
         #   account. In production, Account Statements are generated once per month.
         #
-        # @overload create(account_id:, request_options: {})
+        # @param params [Increase::Models::Simulations::AccountStatementCreateParams, Hash{Symbol=>Object}] .
         #
-        # @param account_id [String]
-        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+        #   @option params [String] :account_id The identifier of the Account the statement is for.
+        #
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::AccountStatement]
         #

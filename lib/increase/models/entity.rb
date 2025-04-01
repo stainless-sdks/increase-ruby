@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::Entities#create
     class Entity < Increase::BaseModel
       # @!attribute id
       #   The entity's identifier.

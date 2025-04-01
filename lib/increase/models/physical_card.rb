@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::PhysicalCards#create
     class PhysicalCard < Increase::BaseModel
       # @!attribute id
       #   The physical card identifier.

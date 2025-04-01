@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::BookkeepingEntrySets#create
     class BookkeepingEntrySet < Increase::BaseModel
       # @!attribute id
       #   The entry set identifier.

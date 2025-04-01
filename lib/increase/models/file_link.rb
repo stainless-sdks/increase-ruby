@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::FileLinks#create
     class FileLink < Increase::BaseModel
       # @!attribute id
       #   The File Link identifier.

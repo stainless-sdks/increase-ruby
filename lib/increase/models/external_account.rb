@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::ExternalAccounts#create
     class ExternalAccount < Increase::BaseModel
       # @!attribute id
       #   The External Account's identifier.

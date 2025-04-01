@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::Groups#retrieve
     class Group < Increase::BaseModel
       # @!attribute id
       #   The Group identifier.

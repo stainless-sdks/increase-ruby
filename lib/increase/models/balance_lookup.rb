@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::Accounts#balance
     class BalanceLookup < Increase::BaseModel
       # @!attribute account_id
       #   The identifier for the account for which the balance was queried.

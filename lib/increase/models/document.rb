@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::Documents#retrieve
     class Document < Increase::BaseModel
       # @!attribute id
       #   The Document identifier.

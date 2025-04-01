@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::InboundCheckDeposits#retrieve
     class InboundCheckDeposit < Increase::BaseModel
       # @!attribute id
       #   The deposit's identifier.

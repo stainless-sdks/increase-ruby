@@ -3,7 +3,6 @@
 module Increase
   module Models
     module Simulations
-      # @see Increase::Resources::Simulations::CardAuthorizations#create
       class CardAuthorizationCreateResponse < Increase::BaseModel
         # @!attribute declined_transaction
         #   If the authorization attempt fails, this will contain the resulting

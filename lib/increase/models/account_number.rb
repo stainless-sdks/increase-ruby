@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::AccountNumbers#create
     class AccountNumber < Increase::BaseModel
       # @!attribute id
       #   The Account Number identifier.

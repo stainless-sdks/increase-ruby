@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::Programs#retrieve
     class Program < Increase::BaseModel
       # @!attribute id
       #   The Program identifier.

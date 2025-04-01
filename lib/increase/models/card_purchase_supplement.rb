@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::CardPurchaseSupplements#retrieve
     class CardPurchaseSupplement < Increase::BaseModel
       # @!attribute id
       #   The Card Purchase Supplement identifier.

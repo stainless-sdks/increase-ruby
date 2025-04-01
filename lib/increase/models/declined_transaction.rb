@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::DeclinedTransactions#retrieve
     class DeclinedTransaction < Increase::BaseModel
       # @!attribute id
       #   The Declined Transaction identifier.

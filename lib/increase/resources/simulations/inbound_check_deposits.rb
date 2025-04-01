@@ -11,12 +11,15 @@ module Increase
         #   Transaction as a result. You can inspect the resulting Inbound Check Deposit
         #   object to see the result.
         #
-        # @overload create(account_number_id:, amount:, check_number:, request_options: {})
+        # @param params [Increase::Models::Simulations::InboundCheckDepositCreateParams, Hash{Symbol=>Object}] .
         #
-        # @param account_number_id [String]
-        # @param amount [Integer]
-        # @param check_number [String]
-        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+        #   @option params [String] :account_number_id The identifier of the Account Number the Inbound Check Deposit will be against.
+        #
+        #   @option params [Integer] :amount The check amount in cents.
+        #
+        #   @option params [String] :check_number The check number on the check to be deposited.
+        #
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::InboundCheckDeposit]
         #

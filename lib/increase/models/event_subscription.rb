@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::EventSubscriptions#create
     class EventSubscription < Increase::BaseModel
       # @!attribute id
       #   The event subscription identifier.

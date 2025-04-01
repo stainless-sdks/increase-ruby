@@ -5,10 +5,11 @@ module Increase
     class OAuthConnections
       # Retrieve an OAuth Connection
       #
-      # @overload retrieve(oauth_connection_id, request_options: {})
+      # @param oauth_connection_id [String] The identifier of the OAuth Connection.
       #
-      # @param oauth_connection_id [String]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      # @param params [Increase::Models::OAuthConnectionRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::OAuthConnection]
       #
@@ -24,13 +25,19 @@ module Increase
 
       # List OAuth Connections
       #
-      # @overload list(cursor: nil, limit: nil, oauth_application_id: nil, status: nil, request_options: {})
+      # @param params [Increase::Models::OAuthConnectionListParams, Hash{Symbol=>Object}] .
       #
-      # @param cursor [String]
-      # @param limit [Integer]
-      # @param oauth_application_id [String]
-      # @param status [Increase::Models::OAuthConnectionListParams::Status]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      #   @option params [String] :cursor Return the page of entries after this one.
+      #
+      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
+      #
+      #   @option params [String] :oauth_application_id Filter results to only include OAuth Connections for a specific OAuth
+      #     Application.
+      #
+      #   @option params [Increase::Models::OAuthConnectionListParams::Status] :status
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::OAuthConnection>]
       #

@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::InboundWireDrawdownRequests#retrieve
     class InboundWireDrawdownRequest < Increase::BaseModel
       # @!attribute id
       #   The Wire drawdown request identifier.

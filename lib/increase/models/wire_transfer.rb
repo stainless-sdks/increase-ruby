@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::WireTransfers#create
     class WireTransfer < Increase::BaseModel
       # @!attribute id
       #   The wire transfer's identifier.

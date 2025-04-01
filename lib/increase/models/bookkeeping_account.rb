@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::BookkeepingAccounts#create
     class BookkeepingAccount < Increase::BaseModel
       # @!attribute id
       #   The account identifier.

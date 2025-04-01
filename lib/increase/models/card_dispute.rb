@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::CardDisputes#create
     class CardDispute < Increase::BaseModel
       # @!attribute id
       #   The Card Dispute identifier.

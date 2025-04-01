@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::OAuthConnections#retrieve
     class OAuthConnection < Increase::BaseModel
       # @!attribute id
       #   The OAuth Connection's identifier.

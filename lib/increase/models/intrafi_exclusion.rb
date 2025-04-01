@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::IntrafiExclusions#create
     class IntrafiExclusion < Increase::BaseModel
       # @!attribute id
       #   The identifier of this exclusion request.

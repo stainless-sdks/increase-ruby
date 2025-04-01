@@ -8,11 +8,13 @@ module Increase
         #   Card, to simulate e.g., that a physical card was attempted shipped but then
         #   failed delivery.
         #
-        # @overload advance_shipment(physical_card_id, shipment_status:, request_options: {})
+        # @param physical_card_id [String] The Physical Card you would like to action.
         #
-        # @param physical_card_id [String]
-        # @param shipment_status [Symbol, Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus]
-        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+        # @param params [Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams, Hash{Symbol=>Object}] .
+        #
+        #   @option params [Symbol, Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus] :shipment_status The shipment status to move the Physical Card to.
+        #
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::PhysicalCard]
         #

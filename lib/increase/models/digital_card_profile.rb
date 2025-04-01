@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::DigitalCardProfiles#create
     class DigitalCardProfile < Increase::BaseModel
       # @!attribute id
       #   The Card Profile identifier.

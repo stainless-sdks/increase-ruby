@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::Exports#create
     class Export < Increase::BaseModel
       # @!attribute id
       #   The Export identifier.

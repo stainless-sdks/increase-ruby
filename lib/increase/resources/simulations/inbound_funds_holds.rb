@@ -7,10 +7,11 @@ module Increase
         # This endpoint simulates immediately releasing an Inbound Funds Hold, which might
         #   be created as a result of e.g., an ACH debit.
         #
-        # @overload release(inbound_funds_hold_id, request_options: {})
+        # @param inbound_funds_hold_id [String] The inbound funds hold to release.
         #
-        # @param inbound_funds_hold_id [String]
-        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+        # @param params [Increase::Models::Simulations::InboundFundsHoldReleaseParams, Hash{Symbol=>Object}] .
+        #
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::Simulations::InboundFundsHoldReleaseResponse]
         #

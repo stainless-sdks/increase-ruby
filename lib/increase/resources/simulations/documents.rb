@@ -6,10 +6,11 @@ module Increase
       class Documents
         # Simulates an tax document being created for an account.
         #
-        # @overload create(account_id:, request_options: {})
+        # @param params [Increase::Models::Simulations::DocumentCreateParams, Hash{Symbol=>Object}] .
         #
-        # @param account_id [String]
-        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+        #   @option params [String] :account_id The identifier of the Account the tax document is for.
+        #
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::Document]
         #

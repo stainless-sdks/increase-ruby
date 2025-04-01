@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::OAuthTokens#create
     class OAuthToken < Increase::BaseModel
       # @!attribute access_token
       #   You may use this token in place of an API key to make OAuth requests on a user's

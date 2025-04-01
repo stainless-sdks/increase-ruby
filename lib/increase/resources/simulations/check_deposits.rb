@@ -8,10 +8,11 @@ module Increase
         #   factors like poor image quality. This Check Deposit must first have a `status`
         #   of `pending`.
         #
-        # @overload reject(check_deposit_id, request_options: {})
+        # @param check_deposit_id [String] The identifier of the Check Deposit you wish to reject.
         #
-        # @param check_deposit_id [String]
-        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+        # @param params [Increase::Models::Simulations::CheckDepositRejectParams, Hash{Symbol=>Object}] .
+        #
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::CheckDeposit]
         #
@@ -28,10 +29,11 @@ module Increase
         # Simulates the return of a [Check Deposit](#check-deposits). This Check Deposit
         #   must first have a `status` of `submitted`.
         #
-        # @overload return_(check_deposit_id, request_options: {})
+        # @param check_deposit_id [String] The identifier of the Check Deposit you wish to return.
         #
-        # @param check_deposit_id [String]
-        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+        # @param params [Increase::Models::Simulations::CheckDepositReturnParams, Hash{Symbol=>Object}] .
+        #
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::CheckDeposit]
         #
@@ -48,10 +50,11 @@ module Increase
         # Simulates the submission of a [Check Deposit](#check-deposits) to the Federal
         #   Reserve. This Check Deposit must first have a `status` of `pending`.
         #
-        # @overload submit(check_deposit_id, request_options: {})
+        # @param check_deposit_id [String] The identifier of the Check Deposit you wish to submit.
         #
-        # @param check_deposit_id [String]
-        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+        # @param params [Increase::Models::Simulations::CheckDepositSubmitParams, Hash{Symbol=>Object}] .
+        #
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::CheckDeposit]
         #

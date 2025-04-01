@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::InboundACHTransfers#retrieve
     class InboundACHTransfer < Increase::BaseModel
       # @!attribute id
       #   The inbound ACH transfer's identifier.

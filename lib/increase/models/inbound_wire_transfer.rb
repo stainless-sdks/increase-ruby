@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::InboundWireTransfers#retrieve
     class InboundWireTransfer < Increase::BaseModel
       # @!attribute id
       #   The inbound wire transfer's identifier.
