@@ -38,7 +38,7 @@ module Increase
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundCheckDepositReturnParams::Reason) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::InboundCheckDepositReturnParams::Reason::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Increase::Models::InboundCheckDepositReturnParams::Reason::TaggedSymbol) }
 
         # The check was altered or fictitious.
         ALTERED_OR_FICTITIOUS =

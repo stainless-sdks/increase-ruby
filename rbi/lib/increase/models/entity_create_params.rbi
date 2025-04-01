@@ -148,7 +148,8 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::Structure) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::Structure::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::EntityCreateParams::Structure::TaggedSymbol) }
 
         # A corporation.
         CORPORATION = T.let(:corporation, Increase::Models::EntityCreateParams::Structure::TaggedSymbol)
@@ -651,6 +652,7 @@ module Increase
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                     )
                   end
@@ -839,7 +841,13 @@ module Increase
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::TaggedSymbol
+                )
+              end
 
             # A person with 25% or greater direct or indirect ownership of the entity.
             OWNERSHIP =
@@ -998,7 +1006,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::GovernmentAuthority::Category) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::GovernmentAuthority::Category::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Increase::Models::EntityCreateParams::GovernmentAuthority::Category::TaggedSymbol) }
 
           # The Public Entity is a Municipality.
           MUNICIPALITY =
@@ -1270,6 +1278,7 @@ module Increase
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
                   )
                 end
@@ -1668,7 +1677,13 @@ module Increase
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol
+                )
+              end
 
             # A social security number.
             SOCIAL_SECURITY_NUMBER =
@@ -1885,7 +1900,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::TaggedSymbol) }
 
           # Alloy. See https://alloy.com for more information.
           ALLOY = T.let(:alloy, Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::TaggedSymbol)
@@ -2053,7 +2068,7 @@ module Increase
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::Trust::Category) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::Trust::Category::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Increase::Models::EntityCreateParams::Trust::Category::TaggedSymbol) }
 
           # The trust is revocable by the grantor.
           REVOCABLE = T.let(:revocable, Increase::Models::EntityCreateParams::Trust::Category::TaggedSymbol)
@@ -2113,7 +2128,7 @@ module Increase
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::Trust::Trustee::Structure) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::Trust::Trustee::Structure::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Increase::Models::EntityCreateParams::Trust::Trustee::Structure::TaggedSymbol) }
 
             # The trustee is an individual.
             INDIVIDUAL =
@@ -2374,6 +2389,7 @@ module Increase
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
                     )
                   end
@@ -2775,7 +2791,13 @@ module Increase
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method) }
               OrSymbol =
-                T.type_alias { T.any(Symbol, Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol) }
+                T.type_alias do
+                  T.any(
+                    Symbol,
+                    String,
+                    Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol
+                  )
+                end
 
               # A social security number.
               SOCIAL_SECURITY_NUMBER =

@@ -64,7 +64,7 @@ module Increase
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EntitySupplementalDocument::Type) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol) }
 
         ENTITY_SUPPLEMENTAL_DOCUMENT =
           T.let(:entity_supplemental_document, Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol)

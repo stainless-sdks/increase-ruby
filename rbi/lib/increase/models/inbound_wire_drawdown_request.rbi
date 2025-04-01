@@ -201,7 +201,7 @@ module Increase
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundWireDrawdownRequest::Type) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol) }
 
         INBOUND_WIRE_DRAWDOWN_REQUEST =
           T.let(:inbound_wire_drawdown_request, Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol)

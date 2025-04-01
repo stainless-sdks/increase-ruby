@@ -140,7 +140,7 @@ module Increase
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountNumber::InboundACH::DebitStatus) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::AccountNumber::InboundACH::DebitStatus::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Increase::Models::AccountNumber::InboundACH::DebitStatus::TaggedSymbol) }
 
           # ACH Debits are allowed.
           ALLOWED = T.let(:allowed, Increase::Models::AccountNumber::InboundACH::DebitStatus::TaggedSymbol)
@@ -175,7 +175,7 @@ module Increase
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountNumber::InboundChecks::Status) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::AccountNumber::InboundChecks::Status::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Increase::Models::AccountNumber::InboundChecks::Status::TaggedSymbol) }
 
           # Checks with this Account Number will be processed even if they are not associated with a Check Transfer.
           ALLOWED = T.let(:allowed, Increase::Models::AccountNumber::InboundChecks::Status::TaggedSymbol)
@@ -195,7 +195,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountNumber::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::AccountNumber::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::AccountNumber::Status::TaggedSymbol) }
 
         # The account number is active.
         ACTIVE = T.let(:active, Increase::Models::AccountNumber::Status::TaggedSymbol)
@@ -217,7 +217,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountNumber::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::AccountNumber::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::AccountNumber::Type::TaggedSymbol) }
 
         ACCOUNT_NUMBER = T.let(:account_number, Increase::Models::AccountNumber::Type::TaggedSymbol)
 

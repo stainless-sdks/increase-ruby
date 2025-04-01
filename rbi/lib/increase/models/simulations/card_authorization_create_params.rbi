@@ -230,7 +230,13 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
+              )
+            end
 
           # The account has been closed.
           ACCOUNT_CLOSED =
@@ -369,7 +375,13 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::Direction) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::Direction::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Increase::Models::Simulations::CardAuthorizationCreateParams::Direction::TaggedSymbol
+              )
+            end
 
           # A regular card authorization where funds are debited from the cardholder.
           SETTLEMENT =
@@ -475,6 +487,7 @@ module Increase
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
                 end

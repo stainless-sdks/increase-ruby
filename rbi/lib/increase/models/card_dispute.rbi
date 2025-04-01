@@ -233,7 +233,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardDispute::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CardDispute::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::CardDispute::Status::TaggedSymbol) }
 
         # The Card Dispute is pending review.
         PENDING_REVIEWING = T.let(:pending_reviewing, Increase::Models::CardDispute::Status::TaggedSymbol)
@@ -265,7 +265,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardDispute::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CardDispute::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::CardDispute::Type::TaggedSymbol) }
 
         CARD_DISPUTE = T.let(:card_dispute, Increase::Models::CardDispute::Type::TaggedSymbol)
 

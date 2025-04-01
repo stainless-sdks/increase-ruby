@@ -72,7 +72,7 @@ module Increase
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RoutingNumberListResponse::ACHTransfers) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::RoutingNumberListResponse::ACHTransfers::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Increase::Models::RoutingNumberListResponse::ACHTransfers::TaggedSymbol) }
 
         # The routing number can receive this transfer type.
         SUPPORTED = T.let(:supported, Increase::Models::RoutingNumberListResponse::ACHTransfers::TaggedSymbol)
@@ -93,7 +93,13 @@ module Increase
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers::TaggedSymbol) }
+          T.type_alias do
+            T.any(
+              Symbol,
+              String,
+              Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers::TaggedSymbol
+            )
+          end
 
         # The routing number can receive this transfer type.
         SUPPORTED =
@@ -121,7 +127,7 @@ module Increase
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RoutingNumberListResponse::Type) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::RoutingNumberListResponse::Type::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Increase::Models::RoutingNumberListResponse::Type::TaggedSymbol) }
 
         ROUTING_NUMBER = T.let(:routing_number, Increase::Models::RoutingNumberListResponse::Type::TaggedSymbol)
 
@@ -136,7 +142,7 @@ module Increase
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RoutingNumberListResponse::WireTransfers) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::RoutingNumberListResponse::WireTransfers::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Increase::Models::RoutingNumberListResponse::WireTransfers::TaggedSymbol) }
 
         # The routing number can receive this transfer type.
         SUPPORTED = T.let(:supported, Increase::Models::RoutingNumberListResponse::WireTransfers::TaggedSymbol)

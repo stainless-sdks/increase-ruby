@@ -150,7 +150,13 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::TaggedSymbol
+              )
+            end
 
           # Approve the authentication attempt without triggering a challenge.
           APPROVE =
@@ -218,6 +224,7 @@ module Increase
             T.type_alias do
               T.any(
                 Symbol,
+                String,
                 Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::TaggedSymbol
               )
             end
@@ -300,7 +307,13 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::TaggedSymbol
+              )
+            end
 
           # Approve the authorization.
           APPROVE =
@@ -331,6 +344,7 @@ module Increase
             T.type_alias do
               T.any(
                 Symbol,
+                String,
                 Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
               )
             end
@@ -444,6 +458,7 @@ module Increase
             T.type_alias do
               T.any(
                 Symbol,
+                String,
                 Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::TaggedSymbol
               )
             end

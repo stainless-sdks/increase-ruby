@@ -77,7 +77,7 @@ module Increase
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountCreateParams::AccountHolder) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol) }
 
         # The External Account is owned by a business.
         BUSINESS = T.let(:business, Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol)
@@ -100,7 +100,7 @@ module Increase
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountCreateParams::Funding) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol) }
 
         # A checking account.
         CHECKING = T.let(:checking, Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol)

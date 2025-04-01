@@ -438,7 +438,8 @@ module Increase
           extend Increase::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::Addenda::Category) }
-          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::Addenda::Category::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::ACHTransfer::Addenda::Category::TaggedSymbol) }
 
           # Unstructured `payment_related_information` passed through with the transfer.
           FREEFORM = T.let(:freeform, Increase::Models::ACHTransfer::Addenda::Category::TaggedSymbol)
@@ -671,7 +672,7 @@ module Increase
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::CreatedBy::Category) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::CreatedBy::Category::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Increase::Models::ACHTransfer::CreatedBy::Category::TaggedSymbol) }
 
           # An API key. Details will be under the `api_key` object.
           API_KEY = T.let(:api_key, Increase::Models::ACHTransfer::CreatedBy::Category::TaggedSymbol)
@@ -725,7 +726,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::Currency) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::Currency::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::ACHTransfer::Currency::TaggedSymbol) }
 
         # Canadian Dollar (CAD)
         CAD = T.let(:CAD, Increase::Models::ACHTransfer::Currency::TaggedSymbol)
@@ -757,7 +758,7 @@ module Increase
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::DestinationAccountHolder) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::DestinationAccountHolder::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Increase::Models::ACHTransfer::DestinationAccountHolder::TaggedSymbol) }
 
         # The External Account is owned by a business.
         BUSINESS = T.let(:business, Increase::Models::ACHTransfer::DestinationAccountHolder::TaggedSymbol)
@@ -778,7 +779,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::Funding) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::Funding::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::ACHTransfer::Funding::TaggedSymbol) }
 
         # A checking account.
         CHECKING = T.let(:checking, Increase::Models::ACHTransfer::Funding::TaggedSymbol)
@@ -895,7 +896,7 @@ module Increase
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::InboundFundsHold::Currency) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::InboundFundsHold::Currency::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Increase::Models::ACHTransfer::InboundFundsHold::Currency::TaggedSymbol) }
 
           # Canadian Dollar (CAD)
           CAD = T.let(:CAD, Increase::Models::ACHTransfer::InboundFundsHold::Currency::TaggedSymbol)
@@ -926,7 +927,7 @@ module Increase
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::InboundFundsHold::Status) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::InboundFundsHold::Status::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Increase::Models::ACHTransfer::InboundFundsHold::Status::TaggedSymbol) }
 
           # Funds are still being held.
           HELD = T.let(:held, Increase::Models::ACHTransfer::InboundFundsHold::Status::TaggedSymbol)
@@ -946,7 +947,7 @@ module Increase
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::InboundFundsHold::Type) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::InboundFundsHold::Type::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Increase::Models::ACHTransfer::InboundFundsHold::Type::TaggedSymbol) }
 
           INBOUND_FUNDS_HOLD =
             T.let(:inbound_funds_hold, Increase::Models::ACHTransfer::InboundFundsHold::Type::TaggedSymbol)
@@ -962,7 +963,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::Network) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::Network::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::ACHTransfer::Network::TaggedSymbol) }
 
         ACH = T.let(:ach, Increase::Models::ACHTransfer::Network::TaggedSymbol)
 
@@ -1022,7 +1023,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol) }
 
           # The account number was incorrect.
           INCORRECT_ACCOUNT_NUMBER =
@@ -1210,7 +1211,13 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol
+              )
+            end
 
           # The chosen effective date will be the same as the ACH processing date on which the transfer is submitted.
           # This is necessary, but not sufficient for the transfer to be settled same-day:
@@ -1310,7 +1317,7 @@ module Increase
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::Return::ReturnReasonCode) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol) }
 
           # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
           INSUFFICIENT_FUND =
@@ -1727,7 +1734,7 @@ module Increase
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::StandardEntryClassCode) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::StandardEntryClassCode::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Increase::Models::ACHTransfer::StandardEntryClassCode::TaggedSymbol) }
 
         # Corporate Credit and Debit (CCD).
         CORPORATE_CREDIT_OR_DEBIT =
@@ -1758,7 +1765,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::ACHTransfer::Status::TaggedSymbol) }
 
         # The transfer is pending approval.
         PENDING_APPROVAL = T.let(:pending_approval, Increase::Models::ACHTransfer::Status::TaggedSymbol)
@@ -1874,7 +1881,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule::TaggedSymbol) }
 
           # The transfer is expected to settle same-day.
           SAME_DAY =
@@ -1899,7 +1906,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::ACHTransfer::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::ACHTransfer::Type::TaggedSymbol) }
 
         ACH_TRANSFER = T.let(:ach_transfer, Increase::Models::ACHTransfer::Type::TaggedSymbol)
 
