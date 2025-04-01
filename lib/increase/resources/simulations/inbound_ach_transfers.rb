@@ -15,34 +15,20 @@ module Increase
         #   [Declined Transaction](#declined-transactions) depending on whether or not the
         #   transfer is allowed.
         #
-        # @param params [Increase::Models::Simulations::InboundACHTransferCreateParams, Hash{Symbol=>Object}] .
+        # @overload create(account_number_id:, amount:, company_descriptive_date: nil, company_discretionary_data: nil, company_entry_description: nil, company_id: nil, company_name: nil, receiver_id_number: nil, receiver_name: nil, resolve_at: nil, standard_entry_class_code: nil, request_options: {})
         #
-        #   @option params [String] :account_number_id The identifier of the Account Number the inbound ACH Transfer is for.
-        #
-        #   @option params [Integer] :amount The transfer amount in cents. A positive amount originates a credit transfer
-        #     pushing funds to the receiving account. A negative amount originates a debit
-        #     transfer pulling funds from the receiving account.
-        #
-        #   @option params [String] :company_descriptive_date The description of the date of the transfer.
-        #
-        #   @option params [String] :company_discretionary_data Data associated with the transfer set by the sender.
-        #
-        #   @option params [String] :company_entry_description The description of the transfer set by the sender.
-        #
-        #   @option params [String] :company_id The sender's company ID.
-        #
-        #   @option params [String] :company_name The name of the sender.
-        #
-        #   @option params [String] :receiver_id_number The ID of the receiver of the transfer.
-        #
-        #   @option params [String] :receiver_name The name of the receiver of the transfer.
-        #
-        #   @option params [Time] :resolve_at The time at which the transfer should be resolved. If not provided will resolve
-        #     immediately.
-        #
-        #   @option params [Symbol, Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode] :standard_entry_class_code The standard entry class code for the transfer.
-        #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param account_number_id [String]
+        # @param amount [Integer]
+        # @param company_descriptive_date [String]
+        # @param company_discretionary_data [String]
+        # @param company_entry_description [String]
+        # @param company_id [String]
+        # @param company_name [String]
+        # @param receiver_id_number [String]
+        # @param receiver_name [String]
+        # @param resolve_at [Time]
+        # @param standard_entry_class_code [Symbol, Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode]
+        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::InboundACHTransfer]
         #

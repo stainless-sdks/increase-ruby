@@ -7,18 +7,12 @@ module Increase
         # Simulates the increment of an authorization by a card acquirer. An authorization
         #   can be incremented multiple times.
         #
-        # @param params [Increase::Models::Simulations::CardIncrementCreateParams, Hash{Symbol=>Object}] .
+        # @overload create(amount:, card_payment_id:, event_subscription_id: nil, request_options: {})
         #
-        #   @option params [Integer] :amount The amount of the increment in minor units in the card authorization's currency.
-        #
-        #   @option params [String] :card_payment_id The identifier of the Card Payment to create a increment on.
-        #
-        #   @option params [String] :event_subscription_id The identifier of the Event Subscription to use. If provided, will override the
-        #     default real time event subscription. Because you can only create one real time
-        #     decision event subscription, you can use this field to route events to any
-        #     specified event subscription for testing purposes.
-        #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param amount [Integer]
+        # @param card_payment_id [String]
+        # @param event_subscription_id [String]
+        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::CardPayment]
         #

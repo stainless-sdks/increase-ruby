@@ -11,11 +11,10 @@ module Increase
         #   Reserve, this endpoint allows you to skip that delay and add the acknowledgment
         #   subresource to the ACH Transfer.
         #
-        # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to become acknowledged.
+        # @overload acknowledge(ach_transfer_id, request_options: {})
         #
-        # @param params [Increase::Models::Simulations::ACHTransferAcknowledgeParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param ach_transfer_id [String]
+        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::ACHTransfer]
         #
@@ -32,16 +31,12 @@ module Increase
         # Simulates receiving a Notification of Change for an
         #   [ACH Transfer](#ach-transfers).
         #
-        # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to create a notification of change
-        #   for.
+        # @overload create_notification_of_change(ach_transfer_id, change_code:, corrected_data:, request_options: {})
         #
-        # @param params [Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Symbol, Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode] :change_code The reason for the notification of change.
-        #
-        #   @option params [String] :corrected_data The corrected data for the notification of change (e.g., a new routing number).
-        #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param ach_transfer_id [String]
+        # @param change_code [Symbol, Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode]
+        # @param corrected_data [String]
+        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::ACHTransfer]
         #
@@ -62,14 +57,11 @@ module Increase
         #   due to an error condition. This will also create a Transaction to account for
         #   the returned funds. This transfer must first have a `status` of `submitted`.
         #
-        # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to return.
+        # @overload return_(ach_transfer_id, reason: nil, request_options: {})
         #
-        # @param params [Increase::Models::Simulations::ACHTransferReturnParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Symbol, Increase::Models::Simulations::ACHTransferReturnParams::Reason] :reason The reason why the Federal Reserve or destination bank returned this transfer.
-        #     Defaults to `no_account`.
-        #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param ach_transfer_id [String]
+        # @param reason [Symbol, Increase::Models::Simulations::ACHTransferReturnParams::Reason]
+        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::ACHTransfer]
         #
@@ -92,11 +84,10 @@ module Increase
         #   simulation the transfer will eventually settle on its own following the same
         #   Federal Reserve timeline as in production.
         #
-        # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to become settled.
+        # @overload settle(ach_transfer_id, request_options: {})
         #
-        # @param params [Increase::Models::Simulations::ACHTransferSettleParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param ach_transfer_id [String]
+        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::ACHTransfer]
         #
@@ -117,11 +108,10 @@ module Increase
         #   not submitted to the Federal Reserve, this endpoint allows you to skip that
         #   delay and transition the ACH Transfer to a status of `submitted`.
         #
-        # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to submit.
+        # @overload submit(ach_transfer_id, request_options: {})
         #
-        # @param params [Increase::Models::Simulations::ACHTransferSubmitParams, Hash{Symbol=>Object}] .
-        #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param ach_transfer_id [String]
+        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::ACHTransfer]
         #

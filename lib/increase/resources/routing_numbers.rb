@@ -8,16 +8,12 @@ module Increase
       #   identify a bank, this will always return 0 or 1 entry. In Sandbox, the only
       #   valid routing number for this method is 110000000.
       #
-      # @param params [Increase::Models::RoutingNumberListParams, Hash{Symbol=>Object}] .
+      # @overload list(routing_number:, cursor: nil, limit: nil, request_options: {})
       #
-      #   @option params [String] :routing_number Filter financial institutions by routing number.
-      #
-      #   @option params [String] :cursor Return the page of entries after this one.
-      #
-      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #     objects.
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param routing_number [String]
+      # @param cursor [String]
+      # @param limit [Integer]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Page<Increase::Models::RoutingNumberListResponse>]
       #

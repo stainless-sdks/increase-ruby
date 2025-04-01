@@ -5,11 +5,10 @@ module Increase
     class IntrafiBalances
       # Get IntraFi balances by bank
       #
-      # @param account_id [String] The identifier of the Account to get balances for.
+      # @overload intrafi_balance(account_id, request_options: {})
       #
-      # @param params [Increase::Models::IntrafiBalanceIntrafiBalanceParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param account_id [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::IntrafiBalance]
       #

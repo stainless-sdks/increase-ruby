@@ -5,27 +5,18 @@ module Increase
     class DigitalCardProfiles
       # Create a Digital Card Profile
       #
-      # @param params [Increase::Models::DigitalCardProfileCreateParams, Hash{Symbol=>Object}] .
+      # @overload create(app_icon_file_id:, background_image_file_id:, card_description:, description:, issuer_name:, contact_email: nil, contact_phone: nil, contact_website: nil, text_color: nil, request_options: {})
       #
-      #   @option params [String] :app_icon_file_id The identifier of the File containing the card's icon image.
-      #
-      #   @option params [String] :background_image_file_id The identifier of the File containing the card's front image.
-      #
-      #   @option params [String] :card_description A user-facing description for the card itself.
-      #
-      #   @option params [String] :description A description you can use to identify the Card Profile.
-      #
-      #   @option params [String] :issuer_name A user-facing description for whoever is issuing the card.
-      #
-      #   @option params [String] :contact_email An email address the user can contact to receive support for their card.
-      #
-      #   @option params [String] :contact_phone A phone number the user can contact to receive support for their card.
-      #
-      #   @option params [String] :contact_website A website the user can visit to view and receive support for their card.
-      #
-      #   @option params [Increase::Models::DigitalCardProfileCreateParams::TextColor] :text_color The Card's text color, specified as an RGB triple. The default is white.
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param app_icon_file_id [String]
+      # @param background_image_file_id [String]
+      # @param card_description [String]
+      # @param description [String]
+      # @param issuer_name [String]
+      # @param contact_email [String]
+      # @param contact_phone [String]
+      # @param contact_website [String]
+      # @param text_color [Increase::Models::DigitalCardProfileCreateParams::TextColor]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::DigitalCardProfile]
       #
@@ -43,11 +34,10 @@ module Increase
 
       # Retrieve a Digital Card Profile
       #
-      # @param digital_card_profile_id [String] The identifier of the Digital Card Profile.
+      # @overload retrieve(digital_card_profile_id, request_options: {})
       #
-      # @param params [Increase::Models::DigitalCardProfileRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param digital_card_profile_id [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::DigitalCardProfile]
       #
@@ -63,21 +53,13 @@ module Increase
 
       # List Card Profiles
       #
-      # @param params [Increase::Models::DigitalCardProfileListParams, Hash{Symbol=>Object}] .
+      # @overload list(cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
       #
-      #   @option params [String] :cursor Return the page of entries after this one.
-      #
-      #   @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
-      #     that object. This value is unique across Increase and is used to ensure that a
-      #     request is only processed once. Learn more about
-      #     [idempotency](https://increase.com/documentation/idempotency-keys).
-      #
-      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #     objects.
-      #
-      #   @option params [Increase::Models::DigitalCardProfileListParams::Status] :status
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param cursor [String]
+      # @param idempotency_key [String]
+      # @param limit [Integer]
+      # @param status [Increase::Models::DigitalCardProfileListParams::Status]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Page<Increase::Models::DigitalCardProfile>]
       #
@@ -96,11 +78,10 @@ module Increase
 
       # Archive a Digital Card Profile
       #
-      # @param digital_card_profile_id [String] The identifier of the Digital Card Profile to archive.
+      # @overload archive(digital_card_profile_id, request_options: {})
       #
-      # @param params [Increase::Models::DigitalCardProfileArchiveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param digital_card_profile_id [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::DigitalCardProfile]
       #
@@ -116,29 +97,19 @@ module Increase
 
       # Clones a Digital Card Profile
       #
-      # @param digital_card_profile_id [String] The identifier of the Digital Card Profile to clone.
+      # @overload clone_(digital_card_profile_id, app_icon_file_id: nil, background_image_file_id: nil, card_description: nil, contact_email: nil, contact_phone: nil, contact_website: nil, description: nil, issuer_name: nil, text_color: nil, request_options: {})
       #
-      # @param params [Increase::Models::DigitalCardProfileCloneParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [String] :app_icon_file_id The identifier of the File containing the card's icon image.
-      #
-      #   @option params [String] :background_image_file_id The identifier of the File containing the card's front image.
-      #
-      #   @option params [String] :card_description A user-facing description for the card itself.
-      #
-      #   @option params [String] :contact_email An email address the user can contact to receive support for their card.
-      #
-      #   @option params [String] :contact_phone A phone number the user can contact to receive support for their card.
-      #
-      #   @option params [String] :contact_website A website the user can visit to view and receive support for their card.
-      #
-      #   @option params [String] :description A description you can use to identify the Card Profile.
-      #
-      #   @option params [String] :issuer_name A user-facing description for whoever is issuing the card.
-      #
-      #   @option params [Increase::Models::DigitalCardProfileCloneParams::TextColor] :text_color The Card's text color, specified as an RGB triple. The default is white.
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param digital_card_profile_id [String]
+      # @param app_icon_file_id [String]
+      # @param background_image_file_id [String]
+      # @param card_description [String]
+      # @param contact_email [String]
+      # @param contact_phone [String]
+      # @param contact_website [String]
+      # @param description [String]
+      # @param issuer_name [String]
+      # @param text_color [Increase::Models::DigitalCardProfileCloneParams::TextColor]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::DigitalCardProfile]
       #

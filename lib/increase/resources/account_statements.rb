@@ -5,11 +5,10 @@ module Increase
     class AccountStatements
       # Retrieve an Account Statement
       #
-      # @param account_statement_id [String] The identifier of the Account Statement to retrieve.
+      # @overload retrieve(account_statement_id, request_options: {})
       #
-      # @param params [Increase::Models::AccountStatementRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param account_statement_id [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::AccountStatement]
       #
@@ -25,18 +24,13 @@ module Increase
 
       # List Account Statements
       #
-      # @param params [Increase::Models::AccountStatementListParams, Hash{Symbol=>Object}] .
+      # @overload list(account_id: nil, cursor: nil, limit: nil, statement_period_start: nil, request_options: {})
       #
-      #   @option params [String] :account_id Filter Account Statements to those belonging to the specified Account.
-      #
-      #   @option params [String] :cursor Return the page of entries after this one.
-      #
-      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #     objects.
-      #
-      #   @option params [Increase::Models::AccountStatementListParams::StatementPeriodStart] :statement_period_start
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param account_id [String]
+      # @param cursor [String]
+      # @param limit [Integer]
+      # @param statement_period_start [Increase::Models::AccountStatementListParams::StatementPeriodStart]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Page<Increase::Models::AccountStatement>]
       #

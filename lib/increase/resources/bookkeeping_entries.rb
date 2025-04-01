@@ -5,11 +5,10 @@ module Increase
     class BookkeepingEntries
       # Retrieve a Bookkeeping Entry
       #
-      # @param bookkeeping_entry_id [String] The identifier of the Bookkeeping Entry.
+      # @overload retrieve(bookkeeping_entry_id, request_options: {})
       #
-      # @param params [Increase::Models::BookkeepingEntryRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param bookkeeping_entry_id [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::BookkeepingEntry]
       #
@@ -25,16 +24,12 @@ module Increase
 
       # List Bookkeeping Entries
       #
-      # @param params [Increase::Models::BookkeepingEntryListParams, Hash{Symbol=>Object}] .
+      # @overload list(account_id: nil, cursor: nil, limit: nil, request_options: {})
       #
-      #   @option params [String] :account_id The identifier for the Bookkeeping Account to filter by.
-      #
-      #   @option params [String] :cursor Return the page of entries after this one.
-      #
-      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #     objects.
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param account_id [String]
+      # @param cursor [String]
+      # @param limit [Integer]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Page<Increase::Models::BookkeepingEntry>]
       #

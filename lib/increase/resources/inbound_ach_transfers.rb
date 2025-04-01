@@ -5,11 +5,10 @@ module Increase
     class InboundACHTransfers
       # Retrieve an Inbound ACH Transfer
       #
-      # @param inbound_ach_transfer_id [String] The identifier of the Inbound ACH Transfer to get details for.
+      # @overload retrieve(inbound_ach_transfer_id, request_options: {})
       #
-      # @param params [Increase::Models::InboundACHTransferRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param inbound_ach_transfer_id [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::InboundACHTransfer]
       #
@@ -25,22 +24,15 @@ module Increase
 
       # List Inbound ACH Transfers
       #
-      # @param params [Increase::Models::InboundACHTransferListParams, Hash{Symbol=>Object}] .
+      # @overload list(account_id: nil, account_number_id: nil, created_at: nil, cursor: nil, limit: nil, status: nil, request_options: {})
       #
-      #   @option params [String] :account_id Filter Inbound ACH Transfers to ones belonging to the specified Account.
-      #
-      #   @option params [String] :account_number_id Filter Inbound ACH Transfers to ones belonging to the specified Account Number.
-      #
-      #   @option params [Increase::Models::InboundACHTransferListParams::CreatedAt] :created_at
-      #
-      #   @option params [String] :cursor Return the page of entries after this one.
-      #
-      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #     objects.
-      #
-      #   @option params [Increase::Models::InboundACHTransferListParams::Status] :status
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param account_id [String]
+      # @param account_number_id [String]
+      # @param created_at [Increase::Models::InboundACHTransferListParams::CreatedAt]
+      # @param cursor [String]
+      # @param limit [Integer]
+      # @param status [Increase::Models::InboundACHTransferListParams::Status]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Page<Increase::Models::InboundACHTransfer>]
       #
@@ -59,16 +51,12 @@ module Increase
 
       # Create a notification of change for an Inbound ACH Transfer
       #
-      # @param inbound_ach_transfer_id [String] The identifier of the Inbound ACH Transfer for which to create a notification of
-      #   change.
+      # @overload create_notification_of_change(inbound_ach_transfer_id, updated_account_number: nil, updated_routing_number: nil, request_options: {})
       #
-      # @param params [Increase::Models::InboundACHTransferCreateNotificationOfChangeParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [String] :updated_account_number The updated account number to send in the notification of change.
-      #
-      #   @option params [String] :updated_routing_number The updated routing number to send in the notification of change.
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param inbound_ach_transfer_id [String]
+      # @param updated_account_number [String]
+      # @param updated_routing_number [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::InboundACHTransfer]
       #
@@ -87,15 +75,11 @@ module Increase
 
       # Decline an Inbound ACH Transfer
       #
-      # @param inbound_ach_transfer_id [String] The identifier of the Inbound ACH Transfer to decline.
+      # @overload decline(inbound_ach_transfer_id, reason: nil, request_options: {})
       #
-      # @param params [Increase::Models::InboundACHTransferDeclineParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Symbol, Increase::Models::InboundACHTransferDeclineParams::Reason] :reason The reason why this transfer will be returned. If this parameter is unset, the
-      #     return codes will be `payment_stopped` for debits and
-      #     `credit_entry_refused_by_receiver` for credits.
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param inbound_ach_transfer_id [String]
+      # @param reason [Symbol, Increase::Models::InboundACHTransferDeclineParams::Reason]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::InboundACHTransfer]
       #
@@ -113,15 +97,11 @@ module Increase
 
       # Return an Inbound ACH Transfer
       #
-      # @param inbound_ach_transfer_id [String] The identifier of the Inbound ACH Transfer to return to the originating
-      #   financial institution.
+      # @overload transfer_return(inbound_ach_transfer_id, reason:, request_options: {})
       #
-      # @param params [Increase::Models::InboundACHTransferTransferReturnParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Symbol, Increase::Models::InboundACHTransferTransferReturnParams::Reason] :reason The reason why this transfer will be returned. The most usual return codes are
-      #     `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param inbound_ach_transfer_id [String]
+      # @param reason [Symbol, Increase::Models::InboundACHTransferTransferReturnParams::Reason]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::InboundACHTransfer]
       #

@@ -5,38 +5,22 @@ module Increase
     class ACHPrenotifications
       # Create an ACH Prenotification
       #
-      # @param params [Increase::Models::ACHPrenotificationCreateParams, Hash{Symbol=>Object}] .
+      # @overload create(account_id:, account_number:, routing_number:, addendum: nil, company_descriptive_date: nil, company_discretionary_data: nil, company_entry_description: nil, company_name: nil, credit_debit_indicator: nil, effective_date: nil, individual_id: nil, individual_name: nil, standard_entry_class_code: nil, request_options: {})
       #
-      #   @option params [String] :account_id The Increase identifier for the account that will send the transfer.
-      #
-      #   @option params [String] :account_number The account number for the destination account.
-      #
-      #   @option params [String] :routing_number The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      #     destination account.
-      #
-      #   @option params [String] :addendum Additional information that will be sent to the recipient.
-      #
-      #   @option params [String] :company_descriptive_date The description of the date of the transfer.
-      #
-      #   @option params [String] :company_discretionary_data The data you choose to associate with the transfer.
-      #
-      #   @option params [String] :company_entry_description The description of the transfer you wish to be shown to the recipient.
-      #
-      #   @option params [String] :company_name The name by which the recipient knows you.
-      #
-      #   @option params [Symbol, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator] :credit_debit_indicator Whether the Prenotification is for a future debit or credit.
-      #
-      #   @option params [Date] :effective_date The transfer effective date in
-      #     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
-      #
-      #   @option params [String] :individual_id Your identifier for the transfer recipient.
-      #
-      #   @option params [String] :individual_name The name of the transfer recipient. This value is information and not verified
-      #     by the recipient's bank.
-      #
-      #   @option params [Symbol, Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode] :standard_entry_class_code The Standard Entry Class (SEC) code to use for the ACH Prenotification.
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param account_id [String]
+      # @param account_number [String]
+      # @param routing_number [String]
+      # @param addendum [String]
+      # @param company_descriptive_date [String]
+      # @param company_discretionary_data [String]
+      # @param company_entry_description [String]
+      # @param company_name [String]
+      # @param credit_debit_indicator [Symbol, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator]
+      # @param effective_date [Date]
+      # @param individual_id [String]
+      # @param individual_name [String]
+      # @param standard_entry_class_code [Symbol, Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::ACHPrenotification]
       #
@@ -54,11 +38,10 @@ module Increase
 
       # Retrieve an ACH Prenotification
       #
-      # @param ach_prenotification_id [String] The identifier of the ACH Prenotification to retrieve.
+      # @overload retrieve(ach_prenotification_id, request_options: {})
       #
-      # @param params [Increase::Models::ACHPrenotificationRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param ach_prenotification_id [String]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::ACHPrenotification]
       #
@@ -74,21 +57,13 @@ module Increase
 
       # List ACH Prenotifications
       #
-      # @param params [Increase::Models::ACHPrenotificationListParams, Hash{Symbol=>Object}] .
+      # @overload list(created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, request_options: {})
       #
-      #   @option params [Increase::Models::ACHPrenotificationListParams::CreatedAt] :created_at
-      #
-      #   @option params [String] :cursor Return the page of entries after this one.
-      #
-      #   @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
-      #     that object. This value is unique across Increase and is used to ensure that a
-      #     request is only processed once. Learn more about
-      #     [idempotency](https://increase.com/documentation/idempotency-keys).
-      #
-      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #     objects.
-      #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param created_at [Increase::Models::ACHPrenotificationListParams::CreatedAt]
+      # @param cursor [String]
+      # @param idempotency_key [String]
+      # @param limit [Integer]
+      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Page<Increase::Models::ACHPrenotification>]
       #
