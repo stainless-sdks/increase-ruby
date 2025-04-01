@@ -43,7 +43,7 @@ module Increase
       def retrieve(card_dispute_id, params = {})
         @client.request(
           method: :get,
-          path: ["card_disputes/%0s", card_dispute_id],
+          path: ["card_disputes/%1$s", card_dispute_id],
           model: Increase::Models::CardDispute,
           options: params[:request_options]
         )

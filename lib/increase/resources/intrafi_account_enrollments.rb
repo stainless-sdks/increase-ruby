@@ -37,7 +37,7 @@ module Increase
       def retrieve(intrafi_account_enrollment_id, params = {})
         @client.request(
           method: :get,
-          path: ["intrafi_account_enrollments/%0s", intrafi_account_enrollment_id],
+          path: ["intrafi_account_enrollments/%1$s", intrafi_account_enrollment_id],
           model: Increase::Models::IntrafiAccountEnrollment,
           options: params[:request_options]
         )
@@ -88,7 +88,7 @@ module Increase
       def unenroll(intrafi_account_enrollment_id, params = {})
         @client.request(
           method: :post,
-          path: ["intrafi_account_enrollments/%0s/unenroll", intrafi_account_enrollment_id],
+          path: ["intrafi_account_enrollments/%1$s/unenroll", intrafi_account_enrollment_id],
           model: Increase::Models::IntrafiAccountEnrollment,
           options: params[:request_options]
         )

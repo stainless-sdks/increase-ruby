@@ -15,7 +15,7 @@ module Increase
       def retrieve(oauth_connection_id, params = {})
         @client.request(
           method: :get,
-          path: ["oauth_connections/%0s", oauth_connection_id],
+          path: ["oauth_connections/%1$s", oauth_connection_id],
           model: Increase::Models::OAuthConnection,
           options: params[:request_options]
         )

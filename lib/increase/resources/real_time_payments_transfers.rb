@@ -62,7 +62,7 @@ module Increase
       def retrieve(real_time_payments_transfer_id, params = {})
         @client.request(
           method: :get,
-          path: ["real_time_payments_transfers/%0s", real_time_payments_transfer_id],
+          path: ["real_time_payments_transfers/%1$s", real_time_payments_transfer_id],
           model: Increase::Models::RealTimePaymentsTransfer,
           options: params[:request_options]
         )

@@ -15,7 +15,7 @@ module Increase
       def retrieve(card_purchase_supplement_id, params = {})
         @client.request(
           method: :get,
-          path: ["card_purchase_supplements/%0s", card_purchase_supplement_id],
+          path: ["card_purchase_supplements/%1$s", card_purchase_supplement_id],
           model: Increase::Models::CardPurchaseSupplement,
           options: params[:request_options]
         )

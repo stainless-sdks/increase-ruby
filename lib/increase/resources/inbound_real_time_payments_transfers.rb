@@ -15,7 +15,7 @@ module Increase
       def retrieve(inbound_real_time_payments_transfer_id, params = {})
         @client.request(
           method: :get,
-          path: ["inbound_real_time_payments_transfers/%0s", inbound_real_time_payments_transfer_id],
+          path: ["inbound_real_time_payments_transfers/%1$s", inbound_real_time_payments_transfer_id],
           model: Increase::Models::InboundRealTimePaymentsTransfer,
           options: params[:request_options]
         )

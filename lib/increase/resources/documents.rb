@@ -15,7 +15,7 @@ module Increase
       def retrieve(document_id, params = {})
         @client.request(
           method: :get,
-          path: ["documents/%0s", document_id],
+          path: ["documents/%1$s", document_id],
           model: Increase::Models::Document,
           options: params[:request_options]
         )

@@ -15,7 +15,7 @@ module Increase
       def retrieve(real_time_decision_id, params = {})
         @client.request(
           method: :get,
-          path: ["real_time_decisions/%0s", real_time_decision_id],
+          path: ["real_time_decisions/%1$s", real_time_decision_id],
           model: Increase::Models::RealTimeDecision,
           options: params[:request_options]
         )
@@ -49,7 +49,7 @@ module Increase
         parsed, options = Increase::Models::RealTimeDecisionActionParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["real_time_decisions/%0s/action", real_time_decision_id],
+          path: ["real_time_decisions/%1$s/action", real_time_decision_id],
           body: parsed,
           model: Increase::Models::RealTimeDecision,
           options: options

@@ -62,7 +62,7 @@ module Increase
       def retrieve(ach_prenotification_id, params = {})
         @client.request(
           method: :get,
-          path: ["ach_prenotifications/%0s", ach_prenotification_id],
+          path: ["ach_prenotifications/%1$s", ach_prenotification_id],
           model: Increase::Models::ACHPrenotification,
           options: params[:request_options]
         )
