@@ -51,7 +51,7 @@ module Increase
       def retrieve(digital_card_profile_id, params = {})
         @client.request(
           method: :get,
-          path: ["digital_card_profiles/%0s", digital_card_profile_id],
+          path: ["digital_card_profiles/%1$s", digital_card_profile_id],
           model: Increase::Models::DigitalCardProfile,
           options: params[:request_options]
         )
@@ -100,7 +100,7 @@ module Increase
       def archive(digital_card_profile_id, params = {})
         @client.request(
           method: :post,
-          path: ["digital_card_profiles/%0s/archive", digital_card_profile_id],
+          path: ["digital_card_profiles/%1$s/archive", digital_card_profile_id],
           model: Increase::Models::DigitalCardProfile,
           options: params[:request_options]
         )
@@ -137,7 +137,7 @@ module Increase
         parsed, options = Increase::Models::DigitalCardProfileCloneParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["digital_card_profiles/%0s/clone", digital_card_profile_id],
+          path: ["digital_card_profiles/%1$s/clone", digital_card_profile_id],
           body: parsed,
           model: Increase::Models::DigitalCardProfile,
           options: options

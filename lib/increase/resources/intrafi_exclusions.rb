@@ -37,7 +37,7 @@ module Increase
       def retrieve(intrafi_exclusion_id, params = {})
         @client.request(
           method: :get,
-          path: ["intrafi_exclusions/%0s", intrafi_exclusion_id],
+          path: ["intrafi_exclusions/%1$s", intrafi_exclusion_id],
           model: Increase::Models::IntrafiExclusion,
           options: params[:request_options]
         )
@@ -88,7 +88,7 @@ module Increase
       def archive(intrafi_exclusion_id, params = {})
         @client.request(
           method: :post,
-          path: ["intrafi_exclusions/%0s/archive", intrafi_exclusion_id],
+          path: ["intrafi_exclusions/%1$s/archive", intrafi_exclusion_id],
           model: Increase::Models::IntrafiExclusion,
           options: params[:request_options]
         )

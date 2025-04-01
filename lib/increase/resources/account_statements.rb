@@ -15,7 +15,7 @@ module Increase
       def retrieve(account_statement_id, params = {})
         @client.request(
           method: :get,
-          path: ["account_statements/%0s", account_statement_id],
+          path: ["account_statements/%1$s", account_statement_id],
           model: Increase::Models::AccountStatement,
           options: params[:request_options]
         )

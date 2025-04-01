@@ -48,7 +48,7 @@ module Increase
       def retrieve(card_id, params = {})
         @client.request(
           method: :get,
-          path: ["cards/%0s", card_id],
+          path: ["cards/%1$s", card_id],
           model: Increase::Models::Card,
           options: params[:request_options]
         )
@@ -80,7 +80,7 @@ module Increase
         parsed, options = Increase::Models::CardUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["cards/%0s", card_id],
+          path: ["cards/%1$s", card_id],
           body: parsed,
           model: Increase::Models::Card,
           options: options
@@ -134,7 +134,7 @@ module Increase
       def details(card_id, params = {})
         @client.request(
           method: :get,
-          path: ["cards/%0s/details", card_id],
+          path: ["cards/%1$s/details", card_id],
           model: Increase::Models::CardDetails,
           options: params[:request_options]
         )

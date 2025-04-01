@@ -15,7 +15,7 @@ module Increase
       def retrieve(inbound_check_deposit_id, params = {})
         @client.request(
           method: :get,
-          path: ["inbound_check_deposits/%0s", inbound_check_deposit_id],
+          path: ["inbound_check_deposits/%1$s", inbound_check_deposit_id],
           model: Increase::Models::InboundCheckDeposit,
           options: params[:request_options]
         )
@@ -64,7 +64,7 @@ module Increase
       def decline(inbound_check_deposit_id, params = {})
         @client.request(
           method: :post,
-          path: ["inbound_check_deposits/%0s/decline", inbound_check_deposit_id],
+          path: ["inbound_check_deposits/%1$s/decline", inbound_check_deposit_id],
           model: Increase::Models::InboundCheckDeposit,
           options: params[:request_options]
         )
@@ -85,7 +85,7 @@ module Increase
         parsed, options = Increase::Models::InboundCheckDepositReturnParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["inbound_check_deposits/%0s/return", inbound_check_deposit_id],
+          path: ["inbound_check_deposits/%1$s/return", inbound_check_deposit_id],
           body: parsed,
           model: Increase::Models::InboundCheckDeposit,
           options: options

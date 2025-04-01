@@ -15,7 +15,7 @@ module Increase
       def retrieve(digital_wallet_token_id, params = {})
         @client.request(
           method: :get,
-          path: ["digital_wallet_tokens/%0s", digital_wallet_token_id],
+          path: ["digital_wallet_tokens/%1$s", digital_wallet_token_id],
           model: Increase::Models::DigitalWalletToken,
           options: params[:request_options]
         )

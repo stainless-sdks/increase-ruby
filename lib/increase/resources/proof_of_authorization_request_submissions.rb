@@ -59,7 +59,7 @@ module Increase
         @client.request(
           method: :get,
           path: [
-            "proof_of_authorization_request_submissions/%0s",
+            "proof_of_authorization_request_submissions/%1$s",
             proof_of_authorization_request_submission_id
           ],
           model: Increase::Models::ProofOfAuthorizationRequestSubmission,

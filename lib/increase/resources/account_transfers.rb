@@ -44,7 +44,7 @@ module Increase
       def retrieve(account_transfer_id, params = {})
         @client.request(
           method: :get,
-          path: ["account_transfers/%0s", account_transfer_id],
+          path: ["account_transfers/%1$s", account_transfer_id],
           model: Increase::Models::AccountTransfer,
           options: params[:request_options]
         )
@@ -95,7 +95,7 @@ module Increase
       def approve(account_transfer_id, params = {})
         @client.request(
           method: :post,
-          path: ["account_transfers/%0s/approve", account_transfer_id],
+          path: ["account_transfers/%1$s/approve", account_transfer_id],
           model: Increase::Models::AccountTransfer,
           options: params[:request_options]
         )
@@ -113,7 +113,7 @@ module Increase
       def cancel(account_transfer_id, params = {})
         @client.request(
           method: :post,
-          path: ["account_transfers/%0s/cancel", account_transfer_id],
+          path: ["account_transfers/%1$s/cancel", account_transfer_id],
           model: Increase::Models::AccountTransfer,
           options: params[:request_options]
         )
