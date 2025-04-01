@@ -3,6 +3,7 @@
 module Increase
   module Models
     module Simulations
+      # @see Increase::Resources::Simulations::InboundFundsHolds#release
       class InboundFundsHoldReleaseResponse < Increase::BaseModel
         # @!attribute id
         #   The Inbound Funds Hold identifier.

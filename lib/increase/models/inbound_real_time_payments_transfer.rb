@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::InboundRealTimePaymentsTransfers#retrieve
     class InboundRealTimePaymentsTransfer < Increase::BaseModel
       # @!attribute id
       #   The inbound Real-Time Payments transfer's identifier.

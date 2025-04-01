@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::CardPayments#retrieve
     class CardPayment < Increase::BaseModel
       # @!attribute id
       #   The Card Payment identifier.

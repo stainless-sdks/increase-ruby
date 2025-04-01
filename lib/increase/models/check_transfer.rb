@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::CheckTransfers#create
     class CheckTransfer < Increase::BaseModel
       # @!attribute id
       #   The Check transfer's identifier.

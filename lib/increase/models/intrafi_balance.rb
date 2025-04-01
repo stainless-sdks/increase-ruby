@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::IntrafiBalances#intrafi_balance
     class IntrafiBalance < Increase::BaseModel
       # @!attribute id
       #   The identifier of this balance.

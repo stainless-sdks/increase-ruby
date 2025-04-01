@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::AccountTransfers#create
     class AccountTransfer < Increase::BaseModel
       # @!attribute id
       #   The account transfer's identifier.

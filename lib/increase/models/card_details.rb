@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::Cards#details
     class CardDetails < Increase::BaseModel
       # @!attribute card_id
       #   The identifier for the Card for which sensitive details have been returned.

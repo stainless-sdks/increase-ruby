@@ -3,6 +3,7 @@
 module Increase
   module Models
     module Simulations
+      # @see Increase::Resources::Simulations::DigitalWalletTokenRequests#create
       class DigitalWalletTokenRequestCreateResponse < Increase::BaseModel
         # @!attribute decline_reason
         #   If the simulated tokenization attempt was declined, this field contains details

@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::RealTimeDecisions#retrieve
     class RealTimeDecision < Increase::BaseModel
       # @!attribute id
       #   The Real-Time Decision identifier.
