@@ -5,16 +5,17 @@ module Increase
     class Lockboxes
       # Create a Lockbox
       #
-      # @overload create(account_id:, description: nil, recipient_name: nil, request_options: {})
+      # @param params [Increase::Models::LockboxCreateParams, Hash{Symbol=>Object}] .
       #
-      # @param account_id [String]
-      # @param description [String]
-      # @param recipient_name [String]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      #   @option params [String] :account_id The Account checks sent to this Lockbox should be deposited into.
+      #
+      #   @option params [String] :description The description you choose for the Lockbox, for display purposes.
+      #
+      #   @option params [String] :recipient_name The name of the recipient that will receive mail at this location.
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Lockbox]
-      #
-      # @see Increase::Models::LockboxCreateParams
       def create(params)
         parsed, options = Increase::Models::LockboxCreateParams.dump_request(params)
         @client.request(
@@ -28,14 +29,13 @@ module Increase
 
       # Retrieve a Lockbox
       #
-      # @overload retrieve(lockbox_id, request_options: {})
+      # @param lockbox_id [String] The identifier of the Lockbox to retrieve.
       #
-      # @param lockbox_id [String]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      # @param params [Increase::Models::LockboxRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Lockbox]
-      #
-      # @see Increase::Models::LockboxRetrieveParams
       def retrieve(lockbox_id, params = {})
         @client.request(
           method: :get,
@@ -47,17 +47,19 @@ module Increase
 
       # Update a Lockbox
       #
-      # @overload update(lockbox_id, description: nil, recipient_name: nil, status: nil, request_options: {})
+      # @param lockbox_id [String] The identifier of the Lockbox.
       #
-      # @param lockbox_id [String]
-      # @param description [String]
-      # @param recipient_name [String]
-      # @param status [Symbol, Increase::Models::LockboxUpdateParams::Status]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      # @param params [Increase::Models::LockboxUpdateParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [String] :description The description you choose for the Lockbox.
+      #
+      #   @option params [String] :recipient_name The recipient name you choose for the Lockbox.
+      #
+      #   @option params [Symbol, Increase::Models::LockboxUpdateParams::Status] :status This indicates if checks can be sent to the Lockbox.
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Lockbox]
-      #
-      # @see Increase::Models::LockboxUpdateParams
       def update(lockbox_id, params = {})
         parsed, options = Increase::Models::LockboxUpdateParams.dump_request(params)
         @client.request(
@@ -71,18 +73,25 @@ module Increase
 
       # List Lockboxes
       #
-      # @overload list(account_id: nil, created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, request_options: {})
+      # @param params [Increase::Models::LockboxListParams, Hash{Symbol=>Object}] .
       #
-      # @param account_id [String]
-      # @param created_at [Increase::Models::LockboxListParams::CreatedAt]
-      # @param cursor [String]
-      # @param idempotency_key [String]
-      # @param limit [Integer]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      #   @option params [String] :account_id Filter Lockboxes to those associated with the provided Account.
+      #
+      #   @option params [Increase::Models::LockboxListParams::CreatedAt] :created_at
+      #
+      #   @option params [String] :cursor Return the page of entries after this one.
+      #
+      #   @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
+      #     that object. This value is unique across Increase and is used to ensure that a
+      #     request is only processed once. Learn more about
+      #     [idempotency](https://increase.com/documentation/idempotency-keys).
+      #
+      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::Lockbox>]
-      #
-      # @see Increase::Models::LockboxListParams
       def list(params = {})
         parsed, options = Increase::Models::LockboxListParams.dump_request(params)
         @client.request(
@@ -95,8 +104,6 @@ module Increase
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

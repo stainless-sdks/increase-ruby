@@ -5,14 +5,13 @@ module Increase
     class PendingTransactions
       # Retrieve a Pending Transaction
       #
-      # @overload retrieve(pending_transaction_id, request_options: {})
+      # @param pending_transaction_id [String] The identifier of the Pending Transaction.
       #
-      # @param pending_transaction_id [String]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      # @param params [Increase::Models::PendingTransactionRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::PendingTransaction]
-      #
-      # @see Increase::Models::PendingTransactionRetrieveParams
       def retrieve(pending_transaction_id, params = {})
         @client.request(
           method: :get,
@@ -24,20 +23,26 @@ module Increase
 
       # List Pending Transactions
       #
-      # @overload list(account_id: nil, category: nil, created_at: nil, cursor: nil, limit: nil, route_id: nil, status: nil, request_options: {})
+      # @param params [Increase::Models::PendingTransactionListParams, Hash{Symbol=>Object}] .
       #
-      # @param account_id [String]
-      # @param category [Increase::Models::PendingTransactionListParams::Category]
-      # @param created_at [Increase::Models::PendingTransactionListParams::CreatedAt]
-      # @param cursor [String]
-      # @param limit [Integer]
-      # @param route_id [String]
-      # @param status [Increase::Models::PendingTransactionListParams::Status]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      #   @option params [String] :account_id Filter pending transactions to those belonging to the specified Account.
+      #
+      #   @option params [Increase::Models::PendingTransactionListParams::Category] :category
+      #
+      #   @option params [Increase::Models::PendingTransactionListParams::CreatedAt] :created_at
+      #
+      #   @option params [String] :cursor Return the page of entries after this one.
+      #
+      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
+      #
+      #   @option params [String] :route_id Filter pending transactions to those belonging to the specified Route.
+      #
+      #   @option params [Increase::Models::PendingTransactionListParams::Status] :status
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::PendingTransaction>]
-      #
-      # @see Increase::Models::PendingTransactionListParams
       def list(params = {})
         parsed, options = Increase::Models::PendingTransactionListParams.dump_request(params)
         @client.request(
@@ -50,8 +55,6 @@ module Increase
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

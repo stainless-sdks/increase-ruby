@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::ACHPrenotifications#list
     class ACHPrenotificationListParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

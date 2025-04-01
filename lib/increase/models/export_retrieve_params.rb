@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::Exports#retrieve
     class ExportRetrieveParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

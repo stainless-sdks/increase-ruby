@@ -127,8 +127,6 @@ module Increase
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending
       #   Transaction's currency. This will match the currency on the Pending
       #   Transaction's Account.
-      #
-      # @see Increase::Models::PendingTransaction#currency
       module Currency
         extend Increase::Enum
 
@@ -158,8 +156,6 @@ module Increase
       end
 
       # The type of the route this Pending Transaction came through.
-      #
-      # @see Increase::Models::PendingTransaction#route_type
       module RouteType
         extend Increase::Enum
 
@@ -179,7 +175,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @see Increase::Models::PendingTransaction#source
       class Source < Increase::BaseModel
         # @!attribute account_transfer_instruction
         #   An Account Transfer Instruction object. This field will be present in the JSON
@@ -319,7 +314,6 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @see Increase::Models::PendingTransaction::Source#account_transfer_instruction
         class AccountTransferInstruction < Increase::BaseModel
           # @!attribute amount
           #   The pending amount in the minor unit of the transaction's currency. For dollars,
@@ -356,8 +350,6 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
           #   account currency.
-          #
-          # @see Increase::Models::PendingTransaction::Source::AccountTransferInstruction#currency
           module Currency
             extend Increase::Enum
 
@@ -387,7 +379,6 @@ module Increase
           end
         end
 
-        # @see Increase::Models::PendingTransaction::Source#ach_transfer_instruction
         class ACHTransferInstruction < Increase::BaseModel
           # @!attribute amount
           #   The pending amount in USD cents.
@@ -413,7 +404,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        # @see Increase::Models::PendingTransaction::Source#card_authorization
         class CardAuthorization < Increase::BaseModel
           # @!attribute id
           #   The Card Authorization identifier.
@@ -669,8 +659,6 @@ module Increase
 
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
-          #
-          # @see Increase::Models::PendingTransaction::Source::CardAuthorization#actioner
           module Actioner
             extend Increase::Enum
 
@@ -692,8 +680,6 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
-          #
-          # @see Increase::Models::PendingTransaction::Source::CardAuthorization#currency
           module Currency
             extend Increase::Enum
 
@@ -724,8 +710,6 @@ module Increase
 
           # The direction describes the direction the funds will move, either from the
           #   cardholder to the merchant or from the merchant to the cardholder.
-          #
-          # @see Increase::Models::PendingTransaction::Source::CardAuthorization#direction
           module Direction
             extend Increase::Enum
 
@@ -742,7 +726,6 @@ module Increase
             #   def self.values; end
           end
 
-          # @see Increase::Models::PendingTransaction::Source::CardAuthorization#network_details
           class NetworkDetails < Increase::BaseModel
             # @!attribute category
             #   The payment network used to process this card authorization.
@@ -770,8 +753,6 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
 
             # The payment network used to process this card authorization.
-            #
-            # @see Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails#category
             module Category
               extend Increase::Enum
 
@@ -785,7 +766,6 @@ module Increase
               #   def self.values; end
             end
 
-            # @see Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails#visa
             class Visa < Increase::BaseModel
               # @!attribute electronic_commerce_indicator
               #   For electronic commerce transactions, this identifies the level of security used
@@ -829,8 +809,6 @@ module Increase
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
               #   transactions, identifies the type of mail or telephone order.
-              #
-              # @see Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa#electronic_commerce_indicator
               module ElectronicCommerceIndicator
                 extend Increase::Enum
 
@@ -868,8 +846,6 @@ module Increase
 
               # The method used to enter the cardholder's primary account number and card
               #   expiration date.
-              #
-              # @see Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa#point_of_service_entry_mode
               module PointOfServiceEntryMode
                 extend Increase::Enum
 
@@ -912,8 +888,6 @@ module Increase
 
               # Only present when `actioner: network`. Describes why a card authorization was
               #   approved or declined by Visa through stand-in processing.
-              #
-              # @see Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa#stand_in_processing_reason
               module StandInProcessingReason
                 extend Increase::Enum
 
@@ -949,7 +923,6 @@ module Increase
             end
           end
 
-          # @see Increase::Models::PendingTransaction::Source::CardAuthorization#network_identifiers
           class NetworkIdentifiers < Increase::BaseModel
             # @!attribute retrieval_reference_number
             #   A life-cycle identifier used across e.g., an authorization and a reversal.
@@ -987,8 +960,6 @@ module Increase
 
           # The processing category describes the intent behind the authorization, such as
           #   whether it was used for bill payments or an automatic fuel dispenser.
-          #
-          # @see Increase::Models::PendingTransaction::Source::CardAuthorization#processing_category
           module ProcessingCategory
             extend Increase::Enum
 
@@ -1019,8 +990,6 @@ module Increase
 
           # A constant representing the object's type. For this resource it will always be
           #   `card_authorization`.
-          #
-          # @see Increase::Models::PendingTransaction::Source::CardAuthorization#type
           module Type
             extend Increase::Enum
 
@@ -1033,7 +1002,6 @@ module Increase
             #   def self.values; end
           end
 
-          # @see Increase::Models::PendingTransaction::Source::CardAuthorization#verification
           class Verification < Increase::BaseModel
             # @!attribute card_verification_code
             #   Fields related to verification of the Card Verification Code, a 3-digit code on
@@ -1061,7 +1029,6 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
-            # @see Increase::Models::PendingTransaction::Source::CardAuthorization::Verification#card_verification_code
             class CardVerificationCode < Increase::BaseModel
               # @!attribute result
               #   The result of verifying the Card Verification Code.
@@ -1081,8 +1048,6 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
 
               # The result of verifying the Card Verification Code.
-              #
-              # @see Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode#result
               module Result
                 extend Increase::Enum
 
@@ -1103,7 +1068,6 @@ module Increase
               end
             end
 
-            # @see Increase::Models::PendingTransaction::Source::CardAuthorization::Verification#cardholder_address
             class CardholderAddress < Increase::BaseModel
               # @!attribute actual_line1
               #   Line 1 of the address on file for the cardholder.
@@ -1152,8 +1116,6 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
 
               # The address verification result returned to the card network.
-              #
-              # @see Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress#result
               module Result
                 extend Increase::Enum
 
@@ -1187,8 +1149,6 @@ module Increase
 
         # The type of the resource. We may add additional possible values for this enum
         #   over time; your application should be able to handle such additions gracefully.
-        #
-        # @see Increase::Models::PendingTransaction::Source#category
         module Category
           extend Increase::Enum
 
@@ -1229,7 +1189,6 @@ module Increase
           #   def self.values; end
         end
 
-        # @see Increase::Models::PendingTransaction::Source#check_deposit_instruction
         class CheckDepositInstruction < Increase::BaseModel
           # @!attribute amount
           #   The pending amount in USD cents.
@@ -1281,8 +1240,6 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
-          #
-          # @see Increase::Models::PendingTransaction::Source::CheckDepositInstruction#currency
           module Currency
             extend Increase::Enum
 
@@ -1312,7 +1269,6 @@ module Increase
           end
         end
 
-        # @see Increase::Models::PendingTransaction::Source#check_transfer_instruction
         class CheckTransferInstruction < Increase::BaseModel
           # @!attribute amount
           #   The transfer amount in USD cents.
@@ -1348,8 +1304,6 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
           #   currency.
-          #
-          # @see Increase::Models::PendingTransaction::Source::CheckTransferInstruction#currency
           module Currency
             extend Increase::Enum
 
@@ -1379,7 +1333,6 @@ module Increase
           end
         end
 
-        # @see Increase::Models::PendingTransaction::Source#inbound_funds_hold
         class InboundFundsHold < Increase::BaseModel
           # @!attribute id
           #   The Inbound Funds Hold identifier.
@@ -1483,8 +1436,6 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
           #   currency.
-          #
-          # @see Increase::Models::PendingTransaction::Source::InboundFundsHold#currency
           module Currency
             extend Increase::Enum
 
@@ -1514,8 +1465,6 @@ module Increase
           end
 
           # The status of the hold.
-          #
-          # @see Increase::Models::PendingTransaction::Source::InboundFundsHold#status
           module Status
             extend Increase::Enum
 
@@ -1534,8 +1483,6 @@ module Increase
 
           # A constant representing the object's type. For this resource it will always be
           #   `inbound_funds_hold`.
-          #
-          # @see Increase::Models::PendingTransaction::Source::InboundFundsHold#type
           module Type
             extend Increase::Enum
 
@@ -1549,7 +1496,6 @@ module Increase
           end
         end
 
-        # @see Increase::Models::PendingTransaction::Source#inbound_wire_transfer_reversal
         class InboundWireTransferReversal < Increase::BaseModel
           # @!attribute inbound_wire_transfer_id
           #   The ID of the Inbound Wire Transfer that is being reversed.
@@ -1570,7 +1516,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        # @see Increase::Models::PendingTransaction::Source#real_time_payments_transfer_instruction
         class RealTimePaymentsTransferInstruction < Increase::BaseModel
           # @!attribute amount
           #   The transfer amount in USD cents.
@@ -1598,7 +1543,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        # @see Increase::Models::PendingTransaction::Source#wire_transfer_instruction
         class WireTransferInstruction < Increase::BaseModel
           # @!attribute account_number
           #   The account number for the destination account.
@@ -1649,8 +1593,6 @@ module Increase
 
       # Whether the Pending Transaction has been confirmed and has an associated
       #   Transaction.
-      #
-      # @see Increase::Models::PendingTransaction#status
       module Status
         extend Increase::Enum
 
@@ -1669,8 +1611,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `pending_transaction`.
-      #
-      # @see Increase::Models::PendingTransaction#type
       module Type
         extend Increase::Enum
 

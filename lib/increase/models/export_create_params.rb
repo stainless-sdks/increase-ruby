@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::Exports#create
     class ExportCreateParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter
@@ -162,7 +161,6 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @see Increase::Models::ExportCreateParams::AccountStatementOfx#created_at
         class CreatedAt < Increase::BaseModel
           # @!attribute [r] after
           #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -265,7 +263,6 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @see Increase::Models::ExportCreateParams::BalanceCsv#created_at
         class CreatedAt < Increase::BaseModel
           # @!attribute [r] after
           #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -357,7 +354,6 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @see Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv#created_at
         class CreatedAt < Increase::BaseModel
           # @!attribute [r] after
           #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -437,7 +433,6 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @see Increase::Models::ExportCreateParams::EntityCsv#status
         class Status < Increase::BaseModel
           # @!attribute in_
           #   Entity statuses to filter by. For GET requests, this should be encoded as a
@@ -521,7 +516,6 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @see Increase::Models::ExportCreateParams::TransactionCsv#created_at
         class CreatedAt < Increase::BaseModel
           # @!attribute [r] after
           #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)

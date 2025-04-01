@@ -3,7 +3,6 @@
 module Increase
   module Models
     module Simulations
-      # @see Increase::Resources::Simulations::AccountTransfers#complete
       class AccountTransferCompleteParams < Increase::BaseModel
         # @!parse
         #   extend Increase::Type::RequestParameters::Converter

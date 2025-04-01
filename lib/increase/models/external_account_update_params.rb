@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::ExternalAccounts#update
     class ExternalAccountUpdateParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

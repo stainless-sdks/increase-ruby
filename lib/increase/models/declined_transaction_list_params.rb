@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::DeclinedTransactions#list
     class DeclinedTransactionListParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

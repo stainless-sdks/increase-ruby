@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::CardDisputes#retrieve
     class CardDisputeRetrieveParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

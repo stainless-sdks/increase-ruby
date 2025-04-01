@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::BookkeepingEntrySets#list
     class BookkeepingEntrySetListParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

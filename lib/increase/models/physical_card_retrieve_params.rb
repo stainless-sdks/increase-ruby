@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::PhysicalCards#retrieve
     class PhysicalCardRetrieveParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

@@ -134,8 +134,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # The status of the Card Profile.
-      #
-      # @see Increase::Models::DigitalCardProfile#status
       module Status
         extend Increase::Enum
 
@@ -158,7 +156,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @see Increase::Models::DigitalCardProfile#text_color
       class TextColor < Increase::BaseModel
         # @!attribute blue
         #   The value of the blue channel in the RGB color.
@@ -192,8 +189,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `digital_card_profile`.
-      #
-      # @see Increase::Models::DigitalCardProfile#type
       module Type
         extend Increase::Enum
 

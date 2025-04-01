@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::RealTimePaymentsTransfers#list
     class RealTimePaymentsTransferListParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

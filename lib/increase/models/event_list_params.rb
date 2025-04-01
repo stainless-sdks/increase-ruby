@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::Events#list
     class EventListParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

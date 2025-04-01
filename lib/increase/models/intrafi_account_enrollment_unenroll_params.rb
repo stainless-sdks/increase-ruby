@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::IntrafiAccountEnrollments#unenroll
     class IntrafiAccountEnrollmentUnenrollParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

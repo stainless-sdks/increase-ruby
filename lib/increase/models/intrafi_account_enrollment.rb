@@ -74,8 +74,6 @@ module Increase
 
       # The status of the account in the network. An account takes about one business
       #   day to go from `pending_enrolling` to `enrolled`.
-      #
-      # @see Increase::Models::IntrafiAccountEnrollment#status
       module Status
         extend Increase::Enum
 
@@ -103,8 +101,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `intrafi_account_enrollment`.
-      #
-      # @see Increase::Models::IntrafiAccountEnrollment#type
       module Type
         extend Increase::Enum
 

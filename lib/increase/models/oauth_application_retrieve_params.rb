@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::OAuthApplications#retrieve
     class OAuthApplicationRetrieveParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

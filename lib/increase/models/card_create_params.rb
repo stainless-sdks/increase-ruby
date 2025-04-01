@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::Cards#create
     class CardCreateParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

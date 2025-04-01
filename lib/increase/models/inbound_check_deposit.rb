@@ -226,8 +226,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # The reason for the adjustment.
-        #
-        # @see Increase::Models::InboundCheckDeposit::Adjustment#reason
         module Reason
           extend Increase::Enum
 
@@ -252,8 +250,6 @@ module Increase
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
-      #
-      # @see Increase::Models::InboundCheckDeposit#currency
       module Currency
         extend Increase::Enum
 
@@ -282,7 +278,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @see Increase::Models::InboundCheckDeposit#deposit_return
       class DepositReturn < Increase::BaseModel
         # @!attribute reason
         #   The reason the deposit was returned.
@@ -315,8 +310,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # The reason the deposit was returned.
-        #
-        # @see Increase::Models::InboundCheckDeposit::DepositReturn#reason
         module Reason
           extend Increase::Enum
 
@@ -345,8 +338,6 @@ module Increase
 
       # Whether the details on the check match the recipient name of the check transfer.
       #   This is an optional feature, contact sales to enable.
-      #
-      # @see Increase::Models::InboundCheckDeposit#payee_name_analysis
       module PayeeNameAnalysis
         extend Increase::Enum
 
@@ -367,8 +358,6 @@ module Increase
       end
 
       # The status of the Inbound Check Deposit.
-      #
-      # @see Increase::Models::InboundCheckDeposit#status
       module Status
         extend Increase::Enum
 
@@ -396,8 +385,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_check_deposit`.
-      #
-      # @see Increase::Models::InboundCheckDeposit#type
       module Type
         extend Increase::Enum
 

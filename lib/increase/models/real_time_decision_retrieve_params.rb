@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::RealTimeDecisions#retrieve
     class RealTimeDecisionRetrieveParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

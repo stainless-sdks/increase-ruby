@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::IntrafiAccountEnrollments#create
     class IntrafiAccountEnrollmentCreateParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

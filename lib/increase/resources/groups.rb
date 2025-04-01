@@ -5,13 +5,11 @@ module Increase
     class Groups
       # Returns details for the currently authenticated Group.
       #
-      # @overload retrieve(request_options: {})
+      # @param params [Increase::Models::GroupRetrieveParams, Hash{Symbol=>Object}] .
       #
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Group]
-      #
-      # @see Increase::Models::GroupRetrieveParams
       def retrieve(params = {})
         @client.request(
           method: :get,
@@ -21,8 +19,6 @@ module Increase
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

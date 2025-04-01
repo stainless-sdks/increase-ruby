@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::ACHTransfers#retrieve
     class ACHTransferRetrieveParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

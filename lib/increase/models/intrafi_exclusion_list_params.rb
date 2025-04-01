@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::IntrafiExclusions#list
     class IntrafiExclusionListParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

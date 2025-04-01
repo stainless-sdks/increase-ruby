@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::InboundCheckDeposits#decline
     class InboundCheckDepositDeclineParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

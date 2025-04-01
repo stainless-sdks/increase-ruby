@@ -5,15 +5,15 @@ module Increase
     class IntrafiExclusions
       # Create an IntraFi Exclusion
       #
-      # @overload create(bank_name:, entity_id:, request_options: {})
+      # @param params [Increase::Models::IntrafiExclusionCreateParams, Hash{Symbol=>Object}] .
       #
-      # @param bank_name [String]
-      # @param entity_id [String]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      #   @option params [String] :bank_name The name of the financial institution to be excluded.
+      #
+      #   @option params [String] :entity_id The identifier of the Entity whose deposits will be excluded.
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::IntrafiExclusion]
-      #
-      # @see Increase::Models::IntrafiExclusionCreateParams
       def create(params)
         parsed, options = Increase::Models::IntrafiExclusionCreateParams.dump_request(params)
         @client.request(
@@ -27,14 +27,13 @@ module Increase
 
       # Get an IntraFi Exclusion
       #
-      # @overload retrieve(intrafi_exclusion_id, request_options: {})
+      # @param intrafi_exclusion_id [String] The identifier of the IntraFi Exclusion to retrieve.
       #
-      # @param intrafi_exclusion_id [String]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      # @param params [Increase::Models::IntrafiExclusionRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::IntrafiExclusion]
-      #
-      # @see Increase::Models::IntrafiExclusionRetrieveParams
       def retrieve(intrafi_exclusion_id, params = {})
         @client.request(
           method: :get,
@@ -46,17 +45,23 @@ module Increase
 
       # List IntraFi Exclusions
       #
-      # @overload list(cursor: nil, entity_id: nil, idempotency_key: nil, limit: nil, request_options: {})
+      # @param params [Increase::Models::IntrafiExclusionListParams, Hash{Symbol=>Object}] .
       #
-      # @param cursor [String]
-      # @param entity_id [String]
-      # @param idempotency_key [String]
-      # @param limit [Integer]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      #   @option params [String] :cursor Return the page of entries after this one.
+      #
+      #   @option params [String] :entity_id Filter IntraFi Exclusions for those belonging to the specified Entity.
+      #
+      #   @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
+      #     that object. This value is unique across Increase and is used to ensure that a
+      #     request is only processed once. Learn more about
+      #     [idempotency](https://increase.com/documentation/idempotency-keys).
+      #
+      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::IntrafiExclusion>]
-      #
-      # @see Increase::Models::IntrafiExclusionListParams
       def list(params = {})
         parsed, options = Increase::Models::IntrafiExclusionListParams.dump_request(params)
         @client.request(
@@ -71,14 +76,15 @@ module Increase
 
       # Archive an IntraFi Exclusion
       #
-      # @overload archive(intrafi_exclusion_id, request_options: {})
+      # @param intrafi_exclusion_id [String] The identifier of the IntraFi Exclusion request to archive. It may take 5
+      #   business days for an exclusion removal to be processed. Removing an exclusion
+      #   does not guarantee that funds will be swept to the previously-excluded bank.
       #
-      # @param intrafi_exclusion_id [String]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      # @param params [Increase::Models::IntrafiExclusionArchiveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::IntrafiExclusion]
-      #
-      # @see Increase::Models::IntrafiExclusionArchiveParams
       def archive(intrafi_exclusion_id, params = {})
         @client.request(
           method: :post,
@@ -88,8 +94,6 @@ module Increase
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

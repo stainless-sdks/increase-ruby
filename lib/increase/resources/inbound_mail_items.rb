@@ -5,14 +5,13 @@ module Increase
     class InboundMailItems
       # Retrieve an Inbound Mail Item
       #
-      # @overload retrieve(inbound_mail_item_id, request_options: {})
+      # @param inbound_mail_item_id [String] The identifier of the Inbound Mail Item to retrieve.
       #
-      # @param inbound_mail_item_id [String]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      # @param params [Increase::Models::InboundMailItemRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::InboundMailItem]
-      #
-      # @see Increase::Models::InboundMailItemRetrieveParams
       def retrieve(inbound_mail_item_id, params = {})
         @client.request(
           method: :get,
@@ -24,17 +23,20 @@ module Increase
 
       # List Inbound Mail Items
       #
-      # @overload list(created_at: nil, cursor: nil, limit: nil, lockbox_id: nil, request_options: {})
+      # @param params [Increase::Models::InboundMailItemListParams, Hash{Symbol=>Object}] .
       #
-      # @param created_at [Increase::Models::InboundMailItemListParams::CreatedAt]
-      # @param cursor [String]
-      # @param limit [Integer]
-      # @param lockbox_id [String]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      #   @option params [Increase::Models::InboundMailItemListParams::CreatedAt] :created_at
+      #
+      #   @option params [String] :cursor Return the page of entries after this one.
+      #
+      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
+      #
+      #   @option params [String] :lockbox_id Filter Inbound Mail Items to ones sent to the provided Lockbox.
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::InboundMailItem>]
-      #
-      # @see Increase::Models::InboundMailItemListParams
       def list(params = {})
         parsed, options = Increase::Models::InboundMailItemListParams.dump_request(params)
         @client.request(
@@ -47,8 +49,6 @@ module Increase
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

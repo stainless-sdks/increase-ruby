@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::CheckDeposits#retrieve
     class CheckDepositRetrieveParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

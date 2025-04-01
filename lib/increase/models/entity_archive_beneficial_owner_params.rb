@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::Entities#archive_beneficial_owner
     class EntityArchiveBeneficialOwnerParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

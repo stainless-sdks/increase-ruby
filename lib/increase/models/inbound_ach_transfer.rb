@@ -247,7 +247,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @see Increase::Models::InboundACHTransfer#acceptance
       class Acceptance < Increase::BaseModel
         # @!attribute accepted_at
         #   The time at which the transfer was accepted.
@@ -272,7 +271,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @see Increase::Models::InboundACHTransfer#addenda
       class Addenda < Increase::BaseModel
         # @!attribute category
         #   The type of addendum.
@@ -297,8 +295,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # The type of addendum.
-        #
-        # @see Increase::Models::InboundACHTransfer::Addenda#category
         module Category
           extend Increase::Enum
 
@@ -312,7 +308,6 @@ module Increase
           #   def self.values; end
         end
 
-        # @see Increase::Models::InboundACHTransfer::Addenda#freeform
         class Freeform < Increase::BaseModel
           # @!attribute entries
           #   Each entry represents an addendum received from the originator.
@@ -347,7 +342,6 @@ module Increase
         end
       end
 
-      # @see Increase::Models::InboundACHTransfer#decline
       class Decline < Increase::BaseModel
         # @!attribute declined_at
         #   The time at which the transfer was declined.
@@ -379,8 +373,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # The reason for the transfer decline.
-        #
-        # @see Increase::Models::InboundACHTransfer::Decline#reason
         module Reason
           extend Increase::Enum
 
@@ -446,8 +438,6 @@ module Increase
       end
 
       # The direction of the transfer.
-      #
-      # @see Increase::Models::InboundACHTransfer#direction
       module Direction
         extend Increase::Enum
 
@@ -465,8 +455,6 @@ module Increase
       end
 
       # The settlement schedule the transfer is expected to follow.
-      #
-      # @see Increase::Models::InboundACHTransfer#expected_settlement_schedule
       module ExpectedSettlementSchedule
         extend Increase::Enum
 
@@ -483,7 +471,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @see Increase::Models::InboundACHTransfer#international_addenda
       class InternationalAddenda < Increase::BaseModel
         # @!attribute destination_country_code
         #   The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2
@@ -788,8 +775,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # A description of how the foreign exchange rate was calculated.
-        #
-        # @see Increase::Models::InboundACHTransfer::InternationalAddenda#foreign_exchange_indicator
         module ForeignExchangeIndicator
           extend Increase::Enum
 
@@ -811,8 +796,6 @@ module Increase
 
         # An instruction of how to interpret the `foreign_exchange_reference` field for
         #   this Transaction.
-        #
-        # @see Increase::Models::InboundACHTransfer::InternationalAddenda#foreign_exchange_reference_indicator
         module ForeignExchangeReferenceIndicator
           extend Increase::Enum
 
@@ -833,8 +816,6 @@ module Increase
         end
 
         # The type of transfer. Set by the originator.
-        #
-        # @see Increase::Models::InboundACHTransfer::InternationalAddenda#international_transaction_type_code
         module InternationalTransactionTypeCode
           extend Increase::Enum
 
@@ -907,8 +888,6 @@ module Increase
 
         # An instruction of how to interpret the
         #   `originating_depository_financial_institution_id` field for this Transaction.
-        #
-        # @see Increase::Models::InboundACHTransfer::InternationalAddenda#originating_depository_financial_institution_id_qualifier
         module OriginatingDepositoryFinancialInstitutionIDQualifier
           extend Increase::Enum
 
@@ -930,8 +909,6 @@ module Increase
 
         # An instruction of how to interpret the
         #   `receiving_depository_financial_institution_id` field for this Transaction.
-        #
-        # @see Increase::Models::InboundACHTransfer::InternationalAddenda#receiving_depository_financial_institution_id_qualifier
         module ReceivingDepositoryFinancialInstitutionIDQualifier
           extend Increase::Enum
 
@@ -952,7 +929,6 @@ module Increase
         end
       end
 
-      # @see Increase::Models::InboundACHTransfer#notification_of_change
       class NotificationOfChange < Increase::BaseModel
         # @!attribute updated_account_number
         #   The new account number provided in the notification of change.
@@ -979,8 +955,6 @@ module Increase
       end
 
       # The Standard Entry Class (SEC) code of the transfer.
-      #
-      # @see Increase::Models::InboundACHTransfer#standard_entry_class_code
       module StandardEntryClassCode
         extend Increase::Enum
 
@@ -1040,8 +1014,6 @@ module Increase
       end
 
       # The status of the transfer.
-      #
-      # @see Increase::Models::InboundACHTransfer#status
       module Status
         extend Increase::Enum
 
@@ -1064,7 +1036,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @see Increase::Models::InboundACHTransfer#transfer_return
       class TransferReturn < Increase::BaseModel
         # @!attribute reason
         #   The reason for the transfer return.
@@ -1096,8 +1067,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # The reason for the transfer return.
-        #
-        # @see Increase::Models::InboundACHTransfer::TransferReturn#reason
         module Reason
           extend Increase::Enum
 
@@ -1143,8 +1112,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_ach_transfer`.
-      #
-      # @see Increase::Models::InboundACHTransfer#type
       module Type
         extend Increase::Enum
 

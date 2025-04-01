@@ -5,17 +5,22 @@ module Increase
     class EventSubscriptions
       # Create an Event Subscription
       #
-      # @overload create(url:, oauth_connection_id: nil, selected_event_category: nil, shared_secret: nil, request_options: {})
+      # @param params [Increase::Models::EventSubscriptionCreateParams, Hash{Symbol=>Object}] .
       #
-      # @param url [String]
-      # @param oauth_connection_id [String]
-      # @param selected_event_category [Symbol, Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory]
-      # @param shared_secret [String]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      #   @option params [String] :url The URL you'd like us to send webhooks to.
+      #
+      #   @option params [String] :oauth_connection_id If specified, this subscription will only receive webhooks for Events associated
+      #     with the specified OAuth Connection.
+      #
+      #   @option params [Symbol, Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory] :selected_event_category If specified, this subscription will only receive webhooks for Events with the
+      #     specified `category`.
+      #
+      #   @option params [String] :shared_secret The key that will be used to sign webhooks. If no value is passed, a random
+      #     string will be used as default.
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::EventSubscription]
-      #
-      # @see Increase::Models::EventSubscriptionCreateParams
       def create(params)
         parsed, options = Increase::Models::EventSubscriptionCreateParams.dump_request(params)
         @client.request(
@@ -29,14 +34,13 @@ module Increase
 
       # Retrieve an Event Subscription
       #
-      # @overload retrieve(event_subscription_id, request_options: {})
+      # @param event_subscription_id [String] The identifier of the Event Subscription.
       #
-      # @param event_subscription_id [String]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      # @param params [Increase::Models::EventSubscriptionRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::EventSubscription]
-      #
-      # @see Increase::Models::EventSubscriptionRetrieveParams
       def retrieve(event_subscription_id, params = {})
         @client.request(
           method: :get,
@@ -48,15 +52,15 @@ module Increase
 
       # Update an Event Subscription
       #
-      # @overload update(event_subscription_id, status: nil, request_options: {})
+      # @param event_subscription_id [String] The identifier of the Event Subscription.
       #
-      # @param event_subscription_id [String]
-      # @param status [Symbol, Increase::Models::EventSubscriptionUpdateParams::Status]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      # @param params [Increase::Models::EventSubscriptionUpdateParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Symbol, Increase::Models::EventSubscriptionUpdateParams::Status] :status The status to update the Event Subscription with.
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::EventSubscription]
-      #
-      # @see Increase::Models::EventSubscriptionUpdateParams
       def update(event_subscription_id, params = {})
         parsed, options = Increase::Models::EventSubscriptionUpdateParams.dump_request(params)
         @client.request(
@@ -70,16 +74,21 @@ module Increase
 
       # List Event Subscriptions
       #
-      # @overload list(cursor: nil, idempotency_key: nil, limit: nil, request_options: {})
+      # @param params [Increase::Models::EventSubscriptionListParams, Hash{Symbol=>Object}] .
       #
-      # @param cursor [String]
-      # @param idempotency_key [String]
-      # @param limit [Integer]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      #   @option params [String] :cursor Return the page of entries after this one.
+      #
+      #   @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
+      #     that object. This value is unique across Increase and is used to ensure that a
+      #     request is only processed once. Learn more about
+      #     [idempotency](https://increase.com/documentation/idempotency-keys).
+      #
+      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::EventSubscription>]
-      #
-      # @see Increase::Models::EventSubscriptionListParams
       def list(params = {})
         parsed, options = Increase::Models::EventSubscriptionListParams.dump_request(params)
         @client.request(
@@ -92,8 +101,6 @@ module Increase
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

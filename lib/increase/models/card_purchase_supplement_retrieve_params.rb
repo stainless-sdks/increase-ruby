@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::CardPurchaseSupplements#retrieve
     class CardPurchaseSupplementRetrieveParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

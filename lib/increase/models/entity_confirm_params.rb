@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::Entities#confirm
     class EntityConfirmParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

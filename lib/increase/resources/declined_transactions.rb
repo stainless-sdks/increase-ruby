@@ -5,14 +5,13 @@ module Increase
     class DeclinedTransactions
       # Retrieve a Declined Transaction
       #
-      # @overload retrieve(declined_transaction_id, request_options: {})
+      # @param declined_transaction_id [String] The identifier of the Declined Transaction.
       #
-      # @param declined_transaction_id [String]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      # @param params [Increase::Models::DeclinedTransactionRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::DeclinedTransaction]
-      #
-      # @see Increase::Models::DeclinedTransactionRetrieveParams
       def retrieve(declined_transaction_id, params = {})
         @client.request(
           method: :get,
@@ -24,19 +23,24 @@ module Increase
 
       # List Declined Transactions
       #
-      # @overload list(account_id: nil, category: nil, created_at: nil, cursor: nil, limit: nil, route_id: nil, request_options: {})
+      # @param params [Increase::Models::DeclinedTransactionListParams, Hash{Symbol=>Object}] .
       #
-      # @param account_id [String]
-      # @param category [Increase::Models::DeclinedTransactionListParams::Category]
-      # @param created_at [Increase::Models::DeclinedTransactionListParams::CreatedAt]
-      # @param cursor [String]
-      # @param limit [Integer]
-      # @param route_id [String]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      #   @option params [String] :account_id Filter Declined Transactions to ones belonging to the specified Account.
+      #
+      #   @option params [Increase::Models::DeclinedTransactionListParams::Category] :category
+      #
+      #   @option params [Increase::Models::DeclinedTransactionListParams::CreatedAt] :created_at
+      #
+      #   @option params [String] :cursor Return the page of entries after this one.
+      #
+      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
+      #
+      #   @option params [String] :route_id Filter Declined Transactions to those belonging to the specified route.
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::DeclinedTransaction>]
-      #
-      # @see Increase::Models::DeclinedTransactionListParams
       def list(params = {})
         parsed, options = Increase::Models::DeclinedTransactionListParams.dump_request(params)
         @client.request(
@@ -49,8 +53,6 @@ module Increase
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

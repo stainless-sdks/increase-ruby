@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::InboundACHTransfers#transfer_return
     class InboundACHTransferTransferReturnParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

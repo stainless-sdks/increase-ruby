@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::Programs#retrieve
     class ProgramRetrieveParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

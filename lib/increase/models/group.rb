@@ -52,8 +52,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # If the Group is allowed to create ACH debits.
-      #
-      # @see Increase::Models::Group#ach_debit_status
       module ACHDebitStatus
         extend Increase::Enum
 
@@ -71,8 +69,6 @@ module Increase
       end
 
       # If the Group is activated or not.
-      #
-      # @see Increase::Models::Group#activation_status
       module ActivationStatus
         extend Increase::Enum
 
@@ -91,8 +87,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `group`.
-      #
-      # @see Increase::Models::Group#type
       module Type
         extend Increase::Enum
 

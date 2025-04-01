@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::CheckTransfers#cancel
     class CheckTransferCancelParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

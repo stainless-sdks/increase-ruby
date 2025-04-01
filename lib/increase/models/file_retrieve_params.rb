@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::Files#retrieve
     class FileRetrieveParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

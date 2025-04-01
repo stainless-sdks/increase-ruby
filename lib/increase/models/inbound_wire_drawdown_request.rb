@@ -211,8 +211,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_wire_drawdown_request`.
-      #
-      # @see Increase::Models::InboundWireDrawdownRequest#type
       module Type
         extend Increase::Enum
 

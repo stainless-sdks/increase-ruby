@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::WireTransfers#retrieve
     class WireTransferRetrieveParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

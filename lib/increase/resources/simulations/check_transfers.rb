@@ -9,14 +9,13 @@ module Increase
         #   This transfer must first have a `status` of `pending_approval` or
         #   `pending_submission`.
         #
-        # @overload mail(check_transfer_id, request_options: {})
+        # @param check_transfer_id [String] The identifier of the Check Transfer you wish to mail.
         #
-        # @param check_transfer_id [String]
-        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+        # @param params [Increase::Models::Simulations::CheckTransferMailParams, Hash{Symbol=>Object}] .
+        #
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::CheckTransfer]
-        #
-        # @see Increase::Models::Simulations::CheckTransferMailParams
         def mail(check_transfer_id, params = {})
           @client.request(
             method: :post,
@@ -26,8 +25,6 @@ module Increase
           )
         end
 
-        # @api private
-        #
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client

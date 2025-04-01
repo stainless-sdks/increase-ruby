@@ -5,17 +5,19 @@ module Increase
     class BookkeepingAccounts
       # Create a Bookkeeping Account
       #
-      # @overload create(name:, account_id: nil, compliance_category: nil, entity_id: nil, request_options: {})
+      # @param params [Increase::Models::BookkeepingAccountCreateParams, Hash{Symbol=>Object}] .
       #
-      # @param name [String]
-      # @param account_id [String]
-      # @param compliance_category [Symbol, Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory]
-      # @param entity_id [String]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      #   @option params [String] :name The name you choose for the account.
+      #
+      #   @option params [String] :account_id The entity, if `compliance_category` is `commingled_cash`.
+      #
+      #   @option params [Symbol, Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory] :compliance_category The account compliance category.
+      #
+      #   @option params [String] :entity_id The entity, if `compliance_category` is `customer_balance`.
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::BookkeepingAccount]
-      #
-      # @see Increase::Models::BookkeepingAccountCreateParams
       def create(params)
         parsed, options = Increase::Models::BookkeepingAccountCreateParams.dump_request(params)
         @client.request(
@@ -29,15 +31,15 @@ module Increase
 
       # Update a Bookkeeping Account
       #
-      # @overload update(bookkeeping_account_id, name:, request_options: {})
+      # @param bookkeeping_account_id [String] The bookkeeping account you would like to update.
       #
-      # @param bookkeeping_account_id [String]
-      # @param name [String]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      # @param params [Increase::Models::BookkeepingAccountUpdateParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [String] :name The name you choose for the account.
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::BookkeepingAccount]
-      #
-      # @see Increase::Models::BookkeepingAccountUpdateParams
       def update(bookkeeping_account_id, params)
         parsed, options = Increase::Models::BookkeepingAccountUpdateParams.dump_request(params)
         @client.request(
@@ -51,16 +53,21 @@ module Increase
 
       # List Bookkeeping Accounts
       #
-      # @overload list(cursor: nil, idempotency_key: nil, limit: nil, request_options: {})
+      # @param params [Increase::Models::BookkeepingAccountListParams, Hash{Symbol=>Object}] .
       #
-      # @param cursor [String]
-      # @param idempotency_key [String]
-      # @param limit [Integer]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      #   @option params [String] :cursor Return the page of entries after this one.
+      #
+      #   @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
+      #     that object. This value is unique across Increase and is used to ensure that a
+      #     request is only processed once. Learn more about
+      #     [idempotency](https://increase.com/documentation/idempotency-keys).
+      #
+      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::BookkeepingAccount>]
-      #
-      # @see Increase::Models::BookkeepingAccountListParams
       def list(params = {})
         parsed, options = Increase::Models::BookkeepingAccountListParams.dump_request(params)
         @client.request(
@@ -75,15 +82,15 @@ module Increase
 
       # Retrieve a Bookkeeping Account Balance
       #
-      # @overload balance(bookkeeping_account_id, at_time: nil, request_options: {})
+      # @param bookkeeping_account_id [String] The identifier of the Bookkeeping Account to retrieve.
       #
-      # @param bookkeeping_account_id [String]
-      # @param at_time [Time]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      # @param params [Increase::Models::BookkeepingAccountBalanceParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Time] :at_time The moment to query the balance at. If not set, returns the current balances.
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::BookkeepingBalanceLookup]
-      #
-      # @see Increase::Models::BookkeepingAccountBalanceParams
       def balance(bookkeeping_account_id, params = {})
         parsed, options = Increase::Models::BookkeepingAccountBalanceParams.dump_request(params)
         @client.request(
@@ -95,8 +102,6 @@ module Increase
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
