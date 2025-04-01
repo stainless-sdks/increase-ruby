@@ -389,11 +389,11 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
 
             class Address < Increase::BaseModel
-              # @!attribute city
-              #   The city of the address.
+              # @!attribute country
+              #   The two-letter ISO 3166-1 alpha-2 code for the country of the address.
               #
               #   @return [String]
-              required :city, String
+              required :country, String
 
               # @!attribute line1
               #   The first line of the address. This is usually the street number and street.
@@ -401,18 +401,16 @@ module Increase
               #   @return [String]
               required :line1, String
 
-              # @!attribute state
-              #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-              #     the address.
+              # @!attribute [r] city
+              #   The city, district, town, or village of the address. Required in certain
+              #     countries.
               #
-              #   @return [String]
-              required :state, String
+              #   @return [String, nil]
+              optional :city, String
 
-              # @!attribute zip
-              #   The ZIP code of the address.
-              #
-              #   @return [String]
-              required :zip, String
+              # @!parse
+              #   # @return [String]
+              #   attr_writer :city
 
               # @!attribute [r] line2
               #   The second line of the address. This might be the floor or room number.
@@ -424,17 +422,39 @@ module Increase
               #   # @return [String]
               #   attr_writer :line2
 
+              # @!attribute [r] state
+              #   The two-letter United States Postal Service (USPS) abbreviation for the US
+              #     state, province, or region of the address. Required in certain countries.
+              #
+              #   @return [String, nil]
+              optional :state, String
+
+              # @!parse
+              #   # @return [String]
+              #   attr_writer :state
+
+              # @!attribute [r] zip
+              #   The ZIP or postal code of the address. Required in certain countries.
+              #
+              #   @return [String, nil]
+              optional :zip, String
+
+              # @!parse
+              #   # @return [String]
+              #   attr_writer :zip
+
               # @!parse
               #   # The individual's physical address. Mail receiving locations like PO Boxes and
               #   #   PMB's are disallowed.
               #   #
-              #   # @param city [String]
+              #   # @param country [String]
               #   # @param line1 [String]
+              #   # @param city [String]
+              #   # @param line2 [String]
               #   # @param state [String]
               #   # @param zip [String]
-              #   # @param line2 [String]
               #   #
-              #   def initialize(city:, line1:, state:, zip:, line2: nil, **) = super
+              #   def initialize(country:, line1:, city: nil, line2: nil, state: nil, zip: nil, **) = super
 
               # def initialize: (Hash | Increase::BaseModel) -> void
             end

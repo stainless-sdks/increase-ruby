@@ -417,9 +417,13 @@ module Increase
             end
 
             class Address < Increase::BaseModel
-              # The city of the address.
-              sig { returns(String) }
+              # The city, district, town, or village of the address.
+              sig { returns(T.nilable(String)) }
               attr_accessor :city
+
+              # The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+              sig { returns(String) }
+              attr_accessor :country
 
               # The first line of the address.
               sig { returns(String) }
@@ -429,33 +433,42 @@ module Increase
               sig { returns(T.nilable(String)) }
               attr_accessor :line2
 
-              # The two-letter United States Postal Service (USPS) abbreviation for the state of
-              #   the address.
-              sig { returns(String) }
+              # The two-letter United States Postal Service (USPS) abbreviation for the US
+              #   state, province, or region of the address.
+              sig { returns(T.nilable(String)) }
               attr_accessor :state
 
-              # The ZIP code of the address.
-              sig { returns(String) }
+              # The ZIP or postal code of the address.
+              sig { returns(T.nilable(String)) }
               attr_accessor :zip
 
               # The person's address.
               sig do
-                params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
+                params(
+                  city: T.nilable(String),
+                  country: String,
+                  line1: String,
+                  line2: T.nilable(String),
+                  state: T.nilable(String),
+                  zip: T.nilable(String)
+                )
                   .returns(T.attached_class)
               end
-              def self.new(city:, line1:, line2:, state:, zip:)
+              def self.new(city:, country:, line1:, line2:, state:, zip:)
               end
 
               sig do
-                override.returns(
-                  {
-                    city: String,
-                    line1: String,
-                    line2: T.nilable(String),
-                    state: String,
-                    zip: String
-                  }
-                )
+                override
+                  .returns(
+                    {
+                      city: T.nilable(String),
+                      country: String,
+                      line1: String,
+                      line2: T.nilable(String),
+                      state: T.nilable(String),
+                      zip: T.nilable(String)
+                    }
+                  )
               end
               def to_hash
               end
