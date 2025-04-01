@@ -7,10 +7,12 @@ module Increase
         # Simulates refunding a card transaction. The full value of the original sandbox
         #   transaction is refunded.
         #
-        # @overload create(transaction_id:, request_options: {})
+        # @param params [Increase::Models::Simulations::CardRefundCreateParams, Hash{Symbol=>Object}] .
         #
-        # @param transaction_id [String]
-        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+        #   @option params [String] :transaction_id The identifier for the Transaction to refund. The Transaction's source must have
+        #     a category of card_settlement.
+        #
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::Transaction]
         #

@@ -5,10 +5,11 @@ module Increase
     class Events
       # Retrieve an Event
       #
-      # @overload retrieve(event_id, request_options: {})
+      # @param event_id [String] The identifier of the Event.
       #
-      # @param event_id [String]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      # @param params [Increase::Models::EventRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Event]
       #
@@ -24,14 +25,20 @@ module Increase
 
       # List Events
       #
-      # @overload list(associated_object_id: nil, category: nil, created_at: nil, cursor: nil, limit: nil, request_options: {})
+      # @param params [Increase::Models::EventListParams, Hash{Symbol=>Object}] .
       #
-      # @param associated_object_id [String]
-      # @param category [Increase::Models::EventListParams::Category]
-      # @param created_at [Increase::Models::EventListParams::CreatedAt]
-      # @param cursor [String]
-      # @param limit [Integer]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      #   @option params [String] :associated_object_id Filter Events to those belonging to the object with the provided identifier.
+      #
+      #   @option params [Increase::Models::EventListParams::Category] :category
+      #
+      #   @option params [Increase::Models::EventListParams::CreatedAt] :created_at
+      #
+      #   @option params [String] :cursor Return the page of entries after this one.
+      #
+      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::Event>]
       #

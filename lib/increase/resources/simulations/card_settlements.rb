@@ -10,12 +10,17 @@ module Increase
         #   production. The amount settled can be different from the amount originally
         #   authorized, for example, when adding a tip to a restaurant bill.
         #
-        # @overload create(card_id:, pending_transaction_id:, amount: nil, request_options: {})
+        # @param params [Increase::Models::Simulations::CardSettlementCreateParams, Hash{Symbol=>Object}] .
         #
-        # @param card_id [String]
-        # @param pending_transaction_id [String]
-        # @param amount [Integer]
-        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+        #   @option params [String] :card_id The identifier of the Card to create a settlement on.
+        #
+        #   @option params [String] :pending_transaction_id The identifier of the Pending Transaction for the Card Authorization you wish to
+        #     settle.
+        #
+        #   @option params [Integer] :amount The amount to be settled. This defaults to the amount of the Pending Transaction
+        #     being settled.
+        #
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::Transaction]
         #
