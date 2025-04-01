@@ -36,8 +36,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Entity]
-      #
-      # @see Increase::Models::EntityCreateParams
       def create(params)
         parsed, options = Increase::Models::EntityCreateParams.dump_request(params)
         @client.request(
@@ -58,12 +56,10 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Entity]
-      #
-      # @see Increase::Models::EntityRetrieveParams
       def retrieve(entity_id, params = {})
         @client.request(
           method: :get,
-          path: ["entities/%1$s", entity_id],
+          path: ["entities/%0s", entity_id],
           model: Increase::Models::Entity,
           options: params[:request_options]
         )
@@ -90,8 +86,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::Entity>]
-      #
-      # @see Increase::Models::EntityListParams
       def list(params = {})
         parsed, options = Increase::Models::EntityListParams.dump_request(params)
         @client.request(
@@ -114,12 +108,10 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Entity]
-      #
-      # @see Increase::Models::EntityArchiveParams
       def archive(entity_id, params = {})
         @client.request(
           method: :post,
-          path: ["entities/%1$s/archive", entity_id],
+          path: ["entities/%0s/archive", entity_id],
           model: Increase::Models::Entity,
           options: params[:request_options]
         )
@@ -138,13 +130,11 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Entity]
-      #
-      # @see Increase::Models::EntityArchiveBeneficialOwnerParams
       def archive_beneficial_owner(entity_id, params)
         parsed, options = Increase::Models::EntityArchiveBeneficialOwnerParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["entities/%1$s/archive_beneficial_owner", entity_id],
+          path: ["entities/%0s/archive_beneficial_owner", entity_id],
           body: parsed,
           model: Increase::Models::Entity,
           options: options
@@ -165,13 +155,11 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Entity]
-      #
-      # @see Increase::Models::EntityConfirmParams
       def confirm(entity_id, params = {})
         parsed, options = Increase::Models::EntityConfirmParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["entities/%1$s/confirm", entity_id],
+          path: ["entities/%0s/confirm", entity_id],
           body: parsed,
           model: Increase::Models::Entity,
           options: options
@@ -190,13 +178,11 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Entity]
-      #
-      # @see Increase::Models::EntityCreateBeneficialOwnerParams
       def create_beneficial_owner(entity_id, params)
         parsed, options = Increase::Models::EntityCreateBeneficialOwnerParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["entities/%1$s/create_beneficial_owner", entity_id],
+          path: ["entities/%0s/create_beneficial_owner", entity_id],
           body: parsed,
           model: Increase::Models::Entity,
           options: options
@@ -215,13 +201,11 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Entity]
-      #
-      # @see Increase::Models::EntityUpdateAddressParams
       def update_address(entity_id, params)
         parsed, options = Increase::Models::EntityUpdateAddressParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["entities/%1$s/update_address", entity_id],
+          path: ["entities/%0s/update_address", entity_id],
           body: parsed,
           model: Increase::Models::Entity,
           options: options
@@ -244,13 +228,11 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Entity]
-      #
-      # @see Increase::Models::EntityUpdateBeneficialOwnerAddressParams
       def update_beneficial_owner_address(entity_id, params)
         parsed, options = Increase::Models::EntityUpdateBeneficialOwnerAddressParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["entities/%1$s/update_beneficial_owner_address", entity_id],
+          path: ["entities/%0s/update_beneficial_owner_address", entity_id],
           body: parsed,
           model: Increase::Models::Entity,
           options: options
@@ -272,21 +254,17 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Entity]
-      #
-      # @see Increase::Models::EntityUpdateIndustryCodeParams
       def update_industry_code(entity_id, params)
         parsed, options = Increase::Models::EntityUpdateIndustryCodeParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["entities/%1$s/update_industry_code", entity_id],
+          path: ["entities/%0s/update_industry_code", entity_id],
           body: parsed,
           model: Increase::Models::Entity,
           options: options
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

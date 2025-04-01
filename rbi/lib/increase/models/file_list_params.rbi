@@ -3,7 +3,7 @@
 module Increase
   module Models
     class FileListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       sig { returns(T.nilable(Increase::Models::FileListParams::CreatedAt)) }
@@ -54,14 +54,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        created_at: nil,
-        cursor: nil,
-        idempotency_key: nil,
-        limit: nil,
-        purpose: nil,
-        request_options: {}
-      )
+      def self.new(created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, purpose: nil, request_options: {})
       end
 
       sig do

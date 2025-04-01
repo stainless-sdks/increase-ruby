@@ -118,9 +118,9 @@ Metrics/ParameterLists:
 Metrics/PerceivedComplexity:
   Enabled: false
 
-# Need to preserve block identifier for documentation.
 Naming/BlockForwarding:
-  Enabled: false
+  Exclude:
+    - "**/*.rbi"
 
 Naming/ClassAndModuleCamelCase:
   Exclude:
@@ -152,9 +152,6 @@ Style/Alias:
 # And/or have confusing precedence, avoid them.
 Style/AndOr:
   EnforcedStyle: always
-
-Style/ArgumentsForwarding:
-  Enabled: false
 
 Style/BisectedAttrAccessor:
   Exclude:
@@ -237,10 +234,6 @@ Style/RegexpLiteral:
 # Allow explicit ifs, especially for imperative use.
 Style/SafeNavigation:
   Enabled: false
-
-Style/SignalException:
-  Exclude:
-    - Rakefile
 
 # We use these sparingly, where we anticipate future branches for the
 # inner conditional.

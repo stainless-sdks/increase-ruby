@@ -29,8 +29,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::CheckTransfer]
-      #
-      # @see Increase::Models::CheckTransferCreateParams
       def create(params)
         parsed, options = Increase::Models::CheckTransferCreateParams.dump_request(params)
         @client.request(
@@ -51,12 +49,10 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::CheckTransfer]
-      #
-      # @see Increase::Models::CheckTransferRetrieveParams
       def retrieve(check_transfer_id, params = {})
         @client.request(
           method: :get,
-          path: ["check_transfers/%1$s", check_transfer_id],
+          path: ["check_transfers/%0s", check_transfer_id],
           model: Increase::Models::CheckTransfer,
           options: params[:request_options]
         )
@@ -85,8 +81,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::CheckTransfer>]
-      #
-      # @see Increase::Models::CheckTransferListParams
       def list(params = {})
         parsed, options = Increase::Models::CheckTransferListParams.dump_request(params)
         @client.request(
@@ -108,12 +102,10 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::CheckTransfer]
-      #
-      # @see Increase::Models::CheckTransferApproveParams
       def approve(check_transfer_id, params = {})
         @client.request(
           method: :post,
-          path: ["check_transfers/%1$s/approve", check_transfer_id],
+          path: ["check_transfers/%0s/approve", check_transfer_id],
           model: Increase::Models::CheckTransfer,
           options: params[:request_options]
         )
@@ -128,12 +120,10 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::CheckTransfer]
-      #
-      # @see Increase::Models::CheckTransferCancelParams
       def cancel(check_transfer_id, params = {})
         @client.request(
           method: :post,
-          path: ["check_transfers/%1$s/cancel", check_transfer_id],
+          path: ["check_transfers/%0s/cancel", check_transfer_id],
           model: Increase::Models::CheckTransfer,
           options: params[:request_options]
         )
@@ -150,21 +140,17 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::CheckTransfer]
-      #
-      # @see Increase::Models::CheckTransferStopPaymentParams
       def stop_payment(check_transfer_id, params = {})
         parsed, options = Increase::Models::CheckTransferStopPaymentParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["check_transfers/%1$s/stop_payment", check_transfer_id],
+          path: ["check_transfers/%0s/stop_payment", check_transfer_id],
           body: parsed,
           model: Increase::Models::CheckTransfer,
           options: options
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

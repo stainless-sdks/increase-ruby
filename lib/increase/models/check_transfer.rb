@@ -216,7 +216,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @see Increase::Models::CheckTransfer#approval
       class Approval < Increase::BaseModel
         # @!attribute approved_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -244,7 +243,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @see Increase::Models::CheckTransfer#cancellation
       class Cancellation < Increase::BaseModel
         # @!attribute canceled_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -272,7 +270,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @see Increase::Models::CheckTransfer#created_by
       class CreatedBy < Increase::BaseModel
         # @!attribute api_key
         #   If present, details about the API key that created the transfer.
@@ -312,7 +309,6 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @see Increase::Models::CheckTransfer::CreatedBy#api_key
         class APIKey < Increase::BaseModel
           # @!attribute description
           #   The description set for the API key when it was created.
@@ -331,8 +327,6 @@ module Increase
         end
 
         # The type of object that created this transfer.
-        #
-        # @see Increase::Models::CheckTransfer::CreatedBy#category
         module Category
           extend Increase::Enum
 
@@ -352,7 +346,6 @@ module Increase
           #   def self.values; end
         end
 
-        # @see Increase::Models::CheckTransfer::CreatedBy#oauth_application
         class OAuthApplication < Increase::BaseModel
           # @!attribute name
           #   The name of the OAuth Application.
@@ -370,7 +363,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        # @see Increase::Models::CheckTransfer::CreatedBy#user
         class User < Increase::BaseModel
           # @!attribute email
           #   The email address of the User.
@@ -391,8 +383,6 @@ module Increase
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
       #   currency.
-      #
-      # @see Increase::Models::CheckTransfer#currency
       module Currency
         extend Increase::Enum
 
@@ -422,8 +412,6 @@ module Increase
       end
 
       # Whether Increase will print and mail the check or if you will do it yourself.
-      #
-      # @see Increase::Models::CheckTransfer#fulfillment_method
       module FulfillmentMethod
         extend Increase::Enum
 
@@ -440,7 +428,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @see Increase::Models::CheckTransfer#mailing
       class Mailing < Increase::BaseModel
         # @!attribute image_id
         #   The ID of the file corresponding to an image of the check that was mailed, if
@@ -475,7 +462,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @see Increase::Models::CheckTransfer#physical_check
       class PhysicalCheck < Increase::BaseModel
         # @!attribute mailing_address
         #   Details for where Increase will mail the check.
@@ -558,7 +544,6 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @see Increase::Models::CheckTransfer::PhysicalCheck#mailing_address
         class MailingAddress < Increase::BaseModel
           # @!attribute city
           #   The city of the check's destination.
@@ -611,7 +596,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        # @see Increase::Models::CheckTransfer::PhysicalCheck#return_address
         class ReturnAddress < Increase::BaseModel
           # @!attribute city
           #   The city of the check's destination.
@@ -665,8 +649,6 @@ module Increase
         end
 
         # The shipping method for the check.
-        #
-        # @see Increase::Models::CheckTransfer::PhysicalCheck#shipping_method
         module ShippingMethod
           extend Increase::Enum
 
@@ -713,8 +695,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
 
           # The type of tracking event.
-          #
-          # @see Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate#category
           module Category
             extend Increase::Enum
 
@@ -740,8 +720,6 @@ module Increase
       end
 
       # The lifecycle status of the transfer.
-      #
-      # @see Increase::Models::CheckTransfer#status
       module Status
         extend Increase::Enum
 
@@ -782,7 +760,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @see Increase::Models::CheckTransfer#stop_payment_request
       class StopPaymentRequest < Increase::BaseModel
         # @!attribute reason
         #   The reason why this transfer was stopped.
@@ -823,8 +800,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # The reason why this transfer was stopped.
-        #
-        # @see Increase::Models::CheckTransfer::StopPaymentRequest#reason
         module Reason
           extend Increase::Enum
 
@@ -849,8 +824,6 @@ module Increase
 
         # A constant representing the object's type. For this resource it will always be
         #   `check_transfer_stop_payment_request`.
-        #
-        # @see Increase::Models::CheckTransfer::StopPaymentRequest#type
         module Type
           extend Increase::Enum
 
@@ -864,7 +837,6 @@ module Increase
         end
       end
 
-      # @see Increase::Models::CheckTransfer#submission
       class Submission < Increase::BaseModel
         # @!attribute submitted_at
         #   When this check transfer was submitted to our check printer.
@@ -882,7 +854,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @see Increase::Models::CheckTransfer#third_party
       class ThirdParty < Increase::BaseModel
         # @!attribute check_number
         #   The check number that you will print on the check.
@@ -910,8 +881,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `check_transfer`.
-      #
-      # @see Increase::Models::CheckTransfer#type
       module Type
         extend Increase::Enum
 

@@ -62,17 +62,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        id:,
-        created_at:,
-        description:,
-        direction:,
-        filename:,
-        idempotency_key:,
-        mime_type:,
-        purpose:,
-        type:
-      )
+      def self.new(id:, created_at:, description:, direction:, filename:, idempotency_key:, mime_type:, purpose:, type:)
       end
 
       sig do

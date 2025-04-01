@@ -3,7 +3,7 @@
 module Increase
   module Models
     class InboundACHTransferDeclineParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The reason why this transfer will be returned. If this parameter is unset, the

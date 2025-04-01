@@ -3,7 +3,7 @@
 module Increase
   module Models
     class RealTimePaymentsTransferCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The transfer amount in USD cents. For Real-Time Payments transfers, must be

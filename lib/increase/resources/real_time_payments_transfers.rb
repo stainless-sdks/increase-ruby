@@ -39,8 +39,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::RealTimePaymentsTransfer]
-      #
-      # @see Increase::Models::RealTimePaymentsTransferCreateParams
       def create(params)
         parsed, options = Increase::Models::RealTimePaymentsTransferCreateParams.dump_request(params)
         @client.request(
@@ -61,12 +59,10 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::RealTimePaymentsTransfer]
-      #
-      # @see Increase::Models::RealTimePaymentsTransferRetrieveParams
       def retrieve(real_time_payments_transfer_id, params = {})
         @client.request(
           method: :get,
-          path: ["real_time_payments_transfers/%1$s", real_time_payments_transfer_id],
+          path: ["real_time_payments_transfers/%0s", real_time_payments_transfer_id],
           model: Increase::Models::RealTimePaymentsTransfer,
           options: params[:request_options]
         )
@@ -98,8 +94,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::RealTimePaymentsTransfer>]
-      #
-      # @see Increase::Models::RealTimePaymentsTransferListParams
       def list(params = {})
         parsed, options = Increase::Models::RealTimePaymentsTransferListParams.dump_request(params)
         @client.request(
@@ -112,8 +106,6 @@ module Increase
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

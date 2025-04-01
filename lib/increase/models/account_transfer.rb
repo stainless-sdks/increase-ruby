@@ -162,7 +162,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @see Increase::Models::AccountTransfer#approval
       class Approval < Increase::BaseModel
         # @!attribute approved_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -190,7 +189,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @see Increase::Models::AccountTransfer#cancellation
       class Cancellation < Increase::BaseModel
         # @!attribute canceled_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -218,7 +216,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @see Increase::Models::AccountTransfer#created_by
       class CreatedBy < Increase::BaseModel
         # @!attribute api_key
         #   If present, details about the API key that created the transfer.
@@ -258,7 +255,6 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @see Increase::Models::AccountTransfer::CreatedBy#api_key
         class APIKey < Increase::BaseModel
           # @!attribute description
           #   The description set for the API key when it was created.
@@ -277,8 +273,6 @@ module Increase
         end
 
         # The type of object that created this transfer.
-        #
-        # @see Increase::Models::AccountTransfer::CreatedBy#category
         module Category
           extend Increase::Enum
 
@@ -298,7 +292,6 @@ module Increase
           #   def self.values; end
         end
 
-        # @see Increase::Models::AccountTransfer::CreatedBy#oauth_application
         class OAuthApplication < Increase::BaseModel
           # @!attribute name
           #   The name of the OAuth Application.
@@ -316,7 +309,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        # @see Increase::Models::AccountTransfer::CreatedBy#user
         class User < Increase::BaseModel
           # @!attribute email
           #   The email address of the User.
@@ -337,8 +329,6 @@ module Increase
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
       #   account currency.
-      #
-      # @see Increase::Models::AccountTransfer#currency
       module Currency
         extend Increase::Enum
 
@@ -368,8 +358,6 @@ module Increase
       end
 
       # The transfer's network.
-      #
-      # @see Increase::Models::AccountTransfer#network
       module Network
         extend Increase::Enum
 
@@ -383,8 +371,6 @@ module Increase
       end
 
       # The lifecycle status of the transfer.
-      #
-      # @see Increase::Models::AccountTransfer#status
       module Status
         extend Increase::Enum
 
@@ -406,8 +392,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `account_transfer`.
-      #
-      # @see Increase::Models::AccountTransfer#type
       module Type
         extend Increase::Enum
 

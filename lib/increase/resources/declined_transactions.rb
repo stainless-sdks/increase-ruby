@@ -12,12 +12,10 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::DeclinedTransaction]
-      #
-      # @see Increase::Models::DeclinedTransactionRetrieveParams
       def retrieve(declined_transaction_id, params = {})
         @client.request(
           method: :get,
-          path: ["declined_transactions/%1$s", declined_transaction_id],
+          path: ["declined_transactions/%0s", declined_transaction_id],
           model: Increase::Models::DeclinedTransaction,
           options: params[:request_options]
         )
@@ -43,8 +41,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::DeclinedTransaction>]
-      #
-      # @see Increase::Models::DeclinedTransactionListParams
       def list(params = {})
         parsed, options = Increase::Models::DeclinedTransactionListParams.dump_request(params)
         @client.request(
@@ -57,8 +53,6 @@ module Increase
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

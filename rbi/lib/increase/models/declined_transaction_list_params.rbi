@@ -3,7 +3,7 @@
 module Increase
   module Models
     class DeclinedTransactionListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter Declined Transactions to ones belonging to the specified Account.

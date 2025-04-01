@@ -12,12 +12,10 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Event]
-      #
-      # @see Increase::Models::EventRetrieveParams
       def retrieve(event_id, params = {})
         @client.request(
           method: :get,
-          path: ["events/%1$s", event_id],
+          path: ["events/%0s", event_id],
           model: Increase::Models::Event,
           options: params[:request_options]
         )
@@ -41,8 +39,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::Event>]
-      #
-      # @see Increase::Models::EventListParams
       def list(params = {})
         parsed, options = Increase::Models::EventListParams.dump_request(params)
         @client.request(
@@ -55,8 +51,6 @@ module Increase
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

@@ -16,19 +16,15 @@ module Increase
         #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::CheckTransfer]
-        #
-        # @see Increase::Models::Simulations::CheckTransferMailParams
         def mail(check_transfer_id, params = {})
           @client.request(
             method: :post,
-            path: ["simulations/check_transfers/%1$s/mail", check_transfer_id],
+            path: ["simulations/check_transfers/%0s/mail", check_transfer_id],
             model: Increase::Models::CheckTransfer,
             options: params[:request_options]
           )
         end
 
-        # @api private
-        #
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client

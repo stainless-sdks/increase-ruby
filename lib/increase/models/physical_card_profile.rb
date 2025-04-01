@@ -119,8 +119,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # The creator of this Physical Card Profile.
-      #
-      # @see Increase::Models::PhysicalCardProfile#creator
       module Creator
         extend Increase::Enum
 
@@ -138,8 +136,6 @@ module Increase
       end
 
       # The status of the Physical Card Profile.
-      #
-      # @see Increase::Models::PhysicalCardProfile#status
       module Status
         extend Increase::Enum
 
@@ -170,8 +166,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `physical_card_profile`.
-      #
-      # @see Increase::Models::PhysicalCardProfile#type
       module Type
         extend Increase::Enum
 

@@ -3,7 +3,7 @@
 module Increase
   module Models
     class DocumentListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       sig { returns(T.nilable(Increase::Models::DocumentListParams::Category)) }
@@ -51,14 +51,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        category: nil,
-        created_at: nil,
-        cursor: nil,
-        entity_id: nil,
-        limit: nil,
-        request_options: {}
-      )
+      def self.new(category: nil, created_at: nil, cursor: nil, entity_id: nil, limit: nil, request_options: {})
       end
 
       sig do

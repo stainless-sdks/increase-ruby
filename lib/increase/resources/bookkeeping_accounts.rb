@@ -18,8 +18,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::BookkeepingAccount]
-      #
-      # @see Increase::Models::BookkeepingAccountCreateParams
       def create(params)
         parsed, options = Increase::Models::BookkeepingAccountCreateParams.dump_request(params)
         @client.request(
@@ -42,13 +40,11 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::BookkeepingAccount]
-      #
-      # @see Increase::Models::BookkeepingAccountUpdateParams
       def update(bookkeeping_account_id, params)
         parsed, options = Increase::Models::BookkeepingAccountUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["bookkeeping_accounts/%1$s", bookkeeping_account_id],
+          path: ["bookkeeping_accounts/%0s", bookkeeping_account_id],
           body: parsed,
           model: Increase::Models::BookkeepingAccount,
           options: options
@@ -72,8 +68,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::BookkeepingAccount>]
-      #
-      # @see Increase::Models::BookkeepingAccountListParams
       def list(params = {})
         parsed, options = Increase::Models::BookkeepingAccountListParams.dump_request(params)
         @client.request(
@@ -97,21 +91,17 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::BookkeepingBalanceLookup]
-      #
-      # @see Increase::Models::BookkeepingAccountBalanceParams
       def balance(bookkeeping_account_id, params = {})
         parsed, options = Increase::Models::BookkeepingAccountBalanceParams.dump_request(params)
         @client.request(
           method: :get,
-          path: ["bookkeeping_accounts/%1$s/balance", bookkeeping_account_id],
+          path: ["bookkeeping_accounts/%0s/balance", bookkeeping_account_id],
           query: parsed,
           model: Increase::Models::BookkeepingBalanceLookup,
           options: options
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

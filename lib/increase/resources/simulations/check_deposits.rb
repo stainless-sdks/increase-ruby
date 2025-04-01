@@ -15,12 +15,10 @@ module Increase
         #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::CheckDeposit]
-        #
-        # @see Increase::Models::Simulations::CheckDepositRejectParams
         def reject(check_deposit_id, params = {})
           @client.request(
             method: :post,
-            path: ["simulations/check_deposits/%1$s/reject", check_deposit_id],
+            path: ["simulations/check_deposits/%0s/reject", check_deposit_id],
             model: Increase::Models::CheckDeposit,
             options: params[:request_options]
           )
@@ -36,12 +34,10 @@ module Increase
         #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::CheckDeposit]
-        #
-        # @see Increase::Models::Simulations::CheckDepositReturnParams
         def return_(check_deposit_id, params = {})
           @client.request(
             method: :post,
-            path: ["simulations/check_deposits/%1$s/return", check_deposit_id],
+            path: ["simulations/check_deposits/%0s/return", check_deposit_id],
             model: Increase::Models::CheckDeposit,
             options: params[:request_options]
           )
@@ -57,19 +53,15 @@ module Increase
         #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::CheckDeposit]
-        #
-        # @see Increase::Models::Simulations::CheckDepositSubmitParams
         def submit(check_deposit_id, params = {})
           @client.request(
             method: :post,
-            path: ["simulations/check_deposits/%1$s/submit", check_deposit_id],
+            path: ["simulations/check_deposits/%0s/submit", check_deposit_id],
             model: Increase::Models::CheckDeposit,
             options: params[:request_options]
           )
         end
 
-        # @api private
-        #
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client

@@ -10,16 +10,22 @@ The underlying REST API documentation can be found on [increase.com](https://inc
 
 ## Installation
 
-To use this gem, install via Bundler by adding the following to your application's `Gemfile`:
+To use this gem during the beta, install directly from GitHub with Bundler by adding the following to your application's `Gemfile`:
 
 ```ruby
-gem "increase", "~> 0.0.1.pre.alpha.0"
+gem "increase", git: "https://github.com/Increase/increase-ruby", branch: "main"
 ```
 
 To fetch an initial copy of the gem:
 
 ```sh
 bundle install
+```
+
+To update the version used by your application when updates are pushed to GitHub:
+
+```sh
+bundle update increase
 ```
 
 ## Usage
@@ -148,7 +154,7 @@ Due to limitations with the Sorbet type system, where a method otherwise can tak
 Please follow Sorbet's [setup guides](https://sorbet.org/docs/adopting) for best experience.
 
 ```ruby
-model = Increase::Models::AccountCreateParams.new(
+model = AccountCreateParams.new(
   name: "New Account!",
   entity_id: "entity_n8y8tnk2p9339ti393yi",
   program_id: "program_i2v2os4mwza1oetokh9i"

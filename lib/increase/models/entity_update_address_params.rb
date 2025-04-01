@@ -2,10 +2,9 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::Entities#update_address
     class EntityUpdateAddressParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
+      #   extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # @!attribute address

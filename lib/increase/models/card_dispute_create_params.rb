@@ -2,10 +2,9 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::CardDisputes#create
     class CardDisputeCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
+      #   extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # @!attribute disputed_transaction_id

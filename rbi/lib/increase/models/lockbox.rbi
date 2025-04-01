@@ -63,17 +63,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        id:,
-        account_id:,
-        address:,
-        created_at:,
-        description:,
-        idempotency_key:,
-        recipient_name:,
-        status:,
-        type:
-      )
+      def self.new(id:, account_id:, address:, created_at:, description:, idempotency_key:, recipient_name:, status:, type:)
       end
 
       sig do

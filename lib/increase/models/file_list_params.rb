@@ -2,10 +2,9 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::Files#list
     class FileListParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
+      #   extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # @!attribute [r] created_at

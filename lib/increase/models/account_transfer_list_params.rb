@@ -2,10 +2,9 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::AccountTransfers#list
     class AccountTransferListParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
+      #   extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # @!attribute [r] account_id

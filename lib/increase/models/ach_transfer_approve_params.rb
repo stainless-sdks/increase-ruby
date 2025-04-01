@@ -2,10 +2,9 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::ACHTransfers#approve
     class ACHTransferApproveParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
+      #   extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # @!parse

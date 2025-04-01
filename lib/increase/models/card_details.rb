@@ -58,8 +58,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `card_details`.
-      #
-      # @see Increase::Models::CardDetails#type
       module Type
         extend Increase::Enum
 

@@ -3,7 +3,7 @@
 module Increase
   module Models
     class AccountNumberListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter Account Numbers to those belonging to the specified Account.

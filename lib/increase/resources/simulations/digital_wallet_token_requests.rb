@@ -14,8 +14,6 @@ module Increase
         #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse]
-        #
-        # @see Increase::Models::Simulations::DigitalWalletTokenRequestCreateParams
         def create(params)
           parsed, options =
             Increase::Models::Simulations::DigitalWalletTokenRequestCreateParams.dump_request(params)
@@ -28,8 +26,6 @@ module Increase
           )
         end
 
-        # @api private
-        #
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client

@@ -253,9 +253,9 @@ module Increase
           path
         in []
           ""
-        in [String => p, *interpolations]
+        in [String, *interpolations]
           encoded = interpolations.map { ERB::Util.url_encode(_1) }
-          format(p, *encoded)
+          path.first % encoded
         end
       end
     end

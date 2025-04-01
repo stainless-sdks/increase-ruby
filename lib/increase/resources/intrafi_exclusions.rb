@@ -14,8 +14,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::IntrafiExclusion]
-      #
-      # @see Increase::Models::IntrafiExclusionCreateParams
       def create(params)
         parsed, options = Increase::Models::IntrafiExclusionCreateParams.dump_request(params)
         @client.request(
@@ -36,12 +34,10 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::IntrafiExclusion]
-      #
-      # @see Increase::Models::IntrafiExclusionRetrieveParams
       def retrieve(intrafi_exclusion_id, params = {})
         @client.request(
           method: :get,
-          path: ["intrafi_exclusions/%1$s", intrafi_exclusion_id],
+          path: ["intrafi_exclusions/%0s", intrafi_exclusion_id],
           model: Increase::Models::IntrafiExclusion,
           options: params[:request_options]
         )
@@ -66,8 +62,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::IntrafiExclusion>]
-      #
-      # @see Increase::Models::IntrafiExclusionListParams
       def list(params = {})
         parsed, options = Increase::Models::IntrafiExclusionListParams.dump_request(params)
         @client.request(
@@ -91,19 +85,15 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::IntrafiExclusion]
-      #
-      # @see Increase::Models::IntrafiExclusionArchiveParams
       def archive(intrafi_exclusion_id, params = {})
         @client.request(
           method: :post,
-          path: ["intrafi_exclusions/%1$s/archive", intrafi_exclusion_id],
+          path: ["intrafi_exclusions/%0s/archive", intrafi_exclusion_id],
           model: Increase::Models::IntrafiExclusion,
           options: params[:request_options]
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

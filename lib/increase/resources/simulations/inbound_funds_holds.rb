@@ -14,19 +14,15 @@ module Increase
         #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::Simulations::InboundFundsHoldReleaseResponse]
-        #
-        # @see Increase::Models::Simulations::InboundFundsHoldReleaseParams
         def release(inbound_funds_hold_id, params = {})
           @client.request(
             method: :post,
-            path: ["simulations/inbound_funds_holds/%1$s/release", inbound_funds_hold_id],
+            path: ["simulations/inbound_funds_holds/%0s/release", inbound_funds_hold_id],
             model: Increase::Models::Simulations::InboundFundsHoldReleaseResponse,
             options: params[:request_options]
           )
         end
 
-        # @api private
-        #
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client

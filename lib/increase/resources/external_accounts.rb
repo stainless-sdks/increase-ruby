@@ -21,8 +21,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::ExternalAccount]
-      #
-      # @see Increase::Models::ExternalAccountCreateParams
       def create(params)
         parsed, options = Increase::Models::ExternalAccountCreateParams.dump_request(params)
         @client.request(
@@ -43,12 +41,10 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::ExternalAccount]
-      #
-      # @see Increase::Models::ExternalAccountRetrieveParams
       def retrieve(external_account_id, params = {})
         @client.request(
           method: :get,
-          path: ["external_accounts/%1$s", external_account_id],
+          path: ["external_accounts/%0s", external_account_id],
           model: Increase::Models::ExternalAccount,
           options: params[:request_options]
         )
@@ -71,13 +67,11 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::ExternalAccount]
-      #
-      # @see Increase::Models::ExternalAccountUpdateParams
       def update(external_account_id, params = {})
         parsed, options = Increase::Models::ExternalAccountUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["external_accounts/%1$s", external_account_id],
+          path: ["external_accounts/%0s", external_account_id],
           body: parsed,
           model: Increase::Models::ExternalAccount,
           options: options
@@ -105,8 +99,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::ExternalAccount>]
-      #
-      # @see Increase::Models::ExternalAccountListParams
       def list(params = {})
         parsed, options = Increase::Models::ExternalAccountListParams.dump_request(params)
         @client.request(
@@ -119,8 +111,6 @@ module Increase
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

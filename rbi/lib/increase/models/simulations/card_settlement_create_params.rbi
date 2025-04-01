@@ -4,7 +4,7 @@ module Increase
   module Models
     module Simulations
       class CardSettlementCreateParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
+        extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
         # The identifier of the Card to create a settlement on.

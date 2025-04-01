@@ -3,7 +3,7 @@
 module Increase
   module Models
     class ExternalAccountCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The account number for the destination account.
@@ -44,14 +44,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        account_number:,
-        description:,
-        routing_number:,
-        account_holder: nil,
-        funding: nil,
-        request_options: {}
-      )
+      def self.new(account_number:, description:, routing_number:, account_holder: nil, funding: nil, request_options: {})
       end
 
       sig do

@@ -3,7 +3,7 @@
 module Increase
   module Models
     class AccountNumberUpdateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Options related to how this Account Number handles inbound ACH transfers.

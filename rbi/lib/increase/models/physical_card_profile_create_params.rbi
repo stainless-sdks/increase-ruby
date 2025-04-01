@@ -3,7 +3,7 @@
 module Increase
   module Models
     class PhysicalCardProfileCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The identifier of the File containing the physical card's carrier image.
@@ -32,13 +32,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        carrier_image_file_id:,
-        contact_phone:,
-        description:,
-        front_image_file_id:,
-        request_options: {}
-      )
+      def self.new(carrier_image_file_id:, contact_phone:, description:, front_image_file_id:, request_options: {})
       end
 
       sig do

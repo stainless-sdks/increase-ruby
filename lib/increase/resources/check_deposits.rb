@@ -20,8 +20,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::CheckDeposit]
-      #
-      # @see Increase::Models::CheckDepositCreateParams
       def create(params)
         parsed, options = Increase::Models::CheckDepositCreateParams.dump_request(params)
         @client.request(
@@ -42,12 +40,10 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::CheckDeposit]
-      #
-      # @see Increase::Models::CheckDepositRetrieveParams
       def retrieve(check_deposit_id, params = {})
         @client.request(
           method: :get,
-          path: ["check_deposits/%1$s", check_deposit_id],
+          path: ["check_deposits/%0s", check_deposit_id],
           model: Increase::Models::CheckDeposit,
           options: params[:request_options]
         )
@@ -74,8 +70,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::CheckDeposit>]
-      #
-      # @see Increase::Models::CheckDepositListParams
       def list(params = {})
         parsed, options = Increase::Models::CheckDepositListParams.dump_request(params)
         @client.request(
@@ -88,8 +82,6 @@ module Increase
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

@@ -68,8 +68,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # The compliance category of the account.
-      #
-      # @see Increase::Models::BookkeepingAccount#compliance_category
       module ComplianceCategory
         extend Increase::Enum
 
@@ -88,8 +86,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `bookkeeping_account`.
-      #
-      # @see Increase::Models::BookkeepingAccount#type
       module Type
         extend Increase::Enum
 

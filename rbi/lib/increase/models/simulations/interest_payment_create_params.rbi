@@ -4,7 +4,7 @@ module Increase
   module Models
     module Simulations
       class InterestPaymentCreateParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
+        extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
         # The identifier of the Account the Interest Payment should be paid to is for.
@@ -47,14 +47,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(
-          account_id:,
-          amount:,
-          accrued_on_account_id: nil,
-          period_end: nil,
-          period_start: nil,
-          request_options: {}
-        )
+        def self.new(account_id:, amount:, accrued_on_account_id: nil, period_end: nil, period_start: nil, request_options: {})
         end
 
         sig do

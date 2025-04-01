@@ -12,12 +12,10 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::OAuthConnection]
-      #
-      # @see Increase::Models::OAuthConnectionRetrieveParams
       def retrieve(oauth_connection_id, params = {})
         @client.request(
           method: :get,
-          path: ["oauth_connections/%1$s", oauth_connection_id],
+          path: ["oauth_connections/%0s", oauth_connection_id],
           model: Increase::Models::OAuthConnection,
           options: params[:request_options]
         )
@@ -40,8 +38,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::OAuthConnection>]
-      #
-      # @see Increase::Models::OAuthConnectionListParams
       def list(params = {})
         parsed, options = Increase::Models::OAuthConnectionListParams.dump_request(params)
         @client.request(
@@ -54,8 +50,6 @@ module Increase
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

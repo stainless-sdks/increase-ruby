@@ -28,8 +28,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::DigitalCardProfile]
-      #
-      # @see Increase::Models::DigitalCardProfileCreateParams
       def create(params)
         parsed, options = Increase::Models::DigitalCardProfileCreateParams.dump_request(params)
         @client.request(
@@ -50,12 +48,10 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::DigitalCardProfile]
-      #
-      # @see Increase::Models::DigitalCardProfileRetrieveParams
       def retrieve(digital_card_profile_id, params = {})
         @client.request(
           method: :get,
-          path: ["digital_card_profiles/%1$s", digital_card_profile_id],
+          path: ["digital_card_profiles/%0s", digital_card_profile_id],
           model: Increase::Models::DigitalCardProfile,
           options: params[:request_options]
         )
@@ -80,8 +76,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::DigitalCardProfile>]
-      #
-      # @see Increase::Models::DigitalCardProfileListParams
       def list(params = {})
         parsed, options = Increase::Models::DigitalCardProfileListParams.dump_request(params)
         @client.request(
@@ -103,12 +97,10 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::DigitalCardProfile]
-      #
-      # @see Increase::Models::DigitalCardProfileArchiveParams
       def archive(digital_card_profile_id, params = {})
         @client.request(
           method: :post,
-          path: ["digital_card_profiles/%1$s/archive", digital_card_profile_id],
+          path: ["digital_card_profiles/%0s/archive", digital_card_profile_id],
           model: Increase::Models::DigitalCardProfile,
           options: params[:request_options]
         )
@@ -141,21 +133,17 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::DigitalCardProfile]
-      #
-      # @see Increase::Models::DigitalCardProfileCloneParams
       def clone_(digital_card_profile_id, params = {})
         parsed, options = Increase::Models::DigitalCardProfileCloneParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["digital_card_profiles/%1$s/clone", digital_card_profile_id],
+          path: ["digital_card_profiles/%0s/clone", digital_card_profile_id],
           body: parsed,
           model: Increase::Models::DigitalCardProfile,
           options: options
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

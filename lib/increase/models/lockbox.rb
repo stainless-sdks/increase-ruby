@@ -93,7 +93,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @see Increase::Models::Lockbox#address
       class Address < Increase::BaseModel
         # @!attribute city
         #   The city of the address.
@@ -151,8 +150,6 @@ module Increase
       end
 
       # This indicates if mail can be sent to this address.
-      #
-      # @see Increase::Models::Lockbox#status
       module Status
         extend Increase::Enum
 
@@ -171,8 +168,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `lockbox`.
-      #
-      # @see Increase::Models::Lockbox#type
       module Type
         extend Increase::Enum
 

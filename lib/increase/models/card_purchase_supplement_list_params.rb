@@ -2,10 +2,9 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::CardPurchaseSupplements#list
     class CardPurchaseSupplementListParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
+      #   extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # @!attribute [r] card_payment_id

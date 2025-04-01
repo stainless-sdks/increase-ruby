@@ -12,12 +12,10 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::InboundMailItem]
-      #
-      # @see Increase::Models::InboundMailItemRetrieveParams
       def retrieve(inbound_mail_item_id, params = {})
         @client.request(
           method: :get,
-          path: ["inbound_mail_items/%1$s", inbound_mail_item_id],
+          path: ["inbound_mail_items/%0s", inbound_mail_item_id],
           model: Increase::Models::InboundMailItem,
           options: params[:request_options]
         )
@@ -39,8 +37,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::InboundMailItem>]
-      #
-      # @see Increase::Models::InboundMailItemListParams
       def list(params = {})
         parsed, options = Increase::Models::InboundMailItemListParams.dump_request(params)
         @client.request(
@@ -53,8 +49,6 @@ module Increase
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

@@ -3,7 +3,7 @@
 module Increase
   module Models
     class DigitalWalletTokenListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter Digital Wallet Tokens to ones belonging to the specified Card.

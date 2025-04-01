@@ -44,8 +44,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::WireDrawdownRequest]
-      #
-      # @see Increase::Models::WireDrawdownRequestCreateParams
       def create(params)
         parsed, options = Increase::Models::WireDrawdownRequestCreateParams.dump_request(params)
         @client.request(
@@ -66,12 +64,10 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::WireDrawdownRequest]
-      #
-      # @see Increase::Models::WireDrawdownRequestRetrieveParams
       def retrieve(wire_drawdown_request_id, params = {})
         @client.request(
           method: :get,
-          path: ["wire_drawdown_requests/%1$s", wire_drawdown_request_id],
+          path: ["wire_drawdown_requests/%0s", wire_drawdown_request_id],
           model: Increase::Models::WireDrawdownRequest,
           options: params[:request_options]
         )
@@ -96,8 +92,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::WireDrawdownRequest>]
-      #
-      # @see Increase::Models::WireDrawdownRequestListParams
       def list(params = {})
         parsed, options = Increase::Models::WireDrawdownRequestListParams.dump_request(params)
         @client.request(
@@ -110,8 +104,6 @@ module Increase
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

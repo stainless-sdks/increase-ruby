@@ -74,18 +74,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        id:,
-        account_id:,
-        amount:,
-        created_at:,
-        currency:,
-        description:,
-        route_id:,
-        route_type:,
-        source:,
-        type:
-      )
+      def self.new(id:, account_id:, amount:, created_at:, currency:, description:, route_id:, route_type:, source:, type:)
       end
 
       sig do
@@ -794,14 +783,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(
-            amount:,
-            currency:,
-            description:,
-            destination_account_id:,
-            source_account_id:,
-            transfer_id:
-          )
+          def self.new(amount:, currency:, description:, destination_account_id:, source_account_id:, transfer_id:)
           end
 
           sig do
@@ -984,14 +966,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(
-            created_at:,
-            raw_return_reason_code:,
-            return_reason_code:,
-            trace_number:,
-            transaction_id:,
-            transfer_id:
-          )
+          def self.new(created_at:, raw_return_reason_code:, return_reason_code:, trace_number:, transaction_id:, transfer_id:)
           end
 
           sig do
@@ -6068,15 +6043,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(
-            account_number:,
-            amount:,
-            auxiliary_on_us:,
-            check_deposit_id:,
-            currency:,
-            routing_number:,
-            serial_number:
-          )
+          def self.new(account_number:, amount:, auxiliary_on_us:, check_deposit_id:, currency:, routing_number:, serial_number:)
           end
 
           sig do
@@ -8000,13 +7967,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(
-            amount:,
-            destination_account_number:,
-            destination_routing_number:,
-            remittance_information:,
-            transfer_id:
-          )
+          def self.new(amount:, destination_account_number:, destination_routing_number:, remittance_information:, transfer_id:)
           end
 
           sig do

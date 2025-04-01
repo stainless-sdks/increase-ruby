@@ -16,8 +16,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Lockbox]
-      #
-      # @see Increase::Models::LockboxCreateParams
       def create(params)
         parsed, options = Increase::Models::LockboxCreateParams.dump_request(params)
         @client.request(
@@ -38,12 +36,10 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Lockbox]
-      #
-      # @see Increase::Models::LockboxRetrieveParams
       def retrieve(lockbox_id, params = {})
         @client.request(
           method: :get,
-          path: ["lockboxes/%1$s", lockbox_id],
+          path: ["lockboxes/%0s", lockbox_id],
           model: Increase::Models::Lockbox,
           options: params[:request_options]
         )
@@ -64,13 +60,11 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Lockbox]
-      #
-      # @see Increase::Models::LockboxUpdateParams
       def update(lockbox_id, params = {})
         parsed, options = Increase::Models::LockboxUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["lockboxes/%1$s", lockbox_id],
+          path: ["lockboxes/%0s", lockbox_id],
           body: parsed,
           model: Increase::Models::Lockbox,
           options: options
@@ -98,8 +92,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::Lockbox>]
-      #
-      # @see Increase::Models::LockboxListParams
       def list(params = {})
         parsed, options = Increase::Models::LockboxListParams.dump_request(params)
         @client.request(
@@ -112,8 +104,6 @@ module Increase
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

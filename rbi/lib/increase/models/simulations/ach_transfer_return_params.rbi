@@ -4,7 +4,7 @@ module Increase
   module Models
     module Simulations
       class ACHTransferReturnParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
+        extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
         # The reason why the Federal Reserve or destination bank returned this transfer.

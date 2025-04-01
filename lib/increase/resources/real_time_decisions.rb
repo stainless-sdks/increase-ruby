@@ -12,12 +12,10 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::RealTimeDecision]
-      #
-      # @see Increase::Models::RealTimeDecisionRetrieveParams
       def retrieve(real_time_decision_id, params = {})
         @client.request(
           method: :get,
-          path: ["real_time_decisions/%1$s", real_time_decision_id],
+          path: ["real_time_decisions/%0s", real_time_decision_id],
           model: Increase::Models::RealTimeDecision,
           options: params[:request_options]
         )
@@ -47,21 +45,17 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::RealTimeDecision]
-      #
-      # @see Increase::Models::RealTimeDecisionActionParams
       def action(real_time_decision_id, params = {})
         parsed, options = Increase::Models::RealTimeDecisionActionParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["real_time_decisions/%1$s/action", real_time_decision_id],
+          path: ["real_time_decisions/%0s/action", real_time_decision_id],
           body: parsed,
           model: Increase::Models::RealTimeDecision,
           options: options
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

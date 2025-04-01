@@ -12,12 +12,10 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::InboundCheckDeposit]
-      #
-      # @see Increase::Models::InboundCheckDepositRetrieveParams
       def retrieve(inbound_check_deposit_id, params = {})
         @client.request(
           method: :get,
-          path: ["inbound_check_deposits/%1$s", inbound_check_deposit_id],
+          path: ["inbound_check_deposits/%0s", inbound_check_deposit_id],
           model: Increase::Models::InboundCheckDeposit,
           options: params[:request_options]
         )
@@ -42,8 +40,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::InboundCheckDeposit>]
-      #
-      # @see Increase::Models::InboundCheckDepositListParams
       def list(params = {})
         parsed, options = Increase::Models::InboundCheckDepositListParams.dump_request(params)
         @client.request(
@@ -65,12 +61,10 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::InboundCheckDeposit]
-      #
-      # @see Increase::Models::InboundCheckDepositDeclineParams
       def decline(inbound_check_deposit_id, params = {})
         @client.request(
           method: :post,
-          path: ["inbound_check_deposits/%1$s/decline", inbound_check_deposit_id],
+          path: ["inbound_check_deposits/%0s/decline", inbound_check_deposit_id],
           model: Increase::Models::InboundCheckDeposit,
           options: params[:request_options]
         )
@@ -87,21 +81,17 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::InboundCheckDeposit]
-      #
-      # @see Increase::Models::InboundCheckDepositReturnParams
       def return_(inbound_check_deposit_id, params)
         parsed, options = Increase::Models::InboundCheckDepositReturnParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["inbound_check_deposits/%1$s/return", inbound_check_deposit_id],
+          path: ["inbound_check_deposits/%0s/return", inbound_check_deposit_id],
           body: parsed,
           model: Increase::Models::InboundCheckDeposit,
           options: options
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

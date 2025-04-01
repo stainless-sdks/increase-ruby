@@ -12,12 +12,10 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Document]
-      #
-      # @see Increase::Models::DocumentRetrieveParams
       def retrieve(document_id, params = {})
         @client.request(
           method: :get,
-          path: ["documents/%1$s", document_id],
+          path: ["documents/%0s", document_id],
           model: Increase::Models::Document,
           options: params[:request_options]
         )
@@ -41,8 +39,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::Document>]
-      #
-      # @see Increase::Models::DocumentListParams
       def list(params = {})
         parsed, options = Increase::Models::DocumentListParams.dump_request(params)
         @client.request(
@@ -55,8 +51,6 @@ module Increase
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

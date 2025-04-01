@@ -71,8 +71,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # If the mail item has been rejected, why it was rejected.
-      #
-      # @see Increase::Models::InboundMailItem#rejection_reason
       module RejectionReason
         extend Increase::Enum
 
@@ -93,8 +91,6 @@ module Increase
       end
 
       # If the mail item has been processed.
-      #
-      # @see Increase::Models::InboundMailItem#status
       module Status
         extend Increase::Enum
 
@@ -116,8 +112,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_mail_item`.
-      #
-      # @see Increase::Models::InboundMailItem#type
       module Type
         extend Increase::Enum
 

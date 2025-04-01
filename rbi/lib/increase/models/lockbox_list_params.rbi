@@ -3,7 +3,7 @@
 module Increase
   module Models
     class LockboxListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter Lockboxes to those associated with the provided Account.
@@ -55,14 +55,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        account_id: nil,
-        created_at: nil,
-        cursor: nil,
-        idempotency_key: nil,
-        limit: nil,
-        request_options: {}
-      )
+      def self.new(account_id: nil, created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, request_options: {})
       end
 
       sig do

@@ -103,7 +103,6 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @see Increase::Models::IntrafiBalance::Balance#bank_location
         class BankLocation < Increase::BaseModel
           # @!attribute city
           #   The bank's city.
@@ -131,8 +130,6 @@ module Increase
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account
       #   currency.
-      #
-      # @see Increase::Models::IntrafiBalance#currency
       module Currency
         extend Increase::Enum
 
@@ -163,8 +160,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `intrafi_balance`.
-      #
-      # @see Increase::Models::IntrafiBalance#type
       module Type
         extend Increase::Enum
 

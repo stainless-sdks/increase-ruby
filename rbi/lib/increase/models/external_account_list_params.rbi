@@ -3,7 +3,7 @@
 module Increase
   module Models
     class ExternalAccountListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Return the page of entries after this one.
@@ -55,14 +55,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        cursor: nil,
-        idempotency_key: nil,
-        limit: nil,
-        routing_number: nil,
-        status: nil,
-        request_options: {}
-      )
+      def self.new(cursor: nil, idempotency_key: nil, limit: nil, routing_number: nil, status: nil, request_options: {})
       end
 
       sig do

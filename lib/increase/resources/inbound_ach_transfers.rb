@@ -12,12 +12,10 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::InboundACHTransfer]
-      #
-      # @see Increase::Models::InboundACHTransferRetrieveParams
       def retrieve(inbound_ach_transfer_id, params = {})
         @client.request(
           method: :get,
-          path: ["inbound_ach_transfers/%1$s", inbound_ach_transfer_id],
+          path: ["inbound_ach_transfers/%0s", inbound_ach_transfer_id],
           model: Increase::Models::InboundACHTransfer,
           options: params[:request_options]
         )
@@ -43,8 +41,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::InboundACHTransfer>]
-      #
-      # @see Increase::Models::InboundACHTransferListParams
       def list(params = {})
         parsed, options = Increase::Models::InboundACHTransferListParams.dump_request(params)
         @client.request(
@@ -71,14 +67,12 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::InboundACHTransfer]
-      #
-      # @see Increase::Models::InboundACHTransferCreateNotificationOfChangeParams
       def create_notification_of_change(inbound_ach_transfer_id, params = {})
         parsed, options =
           Increase::Models::InboundACHTransferCreateNotificationOfChangeParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["inbound_ach_transfers/%1$s/create_notification_of_change", inbound_ach_transfer_id],
+          path: ["inbound_ach_transfers/%0s/create_notification_of_change", inbound_ach_transfer_id],
           body: parsed,
           model: Increase::Models::InboundACHTransfer,
           options: options
@@ -98,13 +92,11 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::InboundACHTransfer]
-      #
-      # @see Increase::Models::InboundACHTransferDeclineParams
       def decline(inbound_ach_transfer_id, params = {})
         parsed, options = Increase::Models::InboundACHTransferDeclineParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["inbound_ach_transfers/%1$s/decline", inbound_ach_transfer_id],
+          path: ["inbound_ach_transfers/%0s/decline", inbound_ach_transfer_id],
           body: parsed,
           model: Increase::Models::InboundACHTransfer,
           options: options
@@ -124,21 +116,17 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::InboundACHTransfer]
-      #
-      # @see Increase::Models::InboundACHTransferTransferReturnParams
       def transfer_return(inbound_ach_transfer_id, params)
         parsed, options = Increase::Models::InboundACHTransferTransferReturnParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["inbound_ach_transfers/%1$s/transfer_return", inbound_ach_transfer_id],
+          path: ["inbound_ach_transfers/%0s/transfer_return", inbound_ach_transfer_id],
           body: parsed,
           model: Increase::Models::InboundACHTransfer,
           options: options
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

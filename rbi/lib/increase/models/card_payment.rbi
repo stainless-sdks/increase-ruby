@@ -1355,11 +1355,7 @@ module Increase
                 )
                   .returns(T.attached_class)
               end
-              def self.new(
-                electronic_commerce_indicator:,
-                point_of_service_entry_mode:,
-                stand_in_processing_reason:
-              )
+              def self.new(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:)
               end
 
               sig do
@@ -1950,13 +1946,7 @@ module Increase
                 )
                   .returns(T.attached_class)
               end
-              def self.new(
-                actual_line1:,
-                actual_postal_code:,
-                provided_line1:,
-                provided_postal_code:,
-                result:
-              )
+              def self.new(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:)
               end
 
               sig do
@@ -2651,11 +2641,7 @@ module Increase
                 )
                   .returns(T.attached_class)
               end
-              def self.new(
-                electronic_commerce_indicator:,
-                point_of_service_entry_mode:,
-                stand_in_processing_reason:
-              )
+              def self.new(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:)
               end
 
               sig do
@@ -3370,13 +3356,7 @@ module Increase
                 )
                   .returns(T.attached_class)
               end
-              def self.new(
-                actual_line1:,
-                actual_postal_code:,
-                provided_line1:,
-                provided_postal_code:,
-                result:
-              )
+              def self.new(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:)
               end
 
               sig do
@@ -8782,11 +8762,7 @@ module Increase
                 )
                   .returns(T.attached_class)
               end
-              def self.new(
-                electronic_commerce_indicator:,
-                point_of_service_entry_mode:,
-                stand_in_processing_reason:
-              )
+              def self.new(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:)
               end
 
               sig do
@@ -9315,13 +9291,7 @@ module Increase
                 )
                   .returns(T.attached_class)
               end
-              def self.new(
-                actual_line1:,
-                actual_postal_code:,
-                provided_line1:,
-                provided_postal_code:,
-                result:
-              )
+              def self.new(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:)
               end
 
               sig do
@@ -9500,13 +9470,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(
-          authorized_amount:,
-          fuel_confirmed_amount:,
-          incremented_amount:,
-          reversed_amount:,
-          settled_amount:
-        )
+        def self.new(authorized_amount:, fuel_confirmed_amount:, incremented_amount:, reversed_amount:, settled_amount:)
         end
 
         sig do

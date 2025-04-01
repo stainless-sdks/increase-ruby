@@ -4,7 +4,7 @@ module Increase
   module Models
     module Simulations
       class PhysicalCardAdvanceShipmentParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
+        extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
         # The shipment status to move the Physical Card to.

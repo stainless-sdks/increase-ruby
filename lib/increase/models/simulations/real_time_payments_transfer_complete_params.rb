@@ -3,10 +3,9 @@
 module Increase
   module Models
     module Simulations
-      # @see Increase::Resources::Simulations::RealTimePaymentsTransfers#complete
       class RealTimePaymentsTransferCompleteParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Type::RequestParameters::Converter
+        #   extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
         # @!attribute [r] rejection
@@ -46,8 +45,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
 
           # The reason code that the simulated rejection will have.
-          #
-          # @see Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection#reject_reason_code
           module RejectReasonCode
             extend Increase::Enum
 

@@ -2,10 +2,9 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::RealTimeDecisions#action
     class RealTimeDecisionActionParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
+      #   extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # @!attribute [r] card_authentication
@@ -106,8 +105,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # Whether the card authentication attempt should be approved or declined.
-        #
-        # @see Increase::Models::RealTimeDecisionActionParams::CardAuthentication#decision
         module Decision
           extend Increase::Enum
 
@@ -149,8 +146,6 @@ module Increase
 
         # Whether the card authentication challenge was successfully delivered to the
         #   cardholder.
-        #
-        # @see Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge#result
         module Result
           extend Increase::Enum
 
@@ -200,8 +195,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # Whether the card authorization should be approved or declined.
-        #
-        # @see Increase::Models::RealTimeDecisionActionParams::CardAuthorization#decision
         module Decision
           extend Increase::Enum
 
@@ -220,8 +213,6 @@ module Increase
 
         # The reason the card authorization was declined. This translates to a specific
         #   decline code that is sent to the card network.
-        #
-        # @see Increase::Models::RealTimeDecisionActionParams::CardAuthorization#decline_reason
         module DeclineReason
           extend Increase::Enum
 
@@ -281,8 +272,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # Whether your application was able to deliver the one-time passcode.
-        #
-        # @see Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication#result
         module Result
           extend Increase::Enum
 
@@ -299,7 +288,6 @@ module Increase
           #   def self.values; end
         end
 
-        # @see Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication#success
         class Success < Increase::BaseModel
           # @!attribute [r] email
           #   The email address that was used to verify the cardholder via one-time passcode.
@@ -366,7 +354,6 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @see Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken#approval
         class Approval < Increase::BaseModel
           # @!attribute [r] email
           #   An email address that can be used to verify the cardholder via one-time
@@ -402,7 +389,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        # @see Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken#decline
         class Decline < Increase::BaseModel
           # @!attribute [r] reason
           #   Why the tokenization attempt was declined. This is for logging purposes only and

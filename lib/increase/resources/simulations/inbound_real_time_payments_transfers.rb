@@ -28,8 +28,6 @@ module Increase
         #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::InboundRealTimePaymentsTransfer]
-        #
-        # @see Increase::Models::Simulations::InboundRealTimePaymentsTransferCreateParams
         def create(params)
           parsed, options =
             Increase::Models::Simulations::InboundRealTimePaymentsTransferCreateParams.dump_request(params)
@@ -42,8 +40,6 @@ module Increase
           )
         end
 
-        # @api private
-        #
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client
