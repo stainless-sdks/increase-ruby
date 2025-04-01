@@ -49,7 +49,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::Simulations::CardDisputeActionParams::Status) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::Simulations::CardDisputeActionParams::Status::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Increase::Models::Simulations::CardDisputeActionParams::Status::TaggedSymbol) }
 
           # Increase has requested more information related to the Card Dispute from you.
           PENDING_USER_INFORMATION =

@@ -312,7 +312,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::ACHTransferCreateParams::Addenda::Category) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::ACHTransferCreateParams::Addenda::Category::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Increase::Models::ACHTransferCreateParams::Addenda::Category::TaggedSymbol) }
 
           # Unstructured `payment_related_information` passed through with the transfer.
           FREEFORM = T.let(:freeform, Increase::Models::ACHTransferCreateParams::Addenda::Category::TaggedSymbol)
@@ -430,7 +430,7 @@ module Increase
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::ACHTransferCreateParams::DestinationAccountHolder) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ACHTransferCreateParams::DestinationAccountHolder::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Increase::Models::ACHTransferCreateParams::DestinationAccountHolder::TaggedSymbol) }
 
         # The External Account is owned by a business.
         BUSINESS =
@@ -458,7 +458,7 @@ module Increase
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransferCreateParams::Funding) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ACHTransferCreateParams::Funding::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Increase::Models::ACHTransferCreateParams::Funding::TaggedSymbol) }
 
         # A checking account.
         CHECKING = T.let(:checking, Increase::Models::ACHTransferCreateParams::Funding::TaggedSymbol)
@@ -532,6 +532,7 @@ module Increase
             T.type_alias do
               T.any(
                 Symbol,
+                String,
                 Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol
               )
             end
@@ -568,7 +569,7 @@ module Increase
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::ACHTransferCreateParams::StandardEntryClassCode) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::TaggedSymbol) }
 
         # Corporate Credit and Debit (CCD).
         CORPORATE_CREDIT_OR_DEBIT =
@@ -612,7 +613,7 @@ module Increase
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::ACHTransferCreateParams::TransactionTiming) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::ACHTransferCreateParams::TransactionTiming::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Increase::Models::ACHTransferCreateParams::TransactionTiming::TaggedSymbol) }
 
         # A Transaction will be created immediately.
         SYNCHRONOUS =

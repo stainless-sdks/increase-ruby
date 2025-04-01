@@ -419,7 +419,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::TaggedSymbol) }
 
           # An API key. Details will be under the `api_key` object.
           API_KEY = T.let(:api_key, Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::TaggedSymbol)
@@ -474,7 +474,7 @@ module Increase
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransfer::Currency) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol) }
 
         # Canadian Dollar (CAD)
         CAD = T.let(:CAD, Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol)
@@ -549,7 +549,13 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol
+              )
+            end
 
           # The destination account is closed. Corresponds to the Real-Time Payments reason code `AC04`.
           ACCOUNT_CLOSED =
@@ -704,7 +710,7 @@ module Increase
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransfer::Status) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol) }
 
         # The transfer is pending approval.
         PENDING_APPROVAL =
@@ -768,7 +774,8 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransfer::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::RealTimePaymentsTransfer::Type::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::RealTimePaymentsTransfer::Type::TaggedSymbol) }
 
         REAL_TIME_PAYMENTS_TRANSFER =
           T.let(:real_time_payments_transfer, Increase::Models::RealTimePaymentsTransfer::Type::TaggedSymbol)

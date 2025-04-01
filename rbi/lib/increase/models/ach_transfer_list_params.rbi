@@ -169,7 +169,7 @@ module Increase
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransferListParams::Status::In) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::ACHTransferListParams::Status::In::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Increase::Models::ACHTransferListParams::Status::In::TaggedSymbol) }
 
           # The transfer is pending approval.
           PENDING_APPROVAL =

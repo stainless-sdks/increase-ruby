@@ -98,7 +98,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::TaggedSymbol) }
 
           # ACH Debits are allowed.
           ALLOWED =
@@ -144,7 +144,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::AccountNumberCreateParams::InboundChecks::Status) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::AccountNumberCreateParams::InboundChecks::Status::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Increase::Models::AccountNumberCreateParams::InboundChecks::Status::TaggedSymbol) }
 
           # Checks with this Account Number will be processed even if they are not associated with a Check Transfer.
           ALLOWED =

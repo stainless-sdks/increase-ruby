@@ -98,7 +98,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountStatement::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::AccountStatement::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::AccountStatement::Type::TaggedSymbol) }
 
         ACCOUNT_STATEMENT = T.let(:account_statement, Increase::Models::AccountStatement::Type::TaggedSymbol)
 

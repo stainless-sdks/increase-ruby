@@ -108,7 +108,13 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency::TaggedSymbol
+              )
+            end
 
           # Canadian Dollar (CAD)
           CAD = T.let(:CAD, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency::TaggedSymbol)
@@ -143,7 +149,13 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status::TaggedSymbol) }
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status::TaggedSymbol
+              )
+            end
 
           # Funds are still being held.
           HELD = T.let(:held, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status::TaggedSymbol)
@@ -168,7 +180,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type::TaggedSymbol) }
 
           INBOUND_FUNDS_HOLD =
             T.let(

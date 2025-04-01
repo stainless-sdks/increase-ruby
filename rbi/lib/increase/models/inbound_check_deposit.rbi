@@ -235,7 +235,7 @@ module Increase
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundCheckDeposit::Adjustment::Reason) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::InboundCheckDeposit::Adjustment::Reason::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Increase::Models::InboundCheckDeposit::Adjustment::Reason::TaggedSymbol) }
 
           # The return was initiated too late and the receiving institution has responded with a Late Return Claim.
           LATE_RETURN =
@@ -264,7 +264,8 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundCheckDeposit::Currency) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::InboundCheckDeposit::Currency::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::InboundCheckDeposit::Currency::TaggedSymbol) }
 
         # Canadian Dollar (CAD)
         CAD = T.let(:CAD, Increase::Models::InboundCheckDeposit::Currency::TaggedSymbol)
@@ -335,7 +336,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::InboundCheckDeposit::DepositReturn::Reason) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Increase::Models::InboundCheckDeposit::DepositReturn::Reason::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Increase::Models::InboundCheckDeposit::DepositReturn::Reason::TaggedSymbol) }
 
           # The check was altered or fictitious.
           ALTERED_OR_FICTITIOUS =
@@ -370,7 +371,7 @@ module Increase
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundCheckDeposit::PayeeNameAnalysis) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Increase::Models::InboundCheckDeposit::PayeeNameAnalysis::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Increase::Models::InboundCheckDeposit::PayeeNameAnalysis::TaggedSymbol) }
 
         # The details on the check match the recipient name of the check transfer.
         NAME_MATCHES =
@@ -394,7 +395,8 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundCheckDeposit::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::InboundCheckDeposit::Status::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::InboundCheckDeposit::Status::TaggedSymbol) }
 
         # The Inbound Check Deposit is pending.
         PENDING = T.let(:pending, Increase::Models::InboundCheckDeposit::Status::TaggedSymbol)
@@ -423,7 +425,8 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundCheckDeposit::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::InboundCheckDeposit::Type::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::InboundCheckDeposit::Type::TaggedSymbol) }
 
         INBOUND_CHECK_DEPOSIT =
           T.let(:inbound_check_deposit, Increase::Models::InboundCheckDeposit::Type::TaggedSymbol)
