@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::AccountNumbers#retrieve
     class AccountNumberRetrieveParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

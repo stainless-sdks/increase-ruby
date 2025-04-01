@@ -3,6 +3,7 @@
 module Increase
   module Models
     module Simulations
+      # @see Increase::Resources::Simulations::InboundWireTransfers#create
       class InboundWireTransferCreateParams < Increase::BaseModel
         # @!parse
         #   extend Increase::Type::RequestParameters::Converter

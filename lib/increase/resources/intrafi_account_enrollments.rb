@@ -14,6 +14,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::IntrafiAccountEnrollment]
+      #
+      # @see Increase::Models::IntrafiAccountEnrollmentCreateParams
       def create(params)
         parsed, options = Increase::Models::IntrafiAccountEnrollmentCreateParams.dump_request(params)
         @client.request(
@@ -34,6 +36,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::IntrafiAccountEnrollment]
+      #
+      # @see Increase::Models::IntrafiAccountEnrollmentRetrieveParams
       def retrieve(intrafi_account_enrollment_id, params = {})
         @client.request(
           method: :get,
@@ -64,6 +68,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::IntrafiAccountEnrollment>]
+      #
+      # @see Increase::Models::IntrafiAccountEnrollmentListParams
       def list(params = {})
         parsed, options = Increase::Models::IntrafiAccountEnrollmentListParams.dump_request(params)
         @client.request(
@@ -85,6 +91,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::IntrafiAccountEnrollment]
+      #
+      # @see Increase::Models::IntrafiAccountEnrollmentUnenrollParams
       def unenroll(intrafi_account_enrollment_id, params = {})
         @client.request(
           method: :post,
@@ -94,6 +102,8 @@ module Increase
         )
       end
 
+      # @api private
+      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

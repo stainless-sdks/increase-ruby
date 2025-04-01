@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::InboundWireTransfers#list
     class InboundWireTransferListParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::DigitalWalletTokens#retrieve
     class DigitalWalletTokenRetrieveParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

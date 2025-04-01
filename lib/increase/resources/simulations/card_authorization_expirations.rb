@@ -13,6 +13,8 @@ module Increase
         #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::CardPayment]
+        #
+        # @see Increase::Models::Simulations::CardAuthorizationExpirationCreateParams
         def create(params)
           parsed, options =
             Increase::Models::Simulations::CardAuthorizationExpirationCreateParams.dump_request(params)
@@ -25,6 +27,8 @@ module Increase
           )
         end
 
+        # @api private
+        #
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client

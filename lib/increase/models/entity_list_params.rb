@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::Entities#list
     class EntityListParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

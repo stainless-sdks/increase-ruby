@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::IntrafiBalances#intrafi_balance
     class IntrafiBalanceIntrafiBalanceParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

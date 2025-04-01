@@ -18,6 +18,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::PhysicalCardProfile]
+      #
+      # @see Increase::Models::PhysicalCardProfileCreateParams
       def create(params)
         parsed, options = Increase::Models::PhysicalCardProfileCreateParams.dump_request(params)
         @client.request(
@@ -38,6 +40,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::PhysicalCardProfile]
+      #
+      # @see Increase::Models::PhysicalCardProfileRetrieveParams
       def retrieve(physical_card_profile_id, params = {})
         @client.request(
           method: :get,
@@ -66,6 +70,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::PhysicalCardProfile>]
+      #
+      # @see Increase::Models::PhysicalCardProfileListParams
       def list(params = {})
         parsed, options = Increase::Models::PhysicalCardProfileListParams.dump_request(params)
         @client.request(
@@ -87,6 +93,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::PhysicalCardProfile]
+      #
+      # @see Increase::Models::PhysicalCardProfileArchiveParams
       def archive(physical_card_profile_id, params = {})
         @client.request(
           method: :post,
@@ -116,6 +124,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::PhysicalCardProfile]
+      #
+      # @see Increase::Models::PhysicalCardProfileCloneParams
       def clone_(physical_card_profile_id, params = {})
         parsed, options = Increase::Models::PhysicalCardProfileCloneParams.dump_request(params)
         @client.request(
@@ -127,6 +137,8 @@ module Increase
         )
       end
 
+      # @api private
+      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

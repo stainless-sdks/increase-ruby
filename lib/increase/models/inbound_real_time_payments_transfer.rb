@@ -147,6 +147,7 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @see Increase::Models::InboundRealTimePaymentsTransfer#confirmation
       class Confirmation < Increase::BaseModel
         # @!attribute confirmed_at
         #   The time at which the transfer was confirmed.
@@ -173,6 +174,8 @@ module Increase
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
       #   currency. This will always be "USD" for a Real-Time Payments transfer.
+      #
+      # @see Increase::Models::InboundRealTimePaymentsTransfer#currency
       module Currency
         extend Increase::Enum
 
@@ -201,6 +204,7 @@ module Increase
         #   def self.values; end
       end
 
+      # @see Increase::Models::InboundRealTimePaymentsTransfer#decline
       class Decline < Increase::BaseModel
         # @!attribute declined_at
         #   The time at which the transfer was declined.
@@ -232,6 +236,8 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # The reason for the transfer decline.
+        #
+        # @see Increase::Models::InboundRealTimePaymentsTransfer::Decline#reason
         module Reason
           extend Increase::Enum
 
@@ -262,6 +268,8 @@ module Increase
       end
 
       # The lifecycle status of the transfer.
+      #
+      # @see Increase::Models::InboundRealTimePaymentsTransfer#status
       module Status
         extend Increase::Enum
 
@@ -286,6 +294,8 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_real_time_payments_transfer`.
+      #
+      # @see Increase::Models::InboundRealTimePaymentsTransfer#type
       module Type
         extend Increase::Enum
 

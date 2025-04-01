@@ -84,6 +84,8 @@ module Increase
       # @return [Increase::Resources::Simulations::Documents]
       attr_reader :documents
 
+      # @api private
+      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

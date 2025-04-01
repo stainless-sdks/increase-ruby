@@ -222,6 +222,8 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # The status of the transfer.
+      #
+      # @see Increase::Models::InboundWireTransfer#status
       module Status
         extend Increase::Enum
 
@@ -246,6 +248,8 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_wire_transfer`.
+      #
+      # @see Increase::Models::InboundWireTransfer#type
       module Type
         extend Increase::Enum
 

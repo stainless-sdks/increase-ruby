@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::Files#create
     class FileCreateParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

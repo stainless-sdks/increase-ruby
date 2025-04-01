@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::InboundRealTimePaymentsTransfers#retrieve
     class InboundRealTimePaymentsTransferRetrieveParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

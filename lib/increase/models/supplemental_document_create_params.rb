@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::SupplementalDocuments#create
     class SupplementalDocumentCreateParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

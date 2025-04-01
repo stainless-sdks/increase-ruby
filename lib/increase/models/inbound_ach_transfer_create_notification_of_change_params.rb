@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::InboundACHTransfers#create_notification_of_change
     class InboundACHTransferCreateNotificationOfChangeParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter

@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::ACHTransfers#create
     class ACHTransferCreateParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter
@@ -299,6 +300,8 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # The type of addenda to pass with the transfer.
+        #
+        # @see Increase::Models::ACHTransferCreateParams::Addenda#category
         module Category
           extend Increase::Enum
 
@@ -315,6 +318,7 @@ module Increase
           #   def self.values; end
         end
 
+        # @see Increase::Models::ACHTransferCreateParams::Addenda#freeform
         class Freeform < Increase::BaseModel
           # @!attribute entries
           #   Each entry represents an addendum sent with the transfer. Please reach out to
@@ -350,6 +354,7 @@ module Increase
           end
         end
 
+        # @see Increase::Models::ACHTransferCreateParams::Addenda#payment_order_remittance_advice
         class PaymentOrderRemittanceAdvice < Increase::BaseModel
           # @!attribute invoices
           #   ASC X12 RMR records for this specific transfer.
@@ -468,6 +473,8 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # A schedule by which Increase will choose an effective date for the transfer.
+        #
+        # @see Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate#settlement_schedule
         module SettlementSchedule
           extend Increase::Enum
 

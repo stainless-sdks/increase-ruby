@@ -109,6 +109,8 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # The type of entity that owns the External Account.
+      #
+      # @see Increase::Models::ExternalAccount#account_holder
       module AccountHolder
         extend Increase::Enum
 
@@ -129,6 +131,8 @@ module Increase
       end
 
       # The type of the account to which the transfer will be sent.
+      #
+      # @see Increase::Models::ExternalAccount#funding
       module Funding
         extend Increase::Enum
 
@@ -149,6 +153,8 @@ module Increase
       end
 
       # The External Account's status.
+      #
+      # @see Increase::Models::ExternalAccount#status
       module Status
         extend Increase::Enum
 
@@ -167,6 +173,8 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `external_account`.
+      #
+      # @see Increase::Models::ExternalAccount#type
       module Type
         extend Increase::Enum
 
@@ -180,6 +188,8 @@ module Increase
       end
 
       # If you have verified ownership of the External Account.
+      #
+      # @see Increase::Models::ExternalAccount#verification_status
       module VerificationStatus
         extend Increase::Enum
 

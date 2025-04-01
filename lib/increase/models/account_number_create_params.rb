@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::AccountNumbers#create
     class AccountNumberCreateParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter
@@ -72,6 +73,8 @@ module Increase
         # Whether ACH debits are allowed against this Account Number. Note that ACH debits
         #   will be declined if this is `allowed` but the Account Number is not active. If
         #   you do not specify this field, the default is `allowed`.
+        #
+        # @see Increase::Models::AccountNumberCreateParams::InboundACH#debit_status
         module DebitStatus
           extend Increase::Enum
 
@@ -109,6 +112,8 @@ module Increase
 
         # How Increase should process checks with this account number printed on them. If
         #   you do not specify this field, the default is `check_transfers_only`.
+        #
+        # @see Increase::Models::AccountNumberCreateParams::InboundChecks#status
         module Status
           extend Increase::Enum
 

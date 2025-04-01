@@ -149,6 +149,8 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # The bank the Account is with.
+      #
+      # @see Increase::Models::Account#bank
       module Bank
         extend Increase::Enum
 
@@ -170,6 +172,8 @@ module Increase
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
       #   currency.
+      #
+      # @see Increase::Models::Account#currency
       module Currency
         extend Increase::Enum
 
@@ -199,6 +203,8 @@ module Increase
       end
 
       # The status of the Account.
+      #
+      # @see Increase::Models::Account#status
       module Status
         extend Increase::Enum
 
@@ -217,6 +223,8 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `account`.
+      #
+      # @see Increase::Models::Account#type
       module Type
         extend Increase::Enum
 

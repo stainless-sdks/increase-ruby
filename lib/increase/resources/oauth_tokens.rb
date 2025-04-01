@@ -26,6 +26,8 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::OAuthToken]
+      #
+      # @see Increase::Models::OAuthTokenCreateParams
       def create(params)
         parsed, options = Increase::Models::OAuthTokenCreateParams.dump_request(params)
         @client.request(
@@ -37,6 +39,8 @@ module Increase
         )
       end
 
+      # @api private
+      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

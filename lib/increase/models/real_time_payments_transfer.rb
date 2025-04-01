@@ -234,6 +234,7 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @see Increase::Models::RealTimePaymentsTransfer#acknowledgement
       class Acknowledgement < Increase::BaseModel
         # @!attribute acknowledged_at
         #   When the transfer was acknowledged.
@@ -252,6 +253,7 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @see Increase::Models::RealTimePaymentsTransfer#approval
       class Approval < Increase::BaseModel
         # @!attribute approved_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -279,6 +281,7 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @see Increase::Models::RealTimePaymentsTransfer#cancellation
       class Cancellation < Increase::BaseModel
         # @!attribute canceled_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -306,6 +309,7 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @see Increase::Models::RealTimePaymentsTransfer#created_by
       class CreatedBy < Increase::BaseModel
         # @!attribute api_key
         #   If present, details about the API key that created the transfer.
@@ -345,6 +349,7 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @see Increase::Models::RealTimePaymentsTransfer::CreatedBy#api_key
         class APIKey < Increase::BaseModel
           # @!attribute description
           #   The description set for the API key when it was created.
@@ -363,6 +368,8 @@ module Increase
         end
 
         # The type of object that created this transfer.
+        #
+        # @see Increase::Models::RealTimePaymentsTransfer::CreatedBy#category
         module Category
           extend Increase::Enum
 
@@ -382,6 +389,7 @@ module Increase
           #   def self.values; end
         end
 
+        # @see Increase::Models::RealTimePaymentsTransfer::CreatedBy#oauth_application
         class OAuthApplication < Increase::BaseModel
           # @!attribute name
           #   The name of the OAuth Application.
@@ -399,6 +407,7 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @see Increase::Models::RealTimePaymentsTransfer::CreatedBy#user
         class User < Increase::BaseModel
           # @!attribute email
           #   The email address of the User.
@@ -419,6 +428,8 @@ module Increase
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
       #   currency. For real-time payments transfers this is always equal to `USD`.
+      #
+      # @see Increase::Models::RealTimePaymentsTransfer#currency
       module Currency
         extend Increase::Enum
 
@@ -447,6 +458,7 @@ module Increase
         #   def self.values; end
       end
 
+      # @see Increase::Models::RealTimePaymentsTransfer#rejection
       class Rejection < Increase::BaseModel
         # @!attribute reject_reason_additional_information
         #   Additional information about the rejection provided by the recipient bank when
@@ -484,6 +496,8 @@ module Increase
 
         # The reason the transfer was rejected as provided by the recipient bank or the
         #   Real-Time Payments network.
+        #
+        # @see Increase::Models::RealTimePaymentsTransfer::Rejection#reject_reason_code
         module RejectReasonCode
           extend Increase::Enum
 
@@ -559,6 +573,8 @@ module Increase
       end
 
       # The lifecycle status of the transfer.
+      #
+      # @see Increase::Models::RealTimePaymentsTransfer#status
       module Status
         extend Increase::Enum
 
@@ -593,6 +609,7 @@ module Increase
         #   def self.values; end
       end
 
+      # @see Increase::Models::RealTimePaymentsTransfer#submission
       class Submission < Increase::BaseModel
         # @!attribute submitted_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -621,6 +638,8 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `real_time_payments_transfer`.
+      #
+      # @see Increase::Models::RealTimePaymentsTransfer#type
       module Type
         extend Increase::Enum
 

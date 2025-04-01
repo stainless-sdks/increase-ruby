@@ -2,6 +2,7 @@
 
 module Increase
   module Models
+    # @see Increase::Resources::Lockboxes#list
     class LockboxListParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Type::RequestParameters::Converter
