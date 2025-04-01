@@ -46,9 +46,7 @@ module Increase
       # @param other [Object]
       #
       # @return [Boolean]
-      def ==(other)
-        other.is_a?(Increase::HashOf) && other.nilable? == nilable? && other.item_type == item_type
-      end
+      def ==(other) = other.is_a?(Increase::HashOf) && other.nilable? == nilable? && other.item_type == item_type
 
       # @api private
       #

@@ -220,15 +220,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(
-          address:,
-          beneficial_owners:,
-          incorporation_state:,
-          industry_code:,
-          name:,
-          tax_identifier:,
-          website:
-        )
+        def self.new(address:, beneficial_owners:, incorporation_state:, industry_code:, name:, tax_identifier:, website:)
         end
 
         sig do

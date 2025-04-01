@@ -2,7 +2,6 @@
 
 module Increase
   module Type
-    # rubocop:disable Metrics/ModuleLength
     # @api private
     module Converter
       # rubocop:disable Lint/UnusedMethodArgument
@@ -119,8 +118,6 @@ module Increase
           value,
           state: {strictness: true, exactness: {yes: 0, no: 0, maybe: 0}, branched: 0}
         )
-          # rubocop:disable Lint/SuppressedException
-          # rubocop:disable Metrics/BlockNesting
           strictness, exactness = state.fetch_values(:strictness, :exactness)
 
           case target
@@ -197,8 +194,6 @@ module Increase
 
           exactness[:no] += 1
           value
-          # rubocop:enable Metrics/BlockNesting
-          # rubocop:enable Lint/SuppressedException
         end
 
         # @api private
@@ -212,6 +207,5 @@ module Increase
         end
       end
     end
-    # rubocop:enable Metrics/ModuleLength
   end
 end

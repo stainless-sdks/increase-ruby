@@ -41,14 +41,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        account_id:,
-        amount:,
-        description:,
-        destination_account_id:,
-        require_approval: nil,
-        request_options: {}
-      )
+      def self.new(account_id:, amount:, description:, destination_account_id:, require_approval: nil, request_options: {})
       end
 
       sig do

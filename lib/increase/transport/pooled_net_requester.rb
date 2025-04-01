@@ -54,7 +54,7 @@ module Increase
         #
         # @yieldparam [String]
         # @return [Net::HTTPGenericRequest]
-        def build_request(request, &blk)
+        def build_request(request, &)
           method, url, headers, body = request.fetch_values(:method, :url, :headers, :body)
           req = Net::HTTPGenericRequest.new(
             method.to_s.upcase,
@@ -70,13 +70,13 @@ module Increase
             nil
           in String
             req["content-length"] ||= body.bytesize.to_s unless req["transfer-encoding"]
-            req.body_stream = Increase::Util::ReadIOAdapter.new(body, &blk)
+            req.body_stream = Increase::Util::ReadIOAdapter.new(body, &)
           in StringIO
             req["content-length"] ||= body.size.to_s unless req["transfer-encoding"]
-            req.body_stream = Increase::Util::ReadIOAdapter.new(body, &blk)
+            req.body_stream = Increase::Util::ReadIOAdapter.new(body, &)
           in IO | Enumerator
             req["transfer-encoding"] ||= "chunked" unless req["content-length"]
-            req.body_stream = Increase::Util::ReadIOAdapter.new(body, &blk)
+            req.body_stream = Increase::Util::ReadIOAdapter.new(body, &)
           end
 
           req

@@ -49,13 +49,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        url:,
-        oauth_connection_id: nil,
-        selected_event_category: nil,
-        shared_secret: nil,
-        request_options: {}
-      )
+      def self.new(url:, oauth_connection_id: nil, selected_event_category: nil, shared_secret: nil, request_options: {})
       end
 
       sig do
