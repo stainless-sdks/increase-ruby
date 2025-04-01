@@ -58,7 +58,14 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(card_id: nil, created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, request_options: {})
+      def self.new(
+        card_id: nil,
+        created_at: nil,
+        cursor: nil,
+        idempotency_key: nil,
+        limit: nil,
+        request_options: {}
+      )
       end
 
       sig do

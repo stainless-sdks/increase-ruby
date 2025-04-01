@@ -59,7 +59,16 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, created_at:, idempotency_key:, oauth_connection_id:, selected_event_category:, status:, type:, url:)
+      def self.new(
+        id:,
+        created_at:,
+        idempotency_key:,
+        oauth_connection_id:,
+        selected_event_category:,
+        status:,
+        type:,
+        url:
+      )
       end
 
       sig do
