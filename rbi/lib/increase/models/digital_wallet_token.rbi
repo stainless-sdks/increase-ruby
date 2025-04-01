@@ -73,8 +73,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalWalletToken::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Increase::Models::DigitalWalletToken::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::DigitalWalletToken::Status::TaggedSymbol) }
 
         # The digital wallet token is active.
         ACTIVE = T.let(:active, Increase::Models::DigitalWalletToken::Status::TaggedSymbol)
@@ -99,7 +98,7 @@ module Increase
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalWalletToken::TokenRequestor) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, String, Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol) }
 
         # Apple Pay
         APPLE_PAY = T.let(:apple_pay, Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol)
@@ -124,8 +123,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalWalletToken::Type) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Increase::Models::DigitalWalletToken::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::DigitalWalletToken::Type::TaggedSymbol) }
 
         DIGITAL_WALLET_TOKEN =
           T.let(:digital_wallet_token, Increase::Models::DigitalWalletToken::Type::TaggedSymbol)
@@ -165,7 +163,7 @@ module Increase
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalWalletToken::Update::Status) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol) }
 
           # The digital wallet token is active.
           ACTIVE = T.let(:active, Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol)

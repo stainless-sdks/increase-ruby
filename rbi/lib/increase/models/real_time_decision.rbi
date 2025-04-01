@@ -198,7 +198,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecision::CardAuthentication::Decision) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::RealTimeDecision::CardAuthentication::Decision::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, Increase::Models::RealTimeDecision::CardAuthentication::Decision::TaggedSymbol) }
 
           # Approve the authentication attempt without triggering a challenge.
           APPROVE = T.let(:approve, Increase::Models::RealTimeDecision::CardAuthentication::Decision::TaggedSymbol)
@@ -274,13 +274,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecision::CardAuthenticationChallenge::Result) }
           OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                String,
-                Increase::Models::RealTimeDecision::CardAuthenticationChallenge::Result::TaggedSymbol
-              )
-            end
+            T.type_alias { T.any(Symbol, Increase::Models::RealTimeDecision::CardAuthenticationChallenge::Result::TaggedSymbol) }
 
           # Your application successfully delivered the one-time code to the cardholder.
           SUCCESS =
@@ -549,7 +543,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Decision) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::RealTimeDecision::CardAuthorization::Decision::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Decision::TaggedSymbol) }
 
           # Approve the authorization.
           APPROVE = T.let(:approve, Increase::Models::RealTimeDecision::CardAuthorization::Decision::TaggedSymbol)
@@ -570,7 +564,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Direction) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::RealTimeDecision::CardAuthorization::Direction::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Direction::TaggedSymbol) }
 
           # A regular card authorization where funds are debited from the cardholder.
           SETTLEMENT =
@@ -644,7 +638,6 @@ module Increase
               T.type_alias do
                 T.any(
                   Symbol,
-                  String,
                   Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category::TaggedSymbol
                 )
               end
@@ -756,7 +749,6 @@ module Increase
                 T.type_alias do
                   T.any(
                     Symbol,
-                    String,
                     Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
                 end
@@ -842,7 +834,6 @@ module Increase
                 T.type_alias do
                   T.any(
                     Symbol,
-                    String,
                     Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
                 end
@@ -942,7 +933,6 @@ module Increase
                 T.type_alias do
                   T.any(
                     Symbol,
-                    String,
                     Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
                 end
@@ -1061,13 +1051,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecision::CardAuthorization::ProcessingCategory) }
           OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                String,
-                Increase::Models::RealTimeDecision::CardAuthorization::ProcessingCategory::TaggedSymbol
-              )
-            end
+            T.type_alias { T.any(Symbol, Increase::Models::RealTimeDecision::CardAuthorization::ProcessingCategory::TaggedSymbol) }
 
           # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
           ACCOUNT_FUNDING =
@@ -1185,7 +1169,6 @@ module Increase
               T.type_alias do
                 T.any(
                   Symbol,
-                  String,
                   Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category::TaggedSymbol
                 )
               end
@@ -1345,7 +1328,6 @@ module Increase
                 T.type_alias do
                   T.any(
                     Symbol,
-                    String,
                     Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
                   )
                 end
@@ -1452,7 +1434,6 @@ module Increase
                 T.type_alias do
                   T.any(
                     Symbol,
-                    String,
                     Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
                   )
                 end
@@ -1519,8 +1500,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecision::Category) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Increase::Models::RealTimeDecision::Category::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::RealTimeDecision::Category::TaggedSymbol) }
 
         # A card is being authorized.
         CARD_AUTHORIZATION_REQUESTED =
@@ -1623,13 +1603,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel) }
           OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                String,
-                Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel::TaggedSymbol
-              )
-            end
+            T.type_alias { T.any(Symbol, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel::TaggedSymbol) }
 
           # Send one-time passcodes over SMS.
           SMS = T.let(:sms, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel::TaggedSymbol)
@@ -1656,7 +1630,6 @@ module Increase
             T.type_alias do
               T.any(
                 Symbol,
-                String,
                 Increase::Models::RealTimeDecision::DigitalWalletAuthentication::DigitalWallet::TaggedSymbol
               )
             end
@@ -1706,13 +1679,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Result) }
           OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                String,
-                Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Result::TaggedSymbol
-              )
-            end
+            T.type_alias { T.any(Symbol, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Result::TaggedSymbol) }
 
           # Your application successfully delivered the one-time passcode to the cardholder.
           SUCCESS =
@@ -1786,7 +1753,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecision::DigitalWalletToken::Decision) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::RealTimeDecision::DigitalWalletToken::Decision::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, Increase::Models::RealTimeDecision::DigitalWalletToken::Decision::TaggedSymbol) }
 
           # Approve the provisioning request.
           APPROVE = T.let(:approve, Increase::Models::RealTimeDecision::DigitalWalletToken::Decision::TaggedSymbol)
@@ -1806,7 +1773,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet::TaggedSymbol) }
 
           # Apple Pay
           APPLE_PAY =
@@ -1838,8 +1805,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecision::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Increase::Models::RealTimeDecision::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::RealTimeDecision::Status::TaggedSymbol) }
 
         # The decision is pending action via real-time webhook.
         PENDING = T.let(:pending, Increase::Models::RealTimeDecision::Status::TaggedSymbol)
@@ -1861,7 +1827,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecision::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::RealTimeDecision::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::RealTimeDecision::Type::TaggedSymbol) }
 
         REAL_TIME_DECISION = T.let(:real_time_decision, Increase::Models::RealTimeDecision::Type::TaggedSymbol)
 
