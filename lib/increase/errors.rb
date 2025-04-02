@@ -1,274 +1,309 @@
 # frozen_string_literal: true
 
 module Increase
-  class Error < StandardError
-    # @!parse
-    #   # @return [StandardError, nil]
-    #   attr_accessor :cause
-  end
-
-  class ConversionError < Increase::Error
-  end
-
-  class APIError < Increase::Error
-    # @return [URI::Generic]
-    attr_accessor :url
-
-    # @return [Integer, nil]
-    attr_accessor :status
-
-    # @return [Object, nil]
-    attr_accessor :body
-
-    # @api private
-    #
-    # @param url [URI::Generic]
-    # @param status [Integer, nil]
-    # @param body [Object, nil]
-    # @param request [nil]
-    # @param response [nil]
-    # @param message [String, nil]
-    def initialize(url:, status: nil, body: nil, request: nil, response: nil, message: nil)
-      @url = url
-      @status = status
-      @body = body
-      @request = request
-      @response = response
-      super(message)
+  module Errors
+    class Error < StandardError
+      # @!parse
+      #   # @return [StandardError, nil]
+      #   attr_accessor :cause
     end
-  end
 
-  class APIConnectionError < Increase::APIError
-    # @!parse
-    #   # @return [nil]
-    #   attr_accessor :status
-
-    # @!parse
-    #   # @return [nil]
-    #   attr_accessor :body
-
-    # @api private
-    #
-    # @param url [URI::Generic]
-    # @param status [nil]
-    # @param body [nil]
-    # @param request [nil]
-    # @param response [nil]
-    # @param message [String, nil]
-    def initialize(
-      url:,
-      status: nil,
-      body: nil,
-      request: nil,
-      response: nil,
-      message: "Connection error."
-    )
-      super
+    class ConversionError < Increase::Errors::Error
     end
-  end
 
-  class APITimeoutError < Increase::APIConnectionError
-    # @api private
-    #
-    # @param url [URI::Generic]
-    # @param status [nil]
-    # @param body [nil]
-    # @param request [nil]
-    # @param response [nil]
-    # @param message [String, nil]
-    def initialize(
-      url:,
-      status: nil,
-      body: nil,
-      request: nil,
-      response: nil,
-      message: "Request timed out."
-    )
-      super
-    end
-  end
+    class APIError < Increase::Errors::Error
+      # @return [URI::Generic]
+      attr_accessor :url
 
-  class APIStatusError < Increase::APIError
-    # @api private
-    #
-    # @param url [URI::Generic]
-    # @param status [Integer]
-    # @param body [Object, nil]
-    # @param request [nil]
-    # @param response [nil]
-    # @param message [String, nil]
-    #
-    # @return [Increase::APIStatusError]
-    def self.for(url:, status:, body:, request:, response:, message: nil)
-      key = Increase::Util.dig(body, :type)
-      kwargs = {url: url, status: status, body: body, request: request, response: response, message: message}
+      # @return [Integer, nil]
+      attr_accessor :status
 
-      case [status, key]
-      in [400, Increase::InvalidParametersError::TYPE]
-        Increase::InvalidParametersError.new(**kwargs)
-      in [400, Increase::MalformedRequestError::TYPE]
-        Increase::MalformedRequestError.new(**kwargs)
-      in [401, Increase::InvalidAPIKeyError::TYPE]
-        Increase::InvalidAPIKeyError.new(**kwargs)
-      in [403, Increase::EnvironmentMismatchError::TYPE]
-        Increase::EnvironmentMismatchError.new(**kwargs)
-      in [403, Increase::InsufficientPermissionsError::TYPE]
-        Increase::InsufficientPermissionsError.new(**kwargs)
-      in [403, Increase::PrivateFeatureError::TYPE]
-        Increase::PrivateFeatureError.new(**kwargs)
-      in [404, Increase::APIMethodNotFoundError::TYPE]
-        Increase::APIMethodNotFoundError.new(**kwargs)
-      in [404, Increase::ObjectNotFoundError::TYPE]
-        Increase::ObjectNotFoundError.new(**kwargs)
-      in [409, Increase::IdempotencyKeyAlreadyUsedError::TYPE]
-        Increase::IdempotencyKeyAlreadyUsedError.new(**kwargs)
-      in [409, Increase::InvalidOperationError::TYPE]
-        Increase::InvalidOperationError.new(**kwargs)
-      in [429, Increase::RateLimitedError::TYPE]
-        Increase::RateLimitedError.new(**kwargs)
-      in [(500..), Increase::InternalServerError::TYPE]
-        Increase::InternalServerError.new(**kwargs)
-      in [400, _]
-        Increase::BadRequestError.new(**kwargs)
-      in [401, _]
-        Increase::AuthenticationError.new(**kwargs)
-      in [403, _]
-        Increase::PermissionDeniedError.new(**kwargs)
-      in [404, _]
-        Increase::NotFoundError.new(**kwargs)
-      in [409, _]
-        Increase::ConflictError.new(**kwargs)
-      in [422, _]
-        Increase::UnprocessableEntityError.new(**kwargs)
-      in [429, _]
-        Increase::RateLimitError.new(**kwargs)
-      else
-        Increase::APIStatusError.new(**kwargs)
+      # @return [Object, nil]
+      attr_accessor :body
+
+      # @api private
+      #
+      # @param url [URI::Generic]
+      # @param status [Integer, nil]
+      # @param body [Object, nil]
+      # @param request [nil]
+      # @param response [nil]
+      # @param message [String, nil]
+      def initialize(url:, status: nil, body: nil, request: nil, response: nil, message: nil)
+        @url = url
+        @status = status
+        @body = body
+        @request = request
+        @response = response
+        super(message)
       end
     end
 
-    # @!parse
-    #   # @return [Integer]
-    #   attr_accessor :status
+    class APIConnectionError < Increase::Errors::APIError
+      # @!parse
+      #   # @return [nil]
+      #   attr_accessor :status
 
-    # @api private
-    #
-    # @param url [URI::Generic]
-    # @param status [Integer]
-    # @param body [Object, nil]
-    # @param request [nil]
-    # @param response [nil]
-    # @param message [String, nil]
-    def initialize(url:, status:, body:, request:, response:, message: nil)
-      message ||= {url: url.to_s, status: status, body: body}
-      super(
-        url: url,
-        status: status,
-        body: body,
-        request: request,
-        response: response,
-        message: message&.to_s
+      # @!parse
+      #   # @return [nil]
+      #   attr_accessor :body
+
+      # @api private
+      #
+      # @param url [URI::Generic]
+      # @param status [nil]
+      # @param body [nil]
+      # @param request [nil]
+      # @param response [nil]
+      # @param message [String, nil]
+      def initialize(
+        url:,
+        status: nil,
+        body: nil,
+        request: nil,
+        response: nil,
+        message: "Connection error."
       )
+        super
+      end
+    end
+
+    class APITimeoutError < Increase::Errors::APIConnectionError
+      # @api private
+      #
+      # @param url [URI::Generic]
+      # @param status [nil]
+      # @param body [nil]
+      # @param request [nil]
+      # @param response [nil]
+      # @param message [String, nil]
+      def initialize(
+        url:,
+        status: nil,
+        body: nil,
+        request: nil,
+        response: nil,
+        message: "Request timed out."
+      )
+        super
+      end
+    end
+
+    class APIStatusError < Increase::Errors::APIError
+      # @api private
+      #
+      # @param url [URI::Generic]
+      # @param status [Integer]
+      # @param body [Object, nil]
+      # @param request [nil]
+      # @param response [nil]
+      # @param message [String, nil]
+      #
+      # @return [Increase::Errors::APIStatusError]
+      def self.for(url:, status:, body:, request:, response:, message: nil)
+        key = Increase::Util.dig(body, :type)
+        kwargs = {
+          url: url,
+          status: status,
+          body: body,
+          request: request,
+          response: response,
+          message: message
+        }
+
+        case [status, key]
+        in [400, Increase::Errors::InvalidParametersError::TYPE]
+          Increase::Errors::InvalidParametersError.new(**kwargs)
+        in [400, Increase::Errors::MalformedRequestError::TYPE]
+          Increase::Errors::MalformedRequestError.new(**kwargs)
+        in [401, Increase::Errors::InvalidAPIKeyError::TYPE]
+          Increase::Errors::InvalidAPIKeyError.new(**kwargs)
+        in [403, Increase::Errors::EnvironmentMismatchError::TYPE]
+          Increase::Errors::EnvironmentMismatchError.new(**kwargs)
+        in [403, Increase::Errors::InsufficientPermissionsError::TYPE]
+          Increase::Errors::InsufficientPermissionsError.new(**kwargs)
+        in [403, Increase::Errors::PrivateFeatureError::TYPE]
+          Increase::Errors::PrivateFeatureError.new(**kwargs)
+        in [404, Increase::Errors::APIMethodNotFoundError::TYPE]
+          Increase::Errors::APIMethodNotFoundError.new(**kwargs)
+        in [404, Increase::Errors::ObjectNotFoundError::TYPE]
+          Increase::Errors::ObjectNotFoundError.new(**kwargs)
+        in [409, Increase::Errors::IdempotencyKeyAlreadyUsedError::TYPE]
+          Increase::Errors::IdempotencyKeyAlreadyUsedError.new(**kwargs)
+        in [409, Increase::Errors::InvalidOperationError::TYPE]
+          Increase::Errors::InvalidOperationError.new(**kwargs)
+        in [429, Increase::Errors::RateLimitedError::TYPE]
+          Increase::Errors::RateLimitedError.new(**kwargs)
+        in [(500..), Increase::Errors::InternalServerError::TYPE]
+          Increase::Errors::InternalServerError.new(**kwargs)
+        in [400, _]
+          Increase::Errors::BadRequestError.new(**kwargs)
+        in [401, _]
+          Increase::Errors::AuthenticationError.new(**kwargs)
+        in [403, _]
+          Increase::Errors::PermissionDeniedError.new(**kwargs)
+        in [404, _]
+          Increase::Errors::NotFoundError.new(**kwargs)
+        in [409, _]
+          Increase::Errors::ConflictError.new(**kwargs)
+        in [422, _]
+          Increase::Errors::UnprocessableEntityError.new(**kwargs)
+        in [429, _]
+          Increase::Errors::RateLimitError.new(**kwargs)
+        else
+          Increase::Errors::APIStatusError.new(**kwargs)
+        end
+      end
+
+      # @!parse
+      #   # @return [Integer]
+      #   attr_accessor :status
+
+      # @api private
+      #
+      # @param url [URI::Generic]
+      # @param status [Integer]
+      # @param body [Object, nil]
+      # @param request [nil]
+      # @param response [nil]
+      # @param message [String, nil]
+      def initialize(url:, status:, body:, request:, response:, message: nil)
+        message ||= {url: url.to_s, status: status, body: body}
+        super(
+          url: url,
+          status: status,
+          body: body,
+          request: request,
+          response: response,
+          message: message&.to_s
+        )
+      end
+    end
+
+    class BadRequestError < Increase::Errors::APIStatusError
+      HTTP_STATUS = 400
+    end
+
+    class AuthenticationError < Increase::Errors::APIStatusError
+      HTTP_STATUS = 401
+    end
+
+    class PermissionDeniedError < Increase::Errors::APIStatusError
+      HTTP_STATUS = 403
+    end
+
+    class NotFoundError < Increase::Errors::APIStatusError
+      HTTP_STATUS = 404
+    end
+
+    class ConflictError < Increase::Errors::APIStatusError
+      HTTP_STATUS = 409
+    end
+
+    class UnprocessableEntityError < Increase::Errors::APIStatusError
+      HTTP_STATUS = 422
+    end
+
+    class RateLimitError < Increase::Errors::APIStatusError
+      HTTP_STATUS = 429
+    end
+
+    class InvalidParametersError < Increase::Errors::BadRequestError
+      TYPE = "invalid_parameters_error"
+    end
+
+    class MalformedRequestError < Increase::Errors::BadRequestError
+      TYPE = "malformed_request_error"
+    end
+
+    class InvalidAPIKeyError < Increase::Errors::AuthenticationError
+      TYPE = "invalid_api_key_error"
+    end
+
+    class EnvironmentMismatchError < Increase::Errors::PermissionDeniedError
+      TYPE = "environment_mismatch_error"
+    end
+
+    class InsufficientPermissionsError < Increase::Errors::PermissionDeniedError
+      TYPE = "insufficient_permissions_error"
+    end
+
+    class PrivateFeatureError < Increase::Errors::PermissionDeniedError
+      TYPE = "private_feature_error"
+    end
+
+    class APIMethodNotFoundError < Increase::Errors::NotFoundError
+      TYPE = "api_method_not_found_error"
+    end
+
+    class ObjectNotFoundError < Increase::Errors::NotFoundError
+      TYPE = "object_not_found_error"
+    end
+
+    class IdempotencyKeyAlreadyUsedError < Increase::Errors::ConflictError
+      TYPE = "idempotency_key_already_used_error"
+    end
+
+    class InvalidOperationError < Increase::Errors::ConflictError
+      TYPE = "invalid_operation_error"
+    end
+
+    class RateLimitedError < Increase::Errors::RateLimitError
+      TYPE = "rate_limited_error"
+    end
+
+    class InternalServerError < Increase::Errors::APIStatusError
+      TYPE = "internal_server_error"
     end
   end
 
-  class BadRequestError < Increase::APIStatusError
-    HTTP_STATUS = 400
-  end
+  Error = Increase::Errors::Error
 
-  class AuthenticationError < Increase::APIStatusError
-    HTTP_STATUS = 401
-  end
+  ConversionError = Increase::Errors::ConversionError
 
-  class PermissionDeniedError < Increase::APIStatusError
-    HTTP_STATUS = 403
-  end
+  APIError = Increase::Errors::APIError
 
-  class NotFoundError < Increase::APIStatusError
-    HTTP_STATUS = 404
-  end
+  APIStatusError = Increase::Errors::APIStatusError
 
-  class ConflictError < Increase::APIStatusError
-    HTTP_STATUS = 409
-  end
+  APIConnectionError = Increase::Errors::APIConnectionError
 
-  class UnprocessableEntityError < Increase::APIStatusError
-    HTTP_STATUS = 422
-  end
+  APITimeoutError = Increase::Errors::APITimeoutError
 
-  class RateLimitError < Increase::APIStatusError
-    HTTP_STATUS = 429
-  end
+  BadRequestError = Increase::Errors::BadRequestError
 
-  class InvalidParametersError < Increase::BadRequestError
-    HTTP_STATUS = Increase::BadRequestError::HTTP_STATUS
+  AuthenticationError = Increase::Errors::AuthenticationError
 
-    TYPE = "invalid_parameters_error"
-  end
+  PermissionDeniedError = Increase::Errors::PermissionDeniedError
 
-  class MalformedRequestError < Increase::BadRequestError
-    HTTP_STATUS = Increase::BadRequestError::HTTP_STATUS
+  NotFoundError = Increase::Errors::NotFoundError
 
-    TYPE = "malformed_request_error"
-  end
+  ConflictError = Increase::Errors::ConflictError
 
-  class InvalidAPIKeyError < Increase::AuthenticationError
-    HTTP_STATUS = Increase::AuthenticationError::HTTP_STATUS
+  UnprocessableEntityError = Increase::Errors::UnprocessableEntityError
 
-    TYPE = "invalid_api_key_error"
-  end
+  RateLimitError = Increase::Errors::RateLimitError
 
-  class EnvironmentMismatchError < Increase::PermissionDeniedError
-    HTTP_STATUS = Increase::PermissionDeniedError::HTTP_STATUS
+  InvalidParametersError = Increase::Errors::InvalidParametersError
 
-    TYPE = "environment_mismatch_error"
-  end
+  MalformedRequestError = Increase::Errors::MalformedRequestError
 
-  class InsufficientPermissionsError < Increase::PermissionDeniedError
-    HTTP_STATUS = Increase::PermissionDeniedError::HTTP_STATUS
+  InvalidAPIKeyError = Increase::Errors::InvalidAPIKeyError
 
-    TYPE = "insufficient_permissions_error"
-  end
+  EnvironmentMismatchError = Increase::Errors::EnvironmentMismatchError
 
-  class PrivateFeatureError < Increase::PermissionDeniedError
-    HTTP_STATUS = Increase::PermissionDeniedError::HTTP_STATUS
+  InsufficientPermissionsError = Increase::Errors::InsufficientPermissionsError
 
-    TYPE = "private_feature_error"
-  end
+  PrivateFeatureError = Increase::Errors::PrivateFeatureError
 
-  class APIMethodNotFoundError < Increase::NotFoundError
-    HTTP_STATUS = Increase::NotFoundError::HTTP_STATUS
+  APIMethodNotFoundError = Increase::Errors::APIMethodNotFoundError
 
-    TYPE = "api_method_not_found_error"
-  end
+  ObjectNotFoundError = Increase::Errors::ObjectNotFoundError
 
-  class ObjectNotFoundError < Increase::NotFoundError
-    HTTP_STATUS = Increase::NotFoundError::HTTP_STATUS
+  IdempotencyKeyAlreadyUsedError = Increase::Errors::IdempotencyKeyAlreadyUsedError
 
-    TYPE = "object_not_found_error"
-  end
+  InvalidOperationError = Increase::Errors::InvalidOperationError
 
-  class IdempotencyKeyAlreadyUsedError < Increase::ConflictError
-    HTTP_STATUS = Increase::ConflictError::HTTP_STATUS
+  RateLimitedError = Increase::Errors::RateLimitedError
 
-    TYPE = "idempotency_key_already_used_error"
-  end
-
-  class InvalidOperationError < Increase::ConflictError
-    HTTP_STATUS = Increase::ConflictError::HTTP_STATUS
-
-    TYPE = "invalid_operation_error"
-  end
-
-  class RateLimitedError < Increase::RateLimitError
-    HTTP_STATUS = Increase::RateLimitError::HTTP_STATUS
-
-    TYPE = "rate_limited_error"
-  end
-
-  class InternalServerError < Increase::APIStatusError
-    HTTP_STATUS = (500..)
-
-    TYPE = "internal_server_error"
-  end
+  InternalServerError = Increase::Errors::InternalServerError
 end

@@ -207,7 +207,7 @@ class IncreaseTest < Minitest::Test
     requester = MockRequester.new(307, {"location" => "/redirected"}, {})
     increase.requester = requester
 
-    assert_raises(Increase::APIConnectionError) do
+    assert_raises(Increase::Errors::APIConnectionError) do
       increase.accounts.create(name: "New Account!", request_options: {extra_headers: {}})
     end
 
@@ -225,7 +225,7 @@ class IncreaseTest < Minitest::Test
     requester = MockRequester.new(303, {"location" => "/redirected"}, {})
     increase.requester = requester
 
-    assert_raises(Increase::APIConnectionError) do
+    assert_raises(Increase::Errors::APIConnectionError) do
       increase.accounts.create(name: "New Account!", request_options: {extra_headers: {}})
     end
 
@@ -240,7 +240,7 @@ class IncreaseTest < Minitest::Test
     requester = MockRequester.new(307, {"location" => "/redirected"}, {})
     increase.requester = requester
 
-    assert_raises(Increase::APIConnectionError) do
+    assert_raises(Increase::Errors::APIConnectionError) do
       increase.accounts.create(
         name: "New Account!",
         request_options: {extra_headers: {"Authorization" => "Bearer xyz"}}
@@ -258,7 +258,7 @@ class IncreaseTest < Minitest::Test
     requester = MockRequester.new(307, {"location" => "https://example.com/redirected"}, {})
     increase.requester = requester
 
-    assert_raises(Increase::APIConnectionError) do
+    assert_raises(Increase::Errors::APIConnectionError) do
       increase.accounts.create(
         name: "New Account!",
         request_options: {extra_headers: {"Authorization" => "Bearer xyz"}}

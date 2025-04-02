@@ -47,7 +47,7 @@ module Increase
       ) -> Increase::Transport::BaseClient::request_input
 
       def self.reap_connection!: (
-        Integer | Increase::APIConnectionError status,
+        Integer | Increase::Errors::APIConnectionError status,
         stream: Enumerable[String]?
       ) -> void
 
