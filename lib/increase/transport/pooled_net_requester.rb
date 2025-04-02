@@ -153,7 +153,7 @@ module Increase
             end
           end
         rescue Timeout::Error
-          raise Increase::Errors::APITimeoutError
+          raise Increase::APITimeoutError
         end
 
         conn, _, response = enum.next

@@ -82,10 +82,9 @@ module Increase
         # @api private
         sig do
           params(
-            status: T.any(Integer, Increase::Errors::APIConnectionError),
+            status: T.any(Integer, Increase::APIConnectionError),
             stream: T.nilable(T::Enumerable[String])
-          )
-            .void
+          ).void
         end
         def reap_connection!(status, stream:)
         end

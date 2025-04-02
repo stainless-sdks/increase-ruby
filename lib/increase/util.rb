@@ -441,7 +441,7 @@ module Increase
       #
       # @yieldparam [Enumerator::Yielder]
       # @return [Enumerable]
-      def writable_enum(&blk)
+      def string_io(&blk)
         Enumerator.new do |y|
           y.define_singleton_method(:write) do
             self << _1.clone
@@ -454,13 +454,15 @@ module Increase
     end
 
     class << self
+      # rubocop:disable Naming/MethodParameterName
+
       # @api private
       #
       # @param y [Enumerator::Yielder]
       # @param boundary [String]
       # @param key [Symbol, String]
       # @param val [Object]
-      private def write_multipart_chunk(y, boundary:, key:, val:)
+      private def encode_multipart_formdata(y, boundary:, key:, val:)
         y << "--#{boundary}\r\n"
         y << "Content-Disposition: form-data"
         unless key.nil?
@@ -492,6 +494,8 @@ module Increase
         y << "\r\n"
       end
 
+      # rubocop:enable Naming/MethodParameterName
+
       # @api private
       #
       # @param body [Object]
@@ -500,21 +504,21 @@ module Increase
       private def encode_multipart_streaming(body)
         boundary = SecureRandom.urlsafe_base64(60)
 
-        strio = writable_enum do |y|
+        strio = string_io do |y|
           case body
           in Hash
             body.each do |key, val|
               case val
               in Array if val.all? { primitive?(_1) }
                 val.each do |v|
-                  write_multipart_chunk(y, boundary: boundary, key: key, val: v)
+                  encode_multipart_formdata(y, boundary: boundary, key: key, val: v)
                 end
               else
-                write_multipart_chunk(y, boundary: boundary, key: key, val: val)
+                encode_multipart_formdata(y, boundary: boundary, key: key, val: val)
               end
             end
           else
-            write_multipart_chunk(y, boundary: boundary, key: nil, val: body)
+            encode_multipart_formdata(y, boundary: boundary, key: nil, val: body)
           end
           y << "--#{boundary}--\r\n"
         end

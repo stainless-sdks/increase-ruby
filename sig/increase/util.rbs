@@ -84,11 +84,11 @@ module Increase
       } -> void
     end
 
-    def self?.writable_enum: {
+    def self?.string_io: {
       (Enumerator::Yielder y) -> void
     } -> Enumerable[String]
 
-    def self?.write_multipart_chunk: (
+    def self?.encode_multipart_formdata: (
       Enumerator::Yielder y,
       boundary: String,
       key: Symbol | String,

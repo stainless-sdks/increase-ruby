@@ -169,13 +169,7 @@ module Increase
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator) }
         OrSymbol =
-          T.type_alias do
-            T.any(
-              Symbol,
-              String,
-              Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol
-            )
-          end
+          T.type_alias { T.any(Symbol, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol) }
 
         # The Prenotification is for an anticipated credit.
         CREDIT =
@@ -200,13 +194,7 @@ module Increase
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode) }
         OrSymbol =
-          T.type_alias do
-            T.any(
-              Symbol,
-              String,
-              Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol
-            )
-          end
+          T.type_alias { T.any(Symbol, Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol) }
 
         # Corporate Credit and Debit (CCD).
         CORPORATE_CREDIT_OR_DEBIT =
