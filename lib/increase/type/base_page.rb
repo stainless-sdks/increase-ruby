@@ -29,7 +29,7 @@ module Increase
       # @return [Boolean]
       def next_page? = (raise NotImplementedError)
 
-      # @raise [Increase::APIError]
+      # @raise [Increase::Errors::APIError]
       # @return [Increase::Type::BasePage]
       def next_page = (raise NotImplementedError)
 

@@ -1,212 +1,240 @@
 # typed: strong
 
 module Increase
-  class Error < StandardError
-    sig { returns(T.nilable(StandardError)) }
-    attr_accessor :cause
-  end
-
-  class ConversionError < Increase::Error
-  end
-
-  class APIError < Increase::Error
-    sig { returns(URI::Generic) }
-    attr_accessor :url
-
-    sig { returns(T.nilable(Integer)) }
-    attr_accessor :status
-
-    sig { returns(T.nilable(T.anything)) }
-    attr_accessor :body
-
-    # @api private
-    sig do
-      params(
-        url: URI::Generic,
-        status: T.nilable(Integer),
-        body: T.nilable(Object),
-        request: NilClass,
-        response: NilClass,
-        message: T.nilable(String)
-      )
-        .returns(T.attached_class)
-    end
-    def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: nil)
-    end
-  end
-
-  class APIConnectionError < Increase::APIError
-    sig { void }
-    attr_accessor :status
-
-    sig { void }
-    attr_accessor :body
-
-    # @api private
-    sig do
-      params(
-        url: URI::Generic,
-        status: NilClass,
-        body: NilClass,
-        request: NilClass,
-        response: NilClass,
-        message: T.nilable(String)
-      )
-        .returns(T.attached_class)
-    end
-    def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: "Connection error.")
-    end
-  end
-
-  class APITimeoutError < Increase::APIConnectionError
-    # @api private
-    sig do
-      params(
-        url: URI::Generic,
-        status: NilClass,
-        body: NilClass,
-        request: NilClass,
-        response: NilClass,
-        message: T.nilable(String)
-      )
-        .returns(T.attached_class)
-    end
-    def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: "Request timed out.")
-    end
-  end
-
-  class APIStatusError < Increase::APIError
-    # @api private
-    sig do
-      params(
-        url: URI::Generic,
-        status: Integer,
-        body: T.nilable(Object),
-        request: NilClass,
-        response: NilClass,
-        message: T.nilable(String)
-      )
-        .returns(T.attached_class)
-    end
-    def self.for(url:, status:, body:, request:, response:, message: nil)
+  module Errors
+    class Error < StandardError
+      sig { returns(T.nilable(StandardError)) }
+      attr_accessor :cause
     end
 
-    sig { returns(Integer) }
-    attr_accessor :status
-
-    # @api private
-    sig do
-      params(
-        url: URI::Generic,
-        status: Integer,
-        body: T.nilable(Object),
-        request: NilClass,
-        response: NilClass,
-        message: T.nilable(String)
-      )
-        .returns(T.attached_class)
+    class ConversionError < Increase::Errors::Error
     end
-    def self.new(url:, status:, body:, request:, response:, message: nil)
+
+    class APIError < Increase::Errors::Error
+      sig { returns(URI::Generic) }
+      attr_accessor :url
+
+      sig { returns(T.nilable(Integer)) }
+      attr_accessor :status
+
+      sig { returns(T.nilable(T.anything)) }
+      attr_accessor :body
+
+      # @api private
+      sig do
+        params(
+          url: URI::Generic,
+          status: T.nilable(Integer),
+          body: T.nilable(Object),
+          request: NilClass,
+          response: NilClass,
+          message: T.nilable(String)
+        )
+          .returns(T.attached_class)
+      end
+      def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: nil)
+      end
+    end
+
+    class APIConnectionError < Increase::Errors::APIError
+      sig { void }
+      attr_accessor :status
+
+      sig { void }
+      attr_accessor :body
+
+      # @api private
+      sig do
+        params(
+          url: URI::Generic,
+          status: NilClass,
+          body: NilClass,
+          request: NilClass,
+          response: NilClass,
+          message: T.nilable(String)
+        )
+          .returns(T.attached_class)
+      end
+      def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: "Connection error.")
+      end
+    end
+
+    class APITimeoutError < Increase::Errors::APIConnectionError
+      # @api private
+      sig do
+        params(
+          url: URI::Generic,
+          status: NilClass,
+          body: NilClass,
+          request: NilClass,
+          response: NilClass,
+          message: T.nilable(String)
+        )
+          .returns(T.attached_class)
+      end
+      def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: "Request timed out.")
+      end
+    end
+
+    class APIStatusError < Increase::Errors::APIError
+      # @api private
+      sig do
+        params(
+          url: URI::Generic,
+          status: Integer,
+          body: T.nilable(Object),
+          request: NilClass,
+          response: NilClass,
+          message: T.nilable(String)
+        )
+          .returns(T.attached_class)
+      end
+      def self.for(url:, status:, body:, request:, response:, message: nil)
+      end
+
+      sig { returns(Integer) }
+      attr_accessor :status
+
+      # @api private
+      sig do
+        params(
+          url: URI::Generic,
+          status: Integer,
+          body: T.nilable(Object),
+          request: NilClass,
+          response: NilClass,
+          message: T.nilable(String)
+        )
+          .returns(T.attached_class)
+      end
+      def self.new(url:, status:, body:, request:, response:, message: nil)
+      end
+    end
+
+    class BadRequestError < Increase::Errors::APIStatusError
+      HTTP_STATUS = 400
+    end
+
+    class AuthenticationError < Increase::Errors::APIStatusError
+      HTTP_STATUS = 401
+    end
+
+    class PermissionDeniedError < Increase::Errors::APIStatusError
+      HTTP_STATUS = 403
+    end
+
+    class NotFoundError < Increase::Errors::APIStatusError
+      HTTP_STATUS = 404
+    end
+
+    class ConflictError < Increase::Errors::APIStatusError
+      HTTP_STATUS = 409
+    end
+
+    class UnprocessableEntityError < Increase::Errors::APIStatusError
+      HTTP_STATUS = 422
+    end
+
+    class RateLimitError < Increase::Errors::APIStatusError
+      HTTP_STATUS = 429
+    end
+
+    class InvalidParametersError < Increase::Errors::BadRequestError
+      TYPE = "invalid_parameters_error"
+    end
+
+    class MalformedRequestError < Increase::Errors::BadRequestError
+      TYPE = "malformed_request_error"
+    end
+
+    class InvalidAPIKeyError < Increase::Errors::AuthenticationError
+      TYPE = "invalid_api_key_error"
+    end
+
+    class EnvironmentMismatchError < Increase::Errors::PermissionDeniedError
+      TYPE = "environment_mismatch_error"
+    end
+
+    class InsufficientPermissionsError < Increase::Errors::PermissionDeniedError
+      TYPE = "insufficient_permissions_error"
+    end
+
+    class PrivateFeatureError < Increase::Errors::PermissionDeniedError
+      TYPE = "private_feature_error"
+    end
+
+    class APIMethodNotFoundError < Increase::Errors::NotFoundError
+      TYPE = "api_method_not_found_error"
+    end
+
+    class ObjectNotFoundError < Increase::Errors::NotFoundError
+      TYPE = "object_not_found_error"
+    end
+
+    class IdempotencyKeyAlreadyUsedError < Increase::Errors::ConflictError
+      TYPE = "idempotency_key_already_used_error"
+    end
+
+    class InvalidOperationError < Increase::Errors::ConflictError
+      TYPE = "invalid_operation_error"
+    end
+
+    class RateLimitedError < Increase::Errors::RateLimitError
+      TYPE = "rate_limited_error"
+    end
+
+    class InternalServerError < Increase::Errors::APIStatusError
+      TYPE = "internal_server_error"
     end
   end
 
-  class BadRequestError < Increase::APIStatusError
-    HTTP_STATUS = 400
-  end
+  Error = Increase::Errors::Error
 
-  class AuthenticationError < Increase::APIStatusError
-    HTTP_STATUS = 401
-  end
+  ConversionError = Increase::Errors::ConversionError
 
-  class PermissionDeniedError < Increase::APIStatusError
-    HTTP_STATUS = 403
-  end
+  APIError = Increase::Errors::APIError
 
-  class NotFoundError < Increase::APIStatusError
-    HTTP_STATUS = 404
-  end
+  APIStatusError = Increase::Errors::APIStatusError
 
-  class ConflictError < Increase::APIStatusError
-    HTTP_STATUS = 409
-  end
+  APIConnectionError = Increase::Errors::APIConnectionError
 
-  class UnprocessableEntityError < Increase::APIStatusError
-    HTTP_STATUS = 422
-  end
+  APITimeoutError = Increase::Errors::APITimeoutError
 
-  class RateLimitError < Increase::APIStatusError
-    HTTP_STATUS = 429
-  end
+  BadRequestError = Increase::Errors::BadRequestError
 
-  class InvalidParametersError < Increase::BadRequestError
-    HTTP_STATUS = 400
+  AuthenticationError = Increase::Errors::AuthenticationError
 
-    TYPE = "invalid_parameters_error"
-  end
+  PermissionDeniedError = Increase::Errors::PermissionDeniedError
 
-  class MalformedRequestError < Increase::BadRequestError
-    HTTP_STATUS = 400
+  NotFoundError = Increase::Errors::NotFoundError
 
-    TYPE = "malformed_request_error"
-  end
+  ConflictError = Increase::Errors::ConflictError
 
-  class InvalidAPIKeyError < Increase::AuthenticationError
-    HTTP_STATUS = 401
+  UnprocessableEntityError = Increase::Errors::UnprocessableEntityError
 
-    TYPE = "invalid_api_key_error"
-  end
+  RateLimitError = Increase::Errors::RateLimitError
 
-  class EnvironmentMismatchError < Increase::PermissionDeniedError
-    HTTP_STATUS = 403
+  InvalidParametersError = Increase::Errors::InvalidParametersError
 
-    TYPE = "environment_mismatch_error"
-  end
+  MalformedRequestError = Increase::Errors::MalformedRequestError
 
-  class InsufficientPermissionsError < Increase::PermissionDeniedError
-    HTTP_STATUS = 403
+  InvalidAPIKeyError = Increase::Errors::InvalidAPIKeyError
 
-    TYPE = "insufficient_permissions_error"
-  end
+  EnvironmentMismatchError = Increase::Errors::EnvironmentMismatchError
 
-  class PrivateFeatureError < Increase::PermissionDeniedError
-    HTTP_STATUS = 403
+  InsufficientPermissionsError = Increase::Errors::InsufficientPermissionsError
 
-    TYPE = "private_feature_error"
-  end
+  PrivateFeatureError = Increase::Errors::PrivateFeatureError
 
-  class APIMethodNotFoundError < Increase::NotFoundError
-    HTTP_STATUS = 404
+  APIMethodNotFoundError = Increase::Errors::APIMethodNotFoundError
 
-    TYPE = "api_method_not_found_error"
-  end
+  ObjectNotFoundError = Increase::Errors::ObjectNotFoundError
 
-  class ObjectNotFoundError < Increase::NotFoundError
-    HTTP_STATUS = 404
+  IdempotencyKeyAlreadyUsedError = Increase::Errors::IdempotencyKeyAlreadyUsedError
 
-    TYPE = "object_not_found_error"
-  end
+  InvalidOperationError = Increase::Errors::InvalidOperationError
 
-  class IdempotencyKeyAlreadyUsedError < Increase::ConflictError
-    HTTP_STATUS = 409
+  RateLimitedError = Increase::Errors::RateLimitedError
 
-    TYPE = "idempotency_key_already_used_error"
-  end
-
-  class InvalidOperationError < Increase::ConflictError
-    HTTP_STATUS = 409
-
-    TYPE = "invalid_operation_error"
-  end
-
-  class RateLimitedError < Increase::RateLimitError
-    HTTP_STATUS = 429
-
-    TYPE = "rate_limited_error"
-  end
-
-  class InternalServerError < Increase::APIStatusError
-    HTTP_STATUS = T.let((500..), T::Range[Integer])
-
-    TYPE = "internal_server_error"
-  end
+  InternalServerError = Increase::Errors::InternalServerError
 end
