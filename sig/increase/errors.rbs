@@ -1,167 +1,195 @@
 module Increase
-  class Error < StandardError
-    attr_accessor cause: StandardError?
+  module Errors
+    class Error < StandardError
+      attr_accessor cause: StandardError?
+    end
+
+    class ConversionError < Increase::Errors::Error
+    end
+
+    class APIError < Increase::Errors::Error
+      attr_accessor url: URI::Generic
+
+      attr_accessor status: Integer?
+
+      attr_accessor body: top?
+
+      def initialize: (
+        url: URI::Generic,
+        ?status: Integer?,
+        ?body: Object?,
+        ?request: nil,
+        ?response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class APIConnectionError < Increase::Errors::APIError
+      def initialize: (
+        url: URI::Generic,
+        ?status: nil,
+        ?body: nil,
+        ?request: nil,
+        ?response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class APITimeoutError < Increase::Errors::APIConnectionError
+      def initialize: (
+        url: URI::Generic,
+        ?status: nil,
+        ?body: nil,
+        ?request: nil,
+        ?response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class APIStatusError < Increase::Errors::APIError
+      def self.for: (
+        url: URI::Generic,
+        status: Integer,
+        body: Object?,
+        request: nil,
+        response: nil,
+        ?message: String?
+      ) -> instance
+
+      def initialize: (
+        url: URI::Generic,
+        status: Integer,
+        body: Object?,
+        request: nil,
+        response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class BadRequestError < Increase::Errors::APIStatusError
+      HTTP_STATUS: 400
+    end
+
+    class AuthenticationError < Increase::Errors::APIStatusError
+      HTTP_STATUS: 401
+    end
+
+    class PermissionDeniedError < Increase::Errors::APIStatusError
+      HTTP_STATUS: 403
+    end
+
+    class NotFoundError < Increase::Errors::APIStatusError
+      HTTP_STATUS: 404
+    end
+
+    class ConflictError < Increase::Errors::APIStatusError
+      HTTP_STATUS: 409
+    end
+
+    class UnprocessableEntityError < Increase::Errors::APIStatusError
+      HTTP_STATUS: 422
+    end
+
+    class RateLimitError < Increase::Errors::APIStatusError
+      HTTP_STATUS: 429
+    end
+
+    class InvalidParametersError < Increase::Errors::BadRequestError
+      TYPE: "invalid_parameters_error"
+    end
+
+    class MalformedRequestError < Increase::Errors::BadRequestError
+      TYPE: "malformed_request_error"
+    end
+
+    class InvalidAPIKeyError < Increase::Errors::AuthenticationError
+      TYPE: "invalid_api_key_error"
+    end
+
+    class EnvironmentMismatchError < Increase::Errors::PermissionDeniedError
+      TYPE: "environment_mismatch_error"
+    end
+
+    class InsufficientPermissionsError < Increase::Errors::PermissionDeniedError
+      TYPE: "insufficient_permissions_error"
+    end
+
+    class PrivateFeatureError < Increase::Errors::PermissionDeniedError
+      TYPE: "private_feature_error"
+    end
+
+    class APIMethodNotFoundError < Increase::Errors::NotFoundError
+      TYPE: "api_method_not_found_error"
+    end
+
+    class ObjectNotFoundError < Increase::Errors::NotFoundError
+      TYPE: "object_not_found_error"
+    end
+
+    class IdempotencyKeyAlreadyUsedError < Increase::Errors::ConflictError
+      TYPE: "idempotency_key_already_used_error"
+    end
+
+    class InvalidOperationError < Increase::Errors::ConflictError
+      TYPE: "invalid_operation_error"
+    end
+
+    class RateLimitedError < Increase::Errors::RateLimitError
+      TYPE: "rate_limited_error"
+    end
+
+    class InternalServerError < Increase::Errors::APIStatusError
+      TYPE: "internal_server_error"
+    end
   end
 
-  class ConversionError < Increase::Error
-  end
+  class Error = Increase::Errors::Error
 
-  class APIError < Increase::Error
-    attr_accessor url: URI::Generic
+  class ConversionError = Increase::Errors::ConversionError
 
-    attr_accessor status: Integer?
+  class APIError = Increase::Errors::APIError
 
-    attr_accessor body: top?
+  class APIStatusError = Increase::Errors::APIStatusError
 
-    def initialize: (
-      url: URI::Generic,
-      ?status: Integer?,
-      ?body: Object?,
-      ?request: nil,
-      ?response: nil,
-      ?message: String?
-    ) -> void
-  end
+  class APIConnectionError = Increase::Errors::APIConnectionError
 
-  class APIConnectionError < Increase::APIError
-    def initialize: (
-      url: URI::Generic,
-      ?status: nil,
-      ?body: nil,
-      ?request: nil,
-      ?response: nil,
-      ?message: String?
-    ) -> void
-  end
+  class APITimeoutError = Increase::Errors::APITimeoutError
 
-  class APITimeoutError < Increase::APIConnectionError
-    def initialize: (
-      url: URI::Generic,
-      ?status: nil,
-      ?body: nil,
-      ?request: nil,
-      ?response: nil,
-      ?message: String?
-    ) -> void
-  end
+  class BadRequestError = Increase::Errors::BadRequestError
 
-  class APIStatusError < Increase::APIError
-    def self.for: (
-      url: URI::Generic,
-      status: Integer,
-      body: Object?,
-      request: nil,
-      response: nil,
-      ?message: String?
-    ) -> instance
+  class AuthenticationError = Increase::Errors::AuthenticationError
 
-    def initialize: (
-      url: URI::Generic,
-      status: Integer,
-      body: Object?,
-      request: nil,
-      response: nil,
-      ?message: String?
-    ) -> void
-  end
+  class PermissionDeniedError = Increase::Errors::PermissionDeniedError
 
-  class BadRequestError < Increase::APIStatusError
-    HTTP_STATUS: 400
-  end
+  class NotFoundError = Increase::Errors::NotFoundError
 
-  class AuthenticationError < Increase::APIStatusError
-    HTTP_STATUS: 401
-  end
+  class ConflictError = Increase::Errors::ConflictError
 
-  class PermissionDeniedError < Increase::APIStatusError
-    HTTP_STATUS: 403
-  end
+  class UnprocessableEntityError = Increase::Errors::UnprocessableEntityError
 
-  class NotFoundError < Increase::APIStatusError
-    HTTP_STATUS: 404
-  end
+  class RateLimitError = Increase::Errors::RateLimitError
 
-  class ConflictError < Increase::APIStatusError
-    HTTP_STATUS: 409
-  end
+  class InvalidParametersError = Increase::Errors::InvalidParametersError
 
-  class UnprocessableEntityError < Increase::APIStatusError
-    HTTP_STATUS: 422
-  end
+  class MalformedRequestError = Increase::Errors::MalformedRequestError
 
-  class RateLimitError < Increase::APIStatusError
-    HTTP_STATUS: 429
-  end
+  class InvalidAPIKeyError = Increase::Errors::InvalidAPIKeyError
 
-  class InvalidParametersError < Increase::BadRequestError
-    HTTP_STATUS: 400
+  class EnvironmentMismatchError = Increase::Errors::EnvironmentMismatchError
 
-    TYPE: "invalid_parameters_error"
-  end
+  class InsufficientPermissionsError = Increase::Errors::InsufficientPermissionsError
 
-  class MalformedRequestError < Increase::BadRequestError
-    HTTP_STATUS: 400
+  class PrivateFeatureError = Increase::Errors::PrivateFeatureError
 
-    TYPE: "malformed_request_error"
-  end
+  class APIMethodNotFoundError = Increase::Errors::APIMethodNotFoundError
 
-  class InvalidAPIKeyError < Increase::AuthenticationError
-    HTTP_STATUS: 401
+  class ObjectNotFoundError = Increase::Errors::ObjectNotFoundError
 
-    TYPE: "invalid_api_key_error"
-  end
+  class IdempotencyKeyAlreadyUsedError = Increase::Errors::IdempotencyKeyAlreadyUsedError
 
-  class EnvironmentMismatchError < Increase::PermissionDeniedError
-    HTTP_STATUS: 403
+  class InvalidOperationError = Increase::Errors::InvalidOperationError
 
-    TYPE: "environment_mismatch_error"
-  end
+  class RateLimitedError = Increase::Errors::RateLimitedError
 
-  class InsufficientPermissionsError < Increase::PermissionDeniedError
-    HTTP_STATUS: 403
-
-    TYPE: "insufficient_permissions_error"
-  end
-
-  class PrivateFeatureError < Increase::PermissionDeniedError
-    HTTP_STATUS: 403
-
-    TYPE: "private_feature_error"
-  end
-
-  class APIMethodNotFoundError < Increase::NotFoundError
-    HTTP_STATUS: 404
-
-    TYPE: "api_method_not_found_error"
-  end
-
-  class ObjectNotFoundError < Increase::NotFoundError
-    HTTP_STATUS: 404
-
-    TYPE: "object_not_found_error"
-  end
-
-  class IdempotencyKeyAlreadyUsedError < Increase::ConflictError
-    HTTP_STATUS: 409
-
-    TYPE: "idempotency_key_already_used_error"
-  end
-
-  class InvalidOperationError < Increase::ConflictError
-    HTTP_STATUS: 409
-
-    TYPE: "invalid_operation_error"
-  end
-
-  class RateLimitedError < Increase::RateLimitError
-    HTTP_STATUS: 429
-
-    TYPE: "rate_limited_error"
-  end
-
-  class InternalServerError < Increase::APIStatusError
-    HTTP_STATUS: Range[Integer]
-
-    TYPE: "internal_server_error"
-  end
+  class InternalServerError = Increase::Errors::InternalServerError
 end

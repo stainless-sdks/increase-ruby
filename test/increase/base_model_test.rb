@@ -390,7 +390,7 @@ class Increase::Test::BaseModelTest < Minitest::Test
           tap do
             target.public_send(accessor)
             flunk
-          rescue Increase::ConversionError => e
+          rescue Increase::Errors::ConversionError => e
             assert_kind_of(expect, e.cause)
           end
         else
