@@ -2,11 +2,11 @@ module Increase
   module Models
     type inbound_ach_transfer_decline_params =
       { reason: Increase::Models::InboundACHTransferDeclineParams::reason }
-      & Increase::Internal::Type::request_parameters
+      & Increase::request_parameters
 
     class InboundACHTransferDeclineParams < Increase::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       attr_reader reason: Increase::Models::InboundACHTransferDeclineParams::reason?
 

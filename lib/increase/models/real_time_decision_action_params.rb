@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::RealTimeDecisions#action
     class RealTimeDecisionActionParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute [r] card_authentication
       #   If the Real-Time Decision relates to a 3DS card authentication attempt, this

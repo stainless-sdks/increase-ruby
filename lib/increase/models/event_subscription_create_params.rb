@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::EventSubscriptions#create
     class EventSubscriptionCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute url
       #   The URL you'd like us to send webhooks to.

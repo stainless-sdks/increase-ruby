@@ -47,7 +47,7 @@ class Increase::Test::Resources::BookkeepingAccountsTest < Increase::Test::Resou
     response = @increase.bookkeeping_accounts.list
 
     assert_pattern do
-      response => Increase::Internal::Page
+      response => Increase::Page
     end
 
     row = response.to_enum.first

@@ -3,8 +3,8 @@
 module Increase
   module Models
     class InboundRealTimePaymentsTransferListParams < Increase::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # Filter Inbound Real-Time Payments Transfers to those belonging to the specified
       #   Account.
@@ -27,10 +27,7 @@ module Increase
 
       sig do
         params(
-          created_at: T.any(
-            Increase::Models::InboundRealTimePaymentsTransferListParams::CreatedAt,
-            Increase::Internal::Util::AnyHash
-          )
+          created_at: T.any(Increase::Models::InboundRealTimePaymentsTransferListParams::CreatedAt, Increase::Util::AnyHash)
         )
           .void
       end
@@ -55,13 +52,10 @@ module Increase
         params(
           account_id: String,
           account_number_id: String,
-          created_at: T.any(
-            Increase::Models::InboundRealTimePaymentsTransferListParams::CreatedAt,
-            Increase::Internal::Util::AnyHash
-          ),
+          created_at: T.any(Increase::Models::InboundRealTimePaymentsTransferListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

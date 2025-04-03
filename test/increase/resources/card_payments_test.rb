@@ -29,7 +29,7 @@ class Increase::Test::Resources::CardPaymentsTest < Increase::Test::ResourceTest
     response = @increase.card_payments.list
 
     assert_pattern do
-      response => Increase::Internal::Page
+      response => Increase::Page
     end
 
     row = response.to_enum.first

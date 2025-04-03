@@ -3,8 +3,8 @@
 module Increase
   module Models
     class EntityConfirmParams < Increase::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # When your user confirmed the Entity's details. If not provided, the current time
       #   will be used.
@@ -15,10 +15,7 @@ module Increase
       attr_writer :confirmed_at
 
       sig do
-        params(
-          confirmed_at: Time,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
-        )
+        params(confirmed_at: Time, request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash))
           .returns(T.attached_class)
       end
       def self.new(confirmed_at: nil, request_options: {})

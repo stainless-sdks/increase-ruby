@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::CardPayments#list
     class CardPaymentListParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute [r] account_id
       #   Filter Card Payments to ones belonging to the specified Account.

@@ -6,8 +6,8 @@ module Increase
       # @see Increase::Resources::Simulations::Documents#create
       class DocumentCreateParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+        #   extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # @!attribute account_id
         #   The identifier of the Account the tax document is for.

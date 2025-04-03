@@ -85,7 +85,7 @@ class Increase::Test::Resources::CardsTest < Increase::Test::ResourceTest
     response = @increase.cards.list
 
     assert_pattern do
-      response => Increase::Internal::Page
+      response => Increase::Page
     end
 
     row = response.to_enum.first

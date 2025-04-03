@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::BookkeepingEntries#list
     class BookkeepingEntryListParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute [r] account_id
       #   The identifier for the Bookkeeping Account to filter by.

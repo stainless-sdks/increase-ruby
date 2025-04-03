@@ -29,7 +29,7 @@ class Increase::Test::Resources::AccountStatementsTest < Increase::Test::Resourc
     response = @increase.account_statements.list
 
     assert_pattern do
-      response => Increase::Internal::Page
+      response => Increase::Page
     end
 
     row = response.to_enum.first

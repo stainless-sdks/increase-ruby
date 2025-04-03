@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::BookkeepingAccounts#create
     class BookkeepingAccountCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute name
       #   The name you choose for the account.

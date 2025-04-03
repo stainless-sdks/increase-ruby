@@ -13,9 +13,7 @@ module Increase
       attr_reader :acceptance
 
       sig do
-        params(
-          acceptance: T.nilable(T.any(Increase::Models::CardDispute::Acceptance, Increase::Internal::Util::AnyHash))
-        )
+        params(acceptance: T.nilable(T.any(Increase::Models::CardDispute::Acceptance, Increase::Util::AnyHash)))
           .void
       end
       attr_writer :acceptance
@@ -48,7 +46,7 @@ module Increase
       sig { returns(T.nilable(Increase::Models::CardDispute::Loss)) }
       attr_reader :loss
 
-      sig { params(loss: T.nilable(T.any(Increase::Models::CardDispute::Loss, Increase::Internal::Util::AnyHash))).void }
+      sig { params(loss: T.nilable(T.any(Increase::Models::CardDispute::Loss, Increase::Util::AnyHash))).void }
       attr_writer :loss
 
       # If the Card Dispute's status is `rejected`, this will contain details of the
@@ -56,12 +54,7 @@ module Increase
       sig { returns(T.nilable(Increase::Models::CardDispute::Rejection)) }
       attr_reader :rejection
 
-      sig do
-        params(
-          rejection: T.nilable(T.any(Increase::Models::CardDispute::Rejection, Increase::Internal::Util::AnyHash))
-        )
-          .void
-      end
+      sig { params(rejection: T.nilable(T.any(Increase::Models::CardDispute::Rejection, Increase::Util::AnyHash))).void }
       attr_writer :rejection
 
       # The results of the Dispute investigation.
@@ -78,7 +71,7 @@ module Increase
       sig { returns(T.nilable(Increase::Models::CardDispute::Win)) }
       attr_reader :win
 
-      sig { params(win: T.nilable(T.any(Increase::Models::CardDispute::Win, Increase::Internal::Util::AnyHash))).void }
+      sig { params(win: T.nilable(T.any(Increase::Models::CardDispute::Win, Increase::Util::AnyHash))).void }
       attr_writer :win
 
       # If unauthorized activity occurs on a card, you can create a Card Dispute and
@@ -86,17 +79,17 @@ module Increase
       sig do
         params(
           id: String,
-          acceptance: T.nilable(T.any(Increase::Models::CardDispute::Acceptance, Increase::Internal::Util::AnyHash)),
+          acceptance: T.nilable(T.any(Increase::Models::CardDispute::Acceptance, Increase::Util::AnyHash)),
           amount: T.nilable(Integer),
           created_at: Time,
           disputed_transaction_id: String,
           explanation: String,
           idempotency_key: T.nilable(String),
-          loss: T.nilable(T.any(Increase::Models::CardDispute::Loss, Increase::Internal::Util::AnyHash)),
-          rejection: T.nilable(T.any(Increase::Models::CardDispute::Rejection, Increase::Internal::Util::AnyHash)),
+          loss: T.nilable(T.any(Increase::Models::CardDispute::Loss, Increase::Util::AnyHash)),
+          rejection: T.nilable(T.any(Increase::Models::CardDispute::Rejection, Increase::Util::AnyHash)),
           status: Increase::Models::CardDispute::Status::OrSymbol,
           type: Increase::Models::CardDispute::Type::OrSymbol,
-          win: T.nilable(T.any(Increase::Models::CardDispute::Win, Increase::Internal::Util::AnyHash))
+          win: T.nilable(T.any(Increase::Models::CardDispute::Win, Increase::Util::AnyHash))
         )
           .returns(T.attached_class)
       end

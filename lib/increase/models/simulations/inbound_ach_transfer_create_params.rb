@@ -6,8 +6,8 @@ module Increase
       # @see Increase::Resources::Simulations::InboundACHTransfers#create
       class InboundACHTransferCreateParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+        #   extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # @!attribute account_number_id
         #   The identifier of the Account Number the inbound ACH Transfer is for.

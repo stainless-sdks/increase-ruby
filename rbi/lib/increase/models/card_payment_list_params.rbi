@@ -3,8 +3,8 @@
 module Increase
   module Models
     class CardPaymentListParams < Increase::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # Filter Card Payments to ones belonging to the specified Account.
       sig { returns(T.nilable(String)) }
@@ -23,12 +23,7 @@ module Increase
       sig { returns(T.nilable(Increase::Models::CardPaymentListParams::CreatedAt)) }
       attr_reader :created_at
 
-      sig do
-        params(
-          created_at: T.any(Increase::Models::CardPaymentListParams::CreatedAt, Increase::Internal::Util::AnyHash)
-        )
-          .void
-      end
+      sig { params(created_at: T.any(Increase::Models::CardPaymentListParams::CreatedAt, Increase::Util::AnyHash)).void }
       attr_writer :created_at
 
       # Return the page of entries after this one.
@@ -50,10 +45,10 @@ module Increase
         params(
           account_id: String,
           card_id: String,
-          created_at: T.any(Increase::Models::CardPaymentListParams::CreatedAt, Increase::Internal::Util::AnyHash),
+          created_at: T.any(Increase::Models::CardPaymentListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

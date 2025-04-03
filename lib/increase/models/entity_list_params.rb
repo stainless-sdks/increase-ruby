@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::Entities#list
     class EntityListParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute [r] created_at
       #

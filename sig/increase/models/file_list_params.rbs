@@ -8,11 +8,11 @@ module Increase
         limit: Integer,
         purpose: Increase::Models::FileListParams::Purpose
       }
-      & Increase::Internal::Type::request_parameters
+      & Increase::request_parameters
 
     class FileListParams < Increase::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       attr_reader created_at: Increase::Models::FileListParams::CreatedAt?
 

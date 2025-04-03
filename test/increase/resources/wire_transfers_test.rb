@@ -97,7 +97,7 @@ class Increase::Test::Resources::WireTransfersTest < Increase::Test::ResourceTes
     response = @increase.wire_transfers.list
 
     assert_pattern do
-      response => Increase::Internal::Page
+      response => Increase::Page
     end
 
     row = response.to_enum.first

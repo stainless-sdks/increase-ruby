@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::Transactions#list
     class TransactionListParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute [r] account_id
       #   Filter Transactions for those belonging to the specified Account.

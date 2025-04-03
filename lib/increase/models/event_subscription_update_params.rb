@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::EventSubscriptions#update
     class EventSubscriptionUpdateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute [r] status
       #   The status to update the Event Subscription with.

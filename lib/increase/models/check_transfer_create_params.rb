@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::CheckTransfers#create
     class CheckTransferCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute account_id
       #   The identifier for the account that will send the transfer.

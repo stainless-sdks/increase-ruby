@@ -4,8 +4,8 @@ module Increase
   module Models
     module Simulations
       class AccountStatementCreateParams < Increase::BaseModel
-        extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+        extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # The identifier of the Account the statement is for.
         sig { returns(String) }
@@ -14,7 +14,7 @@ module Increase
         sig do
           params(
             account_id: String,
-            request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

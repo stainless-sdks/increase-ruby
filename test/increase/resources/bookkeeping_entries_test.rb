@@ -26,7 +26,7 @@ class Increase::Test::Resources::BookkeepingEntriesTest < Increase::Test::Resour
     response = @increase.bookkeeping_entries.list
 
     assert_pattern do
-      response => Increase::Internal::Page
+      response => Increase::Page
     end
 
     row = response.to_enum.first

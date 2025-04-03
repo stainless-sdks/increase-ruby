@@ -25,9 +25,7 @@ module Increase
 
       sig do
         params(
-          confirmation: T.nilable(
-            T.any(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation, Increase::Internal::Util::AnyHash)
-          )
+          confirmation: T.nilable(T.any(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation, Increase::Util::AnyHash))
         )
           .void
       end
@@ -65,9 +63,7 @@ module Increase
 
       sig do
         params(
-          decline: T.nilable(
-            T.any(Increase::Models::InboundRealTimePaymentsTransfer::Decline, Increase::Internal::Util::AnyHash)
-          )
+          decline: T.nilable(T.any(Increase::Models::InboundRealTimePaymentsTransfer::Decline, Increase::Util::AnyHash))
         )
           .void
       end
@@ -98,18 +94,14 @@ module Increase
           account_id: String,
           account_number_id: String,
           amount: Integer,
-          confirmation: T.nilable(
-            T.any(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation, Increase::Internal::Util::AnyHash)
-          ),
+          confirmation: T.nilable(T.any(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation, Increase::Util::AnyHash)),
           created_at: Time,
           creditor_name: String,
           currency: Increase::Models::InboundRealTimePaymentsTransfer::Currency::OrSymbol,
           debtor_account_number: String,
           debtor_name: String,
           debtor_routing_number: String,
-          decline: T.nilable(
-            T.any(Increase::Models::InboundRealTimePaymentsTransfer::Decline, Increase::Internal::Util::AnyHash)
-          ),
+          decline: T.nilable(T.any(Increase::Models::InboundRealTimePaymentsTransfer::Decline, Increase::Util::AnyHash)),
           remittance_information: T.nilable(String),
           status: Increase::Models::InboundRealTimePaymentsTransfer::Status::OrSymbol,
           transaction_identification: String,

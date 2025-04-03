@@ -6,8 +6,8 @@ module Increase
       # @see Increase::Resources::Simulations::CardFuelConfirmations#create
       class CardFuelConfirmationCreateParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+        #   extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # @!attribute amount
         #   The amount of the fuel_confirmation in minor units in the card authorization's

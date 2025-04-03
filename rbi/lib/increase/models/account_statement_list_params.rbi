@@ -3,8 +3,8 @@
 module Increase
   module Models
     class AccountStatementListParams < Increase::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # Filter Account Statements to those belonging to the specified Account.
       sig { returns(T.nilable(String)) }
@@ -33,10 +33,7 @@ module Increase
 
       sig do
         params(
-          statement_period_start: T.any(
-            Increase::Models::AccountStatementListParams::StatementPeriodStart,
-            Increase::Internal::Util::AnyHash
-          )
+          statement_period_start: T.any(Increase::Models::AccountStatementListParams::StatementPeriodStart, Increase::Util::AnyHash)
         )
           .void
       end
@@ -47,11 +44,8 @@ module Increase
           account_id: String,
           cursor: String,
           limit: Integer,
-          statement_period_start: T.any(
-            Increase::Models::AccountStatementListParams::StatementPeriodStart,
-            Increase::Internal::Util::AnyHash
-          ),
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
+          statement_period_start: T.any(Increase::Models::AccountStatementListParams::StatementPeriodStart, Increase::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

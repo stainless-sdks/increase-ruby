@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::Events#list
     class EventListParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute [r] associated_object_id
       #   Filter Events to those belonging to the object with the provided identifier.

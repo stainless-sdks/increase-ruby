@@ -91,7 +91,7 @@ class Increase::Test::Resources::AccountsTest < Increase::Test::ResourceTest
     response = @increase.accounts.list
 
     assert_pattern do
-      response => Increase::Internal::Page
+      response => Increase::Page
     end
 
     row = response.to_enum.first

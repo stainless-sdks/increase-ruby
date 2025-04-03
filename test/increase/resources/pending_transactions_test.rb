@@ -32,7 +32,7 @@ class Increase::Test::Resources::PendingTransactionsTest < Increase::Test::Resou
     response = @increase.pending_transactions.list
 
     assert_pattern do
-      response => Increase::Internal::Page
+      response => Increase::Page
     end
 
     row = response.to_enum.first

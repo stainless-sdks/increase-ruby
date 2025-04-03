@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::Entities#confirm
     class EntityConfirmParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute [r] confirmed_at
       #   When your user confirmed the Entity's details. If not provided, the current time

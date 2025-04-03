@@ -3,8 +3,8 @@
 module Increase
   module Models
     class InboundWireTransferListParams < Increase::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # Filter Inbound Wire Transfers to ones belonging to the specified Account.
       sig { returns(T.nilable(String)) }
@@ -25,7 +25,7 @@ module Increase
 
       sig do
         params(
-          created_at: T.any(Increase::Models::InboundWireTransferListParams::CreatedAt, Increase::Internal::Util::AnyHash)
+          created_at: T.any(Increase::Models::InboundWireTransferListParams::CreatedAt, Increase::Util::AnyHash)
         )
           .void
       end
@@ -50,9 +50,7 @@ module Increase
       attr_reader :status
 
       sig do
-        params(
-          status: T.any(Increase::Models::InboundWireTransferListParams::Status, Increase::Internal::Util::AnyHash)
-        )
+        params(status: T.any(Increase::Models::InboundWireTransferListParams::Status, Increase::Util::AnyHash))
           .void
       end
       attr_writer :status
@@ -61,11 +59,11 @@ module Increase
         params(
           account_id: String,
           account_number_id: String,
-          created_at: T.any(Increase::Models::InboundWireTransferListParams::CreatedAt, Increase::Internal::Util::AnyHash),
+          created_at: T.any(Increase::Models::InboundWireTransferListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
-          status: T.any(Increase::Models::InboundWireTransferListParams::Status, Increase::Internal::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
+          status: T.any(Increase::Models::InboundWireTransferListParams::Status, Increase::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

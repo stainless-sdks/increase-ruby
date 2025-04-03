@@ -6,11 +6,11 @@ module Increase
         cursor: String,
         limit: Integer
       }
-      & Increase::Internal::Type::request_parameters
+      & Increase::request_parameters
 
     class ProofOfAuthorizationRequestListParams < Increase::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       attr_reader created_at: Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt?
 

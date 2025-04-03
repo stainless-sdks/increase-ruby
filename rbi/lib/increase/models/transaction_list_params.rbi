@@ -3,8 +3,8 @@
 module Increase
   module Models
     class TransactionListParams < Increase::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # Filter Transactions for those belonging to the specified Account.
       sig { returns(T.nilable(String)) }
@@ -16,23 +16,13 @@ module Increase
       sig { returns(T.nilable(Increase::Models::TransactionListParams::Category)) }
       attr_reader :category
 
-      sig do
-        params(
-          category: T.any(Increase::Models::TransactionListParams::Category, Increase::Internal::Util::AnyHash)
-        )
-          .void
-      end
+      sig { params(category: T.any(Increase::Models::TransactionListParams::Category, Increase::Util::AnyHash)).void }
       attr_writer :category
 
       sig { returns(T.nilable(Increase::Models::TransactionListParams::CreatedAt)) }
       attr_reader :created_at
 
-      sig do
-        params(
-          created_at: T.any(Increase::Models::TransactionListParams::CreatedAt, Increase::Internal::Util::AnyHash)
-        )
-          .void
-      end
+      sig { params(created_at: T.any(Increase::Models::TransactionListParams::CreatedAt, Increase::Util::AnyHash)).void }
       attr_writer :created_at
 
       # Return the page of entries after this one.
@@ -61,12 +51,12 @@ module Increase
       sig do
         params(
           account_id: String,
-          category: T.any(Increase::Models::TransactionListParams::Category, Increase::Internal::Util::AnyHash),
-          created_at: T.any(Increase::Models::TransactionListParams::CreatedAt, Increase::Internal::Util::AnyHash),
+          category: T.any(Increase::Models::TransactionListParams::Category, Increase::Util::AnyHash),
+          created_at: T.any(Increase::Models::TransactionListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
           route_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
