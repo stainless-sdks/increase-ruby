@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::IntrafiAccountEnrollments#list
     class IntrafiAccountEnrollmentListParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      #   extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # @!attribute [r] account_id
       #   Filter IntraFi Account Enrollments to the one belonging to an account.

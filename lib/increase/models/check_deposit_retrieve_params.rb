@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::CheckDeposits#retrieve
     class CheckDepositRetrieveParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      #   extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # @!parse
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]

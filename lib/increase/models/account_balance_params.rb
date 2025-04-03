@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::Accounts#balance
     class AccountBalanceParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      #   extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # @!attribute [r] at_time
       #   The moment to query the balance at. If not set, returns the current balances.

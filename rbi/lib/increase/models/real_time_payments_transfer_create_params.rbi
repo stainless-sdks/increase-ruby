@@ -3,8 +3,8 @@
 module Increase
   module Models
     class RealTimePaymentsTransferCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # The transfer amount in USD cents. For Real-Time Payments transfers, must be
       #   positive.
@@ -91,7 +91,7 @@ module Increase
           require_approval: T::Boolean,
           ultimate_creditor_name: String,
           ultimate_debtor_name: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

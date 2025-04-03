@@ -3,8 +3,8 @@
 module Increase
   module Models
     class DeclinedTransactionListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # Filter Declined Transactions to ones belonging to the specified Account.
       sig { returns(T.nilable(String)) }
@@ -18,7 +18,7 @@ module Increase
 
       sig do
         params(
-          category: T.any(Increase::Models::DeclinedTransactionListParams::Category, Increase::Util::AnyHash)
+          category: T.any(Increase::Models::DeclinedTransactionListParams::Category, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -29,7 +29,7 @@ module Increase
 
       sig do
         params(
-          created_at: T.any(Increase::Models::DeclinedTransactionListParams::CreatedAt, Increase::Util::AnyHash)
+          created_at: T.any(Increase::Models::DeclinedTransactionListParams::CreatedAt, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -60,12 +60,12 @@ module Increase
       sig do
         params(
           account_id: String,
-          category: T.any(Increase::Models::DeclinedTransactionListParams::Category, Increase::Util::AnyHash),
-          created_at: T.any(Increase::Models::DeclinedTransactionListParams::CreatedAt, Increase::Util::AnyHash),
+          category: T.any(Increase::Models::DeclinedTransactionListParams::Category, Increase::Internal::Util::AnyHash),
+          created_at: T.any(Increase::Models::DeclinedTransactionListParams::CreatedAt, Increase::Internal::Util::AnyHash),
           cursor: String,
           limit: Integer,
           route_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

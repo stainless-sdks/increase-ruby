@@ -4,8 +4,8 @@ module Increase
   module Models
     module Simulations
       class CardFuelConfirmationCreateParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         # The amount of the fuel_confirmation in minor units in the card authorization's
         #   currency.
@@ -20,7 +20,7 @@ module Increase
           params(
             amount: Integer,
             card_payment_id: String,
-            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

@@ -4,8 +4,8 @@ module Increase
   module Models
     module Simulations
       class InboundMailItemCreateParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         # The amount of the check to be simulated, in cents.
         sig { returns(Integer) }
@@ -28,7 +28,7 @@ module Increase
             amount: Integer,
             lockbox_id: String,
             contents_file_id: String,
-            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

@@ -3,8 +3,8 @@
 module Increase
   module Models
     class PhysicalCardListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # Filter Physical Cards to ones belonging to the specified Card.
       sig { returns(T.nilable(String)) }
@@ -17,7 +17,9 @@ module Increase
       attr_reader :created_at
 
       sig do
-        params(created_at: T.any(Increase::Models::PhysicalCardListParams::CreatedAt, Increase::Util::AnyHash))
+        params(
+          created_at: T.any(Increase::Models::PhysicalCardListParams::CreatedAt, Increase::Internal::Util::AnyHash)
+        )
           .void
       end
       attr_writer :created_at
@@ -50,11 +52,11 @@ module Increase
       sig do
         params(
           card_id: String,
-          created_at: T.any(Increase::Models::PhysicalCardListParams::CreatedAt, Increase::Util::AnyHash),
+          created_at: T.any(Increase::Models::PhysicalCardListParams::CreatedAt, Increase::Internal::Util::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

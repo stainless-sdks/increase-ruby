@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::WireDrawdownRequests#create
     class WireDrawdownRequestCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      #   extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # @!attribute account_number_id
       #   The Account Number to which the recipient should send funds.

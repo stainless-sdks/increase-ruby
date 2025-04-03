@@ -3,8 +3,8 @@
 module Increase
   module Models
     class PhysicalCardCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # The underlying card representing this physical card.
       sig { returns(String) }
@@ -15,7 +15,9 @@ module Increase
       attr_reader :cardholder
 
       sig do
-        params(cardholder: T.any(Increase::Models::PhysicalCardCreateParams::Cardholder, Increase::Util::AnyHash))
+        params(
+          cardholder: T.any(Increase::Models::PhysicalCardCreateParams::Cardholder, Increase::Internal::Util::AnyHash)
+        )
           .void
       end
       attr_writer :cardholder
@@ -24,7 +26,12 @@ module Increase
       sig { returns(Increase::Models::PhysicalCardCreateParams::Shipment) }
       attr_reader :shipment
 
-      sig { params(shipment: T.any(Increase::Models::PhysicalCardCreateParams::Shipment, Increase::Util::AnyHash)).void }
+      sig do
+        params(
+          shipment: T.any(Increase::Models::PhysicalCardCreateParams::Shipment, Increase::Internal::Util::AnyHash)
+        )
+          .void
+      end
       attr_writer :shipment
 
       # The physical card profile to use for this physical card. The latest default
@@ -38,10 +45,10 @@ module Increase
       sig do
         params(
           card_id: String,
-          cardholder: T.any(Increase::Models::PhysicalCardCreateParams::Cardholder, Increase::Util::AnyHash),
-          shipment: T.any(Increase::Models::PhysicalCardCreateParams::Shipment, Increase::Util::AnyHash),
+          cardholder: T.any(Increase::Models::PhysicalCardCreateParams::Cardholder, Increase::Internal::Util::AnyHash),
+          shipment: T.any(Increase::Models::PhysicalCardCreateParams::Shipment, Increase::Internal::Util::AnyHash),
           physical_card_profile_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -89,7 +96,7 @@ module Increase
 
         sig do
           params(
-            address: T.any(Increase::Models::PhysicalCardCreateParams::Shipment::Address, Increase::Util::AnyHash)
+            address: T.any(Increase::Models::PhysicalCardCreateParams::Shipment::Address, Increase::Internal::Util::AnyHash)
           )
             .void
         end
@@ -102,7 +109,7 @@ module Increase
         # The details used to ship this physical card.
         sig do
           params(
-            address: T.any(Increase::Models::PhysicalCardCreateParams::Shipment::Address, Increase::Util::AnyHash),
+            address: T.any(Increase::Models::PhysicalCardCreateParams::Shipment::Address, Increase::Internal::Util::AnyHash),
             method_: Increase::Models::PhysicalCardCreateParams::Shipment::Method::OrSymbol
           )
             .returns(T.attached_class)

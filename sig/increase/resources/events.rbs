@@ -13,7 +13,7 @@ module Increase
         ?cursor: String,
         ?limit: Integer,
         ?request_options: Increase::request_opts
-      ) -> Increase::Page[Increase::Models::Event]
+      ) -> Increase::Internal::Page[Increase::Models::Event]
 
       def initialize: (client: Increase::Client) -> void
     end

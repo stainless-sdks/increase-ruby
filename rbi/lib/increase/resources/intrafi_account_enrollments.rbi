@@ -8,7 +8,7 @@ module Increase
         params(
           account_id: String,
           email_address: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
           .returns(Increase::Models::IntrafiAccountEnrollment)
       end
@@ -25,7 +25,7 @@ module Increase
       sig do
         params(
           intrafi_account_enrollment_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
           .returns(Increase::Models::IntrafiAccountEnrollment)
       end
@@ -43,10 +43,10 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: T.any(Increase::Models::IntrafiAccountEnrollmentListParams::Status, Increase::Util::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          status: T.any(Increase::Models::IntrafiAccountEnrollmentListParams::Status, Increase::Internal::Util::AnyHash),
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
-          .returns(Increase::Page[Increase::Models::IntrafiAccountEnrollment])
+          .returns(Increase::Internal::Page[Increase::Models::IntrafiAccountEnrollment])
       end
       def list(
         # Filter IntraFi Account Enrollments to the one belonging to an account.
@@ -70,7 +70,7 @@ module Increase
       sig do
         params(
           intrafi_account_enrollment_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
           .returns(Increase::Models::IntrafiAccountEnrollment)
       end

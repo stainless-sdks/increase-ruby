@@ -8,11 +8,11 @@ module Increase
         entity_id: String,
         status: Increase::Models::CardUpdateParams::status
       }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class CardUpdateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_reader billing_address: Increase::Models::CardUpdateParams::BillingAddress?
 

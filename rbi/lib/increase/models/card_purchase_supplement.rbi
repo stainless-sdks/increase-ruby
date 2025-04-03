@@ -17,7 +17,7 @@ module Increase
 
       sig do
         params(
-          invoice: T.nilable(T.any(Increase::Models::CardPurchaseSupplement::Invoice, Increase::Util::AnyHash))
+          invoice: T.nilable(T.any(Increase::Models::CardPurchaseSupplement::Invoice, Increase::Internal::Util::AnyHash))
         )
           .void
       end
@@ -42,8 +42,10 @@ module Increase
         params(
           id: String,
           card_payment_id: T.nilable(String),
-          invoice: T.nilable(T.any(Increase::Models::CardPurchaseSupplement::Invoice, Increase::Util::AnyHash)),
-          line_items: T.nilable(T::Array[T.any(Increase::Models::CardPurchaseSupplement::LineItem, Increase::Util::AnyHash)]),
+          invoice: T.nilable(T.any(Increase::Models::CardPurchaseSupplement::Invoice, Increase::Internal::Util::AnyHash)),
+          line_items: T.nilable(
+            T::Array[T.any(Increase::Models::CardPurchaseSupplement::LineItem, Increase::Internal::Util::AnyHash)]
+          ),
           transaction_id: String,
           type: Increase::Models::CardPurchaseSupplement::Type::OrSymbol
         )

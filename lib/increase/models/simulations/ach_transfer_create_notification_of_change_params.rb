@@ -6,8 +6,8 @@ module Increase
       # @see Increase::Resources::Simulations::ACHTransfers#create_notification_of_change
       class ACHTransferCreateNotificationOfChangeParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        #   extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         # @!attribute change_code
         #   The reason for the notification of change.

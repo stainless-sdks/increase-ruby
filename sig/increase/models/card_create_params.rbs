@@ -8,11 +8,11 @@ module Increase
         digital_wallet: Increase::Models::CardCreateParams::DigitalWallet,
         entity_id: String
       }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class CardCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_accessor account_id: String
 

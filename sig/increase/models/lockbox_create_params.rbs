@@ -2,11 +2,11 @@ module Increase
   module Models
     type lockbox_create_params =
       { account_id: String, description: String, recipient_name: String }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class LockboxCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_accessor account_id: String
 

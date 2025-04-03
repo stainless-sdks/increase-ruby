@@ -8,11 +8,11 @@ module Increase
         account_holder: Increase::Models::ExternalAccountCreateParams::account_holder,
         funding: Increase::Models::ExternalAccountCreateParams::funding
       }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class ExternalAccountCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_accessor account_number: String
 

@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::InboundACHTransfers#decline
     class InboundACHTransferDeclineParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      #   extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # @!attribute [r] reason
       #   The reason why this transfer will be returned. If this parameter is unset, the

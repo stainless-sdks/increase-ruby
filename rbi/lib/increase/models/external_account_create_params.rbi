@@ -3,8 +3,8 @@
 module Increase
   module Models
     class ExternalAccountCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # The account number for the destination account.
       sig { returns(String) }
@@ -40,7 +40,7 @@ module Increase
           routing_number: String,
           account_holder: Increase::Models::ExternalAccountCreateParams::AccountHolder::OrSymbol,
           funding: Increase::Models::ExternalAccountCreateParams::Funding::OrSymbol,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -15,11 +15,11 @@ module Increase
           resolve_at: Time,
           standard_entry_class_code: Increase::Models::Simulations::InboundACHTransferCreateParams::standard_entry_class_code
         }
-        & Increase::request_parameters
+        & Increase::Internal::Type::request_parameters
 
       class InboundACHTransferCreateParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         attr_accessor account_number_id: String
 

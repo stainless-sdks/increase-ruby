@@ -3,11 +3,11 @@ module Increase
     module Simulations
       type card_settlement_create_params =
         { card_id: String, pending_transaction_id: String, amount: Integer }
-        & Increase::request_parameters
+        & Increase::Internal::Type::request_parameters
 
       class CardSettlementCreateParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         attr_accessor card_id: String
 

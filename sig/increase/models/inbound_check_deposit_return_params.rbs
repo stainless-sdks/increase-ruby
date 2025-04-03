@@ -2,11 +2,11 @@ module Increase
   module Models
     type inbound_check_deposit_return_params =
       { reason: Increase::Models::InboundCheckDepositReturnParams::reason }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class InboundCheckDepositReturnParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_accessor reason: Increase::Models::InboundCheckDepositReturnParams::reason
 

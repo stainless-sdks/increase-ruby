@@ -3,8 +3,8 @@
 module Increase
   module Models
     class ExportCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # The type of Export to create.
       sig { returns(Increase::Models::ExportCreateParams::Category::OrSymbol) }
@@ -17,7 +17,7 @@ module Increase
 
       sig do
         params(
-          account_statement_ofx: T.any(Increase::Models::ExportCreateParams::AccountStatementOfx, Increase::Util::AnyHash)
+          account_statement_ofx: T.any(Increase::Models::ExportCreateParams::AccountStatementOfx, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -28,7 +28,12 @@ module Increase
       sig { returns(T.nilable(Increase::Models::ExportCreateParams::BalanceCsv)) }
       attr_reader :balance_csv
 
-      sig { params(balance_csv: T.any(Increase::Models::ExportCreateParams::BalanceCsv, Increase::Util::AnyHash)).void }
+      sig do
+        params(
+          balance_csv: T.any(Increase::Models::ExportCreateParams::BalanceCsv, Increase::Internal::Util::AnyHash)
+        )
+          .void
+      end
       attr_writer :balance_csv
 
       # Options for the created export. Required if `category` is equal to
@@ -38,7 +43,10 @@ module Increase
 
       sig do
         params(
-          bookkeeping_account_balance_csv: T.any(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv, Increase::Util::AnyHash)
+          bookkeeping_account_balance_csv: T.any(
+            Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv,
+            Increase::Internal::Util::AnyHash
+          )
         )
           .void
       end
@@ -48,7 +56,12 @@ module Increase
       sig { returns(T.nilable(Increase::Models::ExportCreateParams::EntityCsv)) }
       attr_reader :entity_csv
 
-      sig { params(entity_csv: T.any(Increase::Models::ExportCreateParams::EntityCsv, Increase::Util::AnyHash)).void }
+      sig do
+        params(
+          entity_csv: T.any(Increase::Models::ExportCreateParams::EntityCsv, Increase::Internal::Util::AnyHash)
+        )
+          .void
+      end
       attr_writer :entity_csv
 
       # Options for the created export. Required if `category` is equal to
@@ -58,7 +71,7 @@ module Increase
 
       sig do
         params(
-          transaction_csv: T.any(Increase::Models::ExportCreateParams::TransactionCsv, Increase::Util::AnyHash)
+          transaction_csv: T.any(Increase::Models::ExportCreateParams::TransactionCsv, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -74,13 +87,16 @@ module Increase
       sig do
         params(
           category: Increase::Models::ExportCreateParams::Category::OrSymbol,
-          account_statement_ofx: T.any(Increase::Models::ExportCreateParams::AccountStatementOfx, Increase::Util::AnyHash),
-          balance_csv: T.any(Increase::Models::ExportCreateParams::BalanceCsv, Increase::Util::AnyHash),
-          bookkeeping_account_balance_csv: T.any(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv, Increase::Util::AnyHash),
-          entity_csv: T.any(Increase::Models::ExportCreateParams::EntityCsv, Increase::Util::AnyHash),
-          transaction_csv: T.any(Increase::Models::ExportCreateParams::TransactionCsv, Increase::Util::AnyHash),
+          account_statement_ofx: T.any(Increase::Models::ExportCreateParams::AccountStatementOfx, Increase::Internal::Util::AnyHash),
+          balance_csv: T.any(Increase::Models::ExportCreateParams::BalanceCsv, Increase::Internal::Util::AnyHash),
+          bookkeeping_account_balance_csv: T.any(
+            Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv,
+            Increase::Internal::Util::AnyHash
+          ),
+          entity_csv: T.any(Increase::Models::ExportCreateParams::EntityCsv, Increase::Internal::Util::AnyHash),
+          transaction_csv: T.any(Increase::Models::ExportCreateParams::TransactionCsv, Increase::Internal::Util::AnyHash),
           vendor_csv: T.anything,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -158,7 +174,10 @@ module Increase
 
         sig do
           params(
-            created_at: T.any(Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt, Increase::Util::AnyHash)
+            created_at: T.any(
+              Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt,
+              Increase::Internal::Util::AnyHash
+            )
           )
             .void
         end
@@ -169,7 +188,10 @@ module Increase
         sig do
           params(
             account_id: String,
-            created_at: T.any(Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt, Increase::Util::AnyHash)
+            created_at: T.any(
+              Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt,
+              Increase::Internal::Util::AnyHash
+            )
           )
             .returns(T.attached_class)
         end
@@ -245,7 +267,7 @@ module Increase
 
         sig do
           params(
-            created_at: T.any(Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt, Increase::Util::AnyHash)
+            created_at: T.any(Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt, Increase::Internal::Util::AnyHash)
           )
             .void
         end
@@ -263,7 +285,7 @@ module Increase
         sig do
           params(
             account_id: String,
-            created_at: T.any(Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt, Increase::Util::AnyHash),
+            created_at: T.any(Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt, Increase::Internal::Util::AnyHash),
             program_id: String
           )
             .returns(T.attached_class)
@@ -346,7 +368,7 @@ module Increase
           params(
             created_at: T.any(
               Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt,
-              Increase::Util::AnyHash
+              Increase::Internal::Util::AnyHash
             )
           )
             .void
@@ -360,7 +382,7 @@ module Increase
             bookkeeping_account_id: String,
             created_at: T.any(
               Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt,
-              Increase::Util::AnyHash
+              Increase::Internal::Util::AnyHash
             )
           )
             .returns(T.attached_class)
@@ -432,14 +454,18 @@ module Increase
         attr_reader :status
 
         sig do
-          params(status: T.any(Increase::Models::ExportCreateParams::EntityCsv::Status, Increase::Util::AnyHash))
+          params(
+            status: T.any(Increase::Models::ExportCreateParams::EntityCsv::Status, Increase::Internal::Util::AnyHash)
+          )
             .void
         end
         attr_writer :status
 
         # Options for the created export. Required if `category` is equal to `entity_csv`.
         sig do
-          params(status: T.any(Increase::Models::ExportCreateParams::EntityCsv::Status, Increase::Util::AnyHash))
+          params(
+            status: T.any(Increase::Models::ExportCreateParams::EntityCsv::Status, Increase::Internal::Util::AnyHash)
+          )
             .returns(T.attached_class)
         end
         def self.new(status: nil)
@@ -505,7 +531,7 @@ module Increase
 
         sig do
           params(
-            created_at: T.any(Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt, Increase::Util::AnyHash)
+            created_at: T.any(Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt, Increase::Internal::Util::AnyHash)
           )
             .void
         end
@@ -523,7 +549,7 @@ module Increase
         sig do
           params(
             account_id: String,
-            created_at: T.any(Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt, Increase::Util::AnyHash),
+            created_at: T.any(Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt, Increase::Internal::Util::AnyHash),
             program_id: String
           )
             .returns(T.attached_class)

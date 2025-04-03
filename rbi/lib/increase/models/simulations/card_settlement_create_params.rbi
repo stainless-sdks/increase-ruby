@@ -4,8 +4,8 @@ module Increase
   module Models
     module Simulations
       class CardSettlementCreateParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         # The identifier of the Card to create a settlement on.
         sig { returns(String) }
@@ -29,7 +29,7 @@ module Increase
             card_id: String,
             pending_transaction_id: String,
             amount: Integer,
-            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

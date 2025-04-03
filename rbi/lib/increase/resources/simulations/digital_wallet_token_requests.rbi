@@ -9,7 +9,7 @@ module Increase
         sig do
           params(
             card_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
           )
             .returns(Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse)
         end

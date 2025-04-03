@@ -32,7 +32,7 @@ module Increase
       # @param statement_period_start [Increase::Models::AccountStatementListParams::StatementPeriodStart]
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Page<Increase::Models::AccountStatement>]
+      # @return [Increase::Internal::Page<Increase::Models::AccountStatement>]
       #
       # @see Increase::Models::AccountStatementListParams
       def list(params = {})
@@ -41,7 +41,7 @@ module Increase
           method: :get,
           path: "account_statements",
           query: parsed,
-          page: Increase::Page,
+          page: Increase::Internal::Page,
           model: Increase::Models::AccountStatement,
           options: options
         )

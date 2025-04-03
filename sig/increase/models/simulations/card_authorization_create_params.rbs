@@ -21,11 +21,11 @@ module Increase
           physical_card_id: String,
           terminal_id: String
         }
-        & Increase::request_parameters
+        & Increase::Internal::Type::request_parameters
 
       class CardAuthorizationCreateParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         attr_accessor amount: Integer
 

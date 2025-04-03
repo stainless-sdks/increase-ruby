@@ -5,11 +5,11 @@ module Increase
         address: Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
         beneficial_owner_id: String
       }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class EntityUpdateBeneficialOwnerAddressParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_accessor address: Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address
 

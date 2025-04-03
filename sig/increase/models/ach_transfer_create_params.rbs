@@ -22,11 +22,11 @@ module Increase
         standard_entry_class_code: Increase::Models::ACHTransferCreateParams::standard_entry_class_code,
         transaction_timing: Increase::Models::ACHTransferCreateParams::transaction_timing
       }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class ACHTransferCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_accessor account_id: String
 

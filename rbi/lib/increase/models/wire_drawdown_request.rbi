@@ -92,7 +92,7 @@ module Increase
 
       sig do
         params(
-          submission: T.nilable(T.any(Increase::Models::WireDrawdownRequest::Submission, Increase::Util::AnyHash))
+          submission: T.nilable(T.any(Increase::Models::WireDrawdownRequest::Submission, Increase::Internal::Util::AnyHash))
         )
           .void
       end
@@ -127,7 +127,7 @@ module Increase
           recipient_name: T.nilable(String),
           recipient_routing_number: String,
           status: Increase::Models::WireDrawdownRequest::Status::OrSymbol,
-          submission: T.nilable(T.any(Increase::Models::WireDrawdownRequest::Submission, Increase::Util::AnyHash)),
+          submission: T.nilable(T.any(Increase::Models::WireDrawdownRequest::Submission, Increase::Internal::Util::AnyHash)),
           type: Increase::Models::WireDrawdownRequest::Type::OrSymbol
         )
           .returns(T.attached_class)

@@ -40,7 +40,7 @@ class Increase::Test::Resources::InboundCheckDepositsTest < Increase::Test::Reso
     response = @increase.inbound_check_deposits.list
 
     assert_pattern do
-      response => Increase::Page
+      response => Increase::Internal::Page
     end
 
     row = response.to_enum.first

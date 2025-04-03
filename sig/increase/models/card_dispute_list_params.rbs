@@ -8,11 +8,11 @@ module Increase
         limit: Integer,
         status: Increase::Models::CardDisputeListParams::Status
       }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class CardDisputeListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_reader created_at: Increase::Models::CardDisputeListParams::CreatedAt?
 

@@ -35,7 +35,7 @@ module Increase
       # @param status [Increase::Models::PendingTransactionListParams::Status]
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Page<Increase::Models::PendingTransaction>]
+      # @return [Increase::Internal::Page<Increase::Models::PendingTransaction>]
       #
       # @see Increase::Models::PendingTransactionListParams
       def list(params = {})
@@ -44,7 +44,7 @@ module Increase
           method: :get,
           path: "pending_transactions",
           query: parsed,
-          page: Increase::Page,
+          page: Increase::Internal::Page,
           model: Increase::Models::PendingTransaction,
           options: options
         )

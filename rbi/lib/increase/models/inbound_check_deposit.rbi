@@ -76,7 +76,7 @@ module Increase
 
       sig do
         params(
-          deposit_return: T.nilable(T.any(Increase::Models::InboundCheckDeposit::DepositReturn, Increase::Util::AnyHash))
+          deposit_return: T.nilable(T.any(Increase::Models::InboundCheckDeposit::DepositReturn, Increase::Internal::Util::AnyHash))
         )
           .void
       end
@@ -113,7 +113,7 @@ module Increase
           accepted_at: T.nilable(Time),
           account_id: String,
           account_number_id: T.nilable(String),
-          adjustments: T::Array[T.any(Increase::Models::InboundCheckDeposit::Adjustment, Increase::Util::AnyHash)],
+          adjustments: T::Array[T.any(Increase::Models::InboundCheckDeposit::Adjustment, Increase::Internal::Util::AnyHash)],
           amount: Integer,
           back_image_file_id: T.nilable(String),
           bank_of_first_deposit_routing_number: T.nilable(String),
@@ -123,7 +123,7 @@ module Increase
           currency: Increase::Models::InboundCheckDeposit::Currency::OrSymbol,
           declined_at: T.nilable(Time),
           declined_transaction_id: T.nilable(String),
-          deposit_return: T.nilable(T.any(Increase::Models::InboundCheckDeposit::DepositReturn, Increase::Util::AnyHash)),
+          deposit_return: T.nilable(T.any(Increase::Models::InboundCheckDeposit::DepositReturn, Increase::Internal::Util::AnyHash)),
           front_image_file_id: T.nilable(String),
           payee_name_analysis: Increase::Models::InboundCheckDeposit::PayeeNameAnalysis::OrSymbol,
           status: Increase::Models::InboundCheckDeposit::Status::OrSymbol,

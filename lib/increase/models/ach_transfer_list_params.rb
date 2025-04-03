@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::ACHTransfers#list
     class ACHTransferListParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      #   extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # @!attribute [r] account_id
       #   Filter ACH Transfers to those that originated from the specified Account.

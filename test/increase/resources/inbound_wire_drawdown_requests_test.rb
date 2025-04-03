@@ -43,7 +43,7 @@ class Increase::Test::Resources::InboundWireDrawdownRequestsTest < Increase::Tes
     response = @increase.inbound_wire_drawdown_requests.list
 
     assert_pattern do
-      response => Increase::Page
+      response => Increase::Internal::Page
     end
 
     row = response.to_enum.first

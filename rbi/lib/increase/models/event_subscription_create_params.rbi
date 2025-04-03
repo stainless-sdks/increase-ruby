@@ -3,8 +3,8 @@
 module Increase
   module Models
     class EventSubscriptionCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # The URL you'd like us to send webhooks to.
       sig { returns(String) }
@@ -45,7 +45,7 @@ module Increase
           oauth_connection_id: String,
           selected_event_category: Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol,
           shared_secret: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

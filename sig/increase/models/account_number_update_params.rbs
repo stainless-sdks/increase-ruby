@@ -7,11 +7,11 @@ module Increase
         name: String,
         status: Increase::Models::AccountNumberUpdateParams::status
       }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class AccountNumberUpdateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_reader inbound_ach: Increase::Models::AccountNumberUpdateParams::InboundACH?
 

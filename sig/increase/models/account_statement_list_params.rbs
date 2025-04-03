@@ -7,11 +7,11 @@ module Increase
         limit: Integer,
         statement_period_start: Increase::Models::AccountStatementListParams::StatementPeriodStart
       }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class AccountStatementListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_reader account_id: String?
 

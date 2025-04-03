@@ -6,11 +6,11 @@ module Increase
         recipient_name: String,
         status: Increase::Models::LockboxUpdateParams::status
       }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class LockboxUpdateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_reader description: String?
 

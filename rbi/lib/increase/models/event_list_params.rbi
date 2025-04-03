@@ -3,8 +3,8 @@
 module Increase
   module Models
     class EventListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # Filter Events to those belonging to the object with the provided identifier.
       sig { returns(T.nilable(String)) }
@@ -16,13 +16,19 @@ module Increase
       sig { returns(T.nilable(Increase::Models::EventListParams::Category)) }
       attr_reader :category
 
-      sig { params(category: T.any(Increase::Models::EventListParams::Category, Increase::Util::AnyHash)).void }
+      sig do
+        params(category: T.any(Increase::Models::EventListParams::Category, Increase::Internal::Util::AnyHash))
+          .void
+      end
       attr_writer :category
 
       sig { returns(T.nilable(Increase::Models::EventListParams::CreatedAt)) }
       attr_reader :created_at
 
-      sig { params(created_at: T.any(Increase::Models::EventListParams::CreatedAt, Increase::Util::AnyHash)).void }
+      sig do
+        params(created_at: T.any(Increase::Models::EventListParams::CreatedAt, Increase::Internal::Util::AnyHash))
+          .void
+      end
       attr_writer :created_at
 
       # Return the page of entries after this one.
@@ -43,11 +49,11 @@ module Increase
       sig do
         params(
           associated_object_id: String,
-          category: T.any(Increase::Models::EventListParams::Category, Increase::Util::AnyHash),
-          created_at: T.any(Increase::Models::EventListParams::CreatedAt, Increase::Util::AnyHash),
+          category: T.any(Increase::Models::EventListParams::Category, Increase::Internal::Util::AnyHash),
+          created_at: T.any(Increase::Models::EventListParams::CreatedAt, Increase::Internal::Util::AnyHash),
           cursor: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -6,8 +6,8 @@ module Increase
       # @see Increase::Resources::Simulations::ACHTransfers#return_
       class ACHTransferReturnParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        #   extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         # @!attribute [r] reason
         #   The reason why the Federal Reserve or destination bank returned this transfer.

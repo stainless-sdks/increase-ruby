@@ -32,7 +32,7 @@ module Increase
       # @param lockbox_id [String]
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Page<Increase::Models::InboundMailItem>]
+      # @return [Increase::Internal::Page<Increase::Models::InboundMailItem>]
       #
       # @see Increase::Models::InboundMailItemListParams
       def list(params = {})
@@ -41,7 +41,7 @@ module Increase
           method: :get,
           path: "inbound_mail_items",
           query: parsed,
-          page: Increase::Page,
+          page: Increase::Internal::Page,
           model: Increase::Models::InboundMailItem,
           options: options
         )

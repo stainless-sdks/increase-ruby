@@ -61,7 +61,7 @@ module Increase
       # @param status [Increase::Models::ExportListParams::Status]
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Page<Increase::Models::Export>]
+      # @return [Increase::Internal::Page<Increase::Models::Export>]
       #
       # @see Increase::Models::ExportListParams
       def list(params = {})
@@ -70,7 +70,7 @@ module Increase
           method: :get,
           path: "exports",
           query: parsed,
-          page: Increase::Page,
+          page: Increase::Internal::Page,
           model: Increase::Models::Export,
           options: options
         )

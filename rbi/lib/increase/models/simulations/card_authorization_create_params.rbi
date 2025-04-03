@@ -4,8 +4,8 @@ module Increase
   module Models
     module Simulations
       class CardAuthorizationCreateParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         # The authorization amount in cents.
         sig { returns(Integer) }
@@ -116,7 +116,7 @@ module Increase
           params(
             network_details: T.any(
               Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
-              Increase::Util::AnyHash
+              Increase::Internal::Util::AnyHash
             )
           )
             .void
@@ -163,12 +163,12 @@ module Increase
             merchant_state: String,
             network_details: T.any(
               Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
-              Increase::Util::AnyHash
+              Increase::Internal::Util::AnyHash
             ),
             network_risk_score: Integer,
             physical_card_id: String,
             terminal_id: String,
-            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -408,7 +408,7 @@ module Increase
             params(
               visa: T.any(
                 Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa,
-                Increase::Util::AnyHash
+                Increase::Internal::Util::AnyHash
               )
             )
               .void
@@ -420,7 +420,7 @@ module Increase
             params(
               visa: T.any(
                 Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa,
-                Increase::Util::AnyHash
+                Increase::Internal::Util::AnyHash
               )
             )
               .returns(T.attached_class)
