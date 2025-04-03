@@ -33,9 +33,7 @@ module Increase
         #
         # @return [Boolean]
         def ==(other)
-          # rubocop:disable Layout/LineLength
-          other.is_a?(Increase::Internal::Type::ArrayOf) && other.nilable? == nilable? && other.item_type == item_type
-          # rubocop:enable Layout/LineLength
+          other.is_a?(Increase::ArrayOf) && other.nilable? == nilable? && other.item_type == item_type
         end
 
         # @api private

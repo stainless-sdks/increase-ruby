@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class EventSubscriptionUpdateParams < Increase::Internal::Type::BaseModel
+    class EventSubscriptionUpdateParams < Increase::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
@@ -16,7 +16,7 @@ module Increase
       sig do
         params(
           status: Increase::Models::EventSubscriptionUpdateParams::Status::OrSymbol,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -37,7 +37,7 @@ module Increase
 
       # The status to update the Event Subscription with.
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EventSubscriptionUpdateParams::Status) }
         OrSymbol =

@@ -3,7 +3,7 @@
 module Increase
   module Models
     module Simulations
-      class InboundACHTransferCreateParams < Increase::Internal::Type::BaseModel
+      class InboundACHTransferCreateParams < Increase::BaseModel
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
@@ -103,7 +103,7 @@ module Increase
             receiver_name: String,
             resolve_at: Time,
             standard_entry_class_code: Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::OrSymbol,
-            request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -147,7 +147,7 @@ module Increase
 
         # The standard entry class code for the transfer.
         module StandardEntryClassCode
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode) }

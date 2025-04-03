@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::PhysicalCardProfiles#clone_
-    class PhysicalCardProfileCloneParams < Increase::Internal::Type::BaseModel
+    class PhysicalCardProfileCloneParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
@@ -79,9 +79,9 @@ module Increase
       #     super
       #   end
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
-      class FrontText < Increase::Internal::Type::BaseModel
+      class FrontText < Increase::BaseModel
         # @!attribute line1
         #   The first line of text on the front of the card.
         #
@@ -109,7 +109,7 @@ module Increase
         #   #
         #   def initialize(line1:, line2: nil, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
     end
   end

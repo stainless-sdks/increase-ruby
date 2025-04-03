@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::BookkeepingEntrySets#create
-    class BookkeepingEntrySetCreateParams < Increase::Internal::Type::BaseModel
+    class BookkeepingEntrySetCreateParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
@@ -12,8 +12,7 @@ module Increase
       #   The bookkeeping entries.
       #
       #   @return [Array<Increase::Models::BookkeepingEntrySetCreateParams::Entry>]
-      required :entries,
-               -> { Increase::Internal::Type::ArrayOf[Increase::Models::BookkeepingEntrySetCreateParams::Entry] }
+      required :entries, -> { Increase::ArrayOf[Increase::Models::BookkeepingEntrySetCreateParams::Entry] }
 
       # @!attribute [r] date
       #   The date of the transaction. Optional if `transaction_id` is provided, in which
@@ -44,9 +43,9 @@ module Increase
       #   #
       #   def initialize(entries:, date: nil, transaction_id: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
-      class Entry < Increase::Internal::Type::BaseModel
+      class Entry < Increase::BaseModel
         # @!attribute account_id
         #   The identifier for the Bookkeeping Account impacted by this entry.
         #
@@ -67,7 +66,7 @@ module Increase
         #   #
         #   def initialize(account_id:, amount:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
     end
   end

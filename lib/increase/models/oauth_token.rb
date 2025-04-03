@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::OAuthTokens#create
-    class OAuthToken < Increase::Internal::Type::BaseModel
+    class OAuthToken < Increase::BaseModel
       # @!attribute access_token
       #   You may use this token in place of an API key to make OAuth requests on a user's
       #     behalf.
@@ -35,13 +35,13 @@ module Increase
       #   #
       #   def initialize(access_token:, token_type:, type:, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # The type of OAuth token.
       #
       # @see Increase::Models::OAuthToken#token_type
       module TokenType
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         BEARER = :bearer
 
@@ -57,7 +57,7 @@ module Increase
       #
       # @see Increase::Models::OAuthToken#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         OAUTH_TOKEN = :oauth_token
 

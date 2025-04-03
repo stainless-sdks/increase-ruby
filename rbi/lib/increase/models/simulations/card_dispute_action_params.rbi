@@ -3,7 +3,7 @@
 module Increase
   module Models
     module Simulations
-      class CardDisputeActionParams < Increase::Internal::Type::BaseModel
+      class CardDisputeActionParams < Increase::BaseModel
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
@@ -22,7 +22,7 @@ module Increase
           params(
             status: Increase::Models::Simulations::CardDisputeActionParams::Status::OrSymbol,
             explanation: String,
-            request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -44,7 +44,7 @@ module Increase
 
         # The status to move the dispute to.
         module Status
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::Simulations::CardDisputeActionParams::Status) }

@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class ACHPrenotification < Increase::Internal::Type::BaseModel
+    class ACHPrenotification < Increase::BaseModel
       # The ACH Prenotification's identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -61,7 +61,9 @@ module Increase
 
       sig do
         params(
-          prenotification_return: T.nilable(T.any(Increase::Models::ACHPrenotification::PrenotificationReturn, Increase::Internal::AnyHash))
+          prenotification_return: T.nilable(
+            T.any(Increase::Models::ACHPrenotification::PrenotificationReturn, Increase::Internal::Util::AnyHash)
+          )
         )
           .void
       end
@@ -95,8 +97,10 @@ module Increase
           credit_debit_indicator: T.nilable(Increase::Models::ACHPrenotification::CreditDebitIndicator::OrSymbol),
           effective_date: T.nilable(Time),
           idempotency_key: T.nilable(String),
-          notifications_of_change: T::Array[T.any(Increase::Models::ACHPrenotification::NotificationsOfChange, Increase::Internal::AnyHash)],
-          prenotification_return: T.nilable(T.any(Increase::Models::ACHPrenotification::PrenotificationReturn, Increase::Internal::AnyHash)),
+          notifications_of_change: T::Array[T.any(Increase::Models::ACHPrenotification::NotificationsOfChange, Increase::Internal::Util::AnyHash)],
+          prenotification_return: T.nilable(
+            T.any(Increase::Models::ACHPrenotification::PrenotificationReturn, Increase::Internal::Util::AnyHash)
+          ),
           routing_number: String,
           status: Increase::Models::ACHPrenotification::Status::OrSymbol,
           type: Increase::Models::ACHPrenotification::Type::OrSymbol
@@ -151,7 +155,7 @@ module Increase
 
       # If the notification is for a future credit or debit.
       module CreditDebitIndicator
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotification::CreditDebitIndicator) }
         OrSymbol =
@@ -168,7 +172,7 @@ module Increase
         end
       end
 
-      class NotificationsOfChange < Increase::Internal::Type::BaseModel
+      class NotificationsOfChange < Increase::BaseModel
         # The required type of change that is being signaled by the receiving financial
         #   institution.
         sig { returns(Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode::TaggedSymbol) }
@@ -214,7 +218,7 @@ module Increase
         # The required type of change that is being signaled by the receiving financial
         #   institution.
         module ChangeCode
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode) }
@@ -369,7 +373,7 @@ module Increase
         end
       end
 
-      class PrenotificationReturn < Increase::Internal::Type::BaseModel
+      class PrenotificationReturn < Increase::BaseModel
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #   the Prenotification was returned.
         sig { returns(Time) }
@@ -404,7 +408,7 @@ module Increase
 
         # Why the Prenotification was returned.
         module ReturnReasonCode
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotification::PrenotificationReturn::ReturnReasonCode) }
@@ -920,7 +924,7 @@ module Increase
 
       # The lifecycle status of the ACH Prenotification.
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotification::Status) }
         OrSymbol =
@@ -948,7 +952,7 @@ module Increase
       # A constant representing the object's type. For this resource it will always be
       #   `ach_prenotification`.
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotification::Type) }
         OrSymbol =

@@ -4,7 +4,7 @@ module Increase
   module Models
     module Simulations
       # @see Increase::Resources::Simulations::InboundFundsHolds#release
-      class InboundFundsHoldReleaseParams < Increase::Internal::Type::BaseModel
+      class InboundFundsHoldReleaseParams < Increase::BaseModel
         # @!parse
         #   extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
@@ -14,7 +14,7 @@ module Increase
         #   #
         #   def initialize(request_options: {}, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
     end
   end

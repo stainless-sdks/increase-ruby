@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class InboundRealTimePaymentsTransfer < Increase::Internal::Type::BaseModel
+    class InboundRealTimePaymentsTransfer < Increase::BaseModel
       # The inbound Real-Time Payments transfer's identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -26,7 +26,7 @@ module Increase
       sig do
         params(
           confirmation: T.nilable(
-            T.any(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation, Increase::Internal::AnyHash)
+            T.any(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation, Increase::Internal::Util::AnyHash)
           )
         )
           .void
@@ -65,7 +65,9 @@ module Increase
 
       sig do
         params(
-          decline: T.nilable(T.any(Increase::Models::InboundRealTimePaymentsTransfer::Decline, Increase::Internal::AnyHash))
+          decline: T.nilable(
+            T.any(Increase::Models::InboundRealTimePaymentsTransfer::Decline, Increase::Internal::Util::AnyHash)
+          )
         )
           .void
       end
@@ -97,7 +99,7 @@ module Increase
           account_number_id: String,
           amount: Integer,
           confirmation: T.nilable(
-            T.any(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation, Increase::Internal::AnyHash)
+            T.any(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation, Increase::Internal::Util::AnyHash)
           ),
           created_at: Time,
           creditor_name: String,
@@ -105,7 +107,9 @@ module Increase
           debtor_account_number: String,
           debtor_name: String,
           debtor_routing_number: String,
-          decline: T.nilable(T.any(Increase::Models::InboundRealTimePaymentsTransfer::Decline, Increase::Internal::AnyHash)),
+          decline: T.nilable(
+            T.any(Increase::Models::InboundRealTimePaymentsTransfer::Decline, Increase::Internal::Util::AnyHash)
+          ),
           remittance_information: T.nilable(String),
           status: Increase::Models::InboundRealTimePaymentsTransfer::Status::OrSymbol,
           transaction_identification: String,
@@ -159,7 +163,7 @@ module Increase
       def to_hash
       end
 
-      class Confirmation < Increase::Internal::Type::BaseModel
+      class Confirmation < Increase::BaseModel
         # The time at which the transfer was confirmed.
         sig { returns(Time) }
         attr_accessor :confirmed_at
@@ -181,7 +185,7 @@ module Increase
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
       #   currency. This will always be "USD" for a Real-Time Payments transfer.
       module Currency
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Currency) }
@@ -211,7 +215,7 @@ module Increase
         end
       end
 
-      class Decline < Increase::Internal::Type::BaseModel
+      class Decline < Increase::BaseModel
         # The time at which the transfer was declined.
         sig { returns(Time) }
         attr_accessor :declined_at
@@ -251,7 +255,7 @@ module Increase
 
         # The reason for the transfer decline.
         module Reason
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason) }
@@ -308,7 +312,7 @@ module Increase
 
       # The lifecycle status of the transfer.
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Status) }
         OrSymbol =
@@ -335,7 +339,7 @@ module Increase
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_real_time_payments_transfer`.
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Type) }
         OrSymbol =

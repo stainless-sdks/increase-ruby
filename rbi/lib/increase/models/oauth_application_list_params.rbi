@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class OAuthApplicationListParams < Increase::Internal::Type::BaseModel
+    class OAuthApplicationListParams < Increase::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
@@ -11,7 +11,7 @@ module Increase
 
       sig do
         params(
-          created_at: T.any(Increase::Models::OAuthApplicationListParams::CreatedAt, Increase::Internal::AnyHash)
+          created_at: T.any(Increase::Models::OAuthApplicationListParams::CreatedAt, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -36,18 +36,20 @@ module Increase
       attr_reader :status
 
       sig do
-        params(status: T.any(Increase::Models::OAuthApplicationListParams::Status, Increase::Internal::AnyHash))
+        params(
+          status: T.any(Increase::Models::OAuthApplicationListParams::Status, Increase::Internal::Util::AnyHash)
+        )
           .void
       end
       attr_writer :status
 
       sig do
         params(
-          created_at: T.any(Increase::Models::OAuthApplicationListParams::CreatedAt, Increase::Internal::AnyHash),
+          created_at: T.any(Increase::Models::OAuthApplicationListParams::CreatedAt, Increase::Internal::Util::AnyHash),
           cursor: String,
           limit: Integer,
-          status: T.any(Increase::Models::OAuthApplicationListParams::Status, Increase::Internal::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          status: T.any(Increase::Models::OAuthApplicationListParams::Status, Increase::Internal::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -69,7 +71,7 @@ module Increase
       def to_hash
       end
 
-      class CreatedAt < Increase::Internal::Type::BaseModel
+      class CreatedAt < Increase::BaseModel
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
@@ -113,7 +115,7 @@ module Increase
         end
       end
 
-      class Status < Increase::Internal::Type::BaseModel
+      class Status < Increase::BaseModel
         # Return results whose value is in the provided list. For GET requests, this
         #   should be encoded as a comma-delimited string, such as `?in=one,two,three`.
         sig { returns(T.nilable(T::Array[Increase::Models::OAuthApplicationListParams::Status::In::OrSymbol])) }
@@ -134,7 +136,7 @@ module Increase
         end
 
         module In
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthApplicationListParams::Status::In) }
           OrSymbol =

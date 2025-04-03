@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class AccountNumberCreateParams < Increase::Internal::Type::BaseModel
+    class AccountNumberCreateParams < Increase::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
@@ -20,7 +20,7 @@ module Increase
 
       sig do
         params(
-          inbound_ach: T.any(Increase::Models::AccountNumberCreateParams::InboundACH, Increase::Internal::AnyHash)
+          inbound_ach: T.any(Increase::Models::AccountNumberCreateParams::InboundACH, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -33,7 +33,7 @@ module Increase
 
       sig do
         params(
-          inbound_checks: T.any(Increase::Models::AccountNumberCreateParams::InboundChecks, Increase::Internal::AnyHash)
+          inbound_checks: T.any(Increase::Models::AccountNumberCreateParams::InboundChecks, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -43,9 +43,9 @@ module Increase
         params(
           account_id: String,
           name: String,
-          inbound_ach: T.any(Increase::Models::AccountNumberCreateParams::InboundACH, Increase::Internal::AnyHash),
-          inbound_checks: T.any(Increase::Models::AccountNumberCreateParams::InboundChecks, Increase::Internal::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          inbound_ach: T.any(Increase::Models::AccountNumberCreateParams::InboundACH, Increase::Internal::Util::AnyHash),
+          inbound_checks: T.any(Increase::Models::AccountNumberCreateParams::InboundChecks, Increase::Internal::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -67,7 +67,7 @@ module Increase
       def to_hash
       end
 
-      class InboundACH < Increase::Internal::Type::BaseModel
+      class InboundACH < Increase::BaseModel
         # Whether ACH debits are allowed against this Account Number. Note that ACH debits
         #   will be declined if this is `allowed` but the Account Number is not active. If
         #   you do not specify this field, the default is `allowed`.
@@ -93,7 +93,7 @@ module Increase
         #   will be declined if this is `allowed` but the Account Number is not active. If
         #   you do not specify this field, the default is `allowed`.
         module DebitStatus
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus) }
@@ -117,7 +117,7 @@ module Increase
         end
       end
 
-      class InboundChecks < Increase::Internal::Type::BaseModel
+      class InboundChecks < Increase::BaseModel
         # How Increase should process checks with this account number printed on them. If
         #   you do not specify this field, the default is `check_transfers_only`.
         sig { returns(Increase::Models::AccountNumberCreateParams::InboundChecks::Status::OrSymbol) }
@@ -139,7 +139,7 @@ module Increase
         # How Increase should process checks with this account number printed on them. If
         #   you do not specify this field, the default is `check_transfers_only`.
         module Status
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::AccountNumberCreateParams::InboundChecks::Status) }

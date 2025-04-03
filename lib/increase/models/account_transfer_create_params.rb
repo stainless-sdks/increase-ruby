@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::AccountTransfers#create
-    class AccountTransferCreateParams < Increase::Internal::Type::BaseModel
+    class AccountTransferCreateParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
@@ -37,7 +37,7 @@ module Increase
       #   Whether the transfer requires explicit approval via the dashboard or API.
       #
       #   @return [Boolean, nil]
-      optional :require_approval, Increase::Internal::Type::BooleanModel
+      optional :require_approval, Increase::BooleanModel
 
       # @!parse
       #   # @return [Boolean]
@@ -63,7 +63,7 @@ module Increase
       #     super
       #   end
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
     end
   end
 end

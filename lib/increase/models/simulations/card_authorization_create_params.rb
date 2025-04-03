@@ -4,7 +4,7 @@ module Increase
   module Models
     module Simulations
       # @see Increase::Resources::Simulations::CardAuthorizations#create
-      class CardAuthorizationCreateParams < Increase::Internal::Type::BaseModel
+      class CardAuthorizationCreateParams < Increase::BaseModel
         # @!parse
         #   extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
@@ -231,12 +231,12 @@ module Increase
         #     super
         #   end
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # Forces a card decline with a specific reason. No real time decision will be
         #   sent.
         module DeclineReason
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # The account has been closed.
           ACCOUNT_CLOSED = :account_closed
@@ -299,7 +299,7 @@ module Increase
         # The direction describes the direction the funds will move, either from the
         #   cardholder to the merchant or from the merchant to the cardholder.
         module Direction
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # A regular card authorization where funds are debited from the cardholder.
           SETTLEMENT = :settlement
@@ -314,7 +314,7 @@ module Increase
           #   def self.values; end
         end
 
-        class NetworkDetails < Increase::Internal::Type::BaseModel
+        class NetworkDetails < Increase::BaseModel
           # @!attribute visa
           #   Fields specific to the Visa network.
           #
@@ -328,10 +328,10 @@ module Increase
           #   #
           #   def initialize(visa:, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
 
           # @see Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails#visa
-          class Visa < Increase::Internal::Type::BaseModel
+          class Visa < Increase::BaseModel
             # @!attribute [r] stand_in_processing_reason
             #   The reason code for the stand-in processing.
             #
@@ -350,13 +350,13 @@ module Increase
             #   #
             #   def initialize(stand_in_processing_reason: nil, **) = super
 
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # def initialize: (Hash | Increase::BaseModel) -> void
 
             # The reason code for the stand-in processing.
             #
             # @see Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa#stand_in_processing_reason
             module StandInProcessingReason
-              extend Increase::Internal::Type::Enum
+              extend Increase::Enum
 
               # Increase failed to process the authorization in a timely manner.
               ISSUER_ERROR = :issuer_error

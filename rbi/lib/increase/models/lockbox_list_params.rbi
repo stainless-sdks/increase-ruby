@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class LockboxListParams < Increase::Internal::Type::BaseModel
+    class LockboxListParams < Increase::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
@@ -16,7 +16,12 @@ module Increase
       sig { returns(T.nilable(Increase::Models::LockboxListParams::CreatedAt)) }
       attr_reader :created_at
 
-      sig { params(created_at: T.any(Increase::Models::LockboxListParams::CreatedAt, Increase::Internal::AnyHash)).void }
+      sig do
+        params(
+          created_at: T.any(Increase::Models::LockboxListParams::CreatedAt, Increase::Internal::Util::AnyHash)
+        )
+          .void
+      end
       attr_writer :created_at
 
       # Return the page of entries after this one.
@@ -47,11 +52,11 @@ module Increase
       sig do
         params(
           account_id: String,
-          created_at: T.any(Increase::Models::LockboxListParams::CreatedAt, Increase::Internal::AnyHash),
+          created_at: T.any(Increase::Models::LockboxListParams::CreatedAt, Increase::Internal::Util::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -81,7 +86,7 @@ module Increase
       def to_hash
       end
 
-      class CreatedAt < Increase::Internal::Type::BaseModel
+      class CreatedAt < Increase::BaseModel
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }

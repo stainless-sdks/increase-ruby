@@ -4,7 +4,7 @@ module Increase
   module Models
     module Simulations
       # @see Increase::Resources::Simulations::ACHTransfers#return_
-      class ACHTransferReturnParams < Increase::Internal::Type::BaseModel
+      class ACHTransferReturnParams < Increase::BaseModel
         # @!parse
         #   extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
@@ -26,12 +26,12 @@ module Increase
         #   #
         #   def initialize(reason: nil, request_options: {}, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # The reason why the Federal Reserve or destination bank returned this transfer.
         #   Defaults to `no_account`.
         module Reason
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
           INSUFFICIENT_FUND = :insufficient_fund

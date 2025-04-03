@@ -4,7 +4,7 @@ module Increase
       { file_id: String, expires_at: Time }
       & Increase::Internal::Type::request_parameters
 
-    class FileLinkCreateParams < Increase::Internal::Type::BaseModel
+    class FileLinkCreateParams < Increase::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 

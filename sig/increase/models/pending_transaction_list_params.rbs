@@ -12,7 +12,7 @@ module Increase
       }
       & Increase::Internal::Type::request_parameters
 
-    class PendingTransactionListParams < Increase::Internal::Type::BaseModel
+    class PendingTransactionListParams < Increase::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
@@ -68,7 +68,7 @@ module Increase
           in_: ::Array[Increase::Models::PendingTransactionListParams::Category::in_]
         }
 
-      class Category < Increase::Internal::Type::BaseModel
+      class Category < Increase::BaseModel
         attr_reader in_: ::Array[Increase::Models::PendingTransactionListParams::Category::in_]?
 
         def in_=: (
@@ -94,7 +94,7 @@ module Increase
           | :other
 
         module In
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # Account Transfer Instruction: details will be under the `account_transfer_instruction` object.
           ACCOUNT_TRANSFER_INSTRUCTION: :account_transfer_instruction
@@ -133,7 +133,7 @@ module Increase
       type created_at =
         { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
 
-      class CreatedAt < Increase::Internal::Type::BaseModel
+      class CreatedAt < Increase::BaseModel
         attr_reader after: Time?
 
         def after=: (Time) -> Time
@@ -165,7 +165,7 @@ module Increase
           in_: ::Array[Increase::Models::PendingTransactionListParams::Status::in_]
         }
 
-      class Status < Increase::Internal::Type::BaseModel
+      class Status < Increase::BaseModel
         attr_reader in_: ::Array[Increase::Models::PendingTransactionListParams::Status::in_]?
 
         def in_=: (
@@ -181,7 +181,7 @@ module Increase
         type in_ = :pending | :complete
 
         module In
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # The Pending Transaction is still awaiting confirmation.
           PENDING: :pending

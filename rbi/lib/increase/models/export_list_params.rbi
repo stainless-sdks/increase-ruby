@@ -2,20 +2,28 @@
 
 module Increase
   module Models
-    class ExportListParams < Increase::Internal::Type::BaseModel
+    class ExportListParams < Increase::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
       sig { returns(T.nilable(Increase::Models::ExportListParams::Category)) }
       attr_reader :category
 
-      sig { params(category: T.any(Increase::Models::ExportListParams::Category, Increase::Internal::AnyHash)).void }
+      sig do
+        params(category: T.any(Increase::Models::ExportListParams::Category, Increase::Internal::Util::AnyHash))
+          .void
+      end
       attr_writer :category
 
       sig { returns(T.nilable(Increase::Models::ExportListParams::CreatedAt)) }
       attr_reader :created_at
 
-      sig { params(created_at: T.any(Increase::Models::ExportListParams::CreatedAt, Increase::Internal::AnyHash)).void }
+      sig do
+        params(
+          created_at: T.any(Increase::Models::ExportListParams::CreatedAt, Increase::Internal::Util::AnyHash)
+        )
+          .void
+      end
       attr_writer :created_at
 
       # Return the page of entries after this one.
@@ -46,18 +54,18 @@ module Increase
       sig { returns(T.nilable(Increase::Models::ExportListParams::Status)) }
       attr_reader :status
 
-      sig { params(status: T.any(Increase::Models::ExportListParams::Status, Increase::Internal::AnyHash)).void }
+      sig { params(status: T.any(Increase::Models::ExportListParams::Status, Increase::Internal::Util::AnyHash)).void }
       attr_writer :status
 
       sig do
         params(
-          category: T.any(Increase::Models::ExportListParams::Category, Increase::Internal::AnyHash),
-          created_at: T.any(Increase::Models::ExportListParams::CreatedAt, Increase::Internal::AnyHash),
+          category: T.any(Increase::Models::ExportListParams::Category, Increase::Internal::Util::AnyHash),
+          created_at: T.any(Increase::Models::ExportListParams::CreatedAt, Increase::Internal::Util::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: T.any(Increase::Models::ExportListParams::Status, Increase::Internal::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          status: T.any(Increase::Models::ExportListParams::Status, Increase::Internal::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -89,7 +97,7 @@ module Increase
       def to_hash
       end
 
-      class Category < Increase::Internal::Type::BaseModel
+      class Category < Increase::BaseModel
         # Filter Exports for those with the specified category or categories. For GET
         #   requests, this should be encoded as a comma-delimited string, such as
         #   `?in=one,two,three`.
@@ -110,7 +118,7 @@ module Increase
         end
 
         module In
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExportListParams::Category::In) }
           OrSymbol =
@@ -146,7 +154,7 @@ module Increase
         end
       end
 
-      class CreatedAt < Increase::Internal::Type::BaseModel
+      class CreatedAt < Increase::BaseModel
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }
@@ -190,7 +198,7 @@ module Increase
         end
       end
 
-      class Status < Increase::Internal::Type::BaseModel
+      class Status < Increase::BaseModel
         # Filter Exports for those with the specified status or statuses. For GET
         #   requests, this should be encoded as a comma-delimited string, such as
         #   `?in=one,two,three`.
@@ -209,7 +217,7 @@ module Increase
         end
 
         module In
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExportListParams::Status::In) }
           OrSymbol =

@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::InboundCheckDeposits#return_
-    class InboundCheckDepositReturnParams < Increase::Internal::Type::BaseModel
+    class InboundCheckDepositReturnParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
@@ -20,11 +20,11 @@ module Increase
       #   #
       #   def initialize(reason:, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # The reason to return the Inbound Check Deposit.
       module Reason
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The check was altered or fictitious.
         ALTERED_OR_FICTITIOUS = :altered_or_fictitious

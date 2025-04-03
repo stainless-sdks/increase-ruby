@@ -3,7 +3,7 @@ module Increase
     type intrafi_exclusion_retrieve_params =
       {  } & Increase::Internal::Type::request_parameters
 
-    class IntrafiExclusionRetrieveParams < Increase::Internal::Type::BaseModel
+    class IntrafiExclusionRetrieveParams < Increase::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 

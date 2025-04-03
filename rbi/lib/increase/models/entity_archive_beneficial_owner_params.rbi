@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class EntityArchiveBeneficialOwnerParams < Increase::Internal::Type::BaseModel
+    class EntityArchiveBeneficialOwnerParams < Increase::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
@@ -14,7 +14,7 @@ module Increase
       sig do
         params(
           beneficial_owner_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::Exports#create
-    class Export < Increase::Internal::Type::BaseModel
+    class Export < Increase::BaseModel
       # @!attribute id
       #   The Export identifier.
       #
@@ -76,14 +76,14 @@ module Increase
       #   #
       #   def initialize(id:, category:, created_at:, file_download_url:, file_id:, idempotency_key:, status:, type:, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # The category of the Export. We may add additional possible values for this enum
       #   over time; your application should be able to handle that gracefully.
       #
       # @see Increase::Models::Export#category
       module Category
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # Export an Open Financial Exchange (OFX) file of transactions and balances for a given time range and Account.
         ACCOUNT_STATEMENT_OFX = :account_statement_ofx
@@ -117,7 +117,7 @@ module Increase
       #
       # @see Increase::Models::Export#status
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # Increase is generating the export.
         PENDING = :pending
@@ -140,7 +140,7 @@ module Increase
       #
       # @see Increase::Models::Export#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         EXPORT = :export
 

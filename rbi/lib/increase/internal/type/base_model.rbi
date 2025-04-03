@@ -22,7 +22,7 @@ module Increase
               T::Hash[
               Symbol,
               T.all(
-                Increase::Internal::Type::BaseModel::KnownFieldShape,
+                Increase::BaseModel::KnownFieldShape,
                 {type_fn: T.proc.returns(Increase::Internal::Type::Converter::Input)}
               )
               ]
@@ -34,13 +34,11 @@ module Increase
           # @api private
           sig do
             returns(
-              T::Hash[
-              Symbol,
-              T.all(
-                Increase::Internal::Type::BaseModel::KnownFieldShape,
-                {type: Increase::Internal::Type::Converter::Input}
-              )
-              ]
+              T::Hash[Symbol,
+                      T.all(
+                        Increase::BaseModel::KnownFieldShape,
+                        {type: Increase::Internal::Type::Converter::Input}
+                      )]
             )
           end
           def fields
@@ -62,7 +60,7 @@ module Increase
                 T.proc.returns(Increase::Internal::Type::Converter::Input),
                 Increase::Internal::Type::Converter::Input
               ),
-              spec: Increase::Internal::AnyHash
+              spec: Increase::Internal::Util::AnyHash
             )
               .void
           end
@@ -74,11 +72,11 @@ module Increase
             params(
               name_sym: Symbol,
               type_info: T.any(
-                Increase::Internal::AnyHash,
+                Increase::Internal::Util::AnyHash,
                 T.proc.returns(Increase::Internal::Type::Converter::Input),
                 Increase::Internal::Type::Converter::Input
               ),
-              spec: Increase::Internal::AnyHash
+              spec: Increase::Internal::Util::AnyHash
             )
               .void
           end
@@ -90,11 +88,11 @@ module Increase
             params(
               name_sym: Symbol,
               type_info: T.any(
-                Increase::Internal::AnyHash,
+                Increase::Internal::Util::AnyHash,
                 T.proc.returns(Increase::Internal::Type::Converter::Input),
                 Increase::Internal::Type::Converter::Input
               ),
-              spec: Increase::Internal::AnyHash
+              spec: Increase::Internal::Util::AnyHash
             )
               .void
           end
@@ -130,11 +128,7 @@ module Increase
           sig do
             override
               .params(
-                value: T.any(
-                  Increase::Internal::Type::BaseModel,
-                  T::Hash[T.anything, T.anything],
-                  T.anything
-                ),
+                value: T.any(Increase::BaseModel, T::Hash[T.anything, T.anything], T.anything),
                 state: Increase::Internal::Type::Converter::State
               )
               .returns(T.any(T.attached_class, T.anything))
@@ -170,7 +164,7 @@ module Increase
         #
         #   This method is not recursive. The returned value is shared by the object, so it
         #   should not be mutated.
-        sig { overridable.returns(Increase::Internal::AnyHash) }
+        sig { overridable.returns(Increase::Internal::Util::AnyHash) }
         def to_h
         end
 
@@ -182,11 +176,11 @@ module Increase
         #
         #   This method is not recursive. The returned value is shared by the object, so it
         #   should not be mutated.
-        sig { overridable.returns(Increase::Internal::AnyHash) }
+        sig { overridable.returns(Increase::Internal::Util::AnyHash) }
         def to_hash
         end
 
-        sig { params(keys: T.nilable(T::Array[Symbol])).returns(Increase::Internal::AnyHash) }
+        sig { params(keys: T.nilable(T::Array[Symbol])).returns(Increase::Internal::Util::AnyHash) }
         def deconstruct_keys(keys)
         end
 

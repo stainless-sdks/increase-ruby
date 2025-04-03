@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class ProofOfAuthorizationRequestSubmission < Increase::Internal::Type::BaseModel
+    class ProofOfAuthorizationRequestSubmission < Increase::BaseModel
       # The Proof of Authorization Request Submission identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -158,7 +158,7 @@ module Increase
 
       # Status of the proof of authorization request submission.
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Status) }
@@ -192,7 +192,7 @@ module Increase
       # A constant representing the object's type. For this resource it will always be
       #   `proof_of_authorization_request_submission`.
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Type) }

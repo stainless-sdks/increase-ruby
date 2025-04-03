@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class WireTransferListParams < Increase::Internal::Type::BaseModel
+    class WireTransferListParams < Increase::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
@@ -18,7 +18,7 @@ module Increase
 
       sig do
         params(
-          created_at: T.any(Increase::Models::WireTransferListParams::CreatedAt, Increase::Internal::AnyHash)
+          created_at: T.any(Increase::Models::WireTransferListParams::CreatedAt, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -59,12 +59,12 @@ module Increase
       sig do
         params(
           account_id: String,
-          created_at: T.any(Increase::Models::WireTransferListParams::CreatedAt, Increase::Internal::AnyHash),
+          created_at: T.any(Increase::Models::WireTransferListParams::CreatedAt, Increase::Internal::Util::AnyHash),
           cursor: String,
           external_account_id: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -96,7 +96,7 @@ module Increase
       def to_hash
       end
 
-      class CreatedAt < Increase::Internal::Type::BaseModel
+      class CreatedAt < Increase::BaseModel
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }

@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class InboundWireDrawdownRequest < Increase::Internal::Type::BaseModel
+    class InboundWireDrawdownRequest < Increase::BaseModel
       # The Wire drawdown request identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -197,7 +197,7 @@ module Increase
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_wire_drawdown_request`.
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundWireDrawdownRequest::Type) }
         OrSymbol =

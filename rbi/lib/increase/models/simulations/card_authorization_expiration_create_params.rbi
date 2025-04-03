@@ -3,7 +3,7 @@
 module Increase
   module Models
     module Simulations
-      class CardAuthorizationExpirationCreateParams < Increase::Internal::Type::BaseModel
+      class CardAuthorizationExpirationCreateParams < Increase::BaseModel
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
@@ -14,7 +14,7 @@ module Increase
         sig do
           params(
             card_payment_id: String,
-            request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

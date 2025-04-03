@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class OAuthConnection < Increase::Internal::Type::BaseModel
+    class OAuthConnection < Increase::BaseModel
       # The OAuth Connection's identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -71,7 +71,7 @@ module Increase
 
       # Whether the connection is active.
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthConnection::Status) }
         OrSymbol =
@@ -91,7 +91,7 @@ module Increase
       # A constant representing the object's type. For this resource it will always be
       #   `oauth_connection`.
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthConnection::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::OAuthConnection::Type::TaggedSymbol) }

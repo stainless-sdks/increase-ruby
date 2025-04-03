@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::Documents#retrieve
-    class Document < Increase::Internal::Type::BaseModel
+    class Document < Increase::BaseModel
       # @!attribute id
       #   The Document identifier.
       #
@@ -55,13 +55,13 @@ module Increase
       #   #
       #   def initialize(id:, category:, created_at:, entity_id:, file_id:, type:, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # The type of document.
       #
       # @see Increase::Models::Document#category
       module Category
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # Internal Revenue Service Form 1099-INT.
         FORM_1099_INT = :form_1099_int
@@ -87,7 +87,7 @@ module Increase
       #
       # @see Increase::Models::Document#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         DOCUMENT = :document
 

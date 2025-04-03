@@ -3,7 +3,7 @@ module Increase
     type entity_retrieve_params =
       {  } & Increase::Internal::Type::request_parameters
 
-    class EntityRetrieveParams < Increase::Internal::Type::BaseModel
+    class EntityRetrieveParams < Increase::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 

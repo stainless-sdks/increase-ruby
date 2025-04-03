@@ -12,7 +12,7 @@ module Increase
       timeout: Float?
     }
 
-  class RequestOptions < Increase::Internal::Type::BaseModel
+  class RequestOptions < Increase::BaseModel
     def self.validate!: (self | ::Hash[Symbol, top] opts) -> void
 
     attr_accessor idempotency_key: String?

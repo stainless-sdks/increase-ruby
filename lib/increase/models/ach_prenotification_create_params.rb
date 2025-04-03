@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::ACHPrenotifications#create
-    class ACHPrenotificationCreateParams < Increase::Internal::Type::BaseModel
+    class ACHPrenotificationCreateParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
@@ -167,11 +167,11 @@ module Increase
       #     super
       #   end
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # Whether the Prenotification is for a future debit or credit.
       module CreditDebitIndicator
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The Prenotification is for an anticipated credit.
         CREDIT = :credit
@@ -188,7 +188,7 @@ module Increase
 
       # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
       module StandardEntryClassCode
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # Corporate Credit and Debit (CCD).
         CORPORATE_CREDIT_OR_DEBIT = :corporate_credit_or_debit

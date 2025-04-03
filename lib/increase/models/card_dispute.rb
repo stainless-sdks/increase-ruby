@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::CardDisputes#create
-    class CardDispute < Increase::Internal::Type::BaseModel
+    class CardDispute < Increase::BaseModel
       # @!attribute id
       #   The Card Dispute identifier.
       #
@@ -119,10 +119,10 @@ module Increase
       #     super
       #   end
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @see Increase::Models::CardDispute#acceptance
-      class Acceptance < Increase::Internal::Type::BaseModel
+      class Acceptance < Increase::BaseModel
         # @!attribute accepted_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #     the Card Dispute was accepted.
@@ -153,11 +153,11 @@ module Increase
         #   #
         #   def initialize(accepted_at:, card_dispute_id:, transaction_id:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # @see Increase::Models::CardDispute#loss
-      class Loss < Increase::Internal::Type::BaseModel
+      class Loss < Increase::BaseModel
         # @!attribute card_dispute_id
         #   The identifier of the Card Dispute that was lost.
         #
@@ -195,11 +195,11 @@ module Increase
         #   #
         #   def initialize(card_dispute_id:, explanation:, lost_at:, transaction_id:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # @see Increase::Models::CardDispute#rejection
-      class Rejection < Increase::Internal::Type::BaseModel
+      class Rejection < Increase::BaseModel
         # @!attribute card_dispute_id
         #   The identifier of the Card Dispute that was rejected.
         #
@@ -229,14 +229,14 @@ module Increase
         #   #
         #   def initialize(card_dispute_id:, explanation:, rejected_at:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # The results of the Dispute investigation.
       #
       # @see Increase::Models::CardDispute#status
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The Card Dispute is pending review.
         PENDING_REVIEWING = :pending_reviewing
@@ -268,7 +268,7 @@ module Increase
       #
       # @see Increase::Models::CardDispute#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         CARD_DISPUTE = :card_dispute
 
@@ -280,7 +280,7 @@ module Increase
       end
 
       # @see Increase::Models::CardDispute#win
-      class Win < Increase::Internal::Type::BaseModel
+      class Win < Increase::BaseModel
         # @!attribute card_dispute_id
         #   The identifier of the Card Dispute that was won.
         #
@@ -303,7 +303,7 @@ module Increase
         #   #
         #   def initialize(card_dispute_id:, won_at:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
     end
   end

@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class EntityUpdateIndustryCodeParams < Increase::Internal::Type::BaseModel
+    class EntityUpdateIndustryCodeParams < Increase::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
@@ -16,7 +16,7 @@ module Increase
       sig do
         params(
           industry_code: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::EventSubscriptions#create
-    class EventSubscriptionCreateParams < Increase::Internal::Type::BaseModel
+    class EventSubscriptionCreateParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
@@ -57,12 +57,12 @@ module Increase
       #   #
       #   def initialize(url:, oauth_connection_id: nil, selected_event_category: nil, shared_secret: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # If specified, this subscription will only receive webhooks for Events with the
       #   specified `category`.
       module SelectedEventCategory
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # Occurs whenever an Account is created.
         ACCOUNT_CREATED = :"account.created"

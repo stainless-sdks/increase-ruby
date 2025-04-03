@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class ProofOfAuthorizationRequest < Increase::Internal::Type::BaseModel
+    class ProofOfAuthorizationRequest < Increase::BaseModel
       # The Proof of Authorization Request identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -32,7 +32,7 @@ module Increase
       sig do
         params(
           id: String,
-          ach_transfers: T::Array[T.any(Increase::Models::ProofOfAuthorizationRequest::ACHTransfer, Increase::Internal::AnyHash)],
+          ach_transfers: T::Array[T.any(Increase::Models::ProofOfAuthorizationRequest::ACHTransfer, Increase::Internal::Util::AnyHash)],
           created_at: Time,
           due_on: Time,
           type: Increase::Models::ProofOfAuthorizationRequest::Type::OrSymbol,
@@ -59,7 +59,7 @@ module Increase
       def to_hash
       end
 
-      class ACHTransfer < Increase::Internal::Type::BaseModel
+      class ACHTransfer < Increase::BaseModel
         # The ACH Transfer identifier.
         sig { returns(String) }
         attr_accessor :id
@@ -76,7 +76,7 @@ module Increase
       # A constant representing the object's type. For this resource it will always be
       #   `proof_of_authorization_request`.
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ProofOfAuthorizationRequest::Type) }
         OrSymbol =

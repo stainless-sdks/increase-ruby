@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::RealTimePaymentsTransfers#create
-    class RealTimePaymentsTransfer < Increase::Internal::Type::BaseModel
+    class RealTimePaymentsTransfer < Increase::BaseModel
       # @!attribute id
       #   The Real-Time Payments Transfer's identifier.
       #
@@ -233,10 +233,10 @@ module Increase
       #     super
       #   end
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @see Increase::Models::RealTimePaymentsTransfer#acknowledgement
-      class Acknowledgement < Increase::Internal::Type::BaseModel
+      class Acknowledgement < Increase::BaseModel
         # @!attribute acknowledged_at
         #   When the transfer was acknowledged.
         #
@@ -251,11 +251,11 @@ module Increase
         #   #
         #   def initialize(acknowledged_at:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # @see Increase::Models::RealTimePaymentsTransfer#approval
-      class Approval < Increase::Internal::Type::BaseModel
+      class Approval < Increase::BaseModel
         # @!attribute approved_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #     the transfer was approved.
@@ -279,11 +279,11 @@ module Increase
         #   #
         #   def initialize(approved_at:, approved_by:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # @see Increase::Models::RealTimePaymentsTransfer#cancellation
-      class Cancellation < Increase::Internal::Type::BaseModel
+      class Cancellation < Increase::BaseModel
         # @!attribute canceled_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #     the Transfer was canceled.
@@ -307,11 +307,11 @@ module Increase
         #   #
         #   def initialize(canceled_at:, canceled_by:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # @see Increase::Models::RealTimePaymentsTransfer#created_by
-      class CreatedBy < Increase::Internal::Type::BaseModel
+      class CreatedBy < Increase::BaseModel
         # @!attribute api_key
         #   If present, details about the API key that created the transfer.
         #
@@ -348,10 +348,10 @@ module Increase
         #   #
         #   def initialize(api_key:, category:, oauth_application:, user:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @see Increase::Models::RealTimePaymentsTransfer::CreatedBy#api_key
-        class APIKey < Increase::Internal::Type::BaseModel
+        class APIKey < Increase::BaseModel
           # @!attribute description
           #   The description set for the API key when it was created.
           #
@@ -365,14 +365,14 @@ module Increase
           #   #
           #   def initialize(description:, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
         # The type of object that created this transfer.
         #
         # @see Increase::Models::RealTimePaymentsTransfer::CreatedBy#category
         module Category
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # An API key. Details will be under the `api_key` object.
           API_KEY = :api_key
@@ -391,7 +391,7 @@ module Increase
         end
 
         # @see Increase::Models::RealTimePaymentsTransfer::CreatedBy#oauth_application
-        class OAuthApplication < Increase::Internal::Type::BaseModel
+        class OAuthApplication < Increase::BaseModel
           # @!attribute name
           #   The name of the OAuth Application.
           #
@@ -405,11 +405,11 @@ module Increase
           #   #
           #   def initialize(name:, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
         # @see Increase::Models::RealTimePaymentsTransfer::CreatedBy#user
-        class User < Increase::Internal::Type::BaseModel
+        class User < Increase::BaseModel
           # @!attribute email
           #   The email address of the User.
           #
@@ -423,7 +423,7 @@ module Increase
           #   #
           #   def initialize(email:, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
         end
       end
 
@@ -432,7 +432,7 @@ module Increase
       #
       # @see Increase::Models::RealTimePaymentsTransfer#currency
       module Currency
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # Canadian Dollar (CAD)
         CAD = :CAD
@@ -460,7 +460,7 @@ module Increase
       end
 
       # @see Increase::Models::RealTimePaymentsTransfer#rejection
-      class Rejection < Increase::Internal::Type::BaseModel
+      class Rejection < Increase::BaseModel
         # @!attribute reject_reason_additional_information
         #   Additional information about the rejection provided by the recipient bank when
         #     the `reject_reason_code` is `NARRATIVE`.
@@ -493,14 +493,14 @@ module Increase
         #   #
         #   def initialize(reject_reason_additional_information:, reject_reason_code:, rejected_at:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # The reason the transfer was rejected as provided by the recipient bank or the
         #   Real-Time Payments network.
         #
         # @see Increase::Models::RealTimePaymentsTransfer::Rejection#reject_reason_code
         module RejectReasonCode
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # The destination account is closed. Corresponds to the Real-Time Payments reason code `AC04`.
           ACCOUNT_CLOSED = :account_closed
@@ -577,7 +577,7 @@ module Increase
       #
       # @see Increase::Models::RealTimePaymentsTransfer#status
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The transfer is pending approval.
         PENDING_APPROVAL = :pending_approval
@@ -611,7 +611,7 @@ module Increase
       end
 
       # @see Increase::Models::RealTimePaymentsTransfer#submission
-      class Submission < Increase::Internal::Type::BaseModel
+      class Submission < Increase::BaseModel
         # @!attribute submitted_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #     the transfer was submitted to The Clearing House.
@@ -634,7 +634,7 @@ module Increase
         #   #
         #   def initialize(submitted_at:, transaction_identification:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -642,7 +642,7 @@ module Increase
       #
       # @see Increase::Models::RealTimePaymentsTransfer#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         REAL_TIME_PAYMENTS_TRANSFER = :real_time_payments_transfer
 

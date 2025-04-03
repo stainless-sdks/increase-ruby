@@ -3,7 +3,7 @@
 module Increase
   module Models
     module Simulations
-      class RealTimePaymentsTransferCompleteParams < Increase::Internal::Type::BaseModel
+      class RealTimePaymentsTransferCompleteParams < Increase::BaseModel
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
@@ -15,7 +15,7 @@ module Increase
           params(
             rejection: T.any(
               Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
-              Increase::Internal::AnyHash
+              Increase::Internal::Util::AnyHash
             )
           )
             .void
@@ -26,9 +26,9 @@ module Increase
           params(
             rejection: T.any(
               Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
-              Increase::Internal::AnyHash
+              Increase::Internal::Util::AnyHash
             ),
-            request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -47,7 +47,7 @@ module Increase
         def to_hash
         end
 
-        class Rejection < Increase::Internal::Type::BaseModel
+        class Rejection < Increase::BaseModel
           # The reason code that the simulated rejection will have.
           sig do
             returns(
@@ -79,7 +79,7 @@ module Increase
 
           # The reason code that the simulated rejection will have.
           module RejectReasonCode
-            extend Increase::Internal::Type::Enum
+            extend Increase::Enum
 
             TaggedSymbol =
               T.type_alias do
