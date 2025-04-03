@@ -18,7 +18,7 @@ module Increase
       }
       & Increase::Internal::Type::request_parameters
 
-    class WireDrawdownRequestCreateParams < Increase::Internal::Type::BaseModel
+    class WireDrawdownRequestCreateParams < Increase::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 

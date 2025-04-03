@@ -3,7 +3,7 @@
 module Increase
   module Models
     module Simulations
-      class DocumentCreateParams < Increase::Internal::Type::BaseModel
+      class DocumentCreateParams < Increase::BaseModel
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
@@ -14,10 +14,7 @@ module Increase
         sig do
           params(
             account_id: String,
-            request_options: T.any(
-              Increase::RequestOptions,
-              Increase::Internal::AnyHash
-            )
+            request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

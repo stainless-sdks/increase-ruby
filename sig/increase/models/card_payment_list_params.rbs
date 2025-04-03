@@ -10,7 +10,7 @@ module Increase
       }
       & Increase::Internal::Type::request_parameters
 
-    class CardPaymentListParams < Increase::Internal::Type::BaseModel
+    class CardPaymentListParams < Increase::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
@@ -50,7 +50,7 @@ module Increase
       type created_at =
         { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
 
-      class CreatedAt < Increase::Internal::Type::BaseModel
+      class CreatedAt < Increase::BaseModel
         attr_reader after: Time?
 
         def after=: (Time) -> Time

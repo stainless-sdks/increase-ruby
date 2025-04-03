@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           digital_wallet_token_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
           .returns(Increase::Models::DigitalWalletToken)
       end
@@ -22,10 +22,10 @@ module Increase
       sig do
         params(
           card_id: String,
-          created_at: T.any(Increase::Models::DigitalWalletTokenListParams::CreatedAt, Increase::Internal::AnyHash),
+          created_at: T.any(Increase::Models::DigitalWalletTokenListParams::CreatedAt, Increase::Internal::Util::AnyHash),
           cursor: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
           .returns(Increase::Internal::Page[Increase::Models::DigitalWalletToken])
       end

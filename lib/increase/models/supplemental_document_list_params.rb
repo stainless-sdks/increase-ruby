@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::SupplementalDocuments#list
-    class SupplementalDocumentListParams < Increase::Internal::Type::BaseModel
+    class SupplementalDocumentListParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
@@ -57,7 +57,7 @@ module Increase
       #   #
       #   def initialize(entity_id:, cursor: nil, idempotency_key: nil, limit: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
     end
   end
 end

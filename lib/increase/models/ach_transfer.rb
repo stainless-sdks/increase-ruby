@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::ACHTransfers#create
-    class ACHTransfer < Increase::Internal::Type::BaseModel
+    class ACHTransfer < Increase::BaseModel
       # @!attribute id
       #   The ACH transfer's identifier.
       #
@@ -161,7 +161,7 @@ module Increase
       #
       #   @return [Array<Increase::Models::ACHTransfer::NotificationsOfChange>]
       required :notifications_of_change,
-               -> { Increase::Internal::Type::ArrayOf[Increase::Models::ACHTransfer::NotificationsOfChange] }
+               -> { Increase::ArrayOf[Increase::Models::ACHTransfer::NotificationsOfChange] }
 
       # @!attribute pending_transaction_id
       #   The ID for the pending transaction representing the transfer. A pending
@@ -322,10 +322,10 @@ module Increase
       #     super
       #   end
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @see Increase::Models::ACHTransfer#acknowledgement
-      class Acknowledgement < Increase::Internal::Type::BaseModel
+      class Acknowledgement < Increase::BaseModel
         # @!attribute acknowledged_at
         #   When the Federal Reserve acknowledged the submitted file containing this
         #     transfer.
@@ -342,11 +342,11 @@ module Increase
         #   #
         #   def initialize(acknowledged_at:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # @see Increase::Models::ACHTransfer#addenda
-      class Addenda < Increase::Internal::Type::BaseModel
+      class Addenda < Increase::BaseModel
         # @!attribute category
         #   The type of the resource. We may add additional possible values for this enum
         #     over time; your application should be able to handle such additions gracefully.
@@ -378,14 +378,14 @@ module Increase
         #   #
         #   def initialize(category:, freeform:, payment_order_remittance_advice:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # The type of the resource. We may add additional possible values for this enum
         #   over time; your application should be able to handle such additions gracefully.
         #
         # @see Increase::Models::ACHTransfer::Addenda#category
         module Category
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # Unstructured `payment_related_information` passed through with the transfer.
           FREEFORM = :freeform
@@ -404,13 +404,12 @@ module Increase
         end
 
         # @see Increase::Models::ACHTransfer::Addenda#freeform
-        class Freeform < Increase::Internal::Type::BaseModel
+        class Freeform < Increase::BaseModel
           # @!attribute entries
           #   Each entry represents an addendum sent with the transfer.
           #
           #   @return [Array<Increase::Models::ACHTransfer::Addenda::Freeform::Entry>]
-          required :entries,
-                   -> { Increase::Internal::Type::ArrayOf[Increase::Models::ACHTransfer::Addenda::Freeform::Entry] }
+          required :entries, -> { Increase::ArrayOf[Increase::Models::ACHTransfer::Addenda::Freeform::Entry] }
 
           # @!parse
           #   # Unstructured `payment_related_information` passed through with the transfer.
@@ -419,9 +418,9 @@ module Increase
           #   #
           #   def initialize(entries:, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
 
-          class Entry < Increase::Internal::Type::BaseModel
+          class Entry < Increase::BaseModel
             # @!attribute payment_related_information
             #   The payment related information passed in the addendum.
             #
@@ -433,18 +432,18 @@ module Increase
             #   #
             #   def initialize(payment_related_information:, **) = super
 
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # def initialize: (Hash | Increase::BaseModel) -> void
           end
         end
 
         # @see Increase::Models::ACHTransfer::Addenda#payment_order_remittance_advice
-        class PaymentOrderRemittanceAdvice < Increase::Internal::Type::BaseModel
+        class PaymentOrderRemittanceAdvice < Increase::BaseModel
           # @!attribute invoices
           #   ASC X12 RMR records for this specific transfer.
           #
           #   @return [Array<Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice>]
           required :invoices,
-                   -> { Increase::Internal::Type::ArrayOf[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice] }
+                   -> { Increase::ArrayOf[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice] }
 
           # @!parse
           #   # Structured ASC X12 820 remittance advice records. Please reach out to
@@ -454,9 +453,9 @@ module Increase
           #   #
           #   def initialize(invoices:, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
 
-          class Invoice < Increase::Internal::Type::BaseModel
+          class Invoice < Increase::BaseModel
             # @!attribute invoice_number
             #   The invoice number for this reference, determined in advance with the receiver.
             #
@@ -476,13 +475,13 @@ module Increase
             #   #
             #   def initialize(invoice_number:, paid_amount:, **) = super
 
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # def initialize: (Hash | Increase::BaseModel) -> void
           end
         end
       end
 
       # @see Increase::Models::ACHTransfer#approval
-      class Approval < Increase::Internal::Type::BaseModel
+      class Approval < Increase::BaseModel
         # @!attribute approved_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #     the transfer was approved.
@@ -506,11 +505,11 @@ module Increase
         #   #
         #   def initialize(approved_at:, approved_by:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # @see Increase::Models::ACHTransfer#cancellation
-      class Cancellation < Increase::Internal::Type::BaseModel
+      class Cancellation < Increase::BaseModel
         # @!attribute canceled_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #     the Transfer was canceled.
@@ -534,11 +533,11 @@ module Increase
         #   #
         #   def initialize(canceled_at:, canceled_by:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # @see Increase::Models::ACHTransfer#created_by
-      class CreatedBy < Increase::Internal::Type::BaseModel
+      class CreatedBy < Increase::BaseModel
         # @!attribute api_key
         #   If present, details about the API key that created the transfer.
         #
@@ -573,10 +572,10 @@ module Increase
         #   #
         #   def initialize(api_key:, category:, oauth_application:, user:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @see Increase::Models::ACHTransfer::CreatedBy#api_key
-        class APIKey < Increase::Internal::Type::BaseModel
+        class APIKey < Increase::BaseModel
           # @!attribute description
           #   The description set for the API key when it was created.
           #
@@ -590,14 +589,14 @@ module Increase
           #   #
           #   def initialize(description:, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
         # The type of object that created this transfer.
         #
         # @see Increase::Models::ACHTransfer::CreatedBy#category
         module Category
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # An API key. Details will be under the `api_key` object.
           API_KEY = :api_key
@@ -616,7 +615,7 @@ module Increase
         end
 
         # @see Increase::Models::ACHTransfer::CreatedBy#oauth_application
-        class OAuthApplication < Increase::Internal::Type::BaseModel
+        class OAuthApplication < Increase::BaseModel
           # @!attribute name
           #   The name of the OAuth Application.
           #
@@ -630,11 +629,11 @@ module Increase
           #   #
           #   def initialize(name:, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
         # @see Increase::Models::ACHTransfer::CreatedBy#user
-        class User < Increase::Internal::Type::BaseModel
+        class User < Increase::BaseModel
           # @!attribute email
           #   The email address of the User.
           #
@@ -648,7 +647,7 @@ module Increase
           #   #
           #   def initialize(email:, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
         end
       end
 
@@ -657,7 +656,7 @@ module Increase
       #
       # @see Increase::Models::ACHTransfer#currency
       module Currency
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # Canadian Dollar (CAD)
         CAD = :CAD
@@ -689,7 +688,7 @@ module Increase
       #
       # @see Increase::Models::ACHTransfer#destination_account_holder
       module DestinationAccountHolder
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The External Account is owned by a business.
         BUSINESS = :business
@@ -711,7 +710,7 @@ module Increase
       #
       # @see Increase::Models::ACHTransfer#funding
       module Funding
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # A checking account.
         CHECKING = :checking
@@ -727,7 +726,7 @@ module Increase
       end
 
       # @see Increase::Models::ACHTransfer#inbound_funds_hold
-      class InboundFundsHold < Increase::Internal::Type::BaseModel
+      class InboundFundsHold < Increase::BaseModel
         # @!attribute id
         #   The Inbound Funds Hold identifier.
         #
@@ -824,14 +823,14 @@ module Increase
         #     super
         #   end
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
         #   currency.
         #
         # @see Increase::Models::ACHTransfer::InboundFundsHold#currency
         module Currency
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # Canadian Dollar (CAD)
           CAD = :CAD
@@ -862,7 +861,7 @@ module Increase
         #
         # @see Increase::Models::ACHTransfer::InboundFundsHold#status
         module Status
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # Funds are still being held.
           HELD = :held
@@ -882,7 +881,7 @@ module Increase
         #
         # @see Increase::Models::ACHTransfer::InboundFundsHold#type
         module Type
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           INBOUND_FUNDS_HOLD = :inbound_funds_hold
 
@@ -898,7 +897,7 @@ module Increase
       #
       # @see Increase::Models::ACHTransfer#network
       module Network
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         ACH = :ach
 
@@ -909,7 +908,7 @@ module Increase
         #   def self.values; end
       end
 
-      class NotificationsOfChange < Increase::Internal::Type::BaseModel
+      class NotificationsOfChange < Increase::BaseModel
         # @!attribute change_code
         #   The required type of change that is being signaled by the receiving financial
         #     institution.
@@ -941,14 +940,14 @@ module Increase
         #   #
         #   def initialize(change_code:, corrected_data:, created_at:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # The required type of change that is being signaled by the receiving financial
         #   institution.
         #
         # @see Increase::Models::ACHTransfer::NotificationsOfChange#change_code
         module ChangeCode
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # The account number was incorrect.
           INCORRECT_ACCOUNT_NUMBER = :incorrect_account_number
@@ -1022,7 +1021,7 @@ module Increase
       end
 
       # @see Increase::Models::ACHTransfer#preferred_effective_date
-      class PreferredEffectiveDate < Increase::Internal::Type::BaseModel
+      class PreferredEffectiveDate < Increase::BaseModel
         # @!attribute date
         #   A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to
         #     use as the effective date when submitting this transfer.
@@ -1049,13 +1048,13 @@ module Increase
         #   #
         #   def initialize(date:, settlement_schedule:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # A schedule by which Increase will choose an effective date for the transfer.
         #
         # @see Increase::Models::ACHTransfer::PreferredEffectiveDate#settlement_schedule
         module SettlementSchedule
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # The chosen effective date will be the same as the ACH processing date on which the transfer is submitted.
           # This is necessary, but not sufficient for the transfer to be settled same-day:
@@ -1075,7 +1074,7 @@ module Increase
       end
 
       # @see Increase::Models::ACHTransfer#return_
-      class Return < Increase::Internal::Type::BaseModel
+      class Return < Increase::BaseModel
         # @!attribute created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #     the transfer was created.
@@ -1139,14 +1138,14 @@ module Increase
         #     super
         #   end
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # Why the ACH Transfer was returned. This reason code is sent by the receiving
         #   bank back to Increase.
         #
         # @see Increase::Models::ACHTransfer::Return#return_reason_code
         module ReturnReasonCode
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
           INSUFFICIENT_FUND = :insufficient_fund
@@ -1370,7 +1369,7 @@ module Increase
       end
 
       # @see Increase::Models::ACHTransfer#settlement
-      class Settlement < Increase::Internal::Type::BaseModel
+      class Settlement < Increase::BaseModel
         # @!attribute settled_at
         #   When the funds for this transfer have settled at the destination bank at the
         #     Federal Reserve.
@@ -1386,14 +1385,14 @@ module Increase
         #   #
         #   def initialize(settled_at:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # The Standard Entry Class (SEC) code to use for the transfer.
       #
       # @see Increase::Models::ACHTransfer#standard_entry_class_code
       module StandardEntryClassCode
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # Corporate Credit and Debit (CCD).
         CORPORATE_CREDIT_OR_DEBIT = :corporate_credit_or_debit
@@ -1418,7 +1417,7 @@ module Increase
       #
       # @see Increase::Models::ACHTransfer#status
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The transfer is pending approval.
         PENDING_APPROVAL = :pending_approval
@@ -1455,7 +1454,7 @@ module Increase
       end
 
       # @see Increase::Models::ACHTransfer#submission
-      class Submission < Increase::Internal::Type::BaseModel
+      class Submission < Increase::BaseModel
         # @!attribute effective_date
         #   The ACH transfer's effective date as sent to the Federal Reserve. If a specific
         #     date was configured using `preferred_effective_date`, this will match that
@@ -1523,7 +1522,7 @@ module Increase
         #     super
         #   end
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # The settlement schedule the transfer is expected to follow. This expectation
         #   takes into account the `effective_date`, `submitted_at`, and the amount of the
@@ -1531,7 +1530,7 @@ module Increase
         #
         # @see Increase::Models::ACHTransfer::Submission#expected_settlement_schedule
         module ExpectedSettlementSchedule
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # The transfer is expected to settle same-day.
           SAME_DAY = :same_day
@@ -1552,7 +1551,7 @@ module Increase
       #
       # @see Increase::Models::ACHTransfer#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         ACH_TRANSFER = :ach_transfer
 

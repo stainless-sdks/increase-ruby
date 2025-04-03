@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class LockboxCreateParams < Increase::Internal::Type::BaseModel
+    class LockboxCreateParams < Increase::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
@@ -29,7 +29,7 @@ module Increase
           account_id: String,
           description: String,
           recipient_name: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

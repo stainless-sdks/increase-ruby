@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::Entities#create
-    class EntityCreateParams < Increase::Internal::Type::BaseModel
+    class EntityCreateParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
@@ -75,7 +75,7 @@ module Increase
       #
       #   @return [Array<Increase::Models::EntityCreateParams::SupplementalDocument>, nil]
       optional :supplemental_documents,
-               -> { Increase::Internal::Type::ArrayOf[Increase::Models::EntityCreateParams::SupplementalDocument] }
+               -> { Increase::ArrayOf[Increase::Models::EntityCreateParams::SupplementalDocument] }
 
       # @!parse
       #   # @return [Array<Increase::Models::EntityCreateParams::SupplementalDocument>]
@@ -131,11 +131,11 @@ module Increase
       #     super
       #   end
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # The type of Entity to create.
       module Structure
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # A corporation.
         CORPORATION = :corporation
@@ -159,7 +159,7 @@ module Increase
         #   def self.values; end
       end
 
-      class Corporation < Increase::Internal::Type::BaseModel
+      class Corporation < Increase::BaseModel
         # @!attribute address
         #   The entity's physical address. Mail receiving locations like PO Boxes and PMB's
         #     are disallowed.
@@ -173,7 +173,7 @@ module Increase
         #
         #   @return [Array<Increase::Models::EntityCreateParams::Corporation::BeneficialOwner>]
         required :beneficial_owners,
-                 -> { Increase::Internal::Type::ArrayOf[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner] }
+                 -> { Increase::ArrayOf[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner] }
 
         # @!attribute name
         #   The legal name of the corporation.
@@ -246,10 +246,10 @@ module Increase
         #     super
         #   end
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @see Increase::Models::EntityCreateParams::Corporation#address
-        class Address < Increase::Internal::Type::BaseModel
+        class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the address.
           #
@@ -297,10 +297,10 @@ module Increase
           #   #
           #   def initialize(city:, line1:, state:, zip:, line2: nil, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        class BeneficialOwner < Increase::Internal::Type::BaseModel
+        class BeneficialOwner < Increase::BaseModel
           # @!attribute individual
           #   Personal details for the beneficial owner.
           #
@@ -315,7 +315,7 @@ module Increase
           #
           #   @return [Array<Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong>]
           required :prongs,
-                   -> { Increase::Internal::Type::ArrayOf[enum: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong] }
+                   -> { Increase::ArrayOf[enum: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong] }
 
           # @!attribute [r] company_title
           #   This person's role or title within the entity.
@@ -334,10 +334,10 @@ module Increase
           #   #
           #   def initialize(individual:, prongs:, company_title: nil, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
 
           # @see Increase::Models::EntityCreateParams::Corporation::BeneficialOwner#individual
-          class Individual < Increase::Internal::Type::BaseModel
+          class Individual < Increase::BaseModel
             # @!attribute address
             #   The individual's physical address. Mail receiving locations like PO Boxes and
             #     PMB's are disallowed.
@@ -372,7 +372,7 @@ module Increase
             #     Number).
             #
             #   @return [Boolean, nil]
-            optional :confirmed_no_us_tax_id, Increase::Internal::Type::BooleanModel
+            optional :confirmed_no_us_tax_id, Increase::BooleanModel
 
             # @!parse
             #   # @return [Boolean]
@@ -389,10 +389,10 @@ module Increase
             #   #
             #   def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil, **) = super
 
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # def initialize: (Hash | Increase::BaseModel) -> void
 
             # @see Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual#address
-            class Address < Increase::Internal::Type::BaseModel
+            class Address < Increase::BaseModel
               # @!attribute country
               #   The two-letter ISO 3166-1 alpha-2 code for the country of the address.
               #
@@ -460,11 +460,11 @@ module Increase
               #   #
               #   def initialize(country:, line1:, city: nil, line2: nil, state: nil, zip: nil, **) = super
 
-              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+              # def initialize: (Hash | Increase::BaseModel) -> void
             end
 
             # @see Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual#identification
-            class Identification < Increase::Internal::Type::BaseModel
+            class Identification < Increase::BaseModel
               # @!attribute method_
               #   A method that can be used to verify the individual's identity.
               #
@@ -527,13 +527,13 @@ module Increase
               #   #
               #   def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil, **) = super
 
-              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+              # def initialize: (Hash | Increase::BaseModel) -> void
 
               # A method that can be used to verify the individual's identity.
               #
               # @see Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification#method_
               module Method
-                extend Increase::Internal::Type::Enum
+                extend Increase::Enum
 
                 # A social security number.
                 SOCIAL_SECURITY_NUMBER = :social_security_number
@@ -558,7 +558,7 @@ module Increase
               end
 
               # @see Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification#drivers_license
-              class DriversLicense < Increase::Internal::Type::BaseModel
+              class DriversLicense < Increase::BaseModel
                 # @!attribute expiration_date
                 #   The driver's license's expiration date in YYYY-MM-DD format.
                 #
@@ -598,11 +598,11 @@ module Increase
                 #   #
                 #   def initialize(expiration_date:, file_id:, state:, back_file_id: nil, **) = super
 
-                # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+                # def initialize: (Hash | Increase::BaseModel) -> void
               end
 
               # @see Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification#other
-              class Other < Increase::Internal::Type::BaseModel
+              class Other < Increase::BaseModel
                 # @!attribute country
                 #   The two-character ISO 3166-1 code representing the country that issued the
                 #     document.
@@ -655,11 +655,11 @@ module Increase
                 #   #
                 #   def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil, **) = super
 
-                # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+                # def initialize: (Hash | Increase::BaseModel) -> void
               end
 
               # @see Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification#passport
-              class Passport < Increase::Internal::Type::BaseModel
+              class Passport < Increase::BaseModel
                 # @!attribute country
                 #   The country that issued the passport.
                 #
@@ -688,13 +688,13 @@ module Increase
                 #   #
                 #   def initialize(country:, expiration_date:, file_id:, **) = super
 
-                # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+                # def initialize: (Hash | Increase::BaseModel) -> void
               end
             end
           end
 
           module Prong
-            extend Increase::Internal::Type::Enum
+            extend Increase::Enum
 
             # A person with 25% or greater direct or indirect ownership of the entity.
             OWNERSHIP = :ownership
@@ -711,7 +711,7 @@ module Increase
         end
       end
 
-      class GovernmentAuthority < Increase::Internal::Type::BaseModel
+      class GovernmentAuthority < Increase::BaseModel
         # @!attribute address
         #   The entity's physical address. Mail receiving locations like PO Boxes and PMB's
         #     are disallowed.
@@ -724,7 +724,7 @@ module Increase
         #
         #   @return [Array<Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson>]
         required :authorized_persons,
-                 -> { Increase::Internal::Type::ArrayOf[Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson] }
+                 -> { Increase::ArrayOf[Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson] }
 
         # @!attribute category
         #   The category of the government authority.
@@ -767,10 +767,10 @@ module Increase
         #   #
         #   def initialize(address:, authorized_persons:, category:, name:, tax_identifier:, website: nil, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @see Increase::Models::EntityCreateParams::GovernmentAuthority#address
-        class Address < Increase::Internal::Type::BaseModel
+        class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the address.
           #
@@ -818,10 +818,10 @@ module Increase
           #   #
           #   def initialize(city:, line1:, state:, zip:, line2: nil, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        class AuthorizedPerson < Increase::Internal::Type::BaseModel
+        class AuthorizedPerson < Increase::BaseModel
           # @!attribute name
           #   The person's legal name.
           #
@@ -833,14 +833,14 @@ module Increase
           #   #
           #   def initialize(name:, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
         # The category of the government authority.
         #
         # @see Increase::Models::EntityCreateParams::GovernmentAuthority#category
         module Category
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # The Public Entity is a Municipality.
           MUNICIPALITY = :municipality
@@ -853,13 +853,12 @@ module Increase
         end
       end
 
-      class Joint < Increase::Internal::Type::BaseModel
+      class Joint < Increase::BaseModel
         # @!attribute individuals
         #   The two individuals that share control of the entity.
         #
         #   @return [Array<Increase::Models::EntityCreateParams::Joint::Individual>]
-        required :individuals,
-                 -> { Increase::Internal::Type::ArrayOf[Increase::Models::EntityCreateParams::Joint::Individual] }
+        required :individuals, -> { Increase::ArrayOf[Increase::Models::EntityCreateParams::Joint::Individual] }
 
         # @!attribute [r] name
         #   The name of the joint entity.
@@ -880,9 +879,9 @@ module Increase
         #   #
         #   def initialize(individuals:, name: nil, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
-        class Individual < Increase::Internal::Type::BaseModel
+        class Individual < Increase::BaseModel
           # @!attribute address
           #   The individual's physical address. Mail receiving locations like PO Boxes and
           #     PMB's are disallowed.
@@ -915,7 +914,7 @@ module Increase
           #     Number).
           #
           #   @return [Boolean, nil]
-          optional :confirmed_no_us_tax_id, Increase::Internal::Type::BooleanModel
+          optional :confirmed_no_us_tax_id, Increase::BooleanModel
 
           # @!parse
           #   # @return [Boolean]
@@ -930,10 +929,10 @@ module Increase
           #   #
           #   def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
 
           # @see Increase::Models::EntityCreateParams::Joint::Individual#address
-          class Address < Increase::Internal::Type::BaseModel
+          class Address < Increase::BaseModel
             # @!attribute city
             #   The city of the address.
             #
@@ -981,11 +980,11 @@ module Increase
             #   #
             #   def initialize(city:, line1:, state:, zip:, line2: nil, **) = super
 
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
           # @see Increase::Models::EntityCreateParams::Joint::Individual#identification
-          class Identification < Increase::Internal::Type::BaseModel
+          class Identification < Increase::BaseModel
             # @!attribute method_
             #   A method that can be used to verify the individual's identity.
             #
@@ -1047,13 +1046,13 @@ module Increase
             #   #
             #   def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil, **) = super
 
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # def initialize: (Hash | Increase::BaseModel) -> void
 
             # A method that can be used to verify the individual's identity.
             #
             # @see Increase::Models::EntityCreateParams::Joint::Individual::Identification#method_
             module Method
-              extend Increase::Internal::Type::Enum
+              extend Increase::Enum
 
               # A social security number.
               SOCIAL_SECURITY_NUMBER = :social_security_number
@@ -1078,7 +1077,7 @@ module Increase
             end
 
             # @see Increase::Models::EntityCreateParams::Joint::Individual::Identification#drivers_license
-            class DriversLicense < Increase::Internal::Type::BaseModel
+            class DriversLicense < Increase::BaseModel
               # @!attribute expiration_date
               #   The driver's license's expiration date in YYYY-MM-DD format.
               #
@@ -1118,11 +1117,11 @@ module Increase
               #   #
               #   def initialize(expiration_date:, file_id:, state:, back_file_id: nil, **) = super
 
-              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+              # def initialize: (Hash | Increase::BaseModel) -> void
             end
 
             # @see Increase::Models::EntityCreateParams::Joint::Individual::Identification#other
-            class Other < Increase::Internal::Type::BaseModel
+            class Other < Increase::BaseModel
               # @!attribute country
               #   The two-character ISO 3166-1 code representing the country that issued the
               #     document.
@@ -1175,11 +1174,11 @@ module Increase
               #   #
               #   def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil, **) = super
 
-              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+              # def initialize: (Hash | Increase::BaseModel) -> void
             end
 
             # @see Increase::Models::EntityCreateParams::Joint::Individual::Identification#passport
-            class Passport < Increase::Internal::Type::BaseModel
+            class Passport < Increase::BaseModel
               # @!attribute country
               #   The country that issued the passport.
               #
@@ -1208,13 +1207,13 @@ module Increase
               #   #
               #   def initialize(country:, expiration_date:, file_id:, **) = super
 
-              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+              # def initialize: (Hash | Increase::BaseModel) -> void
             end
           end
         end
       end
 
-      class NaturalPerson < Increase::Internal::Type::BaseModel
+      class NaturalPerson < Increase::BaseModel
         # @!attribute address
         #   The individual's physical address. Mail receiving locations like PO Boxes and
         #     PMB's are disallowed.
@@ -1247,7 +1246,7 @@ module Increase
         #     Number).
         #
         #   @return [Boolean, nil]
-        optional :confirmed_no_us_tax_id, Increase::Internal::Type::BooleanModel
+        optional :confirmed_no_us_tax_id, Increase::BooleanModel
 
         # @!parse
         #   # @return [Boolean]
@@ -1267,10 +1266,10 @@ module Increase
         #   #
         #   def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @see Increase::Models::EntityCreateParams::NaturalPerson#address
-        class Address < Increase::Internal::Type::BaseModel
+        class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the address.
           #
@@ -1318,11 +1317,11 @@ module Increase
           #   #
           #   def initialize(city:, line1:, state:, zip:, line2: nil, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
         # @see Increase::Models::EntityCreateParams::NaturalPerson#identification
-        class Identification < Increase::Internal::Type::BaseModel
+        class Identification < Increase::BaseModel
           # @!attribute method_
           #   A method that can be used to verify the individual's identity.
           #
@@ -1383,13 +1382,13 @@ module Increase
           #   #
           #   def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
 
           # A method that can be used to verify the individual's identity.
           #
           # @see Increase::Models::EntityCreateParams::NaturalPerson::Identification#method_
           module Method
-            extend Increase::Internal::Type::Enum
+            extend Increase::Enum
 
             # A social security number.
             SOCIAL_SECURITY_NUMBER = :social_security_number
@@ -1414,7 +1413,7 @@ module Increase
           end
 
           # @see Increase::Models::EntityCreateParams::NaturalPerson::Identification#drivers_license
-          class DriversLicense < Increase::Internal::Type::BaseModel
+          class DriversLicense < Increase::BaseModel
             # @!attribute expiration_date
             #   The driver's license's expiration date in YYYY-MM-DD format.
             #
@@ -1454,11 +1453,11 @@ module Increase
             #   #
             #   def initialize(expiration_date:, file_id:, state:, back_file_id: nil, **) = super
 
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
           # @see Increase::Models::EntityCreateParams::NaturalPerson::Identification#other
-          class Other < Increase::Internal::Type::BaseModel
+          class Other < Increase::BaseModel
             # @!attribute country
             #   The two-character ISO 3166-1 code representing the country that issued the
             #     document.
@@ -1511,11 +1510,11 @@ module Increase
             #   #
             #   def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil, **) = super
 
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
           # @see Increase::Models::EntityCreateParams::NaturalPerson::Identification#passport
-          class Passport < Increase::Internal::Type::BaseModel
+          class Passport < Increase::BaseModel
             # @!attribute country
             #   The country that issued the passport.
             #
@@ -1544,12 +1543,12 @@ module Increase
             #   #
             #   def initialize(country:, expiration_date:, file_id:, **) = super
 
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # def initialize: (Hash | Increase::BaseModel) -> void
           end
         end
       end
 
-      class SupplementalDocument < Increase::Internal::Type::BaseModel
+      class SupplementalDocument < Increase::BaseModel
         # @!attribute file_id
         #   The identifier of the File containing the document.
         #
@@ -1561,10 +1560,10 @@ module Increase
         #   #
         #   def initialize(file_id:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      class ThirdPartyVerification < Increase::Internal::Type::BaseModel
+      class ThirdPartyVerification < Increase::BaseModel
         # @!attribute reference
         #   The reference identifier for the third party verification.
         #
@@ -1586,13 +1585,13 @@ module Increase
         #   #
         #   def initialize(reference:, vendor:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # The vendor that was used to perform the verification.
         #
         # @see Increase::Models::EntityCreateParams::ThirdPartyVerification#vendor
         module Vendor
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # Alloy. See https://alloy.com for more information.
           ALLOY = :alloy
@@ -1608,7 +1607,7 @@ module Increase
         end
       end
 
-      class Trust < Increase::Internal::Type::BaseModel
+      class Trust < Increase::BaseModel
         # @!attribute address
         #   The trust's physical address. Mail receiving locations like PO Boxes and PMB's
         #     are disallowed.
@@ -1634,8 +1633,7 @@ module Increase
         #   The trustees of the trust.
         #
         #   @return [Array<Increase::Models::EntityCreateParams::Trust::Trustee>]
-        required :trustees,
-                 -> { Increase::Internal::Type::ArrayOf[Increase::Models::EntityCreateParams::Trust::Trustee] }
+        required :trustees, -> { Increase::ArrayOf[Increase::Models::EntityCreateParams::Trust::Trustee] }
 
         # @!attribute [r] formation_document_file_id
         #   The identifier of the File containing the formation document of the trust.
@@ -1706,10 +1704,10 @@ module Increase
         #     super
         #   end
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @see Increase::Models::EntityCreateParams::Trust#address
-        class Address < Increase::Internal::Type::BaseModel
+        class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the address.
           #
@@ -1757,7 +1755,7 @@ module Increase
           #   #
           #   def initialize(city:, line1:, state:, zip:, line2: nil, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
         # Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require
@@ -1766,7 +1764,7 @@ module Increase
         #
         # @see Increase::Models::EntityCreateParams::Trust#category
         module Category
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # The trust is revocable by the grantor.
           REVOCABLE = :revocable
@@ -1781,7 +1779,7 @@ module Increase
           #   def self.values; end
         end
 
-        class Trustee < Increase::Internal::Type::BaseModel
+        class Trustee < Increase::BaseModel
           # @!attribute structure
           #   The structure of the trustee.
           #
@@ -1805,13 +1803,13 @@ module Increase
           #   #
           #   def initialize(structure:, individual: nil, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
 
           # The structure of the trustee.
           #
           # @see Increase::Models::EntityCreateParams::Trust::Trustee#structure
           module Structure
-            extend Increase::Internal::Type::Enum
+            extend Increase::Enum
 
             # The trustee is an individual.
             INDIVIDUAL = :individual
@@ -1824,7 +1822,7 @@ module Increase
           end
 
           # @see Increase::Models::EntityCreateParams::Trust::Trustee#individual
-          class Individual < Increase::Internal::Type::BaseModel
+          class Individual < Increase::BaseModel
             # @!attribute address
             #   The individual's physical address. Mail receiving locations like PO Boxes and
             #     PMB's are disallowed.
@@ -1858,7 +1856,7 @@ module Increase
             #     Number).
             #
             #   @return [Boolean, nil]
-            optional :confirmed_no_us_tax_id, Increase::Internal::Type::BooleanModel
+            optional :confirmed_no_us_tax_id, Increase::BooleanModel
 
             # @!parse
             #   # @return [Boolean]
@@ -1876,10 +1874,10 @@ module Increase
             #   #
             #   def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil, **) = super
 
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # def initialize: (Hash | Increase::BaseModel) -> void
 
             # @see Increase::Models::EntityCreateParams::Trust::Trustee::Individual#address
-            class Address < Increase::Internal::Type::BaseModel
+            class Address < Increase::BaseModel
               # @!attribute city
               #   The city of the address.
               #
@@ -1927,11 +1925,11 @@ module Increase
               #   #
               #   def initialize(city:, line1:, state:, zip:, line2: nil, **) = super
 
-              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+              # def initialize: (Hash | Increase::BaseModel) -> void
             end
 
             # @see Increase::Models::EntityCreateParams::Trust::Trustee::Individual#identification
-            class Identification < Increase::Internal::Type::BaseModel
+            class Identification < Increase::BaseModel
               # @!attribute method_
               #   A method that can be used to verify the individual's identity.
               #
@@ -1994,13 +1992,13 @@ module Increase
               #   #
               #   def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil, **) = super
 
-              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+              # def initialize: (Hash | Increase::BaseModel) -> void
 
               # A method that can be used to verify the individual's identity.
               #
               # @see Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification#method_
               module Method
-                extend Increase::Internal::Type::Enum
+                extend Increase::Enum
 
                 # A social security number.
                 SOCIAL_SECURITY_NUMBER = :social_security_number
@@ -2025,7 +2023,7 @@ module Increase
               end
 
               # @see Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification#drivers_license
-              class DriversLicense < Increase::Internal::Type::BaseModel
+              class DriversLicense < Increase::BaseModel
                 # @!attribute expiration_date
                 #   The driver's license's expiration date in YYYY-MM-DD format.
                 #
@@ -2065,11 +2063,11 @@ module Increase
                 #   #
                 #   def initialize(expiration_date:, file_id:, state:, back_file_id: nil, **) = super
 
-                # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+                # def initialize: (Hash | Increase::BaseModel) -> void
               end
 
               # @see Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification#other
-              class Other < Increase::Internal::Type::BaseModel
+              class Other < Increase::BaseModel
                 # @!attribute country
                 #   The two-character ISO 3166-1 code representing the country that issued the
                 #     document.
@@ -2122,11 +2120,11 @@ module Increase
                 #   #
                 #   def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil, **) = super
 
-                # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+                # def initialize: (Hash | Increase::BaseModel) -> void
               end
 
               # @see Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification#passport
-              class Passport < Increase::Internal::Type::BaseModel
+              class Passport < Increase::BaseModel
                 # @!attribute country
                 #   The country that issued the passport.
                 #
@@ -2155,14 +2153,14 @@ module Increase
                 #   #
                 #   def initialize(country:, expiration_date:, file_id:, **) = super
 
-                # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+                # def initialize: (Hash | Increase::BaseModel) -> void
               end
             end
           end
         end
 
         # @see Increase::Models::EntityCreateParams::Trust#grantor
-        class Grantor < Increase::Internal::Type::BaseModel
+        class Grantor < Increase::BaseModel
           # @!attribute address
           #   The individual's physical address. Mail receiving locations like PO Boxes and
           #     PMB's are disallowed.
@@ -2195,7 +2193,7 @@ module Increase
           #     Number).
           #
           #   @return [Boolean, nil]
-          optional :confirmed_no_us_tax_id, Increase::Internal::Type::BooleanModel
+          optional :confirmed_no_us_tax_id, Increase::BooleanModel
 
           # @!parse
           #   # @return [Boolean]
@@ -2212,10 +2210,10 @@ module Increase
           #   #
           #   def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
 
           # @see Increase::Models::EntityCreateParams::Trust::Grantor#address
-          class Address < Increase::Internal::Type::BaseModel
+          class Address < Increase::BaseModel
             # @!attribute city
             #   The city of the address.
             #
@@ -2263,11 +2261,11 @@ module Increase
             #   #
             #   def initialize(city:, line1:, state:, zip:, line2: nil, **) = super
 
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
           # @see Increase::Models::EntityCreateParams::Trust::Grantor#identification
-          class Identification < Increase::Internal::Type::BaseModel
+          class Identification < Increase::BaseModel
             # @!attribute method_
             #   A method that can be used to verify the individual's identity.
             #
@@ -2328,13 +2326,13 @@ module Increase
             #   #
             #   def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil, **) = super
 
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # def initialize: (Hash | Increase::BaseModel) -> void
 
             # A method that can be used to verify the individual's identity.
             #
             # @see Increase::Models::EntityCreateParams::Trust::Grantor::Identification#method_
             module Method
-              extend Increase::Internal::Type::Enum
+              extend Increase::Enum
 
               # A social security number.
               SOCIAL_SECURITY_NUMBER = :social_security_number
@@ -2359,7 +2357,7 @@ module Increase
             end
 
             # @see Increase::Models::EntityCreateParams::Trust::Grantor::Identification#drivers_license
-            class DriversLicense < Increase::Internal::Type::BaseModel
+            class DriversLicense < Increase::BaseModel
               # @!attribute expiration_date
               #   The driver's license's expiration date in YYYY-MM-DD format.
               #
@@ -2399,11 +2397,11 @@ module Increase
               #   #
               #   def initialize(expiration_date:, file_id:, state:, back_file_id: nil, **) = super
 
-              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+              # def initialize: (Hash | Increase::BaseModel) -> void
             end
 
             # @see Increase::Models::EntityCreateParams::Trust::Grantor::Identification#other
-            class Other < Increase::Internal::Type::BaseModel
+            class Other < Increase::BaseModel
               # @!attribute country
               #   The two-character ISO 3166-1 code representing the country that issued the
               #     document.
@@ -2456,11 +2454,11 @@ module Increase
               #   #
               #   def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil, **) = super
 
-              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+              # def initialize: (Hash | Increase::BaseModel) -> void
             end
 
             # @see Increase::Models::EntityCreateParams::Trust::Grantor::Identification#passport
-            class Passport < Increase::Internal::Type::BaseModel
+            class Passport < Increase::BaseModel
               # @!attribute country
               #   The country that issued the passport.
               #
@@ -2489,7 +2487,7 @@ module Increase
               #   #
               #   def initialize(country:, expiration_date:, file_id:, **) = super
 
-              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+              # def initialize: (Hash | Increase::BaseModel) -> void
             end
           end
         end

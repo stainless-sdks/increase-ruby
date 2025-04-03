@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::CardDisputes#create
-    class CardDisputeCreateParams < Increase::Internal::Type::BaseModel
+    class CardDisputeCreateParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
@@ -42,7 +42,7 @@ module Increase
       #   #
       #   def initialize(disputed_transaction_id:, explanation:, amount: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
     end
   end
 end

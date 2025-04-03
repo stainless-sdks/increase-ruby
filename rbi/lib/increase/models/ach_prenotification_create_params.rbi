@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class ACHPrenotificationCreateParams < Increase::Internal::Type::BaseModel
+    class ACHPrenotificationCreateParams < Increase::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
@@ -116,7 +116,7 @@ module Increase
           individual_id: String,
           individual_name: String,
           standard_entry_class_code: Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -164,7 +164,7 @@ module Increase
 
       # Whether the Prenotification is for a future debit or credit.
       module CreditDebitIndicator
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator) }
@@ -195,7 +195,7 @@ module Increase
 
       # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
       module StandardEntryClassCode
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode) }

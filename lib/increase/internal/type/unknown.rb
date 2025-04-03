@@ -21,7 +21,7 @@ module Increase
         # @param other [Object]
         #
         # @return [Boolean]
-        def self.==(other) = other.is_a?(Class) && other <= Increase::Internal::Type::Unknown
+        def self.==(other) = other.is_a?(Class) && other <= Increase::Unknown
 
         class << self
           # @api private

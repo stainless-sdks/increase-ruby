@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::AccountTransfers#create
-    class AccountTransfer < Increase::Internal::Type::BaseModel
+    class AccountTransfer < Increase::BaseModel
       # @!attribute id
       #   The account transfer's identifier.
       #
@@ -161,10 +161,10 @@ module Increase
       #     super
       #   end
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @see Increase::Models::AccountTransfer#approval
-      class Approval < Increase::Internal::Type::BaseModel
+      class Approval < Increase::BaseModel
         # @!attribute approved_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #     the transfer was approved.
@@ -188,11 +188,11 @@ module Increase
         #   #
         #   def initialize(approved_at:, approved_by:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # @see Increase::Models::AccountTransfer#cancellation
-      class Cancellation < Increase::Internal::Type::BaseModel
+      class Cancellation < Increase::BaseModel
         # @!attribute canceled_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         #     the Transfer was canceled.
@@ -216,11 +216,11 @@ module Increase
         #   #
         #   def initialize(canceled_at:, canceled_by:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # @see Increase::Models::AccountTransfer#created_by
-      class CreatedBy < Increase::Internal::Type::BaseModel
+      class CreatedBy < Increase::BaseModel
         # @!attribute api_key
         #   If present, details about the API key that created the transfer.
         #
@@ -257,10 +257,10 @@ module Increase
         #   #
         #   def initialize(api_key:, category:, oauth_application:, user:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @see Increase::Models::AccountTransfer::CreatedBy#api_key
-        class APIKey < Increase::Internal::Type::BaseModel
+        class APIKey < Increase::BaseModel
           # @!attribute description
           #   The description set for the API key when it was created.
           #
@@ -274,14 +274,14 @@ module Increase
           #   #
           #   def initialize(description:, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
         # The type of object that created this transfer.
         #
         # @see Increase::Models::AccountTransfer::CreatedBy#category
         module Category
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # An API key. Details will be under the `api_key` object.
           API_KEY = :api_key
@@ -300,7 +300,7 @@ module Increase
         end
 
         # @see Increase::Models::AccountTransfer::CreatedBy#oauth_application
-        class OAuthApplication < Increase::Internal::Type::BaseModel
+        class OAuthApplication < Increase::BaseModel
           # @!attribute name
           #   The name of the OAuth Application.
           #
@@ -314,11 +314,11 @@ module Increase
           #   #
           #   def initialize(name:, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
         # @see Increase::Models::AccountTransfer::CreatedBy#user
-        class User < Increase::Internal::Type::BaseModel
+        class User < Increase::BaseModel
           # @!attribute email
           #   The email address of the User.
           #
@@ -332,7 +332,7 @@ module Increase
           #   #
           #   def initialize(email:, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
         end
       end
 
@@ -341,7 +341,7 @@ module Increase
       #
       # @see Increase::Models::AccountTransfer#currency
       module Currency
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # Canadian Dollar (CAD)
         CAD = :CAD
@@ -372,7 +372,7 @@ module Increase
       #
       # @see Increase::Models::AccountTransfer#network
       module Network
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         ACCOUNT = :account
 
@@ -387,7 +387,7 @@ module Increase
       #
       # @see Increase::Models::AccountTransfer#status
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The transfer is pending approval.
         PENDING_APPROVAL = :pending_approval
@@ -410,7 +410,7 @@ module Increase
       #
       # @see Increase::Models::AccountTransfer#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         ACCOUNT_TRANSFER = :account_transfer
 

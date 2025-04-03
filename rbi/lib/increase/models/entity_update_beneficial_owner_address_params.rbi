@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class EntityUpdateBeneficialOwnerAddressParams < Increase::Internal::Type::BaseModel
+    class EntityUpdateBeneficialOwnerAddressParams < Increase::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
@@ -13,7 +13,10 @@ module Increase
 
       sig do
         params(
-          address: T.any(Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address, Increase::Internal::AnyHash)
+          address: T.any(
+            Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
+            Increase::Internal::Util::AnyHash
+          )
         )
           .void
       end
@@ -26,9 +29,12 @@ module Increase
 
       sig do
         params(
-          address: T.any(Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address, Increase::Internal::AnyHash),
+          address: T.any(
+            Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
+            Increase::Internal::Util::AnyHash
+          ),
           beneficial_owner_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -48,7 +54,7 @@ module Increase
       def to_hash
       end
 
-      class Address < Increase::Internal::Type::BaseModel
+      class Address < Increase::BaseModel
         # The two-letter ISO 3166-1 alpha-2 code for the country of the address.
         sig { returns(String) }
         attr_accessor :country

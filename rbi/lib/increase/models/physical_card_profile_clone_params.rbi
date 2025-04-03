@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class PhysicalCardProfileCloneParams < Increase::Internal::Type::BaseModel
+    class PhysicalCardProfileCloneParams < Increase::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
@@ -41,7 +41,7 @@ module Increase
 
       sig do
         params(
-          front_text: T.any(Increase::Models::PhysicalCardProfileCloneParams::FrontText, Increase::Internal::AnyHash)
+          front_text: T.any(Increase::Models::PhysicalCardProfileCloneParams::FrontText, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -53,8 +53,8 @@ module Increase
           contact_phone: String,
           description: String,
           front_image_file_id: String,
-          front_text: T.any(Increase::Models::PhysicalCardProfileCloneParams::FrontText, Increase::Internal::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          front_text: T.any(Increase::Models::PhysicalCardProfileCloneParams::FrontText, Increase::Internal::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -84,7 +84,7 @@ module Increase
       def to_hash
       end
 
-      class FrontText < Increase::Internal::Type::BaseModel
+      class FrontText < Increase::BaseModel
         # The first line of text on the front of the card.
         sig { returns(String) }
         attr_accessor :line1

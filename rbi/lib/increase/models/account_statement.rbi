@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class AccountStatement < Increase::Internal::Type::BaseModel
+    class AccountStatement < Increase::BaseModel
       # The Account Statement identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -95,7 +95,7 @@ module Increase
       # A constant representing the object's type. For this resource it will always be
       #   `account_statement`.
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountStatement::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::AccountStatement::Type::TaggedSymbol) }

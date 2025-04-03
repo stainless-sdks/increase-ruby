@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::Files#create
-    class FileCreateParams < Increase::Internal::Type::BaseModel
+    class FileCreateParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
@@ -40,11 +40,11 @@ module Increase
       #   #
       #   def initialize(file:, purpose:, description: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # What the File will be used for in Increase's systems.
       module Purpose
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # An image of the front of a check, used for check deposits.
         CHECK_IMAGE_FRONT = :check_image_front

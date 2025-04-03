@@ -3,7 +3,7 @@
 module Increase
   module Models
     module Simulations
-      class CardRefundCreateParams < Increase::Internal::Type::BaseModel
+      class CardRefundCreateParams < Increase::BaseModel
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
@@ -15,7 +15,7 @@ module Increase
         sig do
           params(
             transaction_id: String,
-            request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

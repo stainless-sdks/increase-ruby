@@ -3,7 +3,7 @@
 module Increase
   module Models
     module Simulations
-      class PhysicalCardAdvanceShipmentParams < Increase::Internal::Type::BaseModel
+      class PhysicalCardAdvanceShipmentParams < Increase::BaseModel
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
@@ -14,7 +14,7 @@ module Increase
         sig do
           params(
             shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol,
-            request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -35,7 +35,7 @@ module Increase
 
         # The shipment status to move the Physical Card to.
         module ShipmentStatus
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus) }

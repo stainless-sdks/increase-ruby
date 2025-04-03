@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class EntityUpdateAddressParams < Increase::Internal::Type::BaseModel
+    class EntityUpdateAddressParams < Increase::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
@@ -12,15 +12,17 @@ module Increase
       attr_reader :address
 
       sig do
-        params(address: T.any(Increase::Models::EntityUpdateAddressParams::Address, Increase::Internal::AnyHash))
+        params(
+          address: T.any(Increase::Models::EntityUpdateAddressParams::Address, Increase::Internal::Util::AnyHash)
+        )
           .void
       end
       attr_writer :address
 
       sig do
         params(
-          address: T.any(Increase::Models::EntityUpdateAddressParams::Address, Increase::Internal::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          address: T.any(Increase::Models::EntityUpdateAddressParams::Address, Increase::Internal::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -36,7 +38,7 @@ module Increase
       def to_hash
       end
 
-      class Address < Increase::Internal::Type::BaseModel
+      class Address < Increase::BaseModel
         # The city of the address.
         sig { returns(String) }
         attr_accessor :city

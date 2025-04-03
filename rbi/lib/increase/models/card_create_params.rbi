@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class CardCreateParams < Increase::Internal::Type::BaseModel
+    class CardCreateParams < Increase::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
@@ -16,7 +16,7 @@ module Increase
 
       sig do
         params(
-          billing_address: T.any(Increase::Models::CardCreateParams::BillingAddress, Increase::Internal::AnyHash)
+          billing_address: T.any(Increase::Models::CardCreateParams::BillingAddress, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -39,7 +39,7 @@ module Increase
 
       sig do
         params(
-          digital_wallet: T.any(Increase::Models::CardCreateParams::DigitalWallet, Increase::Internal::AnyHash)
+          digital_wallet: T.any(Increase::Models::CardCreateParams::DigitalWallet, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -56,11 +56,11 @@ module Increase
       sig do
         params(
           account_id: String,
-          billing_address: T.any(Increase::Models::CardCreateParams::BillingAddress, Increase::Internal::AnyHash),
+          billing_address: T.any(Increase::Models::CardCreateParams::BillingAddress, Increase::Internal::Util::AnyHash),
           description: String,
-          digital_wallet: T.any(Increase::Models::CardCreateParams::DigitalWallet, Increase::Internal::AnyHash),
+          digital_wallet: T.any(Increase::Models::CardCreateParams::DigitalWallet, Increase::Internal::Util::AnyHash),
           entity_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -90,7 +90,7 @@ module Increase
       def to_hash
       end
 
-      class BillingAddress < Increase::Internal::Type::BaseModel
+      class BillingAddress < Increase::BaseModel
         # The city of the billing address.
         sig { returns(String) }
         attr_accessor :city
@@ -129,7 +129,7 @@ module Increase
         end
       end
 
-      class DigitalWallet < Increase::Internal::Type::BaseModel
+      class DigitalWallet < Increase::BaseModel
         # The digital card profile assigned to this digital card.
         sig { returns(T.nilable(String)) }
         attr_reader :digital_card_profile_id

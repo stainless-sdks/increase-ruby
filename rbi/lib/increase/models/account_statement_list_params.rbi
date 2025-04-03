@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class AccountStatementListParams < Increase::Internal::Type::BaseModel
+    class AccountStatementListParams < Increase::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
@@ -33,7 +33,10 @@ module Increase
 
       sig do
         params(
-          statement_period_start: T.any(Increase::Models::AccountStatementListParams::StatementPeriodStart, Increase::Internal::AnyHash)
+          statement_period_start: T.any(
+            Increase::Models::AccountStatementListParams::StatementPeriodStart,
+            Increase::Internal::Util::AnyHash
+          )
         )
           .void
       end
@@ -44,8 +47,11 @@ module Increase
           account_id: String,
           cursor: String,
           limit: Integer,
-          statement_period_start: T.any(Increase::Models::AccountStatementListParams::StatementPeriodStart, Increase::Internal::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          statement_period_start: T.any(
+            Increase::Models::AccountStatementListParams::StatementPeriodStart,
+            Increase::Internal::Util::AnyHash
+          ),
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -67,7 +73,7 @@ module Increase
       def to_hash
       end
 
-      class StatementPeriodStart < Increase::Internal::Type::BaseModel
+      class StatementPeriodStart < Increase::BaseModel
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         sig { returns(T.nilable(Time)) }

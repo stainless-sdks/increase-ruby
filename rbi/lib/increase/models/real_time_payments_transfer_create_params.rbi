@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class RealTimePaymentsTransferCreateParams < Increase::Internal::Type::BaseModel
+    class RealTimePaymentsTransferCreateParams < Increase::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
@@ -91,7 +91,7 @@ module Increase
           require_approval: T::Boolean,
           ultimate_creditor_name: String,
           ultimate_debtor_name: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

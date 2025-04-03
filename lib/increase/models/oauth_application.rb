@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::OAuthApplications#retrieve
-    class OAuthApplication < Increase::Internal::Type::BaseModel
+    class OAuthApplication < Increase::BaseModel
       # @!attribute id
       #   The OAuth Application's identifier.
       #
@@ -66,13 +66,13 @@ module Increase
       #   #
       #   def initialize(id:, client_id:, created_at:, deleted_at:, name:, status:, type:, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # Whether the application is active.
       #
       # @see Increase::Models::OAuthApplication#status
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The application is active and can be used by your users.
         ACTIVE = :active
@@ -92,7 +92,7 @@ module Increase
       #
       # @see Increase::Models::OAuthApplication#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         OAUTH_APPLICATION = :oauth_application
 

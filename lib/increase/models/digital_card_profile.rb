@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::DigitalCardProfiles#create
-    class DigitalCardProfile < Increase::Internal::Type::BaseModel
+    class DigitalCardProfile < Increase::BaseModel
       # @!attribute id
       #   The Card Profile identifier.
       #
@@ -132,13 +132,13 @@ module Increase
       #     super
       #   end
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # The status of the Card Profile.
       #
       # @see Increase::Models::DigitalCardProfile#status
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The Card Profile is awaiting review from Increase and/or processing by card networks.
         PENDING = :pending
@@ -160,7 +160,7 @@ module Increase
       end
 
       # @see Increase::Models::DigitalCardProfile#text_color
-      class TextColor < Increase::Internal::Type::BaseModel
+      class TextColor < Increase::BaseModel
         # @!attribute blue
         #   The value of the blue channel in the RGB color.
         #
@@ -188,7 +188,7 @@ module Increase
         #   #
         #   def initialize(blue:, green:, red:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -196,7 +196,7 @@ module Increase
       #
       # @see Increase::Models::DigitalCardProfile#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         DIGITAL_CARD_PROFILE = :digital_card_profile
 

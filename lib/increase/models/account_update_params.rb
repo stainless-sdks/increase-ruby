@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::Accounts#update
-    class AccountUpdateParams < Increase::Internal::Type::BaseModel
+    class AccountUpdateParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
@@ -24,7 +24,7 @@ module Increase
       #   #
       #   def initialize(name: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
     end
   end
 end

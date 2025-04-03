@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::Cards#create
-    class Card < Increase::Internal::Type::BaseModel
+    class Card < Increase::BaseModel
       # @!attribute id
       #   The card identifier.
       #
@@ -127,10 +127,10 @@ module Increase
       #     super
       #   end
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @see Increase::Models::Card#billing_address
-      class BillingAddress < Increase::Internal::Type::BaseModel
+      class BillingAddress < Increase::BaseModel
         # @!attribute city
         #   The city of the billing address.
         #
@@ -172,11 +172,11 @@ module Increase
         #   #
         #   def initialize(city:, line1:, line2:, postal_code:, state:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # @see Increase::Models::Card#digital_wallet
-      class DigitalWallet < Increase::Internal::Type::BaseModel
+      class DigitalWallet < Increase::BaseModel
         # @!attribute digital_card_profile_id
         #   The digital card profile assigned to this digital card. Card profiles may also
         #     be assigned at the program level.
@@ -209,14 +209,14 @@ module Increase
         #   #
         #   def initialize(digital_card_profile_id:, email:, phone:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # This indicates if payments can be made with the card.
       #
       # @see Increase::Models::Card#status
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The card is active.
         ACTIVE = :active
@@ -239,7 +239,7 @@ module Increase
       #
       # @see Increase::Models::Card#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         CARD = :card
 

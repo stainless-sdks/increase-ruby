@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::WireTransfers#list
-    class WireTransferListParams < Increase::Internal::Type::BaseModel
+    class WireTransferListParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
@@ -93,9 +93,9 @@ module Increase
       #     super
       #   end
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
-      class CreatedAt < Increase::Internal::Type::BaseModel
+      class CreatedAt < Increase::BaseModel
         # @!attribute [r] after
         #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #     timestamp.
@@ -148,7 +148,7 @@ module Increase
         #   #
         #   def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
     end
   end

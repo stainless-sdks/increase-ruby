@@ -3,7 +3,7 @@
 module Increase
   module Models
     module Simulations
-      class InboundMailItemCreateParams < Increase::Internal::Type::BaseModel
+      class InboundMailItemCreateParams < Increase::BaseModel
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
@@ -28,7 +28,7 @@ module Increase
             amount: Integer,
             lockbox_id: String,
             contents_file_id: String,
-            request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

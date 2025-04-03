@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::Groups#retrieve
-    class Group < Increase::Internal::Type::BaseModel
+    class Group < Increase::BaseModel
       # @!attribute id
       #   The Group identifier.
       #
@@ -50,13 +50,13 @@ module Increase
       #   #
       #   def initialize(id:, ach_debit_status:, activation_status:, created_at:, type:, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # If the Group is allowed to create ACH debits.
       #
       # @see Increase::Models::Group#ach_debit_status
       module ACHDebitStatus
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The Group cannot make ACH debits.
         DISABLED = :disabled
@@ -75,7 +75,7 @@ module Increase
       #
       # @see Increase::Models::Group#activation_status
       module ActivationStatus
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The Group is not activated.
         UNACTIVATED = :unactivated
@@ -95,7 +95,7 @@ module Increase
       #
       # @see Increase::Models::Group#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         GROUP = :group
 

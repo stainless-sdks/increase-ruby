@@ -7,11 +7,11 @@ module Increase
       sig do
         params(
           account_id: String,
-          billing_address: T.any(Increase::Models::CardCreateParams::BillingAddress, Increase::Internal::AnyHash),
+          billing_address: T.any(Increase::Models::CardCreateParams::BillingAddress, Increase::Internal::Util::AnyHash),
           description: String,
-          digital_wallet: T.any(Increase::Models::CardCreateParams::DigitalWallet, Increase::Internal::AnyHash),
+          digital_wallet: T.any(Increase::Models::CardCreateParams::DigitalWallet, Increase::Internal::Util::AnyHash),
           entity_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
           .returns(Increase::Models::Card)
       end
@@ -39,7 +39,7 @@ module Increase
       sig do
         params(
           card_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
           .returns(Increase::Models::Card)
       end
@@ -54,12 +54,12 @@ module Increase
       sig do
         params(
           card_id: String,
-          billing_address: T.any(Increase::Models::CardUpdateParams::BillingAddress, Increase::Internal::AnyHash),
+          billing_address: T.any(Increase::Models::CardUpdateParams::BillingAddress, Increase::Internal::Util::AnyHash),
           description: String,
-          digital_wallet: T.any(Increase::Models::CardUpdateParams::DigitalWallet, Increase::Internal::AnyHash),
+          digital_wallet: T.any(Increase::Models::CardUpdateParams::DigitalWallet, Increase::Internal::Util::AnyHash),
           entity_id: String,
           status: Increase::Models::CardUpdateParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
           .returns(Increase::Models::Card)
       end
@@ -87,12 +87,12 @@ module Increase
       sig do
         params(
           account_id: String,
-          created_at: T.any(Increase::Models::CardListParams::CreatedAt, Increase::Internal::AnyHash),
+          created_at: T.any(Increase::Models::CardListParams::CreatedAt, Increase::Internal::Util::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: T.any(Increase::Models::CardListParams::Status, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          status: T.any(Increase::Models::CardListParams::Status, Increase::Internal::Util::AnyHash),
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
           .returns(Increase::Internal::Page[Increase::Models::Card])
       end
@@ -119,7 +119,7 @@ module Increase
       sig do
         params(
           card_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
           .returns(Increase::Models::CardDetails)
       end

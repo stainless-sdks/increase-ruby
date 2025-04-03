@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class IntrafiExclusionCreateParams < Increase::Internal::Type::BaseModel
+    class IntrafiExclusionCreateParams < Increase::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
@@ -18,7 +18,7 @@ module Increase
         params(
           bank_name: String,
           entity_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

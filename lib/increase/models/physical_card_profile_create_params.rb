@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::PhysicalCardProfiles#create
-    class PhysicalCardProfileCreateParams < Increase::Internal::Type::BaseModel
+    class PhysicalCardProfileCreateParams < Increase::BaseModel
       # @!parse
       #   extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
@@ -41,7 +41,7 @@ module Increase
       #   #
       #   def initialize(carrier_image_file_id:, contact_phone:, description:, front_image_file_id:, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
     end
   end
 end

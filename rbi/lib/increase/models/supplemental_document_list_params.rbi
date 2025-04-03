@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class SupplementalDocumentListParams < Increase::Internal::Type::BaseModel
+    class SupplementalDocumentListParams < Increase::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
@@ -41,7 +41,7 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

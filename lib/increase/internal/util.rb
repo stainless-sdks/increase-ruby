@@ -148,6 +148,13 @@ module Increase
         end
       end
 
+      # Use this to indicate that a value should be explicitly removed from a data
+      #   structure when using `Increase::Internal::Util.deep_merge`.
+      #
+      #   e.g. merging `{a: 1}` and `{a: OMIT}` should produce `{}`, where merging
+      #   `{a: 1}` and `{}` would produce `{a: 1}`.
+      OMIT = Object.new.freeze
+
       class << self
         # @api private
         #
@@ -159,9 +166,9 @@ module Increase
         private def deep_merge_lr(lhs, rhs, concat: false)
           case [lhs, rhs, concat]
           in [Hash, Hash, _]
-            rhs_cleaned = rhs.reject { _2 == Increase::Internal::OMIT }
+            rhs_cleaned = rhs.reject { _2 == Increase::Internal::Util::OMIT }
             lhs
-              .reject { |key, _| rhs[key] == Increase::Internal::OMIT }
+              .reject { |key, _| rhs[key] == Increase::Internal::Util::OMIT }
               .merge(rhs_cleaned) do |_, old_val, new_val|
                 deep_merge_lr(old_val, new_val, concat: concat)
               end

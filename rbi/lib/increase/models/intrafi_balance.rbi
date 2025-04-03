@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class IntrafiBalance < Increase::Internal::Type::BaseModel
+    class IntrafiBalance < Increase::BaseModel
       # The identifier of this balance.
       sig { returns(String) }
       attr_accessor :id
@@ -37,7 +37,7 @@ module Increase
       sig do
         params(
           id: String,
-          balances: T::Array[T.any(Increase::Models::IntrafiBalance::Balance, Increase::Internal::AnyHash)],
+          balances: T::Array[T.any(Increase::Models::IntrafiBalance::Balance, Increase::Internal::Util::AnyHash)],
           currency: Increase::Models::IntrafiBalance::Currency::OrSymbol,
           effective_date: Date,
           total_balance: Integer,
@@ -64,7 +64,7 @@ module Increase
       def to_hash
       end
 
-      class Balance < Increase::Internal::Type::BaseModel
+      class Balance < Increase::BaseModel
         # The identifier of this balance.
         sig { returns(String) }
         attr_accessor :id
@@ -83,7 +83,9 @@ module Increase
 
         sig do
           params(
-            bank_location: T.nilable(T.any(Increase::Models::IntrafiBalance::Balance::BankLocation, Increase::Internal::AnyHash))
+            bank_location: T.nilable(
+              T.any(Increase::Models::IntrafiBalance::Balance::BankLocation, Increase::Internal::Util::AnyHash)
+            )
           )
             .void
         end
@@ -100,7 +102,9 @@ module Increase
             id: String,
             balance: Integer,
             bank: String,
-            bank_location: T.nilable(T.any(Increase::Models::IntrafiBalance::Balance::BankLocation, Increase::Internal::AnyHash)),
+            bank_location: T.nilable(
+              T.any(Increase::Models::IntrafiBalance::Balance::BankLocation, Increase::Internal::Util::AnyHash)
+            ),
             fdic_certificate_number: String
           )
             .returns(T.attached_class)
@@ -123,7 +127,7 @@ module Increase
         def to_hash
         end
 
-        class BankLocation < Increase::Internal::Type::BaseModel
+        class BankLocation < Increase::BaseModel
           # The bank's city.
           sig { returns(String) }
           attr_accessor :city
@@ -146,7 +150,7 @@ module Increase
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account
       #   currency.
       module Currency
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiBalance::Currency) }
         OrSymbol =
@@ -178,7 +182,7 @@ module Increase
       # A constant representing the object's type. For this resource it will always be
       #   `intrafi_balance`.
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiBalance::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::IntrafiBalance::Type::TaggedSymbol) }

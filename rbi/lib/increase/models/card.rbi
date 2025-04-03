@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class Card < Increase::Internal::Type::BaseModel
+    class Card < Increase::BaseModel
       # The card identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -15,7 +15,10 @@ module Increase
       sig { returns(Increase::Models::Card::BillingAddress) }
       attr_reader :billing_address
 
-      sig { params(billing_address: T.any(Increase::Models::Card::BillingAddress, Increase::Internal::AnyHash)).void }
+      sig do
+        params(billing_address: T.any(Increase::Models::Card::BillingAddress, Increase::Internal::Util::AnyHash))
+          .void
+      end
       attr_writer :billing_address
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -35,7 +38,7 @@ module Increase
 
       sig do
         params(
-          digital_wallet: T.nilable(T.any(Increase::Models::Card::DigitalWallet, Increase::Internal::AnyHash))
+          digital_wallet: T.nilable(T.any(Increase::Models::Card::DigitalWallet, Increase::Internal::Util::AnyHash))
         )
           .void
       end
@@ -80,10 +83,10 @@ module Increase
         params(
           id: String,
           account_id: String,
-          billing_address: T.any(Increase::Models::Card::BillingAddress, Increase::Internal::AnyHash),
+          billing_address: T.any(Increase::Models::Card::BillingAddress, Increase::Internal::Util::AnyHash),
           created_at: Time,
           description: T.nilable(String),
-          digital_wallet: T.nilable(T.any(Increase::Models::Card::DigitalWallet, Increase::Internal::AnyHash)),
+          digital_wallet: T.nilable(T.any(Increase::Models::Card::DigitalWallet, Increase::Internal::Util::AnyHash)),
           entity_id: T.nilable(String),
           expiration_month: Integer,
           expiration_year: Integer,
@@ -134,7 +137,7 @@ module Increase
       def to_hash
       end
 
-      class BillingAddress < Increase::Internal::Type::BaseModel
+      class BillingAddress < Increase::BaseModel
         # The city of the billing address.
         sig { returns(T.nilable(String)) }
         attr_accessor :city
@@ -185,7 +188,7 @@ module Increase
         end
       end
 
-      class DigitalWallet < Increase::Internal::Type::BaseModel
+      class DigitalWallet < Increase::BaseModel
         # The digital card profile assigned to this digital card. Card profiles may also
         #   be assigned at the program level.
         sig { returns(T.nilable(String)) }
@@ -229,7 +232,7 @@ module Increase
 
       # This indicates if payments can be made with the card.
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Card::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::Card::Status::TaggedSymbol) }
@@ -251,7 +254,7 @@ module Increase
       # A constant representing the object's type. For this resource it will always be
       #   `card`.
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Card::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::Card::Type::TaggedSymbol) }

@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class Document < Increase::Internal::Type::BaseModel
+    class Document < Increase::BaseModel
       # The Document identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -63,7 +63,7 @@ module Increase
 
       # The type of document.
       module Category
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Document::Category) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::Document::Category::TaggedSymbol) }
@@ -89,7 +89,7 @@ module Increase
       # A constant representing the object's type. For this resource it will always be
       #   `document`.
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Document::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::Document::Type::TaggedSymbol) }

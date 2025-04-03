@@ -4,7 +4,7 @@ module Increase
       { account_id: String, cursor: String, limit: Integer }
       & Increase::Internal::Type::request_parameters
 
-    class BookkeepingEntryListParams < Increase::Internal::Type::BaseModel
+    class BookkeepingEntryListParams < Increase::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 

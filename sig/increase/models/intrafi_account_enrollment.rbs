@@ -11,7 +11,7 @@ module Increase
         type: Increase::Models::IntrafiAccountEnrollment::type_
       }
 
-    class IntrafiAccountEnrollment < Increase::Internal::Type::BaseModel
+    class IntrafiAccountEnrollment < Increase::BaseModel
       attr_accessor id: String
 
       attr_accessor account_id: String
@@ -46,7 +46,7 @@ module Increase
         | :requires_attention
 
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The account is being added to the IntraFi network.
         PENDING_ENROLLING: :pending_enrolling
@@ -69,7 +69,7 @@ module Increase
       type type_ = :intrafi_account_enrollment
 
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         INTRAFI_ACCOUNT_ENROLLMENT: :intrafi_account_enrollment
 
