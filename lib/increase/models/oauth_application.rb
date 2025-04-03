@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::OAuthApplications#retrieve
     class OAuthApplication < Increase::BaseModel
       # @!attribute id
       #   The OAuth Application's identifier.
@@ -69,8 +68,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # Whether the application is active.
-      #
-      # @see Increase::Models::OAuthApplication#status
       module Status
         extend Increase::Enum
 
@@ -89,8 +86,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `oauth_application`.
-      #
-      # @see Increase::Models::OAuthApplication#type
       module Type
         extend Increase::Enum
 

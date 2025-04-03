@@ -3,7 +3,7 @@
 module Increase
   module Models
     class EntityConfirmParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # When your user confirmed the Entity's details. If not provided, the current time

@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::ACHPrenotifications#create
     class ACHPrenotification < Increase::BaseModel
       # @!attribute id
       #   The ACH Prenotification's identifier.
@@ -156,8 +155,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # If the notification is for a future credit or debit.
-      #
-      # @see Increase::Models::ACHPrenotification#credit_debit_indicator
       module CreditDebitIndicator
         extend Increase::Enum
 
@@ -211,8 +208,6 @@ module Increase
 
         # The required type of change that is being signaled by the receiving financial
         #   institution.
-        #
-        # @see Increase::Models::ACHPrenotification::NotificationsOfChange#change_code
         module ChangeCode
           extend Increase::Enum
 
@@ -287,7 +282,6 @@ module Increase
         end
       end
 
-      # @see Increase::Models::ACHPrenotification#prenotification_return
       class PrenotificationReturn < Increase::BaseModel
         # @!attribute created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -314,8 +308,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # Why the Prenotification was returned.
-        #
-        # @see Increase::Models::ACHPrenotification::PrenotificationReturn#return_reason_code
         module ReturnReasonCode
           extend Increase::Enum
 
@@ -541,8 +533,6 @@ module Increase
       end
 
       # The lifecycle status of the ACH Prenotification.
-      #
-      # @see Increase::Models::ACHPrenotification#status
       module Status
         extend Increase::Enum
 
@@ -567,8 +557,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `ach_prenotification`.
-      #
-      # @see Increase::Models::ACHPrenotification#type
       module Type
         extend Increase::Enum
 

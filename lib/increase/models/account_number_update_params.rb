@@ -2,10 +2,9 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::AccountNumbers#update
     class AccountNumberUpdateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
+      #   extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # @!attribute [r] inbound_ach
@@ -83,8 +82,6 @@ module Increase
 
         # Whether ACH debits are allowed against this Account Number. Note that ACH debits
         #   will be declined if this is `allowed` but the Account Number is not active.
-        #
-        # @see Increase::Models::AccountNumberUpdateParams::InboundACH#debit_status
         module DebitStatus
           extend Increase::Enum
 
@@ -120,8 +117,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # How Increase should process checks with this account number printed on them.
-        #
-        # @see Increase::Models::AccountNumberUpdateParams::InboundChecks#status
         module Status
           extend Increase::Enum
 

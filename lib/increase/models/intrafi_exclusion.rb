@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::IntrafiExclusions#create
     class IntrafiExclusion < Increase::BaseModel
       # @!attribute id
       #   The identifier of this exclusion request.
@@ -105,8 +104,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # The status of the exclusion request.
-      #
-      # @see Increase::Models::IntrafiExclusion#status
       module Status
         extend Increase::Enum
 
@@ -128,8 +125,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `intrafi_exclusion`.
-      #
-      # @see Increase::Models::IntrafiExclusion#type
       module Type
         extend Increase::Enum
 

@@ -4,7 +4,7 @@ module Increase
   module Models
     module Simulations
       class ACHTransferCreateNotificationOfChangeParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
+        extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
         # The reason for the notification of change.
@@ -49,7 +49,6 @@ module Increase
             T.type_alias do
               T.any(
                 Symbol,
-                String,
                 Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::TaggedSymbol
               )
             end

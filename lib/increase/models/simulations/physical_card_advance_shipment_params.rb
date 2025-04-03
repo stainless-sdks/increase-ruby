@@ -3,10 +3,9 @@
 module Increase
   module Models
     module Simulations
-      # @see Increase::Resources::Simulations::PhysicalCards#advance_shipment
       class PhysicalCardAdvanceShipmentParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Type::RequestParameters::Converter
+        #   extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
         # @!attribute shipment_status

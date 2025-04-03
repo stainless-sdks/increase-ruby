@@ -3,7 +3,7 @@
 module Increase
   module Models
     class BookkeepingAccountCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The name you choose for the account.
@@ -71,7 +71,7 @@ module Increase
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, String, Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol) }
 
         # A cash in an commingled Increase Account.
         COMMINGLED_CASH =

@@ -5,18 +5,17 @@ module Increase
     class InboundWireTransfers
       # Retrieve an Inbound Wire Transfer
       #
-      # @overload retrieve(inbound_wire_transfer_id, request_options: {})
+      # @param inbound_wire_transfer_id [String] The identifier of the Inbound Wire Transfer to get details for.
       #
-      # @param inbound_wire_transfer_id [String]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      # @param params [Increase::Models::InboundWireTransferRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::InboundWireTransfer]
-      #
-      # @see Increase::Models::InboundWireTransferRetrieveParams
       def retrieve(inbound_wire_transfer_id, params = {})
         @client.request(
           method: :get,
-          path: ["inbound_wire_transfers/%1$s", inbound_wire_transfer_id],
+          path: ["inbound_wire_transfers/%0s", inbound_wire_transfer_id],
           model: Increase::Models::InboundWireTransfer,
           options: params[:request_options]
         )
@@ -24,19 +23,24 @@ module Increase
 
       # List Inbound Wire Transfers
       #
-      # @overload list(account_id: nil, account_number_id: nil, created_at: nil, cursor: nil, limit: nil, status: nil, request_options: {})
+      # @param params [Increase::Models::InboundWireTransferListParams, Hash{Symbol=>Object}] .
       #
-      # @param account_id [String]
-      # @param account_number_id [String]
-      # @param created_at [Increase::Models::InboundWireTransferListParams::CreatedAt]
-      # @param cursor [String]
-      # @param limit [Integer]
-      # @param status [Increase::Models::InboundWireTransferListParams::Status]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      #   @option params [String] :account_id Filter Inbound Wire Transfers to ones belonging to the specified Account.
+      #
+      #   @option params [String] :account_number_id Filter Inbound Wire Transfers to ones belonging to the specified Account Number.
+      #
+      #   @option params [Increase::Models::InboundWireTransferListParams::CreatedAt] :created_at
+      #
+      #   @option params [String] :cursor Return the page of entries after this one.
+      #
+      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
+      #
+      #   @option params [Increase::Models::InboundWireTransferListParams::Status] :status
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::InboundWireTransfer>]
-      #
-      # @see Increase::Models::InboundWireTransferListParams
       def list(params = {})
         parsed, options = Increase::Models::InboundWireTransferListParams.dump_request(params)
         @client.request(
@@ -49,8 +53,6 @@ module Increase
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

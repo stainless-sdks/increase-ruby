@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::Cards#details
     class CardDetails < Increase::BaseModel
       # @!attribute card_id
       #   The identifier for the Card for which sensitive details have been returned.
@@ -59,8 +58,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `card_details`.
-      #
-      # @see Increase::Models::CardDetails#type
       module Type
         extend Increase::Enum
 

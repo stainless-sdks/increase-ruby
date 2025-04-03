@@ -2,10 +2,9 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::Entities#update_industry_code
     class EntityUpdateIndustryCodeParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
+      #   extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # @!attribute industry_code

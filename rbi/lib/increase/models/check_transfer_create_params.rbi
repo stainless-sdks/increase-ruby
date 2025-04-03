@@ -3,7 +3,7 @@
 module Increase
   module Models
     class CheckTransferCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The identifier for the account that will send the transfer.
@@ -108,7 +108,7 @@ module Increase
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::CheckTransferCreateParams::FulfillmentMethod) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, String, Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol) }
 
         # Increase will print and mail a physical check.
         PHYSICAL_CHECK =

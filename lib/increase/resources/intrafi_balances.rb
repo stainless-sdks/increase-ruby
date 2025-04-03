@@ -5,25 +5,22 @@ module Increase
     class IntrafiBalances
       # Get IntraFi balances by bank
       #
-      # @overload intrafi_balance(account_id, request_options: {})
+      # @param account_id [String] The identifier of the Account to get balances for.
       #
-      # @param account_id [String]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      # @param params [Increase::Models::IntrafiBalanceIntrafiBalanceParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::IntrafiBalance]
-      #
-      # @see Increase::Models::IntrafiBalanceIntrafiBalanceParams
       def intrafi_balance(account_id, params = {})
         @client.request(
           method: :get,
-          path: ["accounts/%1$s/intrafi_balance", account_id],
+          path: ["accounts/%0s/intrafi_balance", account_id],
           model: Increase::Models::IntrafiBalance,
           options: params[:request_options]
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

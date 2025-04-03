@@ -74,18 +74,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        id:,
-        account_id:,
-        amount:,
-        created_at:,
-        currency:,
-        description:,
-        route_id:,
-        route_type:,
-        source:,
-        type:
-      )
+      def self.new(id:, account_id:, amount:, created_at:, currency:, description:, route_id:, route_type:, source:, type:)
       end
 
       sig do
@@ -115,7 +104,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Transaction::Currency) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::Transaction::Currency::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Transaction::Currency::TaggedSymbol) }
 
         # Canadian Dollar (CAD)
         CAD = T.let(:CAD, Increase::Models::Transaction::Currency::TaggedSymbol)
@@ -145,7 +134,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Transaction::RouteType) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::Transaction::RouteType::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Transaction::RouteType::TaggedSymbol) }
 
         # An Account Number.
         ACCOUNT_NUMBER = T.let(:account_number, Increase::Models::Transaction::RouteType::TaggedSymbol)
@@ -794,14 +783,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(
-            amount:,
-            currency:,
-            description:,
-            destination_account_id:,
-            source_account_id:,
-            transfer_id:
-          )
+          def self.new(amount:, currency:, description:, destination_account_id:, source_account_id:, transfer_id:)
           end
 
           sig do
@@ -828,13 +810,7 @@ module Increase
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::AccountTransferIntention::Currency) }
             OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  String,
-                  Increase::Models::Transaction::Source::AccountTransferIntention::Currency::TaggedSymbol
-                )
-              end
+              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::AccountTransferIntention::Currency::TaggedSymbol) }
 
             # Canadian Dollar (CAD)
             CAD =
@@ -990,14 +966,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(
-            created_at:,
-            raw_return_reason_code:,
-            return_reason_code:,
-            trace_number:,
-            transaction_id:,
-            transfer_id:
-          )
+          def self.new(created_at:, raw_return_reason_code:, return_reason_code:, trace_number:, transaction_id:, transfer_id:)
           end
 
           sig do
@@ -1024,13 +993,7 @@ module Increase
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode) }
             OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  String,
-                  Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
-                )
-              end
+              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol) }
 
             # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
             INSUFFICIENT_FUND =
@@ -1852,7 +1815,7 @@ module Increase
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CardRefund::Cashback::Currency) }
               OrSymbol =
-                T.type_alias { T.any(Symbol, String, Increase::Models::Transaction::Source::CardRefund::Cashback::Currency::TaggedSymbol) }
+                T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CardRefund::Cashback::Currency::TaggedSymbol) }
 
               # Canadian Dollar (CAD)
               CAD = T.let(:CAD, Increase::Models::Transaction::Source::CardRefund::Cashback::Currency::TaggedSymbol)
@@ -1889,7 +1852,7 @@ module Increase
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CardRefund::Currency) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, String, Increase::Models::Transaction::Source::CardRefund::Currency::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CardRefund::Currency::TaggedSymbol) }
 
             # Canadian Dollar (CAD)
             CAD = T.let(:CAD, Increase::Models::Transaction::Source::CardRefund::Currency::TaggedSymbol)
@@ -1963,13 +1926,7 @@ module Increase
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CardRefund::Interchange::Currency) }
               OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    String,
-                    Increase::Models::Transaction::Source::CardRefund::Interchange::Currency::TaggedSymbol
-                  )
-                end
+                T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CardRefund::Interchange::Currency::TaggedSymbol) }
 
               # Canadian Dollar (CAD)
               CAD = T.let(:CAD, Increase::Models::Transaction::Source::CardRefund::Interchange::Currency::TaggedSymbol)
@@ -2362,7 +2319,6 @@ module Increase
                   T.type_alias do
                     T.any(
                       Symbol,
-                      String,
                       Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
                     )
                   end
@@ -2432,7 +2388,6 @@ module Increase
                   T.type_alias do
                     T.any(
                       Symbol,
-                      String,
                       Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
                     )
                   end
@@ -2634,7 +2589,6 @@ module Increase
                   T.type_alias do
                     T.any(
                       Symbol,
-                      String,
                       Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                     )
                   end
@@ -2711,7 +2665,6 @@ module Increase
                   T.type_alias do
                     T.any(
                       Symbol,
-                      String,
                       Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
                     )
                   end
@@ -2753,7 +2706,6 @@ module Increase
                 T.type_alias do
                   T.any(
                     Symbol,
-                    String,
                     Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
                   )
                 end
@@ -3056,7 +3008,6 @@ module Increase
                     T.type_alias do
                       T.any(
                         Symbol,
-                        String,
                         Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
                       )
                     end
@@ -3154,7 +3105,6 @@ module Increase
                       T.type_alias do
                         T.any(
                           Symbol,
-                          String,
                           Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                         )
                       end
@@ -3353,7 +3303,6 @@ module Increase
                   T.type_alias do
                     T.any(
                       Symbol,
-                      String,
                       Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                     )
                   end
@@ -3424,7 +3373,6 @@ module Increase
                   T.type_alias do
                     T.any(
                       Symbol,
-                      String,
                       Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
                     )
                   end
@@ -3467,7 +3415,6 @@ module Increase
                   T.type_alias do
                     T.any(
                       Symbol,
-                      String,
                       Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
                     )
                   end
@@ -3589,7 +3536,6 @@ module Increase
                     T.type_alias do
                       T.any(
                         Symbol,
-                        String,
                         Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
                       )
                     end
@@ -3637,7 +3583,7 @@ module Increase
 
             TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CardRefund::Type) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, String, Increase::Models::Transaction::Source::CardRefund::Type::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CardRefund::Type::TaggedSymbol) }
 
             CARD_REFUND = T.let(:card_refund, Increase::Models::Transaction::Source::CardRefund::Type::TaggedSymbol)
 
@@ -3709,7 +3655,7 @@ module Increase
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CardRevenuePayment::Currency) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, String, Increase::Models::Transaction::Source::CardRevenuePayment::Currency::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CardRevenuePayment::Currency::TaggedSymbol) }
 
             # Canadian Dollar (CAD)
             CAD = T.let(:CAD, Increase::Models::Transaction::Source::CardRevenuePayment::Currency::TaggedSymbol)
@@ -4000,13 +3946,7 @@ module Increase
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency) }
               OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    String,
-                    Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency::TaggedSymbol
-                  )
-                end
+                T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency::TaggedSymbol) }
 
               # Canadian Dollar (CAD)
               CAD =
@@ -4049,7 +3989,7 @@ module Increase
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CardSettlement::Currency) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, String, Increase::Models::Transaction::Source::CardSettlement::Currency::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CardSettlement::Currency::TaggedSymbol) }
 
             # Canadian Dollar (CAD)
             CAD = T.let(:CAD, Increase::Models::Transaction::Source::CardSettlement::Currency::TaggedSymbol)
@@ -4123,13 +4063,7 @@ module Increase
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency) }
               OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    String,
-                    Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency::TaggedSymbol
-                  )
-                end
+                T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency::TaggedSymbol) }
 
               # Canadian Dollar (CAD)
               CAD =
@@ -4538,7 +4472,6 @@ module Increase
                   T.type_alias do
                     T.any(
                       Symbol,
-                      String,
                       Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
                     )
                   end
@@ -4610,7 +4543,6 @@ module Increase
                   T.type_alias do
                     T.any(
                       Symbol,
-                      String,
                       Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
                     )
                   end
@@ -4814,7 +4746,6 @@ module Increase
                   T.type_alias do
                     T.any(
                       Symbol,
-                      String,
                       Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                     )
                   end
@@ -4893,7 +4824,6 @@ module Increase
                   T.type_alias do
                     T.any(
                       Symbol,
-                      String,
                       Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
                     )
                   end
@@ -4937,7 +4867,6 @@ module Increase
                 T.type_alias do
                   T.any(
                     Symbol,
-                    String,
                     Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
                   )
                 end
@@ -5250,7 +5179,6 @@ module Increase
                     T.type_alias do
                       T.any(
                         Symbol,
-                        String,
                         Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
                       )
                     end
@@ -5348,7 +5276,6 @@ module Increase
                       T.type_alias do
                         T.any(
                           Symbol,
-                          String,
                           Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                         )
                       end
@@ -5547,7 +5474,6 @@ module Increase
                   T.type_alias do
                     T.any(
                       Symbol,
-                      String,
                       Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                     )
                   end
@@ -5618,7 +5544,6 @@ module Increase
                   T.type_alias do
                     T.any(
                       Symbol,
-                      String,
                       Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
                     )
                   end
@@ -5661,7 +5586,6 @@ module Increase
                   T.type_alias do
                     T.any(
                       Symbol,
-                      String,
                       Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
                     )
                   end
@@ -5783,7 +5707,6 @@ module Increase
                     T.type_alias do
                       T.any(
                         Symbol,
-                        String,
                         Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
                       )
                     end
@@ -5832,7 +5755,7 @@ module Increase
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CardSettlement::Type) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, String, Increase::Models::Transaction::Source::CardSettlement::Type::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CardSettlement::Type::TaggedSymbol) }
 
             CARD_SETTLEMENT =
               T.let(:card_settlement, Increase::Models::Transaction::Source::CardSettlement::Type::TaggedSymbol)
@@ -5906,7 +5829,7 @@ module Increase
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CashbackPayment::Currency) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, String, Increase::Models::Transaction::Source::CashbackPayment::Currency::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CashbackPayment::Currency::TaggedSymbol) }
 
             # Canadian Dollar (CAD)
             CAD = T.let(:CAD, Increase::Models::Transaction::Source::CashbackPayment::Currency::TaggedSymbol)
@@ -5938,8 +5861,7 @@ module Increase
           extend Increase::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::Category) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::Transaction::Source::Category::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::Category::TaggedSymbol) }
 
           # Account Transfer Intention: details will be under the `account_transfer_intention` object.
           ACCOUNT_TRANSFER_INTENTION =
@@ -6121,15 +6043,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(
-            account_number:,
-            amount:,
-            auxiliary_on_us:,
-            check_deposit_id:,
-            currency:,
-            routing_number:,
-            serial_number:
-          )
+          def self.new(account_number:, amount:, auxiliary_on_us:, check_deposit_id:, currency:, routing_number:, serial_number:)
           end
 
           sig do
@@ -6157,13 +6071,7 @@ module Increase
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency) }
             OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  String,
-                  Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency::TaggedSymbol
-                )
-              end
+              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency::TaggedSymbol) }
 
             # Canadian Dollar (CAD)
             CAD = T.let(:CAD, Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency::TaggedSymbol)
@@ -6265,7 +6173,7 @@ module Increase
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CheckDepositReturn::Currency) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, String, Increase::Models::Transaction::Source::CheckDepositReturn::Currency::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CheckDepositReturn::Currency::TaggedSymbol) }
 
             # Canadian Dollar (CAD)
             CAD = T.let(:CAD, Increase::Models::Transaction::Source::CheckDepositReturn::Currency::TaggedSymbol)
@@ -6301,13 +6209,7 @@ module Increase
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason) }
             OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  String,
-                  Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol
-                )
-              end
+              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol) }
 
             # The check doesn't allow ACH conversion.
             ACH_CONVERSION_NOT_SUPPORTED =
@@ -6585,7 +6487,7 @@ module Increase
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::CheckTransferDeposit::Type) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, String, Increase::Models::Transaction::Source::CheckTransferDeposit::Type::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::CheckTransferDeposit::Type::TaggedSymbol) }
 
             CHECK_TRANSFER_DEPOSIT =
               T.let(
@@ -6657,7 +6559,7 @@ module Increase
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::FeePayment::Currency) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, String, Increase::Models::Transaction::Source::FeePayment::Currency::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::FeePayment::Currency::TaggedSymbol) }
 
             # Canadian Dollar (CAD)
             CAD = T.let(:CAD, Increase::Models::Transaction::Source::FeePayment::Currency::TaggedSymbol)
@@ -6859,13 +6761,7 @@ module Increase
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category) }
               OrSymbol =
-                T.type_alias do
-                  T.any(
-                    Symbol,
-                    String,
-                    Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category::TaggedSymbol
-                  )
-                end
+                T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category::TaggedSymbol) }
 
               # Unstructured addendum.
               FREEFORM =
@@ -6997,7 +6893,7 @@ module Increase
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, String, Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason::TaggedSymbol) }
 
             # The return was initiated too late and the receiving institution has responded with a Late Return Claim.
             LATE_RETURN =
@@ -7165,7 +7061,6 @@ module Increase
               T.type_alias do
                 T.any(
                   Symbol,
-                  String,
                   Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency::TaggedSymbol
                 )
               end
@@ -7339,7 +7234,6 @@ module Increase
               T.type_alias do
                 T.any(
                   Symbol,
-                  String,
                   Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol
                 )
               end
@@ -7406,7 +7300,6 @@ module Increase
               T.type_alias do
                 T.any(
                   Symbol,
-                  String,
                   Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol
                 )
               end
@@ -7857,7 +7750,7 @@ module Increase
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::InterestPayment::Currency) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, String, Increase::Models::Transaction::Source::InterestPayment::Currency::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::InterestPayment::Currency::TaggedSymbol) }
 
             # Canadian Dollar (CAD)
             CAD = T.let(:CAD, Increase::Models::Transaction::Source::InterestPayment::Currency::TaggedSymbol)
@@ -7934,7 +7827,7 @@ module Increase
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::InternalSource::Currency) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, String, Increase::Models::Transaction::Source::InternalSource::Currency::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::InternalSource::Currency::TaggedSymbol) }
 
             # Canadian Dollar (CAD)
             CAD = T.let(:CAD, Increase::Models::Transaction::Source::InternalSource::Currency::TaggedSymbol)
@@ -7967,7 +7860,7 @@ module Increase
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::Transaction::Source::InternalSource::Reason) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, String, Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol) }
 
             # Account closure
             ACCOUNT_CLOSURE =
@@ -8074,13 +7967,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(
-            amount:,
-            destination_account_number:,
-            destination_routing_number:,
-            remittance_information:,
-            transfer_id:
-          )
+          def self.new(amount:, destination_account_number:, destination_routing_number:, remittance_information:, transfer_id:)
           end
 
           sig do
@@ -8176,7 +8063,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Transaction::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::Transaction::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::Transaction::Type::TaggedSymbol) }
 
         TRANSACTION = T.let(:transaction, Increase::Models::Transaction::Type::TaggedSymbol)
 

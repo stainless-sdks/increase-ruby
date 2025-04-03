@@ -10,16 +10,22 @@ The underlying REST API documentation can be found on [increase.com](https://inc
 
 ## Installation
 
-To use this gem, install via Bundler by adding the following to your application's `Gemfile`:
+To use this gem during the beta, install directly from GitHub with Bundler by adding the following to your application's `Gemfile`:
 
 ```ruby
-gem "increase", "~> 0.1.0.pre.alpha.2"
+gem "increase", git: "https://github.com/Increase/increase-ruby", branch: "main"
 ```
 
 To fetch an initial copy of the gem:
 
 ```sh
 bundle install
+```
+
+To update the version used by your application when updates are pushed to GitHub:
+
+```sh
+bundle update increase
 ```
 
 ## Usage
@@ -68,7 +74,7 @@ When the library is unable to connect to the API, or if the API returns a non-su
 ```ruby
 begin
   account = increase.accounts.create
-rescue Increase::Errors::APIError => e
+rescue Increase::Error => e
   puts(e.status) # 400
 end
 ```
@@ -84,6 +90,7 @@ Error codes are as followed:
 | HTTP 409         | `ConflictError`            |
 | HTTP 422         | `UnprocessableEntityError` |
 | HTTP 429         | `RateLimitError`           |
+| HTTP >=500       | `InternalServerError`      |
 | Other HTTP error | `APIStatusError`           |
 | Timeout          | `APITimeoutError`          |
 | Network error    | `APIConnectionError`       |
@@ -147,7 +154,7 @@ Due to limitations with the Sorbet type system, where a method otherwise can tak
 Please follow Sorbet's [setup guides](https://sorbet.org/docs/adopting) for best experience.
 
 ```ruby
-model = Increase::Models::AccountCreateParams.new(
+model = AccountCreateParams.new(
   name: "New Account!",
   entity_id: "entity_n8y8tnk2p9339ti393yi",
   program_id: "program_i2v2os4mwza1oetokh9i"

@@ -3,7 +3,7 @@
 module Increase
   module Models
     class OAuthTokenCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The credential you request in exchange for the code. In Production, this is
@@ -55,14 +55,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        grant_type:,
-        client_id: nil,
-        client_secret: nil,
-        code: nil,
-        production_token: nil,
-        request_options: {}
-      )
+      def self.new(grant_type:, client_id: nil, client_secret: nil, code: nil, production_token: nil, request_options: {})
       end
 
       sig do
@@ -88,7 +81,7 @@ module Increase
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthTokenCreateParams::GrantType) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, String, Increase::Models::OAuthTokenCreateParams::GrantType::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, Increase::Models::OAuthTokenCreateParams::GrantType::TaggedSymbol) }
 
         # An OAuth authorization code.
         AUTHORIZATION_CODE =

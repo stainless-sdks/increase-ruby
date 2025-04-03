@@ -3,7 +3,7 @@
 module Increase
   module Models
     class CardDisputeListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       sig { returns(T.nilable(Increase::Models::CardDisputeListParams::CreatedAt)) }
@@ -54,14 +54,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        created_at: nil,
-        cursor: nil,
-        idempotency_key: nil,
-        limit: nil,
-        status: nil,
-        request_options: {}
-      )
+      def self.new(created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
       end
 
       sig do
@@ -150,7 +143,7 @@ module Increase
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardDisputeListParams::Status::In) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::CardDisputeListParams::Status::In::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, Increase::Models::CardDisputeListParams::Status::In::TaggedSymbol) }
 
           # The Card Dispute is pending review.
           PENDING_REVIEWING =

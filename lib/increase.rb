@@ -1,7 +1,21 @@
 # frozen_string_literal: true
 
+# We already ship the preferred sorbet manifests in the package itself.
+# `tapioca` currently does not offer us a way to opt out of unnecessary compilation.
+if Object.const_defined?(:Tapioca) && caller_locations.any? { _1.path.end_with?("tapioca/cli.rb") }
+  Warning.warn(
+    <<~WARN
+      \n
+      ⚠️ skipped loading of "increase" gem under `tapioca`.
+
+      This message is normal and expected if you are running a `tapioca` command, and does not impact `.rbi` generation.
+      \n
+    WARN
+  )
+  return
+end
+
 # Standard libraries.
-require "English"
 require "cgi"
 require "date"
 require "erb"
@@ -16,42 +30,19 @@ require "stringio"
 require "time"
 require "uri"
 
-# We already ship the preferred sorbet manifests in the package itself.
-# `tapioca` currently does not offer us a way to opt out of unnecessary compilation.
-if Object.const_defined?(:Tapioca) && caller.chain([$PROGRAM_NAME]).chain(ARGV).grep(/tapioca/)
-  Warning.warn(
-    <<~WARN
-      \n
-      ⚠️ skipped loading of "increase" gem under `tapioca`.
-
-      This message is normal and expected if you are running a `tapioca` command, and does not impact `.rbi` generation.
-      \n
-    WARN
-  )
-  return
-end
-
 # Gems.
 require "connection_pool"
 
 # Package files.
 require_relative "increase/version"
 require_relative "increase/util"
-require_relative "increase/type/converter"
-require_relative "increase/type/unknown"
-require_relative "increase/type/boolean_model"
-require_relative "increase/type/enum"
-require_relative "increase/type/union"
-require_relative "increase/type/array_of"
-require_relative "increase/type/hash_of"
-require_relative "increase/type/base_model"
-require_relative "increase/type/base_page"
-require_relative "increase/type/request_parameters"
-require_relative "increase/type"
+require_relative "increase/extern"
+require_relative "increase/base_model"
+require_relative "increase/base_page"
 require_relative "increase/request_options"
 require_relative "increase/errors"
-require_relative "increase/transport/base_client"
-require_relative "increase/transport/pooled_net_requester"
+require_relative "increase/base_client"
+require_relative "increase/pooled_net_requester"
 require_relative "increase/client"
 require_relative "increase/page"
 require_relative "increase/models/account"

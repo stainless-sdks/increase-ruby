@@ -3,7 +3,7 @@
 module Increase
   module Models
     class EntityCreateBeneficialOwnerParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The identifying details of anyone controlling or owning 25% or more of the
@@ -378,7 +378,6 @@ module Increase
                 T.type_alias do
                   T.any(
                     Symbol,
-                    String,
                     Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                   )
                 end
@@ -567,13 +566,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong) }
           OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                String,
-                Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::TaggedSymbol
-              )
-            end
+            T.type_alias { T.any(Symbol, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::TaggedSymbol) }
 
           # A person with 25% or greater direct or indirect ownership of the entity.
           OWNERSHIP =

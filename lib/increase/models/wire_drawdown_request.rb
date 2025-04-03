@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::WireDrawdownRequests#create
     class WireDrawdownRequest < Increase::BaseModel
       # @!attribute id
       #   The Wire drawdown request identifier.
@@ -195,8 +194,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # The lifecycle status of the drawdown request.
-      #
-      # @see Increase::Models::WireDrawdownRequest#status
       module Status
         extend Increase::Enum
 
@@ -219,7 +216,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @see Increase::Models::WireDrawdownRequest#submission
       class Submission < Increase::BaseModel
         # @!attribute input_message_accountability_data
         #   The input message accountability data (IMAD) uniquely identifying the submission
@@ -241,8 +237,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `wire_drawdown_request`.
-      #
-      # @see Increase::Models::WireDrawdownRequest#type
       module Type
         extend Increase::Enum
 

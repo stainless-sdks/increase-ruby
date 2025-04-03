@@ -5,18 +5,21 @@ module Increase
     class CheckDeposits
       # Create a Check Deposit
       #
-      # @overload create(account_id:, amount:, back_image_file_id:, front_image_file_id:, description: nil, request_options: {})
+      # @param params [Increase::Models::CheckDepositCreateParams, Hash{Symbol=>Object}] .
       #
-      # @param account_id [String]
-      # @param amount [Integer]
-      # @param back_image_file_id [String]
-      # @param front_image_file_id [String]
-      # @param description [String]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      #   @option params [String] :account_id The identifier for the Account to deposit the check in.
+      #
+      #   @option params [Integer] :amount The deposit amount in USD cents.
+      #
+      #   @option params [String] :back_image_file_id The File containing the check's back image.
+      #
+      #   @option params [String] :front_image_file_id The File containing the check's front image.
+      #
+      #   @option params [String] :description The description you choose to give the Check Deposit, for display purposes only.
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::CheckDeposit]
-      #
-      # @see Increase::Models::CheckDepositCreateParams
       def create(params)
         parsed, options = Increase::Models::CheckDepositCreateParams.dump_request(params)
         @client.request(
@@ -30,18 +33,17 @@ module Increase
 
       # Retrieve a Check Deposit
       #
-      # @overload retrieve(check_deposit_id, request_options: {})
+      # @param check_deposit_id [String] The identifier of the Check Deposit to retrieve.
       #
-      # @param check_deposit_id [String]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      # @param params [Increase::Models::CheckDepositRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::CheckDeposit]
-      #
-      # @see Increase::Models::CheckDepositRetrieveParams
       def retrieve(check_deposit_id, params = {})
         @client.request(
           method: :get,
-          path: ["check_deposits/%1$s", check_deposit_id],
+          path: ["check_deposits/%0s", check_deposit_id],
           model: Increase::Models::CheckDeposit,
           options: params[:request_options]
         )
@@ -49,18 +51,25 @@ module Increase
 
       # List Check Deposits
       #
-      # @overload list(account_id: nil, created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, request_options: {})
+      # @param params [Increase::Models::CheckDepositListParams, Hash{Symbol=>Object}] .
       #
-      # @param account_id [String]
-      # @param created_at [Increase::Models::CheckDepositListParams::CreatedAt]
-      # @param cursor [String]
-      # @param idempotency_key [String]
-      # @param limit [Integer]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      #   @option params [String] :account_id Filter Check Deposits to those belonging to the specified Account.
+      #
+      #   @option params [Increase::Models::CheckDepositListParams::CreatedAt] :created_at
+      #
+      #   @option params [String] :cursor Return the page of entries after this one.
+      #
+      #   @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
+      #     that object. This value is unique across Increase and is used to ensure that a
+      #     request is only processed once. Learn more about
+      #     [idempotency](https://increase.com/documentation/idempotency-keys).
+      #
+      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::CheckDeposit>]
-      #
-      # @see Increase::Models::CheckDepositListParams
       def list(params = {})
         parsed, options = Increase::Models::CheckDepositListParams.dump_request(params)
         @client.request(
@@ -73,8 +82,6 @@ module Increase
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

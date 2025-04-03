@@ -3,7 +3,7 @@
 module Increase
   module Models
     class RealTimePaymentsTransferListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter Real-Time Payments Transfers to those belonging to the specified Account.
@@ -184,7 +184,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransferListParams::Status::In) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, Increase::Models::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol) }
 
           # The transfer is pending approval.
           PENDING_APPROVAL =

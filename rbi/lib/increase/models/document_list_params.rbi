@@ -3,7 +3,7 @@
 module Increase
   module Models
     class DocumentListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       sig { returns(T.nilable(Increase::Models::DocumentListParams::Category)) }
@@ -51,14 +51,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        category: nil,
-        created_at: nil,
-        cursor: nil,
-        entity_id: nil,
-        limit: nil,
-        request_options: {}
-      )
+      def self.new(category: nil, created_at: nil, cursor: nil, entity_id: nil, limit: nil, request_options: {})
       end
 
       sig do
@@ -103,7 +96,7 @@ module Increase
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DocumentListParams::Category::In) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::DocumentListParams::Category::In::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, Increase::Models::DocumentListParams::Category::In::TaggedSymbol) }
 
           # Internal Revenue Service Form 1099-INT.
           FORM_1099_INT = T.let(:form_1099_int, Increase::Models::DocumentListParams::Category::In::TaggedSymbol)

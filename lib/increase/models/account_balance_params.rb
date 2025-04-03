@@ -2,10 +2,9 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::Accounts#balance
     class AccountBalanceParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
+      #   extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # @!attribute [r] at_time

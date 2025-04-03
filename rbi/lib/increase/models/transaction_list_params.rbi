@@ -3,7 +3,7 @@
 module Increase
   module Models
     class TransactionListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter Transactions for those belonging to the specified Account.
@@ -113,7 +113,7 @@ module Increase
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::TransactionListParams::Category::In) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::TransactionListParams::Category::In::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, Increase::Models::TransactionListParams::Category::In::TaggedSymbol) }
 
           # Account Transfer Intention: details will be under the `account_transfer_intention` object.
           ACCOUNT_TRANSFER_INTENTION =

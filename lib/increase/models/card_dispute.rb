@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::CardDisputes#create
     class CardDispute < Increase::BaseModel
       # @!attribute id
       #   The Card Dispute identifier.
@@ -121,7 +120,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @see Increase::Models::CardDispute#acceptance
       class Acceptance < Increase::BaseModel
         # @!attribute accepted_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -156,7 +154,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @see Increase::Models::CardDispute#loss
       class Loss < Increase::BaseModel
         # @!attribute card_dispute_id
         #   The identifier of the Card Dispute that was lost.
@@ -198,7 +195,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @see Increase::Models::CardDispute#rejection
       class Rejection < Increase::BaseModel
         # @!attribute card_dispute_id
         #   The identifier of the Card Dispute that was rejected.
@@ -233,8 +229,6 @@ module Increase
       end
 
       # The results of the Dispute investigation.
-      #
-      # @see Increase::Models::CardDispute#status
       module Status
         extend Increase::Enum
 
@@ -265,8 +259,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `card_dispute`.
-      #
-      # @see Increase::Models::CardDispute#type
       module Type
         extend Increase::Enum
 
@@ -279,7 +271,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @see Increase::Models::CardDispute#win
       class Win < Increase::BaseModel
         # @!attribute card_dispute_id
         #   The identifier of the Card Dispute that was won.

@@ -3,7 +3,7 @@
 module Increase
   module Models
     class PhysicalCardCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The underlying card representing this physical card.
@@ -207,7 +207,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardCreateParams::Shipment::Method) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol) }
 
           # USPS Post with tracking.
           USPS = T.let(:usps, Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol)

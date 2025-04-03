@@ -5,18 +5,17 @@ module Increase
     class OAuthApplications
       # Retrieve an OAuth Application
       #
-      # @overload retrieve(oauth_application_id, request_options: {})
+      # @param oauth_application_id [String] The identifier of the OAuth Application.
       #
-      # @param oauth_application_id [String]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      # @param params [Increase::Models::OAuthApplicationRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::OAuthApplication]
-      #
-      # @see Increase::Models::OAuthApplicationRetrieveParams
       def retrieve(oauth_application_id, params = {})
         @client.request(
           method: :get,
-          path: ["oauth_applications/%1$s", oauth_application_id],
+          path: ["oauth_applications/%0s", oauth_application_id],
           model: Increase::Models::OAuthApplication,
           options: params[:request_options]
         )
@@ -24,17 +23,20 @@ module Increase
 
       # List OAuth Applications
       #
-      # @overload list(created_at: nil, cursor: nil, limit: nil, status: nil, request_options: {})
+      # @param params [Increase::Models::OAuthApplicationListParams, Hash{Symbol=>Object}] .
       #
-      # @param created_at [Increase::Models::OAuthApplicationListParams::CreatedAt]
-      # @param cursor [String]
-      # @param limit [Integer]
-      # @param status [Increase::Models::OAuthApplicationListParams::Status]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      #   @option params [Increase::Models::OAuthApplicationListParams::CreatedAt] :created_at
+      #
+      #   @option params [String] :cursor Return the page of entries after this one.
+      #
+      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
+      #
+      #   @option params [Increase::Models::OAuthApplicationListParams::Status] :status
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::OAuthApplication>]
-      #
-      # @see Increase::Models::OAuthApplicationListParams
       def list(params = {})
         parsed, options = Increase::Models::OAuthApplicationListParams.dump_request(params)
         @client.request(
@@ -47,8 +49,6 @@ module Increase
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

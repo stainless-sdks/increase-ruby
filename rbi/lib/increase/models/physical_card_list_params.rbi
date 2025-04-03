@@ -3,7 +3,7 @@
 module Increase
   module Models
     class PhysicalCardListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter Physical Cards to ones belonging to the specified Card.
@@ -58,14 +58,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        card_id: nil,
-        created_at: nil,
-        cursor: nil,
-        idempotency_key: nil,
-        limit: nil,
-        request_options: {}
-      )
+      def self.new(card_id: nil, created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, request_options: {})
       end
 
       sig do

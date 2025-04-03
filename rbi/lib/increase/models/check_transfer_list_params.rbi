@@ -3,7 +3,7 @@
 module Increase
   module Models
     class CheckTransferListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter Check Transfers to those that originated from the specified Account.
@@ -163,7 +163,7 @@ module Increase
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckTransferListParams::Status::In) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol) }
 
           # The transfer is awaiting approval.
           PENDING_APPROVAL =

@@ -75,7 +75,7 @@ module Increase
       def coerce_boolean(input)
         case input.is_a?(String) ? input.downcase : input
         in Numeric
-          input.nonzero?
+          !input.zero?
         in "true"
           true
         in "false"
@@ -165,12 +165,14 @@ module Increase
       private def deep_merge_lr(lhs, rhs, concat: false)
         case [lhs, rhs, concat]
         in [Hash, Hash, _]
-          rhs_cleaned = rhs.reject { _2 == Increase::Util::OMIT }
+          # rubocop:disable Style/YodaCondition
+          rhs_cleaned = rhs.reject { |_, val| OMIT == val }
           lhs
-            .reject { |key, _| rhs[key] == Increase::Util::OMIT }
+            .reject { |key, _| OMIT == rhs[key] }
             .merge(rhs_cleaned) do |_, old_val, new_val|
               deep_merge_lr(old_val, new_val, concat: concat)
             end
+          # rubocop:enable Style/YodaCondition
         in [Array, Array, true]
           lhs.concat(rhs)
         else
@@ -253,9 +255,9 @@ module Increase
           path
         in []
           ""
-        in [String => p, *interpolations]
+        in [String, *interpolations]
           encoded = interpolations.map { ERB::Util.url_encode(_1) }
-          format(p, *encoded)
+          path.first % encoded
         end
       end
     end
@@ -441,7 +443,7 @@ module Increase
       #
       # @yieldparam [Enumerator::Yielder]
       # @return [Enumerable]
-      def writable_enum(&blk)
+      def string_io(&blk)
         Enumerator.new do |y|
           y.define_singleton_method(:write) do
             self << _1.clone
@@ -454,13 +456,15 @@ module Increase
     end
 
     class << self
+      # rubocop:disable Naming/MethodParameterName
+
       # @api private
       #
       # @param y [Enumerator::Yielder]
       # @param boundary [String]
       # @param key [Symbol, String]
       # @param val [Object]
-      private def write_multipart_chunk(y, boundary:, key:, val:)
+      private def encode_multipart_formdata(y, boundary:, key:, val:)
         y << "--#{boundary}\r\n"
         y << "Content-Disposition: form-data"
         unless key.nil?
@@ -492,6 +496,8 @@ module Increase
         y << "\r\n"
       end
 
+      # rubocop:enable Naming/MethodParameterName
+
       # @api private
       #
       # @param body [Object]
@@ -500,21 +506,21 @@ module Increase
       private def encode_multipart_streaming(body)
         boundary = SecureRandom.urlsafe_base64(60)
 
-        strio = writable_enum do |y|
+        strio = string_io do |y|
           case body
           in Hash
             body.each do |key, val|
               case val
               in Array if val.all? { primitive?(_1) }
                 val.each do |v|
-                  write_multipart_chunk(y, boundary: boundary, key: key, val: v)
+                  encode_multipart_formdata(y, boundary: boundary, key: key, val: v)
                 end
               else
-                write_multipart_chunk(y, boundary: boundary, key: key, val: val)
+                encode_multipart_formdata(y, boundary: boundary, key: key, val: val)
               end
             end
           else
-            write_multipart_chunk(y, boundary: boundary, key: nil, val: body)
+            encode_multipart_formdata(y, boundary: boundary, key: nil, val: body)
           end
           y << "--#{boundary}--\r\n"
         end

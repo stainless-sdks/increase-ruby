@@ -2,10 +2,9 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::Entities#update_beneficial_owner_address
     class EntityUpdateBeneficialOwnerAddressParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
+      #   extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # @!attribute address

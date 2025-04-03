@@ -210,13 +210,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode) }
           OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                String,
-                Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol
-              )
-            end
+            T.type_alias { T.any(Symbol, Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol) }
 
           # No invoice level discount provided
           NO_INVOICE_LEVEL_DISCOUNT_PROVIDED =
@@ -254,7 +248,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol) }
 
           # No tax applies
           NO_TAX_APPLIES =
@@ -446,7 +440,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol) }
 
           # Normal
           NORMAL =
@@ -475,13 +469,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode) }
           OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                String,
-                Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol
-              )
-            end
+            T.type_alias { T.any(Symbol, Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol) }
 
           # No line item level discount provided
           NO_LINE_ITEM_LEVEL_DISCOUNT_PROVIDED =
@@ -519,8 +507,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardPurchaseSupplement::Type) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol) }
 
         CARD_PURCHASE_SUPPLEMENT =
           T.let(:card_purchase_supplement, Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol)

@@ -3,7 +3,6 @@
 module Increase
   module Models
     module Simulations
-      # @see Increase::Resources::Simulations::CardAuthorizations#create
       class CardAuthorizationCreateResponse < Increase::BaseModel
         # @!attribute declined_transaction
         #   If the authorization attempt fails, this will contain the resulting
@@ -41,8 +40,6 @@ module Increase
 
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_card_authorization_simulation_result`.
-        #
-        # @see Increase::Models::Simulations::CardAuthorizationCreateResponse#type
         module Type
           extend Increase::Enum
 

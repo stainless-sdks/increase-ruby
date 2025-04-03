@@ -2,10 +2,9 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::Cards#update
     class CardUpdateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
+      #   extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # @!attribute [r] billing_address

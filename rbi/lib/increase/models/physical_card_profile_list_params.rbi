@@ -3,7 +3,7 @@
 module Increase
   module Models
     class PhysicalCardProfileListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Return the page of entries after this one.
@@ -95,7 +95,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardProfileListParams::Status::In) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol) }
 
           # The Card Profile has not yet been processed by Increase.
           PENDING_CREATING =

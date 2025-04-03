@@ -4,7 +4,7 @@ module Increase
   module Models
     module Simulations
       class ACHTransferReturnParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
+        extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
         # The reason why the Federal Reserve or destination bank returned this transfer.
@@ -45,7 +45,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::Simulations::ACHTransferReturnParams::Reason) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol) }
 
           # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
           INSUFFICIENT_FUND =

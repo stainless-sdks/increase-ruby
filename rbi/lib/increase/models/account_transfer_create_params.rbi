@@ -3,7 +3,7 @@
 module Increase
   module Models
     class AccountTransferCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The identifier for the account that will send the transfer.
@@ -41,14 +41,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        account_id:,
-        amount:,
-        description:,
-        destination_account_id:,
-        require_approval: nil,
-        request_options: {}
-      )
+      def self.new(account_id:, amount:, description:, destination_account_id:, require_approval: nil, request_options: {})
       end
 
       sig do

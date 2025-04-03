@@ -3,7 +3,6 @@
 module Increase
   module Models
     module Simulations
-      # @see Increase::Resources::Simulations::InboundFundsHolds#release
       class InboundFundsHoldReleaseResponse < Increase::BaseModel
         # @!attribute id
         #   The Inbound Funds Hold identifier.
@@ -105,8 +104,6 @@ module Increase
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
         #   currency.
-        #
-        # @see Increase::Models::Simulations::InboundFundsHoldReleaseResponse#currency
         module Currency
           extend Increase::Enum
 
@@ -136,8 +133,6 @@ module Increase
         end
 
         # The status of the hold.
-        #
-        # @see Increase::Models::Simulations::InboundFundsHoldReleaseResponse#status
         module Status
           extend Increase::Enum
 
@@ -156,8 +151,6 @@ module Increase
 
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_funds_hold`.
-        #
-        # @see Increase::Models::Simulations::InboundFundsHoldReleaseResponse#type
         module Type
           extend Increase::Enum
 

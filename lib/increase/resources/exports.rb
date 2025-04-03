@@ -5,20 +5,29 @@ module Increase
     class Exports
       # Create an Export
       #
-      # @overload create(category:, account_statement_ofx: nil, balance_csv: nil, bookkeeping_account_balance_csv: nil, entity_csv: nil, transaction_csv: nil, vendor_csv: nil, request_options: {})
+      # @param params [Increase::Models::ExportCreateParams, Hash{Symbol=>Object}] .
       #
-      # @param category [Symbol, Increase::Models::ExportCreateParams::Category]
-      # @param account_statement_ofx [Increase::Models::ExportCreateParams::AccountStatementOfx]
-      # @param balance_csv [Increase::Models::ExportCreateParams::BalanceCsv]
-      # @param bookkeeping_account_balance_csv [Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv]
-      # @param entity_csv [Increase::Models::ExportCreateParams::EntityCsv]
-      # @param transaction_csv [Increase::Models::ExportCreateParams::TransactionCsv]
-      # @param vendor_csv [Object]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      #   @option params [Symbol, Increase::Models::ExportCreateParams::Category] :category The type of Export to create.
+      #
+      #   @option params [Increase::Models::ExportCreateParams::AccountStatementOfx] :account_statement_ofx Options for the created export. Required if `category` is equal to
+      #     `account_statement_ofx`.
+      #
+      #   @option params [Increase::Models::ExportCreateParams::BalanceCsv] :balance_csv Options for the created export. Required if `category` is equal to
+      #     `balance_csv`.
+      #
+      #   @option params [Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv] :bookkeeping_account_balance_csv Options for the created export. Required if `category` is equal to
+      #     `bookkeeping_account_balance_csv`.
+      #
+      #   @option params [Increase::Models::ExportCreateParams::EntityCsv] :entity_csv Options for the created export. Required if `category` is equal to `entity_csv`.
+      #
+      #   @option params [Increase::Models::ExportCreateParams::TransactionCsv] :transaction_csv Options for the created export. Required if `category` is equal to
+      #     `transaction_csv`.
+      #
+      #   @option params [Object] :vendor_csv Options for the created export. Required if `category` is equal to `vendor_csv`.
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Export]
-      #
-      # @see Increase::Models::ExportCreateParams
       def create(params)
         parsed, options = Increase::Models::ExportCreateParams.dump_request(params)
         @client.request(
@@ -32,18 +41,17 @@ module Increase
 
       # Retrieve an Export
       #
-      # @overload retrieve(export_id, request_options: {})
+      # @param export_id [String] The identifier of the Export to retrieve.
       #
-      # @param export_id [String]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      # @param params [Increase::Models::ExportRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Export]
-      #
-      # @see Increase::Models::ExportRetrieveParams
       def retrieve(export_id, params = {})
         @client.request(
           method: :get,
-          path: ["exports/%1$s", export_id],
+          path: ["exports/%0s", export_id],
           model: Increase::Models::Export,
           options: params[:request_options]
         )
@@ -51,19 +59,27 @@ module Increase
 
       # List Exports
       #
-      # @overload list(category: nil, created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
+      # @param params [Increase::Models::ExportListParams, Hash{Symbol=>Object}] .
       #
-      # @param category [Increase::Models::ExportListParams::Category]
-      # @param created_at [Increase::Models::ExportListParams::CreatedAt]
-      # @param cursor [String]
-      # @param idempotency_key [String]
-      # @param limit [Integer]
-      # @param status [Increase::Models::ExportListParams::Status]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      #   @option params [Increase::Models::ExportListParams::Category] :category
+      #
+      #   @option params [Increase::Models::ExportListParams::CreatedAt] :created_at
+      #
+      #   @option params [String] :cursor Return the page of entries after this one.
+      #
+      #   @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
+      #     that object. This value is unique across Increase and is used to ensure that a
+      #     request is only processed once. Learn more about
+      #     [idempotency](https://increase.com/documentation/idempotency-keys).
+      #
+      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
+      #
+      #   @option params [Increase::Models::ExportListParams::Status] :status
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::Export>]
-      #
-      # @see Increase::Models::ExportListParams
       def list(params = {})
         parsed, options = Increase::Models::ExportListParams.dump_request(params)
         @client.request(
@@ -76,8 +92,6 @@ module Increase
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

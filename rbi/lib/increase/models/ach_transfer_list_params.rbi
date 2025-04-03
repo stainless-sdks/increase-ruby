@@ -3,7 +3,7 @@
 module Increase
   module Models
     class ACHTransferListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter ACH Transfers to those that originated from the specified Account.
@@ -169,7 +169,7 @@ module Increase
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransferListParams::Status::In) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::ACHTransferListParams::Status::In::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, Increase::Models::ACHTransferListParams::Status::In::TaggedSymbol) }
 
           # The transfer is pending approval.
           PENDING_APPROVAL =

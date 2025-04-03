@@ -4,7 +4,7 @@ module Increase
   module Models
     module Simulations
       class InboundACHTransferCreateParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
+        extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
         # The identifier of the Account Number the inbound ACH Transfer is for.
@@ -155,7 +155,6 @@ module Increase
             T.type_alias do
               T.any(
                 Symbol,
-                String,
                 Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::TaggedSymbol
               )
             end

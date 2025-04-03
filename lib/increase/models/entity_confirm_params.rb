@@ -2,10 +2,9 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::Entities#confirm
     class EntityConfirmParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
+      #   extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # @!attribute [r] confirmed_at

@@ -5,15 +5,16 @@ module Increase
     class FileLinks
       # Create a File Link
       #
-      # @overload create(file_id:, expires_at: nil, request_options: {})
+      # @param params [Increase::Models::FileLinkCreateParams, Hash{Symbol=>Object}] .
       #
-      # @param file_id [String]
-      # @param expires_at [Time]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      #   @option params [String] :file_id The File to create a File Link for.
+      #
+      #   @option params [Time] :expires_at The time at which the File Link will expire. The default is 1 hour from the time
+      #     of the request. The maxiumum is 1 day from the time of the request.
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::FileLink]
-      #
-      # @see Increase::Models::FileLinkCreateParams
       def create(params)
         parsed, options = Increase::Models::FileLinkCreateParams.dump_request(params)
         @client.request(
@@ -25,8 +26,6 @@ module Increase
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

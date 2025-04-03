@@ -5,18 +5,17 @@ module Increase
     class Transactions
       # Retrieve a Transaction
       #
-      # @overload retrieve(transaction_id, request_options: {})
+      # @param transaction_id [String] The identifier of the Transaction to retrieve.
       #
-      # @param transaction_id [String]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      # @param params [Increase::Models::TransactionRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Transaction]
-      #
-      # @see Increase::Models::TransactionRetrieveParams
       def retrieve(transaction_id, params = {})
         @client.request(
           method: :get,
-          path: ["transactions/%1$s", transaction_id],
+          path: ["transactions/%0s", transaction_id],
           model: Increase::Models::Transaction,
           options: params[:request_options]
         )
@@ -24,19 +23,25 @@ module Increase
 
       # List Transactions
       #
-      # @overload list(account_id: nil, category: nil, created_at: nil, cursor: nil, limit: nil, route_id: nil, request_options: {})
+      # @param params [Increase::Models::TransactionListParams, Hash{Symbol=>Object}] .
       #
-      # @param account_id [String]
-      # @param category [Increase::Models::TransactionListParams::Category]
-      # @param created_at [Increase::Models::TransactionListParams::CreatedAt]
-      # @param cursor [String]
-      # @param limit [Integer]
-      # @param route_id [String]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      #   @option params [String] :account_id Filter Transactions for those belonging to the specified Account.
+      #
+      #   @option params [Increase::Models::TransactionListParams::Category] :category
+      #
+      #   @option params [Increase::Models::TransactionListParams::CreatedAt] :created_at
+      #
+      #   @option params [String] :cursor Return the page of entries after this one.
+      #
+      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
+      #
+      #   @option params [String] :route_id Filter Transactions for those belonging to the specified route. This could be a
+      #     Card ID or an Account Number ID.
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::Transaction>]
-      #
-      # @see Increase::Models::TransactionListParams
       def list(params = {})
         parsed, options = Increase::Models::TransactionListParams.dump_request(params)
         @client.request(
@@ -49,8 +54,6 @@ module Increase
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

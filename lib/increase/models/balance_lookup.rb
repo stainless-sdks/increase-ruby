@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::Accounts#balance
     class BalanceLookup < Increase::BaseModel
       # @!attribute account_id
       #   The identifier for the account for which the balance was queried.
@@ -46,8 +45,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `balance_lookup`.
-      #
-      # @see Increase::Models::BalanceLookup#type
       module Type
         extend Increase::Enum
 

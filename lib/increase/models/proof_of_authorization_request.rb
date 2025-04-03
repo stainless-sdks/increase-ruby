@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::ProofOfAuthorizationRequests#retrieve
     class ProofOfAuthorizationRequest < Increase::BaseModel
       # @!attribute id
       #   The Proof of Authorization Request identifier.
@@ -73,8 +72,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `proof_of_authorization_request`.
-      #
-      # @see Increase::Models::ProofOfAuthorizationRequest#type
       module Type
         extend Increase::Enum
 

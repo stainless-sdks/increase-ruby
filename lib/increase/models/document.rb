@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::Documents#retrieve
     class Document < Increase::BaseModel
       # @!attribute id
       #   The Document identifier.
@@ -58,8 +57,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # The type of document.
-      #
-      # @see Increase::Models::Document#category
       module Category
         extend Increase::Enum
 
@@ -84,8 +81,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `document`.
-      #
-      # @see Increase::Models::Document#type
       module Type
         extend Increase::Enum
 

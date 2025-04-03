@@ -5,17 +5,20 @@ module Increase
     class AccountNumbers
       # Create an Account Number
       #
-      # @overload create(account_id:, name:, inbound_ach: nil, inbound_checks: nil, request_options: {})
+      # @param params [Increase::Models::AccountNumberCreateParams, Hash{Symbol=>Object}] .
       #
-      # @param account_id [String]
-      # @param name [String]
-      # @param inbound_ach [Increase::Models::AccountNumberCreateParams::InboundACH]
-      # @param inbound_checks [Increase::Models::AccountNumberCreateParams::InboundChecks]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      #   @option params [String] :account_id The Account the Account Number should belong to.
+      #
+      #   @option params [String] :name The name you choose for the Account Number.
+      #
+      #   @option params [Increase::Models::AccountNumberCreateParams::InboundACH] :inbound_ach Options related to how this Account Number should handle inbound ACH transfers.
+      #
+      #   @option params [Increase::Models::AccountNumberCreateParams::InboundChecks] :inbound_checks Options related to how this Account Number should handle inbound check
+      #     withdrawals.
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::AccountNumber]
-      #
-      # @see Increase::Models::AccountNumberCreateParams
       def create(params)
         parsed, options = Increase::Models::AccountNumberCreateParams.dump_request(params)
         @client.request(
@@ -29,18 +32,17 @@ module Increase
 
       # Retrieve an Account Number
       #
-      # @overload retrieve(account_number_id, request_options: {})
+      # @param account_number_id [String] The identifier of the Account Number to retrieve.
       #
-      # @param account_number_id [String]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      # @param params [Increase::Models::AccountNumberRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::AccountNumber]
-      #
-      # @see Increase::Models::AccountNumberRetrieveParams
       def retrieve(account_number_id, params = {})
         @client.request(
           method: :get,
-          path: ["account_numbers/%1$s", account_number_id],
+          path: ["account_numbers/%0s", account_number_id],
           model: Increase::Models::AccountNumber,
           options: params[:request_options]
         )
@@ -48,23 +50,27 @@ module Increase
 
       # Update an Account Number
       #
-      # @overload update(account_number_id, inbound_ach: nil, inbound_checks: nil, name: nil, status: nil, request_options: {})
+      # @param account_number_id [String] The identifier of the Account Number.
       #
-      # @param account_number_id [String]
-      # @param inbound_ach [Increase::Models::AccountNumberUpdateParams::InboundACH]
-      # @param inbound_checks [Increase::Models::AccountNumberUpdateParams::InboundChecks]
-      # @param name [String]
-      # @param status [Symbol, Increase::Models::AccountNumberUpdateParams::Status]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      # @param params [Increase::Models::AccountNumberUpdateParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::Models::AccountNumberUpdateParams::InboundACH] :inbound_ach Options related to how this Account Number handles inbound ACH transfers.
+      #
+      #   @option params [Increase::Models::AccountNumberUpdateParams::InboundChecks] :inbound_checks Options related to how this Account Number should handle inbound check
+      #     withdrawals.
+      #
+      #   @option params [String] :name The name you choose for the Account Number.
+      #
+      #   @option params [Symbol, Increase::Models::AccountNumberUpdateParams::Status] :status This indicates if transfers can be made to the Account Number.
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::AccountNumber]
-      #
-      # @see Increase::Models::AccountNumberUpdateParams
       def update(account_number_id, params = {})
         parsed, options = Increase::Models::AccountNumberUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["account_numbers/%1$s", account_number_id],
+          path: ["account_numbers/%0s", account_number_id],
           body: parsed,
           model: Increase::Models::AccountNumber,
           options: options
@@ -73,20 +79,29 @@ module Increase
 
       # List Account Numbers
       #
-      # @overload list(account_id: nil, ach_debit_status: nil, created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
+      # @param params [Increase::Models::AccountNumberListParams, Hash{Symbol=>Object}] .
       #
-      # @param account_id [String]
-      # @param ach_debit_status [Increase::Models::AccountNumberListParams::ACHDebitStatus]
-      # @param created_at [Increase::Models::AccountNumberListParams::CreatedAt]
-      # @param cursor [String]
-      # @param idempotency_key [String]
-      # @param limit [Integer]
-      # @param status [Increase::Models::AccountNumberListParams::Status]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      #   @option params [String] :account_id Filter Account Numbers to those belonging to the specified Account.
+      #
+      #   @option params [Increase::Models::AccountNumberListParams::ACHDebitStatus] :ach_debit_status
+      #
+      #   @option params [Increase::Models::AccountNumberListParams::CreatedAt] :created_at
+      #
+      #   @option params [String] :cursor Return the page of entries after this one.
+      #
+      #   @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
+      #     that object. This value is unique across Increase and is used to ensure that a
+      #     request is only processed once. Learn more about
+      #     [idempotency](https://increase.com/documentation/idempotency-keys).
+      #
+      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
+      #
+      #   @option params [Increase::Models::AccountNumberListParams::Status] :status
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::AccountNumber>]
-      #
-      # @see Increase::Models::AccountNumberListParams
       def list(params = {})
         parsed, options = Increase::Models::AccountNumberListParams.dump_request(params)
         @client.request(
@@ -99,8 +114,6 @@ module Increase
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

@@ -3,7 +3,7 @@
 module Increase
   module Models
     class CheckDepositCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The identifier for the Account to deposit the check in.
@@ -40,14 +40,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        account_id:,
-        amount:,
-        back_image_file_id:,
-        front_image_file_id:,
-        description: nil,
-        request_options: {}
-      )
+      def self.new(account_id:, amount:, back_image_file_id:, front_image_file_id:, description: nil, request_options: {})
       end
 
       sig do

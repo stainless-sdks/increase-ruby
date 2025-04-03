@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::Cards#create
     class Card < Increase::BaseModel
       # @!attribute id
       #   The card identifier.
@@ -129,7 +128,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @see Increase::Models::Card#billing_address
       class BillingAddress < Increase::BaseModel
         # @!attribute city
         #   The city of the billing address.
@@ -175,7 +173,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @see Increase::Models::Card#digital_wallet
       class DigitalWallet < Increase::BaseModel
         # @!attribute digital_card_profile_id
         #   The digital card profile assigned to this digital card. Card profiles may also
@@ -213,8 +210,6 @@ module Increase
       end
 
       # This indicates if payments can be made with the card.
-      #
-      # @see Increase::Models::Card#status
       module Status
         extend Increase::Enum
 
@@ -236,8 +231,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `card`.
-      #
-      # @see Increase::Models::Card#type
       module Type
         extend Increase::Enum
 

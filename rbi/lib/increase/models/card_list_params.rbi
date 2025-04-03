@@ -3,7 +3,7 @@
 module Increase
   module Models
     class CardListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter Cards to ones belonging to the specified Account.
@@ -155,8 +155,7 @@ module Increase
           extend Increase::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardListParams::Status::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::CardListParams::Status::In::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CardListParams::Status::In::TaggedSymbol) }
 
           # The card is active.
           ACTIVE = T.let(:active, Increase::Models::CardListParams::Status::In::TaggedSymbol)

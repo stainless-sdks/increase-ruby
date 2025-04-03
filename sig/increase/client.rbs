@@ -1,5 +1,5 @@
 module Increase
-  class Client < Increase::Transport::BaseClient
+  class Client < Increase::BaseClient
     DEFAULT_MAX_RETRIES: 2
 
     DEFAULT_TIMEOUT_IN_SECONDS: Float
@@ -126,9 +126,9 @@ module Increase
     private def auth_headers: -> ::Hash[String, String]
 
     def initialize: (
-      ?api_key: String?,
       ?environment: :production | :sandbox | nil,
       ?base_url: String?,
+      ?api_key: String?,
       ?max_retries: Integer,
       ?timeout: Float,
       ?initial_retry_delay: Float,

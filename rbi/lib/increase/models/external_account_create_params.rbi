@@ -3,7 +3,7 @@
 module Increase
   module Models
     class ExternalAccountCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The account number for the destination account.
@@ -44,14 +44,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        account_number:,
-        description:,
-        routing_number:,
-        account_holder: nil,
-        funding: nil,
-        request_options: {}
-      )
+      def self.new(account_number:, description:, routing_number:, account_holder: nil, funding: nil, request_options: {})
       end
 
       sig do
@@ -77,7 +70,7 @@ module Increase
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountCreateParams::AccountHolder) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, String, Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol) }
 
         # The External Account is owned by a business.
         BUSINESS = T.let(:business, Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol)
@@ -100,7 +93,7 @@ module Increase
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountCreateParams::Funding) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, String, Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol) }
 
         # A checking account.
         CHECKING = T.let(:checking, Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol)

@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::DigitalWalletTokens#retrieve
     class DigitalWalletToken < Increase::BaseModel
       # @!attribute id
       #   The Digital Wallet Token identifier.
@@ -79,7 +78,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @see Increase::Models::DigitalWalletToken#cardholder
       class Cardholder < Increase::BaseModel
         # @!attribute name
         #   Name of the cardholder, for example "John Smith".
@@ -97,7 +95,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @see Increase::Models::DigitalWalletToken#device
       class Device < Increase::BaseModel
         # @!attribute device_type
         #   Device type.
@@ -136,8 +133,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # Device type.
-        #
-        # @see Increase::Models::DigitalWalletToken::Device#device_type
         module DeviceType
           extend Increase::Enum
 
@@ -177,8 +172,6 @@ module Increase
       end
 
       # This indicates if payments can be made with the Digital Wallet Token.
-      #
-      # @see Increase::Models::DigitalWalletToken#status
       module Status
         extend Increase::Enum
 
@@ -202,8 +195,6 @@ module Increase
       end
 
       # The digital wallet app being used.
-      #
-      # @see Increase::Models::DigitalWalletToken#token_requestor
       module TokenRequestor
         extend Increase::Enum
 
@@ -228,8 +219,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `digital_wallet_token`.
-      #
-      # @see Increase::Models::DigitalWalletToken#type
       module Type
         extend Increase::Enum
 
@@ -265,8 +254,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # The status the update changed this Digital Wallet Token to.
-        #
-        # @see Increase::Models::DigitalWalletToken::Update#status
         module Status
           extend Increase::Enum
 

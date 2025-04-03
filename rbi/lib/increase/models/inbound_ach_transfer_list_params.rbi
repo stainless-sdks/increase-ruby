@@ -3,7 +3,7 @@
 module Increase
   module Models
     class InboundACHTransferListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter Inbound ACH Transfers to ones belonging to the specified Account.
@@ -162,7 +162,7 @@ module Increase
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundACHTransferListParams::Status::In) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol) }
 
           # The Inbound ACH Transfer is awaiting action, will transition automatically if no action is taken.
           PENDING = T.let(:pending, Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol)

@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::PhysicalCards#create
     class PhysicalCard < Increase::BaseModel
       # @!attribute id
       #   The physical card identifier.
@@ -96,7 +95,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @see Increase::Models::PhysicalCard#cardholder
       class Cardholder < Increase::BaseModel
         # @!attribute first_name
         #   The cardholder's first name.
@@ -121,7 +119,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @see Increase::Models::PhysicalCard#shipment
       class Shipment < Increase::BaseModel
         # @!attribute address
         #   The location to where the card's packing label is addressed.
@@ -159,7 +156,6 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @see Increase::Models::PhysicalCard::Shipment#address
         class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the shipping address.
@@ -220,8 +216,6 @@ module Increase
         end
 
         # The shipping method.
-        #
-        # @see Increase::Models::PhysicalCard::Shipment#method_
         module Method
           extend Increase::Enum
 
@@ -242,8 +236,6 @@ module Increase
         end
 
         # The status of this shipment.
-        #
-        # @see Increase::Models::PhysicalCard::Shipment#status
         module Status
           extend Increase::Enum
 
@@ -275,7 +267,6 @@ module Increase
           #   def self.values; end
         end
 
-        # @see Increase::Models::PhysicalCard::Shipment#tracking
         class Tracking < Increase::BaseModel
           # @!attribute number
           #   The tracking number.
@@ -318,8 +309,6 @@ module Increase
       end
 
       # The status of the Physical Card.
-      #
-      # @see Increase::Models::PhysicalCard#status
       module Status
         extend Increase::Enum
 
@@ -341,8 +330,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `physical_card`.
-      #
-      # @see Increase::Models::PhysicalCard#type
       module Type
         extend Increase::Enum
 

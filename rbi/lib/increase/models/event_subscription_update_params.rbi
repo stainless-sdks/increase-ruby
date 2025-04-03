@@ -3,7 +3,7 @@
 module Increase
   module Models
     class EventSubscriptionUpdateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The status to update the Event Subscription with.
@@ -41,7 +41,7 @@ module Increase
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EventSubscriptionUpdateParams::Status) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, String, Increase::Models::EventSubscriptionUpdateParams::Status::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, Increase::Models::EventSubscriptionUpdateParams::Status::TaggedSymbol) }
 
         # The subscription is active and Events will be delivered normally.
         ACTIVE = T.let(:active, Increase::Models::EventSubscriptionUpdateParams::Status::TaggedSymbol)

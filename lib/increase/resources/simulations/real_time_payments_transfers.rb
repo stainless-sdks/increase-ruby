@@ -9,29 +9,27 @@ module Increase
         #   response from the destination financial institution. This transfer must first
         #   have a `status` of `pending_submission`.
         #
-        # @overload complete(real_time_payments_transfer_id, rejection: nil, request_options: {})
+        # @param real_time_payments_transfer_id [String] The identifier of the Real-Time Payments Transfer you wish to complete.
         #
-        # @param real_time_payments_transfer_id [String]
-        # @param rejection [Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection]
-        # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+        # @param params [Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams, Hash{Symbol=>Object}] .
+        #
+        #   @option params [Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection] :rejection If set, the simulation will reject the transfer.
+        #
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::RealTimePaymentsTransfer]
-        #
-        # @see Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams
         def complete(real_time_payments_transfer_id, params = {})
           parsed, options =
             Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams.dump_request(params)
           @client.request(
             method: :post,
-            path: ["simulations/real_time_payments_transfers/%1$s/complete", real_time_payments_transfer_id],
+            path: ["simulations/real_time_payments_transfers/%0s/complete", real_time_payments_transfer_id],
             body: parsed,
             model: Increase::Models::RealTimePaymentsTransfer,
             options: options
           )
         end
 
-        # @api private
-        #
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client

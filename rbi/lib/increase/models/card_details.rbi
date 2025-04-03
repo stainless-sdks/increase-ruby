@@ -42,14 +42,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        card_id:,
-        expiration_month:,
-        expiration_year:,
-        primary_account_number:,
-        type:,
-        verification_code:
-      )
+      def self.new(card_id:, expiration_month:, expiration_year:, primary_account_number:, type:, verification_code:)
       end
 
       sig do
@@ -74,7 +67,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardDetails::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::CardDetails::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CardDetails::Type::TaggedSymbol) }
 
         CARD_DETAILS = T.let(:card_details, Increase::Models::CardDetails::Type::TaggedSymbol)
 

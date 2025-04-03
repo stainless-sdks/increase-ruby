@@ -3,10 +3,9 @@
 module Increase
   module Models
     module Simulations
-      # @see Increase::Resources::Simulations::InboundFundsHolds#release
       class InboundFundsHoldReleaseParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Type::RequestParameters::Converter
+        #   extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
         # @!parse

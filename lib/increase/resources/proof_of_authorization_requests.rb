@@ -5,18 +5,17 @@ module Increase
     class ProofOfAuthorizationRequests
       # Retrieve a Proof of Authorization Request
       #
-      # @overload retrieve(proof_of_authorization_request_id, request_options: {})
+      # @param proof_of_authorization_request_id [String] The identifier of the Proof of Authorization Request.
       #
-      # @param proof_of_authorization_request_id [String]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      # @param params [Increase::Models::ProofOfAuthorizationRequestRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::ProofOfAuthorizationRequest]
-      #
-      # @see Increase::Models::ProofOfAuthorizationRequestRetrieveParams
       def retrieve(proof_of_authorization_request_id, params = {})
         @client.request(
           method: :get,
-          path: ["proof_of_authorization_requests/%1$s", proof_of_authorization_request_id],
+          path: ["proof_of_authorization_requests/%0s", proof_of_authorization_request_id],
           model: Increase::Models::ProofOfAuthorizationRequest,
           options: params[:request_options]
         )
@@ -24,16 +23,18 @@ module Increase
 
       # List Proof of Authorization Requests
       #
-      # @overload list(created_at: nil, cursor: nil, limit: nil, request_options: {})
+      # @param params [Increase::Models::ProofOfAuthorizationRequestListParams, Hash{Symbol=>Object}] .
       #
-      # @param created_at [Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt]
-      # @param cursor [String]
-      # @param limit [Integer]
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
+      #   @option params [Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt] :created_at
+      #
+      #   @option params [String] :cursor Return the page of entries after this one.
+      #
+      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::ProofOfAuthorizationRequest>]
-      #
-      # @see Increase::Models::ProofOfAuthorizationRequestListParams
       def list(params = {})
         parsed, options = Increase::Models::ProofOfAuthorizationRequestListParams.dump_request(params)
         @client.request(
@@ -46,8 +47,6 @@ module Increase
         )
       end
 
-      # @api private
-      #
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client

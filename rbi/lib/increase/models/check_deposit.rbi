@@ -247,15 +247,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(
-          account_number:,
-          amount:,
-          auxiliary_on_us:,
-          check_deposit_id:,
-          currency:,
-          routing_number:,
-          serial_number:
-        )
+        def self.new(account_number:, amount:, auxiliary_on_us:, check_deposit_id:, currency:, routing_number:, serial_number:)
         end
 
         sig do
@@ -283,7 +275,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::DepositAcceptance::Currency) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol) }
 
           # Canadian Dollar (CAD)
           CAD = T.let(:CAD, Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol)
@@ -376,7 +368,7 @@ module Increase
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::DepositRejection::Currency) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol) }
 
           # Canadian Dollar (CAD)
           CAD = T.let(:CAD, Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol)
@@ -407,7 +399,7 @@ module Increase
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::DepositRejection::Reason) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol) }
 
           # The check's image is incomplete.
           INCOMPLETE_IMAGE =
@@ -531,7 +523,7 @@ module Increase
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::DepositReturn::Currency) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol) }
 
           # Canadian Dollar (CAD)
           CAD = T.let(:CAD, Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol)
@@ -564,7 +556,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::DepositReturn::ReturnReason) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol) }
 
           # The check doesn't allow ACH conversion.
           ACH_CONVERSION_NOT_SUPPORTED =
@@ -825,7 +817,7 @@ module Increase
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Currency) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol) }
 
           # Canadian Dollar (CAD)
           CAD = T.let(:CAD, Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol)
@@ -856,7 +848,7 @@ module Increase
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Status) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::CheckDeposit::InboundFundsHold::Status::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Status::TaggedSymbol) }
 
           # Funds are still being held.
           HELD = T.let(:held, Increase::Models::CheckDeposit::InboundFundsHold::Status::TaggedSymbol)
@@ -876,7 +868,7 @@ module Increase
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Type) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::CheckDeposit::InboundFundsHold::Type::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Type::TaggedSymbol) }
 
           INBOUND_FUNDS_HOLD =
             T.let(:inbound_funds_hold, Increase::Models::CheckDeposit::InboundFundsHold::Type::TaggedSymbol)
@@ -892,7 +884,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::CheckDeposit::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::Status::TaggedSymbol) }
 
         # The Check Deposit is pending review.
         PENDING = T.let(:pending, Increase::Models::CheckDeposit::Status::TaggedSymbol)
@@ -917,7 +909,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckDeposit::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::CheckDeposit::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::CheckDeposit::Type::TaggedSymbol) }
 
         CHECK_DEPOSIT = T.let(:check_deposit, Increase::Models::CheckDeposit::Type::TaggedSymbol)
 

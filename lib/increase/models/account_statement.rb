@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::AccountStatements#retrieve
     class AccountStatement < Increase::BaseModel
       # @!attribute id
       #   The Account Statement identifier.
@@ -96,8 +95,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `account_statement`.
-      #
-      # @see Increase::Models::AccountStatement#type
       module Type
         extend Increase::Enum
 

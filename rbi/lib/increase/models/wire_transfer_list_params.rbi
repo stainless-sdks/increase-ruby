@@ -3,7 +3,7 @@
 module Increase
   module Models
     class WireTransferListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter Wire Transfers to those belonging to the specified Account.

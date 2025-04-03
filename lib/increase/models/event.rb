@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::Events#retrieve
     class Event < Increase::BaseModel
       # @!attribute id
       #   The Event identifier.
@@ -61,8 +60,6 @@ module Increase
 
       # The category of the Event. We may add additional possible values for this enum
       #   over time; your application should be able to handle such additions gracefully.
-      #
-      # @see Increase::Models::Event#category
       module Category
         extend Increase::Enum
 
@@ -341,8 +338,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `event`.
-      #
-      # @see Increase::Models::Event#type
       module Type
         extend Increase::Enum
 

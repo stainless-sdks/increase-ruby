@@ -3,10 +3,9 @@
 module Increase
   module Models
     module Simulations
-      # @see Increase::Resources::Simulations::InboundWireTransfers#create
       class InboundWireTransferCreateParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Type::RequestParameters::Converter
+        #   extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
         # @!attribute account_number_id

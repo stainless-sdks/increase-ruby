@@ -3,7 +3,7 @@
 module Increase
   module Models
     class IntrafiAccountEnrollmentRetrieveParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       sig do

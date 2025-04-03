@@ -4,7 +4,7 @@ module Increase
   module Models
     module Simulations
       class CardRefundCreateParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
+        extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
         # The identifier for the Transaction to refund. The Transaction's source must have

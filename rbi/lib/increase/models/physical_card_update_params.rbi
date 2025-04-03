@@ -3,7 +3,7 @@
 module Increase
   module Models
     class PhysicalCardUpdateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The status to update the Physical Card to.
@@ -38,7 +38,7 @@ module Increase
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardUpdateParams::Status) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, String, Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol) }
 
         # The physical card is active.
         ACTIVE = T.let(:active, Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol)

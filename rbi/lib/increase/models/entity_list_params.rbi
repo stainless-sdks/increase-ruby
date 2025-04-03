@@ -3,7 +3,7 @@
 module Increase
   module Models
     class EntityListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       sig { returns(T.nilable(Increase::Models::EntityListParams::CreatedAt)) }
@@ -54,14 +54,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        created_at: nil,
-        cursor: nil,
-        idempotency_key: nil,
-        limit: nil,
-        status: nil,
-        request_options: {}
-      )
+      def self.new(created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
       end
 
       sig do
@@ -146,8 +139,7 @@ module Increase
           extend Increase::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EntityListParams::Status::In) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::EntityListParams::Status::In::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::EntityListParams::Status::In::TaggedSymbol) }
 
           # The entity is active.
           ACTIVE = T.let(:active, Increase::Models::EntityListParams::Status::In::TaggedSymbol)

@@ -3,7 +3,7 @@
 module Increase
   module Models
     class InboundACHTransferDeclineParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The reason why this transfer will be returned. If this parameter is unset, the
@@ -45,7 +45,7 @@ module Increase
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundACHTransferDeclineParams::Reason) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, String, Increase::Models::InboundACHTransferDeclineParams::Reason::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, Increase::Models::InboundACHTransferDeclineParams::Reason::TaggedSymbol) }
 
         # The customer's account has insufficient funds. This reason is only allowed for debits. The Nacha return code is R01.
         INSUFFICIENT_FUNDS =

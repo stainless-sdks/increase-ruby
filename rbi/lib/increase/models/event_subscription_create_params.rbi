@@ -3,7 +3,7 @@
 module Increase
   module Models
     class EventSubscriptionCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The URL you'd like us to send webhooks to.
@@ -49,13 +49,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        url:,
-        oauth_connection_id: nil,
-        selected_event_category: nil,
-        shared_secret: nil,
-        request_options: {}
-      )
+      def self.new(url:, oauth_connection_id: nil, selected_event_category: nil, shared_secret: nil, request_options: {})
       end
 
       sig do
@@ -81,13 +75,7 @@ module Increase
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory) }
         OrSymbol =
-          T.type_alias do
-            T.any(
-              Symbol,
-              String,
-              Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol
-            )
-          end
+          T.type_alias { T.any(Symbol, Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol) }
 
         # Occurs whenever an Account is created.
         ACCOUNT_CREATED =

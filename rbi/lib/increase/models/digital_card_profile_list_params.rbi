@@ -3,7 +3,7 @@
 module Increase
   module Models
     class DigitalCardProfileListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Return the page of entries after this one.
@@ -91,7 +91,7 @@ module Increase
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalCardProfileListParams::Status::In) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, Increase::Models::DigitalCardProfileListParams::Status::In::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, Increase::Models::DigitalCardProfileListParams::Status::In::TaggedSymbol) }
 
           # The Card Profile is awaiting review from Increase and/or processing by card networks.
           PENDING = T.let(:pending, Increase::Models::DigitalCardProfileListParams::Status::In::TaggedSymbol)

@@ -3,7 +3,7 @@
 module Increase
   module Models
     class AccountTransferListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # Filter Account Transfers to those that originated from the specified Account.
@@ -58,14 +58,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        account_id: nil,
-        created_at: nil,
-        cursor: nil,
-        idempotency_key: nil,
-        limit: nil,
-        request_options: {}
-      )
+      def self.new(account_id: nil, created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, request_options: {})
       end
 
       sig do

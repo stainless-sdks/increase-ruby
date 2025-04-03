@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::Exports#create
     class Export < Increase::BaseModel
       # @!attribute id
       #   The Export identifier.
@@ -80,8 +79,6 @@ module Increase
 
       # The category of the Export. We may add additional possible values for this enum
       #   over time; your application should be able to handle that gracefully.
-      #
-      # @see Increase::Models::Export#category
       module Category
         extend Increase::Enum
 
@@ -114,8 +111,6 @@ module Increase
       end
 
       # The status of the Export.
-      #
-      # @see Increase::Models::Export#status
       module Status
         extend Increase::Enum
 
@@ -137,8 +132,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `export`.
-      #
-      # @see Increase::Models::Export#type
       module Type
         extend Increase::Enum
 

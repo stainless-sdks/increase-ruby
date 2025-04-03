@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::OAuthTokens#create
     class OAuthToken < Increase::BaseModel
       # @!attribute access_token
       #   You may use this token in place of an API key to make OAuth requests on a user's
@@ -38,8 +37,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # The type of OAuth token.
-      #
-      # @see Increase::Models::OAuthToken#token_type
       module TokenType
         extend Increase::Enum
 
@@ -54,8 +51,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `oauth_token`.
-      #
-      # @see Increase::Models::OAuthToken#type
       module Type
         extend Increase::Enum
 

@@ -3,7 +3,7 @@
 module Increase
   module Models
     class FileCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
+      extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
       # The file contents. This should follow the specifications of
@@ -54,8 +54,7 @@ module Increase
         extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::FileCreateParams::Purpose) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Increase::Models::FileCreateParams::Purpose::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, Increase::Models::FileCreateParams::Purpose::TaggedSymbol) }
 
         # An image of the front of a check, used for check deposits.
         CHECK_IMAGE_FRONT = T.let(:check_image_front, Increase::Models::FileCreateParams::Purpose::TaggedSymbol)

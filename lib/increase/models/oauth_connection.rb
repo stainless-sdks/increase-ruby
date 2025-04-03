@@ -2,7 +2,6 @@
 
 module Increase
   module Models
-    # @see Increase::Resources::OAuthConnections#retrieve
     class OAuthConnection < Increase::BaseModel
       # @!attribute id
       #   The OAuth Connection's identifier.
@@ -67,8 +66,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # Whether the connection is active.
-      #
-      # @see Increase::Models::OAuthConnection#status
       module Status
         extend Increase::Enum
 
@@ -87,8 +84,6 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       #   `oauth_connection`.
-      #
-      # @see Increase::Models::OAuthConnection#type
       module Type
         extend Increase::Enum
 

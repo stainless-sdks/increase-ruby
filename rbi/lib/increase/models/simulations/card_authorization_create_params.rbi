@@ -4,7 +4,7 @@ module Increase
   module Models
     module Simulations
       class CardAuthorizationCreateParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
+        extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
         # The authorization amount in cents.
@@ -230,13 +230,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason) }
           OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                String,
-                Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
-              )
-            end
+            T.type_alias { T.any(Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol) }
 
           # The account has been closed.
           ACCOUNT_CLOSED =
@@ -375,13 +369,7 @@ module Increase
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::Direction) }
           OrSymbol =
-            T.type_alias do
-              T.any(
-                Symbol,
-                String,
-                Increase::Models::Simulations::CardAuthorizationCreateParams::Direction::TaggedSymbol
-              )
-            end
+            T.type_alias { T.any(Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::Direction::TaggedSymbol) }
 
           # A regular card authorization where funds are debited from the cardholder.
           SETTLEMENT =
@@ -487,7 +475,6 @@ module Increase
                 T.type_alias do
                   T.any(
                     Symbol,
-                    String,
                     Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
                 end
