@@ -69,10 +69,10 @@ class IncreaseTest < Minitest::Test
 
   def test_client_default_request_default_retry_attempts
     increase = Increase::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
-    requester = MockRequester.new(500, {}, {"type" => "internal_server_error"})
+    requester = MockRequester.new(500, {}, {})
     increase.requester = requester
 
-    assert_raises(Increase::InternalServerError) do
+    assert_raises(Increase::Errors::InternalServerError) do
       increase.accounts.create(name: "New Account!")
     end
 
@@ -81,10 +81,10 @@ class IncreaseTest < Minitest::Test
 
   def test_client_given_request_default_retry_attempts
     increase = Increase::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 3)
-    requester = MockRequester.new(500, {}, {"type" => "internal_server_error"})
+    requester = MockRequester.new(500, {}, {})
     increase.requester = requester
 
-    assert_raises(Increase::InternalServerError) do
+    assert_raises(Increase::Errors::InternalServerError) do
       increase.accounts.create(name: "New Account!")
     end
 
@@ -93,10 +93,10 @@ class IncreaseTest < Minitest::Test
 
   def test_client_default_request_given_retry_attempts
     increase = Increase::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
-    requester = MockRequester.new(500, {}, {"type" => "internal_server_error"})
+    requester = MockRequester.new(500, {}, {})
     increase.requester = requester
 
-    assert_raises(Increase::InternalServerError) do
+    assert_raises(Increase::Errors::InternalServerError) do
       increase.accounts.create(name: "New Account!", request_options: {max_retries: 3})
     end
 
@@ -105,10 +105,10 @@ class IncreaseTest < Minitest::Test
 
   def test_client_given_request_given_retry_attempts
     increase = Increase::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 3)
-    requester = MockRequester.new(500, {}, {"type" => "internal_server_error"})
+    requester = MockRequester.new(500, {}, {})
     increase.requester = requester
 
-    assert_raises(Increase::InternalServerError) do
+    assert_raises(Increase::Errors::InternalServerError) do
       increase.accounts.create(name: "New Account!", request_options: {max_retries: 4})
     end
 
@@ -117,10 +117,10 @@ class IncreaseTest < Minitest::Test
 
   def test_client_retry_after_seconds
     increase = Increase::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 1)
-    requester = MockRequester.new(500, {"retry-after" => "1.3"}, {"type" => "internal_server_error"})
+    requester = MockRequester.new(500, {"retry-after" => "1.3"}, {})
     increase.requester = requester
 
-    assert_raises(Increase::InternalServerError) do
+    assert_raises(Increase::Errors::InternalServerError) do
       increase.accounts.create(name: "New Account!")
     end
 
@@ -130,11 +130,10 @@ class IncreaseTest < Minitest::Test
 
   def test_client_retry_after_date
     increase = Increase::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 1)
-    requester =
-      MockRequester.new(500, {"retry-after" => (Time.now + 10).httpdate}, {"type" => "internal_server_error"})
+    requester = MockRequester.new(500, {"retry-after" => (Time.now + 10).httpdate}, {})
     increase.requester = requester
 
-    assert_raises(Increase::InternalServerError) do
+    assert_raises(Increase::Errors::InternalServerError) do
       Thread.current.thread_variable_set(:time_now, Time.now)
       increase.accounts.create(name: "New Account!")
       Thread.current.thread_variable_set(:time_now, nil)
@@ -146,10 +145,10 @@ class IncreaseTest < Minitest::Test
 
   def test_client_retry_after_ms
     increase = Increase::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 1)
-    requester = MockRequester.new(500, {"retry-after-ms" => "1300"}, {"type" => "internal_server_error"})
+    requester = MockRequester.new(500, {"retry-after-ms" => "1300"}, {})
     increase.requester = requester
 
-    assert_raises(Increase::InternalServerError) do
+    assert_raises(Increase::Errors::InternalServerError) do
       increase.accounts.create(name: "New Account!")
     end
 
@@ -159,10 +158,10 @@ class IncreaseTest < Minitest::Test
 
   def test_retry_count_header
     increase = Increase::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
-    requester = MockRequester.new(500, {}, {"type" => "internal_server_error"})
+    requester = MockRequester.new(500, {}, {})
     increase.requester = requester
 
-    assert_raises(Increase::InternalServerError) do
+    assert_raises(Increase::Errors::InternalServerError) do
       increase.accounts.create(name: "New Account!")
     end
 
@@ -172,10 +171,10 @@ class IncreaseTest < Minitest::Test
 
   def test_omit_retry_count_header
     increase = Increase::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
-    requester = MockRequester.new(500, {}, {"type" => "internal_server_error"})
+    requester = MockRequester.new(500, {}, {})
     increase.requester = requester
 
-    assert_raises(Increase::InternalServerError) do
+    assert_raises(Increase::Errors::InternalServerError) do
       increase.accounts.create(
         name: "New Account!",
         request_options: {extra_headers: {"x-stainless-retry-count" => nil}}
@@ -188,10 +187,10 @@ class IncreaseTest < Minitest::Test
 
   def test_overwrite_retry_count_header
     increase = Increase::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
-    requester = MockRequester.new(500, {}, {"type" => "internal_server_error"})
+    requester = MockRequester.new(500, {}, {})
     increase.requester = requester
 
-    assert_raises(Increase::InternalServerError) do
+    assert_raises(Increase::Errors::InternalServerError) do
       increase.accounts.create(
         name: "New Account!",
         request_options: {extra_headers: {"x-stainless-retry-count" => "42"}}
@@ -270,10 +269,10 @@ class IncreaseTest < Minitest::Test
 
   def test_client_default_idempotency_key_on_writes
     increase = Increase::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
-    requester = MockRequester.new(500, {}, {"type" => "internal_server_error"})
+    requester = MockRequester.new(500, {}, {})
     increase.requester = requester
 
-    assert_raises(Increase::InternalServerError) do
+    assert_raises(Increase::Errors::InternalServerError) do
       increase.accounts.create(name: "New Account!", request_options: {max_retries: 1})
     end
 
@@ -286,10 +285,10 @@ class IncreaseTest < Minitest::Test
 
   def test_request_option_idempotency_key_on_writes
     increase = Increase::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
-    requester = MockRequester.new(500, {}, {"type" => "internal_server_error"})
+    requester = MockRequester.new(500, {}, {})
     increase.requester = requester
 
-    assert_raises(Increase::InternalServerError) do
+    assert_raises(Increase::Errors::InternalServerError) do
       increase.accounts.create(
         name: "New Account!",
         request_options: {max_retries: 1, idempotency_key: "user-supplied-key"}
