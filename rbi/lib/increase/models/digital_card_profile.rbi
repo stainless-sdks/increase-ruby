@@ -58,12 +58,7 @@ module Increase
       sig { returns(Increase::Models::DigitalCardProfile::TextColor) }
       attr_reader :text_color
 
-      sig do
-        params(
-          text_color: T.any(Increase::Models::DigitalCardProfile::TextColor, Increase::Internal::Util::AnyHash)
-        )
-          .void
-      end
+      sig { params(text_color: T.any(Increase::Models::DigitalCardProfile::TextColor, Increase::Util::AnyHash)).void }
       attr_writer :text_color
 
       # A constant representing the object's type. For this resource it will always be
@@ -88,7 +83,7 @@ module Increase
           idempotency_key: T.nilable(String),
           issuer_name: String,
           status: Increase::Models::DigitalCardProfile::Status::OrSymbol,
-          text_color: T.any(Increase::Models::DigitalCardProfile::TextColor, Increase::Internal::Util::AnyHash),
+          text_color: T.any(Increase::Models::DigitalCardProfile::TextColor, Increase::Util::AnyHash),
           type: Increase::Models::DigitalCardProfile::Type::OrSymbol
         )
           .returns(T.attached_class)

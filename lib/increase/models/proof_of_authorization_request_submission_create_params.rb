@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::ProofOfAuthorizationRequestSubmissions#create
     class ProofOfAuthorizationRequestSubmissionCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute authorization_terms
       #   Terms of authorization.

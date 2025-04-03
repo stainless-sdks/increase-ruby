@@ -12,11 +12,11 @@ module Increase
         issuer_name: String,
         text_color: Increase::Models::DigitalCardProfileCloneParams::TextColor
       }
-      & Increase::Internal::Type::request_parameters
+      & Increase::request_parameters
 
     class DigitalCardProfileCloneParams < Increase::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       attr_reader app_icon_file_id: String?
 

@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::Lockboxes#update
     class LockboxUpdateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute [r] description
       #   The description you choose for the Lockbox.

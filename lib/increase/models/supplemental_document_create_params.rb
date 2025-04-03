@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::SupplementalDocuments#create
     class SupplementalDocumentCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute entity_id
       #   The identifier of the Entity to associate with the supplemental document.

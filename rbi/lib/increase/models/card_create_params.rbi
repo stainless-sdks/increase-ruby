@@ -3,8 +3,8 @@
 module Increase
   module Models
     class CardCreateParams < Increase::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # The Account the card should belong to.
       sig { returns(String) }
@@ -16,7 +16,7 @@ module Increase
 
       sig do
         params(
-          billing_address: T.any(Increase::Models::CardCreateParams::BillingAddress, Increase::Internal::Util::AnyHash)
+          billing_address: T.any(Increase::Models::CardCreateParams::BillingAddress, Increase::Util::AnyHash)
         )
           .void
       end
@@ -38,9 +38,7 @@ module Increase
       attr_reader :digital_wallet
 
       sig do
-        params(
-          digital_wallet: T.any(Increase::Models::CardCreateParams::DigitalWallet, Increase::Internal::Util::AnyHash)
-        )
+        params(digital_wallet: T.any(Increase::Models::CardCreateParams::DigitalWallet, Increase::Util::AnyHash))
           .void
       end
       attr_writer :digital_wallet
@@ -56,11 +54,11 @@ module Increase
       sig do
         params(
           account_id: String,
-          billing_address: T.any(Increase::Models::CardCreateParams::BillingAddress, Increase::Internal::Util::AnyHash),
+          billing_address: T.any(Increase::Models::CardCreateParams::BillingAddress, Increase::Util::AnyHash),
           description: String,
-          digital_wallet: T.any(Increase::Models::CardCreateParams::DigitalWallet, Increase::Internal::Util::AnyHash),
+          digital_wallet: T.any(Increase::Models::CardCreateParams::DigitalWallet, Increase::Util::AnyHash),
           entity_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

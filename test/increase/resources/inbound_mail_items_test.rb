@@ -28,7 +28,7 @@ class Increase::Test::Resources::InboundMailItemsTest < Increase::Test::Resource
     response = @increase.inbound_mail_items.list
 
     assert_pattern do
-      response => Increase::Internal::Page
+      response => Increase::Page
     end
 
     row = response.to_enum.first

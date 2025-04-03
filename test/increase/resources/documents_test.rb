@@ -26,7 +26,7 @@ class Increase::Test::Resources::DocumentsTest < Increase::Test::ResourceTest
     response = @increase.documents.list
 
     assert_pattern do
-      response => Increase::Internal::Page
+      response => Increase::Page
     end
 
     row = response.to_enum.first

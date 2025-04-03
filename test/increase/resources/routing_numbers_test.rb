@@ -7,7 +7,7 @@ class Increase::Test::Resources::RoutingNumbersTest < Increase::Test::ResourceTe
     response = @increase.routing_numbers.list(routing_number: "xxxxxxxxx")
 
     assert_pattern do
-      response => Increase::Internal::Page
+      response => Increase::Page
     end
 
     row = response.to_enum.first

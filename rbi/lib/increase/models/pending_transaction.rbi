@@ -53,7 +53,7 @@ module Increase
       sig { returns(Increase::Models::PendingTransaction::Source) }
       attr_reader :source
 
-      sig { params(source: T.any(Increase::Models::PendingTransaction::Source, Increase::Internal::Util::AnyHash)).void }
+      sig { params(source: T.any(Increase::Models::PendingTransaction::Source, Increase::Util::AnyHash)).void }
       attr_writer :source
 
       # Whether the Pending Transaction has been confirmed and has an associated
@@ -79,7 +79,7 @@ module Increase
           description: String,
           route_id: T.nilable(String),
           route_type: T.nilable(Increase::Models::PendingTransaction::RouteType::OrSymbol),
-          source: T.any(Increase::Models::PendingTransaction::Source, Increase::Internal::Util::AnyHash),
+          source: T.any(Increase::Models::PendingTransaction::Source, Increase::Util::AnyHash),
           status: Increase::Models::PendingTransaction::Status::OrSymbol,
           type: Increase::Models::PendingTransaction::Type::OrSymbol
         )
@@ -187,10 +187,7 @@ module Increase
         sig do
           params(
             account_transfer_instruction: T.nilable(
-              T.any(
-                Increase::Models::PendingTransaction::Source::AccountTransferInstruction,
-                Increase::Internal::Util::AnyHash
-              )
+              T.any(Increase::Models::PendingTransaction::Source::AccountTransferInstruction, Increase::Util::AnyHash)
             )
           )
             .void
@@ -205,10 +202,7 @@ module Increase
         sig do
           params(
             ach_transfer_instruction: T.nilable(
-              T.any(
-                Increase::Models::PendingTransaction::Source::ACHTransferInstruction,
-                Increase::Internal::Util::AnyHash
-              )
+              T.any(Increase::Models::PendingTransaction::Source::ACHTransferInstruction, Increase::Util::AnyHash)
             )
           )
             .void
@@ -224,9 +218,7 @@ module Increase
 
         sig do
           params(
-            card_authorization: T.nilable(
-              T.any(Increase::Models::PendingTransaction::Source::CardAuthorization, Increase::Internal::Util::AnyHash)
-            )
+            card_authorization: T.nilable(T.any(Increase::Models::PendingTransaction::Source::CardAuthorization, Increase::Util::AnyHash))
           )
             .void
         end
@@ -245,10 +237,7 @@ module Increase
         sig do
           params(
             check_deposit_instruction: T.nilable(
-              T.any(
-                Increase::Models::PendingTransaction::Source::CheckDepositInstruction,
-                Increase::Internal::Util::AnyHash
-              )
+              T.any(Increase::Models::PendingTransaction::Source::CheckDepositInstruction, Increase::Util::AnyHash)
             )
           )
             .void
@@ -263,10 +252,7 @@ module Increase
         sig do
           params(
             check_transfer_instruction: T.nilable(
-              T.any(
-                Increase::Models::PendingTransaction::Source::CheckTransferInstruction,
-                Increase::Internal::Util::AnyHash
-              )
+              T.any(Increase::Models::PendingTransaction::Source::CheckTransferInstruction, Increase::Util::AnyHash)
             )
           )
             .void
@@ -282,9 +268,7 @@ module Increase
 
         sig do
           params(
-            inbound_funds_hold: T.nilable(
-              T.any(Increase::Models::PendingTransaction::Source::InboundFundsHold, Increase::Internal::Util::AnyHash)
-            )
+            inbound_funds_hold: T.nilable(T.any(Increase::Models::PendingTransaction::Source::InboundFundsHold, Increase::Util::AnyHash))
           )
             .void
         end
@@ -300,10 +284,7 @@ module Increase
         sig do
           params(
             inbound_wire_transfer_reversal: T.nilable(
-              T.any(
-                Increase::Models::PendingTransaction::Source::InboundWireTransferReversal,
-                Increase::Internal::Util::AnyHash
-              )
+              T.any(Increase::Models::PendingTransaction::Source::InboundWireTransferReversal, Increase::Util::AnyHash)
             )
           )
             .void
@@ -326,7 +307,7 @@ module Increase
             real_time_payments_transfer_instruction: T.nilable(
               T.any(
                 Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction,
-                Increase::Internal::Util::AnyHash
+                Increase::Util::AnyHash
               )
             )
           )
@@ -342,10 +323,7 @@ module Increase
         sig do
           params(
             wire_transfer_instruction: T.nilable(
-              T.any(
-                Increase::Models::PendingTransaction::Source::WireTransferInstruction,
-                Increase::Internal::Util::AnyHash
-              )
+              T.any(Increase::Models::PendingTransaction::Source::WireTransferInstruction, Increase::Util::AnyHash)
             )
           )
             .void
@@ -358,54 +336,32 @@ module Increase
         sig do
           params(
             account_transfer_instruction: T.nilable(
-              T.any(
-                Increase::Models::PendingTransaction::Source::AccountTransferInstruction,
-                Increase::Internal::Util::AnyHash
-              )
+              T.any(Increase::Models::PendingTransaction::Source::AccountTransferInstruction, Increase::Util::AnyHash)
             ),
             ach_transfer_instruction: T.nilable(
-              T.any(
-                Increase::Models::PendingTransaction::Source::ACHTransferInstruction,
-                Increase::Internal::Util::AnyHash
-              )
+              T.any(Increase::Models::PendingTransaction::Source::ACHTransferInstruction, Increase::Util::AnyHash)
             ),
-            card_authorization: T.nilable(
-              T.any(Increase::Models::PendingTransaction::Source::CardAuthorization, Increase::Internal::Util::AnyHash)
-            ),
+            card_authorization: T.nilable(T.any(Increase::Models::PendingTransaction::Source::CardAuthorization, Increase::Util::AnyHash)),
             category: Increase::Models::PendingTransaction::Source::Category::OrSymbol,
             check_deposit_instruction: T.nilable(
-              T.any(
-                Increase::Models::PendingTransaction::Source::CheckDepositInstruction,
-                Increase::Internal::Util::AnyHash
-              )
+              T.any(Increase::Models::PendingTransaction::Source::CheckDepositInstruction, Increase::Util::AnyHash)
             ),
             check_transfer_instruction: T.nilable(
-              T.any(
-                Increase::Models::PendingTransaction::Source::CheckTransferInstruction,
-                Increase::Internal::Util::AnyHash
-              )
+              T.any(Increase::Models::PendingTransaction::Source::CheckTransferInstruction, Increase::Util::AnyHash)
             ),
-            inbound_funds_hold: T.nilable(
-              T.any(Increase::Models::PendingTransaction::Source::InboundFundsHold, Increase::Internal::Util::AnyHash)
-            ),
+            inbound_funds_hold: T.nilable(T.any(Increase::Models::PendingTransaction::Source::InboundFundsHold, Increase::Util::AnyHash)),
             inbound_wire_transfer_reversal: T.nilable(
-              T.any(
-                Increase::Models::PendingTransaction::Source::InboundWireTransferReversal,
-                Increase::Internal::Util::AnyHash
-              )
+              T.any(Increase::Models::PendingTransaction::Source::InboundWireTransferReversal, Increase::Util::AnyHash)
             ),
             other: T.nilable(T.anything),
             real_time_payments_transfer_instruction: T.nilable(
               T.any(
                 Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction,
-                Increase::Internal::Util::AnyHash
+                Increase::Util::AnyHash
               )
             ),
             wire_transfer_instruction: T.nilable(
-              T.any(
-                Increase::Models::PendingTransaction::Source::WireTransferInstruction,
-                Increase::Internal::Util::AnyHash
-              )
+              T.any(Increase::Models::PendingTransaction::Source::WireTransferInstruction, Increase::Util::AnyHash)
             )
           )
             .returns(T.attached_class)
@@ -654,7 +610,7 @@ module Increase
             params(
               network_details: T.any(
                 Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails,
-                Increase::Internal::Util::AnyHash
+                Increase::Util::AnyHash
               )
             )
               .void
@@ -669,7 +625,7 @@ module Increase
             params(
               network_identifiers: T.any(
                 Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers,
-                Increase::Internal::Util::AnyHash
+                Increase::Util::AnyHash
               )
             )
               .void
@@ -727,7 +683,7 @@ module Increase
             params(
               verification: T.any(
                 Increase::Models::PendingTransaction::Source::CardAuthorization::Verification,
-                Increase::Internal::Util::AnyHash
+                Increase::Util::AnyHash
               )
             )
               .void
@@ -757,11 +713,11 @@ module Increase
               merchant_state: T.nilable(String),
               network_details: T.any(
                 Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails,
-                Increase::Internal::Util::AnyHash
+                Increase::Util::AnyHash
               ),
               network_identifiers: T.any(
                 Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers,
-                Increase::Internal::Util::AnyHash
+                Increase::Util::AnyHash
               ),
               network_risk_score: T.nilable(Integer),
               pending_transaction_id: T.nilable(String),
@@ -774,7 +730,7 @@ module Increase
               type: Increase::Models::PendingTransaction::Source::CardAuthorization::Type::OrSymbol,
               verification: T.any(
                 Increase::Models::PendingTransaction::Source::CardAuthorization::Verification,
-                Increase::Internal::Util::AnyHash
+                Increase::Util::AnyHash
               )
             )
               .returns(T.attached_class)
@@ -986,7 +942,7 @@ module Increase
                 visa: T.nilable(
                   T.any(
                     Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa,
-                    Increase::Internal::Util::AnyHash
+                    Increase::Util::AnyHash
                   )
                 )
               )
@@ -1001,7 +957,7 @@ module Increase
                 visa: T.nilable(
                   T.any(
                     Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa,
-                    Increase::Internal::Util::AnyHash
+                    Increase::Util::AnyHash
                   )
                 )
               )
@@ -1547,7 +1503,7 @@ module Increase
               params(
                 card_verification_code: T.any(
                   Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode,
-                  Increase::Internal::Util::AnyHash
+                  Increase::Util::AnyHash
                 )
               )
                 .void
@@ -1563,7 +1519,7 @@ module Increase
               params(
                 cardholder_address: T.any(
                   Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress,
-                  Increase::Internal::Util::AnyHash
+                  Increase::Util::AnyHash
                 )
               )
                 .void
@@ -1575,11 +1531,11 @@ module Increase
               params(
                 card_verification_code: T.any(
                   Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode,
-                  Increase::Internal::Util::AnyHash
+                  Increase::Util::AnyHash
                 ),
                 cardholder_address: T.any(
                   Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress,
-                  Increase::Internal::Util::AnyHash
+                  Increase::Util::AnyHash
                 )
               )
                 .returns(T.attached_class)

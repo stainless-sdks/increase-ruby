@@ -4,8 +4,8 @@ module Increase
   module Models
     module Simulations
       class RealTimePaymentsTransferCompleteParams < Increase::BaseModel
-        extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+        extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # If set, the simulation will reject the transfer.
         sig { returns(T.nilable(Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection)) }
@@ -15,7 +15,7 @@ module Increase
           params(
             rejection: T.any(
               Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
-              Increase::Internal::Util::AnyHash
+              Increase::Util::AnyHash
             )
           )
             .void
@@ -26,9 +26,9 @@ module Increase
           params(
             rejection: T.any(
               Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
-              Increase::Internal::Util::AnyHash
+              Increase::Util::AnyHash
             ),
-            request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

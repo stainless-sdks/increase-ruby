@@ -3,8 +3,8 @@
 module Increase
   module Models
     class ExternalAccountListParams < Increase::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
@@ -41,12 +41,7 @@ module Increase
       sig { returns(T.nilable(Increase::Models::ExternalAccountListParams::Status)) }
       attr_reader :status
 
-      sig do
-        params(
-          status: T.any(Increase::Models::ExternalAccountListParams::Status, Increase::Internal::Util::AnyHash)
-        )
-          .void
-      end
+      sig { params(status: T.any(Increase::Models::ExternalAccountListParams::Status, Increase::Util::AnyHash)).void }
       attr_writer :status
 
       sig do
@@ -55,8 +50,8 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           routing_number: String,
-          status: T.any(Increase::Models::ExternalAccountListParams::Status, Increase::Internal::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
+          status: T.any(Increase::Models::ExternalAccountListParams::Status, Increase::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

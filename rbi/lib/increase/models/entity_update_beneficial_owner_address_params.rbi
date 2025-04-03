@@ -3,8 +3,8 @@
 module Increase
   module Models
     class EntityUpdateBeneficialOwnerAddressParams < Increase::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # The individual's physical address. Mail receiving locations like PO Boxes and
       #   PMB's are disallowed.
@@ -13,10 +13,7 @@ module Increase
 
       sig do
         params(
-          address: T.any(
-            Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
-            Increase::Internal::Util::AnyHash
-          )
+          address: T.any(Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address, Increase::Util::AnyHash)
         )
           .void
       end
@@ -29,12 +26,9 @@ module Increase
 
       sig do
         params(
-          address: T.any(
-            Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
-            Increase::Internal::Util::AnyHash
-          ),
+          address: T.any(Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address, Increase::Util::AnyHash),
           beneficial_owner_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

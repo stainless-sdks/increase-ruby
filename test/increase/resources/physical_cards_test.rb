@@ -87,7 +87,7 @@ class Increase::Test::Resources::PhysicalCardsTest < Increase::Test::ResourceTes
     response = @increase.physical_cards.list
 
     assert_pattern do
-      response => Increase::Internal::Page
+      response => Increase::Page
     end
 
     row = response.to_enum.first

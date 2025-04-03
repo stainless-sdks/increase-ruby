@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::Entities#update_address
     class EntityUpdateAddressParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute address
       #   The entity's physical address. Mail receiving locations like PO Boxes and PMB's

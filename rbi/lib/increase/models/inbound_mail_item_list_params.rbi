@@ -3,16 +3,14 @@
 module Increase
   module Models
     class InboundMailItemListParams < Increase::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       sig { returns(T.nilable(Increase::Models::InboundMailItemListParams::CreatedAt)) }
       attr_reader :created_at
 
       sig do
-        params(
-          created_at: T.any(Increase::Models::InboundMailItemListParams::CreatedAt, Increase::Internal::Util::AnyHash)
-        )
+        params(created_at: T.any(Increase::Models::InboundMailItemListParams::CreatedAt, Increase::Util::AnyHash))
           .void
       end
       attr_writer :created_at
@@ -41,11 +39,11 @@ module Increase
 
       sig do
         params(
-          created_at: T.any(Increase::Models::InboundMailItemListParams::CreatedAt, Increase::Internal::Util::AnyHash),
+          created_at: T.any(Increase::Models::InboundMailItemListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
           lockbox_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -6,8 +6,8 @@ module Increase
       # @see Increase::Resources::Simulations::CardAuthorizations#create
       class CardAuthorizationCreateParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+        #   extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # @!attribute amount
         #   The authorization amount in cents.

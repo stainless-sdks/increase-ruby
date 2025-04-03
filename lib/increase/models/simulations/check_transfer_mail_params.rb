@@ -6,8 +6,8 @@ module Increase
       # @see Increase::Resources::Simulations::CheckTransfers#mail
       class CheckTransferMailParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+        #   extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # @!parse
         #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]

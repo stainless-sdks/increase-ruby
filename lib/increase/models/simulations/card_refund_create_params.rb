@@ -6,8 +6,8 @@ module Increase
       # @see Increase::Resources::Simulations::CardRefunds#create
       class CardRefundCreateParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+        #   extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # @!attribute transaction_id
         #   The identifier for the Transaction to refund. The Transaction's source must have

@@ -11,7 +11,12 @@ module Increase
         sig do
           params(
             name: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
+            request_options: T.nilable(
+              T.any(
+                Increase::RequestOptions,
+                Increase::Util::AnyHash
+              )
+            )
           )
             .returns(Increase::Models::Program)
         end

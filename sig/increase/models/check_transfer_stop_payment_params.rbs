@@ -2,11 +2,11 @@ module Increase
   module Models
     type check_transfer_stop_payment_params =
       { reason: Increase::Models::CheckTransferStopPaymentParams::reason }
-      & Increase::Internal::Type::request_parameters
+      & Increase::request_parameters
 
     class CheckTransferStopPaymentParams < Increase::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       attr_reader reason: Increase::Models::CheckTransferStopPaymentParams::reason?
 
