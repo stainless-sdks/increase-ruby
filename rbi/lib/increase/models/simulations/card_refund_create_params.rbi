@@ -4,8 +4,8 @@ module Increase
   module Models
     module Simulations
       class CardRefundCreateParams < Increase::BaseModel
-        extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+        extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # The identifier for the Transaction to refund. The Transaction's source must have
         #   a category of card_settlement.
@@ -15,7 +15,7 @@ module Increase
         sig do
           params(
             transaction_id: String,
-            request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::PhysicalCards#update
     class PhysicalCardUpdateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute status
       #   The status to update the Physical Card to.

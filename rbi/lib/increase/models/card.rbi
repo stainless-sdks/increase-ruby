@@ -15,10 +15,7 @@ module Increase
       sig { returns(Increase::Models::Card::BillingAddress) }
       attr_reader :billing_address
 
-      sig do
-        params(billing_address: T.any(Increase::Models::Card::BillingAddress, Increase::Internal::Util::AnyHash))
-          .void
-      end
+      sig { params(billing_address: T.any(Increase::Models::Card::BillingAddress, Increase::Util::AnyHash)).void }
       attr_writer :billing_address
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -37,9 +34,7 @@ module Increase
       attr_reader :digital_wallet
 
       sig do
-        params(
-          digital_wallet: T.nilable(T.any(Increase::Models::Card::DigitalWallet, Increase::Internal::Util::AnyHash))
-        )
+        params(digital_wallet: T.nilable(T.any(Increase::Models::Card::DigitalWallet, Increase::Util::AnyHash)))
           .void
       end
       attr_writer :digital_wallet
@@ -83,10 +78,10 @@ module Increase
         params(
           id: String,
           account_id: String,
-          billing_address: T.any(Increase::Models::Card::BillingAddress, Increase::Internal::Util::AnyHash),
+          billing_address: T.any(Increase::Models::Card::BillingAddress, Increase::Util::AnyHash),
           created_at: Time,
           description: T.nilable(String),
-          digital_wallet: T.nilable(T.any(Increase::Models::Card::DigitalWallet, Increase::Internal::Util::AnyHash)),
+          digital_wallet: T.nilable(T.any(Increase::Models::Card::DigitalWallet, Increase::Util::AnyHash)),
           entity_id: T.nilable(String),
           expiration_month: Integer,
           expiration_year: Integer,

@@ -3,8 +3,8 @@
 module Increase
   module Models
     class InboundACHTransferListParams < Increase::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # Filter Inbound ACH Transfers to ones belonging to the specified Account.
       sig { returns(T.nilable(String)) }
@@ -25,7 +25,7 @@ module Increase
 
       sig do
         params(
-          created_at: T.any(Increase::Models::InboundACHTransferListParams::CreatedAt, Increase::Internal::Util::AnyHash)
+          created_at: T.any(Increase::Models::InboundACHTransferListParams::CreatedAt, Increase::Util::AnyHash)
         )
           .void
       end
@@ -49,23 +49,18 @@ module Increase
       sig { returns(T.nilable(Increase::Models::InboundACHTransferListParams::Status)) }
       attr_reader :status
 
-      sig do
-        params(
-          status: T.any(Increase::Models::InboundACHTransferListParams::Status, Increase::Internal::Util::AnyHash)
-        )
-          .void
-      end
+      sig { params(status: T.any(Increase::Models::InboundACHTransferListParams::Status, Increase::Util::AnyHash)).void }
       attr_writer :status
 
       sig do
         params(
           account_id: String,
           account_number_id: String,
-          created_at: T.any(Increase::Models::InboundACHTransferListParams::CreatedAt, Increase::Internal::Util::AnyHash),
+          created_at: T.any(Increase::Models::InboundACHTransferListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
-          status: T.any(Increase::Models::InboundACHTransferListParams::Status, Increase::Internal::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
+          status: T.any(Increase::Models::InboundACHTransferListParams::Status, Increase::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

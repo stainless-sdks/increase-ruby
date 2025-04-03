@@ -89,7 +89,7 @@ class Increase::Test::Resources::RealTimePaymentsTransfersTest < Increase::Test:
     response = @increase.real_time_payments_transfers.list
 
     assert_pattern do
-      response => Increase::Internal::Page
+      response => Increase::Page
     end
 
     row = response.to_enum.first

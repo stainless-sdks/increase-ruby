@@ -37,7 +37,7 @@ module Increase
       sig do
         params(
           id: String,
-          balances: T::Array[T.any(Increase::Models::IntrafiBalance::Balance, Increase::Internal::Util::AnyHash)],
+          balances: T::Array[T.any(Increase::Models::IntrafiBalance::Balance, Increase::Util::AnyHash)],
           currency: Increase::Models::IntrafiBalance::Currency::OrSymbol,
           effective_date: Date,
           total_balance: Integer,
@@ -83,9 +83,7 @@ module Increase
 
         sig do
           params(
-            bank_location: T.nilable(
-              T.any(Increase::Models::IntrafiBalance::Balance::BankLocation, Increase::Internal::Util::AnyHash)
-            )
+            bank_location: T.nilable(T.any(Increase::Models::IntrafiBalance::Balance::BankLocation, Increase::Util::AnyHash))
           )
             .void
         end
@@ -102,9 +100,7 @@ module Increase
             id: String,
             balance: Integer,
             bank: String,
-            bank_location: T.nilable(
-              T.any(Increase::Models::IntrafiBalance::Balance::BankLocation, Increase::Internal::Util::AnyHash)
-            ),
+            bank_location: T.nilable(T.any(Increase::Models::IntrafiBalance::Balance::BankLocation, Increase::Util::AnyHash)),
             fdic_certificate_number: String
           )
             .returns(T.attached_class)

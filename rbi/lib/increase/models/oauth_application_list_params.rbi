@@ -3,15 +3,15 @@
 module Increase
   module Models
     class OAuthApplicationListParams < Increase::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       sig { returns(T.nilable(Increase::Models::OAuthApplicationListParams::CreatedAt)) }
       attr_reader :created_at
 
       sig do
         params(
-          created_at: T.any(Increase::Models::OAuthApplicationListParams::CreatedAt, Increase::Internal::Util::AnyHash)
+          created_at: T.any(Increase::Models::OAuthApplicationListParams::CreatedAt, Increase::Util::AnyHash)
         )
           .void
       end
@@ -35,21 +35,16 @@ module Increase
       sig { returns(T.nilable(Increase::Models::OAuthApplicationListParams::Status)) }
       attr_reader :status
 
-      sig do
-        params(
-          status: T.any(Increase::Models::OAuthApplicationListParams::Status, Increase::Internal::Util::AnyHash)
-        )
-          .void
-      end
+      sig { params(status: T.any(Increase::Models::OAuthApplicationListParams::Status, Increase::Util::AnyHash)).void }
       attr_writer :status
 
       sig do
         params(
-          created_at: T.any(Increase::Models::OAuthApplicationListParams::CreatedAt, Increase::Internal::Util::AnyHash),
+          created_at: T.any(Increase::Models::OAuthApplicationListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
-          status: T.any(Increase::Models::OAuthApplicationListParams::Status, Increase::Internal::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
+          status: T.any(Increase::Models::OAuthApplicationListParams::Status, Increase::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

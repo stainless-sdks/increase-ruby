@@ -6,8 +6,8 @@ module Increase
       # @see Increase::Resources::Simulations::CardDisputes#action
       class CardDisputeActionParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+        #   extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # @!attribute status
         #   The status to move the dispute to.

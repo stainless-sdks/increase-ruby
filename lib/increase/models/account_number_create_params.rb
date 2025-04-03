@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::AccountNumbers#create
     class AccountNumberCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute account_id
       #   The Account the Account Number should belong to.

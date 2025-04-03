@@ -75,7 +75,7 @@ class Increase::Test::Resources::CheckDepositsTest < Increase::Test::ResourceTes
     response = @increase.check_deposits.list
 
     assert_pattern do
-      response => Increase::Internal::Page
+      response => Increase::Page
     end
 
     row = response.to_enum.first

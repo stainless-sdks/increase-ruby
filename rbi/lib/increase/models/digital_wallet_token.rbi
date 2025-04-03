@@ -15,12 +15,7 @@ module Increase
       sig { returns(Increase::Models::DigitalWalletToken::Cardholder) }
       attr_reader :cardholder
 
-      sig do
-        params(
-          cardholder: T.any(Increase::Models::DigitalWalletToken::Cardholder, Increase::Internal::Util::AnyHash)
-        )
-          .void
-      end
+      sig { params(cardholder: T.any(Increase::Models::DigitalWalletToken::Cardholder, Increase::Util::AnyHash)).void }
       attr_writer :cardholder
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -32,7 +27,7 @@ module Increase
       sig { returns(Increase::Models::DigitalWalletToken::Device) }
       attr_reader :device
 
-      sig { params(device: T.any(Increase::Models::DigitalWalletToken::Device, Increase::Internal::Util::AnyHash)).void }
+      sig { params(device: T.any(Increase::Models::DigitalWalletToken::Device, Increase::Util::AnyHash)).void }
       attr_writer :device
 
       # This indicates if payments can be made with the Digital Wallet Token.
@@ -59,13 +54,13 @@ module Increase
         params(
           id: String,
           card_id: String,
-          cardholder: T.any(Increase::Models::DigitalWalletToken::Cardholder, Increase::Internal::Util::AnyHash),
+          cardholder: T.any(Increase::Models::DigitalWalletToken::Cardholder, Increase::Util::AnyHash),
           created_at: Time,
-          device: T.any(Increase::Models::DigitalWalletToken::Device, Increase::Internal::Util::AnyHash),
+          device: T.any(Increase::Models::DigitalWalletToken::Device, Increase::Util::AnyHash),
           status: Increase::Models::DigitalWalletToken::Status::OrSymbol,
           token_requestor: Increase::Models::DigitalWalletToken::TokenRequestor::OrSymbol,
           type: Increase::Models::DigitalWalletToken::Type::OrSymbol,
-          updates: T::Array[T.any(Increase::Models::DigitalWalletToken::Update, Increase::Internal::Util::AnyHash)]
+          updates: T::Array[T.any(Increase::Models::DigitalWalletToken::Update, Increase::Util::AnyHash)]
         )
           .returns(T.attached_class)
       end

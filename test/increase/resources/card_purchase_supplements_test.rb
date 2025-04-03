@@ -26,7 +26,7 @@ class Increase::Test::Resources::CardPurchaseSupplementsTest < Increase::Test::R
     response = @increase.card_purchase_supplements.list
 
     assert_pattern do
-      response => Increase::Internal::Page
+      response => Increase::Page
     end
 
     row = response.to_enum.first

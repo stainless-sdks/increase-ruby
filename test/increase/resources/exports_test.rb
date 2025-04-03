@@ -49,7 +49,7 @@ class Increase::Test::Resources::ExportsTest < Increase::Test::ResourceTest
     response = @increase.exports.list
 
     assert_pattern do
-      response => Increase::Internal::Page
+      response => Increase::Page
     end
 
     row = response.to_enum.first

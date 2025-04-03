@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::IntrafiExclusions#create
     class IntrafiExclusionCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute bank_name
       #   The name of the financial institution to be excluded.

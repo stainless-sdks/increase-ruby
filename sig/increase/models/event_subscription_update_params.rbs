@@ -2,11 +2,11 @@ module Increase
   module Models
     type event_subscription_update_params =
       { status: Increase::Models::EventSubscriptionUpdateParams::status }
-      & Increase::Internal::Type::request_parameters
+      & Increase::request_parameters
 
     class EventSubscriptionUpdateParams < Increase::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       attr_reader status: Increase::Models::EventSubscriptionUpdateParams::status?
 

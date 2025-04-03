@@ -33,7 +33,7 @@ module Increase
       # @param limit [Integer]
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Internal::Page<Increase::Models::Document>]
+      # @return [Increase::Page<Increase::Models::Document>]
       #
       # @see Increase::Models::DocumentListParams
       def list(params = {})
@@ -42,7 +42,7 @@ module Increase
           method: :get,
           path: "documents",
           query: parsed,
-          page: Increase::Internal::Page,
+          page: Increase::Page,
           model: Increase::Models::Document,
           options: options
         )

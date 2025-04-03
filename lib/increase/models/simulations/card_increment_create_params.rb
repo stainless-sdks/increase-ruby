@@ -6,8 +6,8 @@ module Increase
       # @see Increase::Resources::Simulations::CardIncrements#create
       class CardIncrementCreateParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+        #   extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # @!attribute amount
         #   The amount of the increment in minor units in the card authorization's currency.

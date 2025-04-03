@@ -3,8 +3,8 @@
 module Increase
   module Models
     class AccountTransferListParams < Increase::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # Filter Account Transfers to those that originated from the specified Account.
       sig { returns(T.nilable(String)) }
@@ -17,9 +17,7 @@ module Increase
       attr_reader :created_at
 
       sig do
-        params(
-          created_at: T.any(Increase::Models::AccountTransferListParams::CreatedAt, Increase::Internal::Util::AnyHash)
-        )
+        params(created_at: T.any(Increase::Models::AccountTransferListParams::CreatedAt, Increase::Util::AnyHash))
           .void
       end
       attr_writer :created_at
@@ -52,11 +50,11 @@ module Increase
       sig do
         params(
           account_id: String,
-          created_at: T.any(Increase::Models::AccountTransferListParams::CreatedAt, Increase::Internal::Util::AnyHash),
+          created_at: T.any(Increase::Models::AccountTransferListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -4,8 +4,8 @@ module Increase
   module Models
     module Simulations
       class InboundWireTransferCreateParams < Increase::BaseModel
-        extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+        extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # The identifier of the Account Number the inbound Wire Transfer is for.
         sig { returns(String) }
@@ -154,7 +154,7 @@ module Increase
             originator_to_beneficiary_information_line3: String,
             originator_to_beneficiary_information_line4: String,
             sender_reference: String,
-            request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

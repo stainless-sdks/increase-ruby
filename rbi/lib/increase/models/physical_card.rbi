@@ -15,10 +15,7 @@ module Increase
       sig { returns(Increase::Models::PhysicalCard::Cardholder) }
       attr_reader :cardholder
 
-      sig do
-        params(cardholder: T.any(Increase::Models::PhysicalCard::Cardholder, Increase::Internal::Util::AnyHash))
-          .void
-      end
+      sig { params(cardholder: T.any(Increase::Models::PhysicalCard::Cardholder, Increase::Util::AnyHash)).void }
       attr_writer :cardholder
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -40,7 +37,7 @@ module Increase
       sig { returns(Increase::Models::PhysicalCard::Shipment) }
       attr_reader :shipment
 
-      sig { params(shipment: T.any(Increase::Models::PhysicalCard::Shipment, Increase::Internal::Util::AnyHash)).void }
+      sig { params(shipment: T.any(Increase::Models::PhysicalCard::Shipment, Increase::Util::AnyHash)).void }
       attr_writer :shipment
 
       # The status of the Physical Card.
@@ -61,11 +58,11 @@ module Increase
         params(
           id: String,
           card_id: String,
-          cardholder: T.any(Increase::Models::PhysicalCard::Cardholder, Increase::Internal::Util::AnyHash),
+          cardholder: T.any(Increase::Models::PhysicalCard::Cardholder, Increase::Util::AnyHash),
           created_at: Time,
           idempotency_key: T.nilable(String),
           physical_card_profile_id: T.nilable(String),
-          shipment: T.any(Increase::Models::PhysicalCard::Shipment, Increase::Internal::Util::AnyHash),
+          shipment: T.any(Increase::Models::PhysicalCard::Shipment, Increase::Util::AnyHash),
           status: Increase::Models::PhysicalCard::Status::OrSymbol,
           type: Increase::Models::PhysicalCard::Type::OrSymbol
         )
@@ -127,12 +124,7 @@ module Increase
         sig { returns(Increase::Models::PhysicalCard::Shipment::Address) }
         attr_reader :address
 
-        sig do
-          params(
-            address: T.any(Increase::Models::PhysicalCard::Shipment::Address, Increase::Internal::Util::AnyHash)
-          )
-            .void
-        end
+        sig { params(address: T.any(Increase::Models::PhysicalCard::Shipment::Address, Increase::Util::AnyHash)).void }
         attr_writer :address
 
         # The shipping method.
@@ -149,7 +141,7 @@ module Increase
 
         sig do
           params(
-            tracking: T.nilable(T.any(Increase::Models::PhysicalCard::Shipment::Tracking, Increase::Internal::Util::AnyHash))
+            tracking: T.nilable(T.any(Increase::Models::PhysicalCard::Shipment::Tracking, Increase::Util::AnyHash))
           )
             .void
         end
@@ -158,10 +150,10 @@ module Increase
         # The details used to ship this physical card.
         sig do
           params(
-            address: T.any(Increase::Models::PhysicalCard::Shipment::Address, Increase::Internal::Util::AnyHash),
+            address: T.any(Increase::Models::PhysicalCard::Shipment::Address, Increase::Util::AnyHash),
             method_: Increase::Models::PhysicalCard::Shipment::Method::OrSymbol,
             status: Increase::Models::PhysicalCard::Shipment::Status::OrSymbol,
-            tracking: T.nilable(T.any(Increase::Models::PhysicalCard::Shipment::Tracking, Increase::Internal::Util::AnyHash))
+            tracking: T.nilable(T.any(Increase::Models::PhysicalCard::Shipment::Tracking, Increase::Util::AnyHash))
           )
             .returns(T.attached_class)
         end

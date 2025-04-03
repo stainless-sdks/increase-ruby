@@ -3,8 +3,8 @@
 module Increase
   module Models
     class AccountNumberListParams < Increase::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # Filter Account Numbers to those belonging to the specified Account.
       sig { returns(T.nilable(String)) }
@@ -18,7 +18,7 @@ module Increase
 
       sig do
         params(
-          ach_debit_status: T.any(Increase::Models::AccountNumberListParams::ACHDebitStatus, Increase::Internal::Util::AnyHash)
+          ach_debit_status: T.any(Increase::Models::AccountNumberListParams::ACHDebitStatus, Increase::Util::AnyHash)
         )
           .void
       end
@@ -28,9 +28,7 @@ module Increase
       attr_reader :created_at
 
       sig do
-        params(
-          created_at: T.any(Increase::Models::AccountNumberListParams::CreatedAt, Increase::Internal::Util::AnyHash)
-        )
+        params(created_at: T.any(Increase::Models::AccountNumberListParams::CreatedAt, Increase::Util::AnyHash))
           .void
       end
       attr_writer :created_at
@@ -63,24 +61,19 @@ module Increase
       sig { returns(T.nilable(Increase::Models::AccountNumberListParams::Status)) }
       attr_reader :status
 
-      sig do
-        params(
-          status: T.any(Increase::Models::AccountNumberListParams::Status, Increase::Internal::Util::AnyHash)
-        )
-          .void
-      end
+      sig { params(status: T.any(Increase::Models::AccountNumberListParams::Status, Increase::Util::AnyHash)).void }
       attr_writer :status
 
       sig do
         params(
           account_id: String,
-          ach_debit_status: T.any(Increase::Models::AccountNumberListParams::ACHDebitStatus, Increase::Internal::Util::AnyHash),
-          created_at: T.any(Increase::Models::AccountNumberListParams::CreatedAt, Increase::Internal::Util::AnyHash),
+          ach_debit_status: T.any(Increase::Models::AccountNumberListParams::ACHDebitStatus, Increase::Util::AnyHash),
+          created_at: T.any(Increase::Models::AccountNumberListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: T.any(Increase::Models::AccountNumberListParams::Status, Increase::Internal::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
+          status: T.any(Increase::Models::AccountNumberListParams::Status, Increase::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

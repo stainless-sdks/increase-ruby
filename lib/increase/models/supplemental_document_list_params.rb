@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::SupplementalDocuments#list
     class SupplementalDocumentListParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute entity_id
       #   The identifier of the Entity to list supplemental documents for.

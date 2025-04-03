@@ -6,8 +6,8 @@ module Increase
       # @see Increase::Resources::Simulations::InboundMailItems#create
       class InboundMailItemCreateParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+        #   extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # @!attribute amount
         #   The amount of the check to be simulated, in cents.

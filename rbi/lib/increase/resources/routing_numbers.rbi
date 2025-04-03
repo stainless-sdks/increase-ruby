@@ -12,9 +12,9 @@ module Increase
           routing_number: String,
           cursor: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
-          .returns(Increase::Internal::Page[Increase::Models::RoutingNumberListResponse])
+          .returns(Increase::Page[Increase::Models::RoutingNumberListResponse])
       end
       def list(
         # Filter financial institutions by routing number.
