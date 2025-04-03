@@ -3,8 +3,8 @@
 module Increase
   module Models
     class InboundCheckDepositReturnParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # The reason to return the Inbound Check Deposit.
       sig { returns(Increase::Models::InboundCheckDepositReturnParams::Reason::OrSymbol) }
@@ -13,7 +13,7 @@ module Increase
       sig do
         params(
           reason: Increase::Models::InboundCheckDepositReturnParams::Reason::OrSymbol,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

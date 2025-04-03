@@ -8,11 +8,11 @@ module Increase
         destination_account_id: String,
         require_approval: bool
       }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class AccountTransferCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_accessor account_id: String
 

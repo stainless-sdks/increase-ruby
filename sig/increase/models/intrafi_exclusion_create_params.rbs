@@ -1,11 +1,12 @@
 module Increase
   module Models
     type intrafi_exclusion_create_params =
-      { bank_name: String, entity_id: String } & Increase::request_parameters
+      { bank_name: String, entity_id: String }
+      & Increase::Internal::Type::request_parameters
 
     class IntrafiExclusionCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_accessor bank_name: String
 

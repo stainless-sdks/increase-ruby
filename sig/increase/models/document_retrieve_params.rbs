@@ -1,10 +1,11 @@
 module Increase
   module Models
-    type document_retrieve_params = {  } & Increase::request_parameters
+    type document_retrieve_params =
+      {  } & Increase::Internal::Type::request_parameters
 
     class DocumentRetrieveParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       def initialize: (?request_options: Increase::request_opts) -> void
 

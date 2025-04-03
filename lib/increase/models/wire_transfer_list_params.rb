@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::WireTransfers#list
     class WireTransferListParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      #   extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # @!attribute [r] account_id
       #   Filter Wire Transfers to those belonging to the specified Account.

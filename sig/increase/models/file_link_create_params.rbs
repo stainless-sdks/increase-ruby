@@ -1,11 +1,12 @@
 module Increase
   module Models
     type file_link_create_params =
-      { file_id: String, expires_at: Time } & Increase::request_parameters
+      { file_id: String, expires_at: Time }
+      & Increase::Internal::Type::request_parameters
 
     class FileLinkCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_accessor file_id: String
 

@@ -12,11 +12,11 @@ module Increase
         third_party_verification: Increase::Models::EntityCreateParams::ThirdPartyVerification,
         trust: Increase::Models::EntityCreateParams::Trust
       }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class EntityCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_accessor structure: Increase::Models::EntityCreateParams::structure
 

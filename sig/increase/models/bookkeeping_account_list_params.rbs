@@ -2,11 +2,11 @@ module Increase
   module Models
     type bookkeeping_account_list_params =
       { cursor: String, idempotency_key: String, limit: Integer }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class BookkeepingAccountListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_reader cursor: String?
 

@@ -20,7 +20,7 @@ module Increase
         ?limit: Integer,
         ?purpose: Increase::Models::FileListParams::Purpose,
         ?request_options: Increase::request_opts
-      ) -> Increase::Page[Increase::Models::File]
+      ) -> Increase::Internal::Page[Increase::Models::File]
 
       def initialize: (client: Increase::Client) -> void
     end

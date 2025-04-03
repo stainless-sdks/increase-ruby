@@ -3,8 +3,8 @@
 module Increase
   module Models
     class WireDrawdownRequestListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
@@ -35,7 +35,9 @@ module Increase
       attr_reader :status
 
       sig do
-        params(status: T.any(Increase::Models::WireDrawdownRequestListParams::Status, Increase::Util::AnyHash))
+        params(
+          status: T.any(Increase::Models::WireDrawdownRequestListParams::Status, Increase::Internal::Util::AnyHash)
+        )
           .void
       end
       attr_writer :status
@@ -45,8 +47,8 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: T.any(Increase::Models::WireDrawdownRequestListParams::Status, Increase::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          status: T.any(Increase::Models::WireDrawdownRequestListParams::Status, Increase::Internal::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

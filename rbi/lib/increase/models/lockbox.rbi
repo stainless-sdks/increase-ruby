@@ -16,7 +16,7 @@ module Increase
       sig { returns(Increase::Models::Lockbox::Address) }
       attr_reader :address
 
-      sig { params(address: T.any(Increase::Models::Lockbox::Address, Increase::Util::AnyHash)).void }
+      sig { params(address: T.any(Increase::Models::Lockbox::Address, Increase::Internal::Util::AnyHash)).void }
       attr_writer :address
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Lockbox
@@ -53,7 +53,7 @@ module Increase
         params(
           id: String,
           account_id: String,
-          address: T.any(Increase::Models::Lockbox::Address, Increase::Util::AnyHash),
+          address: T.any(Increase::Models::Lockbox::Address, Increase::Internal::Util::AnyHash),
           created_at: Time,
           description: T.nilable(String),
           idempotency_key: T.nilable(String),

@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::Cards#create
     class CardCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      #   extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # @!attribute account_id
       #   The Account the card should belong to.

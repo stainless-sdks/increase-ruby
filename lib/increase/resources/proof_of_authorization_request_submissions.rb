@@ -68,7 +68,7 @@ module Increase
       # @param proof_of_authorization_request_id [String]
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Page<Increase::Models::ProofOfAuthorizationRequestSubmission>]
+      # @return [Increase::Internal::Page<Increase::Models::ProofOfAuthorizationRequestSubmission>]
       #
       # @see Increase::Models::ProofOfAuthorizationRequestSubmissionListParams
       def list(params = {})
@@ -77,7 +77,7 @@ module Increase
           method: :get,
           path: "proof_of_authorization_request_submissions",
           query: parsed,
-          page: Increase::Page,
+          page: Increase::Internal::Page,
           model: Increase::Models::ProofOfAuthorizationRequestSubmission,
           options: options
         )

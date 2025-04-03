@@ -11,7 +11,7 @@ module Increase
         ?cursor: String,
         ?limit: Integer,
         ?request_options: Increase::request_opts
-      ) -> Increase::Page[Increase::Models::BookkeepingEntry]
+      ) -> Increase::Internal::Page[Increase::Models::BookkeepingEntry]
 
       def initialize: (client: Increase::Client) -> void
     end

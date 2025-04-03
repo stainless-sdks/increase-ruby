@@ -3,13 +3,16 @@
 module Increase
   module Models
     class FileListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       sig { returns(T.nilable(Increase::Models::FileListParams::CreatedAt)) }
       attr_reader :created_at
 
-      sig { params(created_at: T.any(Increase::Models::FileListParams::CreatedAt, Increase::Util::AnyHash)).void }
+      sig do
+        params(created_at: T.any(Increase::Models::FileListParams::CreatedAt, Increase::Internal::Util::AnyHash))
+          .void
+      end
       attr_writer :created_at
 
       # Return the page of entries after this one.
@@ -40,17 +43,17 @@ module Increase
       sig { returns(T.nilable(Increase::Models::FileListParams::Purpose)) }
       attr_reader :purpose
 
-      sig { params(purpose: T.any(Increase::Models::FileListParams::Purpose, Increase::Util::AnyHash)).void }
+      sig { params(purpose: T.any(Increase::Models::FileListParams::Purpose, Increase::Internal::Util::AnyHash)).void }
       attr_writer :purpose
 
       sig do
         params(
-          created_at: T.any(Increase::Models::FileListParams::CreatedAt, Increase::Util::AnyHash),
+          created_at: T.any(Increase::Models::FileListParams::CreatedAt, Increase::Internal::Util::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          purpose: T.any(Increase::Models::FileListParams::Purpose, Increase::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          purpose: T.any(Increase::Models::FileListParams::Purpose, Increase::Internal::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

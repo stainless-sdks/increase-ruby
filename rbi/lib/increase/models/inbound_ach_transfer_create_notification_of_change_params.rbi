@@ -3,8 +3,8 @@
 module Increase
   module Models
     class InboundACHTransferCreateNotificationOfChangeParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # The updated account number to send in the notification of change.
       sig { returns(T.nilable(String)) }
@@ -24,7 +24,7 @@ module Increase
         params(
           updated_account_number: String,
           updated_routing_number: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

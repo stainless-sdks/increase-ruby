@@ -3,15 +3,18 @@
 module Increase
   module Models
     class ProofOfAuthorizationRequestListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       sig { returns(T.nilable(Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt)) }
       attr_reader :created_at
 
       sig do
         params(
-          created_at: T.any(Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt, Increase::Util::AnyHash)
+          created_at: T.any(
+            Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt,
+            Increase::Internal::Util::AnyHash
+          )
         )
           .void
       end
@@ -34,10 +37,13 @@ module Increase
 
       sig do
         params(
-          created_at: T.any(Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt, Increase::Util::AnyHash),
+          created_at: T.any(
+            Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt,
+            Increase::Internal::Util::AnyHash
+          ),
           cursor: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

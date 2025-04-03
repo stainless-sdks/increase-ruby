@@ -9,11 +9,11 @@ module Increase
           period_end: Time,
           period_start: Time
         }
-        & Increase::request_parameters
+        & Increase::Internal::Type::request_parameters
 
       class InterestPaymentCreateParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         attr_accessor account_id: String
 

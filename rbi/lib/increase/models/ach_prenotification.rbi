@@ -61,7 +61,9 @@ module Increase
 
       sig do
         params(
-          prenotification_return: T.nilable(T.any(Increase::Models::ACHPrenotification::PrenotificationReturn, Increase::Util::AnyHash))
+          prenotification_return: T.nilable(
+            T.any(Increase::Models::ACHPrenotification::PrenotificationReturn, Increase::Internal::Util::AnyHash)
+          )
         )
           .void
       end
@@ -95,8 +97,10 @@ module Increase
           credit_debit_indicator: T.nilable(Increase::Models::ACHPrenotification::CreditDebitIndicator::OrSymbol),
           effective_date: T.nilable(Time),
           idempotency_key: T.nilable(String),
-          notifications_of_change: T::Array[T.any(Increase::Models::ACHPrenotification::NotificationsOfChange, Increase::Util::AnyHash)],
-          prenotification_return: T.nilable(T.any(Increase::Models::ACHPrenotification::PrenotificationReturn, Increase::Util::AnyHash)),
+          notifications_of_change: T::Array[T.any(Increase::Models::ACHPrenotification::NotificationsOfChange, Increase::Internal::Util::AnyHash)],
+          prenotification_return: T.nilable(
+            T.any(Increase::Models::ACHPrenotification::PrenotificationReturn, Increase::Internal::Util::AnyHash)
+          ),
           routing_number: String,
           status: Increase::Models::ACHPrenotification::Status::OrSymbol,
           type: Increase::Models::ACHPrenotification::Type::OrSymbol

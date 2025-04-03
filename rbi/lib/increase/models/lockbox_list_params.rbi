@@ -3,8 +3,8 @@
 module Increase
   module Models
     class LockboxListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # Filter Lockboxes to those associated with the provided Account.
       sig { returns(T.nilable(String)) }
@@ -16,7 +16,12 @@ module Increase
       sig { returns(T.nilable(Increase::Models::LockboxListParams::CreatedAt)) }
       attr_reader :created_at
 
-      sig { params(created_at: T.any(Increase::Models::LockboxListParams::CreatedAt, Increase::Util::AnyHash)).void }
+      sig do
+        params(
+          created_at: T.any(Increase::Models::LockboxListParams::CreatedAt, Increase::Internal::Util::AnyHash)
+        )
+          .void
+      end
       attr_writer :created_at
 
       # Return the page of entries after this one.
@@ -47,11 +52,11 @@ module Increase
       sig do
         params(
           account_id: String,
-          created_at: T.any(Increase::Models::LockboxListParams::CreatedAt, Increase::Util::AnyHash),
+          created_at: T.any(Increase::Models::LockboxListParams::CreatedAt, Increase::Internal::Util::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -3,15 +3,15 @@
 module Increase
   module Models
     class ACHPrenotificationListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       sig { returns(T.nilable(Increase::Models::ACHPrenotificationListParams::CreatedAt)) }
       attr_reader :created_at
 
       sig do
         params(
-          created_at: T.any(Increase::Models::ACHPrenotificationListParams::CreatedAt, Increase::Util::AnyHash)
+          created_at: T.any(Increase::Models::ACHPrenotificationListParams::CreatedAt, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -44,11 +44,11 @@ module Increase
 
       sig do
         params(
-          created_at: T.any(Increase::Models::ACHPrenotificationListParams::CreatedAt, Increase::Util::AnyHash),
+          created_at: T.any(Increase::Models::ACHPrenotificationListParams::CreatedAt, Increase::Internal::Util::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

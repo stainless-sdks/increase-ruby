@@ -5,11 +5,11 @@ module Increase
         {
           reason: Increase::Models::Simulations::ACHTransferReturnParams::reason
         }
-        & Increase::request_parameters
+        & Increase::Internal::Type::request_parameters
 
       class ACHTransferReturnParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         attr_reader reason: Increase::Models::Simulations::ACHTransferReturnParams::reason?
 

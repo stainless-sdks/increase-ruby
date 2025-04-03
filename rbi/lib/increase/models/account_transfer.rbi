@@ -22,7 +22,9 @@ module Increase
       attr_reader :approval
 
       sig do
-        params(approval: T.nilable(T.any(Increase::Models::AccountTransfer::Approval, Increase::Util::AnyHash)))
+        params(
+          approval: T.nilable(T.any(Increase::Models::AccountTransfer::Approval, Increase::Internal::Util::AnyHash))
+        )
           .void
       end
       attr_writer :approval
@@ -34,7 +36,7 @@ module Increase
 
       sig do
         params(
-          cancellation: T.nilable(T.any(Increase::Models::AccountTransfer::Cancellation, Increase::Util::AnyHash))
+          cancellation: T.nilable(T.any(Increase::Models::AccountTransfer::Cancellation, Increase::Internal::Util::AnyHash))
         )
           .void
       end
@@ -51,7 +53,7 @@ module Increase
 
       sig do
         params(
-          created_by: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy, Increase::Util::AnyHash))
+          created_by: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy, Increase::Internal::Util::AnyHash))
         )
           .void
       end
@@ -110,10 +112,10 @@ module Increase
           id: String,
           account_id: String,
           amount: Integer,
-          approval: T.nilable(T.any(Increase::Models::AccountTransfer::Approval, Increase::Util::AnyHash)),
-          cancellation: T.nilable(T.any(Increase::Models::AccountTransfer::Cancellation, Increase::Util::AnyHash)),
+          approval: T.nilable(T.any(Increase::Models::AccountTransfer::Approval, Increase::Internal::Util::AnyHash)),
+          cancellation: T.nilable(T.any(Increase::Models::AccountTransfer::Cancellation, Increase::Internal::Util::AnyHash)),
           created_at: Time,
-          created_by: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy, Increase::Util::AnyHash)),
+          created_by: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy, Increase::Internal::Util::AnyHash)),
           currency: Increase::Models::AccountTransfer::Currency::OrSymbol,
           description: String,
           destination_account_id: String,
@@ -226,7 +228,7 @@ module Increase
 
         sig do
           params(
-            api_key: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::APIKey, Increase::Util::AnyHash))
+            api_key: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::APIKey, Increase::Internal::Util::AnyHash))
           )
             .void
         end
@@ -242,7 +244,9 @@ module Increase
 
         sig do
           params(
-            oauth_application: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash))
+            oauth_application: T.nilable(
+              T.any(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication, Increase::Internal::Util::AnyHash)
+            )
           )
             .void
         end
@@ -254,7 +258,7 @@ module Increase
 
         sig do
           params(
-            user: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::User, Increase::Util::AnyHash))
+            user: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::User, Increase::Internal::Util::AnyHash))
           )
             .void
         end
@@ -263,10 +267,12 @@ module Increase
         # What object created the transfer, either via the API or the dashboard.
         sig do
           params(
-            api_key: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::APIKey, Increase::Util::AnyHash)),
+            api_key: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::APIKey, Increase::Internal::Util::AnyHash)),
             category: Increase::Models::AccountTransfer::CreatedBy::Category::OrSymbol,
-            oauth_application: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash)),
-            user: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::User, Increase::Util::AnyHash))
+            oauth_application: T.nilable(
+              T.any(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication, Increase::Internal::Util::AnyHash)
+            ),
+            user: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::User, Increase::Internal::Util::AnyHash))
           )
             .returns(T.attached_class)
         end

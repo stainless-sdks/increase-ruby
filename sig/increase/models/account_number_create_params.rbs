@@ -7,11 +7,11 @@ module Increase
         inbound_ach: Increase::Models::AccountNumberCreateParams::InboundACH,
         inbound_checks: Increase::Models::AccountNumberCreateParams::InboundChecks
       }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class AccountNumberCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_accessor account_id: String
 

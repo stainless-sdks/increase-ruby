@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           inbound_mail_item_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
           .returns(Increase::Models::InboundMailItem)
       end
@@ -21,13 +21,13 @@ module Increase
       # List Inbound Mail Items
       sig do
         params(
-          created_at: T.any(Increase::Models::InboundMailItemListParams::CreatedAt, Increase::Util::AnyHash),
+          created_at: T.any(Increase::Models::InboundMailItemListParams::CreatedAt, Increase::Internal::Util::AnyHash),
           cursor: String,
           limit: Integer,
           lockbox_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
-          .returns(Increase::Page[Increase::Models::InboundMailItem])
+          .returns(Increase::Internal::Page[Increase::Models::InboundMailItem])
       end
       def list(
         created_at: nil,

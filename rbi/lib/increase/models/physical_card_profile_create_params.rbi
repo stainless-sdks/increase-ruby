@@ -3,8 +3,8 @@
 module Increase
   module Models
     class PhysicalCardProfileCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # The identifier of the File containing the physical card's carrier image.
       sig { returns(String) }
@@ -28,7 +28,7 @@ module Increase
           contact_phone: String,
           description: String,
           front_image_file_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

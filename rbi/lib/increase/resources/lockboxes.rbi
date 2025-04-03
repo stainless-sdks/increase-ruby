@@ -9,7 +9,7 @@ module Increase
           account_id: String,
           description: String,
           recipient_name: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
           .returns(Increase::Models::Lockbox)
       end
@@ -28,7 +28,7 @@ module Increase
       sig do
         params(
           lockbox_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
           .returns(Increase::Models::Lockbox)
       end
@@ -46,7 +46,7 @@ module Increase
           description: String,
           recipient_name: String,
           status: Increase::Models::LockboxUpdateParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
           .returns(Increase::Models::Lockbox)
       end
@@ -67,13 +67,13 @@ module Increase
       sig do
         params(
           account_id: String,
-          created_at: T.any(Increase::Models::LockboxListParams::CreatedAt, Increase::Util::AnyHash),
+          created_at: T.any(Increase::Models::LockboxListParams::CreatedAt, Increase::Internal::Util::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
-          .returns(Increase::Page[Increase::Models::Lockbox])
+          .returns(Increase::Internal::Page[Increase::Models::Lockbox])
       end
       def list(
         # Filter Lockboxes to those associated with the provided Account.

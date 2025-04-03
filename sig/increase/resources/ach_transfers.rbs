@@ -38,7 +38,7 @@ module Increase
         ?limit: Integer,
         ?status: Increase::Models::ACHTransferListParams::Status,
         ?request_options: Increase::request_opts
-      ) -> Increase::Page[Increase::Models::ACHTransfer]
+      ) -> Increase::Internal::Page[Increase::Models::ACHTransfer]
 
       def approve: (
         String ach_transfer_id,

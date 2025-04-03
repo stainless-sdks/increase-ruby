@@ -13,7 +13,7 @@ module Increase
 
       sig do
         params(
-          acceptance: T.nilable(T.any(Increase::Models::InboundACHTransfer::Acceptance, Increase::Util::AnyHash))
+          acceptance: T.nilable(T.any(Increase::Models::InboundACHTransfer::Acceptance, Increase::Internal::Util::AnyHash))
         )
           .void
       end
@@ -32,7 +32,9 @@ module Increase
       attr_reader :addenda
 
       sig do
-        params(addenda: T.nilable(T.any(Increase::Models::InboundACHTransfer::Addenda, Increase::Util::AnyHash)))
+        params(
+          addenda: T.nilable(T.any(Increase::Models::InboundACHTransfer::Addenda, Increase::Internal::Util::AnyHash))
+        )
           .void
       end
       attr_writer :addenda
@@ -55,7 +57,9 @@ module Increase
       attr_reader :decline
 
       sig do
-        params(decline: T.nilable(T.any(Increase::Models::InboundACHTransfer::Decline, Increase::Util::AnyHash)))
+        params(
+          decline: T.nilable(T.any(Increase::Models::InboundACHTransfer::Decline, Increase::Internal::Util::AnyHash))
+        )
           .void
       end
       attr_writer :decline
@@ -80,7 +84,9 @@ module Increase
 
       sig do
         params(
-          international_addenda: T.nilable(T.any(Increase::Models::InboundACHTransfer::InternationalAddenda, Increase::Util::AnyHash))
+          international_addenda: T.nilable(
+            T.any(Increase::Models::InboundACHTransfer::InternationalAddenda, Increase::Internal::Util::AnyHash)
+          )
         )
           .void
       end
@@ -93,7 +99,9 @@ module Increase
 
       sig do
         params(
-          notification_of_change: T.nilable(T.any(Increase::Models::InboundACHTransfer::NotificationOfChange, Increase::Util::AnyHash))
+          notification_of_change: T.nilable(
+            T.any(Increase::Models::InboundACHTransfer::NotificationOfChange, Increase::Internal::Util::AnyHash)
+          )
         )
           .void
       end
@@ -153,7 +161,7 @@ module Increase
 
       sig do
         params(
-          transfer_return: T.nilable(T.any(Increase::Models::InboundACHTransfer::TransferReturn, Increase::Util::AnyHash))
+          transfer_return: T.nilable(T.any(Increase::Models::InboundACHTransfer::TransferReturn, Increase::Internal::Util::AnyHash))
         )
           .void
       end
@@ -169,19 +177,23 @@ module Increase
       sig do
         params(
           id: String,
-          acceptance: T.nilable(T.any(Increase::Models::InboundACHTransfer::Acceptance, Increase::Util::AnyHash)),
+          acceptance: T.nilable(T.any(Increase::Models::InboundACHTransfer::Acceptance, Increase::Internal::Util::AnyHash)),
           account_id: String,
           account_number_id: String,
-          addenda: T.nilable(T.any(Increase::Models::InboundACHTransfer::Addenda, Increase::Util::AnyHash)),
+          addenda: T.nilable(T.any(Increase::Models::InboundACHTransfer::Addenda, Increase::Internal::Util::AnyHash)),
           amount: Integer,
           automatically_resolves_at: Time,
           created_at: Time,
-          decline: T.nilable(T.any(Increase::Models::InboundACHTransfer::Decline, Increase::Util::AnyHash)),
+          decline: T.nilable(T.any(Increase::Models::InboundACHTransfer::Decline, Increase::Internal::Util::AnyHash)),
           direction: Increase::Models::InboundACHTransfer::Direction::OrSymbol,
           effective_date: Date,
           expected_settlement_schedule: Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule::OrSymbol,
-          international_addenda: T.nilable(T.any(Increase::Models::InboundACHTransfer::InternationalAddenda, Increase::Util::AnyHash)),
-          notification_of_change: T.nilable(T.any(Increase::Models::InboundACHTransfer::NotificationOfChange, Increase::Util::AnyHash)),
+          international_addenda: T.nilable(
+            T.any(Increase::Models::InboundACHTransfer::InternationalAddenda, Increase::Internal::Util::AnyHash)
+          ),
+          notification_of_change: T.nilable(
+            T.any(Increase::Models::InboundACHTransfer::NotificationOfChange, Increase::Internal::Util::AnyHash)
+          ),
           originator_company_descriptive_date: T.nilable(String),
           originator_company_discretionary_data: T.nilable(String),
           originator_company_entry_description: String,
@@ -193,7 +205,7 @@ module Increase
           standard_entry_class_code: Increase::Models::InboundACHTransfer::StandardEntryClassCode::OrSymbol,
           status: Increase::Models::InboundACHTransfer::Status::OrSymbol,
           trace_number: String,
-          transfer_return: T.nilable(T.any(Increase::Models::InboundACHTransfer::TransferReturn, Increase::Util::AnyHash)),
+          transfer_return: T.nilable(T.any(Increase::Models::InboundACHTransfer::TransferReturn, Increase::Internal::Util::AnyHash)),
           type: Increase::Models::InboundACHTransfer::Type::OrSymbol
         )
           .returns(T.attached_class)
@@ -296,7 +308,9 @@ module Increase
 
         sig do
           params(
-            freeform: T.nilable(T.any(Increase::Models::InboundACHTransfer::Addenda::Freeform, Increase::Util::AnyHash))
+            freeform: T.nilable(
+              T.any(Increase::Models::InboundACHTransfer::Addenda::Freeform, Increase::Internal::Util::AnyHash)
+            )
           )
             .void
         end
@@ -306,7 +320,9 @@ module Increase
         sig do
           params(
             category: Increase::Models::InboundACHTransfer::Addenda::Category::OrSymbol,
-            freeform: T.nilable(T.any(Increase::Models::InboundACHTransfer::Addenda::Freeform, Increase::Util::AnyHash))
+            freeform: T.nilable(
+              T.any(Increase::Models::InboundACHTransfer::Addenda::Freeform, Increase::Internal::Util::AnyHash)
+            )
           )
             .returns(T.attached_class)
         end
@@ -349,7 +365,7 @@ module Increase
           # Unstructured `payment_related_information` passed through by the originator.
           sig do
             params(
-              entries: T::Array[T.any(Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry, Increase::Util::AnyHash)]
+              entries: T::Array[T.any(Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry, Increase::Internal::Util::AnyHash)]
             )
               .returns(T.attached_class)
           end

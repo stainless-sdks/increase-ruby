@@ -70,7 +70,7 @@ class Increase::Test::Resources::ACHPrenotificationsTest < Increase::Test::Resou
     response = @increase.ach_prenotifications.list
 
     assert_pattern do
-      response => Increase::Page
+      response => Increase::Internal::Page
     end
 
     row = response.to_enum.first

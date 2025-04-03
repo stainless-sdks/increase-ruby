@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::FileLinks#create
     class FileLinkCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      #   extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # @!attribute file_id
       #   The File to create a File Link for.

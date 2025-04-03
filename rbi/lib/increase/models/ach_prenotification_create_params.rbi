@@ -3,8 +3,8 @@
 module Increase
   module Models
     class ACHPrenotificationCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # The Increase identifier for the account that will send the transfer.
       sig { returns(String) }
@@ -116,7 +116,7 @@ module Increase
           individual_id: String,
           individual_name: String,
           standard_entry_class_code: Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

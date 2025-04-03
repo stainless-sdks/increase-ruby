@@ -12,11 +12,11 @@ module Increase
         contact_website: String,
         text_color: Increase::Models::DigitalCardProfileCreateParams::TextColor
       }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class DigitalCardProfileCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_accessor app_icon_file_id: String
 

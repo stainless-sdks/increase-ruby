@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::CardDisputes#create
     class CardDisputeCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      #   extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # @!attribute disputed_transaction_id
       #   The Transaction you wish to dispute. This Transaction must have a `source_type`
