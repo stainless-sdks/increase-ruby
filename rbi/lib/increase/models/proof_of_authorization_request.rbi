@@ -32,7 +32,7 @@ module Increase
       sig do
         params(
           id: String,
-          ach_transfers: T::Array[T.any(Increase::Models::ProofOfAuthorizationRequest::ACHTransfer, Increase::Util::AnyHash)],
+          ach_transfers: T::Array[T.any(Increase::Models::ProofOfAuthorizationRequest::ACHTransfer, Increase::Internal::Util::AnyHash)],
           created_at: Time,
           due_on: Time,
           type: Increase::Models::ProofOfAuthorizationRequest::Type::OrSymbol,

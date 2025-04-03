@@ -3,8 +3,8 @@
 module Increase
   module Models
     class EntityCreateBeneficialOwnerParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # The identifying details of anyone controlling or owning 25% or more of the
       #   corporation.
@@ -13,7 +13,10 @@ module Increase
 
       sig do
         params(
-          beneficial_owner: T.any(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner, Increase::Util::AnyHash)
+          beneficial_owner: T.any(
+            Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner,
+            Increase::Internal::Util::AnyHash
+          )
         )
           .void
       end
@@ -21,8 +24,11 @@ module Increase
 
       sig do
         params(
-          beneficial_owner: T.any(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner, Increase::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          beneficial_owner: T.any(
+            Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner,
+            Increase::Internal::Util::AnyHash
+          ),
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -50,7 +56,7 @@ module Increase
           params(
             individual: T.any(
               Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual,
-              Increase::Util::AnyHash
+              Increase::Internal::Util::AnyHash
             )
           )
             .void
@@ -76,7 +82,7 @@ module Increase
           params(
             individual: T.any(
               Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual,
-              Increase::Util::AnyHash
+              Increase::Internal::Util::AnyHash
             ),
             prongs: T::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol],
             company_title: String
@@ -109,7 +115,7 @@ module Increase
             params(
               address: T.any(
                 Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address,
-                Increase::Util::AnyHash
+                Increase::Internal::Util::AnyHash
               )
             )
               .void
@@ -128,7 +134,7 @@ module Increase
             params(
               identification: T.any(
                 Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification,
-                Increase::Util::AnyHash
+                Increase::Internal::Util::AnyHash
               )
             )
               .void
@@ -154,12 +160,12 @@ module Increase
             params(
               address: T.any(
                 Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address,
-                Increase::Util::AnyHash
+                Increase::Internal::Util::AnyHash
               ),
               date_of_birth: Date,
               identification: T.any(
                 Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification,
-                Increase::Util::AnyHash
+                Increase::Internal::Util::AnyHash
               ),
               name: String,
               confirmed_no_us_tax_id: T::Boolean
@@ -277,7 +283,7 @@ module Increase
               params(
                 drivers_license: T.any(
                   Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -299,7 +305,7 @@ module Increase
               params(
                 other: T.any(
                   Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -321,7 +327,7 @@ module Increase
               params(
                 passport: T.any(
                   Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -335,15 +341,15 @@ module Increase
                 number: String,
                 drivers_license: T.any(
                   Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 ),
                 other: T.any(
                   Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 ),
                 passport: T.any(
                   Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 )
               )
                 .returns(T.attached_class)

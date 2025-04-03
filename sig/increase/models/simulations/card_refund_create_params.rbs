@@ -2,11 +2,12 @@ module Increase
   module Models
     module Simulations
       type card_refund_create_params =
-        { transaction_id: String } & Increase::request_parameters
+        { transaction_id: String }
+        & Increase::Internal::Type::request_parameters
 
       class CardRefundCreateParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         attr_accessor transaction_id: String
 

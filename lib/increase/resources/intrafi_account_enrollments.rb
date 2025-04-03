@@ -55,7 +55,7 @@ module Increase
       # @param status [Increase::Models::IntrafiAccountEnrollmentListParams::Status]
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Page<Increase::Models::IntrafiAccountEnrollment>]
+      # @return [Increase::Internal::Page<Increase::Models::IntrafiAccountEnrollment>]
       #
       # @see Increase::Models::IntrafiAccountEnrollmentListParams
       def list(params = {})
@@ -64,7 +64,7 @@ module Increase
           method: :get,
           path: "intrafi_account_enrollments",
           query: parsed,
-          page: Increase::Page,
+          page: Increase::Internal::Page,
           model: Increase::Models::IntrafiAccountEnrollment,
           options: options
         )

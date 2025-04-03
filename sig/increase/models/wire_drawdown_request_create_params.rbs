@@ -16,11 +16,11 @@ module Increase
         :recipient_address_line2 => String,
         :recipient_address_line3 => String
       }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class WireDrawdownRequestCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_accessor account_number_id: String
 

@@ -6,8 +6,8 @@ module Increase
       # @see Increase::Resources::Simulations::ACHTransfers#acknowledge
       class ACHTransferAcknowledgeParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        #   extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         # @!parse
         #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]

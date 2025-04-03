@@ -32,7 +32,7 @@ module Increase
       # @param limit [Integer]
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Page<Increase::Models::CardPurchaseSupplement>]
+      # @return [Increase::Internal::Page<Increase::Models::CardPurchaseSupplement>]
       #
       # @see Increase::Models::CardPurchaseSupplementListParams
       def list(params = {})
@@ -41,7 +41,7 @@ module Increase
           method: :get,
           path: "card_purchase_supplements",
           query: parsed,
-          page: Increase::Page,
+          page: Increase::Internal::Page,
           model: Increase::Models::CardPurchaseSupplement,
           options: options
         )

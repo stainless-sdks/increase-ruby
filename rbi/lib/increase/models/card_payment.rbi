@@ -36,7 +36,7 @@ module Increase
       sig { returns(Increase::Models::CardPayment::State) }
       attr_reader :state
 
-      sig { params(state: T.any(Increase::Models::CardPayment::State, Increase::Util::AnyHash)).void }
+      sig { params(state: T.any(Increase::Models::CardPayment::State, Increase::Internal::Util::AnyHash)).void }
       attr_writer :state
 
       # A constant representing the object's type. For this resource it will always be
@@ -53,9 +53,9 @@ module Increase
           card_id: String,
           created_at: Time,
           digital_wallet_token_id: T.nilable(String),
-          elements: T::Array[T.any(Increase::Models::CardPayment::Element, Increase::Util::AnyHash)],
+          elements: T::Array[T.any(Increase::Models::CardPayment::Element, Increase::Internal::Util::AnyHash)],
           physical_card_id: T.nilable(String),
-          state: T.any(Increase::Models::CardPayment::State, Increase::Util::AnyHash),
+          state: T.any(Increase::Models::CardPayment::State, Increase::Internal::Util::AnyHash),
           type: Increase::Models::CardPayment::Type::OrSymbol
         )
           .returns(T.attached_class)
@@ -101,7 +101,9 @@ module Increase
 
         sig do
           params(
-            card_authentication: T.nilable(T.any(Increase::Models::CardPayment::Element::CardAuthentication, Increase::Util::AnyHash))
+            card_authentication: T.nilable(
+              T.any(Increase::Models::CardPayment::Element::CardAuthentication, Increase::Internal::Util::AnyHash)
+            )
           )
             .void
         end
@@ -116,7 +118,9 @@ module Increase
 
         sig do
           params(
-            card_authorization: T.nilable(T.any(Increase::Models::CardPayment::Element::CardAuthorization, Increase::Util::AnyHash))
+            card_authorization: T.nilable(
+              T.any(Increase::Models::CardPayment::Element::CardAuthorization, Increase::Internal::Util::AnyHash)
+            )
           )
             .void
         end
@@ -132,7 +136,10 @@ module Increase
         sig do
           params(
             card_authorization_expiration: T.nilable(
-              T.any(Increase::Models::CardPayment::Element::CardAuthorizationExpiration, Increase::Util::AnyHash)
+              T.any(
+                Increase::Models::CardPayment::Element::CardAuthorizationExpiration,
+                Increase::Internal::Util::AnyHash
+              )
             )
           )
             .void
@@ -146,7 +153,7 @@ module Increase
 
         sig do
           params(
-            card_decline: T.nilable(T.any(Increase::Models::CardPayment::Element::CardDecline, Increase::Util::AnyHash))
+            card_decline: T.nilable(T.any(Increase::Models::CardPayment::Element::CardDecline, Increase::Internal::Util::AnyHash))
           )
             .void
         end
@@ -161,7 +168,9 @@ module Increase
 
         sig do
           params(
-            card_fuel_confirmation: T.nilable(T.any(Increase::Models::CardPayment::Element::CardFuelConfirmation, Increase::Util::AnyHash))
+            card_fuel_confirmation: T.nilable(
+              T.any(Increase::Models::CardPayment::Element::CardFuelConfirmation, Increase::Internal::Util::AnyHash)
+            )
           )
             .void
         end
@@ -175,7 +184,7 @@ module Increase
 
         sig do
           params(
-            card_increment: T.nilable(T.any(Increase::Models::CardPayment::Element::CardIncrement, Increase::Util::AnyHash))
+            card_increment: T.nilable(T.any(Increase::Models::CardPayment::Element::CardIncrement, Increase::Internal::Util::AnyHash))
           )
             .void
         end
@@ -191,7 +200,7 @@ module Increase
 
         sig do
           params(
-            card_refund: T.nilable(T.any(Increase::Models::CardPayment::Element::CardRefund, Increase::Util::AnyHash))
+            card_refund: T.nilable(T.any(Increase::Models::CardPayment::Element::CardRefund, Increase::Internal::Util::AnyHash))
           )
             .void
         end
@@ -205,7 +214,7 @@ module Increase
 
         sig do
           params(
-            card_reversal: T.nilable(T.any(Increase::Models::CardPayment::Element::CardReversal, Increase::Util::AnyHash))
+            card_reversal: T.nilable(T.any(Increase::Models::CardPayment::Element::CardReversal, Increase::Internal::Util::AnyHash))
           )
             .void
         end
@@ -221,7 +230,9 @@ module Increase
 
         sig do
           params(
-            card_settlement: T.nilable(T.any(Increase::Models::CardPayment::Element::CardSettlement, Increase::Util::AnyHash))
+            card_settlement: T.nilable(
+              T.any(Increase::Models::CardPayment::Element::CardSettlement, Increase::Internal::Util::AnyHash)
+            )
           )
             .void
         end
@@ -236,7 +247,9 @@ module Increase
 
         sig do
           params(
-            card_validation: T.nilable(T.any(Increase::Models::CardPayment::Element::CardValidation, Increase::Util::AnyHash))
+            card_validation: T.nilable(
+              T.any(Increase::Models::CardPayment::Element::CardValidation, Increase::Internal::Util::AnyHash)
+            )
           )
             .void
         end
@@ -259,18 +272,31 @@ module Increase
 
         sig do
           params(
-            card_authentication: T.nilable(T.any(Increase::Models::CardPayment::Element::CardAuthentication, Increase::Util::AnyHash)),
-            card_authorization: T.nilable(T.any(Increase::Models::CardPayment::Element::CardAuthorization, Increase::Util::AnyHash)),
-            card_authorization_expiration: T.nilable(
-              T.any(Increase::Models::CardPayment::Element::CardAuthorizationExpiration, Increase::Util::AnyHash)
+            card_authentication: T.nilable(
+              T.any(Increase::Models::CardPayment::Element::CardAuthentication, Increase::Internal::Util::AnyHash)
             ),
-            card_decline: T.nilable(T.any(Increase::Models::CardPayment::Element::CardDecline, Increase::Util::AnyHash)),
-            card_fuel_confirmation: T.nilable(T.any(Increase::Models::CardPayment::Element::CardFuelConfirmation, Increase::Util::AnyHash)),
-            card_increment: T.nilable(T.any(Increase::Models::CardPayment::Element::CardIncrement, Increase::Util::AnyHash)),
-            card_refund: T.nilable(T.any(Increase::Models::CardPayment::Element::CardRefund, Increase::Util::AnyHash)),
-            card_reversal: T.nilable(T.any(Increase::Models::CardPayment::Element::CardReversal, Increase::Util::AnyHash)),
-            card_settlement: T.nilable(T.any(Increase::Models::CardPayment::Element::CardSettlement, Increase::Util::AnyHash)),
-            card_validation: T.nilable(T.any(Increase::Models::CardPayment::Element::CardValidation, Increase::Util::AnyHash)),
+            card_authorization: T.nilable(
+              T.any(Increase::Models::CardPayment::Element::CardAuthorization, Increase::Internal::Util::AnyHash)
+            ),
+            card_authorization_expiration: T.nilable(
+              T.any(
+                Increase::Models::CardPayment::Element::CardAuthorizationExpiration,
+                Increase::Internal::Util::AnyHash
+              )
+            ),
+            card_decline: T.nilable(T.any(Increase::Models::CardPayment::Element::CardDecline, Increase::Internal::Util::AnyHash)),
+            card_fuel_confirmation: T.nilable(
+              T.any(Increase::Models::CardPayment::Element::CardFuelConfirmation, Increase::Internal::Util::AnyHash)
+            ),
+            card_increment: T.nilable(T.any(Increase::Models::CardPayment::Element::CardIncrement, Increase::Internal::Util::AnyHash)),
+            card_refund: T.nilable(T.any(Increase::Models::CardPayment::Element::CardRefund, Increase::Internal::Util::AnyHash)),
+            card_reversal: T.nilable(T.any(Increase::Models::CardPayment::Element::CardReversal, Increase::Internal::Util::AnyHash)),
+            card_settlement: T.nilable(
+              T.any(Increase::Models::CardPayment::Element::CardSettlement, Increase::Internal::Util::AnyHash)
+            ),
+            card_validation: T.nilable(
+              T.any(Increase::Models::CardPayment::Element::CardValidation, Increase::Internal::Util::AnyHash)
+            ),
             category: Increase::Models::CardPayment::Element::Category::OrSymbol,
             created_at: Time,
             other: T.nilable(T.anything)
@@ -341,7 +367,10 @@ module Increase
           sig do
             params(
               challenge: T.nilable(
-                T.any(Increase::Models::CardPayment::Element::CardAuthentication::Challenge, Increase::Util::AnyHash)
+                T.any(
+                  Increase::Models::CardPayment::Element::CardAuthentication::Challenge,
+                  Increase::Internal::Util::AnyHash
+                )
               )
             )
               .void
@@ -416,7 +445,10 @@ module Increase
               card_payment_id: String,
               category: T.nilable(Increase::Models::CardPayment::Element::CardAuthentication::Category::OrSymbol),
               challenge: T.nilable(
-                T.any(Increase::Models::CardPayment::Element::CardAuthentication::Challenge, Increase::Util::AnyHash)
+                T.any(
+                  Increase::Models::CardPayment::Element::CardAuthentication::Challenge,
+                  Increase::Internal::Util::AnyHash
+                )
               ),
               created_at: Time,
               deny_reason: T.nilable(Increase::Models::CardPayment::Element::CardAuthentication::DenyReason::OrSymbol),
@@ -545,7 +577,7 @@ module Increase
                 attempts: T::Array[
                 T.any(
                   Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 )
                 ],
                 created_at: Time,
@@ -964,7 +996,10 @@ module Increase
 
           sig do
             params(
-              network_details: T.any(Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails, Increase::Util::AnyHash)
+              network_details: T.any(
+                Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails,
+                Increase::Internal::Util::AnyHash
+              )
             )
               .void
           end
@@ -978,7 +1013,7 @@ module Increase
             params(
               network_identifiers: T.any(
                 Increase::Models::CardPayment::Element::CardAuthorization::NetworkIdentifiers,
-                Increase::Util::AnyHash
+                Increase::Internal::Util::AnyHash
               )
             )
               .void
@@ -1034,7 +1069,10 @@ module Increase
 
           sig do
             params(
-              verification: T.any(Increase::Models::CardPayment::Element::CardAuthorization::Verification, Increase::Util::AnyHash)
+              verification: T.any(
+                Increase::Models::CardPayment::Element::CardAuthorization::Verification,
+                Increase::Internal::Util::AnyHash
+              )
             )
               .void
           end
@@ -1061,10 +1099,13 @@ module Increase
               merchant_descriptor: String,
               merchant_postal_code: T.nilable(String),
               merchant_state: T.nilable(String),
-              network_details: T.any(Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails, Increase::Util::AnyHash),
+              network_details: T.any(
+                Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails,
+                Increase::Internal::Util::AnyHash
+              ),
               network_identifiers: T.any(
                 Increase::Models::CardPayment::Element::CardAuthorization::NetworkIdentifiers,
-                Increase::Util::AnyHash
+                Increase::Internal::Util::AnyHash
               ),
               network_risk_score: T.nilable(Integer),
               pending_transaction_id: T.nilable(String),
@@ -1075,7 +1116,10 @@ module Increase
               real_time_decision_id: T.nilable(String),
               terminal_id: T.nilable(String),
               type: Increase::Models::CardPayment::Element::CardAuthorization::Type::OrSymbol,
-              verification: T.any(Increase::Models::CardPayment::Element::CardAuthorization::Verification, Increase::Util::AnyHash)
+              verification: T.any(
+                Increase::Models::CardPayment::Element::CardAuthorization::Verification,
+                Increase::Internal::Util::AnyHash
+              )
             )
               .returns(T.attached_class)
           end
@@ -1252,7 +1296,7 @@ module Increase
                 visa: T.nilable(
                   T.any(
                     Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   )
                 )
               )
@@ -1267,7 +1311,7 @@ module Increase
                 visa: T.nilable(
                   T.any(
                     Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   )
                 )
               )
@@ -1803,7 +1847,7 @@ module Increase
               params(
                 card_verification_code: T.any(
                   Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -1819,7 +1863,7 @@ module Increase
               params(
                 cardholder_address: T.any(
                   Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -1831,11 +1875,11 @@ module Increase
               params(
                 card_verification_code: T.any(
                   Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 ),
                 cardholder_address: T.any(
                   Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 )
               )
                 .returns(T.attached_class)
@@ -2320,7 +2364,10 @@ module Increase
 
           sig do
             params(
-              network_details: T.any(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails, Increase::Util::AnyHash)
+              network_details: T.any(
+                Increase::Models::CardPayment::Element::CardDecline::NetworkDetails,
+                Increase::Internal::Util::AnyHash
+              )
             )
               .void
           end
@@ -2332,7 +2379,10 @@ module Increase
 
           sig do
             params(
-              network_identifiers: T.any(Increase::Models::CardPayment::Element::CardDecline::NetworkIdentifiers, Increase::Util::AnyHash)
+              network_identifiers: T.any(
+                Increase::Models::CardPayment::Element::CardDecline::NetworkIdentifiers,
+                Increase::Internal::Util::AnyHash
+              )
             )
               .void
           end
@@ -2391,7 +2441,10 @@ module Increase
 
           sig do
             params(
-              verification: T.any(Increase::Models::CardPayment::Element::CardDecline::Verification, Increase::Util::AnyHash)
+              verification: T.any(
+                Increase::Models::CardPayment::Element::CardDecline::Verification,
+                Increase::Internal::Util::AnyHash
+              )
             )
               .void
           end
@@ -2416,8 +2469,14 @@ module Increase
               merchant_descriptor: String,
               merchant_postal_code: T.nilable(String),
               merchant_state: T.nilable(String),
-              network_details: T.any(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails, Increase::Util::AnyHash),
-              network_identifiers: T.any(Increase::Models::CardPayment::Element::CardDecline::NetworkIdentifiers, Increase::Util::AnyHash),
+              network_details: T.any(
+                Increase::Models::CardPayment::Element::CardDecline::NetworkDetails,
+                Increase::Internal::Util::AnyHash
+              ),
+              network_identifiers: T.any(
+                Increase::Models::CardPayment::Element::CardDecline::NetworkIdentifiers,
+                Increase::Internal::Util::AnyHash
+              ),
               network_risk_score: T.nilable(Integer),
               physical_card_id: T.nilable(String),
               presentment_amount: Integer,
@@ -2427,7 +2486,10 @@ module Increase
               real_time_decision_reason: T.nilable(Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason::OrSymbol),
               reason: Increase::Models::CardPayment::Element::CardDecline::Reason::OrSymbol,
               terminal_id: T.nilable(String),
-              verification: T.any(Increase::Models::CardPayment::Element::CardDecline::Verification, Increase::Util::AnyHash)
+              verification: T.any(
+                Increase::Models::CardPayment::Element::CardDecline::Verification,
+                Increase::Internal::Util::AnyHash
+              )
             )
               .returns(T.attached_class)
           end
@@ -2590,7 +2652,10 @@ module Increase
             sig do
               params(
                 visa: T.nilable(
-                  T.any(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa, Increase::Util::AnyHash)
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa,
+                    Increase::Internal::Util::AnyHash
+                  )
                 )
               )
                 .void
@@ -2602,7 +2667,10 @@ module Increase
               params(
                 category: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category::OrSymbol,
                 visa: T.nilable(
-                  T.any(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa, Increase::Util::AnyHash)
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa,
+                    Increase::Internal::Util::AnyHash
+                  )
                 )
               )
                 .returns(T.attached_class)
@@ -3264,7 +3332,7 @@ module Increase
               params(
                 card_verification_code: T.any(
                   Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -3280,7 +3348,7 @@ module Increase
               params(
                 cardholder_address: T.any(
                   Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -3292,11 +3360,11 @@ module Increase
               params(
                 card_verification_code: T.any(
                   Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 ),
                 cardholder_address: T.any(
                   Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 )
               )
                 .returns(T.attached_class)
@@ -3558,7 +3626,7 @@ module Increase
             params(
               network_identifiers: T.any(
                 Increase::Models::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers,
-                Increase::Util::AnyHash
+                Increase::Internal::Util::AnyHash
               )
             )
               .void
@@ -3592,7 +3660,7 @@ module Increase
               network: Increase::Models::CardPayment::Element::CardFuelConfirmation::Network::OrSymbol,
               network_identifiers: T.any(
                 Increase::Models::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers,
-                Increase::Util::AnyHash
+                Increase::Internal::Util::AnyHash
               ),
               pending_transaction_id: T.nilable(String),
               type: Increase::Models::CardPayment::Element::CardFuelConfirmation::Type::OrSymbol,
@@ -3794,7 +3862,10 @@ module Increase
 
           sig do
             params(
-              network_identifiers: T.any(Increase::Models::CardPayment::Element::CardIncrement::NetworkIdentifiers, Increase::Util::AnyHash)
+              network_identifiers: T.any(
+                Increase::Models::CardPayment::Element::CardIncrement::NetworkIdentifiers,
+                Increase::Internal::Util::AnyHash
+              )
             )
               .void
           end
@@ -3835,7 +3906,10 @@ module Increase
               card_authorization_id: String,
               currency: Increase::Models::CardPayment::Element::CardIncrement::Currency::OrSymbol,
               network: Increase::Models::CardPayment::Element::CardIncrement::Network::OrSymbol,
-              network_identifiers: T.any(Increase::Models::CardPayment::Element::CardIncrement::NetworkIdentifiers, Increase::Util::AnyHash),
+              network_identifiers: T.any(
+                Increase::Models::CardPayment::Element::CardIncrement::NetworkIdentifiers,
+                Increase::Internal::Util::AnyHash
+              ),
               network_risk_score: T.nilable(Integer),
               pending_transaction_id: T.nilable(String),
               real_time_decision_id: T.nilable(String),
@@ -4040,7 +4114,9 @@ module Increase
 
           sig do
             params(
-              cashback: T.nilable(T.any(Increase::Models::CardPayment::Element::CardRefund::Cashback, Increase::Util::AnyHash))
+              cashback: T.nilable(
+                T.any(Increase::Models::CardPayment::Element::CardRefund::Cashback, Increase::Internal::Util::AnyHash)
+              )
             )
               .void
           end
@@ -4057,7 +4133,9 @@ module Increase
 
           sig do
             params(
-              interchange: T.nilable(T.any(Increase::Models::CardPayment::Element::CardRefund::Interchange, Increase::Util::AnyHash))
+              interchange: T.nilable(
+                T.any(Increase::Models::CardPayment::Element::CardRefund::Interchange, Increase::Internal::Util::AnyHash)
+              )
             )
               .void
           end
@@ -4098,7 +4176,10 @@ module Increase
 
           sig do
             params(
-              network_identifiers: T.any(Increase::Models::CardPayment::Element::CardRefund::NetworkIdentifiers, Increase::Util::AnyHash)
+              network_identifiers: T.any(
+                Increase::Models::CardPayment::Element::CardRefund::NetworkIdentifiers,
+                Increase::Internal::Util::AnyHash
+              )
             )
               .void
           end
@@ -4121,7 +4202,10 @@ module Increase
           sig do
             params(
               purchase_details: T.nilable(
-                T.any(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails, Increase::Util::AnyHash)
+                T.any(
+                  Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails,
+                  Increase::Internal::Util::AnyHash
+                )
               )
             )
               .void
@@ -4147,9 +4231,13 @@ module Increase
               id: String,
               amount: Integer,
               card_payment_id: String,
-              cashback: T.nilable(T.any(Increase::Models::CardPayment::Element::CardRefund::Cashback, Increase::Util::AnyHash)),
+              cashback: T.nilable(
+                T.any(Increase::Models::CardPayment::Element::CardRefund::Cashback, Increase::Internal::Util::AnyHash)
+              ),
               currency: Increase::Models::CardPayment::Element::CardRefund::Currency::OrSymbol,
-              interchange: T.nilable(T.any(Increase::Models::CardPayment::Element::CardRefund::Interchange, Increase::Util::AnyHash)),
+              interchange: T.nilable(
+                T.any(Increase::Models::CardPayment::Element::CardRefund::Interchange, Increase::Internal::Util::AnyHash)
+              ),
               merchant_acceptor_id: String,
               merchant_category_code: String,
               merchant_city: String,
@@ -4157,11 +4245,17 @@ module Increase
               merchant_name: String,
               merchant_postal_code: T.nilable(String),
               merchant_state: T.nilable(String),
-              network_identifiers: T.any(Increase::Models::CardPayment::Element::CardRefund::NetworkIdentifiers, Increase::Util::AnyHash),
+              network_identifiers: T.any(
+                Increase::Models::CardPayment::Element::CardRefund::NetworkIdentifiers,
+                Increase::Internal::Util::AnyHash
+              ),
               presentment_amount: Integer,
               presentment_currency: String,
               purchase_details: T.nilable(
-                T.any(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails, Increase::Util::AnyHash)
+                T.any(
+                  Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails,
+                  Increase::Internal::Util::AnyHash
+                )
               ),
               transaction_id: String,
               type: Increase::Models::CardPayment::Element::CardRefund::Type::OrSymbol
@@ -4471,7 +4565,7 @@ module Increase
                 car_rental: T.nilable(
                   T.any(
                     Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   )
                 )
               )
@@ -4501,7 +4595,7 @@ module Increase
                 lodging: T.nilable(
                   T.any(
                     Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   )
                 )
               )
@@ -4541,7 +4635,7 @@ module Increase
                 travel: T.nilable(
                   T.any(
                     Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   )
                 )
               )
@@ -4556,7 +4650,7 @@ module Increase
                 car_rental: T.nilable(
                   T.any(
                     Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   )
                 ),
                 customer_reference_identifier: T.nilable(String),
@@ -4565,7 +4659,7 @@ module Increase
                 lodging: T.nilable(
                   T.any(
                     Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   )
                 ),
                 national_tax_amount: T.nilable(Integer),
@@ -4577,7 +4671,7 @@ module Increase
                 travel: T.nilable(
                   T.any(
                     Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   )
                 )
               )
@@ -5247,7 +5341,7 @@ module Increase
                   ancillary: T.nilable(
                     T.any(
                       Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary,
-                      Increase::Util::AnyHash
+                      Increase::Internal::Util::AnyHash
                     )
                   )
                 )
@@ -5327,7 +5421,7 @@ module Increase
                   ancillary: T.nilable(
                     T.any(
                       Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary,
-                      Increase::Util::AnyHash
+                      Increase::Internal::Util::AnyHash
                     )
                   ),
                   computerized_reservation_system: T.nilable(String),
@@ -5350,7 +5444,7 @@ module Increase
                     T::Array[
                     T.any(
                       Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg,
-                      Increase::Util::AnyHash
+                      Increase::Internal::Util::AnyHash
                     )
                     ]
                   )
@@ -5445,7 +5539,7 @@ module Increase
                     services: T::Array[
                     T.any(
                       Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service,
-                      Increase::Util::AnyHash
+                      Increase::Internal::Util::AnyHash
                     )
                     ],
                     ticket_document_number: T.nilable(String)
@@ -6136,7 +6230,10 @@ module Increase
 
           sig do
             params(
-              network_identifiers: T.any(Increase::Models::CardPayment::Element::CardReversal::NetworkIdentifiers, Increase::Util::AnyHash)
+              network_identifiers: T.any(
+                Increase::Models::CardPayment::Element::CardReversal::NetworkIdentifiers,
+                Increase::Internal::Util::AnyHash
+              )
             )
               .void
           end
@@ -6186,7 +6283,10 @@ module Increase
               merchant_postal_code: T.nilable(String),
               merchant_state: T.nilable(String),
               network: Increase::Models::CardPayment::Element::CardReversal::Network::OrSymbol,
-              network_identifiers: T.any(Increase::Models::CardPayment::Element::CardReversal::NetworkIdentifiers, Increase::Util::AnyHash),
+              network_identifiers: T.any(
+                Increase::Models::CardPayment::Element::CardReversal::NetworkIdentifiers,
+                Increase::Internal::Util::AnyHash
+              ),
               pending_transaction_id: T.nilable(String),
               reversal_amount: Integer,
               reversal_reason: T.nilable(Increase::Models::CardPayment::Element::CardReversal::ReversalReason::OrSymbol),
@@ -6429,7 +6529,7 @@ module Increase
           sig do
             params(
               cashback: T.nilable(
-                T.any(Increase::Models::CardPayment::Element::CardSettlement::Cashback, Increase::Util::AnyHash)
+                T.any(Increase::Models::CardPayment::Element::CardSettlement::Cashback, Increase::Internal::Util::AnyHash)
               )
             )
               .void
@@ -6448,7 +6548,10 @@ module Increase
           sig do
             params(
               interchange: T.nilable(
-                T.any(Increase::Models::CardPayment::Element::CardSettlement::Interchange, Increase::Util::AnyHash)
+                T.any(
+                  Increase::Models::CardPayment::Element::CardSettlement::Interchange,
+                  Increase::Internal::Util::AnyHash
+                )
               )
             )
               .void
@@ -6490,7 +6593,10 @@ module Increase
 
           sig do
             params(
-              network_identifiers: T.any(Increase::Models::CardPayment::Element::CardSettlement::NetworkIdentifiers, Increase::Util::AnyHash)
+              network_identifiers: T.any(
+                Increase::Models::CardPayment::Element::CardSettlement::NetworkIdentifiers,
+                Increase::Internal::Util::AnyHash
+              )
             )
               .void
           end
@@ -6517,7 +6623,10 @@ module Increase
           sig do
             params(
               purchase_details: T.nilable(
-                T.any(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails, Increase::Util::AnyHash)
+                T.any(
+                  Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails,
+                  Increase::Internal::Util::AnyHash
+                )
               )
             )
               .void
@@ -6545,11 +6654,14 @@ module Increase
               card_authorization: T.nilable(String),
               card_payment_id: String,
               cashback: T.nilable(
-                T.any(Increase::Models::CardPayment::Element::CardSettlement::Cashback, Increase::Util::AnyHash)
+                T.any(Increase::Models::CardPayment::Element::CardSettlement::Cashback, Increase::Internal::Util::AnyHash)
               ),
               currency: Increase::Models::CardPayment::Element::CardSettlement::Currency::OrSymbol,
               interchange: T.nilable(
-                T.any(Increase::Models::CardPayment::Element::CardSettlement::Interchange, Increase::Util::AnyHash)
+                T.any(
+                  Increase::Models::CardPayment::Element::CardSettlement::Interchange,
+                  Increase::Internal::Util::AnyHash
+                )
               ),
               merchant_acceptor_id: String,
               merchant_category_code: String,
@@ -6558,12 +6670,18 @@ module Increase
               merchant_name: String,
               merchant_postal_code: T.nilable(String),
               merchant_state: T.nilable(String),
-              network_identifiers: T.any(Increase::Models::CardPayment::Element::CardSettlement::NetworkIdentifiers, Increase::Util::AnyHash),
+              network_identifiers: T.any(
+                Increase::Models::CardPayment::Element::CardSettlement::NetworkIdentifiers,
+                Increase::Internal::Util::AnyHash
+              ),
               pending_transaction_id: T.nilable(String),
               presentment_amount: Integer,
               presentment_currency: String,
               purchase_details: T.nilable(
-                T.any(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails, Increase::Util::AnyHash)
+                T.any(
+                  Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails,
+                  Increase::Internal::Util::AnyHash
+                )
               ),
               transaction_id: String,
               type: Increase::Models::CardPayment::Element::CardSettlement::Type::OrSymbol
@@ -6887,7 +7005,7 @@ module Increase
                 car_rental: T.nilable(
                   T.any(
                     Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   )
                 )
               )
@@ -6917,7 +7035,7 @@ module Increase
                 lodging: T.nilable(
                   T.any(
                     Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   )
                 )
               )
@@ -6957,7 +7075,7 @@ module Increase
                 travel: T.nilable(
                   T.any(
                     Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   )
                 )
               )
@@ -6972,7 +7090,7 @@ module Increase
                 car_rental: T.nilable(
                   T.any(
                     Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   )
                 ),
                 customer_reference_identifier: T.nilable(String),
@@ -6981,7 +7099,7 @@ module Increase
                 lodging: T.nilable(
                   T.any(
                     Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   )
                 ),
                 national_tax_amount: T.nilable(Integer),
@@ -6993,7 +7111,7 @@ module Increase
                 travel: T.nilable(
                   T.any(
                     Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   )
                 )
               )
@@ -7673,7 +7791,7 @@ module Increase
                   ancillary: T.nilable(
                     T.any(
                       Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary,
-                      Increase::Util::AnyHash
+                      Increase::Internal::Util::AnyHash
                     )
                   )
                 )
@@ -7755,7 +7873,7 @@ module Increase
                   ancillary: T.nilable(
                     T.any(
                       Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary,
-                      Increase::Util::AnyHash
+                      Increase::Internal::Util::AnyHash
                     )
                   ),
                   computerized_reservation_system: T.nilable(String),
@@ -7778,7 +7896,7 @@ module Increase
                     T::Array[
                     T.any(
                       Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg,
-                      Increase::Util::AnyHash
+                      Increase::Internal::Util::AnyHash
                     )
                     ]
                   )
@@ -7875,7 +7993,7 @@ module Increase
                     services: T::Array[
                     T.any(
                       Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service,
-                      Increase::Util::AnyHash
+                      Increase::Internal::Util::AnyHash
                     )
                     ],
                     ticket_document_number: T.nilable(String)
@@ -8574,7 +8692,10 @@ module Increase
 
           sig do
             params(
-              network_details: T.any(Increase::Models::CardPayment::Element::CardValidation::NetworkDetails, Increase::Util::AnyHash)
+              network_details: T.any(
+                Increase::Models::CardPayment::Element::CardValidation::NetworkDetails,
+                Increase::Internal::Util::AnyHash
+              )
             )
               .void
           end
@@ -8586,7 +8707,10 @@ module Increase
 
           sig do
             params(
-              network_identifiers: T.any(Increase::Models::CardPayment::Element::CardValidation::NetworkIdentifiers, Increase::Util::AnyHash)
+              network_identifiers: T.any(
+                Increase::Models::CardPayment::Element::CardValidation::NetworkIdentifiers,
+                Increase::Internal::Util::AnyHash
+              )
             )
               .void
           end
@@ -8623,7 +8747,10 @@ module Increase
 
           sig do
             params(
-              verification: T.any(Increase::Models::CardPayment::Element::CardValidation::Verification, Increase::Util::AnyHash)
+              verification: T.any(
+                Increase::Models::CardPayment::Element::CardValidation::Verification,
+                Increase::Internal::Util::AnyHash
+              )
             )
               .void
           end
@@ -8647,14 +8774,23 @@ module Increase
               merchant_descriptor: String,
               merchant_postal_code: T.nilable(String),
               merchant_state: T.nilable(String),
-              network_details: T.any(Increase::Models::CardPayment::Element::CardValidation::NetworkDetails, Increase::Util::AnyHash),
-              network_identifiers: T.any(Increase::Models::CardPayment::Element::CardValidation::NetworkIdentifiers, Increase::Util::AnyHash),
+              network_details: T.any(
+                Increase::Models::CardPayment::Element::CardValidation::NetworkDetails,
+                Increase::Internal::Util::AnyHash
+              ),
+              network_identifiers: T.any(
+                Increase::Models::CardPayment::Element::CardValidation::NetworkIdentifiers,
+                Increase::Internal::Util::AnyHash
+              ),
               network_risk_score: T.nilable(Integer),
               physical_card_id: T.nilable(String),
               real_time_decision_id: T.nilable(String),
               terminal_id: T.nilable(String),
               type: Increase::Models::CardPayment::Element::CardValidation::Type::OrSymbol,
-              verification: T.any(Increase::Models::CardPayment::Element::CardValidation::Verification, Increase::Util::AnyHash)
+              verification: T.any(
+                Increase::Models::CardPayment::Element::CardValidation::Verification,
+                Increase::Internal::Util::AnyHash
+              )
             )
               .returns(T.attached_class)
           end
@@ -8784,7 +8920,7 @@ module Increase
                 visa: T.nilable(
                   T.any(
                     Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   )
                 )
               )
@@ -8799,7 +8935,7 @@ module Increase
                 visa: T.nilable(
                   T.any(
                     Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   )
                 )
               )
@@ -9267,7 +9403,7 @@ module Increase
               params(
                 card_verification_code: T.any(
                   Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -9283,7 +9419,7 @@ module Increase
               params(
                 cardholder_address: T.any(
                   Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -9295,11 +9431,11 @@ module Increase
               params(
                 card_verification_code: T.any(
                   Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 ),
                 cardholder_address: T.any(
                   Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 )
               )
                 .returns(T.attached_class)

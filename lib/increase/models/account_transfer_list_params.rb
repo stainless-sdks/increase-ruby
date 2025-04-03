@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::AccountTransfers#list
     class AccountTransferListParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      #   extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # @!attribute [r] account_id
       #   Filter Account Transfers to those that originated from the specified Account.

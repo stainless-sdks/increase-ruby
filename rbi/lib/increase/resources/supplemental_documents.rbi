@@ -8,7 +8,7 @@ module Increase
         params(
           entity_id: String,
           file_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
           .returns(Increase::Models::EntitySupplementalDocument)
       end
@@ -28,9 +28,9 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
-          .returns(Increase::Page[Increase::Models::EntitySupplementalDocument])
+          .returns(Increase::Internal::Page[Increase::Models::EntitySupplementalDocument])
       end
       def list(
         # The identifier of the Entity to list supplemental documents for.

@@ -11,11 +11,11 @@ module Increase
         program_id: String,
         status: Increase::Models::AccountListParams::Status
       }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class AccountListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_reader created_at: Increase::Models::AccountListParams::CreatedAt?
 

@@ -3,8 +3,8 @@
 module Increase
   module Models
     class CheckTransferCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # The identifier for the account that will send the transfer.
       sig { returns(String) }
@@ -31,7 +31,7 @@ module Increase
 
       sig do
         params(
-          physical_check: T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck, Increase::Util::AnyHash)
+          physical_check: T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -52,7 +52,7 @@ module Increase
 
       sig do
         params(
-          third_party: T.any(Increase::Models::CheckTransferCreateParams::ThirdParty, Increase::Util::AnyHash)
+          third_party: T.any(Increase::Models::CheckTransferCreateParams::ThirdParty, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -64,10 +64,10 @@ module Increase
           amount: Integer,
           fulfillment_method: Increase::Models::CheckTransferCreateParams::FulfillmentMethod::OrSymbol,
           source_account_number_id: String,
-          physical_check: T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck, Increase::Util::AnyHash),
+          physical_check: T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck, Increase::Internal::Util::AnyHash),
           require_approval: T::Boolean,
-          third_party: T.any(Increase::Models::CheckTransferCreateParams::ThirdParty, Increase::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          third_party: T.any(Increase::Models::CheckTransferCreateParams::ThirdParty, Increase::Internal::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -130,7 +130,10 @@ module Increase
 
         sig do
           params(
-            mailing_address: T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress, Increase::Util::AnyHash)
+            mailing_address: T.any(
+              Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
+              Increase::Internal::Util::AnyHash
+            )
           )
             .void
         end
@@ -168,7 +171,10 @@ module Increase
 
         sig do
           params(
-            return_address: T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress, Increase::Util::AnyHash)
+            return_address: T.any(
+              Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
+              Increase::Internal::Util::AnyHash
+            )
           )
             .void
         end
@@ -187,12 +193,18 @@ module Increase
         #   included if any other `fulfillment_method` is provided.
         sig do
           params(
-            mailing_address: T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress, Increase::Util::AnyHash),
+            mailing_address: T.any(
+              Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
+              Increase::Internal::Util::AnyHash
+            ),
             memo: String,
             recipient_name: String,
             check_number: String,
             note: String,
-            return_address: T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress, Increase::Util::AnyHash),
+            return_address: T.any(
+              Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
+              Increase::Internal::Util::AnyHash
+            ),
             signature_text: String
           )
             .returns(T.attached_class)

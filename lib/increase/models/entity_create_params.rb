@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::Entities#create
     class EntityCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      #   extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # @!attribute structure
       #   The type of Entity to create.

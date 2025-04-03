@@ -73,7 +73,7 @@ class Increase::Test::Resources::AccountTransfersTest < Increase::Test::Resource
     response = @increase.account_transfers.list
 
     assert_pattern do
-      response => Increase::Page
+      response => Increase::Internal::Page
     end
 
     row = response.to_enum.first

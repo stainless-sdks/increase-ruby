@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::PhysicalCardProfiles#create
     class PhysicalCardProfileCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      #   extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # @!attribute carrier_image_file_id
       #   The identifier of the File containing the physical card's carrier image.

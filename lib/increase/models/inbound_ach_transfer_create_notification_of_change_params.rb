@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::InboundACHTransfers#create_notification_of_change
     class InboundACHTransferCreateNotificationOfChangeParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      #   extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # @!attribute [r] updated_account_number
       #   The updated account number to send in the notification of change.

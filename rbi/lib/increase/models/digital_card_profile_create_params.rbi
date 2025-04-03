@@ -3,8 +3,8 @@
 module Increase
   module Models
     class DigitalCardProfileCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # The identifier of the File containing the card's icon image.
       sig { returns(String) }
@@ -53,7 +53,7 @@ module Increase
 
       sig do
         params(
-          text_color: T.any(Increase::Models::DigitalCardProfileCreateParams::TextColor, Increase::Util::AnyHash)
+          text_color: T.any(Increase::Models::DigitalCardProfileCreateParams::TextColor, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -69,8 +69,8 @@ module Increase
           contact_email: String,
           contact_phone: String,
           contact_website: String,
-          text_color: T.any(Increase::Models::DigitalCardProfileCreateParams::TextColor, Increase::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          text_color: T.any(Increase::Models::DigitalCardProfileCreateParams::TextColor, Increase::Internal::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

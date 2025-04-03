@@ -1,11 +1,11 @@
 module Increase
   module Models
     type account_balance_params =
-      { at_time: Time } & Increase::request_parameters
+      { at_time: Time } & Increase::Internal::Type::request_parameters
 
     class AccountBalanceParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_reader at_time: Time?
 

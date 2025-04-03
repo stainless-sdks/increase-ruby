@@ -12,7 +12,7 @@ module Increase
         ?limit: Integer,
         ?status: Increase::Models::OAuthApplicationListParams::Status,
         ?request_options: Increase::request_opts
-      ) -> Increase::Page[Increase::Models::OAuthApplication]
+      ) -> Increase::Internal::Page[Increase::Models::OAuthApplication]
 
       def initialize: (client: Increase::Client) -> void
     end

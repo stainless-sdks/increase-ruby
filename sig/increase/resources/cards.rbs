@@ -33,7 +33,7 @@ module Increase
         ?limit: Integer,
         ?status: Increase::Models::CardListParams::Status,
         ?request_options: Increase::request_opts
-      ) -> Increase::Page[Increase::Models::Card]
+      ) -> Increase::Internal::Page[Increase::Models::Card]
 
       def details: (
         String card_id,

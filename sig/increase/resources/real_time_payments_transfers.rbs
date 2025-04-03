@@ -30,7 +30,7 @@ module Increase
         ?limit: Integer,
         ?status: Increase::Models::RealTimePaymentsTransferListParams::Status,
         ?request_options: Increase::request_opts
-      ) -> Increase::Page[Increase::Models::RealTimePaymentsTransfer]
+      ) -> Increase::Internal::Page[Increase::Models::RealTimePaymentsTransfer]
 
       def initialize: (client: Increase::Client) -> void
     end

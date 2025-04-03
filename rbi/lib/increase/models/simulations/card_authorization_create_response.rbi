@@ -12,7 +12,7 @@ module Increase
 
         sig do
           params(
-            declined_transaction: T.nilable(T.any(Increase::Models::DeclinedTransaction, Increase::Util::AnyHash))
+            declined_transaction: T.nilable(T.any(Increase::Models::DeclinedTransaction, Increase::Internal::Util::AnyHash))
           )
             .void
         end
@@ -26,7 +26,7 @@ module Increase
 
         sig do
           params(
-            pending_transaction: T.nilable(T.any(Increase::Models::PendingTransaction, Increase::Util::AnyHash))
+            pending_transaction: T.nilable(T.any(Increase::Models::PendingTransaction, Increase::Internal::Util::AnyHash))
           )
             .void
         end
@@ -40,8 +40,8 @@ module Increase
         # The results of a Card Authorization simulation.
         sig do
           params(
-            declined_transaction: T.nilable(T.any(Increase::Models::DeclinedTransaction, Increase::Util::AnyHash)),
-            pending_transaction: T.nilable(T.any(Increase::Models::PendingTransaction, Increase::Util::AnyHash)),
+            declined_transaction: T.nilable(T.any(Increase::Models::DeclinedTransaction, Increase::Internal::Util::AnyHash)),
+            pending_transaction: T.nilable(T.any(Increase::Models::PendingTransaction, Increase::Internal::Util::AnyHash)),
             type: Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::OrSymbol
           )
             .returns(T.attached_class)

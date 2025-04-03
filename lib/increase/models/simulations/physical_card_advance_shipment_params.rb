@@ -6,8 +6,8 @@ module Increase
       # @see Increase::Resources::Simulations::PhysicalCards#advance_shipment
       class PhysicalCardAdvanceShipmentParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        #   extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         # @!attribute shipment_status
         #   The shipment status to move the Physical Card to.

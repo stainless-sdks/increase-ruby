@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           event_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
           .returns(Increase::Models::Event)
       end
@@ -22,13 +22,13 @@ module Increase
       sig do
         params(
           associated_object_id: String,
-          category: T.any(Increase::Models::EventListParams::Category, Increase::Util::AnyHash),
-          created_at: T.any(Increase::Models::EventListParams::CreatedAt, Increase::Util::AnyHash),
+          category: T.any(Increase::Models::EventListParams::Category, Increase::Internal::Util::AnyHash),
+          created_at: T.any(Increase::Models::EventListParams::CreatedAt, Increase::Internal::Util::AnyHash),
           cursor: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
-          .returns(Increase::Page[Increase::Models::Event])
+          .returns(Increase::Internal::Page[Increase::Models::Event])
       end
       def list(
         # Filter Events to those belonging to the object with the provided identifier.

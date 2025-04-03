@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::PhysicalCards#create
     class PhysicalCardCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      #   extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # @!attribute card_id
       #   The underlying card representing this physical card.

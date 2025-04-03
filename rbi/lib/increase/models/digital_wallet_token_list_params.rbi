@@ -3,8 +3,8 @@
 module Increase
   module Models
     class DigitalWalletTokenListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # Filter Digital Wallet Tokens to ones belonging to the specified Card.
       sig { returns(T.nilable(String)) }
@@ -18,7 +18,7 @@ module Increase
 
       sig do
         params(
-          created_at: T.any(Increase::Models::DigitalWalletTokenListParams::CreatedAt, Increase::Util::AnyHash)
+          created_at: T.any(Increase::Models::DigitalWalletTokenListParams::CreatedAt, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -42,10 +42,10 @@ module Increase
       sig do
         params(
           card_id: String,
-          created_at: T.any(Increase::Models::DigitalWalletTokenListParams::CreatedAt, Increase::Util::AnyHash),
+          created_at: T.any(Increase::Models::DigitalWalletTokenListParams::CreatedAt, Increase::Internal::Util::AnyHash),
           cursor: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

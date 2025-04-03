@@ -1,10 +1,11 @@
 module Increase
   module Models
-    type intrafi_exclusion_archive_params = {  } & Increase::request_parameters
+    type intrafi_exclusion_archive_params =
+      {  } & Increase::Internal::Type::request_parameters
 
     class IntrafiExclusionArchiveParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       def initialize: (?request_options: Increase::request_opts) -> void
 

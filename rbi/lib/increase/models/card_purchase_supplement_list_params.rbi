@@ -3,8 +3,8 @@
 module Increase
   module Models
     class CardPurchaseSupplementListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # Filter Card Purchase Supplements to ones belonging to the specified Card
       #   Payment.
@@ -19,7 +19,7 @@ module Increase
 
       sig do
         params(
-          created_at: T.any(Increase::Models::CardPurchaseSupplementListParams::CreatedAt, Increase::Util::AnyHash)
+          created_at: T.any(Increase::Models::CardPurchaseSupplementListParams::CreatedAt, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -43,10 +43,10 @@ module Increase
       sig do
         params(
           card_payment_id: String,
-          created_at: T.any(Increase::Models::CardPurchaseSupplementListParams::CreatedAt, Increase::Util::AnyHash),
+          created_at: T.any(Increase::Models::CardPurchaseSupplementListParams::CreatedAt, Increase::Internal::Util::AnyHash),
           cursor: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

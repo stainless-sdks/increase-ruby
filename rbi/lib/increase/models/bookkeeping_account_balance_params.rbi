@@ -3,8 +3,8 @@
 module Increase
   module Models
     class BookkeepingAccountBalanceParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # The moment to query the balance at. If not set, returns the current balances.
       sig { returns(T.nilable(Time)) }
@@ -14,7 +14,13 @@ module Increase
       attr_writer :at_time
 
       sig do
-        params(at_time: Time, request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+        params(
+          at_time: Time,
+          request_options: T.any(
+            Increase::RequestOptions,
+            Increase::Internal::Util::AnyHash
+          )
+        )
           .returns(T.attached_class)
       end
       def self.new(at_time: nil, request_options: {})

@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::DigitalCardProfiles#clone_
     class DigitalCardProfileCloneParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      #   extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # @!attribute [r] app_icon_file_id
       #   The identifier of the File containing the card's icon image.

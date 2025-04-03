@@ -3,11 +3,11 @@ module Increase
     module Simulations
       type card_fuel_confirmation_create_params =
         { amount: Integer, card_payment_id: String }
-        & Increase::request_parameters
+        & Increase::Internal::Type::request_parameters
 
       class CardFuelConfirmationCreateParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         attr_accessor amount: Integer
 

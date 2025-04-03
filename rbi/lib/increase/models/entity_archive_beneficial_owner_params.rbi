@@ -3,8 +3,8 @@
 module Increase
   module Models
     class EntityArchiveBeneficialOwnerParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # The identifying details of anyone controlling or owning 25% or more of the
       #   corporation.
@@ -14,7 +14,7 @@ module Increase
       sig do
         params(
           beneficial_owner_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

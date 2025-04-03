@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           program_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
           .returns(Increase::Models::Program)
       end
@@ -23,9 +23,9 @@ module Increase
         params(
           cursor: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
-          .returns(Increase::Page[Increase::Models::Program])
+          .returns(Increase::Internal::Page[Increase::Models::Program])
       end
       def list(
         # Return the page of entries after this one.

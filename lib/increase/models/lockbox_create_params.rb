@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::Lockboxes#create
     class LockboxCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      #   extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # @!attribute account_id
       #   The Account checks sent to this Lockbox should be deposited into.

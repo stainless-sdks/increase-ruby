@@ -4,15 +4,21 @@ module Increase
   module Models
     module Simulations
       class ProgramCreateParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         # The name of the program being added.
         sig { returns(String) }
         attr_accessor :name
 
         sig do
-          params(name: String, request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          params(
+            name: String,
+            request_options: T.any(
+              Increase::RequestOptions,
+              Increase::Internal::Util::AnyHash
+            )
+          )
             .returns(T.attached_class)
         end
         def self.new(name:, request_options: {})

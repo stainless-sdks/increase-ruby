@@ -4,8 +4,8 @@ module Increase
   module Models
     module Simulations
       class CardDisputeActionParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         # The status to move the dispute to.
         sig { returns(Increase::Models::Simulations::CardDisputeActionParams::Status::OrSymbol) }
@@ -22,7 +22,7 @@ module Increase
           params(
             status: Increase::Models::Simulations::CardDisputeActionParams::Status::OrSymbol,
             explanation: String,
-            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

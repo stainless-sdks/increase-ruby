@@ -4,8 +4,8 @@ module Increase
   module Models
     module Simulations
       class ACHTransferReturnParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         # The reason why the Federal Reserve or destination bank returned this transfer.
         #   Defaults to `no_account`.
@@ -18,7 +18,7 @@ module Increase
         sig do
           params(
             reason: Increase::Models::Simulations::ACHTransferReturnParams::Reason::OrSymbol,
-            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

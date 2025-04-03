@@ -14,7 +14,7 @@ module Increase
         ?limit: Integer,
         ?status: Increase::Models::InboundWireTransferListParams::Status,
         ?request_options: Increase::request_opts
-      ) -> Increase::Page[Increase::Models::InboundWireTransfer]
+      ) -> Increase::Internal::Page[Increase::Models::InboundWireTransfer]
 
       def initialize: (client: Increase::Client) -> void
     end

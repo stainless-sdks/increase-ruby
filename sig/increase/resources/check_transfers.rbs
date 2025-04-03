@@ -25,7 +25,7 @@ module Increase
         ?limit: Integer,
         ?status: Increase::Models::CheckTransferListParams::Status,
         ?request_options: Increase::request_opts
-      ) -> Increase::Page[Increase::Models::CheckTransfer]
+      ) -> Increase::Internal::Page[Increase::Models::CheckTransfer]
 
       def approve: (
         String check_transfer_id,

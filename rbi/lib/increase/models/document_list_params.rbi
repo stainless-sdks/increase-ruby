@@ -3,19 +3,27 @@
 module Increase
   module Models
     class DocumentListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       sig { returns(T.nilable(Increase::Models::DocumentListParams::Category)) }
       attr_reader :category
 
-      sig { params(category: T.any(Increase::Models::DocumentListParams::Category, Increase::Util::AnyHash)).void }
+      sig do
+        params(category: T.any(Increase::Models::DocumentListParams::Category, Increase::Internal::Util::AnyHash))
+          .void
+      end
       attr_writer :category
 
       sig { returns(T.nilable(Increase::Models::DocumentListParams::CreatedAt)) }
       attr_reader :created_at
 
-      sig { params(created_at: T.any(Increase::Models::DocumentListParams::CreatedAt, Increase::Util::AnyHash)).void }
+      sig do
+        params(
+          created_at: T.any(Increase::Models::DocumentListParams::CreatedAt, Increase::Internal::Util::AnyHash)
+        )
+          .void
+      end
       attr_writer :created_at
 
       # Return the page of entries after this one.
@@ -42,12 +50,12 @@ module Increase
 
       sig do
         params(
-          category: T.any(Increase::Models::DocumentListParams::Category, Increase::Util::AnyHash),
-          created_at: T.any(Increase::Models::DocumentListParams::CreatedAt, Increase::Util::AnyHash),
+          category: T.any(Increase::Models::DocumentListParams::Category, Increase::Internal::Util::AnyHash),
+          created_at: T.any(Increase::Models::DocumentListParams::CreatedAt, Increase::Internal::Util::AnyHash),
           cursor: String,
           entity_id: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -3,8 +3,8 @@
 module Increase
   module Models
     class OAuthConnectionListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
@@ -32,7 +32,12 @@ module Increase
       sig { returns(T.nilable(Increase::Models::OAuthConnectionListParams::Status)) }
       attr_reader :status
 
-      sig { params(status: T.any(Increase::Models::OAuthConnectionListParams::Status, Increase::Util::AnyHash)).void }
+      sig do
+        params(
+          status: T.any(Increase::Models::OAuthConnectionListParams::Status, Increase::Internal::Util::AnyHash)
+        )
+          .void
+      end
       attr_writer :status
 
       sig do
@@ -40,8 +45,8 @@ module Increase
           cursor: String,
           limit: Integer,
           oauth_application_id: String,
-          status: T.any(Increase::Models::OAuthConnectionListParams::Status, Increase::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          status: T.any(Increase::Models::OAuthConnectionListParams::Status, Increase::Internal::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

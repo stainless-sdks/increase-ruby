@@ -1,11 +1,12 @@
 module Increase
   module Models
     type supplemental_document_create_params =
-      { entity_id: String, file_id: String } & Increase::request_parameters
+      { entity_id: String, file_id: String }
+      & Increase::Internal::Type::request_parameters
 
     class SupplementalDocumentCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_accessor entity_id: String
 

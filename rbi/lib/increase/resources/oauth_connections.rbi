@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           oauth_connection_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
           .returns(Increase::Models::OAuthConnection)
       end
@@ -24,10 +24,10 @@ module Increase
           cursor: String,
           limit: Integer,
           oauth_application_id: String,
-          status: T.any(Increase::Models::OAuthConnectionListParams::Status, Increase::Util::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          status: T.any(Increase::Models::OAuthConnectionListParams::Status, Increase::Internal::Util::AnyHash),
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
-          .returns(Increase::Page[Increase::Models::OAuthConnection])
+          .returns(Increase::Internal::Page[Increase::Models::OAuthConnection])
       end
       def list(
         # Return the page of entries after this one.
