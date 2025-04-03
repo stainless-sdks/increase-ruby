@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::IntrafiAccountEnrollments#create
     class IntrafiAccountEnrollmentCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      #   extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # @!attribute account_id
       #   The identifier for the account to be added to IntraFi.

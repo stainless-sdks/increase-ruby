@@ -51,7 +51,7 @@ class Increase::Test::Resources::IntrafiAccountEnrollmentsTest < Increase::Test:
     response = @increase.intrafi_account_enrollments.list
 
     assert_pattern do
-      response => Increase::Page
+      response => Increase::Internal::Page
     end
 
     row = response.to_enum.first

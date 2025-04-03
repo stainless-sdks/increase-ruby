@@ -3,8 +3,8 @@
 module Increase
   module Models
     class LockboxUpdateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # The description you choose for the Lockbox.
       sig { returns(T.nilable(String)) }
@@ -32,7 +32,7 @@ module Increase
           description: String,
           recipient_name: String,
           status: Increase::Models::LockboxUpdateParams::Status::OrSymbol,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -73,7 +73,7 @@ class Increase::Test::Resources::LockboxesTest < Increase::Test::ResourceTest
     response = @increase.lockboxes.list
 
     assert_pattern do
-      response => Increase::Page
+      response => Increase::Internal::Page
     end
 
     row = response.to_enum.first

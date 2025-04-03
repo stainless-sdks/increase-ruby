@@ -54,7 +54,7 @@ module Increase
       # @param limit [Integer]
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Page<Increase::Models::IntrafiExclusion>]
+      # @return [Increase::Internal::Page<Increase::Models::IntrafiExclusion>]
       #
       # @see Increase::Models::IntrafiExclusionListParams
       def list(params = {})
@@ -63,7 +63,7 @@ module Increase
           method: :get,
           path: "intrafi_exclusions",
           query: parsed,
-          page: Increase::Page,
+          page: Increase::Internal::Page,
           model: Increase::Models::IntrafiExclusion,
           options: options
         )

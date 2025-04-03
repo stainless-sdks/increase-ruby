@@ -29,7 +29,7 @@ class Increase::Test::Resources::SupplementalDocumentsTest < Increase::Test::Res
     response = @increase.supplemental_documents.list(entity_id: "entity_id")
 
     assert_pattern do
-      response => Increase::Page
+      response => Increase::Internal::Page
     end
 
     row = response.to_enum.first

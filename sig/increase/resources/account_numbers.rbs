@@ -32,7 +32,7 @@ module Increase
         ?limit: Integer,
         ?status: Increase::Models::AccountNumberListParams::Status,
         ?request_options: Increase::request_opts
-      ) -> Increase::Page[Increase::Models::AccountNumber]
+      ) -> Increase::Internal::Page[Increase::Models::AccountNumber]
 
       def initialize: (client: Increase::Client) -> void
     end

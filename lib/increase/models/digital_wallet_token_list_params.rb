@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::DigitalWalletTokens#list
     class DigitalWalletTokenListParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      #   extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # @!attribute [r] card_id
       #   Filter Digital Wallet Tokens to ones belonging to the specified Card.

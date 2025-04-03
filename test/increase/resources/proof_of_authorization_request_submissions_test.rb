@@ -83,7 +83,7 @@ class Increase::Test::Resources::ProofOfAuthorizationRequestSubmissionsTest < In
     response = @increase.proof_of_authorization_request_submissions.list
 
     assert_pattern do
-      response => Increase::Page
+      response => Increase::Internal::Page
     end
 
     row = response.to_enum.first

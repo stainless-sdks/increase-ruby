@@ -24,7 +24,12 @@ module Increase
       sig { returns(T.nilable(Increase::Models::WireTransfer::Approval)) }
       attr_reader :approval
 
-      sig { params(approval: T.nilable(T.any(Increase::Models::WireTransfer::Approval, Increase::Util::AnyHash))).void }
+      sig do
+        params(
+          approval: T.nilable(T.any(Increase::Models::WireTransfer::Approval, Increase::Internal::Util::AnyHash))
+        )
+          .void
+      end
       attr_writer :approval
 
       # The beneficiary's address line 1.
@@ -50,7 +55,7 @@ module Increase
 
       sig do
         params(
-          cancellation: T.nilable(T.any(Increase::Models::WireTransfer::Cancellation, Increase::Util::AnyHash))
+          cancellation: T.nilable(T.any(Increase::Models::WireTransfer::Cancellation, Increase::Internal::Util::AnyHash))
         )
           .void
       end
@@ -66,7 +71,9 @@ module Increase
       attr_reader :created_by
 
       sig do
-        params(created_by: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy, Increase::Util::AnyHash)))
+        params(
+          created_by: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy, Increase::Internal::Util::AnyHash))
+        )
           .void
       end
       attr_writer :created_by
@@ -121,7 +128,12 @@ module Increase
       sig { returns(T.nilable(Increase::Models::WireTransfer::Reversal)) }
       attr_reader :reversal
 
-      sig { params(reversal: T.nilable(T.any(Increase::Models::WireTransfer::Reversal, Increase::Util::AnyHash))).void }
+      sig do
+        params(
+          reversal: T.nilable(T.any(Increase::Models::WireTransfer::Reversal, Increase::Internal::Util::AnyHash))
+        )
+          .void
+      end
       attr_writer :reversal
 
       # The American Bankers' Association (ABA) Routing Transit Number (RTN).
@@ -142,7 +154,9 @@ module Increase
       attr_reader :submission
 
       sig do
-        params(submission: T.nilable(T.any(Increase::Models::WireTransfer::Submission, Increase::Util::AnyHash)))
+        params(
+          submission: T.nilable(T.any(Increase::Models::WireTransfer::Submission, Increase::Internal::Util::AnyHash))
+        )
           .void
       end
       attr_writer :submission
@@ -164,14 +178,14 @@ module Increase
           account_id: String,
           account_number: String,
           amount: Integer,
-          approval: T.nilable(T.any(Increase::Models::WireTransfer::Approval, Increase::Util::AnyHash)),
+          approval: T.nilable(T.any(Increase::Models::WireTransfer::Approval, Increase::Internal::Util::AnyHash)),
           beneficiary_address_line1: T.nilable(String),
           beneficiary_address_line2: T.nilable(String),
           beneficiary_address_line3: T.nilable(String),
           beneficiary_name: T.nilable(String),
-          cancellation: T.nilable(T.any(Increase::Models::WireTransfer::Cancellation, Increase::Util::AnyHash)),
+          cancellation: T.nilable(T.any(Increase::Models::WireTransfer::Cancellation, Increase::Internal::Util::AnyHash)),
           created_at: Time,
-          created_by: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy, Increase::Util::AnyHash)),
+          created_by: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy, Increase::Internal::Util::AnyHash)),
           currency: Increase::Models::WireTransfer::Currency::OrSymbol,
           external_account_id: T.nilable(String),
           idempotency_key: T.nilable(String),
@@ -182,11 +196,11 @@ module Increase
           originator_address_line3: T.nilable(String),
           originator_name: T.nilable(String),
           pending_transaction_id: T.nilable(String),
-          reversal: T.nilable(T.any(Increase::Models::WireTransfer::Reversal, Increase::Util::AnyHash)),
+          reversal: T.nilable(T.any(Increase::Models::WireTransfer::Reversal, Increase::Internal::Util::AnyHash)),
           routing_number: String,
           source_account_number_id: T.nilable(String),
           status: Increase::Models::WireTransfer::Status::OrSymbol,
-          submission: T.nilable(T.any(Increase::Models::WireTransfer::Submission, Increase::Util::AnyHash)),
+          submission: T.nilable(T.any(Increase::Models::WireTransfer::Submission, Increase::Internal::Util::AnyHash)),
           transaction_id: T.nilable(String),
           type: Increase::Models::WireTransfer::Type::OrSymbol
         )
@@ -315,7 +329,7 @@ module Increase
 
         sig do
           params(
-            api_key: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::APIKey, Increase::Util::AnyHash))
+            api_key: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::APIKey, Increase::Internal::Util::AnyHash))
           )
             .void
         end
@@ -331,7 +345,9 @@ module Increase
 
         sig do
           params(
-            oauth_application: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash))
+            oauth_application: T.nilable(
+              T.any(Increase::Models::WireTransfer::CreatedBy::OAuthApplication, Increase::Internal::Util::AnyHash)
+            )
           )
             .void
         end
@@ -342,7 +358,9 @@ module Increase
         attr_reader :user
 
         sig do
-          params(user: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::User, Increase::Util::AnyHash)))
+          params(
+            user: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::User, Increase::Internal::Util::AnyHash))
+          )
             .void
         end
         attr_writer :user
@@ -350,10 +368,12 @@ module Increase
         # What object created the transfer, either via the API or the dashboard.
         sig do
           params(
-            api_key: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::APIKey, Increase::Util::AnyHash)),
+            api_key: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::APIKey, Increase::Internal::Util::AnyHash)),
             category: Increase::Models::WireTransfer::CreatedBy::Category::OrSymbol,
-            oauth_application: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash)),
-            user: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::User, Increase::Util::AnyHash))
+            oauth_application: T.nilable(
+              T.any(Increase::Models::WireTransfer::CreatedBy::OAuthApplication, Increase::Internal::Util::AnyHash)
+            ),
+            user: T.nilable(T.any(Increase::Models::WireTransfer::CreatedBy::User, Increase::Internal::Util::AnyHash))
           )
             .returns(T.attached_class)
         end

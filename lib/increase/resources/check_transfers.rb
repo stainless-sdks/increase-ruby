@@ -61,7 +61,7 @@ module Increase
       # @param status [Increase::Models::CheckTransferListParams::Status]
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Page<Increase::Models::CheckTransfer>]
+      # @return [Increase::Internal::Page<Increase::Models::CheckTransfer>]
       #
       # @see Increase::Models::CheckTransferListParams
       def list(params = {})
@@ -70,7 +70,7 @@ module Increase
           method: :get,
           path: "check_transfers",
           query: parsed,
-          page: Increase::Page,
+          page: Increase::Internal::Page,
           model: Increase::Models::CheckTransfer,
           options: options
         )

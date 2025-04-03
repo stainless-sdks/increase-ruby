@@ -6,8 +6,8 @@ module Increase
       # @see Increase::Resources::Simulations::InboundRealTimePaymentsTransfers#create
       class InboundRealTimePaymentsTransferCreateParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        #   extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         # @!attribute account_number_id
         #   The identifier of the Account Number the inbound Real-Time Payments Transfer is

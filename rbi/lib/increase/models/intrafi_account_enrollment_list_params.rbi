@@ -3,8 +3,8 @@
 module Increase
   module Models
     class IntrafiAccountEnrollmentListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # Filter IntraFi Account Enrollments to the one belonging to an account.
       sig { returns(T.nilable(String)) }
@@ -43,7 +43,7 @@ module Increase
 
       sig do
         params(
-          status: T.any(Increase::Models::IntrafiAccountEnrollmentListParams::Status, Increase::Util::AnyHash)
+          status: T.any(Increase::Models::IntrafiAccountEnrollmentListParams::Status, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -55,8 +55,8 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: T.any(Increase::Models::IntrafiAccountEnrollmentListParams::Status, Increase::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          status: T.any(Increase::Models::IntrafiAccountEnrollmentListParams::Status, Increase::Internal::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -6,11 +6,11 @@ module Increase
         date: Time,
         transaction_id: String
       }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class BookkeepingEntrySetCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_accessor entries: ::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry]
 

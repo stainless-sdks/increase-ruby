@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::OAuthTokens#create
     class OAuthTokenCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      #   extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # @!attribute grant_type
       #   The credential you request in exchange for the code. In Production, this is

@@ -3,8 +3,8 @@
 module Increase
   module Models
     class BookkeepingEntrySetCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # The bookkeeping entries.
       sig { returns(T::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry]) }
@@ -27,10 +27,10 @@ module Increase
 
       sig do
         params(
-          entries: T::Array[T.any(Increase::Models::BookkeepingEntrySetCreateParams::Entry, Increase::Util::AnyHash)],
+          entries: T::Array[T.any(Increase::Models::BookkeepingEntrySetCreateParams::Entry, Increase::Internal::Util::AnyHash)],
           date: Time,
           transaction_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

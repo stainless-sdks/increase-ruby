@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::InboundWireDrawdownRequests#list
     class InboundWireDrawdownRequestListParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      #   extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # @!attribute [r] cursor
       #   Return the page of entries after this one.

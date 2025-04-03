@@ -8,11 +8,11 @@ module Increase
         digital_wallet_authentication: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
         digital_wallet_token: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken
       }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class RealTimeDecisionActionParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_reader card_authentication: Increase::Models::RealTimeDecisionActionParams::CardAuthentication?
 

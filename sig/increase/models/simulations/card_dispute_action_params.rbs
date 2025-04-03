@@ -6,11 +6,11 @@ module Increase
           status: Increase::Models::Simulations::CardDisputeActionParams::status,
           explanation: String
         }
-        & Increase::request_parameters
+        & Increase::Internal::Type::request_parameters
 
       class CardDisputeActionParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         attr_accessor status: Increase::Models::Simulations::CardDisputeActionParams::status
 

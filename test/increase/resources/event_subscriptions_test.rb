@@ -70,7 +70,7 @@ class Increase::Test::Resources::EventSubscriptionsTest < Increase::Test::Resour
     response = @increase.event_subscriptions.list
 
     assert_pattern do
-      response => Increase::Page
+      response => Increase::Internal::Page
     end
 
     row = response.to_enum.first

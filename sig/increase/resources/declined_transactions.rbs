@@ -14,7 +14,7 @@ module Increase
         ?limit: Integer,
         ?route_id: String,
         ?request_options: Increase::request_opts
-      ) -> Increase::Page[Increase::Models::DeclinedTransaction]
+      ) -> Increase::Internal::Page[Increase::Models::DeclinedTransaction]
 
       def initialize: (client: Increase::Client) -> void
     end

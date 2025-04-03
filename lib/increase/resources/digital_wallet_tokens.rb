@@ -32,7 +32,7 @@ module Increase
       # @param limit [Integer]
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Page<Increase::Models::DigitalWalletToken>]
+      # @return [Increase::Internal::Page<Increase::Models::DigitalWalletToken>]
       #
       # @see Increase::Models::DigitalWalletTokenListParams
       def list(params = {})
@@ -41,7 +41,7 @@ module Increase
           method: :get,
           path: "digital_wallet_tokens",
           query: parsed,
-          page: Increase::Page,
+          page: Increase::Internal::Page,
           model: Increase::Models::DigitalWalletToken,
           options: options
         )

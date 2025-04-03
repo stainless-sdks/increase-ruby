@@ -7,11 +7,11 @@ module Increase
         funding: Increase::Models::ExternalAccountUpdateParams::funding,
         status: Increase::Models::ExternalAccountUpdateParams::status
       }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class ExternalAccountUpdateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_reader account_holder: Increase::Models::ExternalAccountUpdateParams::account_holder?
 

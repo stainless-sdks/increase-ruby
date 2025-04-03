@@ -7,11 +7,11 @@ module Increase
         compliance_category: Increase::Models::BookkeepingAccountCreateParams::compliance_category,
         entity_id: String
       }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class BookkeepingAccountCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_accessor name: String
 

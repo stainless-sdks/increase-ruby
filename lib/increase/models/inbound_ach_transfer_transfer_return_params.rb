@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::InboundACHTransfers#transfer_return
     class InboundACHTransferTransferReturnParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      #   extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # @!attribute reason
       #   The reason why this transfer will be returned. The most usual return codes are

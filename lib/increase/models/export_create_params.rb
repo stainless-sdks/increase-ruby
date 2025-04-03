@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::Exports#create
     class ExportCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      #   extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # @!attribute category
       #   The type of Export to create.

@@ -47,7 +47,7 @@ class Increase::Test::Resources::InboundACHTransfersTest < Increase::Test::Resou
     response = @increase.inbound_ach_transfers.list
 
     assert_pattern do
-      response => Increase::Page
+      response => Increase::Internal::Page
     end
 
     row = response.to_enum.first

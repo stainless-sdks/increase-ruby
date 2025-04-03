@@ -15,11 +15,11 @@ module Increase
         authorizer_company: String,
         authorizer_ip_address: String
       }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class ProofOfAuthorizationRequestSubmissionCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_accessor authorization_terms: String
 

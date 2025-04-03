@@ -5,11 +5,11 @@ module Increase
         {
           shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status
         }
-        & Increase::request_parameters
+        & Increase::Internal::Type::request_parameters
 
       class PhysicalCardAdvanceShipmentParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         attr_accessor shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status
 

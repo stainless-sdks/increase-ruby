@@ -3,13 +3,18 @@
 module Increase
   module Models
     class CardDisputeListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       sig { returns(T.nilable(Increase::Models::CardDisputeListParams::CreatedAt)) }
       attr_reader :created_at
 
-      sig { params(created_at: T.any(Increase::Models::CardDisputeListParams::CreatedAt, Increase::Util::AnyHash)).void }
+      sig do
+        params(
+          created_at: T.any(Increase::Models::CardDisputeListParams::CreatedAt, Increase::Internal::Util::AnyHash)
+        )
+          .void
+      end
       attr_writer :created_at
 
       # Return the page of entries after this one.
@@ -40,17 +45,20 @@ module Increase
       sig { returns(T.nilable(Increase::Models::CardDisputeListParams::Status)) }
       attr_reader :status
 
-      sig { params(status: T.any(Increase::Models::CardDisputeListParams::Status, Increase::Util::AnyHash)).void }
+      sig do
+        params(status: T.any(Increase::Models::CardDisputeListParams::Status, Increase::Internal::Util::AnyHash))
+          .void
+      end
       attr_writer :status
 
       sig do
         params(
-          created_at: T.any(Increase::Models::CardDisputeListParams::CreatedAt, Increase::Util::AnyHash),
+          created_at: T.any(Increase::Models::CardDisputeListParams::CreatedAt, Increase::Internal::Util::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: T.any(Increase::Models::CardDisputeListParams::Status, Increase::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          status: T.any(Increase::Models::CardDisputeListParams::Status, Increase::Internal::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

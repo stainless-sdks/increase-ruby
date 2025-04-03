@@ -3,8 +3,8 @@
 module Increase
   module Models
     class InboundACHTransferDeclineParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # The reason why this transfer will be returned. If this parameter is unset, the
       #   return codes will be `payment_stopped` for debits and
@@ -18,7 +18,7 @@ module Increase
       sig do
         params(
           reason: Increase::Models::InboundACHTransferDeclineParams::Reason::OrSymbol,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

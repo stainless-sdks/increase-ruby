@@ -3,16 +3,12 @@
 module Increase
   module Models
     class AccountCloseParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       sig do
-        params(
-          request_options: T.any(
-            Increase::RequestOptions,
-            Increase::Util::AnyHash
-          )
-        ).returns(T.attached_class)
+        params(request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
+          .returns(T.attached_class)
       end
       def self.new(request_options: {})
       end

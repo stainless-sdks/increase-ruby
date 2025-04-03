@@ -5,11 +5,11 @@ module Increase
         {
           rejection: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection
         }
-        & Increase::request_parameters
+        & Increase::Internal::Type::request_parameters
 
       class RealTimePaymentsTransferCompleteParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         attr_reader rejection: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection?
 

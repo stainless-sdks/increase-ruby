@@ -6,8 +6,8 @@ module Increase
       # @see Increase::Resources::Simulations::DigitalWalletTokenRequests#create
       class DigitalWalletTokenRequestCreateParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        #   extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         # @!attribute card_id
         #   The identifier of the Card to be authorized.
