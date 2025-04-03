@@ -6,11 +6,11 @@ module Increase
         purpose: Increase::Models::FileCreateParams::purpose,
         description: String
       }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class FileCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_accessor file: IO | StringIO
 

@@ -31,7 +31,7 @@ module Increase
 
       sig do
         params(
-          deposit_acceptance: T.nilable(T.any(Increase::Models::CheckDeposit::DepositAcceptance, Increase::Util::AnyHash))
+          deposit_acceptance: T.nilable(T.any(Increase::Models::CheckDeposit::DepositAcceptance, Increase::Internal::Util::AnyHash))
         )
           .void
       end
@@ -44,7 +44,7 @@ module Increase
 
       sig do
         params(
-          deposit_rejection: T.nilable(T.any(Increase::Models::CheckDeposit::DepositRejection, Increase::Util::AnyHash))
+          deposit_rejection: T.nilable(T.any(Increase::Models::CheckDeposit::DepositRejection, Increase::Internal::Util::AnyHash))
         )
           .void
       end
@@ -57,7 +57,7 @@ module Increase
 
       sig do
         params(
-          deposit_return: T.nilable(T.any(Increase::Models::CheckDeposit::DepositReturn, Increase::Util::AnyHash))
+          deposit_return: T.nilable(T.any(Increase::Models::CheckDeposit::DepositReturn, Increase::Internal::Util::AnyHash))
         )
           .void
       end
@@ -70,7 +70,7 @@ module Increase
 
       sig do
         params(
-          deposit_submission: T.nilable(T.any(Increase::Models::CheckDeposit::DepositSubmission, Increase::Util::AnyHash))
+          deposit_submission: T.nilable(T.any(Increase::Models::CheckDeposit::DepositSubmission, Increase::Internal::Util::AnyHash))
         )
           .void
       end
@@ -97,7 +97,7 @@ module Increase
 
       sig do
         params(
-          inbound_funds_hold: T.nilable(T.any(Increase::Models::CheckDeposit::InboundFundsHold, Increase::Util::AnyHash))
+          inbound_funds_hold: T.nilable(T.any(Increase::Models::CheckDeposit::InboundFundsHold, Increase::Internal::Util::AnyHash))
         )
           .void
       end
@@ -134,14 +134,14 @@ module Increase
           amount: Integer,
           back_image_file_id: T.nilable(String),
           created_at: Time,
-          deposit_acceptance: T.nilable(T.any(Increase::Models::CheckDeposit::DepositAcceptance, Increase::Util::AnyHash)),
-          deposit_rejection: T.nilable(T.any(Increase::Models::CheckDeposit::DepositRejection, Increase::Util::AnyHash)),
-          deposit_return: T.nilable(T.any(Increase::Models::CheckDeposit::DepositReturn, Increase::Util::AnyHash)),
-          deposit_submission: T.nilable(T.any(Increase::Models::CheckDeposit::DepositSubmission, Increase::Util::AnyHash)),
+          deposit_acceptance: T.nilable(T.any(Increase::Models::CheckDeposit::DepositAcceptance, Increase::Internal::Util::AnyHash)),
+          deposit_rejection: T.nilable(T.any(Increase::Models::CheckDeposit::DepositRejection, Increase::Internal::Util::AnyHash)),
+          deposit_return: T.nilable(T.any(Increase::Models::CheckDeposit::DepositReturn, Increase::Internal::Util::AnyHash)),
+          deposit_submission: T.nilable(T.any(Increase::Models::CheckDeposit::DepositSubmission, Increase::Internal::Util::AnyHash)),
           description: T.nilable(String),
           front_image_file_id: String,
           idempotency_key: T.nilable(String),
-          inbound_funds_hold: T.nilable(T.any(Increase::Models::CheckDeposit::InboundFundsHold, Increase::Util::AnyHash)),
+          inbound_funds_hold: T.nilable(T.any(Increase::Models::CheckDeposit::InboundFundsHold, Increase::Internal::Util::AnyHash)),
           inbound_mail_item_id: T.nilable(String),
           lockbox_id: T.nilable(String),
           status: Increase::Models::CheckDeposit::Status::OrSymbol,

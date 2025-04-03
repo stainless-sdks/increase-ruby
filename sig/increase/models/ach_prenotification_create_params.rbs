@@ -16,11 +16,11 @@ module Increase
         individual_name: String,
         standard_entry_class_code: Increase::Models::ACHPrenotificationCreateParams::standard_entry_class_code
       }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class ACHPrenotificationCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_accessor account_id: String
 

@@ -1,11 +1,11 @@
 module Increase
   module Models
     type proof_of_authorization_request_submission_retrieve_params =
-      {  } & Increase::request_parameters
+      {  } & Increase::Internal::Type::request_parameters
 
     class ProofOfAuthorizationRequestSubmissionRetrieveParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       def initialize: (?request_options: Increase::request_opts) -> void
 

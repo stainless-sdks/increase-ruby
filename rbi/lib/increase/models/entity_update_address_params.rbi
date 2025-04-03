@@ -3,21 +3,26 @@
 module Increase
   module Models
     class EntityUpdateAddressParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
       #   are disallowed.
       sig { returns(Increase::Models::EntityUpdateAddressParams::Address) }
       attr_reader :address
 
-      sig { params(address: T.any(Increase::Models::EntityUpdateAddressParams::Address, Increase::Util::AnyHash)).void }
+      sig do
+        params(
+          address: T.any(Increase::Models::EntityUpdateAddressParams::Address, Increase::Internal::Util::AnyHash)
+        )
+          .void
+      end
       attr_writer :address
 
       sig do
         params(
-          address: T.any(Increase::Models::EntityUpdateAddressParams::Address, Increase::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          address: T.any(Increase::Models::EntityUpdateAddressParams::Address, Increase::Internal::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

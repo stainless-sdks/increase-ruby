@@ -3,8 +3,8 @@
 module Increase
   module Models
     class IntrafiExclusionCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # The name of the financial institution to be excluded.
       sig { returns(String) }
@@ -18,7 +18,7 @@ module Increase
         params(
           bank_name: String,
           entity_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

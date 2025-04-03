@@ -34,7 +34,7 @@ module Increase
       # @param route_id [String]
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Page<Increase::Models::DeclinedTransaction>]
+      # @return [Increase::Internal::Page<Increase::Models::DeclinedTransaction>]
       #
       # @see Increase::Models::DeclinedTransactionListParams
       def list(params = {})
@@ -43,7 +43,7 @@ module Increase
           method: :get,
           path: "declined_transactions",
           query: parsed,
-          page: Increase::Page,
+          page: Increase::Internal::Page,
           model: Increase::Models::DeclinedTransaction,
           options: options
         )

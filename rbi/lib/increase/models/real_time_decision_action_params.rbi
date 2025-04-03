@@ -3,8 +3,8 @@
 module Increase
   module Models
     class RealTimeDecisionActionParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # If the Real-Time Decision relates to a 3DS card authentication attempt, this
       #   object contains your response to the authentication.
@@ -13,7 +13,10 @@ module Increase
 
       sig do
         params(
-          card_authentication: T.any(Increase::Models::RealTimeDecisionActionParams::CardAuthentication, Increase::Util::AnyHash)
+          card_authentication: T.any(
+            Increase::Models::RealTimeDecisionActionParams::CardAuthentication,
+            Increase::Internal::Util::AnyHash
+          )
         )
           .void
       end
@@ -28,7 +31,7 @@ module Increase
         params(
           card_authentication_challenge: T.any(
             Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge,
-            Increase::Util::AnyHash
+            Increase::Internal::Util::AnyHash
           )
         )
           .void
@@ -42,7 +45,10 @@ module Increase
 
       sig do
         params(
-          card_authorization: T.any(Increase::Models::RealTimeDecisionActionParams::CardAuthorization, Increase::Util::AnyHash)
+          card_authorization: T.any(
+            Increase::Models::RealTimeDecisionActionParams::CardAuthorization,
+            Increase::Internal::Util::AnyHash
+          )
         )
           .void
       end
@@ -57,7 +63,7 @@ module Increase
         params(
           digital_wallet_authentication: T.any(
             Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
-            Increase::Util::AnyHash
+            Increase::Internal::Util::AnyHash
           )
         )
           .void
@@ -71,7 +77,10 @@ module Increase
 
       sig do
         params(
-          digital_wallet_token: T.any(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken, Increase::Util::AnyHash)
+          digital_wallet_token: T.any(
+            Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken,
+            Increase::Internal::Util::AnyHash
+          )
         )
           .void
       end
@@ -79,18 +88,27 @@ module Increase
 
       sig do
         params(
-          card_authentication: T.any(Increase::Models::RealTimeDecisionActionParams::CardAuthentication, Increase::Util::AnyHash),
+          card_authentication: T.any(
+            Increase::Models::RealTimeDecisionActionParams::CardAuthentication,
+            Increase::Internal::Util::AnyHash
+          ),
           card_authentication_challenge: T.any(
             Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge,
-            Increase::Util::AnyHash
+            Increase::Internal::Util::AnyHash
           ),
-          card_authorization: T.any(Increase::Models::RealTimeDecisionActionParams::CardAuthorization, Increase::Util::AnyHash),
+          card_authorization: T.any(
+            Increase::Models::RealTimeDecisionActionParams::CardAuthorization,
+            Increase::Internal::Util::AnyHash
+          ),
           digital_wallet_authentication: T.any(
             Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
-            Increase::Util::AnyHash
+            Increase::Internal::Util::AnyHash
           ),
-          digital_wallet_token: T.any(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken, Increase::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          digital_wallet_token: T.any(
+            Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken,
+            Increase::Internal::Util::AnyHash
+          ),
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -414,7 +432,7 @@ module Increase
           params(
             success: T.any(
               Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success,
-              Increase::Util::AnyHash
+              Increase::Internal::Util::AnyHash
             )
           )
             .void
@@ -428,7 +446,7 @@ module Increase
             result: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::OrSymbol,
             success: T.any(
               Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success,
-              Increase::Util::AnyHash
+              Increase::Internal::Util::AnyHash
             )
           )
             .returns(T.attached_class)
@@ -523,7 +541,7 @@ module Increase
           params(
             approval: T.any(
               Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval,
-              Increase::Util::AnyHash
+              Increase::Internal::Util::AnyHash
             )
           )
             .void
@@ -539,7 +557,7 @@ module Increase
           params(
             decline: T.any(
               Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline,
-              Increase::Util::AnyHash
+              Increase::Internal::Util::AnyHash
             )
           )
             .void
@@ -552,11 +570,11 @@ module Increase
           params(
             approval: T.any(
               Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval,
-              Increase::Util::AnyHash
+              Increase::Internal::Util::AnyHash
             ),
             decline: T.any(
               Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline,
-              Increase::Util::AnyHash
+              Increase::Internal::Util::AnyHash
             )
           )
             .returns(T.attached_class)

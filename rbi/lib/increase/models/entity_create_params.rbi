@@ -3,8 +3,8 @@
 module Increase
   module Models
     class EntityCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # The type of Entity to create.
       sig { returns(Increase::Models::EntityCreateParams::Structure::OrSymbol) }
@@ -15,7 +15,12 @@ module Increase
       sig { returns(T.nilable(Increase::Models::EntityCreateParams::Corporation)) }
       attr_reader :corporation
 
-      sig { params(corporation: T.any(Increase::Models::EntityCreateParams::Corporation, Increase::Util::AnyHash)).void }
+      sig do
+        params(
+          corporation: T.any(Increase::Models::EntityCreateParams::Corporation, Increase::Internal::Util::AnyHash)
+        )
+          .void
+      end
       attr_writer :corporation
 
       # The description you choose to give the entity.
@@ -32,7 +37,7 @@ module Increase
 
       sig do
         params(
-          government_authority: T.any(Increase::Models::EntityCreateParams::GovernmentAuthority, Increase::Util::AnyHash)
+          government_authority: T.any(Increase::Models::EntityCreateParams::GovernmentAuthority, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -43,7 +48,7 @@ module Increase
       sig { returns(T.nilable(Increase::Models::EntityCreateParams::Joint)) }
       attr_reader :joint
 
-      sig { params(joint: T.any(Increase::Models::EntityCreateParams::Joint, Increase::Util::AnyHash)).void }
+      sig { params(joint: T.any(Increase::Models::EntityCreateParams::Joint, Increase::Internal::Util::AnyHash)).void }
       attr_writer :joint
 
       # Details of the natural person entity to create. Required if `structure` is equal
@@ -55,7 +60,7 @@ module Increase
 
       sig do
         params(
-          natural_person: T.any(Increase::Models::EntityCreateParams::NaturalPerson, Increase::Util::AnyHash)
+          natural_person: T.any(Increase::Models::EntityCreateParams::NaturalPerson, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -67,7 +72,7 @@ module Increase
 
       sig do
         params(
-          supplemental_documents: T::Array[T.any(Increase::Models::EntityCreateParams::SupplementalDocument, Increase::Util::AnyHash)]
+          supplemental_documents: T::Array[T.any(Increase::Models::EntityCreateParams::SupplementalDocument, Increase::Internal::Util::AnyHash)]
         )
           .void
       end
@@ -80,7 +85,7 @@ module Increase
 
       sig do
         params(
-          third_party_verification: T.any(Increase::Models::EntityCreateParams::ThirdPartyVerification, Increase::Util::AnyHash)
+          third_party_verification: T.any(Increase::Models::EntityCreateParams::ThirdPartyVerification, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -91,21 +96,21 @@ module Increase
       sig { returns(T.nilable(Increase::Models::EntityCreateParams::Trust)) }
       attr_reader :trust
 
-      sig { params(trust: T.any(Increase::Models::EntityCreateParams::Trust, Increase::Util::AnyHash)).void }
+      sig { params(trust: T.any(Increase::Models::EntityCreateParams::Trust, Increase::Internal::Util::AnyHash)).void }
       attr_writer :trust
 
       sig do
         params(
           structure: Increase::Models::EntityCreateParams::Structure::OrSymbol,
-          corporation: T.any(Increase::Models::EntityCreateParams::Corporation, Increase::Util::AnyHash),
+          corporation: T.any(Increase::Models::EntityCreateParams::Corporation, Increase::Internal::Util::AnyHash),
           description: String,
-          government_authority: T.any(Increase::Models::EntityCreateParams::GovernmentAuthority, Increase::Util::AnyHash),
-          joint: T.any(Increase::Models::EntityCreateParams::Joint, Increase::Util::AnyHash),
-          natural_person: T.any(Increase::Models::EntityCreateParams::NaturalPerson, Increase::Util::AnyHash),
-          supplemental_documents: T::Array[T.any(Increase::Models::EntityCreateParams::SupplementalDocument, Increase::Util::AnyHash)],
-          third_party_verification: T.any(Increase::Models::EntityCreateParams::ThirdPartyVerification, Increase::Util::AnyHash),
-          trust: T.any(Increase::Models::EntityCreateParams::Trust, Increase::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          government_authority: T.any(Increase::Models::EntityCreateParams::GovernmentAuthority, Increase::Internal::Util::AnyHash),
+          joint: T.any(Increase::Models::EntityCreateParams::Joint, Increase::Internal::Util::AnyHash),
+          natural_person: T.any(Increase::Models::EntityCreateParams::NaturalPerson, Increase::Internal::Util::AnyHash),
+          supplemental_documents: T::Array[T.any(Increase::Models::EntityCreateParams::SupplementalDocument, Increase::Internal::Util::AnyHash)],
+          third_party_verification: T.any(Increase::Models::EntityCreateParams::ThirdPartyVerification, Increase::Internal::Util::AnyHash),
+          trust: T.any(Increase::Models::EntityCreateParams::Trust, Increase::Internal::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -180,7 +185,7 @@ module Increase
 
         sig do
           params(
-            address: T.any(Increase::Models::EntityCreateParams::Corporation::Address, Increase::Util::AnyHash)
+            address: T.any(Increase::Models::EntityCreateParams::Corporation::Address, Increase::Internal::Util::AnyHash)
           )
             .void
         end
@@ -228,8 +233,13 @@ module Increase
         #   `corporation`.
         sig do
           params(
-            address: T.any(Increase::Models::EntityCreateParams::Corporation::Address, Increase::Util::AnyHash),
-            beneficial_owners: T::Array[T.any(Increase::Models::EntityCreateParams::Corporation::BeneficialOwner, Increase::Util::AnyHash)],
+            address: T.any(Increase::Models::EntityCreateParams::Corporation::Address, Increase::Internal::Util::AnyHash),
+            beneficial_owners: T::Array[
+            T.any(
+              Increase::Models::EntityCreateParams::Corporation::BeneficialOwner,
+              Increase::Internal::Util::AnyHash
+            )
+            ],
             name: String,
             tax_identifier: String,
             incorporation_state: String,
@@ -319,7 +329,7 @@ module Increase
             params(
               individual: T.any(
                 Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual,
-                Increase::Util::AnyHash
+                Increase::Internal::Util::AnyHash
               )
             )
               .void
@@ -343,7 +353,7 @@ module Increase
             params(
               individual: T.any(
                 Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual,
-                Increase::Util::AnyHash
+                Increase::Internal::Util::AnyHash
               ),
               prongs: T::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::OrSymbol],
               company_title: String
@@ -376,7 +386,7 @@ module Increase
               params(
                 address: T.any(
                   Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -395,7 +405,7 @@ module Increase
               params(
                 identification: T.any(
                   Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -421,12 +431,12 @@ module Increase
               params(
                 address: T.any(
                   Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 ),
                 date_of_birth: Date,
                 identification: T.any(
                   Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 ),
                 name: String,
                 confirmed_no_us_tax_id: T::Boolean
@@ -551,7 +561,7 @@ module Increase
                 params(
                   drivers_license: T.any(
                     Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   )
                 )
                   .void
@@ -573,7 +583,7 @@ module Increase
                 params(
                   other: T.any(
                     Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   )
                 )
                   .void
@@ -595,7 +605,7 @@ module Increase
                 params(
                   passport: T.any(
                     Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   )
                 )
                   .void
@@ -609,15 +619,15 @@ module Increase
                   number: String,
                   drivers_license: T.any(
                     Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   ),
                   other: T.any(
                     Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   ),
                   passport: T.any(
                     Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   )
                 )
                   .returns(T.attached_class)
@@ -875,7 +885,10 @@ module Increase
 
         sig do
           params(
-            address: T.any(Increase::Models::EntityCreateParams::GovernmentAuthority::Address, Increase::Util::AnyHash)
+            address: T.any(
+              Increase::Models::EntityCreateParams::GovernmentAuthority::Address,
+              Increase::Internal::Util::AnyHash
+            )
           )
             .void
         end
@@ -908,11 +921,14 @@ module Increase
         #   equal to `Government Authority`.
         sig do
           params(
-            address: T.any(Increase::Models::EntityCreateParams::GovernmentAuthority::Address, Increase::Util::AnyHash),
+            address: T.any(
+              Increase::Models::EntityCreateParams::GovernmentAuthority::Address,
+              Increase::Internal::Util::AnyHash
+            ),
             authorized_persons: T::Array[
             T.any(
               Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson,
-              Increase::Util::AnyHash
+              Increase::Internal::Util::AnyHash
             )
             ],
             category: Increase::Models::EntityCreateParams::GovernmentAuthority::Category::OrSymbol,
@@ -1037,7 +1053,7 @@ module Increase
         #   `joint`.
         sig do
           params(
-            individuals: T::Array[T.any(Increase::Models::EntityCreateParams::Joint::Individual, Increase::Util::AnyHash)],
+            individuals: T::Array[T.any(Increase::Models::EntityCreateParams::Joint::Individual, Increase::Internal::Util::AnyHash)],
             name: String
           )
             .returns(T.attached_class)
@@ -1060,7 +1076,7 @@ module Increase
 
           sig do
             params(
-              address: T.any(Increase::Models::EntityCreateParams::Joint::Individual::Address, Increase::Util::AnyHash)
+              address: T.any(Increase::Models::EntityCreateParams::Joint::Individual::Address, Increase::Internal::Util::AnyHash)
             )
               .void
           end
@@ -1076,7 +1092,10 @@ module Increase
 
           sig do
             params(
-              identification: T.any(Increase::Models::EntityCreateParams::Joint::Individual::Identification, Increase::Util::AnyHash)
+              identification: T.any(
+                Increase::Models::EntityCreateParams::Joint::Individual::Identification,
+                Increase::Internal::Util::AnyHash
+              )
             )
               .void
           end
@@ -1098,9 +1117,12 @@ module Increase
 
           sig do
             params(
-              address: T.any(Increase::Models::EntityCreateParams::Joint::Individual::Address, Increase::Util::AnyHash),
+              address: T.any(Increase::Models::EntityCreateParams::Joint::Individual::Address, Increase::Internal::Util::AnyHash),
               date_of_birth: Date,
-              identification: T.any(Increase::Models::EntityCreateParams::Joint::Individual::Identification, Increase::Util::AnyHash),
+              identification: T.any(
+                Increase::Models::EntityCreateParams::Joint::Individual::Identification,
+                Increase::Internal::Util::AnyHash
+              ),
               name: String,
               confirmed_no_us_tax_id: T::Boolean
             )
@@ -1191,7 +1213,7 @@ module Increase
               params(
                 drivers_license: T.any(
                   Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -1207,7 +1229,7 @@ module Increase
               params(
                 other: T.any(
                   Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -1223,7 +1245,7 @@ module Increase
               params(
                 passport: T.any(
                   Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -1237,15 +1259,15 @@ module Increase
                 number: String,
                 drivers_license: T.any(
                   Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 ),
                 other: T.any(
                   Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 ),
                 passport: T.any(
                   Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 )
               )
                 .returns(T.attached_class)
@@ -1468,7 +1490,7 @@ module Increase
 
         sig do
           params(
-            address: T.any(Increase::Models::EntityCreateParams::NaturalPerson::Address, Increase::Util::AnyHash)
+            address: T.any(Increase::Models::EntityCreateParams::NaturalPerson::Address, Increase::Internal::Util::AnyHash)
           )
             .void
         end
@@ -1484,7 +1506,10 @@ module Increase
 
         sig do
           params(
-            identification: T.any(Increase::Models::EntityCreateParams::NaturalPerson::Identification, Increase::Util::AnyHash)
+            identification: T.any(
+              Increase::Models::EntityCreateParams::NaturalPerson::Identification,
+              Increase::Internal::Util::AnyHash
+            )
           )
             .void
         end
@@ -1510,9 +1535,12 @@ module Increase
         #   identification methods.
         sig do
           params(
-            address: T.any(Increase::Models::EntityCreateParams::NaturalPerson::Address, Increase::Util::AnyHash),
+            address: T.any(Increase::Models::EntityCreateParams::NaturalPerson::Address, Increase::Internal::Util::AnyHash),
             date_of_birth: Date,
-            identification: T.any(Increase::Models::EntityCreateParams::NaturalPerson::Identification, Increase::Util::AnyHash),
+            identification: T.any(
+              Increase::Models::EntityCreateParams::NaturalPerson::Identification,
+              Increase::Internal::Util::AnyHash
+            ),
             name: String,
             confirmed_no_us_tax_id: T::Boolean
           )
@@ -1599,7 +1627,7 @@ module Increase
             params(
               drivers_license: T.any(
                 Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense,
-                Increase::Util::AnyHash
+                Increase::Internal::Util::AnyHash
               )
             )
               .void
@@ -1613,7 +1641,10 @@ module Increase
 
           sig do
             params(
-              other: T.any(Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other, Increase::Util::AnyHash)
+              other: T.any(
+                Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other,
+                Increase::Internal::Util::AnyHash
+              )
             )
               .void
           end
@@ -1628,7 +1659,7 @@ module Increase
             params(
               passport: T.any(
                 Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport,
-                Increase::Util::AnyHash
+                Increase::Internal::Util::AnyHash
               )
             )
               .void
@@ -1642,12 +1673,15 @@ module Increase
               number: String,
               drivers_license: T.any(
                 Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense,
-                Increase::Util::AnyHash
+                Increase::Internal::Util::AnyHash
               ),
-              other: T.any(Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other, Increase::Util::AnyHash),
+              other: T.any(
+                Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other,
+                Increase::Internal::Util::AnyHash
+              ),
               passport: T.any(
                 Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport,
-                Increase::Util::AnyHash
+                Increase::Internal::Util::AnyHash
               )
             )
               .returns(T.attached_class)
@@ -1924,7 +1958,12 @@ module Increase
         sig { returns(Increase::Models::EntityCreateParams::Trust::Address) }
         attr_reader :address
 
-        sig { params(address: T.any(Increase::Models::EntityCreateParams::Trust::Address, Increase::Util::AnyHash)).void }
+        sig do
+          params(
+            address: T.any(Increase::Models::EntityCreateParams::Trust::Address, Increase::Internal::Util::AnyHash)
+          )
+            .void
+        end
         attr_writer :address
 
         # Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require
@@ -1960,7 +1999,12 @@ module Increase
         sig { returns(T.nilable(Increase::Models::EntityCreateParams::Trust::Grantor)) }
         attr_reader :grantor
 
-        sig { params(grantor: T.any(Increase::Models::EntityCreateParams::Trust::Grantor, Increase::Util::AnyHash)).void }
+        sig do
+          params(
+            grantor: T.any(Increase::Models::EntityCreateParams::Trust::Grantor, Increase::Internal::Util::AnyHash)
+          )
+            .void
+        end
         attr_writer :grantor
 
         # The Employer Identification Number (EIN) for the trust. Required if `category`
@@ -1975,13 +2019,13 @@ module Increase
         #   `trust`.
         sig do
           params(
-            address: T.any(Increase::Models::EntityCreateParams::Trust::Address, Increase::Util::AnyHash),
+            address: T.any(Increase::Models::EntityCreateParams::Trust::Address, Increase::Internal::Util::AnyHash),
             category: Increase::Models::EntityCreateParams::Trust::Category::OrSymbol,
             name: String,
-            trustees: T::Array[T.any(Increase::Models::EntityCreateParams::Trust::Trustee, Increase::Util::AnyHash)],
+            trustees: T::Array[T.any(Increase::Models::EntityCreateParams::Trust::Trustee, Increase::Internal::Util::AnyHash)],
             formation_document_file_id: String,
             formation_state: String,
-            grantor: T.any(Increase::Models::EntityCreateParams::Trust::Grantor, Increase::Util::AnyHash),
+            grantor: T.any(Increase::Models::EntityCreateParams::Trust::Grantor, Increase::Internal::Util::AnyHash),
             tax_identifier: String
           )
             .returns(T.attached_class)
@@ -2093,7 +2137,7 @@ module Increase
 
           sig do
             params(
-              individual: T.any(Increase::Models::EntityCreateParams::Trust::Trustee::Individual, Increase::Util::AnyHash)
+              individual: T.any(Increase::Models::EntityCreateParams::Trust::Trustee::Individual, Increase::Internal::Util::AnyHash)
             )
               .void
           end
@@ -2102,7 +2146,7 @@ module Increase
           sig do
             params(
               structure: Increase::Models::EntityCreateParams::Trust::Trustee::Structure::OrSymbol,
-              individual: T.any(Increase::Models::EntityCreateParams::Trust::Trustee::Individual, Increase::Util::AnyHash)
+              individual: T.any(Increase::Models::EntityCreateParams::Trust::Trustee::Individual, Increase::Internal::Util::AnyHash)
             )
               .returns(T.attached_class)
           end
@@ -2147,7 +2191,10 @@ module Increase
 
             sig do
               params(
-                address: T.any(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address, Increase::Util::AnyHash)
+                address: T.any(
+                  Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address,
+                  Increase::Internal::Util::AnyHash
+                )
               )
                 .void
             end
@@ -2165,7 +2212,7 @@ module Increase
               params(
                 identification: T.any(
                   Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -2190,11 +2237,14 @@ module Increase
             #   equal to `individual`.
             sig do
               params(
-                address: T.any(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address, Increase::Util::AnyHash),
+                address: T.any(
+                  Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address,
+                  Increase::Internal::Util::AnyHash
+                ),
                 date_of_birth: Date,
                 identification: T.any(
                   Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 ),
                 name: String,
                 confirmed_no_us_tax_id: T::Boolean
@@ -2294,7 +2344,7 @@ module Increase
                 params(
                   drivers_license: T.any(
                     Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   )
                 )
                   .void
@@ -2314,7 +2364,7 @@ module Increase
                 params(
                   other: T.any(
                     Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   )
                 )
                   .void
@@ -2334,7 +2384,7 @@ module Increase
                 params(
                   passport: T.any(
                     Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   )
                 )
                   .void
@@ -2348,15 +2398,15 @@ module Increase
                   number: String,
                   drivers_license: T.any(
                     Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   ),
                   other: T.any(
                     Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   ),
                   passport: T.any(
                     Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport,
-                    Increase::Util::AnyHash
+                    Increase::Internal::Util::AnyHash
                   )
                 )
                   .returns(T.attached_class)
@@ -2579,7 +2629,7 @@ module Increase
 
           sig do
             params(
-              address: T.any(Increase::Models::EntityCreateParams::Trust::Grantor::Address, Increase::Util::AnyHash)
+              address: T.any(Increase::Models::EntityCreateParams::Trust::Grantor::Address, Increase::Internal::Util::AnyHash)
             )
               .void
           end
@@ -2595,7 +2645,10 @@ module Increase
 
           sig do
             params(
-              identification: T.any(Increase::Models::EntityCreateParams::Trust::Grantor::Identification, Increase::Util::AnyHash)
+              identification: T.any(
+                Increase::Models::EntityCreateParams::Trust::Grantor::Identification,
+                Increase::Internal::Util::AnyHash
+              )
             )
               .void
           end
@@ -2618,9 +2671,12 @@ module Increase
           # The grantor of the trust. Required if `category` is equal to `revocable`.
           sig do
             params(
-              address: T.any(Increase::Models::EntityCreateParams::Trust::Grantor::Address, Increase::Util::AnyHash),
+              address: T.any(Increase::Models::EntityCreateParams::Trust::Grantor::Address, Increase::Internal::Util::AnyHash),
               date_of_birth: Date,
-              identification: T.any(Increase::Models::EntityCreateParams::Trust::Grantor::Identification, Increase::Util::AnyHash),
+              identification: T.any(
+                Increase::Models::EntityCreateParams::Trust::Grantor::Identification,
+                Increase::Internal::Util::AnyHash
+              ),
               name: String,
               confirmed_no_us_tax_id: T::Boolean
             )
@@ -2707,7 +2763,7 @@ module Increase
               params(
                 drivers_license: T.any(
                   Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -2723,7 +2779,7 @@ module Increase
               params(
                 other: T.any(
                   Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -2739,7 +2795,7 @@ module Increase
               params(
                 passport: T.any(
                   Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 )
               )
                 .void
@@ -2753,15 +2809,15 @@ module Increase
                 number: String,
                 drivers_license: T.any(
                   Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 ),
                 other: T.any(
                   Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 ),
                 passport: T.any(
                   Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport,
-                  Increase::Util::AnyHash
+                  Increase::Internal::Util::AnyHash
                 )
               )
                 .returns(T.attached_class)

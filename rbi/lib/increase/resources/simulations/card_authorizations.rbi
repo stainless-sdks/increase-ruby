@@ -28,12 +28,12 @@ module Increase
             merchant_state: String,
             network_details: T.any(
               Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
-              Increase::Util::AnyHash
+              Increase::Internal::Util::AnyHash
             ),
             network_risk_score: Integer,
             physical_card_id: String,
             terminal_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
           )
             .returns(Increase::Models::Simulations::CardAuthorizationCreateResponse)
         end

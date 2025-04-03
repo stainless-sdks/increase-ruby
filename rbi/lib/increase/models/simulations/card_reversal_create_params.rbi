@@ -4,8 +4,8 @@ module Increase
   module Models
     module Simulations
       class CardReversalCreateParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         # The identifier of the Card Payment to create a reversal on.
         sig { returns(String) }
@@ -23,7 +23,7 @@ module Increase
           params(
             card_payment_id: String,
             amount: Integer,
-            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

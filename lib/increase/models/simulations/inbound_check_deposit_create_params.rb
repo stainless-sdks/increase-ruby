@@ -6,8 +6,8 @@ module Increase
       # @see Increase::Resources::Simulations::InboundCheckDeposits#create
       class InboundCheckDepositCreateParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        #   extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         # @!attribute account_number_id
         #   The identifier of the Account Number the Inbound Check Deposit will be against.

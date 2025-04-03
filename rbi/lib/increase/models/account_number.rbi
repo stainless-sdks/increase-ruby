@@ -30,7 +30,10 @@ module Increase
       sig { returns(Increase::Models::AccountNumber::InboundACH) }
       attr_reader :inbound_ach
 
-      sig { params(inbound_ach: T.any(Increase::Models::AccountNumber::InboundACH, Increase::Util::AnyHash)).void }
+      sig do
+        params(inbound_ach: T.any(Increase::Models::AccountNumber::InboundACH, Increase::Internal::Util::AnyHash))
+          .void
+      end
       attr_writer :inbound_ach
 
       # Properties related to how this Account Number should handle inbound check
@@ -38,7 +41,12 @@ module Increase
       sig { returns(Increase::Models::AccountNumber::InboundChecks) }
       attr_reader :inbound_checks
 
-      sig { params(inbound_checks: T.any(Increase::Models::AccountNumber::InboundChecks, Increase::Util::AnyHash)).void }
+      sig do
+        params(
+          inbound_checks: T.any(Increase::Models::AccountNumber::InboundChecks, Increase::Internal::Util::AnyHash)
+        )
+          .void
+      end
       attr_writer :inbound_checks
 
       # The name you choose for the Account Number.
@@ -70,8 +78,8 @@ module Increase
           account_number: String,
           created_at: Time,
           idempotency_key: T.nilable(String),
-          inbound_ach: T.any(Increase::Models::AccountNumber::InboundACH, Increase::Util::AnyHash),
-          inbound_checks: T.any(Increase::Models::AccountNumber::InboundChecks, Increase::Util::AnyHash),
+          inbound_ach: T.any(Increase::Models::AccountNumber::InboundACH, Increase::Internal::Util::AnyHash),
+          inbound_checks: T.any(Increase::Models::AccountNumber::InboundChecks, Increase::Internal::Util::AnyHash),
           name: String,
           routing_number: String,
           status: Increase::Models::AccountNumber::Status::OrSymbol,

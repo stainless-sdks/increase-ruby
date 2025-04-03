@@ -3,8 +3,8 @@
 module Increase
   module Models
     class RealTimePaymentsTransferListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # Filter Real-Time Payments Transfers to those belonging to the specified Account.
       sig { returns(T.nilable(String)) }
@@ -18,7 +18,7 @@ module Increase
 
       sig do
         params(
-          created_at: T.any(Increase::Models::RealTimePaymentsTransferListParams::CreatedAt, Increase::Util::AnyHash)
+          created_at: T.any(Increase::Models::RealTimePaymentsTransferListParams::CreatedAt, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -62,7 +62,7 @@ module Increase
 
       sig do
         params(
-          status: T.any(Increase::Models::RealTimePaymentsTransferListParams::Status, Increase::Util::AnyHash)
+          status: T.any(Increase::Models::RealTimePaymentsTransferListParams::Status, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -71,13 +71,13 @@ module Increase
       sig do
         params(
           account_id: String,
-          created_at: T.any(Increase::Models::RealTimePaymentsTransferListParams::CreatedAt, Increase::Util::AnyHash),
+          created_at: T.any(Increase::Models::RealTimePaymentsTransferListParams::CreatedAt, Increase::Internal::Util::AnyHash),
           cursor: String,
           external_account_id: String,
           idempotency_key: String,
           limit: Integer,
-          status: T.any(Increase::Models::RealTimePaymentsTransferListParams::Status, Increase::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          status: T.any(Increase::Models::RealTimePaymentsTransferListParams::Status, Increase::Internal::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

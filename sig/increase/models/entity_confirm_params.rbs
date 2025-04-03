@@ -1,11 +1,11 @@
 module Increase
   module Models
     type entity_confirm_params =
-      { confirmed_at: Time } & Increase::request_parameters
+      { confirmed_at: Time } & Increase::Internal::Type::request_parameters
 
     class EntityConfirmParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_reader confirmed_at: Time?
 

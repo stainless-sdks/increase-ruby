@@ -3,8 +3,8 @@
 module Increase
   module Models
     class OAuthTokenCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # The credential you request in exchange for the code. In Production, this is
       #   always `authorization_code`. In Sandbox, you can pass either enum value.
@@ -51,7 +51,7 @@ module Increase
           client_secret: String,
           code: String,
           production_token: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

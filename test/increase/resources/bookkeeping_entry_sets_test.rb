@@ -53,7 +53,7 @@ class Increase::Test::Resources::BookkeepingEntrySetsTest < Increase::Test::Reso
     response = @increase.bookkeeping_entry_sets.list
 
     assert_pattern do
-      response => Increase::Page
+      response => Increase::Internal::Page
     end
 
     row = response.to_enum.first

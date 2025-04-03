@@ -2,11 +2,11 @@ module Increase
   module Models
     type intrafi_account_enrollment_create_params =
       { account_id: String, email_address: String }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class IntrafiAccountEnrollmentCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_accessor account_id: String
 

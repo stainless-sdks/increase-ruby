@@ -3,11 +3,11 @@ module Increase
     module Simulations
       type inbound_mail_item_create_params =
         { amount: Integer, lockbox_id: String, contents_file_id: String }
-        & Increase::request_parameters
+        & Increase::Internal::Type::request_parameters
 
       class InboundMailItemCreateParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         attr_accessor amount: Integer
 

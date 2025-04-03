@@ -11,11 +11,11 @@ module Increase
           remittance_information: String,
           request_for_payment_id: String
         }
-        & Increase::request_parameters
+        & Increase::Internal::Type::request_parameters
 
       class InboundRealTimePaymentsTransferCreateParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         attr_accessor account_number_id: String
 

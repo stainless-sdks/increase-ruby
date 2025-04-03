@@ -6,8 +6,8 @@ module Increase
       # @see Increase::Resources::Simulations::CardAuthorizationExpirations#create
       class CardAuthorizationExpirationCreateParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        #   extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         # @!attribute card_payment_id
         #   The identifier of the Card Payment to expire.

@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::Accounts#update
     class AccountUpdateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      #   extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # @!attribute [r] name
       #   The new name of the Account.

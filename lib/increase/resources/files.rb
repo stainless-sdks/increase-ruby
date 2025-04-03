@@ -59,7 +59,7 @@ module Increase
       # @param purpose [Increase::Models::FileListParams::Purpose]
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Page<Increase::Models::File>]
+      # @return [Increase::Internal::Page<Increase::Models::File>]
       #
       # @see Increase::Models::FileListParams
       def list(params = {})
@@ -68,7 +68,7 @@ module Increase
           method: :get,
           path: "files",
           query: parsed,
-          page: Increase::Page,
+          page: Increase::Internal::Page,
           model: Increase::Models::File,
           options: options
         )

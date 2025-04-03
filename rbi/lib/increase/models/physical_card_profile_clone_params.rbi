@@ -3,8 +3,8 @@
 module Increase
   module Models
     class PhysicalCardProfileCloneParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # The identifier of the File containing the physical card's carrier image.
       sig { returns(T.nilable(String)) }
@@ -41,7 +41,7 @@ module Increase
 
       sig do
         params(
-          front_text: T.any(Increase::Models::PhysicalCardProfileCloneParams::FrontText, Increase::Util::AnyHash)
+          front_text: T.any(Increase::Models::PhysicalCardProfileCloneParams::FrontText, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -53,8 +53,8 @@ module Increase
           contact_phone: String,
           description: String,
           front_image_file_id: String,
-          front_text: T.any(Increase::Models::PhysicalCardProfileCloneParams::FrontText, Increase::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          front_text: T.any(Increase::Models::PhysicalCardProfileCloneParams::FrontText, Increase::Internal::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

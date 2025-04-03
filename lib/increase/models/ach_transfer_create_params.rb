@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::ACHTransfers#create
     class ACHTransferCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      #   extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # @!attribute account_id
       #   The Increase identifier for the account that will send the transfer.

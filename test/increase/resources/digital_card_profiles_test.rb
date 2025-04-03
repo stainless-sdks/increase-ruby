@@ -68,7 +68,7 @@ class Increase::Test::Resources::DigitalCardProfilesTest < Increase::Test::Resou
     response = @increase.digital_card_profiles.list
 
     assert_pattern do
-      response => Increase::Page
+      response => Increase::Internal::Page
     end
 
     row = response.to_enum.first

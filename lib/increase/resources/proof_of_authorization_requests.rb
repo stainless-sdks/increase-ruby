@@ -31,7 +31,7 @@ module Increase
       # @param limit [Integer]
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Page<Increase::Models::ProofOfAuthorizationRequest>]
+      # @return [Increase::Internal::Page<Increase::Models::ProofOfAuthorizationRequest>]
       #
       # @see Increase::Models::ProofOfAuthorizationRequestListParams
       def list(params = {})
@@ -40,7 +40,7 @@ module Increase
           method: :get,
           path: "proof_of_authorization_requests",
           query: parsed,
-          page: Increase::Page,
+          page: Increase::Internal::Page,
           model: Increase::Models::ProofOfAuthorizationRequest,
           options: options
         )

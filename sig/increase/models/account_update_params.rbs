@@ -1,10 +1,11 @@
 module Increase
   module Models
-    type account_update_params = { name: String } & Increase::request_parameters
+    type account_update_params =
+      { name: String } & Increase::Internal::Type::request_parameters
 
     class AccountUpdateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_reader name: String?
 

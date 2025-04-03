@@ -3,8 +3,8 @@
 module Increase
   module Models
     class CardUpdateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # The card's updated billing address.
       sig { returns(T.nilable(Increase::Models::CardUpdateParams::BillingAddress)) }
@@ -12,7 +12,7 @@ module Increase
 
       sig do
         params(
-          billing_address: T.any(Increase::Models::CardUpdateParams::BillingAddress, Increase::Util::AnyHash)
+          billing_address: T.any(Increase::Models::CardUpdateParams::BillingAddress, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -32,7 +32,9 @@ module Increase
       attr_reader :digital_wallet
 
       sig do
-        params(digital_wallet: T.any(Increase::Models::CardUpdateParams::DigitalWallet, Increase::Util::AnyHash))
+        params(
+          digital_wallet: T.any(Increase::Models::CardUpdateParams::DigitalWallet, Increase::Internal::Util::AnyHash)
+        )
           .void
       end
       attr_writer :digital_wallet
@@ -54,12 +56,12 @@ module Increase
 
       sig do
         params(
-          billing_address: T.any(Increase::Models::CardUpdateParams::BillingAddress, Increase::Util::AnyHash),
+          billing_address: T.any(Increase::Models::CardUpdateParams::BillingAddress, Increase::Internal::Util::AnyHash),
           description: String,
-          digital_wallet: T.any(Increase::Models::CardUpdateParams::DigitalWallet, Increase::Util::AnyHash),
+          digital_wallet: T.any(Increase::Models::CardUpdateParams::DigitalWallet, Increase::Internal::Util::AnyHash),
           entity_id: String,
           status: Increase::Models::CardUpdateParams::Status::OrSymbol,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

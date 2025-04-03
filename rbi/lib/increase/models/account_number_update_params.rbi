@@ -3,8 +3,8 @@
 module Increase
   module Models
     class AccountNumberUpdateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # Options related to how this Account Number handles inbound ACH transfers.
       sig { returns(T.nilable(Increase::Models::AccountNumberUpdateParams::InboundACH)) }
@@ -12,7 +12,7 @@ module Increase
 
       sig do
         params(
-          inbound_ach: T.any(Increase::Models::AccountNumberUpdateParams::InboundACH, Increase::Util::AnyHash)
+          inbound_ach: T.any(Increase::Models::AccountNumberUpdateParams::InboundACH, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -25,7 +25,7 @@ module Increase
 
       sig do
         params(
-          inbound_checks: T.any(Increase::Models::AccountNumberUpdateParams::InboundChecks, Increase::Util::AnyHash)
+          inbound_checks: T.any(Increase::Models::AccountNumberUpdateParams::InboundChecks, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -47,11 +47,11 @@ module Increase
 
       sig do
         params(
-          inbound_ach: T.any(Increase::Models::AccountNumberUpdateParams::InboundACH, Increase::Util::AnyHash),
-          inbound_checks: T.any(Increase::Models::AccountNumberUpdateParams::InboundChecks, Increase::Util::AnyHash),
+          inbound_ach: T.any(Increase::Models::AccountNumberUpdateParams::InboundACH, Increase::Internal::Util::AnyHash),
+          inbound_checks: T.any(Increase::Models::AccountNumberUpdateParams::InboundChecks, Increase::Internal::Util::AnyHash),
           name: String,
           status: Increase::Models::AccountNumberUpdateParams::Status::OrSymbol,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

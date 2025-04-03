@@ -1,11 +1,11 @@
 module Increase
   module Models
     type declined_transaction_retrieve_params =
-      {  } & Increase::request_parameters
+      {  } & Increase::Internal::Type::request_parameters
 
     class DeclinedTransactionRetrieveParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       def initialize: (?request_options: Increase::request_opts) -> void
 

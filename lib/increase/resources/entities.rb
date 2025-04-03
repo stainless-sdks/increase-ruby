@@ -62,7 +62,7 @@ module Increase
       # @param status [Increase::Models::EntityListParams::Status]
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Page<Increase::Models::Entity>]
+      # @return [Increase::Internal::Page<Increase::Models::Entity>]
       #
       # @see Increase::Models::EntityListParams
       def list(params = {})
@@ -71,7 +71,7 @@ module Increase
           method: :get,
           path: "entities",
           query: parsed,
-          page: Increase::Page,
+          page: Increase::Internal::Page,
           model: Increase::Models::Entity,
           options: options
         )

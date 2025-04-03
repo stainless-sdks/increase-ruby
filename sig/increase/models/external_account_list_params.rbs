@@ -8,11 +8,11 @@ module Increase
         routing_number: String,
         status: Increase::Models::ExternalAccountListParams::Status
       }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class ExternalAccountListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_reader cursor: String?
 

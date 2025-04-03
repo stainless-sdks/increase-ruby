@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::CardPurchaseSupplements#list
     class CardPurchaseSupplementListParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      #   extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # @!attribute [r] card_payment_id
       #   Filter Card Purchase Supplements to ones belonging to the specified Card

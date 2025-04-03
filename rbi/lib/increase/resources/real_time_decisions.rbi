@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           real_time_decision_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
           .returns(Increase::Models::RealTimeDecision)
       end
@@ -22,18 +22,27 @@ module Increase
       sig do
         params(
           real_time_decision_id: String,
-          card_authentication: T.any(Increase::Models::RealTimeDecisionActionParams::CardAuthentication, Increase::Util::AnyHash),
+          card_authentication: T.any(
+            Increase::Models::RealTimeDecisionActionParams::CardAuthentication,
+            Increase::Internal::Util::AnyHash
+          ),
           card_authentication_challenge: T.any(
             Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge,
-            Increase::Util::AnyHash
+            Increase::Internal::Util::AnyHash
           ),
-          card_authorization: T.any(Increase::Models::RealTimeDecisionActionParams::CardAuthorization, Increase::Util::AnyHash),
+          card_authorization: T.any(
+            Increase::Models::RealTimeDecisionActionParams::CardAuthorization,
+            Increase::Internal::Util::AnyHash
+          ),
           digital_wallet_authentication: T.any(
             Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
-            Increase::Util::AnyHash
+            Increase::Internal::Util::AnyHash
           ),
-          digital_wallet_token: T.any(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken, Increase::Util::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          digital_wallet_token: T.any(
+            Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken,
+            Increase::Internal::Util::AnyHash
+          ),
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
           .returns(Increase::Models::RealTimeDecision)
       end

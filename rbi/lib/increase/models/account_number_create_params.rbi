@@ -3,8 +3,8 @@
 module Increase
   module Models
     class AccountNumberCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # The Account the Account Number should belong to.
       sig { returns(String) }
@@ -20,7 +20,7 @@ module Increase
 
       sig do
         params(
-          inbound_ach: T.any(Increase::Models::AccountNumberCreateParams::InboundACH, Increase::Util::AnyHash)
+          inbound_ach: T.any(Increase::Models::AccountNumberCreateParams::InboundACH, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -33,7 +33,7 @@ module Increase
 
       sig do
         params(
-          inbound_checks: T.any(Increase::Models::AccountNumberCreateParams::InboundChecks, Increase::Util::AnyHash)
+          inbound_checks: T.any(Increase::Models::AccountNumberCreateParams::InboundChecks, Increase::Internal::Util::AnyHash)
         )
           .void
       end
@@ -43,9 +43,9 @@ module Increase
         params(
           account_id: String,
           name: String,
-          inbound_ach: T.any(Increase::Models::AccountNumberCreateParams::InboundACH, Increase::Util::AnyHash),
-          inbound_checks: T.any(Increase::Models::AccountNumberCreateParams::InboundChecks, Increase::Util::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          inbound_ach: T.any(Increase::Models::AccountNumberCreateParams::InboundACH, Increase::Internal::Util::AnyHash),
+          inbound_checks: T.any(Increase::Models::AccountNumberCreateParams::InboundChecks, Increase::Internal::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

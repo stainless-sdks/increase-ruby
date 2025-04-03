@@ -4,8 +4,8 @@ module Increase
   module Models
     module Simulations
       class CardAuthorizationExpirationCreateParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         # The identifier of the Card Payment to expire.
         sig { returns(String) }
@@ -14,7 +14,7 @@ module Increase
         sig do
           params(
             card_payment_id: String,
-            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

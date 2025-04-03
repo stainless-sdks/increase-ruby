@@ -3,8 +3,8 @@
 module Increase
   module Models
     class LockboxCreateParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # The Account checks sent to this Lockbox should be deposited into.
       sig { returns(String) }
@@ -29,7 +29,7 @@ module Increase
           account_id: String,
           description: String,
           recipient_name: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

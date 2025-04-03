@@ -10,11 +10,11 @@ module Increase
         limit: Integer,
         status: Increase::Models::AccountNumberListParams::Status
       }
-      & Increase::request_parameters
+      & Increase::Internal::Type::request_parameters
 
     class AccountNumberListParams < Increase::BaseModel
-      extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       attr_reader account_id: String?
 

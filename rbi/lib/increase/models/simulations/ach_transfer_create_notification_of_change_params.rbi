@@ -4,8 +4,8 @@ module Increase
   module Models
     module Simulations
       class ACHTransferCreateNotificationOfChangeParams < Increase::BaseModel
-        extend Increase::Type::RequestParameters::Converter
-        include Increase::RequestParameters
+        extend Increase::Internal::Type::RequestParameters::Converter
+        include Increase::Internal::Type::RequestParameters
 
         # The reason for the notification of change.
         sig { returns(Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol) }
@@ -19,7 +19,7 @@ module Increase
           params(
             change_code: Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol,
             corrected_data: String,
-            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

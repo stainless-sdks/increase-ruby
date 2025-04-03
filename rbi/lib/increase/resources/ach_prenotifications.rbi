@@ -19,7 +19,7 @@ module Increase
           individual_id: String,
           individual_name: String,
           standard_entry_class_code: Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
           .returns(Increase::Models::ACHPrenotification)
       end
@@ -61,7 +61,7 @@ module Increase
       sig do
         params(
           ach_prenotification_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
           .returns(Increase::Models::ACHPrenotification)
       end
@@ -75,13 +75,13 @@ module Increase
       # List ACH Prenotifications
       sig do
         params(
-          created_at: T.any(Increase::Models::ACHPrenotificationListParams::CreatedAt, Increase::Util::AnyHash),
+          created_at: T.any(Increase::Models::ACHPrenotificationListParams::CreatedAt, Increase::Internal::Util::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::Util::AnyHash))
         )
-          .returns(Increase::Page[Increase::Models::ACHPrenotification])
+          .returns(Increase::Internal::Page[Increase::Models::ACHPrenotification])
       end
       def list(
         created_at: nil,

@@ -28,7 +28,7 @@ module Increase
         ?limit: Integer,
         ?proof_of_authorization_request_id: String,
         ?request_options: Increase::request_opts
-      ) -> Increase::Page[Increase::Models::ProofOfAuthorizationRequestSubmission]
+      ) -> Increase::Internal::Page[Increase::Models::ProofOfAuthorizationRequestSubmission]
 
       def initialize: (client: Increase::Client) -> void
     end

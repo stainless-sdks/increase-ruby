@@ -5,8 +5,8 @@ module Increase
     # @see Increase::Resources::InboundCheckDeposits#return_
     class InboundCheckDepositReturnParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Type::RequestParameters::Converter
-      include Increase::RequestParameters
+      #   extend Increase::Internal::Type::RequestParameters::Converter
+      include Increase::Internal::Type::RequestParameters
 
       # @!attribute reason
       #   The reason to return the Inbound Check Deposit.
