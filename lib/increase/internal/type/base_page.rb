@@ -3,9 +3,27 @@
 module Increase
   module Internal
     module Type
-      # @generic Elem
+      # @example
+      #   if page.has_next?
+      #     page = page.next_page
+      #   end
       #
-      # This module provides a base implementation for paginated responses in the SDK.
+      # @example
+      #   page.auto_paging_each do |account|
+      #     puts(account)
+      #   end
+      #
+      # @example
+      #   accounts =
+      #     page
+      #     .to_enum
+      #     .lazy
+      #     .select { _1.object_id.even? }
+      #     .map(&:itself)
+      #     .take(2)
+      #     .to_a
+      #
+      #   accounts => Array
       module BasePage
         # rubocop:disable Lint/UnusedMethodArgument
 
@@ -18,11 +36,10 @@ module Increase
 
         # @param blk [Proc]
         #
-        # @yieldparam [generic<Elem>]
         # @return [void]
         def auto_paging_each(&blk) = (raise NotImplementedError)
 
-        # @return [Enumerable<generic<Elem>>]
+        # @return [Enumerable]
         def to_enum = super(:auto_paging_each)
 
         alias_method :enum_for, :to_enum
