@@ -12,13 +12,9 @@ The underlying REST API documentation can be found on [increase.com](https://inc
 
 To use this gem, install via Bundler by adding the following to your application's `Gemfile`:
 
-<!-- x-release-please-start-version -->
-
 ```ruby
-gem "increase", "~> 0.1.0.pre.alpha.4"
+gem "increase", "~> 0.0.1.pre.alpha.0"
 ```
-
-<!-- x-release-please-end -->
 
 To fetch an initial copy of the gem:
 
@@ -138,9 +134,7 @@ increase.accounts.create(
 )
 ```
 
-## LSP Support
-
-### Sorbet
+## Sorbet Support
 
 **This library emits an intentional warning under the [`tapioca` toolchain](https://github.com/Shopify/tapioca)**. This is normal, and does not impact functionality.
 
@@ -163,31 +157,6 @@ increase.accounts.create(**model)
 ```
 
 ## Advanced
-
-### Making custom/undocumented requests
-
-This library is typed for convenient access to the documented API.
-
-If you need to access undocumented endpoints, params, or response properties, the library can still be used.
-
-#### Undocumented request params
-
-If you want to explicitly send an extra param, you can do so with the `extra_query`, `extra_body`, and `extra_headers` under the `request_options:` parameter when making a requests as seen in examples above.
-
-#### Undocumented endpoints
-
-To make requests to undocumented endpoints, you can make requests using `client.request`. Options on the client will be respected (such as retries) when making this request.
-
-```ruby
-response =
-  client.request(
-    method: :post,
-    path: '/undocumented/endpoint',
-    query: {"dog": "woof"},
-    headers: {"useful-header": "interesting-value"},
-    body: {"he": "llo"},
-  )
-```
 
 ### Concurrency & Connection Pooling
 

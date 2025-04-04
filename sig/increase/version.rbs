@@ -1,3 +1,3 @@
 module Increase
-  VERSION: String
+  VERSION: "0.0.1-alpha.0"
 end

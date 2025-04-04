@@ -2,8 +2,6 @@
 
 module Increase
   module Internal
-    # @generic Elem
-    #
     # @example
     #   if page.has_next?
     #     page = page.next_page
@@ -16,7 +14,7 @@ module Increase
     class Page
       include Increase::Internal::Type::BasePage
 
-      # @return [Array<generic<Elem>>, nil]
+      # @return [Array<Object>, nil]
       attr_accessor :data
 
       # @return [String, nil]
@@ -63,8 +61,6 @@ module Increase
       end
 
       # @param blk [Proc]
-      #
-      # @yieldparam [generic<Elem>]
       def auto_paging_each(&blk)
         unless block_given?
           raise ArgumentError.new("A block must be given to ##{__method__}")

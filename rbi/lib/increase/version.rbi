@@ -1,5 +1,5 @@
 # typed: strong
 
 module Increase
-  VERSION = T.let(T.unsafe(nil), String)
+  VERSION = "0.0.1-alpha.0"
 end

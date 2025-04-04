@@ -131,7 +131,7 @@ module Increase
           # @api private
           #
           # @param status [Integer, Increase::Errors::APIConnectionError]
-          # @param stream [Enumerable<String>, nil]
+          # @param stream [Enumerable, nil]
           def reap_connection!(status, stream:)
             case status
             in (..199) | (300..499)
@@ -328,7 +328,7 @@ module Increase
         # @param send_retry_header [Boolean]
         #
         # @raise [Increase::Errors::APIError]
-        # @return [Array(Integer, Net::HTTPResponse, Enumerable<String>)]
+        # @return [Array(Integer, Net::HTTPResponse, Enumerable)]
         private def send_request(request, redirect_count:, retry_count:, send_retry_header:)
           url, headers, max_retries, timeout = request.fetch_values(:url, :headers, :max_retries, :timeout)
           input = {**request.except(:timeout), deadline: Increase::Internal::Util.monotonic_secs + timeout}
@@ -395,39 +395,27 @@ module Increase
         # Execute the request specified by `req`. This is the method that all resource
         #   methods call into.
         #
-        # @overload request(method, path, query: {}, headers: {}, body: nil, unwrap: nil, page: nil, stream: nil, model: Increase::Internal::Type::Unknown, options: {})
+        # @param req [Hash{Symbol=>Object}] .
         #
-        # @param method [Symbol]
+        #   @option req [Symbol] :method
         #
-        # @param path [String, Array<String>]
+        #   @option req [String, Array<String>] :path
         #
-        # @param query [Hash{String=>Array<String>, String, nil}, nil]
+        #   @option req [Hash{String=>Array<String>, String, nil}, nil] :query
         #
-        # @param headers [Hash{String=>String, Integer, Array<String, Integer, nil>, nil}, nil]
+        #   @option req [Hash{String=>String, Integer, Array<String, Integer, nil>, nil}, nil] :headers
         #
-        # @param body [Object, nil]
+        #   @option req [Object, nil] :body
         #
-        # @param unwrap [Symbol, nil]
+        #   @option req [Symbol, nil] :unwrap
         #
-        # @param page [Class, nil]
+        #   @option req [Class, nil] :page
         #
-        # @param stream [Class, nil]
+        #   @option req [Class, nil] :stream
         #
-        # @param model [Increase::Internal::Type::Converter, Class, nil]
+        #   @option req [Increase::Internal::Type::Converter, Class, nil] :model
         #
-        # @param options [Increase::RequestOptions, Hash{Symbol=>Object}, nil] .
-        #
-        #   @option options [String, nil] :idempotency_key
-        #
-        #   @option options [Hash{String=>Array<String>, String, nil}, nil] :extra_query
-        #
-        #   @option options [Hash{String=>String, nil}, nil] :extra_headers
-        #
-        #   @option options [Object, nil] :extra_body
-        #
-        #   @option options [Integer, nil] :max_retries
-        #
-        #   @option options [Float, nil] :timeout
+        #   @option req [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :options
         #
         # @raise [Increase::Errors::APIError]
         # @return [Object]
