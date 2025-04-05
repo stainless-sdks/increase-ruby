@@ -9,22 +9,22 @@ module Increase
         attr_accessor :id
 
         # The held amount in the minor unit of the account's currency. For dollars, for
-        #   example, this is cents.
+        # example, this is cents.
         sig { returns(Integer) }
         attr_accessor :amount
 
         # When the hold will be released automatically. Certain conditions may cause it to
-        #   be released before this time.
+        # be released before this time.
         sig { returns(Time) }
         attr_accessor :automatically_releases_at
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
-        #   was created.
+        # was created.
         sig { returns(Time) }
         attr_accessor :created_at
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-        #   currency.
+        # currency.
         sig { returns(Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency::TaggedSymbol) }
         attr_accessor :currency
 
@@ -45,12 +45,12 @@ module Increase
         attr_accessor :status
 
         # A constant representing the object's type. For this resource it will always be
-        #   `inbound_funds_hold`.
+        # `inbound_funds_hold`.
         sig { returns(Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type::TaggedSymbol) }
         attr_accessor :type
 
         # We hold funds for certain transaction types to account for return windows where
-        #   funds might still be clawed back by the sending institution.
+        # funds might still be clawed back by the sending institution.
         sig do
           params(
             id: String,
@@ -98,7 +98,7 @@ module Increase
         def to_hash; end
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-        #   currency.
+        # currency.
         module Currency
           extend Increase::Internal::Type::Enum
 
@@ -168,7 +168,7 @@ module Increase
         end
 
         # A constant representing the object's type. For this resource it will always be
-        #   `inbound_funds_hold`.
+        # `inbound_funds_hold`.
         module Type
           extend Increase::Internal::Type::Enum
 

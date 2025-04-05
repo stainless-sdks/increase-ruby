@@ -23,7 +23,7 @@ module Increase
 
         # @!attribute [r] beneficiary_address_line1
         #   The sending bank will set beneficiary_address_line1 in production. You can
-        #     simulate any value here.
+        #   simulate any value here.
         #
         #   @return [String, nil]
         optional :beneficiary_address_line1, String
@@ -34,7 +34,7 @@ module Increase
 
         # @!attribute [r] beneficiary_address_line2
         #   The sending bank will set beneficiary_address_line2 in production. You can
-        #     simulate any value here.
+        #   simulate any value here.
         #
         #   @return [String, nil]
         optional :beneficiary_address_line2, String
@@ -45,7 +45,7 @@ module Increase
 
         # @!attribute [r] beneficiary_address_line3
         #   The sending bank will set beneficiary_address_line3 in production. You can
-        #     simulate any value here.
+        #   simulate any value here.
         #
         #   @return [String, nil]
         optional :beneficiary_address_line3, String
@@ -56,7 +56,7 @@ module Increase
 
         # @!attribute [r] beneficiary_name
         #   The sending bank will set beneficiary_name in production. You can simulate any
-        #     value here.
+        #   value here.
         #
         #   @return [String, nil]
         optional :beneficiary_name, String
@@ -67,7 +67,7 @@ module Increase
 
         # @!attribute [r] beneficiary_reference
         #   The sending bank will set beneficiary_reference in production. You can simulate
-        #     any value here.
+        #   any value here.
         #
         #   @return [String, nil]
         optional :beneficiary_reference, String
@@ -78,7 +78,7 @@ module Increase
 
         # @!attribute [r] originator_address_line1
         #   The sending bank will set originator_address_line1 in production. You can
-        #     simulate any value here.
+        #   simulate any value here.
         #
         #   @return [String, nil]
         optional :originator_address_line1, String
@@ -89,7 +89,7 @@ module Increase
 
         # @!attribute [r] originator_address_line2
         #   The sending bank will set originator_address_line2 in production. You can
-        #     simulate any value here.
+        #   simulate any value here.
         #
         #   @return [String, nil]
         optional :originator_address_line2, String
@@ -100,7 +100,7 @@ module Increase
 
         # @!attribute [r] originator_address_line3
         #   The sending bank will set originator_address_line3 in production. You can
-        #     simulate any value here.
+        #   simulate any value here.
         #
         #   @return [String, nil]
         optional :originator_address_line3, String
@@ -111,7 +111,7 @@ module Increase
 
         # @!attribute [r] originator_name
         #   The sending bank will set originator_name in production. You can simulate any
-        #     value here.
+        #   value here.
         #
         #   @return [String, nil]
         optional :originator_name, String
@@ -122,7 +122,7 @@ module Increase
 
         # @!attribute [r] originator_routing_number
         #   The sending bank will set originator_routing_number in production. You can
-        #     simulate any value here.
+        #   simulate any value here.
         #
         #   @return [String, nil]
         optional :originator_routing_number, String
@@ -133,7 +133,7 @@ module Increase
 
         # @!attribute [r] originator_to_beneficiary_information_line1
         #   The sending bank will set originator_to_beneficiary_information_line1 in
-        #     production. You can simulate any value here.
+        #   production. You can simulate any value here.
         #
         #   @return [String, nil]
         optional :originator_to_beneficiary_information_line1, String
@@ -144,7 +144,7 @@ module Increase
 
         # @!attribute [r] originator_to_beneficiary_information_line2
         #   The sending bank will set originator_to_beneficiary_information_line2 in
-        #     production. You can simulate any value here.
+        #   production. You can simulate any value here.
         #
         #   @return [String, nil]
         optional :originator_to_beneficiary_information_line2, String
@@ -155,7 +155,7 @@ module Increase
 
         # @!attribute [r] originator_to_beneficiary_information_line3
         #   The sending bank will set originator_to_beneficiary_information_line3 in
-        #     production. You can simulate any value here.
+        #   production. You can simulate any value here.
         #
         #   @return [String, nil]
         optional :originator_to_beneficiary_information_line3, String
@@ -166,7 +166,7 @@ module Increase
 
         # @!attribute [r] originator_to_beneficiary_information_line4
         #   The sending bank will set originator_to_beneficiary_information_line4 in
-        #     production. You can simulate any value here.
+        #   production. You can simulate any value here.
         #
         #   @return [String, nil]
         optional :originator_to_beneficiary_information_line4, String
@@ -177,7 +177,7 @@ module Increase
 
         # @!attribute [r] sender_reference
         #   The sending bank will set sender_reference in production. You can simulate any
-        #     value here.
+        #   value here.
         #
         #   @return [String, nil]
         optional :sender_reference, String

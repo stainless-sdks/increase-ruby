@@ -36,7 +36,7 @@ module Increase
         # Filter Documents to ones belonging to the specified Entity.
         entity_id: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        #   objects.
+        # objects.
         limit: nil,
         request_options: {}
       ); end

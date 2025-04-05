@@ -18,7 +18,7 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      #     Statement was created.
+      #   Statement was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -43,29 +43,29 @@ module Increase
 
       # @!attribute statement_period_end
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the end
-      #     of the period the Account Statement covers.
+      #   of the period the Account Statement covers.
       #
       #   @return [Time]
       required :statement_period_end, Time
 
       # @!attribute statement_period_start
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the
-      #     start of the period the Account Statement covers.
+      #   start of the period the Account Statement covers.
       #
       #   @return [Time]
       required :statement_period_start, Time
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `account_statement`.
+      #   `account_statement`.
       #
       #   @return [Symbol, Increase::Models::AccountStatement::Type]
       required :type, enum: -> { Increase::Models::AccountStatement::Type }
 
       # @!parse
       #   # Account Statements are generated monthly for every active Account. You can
-      #   #   access the statement's data via the API or retrieve a PDF with its details via
-      #   #   its associated File.
+      #   # access the statement's data via the API or retrieve a PDF with its details via
+      #   # its associated File.
       #   #
       #   # @param id [String]
       #   # @param account_id [String]
@@ -95,7 +95,7 @@ module Increase
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       # A constant representing the object's type. For this resource it will always be
-      #   `account_statement`.
+      # `account_statement`.
       #
       # @see Increase::Models::AccountStatement#type
       module Type

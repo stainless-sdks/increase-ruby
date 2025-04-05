@@ -17,8 +17,8 @@ module Increase
 
         # @!attribute amount
         #   The transfer amount in cents. A positive amount originates a credit transfer
-        #     pushing funds to the receiving account. A negative amount originates a debit
-        #     transfer pulling funds from the receiving account.
+        #   pushing funds to the receiving account. A negative amount originates a debit
+        #   transfer pulling funds from the receiving account.
         #
         #   @return [Integer]
         required :amount, Integer
@@ -95,7 +95,7 @@ module Increase
 
         # @!attribute [r] resolve_at
         #   The time at which the transfer should be resolved. If not provided will resolve
-        #     immediately.
+        #   immediately.
         #
         #   @return [Time, nil]
         optional :resolve_at, Time

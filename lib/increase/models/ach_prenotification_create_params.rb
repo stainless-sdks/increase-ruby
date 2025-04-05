@@ -22,7 +22,7 @@ module Increase
 
       # @!attribute routing_number
       #   The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      #     destination account.
+      #   destination account.
       #
       #   @return [String]
       required :routing_number, String
@@ -90,7 +90,7 @@ module Increase
 
       # @!attribute [r] effective_date
       #   The transfer effective date in
-      #     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+      #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
       #
       #   @return [Date, nil]
       optional :effective_date, Date
@@ -111,7 +111,7 @@ module Increase
 
       # @!attribute [r] individual_name
       #   The name of the transfer recipient. This value is information and not verified
-      #     by the recipient's bank.
+      #   by the recipient's bank.
       #
       #   @return [String, nil]
       optional :individual_name, String

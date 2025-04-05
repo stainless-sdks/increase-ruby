@@ -20,7 +20,7 @@ module Increase
 
       # @!attribute [r] limit
       #   Limit the size of the list that is returned. The default (and maximum) is 100
-      #     objects.
+      #   objects.
       #
       #   @return [Integer, nil]
       optional :limit, Integer

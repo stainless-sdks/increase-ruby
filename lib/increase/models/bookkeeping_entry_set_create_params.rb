@@ -17,7 +17,7 @@ module Increase
 
       # @!attribute [r] date
       #   The date of the transaction. Optional if `transaction_id` is provided, in which
-      #     case we use the `date` of that transaction. Required otherwise.
+      #   case we use the `date` of that transaction. Required otherwise.
       #
       #   @return [Time, nil]
       optional :date, Time
@@ -55,8 +55,8 @@ module Increase
 
         # @!attribute amount
         #   The entry amount in the minor unit of the account currency. For dollars, for
-        #     example, this is cents. Debit entries have positive amounts; credit entries have
-        #     negative amounts.
+        #   example, this is cents. Debit entries have positive amounts; credit entries have
+        #   negative amounts.
         #
         #   @return [Integer]
         required :amount, Integer

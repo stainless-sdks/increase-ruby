@@ -48,7 +48,7 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #     the prenotification was created.
+      #   the prenotification was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -69,15 +69,15 @@ module Increase
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
-      #     Increase and is used to ensure that a request is only processed once. Learn more
-      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
 
       # @!attribute notifications_of_change
       #   If the receiving bank notifies that future transfers should use different
-      #     details, this will contain those details.
+      #   details, this will contain those details.
       #
       #   @return [Array<Increase::Models::ACHPrenotification::NotificationsOfChange>]
       required :notifications_of_change,
@@ -105,14 +105,14 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `ach_prenotification`.
+      #   `ach_prenotification`.
       #
       #   @return [Symbol, Increase::Models::ACHPrenotification::Type]
       required :type, enum: -> { Increase::Models::ACHPrenotification::Type }
 
       # @!parse
       #   # ACH Prenotifications are one way you can verify account and routing numbers by
-      #   #   Automated Clearing House (ACH).
+      #   # Automated Clearing House (ACH).
       #   #
       #   # @param id [String]
       #   # @param account_number [String]
@@ -177,7 +177,7 @@ module Increase
       class NotificationsOfChange < Increase::Internal::Type::BaseModel
         # @!attribute change_code
         #   The required type of change that is being signaled by the receiving financial
-        #     institution.
+        #   institution.
         #
         #   @return [Symbol, Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode]
         required :change_code,
@@ -185,17 +185,17 @@ module Increase
 
         # @!attribute corrected_data
         #   The corrected data that should be used in future ACHs to this account. This may
-        #     contain the suggested new account number or routing number. When the
-        #     `change_code` is `incorrect_transaction_code`, this field contains an integer.
-        #     Numbers starting with a 2 encourage changing the `funding` parameter to
-        #     checking; numbers starting with a 3 encourage changing to savings.
+        #   contain the suggested new account number or routing number. When the
+        #   `change_code` is `incorrect_transaction_code`, this field contains an integer.
+        #   Numbers starting with a 2 encourage changing the `funding` parameter to
+        #   checking; numbers starting with a 3 encourage changing to savings.
         #
         #   @return [String]
         required :corrected_data, String
 
         # @!attribute created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #     the notification occurred.
+        #   the notification occurred.
         #
         #   @return [Time]
         required :created_at, Time
@@ -210,7 +210,7 @@ module Increase
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
         # The required type of change that is being signaled by the receiving financial
-        #   institution.
+        # institution.
         #
         # @see Increase::Models::ACHPrenotification::NotificationsOfChange#change_code
         module ChangeCode
@@ -291,7 +291,7 @@ module Increase
       class PrenotificationReturn < Increase::Internal::Type::BaseModel
         # @!attribute created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #     the Prenotification was returned.
+        #   the Prenotification was returned.
         #
         #   @return [Time]
         required :created_at, Time
@@ -566,7 +566,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `ach_prenotification`.
+      # `ach_prenotification`.
       #
       # @see Increase::Models::ACHPrenotification#type
       module Type

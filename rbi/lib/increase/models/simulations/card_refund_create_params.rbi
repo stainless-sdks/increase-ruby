@@ -8,7 +8,7 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         # The identifier for the Transaction to refund. The Transaction's source must have
-        #   a category of card_settlement.
+        # a category of card_settlement.
         sig { returns(String) }
         attr_accessor :transaction_id
 

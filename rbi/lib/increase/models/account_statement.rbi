@@ -12,7 +12,7 @@ module Increase
       attr_accessor :account_id
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      #   Statement was created.
+      # Statement was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -29,23 +29,23 @@ module Increase
       attr_accessor :starting_balance
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the end
-      #   of the period the Account Statement covers.
+      # of the period the Account Statement covers.
       sig { returns(Time) }
       attr_accessor :statement_period_end
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the
-      #   start of the period the Account Statement covers.
+      # start of the period the Account Statement covers.
       sig { returns(Time) }
       attr_accessor :statement_period_start
 
       # A constant representing the object's type. For this resource it will always be
-      #   `account_statement`.
+      # `account_statement`.
       sig { returns(Increase::Models::AccountStatement::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Account Statements are generated monthly for every active Account. You can
-      #   access the statement's data via the API or retrieve a PDF with its details via
-      #   its associated File.
+      # access the statement's data via the API or retrieve a PDF with its details via
+      # its associated File.
       sig do
         params(
           id: String,
@@ -90,7 +90,7 @@ module Increase
       def to_hash; end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `account_statement`.
+      # `account_statement`.
       module Type
         extend Increase::Internal::Type::Enum
 

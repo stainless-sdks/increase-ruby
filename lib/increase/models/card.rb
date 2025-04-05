@@ -24,7 +24,7 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #     the Card was created.
+      #   the Card was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -37,8 +37,8 @@ module Increase
 
       # @!attribute digital_wallet
       #   The contact information used in the two-factor steps for digital wallet card
-      #     creation. At least one field must be present to complete the digital wallet
-      #     steps.
+      #   creation. At least one field must be present to complete the digital wallet
+      #   steps.
       #
       #   @return [Increase::Models::Card::DigitalWallet, nil]
       required :digital_wallet, -> { Increase::Models::Card::DigitalWallet }, nil?: true
@@ -63,8 +63,8 @@ module Increase
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
-      #     Increase and is used to ensure that a request is only processed once. Learn more
-      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -83,16 +83,16 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `card`.
+      #   `card`.
       #
       #   @return [Symbol, Increase::Models::Card::Type]
       required :type, enum: -> { Increase::Models::Card::Type }
 
       # @!parse
       #   # Cards are commercial credit cards. They'll immediately work for online purchases
-      #   #   after you create them. All cards maintain a credit limit of 100% of the
-      #   #   Account’s available balance at the time of transaction. Funds are deducted from
-      #   #   the Account upon transaction settlement.
+      #   # after you create them. All cards maintain a credit limit of 100% of the
+      #   # Account’s available balance at the time of transaction. Funds are deducted from
+      #   # the Account upon transaction settlement.
       #   #
       #   # @param id [String]
       #   # @param account_id [String]
@@ -179,29 +179,29 @@ module Increase
       class DigitalWallet < Increase::Internal::Type::BaseModel
         # @!attribute digital_card_profile_id
         #   The digital card profile assigned to this digital card. Card profiles may also
-        #     be assigned at the program level.
+        #   be assigned at the program level.
         #
         #   @return [String, nil]
         required :digital_card_profile_id, String, nil?: true
 
         # @!attribute email
         #   An email address that can be used to verify the cardholder via one-time passcode
-        #     over email.
+        #   over email.
         #
         #   @return [String, nil]
         required :email, String, nil?: true
 
         # @!attribute phone
         #   A phone number that can be used to verify the cardholder via one-time passcode
-        #     over SMS.
+        #   over SMS.
         #
         #   @return [String, nil]
         required :phone, String, nil?: true
 
         # @!parse
         #   # The contact information used in the two-factor steps for digital wallet card
-        #   #   creation. At least one field must be present to complete the digital wallet
-        #   #   steps.
+        #   # creation. At least one field must be present to complete the digital wallet
+        #   # steps.
         #   #
         #   # @param digital_card_profile_id [String, nil]
         #   # @param email [String, nil]
@@ -235,7 +235,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `card`.
+      # `card`.
       #
       # @see Increase::Models::Card#type
       module Type

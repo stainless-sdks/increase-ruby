@@ -31,7 +31,7 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `routing_number`.
+      #   `routing_number`.
       #
       #   @return [Symbol, Increase::Models::RoutingNumberListResponse::Type]
       required :type, enum: -> { Increase::Models::RoutingNumberListResponse::Type }
@@ -95,7 +95,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `routing_number`.
+      # `routing_number`.
       #
       # @see Increase::Models::RoutingNumberListResponse#type
       module Type

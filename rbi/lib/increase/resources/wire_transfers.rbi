@@ -44,24 +44,24 @@ module Increase
         # The beneficiary's address line 3.
         beneficiary_address_line3: nil,
         # The ID of an External Account to initiate a transfer to. If this parameter is
-        #   provided, `account_number` and `routing_number` must be absent.
+        # provided, `account_number` and `routing_number` must be absent.
         external_account_id: nil,
         # The originator's address line 1. This is only necessary if you're transferring
-        #   from a commingled account. Otherwise, we'll use the associated entity's details.
+        # from a commingled account. Otherwise, we'll use the associated entity's details.
         originator_address_line1: nil,
         # The originator's address line 2. This is only necessary if you're transferring
-        #   from a commingled account. Otherwise, we'll use the associated entity's details.
+        # from a commingled account. Otherwise, we'll use the associated entity's details.
         originator_address_line2: nil,
         # The originator's address line 3. This is only necessary if you're transferring
-        #   from a commingled account. Otherwise, we'll use the associated entity's details.
+        # from a commingled account. Otherwise, we'll use the associated entity's details.
         originator_address_line3: nil,
         # The originator's name. This is only necessary if you're transferring from a
-        #   commingled account. Otherwise, we'll use the associated entity's details.
+        # commingled account. Otherwise, we'll use the associated entity's details.
         originator_name: nil,
         # Whether the transfer requires explicit approval via the dashboard or API.
         require_approval: nil,
         # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-        #   destination account.
+        # destination account.
         routing_number: nil,
         # The ID of an Account Number that will be passed to the wire's recipient
         source_account_number_id: nil,
@@ -102,12 +102,12 @@ module Increase
         # Filter Wire Transfers to those made to the specified External Account.
         external_account_id: nil,
         # Filter records to the one with the specified `idempotency_key` you chose for
-        #   that object. This value is unique across Increase and is used to ensure that a
-        #   request is only processed once. Learn more about
-        #   [idempotency](https://increase.com/documentation/idempotency-keys).
+        # that object. This value is unique across Increase and is used to ensure that a
+        # request is only processed once. Learn more about
+        # [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        #   objects.
+        # objects.
         limit: nil,
         request_options: {}
       ); end

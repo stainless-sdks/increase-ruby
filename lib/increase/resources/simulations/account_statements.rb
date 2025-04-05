@@ -5,7 +5,7 @@ module Increase
     class Simulations
       class AccountStatements
         # Simulates an [Account Statement](#account-statements) being created for an
-        #   account. In production, Account Statements are generated once per month.
+        # account. In production, Account Statements are generated once per month.
         #
         # @overload create(account_id:, request_options: {})
         #

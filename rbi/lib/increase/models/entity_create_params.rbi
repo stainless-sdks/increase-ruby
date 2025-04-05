@@ -11,7 +11,7 @@ module Increase
       attr_accessor :structure
 
       # Details of the corporation entity to create. Required if `structure` is equal to
-      #   `corporation`.
+      # `corporation`.
       sig { returns(T.nilable(Increase::Models::EntityCreateParams::Corporation)) }
       attr_reader :corporation
 
@@ -29,7 +29,7 @@ module Increase
       attr_writer :description
 
       # Details of the Government Authority entity to create. Required if `structure` is
-      #   equal to `Government Authority`.
+      # equal to `Government Authority`.
       sig { returns(T.nilable(Increase::Models::EntityCreateParams::GovernmentAuthority)) }
       attr_reader :government_authority
 
@@ -42,7 +42,7 @@ module Increase
       attr_writer :government_authority
 
       # Details of the joint entity to create. Required if `structure` is equal to
-      #   `joint`.
+      # `joint`.
       sig { returns(T.nilable(Increase::Models::EntityCreateParams::Joint)) }
       attr_reader :joint
 
@@ -50,9 +50,9 @@ module Increase
       attr_writer :joint
 
       # Details of the natural person entity to create. Required if `structure` is equal
-      #   to `natural_person`. Natural people entities should be submitted with
-      #   `social_security_number` or `individual_taxpayer_identification_number`
-      #   identification methods.
+      # to `natural_person`. Natural people entities should be submitted with
+      # `social_security_number` or `individual_taxpayer_identification_number`
+      # identification methods.
       sig { returns(T.nilable(Increase::Models::EntityCreateParams::NaturalPerson)) }
       attr_reader :natural_person
 
@@ -77,7 +77,7 @@ module Increase
       attr_writer :supplemental_documents
 
       # A reference to data stored in a third-party verification service. Your
-      #   integration may or may not use this field.
+      # integration may or may not use this field.
       sig { returns(T.nilable(Increase::Models::EntityCreateParams::ThirdPartyVerification)) }
       attr_reader :third_party_verification
 
@@ -90,7 +90,7 @@ module Increase
       attr_writer :third_party_verification
 
       # Details of the trust entity to create. Required if `structure` is equal to
-      #   `trust`.
+      # `trust`.
       sig { returns(T.nilable(Increase::Models::EntityCreateParams::Trust)) }
       attr_reader :trust
 
@@ -173,7 +173,7 @@ module Increase
 
       class Corporation < Increase::Internal::Type::BaseModel
         # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-        #   are disallowed.
+        # are disallowed.
         sig { returns(Increase::Models::EntityCreateParams::Corporation::Address) }
         attr_reader :address
 
@@ -186,7 +186,7 @@ module Increase
         attr_writer :address
 
         # The identifying details of anyone controlling or owning 25% or more of the
-        #   corporation.
+        # corporation.
         sig { returns(T::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner]) }
         attr_accessor :beneficial_owners
 
@@ -199,7 +199,7 @@ module Increase
         attr_accessor :tax_identifier
 
         # The two-letter United States Postal Service (USPS) abbreviation for the
-        #   corporation's state of incorporation.
+        # corporation's state of incorporation.
         sig { returns(T.nilable(String)) }
         attr_reader :incorporation_state
 
@@ -207,9 +207,9 @@ module Increase
         attr_writer :incorporation_state
 
         # The North American Industry Classification System (NAICS) code for the
-        #   corporation's primary line of business. This is a number, like `5132` for
-        #   `Software Publishers`. A full list of classification codes is available
-        #   [here](https://increase.com/documentation/data-dictionary#north-american-industry-classification-system-codes).
+        # corporation's primary line of business. This is a number, like `5132` for
+        # `Software Publishers`. A full list of classification codes is available
+        # [here](https://increase.com/documentation/data-dictionary#north-american-industry-classification-system-codes).
         sig { returns(T.nilable(String)) }
         attr_reader :industry_code
 
@@ -224,7 +224,7 @@ module Increase
         attr_writer :website
 
         # Details of the corporation entity to create. Required if `structure` is equal to
-        #   `corporation`.
+        # `corporation`.
         sig do
           params(
             address: T.any(Increase::Models::EntityCreateParams::Corporation::Address, Increase::Internal::AnyHash),
@@ -272,7 +272,7 @@ module Increase
           attr_accessor :line1
 
           # The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   the address.
+          # the address.
           sig { returns(String) }
           attr_accessor :state
 
@@ -288,7 +288,7 @@ module Increase
           attr_writer :line2
 
           # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-          #   are disallowed.
+          # are disallowed.
           sig do
             params(
               city: String,
@@ -321,8 +321,8 @@ module Increase
           attr_writer :individual
 
           # Why this person is considered a beneficial owner of the entity. At least one
-          #   option is required, if a person is both a control person and owner, submit an
-          #   array containing both.
+          # option is required, if a person is both a control person and owner, submit an
+          # array containing both.
           sig { returns(T::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::OrSymbol]) }
           attr_accessor :prongs
 
@@ -360,7 +360,7 @@ module Increase
 
           class Individual < Increase::Internal::Type::BaseModel
             # The individual's physical address. Mail receiving locations like PO Boxes and
-            #   PMB's are disallowed.
+            # PMB's are disallowed.
             sig { returns(Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address) }
             attr_reader :address
 
@@ -399,9 +399,9 @@ module Increase
             attr_accessor :name
 
             # The identification method for an individual can only be a passport, driver's
-            #   license, or other document if you've confirmed the individual does not have a US
-            #   tax id (either a Social Security Number or Individual Taxpayer Identification
-            #   Number).
+            # license, or other document if you've confirmed the individual does not have a US
+            # tax id (either a Social Security Number or Individual Taxpayer Identification
+            # Number).
             sig { returns(T.nilable(T::Boolean)) }
             attr_reader :confirmed_no_us_tax_id
 
@@ -451,7 +451,7 @@ module Increase
               attr_accessor :line1
 
               # The city, district, town, or village of the address. Required in certain
-              #   countries.
+              # countries.
               sig { returns(T.nilable(String)) }
               attr_reader :city
 
@@ -466,7 +466,7 @@ module Increase
               attr_writer :line2
 
               # The two-letter United States Postal Service (USPS) abbreviation for the US
-              #   state, province, or region of the address. Required in certain countries.
+              # state, province, or region of the address. Required in certain countries.
               sig { returns(T.nilable(String)) }
               attr_reader :state
 
@@ -481,7 +481,7 @@ module Increase
               attr_writer :zip
 
               # The individual's physical address. Mail receiving locations like PO Boxes and
-              #   PMB's are disallowed.
+              # PMB's are disallowed.
               sig do
                 params(
                   country: String,
@@ -520,12 +520,12 @@ module Increase
               attr_accessor :method_
 
               # An identification number that can be used to verify the individual's identity,
-              #   such as a social security number.
+              # such as a social security number.
               sig { returns(String) }
               attr_accessor :number
 
               # Information about the United States driver's license used for identification.
-              #   Required if `method` is equal to `drivers_license`.
+              # Required if `method` is equal to `drivers_license`.
               sig do
                 returns(
                   T.nilable(
@@ -547,7 +547,7 @@ module Increase
               attr_writer :drivers_license
 
               # Information about the identification document provided. Required if `method` is
-              #   equal to `other`.
+              # equal to `other`.
               sig do
                 returns(
                   T.nilable(
@@ -569,7 +569,7 @@ module Increase
               attr_writer :other
 
               # Information about the passport used for identification. Required if `method` is
-              #   equal to `passport`.
+              # equal to `passport`.
               sig do
                 returns(
                   T.nilable(
@@ -710,7 +710,7 @@ module Increase
                 attr_writer :back_file_id
 
                 # Information about the United States driver's license used for identification.
-                #   Required if `method` is equal to `drivers_license`.
+                # Required if `method` is equal to `drivers_license`.
                 sig do
                   params(expiration_date: Date, file_id: String, state: String, back_file_id: String)
                     .returns(T.attached_class)
@@ -732,7 +732,7 @@ module Increase
 
               class Other < Increase::Internal::Type::BaseModel
                 # The two-character ISO 3166-1 code representing the country that issued the
-                #   document.
+                # document.
                 sig { returns(String) }
                 attr_accessor :country
 
@@ -745,7 +745,7 @@ module Increase
                 attr_accessor :file_id
 
                 # The identifier of the File containing the back of the document. Not every
-                #   document has a reverse side.
+                # document has a reverse side.
                 sig { returns(T.nilable(String)) }
                 attr_reader :back_file_id
 
@@ -760,7 +760,7 @@ module Increase
                 attr_writer :expiration_date
 
                 # Information about the identification document provided. Required if `method` is
-                #   equal to `other`.
+                # equal to `other`.
                 sig do
                   params(
                     country: String,
@@ -802,7 +802,7 @@ module Increase
                 attr_accessor :file_id
 
                 # Information about the passport used for identification. Required if `method` is
-                #   equal to `passport`.
+                # equal to `passport`.
                 sig do
                   params(country: String, expiration_date: Date, file_id: String).returns(T.attached_class)
                 end
@@ -847,7 +847,7 @@ module Increase
 
       class GovernmentAuthority < Increase::Internal::Type::BaseModel
         # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-        #   are disallowed.
+        # are disallowed.
         sig { returns(Increase::Models::EntityCreateParams::GovernmentAuthority::Address) }
         attr_reader :address
 
@@ -883,7 +883,7 @@ module Increase
         attr_writer :website
 
         # Details of the Government Authority entity to create. Required if `structure` is
-        #   equal to `Government Authority`.
+        # equal to `Government Authority`.
         sig do
           params(
             address: T.any(Increase::Models::EntityCreateParams::GovernmentAuthority::Address, Increase::Internal::AnyHash),
@@ -927,7 +927,7 @@ module Increase
           attr_accessor :line1
 
           # The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   the address.
+          # the address.
           sig { returns(String) }
           attr_accessor :state
 
@@ -943,7 +943,7 @@ module Increase
           attr_writer :line2
 
           # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-          #   are disallowed.
+          # are disallowed.
           sig do
             params(
               city: String,
@@ -1005,7 +1005,7 @@ module Increase
         attr_writer :name
 
         # Details of the joint entity to create. Required if `structure` is equal to
-        #   `joint`.
+        # `joint`.
         sig do
           params(
             individuals: T::Array[T.any(Increase::Models::EntityCreateParams::Joint::Individual, Increase::Internal::AnyHash)],
@@ -1023,7 +1023,7 @@ module Increase
 
         class Individual < Increase::Internal::Type::BaseModel
           # The individual's physical address. Mail receiving locations like PO Boxes and
-          #   PMB's are disallowed.
+          # PMB's are disallowed.
           sig { returns(Increase::Models::EntityCreateParams::Joint::Individual::Address) }
           attr_reader :address
 
@@ -1059,9 +1059,9 @@ module Increase
           attr_accessor :name
 
           # The identification method for an individual can only be a passport, driver's
-          #   license, or other document if you've confirmed the individual does not have a US
-          #   tax id (either a Social Security Number or Individual Taxpayer Identification
-          #   Number).
+          # license, or other document if you've confirmed the individual does not have a US
+          # tax id (either a Social Security Number or Individual Taxpayer Identification
+          # Number).
           sig { returns(T.nilable(T::Boolean)) }
           attr_reader :confirmed_no_us_tax_id
 
@@ -1107,7 +1107,7 @@ module Increase
             attr_accessor :line1
 
             # The two-letter United States Postal Service (USPS) abbreviation for the state of
-            #   the address.
+            # the address.
             sig { returns(String) }
             attr_accessor :state
 
@@ -1123,7 +1123,7 @@ module Increase
             attr_writer :line2
 
             # The individual's physical address. Mail receiving locations like PO Boxes and
-            #   PMB's are disallowed.
+            # PMB's are disallowed.
             sig do
               params(
                 city: String,
@@ -1145,12 +1145,12 @@ module Increase
             attr_accessor :method_
 
             # An identification number that can be used to verify the individual's identity,
-            #   such as a social security number.
+            # such as a social security number.
             sig { returns(String) }
             attr_accessor :number
 
             # Information about the United States driver's license used for identification.
-            #   Required if `method` is equal to `drivers_license`.
+            # Required if `method` is equal to `drivers_license`.
             sig do
               returns(
                 T.nilable(Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense)
@@ -1170,7 +1170,7 @@ module Increase
             attr_writer :drivers_license
 
             # Information about the identification document provided. Required if `method` is
-            #   equal to `other`.
+            # equal to `other`.
             sig { returns(T.nilable(Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other)) }
             attr_reader :other
 
@@ -1186,7 +1186,7 @@ module Increase
             attr_writer :other
 
             # Information about the passport used for identification. Required if `method` is
-            #   equal to `passport`.
+            # equal to `passport`.
             sig { returns(T.nilable(Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport)) }
             attr_reader :passport
 
@@ -1317,7 +1317,7 @@ module Increase
               attr_writer :back_file_id
 
               # Information about the United States driver's license used for identification.
-              #   Required if `method` is equal to `drivers_license`.
+              # Required if `method` is equal to `drivers_license`.
               sig do
                 params(expiration_date: Date, file_id: String, state: String, back_file_id: String)
                   .returns(T.attached_class)
@@ -1339,7 +1339,7 @@ module Increase
 
             class Other < Increase::Internal::Type::BaseModel
               # The two-character ISO 3166-1 code representing the country that issued the
-              #   document.
+              # document.
               sig { returns(String) }
               attr_accessor :country
 
@@ -1352,7 +1352,7 @@ module Increase
               attr_accessor :file_id
 
               # The identifier of the File containing the back of the document. Not every
-              #   document has a reverse side.
+              # document has a reverse side.
               sig { returns(T.nilable(String)) }
               attr_reader :back_file_id
 
@@ -1367,7 +1367,7 @@ module Increase
               attr_writer :expiration_date
 
               # Information about the identification document provided. Required if `method` is
-              #   equal to `other`.
+              # equal to `other`.
               sig do
                 params(
                   country: String,
@@ -1409,7 +1409,7 @@ module Increase
               attr_accessor :file_id
 
               # Information about the passport used for identification. Required if `method` is
-              #   equal to `passport`.
+              # equal to `passport`.
               sig do
                 params(country: String, expiration_date: Date, file_id: String).returns(T.attached_class)
               end
@@ -1424,7 +1424,7 @@ module Increase
 
       class NaturalPerson < Increase::Internal::Type::BaseModel
         # The individual's physical address. Mail receiving locations like PO Boxes and
-        #   PMB's are disallowed.
+        # PMB's are disallowed.
         sig { returns(Increase::Models::EntityCreateParams::NaturalPerson::Address) }
         attr_reader :address
 
@@ -1457,9 +1457,9 @@ module Increase
         attr_accessor :name
 
         # The identification method for an individual can only be a passport, driver's
-        #   license, or other document if you've confirmed the individual does not have a US
-        #   tax id (either a Social Security Number or Individual Taxpayer Identification
-        #   Number).
+        # license, or other document if you've confirmed the individual does not have a US
+        # tax id (either a Social Security Number or Individual Taxpayer Identification
+        # Number).
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :confirmed_no_us_tax_id
 
@@ -1467,9 +1467,9 @@ module Increase
         attr_writer :confirmed_no_us_tax_id
 
         # Details of the natural person entity to create. Required if `structure` is equal
-        #   to `natural_person`. Natural people entities should be submitted with
-        #   `social_security_number` or `individual_taxpayer_identification_number`
-        #   identification methods.
+        # to `natural_person`. Natural people entities should be submitted with
+        # `social_security_number` or `individual_taxpayer_identification_number`
+        # identification methods.
         sig do
           params(
             address: T.any(Increase::Models::EntityCreateParams::NaturalPerson::Address, Increase::Internal::AnyHash),
@@ -1506,7 +1506,7 @@ module Increase
           attr_accessor :line1
 
           # The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   the address.
+          # the address.
           sig { returns(String) }
           attr_accessor :state
 
@@ -1522,7 +1522,7 @@ module Increase
           attr_writer :line2
 
           # The individual's physical address. Mail receiving locations like PO Boxes and
-          #   PMB's are disallowed.
+          # PMB's are disallowed.
           sig do
             params(
               city: String,
@@ -1544,12 +1544,12 @@ module Increase
           attr_accessor :method_
 
           # An identification number that can be used to verify the individual's identity,
-          #   such as a social security number.
+          # such as a social security number.
           sig { returns(String) }
           attr_accessor :number
 
           # Information about the United States driver's license used for identification.
-          #   Required if `method` is equal to `drivers_license`.
+          # Required if `method` is equal to `drivers_license`.
           sig { returns(T.nilable(Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense)) }
           attr_reader :drivers_license
 
@@ -1565,7 +1565,7 @@ module Increase
           attr_writer :drivers_license
 
           # Information about the identification document provided. Required if `method` is
-          #   equal to `other`.
+          # equal to `other`.
           sig { returns(T.nilable(Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other)) }
           attr_reader :other
 
@@ -1581,7 +1581,7 @@ module Increase
           attr_writer :other
 
           # Information about the passport used for identification. Required if `method` is
-          #   equal to `passport`.
+          # equal to `passport`.
           sig { returns(T.nilable(Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport)) }
           attr_reader :passport
 
@@ -1709,7 +1709,7 @@ module Increase
             attr_writer :back_file_id
 
             # Information about the United States driver's license used for identification.
-            #   Required if `method` is equal to `drivers_license`.
+            # Required if `method` is equal to `drivers_license`.
             sig do
               params(expiration_date: Date, file_id: String, state: String, back_file_id: String)
                 .returns(T.attached_class)
@@ -1724,7 +1724,7 @@ module Increase
 
           class Other < Increase::Internal::Type::BaseModel
             # The two-character ISO 3166-1 code representing the country that issued the
-            #   document.
+            # document.
             sig { returns(String) }
             attr_accessor :country
 
@@ -1737,7 +1737,7 @@ module Increase
             attr_accessor :file_id
 
             # The identifier of the File containing the back of the document. Not every
-            #   document has a reverse side.
+            # document has a reverse side.
             sig { returns(T.nilable(String)) }
             attr_reader :back_file_id
 
@@ -1752,7 +1752,7 @@ module Increase
             attr_writer :expiration_date
 
             # Information about the identification document provided. Required if `method` is
-            #   equal to `other`.
+            # equal to `other`.
             sig do
               params(
                 country: String,
@@ -1794,7 +1794,7 @@ module Increase
             attr_accessor :file_id
 
             # Information about the passport used for identification. Required if `method` is
-            #   equal to `passport`.
+            # equal to `passport`.
             sig { params(country: String, expiration_date: Date, file_id: String).returns(T.attached_class) }
             def self.new(country:, expiration_date:, file_id:); end
 
@@ -1826,7 +1826,7 @@ module Increase
         attr_accessor :vendor
 
         # A reference to data stored in a third-party verification service. Your
-        #   integration may or may not use this field.
+        # integration may or may not use this field.
         sig do
           params(
             reference: String,
@@ -1870,7 +1870,7 @@ module Increase
 
       class Trust < Increase::Internal::Type::BaseModel
         # The trust's physical address. Mail receiving locations like PO Boxes and PMB's
-        #   are disallowed.
+        # are disallowed.
         sig { returns(Increase::Models::EntityCreateParams::Trust::Address) }
         attr_reader :address
 
@@ -1881,8 +1881,8 @@ module Increase
         attr_writer :address
 
         # Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require
-        #   their own Employer Identification Number. Revocable trusts require information
-        #   about the individual `grantor` who created the trust.
+        # their own Employer Identification Number. Revocable trusts require information
+        # about the individual `grantor` who created the trust.
         sig { returns(Increase::Models::EntityCreateParams::Trust::Category::OrSymbol) }
         attr_accessor :category
 
@@ -1902,7 +1902,7 @@ module Increase
         attr_writer :formation_document_file_id
 
         # The two-letter United States Postal Service (USPS) abbreviation for the state in
-        #   which the trust was formed.
+        # which the trust was formed.
         sig { returns(T.nilable(String)) }
         attr_reader :formation_state
 
@@ -1920,7 +1920,7 @@ module Increase
         attr_writer :grantor
 
         # The Employer Identification Number (EIN) for the trust. Required if `category`
-        #   is equal to `irrevocable`.
+        # is equal to `irrevocable`.
         sig { returns(T.nilable(String)) }
         attr_reader :tax_identifier
 
@@ -1928,7 +1928,7 @@ module Increase
         attr_writer :tax_identifier
 
         # Details of the trust entity to create. Required if `structure` is equal to
-        #   `trust`.
+        # `trust`.
         sig do
           params(
             address: T.any(Increase::Models::EntityCreateParams::Trust::Address, Increase::Internal::AnyHash),
@@ -1979,7 +1979,7 @@ module Increase
           attr_accessor :line1
 
           # The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   the address.
+          # the address.
           sig { returns(String) }
           attr_accessor :state
 
@@ -1995,7 +1995,7 @@ module Increase
           attr_writer :line2
 
           # The trust's physical address. Mail receiving locations like PO Boxes and PMB's
-          #   are disallowed.
+          # are disallowed.
           sig do
             params(
               city: String,
@@ -2012,8 +2012,8 @@ module Increase
         end
 
         # Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require
-        #   their own Employer Identification Number. Revocable trusts require information
-        #   about the individual `grantor` who created the trust.
+        # their own Employer Identification Number. Revocable trusts require information
+        # about the individual `grantor` who created the trust.
         module Category
           extend Increase::Internal::Type::Enum
 
@@ -2037,7 +2037,7 @@ module Increase
           attr_accessor :structure
 
           # Details of the individual trustee. Required when the trustee `structure` is
-          #   equal to `individual`.
+          # equal to `individual`.
           sig { returns(T.nilable(Increase::Models::EntityCreateParams::Trust::Trustee::Individual)) }
           attr_reader :individual
 
@@ -2088,7 +2088,7 @@ module Increase
 
           class Individual < Increase::Internal::Type::BaseModel
             # The individual's physical address. Mail receiving locations like PO Boxes and
-            #   PMB's are disallowed.
+            # PMB's are disallowed.
             sig { returns(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address) }
             attr_reader :address
 
@@ -2127,9 +2127,9 @@ module Increase
             attr_accessor :name
 
             # The identification method for an individual can only be a passport, driver's
-            #   license, or other document if you've confirmed the individual does not have a US
-            #   tax id (either a Social Security Number or Individual Taxpayer Identification
-            #   Number).
+            # license, or other document if you've confirmed the individual does not have a US
+            # tax id (either a Social Security Number or Individual Taxpayer Identification
+            # Number).
             sig { returns(T.nilable(T::Boolean)) }
             attr_reader :confirmed_no_us_tax_id
 
@@ -2137,7 +2137,7 @@ module Increase
             attr_writer :confirmed_no_us_tax_id
 
             # Details of the individual trustee. Required when the trustee `structure` is
-            #   equal to `individual`.
+            # equal to `individual`.
             sig do
               params(
                 address: T.any(
@@ -2180,7 +2180,7 @@ module Increase
               attr_accessor :line1
 
               # The two-letter United States Postal Service (USPS) abbreviation for the state of
-              #   the address.
+              # the address.
               sig { returns(String) }
               attr_accessor :state
 
@@ -2196,7 +2196,7 @@ module Increase
               attr_writer :line2
 
               # The individual's physical address. Mail receiving locations like PO Boxes and
-              #   PMB's are disallowed.
+              # PMB's are disallowed.
               sig do
                 params(
                   city: String,
@@ -2224,12 +2224,12 @@ module Increase
               attr_accessor :method_
 
               # An identification number that can be used to verify the individual's identity,
-              #   such as a social security number.
+              # such as a social security number.
               sig { returns(String) }
               attr_accessor :number
 
               # Information about the United States driver's license used for identification.
-              #   Required if `method` is equal to `drivers_license`.
+              # Required if `method` is equal to `drivers_license`.
               sig do
                 returns(
                   T.nilable(
@@ -2251,7 +2251,7 @@ module Increase
               attr_writer :drivers_license
 
               # Information about the identification document provided. Required if `method` is
-              #   equal to `other`.
+              # equal to `other`.
               sig do
                 returns(
                   T.nilable(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other)
@@ -2271,7 +2271,7 @@ module Increase
               attr_writer :other
 
               # Information about the passport used for identification. Required if `method` is
-              #   equal to `passport`.
+              # equal to `passport`.
               sig do
                 returns(
                   T.nilable(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport)
@@ -2406,7 +2406,7 @@ module Increase
                 attr_writer :back_file_id
 
                 # Information about the United States driver's license used for identification.
-                #   Required if `method` is equal to `drivers_license`.
+                # Required if `method` is equal to `drivers_license`.
                 sig do
                   params(expiration_date: Date, file_id: String, state: String, back_file_id: String)
                     .returns(T.attached_class)
@@ -2428,7 +2428,7 @@ module Increase
 
               class Other < Increase::Internal::Type::BaseModel
                 # The two-character ISO 3166-1 code representing the country that issued the
-                #   document.
+                # document.
                 sig { returns(String) }
                 attr_accessor :country
 
@@ -2441,7 +2441,7 @@ module Increase
                 attr_accessor :file_id
 
                 # The identifier of the File containing the back of the document. Not every
-                #   document has a reverse side.
+                # document has a reverse side.
                 sig { returns(T.nilable(String)) }
                 attr_reader :back_file_id
 
@@ -2456,7 +2456,7 @@ module Increase
                 attr_writer :expiration_date
 
                 # Information about the identification document provided. Required if `method` is
-                #   equal to `other`.
+                # equal to `other`.
                 sig do
                   params(
                     country: String,
@@ -2498,7 +2498,7 @@ module Increase
                 attr_accessor :file_id
 
                 # Information about the passport used for identification. Required if `method` is
-                #   equal to `passport`.
+                # equal to `passport`.
                 sig do
                   params(country: String, expiration_date: Date, file_id: String).returns(T.attached_class)
                 end
@@ -2513,7 +2513,7 @@ module Increase
 
         class Grantor < Increase::Internal::Type::BaseModel
           # The individual's physical address. Mail receiving locations like PO Boxes and
-          #   PMB's are disallowed.
+          # PMB's are disallowed.
           sig { returns(Increase::Models::EntityCreateParams::Trust::Grantor::Address) }
           attr_reader :address
 
@@ -2546,9 +2546,9 @@ module Increase
           attr_accessor :name
 
           # The identification method for an individual can only be a passport, driver's
-          #   license, or other document if you've confirmed the individual does not have a US
-          #   tax id (either a Social Security Number or Individual Taxpayer Identification
-          #   Number).
+          # license, or other document if you've confirmed the individual does not have a US
+          # tax id (either a Social Security Number or Individual Taxpayer Identification
+          # Number).
           sig { returns(T.nilable(T::Boolean)) }
           attr_reader :confirmed_no_us_tax_id
 
@@ -2592,7 +2592,7 @@ module Increase
             attr_accessor :line1
 
             # The two-letter United States Postal Service (USPS) abbreviation for the state of
-            #   the address.
+            # the address.
             sig { returns(String) }
             attr_accessor :state
 
@@ -2608,7 +2608,7 @@ module Increase
             attr_writer :line2
 
             # The individual's physical address. Mail receiving locations like PO Boxes and
-            #   PMB's are disallowed.
+            # PMB's are disallowed.
             sig do
               params(
                 city: String,
@@ -2630,12 +2630,12 @@ module Increase
             attr_accessor :method_
 
             # An identification number that can be used to verify the individual's identity,
-            #   such as a social security number.
+            # such as a social security number.
             sig { returns(String) }
             attr_accessor :number
 
             # Information about the United States driver's license used for identification.
-            #   Required if `method` is equal to `drivers_license`.
+            # Required if `method` is equal to `drivers_license`.
             sig { returns(T.nilable(Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense)) }
             attr_reader :drivers_license
 
@@ -2651,7 +2651,7 @@ module Increase
             attr_writer :drivers_license
 
             # Information about the identification document provided. Required if `method` is
-            #   equal to `other`.
+            # equal to `other`.
             sig { returns(T.nilable(Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other)) }
             attr_reader :other
 
@@ -2667,7 +2667,7 @@ module Increase
             attr_writer :other
 
             # Information about the passport used for identification. Required if `method` is
-            #   equal to `passport`.
+            # equal to `passport`.
             sig { returns(T.nilable(Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport)) }
             attr_reader :passport
 
@@ -2795,7 +2795,7 @@ module Increase
               attr_writer :back_file_id
 
               # Information about the United States driver's license used for identification.
-              #   Required if `method` is equal to `drivers_license`.
+              # Required if `method` is equal to `drivers_license`.
               sig do
                 params(expiration_date: Date, file_id: String, state: String, back_file_id: String)
                   .returns(T.attached_class)
@@ -2817,7 +2817,7 @@ module Increase
 
             class Other < Increase::Internal::Type::BaseModel
               # The two-character ISO 3166-1 code representing the country that issued the
-              #   document.
+              # document.
               sig { returns(String) }
               attr_accessor :country
 
@@ -2830,7 +2830,7 @@ module Increase
               attr_accessor :file_id
 
               # The identifier of the File containing the back of the document. Not every
-              #   document has a reverse side.
+              # document has a reverse side.
               sig { returns(T.nilable(String)) }
               attr_reader :back_file_id
 
@@ -2845,7 +2845,7 @@ module Increase
               attr_writer :expiration_date
 
               # Information about the identification document provided. Required if `method` is
-              #   equal to `other`.
+              # equal to `other`.
               sig do
                 params(
                   country: String,
@@ -2887,7 +2887,7 @@ module Increase
               attr_accessor :file_id
 
               # Information about the passport used for identification. Required if `method` is
-              #   equal to `passport`.
+              # equal to `passport`.
               sig do
                 params(country: String, expiration_date: Date, file_id: String).returns(T.attached_class)
               end

@@ -16,7 +16,7 @@ module Increase
 
       # @!attribute [r] corporation
       #   Details of the corporation entity to create. Required if `structure` is equal to
-      #     `corporation`.
+      #   `corporation`.
       #
       #   @return [Increase::Models::EntityCreateParams::Corporation, nil]
       optional :corporation, -> { Increase::Models::EntityCreateParams::Corporation }
@@ -37,7 +37,7 @@ module Increase
 
       # @!attribute [r] government_authority
       #   Details of the Government Authority entity to create. Required if `structure` is
-      #     equal to `Government Authority`.
+      #   equal to `Government Authority`.
       #
       #   @return [Increase::Models::EntityCreateParams::GovernmentAuthority, nil]
       optional :government_authority, -> { Increase::Models::EntityCreateParams::GovernmentAuthority }
@@ -48,7 +48,7 @@ module Increase
 
       # @!attribute [r] joint
       #   Details of the joint entity to create. Required if `structure` is equal to
-      #     `joint`.
+      #   `joint`.
       #
       #   @return [Increase::Models::EntityCreateParams::Joint, nil]
       optional :joint, -> { Increase::Models::EntityCreateParams::Joint }
@@ -59,9 +59,9 @@ module Increase
 
       # @!attribute [r] natural_person
       #   Details of the natural person entity to create. Required if `structure` is equal
-      #     to `natural_person`. Natural people entities should be submitted with
-      #     `social_security_number` or `individual_taxpayer_identification_number`
-      #     identification methods.
+      #   to `natural_person`. Natural people entities should be submitted with
+      #   `social_security_number` or `individual_taxpayer_identification_number`
+      #   identification methods.
       #
       #   @return [Increase::Models::EntityCreateParams::NaturalPerson, nil]
       optional :natural_person, -> { Increase::Models::EntityCreateParams::NaturalPerson }
@@ -83,7 +83,7 @@ module Increase
 
       # @!attribute [r] third_party_verification
       #   A reference to data stored in a third-party verification service. Your
-      #     integration may or may not use this field.
+      #   integration may or may not use this field.
       #
       #   @return [Increase::Models::EntityCreateParams::ThirdPartyVerification, nil]
       optional :third_party_verification, -> { Increase::Models::EntityCreateParams::ThirdPartyVerification }
@@ -94,7 +94,7 @@ module Increase
 
       # @!attribute [r] trust
       #   Details of the trust entity to create. Required if `structure` is equal to
-      #     `trust`.
+      #   `trust`.
       #
       #   @return [Increase::Models::EntityCreateParams::Trust, nil]
       optional :trust, -> { Increase::Models::EntityCreateParams::Trust }
@@ -162,14 +162,14 @@ module Increase
       class Corporation < Increase::Internal::Type::BaseModel
         # @!attribute address
         #   The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-        #     are disallowed.
+        #   are disallowed.
         #
         #   @return [Increase::Models::EntityCreateParams::Corporation::Address]
         required :address, -> { Increase::Models::EntityCreateParams::Corporation::Address }
 
         # @!attribute beneficial_owners
         #   The identifying details of anyone controlling or owning 25% or more of the
-        #     corporation.
+        #   corporation.
         #
         #   @return [Array<Increase::Models::EntityCreateParams::Corporation::BeneficialOwner>]
         required :beneficial_owners,
@@ -189,7 +189,7 @@ module Increase
 
         # @!attribute [r] incorporation_state
         #   The two-letter United States Postal Service (USPS) abbreviation for the
-        #     corporation's state of incorporation.
+        #   corporation's state of incorporation.
         #
         #   @return [String, nil]
         optional :incorporation_state, String
@@ -200,9 +200,9 @@ module Increase
 
         # @!attribute [r] industry_code
         #   The North American Industry Classification System (NAICS) code for the
-        #     corporation's primary line of business. This is a number, like `5132` for
-        #     `Software Publishers`. A full list of classification codes is available
-        #     [here](https://increase.com/documentation/data-dictionary#north-american-industry-classification-system-codes).
+        #   corporation's primary line of business. This is a number, like `5132` for
+        #   `Software Publishers`. A full list of classification codes is available
+        #   [here](https://increase.com/documentation/data-dictionary#north-american-industry-classification-system-codes).
         #
         #   @return [String, nil]
         optional :industry_code, String
@@ -223,7 +223,7 @@ module Increase
 
         # @!parse
         #   # Details of the corporation entity to create. Required if `structure` is equal to
-        #   #   `corporation`.
+        #   # `corporation`.
         #   #
         #   # @param address [Increase::Models::EntityCreateParams::Corporation::Address]
         #   # @param beneficial_owners [Array<Increase::Models::EntityCreateParams::Corporation::BeneficialOwner>]
@@ -264,7 +264,7 @@ module Increase
 
           # @!attribute state
           #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #     the address.
+          #   the address.
           #
           #   @return [String]
           required :state, String
@@ -287,7 +287,7 @@ module Increase
 
           # @!parse
           #   # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-          #   #   are disallowed.
+          #   # are disallowed.
           #   #
           #   # @param city [String]
           #   # @param line1 [String]
@@ -310,8 +310,8 @@ module Increase
 
           # @!attribute prongs
           #   Why this person is considered a beneficial owner of the entity. At least one
-          #     option is required, if a person is both a control person and owner, submit an
-          #     array containing both.
+          #   option is required, if a person is both a control person and owner, submit an
+          #   array containing both.
           #
           #   @return [Array<Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong>]
           required :prongs,
@@ -340,7 +340,7 @@ module Increase
           class Individual < Increase::Internal::Type::BaseModel
             # @!attribute address
             #   The individual's physical address. Mail receiving locations like PO Boxes and
-            #     PMB's are disallowed.
+            #   PMB's are disallowed.
             #
             #   @return [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address]
             required :address,
@@ -367,9 +367,9 @@ module Increase
 
             # @!attribute [r] confirmed_no_us_tax_id
             #   The identification method for an individual can only be a passport, driver's
-            #     license, or other document if you've confirmed the individual does not have a US
-            #     tax id (either a Social Security Number or Individual Taxpayer Identification
-            #     Number).
+            #   license, or other document if you've confirmed the individual does not have a US
+            #   tax id (either a Social Security Number or Individual Taxpayer Identification
+            #   Number).
             #
             #   @return [Boolean, nil]
             optional :confirmed_no_us_tax_id, Increase::Internal::Type::Boolean
@@ -407,7 +407,7 @@ module Increase
 
               # @!attribute [r] city
               #   The city, district, town, or village of the address. Required in certain
-              #     countries.
+              #   countries.
               #
               #   @return [String, nil]
               optional :city, String
@@ -428,7 +428,7 @@ module Increase
 
               # @!attribute [r] state
               #   The two-letter United States Postal Service (USPS) abbreviation for the US
-              #     state, province, or region of the address. Required in certain countries.
+              #   state, province, or region of the address. Required in certain countries.
               #
               #   @return [String, nil]
               optional :state, String
@@ -449,7 +449,7 @@ module Increase
 
               # @!parse
               #   # The individual's physical address. Mail receiving locations like PO Boxes and
-              #   #   PMB's are disallowed.
+              #   # PMB's are disallowed.
               #   #
               #   # @param country [String]
               #   # @param line1 [String]
@@ -475,14 +475,14 @@ module Increase
 
               # @!attribute number
               #   An identification number that can be used to verify the individual's identity,
-              #     such as a social security number.
+              #   such as a social security number.
               #
               #   @return [String]
               required :number, String
 
               # @!attribute [r] drivers_license
               #   Information about the United States driver's license used for identification.
-              #     Required if `method` is equal to `drivers_license`.
+              #   Required if `method` is equal to `drivers_license`.
               #
               #   @return [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense, nil]
               optional :drivers_license,
@@ -494,7 +494,7 @@ module Increase
 
               # @!attribute [r] other
               #   Information about the identification document provided. Required if `method` is
-              #     equal to `other`.
+              #   equal to `other`.
               #
               #   @return [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other, nil]
               optional :other,
@@ -506,7 +506,7 @@ module Increase
 
               # @!attribute [r] passport
               #   Information about the passport used for identification. Required if `method` is
-              #     equal to `passport`.
+              #   equal to `passport`.
               #
               #   @return [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport, nil]
               optional :passport,
@@ -589,7 +589,7 @@ module Increase
 
                 # @!parse
                 #   # Information about the United States driver's license used for identification.
-                #   #   Required if `method` is equal to `drivers_license`.
+                #   # Required if `method` is equal to `drivers_license`.
                 #   #
                 #   # @param expiration_date [Date]
                 #   # @param file_id [String]
@@ -605,7 +605,7 @@ module Increase
               class Other < Increase::Internal::Type::BaseModel
                 # @!attribute country
                 #   The two-character ISO 3166-1 code representing the country that issued the
-                #     document.
+                #   document.
                 #
                 #   @return [String]
                 required :country, String
@@ -624,7 +624,7 @@ module Increase
 
                 # @!attribute [r] back_file_id
                 #   The identifier of the File containing the back of the document. Not every
-                #     document has a reverse side.
+                #   document has a reverse side.
                 #
                 #   @return [String, nil]
                 optional :back_file_id, String
@@ -645,7 +645,7 @@ module Increase
 
                 # @!parse
                 #   # Information about the identification document provided. Required if `method` is
-                #   #   equal to `other`.
+                #   # equal to `other`.
                 #   #
                 #   # @param country [String]
                 #   # @param description [String]
@@ -680,7 +680,7 @@ module Increase
 
                 # @!parse
                 #   # Information about the passport used for identification. Required if `method` is
-                #   #   equal to `passport`.
+                #   # equal to `passport`.
                 #   #
                 #   # @param country [String]
                 #   # @param expiration_date [Date]
@@ -714,7 +714,7 @@ module Increase
       class GovernmentAuthority < Increase::Internal::Type::BaseModel
         # @!attribute address
         #   The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-        #     are disallowed.
+        #   are disallowed.
         #
         #   @return [Increase::Models::EntityCreateParams::GovernmentAuthority::Address]
         required :address, -> { Increase::Models::EntityCreateParams::GovernmentAuthority::Address }
@@ -756,7 +756,7 @@ module Increase
 
         # @!parse
         #   # Details of the Government Authority entity to create. Required if `structure` is
-        #   #   equal to `Government Authority`.
+        #   # equal to `Government Authority`.
         #   #
         #   # @param address [Increase::Models::EntityCreateParams::GovernmentAuthority::Address]
         #   # @param authorized_persons [Array<Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson>]
@@ -785,7 +785,7 @@ module Increase
 
           # @!attribute state
           #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #     the address.
+          #   the address.
           #
           #   @return [String]
           required :state, String
@@ -808,7 +808,7 @@ module Increase
 
           # @!parse
           #   # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-          #   #   are disallowed.
+          #   # are disallowed.
           #   #
           #   # @param city [String]
           #   # @param line1 [String]
@@ -873,7 +873,7 @@ module Increase
 
         # @!parse
         #   # Details of the joint entity to create. Required if `structure` is equal to
-        #   #   `joint`.
+        #   # `joint`.
         #   #
         #   # @param individuals [Array<Increase::Models::EntityCreateParams::Joint::Individual>]
         #   # @param name [String]
@@ -885,7 +885,7 @@ module Increase
         class Individual < Increase::Internal::Type::BaseModel
           # @!attribute address
           #   The individual's physical address. Mail receiving locations like PO Boxes and
-          #     PMB's are disallowed.
+          #   PMB's are disallowed.
           #
           #   @return [Increase::Models::EntityCreateParams::Joint::Individual::Address]
           required :address, -> { Increase::Models::EntityCreateParams::Joint::Individual::Address }
@@ -910,9 +910,9 @@ module Increase
 
           # @!attribute [r] confirmed_no_us_tax_id
           #   The identification method for an individual can only be a passport, driver's
-          #     license, or other document if you've confirmed the individual does not have a US
-          #     tax id (either a Social Security Number or Individual Taxpayer Identification
-          #     Number).
+          #   license, or other document if you've confirmed the individual does not have a US
+          #   tax id (either a Social Security Number or Individual Taxpayer Identification
+          #   Number).
           #
           #   @return [Boolean, nil]
           optional :confirmed_no_us_tax_id, Increase::Internal::Type::Boolean
@@ -948,7 +948,7 @@ module Increase
 
             # @!attribute state
             #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-            #     the address.
+            #   the address.
             #
             #   @return [String]
             required :state, String
@@ -971,7 +971,7 @@ module Increase
 
             # @!parse
             #   # The individual's physical address. Mail receiving locations like PO Boxes and
-            #   #   PMB's are disallowed.
+            #   # PMB's are disallowed.
             #   #
             #   # @param city [String]
             #   # @param line1 [String]
@@ -996,14 +996,14 @@ module Increase
 
             # @!attribute number
             #   An identification number that can be used to verify the individual's identity,
-            #     such as a social security number.
+            #   such as a social security number.
             #
             #   @return [String]
             required :number, String
 
             # @!attribute [r] drivers_license
             #   Information about the United States driver's license used for identification.
-            #     Required if `method` is equal to `drivers_license`.
+            #   Required if `method` is equal to `drivers_license`.
             #
             #   @return [Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense, nil]
             optional :drivers_license,
@@ -1015,7 +1015,7 @@ module Increase
 
             # @!attribute [r] other
             #   Information about the identification document provided. Required if `method` is
-            #     equal to `other`.
+            #   equal to `other`.
             #
             #   @return [Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other, nil]
             optional :other, -> { Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other }
@@ -1026,7 +1026,7 @@ module Increase
 
             # @!attribute [r] passport
             #   Information about the passport used for identification. Required if `method` is
-            #     equal to `passport`.
+            #   equal to `passport`.
             #
             #   @return [Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport, nil]
             optional :passport,
@@ -1109,7 +1109,7 @@ module Increase
 
               # @!parse
               #   # Information about the United States driver's license used for identification.
-              #   #   Required if `method` is equal to `drivers_license`.
+              #   # Required if `method` is equal to `drivers_license`.
               #   #
               #   # @param expiration_date [Date]
               #   # @param file_id [String]
@@ -1125,7 +1125,7 @@ module Increase
             class Other < Increase::Internal::Type::BaseModel
               # @!attribute country
               #   The two-character ISO 3166-1 code representing the country that issued the
-              #     document.
+              #   document.
               #
               #   @return [String]
               required :country, String
@@ -1144,7 +1144,7 @@ module Increase
 
               # @!attribute [r] back_file_id
               #   The identifier of the File containing the back of the document. Not every
-              #     document has a reverse side.
+              #   document has a reverse side.
               #
               #   @return [String, nil]
               optional :back_file_id, String
@@ -1165,7 +1165,7 @@ module Increase
 
               # @!parse
               #   # Information about the identification document provided. Required if `method` is
-              #   #   equal to `other`.
+              #   # equal to `other`.
               #   #
               #   # @param country [String]
               #   # @param description [String]
@@ -1200,7 +1200,7 @@ module Increase
 
               # @!parse
               #   # Information about the passport used for identification. Required if `method` is
-              #   #   equal to `passport`.
+              #   # equal to `passport`.
               #   #
               #   # @param country [String]
               #   # @param expiration_date [Date]
@@ -1217,7 +1217,7 @@ module Increase
       class NaturalPerson < Increase::Internal::Type::BaseModel
         # @!attribute address
         #   The individual's physical address. Mail receiving locations like PO Boxes and
-        #     PMB's are disallowed.
+        #   PMB's are disallowed.
         #
         #   @return [Increase::Models::EntityCreateParams::NaturalPerson::Address]
         required :address, -> { Increase::Models::EntityCreateParams::NaturalPerson::Address }
@@ -1242,9 +1242,9 @@ module Increase
 
         # @!attribute [r] confirmed_no_us_tax_id
         #   The identification method for an individual can only be a passport, driver's
-        #     license, or other document if you've confirmed the individual does not have a US
-        #     tax id (either a Social Security Number or Individual Taxpayer Identification
-        #     Number).
+        #   license, or other document if you've confirmed the individual does not have a US
+        #   tax id (either a Social Security Number or Individual Taxpayer Identification
+        #   Number).
         #
         #   @return [Boolean, nil]
         optional :confirmed_no_us_tax_id, Increase::Internal::Type::Boolean
@@ -1255,9 +1255,9 @@ module Increase
 
         # @!parse
         #   # Details of the natural person entity to create. Required if `structure` is equal
-        #   #   to `natural_person`. Natural people entities should be submitted with
-        #   #   `social_security_number` or `individual_taxpayer_identification_number`
-        #   #   identification methods.
+        #   # to `natural_person`. Natural people entities should be submitted with
+        #   # `social_security_number` or `individual_taxpayer_identification_number`
+        #   # identification methods.
         #   #
         #   # @param address [Increase::Models::EntityCreateParams::NaturalPerson::Address]
         #   # @param date_of_birth [Date]
@@ -1285,7 +1285,7 @@ module Increase
 
           # @!attribute state
           #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #     the address.
+          #   the address.
           #
           #   @return [String]
           required :state, String
@@ -1308,7 +1308,7 @@ module Increase
 
           # @!parse
           #   # The individual's physical address. Mail receiving locations like PO Boxes and
-          #   #   PMB's are disallowed.
+          #   # PMB's are disallowed.
           #   #
           #   # @param city [String]
           #   # @param line1 [String]
@@ -1333,14 +1333,14 @@ module Increase
 
           # @!attribute number
           #   An identification number that can be used to verify the individual's identity,
-          #     such as a social security number.
+          #   such as a social security number.
           #
           #   @return [String]
           required :number, String
 
           # @!attribute [r] drivers_license
           #   Information about the United States driver's license used for identification.
-          #     Required if `method` is equal to `drivers_license`.
+          #   Required if `method` is equal to `drivers_license`.
           #
           #   @return [Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense, nil]
           optional :drivers_license,
@@ -1352,7 +1352,7 @@ module Increase
 
           # @!attribute [r] other
           #   Information about the identification document provided. Required if `method` is
-          #     equal to `other`.
+          #   equal to `other`.
           #
           #   @return [Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other, nil]
           optional :other, -> { Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other }
@@ -1363,7 +1363,7 @@ module Increase
 
           # @!attribute [r] passport
           #   Information about the passport used for identification. Required if `method` is
-          #     equal to `passport`.
+          #   equal to `passport`.
           #
           #   @return [Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport, nil]
           optional :passport, -> { Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport }
@@ -1445,7 +1445,7 @@ module Increase
 
             # @!parse
             #   # Information about the United States driver's license used for identification.
-            #   #   Required if `method` is equal to `drivers_license`.
+            #   # Required if `method` is equal to `drivers_license`.
             #   #
             #   # @param expiration_date [Date]
             #   # @param file_id [String]
@@ -1461,7 +1461,7 @@ module Increase
           class Other < Increase::Internal::Type::BaseModel
             # @!attribute country
             #   The two-character ISO 3166-1 code representing the country that issued the
-            #     document.
+            #   document.
             #
             #   @return [String]
             required :country, String
@@ -1480,7 +1480,7 @@ module Increase
 
             # @!attribute [r] back_file_id
             #   The identifier of the File containing the back of the document. Not every
-            #     document has a reverse side.
+            #   document has a reverse side.
             #
             #   @return [String, nil]
             optional :back_file_id, String
@@ -1501,7 +1501,7 @@ module Increase
 
             # @!parse
             #   # Information about the identification document provided. Required if `method` is
-            #   #   equal to `other`.
+            #   # equal to `other`.
             #   #
             #   # @param country [String]
             #   # @param description [String]
@@ -1536,7 +1536,7 @@ module Increase
 
             # @!parse
             #   # Information about the passport used for identification. Required if `method` is
-            #   #   equal to `passport`.
+            #   # equal to `passport`.
             #   #
             #   # @param country [String]
             #   # @param expiration_date [Date]
@@ -1579,7 +1579,7 @@ module Increase
 
         # @!parse
         #   # A reference to data stored in a third-party verification service. Your
-        #   #   integration may or may not use this field.
+        #   # integration may or may not use this field.
         #   #
         #   # @param reference [String]
         #   # @param vendor [Symbol, Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor]
@@ -1611,15 +1611,15 @@ module Increase
       class Trust < Increase::Internal::Type::BaseModel
         # @!attribute address
         #   The trust's physical address. Mail receiving locations like PO Boxes and PMB's
-        #     are disallowed.
+        #   are disallowed.
         #
         #   @return [Increase::Models::EntityCreateParams::Trust::Address]
         required :address, -> { Increase::Models::EntityCreateParams::Trust::Address }
 
         # @!attribute category
         #   Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require
-        #     their own Employer Identification Number. Revocable trusts require information
-        #     about the individual `grantor` who created the trust.
+        #   their own Employer Identification Number. Revocable trusts require information
+        #   about the individual `grantor` who created the trust.
         #
         #   @return [Symbol, Increase::Models::EntityCreateParams::Trust::Category]
         required :category, enum: -> { Increase::Models::EntityCreateParams::Trust::Category }
@@ -1649,7 +1649,7 @@ module Increase
 
         # @!attribute [r] formation_state
         #   The two-letter United States Postal Service (USPS) abbreviation for the state in
-        #     which the trust was formed.
+        #   which the trust was formed.
         #
         #   @return [String, nil]
         optional :formation_state, String
@@ -1670,7 +1670,7 @@ module Increase
 
         # @!attribute [r] tax_identifier
         #   The Employer Identification Number (EIN) for the trust. Required if `category`
-        #     is equal to `irrevocable`.
+        #   is equal to `irrevocable`.
         #
         #   @return [String, nil]
         optional :tax_identifier, String
@@ -1681,7 +1681,7 @@ module Increase
 
         # @!parse
         #   # Details of the trust entity to create. Required if `structure` is equal to
-        #   #   `trust`.
+        #   # `trust`.
         #   #
         #   # @param address [Increase::Models::EntityCreateParams::Trust::Address]
         #   # @param category [Symbol, Increase::Models::EntityCreateParams::Trust::Category]
@@ -1724,7 +1724,7 @@ module Increase
 
           # @!attribute state
           #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #     the address.
+          #   the address.
           #
           #   @return [String]
           required :state, String
@@ -1747,7 +1747,7 @@ module Increase
 
           # @!parse
           #   # The trust's physical address. Mail receiving locations like PO Boxes and PMB's
-          #   #   are disallowed.
+          #   # are disallowed.
           #   #
           #   # @param city [String]
           #   # @param line1 [String]
@@ -1761,8 +1761,8 @@ module Increase
         end
 
         # Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require
-        #   their own Employer Identification Number. Revocable trusts require information
-        #   about the individual `grantor` who created the trust.
+        # their own Employer Identification Number. Revocable trusts require information
+        # about the individual `grantor` who created the trust.
         #
         # @see Increase::Models::EntityCreateParams::Trust#category
         module Category
@@ -1790,7 +1790,7 @@ module Increase
 
           # @!attribute [r] individual
           #   Details of the individual trustee. Required when the trustee `structure` is
-          #     equal to `individual`.
+          #   equal to `individual`.
           #
           #   @return [Increase::Models::EntityCreateParams::Trust::Trustee::Individual, nil]
           optional :individual, -> { Increase::Models::EntityCreateParams::Trust::Trustee::Individual }
@@ -1827,7 +1827,7 @@ module Increase
           class Individual < Increase::Internal::Type::BaseModel
             # @!attribute address
             #   The individual's physical address. Mail receiving locations like PO Boxes and
-            #     PMB's are disallowed.
+            #   PMB's are disallowed.
             #
             #   @return [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address]
             required :address, -> { Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address }
@@ -1853,9 +1853,9 @@ module Increase
 
             # @!attribute [r] confirmed_no_us_tax_id
             #   The identification method for an individual can only be a passport, driver's
-            #     license, or other document if you've confirmed the individual does not have a US
-            #     tax id (either a Social Security Number or Individual Taxpayer Identification
-            #     Number).
+            #   license, or other document if you've confirmed the individual does not have a US
+            #   tax id (either a Social Security Number or Individual Taxpayer Identification
+            #   Number).
             #
             #   @return [Boolean, nil]
             optional :confirmed_no_us_tax_id, Increase::Internal::Type::Boolean
@@ -1866,7 +1866,7 @@ module Increase
 
             # @!parse
             #   # Details of the individual trustee. Required when the trustee `structure` is
-            #   #   equal to `individual`.
+            #   # equal to `individual`.
             #   #
             #   # @param address [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address]
             #   # @param date_of_birth [Date]
@@ -1894,7 +1894,7 @@ module Increase
 
               # @!attribute state
               #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-              #     the address.
+              #   the address.
               #
               #   @return [String]
               required :state, String
@@ -1917,7 +1917,7 @@ module Increase
 
               # @!parse
               #   # The individual's physical address. Mail receiving locations like PO Boxes and
-              #   #   PMB's are disallowed.
+              #   # PMB's are disallowed.
               #   #
               #   # @param city [String]
               #   # @param line1 [String]
@@ -1942,14 +1942,14 @@ module Increase
 
               # @!attribute number
               #   An identification number that can be used to verify the individual's identity,
-              #     such as a social security number.
+              #   such as a social security number.
               #
               #   @return [String]
               required :number, String
 
               # @!attribute [r] drivers_license
               #   Information about the United States driver's license used for identification.
-              #     Required if `method` is equal to `drivers_license`.
+              #   Required if `method` is equal to `drivers_license`.
               #
               #   @return [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense, nil]
               optional :drivers_license,
@@ -1961,7 +1961,7 @@ module Increase
 
               # @!attribute [r] other
               #   Information about the identification document provided. Required if `method` is
-              #     equal to `other`.
+              #   equal to `other`.
               #
               #   @return [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other, nil]
               optional :other,
@@ -1973,7 +1973,7 @@ module Increase
 
               # @!attribute [r] passport
               #   Information about the passport used for identification. Required if `method` is
-              #     equal to `passport`.
+              #   equal to `passport`.
               #
               #   @return [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport, nil]
               optional :passport,
@@ -2056,7 +2056,7 @@ module Increase
 
                 # @!parse
                 #   # Information about the United States driver's license used for identification.
-                #   #   Required if `method` is equal to `drivers_license`.
+                #   # Required if `method` is equal to `drivers_license`.
                 #   #
                 #   # @param expiration_date [Date]
                 #   # @param file_id [String]
@@ -2072,7 +2072,7 @@ module Increase
               class Other < Increase::Internal::Type::BaseModel
                 # @!attribute country
                 #   The two-character ISO 3166-1 code representing the country that issued the
-                #     document.
+                #   document.
                 #
                 #   @return [String]
                 required :country, String
@@ -2091,7 +2091,7 @@ module Increase
 
                 # @!attribute [r] back_file_id
                 #   The identifier of the File containing the back of the document. Not every
-                #     document has a reverse side.
+                #   document has a reverse side.
                 #
                 #   @return [String, nil]
                 optional :back_file_id, String
@@ -2112,7 +2112,7 @@ module Increase
 
                 # @!parse
                 #   # Information about the identification document provided. Required if `method` is
-                #   #   equal to `other`.
+                #   # equal to `other`.
                 #   #
                 #   # @param country [String]
                 #   # @param description [String]
@@ -2147,7 +2147,7 @@ module Increase
 
                 # @!parse
                 #   # Information about the passport used for identification. Required if `method` is
-                #   #   equal to `passport`.
+                #   # equal to `passport`.
                 #   #
                 #   # @param country [String]
                 #   # @param expiration_date [Date]
@@ -2165,7 +2165,7 @@ module Increase
         class Grantor < Increase::Internal::Type::BaseModel
           # @!attribute address
           #   The individual's physical address. Mail receiving locations like PO Boxes and
-          #     PMB's are disallowed.
+          #   PMB's are disallowed.
           #
           #   @return [Increase::Models::EntityCreateParams::Trust::Grantor::Address]
           required :address, -> { Increase::Models::EntityCreateParams::Trust::Grantor::Address }
@@ -2190,9 +2190,9 @@ module Increase
 
           # @!attribute [r] confirmed_no_us_tax_id
           #   The identification method for an individual can only be a passport, driver's
-          #     license, or other document if you've confirmed the individual does not have a US
-          #     tax id (either a Social Security Number or Individual Taxpayer Identification
-          #     Number).
+          #   license, or other document if you've confirmed the individual does not have a US
+          #   tax id (either a Social Security Number or Individual Taxpayer Identification
+          #   Number).
           #
           #   @return [Boolean, nil]
           optional :confirmed_no_us_tax_id, Increase::Internal::Type::Boolean
@@ -2230,7 +2230,7 @@ module Increase
 
             # @!attribute state
             #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-            #     the address.
+            #   the address.
             #
             #   @return [String]
             required :state, String
@@ -2253,7 +2253,7 @@ module Increase
 
             # @!parse
             #   # The individual's physical address. Mail receiving locations like PO Boxes and
-            #   #   PMB's are disallowed.
+            #   # PMB's are disallowed.
             #   #
             #   # @param city [String]
             #   # @param line1 [String]
@@ -2278,14 +2278,14 @@ module Increase
 
             # @!attribute number
             #   An identification number that can be used to verify the individual's identity,
-            #     such as a social security number.
+            #   such as a social security number.
             #
             #   @return [String]
             required :number, String
 
             # @!attribute [r] drivers_license
             #   Information about the United States driver's license used for identification.
-            #     Required if `method` is equal to `drivers_license`.
+            #   Required if `method` is equal to `drivers_license`.
             #
             #   @return [Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense, nil]
             optional :drivers_license,
@@ -2297,7 +2297,7 @@ module Increase
 
             # @!attribute [r] other
             #   Information about the identification document provided. Required if `method` is
-            #     equal to `other`.
+            #   equal to `other`.
             #
             #   @return [Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other, nil]
             optional :other, -> { Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other }
@@ -2308,7 +2308,7 @@ module Increase
 
             # @!attribute [r] passport
             #   Information about the passport used for identification. Required if `method` is
-            #     equal to `passport`.
+            #   equal to `passport`.
             #
             #   @return [Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport, nil]
             optional :passport, -> { Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport }
@@ -2390,7 +2390,7 @@ module Increase
 
               # @!parse
               #   # Information about the United States driver's license used for identification.
-              #   #   Required if `method` is equal to `drivers_license`.
+              #   # Required if `method` is equal to `drivers_license`.
               #   #
               #   # @param expiration_date [Date]
               #   # @param file_id [String]
@@ -2406,7 +2406,7 @@ module Increase
             class Other < Increase::Internal::Type::BaseModel
               # @!attribute country
               #   The two-character ISO 3166-1 code representing the country that issued the
-              #     document.
+              #   document.
               #
               #   @return [String]
               required :country, String
@@ -2425,7 +2425,7 @@ module Increase
 
               # @!attribute [r] back_file_id
               #   The identifier of the File containing the back of the document. Not every
-              #     document has a reverse side.
+              #   document has a reverse side.
               #
               #   @return [String, nil]
               optional :back_file_id, String
@@ -2446,7 +2446,7 @@ module Increase
 
               # @!parse
               #   # Information about the identification document provided. Required if `method` is
-              #   #   equal to `other`.
+              #   # equal to `other`.
               #   #
               #   # @param country [String]
               #   # @param description [String]
@@ -2481,7 +2481,7 @@ module Increase
 
               # @!parse
               #   # Information about the passport used for identification. Required if `method` is
-              #   #   equal to `passport`.
+              #   # equal to `passport`.
               #   #
               #   # @param country [String]
               #   # @param expiration_date [Date]

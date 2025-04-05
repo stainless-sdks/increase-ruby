@@ -7,7 +7,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # The identifying details of anyone controlling or owning 25% or more of the
-      #   corporation.
+      # corporation.
       sig { returns(String) }
       attr_accessor :beneficial_owner_id
 

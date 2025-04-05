@@ -51,7 +51,7 @@ module Increase
       attr_writer :beneficiary_address_line3
 
       # The ID of an External Account to initiate a transfer to. If this parameter is
-      #   provided, `account_number` and `routing_number` must be absent.
+      # provided, `account_number` and `routing_number` must be absent.
       sig { returns(T.nilable(String)) }
       attr_reader :external_account_id
 
@@ -59,7 +59,7 @@ module Increase
       attr_writer :external_account_id
 
       # The originator's address line 1. This is only necessary if you're transferring
-      #   from a commingled account. Otherwise, we'll use the associated entity's details.
+      # from a commingled account. Otherwise, we'll use the associated entity's details.
       sig { returns(T.nilable(String)) }
       attr_reader :originator_address_line1
 
@@ -67,7 +67,7 @@ module Increase
       attr_writer :originator_address_line1
 
       # The originator's address line 2. This is only necessary if you're transferring
-      #   from a commingled account. Otherwise, we'll use the associated entity's details.
+      # from a commingled account. Otherwise, we'll use the associated entity's details.
       sig { returns(T.nilable(String)) }
       attr_reader :originator_address_line2
 
@@ -75,7 +75,7 @@ module Increase
       attr_writer :originator_address_line2
 
       # The originator's address line 3. This is only necessary if you're transferring
-      #   from a commingled account. Otherwise, we'll use the associated entity's details.
+      # from a commingled account. Otherwise, we'll use the associated entity's details.
       sig { returns(T.nilable(String)) }
       attr_reader :originator_address_line3
 
@@ -83,7 +83,7 @@ module Increase
       attr_writer :originator_address_line3
 
       # The originator's name. This is only necessary if you're transferring from a
-      #   commingled account. Otherwise, we'll use the associated entity's details.
+      # commingled account. Otherwise, we'll use the associated entity's details.
       sig { returns(T.nilable(String)) }
       attr_reader :originator_name
 
@@ -98,7 +98,7 @@ module Increase
       attr_writer :require_approval
 
       # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      #   destination account.
+      # destination account.
       sig { returns(T.nilable(String)) }
       attr_reader :routing_number
 

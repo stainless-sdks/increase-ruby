@@ -5,7 +5,7 @@ module Increase
     class Simulations
       class InboundWireDrawdownRequests
         # Simulates receiving an
-        #   [Inbound Wire Drawdown Request](#inbound-wire-drawdown-requests).
+        # [Inbound Wire Drawdown Request](#inbound-wire-drawdown-requests).
         sig do
           params(
             amount: Integer,
@@ -40,7 +40,7 @@ module Increase
           # The drawdown request's beneficiary's routing number.
           beneficiary_routing_number:,
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
-          #   requested. Will always be "USD".
+          # requested. Will always be "USD".
           currency:,
           # A message from the drawdown request's originator.
           message_to_recipient:,
@@ -49,7 +49,7 @@ module Increase
           # The drawdown request's originator's routing number.
           originator_routing_number:,
           # The Account Number to which the recipient of this request is being requested to
-          #   send funds from.
+          # send funds from.
           recipient_account_number_id:,
           # Line 1 of the drawdown request's beneficiary's address.
           beneficiary_address_line1: nil,
@@ -68,16 +68,16 @@ module Increase
           # The drawdown request's originator's name.
           originator_name: nil,
           # Line 1 of the information conveyed from the originator of the message to the
-          #   beneficiary.
+          # beneficiary.
           originator_to_beneficiary_information_line1: nil,
           # Line 2 of the information conveyed from the originator of the message to the
-          #   beneficiary.
+          # beneficiary.
           originator_to_beneficiary_information_line2: nil,
           # Line 3 of the information conveyed from the originator of the message to the
-          #   beneficiary.
+          # beneficiary.
           originator_to_beneficiary_information_line3: nil,
           # Line 4 of the information conveyed from the originator of the message to the
-          #   beneficiary.
+          # beneficiary.
           originator_to_beneficiary_information_line4: nil,
           request_options: {}
         ); end

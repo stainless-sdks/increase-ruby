@@ -20,7 +20,7 @@ module Increase
       attr_accessor :due_on
 
       # A constant representing the object's type. For this resource it will always be
-      #   `proof_of_authorization_request`.
+      # `proof_of_authorization_request`.
       sig { returns(Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol) }
       attr_accessor :type
 
@@ -70,7 +70,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `proof_of_authorization_request`.
+      # `proof_of_authorization_request`.
       module Type
         extend Increase::Internal::Type::Enum
 

@@ -24,7 +24,7 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #     the Digital Wallet Token was created.
+      #   the Digital Wallet Token was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -49,7 +49,7 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `digital_wallet_token`.
+      #   `digital_wallet_token`.
       #
       #   @return [Symbol, Increase::Models::DigitalWalletToken::Type]
       required :type, enum: -> { Increase::Models::DigitalWalletToken::Type }
@@ -62,8 +62,8 @@ module Increase
 
       # @!parse
       #   # A Digital Wallet Token is created when a user adds a Card to their Apple Pay or
-      #   #   Google Pay app. The Digital Wallet Token can be used for purchases just like a
-      #   #   Card.
+      #   # Google Pay app. The Digital Wallet Token can be used for purchases just like a
+      #   # Card.
       #   #
       #   # @param id [String]
       #   # @param card_id [String]
@@ -227,7 +227,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `digital_wallet_token`.
+      # `digital_wallet_token`.
       #
       # @see Increase::Models::DigitalWalletToken#type
       module Type
@@ -251,7 +251,7 @@ module Increase
 
         # @!attribute timestamp
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #     the update happened.
+        #   the update happened.
         #
         #   @return [Time]
         required :timestamp, Time

@@ -7,7 +7,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # The transfer amount in USD cents. For Real-Time Payments transfers, must be
-      #   positive.
+      # positive.
       sig { returns(Integer) }
       attr_accessor :amount
 
@@ -24,7 +24,7 @@ module Increase
       attr_accessor :source_account_number_id
 
       # The name of the transfer's sender. If not provided, defaults to the name of the
-      #   account's entity.
+      # account's entity.
       sig { returns(T.nilable(String)) }
       attr_reader :debtor_name
 
@@ -39,7 +39,7 @@ module Increase
       attr_writer :destination_account_number
 
       # The destination American Bankers' Association (ABA) Routing Transit Number
-      #   (RTN).
+      # (RTN).
       sig { returns(T.nilable(String)) }
       attr_reader :destination_routing_number
 
@@ -47,8 +47,8 @@ module Increase
       attr_writer :destination_routing_number
 
       # The ID of an External Account to initiate a transfer to. If this parameter is
-      #   provided, `destination_account_number` and `destination_routing_number` must be
-      #   absent.
+      # provided, `destination_account_number` and `destination_routing_number` must be
+      # absent.
       sig { returns(T.nilable(String)) }
       attr_reader :external_account_id
 
@@ -63,7 +63,7 @@ module Increase
       attr_writer :require_approval
 
       # The name of the ultimate recipient of the transfer. Set this if the creditor is
-      #   an intermediary receiving the payment for someone else.
+      # an intermediary receiving the payment for someone else.
       sig { returns(T.nilable(String)) }
       attr_reader :ultimate_creditor_name
 
@@ -71,7 +71,7 @@ module Increase
       attr_writer :ultimate_creditor_name
 
       # The name of the ultimate sender of the transfer. Set this if the funds are being
-      #   sent on behalf of someone who is not the account holder at Increase.
+      # sent on behalf of someone who is not the account holder at Increase.
       sig { returns(T.nilable(String)) }
       attr_reader :ultimate_debtor_name
 

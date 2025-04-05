@@ -5,8 +5,8 @@ module Increase
     class Simulations
       class InboundRealTimePaymentsTransfers
         # Simulates an
-        #   [Inbound Real-Time Payments Transfer](#inbound-real-time-payments-transfers) to
-        #   your account. Real-Time Payments are a beta feature.
+        # [Inbound Real-Time Payments Transfer](#inbound-real-time-payments-transfers) to
+        # your account. Real-Time Payments are a beta feature.
         #
         # @overload create(account_number_id:, amount:, debtor_account_number: nil, debtor_name: nil, debtor_routing_number: nil, remittance_information: nil, request_for_payment_id: nil, request_options: {})
         #

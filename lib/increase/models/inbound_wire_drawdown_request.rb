@@ -54,14 +54,14 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #     the inbound wire drawdown requested was created.
+      #   the inbound wire drawdown requested was created.
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
-      #     requested. Will always be "USD".
+      #   requested. Will always be "USD".
       #
       #   @return [String]
       required :currency, String
@@ -110,50 +110,50 @@ module Increase
 
       # @!attribute originator_to_beneficiary_information_line1
       #   Line 1 of the information conveyed from the originator of the message to the
-      #     beneficiary.
+      #   beneficiary.
       #
       #   @return [String, nil]
       required :originator_to_beneficiary_information_line1, String, nil?: true
 
       # @!attribute originator_to_beneficiary_information_line2
       #   Line 2 of the information conveyed from the originator of the message to the
-      #     beneficiary.
+      #   beneficiary.
       #
       #   @return [String, nil]
       required :originator_to_beneficiary_information_line2, String, nil?: true
 
       # @!attribute originator_to_beneficiary_information_line3
       #   Line 3 of the information conveyed from the originator of the message to the
-      #     beneficiary.
+      #   beneficiary.
       #
       #   @return [String, nil]
       required :originator_to_beneficiary_information_line3, String, nil?: true
 
       # @!attribute originator_to_beneficiary_information_line4
       #   Line 4 of the information conveyed from the originator of the message to the
-      #     beneficiary.
+      #   beneficiary.
       #
       #   @return [String, nil]
       required :originator_to_beneficiary_information_line4, String, nil?: true
 
       # @!attribute recipient_account_number_id
       #   The Account Number from which the recipient of this request is being requested
-      #     to send funds.
+      #   to send funds.
       #
       #   @return [String]
       required :recipient_account_number_id, String
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `inbound_wire_drawdown_request`.
+      #   `inbound_wire_drawdown_request`.
       #
       #   @return [Symbol, Increase::Models::InboundWireDrawdownRequest::Type]
       required :type, enum: -> { Increase::Models::InboundWireDrawdownRequest::Type }
 
       # @!parse
       #   # Inbound wire drawdown requests are requests from someone else to send them a
-      #   #   wire. This feature is in beta; reach out to
-      #   #   [support@increase.com](mailto:support@increase.com) to learn more.
+      #   # wire. This feature is in beta; reach out to
+      #   # [support@increase.com](mailto:support@increase.com) to learn more.
       #   #
       #   # @param id [String]
       #   # @param amount [Integer]
@@ -211,7 +211,7 @@ module Increase
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       # A constant representing the object's type. For this resource it will always be
-      #   `inbound_wire_drawdown_request`.
+      # `inbound_wire_drawdown_request`.
       #
       # @see Increase::Models::InboundWireDrawdownRequest#type
       module Type

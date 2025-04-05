@@ -7,8 +7,8 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # The file contents. This should follow the specifications of
-      #   [RFC 7578](https://datatracker.ietf.org/doc/html/rfc7578) which defines file
-      #   transfers for the multipart/form-data protocol.
+      # [RFC 7578](https://datatracker.ietf.org/doc/html/rfc7578) which defines file
+      # transfers for the multipart/form-data protocol.
       sig { returns(T.any(IO, StringIO)) }
       attr_accessor :file
 

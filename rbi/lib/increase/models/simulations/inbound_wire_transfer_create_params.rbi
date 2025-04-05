@@ -16,7 +16,7 @@ module Increase
         attr_accessor :amount
 
         # The sending bank will set beneficiary_address_line1 in production. You can
-        #   simulate any value here.
+        # simulate any value here.
         sig { returns(T.nilable(String)) }
         attr_reader :beneficiary_address_line1
 
@@ -24,7 +24,7 @@ module Increase
         attr_writer :beneficiary_address_line1
 
         # The sending bank will set beneficiary_address_line2 in production. You can
-        #   simulate any value here.
+        # simulate any value here.
         sig { returns(T.nilable(String)) }
         attr_reader :beneficiary_address_line2
 
@@ -32,7 +32,7 @@ module Increase
         attr_writer :beneficiary_address_line2
 
         # The sending bank will set beneficiary_address_line3 in production. You can
-        #   simulate any value here.
+        # simulate any value here.
         sig { returns(T.nilable(String)) }
         attr_reader :beneficiary_address_line3
 
@@ -40,7 +40,7 @@ module Increase
         attr_writer :beneficiary_address_line3
 
         # The sending bank will set beneficiary_name in production. You can simulate any
-        #   value here.
+        # value here.
         sig { returns(T.nilable(String)) }
         attr_reader :beneficiary_name
 
@@ -48,7 +48,7 @@ module Increase
         attr_writer :beneficiary_name
 
         # The sending bank will set beneficiary_reference in production. You can simulate
-        #   any value here.
+        # any value here.
         sig { returns(T.nilable(String)) }
         attr_reader :beneficiary_reference
 
@@ -56,7 +56,7 @@ module Increase
         attr_writer :beneficiary_reference
 
         # The sending bank will set originator_address_line1 in production. You can
-        #   simulate any value here.
+        # simulate any value here.
         sig { returns(T.nilable(String)) }
         attr_reader :originator_address_line1
 
@@ -64,7 +64,7 @@ module Increase
         attr_writer :originator_address_line1
 
         # The sending bank will set originator_address_line2 in production. You can
-        #   simulate any value here.
+        # simulate any value here.
         sig { returns(T.nilable(String)) }
         attr_reader :originator_address_line2
 
@@ -72,7 +72,7 @@ module Increase
         attr_writer :originator_address_line2
 
         # The sending bank will set originator_address_line3 in production. You can
-        #   simulate any value here.
+        # simulate any value here.
         sig { returns(T.nilable(String)) }
         attr_reader :originator_address_line3
 
@@ -80,7 +80,7 @@ module Increase
         attr_writer :originator_address_line3
 
         # The sending bank will set originator_name in production. You can simulate any
-        #   value here.
+        # value here.
         sig { returns(T.nilable(String)) }
         attr_reader :originator_name
 
@@ -88,7 +88,7 @@ module Increase
         attr_writer :originator_name
 
         # The sending bank will set originator_routing_number in production. You can
-        #   simulate any value here.
+        # simulate any value here.
         sig { returns(T.nilable(String)) }
         attr_reader :originator_routing_number
 
@@ -96,7 +96,7 @@ module Increase
         attr_writer :originator_routing_number
 
         # The sending bank will set originator_to_beneficiary_information_line1 in
-        #   production. You can simulate any value here.
+        # production. You can simulate any value here.
         sig { returns(T.nilable(String)) }
         attr_reader :originator_to_beneficiary_information_line1
 
@@ -104,7 +104,7 @@ module Increase
         attr_writer :originator_to_beneficiary_information_line1
 
         # The sending bank will set originator_to_beneficiary_information_line2 in
-        #   production. You can simulate any value here.
+        # production. You can simulate any value here.
         sig { returns(T.nilable(String)) }
         attr_reader :originator_to_beneficiary_information_line2
 
@@ -112,7 +112,7 @@ module Increase
         attr_writer :originator_to_beneficiary_information_line2
 
         # The sending bank will set originator_to_beneficiary_information_line3 in
-        #   production. You can simulate any value here.
+        # production. You can simulate any value here.
         sig { returns(T.nilable(String)) }
         attr_reader :originator_to_beneficiary_information_line3
 
@@ -120,7 +120,7 @@ module Increase
         attr_writer :originator_to_beneficiary_information_line3
 
         # The sending bank will set originator_to_beneficiary_information_line4 in
-        #   production. You can simulate any value here.
+        # production. You can simulate any value here.
         sig { returns(T.nilable(String)) }
         attr_reader :originator_to_beneficiary_information_line4
 
@@ -128,7 +128,7 @@ module Increase
         attr_writer :originator_to_beneficiary_information_line4
 
         # The sending bank will set sender_reference in production. You can simulate any
-        #   value here.
+        # value here.
         sig { returns(T.nilable(String)) }
         attr_reader :sender_reference
 
