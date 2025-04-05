@@ -86,8 +86,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # If specified, this subscription will only receive webhooks for Events with the
       #   specified `category`.
@@ -616,8 +615,7 @@ module Increase
           T.let(:"wire_transfer.updated", Increase::Models::EventSubscription::SelectedEventCategory::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::EventSubscription::SelectedEventCategory::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # This indicates if we'll send notifications to this subscription.
@@ -642,8 +640,7 @@ module Increase
           T.let(:requires_attention, Increase::Models::EventSubscription::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::EventSubscription::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -658,8 +655,7 @@ module Increase
         EVENT_SUBSCRIPTION = T.let(:event_subscription, Increase::Models::EventSubscription::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::EventSubscription::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

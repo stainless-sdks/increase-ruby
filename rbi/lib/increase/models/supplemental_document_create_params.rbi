@@ -22,14 +22,12 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(entity_id:, file_id:, request_options: {})
-      end
+      def self.new(entity_id:, file_id:, request_options: {}); end
 
       sig do
         override.returns({entity_id: String, file_id: String, request_options: Increase::RequestOptions})
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

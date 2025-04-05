@@ -50,8 +50,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, created_at:, date:, entries:, idempotency_key:, transaction_id:, type:)
-      end
+      def self.new(id:, created_at:, date:, entries:, idempotency_key:, transaction_id:, type:); end
 
       sig do
         override
@@ -67,8 +66,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Entry < Increase::Internal::Type::BaseModel
         # The entry identifier.
@@ -84,12 +82,10 @@ module Increase
         attr_accessor :amount
 
         sig { params(id: String, account_id: String, amount: Integer).returns(T.attached_class) }
-        def self.new(id:, account_id:, amount:)
-        end
+        def self.new(id:, account_id:, amount:); end
 
         sig { override.returns({id: String, account_id: String, amount: Integer}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -105,8 +101,7 @@ module Increase
           T.let(:bookkeeping_entry_set, Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

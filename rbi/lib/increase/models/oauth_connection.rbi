@@ -49,8 +49,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, created_at:, deleted_at:, group_id:, oauth_application_id:, status:, type:)
-      end
+      def self.new(id:, created_at:, deleted_at:, group_id:, oauth_application_id:, status:, type:); end
 
       sig do
         override
@@ -66,8 +65,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Whether the connection is active.
       module Status
@@ -84,8 +82,7 @@ module Increase
         INACTIVE = T.let(:inactive, Increase::Models::OAuthConnection::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::OAuthConnection::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -99,8 +96,7 @@ module Increase
         OAUTH_CONNECTION = T.let(:oauth_connection, Increase::Models::OAuthConnection::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::OAuthConnection::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

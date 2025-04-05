@@ -66,9 +66,7 @@ module Increase
         # The ID of an Account Number that will be passed to the wire's recipient
         source_account_number_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve a Wire Transfer
       sig do
         params(
@@ -81,9 +79,7 @@ module Increase
         # The identifier of the Wire Transfer.
         wire_transfer_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # List Wire Transfers
       sig do
         params(
@@ -114,9 +110,7 @@ module Increase
         #   objects.
         limit: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Approve a Wire Transfer
       sig do
         params(
@@ -129,9 +123,7 @@ module Increase
         # The identifier of the Wire Transfer to approve.
         wire_transfer_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Cancel a pending Wire Transfer
       sig do
         params(
@@ -144,13 +136,10 @@ module Increase
         # The identifier of the pending Wire Transfer to cancel.
         wire_transfer_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

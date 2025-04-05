@@ -121,9 +121,7 @@ module Increase
         recipient_address_line2: nil,
         recipient_address_line3: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -145,8 +143,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

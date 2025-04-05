@@ -120,9 +120,7 @@ module Increase
         routing_number:,
         status:,
         type:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -146,8 +144,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # If the notification is for a future credit or debit.
       module CreditDebitIndicator
@@ -164,8 +161,7 @@ module Increase
         DEBIT = T.let(:debit, Increase::Models::ACHPrenotification::CreditDebitIndicator::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ACHPrenotification::CreditDebitIndicator::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class NotificationsOfChange < Increase::Internal::Type::BaseModel
@@ -195,8 +191,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(change_code:, corrected_data:, created_at:)
-        end
+        def self.new(change_code:, corrected_data:, created_at:); end
 
         sig do
           override
@@ -208,8 +203,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The required type of change that is being signaled by the receiving financial
         #   institution.
@@ -364,8 +358,7 @@ module Increase
             override
               .returns(T::Array[Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -387,8 +380,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(created_at:, return_reason_code:)
-        end
+        def self.new(created_at:, return_reason_code:); end
 
         sig do
           override
@@ -399,8 +391,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # Why the Prenotification was returned.
         module ReturnReasonCode
@@ -913,8 +904,7 @@ module Increase
                 T::Array[Increase::Models::ACHPrenotification::PrenotificationReturn::ReturnReasonCode::TaggedSymbol]
               )
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -941,8 +931,7 @@ module Increase
         SUBMITTED = T.let(:submitted, Increase::Models::ACHPrenotification::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ACHPrenotification::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -958,8 +947,7 @@ module Increase
           T.let(:ach_prenotification, Increase::Models::ACHPrenotification::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ACHPrenotification::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

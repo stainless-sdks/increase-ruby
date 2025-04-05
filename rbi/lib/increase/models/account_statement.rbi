@@ -70,9 +70,7 @@ module Increase
         statement_period_end:,
         statement_period_start:,
         type:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -89,8 +87,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # A constant representing the object's type. For this resource it will always be
       #   `account_statement`.
@@ -103,8 +100,7 @@ module Increase
         ACCOUNT_STATEMENT = T.let(:account_statement, Increase::Models::AccountStatement::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::AccountStatement::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

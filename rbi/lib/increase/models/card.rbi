@@ -108,9 +108,7 @@ module Increase
         last4:,
         status:,
         type:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -131,8 +129,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class BillingAddress < Increase::Internal::Type::BaseModel
         # The city of the billing address.
@@ -166,8 +163,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(city:, line1:, line2:, postal_code:, state:)
-        end
+        def self.new(city:, line1:, line2:, postal_code:, state:); end
 
         sig do
           override
@@ -181,8 +177,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class DigitalWallet < Increase::Internal::Type::BaseModel
@@ -212,8 +207,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(digital_card_profile_id:, email:, phone:)
-        end
+        def self.new(digital_card_profile_id:, email:, phone:); end
 
         sig do
           override
@@ -223,8 +217,7 @@ module Increase
                        phone: T.nilable(String)
                      })
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       # This indicates if payments can be made with the card.
@@ -244,8 +237,7 @@ module Increase
         CANCELED = T.let(:canceled, Increase::Models::Card::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Card::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -259,8 +251,7 @@ module Increase
         CARD = T.let(:card, Increase::Models::Card::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Card::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

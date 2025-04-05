@@ -26,12 +26,10 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(file_id:, expires_at: nil, request_options: {})
-      end
+      def self.new(file_id:, expires_at: nil, request_options: {}); end
 
       sig { override.returns({file_id: String, expires_at: Time, request_options: Increase::RequestOptions}) }
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

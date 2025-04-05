@@ -105,8 +105,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
       #   Transaction's currency. This will match the currency on the Transaction's
@@ -136,8 +135,7 @@ module Increase
         USD = T.let(:USD, Increase::Models::Transaction::Currency::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Transaction::Currency::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # The type of the route this Transaction came through.
@@ -157,8 +155,7 @@ module Increase
         LOCKBOX = T.let(:lockbox, Increase::Models::Transaction::RouteType::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Transaction::RouteType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class Source < Increase::Internal::Type::BaseModel
@@ -741,9 +738,7 @@ module Increase
           real_time_payments_transfer_acknowledgement:,
           sample_funds:,
           wire_transfer_intention:
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -781,8 +776,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class AccountTransferIntention < Increase::Internal::Type::BaseModel
           # The pending amount in the minor unit of the transaction's currency. For dollars,
@@ -849,8 +843,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
           #   account currency.
@@ -896,8 +889,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::Transaction::Source::AccountTransferIntention::Currency::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -938,8 +930,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(account_number:, amount:, routing_number:, statement_descriptor:, transfer_id:)
-          end
+          def self.new(account_number:, amount:, routing_number:, statement_descriptor:, transfer_id:); end
 
           sig do
             override
@@ -953,8 +944,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class ACHTransferRejection < Increase::Internal::Type::BaseModel
@@ -967,12 +957,10 @@ module Increase
           #   Transfer Rejection is created when an ACH Transfer is rejected by Increase. It
           #   offsets the ACH Transfer Intention. These rejections are rare.
           sig { params(transfer_id: String).returns(T.attached_class) }
-          def self.new(transfer_id:)
-          end
+          def self.new(transfer_id:); end
 
           sig { override.returns({transfer_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class ACHTransferReturn < Increase::Internal::Type::BaseModel
@@ -1045,8 +1033,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # Why the ACH Transfer was returned. This reason code is sent by the receiving
           #   bank back to Increase.
@@ -1560,8 +1547,7 @@ module Increase
                   T::Array[Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -1590,12 +1576,10 @@ module Increase
               transaction_id: String
             ).returns(T.attached_class)
           end
-          def self.new(accepted_at:, card_dispute_id:, transaction_id:)
-          end
+          def self.new(accepted_at:, card_dispute_id:, transaction_id:); end
 
           sig { override.returns({accepted_at: Time, card_dispute_id: String, transaction_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class CardDisputeLoss < Increase::Internal::Type::BaseModel
@@ -1624,8 +1608,7 @@ module Increase
             params(card_dispute_id: String, explanation: String, lost_at: Time, transaction_id: String)
               .returns(T.attached_class)
           end
-          def self.new(card_dispute_id:, explanation:, lost_at:, transaction_id:)
-          end
+          def self.new(card_dispute_id:, explanation:, lost_at:, transaction_id:); end
 
           sig do
             override.returns(
@@ -1637,8 +1620,7 @@ module Increase
               }
             )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class CardRefund < Increase::Internal::Type::BaseModel
@@ -1814,9 +1796,7 @@ module Increase
             purchase_details:,
             transaction_id:,
             type:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -1843,8 +1823,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class Cashback < Increase::Internal::Type::BaseModel
             # The cashback amount given as a string containing a decimal number. The amount is
@@ -1866,8 +1845,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(amount:, currency:)
-            end
+            def self.new(amount:, currency:); end
 
             sig do
               override
@@ -1878,8 +1856,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             module Currency
@@ -1912,8 +1889,7 @@ module Increase
                 override
                   .returns(T::Array[Increase::Models::Transaction::Source::CardRefund::Cashback::Currency::TaggedSymbol])
               end
-              def self.values
-              end
+              def self.values; end
             end
           end
 
@@ -1946,8 +1922,7 @@ module Increase
             USD = T.let(:USD, Increase::Models::Transaction::Source::CardRefund::Currency::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::Transaction::Source::CardRefund::Currency::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
 
           class Interchange < Increase::Internal::Type::BaseModel
@@ -1975,8 +1950,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(amount:, code:, currency:)
-            end
+            def self.new(amount:, code:, currency:); end
 
             sig do
               override
@@ -1988,8 +1962,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   reimbursement.
@@ -2029,8 +2002,7 @@ module Increase
                 override
                   .returns(T::Array[Increase::Models::Transaction::Source::CardRefund::Interchange::Currency::TaggedSymbol])
               end
-              def self.values
-              end
+              def self.values; end
             end
           end
 
@@ -2058,8 +2030,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(acquirer_business_id:, acquirer_reference_number:, transaction_id:)
-            end
+            def self.new(acquirer_business_id:, acquirer_reference_number:, transaction_id:); end
 
             sig do
               override
@@ -2071,8 +2042,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class PurchaseDetails < Increase::Internal::Type::BaseModel
@@ -2208,9 +2178,7 @@ module Increase
               purchase_identifier:,
               purchase_identifier_format:,
               travel:
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -2230,8 +2198,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class CarRental < Increase::Internal::Type::BaseModel
               # Code indicating the vehicle's class.
@@ -2361,9 +2328,7 @@ module Increase
                 renter_name:,
                 weekly_rental_rate_amount:,
                 weekly_rental_rate_currency:
-              )
-              end
-
+              ); end
               sig do
                 override
                   .returns(
@@ -2391,8 +2356,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # Additional charges (gas, late fee, etc.) being billed.
               module ExtraCharges
@@ -2457,8 +2421,7 @@ module Increase
                       T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # An indicator that the cardholder is being billed for a reserved vehicle that was
@@ -2497,12 +2460,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
+                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -2633,9 +2595,7 @@ module Increase
                 total_room_tax_currency:,
                 total_tax_amount:,
                 total_tax_currency:
-              )
-              end
-
+              ); end
               sig do
                 override
                   .returns(
@@ -2663,8 +2623,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # Additional charges (phone, late check-out, etc.) being billed.
               module ExtraCharges
@@ -2736,8 +2695,7 @@ module Increase
                       T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # Indicator that the cardholder is being billed for a reserved room that was not
@@ -2778,8 +2736,7 @@ module Increase
                       T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -2841,8 +2798,7 @@ module Increase
                     T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class Travel < Increase::Internal::Type::BaseModel
@@ -2956,10 +2912,10 @@ module Increase
                   travel_agency_name: T.nilable(String),
                   trip_legs: T.nilable(
                     T::Array[
-                    T.any(
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg,
-                      Increase::Internal::AnyHash
-                    )
+                      T.any(
+                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg,
+                        Increase::Internal::AnyHash
+                      )
                     ]
                   )
                 )
@@ -2978,9 +2934,7 @@ module Increase
                 travel_agency_code:,
                 travel_agency_name:,
                 trip_legs:
-              )
-              end
-
+              ); end
               sig do
                 override
                   .returns(
@@ -3006,8 +2960,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class Ancillary < Increase::Internal::Type::BaseModel
                 # If this purchase has a connection or relationship to another purchase, such as a
@@ -3051,10 +3004,10 @@ module Increase
                     ),
                     passenger_name_or_description: T.nilable(String),
                     services: T::Array[
-                    T.any(
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service,
-                      Increase::Internal::AnyHash
-                    )
+                      T.any(
+                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service,
+                        Increase::Internal::AnyHash
+                      )
                     ],
                     ticket_document_number: T.nilable(String)
                   )
@@ -3066,9 +3019,7 @@ module Increase
                   passenger_name_or_description:,
                   services:,
                   ticket_document_number:
-                )
-                end
-
+                ); end
                 sig do
                   override
                     .returns(
@@ -3083,8 +3034,7 @@ module Increase
                       }
                     )
                 end
-                def to_hash
-                end
+                def to_hash; end
 
                 # Indicates the reason for a credit to the cardholder.
                 module CreditReasonIndicator
@@ -3135,12 +3085,11 @@ module Increase
                     override
                       .returns(
                         T::Array[
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
+                          Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
                         ]
                       )
                   end
-                  def self.values
-                  end
+                  def self.values; end
                 end
 
                 class Service < Increase::Internal::Type::BaseModel
@@ -3167,8 +3116,7 @@ module Increase
                     )
                       .returns(T.attached_class)
                   end
-                  def self.new(category:, sub_category:)
-                  end
+                  def self.new(category:, sub_category:); end
 
                   sig do
                     override
@@ -3181,8 +3129,7 @@ module Increase
                         }
                       )
                   end
-                  def to_hash
-                  end
+                  def to_hash; end
 
                   # Category of the ancillary service.
                   module Category
@@ -3373,12 +3320,11 @@ module Increase
                       override
                         .returns(
                           T::Array[
-                          Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                            Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                           ]
                         )
                     end
-                    def self.values
-                    end
+                    def self.values; end
                   end
                 end
               end
@@ -3446,12 +3392,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # Indicates whether this ticket is non-refundable.
@@ -3489,12 +3434,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
+                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # Indicates why a ticket was changed.
@@ -3539,12 +3483,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
+                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               class TripLeg < Increase::Internal::Type::BaseModel
@@ -3598,9 +3541,7 @@ module Increase
                   flight_number:,
                   service_class:,
                   stop_over_code:
-                )
-                end
-
+                ); end
                 sig do
                   override
                     .returns(
@@ -3616,8 +3557,7 @@ module Increase
                       }
                     )
                 end
-                def to_hash
-                end
+                def to_hash; end
 
                 # Indicates whether a stopover is allowed on this ticket.
                 module StopOverCode
@@ -3661,12 +3601,11 @@ module Increase
                     override
                       .returns(
                         T::Array[
-                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
+                          Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
                         ]
                       )
                   end
-                  def self.values
-                  end
+                  def self.values; end
                 end
               end
             end
@@ -3684,8 +3623,7 @@ module Increase
             CARD_REFUND = T.let(:card_refund, Increase::Models::Transaction::Source::CardRefund::Type::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::Transaction::Source::CardRefund::Type::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -3725,8 +3663,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(amount:, currency:, period_end:, period_start:, transacted_on_account_id:)
-          end
+          def self.new(amount:, currency:, period_end:, period_start:, transacted_on_account_id:); end
 
           sig do
             override
@@ -3740,8 +3677,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
@@ -3775,8 +3711,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::Transaction::Source::CardRevenuePayment::Currency::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -3976,9 +3911,7 @@ module Increase
             purchase_details:,
             transaction_id:,
             type:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -4007,8 +3940,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class Cashback < Increase::Internal::Type::BaseModel
             # The cashback amount given as a string containing a decimal number. The amount is
@@ -4030,8 +3962,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(amount:, currency:)
-            end
+            def self.new(amount:, currency:); end
 
             sig do
               override
@@ -4042,8 +3973,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             module Currency
@@ -4088,8 +4018,7 @@ module Increase
                 override
                   .returns(T::Array[Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency::TaggedSymbol])
               end
-              def self.values
-              end
+              def self.values; end
             end
           end
 
@@ -4122,8 +4051,7 @@ module Increase
             USD = T.let(:USD, Increase::Models::Transaction::Source::CardSettlement::Currency::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::Transaction::Source::CardSettlement::Currency::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
 
           class Interchange < Increase::Internal::Type::BaseModel
@@ -4151,8 +4079,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(amount:, code:, currency:)
-            end
+            def self.new(amount:, code:, currency:); end
 
             sig do
               override
@@ -4164,8 +4091,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   reimbursement.
@@ -4213,8 +4139,7 @@ module Increase
                     T::Array[Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
           end
 
@@ -4242,8 +4167,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(acquirer_business_id:, acquirer_reference_number:, transaction_id:)
-            end
+            def self.new(acquirer_business_id:, acquirer_reference_number:, transaction_id:); end
 
             sig do
               override
@@ -4255,8 +4179,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class PurchaseDetails < Increase::Internal::Type::BaseModel
@@ -4392,9 +4315,7 @@ module Increase
               purchase_identifier:,
               purchase_identifier_format:,
               travel:
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -4414,8 +4335,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class CarRental < Increase::Internal::Type::BaseModel
               # Code indicating the vehicle's class.
@@ -4545,9 +4465,7 @@ module Increase
                 renter_name:,
                 weekly_rental_rate_amount:,
                 weekly_rental_rate_currency:
-              )
-              end
-
+              ); end
               sig do
                 override
                   .returns(
@@ -4575,8 +4493,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # Additional charges (gas, late fee, etc.) being billed.
               module ExtraCharges
@@ -4641,12 +4558,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
+                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # An indicator that the cardholder is being billed for a reserved vehicle that was
@@ -4685,12 +4601,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
+                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -4821,9 +4736,7 @@ module Increase
                 total_room_tax_currency:,
                 total_tax_amount:,
                 total_tax_currency:
-              )
-              end
-
+              ); end
               sig do
                 override
                   .returns(
@@ -4851,8 +4764,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # Additional charges (phone, late check-out, etc.) being billed.
               module ExtraCharges
@@ -4924,12 +4836,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
+                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # Indicator that the cardholder is being billed for a reserved room that was not
@@ -4968,12 +4879,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
+                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -5033,12 +4943,11 @@ module Increase
                 override
                   .returns(
                     T::Array[
-                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
+                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class Travel < Increase::Internal::Type::BaseModel
@@ -5158,10 +5067,10 @@ module Increase
                   travel_agency_name: T.nilable(String),
                   trip_legs: T.nilable(
                     T::Array[
-                    T.any(
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg,
-                      Increase::Internal::AnyHash
-                    )
+                      T.any(
+                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg,
+                        Increase::Internal::AnyHash
+                      )
                     ]
                   )
                 )
@@ -5180,9 +5089,7 @@ module Increase
                 travel_agency_code:,
                 travel_agency_name:,
                 trip_legs:
-              )
-              end
-
+              ); end
               sig do
                 override
                   .returns(
@@ -5210,8 +5117,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class Ancillary < Increase::Internal::Type::BaseModel
                 # If this purchase has a connection or relationship to another purchase, such as a
@@ -5255,10 +5161,10 @@ module Increase
                     ),
                     passenger_name_or_description: T.nilable(String),
                     services: T::Array[
-                    T.any(
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service,
-                      Increase::Internal::AnyHash
-                    )
+                      T.any(
+                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service,
+                        Increase::Internal::AnyHash
+                      )
                     ],
                     ticket_document_number: T.nilable(String)
                   )
@@ -5270,9 +5176,7 @@ module Increase
                   passenger_name_or_description:,
                   services:,
                   ticket_document_number:
-                )
-                end
-
+                ); end
                 sig do
                   override
                     .returns(
@@ -5287,8 +5191,7 @@ module Increase
                       }
                     )
                 end
-                def to_hash
-                end
+                def to_hash; end
 
                 # Indicates the reason for a credit to the cardholder.
                 module CreditReasonIndicator
@@ -5339,12 +5242,11 @@ module Increase
                     override
                       .returns(
                         T::Array[
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
+                          Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
                         ]
                       )
                   end
-                  def self.values
-                  end
+                  def self.values; end
                 end
 
                 class Service < Increase::Internal::Type::BaseModel
@@ -5371,8 +5273,7 @@ module Increase
                     )
                       .returns(T.attached_class)
                   end
-                  def self.new(category:, sub_category:)
-                  end
+                  def self.new(category:, sub_category:); end
 
                   sig do
                     override
@@ -5385,8 +5286,7 @@ module Increase
                         }
                       )
                   end
-                  def to_hash
-                  end
+                  def to_hash; end
 
                   # Category of the ancillary service.
                   module Category
@@ -5577,12 +5477,11 @@ module Increase
                       override
                         .returns(
                           T::Array[
-                          Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                            Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                           ]
                         )
                     end
-                    def self.values
-                    end
+                    def self.values; end
                   end
                 end
               end
@@ -5650,12 +5549,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # Indicates whether this ticket is non-refundable.
@@ -5693,12 +5591,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
+                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # Indicates why a ticket was changed.
@@ -5743,12 +5640,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
+                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               class TripLeg < Increase::Internal::Type::BaseModel
@@ -5802,9 +5698,7 @@ module Increase
                   flight_number:,
                   service_class:,
                   stop_over_code:
-                )
-                end
-
+                ); end
                 sig do
                   override
                     .returns(
@@ -5820,8 +5714,7 @@ module Increase
                       }
                     )
                 end
-                def to_hash
-                end
+                def to_hash; end
 
                 # Indicates whether a stopover is allowed on this ticket.
                 module StopOverCode
@@ -5865,12 +5758,11 @@ module Increase
                     override
                       .returns(
                         T::Array[
-                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
+                          Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
                         ]
                       )
                   end
-                  def self.values
-                  end
+                  def self.values; end
                 end
               end
             end
@@ -5890,8 +5782,7 @@ module Increase
               T.let(:card_settlement, Increase::Models::Transaction::Source::CardSettlement::Type::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::Transaction::Source::CardSettlement::Type::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -5932,8 +5823,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(accrued_on_card_id:, amount:, currency:, period_end:, period_start:)
-          end
+          def self.new(accrued_on_card_id:, amount:, currency:, period_end:, period_start:); end
 
           sig do
             override
@@ -5947,8 +5837,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
@@ -5979,8 +5868,7 @@ module Increase
             USD = T.let(:USD, Increase::Models::Transaction::Source::CashbackPayment::Currency::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::Transaction::Source::CashbackPayment::Currency::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -6119,8 +6007,7 @@ module Increase
           OTHER = T.let(:other, Increase::Models::Transaction::Source::Category::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::Transaction::Source::Category::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CheckDepositAcceptance < Increase::Internal::Type::BaseModel
@@ -6198,8 +6085,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
@@ -6239,8 +6125,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -6306,8 +6191,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
@@ -6341,8 +6225,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::Transaction::Source::CheckDepositReturn::Currency::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # Why this check was returned by the bank holding the account it was drawn
@@ -6538,8 +6421,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -6608,9 +6490,7 @@ module Increase
             transaction_id:,
             transfer_id:,
             type:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -6626,8 +6506,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # A constant representing the object's type. For this resource it will always be
           #   `check_transfer_deposit`.
@@ -6648,8 +6527,7 @@ module Increase
             sig do
               override.returns(T::Array[Increase::Models::Transaction::Source::CheckTransferDeposit::Type::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -6684,8 +6562,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(amount:, currency:, fee_period_start:, program_id:)
-          end
+          def self.new(amount:, currency:, fee_period_start:, program_id:); end
 
           sig do
             override
@@ -6698,8 +6575,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
@@ -6730,8 +6606,7 @@ module Increase
             USD = T.let(:USD, Increase::Models::Transaction::Source::FeePayment::Currency::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::Transaction::Source::FeePayment::Currency::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -6830,9 +6705,7 @@ module Increase
             receiver_name:,
             trace_number:,
             transfer_id:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -6851,8 +6724,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class Addenda < Increase::Internal::Type::BaseModel
             # The type of addendum.
@@ -6889,8 +6761,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(category:, freeform:)
-            end
+            def self.new(category:, freeform:); end
 
             sig do
               override
@@ -6901,8 +6772,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The type of addendum.
             module Category
@@ -6932,8 +6802,7 @@ module Increase
                     T::Array[Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class Freeform < Increase::Internal::Type::BaseModel
@@ -6945,16 +6814,15 @@ module Increase
               sig do
                 params(
                   entries: T::Array[
-                  T.any(
-                    Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry,
-                    Increase::Internal::AnyHash
-                  )
+                    T.any(
+                      Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry,
+                      Increase::Internal::AnyHash
+                    )
                   ]
                 )
                   .returns(T.attached_class)
               end
-              def self.new(entries:)
-              end
+              def self.new(entries:); end
 
               sig do
                 override
@@ -6962,8 +6830,7 @@ module Increase
                     {entries: T::Array[Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry]}
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class Entry < Increase::Internal::Type::BaseModel
                 # The payment related information passed in the addendum.
@@ -6971,12 +6838,10 @@ module Increase
                 attr_accessor :payment_related_information
 
                 sig { params(payment_related_information: String).returns(T.attached_class) }
-                def self.new(payment_related_information:)
-                end
+                def self.new(payment_related_information:); end
 
                 sig { override.returns({payment_related_information: String}) }
-                def to_hash
-                end
+                def to_hash; end
               end
             end
           end
@@ -6993,12 +6858,10 @@ module Increase
           #   Intention is created when an ACH transfer is initiated at another bank and
           #   returned by Increase.
           sig { params(inbound_ach_transfer_id: String).returns(T.attached_class) }
-          def self.new(inbound_ach_transfer_id:)
-          end
+          def self.new(inbound_ach_transfer_id:); end
 
           sig { override.returns({inbound_ach_transfer_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InboundCheckAdjustment < Increase::Internal::Type::BaseModel
@@ -7026,8 +6889,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(adjusted_transaction_id:, amount:, reason:)
-          end
+          def self.new(adjusted_transaction_id:, amount:, reason:); end
 
           sig do
             override
@@ -7039,8 +6901,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The reason for the adjustment.
           module Reason
@@ -7080,8 +6941,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -7102,12 +6962,10 @@ module Increase
           sig do
             params(inbound_check_deposit_id: String, transfer_id: T.nilable(String)).returns(T.attached_class)
           end
-          def self.new(inbound_check_deposit_id:, transfer_id:)
-          end
+          def self.new(inbound_check_deposit_id:, transfer_id:); end
 
           sig { override.returns({inbound_check_deposit_id: String, transfer_id: T.nilable(String)}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InboundRealTimePaymentsTransferConfirmation < Increase::Internal::Type::BaseModel
@@ -7182,9 +7040,7 @@ module Increase
             remittance_information:,
             transaction_identification:,
             transfer_id:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -7201,8 +7057,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
           #   currency. This will always be "USD" for a Real-Time Payments transfer.
@@ -7270,8 +7125,7 @@ module Increase
                   T::Array[Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -7356,9 +7210,7 @@ module Increase
             remittance_information:,
             transaction_identification:,
             transfer_id:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -7376,8 +7228,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
           #   transfer's currency. This will always be "USD" for a Real-Time Payments
@@ -7444,8 +7295,7 @@ module Increase
                   T::Array[Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # Why the transfer was declined.
@@ -7511,8 +7361,7 @@ module Increase
                   T::Array[Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -7635,9 +7484,7 @@ module Increase
             sender_reference:,
             transaction_id:,
             wire_transfer_id:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -7662,8 +7509,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InboundWireTransfer < Increase::Internal::Type::BaseModel
@@ -7794,9 +7640,7 @@ module Increase
             originator_to_beneficiary_information_line3:,
             originator_to_beneficiary_information_line4:,
             transfer_id:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -7823,8 +7667,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InboundWireTransferReversal < Increase::Internal::Type::BaseModel
@@ -7838,12 +7681,10 @@ module Increase
           #   created when Increase has received a wire and the User requests that it be
           #   reversed.
           sig { params(inbound_wire_transfer_id: String).returns(T.attached_class) }
-          def self.new(inbound_wire_transfer_id:)
-          end
+          def self.new(inbound_wire_transfer_id:); end
 
           sig { override.returns({inbound_wire_transfer_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InterestPayment < Increase::Internal::Type::BaseModel
@@ -7883,8 +7724,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(accrued_on_account_id:, amount:, currency:, period_end:, period_start:)
-          end
+          def self.new(accrued_on_account_id:, amount:, currency:, period_end:, period_start:); end
 
           sig do
             override
@@ -7898,8 +7738,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
@@ -7930,8 +7769,7 @@ module Increase
             USD = T.let(:USD, Increase::Models::Transaction::Source::InterestPayment::Currency::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::Transaction::Source::InterestPayment::Currency::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -7962,8 +7800,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(amount:, currency:, reason:)
-          end
+          def self.new(amount:, currency:, reason:); end
 
           sig do
             override
@@ -7975,8 +7812,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
@@ -8007,8 +7843,7 @@ module Increase
             USD = T.let(:USD, Increase::Models::Transaction::Source::InternalSource::Currency::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::Transaction::Source::InternalSource::Currency::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
 
           # An Internal Source is a transaction between you and Increase. This describes the
@@ -8085,8 +7920,7 @@ module Increase
               T.let(:sample_funds_return, Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::Transaction::Source::InternalSource::Reason::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -8147,8 +7981,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class SampleFunds < Increase::Internal::Type::BaseModel
@@ -8160,12 +7993,10 @@ module Increase
           #   only if `category` is equal to `sample_funds`. Sample funds for testing
           #   purposes.
           sig { params(originator: String).returns(T.attached_class) }
-          def self.new(originator:)
-          end
+          def self.new(originator:); end
 
           sig { override.returns({originator: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class WireTransferIntention < Increase::Internal::Type::BaseModel
@@ -8202,8 +8033,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(account_number:, amount:, message_to_recipient:, routing_number:, transfer_id:)
-          end
+          def self.new(account_number:, amount:, message_to_recipient:, routing_number:, transfer_id:); end
 
           sig do
             override
@@ -8217,8 +8047,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -8233,8 +8062,7 @@ module Increase
         TRANSACTION = T.let(:transaction, Increase::Models::Transaction::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Transaction::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

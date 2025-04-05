@@ -54,9 +54,7 @@ module Increase
         # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
         standard_entry_class_code: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve an ACH Prenotification
       sig do
         params(
@@ -69,9 +67,7 @@ module Increase
         # The identifier of the ACH Prenotification to retrieve.
         ach_prenotification_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # List ACH Prenotifications
       sig do
         params(
@@ -96,13 +92,10 @@ module Increase
         #   objects.
         limit: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

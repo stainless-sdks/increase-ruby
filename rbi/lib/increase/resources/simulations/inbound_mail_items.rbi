@@ -24,13 +24,10 @@ module Increase
           #   will be used.
           contents_file_id: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: Increase::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

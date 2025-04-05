@@ -38,9 +38,7 @@ module Increase
         #   other `fulfillment_method` is provided.
         third_party: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve a Check Transfer
       sig do
         params(
@@ -53,9 +51,7 @@ module Increase
         # The identifier of the Check Transfer.
         check_transfer_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # List Check Transfers
       sig do
         params(
@@ -85,9 +81,7 @@ module Increase
         limit: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Approve a Check Transfer
       sig do
         params(
@@ -100,9 +94,7 @@ module Increase
         # The identifier of the Check Transfer to approve.
         check_transfer_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Cancel a pending Check Transfer
       sig do
         params(
@@ -115,9 +107,7 @@ module Increase
         # The identifier of the pending Check Transfer to cancel.
         check_transfer_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Request a stop payment on a Check Transfer
       sig do
         params(
@@ -133,13 +123,10 @@ module Increase
         # The reason why this transfer should be stopped.
         reason: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

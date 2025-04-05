@@ -25,9 +25,7 @@ module Increase
         #   withdrawals.
         inbound_checks: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve an Account Number
       sig do
         params(
@@ -40,9 +38,7 @@ module Increase
         # The identifier of the Account Number to retrieve.
         account_number_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Update an Account Number
       sig do
         params(
@@ -68,9 +64,7 @@ module Increase
         # This indicates if transfers can be made to the Account Number.
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # List Account Numbers
       sig do
         params(
@@ -102,13 +96,10 @@ module Increase
         limit: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

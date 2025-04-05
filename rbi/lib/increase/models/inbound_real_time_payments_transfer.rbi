@@ -130,9 +130,7 @@ module Increase
         status:,
         transaction_identification:,
         type:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -156,8 +154,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Confirmation < Increase::Internal::Type::BaseModel
         # The time at which the transfer was confirmed.
@@ -170,12 +167,10 @@ module Increase
 
         # If your transfer is confirmed, this will contain details of the confirmation.
         sig { params(confirmed_at: Time, transaction_id: String).returns(T.attached_class) }
-        def self.new(confirmed_at:, transaction_id:)
-        end
+        def self.new(confirmed_at:, transaction_id:); end
 
         sig { override.returns({confirmed_at: Time, transaction_id: String}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
@@ -207,8 +202,7 @@ module Increase
         USD = T.let(:USD, Increase::Models::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class Decline < Increase::Internal::Type::BaseModel
@@ -233,8 +227,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(declined_at:, declined_transaction_id:, reason:)
-        end
+        def self.new(declined_at:, declined_transaction_id:, reason:); end
 
         sig do
           override
@@ -246,8 +239,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The reason for the transfer decline.
         module Reason
@@ -301,8 +293,7 @@ module Increase
             override
               .returns(T::Array[Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -328,8 +319,7 @@ module Increase
         DECLINED = T.let(:declined, Increase::Models::InboundRealTimePaymentsTransfer::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::InboundRealTimePaymentsTransfer::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -348,8 +338,7 @@ module Increase
           )
 
         sig { override.returns(T::Array[Increase::Models::InboundRealTimePaymentsTransfer::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

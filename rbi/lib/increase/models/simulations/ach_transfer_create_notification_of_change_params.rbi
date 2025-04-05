@@ -23,8 +23,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(change_code:, corrected_data:, request_options: {})
-        end
+        def self.new(change_code:, corrected_data:, request_options: {}); end
 
         sig do
           override
@@ -36,8 +35,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The reason for the notification of change.
         module ChangeCode
@@ -193,8 +191,7 @@ module Increase
                 T::Array[Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::TaggedSymbol]
               )
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

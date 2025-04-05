@@ -111,9 +111,7 @@ module Increase
         status:,
         type:,
         win:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -133,8 +131,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Acceptance < Increase::Internal::Type::BaseModel
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -156,12 +153,10 @@ module Increase
         sig do
           params(accepted_at: Time, card_dispute_id: String, transaction_id: String).returns(T.attached_class)
         end
-        def self.new(accepted_at:, card_dispute_id:, transaction_id:)
-        end
+        def self.new(accepted_at:, card_dispute_id:, transaction_id:); end
 
         sig { override.returns({accepted_at: Time, card_dispute_id: String, transaction_id: String}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class Loss < Increase::Internal::Type::BaseModel
@@ -189,8 +184,7 @@ module Increase
           params(card_dispute_id: String, explanation: String, lost_at: Time, transaction_id: String)
             .returns(T.attached_class)
         end
-        def self.new(card_dispute_id:, explanation:, lost_at:, transaction_id:)
-        end
+        def self.new(card_dispute_id:, explanation:, lost_at:, transaction_id:); end
 
         sig do
           override.returns(
@@ -202,8 +196,7 @@ module Increase
             }
           )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class Rejection < Increase::Internal::Type::BaseModel
@@ -225,12 +218,10 @@ module Increase
         sig do
           params(card_dispute_id: String, explanation: String, rejected_at: Time).returns(T.attached_class)
         end
-        def self.new(card_dispute_id:, explanation:, rejected_at:)
-        end
+        def self.new(card_dispute_id:, explanation:, rejected_at:); end
 
         sig { override.returns({card_dispute_id: String, explanation: String, rejected_at: Time}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       # The results of the Dispute investigation.
@@ -260,8 +251,7 @@ module Increase
         WON = T.let(:won, Increase::Models::CardDispute::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::CardDispute::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -275,8 +265,7 @@ module Increase
         CARD_DISPUTE = T.let(:card_dispute, Increase::Models::CardDispute::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::CardDispute::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class Win < Increase::Internal::Type::BaseModel
@@ -292,12 +281,10 @@ module Increase
         # If the Card Dispute's status is `won`, this will contain details of the won
         #   dispute.
         sig { params(card_dispute_id: String, won_at: Time).returns(T.attached_class) }
-        def self.new(card_dispute_id:, won_at:)
-        end
+        def self.new(card_dispute_id:, won_at:); end
 
         sig { override.returns({card_dispute_id: String, won_at: Time}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

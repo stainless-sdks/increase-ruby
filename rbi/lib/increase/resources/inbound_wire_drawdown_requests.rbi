@@ -15,9 +15,7 @@ module Increase
         # The identifier of the Inbound Wire Drawdown Request to retrieve.
         inbound_wire_drawdown_request_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # List Inbound Wire Drawdown Requests
       sig do
         params(
@@ -34,13 +32,10 @@ module Increase
         #   objects.
         limit: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

@@ -72,9 +72,7 @@ module Increase
         entity_id: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -88,8 +86,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class BillingAddress < Increase::Internal::Type::BaseModel
         # The city of the billing address.
@@ -120,14 +117,12 @@ module Increase
           params(city: String, line1: String, postal_code: String, state: String, line2: String)
             .returns(T.attached_class)
         end
-        def self.new(city:, line1:, postal_code:, state:, line2: nil)
-        end
+        def self.new(city:, line1:, postal_code:, state:, line2: nil); end
 
         sig do
           override.returns({city: String, line1: String, postal_code: String, state: String, line2: String})
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class DigitalWallet < Increase::Internal::Type::BaseModel
@@ -160,12 +155,10 @@ module Increase
         sig do
           params(digital_card_profile_id: String, email: String, phone: String).returns(T.attached_class)
         end
-        def self.new(digital_card_profile_id: nil, email: nil, phone: nil)
-        end
+        def self.new(digital_card_profile_id: nil, email: nil, phone: nil); end
 
         sig { override.returns({digital_card_profile_id: String, email: String, phone: String}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       # The status to update the Card with.
@@ -186,8 +179,7 @@ module Increase
         CANCELED = T.let(:canceled, Increase::Models::CardUpdateParams::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::CardUpdateParams::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

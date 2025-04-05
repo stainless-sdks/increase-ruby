@@ -65,9 +65,7 @@ module Increase
         front_image_file_id: nil,
         front_text: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -81,8 +79,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class FrontText < Increase::Internal::Type::BaseModel
         # The first line of text on the front of the card.
@@ -101,12 +98,10 @@ module Increase
         # Text printed on the front of the card. Reach out to
         #   [support@increase.com](mailto:support@increase.com) for more information.
         sig { params(line1: String, line2: String).returns(T.attached_class) }
-        def self.new(line1:, line2: nil)
-        end
+        def self.new(line1:, line2: nil); end
 
         sig { override.returns({line1: String, line2: String}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

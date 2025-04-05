@@ -19,13 +19,10 @@ module Increase
         #   of the request. The maxiumum is 1 day from the time of the request.
         expires_at: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

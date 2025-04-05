@@ -17,8 +17,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(status:, request_options: {})
-      end
+      def self.new(status:, request_options: {}); end
 
       sig do
         override
@@ -29,8 +28,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The status to update the Physical Card to.
       module Status
@@ -50,8 +48,7 @@ module Increase
         CANCELED = T.let(:canceled, Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end
