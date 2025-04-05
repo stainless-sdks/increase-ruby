@@ -33,7 +33,7 @@ module Increase
       attr_writer :shipment
 
       # The physical card profile to use for this physical card. The latest default
-      #   physical card profile will be used if not provided.
+      # physical card profile will be used if not provided.
       sig { returns(T.nilable(String)) }
       attr_reader :physical_card_profile_id
 

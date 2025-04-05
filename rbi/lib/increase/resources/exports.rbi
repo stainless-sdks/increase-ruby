@@ -21,18 +21,18 @@ module Increase
         # The type of Export to create.
         category:,
         # Options for the created export. Required if `category` is equal to
-        #   `account_statement_ofx`.
+        # `account_statement_ofx`.
         account_statement_ofx: nil,
         # Options for the created export. Required if `category` is equal to
-        #   `balance_csv`.
+        # `balance_csv`.
         balance_csv: nil,
         # Options for the created export. Required if `category` is equal to
-        #   `bookkeeping_account_balance_csv`.
+        # `bookkeeping_account_balance_csv`.
         bookkeeping_account_balance_csv: nil,
         # Options for the created export. Required if `category` is equal to `entity_csv`.
         entity_csv: nil,
         # Options for the created export. Required if `category` is equal to
-        #   `transaction_csv`.
+        # `transaction_csv`.
         transaction_csv: nil,
         # Options for the created export. Required if `category` is equal to `vendor_csv`.
         vendor_csv: nil,
@@ -70,12 +70,12 @@ module Increase
         # Return the page of entries after this one.
         cursor: nil,
         # Filter records to the one with the specified `idempotency_key` you chose for
-        #   that object. This value is unique across Increase and is used to ensure that a
-        #   request is only processed once. Learn more about
-        #   [idempotency](https://increase.com/documentation/idempotency-keys).
+        # that object. This value is unique across Increase and is used to ensure that a
+        # request is only processed once. Learn more about
+        # [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        #   objects.
+        # objects.
         limit: nil,
         status: nil,
         request_options: {}

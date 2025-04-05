@@ -12,7 +12,7 @@ module Increase
       attr_accessor :category
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
-      #   Document was created.
+      # Document was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -25,12 +25,12 @@ module Increase
       attr_accessor :file_id
 
       # A constant representing the object's type. For this resource it will always be
-      #   `document`.
+      # `document`.
       sig { returns(Increase::Models::Document::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Increase generates certain documents / forms automatically for your application;
-      #   they can be listed here.
+      # they can be listed here.
       sig do
         params(
           id: String,
@@ -84,7 +84,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `document`.
+      # `document`.
       module Type
         extend Increase::Internal::Type::Enum
 

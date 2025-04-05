@@ -31,7 +31,7 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `proof_of_authorization_request`.
+      #   `proof_of_authorization_request`.
       #
       #   @return [Symbol, Increase::Models::ProofOfAuthorizationRequest::Type]
       required :type, enum: -> { Increase::Models::ProofOfAuthorizationRequest::Type }
@@ -72,7 +72,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `proof_of_authorization_request`.
+      # `proof_of_authorization_request`.
       #
       # @see Increase::Models::ProofOfAuthorizationRequest#type
       module Type

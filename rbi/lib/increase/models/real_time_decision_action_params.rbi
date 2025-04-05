@@ -7,7 +7,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # If the Real-Time Decision relates to a 3DS card authentication attempt, this
-      #   object contains your response to the authentication.
+      # object contains your response to the authentication.
       sig { returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::CardAuthentication)) }
       attr_reader :card_authentication
 
@@ -20,7 +20,7 @@ module Increase
       attr_writer :card_authentication
 
       # If the Real-Time Decision relates to 3DS card authentication challenge delivery,
-      #   this object contains your response.
+      # this object contains your response.
       sig { returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge)) }
       attr_reader :card_authentication_challenge
 
@@ -36,7 +36,7 @@ module Increase
       attr_writer :card_authentication_challenge
 
       # If the Real-Time Decision relates to a card authorization attempt, this object
-      #   contains your response to the authorization.
+      # contains your response to the authorization.
       sig { returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::CardAuthorization)) }
       attr_reader :card_authorization
 
@@ -49,7 +49,7 @@ module Increase
       attr_writer :card_authorization
 
       # If the Real-Time Decision relates to a digital wallet authentication attempt,
-      #   this object contains your response to the authentication.
+      # this object contains your response to the authentication.
       sig { returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication)) }
       attr_reader :digital_wallet_authentication
 
@@ -65,7 +65,7 @@ module Increase
       attr_writer :digital_wallet_authentication
 
       # If the Real-Time Decision relates to a digital wallet token provisioning
-      #   attempt, this object contains your response to the attempt.
+      # attempt, this object contains your response to the attempt.
       sig { returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken)) }
       attr_reader :digital_wallet_token
 
@@ -123,7 +123,7 @@ module Increase
         attr_accessor :decision
 
         # If the Real-Time Decision relates to a 3DS card authentication attempt, this
-        #   object contains your response to the authentication.
+        # object contains your response to the authentication.
         sig do
           params(decision: Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::OrSymbol)
             .returns(T.attached_class)
@@ -183,12 +183,12 @@ module Increase
 
       class CardAuthenticationChallenge < Increase::Internal::Type::BaseModel
         # Whether the card authentication challenge was successfully delivered to the
-        #   cardholder.
+        # cardholder.
         sig { returns(Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::OrSymbol) }
         attr_accessor :result
 
         # If the Real-Time Decision relates to 3DS card authentication challenge delivery,
-        #   this object contains your response.
+        # this object contains your response.
         sig do
           params(
             result: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::OrSymbol
@@ -206,7 +206,7 @@ module Increase
         def to_hash; end
 
         # Whether the card authentication challenge was successfully delivered to the
-        #   cardholder.
+        # cardholder.
         module Result
           extend Increase::Internal::Type::Enum
 
@@ -251,7 +251,7 @@ module Increase
         attr_accessor :decision
 
         # The reason the card authorization was declined. This translates to a specific
-        #   decline code that is sent to the card network.
+        # decline code that is sent to the card network.
         sig do
           returns(
             T.nilable(Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::OrSymbol)
@@ -268,7 +268,7 @@ module Increase
         attr_writer :decline_reason
 
         # If the Real-Time Decision relates to a card authorization attempt, this object
-        #   contains your response to the authorization.
+        # contains your response to the authorization.
         sig do
           params(
             decision: Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::OrSymbol,
@@ -322,7 +322,7 @@ module Increase
         end
 
         # The reason the card authorization was declined. This translates to a specific
-        #   decline code that is sent to the card network.
+        # decline code that is sent to the card network.
         module DeclineReason
           extend Increase::Internal::Type::Enum
 
@@ -409,7 +409,7 @@ module Increase
         attr_writer :success
 
         # If the Real-Time Decision relates to a digital wallet authentication attempt,
-        #   this object contains your response to the authentication.
+        # this object contains your response to the authentication.
         sig do
           params(
             result: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::OrSymbol,
@@ -480,7 +480,7 @@ module Increase
           attr_writer :email
 
           # The phone number that was used to verify the cardholder via one-time passcode
-          #   over SMS.
+          # over SMS.
           sig { returns(T.nilable(String)) }
           attr_reader :phone
 
@@ -497,7 +497,7 @@ module Increase
 
       class DigitalWalletToken < Increase::Internal::Type::BaseModel
         # If your application approves the provisioning attempt, this contains metadata
-        #   about the digital wallet token that will be generated.
+        # about the digital wallet token that will be generated.
         sig { returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval)) }
         attr_reader :approval
 
@@ -513,7 +513,7 @@ module Increase
         attr_writer :approval
 
         # If your application declines the provisioning attempt, this contains details
-        #   about the decline.
+        # about the decline.
         sig { returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline)) }
         attr_reader :decline
 
@@ -529,7 +529,7 @@ module Increase
         attr_writer :decline
 
         # If the Real-Time Decision relates to a digital wallet token provisioning
-        #   attempt, this object contains your response to the attempt.
+        # attempt, this object contains your response to the attempt.
         sig do
           params(
             approval: T.any(
@@ -558,7 +558,7 @@ module Increase
 
         class Approval < Increase::Internal::Type::BaseModel
           # An email address that can be used to verify the cardholder via one-time
-          #   passcode.
+          # passcode.
           sig { returns(T.nilable(String)) }
           attr_reader :email
 
@@ -566,7 +566,7 @@ module Increase
           attr_writer :email
 
           # A phone number that can be used to verify the cardholder via one-time passcode
-          #   over SMS.
+          # over SMS.
           sig { returns(T.nilable(String)) }
           attr_reader :phone
 
@@ -574,7 +574,7 @@ module Increase
           attr_writer :phone
 
           # If your application approves the provisioning attempt, this contains metadata
-          #   about the digital wallet token that will be generated.
+          # about the digital wallet token that will be generated.
           sig { params(email: String, phone: String).returns(T.attached_class) }
           def self.new(email: nil, phone: nil); end
 
@@ -584,7 +584,7 @@ module Increase
 
         class Decline < Increase::Internal::Type::BaseModel
           # Why the tokenization attempt was declined. This is for logging purposes only and
-          #   is not displayed to the end-user.
+          # is not displayed to the end-user.
           sig { returns(T.nilable(String)) }
           attr_reader :reason
 
@@ -592,7 +592,7 @@ module Increase
           attr_writer :reason
 
           # If your application declines the provisioning attempt, this contains details
-          #   about the decline.
+          # about the decline.
           sig { params(reason: String).returns(T.attached_class) }
           def self.new(reason: nil); end
 

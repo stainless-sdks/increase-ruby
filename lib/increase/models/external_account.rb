@@ -24,7 +24,7 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #     the External Account was created.
+      #   the External Account was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -43,8 +43,8 @@ module Increase
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
-      #     Increase and is used to ensure that a request is only processed once. Learn more
-      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -63,7 +63,7 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `external_account`.
+      #   `external_account`.
       #
       #   @return [Symbol, Increase::Models::ExternalAccount::Type]
       required :type, enum: -> { Increase::Models::ExternalAccount::Type }
@@ -76,7 +76,7 @@ module Increase
 
       # @!parse
       #   # External Accounts represent accounts at financial institutions other than
-      #   #   Increase. You can use this API to store their details for reuse.
+      #   # Increase. You can use this API to store their details for reuse.
       #   #
       #   # @param id [String]
       #   # @param account_holder [Symbol, Increase::Models::ExternalAccount::AccountHolder]
@@ -173,7 +173,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `external_account`.
+      # `external_account`.
       #
       # @see Increase::Models::ExternalAccount#type
       module Type

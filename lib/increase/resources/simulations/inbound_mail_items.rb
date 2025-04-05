@@ -5,7 +5,7 @@ module Increase
     class Simulations
       class InboundMailItems
         # Simulates an inbound mail item to your account, as if someone had mailed a
-        #   physical check to one of your account's Lockboxes.
+        # physical check to one of your account's Lockboxes.
         #
         # @overload create(amount:, lockbox_id:, contents_file_id: nil, request_options: {})
         #

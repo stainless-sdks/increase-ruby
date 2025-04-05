@@ -5,8 +5,8 @@ module Increase
     class Simulations
       class CardFuelConfirmations
         # Simulates the fuel confirmation of an authorization by a card acquirer. This
-        #   happens asynchronously right after a fuel pump transaction is completed. A fuel
-        #   confirmation can only happen once per authorization.
+        # happens asynchronously right after a fuel pump transaction is completed. A fuel
+        # confirmation can only happen once per authorization.
         #
         # @overload create(amount:, card_payment_id:, request_options: {})
         #

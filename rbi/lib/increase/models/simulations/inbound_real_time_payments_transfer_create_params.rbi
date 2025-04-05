@@ -8,7 +8,7 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         # The identifier of the Account Number the inbound Real-Time Payments Transfer is
-        #   for.
+        # for.
         sig { returns(String) }
         attr_accessor :account_number_id
 

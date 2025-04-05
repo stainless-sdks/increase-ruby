@@ -12,14 +12,14 @@ module Increase
 
       # @!attribute corporation
       #   Details of the corporation entity. Will be present if `structure` is equal to
-      #     `corporation`.
+      #   `corporation`.
       #
       #   @return [Increase::Models::Entity::Corporation, nil]
       required :corporation, -> { Increase::Models::Entity::Corporation }, nil?: true
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Entity
-      #     was created.
+      #   was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -32,22 +32,22 @@ module Increase
 
       # @!attribute details_confirmed_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
-      #     Entity's details were most recently confirmed.
+      #   Entity's details were most recently confirmed.
       #
       #   @return [Time, nil]
       required :details_confirmed_at, Time, nil?: true
 
       # @!attribute government_authority
       #   Details of the government authority entity. Will be present if `structure` is
-      #     equal to `government_authority`.
+      #   equal to `government_authority`.
       #
       #   @return [Increase::Models::Entity::GovernmentAuthority, nil]
       required :government_authority, -> { Increase::Models::Entity::GovernmentAuthority }, nil?: true
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
-      #     Increase and is used to ensure that a request is only processed once. Learn more
-      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -60,7 +60,7 @@ module Increase
 
       # @!attribute natural_person
       #   Details of the natural person entity. Will be present if `structure` is equal to
-      #     `natural_person`.
+      #   `natural_person`.
       #
       #   @return [Increase::Models::Entity::NaturalPerson, nil]
       required :natural_person, -> { Increase::Models::Entity::NaturalPerson }, nil?: true
@@ -79,8 +79,8 @@ module Increase
 
       # @!attribute supplemental_documents
       #   Additional documentation associated with the entity. This is limited to the
-      #     first 10 documents for an entity. If an entity has more than 10 documents, use
-      #     the GET /entity_supplemental_documents list endpoint to retrieve them.
+      #   first 10 documents for an entity. If an entity has more than 10 documents, use
+      #   the GET /entity_supplemental_documents list endpoint to retrieve them.
       #
       #   @return [Array<Increase::Models::EntitySupplementalDocument>]
       required :supplemental_documents,
@@ -88,7 +88,7 @@ module Increase
 
       # @!attribute third_party_verification
       #   A reference to data stored in a third-party verification service. Your
-      #     integration may or may not use this field.
+      #   integration may or may not use this field.
       #
       #   @return [Increase::Models::Entity::ThirdPartyVerification, nil]
       required :third_party_verification, -> { Increase::Models::Entity::ThirdPartyVerification }, nil?: true
@@ -101,14 +101,14 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `entity`.
+      #   `entity`.
       #
       #   @return [Symbol, Increase::Models::Entity::Type]
       required :type, enum: -> { Increase::Models::Entity::Type }
 
       # @!parse
       #   # Entities are the legal entities that own accounts. They can be people,
-      #   #   corporations, partnerships, government authorities, or trusts.
+      #   # corporations, partnerships, government authorities, or trusts.
       #   #
       #   # @param id [String]
       #   # @param corporation [Increase::Models::Entity::Corporation, nil]
@@ -159,7 +159,7 @@ module Increase
 
         # @!attribute beneficial_owners
         #   The identifying details of anyone controlling or owning 25% or more of the
-        #     corporation.
+        #   corporation.
         #
         #   @return [Array<Increase::Models::Entity::Corporation::BeneficialOwner>]
         required :beneficial_owners,
@@ -167,14 +167,14 @@ module Increase
 
         # @!attribute incorporation_state
         #   The two-letter United States Postal Service (USPS) abbreviation for the
-        #     corporation's state of incorporation.
+        #   corporation's state of incorporation.
         #
         #   @return [String, nil]
         required :incorporation_state, String, nil?: true
 
         # @!attribute industry_code
         #   The numeric North American Industry Classification System (NAICS) code submitted
-        #     for the corporation.
+        #   for the corporation.
         #
         #   @return [String, nil]
         required :industry_code, String, nil?: true
@@ -199,7 +199,7 @@ module Increase
 
         # @!parse
         #   # Details of the corporation entity. Will be present if `structure` is equal to
-        #   #   `corporation`.
+        #   # `corporation`.
         #   #
         #   # @param address [Increase::Models::Entity::Corporation::Address]
         #   # @param beneficial_owners [Array<Increase::Models::Entity::Corporation::BeneficialOwner>]
@@ -235,7 +235,7 @@ module Increase
 
           # @!attribute state
           #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #     the address.
+          #   the address.
           #
           #   @return [String]
           required :state, String
@@ -362,7 +362,7 @@ module Increase
 
               # @!attribute state
               #   The two-letter United States Postal Service (USPS) abbreviation for the US
-              #     state, province, or region of the address.
+              #   state, province, or region of the address.
               #
               #   @return [String, nil]
               required :state, String, nil?: true
@@ -400,7 +400,7 @@ module Increase
 
               # @!attribute number_last4
               #   The last 4 digits of the identification number that can be used to verify the
-              #     individual's identity.
+              #   individual's identity.
               #
               #   @return [String]
               required :number_last4, String
@@ -507,7 +507,7 @@ module Increase
 
         # @!parse
         #   # Details of the government authority entity. Will be present if `structure` is
-        #   #   equal to `government_authority`.
+        #   # equal to `government_authority`.
         #   #
         #   # @param address [Increase::Models::Entity::GovernmentAuthority::Address]
         #   # @param authorized_persons [Array<Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson>]
@@ -542,7 +542,7 @@ module Increase
 
           # @!attribute state
           #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #     the address.
+          #   the address.
           #
           #   @return [String]
           required :state, String
@@ -688,7 +688,7 @@ module Increase
 
             # @!attribute state
             #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-            #     the address.
+            #   the address.
             #
             #   @return [String]
             required :state, String
@@ -725,7 +725,7 @@ module Increase
 
             # @!attribute number_last4
             #   The last 4 digits of the identification number that can be used to verify the
-            #     individual's identity.
+            #   individual's identity.
             #
             #   @return [String]
             required :number_last4, String
@@ -799,7 +799,7 @@ module Increase
 
         # @!parse
         #   # Details of the natural person entity. Will be present if `structure` is equal to
-        #   #   `natural_person`.
+        #   # `natural_person`.
         #   #
         #   # @param address [Increase::Models::Entity::NaturalPerson::Address]
         #   # @param date_of_birth [Date]
@@ -832,7 +832,7 @@ module Increase
 
           # @!attribute state
           #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #     the address.
+          #   the address.
           #
           #   @return [String]
           required :state, String
@@ -869,7 +869,7 @@ module Increase
 
           # @!attribute number_last4
           #   The last 4 digits of the identification number that can be used to verify the
-          #     individual's identity.
+          #   individual's identity.
           #
           #   @return [String]
           required :number_last4, String
@@ -980,7 +980,7 @@ module Increase
 
         # @!parse
         #   # A reference to data stored in a third-party verification service. Your
-        #   #   integration may or may not use this field.
+        #   # integration may or may not use this field.
         #   #
         #   # @param reference [String]
         #   # @param vendor [Symbol, Increase::Models::Entity::ThirdPartyVerification::Vendor]
@@ -1031,7 +1031,7 @@ module Increase
 
         # @!attribute formation_state
         #   The two-letter United States Postal Service (USPS) abbreviation for the state in
-        #     which the trust was formed.
+        #   which the trust was formed.
         #
         #   @return [String, nil]
         required :formation_state, String, nil?: true
@@ -1110,7 +1110,7 @@ module Increase
 
           # @!attribute state
           #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #     the address.
+          #   the address.
           #
           #   @return [String]
           required :state, String
@@ -1214,7 +1214,7 @@ module Increase
 
             # @!attribute state
             #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-            #     the address.
+            #   the address.
             #
             #   @return [String]
             required :state, String
@@ -1251,7 +1251,7 @@ module Increase
 
             # @!attribute number_last4
             #   The last 4 digits of the identification number that can be used to verify the
-            #     individual's identity.
+            #   individual's identity.
             #
             #   @return [String]
             required :number_last4, String
@@ -1299,7 +1299,7 @@ module Increase
         class Trustee < Increase::Internal::Type::BaseModel
           # @!attribute individual
           #   The individual trustee of the trust. Will be present if the trustee's
-          #     `structure` is equal to `individual`.
+          #   `structure` is equal to `individual`.
           #
           #   @return [Increase::Models::Entity::Trust::Trustee::Individual, nil]
           required :individual, -> { Increase::Models::Entity::Trust::Trustee::Individual }, nil?: true
@@ -1346,7 +1346,7 @@ module Increase
 
             # @!parse
             #   # The individual trustee of the trust. Will be present if the trustee's
-            #   #   `structure` is equal to `individual`.
+            #   # `structure` is equal to `individual`.
             #   #
             #   # @param address [Increase::Models::Entity::Trust::Trustee::Individual::Address]
             #   # @param date_of_birth [Date]
@@ -1379,7 +1379,7 @@ module Increase
 
               # @!attribute state
               #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-              #     the address.
+              #   the address.
               #
               #   @return [String]
               required :state, String
@@ -1416,7 +1416,7 @@ module Increase
 
               # @!attribute number_last4
               #   The last 4 digits of the identification number that can be used to verify the
-              #     individual's identity.
+              #   individual's identity.
               #
               #   @return [String]
               required :number_last4, String
@@ -1480,7 +1480,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `entity`.
+      # `entity`.
       #
       # @see Increase::Models::Entity#type
       module Type

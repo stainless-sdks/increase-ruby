@@ -38,14 +38,14 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `card_purchase_supplement`.
+      #   `card_purchase_supplement`.
       #
       #   @return [Symbol, Increase::Models::CardPurchaseSupplement::Type]
       required :type, enum: -> { Increase::Models::CardPurchaseSupplement::Type }
 
       # @!parse
       #   # Additional information about a card purchase (e.g., settlement or refund), such
-      #   #   as level 3 line item data.
+      #   # as level 3 line item data.
       #   #
       #   # @param id [String]
       #   # @param card_payment_id [String, nil]
@@ -106,7 +106,7 @@ module Increase
 
         # @!attribute shipping_currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping
-        #     cost.
+        #   cost.
         #
         #   @return [String, nil]
         required :shipping_currency, String, nil?: true
@@ -137,7 +137,7 @@ module Increase
 
         # @!attribute shipping_tax_currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping
-        #     tax.
+        #   tax.
         #
         #   @return [String, nil]
         required :shipping_tax_currency, String, nil?: true
@@ -324,7 +324,7 @@ module Increase
 
         # @!attribute sales_tax_currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the sales tax
-        #     assessed.
+        #   assessed.
         #
         #   @return [String, nil]
         required :sales_tax_currency, String, nil?: true
@@ -343,7 +343,7 @@ module Increase
 
         # @!attribute total_amount_currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total
-        #     amount.
+        #   amount.
         #
         #   @return [String, nil]
         required :total_amount_currency, String, nil?: true
@@ -456,7 +456,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `card_purchase_supplement`.
+      # `card_purchase_supplement`.
       #
       # @see Increase::Models::CardPurchaseSupplement#type
       module Type

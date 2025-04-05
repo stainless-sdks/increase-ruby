@@ -8,7 +8,7 @@ module Increase
       attr_accessor :id
 
       # Details of the corporation entity. Will be present if `structure` is equal to
-      #   `corporation`.
+      # `corporation`.
       sig { returns(T.nilable(Increase::Models::Entity::Corporation)) }
       attr_reader :corporation
 
@@ -19,7 +19,7 @@ module Increase
       attr_writer :corporation
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Entity
-      #   was created.
+      # was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -28,12 +28,12 @@ module Increase
       attr_accessor :description
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
-      #   Entity's details were most recently confirmed.
+      # Entity's details were most recently confirmed.
       sig { returns(T.nilable(Time)) }
       attr_accessor :details_confirmed_at
 
       # Details of the government authority entity. Will be present if `structure` is
-      #   equal to `government_authority`.
+      # equal to `government_authority`.
       sig { returns(T.nilable(Increase::Models::Entity::GovernmentAuthority)) }
       attr_reader :government_authority
 
@@ -46,8 +46,8 @@ module Increase
       attr_writer :government_authority
 
       # The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # Increase and is used to ensure that a request is only processed once. Learn more
+      # about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
@@ -59,7 +59,7 @@ module Increase
       attr_writer :joint
 
       # Details of the natural person entity. Will be present if `structure` is equal to
-      #   `natural_person`.
+      # `natural_person`.
       sig { returns(T.nilable(Increase::Models::Entity::NaturalPerson)) }
       attr_reader :natural_person
 
@@ -80,13 +80,13 @@ module Increase
       attr_accessor :structure
 
       # Additional documentation associated with the entity. This is limited to the
-      #   first 10 documents for an entity. If an entity has more than 10 documents, use
-      #   the GET /entity_supplemental_documents list endpoint to retrieve them.
+      # first 10 documents for an entity. If an entity has more than 10 documents, use
+      # the GET /entity_supplemental_documents list endpoint to retrieve them.
       sig { returns(T::Array[Increase::Models::EntitySupplementalDocument]) }
       attr_accessor :supplemental_documents
 
       # A reference to data stored in a third-party verification service. Your
-      #   integration may or may not use this field.
+      # integration may or may not use this field.
       sig { returns(T.nilable(Increase::Models::Entity::ThirdPartyVerification)) }
       attr_reader :third_party_verification
 
@@ -106,12 +106,12 @@ module Increase
       attr_writer :trust
 
       # A constant representing the object's type. For this resource it will always be
-      #   `entity`.
+      # `entity`.
       sig { returns(Increase::Models::Entity::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Entities are the legal entities that own accounts. They can be people,
-      #   corporations, partnerships, government authorities, or trusts.
+      # corporations, partnerships, government authorities, or trusts.
       sig do
         params(
           id: String,
@@ -182,17 +182,17 @@ module Increase
         attr_writer :address
 
         # The identifying details of anyone controlling or owning 25% or more of the
-        #   corporation.
+        # corporation.
         sig { returns(T::Array[Increase::Models::Entity::Corporation::BeneficialOwner]) }
         attr_accessor :beneficial_owners
 
         # The two-letter United States Postal Service (USPS) abbreviation for the
-        #   corporation's state of incorporation.
+        # corporation's state of incorporation.
         sig { returns(T.nilable(String)) }
         attr_accessor :incorporation_state
 
         # The numeric North American Industry Classification System (NAICS) code submitted
-        #   for the corporation.
+        # for the corporation.
         sig { returns(T.nilable(String)) }
         attr_accessor :industry_code
 
@@ -209,7 +209,7 @@ module Increase
         attr_accessor :website
 
         # Details of the corporation entity. Will be present if `structure` is equal to
-        #   `corporation`.
+        # `corporation`.
         sig do
           params(
             address: T.any(Increase::Models::Entity::Corporation::Address, Increase::Internal::AnyHash),
@@ -263,7 +263,7 @@ module Increase
           attr_accessor :line2
 
           # The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   the address.
+          # the address.
           sig { returns(String) }
           attr_accessor :state
 
@@ -429,7 +429,7 @@ module Increase
               attr_accessor :line2
 
               # The two-letter United States Postal Service (USPS) abbreviation for the US
-              #   state, province, or region of the address.
+              # state, province, or region of the address.
               sig { returns(T.nilable(String)) }
               attr_accessor :state
 
@@ -477,7 +477,7 @@ module Increase
               attr_accessor :method_
 
               # The last 4 digits of the identification number that can be used to verify the
-              #   individual's identity.
+              # individual's identity.
               sig { returns(String) }
               attr_accessor :number_last4
 
@@ -619,7 +619,7 @@ module Increase
         attr_accessor :website
 
         # Details of the government authority entity. Will be present if `structure` is
-        #   equal to `government_authority`.
+        # equal to `government_authority`.
         sig do
           params(
             address: T.any(Increase::Models::Entity::GovernmentAuthority::Address, Increase::Internal::AnyHash),
@@ -662,7 +662,7 @@ module Increase
           attr_accessor :line2
 
           # The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   the address.
+          # the address.
           sig { returns(String) }
           attr_accessor :state
 
@@ -815,7 +815,7 @@ module Increase
             attr_accessor :line2
 
             # The two-letter United States Postal Service (USPS) abbreviation for the state of
-            #   the address.
+            # the address.
             sig { returns(String) }
             attr_accessor :state
 
@@ -850,7 +850,7 @@ module Increase
             attr_accessor :method_
 
             # The last 4 digits of the identification number that can be used to verify the
-            #   individual's identity.
+            # individual's identity.
             sig { returns(String) }
             attr_accessor :number_last4
 
@@ -948,7 +948,7 @@ module Increase
         attr_accessor :name
 
         # Details of the natural person entity. Will be present if `structure` is equal to
-        #   `natural_person`.
+        # `natural_person`.
         sig do
           params(
             address: T.any(Increase::Models::Entity::NaturalPerson::Address, Increase::Internal::AnyHash),
@@ -987,7 +987,7 @@ module Increase
           attr_accessor :line2
 
           # The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   the address.
+          # the address.
           sig { returns(String) }
           attr_accessor :state
 
@@ -1022,7 +1022,7 @@ module Increase
           attr_accessor :method_
 
           # The last 4 digits of the identification number that can be used to verify the
-          #   individual's identity.
+          # individual's identity.
           sig { returns(String) }
           attr_accessor :number_last4
 
@@ -1140,7 +1140,7 @@ module Increase
         attr_accessor :vendor
 
         # A reference to data stored in a third-party verification service. Your
-        #   integration may or may not use this field.
+        # integration may or may not use this field.
         sig do
           params(reference: String, vendor: Increase::Models::Entity::ThirdPartyVerification::Vendor::OrSymbol)
             .returns(T.attached_class)
@@ -1191,7 +1191,7 @@ module Increase
         attr_accessor :formation_document_file_id
 
         # The two-letter United States Postal Service (USPS) abbreviation for the state in
-        #   which the trust was formed.
+        # which the trust was formed.
         sig { returns(T.nilable(String)) }
         attr_accessor :formation_state
 
@@ -1272,7 +1272,7 @@ module Increase
           attr_accessor :line2
 
           # The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   the address.
+          # the address.
           sig { returns(String) }
           attr_accessor :state
 
@@ -1388,7 +1388,7 @@ module Increase
             attr_accessor :line2
 
             # The two-letter United States Postal Service (USPS) abbreviation for the state of
-            #   the address.
+            # the address.
             sig { returns(String) }
             attr_accessor :state
 
@@ -1423,7 +1423,7 @@ module Increase
             attr_accessor :method_
 
             # The last 4 digits of the identification number that can be used to verify the
-            #   individual's identity.
+            # individual's identity.
             sig { returns(String) }
             attr_accessor :number_last4
 
@@ -1490,7 +1490,7 @@ module Increase
 
         class Trustee < Increase::Internal::Type::BaseModel
           # The individual trustee of the trust. Will be present if the trustee's
-          #   `structure` is equal to `individual`.
+          # `structure` is equal to `individual`.
           sig { returns(T.nilable(Increase::Models::Entity::Trust::Trustee::Individual)) }
           attr_reader :individual
 
@@ -1560,7 +1560,7 @@ module Increase
             attr_accessor :name
 
             # The individual trustee of the trust. Will be present if the trustee's
-            #   `structure` is equal to `individual`.
+            # `structure` is equal to `individual`.
             sig do
               params(
                 address: T.any(Increase::Models::Entity::Trust::Trustee::Individual::Address, Increase::Internal::AnyHash),
@@ -1599,7 +1599,7 @@ module Increase
               attr_accessor :line2
 
               # The two-letter United States Postal Service (USPS) abbreviation for the state of
-              #   the address.
+              # the address.
               sig { returns(String) }
               attr_accessor :state
 
@@ -1634,7 +1634,7 @@ module Increase
               attr_accessor :method_
 
               # The last 4 digits of the identification number that can be used to verify the
-              #   individual's identity.
+              # individual's identity.
               sig { returns(String) }
               attr_accessor :number_last4
 
@@ -1735,7 +1735,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `entity`.
+      # `entity`.
       module Type
         extend Increase::Internal::Type::Enum
 

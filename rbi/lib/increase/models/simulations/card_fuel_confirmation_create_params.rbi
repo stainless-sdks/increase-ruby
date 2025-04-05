@@ -8,7 +8,7 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         # The amount of the fuel_confirmation in minor units in the card authorization's
-        #   currency.
+        # currency.
         sig { returns(Integer) }
         attr_accessor :amount
 

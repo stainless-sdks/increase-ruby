@@ -12,12 +12,12 @@ module Increase
       attr_accessor :account_id
 
       # The transfer amount in the minor unit of the destination account currency. For
-      #   dollars, for example, this is cents.
+      # dollars, for example, this is cents.
       sig { returns(Integer) }
       attr_accessor :amount
 
       # If your account requires approvals for transfers and the transfer was approved,
-      #   this will contain details of the approval.
+      # this will contain details of the approval.
       sig { returns(T.nilable(Increase::Models::AccountTransfer::Approval)) }
       attr_reader :approval
 
@@ -30,7 +30,7 @@ module Increase
       attr_writer :approval
 
       # If your account requires approvals for transfers and the transfer was not
-      #   approved, this will contain details of the cancellation.
+      # approved, this will contain details of the cancellation.
       sig { returns(T.nilable(Increase::Models::AccountTransfer::Cancellation)) }
       attr_reader :cancellation
 
@@ -43,7 +43,7 @@ module Increase
       attr_writer :cancellation
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the transfer was created.
+      # the transfer was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -60,7 +60,7 @@ module Increase
       attr_writer :created_by
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-      #   account currency.
+      # account currency.
       sig { returns(Increase::Models::AccountTransfer::Currency::TaggedSymbol) }
       attr_accessor :currency
 
@@ -77,8 +77,8 @@ module Increase
       attr_accessor :destination_transaction_id
 
       # The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # Increase and is used to ensure that a request is only processed once. Learn more
+      # about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
@@ -87,9 +87,9 @@ module Increase
       attr_accessor :network
 
       # The ID for the pending transaction representing the transfer. A pending
-      #   transaction is created when the transfer
-      #   [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
-      #   by someone else in your organization.
+      # transaction is created when the transfer
+      # [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
+      # by someone else in your organization.
       sig { returns(T.nilable(String)) }
       attr_accessor :pending_transaction_id
 
@@ -102,7 +102,7 @@ module Increase
       attr_accessor :transaction_id
 
       # A constant representing the object's type. For this resource it will always be
-      #   `account_transfer`.
+      # `account_transfer`.
       sig { returns(Increase::Models::AccountTransfer::Type::TaggedSymbol) }
       attr_accessor :type
 
@@ -176,17 +176,17 @@ module Increase
 
       class Approval < Increase::Internal::Type::BaseModel
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the transfer was approved.
+        # the transfer was approved.
         sig { returns(Time) }
         attr_accessor :approved_at
 
         # If the Transfer was approved by a user in the dashboard, the email address of
-        #   that user.
+        # that user.
         sig { returns(T.nilable(String)) }
         attr_accessor :approved_by
 
         # If your account requires approvals for transfers and the transfer was approved,
-        #   this will contain details of the approval.
+        # this will contain details of the approval.
         sig { params(approved_at: Time, approved_by: T.nilable(String)).returns(T.attached_class) }
         def self.new(approved_at:, approved_by:); end
 
@@ -196,17 +196,17 @@ module Increase
 
       class Cancellation < Increase::Internal::Type::BaseModel
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the Transfer was canceled.
+        # the Transfer was canceled.
         sig { returns(Time) }
         attr_accessor :canceled_at
 
         # If the Transfer was canceled by a user in the dashboard, the email address of
-        #   that user.
+        # that user.
         sig { returns(T.nilable(String)) }
         attr_accessor :canceled_by
 
         # If your account requires approvals for transfers and the transfer was not
-        #   approved, this will contain details of the cancellation.
+        # approved, this will contain details of the cancellation.
         sig { params(canceled_at: Time, canceled_by: T.nilable(String)).returns(T.attached_class) }
         def self.new(canceled_at:, canceled_by:); end
 
@@ -347,7 +347,7 @@ module Increase
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-      #   account currency.
+      # account currency.
       module Currency
         extend Increase::Internal::Type::Enum
 
@@ -413,7 +413,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `account_transfer`.
+      # `account_transfer`.
       module Type
         extend Increase::Internal::Type::Enum
 

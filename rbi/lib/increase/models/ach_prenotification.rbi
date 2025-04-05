@@ -32,7 +32,7 @@ module Increase
       attr_accessor :company_name
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the prenotification was created.
+      # the prenotification was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -45,13 +45,13 @@ module Increase
       attr_accessor :effective_date
 
       # The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # Increase and is used to ensure that a request is only processed once. Learn more
+      # about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
       # If the receiving bank notifies that future transfers should use different
-      #   details, this will contain those details.
+      # details, this will contain those details.
       sig { returns(T::Array[Increase::Models::ACHPrenotification::NotificationsOfChange]) }
       attr_accessor :notifications_of_change
 
@@ -76,12 +76,12 @@ module Increase
       attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
-      #   `ach_prenotification`.
+      # `ach_prenotification`.
       sig { returns(Increase::Models::ACHPrenotification::Type::TaggedSymbol) }
       attr_accessor :type
 
       # ACH Prenotifications are one way you can verify account and routing numbers by
-      #   Automated Clearing House (ACH).
+      # Automated Clearing House (ACH).
       sig do
         params(
           id: String,
@@ -166,20 +166,20 @@ module Increase
 
       class NotificationsOfChange < Increase::Internal::Type::BaseModel
         # The required type of change that is being signaled by the receiving financial
-        #   institution.
+        # institution.
         sig { returns(Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode::TaggedSymbol) }
         attr_accessor :change_code
 
         # The corrected data that should be used in future ACHs to this account. This may
-        #   contain the suggested new account number or routing number. When the
-        #   `change_code` is `incorrect_transaction_code`, this field contains an integer.
-        #   Numbers starting with a 2 encourage changing the `funding` parameter to
-        #   checking; numbers starting with a 3 encourage changing to savings.
+        # contain the suggested new account number or routing number. When the
+        # `change_code` is `incorrect_transaction_code`, this field contains an integer.
+        # Numbers starting with a 2 encourage changing the `funding` parameter to
+        # checking; numbers starting with a 3 encourage changing to savings.
         sig { returns(String) }
         attr_accessor :corrected_data
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the notification occurred.
+        # the notification occurred.
         sig { returns(Time) }
         attr_accessor :created_at
 
@@ -206,7 +206,7 @@ module Increase
         def to_hash; end
 
         # The required type of change that is being signaled by the receiving financial
-        #   institution.
+        # institution.
         module ChangeCode
           extend Increase::Internal::Type::Enum
 
@@ -364,7 +364,7 @@ module Increase
 
       class PrenotificationReturn < Increase::Internal::Type::BaseModel
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the Prenotification was returned.
+        # the Prenotification was returned.
         sig { returns(Time) }
         attr_accessor :created_at
 
@@ -935,7 +935,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `ach_prenotification`.
+      # `ach_prenotification`.
       module Type
         extend Increase::Internal::Type::Enum
 

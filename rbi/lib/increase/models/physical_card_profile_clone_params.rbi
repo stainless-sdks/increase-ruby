@@ -35,7 +35,7 @@ module Increase
       attr_writer :front_image_file_id
 
       # Text printed on the front of the card. Reach out to
-      #   [support@increase.com](mailto:support@increase.com) for more information.
+      # [support@increase.com](mailto:support@increase.com) for more information.
       sig { returns(T.nilable(Increase::Models::PhysicalCardProfileCloneParams::FrontText)) }
       attr_reader :front_text
 
@@ -87,8 +87,8 @@ module Increase
         attr_accessor :line1
 
         # The second line of text on the front of the card. Providing a second line moves
-        #   the first line slightly higher and prints the second line in the spot where the
-        #   first line would have otherwise been printed.
+        # the first line slightly higher and prints the second line in the spot where the
+        # first line would have otherwise been printed.
         sig { returns(T.nilable(String)) }
         attr_reader :line2
 
@@ -96,7 +96,7 @@ module Increase
         attr_writer :line2
 
         # Text printed on the front of the card. Reach out to
-        #   [support@increase.com](mailto:support@increase.com) for more information.
+        # [support@increase.com](mailto:support@increase.com) for more information.
         sig { params(line1: String, line2: String).returns(T.attached_class) }
         def self.new(line1:, line2: nil); end
 

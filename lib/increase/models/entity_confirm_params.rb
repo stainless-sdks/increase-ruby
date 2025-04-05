@@ -10,7 +10,7 @@ module Increase
 
       # @!attribute [r] confirmed_at
       #   When your user confirmed the Entity's details. If not provided, the current time
-      #     will be used.
+      #   will be used.
       #
       #   @return [Time, nil]
       optional :confirmed_at, Time

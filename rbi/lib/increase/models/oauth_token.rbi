@@ -4,7 +4,7 @@ module Increase
   module Models
     class OAuthToken < Increase::Internal::Type::BaseModel
       # You may use this token in place of an API key to make OAuth requests on a user's
-      #   behalf.
+      # behalf.
       sig { returns(String) }
       attr_accessor :access_token
 
@@ -13,13 +13,13 @@ module Increase
       attr_accessor :token_type
 
       # A constant representing the object's type. For this resource it will always be
-      #   `oauth_token`.
+      # `oauth_token`.
       sig { returns(Increase::Models::OAuthToken::Type::TaggedSymbol) }
       attr_accessor :type
 
       # A token that is returned to your application when a user completes the OAuth
-      #   flow and may be used to authenticate requests. Learn more about OAuth
-      #   [here](/documentation/oauth).
+      # flow and may be used to authenticate requests. Learn more about OAuth
+      # [here](/documentation/oauth).
       sig do
         params(
           access_token: String,
@@ -56,7 +56,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `oauth_token`.
+      # `oauth_token`.
       module Type
         extend Increase::Internal::Type::Enum
 

@@ -24,7 +24,7 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
-      #     was created.
+      #   was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -37,8 +37,8 @@ module Increase
 
       # @!attribute interest_rate
       #   The Interest Rate currently being earned on the accounts in this program, as a
-      #     string containing a decimal number. For example, a 1% interest rate would be
-      #     represented as "0.01".
+      #   string containing a decimal number. For example, a 1% interest rate would be
+      #   represented as "0.01".
       #
       #   @return [String]
       required :interest_rate, String
@@ -51,23 +51,23 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `program`.
+      #   `program`.
       #
       #   @return [Symbol, Increase::Models::Program::Type]
       required :type, enum: -> { Increase::Models::Program::Type }
 
       # @!attribute updated_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
-      #     was last updated.
+      #   was last updated.
       #
       #   @return [Time]
       required :updated_at, Time
 
       # @!parse
       #   # Programs determine the compliance and commercial terms of Accounts. By default,
-      #   #   you have a Commercial Banking program for managing your own funds. If you are
-      #   #   lending or managing funds on behalf of your customers, or otherwise engaged in
-      #   #   regulated activity, we will work together to create additional Programs for you.
+      #   # you have a Commercial Banking program for managing your own funds. If you are
+      #   # lending or managing funds on behalf of your customers, or otherwise engaged in
+      #   # regulated activity, we will work together to create additional Programs for you.
       #   #
       #   # @param id [String]
       #   # @param bank [Symbol, Increase::Models::Program::Bank]
@@ -119,7 +119,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `program`.
+      # `program`.
       #
       # @see Increase::Models::Program#type
       module Type

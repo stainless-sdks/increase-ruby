@@ -10,7 +10,7 @@ module Increase
 
       # @!attribute beneficial_owner_id
       #   The identifying details of anyone controlling or owning 25% or more of the
-      #     corporation.
+      #   corporation.
       #
       #   @return [String]
       required :beneficial_owner_id, String

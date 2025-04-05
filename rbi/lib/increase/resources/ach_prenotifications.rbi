@@ -29,7 +29,7 @@ module Increase
         # The account number for the destination account.
         account_number:,
         # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-        #   destination account.
+        # destination account.
         routing_number:,
         # Additional information that will be sent to the recipient.
         addendum: nil,
@@ -44,12 +44,12 @@ module Increase
         # Whether the Prenotification is for a future debit or credit.
         credit_debit_indicator: nil,
         # The transfer effective date in
-        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+        # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
         effective_date: nil,
         # Your identifier for the transfer recipient.
         individual_id: nil,
         # The name of the transfer recipient. This value is information and not verified
-        #   by the recipient's bank.
+        # by the recipient's bank.
         individual_name: nil,
         # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
         standard_entry_class_code: nil,
@@ -84,12 +84,12 @@ module Increase
         # Return the page of entries after this one.
         cursor: nil,
         # Filter records to the one with the specified `idempotency_key` you chose for
-        #   that object. This value is unique across Increase and is used to ensure that a
-        #   request is only processed once. Learn more about
-        #   [idempotency](https://increase.com/documentation/idempotency-keys).
+        # that object. This value is unique across Increase and is used to ensure that a
+        # request is only processed once. Learn more about
+        # [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        #   objects.
+        # objects.
         limit: nil,
         request_options: {}
       ); end

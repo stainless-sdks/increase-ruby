@@ -5,7 +5,7 @@ module Increase
     class Simulations
       class InterestPayments
         # Simulates an interest payment to your account. In production, this happens
-        #   automatically on the first of each month.
+        # automatically on the first of each month.
         #
         # @overload create(account_id:, amount:, accrued_on_account_id: nil, period_end: nil, period_start: nil, request_options: {})
         #
