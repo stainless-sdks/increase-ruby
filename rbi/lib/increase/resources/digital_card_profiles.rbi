@@ -39,9 +39,7 @@ module Increase
         # The Card's text color, specified as an RGB triple. The default is white.
         text_color: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve a Digital Card Profile
       sig do
         params(
@@ -54,9 +52,7 @@ module Increase
         # The identifier of the Digital Card Profile.
         digital_card_profile_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # List Card Profiles
       sig do
         params(
@@ -81,9 +77,7 @@ module Increase
         limit: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Archive a Digital Card Profile
       sig do
         params(
@@ -96,9 +90,7 @@ module Increase
         # The identifier of the Digital Card Profile to archive.
         digital_card_profile_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Clones a Digital Card Profile
       sig do
         params(
@@ -138,13 +130,10 @@ module Increase
         # The Card's text color, specified as an RGB triple. The default is white.
         text_color: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

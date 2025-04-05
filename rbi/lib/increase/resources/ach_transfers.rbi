@@ -88,9 +88,7 @@ module Increase
         # The timing of the transaction.
         transaction_timing: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve an ACH Transfer
       sig do
         params(
@@ -103,9 +101,7 @@ module Increase
         # The identifier of the ACH Transfer.
         ach_transfer_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # List ACH Transfers
       sig do
         params(
@@ -138,9 +134,7 @@ module Increase
         limit: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Approves an ACH Transfer in a pending_approval state.
       sig do
         params(
@@ -153,9 +147,7 @@ module Increase
         # The identifier of the ACH Transfer to approve.
         ach_transfer_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Cancels an ACH Transfer in a pending_approval state.
       sig do
         params(
@@ -168,13 +160,10 @@ module Increase
         # The identifier of the pending ACH Transfer to cancel.
         ach_transfer_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

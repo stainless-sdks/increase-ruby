@@ -191,9 +191,7 @@ module Increase
           physical_card_id: nil,
           terminal_id: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -219,8 +217,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # Forces a card decline with a specific reason. No real time decision will be
         #   sent.
@@ -363,8 +360,7 @@ module Increase
                 T::Array[Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol]
               )
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         # The direction describes the direction the funds will move, either from the
@@ -395,8 +391,7 @@ module Increase
             override
               .returns(T::Array[Increase::Models::Simulations::CardAuthorizationCreateParams::Direction::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         class NetworkDetails < Increase::Internal::Type::BaseModel
@@ -425,15 +420,13 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(visa:)
-          end
+          def self.new(visa:); end
 
           sig do
             override
               .returns({visa: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa})
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class Visa < Increase::Internal::Type::BaseModel
             # The reason code for the stand-in processing.
@@ -461,8 +454,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(stand_in_processing_reason: nil)
-            end
+            def self.new(stand_in_processing_reason: nil); end
 
             sig do
               override
@@ -472,8 +464,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The reason code for the stand-in processing.
             module StandInProcessingReason
@@ -545,12 +536,11 @@ module Increase
                 override
                   .returns(
                     T::Array[
-                    Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                      Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
           end
         end

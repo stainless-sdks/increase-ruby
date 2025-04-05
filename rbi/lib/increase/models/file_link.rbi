@@ -68,8 +68,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # A constant representing the object's type. For this resource it will always be
       #   `file_link`.
@@ -82,8 +81,7 @@ module Increase
         FILE_LINK = T.let(:file_link, Increase::Models::FileLink::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::FileLink::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

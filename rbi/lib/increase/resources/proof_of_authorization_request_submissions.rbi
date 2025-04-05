@@ -48,9 +48,7 @@ module Increase
         # IP address of the authorizer.
         authorizer_ip_address: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve a Proof of Authorization Request Submission
       sig do
         params(
@@ -63,9 +61,7 @@ module Increase
         # The identifier of the Proof of Authorization Request Submission.
         proof_of_authorization_request_submission_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # List Proof of Authorization Request Submissions
       sig do
         params(
@@ -91,13 +87,10 @@ module Increase
         # ID of the proof of authorization request.
         proof_of_authorization_request_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

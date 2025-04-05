@@ -98,9 +98,7 @@ module Increase
         source:,
         status:,
         type:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -120,8 +118,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending
       #   Transaction's currency. This will match the currency on the Pending
@@ -152,8 +149,7 @@ module Increase
         USD = T.let(:USD, Increase::Models::PendingTransaction::Currency::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::PendingTransaction::Currency::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # The type of the route this Pending Transaction came through.
@@ -174,8 +170,7 @@ module Increase
         LOCKBOX = T.let(:lockbox, Increase::Models::PendingTransaction::RouteType::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::PendingTransaction::RouteType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class Source < Increase::Internal::Type::BaseModel
@@ -398,9 +393,7 @@ module Increase
           other:,
           real_time_payments_transfer_instruction:,
           wire_transfer_instruction:
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -419,8 +412,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class AccountTransferInstruction < Increase::Internal::Type::BaseModel
           # The pending amount in the minor unit of the transaction's currency. For dollars,
@@ -447,8 +439,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(amount:, currency:, transfer_id:)
-          end
+          def self.new(amount:, currency:, transfer_id:); end
 
           sig do
             override
@@ -460,8 +451,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
           #   account currency.
@@ -527,8 +517,7 @@ module Increase
                   T::Array[Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -544,12 +533,10 @@ module Increase
           # An ACH Transfer Instruction object. This field will be present in the JSON
           #   response if and only if `category` is equal to `ach_transfer_instruction`.
           sig { params(amount: Integer, transfer_id: String).returns(T.attached_class) }
-          def self.new(amount:, transfer_id:)
-          end
+          def self.new(amount:, transfer_id:); end
 
           sig { override.returns({amount: Integer, transfer_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class CardAuthorization < Increase::Internal::Type::BaseModel
@@ -783,9 +770,7 @@ module Increase
             terminal_id:,
             type:,
             verification:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -820,8 +805,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
@@ -855,8 +839,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
@@ -903,8 +886,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # The direction describes the direction the funds will move, either from the
@@ -940,8 +922,7 @@ module Increase
                   T::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::Direction::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           class NetworkDetails < Increase::Internal::Type::BaseModel
@@ -983,8 +964,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(category:, visa:)
-            end
+            def self.new(category:, visa:); end
 
             sig do
               override
@@ -995,8 +975,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The payment network used to process this card authorization.
             module Category
@@ -1026,8 +1005,7 @@ module Increase
                     T::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class Visa < Increase::Internal::Type::BaseModel
@@ -1103,8 +1081,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
@@ -1185,12 +1162,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                        Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # The method used to enter the cardholder's primary account number and card
@@ -1285,12 +1261,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                        Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # Only present when `actioner: network`. Describes why a card authorization was
@@ -1364,12 +1339,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                        Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -1400,8 +1374,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(retrieval_reference_number:, trace_number:, transaction_id:)
-            end
+            def self.new(retrieval_reference_number:, trace_number:, transaction_id:); end
 
             sig do
               override
@@ -1413,8 +1386,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           # The processing category describes the intent behind the authorization, such as
@@ -1481,8 +1453,7 @@ module Increase
                   T::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # A constant representing the object's type. For this resource it will always be
@@ -1505,8 +1476,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::Type::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           class Verification < Increase::Internal::Type::BaseModel
@@ -1560,8 +1530,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(card_verification_code:, cardholder_address:)
-            end
+            def self.new(card_verification_code:, cardholder_address:); end
 
             sig do
               override
@@ -1572,8 +1541,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class CardVerificationCode < Increase::Internal::Type::BaseModel
               # The result of verifying the Card Verification Code.
@@ -1592,8 +1560,7 @@ module Increase
                 )
                   .returns(T.attached_class)
               end
-              def self.new(result:)
-              end
+              def self.new(result:); end
 
               sig do
                 override
@@ -1603,8 +1570,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The result of verifying the Card Verification Code.
               module Result
@@ -1648,12 +1614,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
+                        Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -1716,8 +1681,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The address verification result returned to the card network.
               module Result
@@ -1782,12 +1746,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
+                        Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -1848,8 +1811,7 @@ module Increase
           OTHER = T.let(:other, Increase::Models::PendingTransaction::Source::Category::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::PendingTransaction::Source::Category::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CheckDepositInstruction < Increase::Internal::Type::BaseModel
@@ -1888,8 +1850,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(amount:, back_image_file_id:, check_deposit_id:, currency:, front_image_file_id:)
-          end
+          def self.new(amount:, back_image_file_id:, check_deposit_id:, currency:, front_image_file_id:); end
 
           sig do
             override
@@ -1903,8 +1864,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
@@ -1952,8 +1912,7 @@ module Increase
                   T::Array[Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -1981,8 +1940,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(amount:, currency:, transfer_id:)
-          end
+          def self.new(amount:, currency:, transfer_id:); end
 
           sig do
             override
@@ -1994,8 +1952,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
           #   currency.
@@ -2061,8 +2018,7 @@ module Increase
                   T::Array[Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -2142,9 +2098,7 @@ module Increase
             released_at:,
             status:,
             type:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -2162,8 +2116,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
           #   currency.
@@ -2203,8 +2156,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # The status of the hold.
@@ -2233,8 +2185,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::PendingTransaction::Source::InboundFundsHold::Status::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # A constant representing the object's type. For this resource it will always be
@@ -2257,8 +2208,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::PendingTransaction::Source::InboundFundsHold::Type::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -2272,12 +2222,10 @@ module Increase
           #   An Inbound Wire Transfer Reversal is created when Increase has received a wire
           #   and the User requests that it be reversed.
           sig { params(inbound_wire_transfer_id: String).returns(T.attached_class) }
-          def self.new(inbound_wire_transfer_id:)
-          end
+          def self.new(inbound_wire_transfer_id:); end
 
           sig { override.returns({inbound_wire_transfer_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class RealTimePaymentsTransferInstruction < Increase::Internal::Type::BaseModel
@@ -2294,12 +2242,10 @@ module Increase
           #   the JSON response if and only if `category` is equal to
           #   `real_time_payments_transfer_instruction`.
           sig { params(amount: Integer, transfer_id: String).returns(T.attached_class) }
-          def self.new(amount:, transfer_id:)
-          end
+          def self.new(amount:, transfer_id:); end
 
           sig { override.returns({amount: Integer, transfer_id: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class WireTransferInstruction < Increase::Internal::Type::BaseModel
@@ -2336,8 +2282,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(account_number:, amount:, message_to_recipient:, routing_number:, transfer_id:)
-          end
+          def self.new(account_number:, amount:, message_to_recipient:, routing_number:, transfer_id:); end
 
           sig do
             override
@@ -2351,8 +2296,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -2372,8 +2316,7 @@ module Increase
         COMPLETE = T.let(:complete, Increase::Models::PendingTransaction::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::PendingTransaction::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -2389,8 +2332,7 @@ module Increase
           T.let(:pending_transaction, Increase::Models::PendingTransaction::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::PendingTransaction::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

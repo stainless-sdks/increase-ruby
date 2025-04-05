@@ -65,8 +65,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # A constant representing the object's type. For this resource it will always be
       #   `card_details`.
@@ -79,8 +78,7 @@ module Increase
         CARD_DETAILS = T.let(:card_details, Increase::Models::CardDetails::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::CardDetails::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

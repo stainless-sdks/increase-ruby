@@ -45,8 +45,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, balances:, currency:, effective_date:, total_balance:, type:)
-      end
+      def self.new(id:, balances:, currency:, effective_date:, total_balance:, type:); end
 
       sig do
         override
@@ -61,8 +60,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Balance < Increase::Internal::Type::BaseModel
         # The identifier of this balance.
@@ -105,8 +103,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(id:, balance:, bank:, bank_location:, fdic_certificate_number:)
-        end
+        def self.new(id:, balance:, bank:, bank_location:, fdic_certificate_number:); end
 
         sig do
           override
@@ -120,8 +117,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class BankLocation < Increase::Internal::Type::BaseModel
           # The bank's city.
@@ -134,12 +130,10 @@ module Increase
 
           # The primary location of the bank.
           sig { params(city: String, state: String).returns(T.attached_class) }
-          def self.new(city:, state:)
-          end
+          def self.new(city:, state:); end
 
           sig { override.returns({city: String, state: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -171,8 +165,7 @@ module Increase
         USD = T.let(:USD, Increase::Models::IntrafiBalance::Currency::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::IntrafiBalance::Currency::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -186,8 +179,7 @@ module Increase
         INTRAFI_BALANCE = T.let(:intrafi_balance, Increase::Models::IntrafiBalance::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::IntrafiBalance::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

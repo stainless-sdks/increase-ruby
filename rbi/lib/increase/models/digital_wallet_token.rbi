@@ -96,8 +96,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Cardholder < Increase::Internal::Type::BaseModel
         # Name of the cardholder, for example "John Smith".
@@ -106,12 +105,10 @@ module Increase
 
         # The cardholder information given when the Digital Wallet Token was created.
         sig { params(name: T.nilable(String)).returns(T.attached_class) }
-        def self.new(name:)
-        end
+        def self.new(name:); end
 
         sig { override.returns({name: T.nilable(String)}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class Device < Increase::Internal::Type::BaseModel
@@ -141,8 +138,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(device_type:, identifier:, ip_address:, name:)
-        end
+        def self.new(device_type:, identifier:, ip_address:, name:); end
 
         sig do
           override
@@ -155,8 +151,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # Device type.
         module DeviceType
@@ -199,8 +194,7 @@ module Increase
             T.let(:automobile_device, Increase::Models::DigitalWalletToken::Device::DeviceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::DigitalWalletToken::Device::DeviceType::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -225,8 +219,7 @@ module Increase
         DEACTIVATED = T.let(:deactivated, Increase::Models::DigitalWalletToken::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::DigitalWalletToken::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # The digital wallet app being used.
@@ -250,8 +243,7 @@ module Increase
         UNKNOWN = T.let(:unknown, Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -267,8 +259,7 @@ module Increase
           T.let(:digital_wallet_token, Increase::Models::DigitalWalletToken::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::DigitalWalletToken::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class Update < Increase::Internal::Type::BaseModel
@@ -285,15 +276,13 @@ module Increase
           params(status: Increase::Models::DigitalWalletToken::Update::Status::OrSymbol, timestamp: Time)
             .returns(T.attached_class)
         end
-        def self.new(status:, timestamp:)
-        end
+        def self.new(status:, timestamp:); end
 
         sig do
           override
             .returns({status: Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol, timestamp: Time})
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The status the update changed this Digital Wallet Token to.
         module Status
@@ -316,8 +305,7 @@ module Increase
           DEACTIVATED = T.let(:deactivated, Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

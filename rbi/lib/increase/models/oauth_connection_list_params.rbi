@@ -48,8 +48,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(cursor: nil, limit: nil, oauth_application_id: nil, status: nil, request_options: {})
-      end
+      def self.new(cursor: nil, limit: nil, oauth_application_id: nil, status: nil, request_options: {}); end
 
       sig do
         override
@@ -63,8 +62,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Status < Increase::Internal::Type::BaseModel
         # Filter to OAuth Connections by their status. By default, return only the
@@ -80,12 +78,10 @@ module Increase
           params(in_: T::Array[Increase::Models::OAuthConnectionListParams::Status::In::OrSymbol])
             .returns(T.attached_class)
         end
-        def self.new(in_: nil)
-        end
+        def self.new(in_: nil); end
 
         sig { override.returns({in_: T::Array[Increase::Models::OAuthConnectionListParams::Status::In::OrSymbol]}) }
-        def to_hash
-        end
+        def to_hash; end
 
         module In
           extend Increase::Internal::Type::Enum
@@ -101,8 +97,7 @@ module Increase
           INACTIVE = T.let(:inactive, Increase::Models::OAuthConnectionListParams::Status::In::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::OAuthConnectionListParams::Status::In::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

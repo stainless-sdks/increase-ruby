@@ -169,9 +169,7 @@ module Increase
         status:,
         transaction_id:,
         type:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -197,8 +195,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class DepositAcceptance < Increase::Internal::Type::BaseModel
         # The account number printed on the check.
@@ -272,8 +269,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
         #   transaction's currency.
@@ -304,8 +300,7 @@ module Increase
           USD = T.let(:USD, Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -366,8 +361,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
         #   currency.
@@ -397,8 +391,7 @@ module Increase
           USD = T.let(:USD, Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         # Why the check deposit was rejected.
@@ -458,8 +451,7 @@ module Increase
           UNKNOWN = T.let(:unknown, Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::CheckDeposit::DepositRejection::Reason::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -521,8 +513,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
         #   transaction's currency.
@@ -552,8 +543,7 @@ module Increase
           USD = T.let(:USD, Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         # Why this check was returned by the bank holding the account it was drawn
@@ -686,8 +676,7 @@ module Increase
             T.let(:branch_or_account_sold, Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -713,12 +702,10 @@ module Increase
         sig do
           params(back_file_id: String, front_file_id: String, submitted_at: Time).returns(T.attached_class)
         end
-        def self.new(back_file_id:, front_file_id:, submitted_at:)
-        end
+        def self.new(back_file_id:, front_file_id:, submitted_at:); end
 
         sig { override.returns({back_file_id: String, front_file_id: String, submitted_at: Time}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class InboundFundsHold < Increase::Internal::Type::BaseModel
@@ -795,9 +782,7 @@ module Increase
           released_at:,
           status:,
           type:
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -815,8 +800,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
         #   currency.
@@ -846,8 +830,7 @@ module Increase
           USD = T.let(:USD, Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         # The status of the hold.
@@ -865,8 +848,7 @@ module Increase
           COMPLETE = T.let(:complete, Increase::Models::CheckDeposit::InboundFundsHold::Status::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::CheckDeposit::InboundFundsHold::Status::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         # A constant representing the object's type. For this resource it will always be
@@ -882,8 +864,7 @@ module Increase
             T.let(:inbound_funds_hold, Increase::Models::CheckDeposit::InboundFundsHold::Type::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::CheckDeposit::InboundFundsHold::Type::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -907,8 +888,7 @@ module Increase
         RETURNED = T.let(:returned, Increase::Models::CheckDeposit::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::CheckDeposit::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -922,8 +902,7 @@ module Increase
         CHECK_DEPOSIT = T.let(:check_deposit, Increase::Models::CheckDeposit::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::CheckDeposit::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

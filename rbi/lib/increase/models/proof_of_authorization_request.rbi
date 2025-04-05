@@ -40,8 +40,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, ach_transfers:, created_at:, due_on:, type:, updated_at:)
-      end
+      def self.new(id:, ach_transfers:, created_at:, due_on:, type:, updated_at:); end
 
       sig do
         override
@@ -56,8 +55,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class ACHTransfer < Increase::Internal::Type::BaseModel
         # The ACH Transfer identifier.
@@ -65,12 +63,10 @@ module Increase
         attr_accessor :id
 
         sig { params(id: String).returns(T.attached_class) }
-        def self.new(id:)
-        end
+        def self.new(id:); end
 
         sig { override.returns({id: String}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -86,8 +82,7 @@ module Increase
           T.let(:proof_of_authorization_request, Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

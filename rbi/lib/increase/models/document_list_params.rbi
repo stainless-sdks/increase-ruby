@@ -77,8 +77,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Category < Increase::Internal::Type::BaseModel
         # Filter Documents for those with the specified category or categories. For GET
@@ -94,12 +93,10 @@ module Increase
           params(in_: T::Array[Increase::Models::DocumentListParams::Category::In::OrSymbol])
             .returns(T.attached_class)
         end
-        def self.new(in_: nil)
-        end
+        def self.new(in_: nil); end
 
         sig { override.returns({in_: T::Array[Increase::Models::DocumentListParams::Category::In::OrSymbol]}) }
-        def to_hash
-        end
+        def to_hash; end
 
         module In
           extend Increase::Internal::Type::Enum
@@ -123,8 +120,7 @@ module Increase
             T.let(:company_information, Increase::Models::DocumentListParams::Category::In::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::DocumentListParams::Category::In::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -164,12 +160,10 @@ module Increase
         sig do
           params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
         end
-        def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
-        end
+        def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil); end
 
         sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

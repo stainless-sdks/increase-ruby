@@ -77,9 +77,7 @@ module Increase
           released_at:,
           status:,
           type:
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -97,8 +95,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
         #   currency.
@@ -138,8 +135,7 @@ module Increase
             override
               .returns(T::Array[Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         # The status of the hold.
@@ -168,8 +164,7 @@ module Increase
             override
               .returns(T::Array[Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         # A constant representing the object's type. For this resource it will always be
@@ -192,8 +187,7 @@ module Increase
             override
               .returns(T::Array[Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

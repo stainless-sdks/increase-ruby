@@ -92,8 +92,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Address < Increase::Internal::Type::BaseModel
         # The city of the address.
@@ -136,8 +135,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(city:, line1:, line2:, postal_code:, recipient:, state:)
-        end
+        def self.new(city:, line1:, line2:, postal_code:, recipient:, state:); end
 
         sig do
           override
@@ -152,8 +150,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       # This indicates if mail can be sent to this address.
@@ -170,8 +167,7 @@ module Increase
         INACTIVE = T.let(:inactive, Increase::Models::Lockbox::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Lockbox::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -185,8 +181,7 @@ module Increase
         LOCKBOX = T.let(:lockbox, Increase::Models::Lockbox::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Lockbox::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

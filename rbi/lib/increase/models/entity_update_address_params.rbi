@@ -24,8 +24,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(address:, request_options: {})
-      end
+      def self.new(address:, request_options: {}); end
 
       sig do
         override
@@ -33,8 +32,7 @@ module Increase
             {address: Increase::Models::EntityUpdateAddressParams::Address, request_options: Increase::RequestOptions}
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Address < Increase::Internal::Type::BaseModel
         # The city of the address.
@@ -72,12 +70,10 @@ module Increase
             line2: String
           ).returns(T.attached_class)
         end
-        def self.new(city:, line1:, state:, zip:, line2: nil)
-        end
+        def self.new(city:, line1:, state:, zip:, line2: nil); end
 
         sig { override.returns({city: String, line1: String, state: String, zip: String, line2: String}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

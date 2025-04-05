@@ -135,9 +135,7 @@ module Increase
         individual_name: nil,
         standard_entry_class_code: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -159,8 +157,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Whether the Prenotification is for a future debit or credit.
       module CreditDebitIndicator
@@ -189,8 +186,7 @@ module Increase
           override
             .returns(T::Array[Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol])
         end
-        def self.values
-        end
+        def self.values; end
       end
 
       # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
@@ -240,8 +236,7 @@ module Increase
           override
             .returns(T::Array[Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol])
         end
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

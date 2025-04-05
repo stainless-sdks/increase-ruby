@@ -113,9 +113,7 @@ module Increase
         program_id:,
         status:,
         type:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -138,8 +136,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The bank the Account is with.
       module Bank
@@ -158,8 +155,7 @@ module Increase
         GRASSHOPPER_BANK = T.let(:grasshopper_bank, Increase::Models::Account::Bank::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Account::Bank::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
@@ -189,8 +185,7 @@ module Increase
         USD = T.let(:USD, Increase::Models::Account::Currency::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Account::Currency::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # The status of the Account.
@@ -207,8 +202,7 @@ module Increase
         OPEN = T.let(:open, Increase::Models::Account::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Account::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -222,8 +216,7 @@ module Increase
         ACCOUNT = T.let(:account, Increase::Models::Account::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Account::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

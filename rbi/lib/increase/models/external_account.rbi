@@ -81,9 +81,7 @@ module Increase
         status:,
         type:,
         verification_status:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -102,8 +100,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The type of entity that owns the External Account.
       module AccountHolder
@@ -123,8 +120,7 @@ module Increase
         UNKNOWN = T.let(:unknown, Increase::Models::ExternalAccount::AccountHolder::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ExternalAccount::AccountHolder::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # The type of the account to which the transfer will be sent.
@@ -145,8 +141,7 @@ module Increase
         OTHER = T.let(:other, Increase::Models::ExternalAccount::Funding::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ExternalAccount::Funding::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # The External Account's status.
@@ -164,8 +159,7 @@ module Increase
         ARCHIVED = T.let(:archived, Increase::Models::ExternalAccount::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ExternalAccount::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -179,8 +173,7 @@ module Increase
         EXTERNAL_ACCOUNT = T.let(:external_account, Increase::Models::ExternalAccount::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ExternalAccount::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # If you have verified ownership of the External Account.
@@ -201,8 +194,7 @@ module Increase
         VERIFIED = T.let(:verified, Increase::Models::ExternalAccount::VerificationStatus::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ExternalAccount::VerificationStatus::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

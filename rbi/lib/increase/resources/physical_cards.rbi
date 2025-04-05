@@ -25,9 +25,7 @@ module Increase
         #   physical card profile will be used if not provided.
         physical_card_profile_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve a Physical Card
       sig do
         params(
@@ -40,9 +38,7 @@ module Increase
         # The identifier of the Physical Card.
         physical_card_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Update a Physical Card
       sig do
         params(
@@ -58,9 +54,7 @@ module Increase
         # The status to update the Physical Card to.
         status:,
         request_options: {}
-      )
-      end
-
+      ); end
       # List Physical Cards
       sig do
         params(
@@ -88,13 +82,10 @@ module Increase
         #   objects.
         limit: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

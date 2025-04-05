@@ -158,9 +158,7 @@ module Increase
         originator_to_beneficiary_information_line4:,
         recipient_account_number_id:,
         type:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -191,8 +189,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_wire_drawdown_request`.
@@ -207,8 +204,7 @@ module Increase
           T.let(:inbound_wire_drawdown_request, Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

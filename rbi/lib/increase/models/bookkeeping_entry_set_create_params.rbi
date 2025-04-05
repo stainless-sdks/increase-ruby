@@ -34,8 +34,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(entries:, date: nil, transaction_id: nil, request_options: {})
-      end
+      def self.new(entries:, date: nil, transaction_id: nil, request_options: {}); end
 
       sig do
         override
@@ -48,8 +47,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Entry < Increase::Internal::Type::BaseModel
         # The identifier for the Bookkeeping Account impacted by this entry.
@@ -63,12 +61,10 @@ module Increase
         attr_accessor :amount
 
         sig { params(account_id: String, amount: Integer).returns(T.attached_class) }
-        def self.new(account_id:, amount:)
-        end
+        def self.new(account_id:, amount:); end
 
         sig { override.returns({account_id: String, amount: Integer}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

@@ -51,8 +51,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, client_id:, created_at:, deleted_at:, name:, status:, type:)
-      end
+      def self.new(id:, client_id:, created_at:, deleted_at:, name:, status:, type:); end
 
       sig do
         override
@@ -68,8 +67,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Whether the application is active.
       module Status
@@ -86,8 +84,7 @@ module Increase
         DELETED = T.let(:deleted, Increase::Models::OAuthApplication::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::OAuthApplication::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -101,8 +98,7 @@ module Increase
         OAUTH_APPLICATION = T.let(:oauth_application, Increase::Models::OAuthApplication::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::OAuthApplication::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

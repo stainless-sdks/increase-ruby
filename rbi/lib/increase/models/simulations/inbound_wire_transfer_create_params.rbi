@@ -177,9 +177,7 @@ module Increase
           originator_to_beneficiary_information_line4: nil,
           sender_reference: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -205,8 +203,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

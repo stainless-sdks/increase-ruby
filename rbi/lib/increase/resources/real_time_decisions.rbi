@@ -15,9 +15,7 @@ module Increase
         # The identifier of the Real-Time Decision.
         real_time_decision_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Action a Real-Time Decision
       sig do
         params(
@@ -56,13 +54,10 @@ module Increase
         #   attempt, this object contains your response to the attempt.
         digital_wallet_token: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end
