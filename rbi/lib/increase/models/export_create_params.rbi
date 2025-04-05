@@ -11,7 +11,7 @@ module Increase
       attr_accessor :category
 
       # Options for the created export. Required if `category` is equal to
-      #   `account_statement_ofx`.
+      # `account_statement_ofx`.
       sig { returns(T.nilable(Increase::Models::ExportCreateParams::AccountStatementOfx)) }
       attr_reader :account_statement_ofx
 
@@ -24,7 +24,7 @@ module Increase
       attr_writer :account_statement_ofx
 
       # Options for the created export. Required if `category` is equal to
-      #   `balance_csv`.
+      # `balance_csv`.
       sig { returns(T.nilable(Increase::Models::ExportCreateParams::BalanceCsv)) }
       attr_reader :balance_csv
 
@@ -35,7 +35,7 @@ module Increase
       attr_writer :balance_csv
 
       # Options for the created export. Required if `category` is equal to
-      #   `bookkeeping_account_balance_csv`.
+      # `bookkeeping_account_balance_csv`.
       sig { returns(T.nilable(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv)) }
       attr_reader :bookkeeping_account_balance_csv
 
@@ -58,7 +58,7 @@ module Increase
       attr_writer :entity_csv
 
       # Options for the created export. Required if `category` is equal to
-      #   `transaction_csv`.
+      # `transaction_csv`.
       sig { returns(T.nilable(Increase::Models::ExportCreateParams::TransactionCsv)) }
       attr_reader :transaction_csv
 
@@ -167,7 +167,7 @@ module Increase
         attr_writer :created_at
 
         # Options for the created export. Required if `category` is equal to
-        #   `account_statement_ofx`.
+        # `account_statement_ofx`.
         sig do
           params(
             account_id: String,
@@ -187,7 +187,7 @@ module Increase
 
         class CreatedAt < Increase::Internal::Type::BaseModel
           # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          #   timestamp.
+          # timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :after
 
@@ -195,7 +195,7 @@ module Increase
           attr_writer :after
 
           # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          #   timestamp.
+          # timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :before
 
@@ -203,7 +203,7 @@ module Increase
           attr_writer :before
 
           # Return results on or after this
-          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :on_or_after
 
@@ -211,7 +211,7 @@ module Increase
           attr_writer :on_or_after
 
           # Return results on or before this
-          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :on_or_before
 
@@ -257,7 +257,7 @@ module Increase
         attr_writer :program_id
 
         # Options for the created export. Required if `category` is equal to
-        #   `balance_csv`.
+        # `balance_csv`.
         sig do
           params(
             account_id: String,
@@ -282,7 +282,7 @@ module Increase
 
         class CreatedAt < Increase::Internal::Type::BaseModel
           # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          #   timestamp.
+          # timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :after
 
@@ -290,7 +290,7 @@ module Increase
           attr_writer :after
 
           # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          #   timestamp.
+          # timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :before
 
@@ -298,7 +298,7 @@ module Increase
           attr_writer :before
 
           # Return results on or after this
-          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :on_or_after
 
@@ -306,7 +306,7 @@ module Increase
           attr_writer :on_or_after
 
           # Return results on or before this
-          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :on_or_before
 
@@ -348,7 +348,7 @@ module Increase
         attr_writer :created_at
 
         # Options for the created export. Required if `category` is equal to
-        #   `bookkeeping_account_balance_csv`.
+        # `bookkeeping_account_balance_csv`.
         sig do
           params(
             bookkeeping_account_id: String,
@@ -374,7 +374,7 @@ module Increase
 
         class CreatedAt < Increase::Internal::Type::BaseModel
           # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          #   timestamp.
+          # timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :after
 
@@ -382,7 +382,7 @@ module Increase
           attr_writer :after
 
           # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          #   timestamp.
+          # timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :before
 
@@ -390,7 +390,7 @@ module Increase
           attr_writer :before
 
           # Return results on or after this
-          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :on_or_after
 
@@ -398,7 +398,7 @@ module Increase
           attr_writer :on_or_after
 
           # Return results on or before this
-          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :on_or_before
 
@@ -443,7 +443,7 @@ module Increase
 
         class Status < Increase::Internal::Type::BaseModel
           # Entity statuses to filter by. For GET requests, this should be encoded as a
-          #   comma-delimited string, such as `?in=one,two,three`.
+          # comma-delimited string, such as `?in=one,two,three`.
           sig { returns(T::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::In::OrSymbol]) }
           attr_accessor :in_
 
@@ -508,7 +508,7 @@ module Increase
         attr_writer :program_id
 
         # Options for the created export. Required if `category` is equal to
-        #   `transaction_csv`.
+        # `transaction_csv`.
         sig do
           params(
             account_id: String,
@@ -533,7 +533,7 @@ module Increase
 
         class CreatedAt < Increase::Internal::Type::BaseModel
           # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          #   timestamp.
+          # timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :after
 
@@ -541,7 +541,7 @@ module Increase
           attr_writer :after
 
           # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          #   timestamp.
+          # timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :before
 
@@ -549,7 +549,7 @@ module Increase
           attr_writer :before
 
           # Return results on or after this
-          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :on_or_after
 
@@ -557,7 +557,7 @@ module Increase
           attr_writer :on_or_after
 
           # Return results on or before this
-          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :on_or_before
 

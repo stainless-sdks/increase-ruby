@@ -5,7 +5,7 @@ module Increase
     class Simulations
       class DigitalWalletTokenRequests
         # Simulates a user attempting add a [Card](#cards) to a digital wallet such as
-        #   Apple Pay.
+        # Apple Pay.
         #
         # @overload create(card_id:, request_options: {})
         #

@@ -8,7 +8,7 @@ module Increase
       attr_accessor :id
 
       # The identifier for the Account checks sent to this lockbox will be deposited
-      #   into.
+      # into.
       sig { returns(String) }
       attr_accessor :account_id
 
@@ -20,7 +20,7 @@ module Increase
       attr_writer :address
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Lockbox
-      #   was created.
+      # was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -29,8 +29,8 @@ module Increase
       attr_accessor :description
 
       # The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # Increase and is used to ensure that a request is only processed once. Learn more
+      # about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
@@ -43,12 +43,12 @@ module Increase
       attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
-      #   `lockbox`.
+      # `lockbox`.
       sig { returns(Increase::Models::Lockbox::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Lockboxes are physical locations that can receive mail containing paper checks.
-      #   Increase will automatically create a Check Deposit for checks received this way.
+      # Increase will automatically create a Check Deposit for checks received this way.
       sig do
         params(
           id: String,
@@ -112,14 +112,14 @@ module Increase
         attr_accessor :postal_code
 
         # The recipient line of the address. This will include the recipient name you
-        #   provide when creating the address, as well as an ATTN suffix to help route the
-        #   mail to your lockbox. Mail senders must include this ATTN line to receive mail
-        #   at this Lockbox.
+        # provide when creating the address, as well as an ATTN suffix to help route the
+        # mail to your lockbox. Mail senders must include this ATTN line to receive mail
+        # at this Lockbox.
         sig { returns(T.nilable(String)) }
         attr_accessor :recipient
 
         # The two-letter United States Postal Service (USPS) abbreviation for the state of
-        #   the address.
+        # the address.
         sig { returns(String) }
         attr_accessor :state
 
@@ -171,7 +171,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `lockbox`.
+      # `lockbox`.
       module Type
         extend Increase::Internal::Type::Enum
 

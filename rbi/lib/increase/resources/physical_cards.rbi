@@ -22,7 +22,7 @@ module Increase
         # The details used to ship this physical card.
         shipment:,
         # The physical card profile to use for this physical card. The latest default
-        #   physical card profile will be used if not provided.
+        # physical card profile will be used if not provided.
         physical_card_profile_id: nil,
         request_options: {}
       ); end
@@ -74,12 +74,12 @@ module Increase
         # Return the page of entries after this one.
         cursor: nil,
         # Filter records to the one with the specified `idempotency_key` you chose for
-        #   that object. This value is unique across Increase and is used to ensure that a
-        #   request is only processed once. Learn more about
-        #   [idempotency](https://increase.com/documentation/idempotency-keys).
+        # that object. This value is unique across Increase and is used to ensure that a
+        # request is only processed once. Learn more about
+        # [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        #   objects.
+        # objects.
         limit: nil,
         request_options: {}
       ); end

@@ -10,8 +10,8 @@ module Increase
 
       # @!attribute file
       #   The file contents. This should follow the specifications of
-      #     [RFC 7578](https://datatracker.ietf.org/doc/html/rfc7578) which defines file
-      #     transfers for the multipart/form-data protocol.
+      #   [RFC 7578](https://datatracker.ietf.org/doc/html/rfc7578) which defines file
+      #   transfers for the multipart/form-data protocol.
       #
       #   @return [IO, StringIO]
       required :file, IO

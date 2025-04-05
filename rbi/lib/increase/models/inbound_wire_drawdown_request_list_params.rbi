@@ -14,7 +14,7 @@ module Increase
       attr_writer :cursor
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
+      # objects.
       sig { returns(T.nilable(Integer)) }
       attr_reader :limit
 

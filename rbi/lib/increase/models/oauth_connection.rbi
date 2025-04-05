@@ -8,12 +8,12 @@ module Increase
       attr_accessor :id
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-      #   Connection was created.
+      # Connection was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-      #   Connection was deleted.
+      # Connection was deleted.
       sig { returns(T.nilable(Time)) }
       attr_accessor :deleted_at
 
@@ -30,13 +30,13 @@ module Increase
       attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
-      #   `oauth_connection`.
+      # `oauth_connection`.
       sig { returns(Increase::Models::OAuthConnection::Type::TaggedSymbol) }
       attr_accessor :type
 
       # When a user authorizes your OAuth application, an OAuth Connection object is
-      #   created. Learn more about OAuth
-      #   [here](https://increase.com/documentation/oauth).
+      # created. Learn more about OAuth
+      # [here](https://increase.com/documentation/oauth).
       sig do
         params(
           id: String,
@@ -86,7 +86,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `oauth_connection`.
+      # `oauth_connection`.
       module Type
         extend Increase::Internal::Type::Enum
 

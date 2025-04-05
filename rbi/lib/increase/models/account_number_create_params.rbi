@@ -27,7 +27,7 @@ module Increase
       attr_writer :inbound_ach
 
       # Options related to how this Account Number should handle inbound check
-      #   withdrawals.
+      # withdrawals.
       sig { returns(T.nilable(Increase::Models::AccountNumberCreateParams::InboundChecks)) }
       attr_reader :inbound_checks
 
@@ -67,8 +67,8 @@ module Increase
 
       class InboundACH < Increase::Internal::Type::BaseModel
         # Whether ACH debits are allowed against this Account Number. Note that ACH debits
-        #   will be declined if this is `allowed` but the Account Number is not active. If
-        #   you do not specify this field, the default is `allowed`.
+        # will be declined if this is `allowed` but the Account Number is not active. If
+        # you do not specify this field, the default is `allowed`.
         sig { returns(Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::OrSymbol) }
         attr_accessor :debit_status
 
@@ -86,8 +86,8 @@ module Increase
         def to_hash; end
 
         # Whether ACH debits are allowed against this Account Number. Note that ACH debits
-        #   will be declined if this is `allowed` but the Account Number is not active. If
-        #   you do not specify this field, the default is `allowed`.
+        # will be declined if this is `allowed` but the Account Number is not active. If
+        # you do not specify this field, the default is `allowed`.
         module DebitStatus
           extend Increase::Internal::Type::Enum
 
@@ -114,12 +114,12 @@ module Increase
 
       class InboundChecks < Increase::Internal::Type::BaseModel
         # How Increase should process checks with this account number printed on them. If
-        #   you do not specify this field, the default is `check_transfers_only`.
+        # you do not specify this field, the default is `check_transfers_only`.
         sig { returns(Increase::Models::AccountNumberCreateParams::InboundChecks::Status::OrSymbol) }
         attr_accessor :status
 
         # Options related to how this Account Number should handle inbound check
-        #   withdrawals.
+        # withdrawals.
         sig do
           params(status: Increase::Models::AccountNumberCreateParams::InboundChecks::Status::OrSymbol)
             .returns(T.attached_class)
@@ -130,7 +130,7 @@ module Increase
         def to_hash; end
 
         # How Increase should process checks with this account number printed on them. If
-        #   you do not specify this field, the default is `check_transfers_only`.
+        # you do not specify this field, the default is `check_transfers_only`.
         module Status
           extend Increase::Internal::Type::Enum
 

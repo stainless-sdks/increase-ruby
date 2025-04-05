@@ -5,9 +5,9 @@ module Increase
     class Simulations
       class RealTimePaymentsTransfers
         # Simulates submission of a
-        #   [Real-Time Payments Transfer](#real-time-payments-transfers) and handling the
-        #   response from the destination financial institution. This transfer must first
-        #   have a `status` of `pending_submission`.
+        # [Real-Time Payments Transfer](#real-time-payments-transfers) and handling the
+        # response from the destination financial institution. This transfer must first
+        # have a `status` of `pending_submission`.
         sig do
           params(
             real_time_payments_transfer_id: String,

@@ -20,13 +20,13 @@ module Increase
       attr_accessor :primary_account_number
 
       # A constant representing the object's type. For this resource it will always be
-      #   `card_details`.
+      # `card_details`.
       sig { returns(Increase::Models::CardDetails::Type::TaggedSymbol) }
       attr_accessor :type
 
       # The three-digit verification code for the card. It's also known as the Card
-      #   Verification Code (CVC), the Card Verification Value (CVV), or the Card
-      #   Identification (CID).
+      # Verification Code (CVC), the Card Verification Value (CVV), or the Card
+      # Identification (CID).
       sig { returns(String) }
       attr_accessor :verification_code
 
@@ -68,7 +68,7 @@ module Increase
       def to_hash; end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `card_details`.
+      # `card_details`.
       module Type
         extend Increase::Internal::Type::Enum
 

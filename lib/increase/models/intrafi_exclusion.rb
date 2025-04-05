@@ -18,7 +18,7 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #     the exclusion was created.
+      #   the exclusion was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -37,15 +37,15 @@ module Increase
 
       # @!attribute fdic_certificate_number
       #   The Federal Deposit Insurance Corporation's certificate number for the
-      #     institution.
+      #   institution.
       #
       #   @return [String, nil]
       required :fdic_certificate_number, String, nil?: true
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
-      #     Increase and is used to ensure that a request is only processed once. Learn more
-      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -64,16 +64,16 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `intrafi_exclusion`.
+      #   `intrafi_exclusion`.
       #
       #   @return [Symbol, Increase::Models::IntrafiExclusion::Type]
       required :type, enum: -> { Increase::Models::IntrafiExclusion::Type }
 
       # @!parse
       #   # Certain institutions may be excluded per Entity when sweeping funds into the
-      #   #   IntraFi network. This is useful when an Entity already has deposits at a
-      #   #   particular bank, and does not want to sweep additional funds to it. It may take
-      #   #   5 business days for an exclusion to be processed.
+      #   # IntraFi network. This is useful when an Entity already has deposits at a
+      #   # particular bank, and does not want to sweep additional funds to it. It may take
+      #   # 5 business days for an exclusion to be processed.
       #   #
       #   # @param id [String]
       #   # @param bank_name [String]
@@ -127,7 +127,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `intrafi_exclusion`.
+      # `intrafi_exclusion`.
       #
       # @see Increase::Models::IntrafiExclusion#type
       module Type

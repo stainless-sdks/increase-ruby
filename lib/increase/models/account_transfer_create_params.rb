@@ -16,7 +16,7 @@ module Increase
 
       # @!attribute amount
       #   The transfer amount in the minor unit of the account currency. For dollars, for
-      #     example, this is cents.
+      #   example, this is cents.
       #
       #   @return [Integer]
       required :amount, Integer

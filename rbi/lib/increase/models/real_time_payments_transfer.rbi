@@ -12,7 +12,7 @@ module Increase
       attr_accessor :account_id
 
       # If the transfer is acknowledged by the recipient bank, this will contain
-      #   supplemental details.
+      # supplemental details.
       sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Acknowledgement)) }
       attr_reader :acknowledgement
 
@@ -29,7 +29,7 @@ module Increase
       attr_accessor :amount
 
       # If your account requires approvals for transfers and the transfer was approved,
-      #   this will contain details of the approval.
+      # this will contain details of the approval.
       sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Approval)) }
       attr_reader :approval
 
@@ -42,7 +42,7 @@ module Increase
       attr_writer :approval
 
       # If your account requires approvals for transfers and the transfer was not
-      #   approved, this will contain details of the cancellation.
+      # approved, this will contain details of the cancellation.
       sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Cancellation)) }
       attr_reader :cancellation
 
@@ -55,7 +55,7 @@ module Increase
       attr_writer :cancellation
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the transfer was created.
+      # the transfer was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -72,17 +72,17 @@ module Increase
       attr_writer :created_by
 
       # The name of the transfer's recipient. This is set by the sender when creating
-      #   the transfer.
+      # the transfer.
       sig { returns(String) }
       attr_accessor :creditor_name
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-      #   currency. For real-time payments transfers this is always equal to `USD`.
+      # currency. For real-time payments transfers this is always equal to `USD`.
       sig { returns(Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol) }
       attr_accessor :currency
 
       # The name of the transfer's sender. If not provided, defaults to the name of the
-      #   account's entity.
+      # account's entity.
       sig { returns(T.nilable(String)) }
       attr_accessor :debtor_name
 
@@ -91,7 +91,7 @@ module Increase
       attr_accessor :destination_account_number
 
       # The destination American Bankers' Association (ABA) Routing Transit Number
-      #   (RTN).
+      # (RTN).
       sig { returns(String) }
       attr_accessor :destination_routing_number
 
@@ -100,20 +100,20 @@ module Increase
       attr_accessor :external_account_id
 
       # The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # Increase and is used to ensure that a request is only processed once. Learn more
+      # about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
       # The ID for the pending transaction representing the transfer. A pending
-      #   transaction is created when the transfer
-      #   [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
-      #   by someone else in your organization.
+      # transaction is created when the transfer
+      # [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
+      # by someone else in your organization.
       sig { returns(T.nilable(String)) }
       attr_accessor :pending_transaction_id
 
       # If the transfer is rejected by Real-Time Payments or the destination financial
-      #   institution, this will contain supplemental details.
+      # institution, this will contain supplemental details.
       sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Rejection)) }
       attr_reader :rejection
 
@@ -138,7 +138,7 @@ module Increase
       attr_accessor :status
 
       # After the transfer is submitted to Real-Time Payments, this will contain
-      #   supplemental details.
+      # supplemental details.
       sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Submission)) }
       attr_reader :submission
 
@@ -155,22 +155,22 @@ module Increase
       attr_accessor :transaction_id
 
       # A constant representing the object's type. For this resource it will always be
-      #   `real_time_payments_transfer`.
+      # `real_time_payments_transfer`.
       sig { returns(Increase::Models::RealTimePaymentsTransfer::Type::TaggedSymbol) }
       attr_accessor :type
 
       # The name of the ultimate recipient of the transfer. Set this if the creditor is
-      #   an intermediary receiving the payment for someone else.
+      # an intermediary receiving the payment for someone else.
       sig { returns(T.nilable(String)) }
       attr_accessor :ultimate_creditor_name
 
       # The name of the ultimate sender of the transfer. Set this if the funds are being
-      #   sent on behalf of someone who is not the account holder at Increase.
+      # sent on behalf of someone who is not the account holder at Increase.
       sig { returns(T.nilable(String)) }
       attr_accessor :ultimate_debtor_name
 
       # Real-Time Payments transfers move funds, within seconds, between your Increase
-      #   account and any other account on the Real-Time Payments network.
+      # account and any other account on the Real-Time Payments network.
       sig do
         params(
           id: String,
@@ -268,7 +268,7 @@ module Increase
         attr_accessor :acknowledged_at
 
         # If the transfer is acknowledged by the recipient bank, this will contain
-        #   supplemental details.
+        # supplemental details.
         sig { params(acknowledged_at: Time).returns(T.attached_class) }
         def self.new(acknowledged_at:); end
 
@@ -278,17 +278,17 @@ module Increase
 
       class Approval < Increase::Internal::Type::BaseModel
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the transfer was approved.
+        # the transfer was approved.
         sig { returns(Time) }
         attr_accessor :approved_at
 
         # If the Transfer was approved by a user in the dashboard, the email address of
-        #   that user.
+        # that user.
         sig { returns(T.nilable(String)) }
         attr_accessor :approved_by
 
         # If your account requires approvals for transfers and the transfer was approved,
-        #   this will contain details of the approval.
+        # this will contain details of the approval.
         sig { params(approved_at: Time, approved_by: T.nilable(String)).returns(T.attached_class) }
         def self.new(approved_at:, approved_by:); end
 
@@ -298,17 +298,17 @@ module Increase
 
       class Cancellation < Increase::Internal::Type::BaseModel
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the Transfer was canceled.
+        # the Transfer was canceled.
         sig { returns(Time) }
         attr_accessor :canceled_at
 
         # If the Transfer was canceled by a user in the dashboard, the email address of
-        #   that user.
+        # that user.
         sig { returns(T.nilable(String)) }
         attr_accessor :canceled_by
 
         # If your account requires approvals for transfers and the transfer was not
-        #   approved, this will contain details of the cancellation.
+        # approved, this will contain details of the cancellation.
         sig { params(canceled_at: Time, canceled_by: T.nilable(String)).returns(T.attached_class) }
         def self.new(canceled_at:, canceled_by:); end
 
@@ -460,7 +460,7 @@ module Increase
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-      #   currency. For real-time payments transfers this is always equal to `USD`.
+      # currency. For real-time payments transfers this is always equal to `USD`.
       module Currency
         extend Increase::Internal::Type::Enum
 
@@ -492,22 +492,22 @@ module Increase
 
       class Rejection < Increase::Internal::Type::BaseModel
         # Additional information about the rejection provided by the recipient bank when
-        #   the `reject_reason_code` is `NARRATIVE`.
+        # the `reject_reason_code` is `NARRATIVE`.
         sig { returns(T.nilable(String)) }
         attr_accessor :reject_reason_additional_information
 
         # The reason the transfer was rejected as provided by the recipient bank or the
-        #   Real-Time Payments network.
+        # Real-Time Payments network.
         sig { returns(Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol) }
         attr_accessor :reject_reason_code
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the transfer was rejected.
+        # the transfer was rejected.
         sig { returns(T.nilable(Time)) }
         attr_accessor :rejected_at
 
         # If the transfer is rejected by Real-Time Payments or the destination financial
-        #   institution, this will contain supplemental details.
+        # institution, this will contain supplemental details.
         sig do
           params(
             reject_reason_additional_information: T.nilable(String),
@@ -531,7 +531,7 @@ module Increase
         def to_hash; end
 
         # The reason the transfer was rejected as provided by the recipient bank or the
-        #   Real-Time Payments network.
+        # Real-Time Payments network.
         module RejectReasonCode
           extend Increase::Internal::Type::Enum
 
@@ -734,7 +734,7 @@ module Increase
 
       class Submission < Increase::Internal::Type::BaseModel
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the transfer was submitted to The Clearing House.
+        # the transfer was submitted to The Clearing House.
         sig { returns(T.nilable(Time)) }
         attr_accessor :submitted_at
 
@@ -743,7 +743,7 @@ module Increase
         attr_accessor :transaction_identification
 
         # After the transfer is submitted to Real-Time Payments, this will contain
-        #   supplemental details.
+        # supplemental details.
         sig do
           params(submitted_at: T.nilable(Time), transaction_identification: String).returns(T.attached_class)
         end
@@ -754,7 +754,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `real_time_payments_transfer`.
+      # `real_time_payments_transfer`.
       module Type
         extend Increase::Internal::Type::Enum
 

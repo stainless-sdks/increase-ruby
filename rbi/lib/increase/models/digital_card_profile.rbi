@@ -32,7 +32,7 @@ module Increase
       attr_accessor :contact_website
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the Card Dispute was created.
+      # the Card Dispute was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -41,8 +41,8 @@ module Increase
       attr_accessor :description
 
       # The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # Increase and is used to ensure that a request is only processed once. Learn more
+      # about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
@@ -65,13 +65,13 @@ module Increase
       attr_writer :text_color
 
       # A constant representing the object's type. For this resource it will always be
-      #   `digital_card_profile`.
+      # `digital_card_profile`.
       sig { returns(Increase::Models::DigitalCardProfile::Type::TaggedSymbol) }
       attr_accessor :type
 
       # This contains artwork and metadata relating to a Card's appearance in digital
-      #   wallet apps like Apple Pay and Google Pay. For more information, see our guide
-      #   on [digital card artwork](https://increase.com/documentation/card-art).
+      # wallet apps like Apple Pay and Google Pay. For more information, see our guide
+      # on [digital card artwork](https://increase.com/documentation/card-art).
       sig do
         params(
           id: String,
@@ -176,7 +176,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `digital_card_profile`.
+      # `digital_card_profile`.
       module Type
         extend Increase::Internal::Type::Enum
 

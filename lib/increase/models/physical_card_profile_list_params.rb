@@ -20,9 +20,9 @@ module Increase
 
       # @!attribute [r] idempotency_key
       #   Filter records to the one with the specified `idempotency_key` you chose for
-      #     that object. This value is unique across Increase and is used to ensure that a
-      #     request is only processed once. Learn more about
-      #     [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   that object. This value is unique across Increase and is used to ensure that a
+      #   request is only processed once. Learn more about
+      #   [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       optional :idempotency_key, String
@@ -33,7 +33,7 @@ module Increase
 
       # @!attribute [r] limit
       #   Limit the size of the list that is returned. The default (and maximum) is 100
-      #     objects.
+      #   objects.
       #
       #   @return [Integer, nil]
       optional :limit, Integer
@@ -65,8 +65,8 @@ module Increase
       class Status < Increase::Internal::Type::BaseModel
         # @!attribute [r] in_
         #   Filter Physical Card Profiles for those with the specified statuses. For GET
-        #     requests, this should be encoded as a comma-delimited string, such as
-        #     `?in=one,two,three`.
+        #   requests, this should be encoded as a comma-delimited string, such as
+        #   `?in=one,two,three`.
         #
         #   @return [Array<Symbol, Increase::Models::PhysicalCardProfileListParams::Status::In>, nil]
         optional :in_,

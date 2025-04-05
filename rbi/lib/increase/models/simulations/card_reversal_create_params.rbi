@@ -12,7 +12,7 @@ module Increase
         attr_accessor :card_payment_id
 
         # The amount of the reversal in minor units in the card authorization's currency.
-        #   This defaults to the authorization amount.
+        # This defaults to the authorization amount.
         sig { returns(T.nilable(Integer)) }
         attr_reader :amount
 

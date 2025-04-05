@@ -18,22 +18,22 @@ module Increase
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
-      #     Increase and is used to ensure that a request is only processed once. Learn more
-      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
 
       # @!attribute oauth_connection_id
       #   If specified, this subscription will only receive webhooks for Events associated
-      #     with this OAuth Connection.
+      #   with this OAuth Connection.
       #
       #   @return [String, nil]
       required :oauth_connection_id, String, nil?: true
 
       # @!attribute selected_event_category
       #   If specified, this subscription will only receive webhooks for Events with the
-      #     specified `category`.
+      #   specified `category`.
       #
       #   @return [Symbol, Increase::Models::EventSubscription::SelectedEventCategory, nil]
       required :selected_event_category,
@@ -48,7 +48,7 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `event_subscription`.
+      #   `event_subscription`.
       #
       #   @return [Symbol, Increase::Models::EventSubscription::Type]
       required :type, enum: -> { Increase::Models::EventSubscription::Type }
@@ -61,11 +61,11 @@ module Increase
 
       # @!parse
       #   # Webhooks are event notifications we send to you by HTTPS POST requests. Event
-      #   #   Subscriptions are how you configure your application to listen for them. You can
-      #   #   create an Event Subscription through your
-      #   #   [developer dashboard](https://dashboard.increase.com/developers/webhooks) or the
-      #   #   API. For more information, see our
-      #   #   [webhooks guide](https://increase.com/documentation/webhooks).
+      #   # Subscriptions are how you configure your application to listen for them. You can
+      #   # create an Event Subscription through your
+      #   # [developer dashboard](https://dashboard.increase.com/developers/webhooks) or the
+      #   # API. For more information, see our
+      #   # [webhooks guide](https://increase.com/documentation/webhooks).
       #   #
       #   # @param id [String]
       #   # @param created_at [Time]
@@ -93,7 +93,7 @@ module Increase
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       # If specified, this subscription will only receive webhooks for Events with the
-      #   specified `category`.
+      # specified `category`.
       #
       # @see Increase::Models::EventSubscription#selected_event_category
       module SelectedEventCategory
@@ -398,7 +398,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `event_subscription`.
+      # `event_subscription`.
       #
       # @see Increase::Models::EventSubscription#type
       module Type

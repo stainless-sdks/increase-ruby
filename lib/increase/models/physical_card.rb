@@ -24,15 +24,15 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #     the Physical Card was created.
+      #   the Physical Card was created.
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
-      #     Increase and is used to ensure that a request is only processed once. Learn more
-      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -57,17 +57,17 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `physical_card`.
+      #   `physical_card`.
       #
       #   @return [Symbol, Increase::Models::PhysicalCard::Type]
       required :type, enum: -> { Increase::Models::PhysicalCard::Type }
 
       # @!parse
       #   # Custom physical Visa cards that are shipped to your customers. The artwork is
-      #   #   configurable by a connected [Card Profile](/documentation/api#card-profiles).
-      #   #   The same Card can be used for multiple Physical Cards. Printing cards incurs a
-      #   #   fee. Please contact [support@increase.com](mailto:support@increase.com) for
-      #   #   pricing!
+      #   # configurable by a connected [Card Profile](/documentation/api#card-profiles).
+      #   # The same Card can be used for multiple Physical Cards. Printing cards incurs a
+      #   # fee. Please contact [support@increase.com](mailto:support@increase.com) for
+      #   # pricing!
       #   #
       #   # @param id [String]
       #   # @param card_id [String]
@@ -297,8 +297,8 @@ module Increase
 
           # @!attribute shipped_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-          #     the fulfillment provider marked the card as ready for pick-up by the shipment
-          #     carrier.
+          #   the fulfillment provider marked the card as ready for pick-up by the shipment
+          #   carrier.
           #
           #   @return [Time]
           required :shipped_at, Time
@@ -340,7 +340,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `physical_card`.
+      # `physical_card`.
       #
       # @see Increase::Models::PhysicalCard#type
       module Type

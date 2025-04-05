@@ -4,8 +4,8 @@ module Increase
   module Resources
     class Files
       # To upload a file to Increase, you'll need to send a request of Content-Type
-      #   `multipart/form-data`. The request should contain the file you would like to
-      #   upload, as well as the parameters for creating a file.
+      # `multipart/form-data`. The request should contain the file you would like to
+      # upload, as well as the parameters for creating a file.
       #
       # @overload create(file:, purpose:, description: nil, request_options: {})
       #

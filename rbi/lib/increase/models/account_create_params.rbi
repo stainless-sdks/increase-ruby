@@ -18,7 +18,7 @@ module Increase
       attr_writer :entity_id
 
       # The identifier of an Entity that, while not owning the Account, is associated
-      #   with its activity. Its relationship to your group must be `informational`.
+      # with its activity. Its relationship to your group must be `informational`.
       sig { returns(T.nilable(String)) }
       attr_reader :informational_entity_id
 
@@ -26,7 +26,7 @@ module Increase
       attr_writer :informational_entity_id
 
       # The identifier for the Program that this Account falls under. Required if you
-      #   operate more than one Program.
+      # operate more than one Program.
       sig { returns(T.nilable(String)) }
       attr_reader :program_id
 

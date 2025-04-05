@@ -12,17 +12,17 @@ module Increase
       attr_accessor :bank
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      #   was closed.
+      # was closed.
       sig { returns(T.nilable(Time)) }
       attr_accessor :closed_at
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      #   was created.
+      # was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
-      #   currency.
+      # currency.
       sig { returns(Increase::Models::Account::Currency::TaggedSymbol) }
       attr_accessor :currency
 
@@ -31,29 +31,29 @@ module Increase
       attr_accessor :entity_id
 
       # The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # Increase and is used to ensure that a request is only processed once. Learn more
+      # about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
       # The identifier of an Entity that, while not owning the Account, is associated
-      #   with its activity.
+      # with its activity.
       sig { returns(T.nilable(String)) }
       attr_accessor :informational_entity_id
 
       # The interest accrued but not yet paid, expressed as a string containing a
-      #   floating-point value.
+      # floating-point value.
       sig { returns(String) }
       attr_accessor :interest_accrued
 
       # The latest [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which
-      #   interest was accrued.
+      # interest was accrued.
       sig { returns(T.nilable(Date)) }
       attr_accessor :interest_accrued_at
 
       # The Interest Rate currently being earned on the account, as a string containing
-      #   a decimal number. For example, a 1% interest rate would be represented as
-      #   "0.01".
+      # a decimal number. For example, a 1% interest rate would be represented as
+      # "0.01".
       sig { returns(String) }
       attr_accessor :interest_rate
 
@@ -62,7 +62,7 @@ module Increase
       attr_accessor :name
 
       # The identifier of the Program determining the compliance and commercial terms of
-      #   this Account.
+      # this Account.
       sig { returns(String) }
       attr_accessor :program_id
 
@@ -71,12 +71,12 @@ module Increase
       attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
-      #   `account`.
+      # `account`.
       sig { returns(Increase::Models::Account::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Accounts are your bank accounts with Increase. They store money, receive
-      #   transfers, and send payments. They earn interest and have depository insurance.
+      # transfers, and send payments. They earn interest and have depository insurance.
       sig do
         params(
           id: String,
@@ -159,7 +159,7 @@ module Increase
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
-      #   currency.
+      # currency.
       module Currency
         extend Increase::Internal::Type::Enum
 
@@ -206,7 +206,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `account`.
+      # `account`.
       module Type
         extend Increase::Internal::Type::Enum
 

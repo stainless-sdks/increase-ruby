@@ -40,7 +40,7 @@ module Increase
       attr_accessor :beneficiary_reference
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the inbound wire transfer was created.
+      # the inbound wire transfer was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -49,8 +49,8 @@ module Increase
       attr_accessor :description
 
       # A unique identifier available to the originating and receiving banks, commonly
-      #   abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
-      #   service and is helpful when debugging wires with the originating bank.
+      # abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
+      # service and is helpful when debugging wires with the originating bank.
       sig { returns(T.nilable(String)) }
       attr_accessor :input_message_accountability_data
 
@@ -71,7 +71,7 @@ module Increase
       attr_accessor :originator_name
 
       # The American Banking Association (ABA) routing number of the bank originating
-      #   the transfer.
+      # the transfer.
       sig { returns(T.nilable(String)) }
       attr_accessor :originator_routing_number
 
@@ -104,12 +104,12 @@ module Increase
       attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
-      #   `inbound_wire_transfer`.
+      # `inbound_wire_transfer`.
       sig { returns(Increase::Models::InboundWireTransfer::Type::TaggedSymbol) }
       attr_accessor :type
 
       # An Inbound Wire Transfer is a wire transfer initiated outside of Increase to
-      #   your account.
+      # your account.
       sig do
         params(
           id: String,
@@ -226,7 +226,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `inbound_wire_transfer`.
+      # `inbound_wire_transfer`.
       module Type
         extend Increase::Internal::Type::Enum
 

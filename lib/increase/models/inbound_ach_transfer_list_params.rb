@@ -49,7 +49,7 @@ module Increase
 
       # @!attribute [r] limit
       #   Limit the size of the list that is returned. The default (and maximum) is 100
-      #     objects.
+      #   objects.
       #
       #   @return [Integer, nil]
       optional :limit, Integer
@@ -94,7 +94,7 @@ module Increase
       class CreatedAt < Increase::Internal::Type::BaseModel
         # @!attribute [r] after
         #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        #     timestamp.
+        #   timestamp.
         #
         #   @return [Time, nil]
         optional :after, Time
@@ -105,7 +105,7 @@ module Increase
 
         # @!attribute [r] before
         #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        #     timestamp.
+        #   timestamp.
         #
         #   @return [Time, nil]
         optional :before, Time
@@ -116,7 +116,7 @@ module Increase
 
         # @!attribute [r] on_or_after
         #   Return results on or after this
-        #     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
         #   @return [Time, nil]
         optional :on_or_after, Time
@@ -127,7 +127,7 @@ module Increase
 
         # @!attribute [r] on_or_before
         #   Return results on or before this
-        #     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
         #   @return [Time, nil]
         optional :on_or_before, Time
@@ -150,8 +150,8 @@ module Increase
       class Status < Increase::Internal::Type::BaseModel
         # @!attribute [r] in_
         #   Filter Inbound ACH Transfers to those with the specified status. For GET
-        #     requests, this should be encoded as a comma-delimited string, such as
-        #     `?in=one,two,three`.
+        #   requests, this should be encoded as a comma-delimited string, such as
+        #   `?in=one,two,three`.
         #
         #   @return [Array<Symbol, Increase::Models::InboundACHTransferListParams::Status::In>, nil]
         optional :in_,

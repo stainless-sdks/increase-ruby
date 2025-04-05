@@ -20,7 +20,7 @@ module Increase
 
       # @!attribute [r] inbound_checks
       #   Options related to how this Account Number should handle inbound check
-      #     withdrawals.
+      #   withdrawals.
       #
       #   @return [Increase::Models::AccountNumberUpdateParams::InboundChecks, nil]
       optional :inbound_checks, -> { Increase::Models::AccountNumberUpdateParams::InboundChecks }
@@ -63,7 +63,7 @@ module Increase
       class InboundACH < Increase::Internal::Type::BaseModel
         # @!attribute [r] debit_status
         #   Whether ACH debits are allowed against this Account Number. Note that ACH debits
-        #     will be declined if this is `allowed` but the Account Number is not active.
+        #   will be declined if this is `allowed` but the Account Number is not active.
         #
         #   @return [Symbol, Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus, nil]
         optional :debit_status, enum: -> { Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus }
@@ -82,7 +82,7 @@ module Increase
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
         # Whether ACH debits are allowed against this Account Number. Note that ACH debits
-        #   will be declined if this is `allowed` but the Account Number is not active.
+        # will be declined if this is `allowed` but the Account Number is not active.
         #
         # @see Increase::Models::AccountNumberUpdateParams::InboundACH#debit_status
         module DebitStatus
@@ -111,7 +111,7 @@ module Increase
 
         # @!parse
         #   # Options related to how this Account Number should handle inbound check
-        #   #   withdrawals.
+        #   # withdrawals.
         #   #
         #   # @param status [Symbol, Increase::Models::AccountNumberUpdateParams::InboundChecks::Status]
         #   #

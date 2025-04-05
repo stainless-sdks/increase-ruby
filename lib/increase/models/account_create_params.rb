@@ -26,7 +26,7 @@ module Increase
 
       # @!attribute [r] informational_entity_id
       #   The identifier of an Entity that, while not owning the Account, is associated
-      #     with its activity. Its relationship to your group must be `informational`.
+      #   with its activity. Its relationship to your group must be `informational`.
       #
       #   @return [String, nil]
       optional :informational_entity_id, String
@@ -37,7 +37,7 @@ module Increase
 
       # @!attribute [r] program_id
       #   The identifier for the Program that this Account falls under. Required if you
-      #     operate more than one Program.
+      #   operate more than one Program.
       #
       #   @return [String, nil]
       optional :program_id, String

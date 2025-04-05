@@ -30,8 +30,8 @@ module Increase
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
-      #     Increase and is used to ensure that a request is only processed once. Learn more
-      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -44,16 +44,16 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `bookkeeping_entry_set`.
+      #   `bookkeeping_entry_set`.
       #
       #   @return [Symbol, Increase::Models::BookkeepingEntrySet::Type]
       required :type, enum: -> { Increase::Models::BookkeepingEntrySet::Type }
 
       # @!parse
       #   # Entry Sets are accounting entries that are transactionally applied. Your
-      #   #   compliance setup might require annotating money movements using this API. Learn
-      #   #   more in our
-      #   #   [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
+      #   # compliance setup might require annotating money movements using this API. Learn
+      #   # more in our
+      #   # [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
       #   #
       #   # @param id [String]
       #   # @param created_at [Time]
@@ -97,7 +97,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `bookkeeping_entry_set`.
+      # `bookkeeping_entry_set`.
       #
       # @see Increase::Models::BookkeepingEntrySet#type
       module Type

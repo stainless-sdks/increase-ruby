@@ -48,7 +48,7 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #     the Card Dispute was created.
+      #   the Card Dispute was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -61,8 +61,8 @@ module Increase
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
-      #     Increase and is used to ensure that a request is only processed once. Learn more
-      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -87,15 +87,15 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `digital_card_profile`.
+      #   `digital_card_profile`.
       #
       #   @return [Symbol, Increase::Models::DigitalCardProfile::Type]
       required :type, enum: -> { Increase::Models::DigitalCardProfile::Type }
 
       # @!parse
       #   # This contains artwork and metadata relating to a Card's appearance in digital
-      #   #   wallet apps like Apple Pay and Google Pay. For more information, see our guide
-      #   #   on [digital card artwork](https://increase.com/documentation/card-art).
+      #   # wallet apps like Apple Pay and Google Pay. For more information, see our guide
+      #   # on [digital card artwork](https://increase.com/documentation/card-art).
       #   #
       #   # @param id [String]
       #   # @param app_icon_file_id [String]
@@ -192,7 +192,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `digital_card_profile`.
+      # `digital_card_profile`.
       #
       # @see Increase::Models::DigitalCardProfile#type
       module Type

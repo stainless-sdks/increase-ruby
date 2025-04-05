@@ -28,7 +28,7 @@ module Increase
 
       # @!attribute [r] physical_card_profile_id
       #   The physical card profile to use for this physical card. The latest default
-      #     physical card profile will be used if not provided.
+      #   physical card profile will be used if not provided.
       #
       #   @return [String, nil]
       optional :physical_card_profile_id, String

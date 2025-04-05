@@ -39,19 +39,19 @@ module Increase
         # The identifier of the Real-Time Decision.
         real_time_decision_id,
         # If the Real-Time Decision relates to a 3DS card authentication attempt, this
-        #   object contains your response to the authentication.
+        # object contains your response to the authentication.
         card_authentication: nil,
         # If the Real-Time Decision relates to 3DS card authentication challenge delivery,
-        #   this object contains your response.
+        # this object contains your response.
         card_authentication_challenge: nil,
         # If the Real-Time Decision relates to a card authorization attempt, this object
-        #   contains your response to the authorization.
+        # contains your response to the authorization.
         card_authorization: nil,
         # If the Real-Time Decision relates to a digital wallet authentication attempt,
-        #   this object contains your response to the authentication.
+        # this object contains your response to the authentication.
         digital_wallet_authentication: nil,
         # If the Real-Time Decision relates to a digital wallet token provisioning
-        #   attempt, this object contains your response to the attempt.
+        # attempt, this object contains your response to the attempt.
         digital_wallet_token: nil,
         request_options: {}
       ); end

@@ -98,7 +98,7 @@ module Increase
       end
 
       # Retrieve the current and available balances for an account in minor units of the
-      #   account's currency. Learn more about [account balances](/documentation/balance).
+      # account's currency. Learn more about [account balances](/documentation/balance).
       #
       # @overload balance(account_id, at_time: nil, request_options: {})
       #

@@ -12,14 +12,14 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the File
-      #     Link was created.
+      #   Link was created.
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute expires_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the File
-      #     Link will expire.
+      #   Link will expire.
       #
       #   @return [Time]
       required :expires_at, Time
@@ -32,23 +32,23 @@ module Increase
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
-      #     Increase and is used to ensure that a request is only processed once. Learn more
-      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `file_link`.
+      #   `file_link`.
       #
       #   @return [Symbol, Increase::Models::FileLink::Type]
       required :type, enum: -> { Increase::Models::FileLink::Type }
 
       # @!attribute unauthenticated_url
       #   A URL where the File can be downloaded. The URL will expire after the
-      #     `expires_at` time. This URL is unauthenticated and can be used to download the
-      #     File without an Increase API key.
+      #   `expires_at` time. This URL is unauthenticated and can be used to download the
+      #   File without an Increase API key.
       #
       #   @return [String]
       required :unauthenticated_url, String
@@ -69,7 +69,7 @@ module Increase
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       # A constant representing the object's type. For this resource it will always be
-      #   `file_link`.
+      # `file_link`.
       #
       # @see Increase::Models::FileLink#type
       module Type

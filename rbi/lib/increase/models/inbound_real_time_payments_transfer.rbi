@@ -34,7 +34,7 @@ module Increase
       attr_writer :confirmation
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the transfer was created.
+      # the transfer was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -43,7 +43,7 @@ module Increase
       attr_accessor :creditor_name
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
-      #   currency. This will always be "USD" for a Real-Time Payments transfer.
+      # currency. This will always be "USD" for a Real-Time Payments transfer.
       sig { returns(Increase::Models::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol) }
       attr_accessor :currency
 
@@ -84,12 +84,12 @@ module Increase
       attr_accessor :transaction_identification
 
       # A constant representing the object's type. For this resource it will always be
-      #   `inbound_real_time_payments_transfer`.
+      # `inbound_real_time_payments_transfer`.
       sig { returns(Increase::Models::InboundRealTimePaymentsTransfer::Type::TaggedSymbol) }
       attr_accessor :type
 
       # An Inbound Real-Time Payments Transfer is a Real-Time Payments transfer
-      #   initiated outside of Increase to your account.
+      # initiated outside of Increase to your account.
       sig do
         params(
           id: String,
@@ -174,7 +174,7 @@ module Increase
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
-      #   currency. This will always be "USD" for a Real-Time Payments transfer.
+      # currency. This will always be "USD" for a Real-Time Payments transfer.
       module Currency
         extend Increase::Internal::Type::Enum
 
@@ -323,7 +323,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `inbound_real_time_payments_transfer`.
+      # `inbound_real_time_payments_transfer`.
       module Type
         extend Increase::Internal::Type::Enum
 

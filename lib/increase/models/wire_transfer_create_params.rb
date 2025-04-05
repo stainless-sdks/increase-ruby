@@ -74,7 +74,7 @@ module Increase
 
       # @!attribute [r] external_account_id
       #   The ID of an External Account to initiate a transfer to. If this parameter is
-      #     provided, `account_number` and `routing_number` must be absent.
+      #   provided, `account_number` and `routing_number` must be absent.
       #
       #   @return [String, nil]
       optional :external_account_id, String
@@ -85,7 +85,7 @@ module Increase
 
       # @!attribute [r] originator_address_line1
       #   The originator's address line 1. This is only necessary if you're transferring
-      #     from a commingled account. Otherwise, we'll use the associated entity's details.
+      #   from a commingled account. Otherwise, we'll use the associated entity's details.
       #
       #   @return [String, nil]
       optional :originator_address_line1, String
@@ -96,7 +96,7 @@ module Increase
 
       # @!attribute [r] originator_address_line2
       #   The originator's address line 2. This is only necessary if you're transferring
-      #     from a commingled account. Otherwise, we'll use the associated entity's details.
+      #   from a commingled account. Otherwise, we'll use the associated entity's details.
       #
       #   @return [String, nil]
       optional :originator_address_line2, String
@@ -107,7 +107,7 @@ module Increase
 
       # @!attribute [r] originator_address_line3
       #   The originator's address line 3. This is only necessary if you're transferring
-      #     from a commingled account. Otherwise, we'll use the associated entity's details.
+      #   from a commingled account. Otherwise, we'll use the associated entity's details.
       #
       #   @return [String, nil]
       optional :originator_address_line3, String
@@ -118,7 +118,7 @@ module Increase
 
       # @!attribute [r] originator_name
       #   The originator's name. This is only necessary if you're transferring from a
-      #     commingled account. Otherwise, we'll use the associated entity's details.
+      #   commingled account. Otherwise, we'll use the associated entity's details.
       #
       #   @return [String, nil]
       optional :originator_name, String
@@ -139,7 +139,7 @@ module Increase
 
       # @!attribute [r] routing_number
       #   The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      #     destination account.
+      #   destination account.
       #
       #   @return [String, nil]
       optional :routing_number, String

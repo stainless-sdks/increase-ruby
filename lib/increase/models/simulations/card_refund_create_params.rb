@@ -11,7 +11,7 @@ module Increase
 
         # @!attribute transaction_id
         #   The identifier for the Transaction to refund. The Transaction's source must have
-        #     a category of card_settlement.
+        #   a category of card_settlement.
         #
         #   @return [String]
         required :transaction_id, String

@@ -7,7 +7,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-      #   are disallowed.
+      # are disallowed.
       sig { returns(Increase::Models::EntityUpdateAddressParams::Address) }
       attr_reader :address
 
@@ -44,7 +44,7 @@ module Increase
         attr_accessor :line1
 
         # The two-letter United States Postal Service (USPS) abbreviation for the state of
-        #   the address.
+        # the address.
         sig { returns(String) }
         attr_accessor :state
 
@@ -60,7 +60,7 @@ module Increase
         attr_writer :line2
 
         # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-        #   are disallowed.
+        # are disallowed.
         sig do
           params(
             city: String,

@@ -10,14 +10,14 @@ module Increase
 
       # @!attribute address
       #   The individual's physical address. Mail receiving locations like PO Boxes and
-      #     PMB's are disallowed.
+      #   PMB's are disallowed.
       #
       #   @return [Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address]
       required :address, -> { Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address }
 
       # @!attribute beneficial_owner_id
       #   The identifying details of anyone controlling or owning 25% or more of the
-      #     corporation.
+      #   corporation.
       #
       #   @return [String]
       required :beneficial_owner_id, String
@@ -46,7 +46,7 @@ module Increase
 
         # @!attribute [r] city
         #   The city, district, town, or village of the address. Required in certain
-        #     countries.
+        #   countries.
         #
         #   @return [String, nil]
         optional :city, String
@@ -67,7 +67,7 @@ module Increase
 
         # @!attribute [r] state
         #   The two-letter United States Postal Service (USPS) abbreviation for the US
-        #     state, province, or region of the address. Required in certain countries.
+        #   state, province, or region of the address. Required in certain countries.
         #
         #   @return [String, nil]
         optional :state, String
@@ -88,7 +88,7 @@ module Increase
 
         # @!parse
         #   # The individual's physical address. Mail receiving locations like PO Boxes and
-        #   #   PMB's are disallowed.
+        #   # PMB's are disallowed.
         #   #
         #   # @param country [String]
         #   # @param line1 [String]

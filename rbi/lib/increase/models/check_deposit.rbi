@@ -20,12 +20,12 @@ module Increase
       attr_accessor :back_image_file_id
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the transfer was created.
+      # the transfer was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
       # If your deposit is successfully parsed and accepted by Increase, this will
-      #   contain details of the parsed check.
+      # contain details of the parsed check.
       sig { returns(T.nilable(Increase::Models::CheckDeposit::DepositAcceptance)) }
       attr_reader :deposit_acceptance
 
@@ -38,7 +38,7 @@ module Increase
       attr_writer :deposit_acceptance
 
       # If your deposit is rejected by Increase, this will contain details as to why it
-      #   was rejected.
+      # was rejected.
       sig { returns(T.nilable(Increase::Models::CheckDeposit::DepositRejection)) }
       attr_reader :deposit_rejection
 
@@ -51,7 +51,7 @@ module Increase
       attr_writer :deposit_rejection
 
       # If your deposit is returned, this will contain details as to why it was
-      #   returned.
+      # returned.
       sig { returns(T.nilable(Increase::Models::CheckDeposit::DepositReturn)) }
       attr_reader :deposit_return
 
@@ -64,7 +64,7 @@ module Increase
       attr_writer :deposit_return
 
       # After the check is parsed, it is submitted to the Check21 network for
-      #   processing. This will contain details of the submission.
+      # processing. This will contain details of the submission.
       sig { returns(T.nilable(Increase::Models::CheckDeposit::DepositSubmission)) }
       attr_reader :deposit_submission
 
@@ -85,13 +85,13 @@ module Increase
       attr_accessor :front_image_file_id
 
       # The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # Increase and is used to ensure that a request is only processed once. Learn more
+      # about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
       # Increase will sometimes hold the funds for Check Deposits. If funds are held,
-      #   this sub-object will contain details of the hold.
+      # this sub-object will contain details of the hold.
       sig { returns(T.nilable(Increase::Models::CheckDeposit::InboundFundsHold)) }
       attr_reader :inbound_funds_hold
 
@@ -104,12 +104,12 @@ module Increase
       attr_writer :inbound_funds_hold
 
       # If the Check Deposit was the result of an Inbound Mail Item, this will contain
-      #   the identifier of the Inbound Mail Item.
+      # the identifier of the Inbound Mail Item.
       sig { returns(T.nilable(String)) }
       attr_accessor :inbound_mail_item_id
 
       # If the Check Deposit was the result of an Inbound Mail Item, this will contain
-      #   the identifier of the Lockbox that received it.
+      # the identifier of the Lockbox that received it.
       sig { returns(T.nilable(String)) }
       attr_accessor :lockbox_id
 
@@ -122,7 +122,7 @@ module Increase
       attr_accessor :transaction_id
 
       # A constant representing the object's type. For this resource it will always be
-      #   `check_deposit`.
+      # `check_deposit`.
       sig { returns(Increase::Models::CheckDeposit::Type::TaggedSymbol) }
       attr_accessor :type
 
@@ -203,12 +203,12 @@ module Increase
         attr_accessor :account_number
 
         # The amount to be deposited in the minor unit of the transaction's currency. For
-        #   dollars, for example, this is cents.
+        # dollars, for example, this is cents.
         sig { returns(Integer) }
         attr_accessor :amount
 
         # An additional line of metadata printed on the check. This typically includes the
-        #   check number for business checks.
+        # check number for business checks.
         sig { returns(T.nilable(String)) }
         attr_accessor :auxiliary_on_us
 
@@ -217,7 +217,7 @@ module Increase
         attr_accessor :check_deposit_id
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-        #   transaction's currency.
+        # transaction's currency.
         sig { returns(Increase::Models::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol) }
         attr_accessor :currency
 
@@ -226,12 +226,12 @@ module Increase
         attr_accessor :routing_number
 
         # The check serial number, if present, for consumer checks. For business checks,
-        #   the serial number is usually in the `auxiliary_on_us` field.
+        # the serial number is usually in the `auxiliary_on_us` field.
         sig { returns(T.nilable(String)) }
         attr_accessor :serial_number
 
         # If your deposit is successfully parsed and accepted by Increase, this will
-        #   contain details of the parsed check.
+        # contain details of the parsed check.
         sig do
           params(
             account_number: String,
@@ -272,7 +272,7 @@ module Increase
         def to_hash; end
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-        #   transaction's currency.
+        # transaction's currency.
         module Currency
           extend Increase::Internal::Type::Enum
 
@@ -306,7 +306,7 @@ module Increase
 
       class DepositRejection < Increase::Internal::Type::BaseModel
         # The rejected amount in the minor unit of check's currency. For dollars, for
-        #   example, this is cents.
+        # example, this is cents.
         sig { returns(Integer) }
         attr_accessor :amount
 
@@ -315,7 +315,7 @@ module Increase
         attr_accessor :check_deposit_id
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-        #   currency.
+        # currency.
         sig { returns(Increase::Models::CheckDeposit::DepositRejection::Currency::TaggedSymbol) }
         attr_accessor :currency
 
@@ -328,12 +328,12 @@ module Increase
         attr_accessor :reason
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the check deposit was rejected.
+        # the check deposit was rejected.
         sig { returns(Time) }
         attr_accessor :rejected_at
 
         # If your deposit is rejected by Increase, this will contain details as to why it
-        #   was rejected.
+        # was rejected.
         sig do
           params(
             amount: Integer,
@@ -364,7 +364,7 @@ module Increase
         def to_hash; end
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-        #   currency.
+        # currency.
         module Currency
           extend Increase::Internal::Type::Enum
 
@@ -465,27 +465,27 @@ module Increase
         attr_accessor :check_deposit_id
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-        #   transaction's currency.
+        # transaction's currency.
         sig { returns(Increase::Models::CheckDeposit::DepositReturn::Currency::TaggedSymbol) }
         attr_accessor :currency
 
         # Why this check was returned by the bank holding the account it was drawn
-        #   against.
+        # against.
         sig { returns(Increase::Models::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol) }
         attr_accessor :return_reason
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the check deposit was returned.
+        # the check deposit was returned.
         sig { returns(Time) }
         attr_accessor :returned_at
 
         # The identifier of the transaction that reversed the original check deposit
-        #   transaction.
+        # transaction.
         sig { returns(String) }
         attr_accessor :transaction_id
 
         # If your deposit is returned, this will contain details as to why it was
-        #   returned.
+        # returned.
         sig do
           params(
             amount: Integer,
@@ -516,7 +516,7 @@ module Increase
         def to_hash; end
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-        #   transaction's currency.
+        # transaction's currency.
         module Currency
           extend Increase::Internal::Type::Enum
 
@@ -547,7 +547,7 @@ module Increase
         end
 
         # Why this check was returned by the bank holding the account it was drawn
-        #   against.
+        # against.
         module ReturnReason
           extend Increase::Internal::Type::Enum
 
@@ -682,23 +682,23 @@ module Increase
 
       class DepositSubmission < Increase::Internal::Type::BaseModel
         # The ID for the File containing the check back image that was submitted to the
-        #   Check21 network.
+        # Check21 network.
         sig { returns(String) }
         attr_accessor :back_file_id
 
         # The ID for the File containing the check front image that was submitted to the
-        #   Check21 network.
+        # Check21 network.
         sig { returns(String) }
         attr_accessor :front_file_id
 
         # When the check deposit was submitted to the Check21 network for processing.
-        #   During business days, this happens within a few hours of the check being
-        #   accepted by Increase.
+        # During business days, this happens within a few hours of the check being
+        # accepted by Increase.
         sig { returns(Time) }
         attr_accessor :submitted_at
 
         # After the check is parsed, it is submitted to the Check21 network for
-        #   processing. This will contain details of the submission.
+        # processing. This will contain details of the submission.
         sig do
           params(back_file_id: String, front_file_id: String, submitted_at: Time).returns(T.attached_class)
         end
@@ -714,22 +714,22 @@ module Increase
         attr_accessor :id
 
         # The held amount in the minor unit of the account's currency. For dollars, for
-        #   example, this is cents.
+        # example, this is cents.
         sig { returns(Integer) }
         attr_accessor :amount
 
         # When the hold will be released automatically. Certain conditions may cause it to
-        #   be released before this time.
+        # be released before this time.
         sig { returns(Time) }
         attr_accessor :automatically_releases_at
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
-        #   was created.
+        # was created.
         sig { returns(Time) }
         attr_accessor :created_at
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-        #   currency.
+        # currency.
         sig { returns(Increase::Models::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol) }
         attr_accessor :currency
 
@@ -750,12 +750,12 @@ module Increase
         attr_accessor :status
 
         # A constant representing the object's type. For this resource it will always be
-        #   `inbound_funds_hold`.
+        # `inbound_funds_hold`.
         sig { returns(Increase::Models::CheckDeposit::InboundFundsHold::Type::TaggedSymbol) }
         attr_accessor :type
 
         # Increase will sometimes hold the funds for Check Deposits. If funds are held,
-        #   this sub-object will contain details of the hold.
+        # this sub-object will contain details of the hold.
         sig do
           params(
             id: String,
@@ -803,7 +803,7 @@ module Increase
         def to_hash; end
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-        #   currency.
+        # currency.
         module Currency
           extend Increase::Internal::Type::Enum
 
@@ -852,7 +852,7 @@ module Increase
         end
 
         # A constant representing the object's type. For this resource it will always be
-        #   `inbound_funds_hold`.
+        # `inbound_funds_hold`.
         module Type
           extend Increase::Internal::Type::Enum
 
@@ -892,7 +892,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `check_deposit`.
+      # `check_deposit`.
       module Type
         extend Increase::Internal::Type::Enum
 

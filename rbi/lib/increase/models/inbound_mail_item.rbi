@@ -8,7 +8,7 @@ module Increase
       attr_accessor :id
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Inbound
-      #   Mail Item was created.
+      # Mail Item was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -17,7 +17,7 @@ module Increase
       attr_accessor :file_id
 
       # The identifier for the Lockbox that received this mail item. For mail items that
-      #   could not be processed due to an invalid address, this will be null.
+      # could not be processed due to an invalid address, this will be null.
       sig { returns(T.nilable(String)) }
       attr_accessor :lockbox_id
 
@@ -34,7 +34,7 @@ module Increase
       attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
-      #   `inbound_mail_item`.
+      # `inbound_mail_item`.
       sig { returns(Increase::Models::InboundMailItem::Type::TaggedSymbol) }
       attr_accessor :type
 
@@ -126,7 +126,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `inbound_mail_item`.
+      # `inbound_mail_item`.
       module Type
         extend Increase::Internal::Type::Enum
 

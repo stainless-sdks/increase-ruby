@@ -31,10 +31,10 @@ module Increase
         # Return the page of entries after this one.
         cursor: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        #   objects.
+        # objects.
         limit: nil,
         # Filter results to only include OAuth Connections for a specific OAuth
-        #   Application.
+        # Application.
         oauth_application_id: nil,
         status: nil,
         request_options: {}

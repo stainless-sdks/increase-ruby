@@ -38,7 +38,7 @@ module Increase
         # Return the page of entries after this one.
         cursor: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        #   objects.
+        # objects.
         limit: nil,
         status: nil,
         request_options: {}
@@ -55,7 +55,7 @@ module Increase
       end
       def create_notification_of_change(
         # The identifier of the Inbound ACH Transfer for which to create a notification of
-        #   change.
+        # change.
         inbound_ach_transfer_id,
         # The updated account number to send in the notification of change.
         updated_account_number: nil,
@@ -76,8 +76,8 @@ module Increase
         # The identifier of the Inbound ACH Transfer to decline.
         inbound_ach_transfer_id,
         # The reason why this transfer will be returned. If this parameter is unset, the
-        #   return codes will be `payment_stopped` for debits and
-        #   `credit_entry_refused_by_receiver` for credits.
+        # return codes will be `payment_stopped` for debits and
+        # `credit_entry_refused_by_receiver` for credits.
         reason: nil,
         request_options: {}
       ); end
@@ -92,10 +92,10 @@ module Increase
       end
       def transfer_return(
         # The identifier of the Inbound ACH Transfer to return to the originating
-        #   financial institution.
+        # financial institution.
         inbound_ach_transfer_id,
         # The reason why this transfer will be returned. The most usual return codes are
-        #   `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
+        # `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
         reason:,
         request_options: {}
       ); end

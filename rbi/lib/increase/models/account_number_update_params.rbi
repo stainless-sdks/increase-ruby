@@ -19,7 +19,7 @@ module Increase
       attr_writer :inbound_ach
 
       # Options related to how this Account Number should handle inbound check
-      #   withdrawals.
+      # withdrawals.
       sig { returns(T.nilable(Increase::Models::AccountNumberUpdateParams::InboundChecks)) }
       attr_reader :inbound_checks
 
@@ -73,7 +73,7 @@ module Increase
 
       class InboundACH < Increase::Internal::Type::BaseModel
         # Whether ACH debits are allowed against this Account Number. Note that ACH debits
-        #   will be declined if this is `allowed` but the Account Number is not active.
+        # will be declined if this is `allowed` but the Account Number is not active.
         sig { returns(T.nilable(Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus::OrSymbol)) }
         attr_reader :debit_status
 
@@ -94,7 +94,7 @@ module Increase
         def to_hash; end
 
         # Whether ACH debits are allowed against this Account Number. Note that ACH debits
-        #   will be declined if this is `allowed` but the Account Number is not active.
+        # will be declined if this is `allowed` but the Account Number is not active.
         module DebitStatus
           extend Increase::Internal::Type::Enum
 
@@ -125,7 +125,7 @@ module Increase
         attr_accessor :status
 
         # Options related to how this Account Number should handle inbound check
-        #   withdrawals.
+        # withdrawals.
         sig do
           params(status: Increase::Models::AccountNumberUpdateParams::InboundChecks::Status::OrSymbol)
             .returns(T.attached_class)

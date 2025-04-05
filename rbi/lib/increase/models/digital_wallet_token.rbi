@@ -22,7 +22,7 @@ module Increase
       attr_writer :cardholder
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the Digital Wallet Token was created.
+      # the Digital Wallet Token was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -42,7 +42,7 @@ module Increase
       attr_accessor :token_requestor
 
       # A constant representing the object's type. For this resource it will always be
-      #   `digital_wallet_token`.
+      # `digital_wallet_token`.
       sig { returns(Increase::Models::DigitalWalletToken::Type::TaggedSymbol) }
       attr_accessor :type
 
@@ -51,8 +51,8 @@ module Increase
       attr_accessor :updates
 
       # A Digital Wallet Token is created when a user adds a Card to their Apple Pay or
-      #   Google Pay app. The Digital Wallet Token can be used for purchases just like a
-      #   Card.
+      # Google Pay app. The Digital Wallet Token can be used for purchases just like a
+      # Card.
       sig do
         params(
           id: String,
@@ -247,7 +247,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `digital_wallet_token`.
+      # `digital_wallet_token`.
       module Type
         extend Increase::Internal::Type::Enum
 
@@ -268,7 +268,7 @@ module Increase
         attr_accessor :status
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the update happened.
+        # the update happened.
         sig { returns(Time) }
         attr_accessor :timestamp
 

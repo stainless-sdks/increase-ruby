@@ -15,7 +15,7 @@ module Increase
       attr_accessor :description
 
       # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      #   destination account.
+      # destination account.
       sig { returns(String) }
       attr_accessor :routing_number
 

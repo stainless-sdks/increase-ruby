@@ -16,19 +16,19 @@ module Increase
       attr_accessor :activation_status
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Group
-      #   was created.
+      # was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
       # A constant representing the object's type. For this resource it will always be
-      #   `group`.
+      # `group`.
       sig { returns(Increase::Models::Group::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Groups represent organizations using Increase. You can retrieve information
-      #   about your own organization via the API. More commonly, OAuth platforms can
-      #   retrieve information about the organizations that have granted them access.
-      #   Learn more about OAuth [here](https://increase.com/documentation/oauth).
+      # about your own organization via the API. More commonly, OAuth platforms can
+      # retrieve information about the organizations that have granted them access.
+      # Learn more about OAuth [here](https://increase.com/documentation/oauth).
       sig do
         params(
           id: String,
@@ -91,7 +91,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `group`.
+      # `group`.
       module Type
         extend Increase::Internal::Type::Enum
 

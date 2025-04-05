@@ -36,10 +36,10 @@ module Increase
 
       # @!attribute [r] digital_wallet
       #   The contact information used in the two-factor steps for digital wallet card
-      #     creation. To add the card to a digital wallet, you may supply an email or phone
-      #     number with this request. Otherwise, subscribe and then action a Real Time
-      #     Decision with the category `digital_wallet_token_requested` or
-      #     `digital_wallet_authentication_requested`.
+      #   creation. To add the card to a digital wallet, you may supply an email or phone
+      #   number with this request. Otherwise, subscribe and then action a Real Time
+      #   Decision with the category `digital_wallet_token_requested` or
+      #   `digital_wallet_authentication_requested`.
       #
       #   @return [Increase::Models::CardCreateParams::DigitalWallet, nil]
       optional :digital_wallet, -> { Increase::Models::CardCreateParams::DigitalWallet }
@@ -50,7 +50,7 @@ module Increase
 
       # @!attribute [r] entity_id
       #   The Entity the card belongs to. You only need to supply this in rare situations
-      #     when the card is not for the Account holder.
+      #   when the card is not for the Account holder.
       #
       #   @return [String, nil]
       optional :entity_id, String
@@ -143,7 +143,7 @@ module Increase
 
         # @!attribute [r] email
         #   An email address that can be used to contact and verify the cardholder via
-        #     one-time passcode over email.
+        #   one-time passcode over email.
         #
         #   @return [String, nil]
         optional :email, String
@@ -154,7 +154,7 @@ module Increase
 
         # @!attribute [r] phone
         #   A phone number that can be used to contact and verify the cardholder via
-        #     one-time passcode over SMS.
+        #   one-time passcode over SMS.
         #
         #   @return [String, nil]
         optional :phone, String
@@ -165,10 +165,10 @@ module Increase
 
         # @!parse
         #   # The contact information used in the two-factor steps for digital wallet card
-        #   #   creation. To add the card to a digital wallet, you may supply an email or phone
-        #   #   number with this request. Otherwise, subscribe and then action a Real Time
-        #   #   Decision with the category `digital_wallet_token_requested` or
-        #   #   `digital_wallet_authentication_requested`.
+        #   # creation. To add the card to a digital wallet, you may supply an email or phone
+        #   # number with this request. Otherwise, subscribe and then action a Real Time
+        #   # Decision with the category `digital_wallet_token_requested` or
+        #   # `digital_wallet_authentication_requested`.
         #   #
         #   # @param digital_card_profile_id [String]
         #   # @param email [String]

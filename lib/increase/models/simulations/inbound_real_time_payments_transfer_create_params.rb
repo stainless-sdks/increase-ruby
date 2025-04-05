@@ -11,7 +11,7 @@ module Increase
 
         # @!attribute account_number_id
         #   The identifier of the Account Number the inbound Real-Time Payments Transfer is
-        #     for.
+        #   for.
         #
         #   @return [String]
         required :account_number_id, String

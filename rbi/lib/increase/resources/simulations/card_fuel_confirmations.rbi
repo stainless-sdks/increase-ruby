@@ -5,8 +5,8 @@ module Increase
     class Simulations
       class CardFuelConfirmations
         # Simulates the fuel confirmation of an authorization by a card acquirer. This
-        #   happens asynchronously right after a fuel pump transaction is completed. A fuel
-        #   confirmation can only happen once per authorization.
+        # happens asynchronously right after a fuel pump transaction is completed. A fuel
+        # confirmation can only happen once per authorization.
         sig do
           params(
             amount: Integer,
@@ -17,7 +17,7 @@ module Increase
         end
         def create(
           # The amount of the fuel_confirmation in minor units in the card authorization's
-          #   currency.
+          # currency.
           amount:,
           # The identifier of the Card Payment to create a fuel_confirmation on.
           card_payment_id:,

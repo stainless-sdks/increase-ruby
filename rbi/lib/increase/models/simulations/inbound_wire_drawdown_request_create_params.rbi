@@ -20,7 +20,7 @@ module Increase
         attr_accessor :beneficiary_routing_number
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
-        #   requested. Will always be "USD".
+        # requested. Will always be "USD".
         sig { returns(String) }
         attr_accessor :currency
 
@@ -37,7 +37,7 @@ module Increase
         attr_accessor :originator_routing_number
 
         # The Account Number to which the recipient of this request is being requested to
-        #   send funds from.
+        # send funds from.
         sig { returns(String) }
         attr_accessor :recipient_account_number_id
 
@@ -98,7 +98,7 @@ module Increase
         attr_writer :originator_name
 
         # Line 1 of the information conveyed from the originator of the message to the
-        #   beneficiary.
+        # beneficiary.
         sig { returns(T.nilable(String)) }
         attr_reader :originator_to_beneficiary_information_line1
 
@@ -106,7 +106,7 @@ module Increase
         attr_writer :originator_to_beneficiary_information_line1
 
         # Line 2 of the information conveyed from the originator of the message to the
-        #   beneficiary.
+        # beneficiary.
         sig { returns(T.nilable(String)) }
         attr_reader :originator_to_beneficiary_information_line2
 
@@ -114,7 +114,7 @@ module Increase
         attr_writer :originator_to_beneficiary_information_line2
 
         # Line 3 of the information conveyed from the originator of the message to the
-        #   beneficiary.
+        # beneficiary.
         sig { returns(T.nilable(String)) }
         attr_reader :originator_to_beneficiary_information_line3
 
@@ -122,7 +122,7 @@ module Increase
         attr_writer :originator_to_beneficiary_information_line3
 
         # Line 4 of the information conveyed from the originator of the message to the
-        #   beneficiary.
+        # beneficiary.
         sig { returns(T.nilable(String)) }
         attr_reader :originator_to_beneficiary_information_line4
 

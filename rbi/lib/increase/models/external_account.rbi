@@ -16,7 +16,7 @@ module Increase
       attr_accessor :account_number
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the External Account was created.
+      # the External Account was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -29,8 +29,8 @@ module Increase
       attr_accessor :funding
 
       # The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # Increase and is used to ensure that a request is only processed once. Learn more
+      # about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
@@ -43,7 +43,7 @@ module Increase
       attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
-      #   `external_account`.
+      # `external_account`.
       sig { returns(Increase::Models::ExternalAccount::Type::TaggedSymbol) }
       attr_accessor :type
 
@@ -52,7 +52,7 @@ module Increase
       attr_accessor :verification_status
 
       # External Accounts represent accounts at financial institutions other than
-      #   Increase. You can use this API to store their details for reuse.
+      # Increase. You can use this API to store their details for reuse.
       sig do
         params(
           id: String,
@@ -163,7 +163,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `external_account`.
+      # `external_account`.
       module Type
         extend Increase::Internal::Type::Enum
 

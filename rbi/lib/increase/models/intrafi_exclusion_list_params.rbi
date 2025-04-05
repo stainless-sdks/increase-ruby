@@ -21,9 +21,9 @@ module Increase
       attr_writer :entity_id
 
       # Filter records to the one with the specified `idempotency_key` you chose for
-      #   that object. This value is unique across Increase and is used to ensure that a
-      #   request is only processed once. Learn more about
-      #   [idempotency](https://increase.com/documentation/idempotency-keys).
+      # that object. This value is unique across Increase and is used to ensure that a
+      # request is only processed once. Learn more about
+      # [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_reader :idempotency_key
 
@@ -31,7 +31,7 @@ module Increase
       attr_writer :idempotency_key
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
+      # objects.
       sig { returns(T.nilable(Integer)) }
       attr_reader :limit
 

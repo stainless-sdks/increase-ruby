@@ -5,7 +5,7 @@ module Increase
     class Simulations
       class CardRefunds
         # Simulates refunding a card transaction. The full value of the original sandbox
-        #   transaction is refunded.
+        # transaction is refunded.
         sig do
           params(
             transaction_id: String,
@@ -15,7 +15,7 @@ module Increase
         end
         def create(
           # The identifier for the Transaction to refund. The Transaction's source must have
-          #   a category of card_settlement.
+          # a category of card_settlement.
           transaction_id:,
           request_options: {}
         ); end

@@ -5,9 +5,9 @@ module Increase
     class Simulations
       class CheckTransfers
         # Simulates the mailing of a [Check Transfer](#check-transfers), which happens
-        #   periodically throughout the day in production but can be sped up in sandbox.
-        #   This transfer must first have a `status` of `pending_approval` or
-        #   `pending_submission`.
+        # periodically throughout the day in production but can be sped up in sandbox.
+        # This transfer must first have a `status` of `pending_approval` or
+        # `pending_submission`.
         sig do
           params(
             check_transfer_id: String,

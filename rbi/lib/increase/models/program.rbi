@@ -16,7 +16,7 @@ module Increase
       attr_accessor :billing_account_id
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
-      #   was created.
+      # was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -25,8 +25,8 @@ module Increase
       attr_accessor :default_digital_card_profile_id
 
       # The Interest Rate currently being earned on the accounts in this program, as a
-      #   string containing a decimal number. For example, a 1% interest rate would be
-      #   represented as "0.01".
+      # string containing a decimal number. For example, a 1% interest rate would be
+      # represented as "0.01".
       sig { returns(String) }
       attr_accessor :interest_rate
 
@@ -35,19 +35,19 @@ module Increase
       attr_accessor :name
 
       # A constant representing the object's type. For this resource it will always be
-      #   `program`.
+      # `program`.
       sig { returns(Increase::Models::Program::Type::TaggedSymbol) }
       attr_accessor :type
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
-      #   was last updated.
+      # was last updated.
       sig { returns(Time) }
       attr_accessor :updated_at
 
       # Programs determine the compliance and commercial terms of Accounts. By default,
-      #   you have a Commercial Banking program for managing your own funds. If you are
-      #   lending or managing funds on behalf of your customers, or otherwise engaged in
-      #   regulated activity, we will work together to create additional Programs for you.
+      # you have a Commercial Banking program for managing your own funds. If you are
+      # lending or managing funds on behalf of your customers, or otherwise engaged in
+      # regulated activity, we will work together to create additional Programs for you.
       sig do
         params(
           id: String,
@@ -112,7 +112,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `program`.
+      # `program`.
       module Type
         extend Increase::Internal::Type::Enum
 

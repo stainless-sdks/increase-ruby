@@ -13,28 +13,28 @@ module Increase
 
         # @!attribute amount
         #   The held amount in the minor unit of the account's currency. For dollars, for
-        #     example, this is cents.
+        #   example, this is cents.
         #
         #   @return [Integer]
         required :amount, Integer
 
         # @!attribute automatically_releases_at
         #   When the hold will be released automatically. Certain conditions may cause it to
-        #     be released before this time.
+        #   be released before this time.
         #
         #   @return [Time]
         required :automatically_releases_at, Time
 
         # @!attribute created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
-        #     was created.
+        #   was created.
         #
         #   @return [Time]
         required :created_at, Time
 
         # @!attribute currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-        #     currency.
+        #   currency.
         #
         #   @return [Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency]
         required :currency, enum: -> { Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency }
@@ -65,14 +65,14 @@ module Increase
 
         # @!attribute type
         #   A constant representing the object's type. For this resource it will always be
-        #     `inbound_funds_hold`.
+        #   `inbound_funds_hold`.
         #
         #   @return [Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type]
         required :type, enum: -> { Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type }
 
         # @!parse
         #   # We hold funds for certain transaction types to account for return windows where
-        #   #   funds might still be clawed back by the sending institution.
+        #   # funds might still be clawed back by the sending institution.
         #   #
         #   # @param id [String]
         #   # @param amount [Integer]
@@ -104,7 +104,7 @@ module Increase
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-        #   currency.
+        # currency.
         #
         # @see Increase::Models::Simulations::InboundFundsHoldReleaseResponse#currency
         module Currency
@@ -155,7 +155,7 @@ module Increase
         end
 
         # A constant representing the object's type. For this resource it will always be
-        #   `inbound_funds_hold`.
+        # `inbound_funds_hold`.
         #
         # @see Increase::Models::Simulations::InboundFundsHoldReleaseResponse#type
         module Type

@@ -16,7 +16,7 @@ module Increase
         attr_accessor :lockbox_id
 
         # The file containing the PDF contents. If not present, a default check image file
-        #   will be used.
+        # will be used.
         sig { returns(T.nilable(String)) }
         attr_reader :contents_file_id
 

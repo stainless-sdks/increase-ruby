@@ -119,8 +119,8 @@ module Increase
       end
 
       # Depending on your program, you may be required to re-confirm an Entity's details
-      #   on a recurring basis. After making any required updates, call this endpoint to
-      #   record that your user confirmed their details.
+      # on a recurring basis. After making any required updates, call this endpoint to
+      # record that your user confirmed their details.
       #
       # @overload confirm(entity_id, confirmed_at: nil, request_options: {})
       #

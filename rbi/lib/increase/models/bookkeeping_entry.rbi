@@ -12,7 +12,7 @@ module Increase
       attr_accessor :account_id
 
       # The Entry amount in the minor unit of its currency. For dollars, for example,
-      #   this is cents.
+      # this is cents.
       sig { returns(Integer) }
       attr_accessor :amount
 
@@ -25,13 +25,13 @@ module Increase
       attr_accessor :entry_set_id
 
       # A constant representing the object's type. For this resource it will always be
-      #   `bookkeeping_entry`.
+      # `bookkeeping_entry`.
       sig { returns(Increase::Models::BookkeepingEntry::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Entries are T-account entries recording debits and credits. Your compliance
-      #   setup might require annotating money movements using this API. Learn more in our
-      #   [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
+      # setup might require annotating money movements using this API. Learn more in our
+      # [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
       sig do
         params(
           id: String,
@@ -61,7 +61,7 @@ module Increase
       def to_hash; end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `bookkeeping_entry`.
+      # `bookkeeping_entry`.
       module Type
         extend Increase::Internal::Type::Enum
 

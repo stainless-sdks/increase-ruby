@@ -11,7 +11,7 @@ module Increase
       attr_accessor :url
 
       # If specified, this subscription will only receive webhooks for Events associated
-      #   with the specified OAuth Connection.
+      # with the specified OAuth Connection.
       sig { returns(T.nilable(String)) }
       attr_reader :oauth_connection_id
 
@@ -19,7 +19,7 @@ module Increase
       attr_writer :oauth_connection_id
 
       # If specified, this subscription will only receive webhooks for Events with the
-      #   specified `category`.
+      # specified `category`.
       sig { returns(T.nilable(Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol)) }
       attr_reader :selected_event_category
 
@@ -32,7 +32,7 @@ module Increase
       attr_writer :selected_event_category
 
       # The key that will be used to sign webhooks. If no value is passed, a random
-      #   string will be used as default.
+      # string will be used as default.
       sig { returns(T.nilable(String)) }
       attr_reader :shared_secret
 
@@ -73,7 +73,7 @@ module Increase
       def to_hash; end
 
       # If specified, this subscription will only receive webhooks for Events with the
-      #   specified `category`.
+      # specified `category`.
       module SelectedEventCategory
         extend Increase::Internal::Type::Enum
 

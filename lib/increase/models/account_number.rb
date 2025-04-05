@@ -24,15 +24,15 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      #     Number was created.
+      #   Number was created.
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
-      #     Increase and is used to ensure that a request is only processed once. Learn more
-      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -45,7 +45,7 @@ module Increase
 
       # @!attribute inbound_checks
       #   Properties related to how this Account Number should handle inbound check
-      #     withdrawals.
+      #   withdrawals.
       #
       #   @return [Increase::Models::AccountNumber::InboundChecks]
       required :inbound_checks, -> { Increase::Models::AccountNumber::InboundChecks }
@@ -70,17 +70,17 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `account_number`.
+      #   `account_number`.
       #
       #   @return [Symbol, Increase::Models::AccountNumber::Type]
       required :type, enum: -> { Increase::Models::AccountNumber::Type }
 
       # @!parse
       #   # Each account can have multiple account and routing numbers. We recommend that
-      #   #   you use a set per vendor. This is similar to how you use different passwords for
-      #   #   different websites. Account numbers can also be used to seamlessly reconcile
-      #   #   inbound payments. Generating a unique account number per vendor ensures you
-      #   #   always know the originator of an incoming payment.
+      #   # you use a set per vendor. This is similar to how you use different passwords for
+      #   # different websites. Account numbers can also be used to seamlessly reconcile
+      #   # inbound payments. Generating a unique account number per vendor ensures you
+      #   # always know the originator of an incoming payment.
       #   #
       #   # @param id [String]
       #   # @param account_id [String]
@@ -117,7 +117,7 @@ module Increase
       class InboundACH < Increase::Internal::Type::BaseModel
         # @!attribute debit_status
         #   Whether ACH debits are allowed against this Account Number. Note that they will
-        #     still be declined if this is `allowed` if the Account Number is not active.
+        #   still be declined if this is `allowed` if the Account Number is not active.
         #
         #   @return [Symbol, Increase::Models::AccountNumber::InboundACH::DebitStatus]
         required :debit_status, enum: -> { Increase::Models::AccountNumber::InboundACH::DebitStatus }
@@ -132,7 +132,7 @@ module Increase
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
         # Whether ACH debits are allowed against this Account Number. Note that they will
-        #   still be declined if this is `allowed` if the Account Number is not active.
+        # still be declined if this is `allowed` if the Account Number is not active.
         #
         # @see Increase::Models::AccountNumber::InboundACH#debit_status
         module DebitStatus
@@ -162,7 +162,7 @@ module Increase
 
         # @!parse
         #   # Properties related to how this Account Number should handle inbound check
-        #   #   withdrawals.
+        #   # withdrawals.
         #   #
         #   # @param status [Symbol, Increase::Models::AccountNumber::InboundChecks::Status]
         #   #
@@ -213,7 +213,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `account_number`.
+      # `account_number`.
       #
       # @see Increase::Models::AccountNumber#type
       module Type

@@ -17,14 +17,14 @@ module Increase
 
         # @!attribute pending_transaction_id
         #   The identifier of the Pending Transaction for the Card Authorization you wish to
-        #     settle.
+        #   settle.
         #
         #   @return [String]
         required :pending_transaction_id, String
 
         # @!attribute [r] amount
         #   The amount to be settled. This defaults to the amount of the Pending Transaction
-        #     being settled.
+        #   being settled.
         #
         #   @return [Integer, nil]
         optional :amount, Integer

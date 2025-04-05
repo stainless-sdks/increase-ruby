@@ -29,13 +29,13 @@ module Increase
       end
       def list(
         # Filter Card Purchase Supplements to ones belonging to the specified Card
-        #   Payment.
+        # Payment.
         card_payment_id: nil,
         created_at: nil,
         # Return the page of entries after this one.
         cursor: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        #   objects.
+        # objects.
         limit: nil,
         request_options: {}
       ); end

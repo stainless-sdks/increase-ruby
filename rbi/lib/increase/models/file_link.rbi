@@ -8,12 +8,12 @@ module Increase
       attr_accessor :id
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the File
-      #   Link was created.
+      # Link was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the File
-      #   Link will expire.
+      # Link will expire.
       sig { returns(Time) }
       attr_accessor :expires_at
 
@@ -22,19 +22,19 @@ module Increase
       attr_accessor :file_id
 
       # The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # Increase and is used to ensure that a request is only processed once. Learn more
+      # about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
       # A constant representing the object's type. For this resource it will always be
-      #   `file_link`.
+      # `file_link`.
       sig { returns(Increase::Models::FileLink::Type::TaggedSymbol) }
       attr_accessor :type
 
       # A URL where the File can be downloaded. The URL will expire after the
-      #   `expires_at` time. This URL is unauthenticated and can be used to download the
-      #   File without an Increase API key.
+      # `expires_at` time. This URL is unauthenticated and can be used to download the
+      # File without an Increase API key.
       sig { returns(String) }
       attr_accessor :unauthenticated_url
 
@@ -71,7 +71,7 @@ module Increase
       def to_hash; end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `file_link`.
+      # `file_link`.
       module Type
         extend Increase::Internal::Type::Enum
 

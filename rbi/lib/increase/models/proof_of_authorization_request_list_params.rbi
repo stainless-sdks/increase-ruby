@@ -25,7 +25,7 @@ module Increase
       attr_writer :cursor
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
+      # objects.
       sig { returns(T.nilable(Integer)) }
       attr_reader :limit
 
@@ -58,7 +58,7 @@ module Increase
 
       class CreatedAt < Increase::Internal::Type::BaseModel
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        #   timestamp.
+        # timestamp.
         sig { returns(T.nilable(Time)) }
         attr_reader :after
 
@@ -66,7 +66,7 @@ module Increase
         attr_writer :after
 
         # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        #   timestamp.
+        # timestamp.
         sig { returns(T.nilable(Time)) }
         attr_reader :before
 
@@ -74,7 +74,7 @@ module Increase
         attr_writer :before
 
         # Return results on or after this
-        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
         attr_reader :on_or_after
 
@@ -82,7 +82,7 @@ module Increase
         attr_writer :on_or_after
 
         # Return results on or before this
-        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
         attr_reader :on_or_before
 

@@ -5,7 +5,7 @@ module Increase
     class Simulations
       class CardIncrements
         # Simulates the increment of an authorization by a card acquirer. An authorization
-        #   can be incremented multiple times.
+        # can be incremented multiple times.
         #
         # @overload create(amount:, card_payment_id:, event_subscription_id: nil, request_options: {})
         #

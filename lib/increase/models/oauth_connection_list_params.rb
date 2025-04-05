@@ -20,7 +20,7 @@ module Increase
 
       # @!attribute [r] limit
       #   Limit the size of the list that is returned. The default (and maximum) is 100
-      #     objects.
+      #   objects.
       #
       #   @return [Integer, nil]
       optional :limit, Integer
@@ -31,7 +31,7 @@ module Increase
 
       # @!attribute [r] oauth_application_id
       #   Filter results to only include OAuth Connections for a specific OAuth
-      #     Application.
+      #   Application.
       #
       #   @return [String, nil]
       optional :oauth_application_id, String
@@ -63,8 +63,8 @@ module Increase
       class Status < Increase::Internal::Type::BaseModel
         # @!attribute [r] in_
         #   Filter to OAuth Connections by their status. By default, return only the
-        #     `active` ones. For GET requests, this should be encoded as a comma-delimited
-        #     string, such as `?in=one,two,three`.
+        #   `active` ones. For GET requests, this should be encoded as a comma-delimited
+        #   string, such as `?in=one,two,three`.
         #
         #   @return [Array<Symbol, Increase::Models::OAuthConnectionListParams::Status::In>, nil]
         optional :in_,

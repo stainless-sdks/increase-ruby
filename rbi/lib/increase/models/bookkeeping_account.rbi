@@ -20,8 +20,8 @@ module Increase
       attr_accessor :entity_id
 
       # The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # Increase and is used to ensure that a request is only processed once. Learn more
+      # about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
@@ -30,13 +30,13 @@ module Increase
       attr_accessor :name
 
       # A constant representing the object's type. For this resource it will always be
-      #   `bookkeeping_account`.
+      # `bookkeeping_account`.
       sig { returns(Increase::Models::BookkeepingAccount::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Accounts are T-accounts. They can store accounting entries. Your compliance
-      #   setup might require annotating money movements using this API. Learn more in our
-      #   [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
+      # setup might require annotating money movements using this API. Learn more in our
+      # [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
       sig do
         params(
           id: String,
@@ -88,7 +88,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `bookkeeping_account`.
+      # `bookkeeping_account`.
       module Type
         extend Increase::Internal::Type::Enum
 

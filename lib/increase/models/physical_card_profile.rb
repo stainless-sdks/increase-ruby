@@ -30,7 +30,7 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #     the Card Dispute was created.
+      #   the Card Dispute was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -55,15 +55,15 @@ module Increase
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
-      #     Increase and is used to ensure that a request is only processed once. Learn more
-      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
 
       # @!attribute is_default
       #   Whether this Physical Card Profile is the default for all cards in its Increase
-      #     group.
+      #   group.
       #
       #   @return [Boolean]
       required :is_default, Increase::Internal::Type::Boolean
@@ -76,15 +76,15 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `physical_card_profile`.
+      #   `physical_card_profile`.
       #
       #   @return [Symbol, Increase::Models::PhysicalCardProfile::Type]
       required :type, enum: -> { Increase::Models::PhysicalCardProfile::Type }
 
       # @!parse
       #   # This contains artwork and metadata relating to a Physical Card's appearance. For
-      #   #   more information, see our guide on
-      #   #   [physical card artwork](https://increase.com/documentation/card-art-physical-cards).
+      #   # more information, see our guide on
+      #   # [physical card artwork](https://increase.com/documentation/card-art-physical-cards).
       #   #
       #   # @param id [String]
       #   # @param back_image_file_id [String, nil]
@@ -170,7 +170,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `physical_card_profile`.
+      # `physical_card_profile`.
       #
       # @see Increase::Models::PhysicalCardProfile#type
       module Type

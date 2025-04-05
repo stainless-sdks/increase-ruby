@@ -32,12 +32,12 @@ module Increase
       attr_accessor :transaction_id
 
       # A constant representing the object's type. For this resource it will always be
-      #   `card_purchase_supplement`.
+      # `card_purchase_supplement`.
       sig { returns(Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Additional information about a card purchase (e.g., settlement or refund), such
-      #   as level 3 line item data.
+      # as level 3 line item data.
       sig do
         params(
           id: String,
@@ -98,7 +98,7 @@ module Increase
         attr_accessor :shipping_amount
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping
-        #   cost.
+        # cost.
         sig { returns(T.nilable(String)) }
         attr_accessor :shipping_currency
 
@@ -119,7 +119,7 @@ module Increase
         attr_accessor :shipping_tax_amount
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping
-        #   tax.
+        # tax.
         sig { returns(T.nilable(String)) }
         attr_accessor :shipping_tax_currency
 
@@ -335,7 +335,7 @@ module Increase
         attr_accessor :sales_tax_amount
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the sales tax
-        #   assessed.
+        # assessed.
         sig { returns(T.nilable(String)) }
         attr_accessor :sales_tax_currency
 
@@ -348,7 +348,7 @@ module Increase
         attr_accessor :total_amount
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total
-        #   amount.
+        # amount.
         sig { returns(T.nilable(String)) }
         attr_accessor :total_amount_currency
 
@@ -504,7 +504,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `card_purchase_supplement`.
+      # `card_purchase_supplement`.
       module Type
         extend Increase::Internal::Type::Enum
 

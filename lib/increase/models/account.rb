@@ -18,21 +18,21 @@ module Increase
 
       # @!attribute closed_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      #     was closed.
+      #   was closed.
       #
       #   @return [Time, nil]
       required :closed_at, Time, nil?: true
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      #     was created.
+      #   was created.
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
-      #     currency.
+      #   currency.
       #
       #   @return [Symbol, Increase::Models::Account::Currency]
       required :currency, enum: -> { Increase::Models::Account::Currency }
@@ -45,37 +45,37 @@ module Increase
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
-      #     Increase and is used to ensure that a request is only processed once. Learn more
-      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
 
       # @!attribute informational_entity_id
       #   The identifier of an Entity that, while not owning the Account, is associated
-      #     with its activity.
+      #   with its activity.
       #
       #   @return [String, nil]
       required :informational_entity_id, String, nil?: true
 
       # @!attribute interest_accrued
       #   The interest accrued but not yet paid, expressed as a string containing a
-      #     floating-point value.
+      #   floating-point value.
       #
       #   @return [String]
       required :interest_accrued, String
 
       # @!attribute interest_accrued_at
       #   The latest [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which
-      #     interest was accrued.
+      #   interest was accrued.
       #
       #   @return [Date, nil]
       required :interest_accrued_at, Date, nil?: true
 
       # @!attribute interest_rate
       #   The Interest Rate currently being earned on the account, as a string containing
-      #     a decimal number. For example, a 1% interest rate would be represented as
-      #     "0.01".
+      #   a decimal number. For example, a 1% interest rate would be represented as
+      #   "0.01".
       #
       #   @return [String]
       required :interest_rate, String
@@ -88,7 +88,7 @@ module Increase
 
       # @!attribute program_id
       #   The identifier of the Program determining the compliance and commercial terms of
-      #     this Account.
+      #   this Account.
       #
       #   @return [String]
       required :program_id, String
@@ -101,14 +101,14 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `account`.
+      #   `account`.
       #
       #   @return [Symbol, Increase::Models::Account::Type]
       required :type, enum: -> { Increase::Models::Account::Type }
 
       # @!parse
       #   # Accounts are your bank accounts with Increase. They store money, receive
-      #   #   transfers, and send payments. They earn interest and have depository insurance.
+      #   # transfers, and send payments. They earn interest and have depository insurance.
       #   #
       #   # @param id [String]
       #   # @param bank [Symbol, Increase::Models::Account::Bank]
@@ -172,7 +172,7 @@ module Increase
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
-      #   currency.
+      # currency.
       #
       # @see Increase::Models::Account#currency
       module Currency
@@ -223,7 +223,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `account`.
+      # `account`.
       #
       # @see Increase::Models::Account#type
       module Type

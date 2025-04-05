@@ -19,13 +19,13 @@ module Increase
       attr_writer :cardholder
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the Physical Card was created.
+      # the Physical Card was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
       # The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # Increase and is used to ensure that a request is only processed once. Learn more
+      # about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
@@ -45,15 +45,15 @@ module Increase
       attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
-      #   `physical_card`.
+      # `physical_card`.
       sig { returns(Increase::Models::PhysicalCard::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Custom physical Visa cards that are shipped to your customers. The artwork is
-      #   configurable by a connected [Card Profile](/documentation/api#card-profiles).
-      #   The same Card can be used for multiple Physical Cards. Printing cards incurs a
-      #   fee. Please contact [support@increase.com](mailto:support@increase.com) for
-      #   pricing!
+      # configurable by a connected [Card Profile](/documentation/api#card-profiles).
+      # The same Card can be used for multiple Physical Cards. Printing cards incurs a
+      # fee. Please contact [support@increase.com](mailto:support@increase.com) for
+      # pricing!
       sig do
         params(
           id: String,
@@ -299,8 +299,8 @@ module Increase
           attr_accessor :return_reason
 
           # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-          #   the fulfillment provider marked the card as ready for pick-up by the shipment
-          #   carrier.
+          # the fulfillment provider marked the card as ready for pick-up by the shipment
+          # carrier.
           sig { returns(Time) }
           attr_accessor :shipped_at
 
@@ -352,7 +352,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `physical_card`.
+      # `physical_card`.
       module Type
         extend Increase::Internal::Type::Enum
 

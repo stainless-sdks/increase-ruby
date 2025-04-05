@@ -10,7 +10,7 @@ module Increase
 
       # @!attribute amount
       #   The transfer amount in USD cents. For Real-Time Payments transfers, must be
-      #     positive.
+      #   positive.
       #
       #   @return [Integer]
       required :amount, Integer
@@ -35,7 +35,7 @@ module Increase
 
       # @!attribute [r] debtor_name
       #   The name of the transfer's sender. If not provided, defaults to the name of the
-      #     account's entity.
+      #   account's entity.
       #
       #   @return [String, nil]
       optional :debtor_name, String
@@ -56,7 +56,7 @@ module Increase
 
       # @!attribute [r] destination_routing_number
       #   The destination American Bankers' Association (ABA) Routing Transit Number
-      #     (RTN).
+      #   (RTN).
       #
       #   @return [String, nil]
       optional :destination_routing_number, String
@@ -67,8 +67,8 @@ module Increase
 
       # @!attribute [r] external_account_id
       #   The ID of an External Account to initiate a transfer to. If this parameter is
-      #     provided, `destination_account_number` and `destination_routing_number` must be
-      #     absent.
+      #   provided, `destination_account_number` and `destination_routing_number` must be
+      #   absent.
       #
       #   @return [String, nil]
       optional :external_account_id, String
@@ -89,7 +89,7 @@ module Increase
 
       # @!attribute [r] ultimate_creditor_name
       #   The name of the ultimate recipient of the transfer. Set this if the creditor is
-      #     an intermediary receiving the payment for someone else.
+      #   an intermediary receiving the payment for someone else.
       #
       #   @return [String, nil]
       optional :ultimate_creditor_name, String
@@ -100,7 +100,7 @@ module Increase
 
       # @!attribute [r] ultimate_debtor_name
       #   The name of the ultimate sender of the transfer. Set this if the funds are being
-      #     sent on behalf of someone who is not the account holder at Increase.
+      #   sent on behalf of someone who is not the account holder at Increase.
       #
       #   @return [String, nil]
       optional :ultimate_debtor_name, String

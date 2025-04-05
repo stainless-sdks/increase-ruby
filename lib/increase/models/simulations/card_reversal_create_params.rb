@@ -17,7 +17,7 @@ module Increase
 
         # @!attribute [r] amount
         #   The amount of the reversal in minor units in the card authorization's currency.
-        #     This defaults to the authorization amount.
+        #   This defaults to the authorization amount.
         #
         #   @return [Integer, nil]
         optional :amount, Integer

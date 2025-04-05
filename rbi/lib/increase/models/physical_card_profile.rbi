@@ -20,7 +20,7 @@ module Increase
       attr_accessor :contact_phone
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the Card Dispute was created.
+      # the Card Dispute was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -37,13 +37,13 @@ module Increase
       attr_accessor :front_image_file_id
 
       # The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # Increase and is used to ensure that a request is only processed once. Learn more
+      # about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
       # Whether this Physical Card Profile is the default for all cards in its Increase
-      #   group.
+      # group.
       sig { returns(T::Boolean) }
       attr_accessor :is_default
 
@@ -52,13 +52,13 @@ module Increase
       attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
-      #   `physical_card_profile`.
+      # `physical_card_profile`.
       sig { returns(Increase::Models::PhysicalCardProfile::Type::TaggedSymbol) }
       attr_accessor :type
 
       # This contains artwork and metadata relating to a Physical Card's appearance. For
-      #   more information, see our guide on
-      #   [physical card artwork](https://increase.com/documentation/card-art-physical-cards).
+      # more information, see our guide on
+      # [physical card artwork](https://increase.com/documentation/card-art-physical-cards).
       sig do
         params(
           id: String,
@@ -162,7 +162,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `physical_card_profile`.
+      # `physical_card_profile`.
       module Type
         extend Increase::Internal::Type::Enum
 

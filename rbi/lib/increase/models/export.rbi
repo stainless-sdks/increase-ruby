@@ -8,7 +8,7 @@ module Increase
       attr_accessor :id
 
       # The category of the Export. We may add additional possible values for this enum
-      #   over time; your application should be able to handle that gracefully.
+      # over time; your application should be able to handle that gracefully.
       sig { returns(Increase::Models::Export::Category::TaggedSymbol) }
       attr_accessor :category
 
@@ -17,18 +17,18 @@ module Increase
       attr_accessor :created_at
 
       # A URL at which the Export's file can be downloaded. This will be present when
-      #   the Export's status transitions to `complete`.
+      # the Export's status transitions to `complete`.
       sig { returns(T.nilable(String)) }
       attr_accessor :file_download_url
 
       # The File containing the contents of the Export. This will be present when the
-      #   Export's status transitions to `complete`.
+      # Export's status transitions to `complete`.
       sig { returns(T.nilable(String)) }
       attr_accessor :file_id
 
       # The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # Increase and is used to ensure that a request is only processed once. Learn more
+      # about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
@@ -37,15 +37,15 @@ module Increase
       attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
-      #   `export`.
+      # `export`.
       sig { returns(Increase::Models::Export::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Exports are batch summaries of your Increase data. You can make them from the
-      #   API or dashboard. Since they can take a while, they are generated
-      #   asynchronously. We send a webhook when they are ready. For more information,
-      #   please read our
-      #   [Exports documentation](https://increase.com/documentation/exports).
+      # API or dashboard. Since they can take a while, they are generated
+      # asynchronously. We send a webhook when they are ready. For more information,
+      # please read our
+      # [Exports documentation](https://increase.com/documentation/exports).
       sig do
         params(
           id: String,
@@ -89,7 +89,7 @@ module Increase
       def to_hash; end
 
       # The category of the Export. We may add additional possible values for this enum
-      #   over time; your application should be able to handle that gracefully.
+      # over time; your application should be able to handle that gracefully.
       module Category
         extend Increase::Internal::Type::Enum
 
@@ -143,7 +143,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `export`.
+      # `export`.
       module Type
         extend Increase::Internal::Type::Enum
 

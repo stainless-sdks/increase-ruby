@@ -48,7 +48,7 @@ module Increase
       attr_accessor :automatically_resolves_at
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the inbound ACH transfer was created.
+      # the inbound ACH transfer was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -69,7 +69,7 @@ module Increase
       attr_accessor :direction
 
       # The effective date of the transfer. This is sent by the sending bank and is a
-      #   factor in determining funds availability.
+      # factor in determining funds availability.
       sig { returns(Date) }
       attr_accessor :effective_date
 
@@ -78,7 +78,7 @@ module Increase
       attr_accessor :expected_settlement_schedule
 
       # If the Inbound ACH Transfer has a Standard Entry Class Code of IAT, this will
-      #   contain fields pertaining to the International ACH Transaction.
+      # contain fields pertaining to the International ACH Transaction.
       sig { returns(T.nilable(Increase::Models::InboundACHTransfer::InternationalAddenda)) }
       attr_reader :international_addenda
 
@@ -91,7 +91,7 @@ module Increase
       attr_writer :international_addenda
 
       # If you initiate a notification of change in response to the transfer, this will
-      #   contain its details.
+      # contain its details.
       sig { returns(T.nilable(Increase::Models::InboundACHTransfer::NotificationOfChange)) }
       attr_reader :notification_of_change
 
@@ -124,7 +124,7 @@ module Increase
       attr_accessor :originator_company_name
 
       # The American Banking Association (ABA) routing number of the bank originating
-      #   the transfer.
+      # the transfer.
       sig { returns(String) }
       attr_accessor :originator_routing_number
 
@@ -145,9 +145,9 @@ module Increase
       attr_accessor :status
 
       # A 15 digit number set by the sending bank and transmitted to the receiving bank.
-      #   Along with the amount, date, and originating routing number, this can be used to
-      #   identify the ACH transfer. ACH trace numbers are not unique, but are
-      #   [used to correlate returns](https://increase.com/documentation/ach-returns#ach-returns).
+      # Along with the amount, date, and originating routing number, this can be used to
+      # identify the ACH transfer. ACH trace numbers are not unique, but are
+      # [used to correlate returns](https://increase.com/documentation/ach-returns#ach-returns).
       sig { returns(String) }
       attr_accessor :trace_number
 
@@ -164,12 +164,12 @@ module Increase
       attr_writer :transfer_return
 
       # A constant representing the object's type. For this resource it will always be
-      #   `inbound_ach_transfer`.
+      # `inbound_ach_transfer`.
       sig { returns(Increase::Models::InboundACHTransfer::Type::TaggedSymbol) }
       attr_accessor :type
 
       # An Inbound ACH Transfer is an ACH transfer initiated outside of Increase to your
-      #   account.
+      # account.
       sig do
         params(
           id: String,
@@ -543,12 +543,12 @@ module Increase
 
       class InternationalAddenda < Increase::Internal::Type::BaseModel
         # The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2
-        #   country code of the destination country.
+        # country code of the destination country.
         sig { returns(String) }
         attr_accessor :destination_country_code
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for the
-        #   destination bank account.
+        # destination bank account.
         sig { returns(String) }
         attr_accessor :destination_currency_code
 
@@ -561,12 +561,12 @@ module Increase
         attr_accessor :foreign_exchange_indicator
 
         # Depending on the `foreign_exchange_reference_indicator`, an exchange rate or a
-        #   reference to a well-known rate.
+        # reference to a well-known rate.
         sig { returns(T.nilable(String)) }
         attr_accessor :foreign_exchange_reference
 
         # An instruction of how to interpret the `foreign_exchange_reference` field for
-        #   this Transaction.
+        # this Transaction.
         sig do
           returns(
             Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator::TaggedSymbol
@@ -575,7 +575,7 @@ module Increase
         attr_accessor :foreign_exchange_reference_indicator
 
         # The amount in the minor unit of the foreign payment currency. For dollars, for
-        #   example, this is cents.
+        # example, this is cents.
         sig { returns(Integer) }
         attr_accessor :foreign_payment_amount
 
@@ -592,23 +592,23 @@ module Increase
         attr_accessor :international_transaction_type_code
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for the
-        #   originating bank account.
+        # originating bank account.
         sig { returns(String) }
         attr_accessor :originating_currency_code
 
         # The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2
-        #   country code of the originating branch country.
+        # country code of the originating branch country.
         sig { returns(String) }
         attr_accessor :originating_depository_financial_institution_branch_country
 
         # An identifier for the originating bank. One of an International Bank Account
-        #   Number (IBAN) bank identifier, SWIFT Bank Identification Code (BIC), or a
-        #   domestic identifier like a US Routing Number.
+        # Number (IBAN) bank identifier, SWIFT Bank Identification Code (BIC), or a
+        # domestic identifier like a US Routing Number.
         sig { returns(String) }
         attr_accessor :originating_depository_financial_institution_id
 
         # An instruction of how to interpret the
-        #   `originating_depository_financial_institution_id` field for this Transaction.
+        # `originating_depository_financial_institution_id` field for this Transaction.
         sig do
           returns(
             Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier::TaggedSymbol
@@ -617,7 +617,7 @@ module Increase
         attr_accessor :originating_depository_financial_institution_id_qualifier
 
         # The name of the originating bank. Sometimes this will refer to an American bank
-        #   and obscure the correspondent foreign bank.
+        # and obscure the correspondent foreign bank.
         sig { returns(String) }
         attr_accessor :originating_depository_financial_institution_name
 
@@ -626,13 +626,13 @@ module Increase
         attr_accessor :originator_city
 
         # A portion of the originator address. The
-        #   [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2 country
-        #   code of the originator country.
+        # [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2 country
+        # code of the originator country.
         sig { returns(String) }
         attr_accessor :originator_country
 
         # An identifier for the originating company. This is generally stable across
-        #   multiple ACH transfers.
+        # multiple ACH transfers.
         sig { returns(String) }
         attr_accessor :originator_identification
 
@@ -665,8 +665,8 @@ module Increase
         attr_accessor :receiver_city
 
         # A portion of the receiver address. The
-        #   [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2 country
-        #   code of the receiver country.
+        # [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2 country
+        # code of the receiver country.
         sig { returns(String) }
         attr_accessor :receiver_country
 
@@ -691,18 +691,18 @@ module Increase
         attr_accessor :receiving_company_or_individual_name
 
         # The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2
-        #   country code of the receiving bank country.
+        # country code of the receiving bank country.
         sig { returns(String) }
         attr_accessor :receiving_depository_financial_institution_country
 
         # An identifier for the receiving bank. One of an International Bank Account
-        #   Number (IBAN) bank identifier, SWIFT Bank Identification Code (BIC), or a
-        #   domestic identifier like a US Routing Number.
+        # Number (IBAN) bank identifier, SWIFT Bank Identification Code (BIC), or a
+        # domestic identifier like a US Routing Number.
         sig { returns(String) }
         attr_accessor :receiving_depository_financial_institution_id
 
         # An instruction of how to interpret the
-        #   `receiving_depository_financial_institution_id` field for this Transaction.
+        # `receiving_depository_financial_institution_id` field for this Transaction.
         sig do
           returns(
             Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier::TaggedSymbol
@@ -715,7 +715,7 @@ module Increase
         attr_accessor :receiving_depository_financial_institution_name
 
         # If the Inbound ACH Transfer has a Standard Entry Class Code of IAT, this will
-        #   contain fields pertaining to the International ACH Transaction.
+        # contain fields pertaining to the International ACH Transaction.
         sig do
           params(
             destination_country_code: String,
@@ -877,7 +877,7 @@ module Increase
         end
 
         # An instruction of how to interpret the `foreign_exchange_reference` field for
-        #   this Transaction.
+        # this Transaction.
         module ForeignExchangeReferenceIndicator
           extend Increase::Internal::Type::Enum
 
@@ -1093,7 +1093,7 @@ module Increase
         end
 
         # An instruction of how to interpret the
-        #   `originating_depository_financial_institution_id` field for this Transaction.
+        # `originating_depository_financial_institution_id` field for this Transaction.
         module OriginatingDepositoryFinancialInstitutionIDQualifier
           extend Increase::Internal::Type::Enum
 
@@ -1143,7 +1143,7 @@ module Increase
         end
 
         # An instruction of how to interpret the
-        #   `receiving_depository_financial_institution_id` field for this Transaction.
+        # `receiving_depository_financial_institution_id` field for this Transaction.
         module ReceivingDepositoryFinancialInstitutionIDQualifier
           extend Increase::Internal::Type::Enum
 
@@ -1203,7 +1203,7 @@ module Increase
         attr_accessor :updated_routing_number
 
         # If you initiate a notification of change in response to the transfer, this will
-        #   contain its details.
+        # contain its details.
         sig do
           params(updated_account_number: T.nilable(String), updated_routing_number: T.nilable(String))
             .returns(T.attached_class)
@@ -1449,7 +1449,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `inbound_ach_transfer`.
+      # `inbound_ach_transfer`.
       module Type
         extend Increase::Internal::Type::Enum
 
