@@ -20,7 +20,7 @@ module Increase
       attr_accessor :routing_number
 
       # A constant representing the object's type. For this resource it will always be
-      #   `routing_number`.
+      # `routing_number`.
       sig { returns(Increase::Models::RoutingNumberListResponse::Type::TaggedSymbol) }
       attr_accessor :type
 
@@ -118,7 +118,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `routing_number`.
+      # `routing_number`.
       module Type
         extend Increase::Internal::Type::Enum
 

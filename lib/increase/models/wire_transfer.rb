@@ -30,7 +30,7 @@ module Increase
 
       # @!attribute approval
       #   If your account requires approvals for transfers and the transfer was approved,
-      #     this will contain details of the approval.
+      #   this will contain details of the approval.
       #
       #   @return [Increase::Models::WireTransfer::Approval, nil]
       required :approval, -> { Increase::Models::WireTransfer::Approval }, nil?: true
@@ -61,14 +61,14 @@ module Increase
 
       # @!attribute cancellation
       #   If your account requires approvals for transfers and the transfer was not
-      #     approved, this will contain details of the cancellation.
+      #   approved, this will contain details of the cancellation.
       #
       #   @return [Increase::Models::WireTransfer::Cancellation, nil]
       required :cancellation, -> { Increase::Models::WireTransfer::Cancellation }, nil?: true
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #     the transfer was created.
+      #   the transfer was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -81,7 +81,7 @@ module Increase
 
       # @!attribute currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-      #     currency. For wire transfers this is always equal to `usd`.
+      #   currency. For wire transfers this is always equal to `usd`.
       #
       #   @return [Symbol, Increase::Models::WireTransfer::Currency]
       required :currency, enum: -> { Increase::Models::WireTransfer::Currency }
@@ -94,8 +94,8 @@ module Increase
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
-      #     Increase and is used to ensure that a request is only processed once. Learn more
-      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -138,9 +138,9 @@ module Increase
 
       # @!attribute pending_transaction_id
       #   The ID for the pending transaction representing the transfer. A pending
-      #     transaction is created when the transfer
-      #     [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
-      #     by someone else in your organization.
+      #   transaction is created when the transfer
+      #   [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
+      #   by someone else in your organization.
       #
       #   @return [String, nil]
       required :pending_transaction_id, String, nil?: true
@@ -171,7 +171,7 @@ module Increase
 
       # @!attribute submission
       #   After the transfer is submitted to Fedwire, this will contain supplemental
-      #     details.
+      #   details.
       #
       #   @return [Increase::Models::WireTransfer::Submission, nil]
       required :submission, -> { Increase::Models::WireTransfer::Submission }, nil?: true
@@ -184,14 +184,14 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `wire_transfer`.
+      #   `wire_transfer`.
       #
       #   @return [Symbol, Increase::Models::WireTransfer::Type]
       required :type, enum: -> { Increase::Models::WireTransfer::Type }
 
       # @!parse
       #   # Wire transfers move funds between your Increase account and any other account
-      #   #   accessible by Fedwire.
+      #   # accessible by Fedwire.
       #   #
       #   # @param id [String]
       #   # @param account_id [String]
@@ -264,21 +264,21 @@ module Increase
       class Approval < Increase::Internal::Type::BaseModel
         # @!attribute approved_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #     the transfer was approved.
+        #   the transfer was approved.
         #
         #   @return [Time]
         required :approved_at, Time
 
         # @!attribute approved_by
         #   If the Transfer was approved by a user in the dashboard, the email address of
-        #     that user.
+        #   that user.
         #
         #   @return [String, nil]
         required :approved_by, String, nil?: true
 
         # @!parse
         #   # If your account requires approvals for transfers and the transfer was approved,
-        #   #   this will contain details of the approval.
+        #   # this will contain details of the approval.
         #   #
         #   # @param approved_at [Time]
         #   # @param approved_by [String, nil]
@@ -292,21 +292,21 @@ module Increase
       class Cancellation < Increase::Internal::Type::BaseModel
         # @!attribute canceled_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #     the Transfer was canceled.
+        #   the Transfer was canceled.
         #
         #   @return [Time]
         required :canceled_at, Time
 
         # @!attribute canceled_by
         #   If the Transfer was canceled by a user in the dashboard, the email address of
-        #     that user.
+        #   that user.
         #
         #   @return [String, nil]
         required :canceled_by, String, nil?: true
 
         # @!parse
         #   # If your account requires approvals for transfers and the transfer was not
-        #   #   approved, this will contain details of the cancellation.
+        #   # approved, this will contain details of the cancellation.
         #   #
         #   # @param canceled_at [Time]
         #   # @param canceled_by [String, nil]
@@ -434,7 +434,7 @@ module Increase
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-      #   currency. For wire transfers this is always equal to `usd`.
+      # currency. For wire transfers this is always equal to `usd`.
       #
       # @see Increase::Models::WireTransfer#currency
       module Currency
@@ -490,7 +490,7 @@ module Increase
 
         # @!attribute created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #     the reversal was created.
+        #   the reversal was created.
         #
         #   @return [Time]
         required :created_at, Time
@@ -509,7 +509,7 @@ module Increase
 
         # @!attribute input_cycle_date
         #   The Fedwire cycle date for the wire reversal. The "Fedwire day" begins at 9:00
-        #     PM Eastern Time on the evening before the `cycle date`.
+        #   PM Eastern Time on the evening before the `cycle date`.
         #
         #   @return [Date]
         required :input_cycle_date, Date
@@ -534,14 +534,14 @@ module Increase
 
         # @!attribute originator_routing_number
         #   The American Banking Association (ABA) routing number of the bank originating
-        #     the transfer.
+        #   the transfer.
         #
         #   @return [String, nil]
         required :originator_routing_number, String, nil?: true
 
         # @!attribute previous_message_input_cycle_date
         #   The Fedwire cycle date for the wire transfer that is being reversed by this
-        #     message.
+        #   message.
         #
         #   @return [Date]
         required :previous_message_input_cycle_date, Date
@@ -566,7 +566,7 @@ module Increase
 
         # @!attribute receiver_financial_institution_information
         #   Information included in the wire reversal for the receiving financial
-        #     institution.
+        #   institution.
         #
         #   @return [String, nil]
         required :receiver_financial_institution_information, String, nil?: true
@@ -692,7 +692,7 @@ module Increase
 
         # @!parse
         #   # After the transfer is submitted to Fedwire, this will contain supplemental
-        #   #   details.
+        #   # details.
         #   #
         #   # @param input_message_accountability_data [String]
         #   # @param submitted_at [Time]
@@ -703,7 +703,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `wire_transfer`.
+      # `wire_transfer`.
       #
       # @see Increase::Models::WireTransfer#type
       module Type

@@ -12,7 +12,7 @@ module Increase
 
       # @!attribute category
       #   The category of the Export. We may add additional possible values for this enum
-      #     over time; your application should be able to handle that gracefully.
+      #   over time; your application should be able to handle that gracefully.
       #
       #   @return [Symbol, Increase::Models::Export::Category]
       required :category, enum: -> { Increase::Models::Export::Category }
@@ -25,22 +25,22 @@ module Increase
 
       # @!attribute file_download_url
       #   A URL at which the Export's file can be downloaded. This will be present when
-      #     the Export's status transitions to `complete`.
+      #   the Export's status transitions to `complete`.
       #
       #   @return [String, nil]
       required :file_download_url, String, nil?: true
 
       # @!attribute file_id
       #   The File containing the contents of the Export. This will be present when the
-      #     Export's status transitions to `complete`.
+      #   Export's status transitions to `complete`.
       #
       #   @return [String, nil]
       required :file_id, String, nil?: true
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
-      #     Increase and is used to ensure that a request is only processed once. Learn more
-      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -53,17 +53,17 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `export`.
+      #   `export`.
       #
       #   @return [Symbol, Increase::Models::Export::Type]
       required :type, enum: -> { Increase::Models::Export::Type }
 
       # @!parse
       #   # Exports are batch summaries of your Increase data. You can make them from the
-      #   #   API or dashboard. Since they can take a while, they are generated
-      #   #   asynchronously. We send a webhook when they are ready. For more information,
-      #   #   please read our
-      #   #   [Exports documentation](https://increase.com/documentation/exports).
+      #   # API or dashboard. Since they can take a while, they are generated
+      #   # asynchronously. We send a webhook when they are ready. For more information,
+      #   # please read our
+      #   # [Exports documentation](https://increase.com/documentation/exports).
       #   #
       #   # @param id [String]
       #   # @param category [Symbol, Increase::Models::Export::Category]
@@ -79,7 +79,7 @@ module Increase
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       # The category of the Export. We may add additional possible values for this enum
-      #   over time; your application should be able to handle that gracefully.
+      # over time; your application should be able to handle that gracefully.
       #
       # @see Increase::Models::Export#category
       module Category
@@ -136,7 +136,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `export`.
+      # `export`.
       #
       # @see Increase::Models::Export#type
       module Type

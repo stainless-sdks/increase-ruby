@@ -5,7 +5,7 @@ module Increase
     module Simulations
       class DigitalWalletTokenRequestCreateResponse < Increase::Internal::Type::BaseModel
         # If the simulated tokenization attempt was declined, this field contains details
-        #   as to why.
+        # as to why.
         sig do
           returns(
             T.nilable(
@@ -16,12 +16,12 @@ module Increase
         attr_accessor :decline_reason
 
         # If the simulated tokenization attempt was accepted, this field contains the id
-        #   of the Digital Wallet Token that was created.
+        # of the Digital Wallet Token that was created.
         sig { returns(T.nilable(String)) }
         attr_accessor :digital_wallet_token_id
 
         # A constant representing the object's type. For this resource it will always be
-        #   `inbound_digital_wallet_token_request_simulation_result`.
+        # `inbound_digital_wallet_token_request_simulation_result`.
         sig { returns(Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type::TaggedSymbol) }
         attr_accessor :type
 
@@ -51,7 +51,7 @@ module Increase
         def to_hash; end
 
         # If the simulated tokenization attempt was declined, this field contains details
-        #   as to why.
+        # as to why.
         module DeclineReason
           extend Increase::Internal::Type::Enum
 
@@ -104,7 +104,7 @@ module Increase
         end
 
         # A constant representing the object's type. For this resource it will always be
-        #   `inbound_digital_wallet_token_request_simulation_result`.
+        # `inbound_digital_wallet_token_request_simulation_result`.
         module Type
           extend Increase::Internal::Type::Enum
 

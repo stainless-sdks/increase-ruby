@@ -14,7 +14,7 @@ module Increase
       attr_writer :cursor
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
+      # objects.
       sig { returns(T.nilable(Integer)) }
       attr_reader :limit
 
@@ -22,7 +22,7 @@ module Increase
       attr_writer :limit
 
       # Filter results to only include OAuth Connections for a specific OAuth
-      #   Application.
+      # Application.
       sig { returns(T.nilable(String)) }
       attr_reader :oauth_application_id
 
@@ -66,8 +66,8 @@ module Increase
 
       class Status < Increase::Internal::Type::BaseModel
         # Filter to OAuth Connections by their status. By default, return only the
-        #   `active` ones. For GET requests, this should be encoded as a comma-delimited
-        #   string, such as `?in=one,two,three`.
+        # `active` ones. For GET requests, this should be encoded as a comma-delimited
+        # string, such as `?in=one,two,three`.
         sig { returns(T.nilable(T::Array[Increase::Models::OAuthConnectionListParams::Status::In::OrSymbol])) }
         attr_reader :in_
 

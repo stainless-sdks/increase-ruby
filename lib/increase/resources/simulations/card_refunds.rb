@@ -5,7 +5,7 @@ module Increase
     class Simulations
       class CardRefunds
         # Simulates refunding a card transaction. The full value of the original sandbox
-        #   transaction is refunded.
+        # transaction is refunded.
         #
         # @overload create(transaction_id:, request_options: {})
         #

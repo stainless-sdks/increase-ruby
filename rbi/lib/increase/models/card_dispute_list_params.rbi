@@ -23,9 +23,9 @@ module Increase
       attr_writer :cursor
 
       # Filter records to the one with the specified `idempotency_key` you chose for
-      #   that object. This value is unique across Increase and is used to ensure that a
-      #   request is only processed once. Learn more about
-      #   [idempotency](https://increase.com/documentation/idempotency-keys).
+      # that object. This value is unique across Increase and is used to ensure that a
+      # request is only processed once. Learn more about
+      # [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_reader :idempotency_key
 
@@ -33,7 +33,7 @@ module Increase
       attr_writer :idempotency_key
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
+      # objects.
       sig { returns(T.nilable(Integer)) }
       attr_reader :limit
 
@@ -84,7 +84,7 @@ module Increase
 
       class CreatedAt < Increase::Internal::Type::BaseModel
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        #   timestamp.
+        # timestamp.
         sig { returns(T.nilable(Time)) }
         attr_reader :after
 
@@ -92,7 +92,7 @@ module Increase
         attr_writer :after
 
         # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        #   timestamp.
+        # timestamp.
         sig { returns(T.nilable(Time)) }
         attr_reader :before
 
@@ -100,7 +100,7 @@ module Increase
         attr_writer :before
 
         # Return results on or after this
-        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
         attr_reader :on_or_after
 
@@ -108,7 +108,7 @@ module Increase
         attr_writer :on_or_after
 
         # Return results on or before this
-        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
         attr_reader :on_or_before
 
@@ -126,8 +126,8 @@ module Increase
 
       class Status < Increase::Internal::Type::BaseModel
         # Filter Card Disputes for those with the specified status or statuses. For GET
-        #   requests, this should be encoded as a comma-delimited string, such as
-        #   `?in=one,two,three`.
+        # requests, this should be encoded as a comma-delimited string, such as
+        # `?in=one,two,three`.
         sig { returns(T.nilable(T::Array[Increase::Models::CardDisputeListParams::Status::In::OrSymbol])) }
         attr_reader :in_
 

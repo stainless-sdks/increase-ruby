@@ -16,7 +16,7 @@ module Increase
       attr_accessor :associated_object_type
 
       # The category of the Event. We may add additional possible values for this enum
-      #   over time; your application should be able to handle such additions gracefully.
+      # over time; your application should be able to handle such additions gracefully.
       sig { returns(Increase::Models::Event::Category::TaggedSymbol) }
       attr_accessor :category
 
@@ -25,14 +25,14 @@ module Increase
       attr_accessor :created_at
 
       # A constant representing the object's type. For this resource it will always be
-      #   `event`.
+      # `event`.
       sig { returns(Increase::Models::Event::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Events are records of things that happened to objects at Increase. Events are
-      #   accessible via the List Events endpoint and can be delivered to your application
-      #   via webhooks. For more information, see our
-      #   [webhooks guide](https://increase.com/documentation/webhooks).
+      # accessible via the List Events endpoint and can be delivered to your application
+      # via webhooks. For more information, see our
+      # [webhooks guide](https://increase.com/documentation/webhooks).
       sig do
         params(
           id: String,
@@ -62,7 +62,7 @@ module Increase
       def to_hash; end
 
       # The category of the Event. We may add additional possible values for this enum
-      #   over time; your application should be able to handle such additions gracefully.
+      # over time; your application should be able to handle such additions gracefully.
       module Category
         extend Increase::Internal::Type::Enum
 
@@ -415,7 +415,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `event`.
+      # `event`.
       module Type
         extend Increase::Internal::Type::Enum
 

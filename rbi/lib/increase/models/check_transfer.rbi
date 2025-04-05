@@ -20,7 +20,7 @@ module Increase
       attr_accessor :amount
 
       # If your account requires approvals for transfers and the transfer was approved,
-      #   this will contain details of the approval.
+      # this will contain details of the approval.
       sig { returns(T.nilable(Increase::Models::CheckTransfer::Approval)) }
       attr_reader :approval
 
@@ -31,12 +31,12 @@ module Increase
       attr_writer :approval
 
       # If the Check Transfer was successfully deposited, this will contain the
-      #   identifier of the Inbound Check Deposit object with details of the deposit.
+      # identifier of the Inbound Check Deposit object with details of the deposit.
       sig { returns(T.nilable(String)) }
       attr_accessor :approved_inbound_check_deposit_id
 
       # If your account requires approvals for transfers and the transfer was not
-      #   approved, this will contain details of the cancellation.
+      # approved, this will contain details of the cancellation.
       sig { returns(T.nilable(Increase::Models::CheckTransfer::Cancellation)) }
       attr_reader :cancellation
 
@@ -53,7 +53,7 @@ module Increase
       attr_accessor :check_number
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the transfer was created.
+      # the transfer was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -70,7 +70,7 @@ module Increase
       attr_writer :created_by
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-      #   currency.
+      # currency.
       sig { returns(Increase::Models::CheckTransfer::Currency::TaggedSymbol) }
       attr_accessor :currency
 
@@ -79,13 +79,13 @@ module Increase
       attr_accessor :fulfillment_method
 
       # The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # Increase and is used to ensure that a request is only processed once. Learn more
+      # about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
       # If the check has been mailed by Increase, this will contain details of the
-      #   shipment.
+      # shipment.
       sig { returns(T.nilable(Increase::Models::CheckTransfer::Mailing)) }
       attr_reader :mailing
 
@@ -96,14 +96,14 @@ module Increase
       attr_writer :mailing
 
       # The ID for the pending transaction representing the transfer. A pending
-      #   transaction is created when the transfer
-      #   [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
-      #   by someone else in your organization.
+      # transaction is created when the transfer
+      # [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
+      # by someone else in your organization.
       sig { returns(T.nilable(String)) }
       attr_accessor :pending_transaction_id
 
       # Details relating to the physical check that Increase will print and mail. Will
-      #   be present if and only if `fulfillment_method` is equal to `physical_check`.
+      # be present if and only if `fulfillment_method` is equal to `physical_check`.
       sig { returns(T.nilable(Increase::Models::CheckTransfer::PhysicalCheck)) }
       attr_reader :physical_check
 
@@ -120,7 +120,7 @@ module Increase
       attr_accessor :routing_number
 
       # The identifier of the Account Number from which to send the transfer and print
-      #   on the check.
+      # on the check.
       sig { returns(T.nilable(String)) }
       attr_accessor :source_account_number_id
 
@@ -129,7 +129,7 @@ module Increase
       attr_accessor :status
 
       # After a stop-payment is requested on the check, this will contain supplemental
-      #   details.
+      # details.
       sig { returns(T.nilable(Increase::Models::CheckTransfer::StopPaymentRequest)) }
       attr_reader :stop_payment_request
 
@@ -154,7 +154,7 @@ module Increase
       attr_writer :submission
 
       # Details relating to the custom fulfillment you will perform. Will be present if
-      #   and only if `fulfillment_method` is equal to `third_party`.
+      # and only if `fulfillment_method` is equal to `third_party`.
       sig { returns(T.nilable(Increase::Models::CheckTransfer::ThirdParty)) }
       attr_reader :third_party
 
@@ -167,12 +167,12 @@ module Increase
       attr_writer :third_party
 
       # A constant representing the object's type. For this resource it will always be
-      #   `check_transfer`.
+      # `check_transfer`.
       sig { returns(Increase::Models::CheckTransfer::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Check Transfers move funds from your Increase account by mailing a physical
-      #   check.
+      # check.
       sig do
         params(
           id: String,
@@ -260,17 +260,17 @@ module Increase
 
       class Approval < Increase::Internal::Type::BaseModel
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the transfer was approved.
+        # the transfer was approved.
         sig { returns(Time) }
         attr_accessor :approved_at
 
         # If the Transfer was approved by a user in the dashboard, the email address of
-        #   that user.
+        # that user.
         sig { returns(T.nilable(String)) }
         attr_accessor :approved_by
 
         # If your account requires approvals for transfers and the transfer was approved,
-        #   this will contain details of the approval.
+        # this will contain details of the approval.
         sig { params(approved_at: Time, approved_by: T.nilable(String)).returns(T.attached_class) }
         def self.new(approved_at:, approved_by:); end
 
@@ -280,17 +280,17 @@ module Increase
 
       class Cancellation < Increase::Internal::Type::BaseModel
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the Transfer was canceled.
+        # the Transfer was canceled.
         sig { returns(Time) }
         attr_accessor :canceled_at
 
         # If the Transfer was canceled by a user in the dashboard, the email address of
-        #   that user.
+        # that user.
         sig { returns(T.nilable(String)) }
         attr_accessor :canceled_by
 
         # If your account requires approvals for transfers and the transfer was not
-        #   approved, this will contain details of the cancellation.
+        # approved, this will contain details of the cancellation.
         sig { params(canceled_at: Time, canceled_by: T.nilable(String)).returns(T.attached_class) }
         def self.new(canceled_at:, canceled_by:); end
 
@@ -431,7 +431,7 @@ module Increase
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-      #   currency.
+      # currency.
       module Currency
         extend Increase::Internal::Type::Enum
 
@@ -481,12 +481,12 @@ module Increase
 
       class Mailing < Increase::Internal::Type::BaseModel
         # The ID of the file corresponding to an image of the check that was mailed, if
-        #   available.
+        # available.
         sig { returns(T.nilable(String)) }
         attr_accessor :image_id
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the check was mailed.
+        # the check was mailed.
         sig { returns(Time) }
         attr_accessor :mailed_at
 
@@ -495,7 +495,7 @@ module Increase
         attr_accessor :tracking_number
 
         # If the check has been mailed by Increase, this will contain details of the
-        #   shipment.
+        # shipment.
         sig do
           params(image_id: T.nilable(String), mailed_at: Time, tracking_number: T.nilable(String))
             .returns(T.attached_class)
@@ -552,7 +552,7 @@ module Increase
         attr_accessor :shipping_method
 
         # The text that will appear as the signature on the check in cursive font. If
-        #   blank, the check will be printed with 'No signature required'.
+        # blank, the check will be printed with 'No signature required'.
         sig { returns(T.nilable(String)) }
         attr_accessor :signature_text
 
@@ -561,7 +561,7 @@ module Increase
         attr_accessor :tracking_updates
 
         # Details relating to the physical check that Increase will print and mail. Will
-        #   be present if and only if `fulfillment_method` is equal to `physical_check`.
+        # be present if and only if `fulfillment_method` is equal to `physical_check`.
         sig do
           params(
             mailing_address: T.any(Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress, Increase::Internal::AnyHash),
@@ -741,7 +741,7 @@ module Increase
           attr_accessor :category
 
           # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-          #   the tracking event took place.
+          # the tracking event took place.
           sig { returns(Time) }
           attr_accessor :created_at
 
@@ -872,12 +872,12 @@ module Increase
         attr_accessor :transfer_id
 
         # A constant representing the object's type. For this resource it will always be
-        #   `check_transfer_stop_payment_request`.
+        # `check_transfer_stop_payment_request`.
         sig { returns(Increase::Models::CheckTransfer::StopPaymentRequest::Type::TaggedSymbol) }
         attr_accessor :type
 
         # After a stop-payment is requested on the check, this will contain supplemental
-        #   details.
+        # details.
         sig do
           params(
             reason: Increase::Models::CheckTransfer::StopPaymentRequest::Reason::OrSymbol,
@@ -931,7 +931,7 @@ module Increase
         end
 
         # A constant representing the object's type. For this resource it will always be
-        #   `check_transfer_stop_payment_request`.
+        # `check_transfer_stop_payment_request`.
         module Type
           extend Increase::Internal::Type::Enum
 
@@ -973,7 +973,7 @@ module Increase
         attr_accessor :recipient_name
 
         # Details relating to the custom fulfillment you will perform. Will be present if
-        #   and only if `fulfillment_method` is equal to `third_party`.
+        # and only if `fulfillment_method` is equal to `third_party`.
         sig do
           params(check_number: T.nilable(String), recipient_name: T.nilable(String)).returns(T.attached_class)
         end
@@ -984,7 +984,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `check_transfer`.
+      # `check_transfer`.
       module Type
         extend Increase::Internal::Type::Enum
 

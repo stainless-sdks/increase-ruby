@@ -8,8 +8,8 @@ module Increase
       attr_accessor :id
 
       # If the Inbound Check Deposit was accepted, the
-      #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this
-      #   took place.
+      # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this
+      # took place.
       sig { returns(T.nilable(Time)) }
       attr_accessor :accepted_at
 
@@ -22,7 +22,7 @@ module Increase
       attr_accessor :account_number_id
 
       # If the deposit or the return was adjusted by the sending institution, this will
-      #   contain details of the adjustments.
+      # contain details of the adjustments.
       sig { returns(T::Array[Increase::Models::InboundCheckDeposit::Adjustment]) }
       attr_accessor :adjustments
 
@@ -35,8 +35,8 @@ module Increase
       attr_accessor :back_image_file_id
 
       # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      #   bank depositing this check. In some rare cases, this is not transmitted via
-      #   Check21 and the value will be null.
+      # bank depositing this check. In some rare cases, this is not transmitted via
+      # Check21 and the value will be null.
       sig { returns(T.nilable(String)) }
       attr_accessor :bank_of_first_deposit_routing_number
 
@@ -45,12 +45,12 @@ module Increase
       attr_accessor :check_number
 
       # If this deposit is for an existing Check Transfer, the identifier of that Check
-      #   Transfer.
+      # Transfer.
       sig { returns(T.nilable(String)) }
       attr_accessor :check_transfer_id
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the deposit was attempted.
+      # the deposit was attempted.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -59,18 +59,18 @@ module Increase
       attr_accessor :currency
 
       # If the Inbound Check Deposit was declined, the
-      #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this
-      #   took place.
+      # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this
+      # took place.
       sig { returns(T.nilable(Time)) }
       attr_accessor :declined_at
 
       # If the deposit attempt has been rejected, the identifier of the Declined
-      #   Transaction object created as a result of the failed deposit.
+      # Transaction object created as a result of the failed deposit.
       sig { returns(T.nilable(String)) }
       attr_accessor :declined_transaction_id
 
       # If you requested a return of this deposit, this will contain details of the
-      #   return.
+      # return.
       sig { returns(T.nilable(Increase::Models::InboundCheckDeposit::DepositReturn)) }
       attr_reader :deposit_return
 
@@ -87,7 +87,7 @@ module Increase
       attr_accessor :front_image_file_id
 
       # Whether the details on the check match the recipient name of the check transfer.
-      #   This is an optional feature, contact sales to enable.
+      # This is an optional feature, contact sales to enable.
       sig { returns(Increase::Models::InboundCheckDeposit::PayeeNameAnalysis::TaggedSymbol) }
       attr_accessor :payee_name_analysis
 
@@ -96,17 +96,17 @@ module Increase
       attr_accessor :status
 
       # If the deposit attempt has been accepted, the identifier of the Transaction
-      #   object created as a result of the successful deposit.
+      # object created as a result of the successful deposit.
       sig { returns(T.nilable(String)) }
       attr_accessor :transaction_id
 
       # A constant representing the object's type. For this resource it will always be
-      #   `inbound_check_deposit`.
+      # `inbound_check_deposit`.
       sig { returns(Increase::Models::InboundCheckDeposit::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Inbound Check Deposits are records of third-parties attempting to deposit checks
-      #   against your account.
+      # against your account.
       sig do
         params(
           id: String,
@@ -297,7 +297,7 @@ module Increase
         attr_accessor :transaction_id
 
         # If you requested a return of this deposit, this will contain details of the
-        #   return.
+        # return.
         sig do
           params(
             reason: Increase::Models::InboundCheckDeposit::DepositReturn::Reason::OrSymbol,
@@ -355,7 +355,7 @@ module Increase
       end
 
       # Whether the details on the check match the recipient name of the check transfer.
-      #   This is an optional feature, contact sales to enable.
+      # This is an optional feature, contact sales to enable.
       module PayeeNameAnalysis
         extend Increase::Internal::Type::Enum
 
@@ -408,7 +408,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `inbound_check_deposit`.
+      # `inbound_check_deposit`.
       module Type
         extend Increase::Internal::Type::Enum
 

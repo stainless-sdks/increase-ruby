@@ -20,10 +20,10 @@ module Increase
         # The identifier for the Entity that will own the Account.
         entity_id: nil,
         # The identifier of an Entity that, while not owning the Account, is associated
-        #   with its activity. Its relationship to your group must be `informational`.
+        # with its activity. Its relationship to your group must be `informational`.
         informational_entity_id: nil,
         # The identifier for the Program that this Account falls under. Required if you
-        #   operate more than one Program.
+        # operate more than one Program.
         program_id: nil,
         request_options: {}
       ); end
@@ -78,14 +78,14 @@ module Increase
         # Filter Accounts for those belonging to the specified Entity.
         entity_id: nil,
         # Filter records to the one with the specified `idempotency_key` you chose for
-        #   that object. This value is unique across Increase and is used to ensure that a
-        #   request is only processed once. Learn more about
-        #   [idempotency](https://increase.com/documentation/idempotency-keys).
+        # that object. This value is unique across Increase and is used to ensure that a
+        # request is only processed once. Learn more about
+        # [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key: nil,
         # Filter Accounts for those belonging to the specified Entity as informational.
         informational_entity_id: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        #   objects.
+        # objects.
         limit: nil,
         # Filter Accounts for those in a specific Program.
         program_id: nil,
@@ -93,7 +93,7 @@ module Increase
         request_options: {}
       ); end
       # Retrieve the current and available balances for an account in minor units of the
-      #   account's currency. Learn more about [account balances](/documentation/balance).
+      # account's currency. Learn more about [account balances](/documentation/balance).
       sig do
         params(
           account_id: String,

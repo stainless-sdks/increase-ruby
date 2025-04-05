@@ -36,7 +36,7 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #     the transfer was created.
+      #   the transfer was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -49,7 +49,7 @@ module Increase
 
       # @!attribute currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
-      #     currency. This will always be "USD" for a Real-Time Payments transfer.
+      #   currency. This will always be "USD" for a Real-Time Payments transfer.
       #
       #   @return [Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Currency]
       required :currency, enum: -> { Increase::Models::InboundRealTimePaymentsTransfer::Currency }
@@ -98,14 +98,14 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `inbound_real_time_payments_transfer`.
+      #   `inbound_real_time_payments_transfer`.
       #
       #   @return [Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Type]
       required :type, enum: -> { Increase::Models::InboundRealTimePaymentsTransfer::Type }
 
       # @!parse
       #   # An Inbound Real-Time Payments Transfer is a Real-Time Payments transfer
-      #   #   initiated outside of Increase to your account.
+      #   # initiated outside of Increase to your account.
       #   #
       #   # @param id [String]
       #   # @param account_id [String]
@@ -174,7 +174,7 @@ module Increase
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
-      #   currency. This will always be "USD" for a Real-Time Payments transfer.
+      # currency. This will always be "USD" for a Real-Time Payments transfer.
       #
       # @see Increase::Models::InboundRealTimePaymentsTransfer#currency
       module Currency
@@ -294,7 +294,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `inbound_real_time_payments_transfer`.
+      # `inbound_real_time_payments_transfer`.
       #
       # @see Increase::Models::InboundRealTimePaymentsTransfer#type
       module Type

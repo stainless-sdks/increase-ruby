@@ -12,7 +12,7 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Inbound
-      #     Mail Item was created.
+      #   Mail Item was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -25,7 +25,7 @@ module Increase
 
       # @!attribute lockbox_id
       #   The identifier for the Lockbox that received this mail item. For mail items that
-      #     could not be processed due to an invalid address, this will be null.
+      #   could not be processed due to an invalid address, this will be null.
       #
       #   @return [String, nil]
       required :lockbox_id, String, nil?: true
@@ -50,7 +50,7 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `inbound_mail_item`.
+      #   `inbound_mail_item`.
       #
       #   @return [Symbol, Increase::Models::InboundMailItem::Type]
       required :type, enum: -> { Increase::Models::InboundMailItem::Type }
@@ -116,7 +116,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `inbound_mail_item`.
+      # `inbound_mail_item`.
       #
       # @see Increase::Models::InboundMailItem#type
       module Type

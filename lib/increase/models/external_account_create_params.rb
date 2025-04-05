@@ -22,7 +22,7 @@ module Increase
 
       # @!attribute routing_number
       #   The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      #     destination account.
+      #   destination account.
       #
       #   @return [String]
       required :routing_number, String

@@ -15,7 +15,7 @@ module Increase
       attr_accessor :account_number
 
       # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      #   destination account.
+      # destination account.
       sig { returns(String) }
       attr_accessor :routing_number
 
@@ -67,7 +67,7 @@ module Increase
       attr_writer :credit_debit_indicator
 
       # The transfer effective date in
-      #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+      # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
       sig { returns(T.nilable(Date)) }
       attr_reader :effective_date
 
@@ -82,7 +82,7 @@ module Increase
       attr_writer :individual_id
 
       # The name of the transfer recipient. This value is information and not verified
-      #   by the recipient's bank.
+      # by the recipient's bank.
       sig { returns(T.nilable(String)) }
       attr_reader :individual_name
 

@@ -5,8 +5,8 @@ module Increase
     class Simulations
       class CheckDeposits
         # Simulates the rejection of a [Check Deposit](#check-deposits) by Increase due to
-        #   factors like poor image quality. This Check Deposit must first have a `status`
-        #   of `pending`.
+        # factors like poor image quality. This Check Deposit must first have a `status`
+        # of `pending`.
         #
         # @overload reject(check_deposit_id, request_options: {})
         #
@@ -26,7 +26,7 @@ module Increase
         end
 
         # Simulates the return of a [Check Deposit](#check-deposits). This Check Deposit
-        #   must first have a `status` of `submitted`.
+        # must first have a `status` of `submitted`.
         #
         # @overload return_(check_deposit_id, request_options: {})
         #
@@ -46,7 +46,7 @@ module Increase
         end
 
         # Simulates the submission of a [Check Deposit](#check-deposits) to the Federal
-        #   Reserve. This Check Deposit must first have a `status` of `pending`.
+        # Reserve. This Check Deposit must first have a `status` of `pending`.
         #
         # @overload submit(check_deposit_id, request_options: {})
         #

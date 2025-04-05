@@ -38,7 +38,7 @@ module Increase
         # Return the page of entries after this one.
         cursor: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        #   objects.
+        # objects.
         limit: nil,
         # Filter pending transactions to those belonging to the specified Route.
         route_id: nil,

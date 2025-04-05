@@ -23,7 +23,7 @@ module Increase
 
         # @!attribute [r] contents_file_id
         #   The file containing the PDF contents. If not present, a default check image file
-        #     will be used.
+        #   will be used.
         #
         #   @return [String, nil]
         optional :contents_file_id, String

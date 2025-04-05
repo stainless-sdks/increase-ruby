@@ -20,8 +20,8 @@ module Increase
       attr_accessor :entries
 
       # The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # Increase and is used to ensure that a request is only processed once. Learn more
+      # about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
@@ -30,14 +30,14 @@ module Increase
       attr_accessor :transaction_id
 
       # A constant representing the object's type. For this resource it will always be
-      #   `bookkeeping_entry_set`.
+      # `bookkeeping_entry_set`.
       sig { returns(Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Entry Sets are accounting entries that are transactionally applied. Your
-      #   compliance setup might require annotating money movements using this API. Learn
-      #   more in our
-      #   [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
+      # compliance setup might require annotating money movements using this API. Learn
+      # more in our
+      # [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
       sig do
         params(
           id: String,
@@ -89,7 +89,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `bookkeeping_entry_set`.
+      # `bookkeeping_entry_set`.
       module Type
         extend Increase::Internal::Type::Enum
 
