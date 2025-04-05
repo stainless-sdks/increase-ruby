@@ -32,9 +32,7 @@ module Increase
         #   when the card is not for the Account holder.
         entity_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve a Card
       sig do
         params(
@@ -47,9 +45,7 @@ module Increase
         # The identifier of the Card.
         card_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Update a Card
       sig do
         params(
@@ -80,9 +76,7 @@ module Increase
         # The status to update the Card with.
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # List Cards
       sig do
         params(
@@ -112,9 +106,7 @@ module Increase
         limit: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve sensitive details for a Card
       sig do
         params(
@@ -127,13 +119,10 @@ module Increase
         # The identifier of the Card to retrieve details for.
         card_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

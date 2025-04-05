@@ -18,9 +18,7 @@ module Increase
           # The identifier of the Check Deposit you wish to reject.
           check_deposit_id,
           request_options: {}
-        )
-        end
-
+        ); end
         # Simulates the return of a [Check Deposit](#check-deposits). This Check Deposit
         #   must first have a `status` of `submitted`.
         sig do
@@ -34,9 +32,7 @@ module Increase
           # The identifier of the Check Deposit you wish to return.
           check_deposit_id,
           request_options: {}
-        )
-        end
-
+        ); end
         # Simulates the submission of a [Check Deposit](#check-deposits) to the Federal
         #   Reserve. This Check Deposit must first have a `status` of `pending`.
         sig do
@@ -50,13 +46,10 @@ module Increase
           # The identifier of the Check Deposit you wish to submit.
           check_deposit_id,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: Increase::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

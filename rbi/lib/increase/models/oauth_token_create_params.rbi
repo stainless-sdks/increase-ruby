@@ -78,8 +78,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The credential you request in exchange for the code. In Production, this is
       #   always `authorization_code`. In Sandbox, you can pass either enum value.
@@ -99,8 +98,7 @@ module Increase
           T.let(:production_token, Increase::Models::OAuthTokenCreateParams::GrantType::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::OAuthTokenCreateParams::GrantType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

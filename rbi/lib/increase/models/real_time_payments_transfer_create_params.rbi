@@ -108,9 +108,7 @@ module Increase
         ultimate_creditor_name: nil,
         ultimate_debtor_name: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -130,8 +128,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

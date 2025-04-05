@@ -50,8 +50,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
-      end
+      def self.new(cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {}); end
 
       sig do
         override
@@ -65,8 +64,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Status < Increase::Internal::Type::BaseModel
         # Filter Digital Card Profiles for those with the specified digital wallet status
@@ -82,12 +80,10 @@ module Increase
           params(in_: T::Array[Increase::Models::DigitalCardProfileListParams::Status::In::OrSymbol])
             .returns(T.attached_class)
         end
-        def self.new(in_: nil)
-        end
+        def self.new(in_: nil); end
 
         sig { override.returns({in_: T::Array[Increase::Models::DigitalCardProfileListParams::Status::In::OrSymbol]}) }
-        def to_hash
-        end
+        def to_hash; end
 
         module In
           extend Increase::Internal::Type::Enum
@@ -109,8 +105,7 @@ module Increase
           ARCHIVED = T.let(:archived, Increase::Models::DigitalCardProfileListParams::Status::In::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::DigitalCardProfileListParams::Status::In::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

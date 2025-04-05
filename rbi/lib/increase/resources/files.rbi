@@ -25,9 +25,7 @@ module Increase
         # The description you choose to give the File.
         description: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve a File
       sig do
         params(
@@ -40,9 +38,7 @@ module Increase
         # The identifier of the File.
         file_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # List Files
       sig do
         params(
@@ -69,13 +65,10 @@ module Increase
         limit: nil,
         purpose: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

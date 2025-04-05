@@ -152,9 +152,7 @@ module Increase
         routing_number: nil,
         source_account_number_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -179,8 +177,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

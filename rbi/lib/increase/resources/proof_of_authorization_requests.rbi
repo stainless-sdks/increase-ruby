@@ -15,9 +15,7 @@ module Increase
         # The identifier of the Proof of Authorization Request.
         proof_of_authorization_request_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # List Proof of Authorization Requests
       sig do
         params(
@@ -36,13 +34,10 @@ module Increase
         #   objects.
         limit: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

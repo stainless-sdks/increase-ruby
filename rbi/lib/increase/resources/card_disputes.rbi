@@ -25,9 +25,7 @@ module Increase
         #   the transaction.
         amount: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve a Card Dispute
       sig do
         params(
@@ -40,9 +38,7 @@ module Increase
         # The identifier of the Card Dispute.
         card_dispute_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # List Card Disputes
       sig do
         params(
@@ -69,13 +65,10 @@ module Increase
         limit: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

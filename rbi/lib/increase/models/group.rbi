@@ -39,8 +39,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, ach_debit_status:, activation_status:, created_at:, type:)
-      end
+      def self.new(id:, ach_debit_status:, activation_status:, created_at:, type:); end
 
       sig do
         override
@@ -54,8 +53,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # If the Group is allowed to create ACH debits.
       module ACHDebitStatus
@@ -71,8 +69,7 @@ module Increase
         ENABLED = T.let(:enabled, Increase::Models::Group::ACHDebitStatus::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Group::ACHDebitStatus::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # If the Group is activated or not.
@@ -90,8 +87,7 @@ module Increase
         ACTIVATED = T.let(:activated, Increase::Models::Group::ActivationStatus::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Group::ActivationStatus::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -105,8 +101,7 @@ module Increase
         GROUP = T.let(:group, Increase::Models::Group::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Group::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

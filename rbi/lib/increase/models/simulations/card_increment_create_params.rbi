@@ -34,8 +34,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(amount:, card_payment_id:, event_subscription_id: nil, request_options: {})
-        end
+        def self.new(amount:, card_payment_id:, event_subscription_id: nil, request_options: {}); end
 
         sig do
           override
@@ -48,8 +47,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

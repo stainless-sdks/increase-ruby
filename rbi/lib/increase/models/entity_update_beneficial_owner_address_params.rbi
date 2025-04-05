@@ -32,8 +32,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(address:, beneficial_owner_id:, request_options: {})
-      end
+      def self.new(address:, beneficial_owner_id:, request_options: {}); end
 
       sig do
         override
@@ -45,8 +44,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Address < Increase::Internal::Type::BaseModel
         # The two-letter ISO 3166-1 alpha-2 code for the country of the address.
@@ -93,8 +91,7 @@ module Increase
           params(country: String, line1: String, city: String, line2: String, state: String, zip: String)
             .returns(T.attached_class)
         end
-        def self.new(country:, line1:, city: nil, line2: nil, state: nil, zip: nil)
-        end
+        def self.new(country:, line1:, city: nil, line2: nil, state: nil, zip: nil); end
 
         sig do
           override.returns(
@@ -108,8 +105,7 @@ module Increase
             }
           )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

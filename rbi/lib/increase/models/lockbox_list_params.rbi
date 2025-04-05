@@ -16,7 +16,9 @@ module Increase
       sig { returns(T.nilable(Increase::Models::LockboxListParams::CreatedAt)) }
       attr_reader :created_at
 
-      sig { params(created_at: T.any(Increase::Models::LockboxListParams::CreatedAt, Increase::Internal::AnyHash)).void }
+      sig do
+        params(created_at: T.any(Increase::Models::LockboxListParams::CreatedAt, Increase::Internal::AnyHash)).void
+      end
       attr_writer :created_at
 
       # Return the page of entries after this one.
@@ -78,8 +80,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -117,12 +118,10 @@ module Increase
         sig do
           params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
         end
-        def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
-        end
+        def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil); end
 
         sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

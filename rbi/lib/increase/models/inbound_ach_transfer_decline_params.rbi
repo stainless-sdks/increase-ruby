@@ -22,8 +22,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(reason: nil, request_options: {})
-      end
+      def self.new(reason: nil, request_options: {}); end
 
       sig do
         override
@@ -34,8 +33,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The reason why this transfer will be returned. If this parameter is unset, the
       #   return codes will be `payment_stopped` for debits and
@@ -106,8 +104,7 @@ module Increase
           )
 
         sig { override.returns(T::Array[Increase::Models::InboundACHTransferDeclineParams::Reason::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

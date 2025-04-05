@@ -72,9 +72,7 @@ module Increase
         name:,
         type:,
         updated_at:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -91,8 +89,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The Bank the Program is with.
       module Bank
@@ -111,8 +108,7 @@ module Increase
         GRASSHOPPER_BANK = T.let(:grasshopper_bank, Increase::Models::Program::Bank::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Program::Bank::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -126,8 +122,7 @@ module Increase
         PROGRAM = T.let(:program, Increase::Models::Program::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Program::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

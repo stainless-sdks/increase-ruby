@@ -70,9 +70,7 @@ module Increase
         physical_card_id:,
         state:,
         type:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -89,8 +87,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Element < Increase::Internal::Type::BaseModel
         # A Card Authentication object. This field will be present in the JSON response if
@@ -295,9 +292,7 @@ module Increase
           category:,
           created_at:,
           other:
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -318,8 +313,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class CardAuthentication < Increase::Internal::Type::BaseModel
           # The Card Authentication identifier.
@@ -455,9 +449,7 @@ module Increase
             real_time_decision_id:,
             status:,
             type:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -482,8 +474,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The category of the card authentication attempt.
           module Category
@@ -512,8 +503,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Category::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           class Challenge < Increase::Internal::Type::BaseModel
@@ -547,10 +537,10 @@ module Increase
             sig do
               params(
                 attempts: T::Array[
-                T.any(
-                  Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt,
-                  Increase::Internal::AnyHash
-                )
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt,
+                    Increase::Internal::AnyHash
+                  )
                 ],
                 created_at: Time,
                 one_time_code: String,
@@ -574,8 +564,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class Attempt < Increase::Internal::Type::BaseModel
               # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time of the Card
@@ -598,8 +587,7 @@ module Increase
                 )
                   .returns(T.attached_class)
               end
-              def self.new(created_at:, outcome:)
-              end
+              def self.new(created_at:, outcome:); end
 
               sig do
                 override
@@ -610,8 +598,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The outcome of the Card Authentication Challenge Attempt.
               module Outcome
@@ -648,8 +635,7 @@ module Increase
                       T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome::TaggedSymbol]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -695,8 +681,7 @@ module Increase
                     T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
           end
 
@@ -758,8 +743,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # The device channel of the card authentication attempt.
@@ -796,8 +780,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthentication::DeviceChannel::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # The status of the card authentication.
@@ -866,8 +849,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # A constant representing the object's type. For this resource it will always be
@@ -887,8 +869,7 @@ module Increase
               )
 
             sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Type::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -1123,9 +1104,7 @@ module Increase
             terminal_id:,
             type:,
             verification:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -1160,8 +1139,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
@@ -1188,8 +1166,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthorization::Actioner::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
@@ -1224,8 +1201,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # The direction describes the direction the funds will move, either from the
@@ -1250,8 +1226,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthorization::Direction::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           class NetworkDetails < Increase::Internal::Type::BaseModel
@@ -1289,8 +1264,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(category:, visa:)
-            end
+            def self.new(category:, visa:); end
 
             sig do
               override
@@ -1301,8 +1275,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The payment network used to process this card authorization.
             module Category
@@ -1332,8 +1305,7 @@ module Increase
                     T::Array[Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Category::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class Visa < Increase::Internal::Type::BaseModel
@@ -1409,8 +1381,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
@@ -1491,12 +1462,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # The method used to enter the cardholder's primary account number and card
@@ -1591,12 +1561,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # Only present when `actioner: network`. Describes why a card authorization was
@@ -1670,12 +1639,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -1706,8 +1674,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(retrieval_reference_number:, trace_number:, transaction_id:)
-            end
+            def self.new(retrieval_reference_number:, trace_number:, transaction_id:); end
 
             sig do
               override
@@ -1719,8 +1686,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           # The processing category describes the intent behind the authorization, such as
@@ -1787,8 +1753,7 @@ module Increase
                   T::Array[Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # A constant representing the object's type. For this resource it will always be
@@ -1805,8 +1770,7 @@ module Increase
               T.let(:card_authorization, Increase::Models::CardPayment::Element::CardAuthorization::Type::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardAuthorization::Type::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
 
           class Verification < Increase::Internal::Type::BaseModel
@@ -1856,8 +1820,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(card_verification_code:, cardholder_address:)
-            end
+            def self.new(card_verification_code:, cardholder_address:); end
 
             sig do
               override
@@ -1868,8 +1831,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class CardVerificationCode < Increase::Internal::Type::BaseModel
               # The result of verifying the Card Verification Code.
@@ -1888,8 +1850,7 @@ module Increase
                 )
                   .returns(T.attached_class)
               end
-              def self.new(result:)
-              end
+              def self.new(result:); end
 
               sig do
                 override
@@ -1899,8 +1860,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The result of verifying the Card Verification Code.
               module Result
@@ -1944,12 +1904,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -2012,8 +1971,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The address verification result returned to the card network.
               module Result
@@ -2078,12 +2036,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -2132,8 +2089,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(id:, card_authorization_id:, currency:, expired_amount:, network:, type:)
-          end
+          def self.new(id:, card_authorization_id:, currency:, expired_amount:, network:, type:); end
 
           sig do
             override
@@ -2148,8 +2104,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
           #   currency.
@@ -2197,8 +2152,7 @@ module Increase
                   T::Array[Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # The card network used to process this card authorization.
@@ -2226,8 +2180,7 @@ module Increase
                   T::Array[Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Network::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # A constant representing the object's type. For this resource it will always be
@@ -2256,8 +2209,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Type::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -2481,9 +2433,7 @@ module Increase
             reason:,
             terminal_id:,
             verification:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -2518,8 +2468,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
@@ -2541,8 +2490,7 @@ module Increase
             NETWORK = T.let(:network, Increase::Models::CardPayment::Element::CardDecline::Actioner::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardDecline::Actioner::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
@@ -2574,8 +2522,7 @@ module Increase
             USD = T.let(:USD, Increase::Models::CardPayment::Element::CardDecline::Currency::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardDecline::Currency::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
 
           # The direction describes the direction the funds will move, either from the
@@ -2596,8 +2543,7 @@ module Increase
             REFUND = T.let(:refund, Increase::Models::CardPayment::Element::CardDecline::Direction::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardDecline::Direction::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
 
           class NetworkDetails < Increase::Internal::Type::BaseModel
@@ -2635,8 +2581,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(category:, visa:)
-            end
+            def self.new(category:, visa:); end
 
             sig do
               override
@@ -2647,8 +2592,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The payment network used to process this card authorization.
             module Category
@@ -2675,8 +2619,7 @@ module Increase
                     T::Array[Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class Visa < Increase::Internal::Type::BaseModel
@@ -2752,8 +2695,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
@@ -2834,12 +2776,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # The method used to enter the cardholder's primary account number and card
@@ -2934,12 +2875,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # Only present when `actioner: network`. Describes why a card authorization was
@@ -3013,12 +2953,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -3049,8 +2988,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(retrieval_reference_number:, trace_number:, transaction_id:)
-            end
+            def self.new(retrieval_reference_number:, trace_number:, transaction_id:); end
 
             sig do
               override
@@ -3062,8 +3000,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           # The processing category describes the intent behind the authorization, such as
@@ -3119,8 +3056,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # This is present if a specific decline reason was given in the real-time
@@ -3184,8 +3120,7 @@ module Increase
                   T::Array[Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # Why the transaction was declined.
@@ -3278,8 +3213,7 @@ module Increase
               T.let(:suspected_fraud, Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
 
           class Verification < Increase::Internal::Type::BaseModel
@@ -3329,8 +3263,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(card_verification_code:, cardholder_address:)
-            end
+            def self.new(card_verification_code:, cardholder_address:); end
 
             sig do
               override
@@ -3341,8 +3274,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class CardVerificationCode < Increase::Internal::Type::BaseModel
               # The result of verifying the Card Verification Code.
@@ -3361,8 +3293,7 @@ module Increase
                 )
                   .returns(T.attached_class)
               end
-              def self.new(result:)
-              end
+              def self.new(result:); end
 
               sig do
                 override
@@ -3372,8 +3303,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The result of verifying the Card Verification Code.
               module Result
@@ -3417,12 +3347,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -3485,8 +3414,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The address verification result returned to the card network.
               module Result
@@ -3553,8 +3481,7 @@ module Increase
                       T::Array[Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -3637,9 +3564,7 @@ module Increase
             pending_transaction_id:,
             type:,
             updated_authorization_amount:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -3655,8 +3580,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
           #   currency.
@@ -3696,8 +3620,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # The card network used to process this card authorization.
@@ -3716,8 +3639,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::CardPayment::Element::CardFuelConfirmation::Network::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
@@ -3746,8 +3668,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(retrieval_reference_number:, trace_number:, transaction_id:)
-            end
+            def self.new(retrieval_reference_number:, trace_number:, transaction_id:); end
 
             sig do
               override
@@ -3759,8 +3680,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           # A constant representing the object's type. For this resource it will always be
@@ -3783,8 +3703,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::CardPayment::Element::CardFuelConfirmation::Type::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -3891,9 +3810,7 @@ module Increase
             real_time_decision_id:,
             type:,
             updated_authorization_amount:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -3913,8 +3830,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
@@ -3937,8 +3853,7 @@ module Increase
             NETWORK = T.let(:network, Increase::Models::CardPayment::Element::CardIncrement::Actioner::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardIncrement::Actioner::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
@@ -3970,8 +3885,7 @@ module Increase
             USD = T.let(:USD, Increase::Models::CardPayment::Element::CardIncrement::Currency::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardIncrement::Currency::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
 
           # The card network used to process this card authorization.
@@ -3987,8 +3901,7 @@ module Increase
             VISA = T.let(:visa, Increase::Models::CardPayment::Element::CardIncrement::Network::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardIncrement::Network::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
@@ -4017,8 +3930,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(retrieval_reference_number:, trace_number:, transaction_id:)
-            end
+            def self.new(retrieval_reference_number:, trace_number:, transaction_id:); end
 
             sig do
               override
@@ -4030,8 +3942,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           # A constant representing the object's type. For this resource it will always be
@@ -4048,8 +3959,7 @@ module Increase
               T.let(:card_increment, Increase::Models::CardPayment::Element::CardIncrement::Type::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardIncrement::Type::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -4230,9 +4140,7 @@ module Increase
             purchase_details:,
             transaction_id:,
             type:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -4259,8 +4167,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class Cashback < Increase::Internal::Type::BaseModel
             # The cashback amount given as a string containing a decimal number. The amount is
@@ -4282,8 +4189,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(amount:, currency:)
-            end
+            def self.new(amount:, currency:); end
 
             sig do
               override
@@ -4294,8 +4200,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             module Currency
@@ -4334,8 +4239,7 @@ module Increase
                 override
                   .returns(T::Array[Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol])
               end
-              def self.values
-              end
+              def self.values; end
             end
           end
 
@@ -4368,8 +4272,7 @@ module Increase
             USD = T.let(:USD, Increase::Models::CardPayment::Element::CardRefund::Currency::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardRefund::Currency::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
 
           class Interchange < Increase::Internal::Type::BaseModel
@@ -4397,8 +4300,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(amount:, code:, currency:)
-            end
+            def self.new(amount:, code:, currency:); end
 
             sig do
               override
@@ -4410,8 +4312,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   reimbursement.
@@ -4457,8 +4358,7 @@ module Increase
                 override
                   .returns(T::Array[Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol])
               end
-              def self.values
-              end
+              def self.values; end
             end
           end
 
@@ -4486,8 +4386,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(acquirer_business_id:, acquirer_reference_number:, transaction_id:)
-            end
+            def self.new(acquirer_business_id:, acquirer_reference_number:, transaction_id:); end
 
             sig do
               override
@@ -4499,8 +4398,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class PurchaseDetails < Increase::Internal::Type::BaseModel
@@ -4636,9 +4534,7 @@ module Increase
               purchase_identifier:,
               purchase_identifier_format:,
               travel:
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -4658,8 +4554,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class CarRental < Increase::Internal::Type::BaseModel
               # Code indicating the vehicle's class.
@@ -4789,9 +4684,7 @@ module Increase
                 renter_name:,
                 weekly_rental_rate_amount:,
                 weekly_rental_rate_currency:
-              )
-              end
-
+              ); end
               sig do
                 override
                   .returns(
@@ -4819,8 +4712,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # Additional charges (gas, late fee, etc.) being billed.
               module ExtraCharges
@@ -4887,8 +4779,7 @@ module Increase
                       T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # An indicator that the cardholder is being billed for a reserved vehicle that was
@@ -4927,12 +4818,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -5063,9 +4953,7 @@ module Increase
                 total_room_tax_currency:,
                 total_tax_amount:,
                 total_tax_currency:
-              )
-              end
-
+              ); end
               sig do
                 override
                   .returns(
@@ -5093,8 +4981,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # Additional charges (phone, late check-out, etc.) being billed.
               module ExtraCharges
@@ -5166,8 +5053,7 @@ module Increase
                       T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # Indicator that the cardholder is being billed for a reserved room that was not
@@ -5206,12 +5092,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -5271,12 +5156,11 @@ module Increase
                 override
                   .returns(
                     T::Array[
-                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class Travel < Increase::Internal::Type::BaseModel
@@ -5390,10 +5274,10 @@ module Increase
                   travel_agency_name: T.nilable(String),
                   trip_legs: T.nilable(
                     T::Array[
-                    T.any(
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg,
-                      Increase::Internal::AnyHash
-                    )
+                      T.any(
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg,
+                        Increase::Internal::AnyHash
+                      )
                     ]
                   )
                 )
@@ -5412,9 +5296,7 @@ module Increase
                 travel_agency_code:,
                 travel_agency_name:,
                 trip_legs:
-              )
-              end
-
+              ); end
               sig do
                 override
                   .returns(
@@ -5440,8 +5322,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class Ancillary < Increase::Internal::Type::BaseModel
                 # If this purchase has a connection or relationship to another purchase, such as a
@@ -5485,10 +5366,10 @@ module Increase
                     ),
                     passenger_name_or_description: T.nilable(String),
                     services: T::Array[
-                    T.any(
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service,
-                      Increase::Internal::AnyHash
-                    )
+                      T.any(
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service,
+                        Increase::Internal::AnyHash
+                      )
                     ],
                     ticket_document_number: T.nilable(String)
                   )
@@ -5500,9 +5381,7 @@ module Increase
                   passenger_name_or_description:,
                   services:,
                   ticket_document_number:
-                )
-                end
-
+                ); end
                 sig do
                   override
                     .returns(
@@ -5517,8 +5396,7 @@ module Increase
                       }
                     )
                 end
-                def to_hash
-                end
+                def to_hash; end
 
                 # Indicates the reason for a credit to the cardholder.
                 module CreditReasonIndicator
@@ -5569,12 +5447,11 @@ module Increase
                     override
                       .returns(
                         T::Array[
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
+                          Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
                         ]
                       )
                   end
-                  def self.values
-                  end
+                  def self.values; end
                 end
 
                 class Service < Increase::Internal::Type::BaseModel
@@ -5601,8 +5478,7 @@ module Increase
                     )
                       .returns(T.attached_class)
                   end
-                  def self.new(category:, sub_category:)
-                  end
+                  def self.new(category:, sub_category:); end
 
                   sig do
                     override
@@ -5615,8 +5491,7 @@ module Increase
                         }
                       )
                   end
-                  def to_hash
-                  end
+                  def to_hash; end
 
                   # Category of the ancillary service.
                   module Category
@@ -5807,12 +5682,11 @@ module Increase
                       override
                         .returns(
                           T::Array[
-                          Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                            Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                           ]
                         )
                     end
-                    def self.values
-                    end
+                    def self.values; end
                   end
                 end
               end
@@ -5880,12 +5754,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # Indicates whether this ticket is non-refundable.
@@ -5923,12 +5796,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # Indicates why a ticket was changed.
@@ -5973,12 +5845,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               class TripLeg < Increase::Internal::Type::BaseModel
@@ -6032,9 +5903,7 @@ module Increase
                   flight_number:,
                   service_class:,
                   stop_over_code:
-                )
-                end
-
+                ); end
                 sig do
                   override
                     .returns(
@@ -6050,8 +5919,7 @@ module Increase
                       }
                     )
                 end
-                def to_hash
-                end
+                def to_hash; end
 
                 # Indicates whether a stopover is allowed on this ticket.
                 module StopOverCode
@@ -6095,12 +5963,11 @@ module Increase
                     override
                       .returns(
                         T::Array[
-                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
+                          Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
                         ]
                       )
                   end
-                  def self.values
-                  end
+                  def self.values; end
                 end
               end
             end
@@ -6118,8 +5985,7 @@ module Increase
             CARD_REFUND = T.let(:card_refund, Increase::Models::CardPayment::Element::CardRefund::Type::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardRefund::Type::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -6263,9 +6129,7 @@ module Increase
             terminal_id:,
             type:,
             updated_authorization_amount:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -6291,8 +6155,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
           #   currency.
@@ -6323,8 +6186,7 @@ module Increase
             USD = T.let(:USD, Increase::Models::CardPayment::Element::CardReversal::Currency::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardReversal::Currency::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
 
           # The card network used to process this card authorization.
@@ -6340,8 +6202,7 @@ module Increase
             VISA = T.let(:visa, Increase::Models::CardPayment::Element::CardReversal::Network::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardReversal::Network::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
@@ -6370,8 +6231,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(retrieval_reference_number:, trace_number:, transaction_id:)
-            end
+            def self.new(retrieval_reference_number:, trace_number:, transaction_id:); end
 
             sig do
               override
@@ -6383,8 +6243,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           # Why this reversal was initiated.
@@ -6428,8 +6287,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::CardPayment::Element::CardReversal::ReversalReason::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # A constant representing the object's type. For this resource it will always be
@@ -6445,8 +6303,7 @@ module Increase
               T.let(:card_reversal, Increase::Models::CardPayment::Element::CardReversal::Type::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardReversal::Type::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -6652,9 +6509,7 @@ module Increase
             purchase_details:,
             transaction_id:,
             type:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -6683,8 +6538,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class Cashback < Increase::Internal::Type::BaseModel
             # The cashback amount given as a string containing a decimal number. The amount is
@@ -6706,8 +6560,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(amount:, currency:)
-            end
+            def self.new(amount:, currency:); end
 
             sig do
               override
@@ -6718,8 +6571,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             module Currency
@@ -6766,8 +6618,7 @@ module Increase
                     T::Array[Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
           end
 
@@ -6800,8 +6651,7 @@ module Increase
             USD = T.let(:USD, Increase::Models::CardPayment::Element::CardSettlement::Currency::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardSettlement::Currency::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
 
           class Interchange < Increase::Internal::Type::BaseModel
@@ -6829,8 +6679,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(amount:, code:, currency:)
-            end
+            def self.new(amount:, code:, currency:); end
 
             sig do
               override
@@ -6842,8 +6691,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   reimbursement.
@@ -6891,8 +6739,7 @@ module Increase
                     T::Array[Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
           end
 
@@ -6920,8 +6767,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(acquirer_business_id:, acquirer_reference_number:, transaction_id:)
-            end
+            def self.new(acquirer_business_id:, acquirer_reference_number:, transaction_id:); end
 
             sig do
               override
@@ -6933,8 +6779,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class PurchaseDetails < Increase::Internal::Type::BaseModel
@@ -7070,9 +6915,7 @@ module Increase
               purchase_identifier:,
               purchase_identifier_format:,
               travel:
-            )
-            end
-
+            ); end
             sig do
               override
                 .returns(
@@ -7092,8 +6935,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class CarRental < Increase::Internal::Type::BaseModel
               # Code indicating the vehicle's class.
@@ -7223,9 +7065,7 @@ module Increase
                 renter_name:,
                 weekly_rental_rate_amount:,
                 weekly_rental_rate_currency:
-              )
-              end
-
+              ); end
               sig do
                 override
                   .returns(
@@ -7253,8 +7093,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # Additional charges (gas, late fee, etc.) being billed.
               module ExtraCharges
@@ -7319,12 +7158,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # An indicator that the cardholder is being billed for a reserved vehicle that was
@@ -7363,12 +7201,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -7499,9 +7336,7 @@ module Increase
                 total_room_tax_currency:,
                 total_tax_amount:,
                 total_tax_currency:
-              )
-              end
-
+              ); end
               sig do
                 override
                   .returns(
@@ -7529,8 +7364,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # Additional charges (phone, late check-out, etc.) being billed.
               module ExtraCharges
@@ -7602,12 +7436,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # Indicator that the cardholder is being billed for a reserved room that was not
@@ -7646,12 +7479,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -7711,12 +7543,11 @@ module Increase
                 override
                   .returns(
                     T::Array[
-                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
                     ]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class Travel < Increase::Internal::Type::BaseModel
@@ -7836,10 +7667,10 @@ module Increase
                   travel_agency_name: T.nilable(String),
                   trip_legs: T.nilable(
                     T::Array[
-                    T.any(
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg,
-                      Increase::Internal::AnyHash
-                    )
+                      T.any(
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg,
+                        Increase::Internal::AnyHash
+                      )
                     ]
                   )
                 )
@@ -7858,9 +7689,7 @@ module Increase
                 travel_agency_code:,
                 travel_agency_name:,
                 trip_legs:
-              )
-              end
-
+              ); end
               sig do
                 override
                   .returns(
@@ -7888,8 +7717,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class Ancillary < Increase::Internal::Type::BaseModel
                 # If this purchase has a connection or relationship to another purchase, such as a
@@ -7933,10 +7761,10 @@ module Increase
                     ),
                     passenger_name_or_description: T.nilable(String),
                     services: T::Array[
-                    T.any(
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service,
-                      Increase::Internal::AnyHash
-                    )
+                      T.any(
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service,
+                        Increase::Internal::AnyHash
+                      )
                     ],
                     ticket_document_number: T.nilable(String)
                   )
@@ -7948,9 +7776,7 @@ module Increase
                   passenger_name_or_description:,
                   services:,
                   ticket_document_number:
-                )
-                end
-
+                ); end
                 sig do
                   override
                     .returns(
@@ -7965,8 +7791,7 @@ module Increase
                       }
                     )
                 end
-                def to_hash
-                end
+                def to_hash; end
 
                 # Indicates the reason for a credit to the cardholder.
                 module CreditReasonIndicator
@@ -8017,12 +7842,11 @@ module Increase
                     override
                       .returns(
                         T::Array[
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
+                          Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
                         ]
                       )
                   end
-                  def self.values
-                  end
+                  def self.values; end
                 end
 
                 class Service < Increase::Internal::Type::BaseModel
@@ -8049,8 +7873,7 @@ module Increase
                     )
                       .returns(T.attached_class)
                   end
-                  def self.new(category:, sub_category:)
-                  end
+                  def self.new(category:, sub_category:); end
 
                   sig do
                     override
@@ -8063,8 +7886,7 @@ module Increase
                         }
                       )
                   end
-                  def to_hash
-                  end
+                  def to_hash; end
 
                   # Category of the ancillary service.
                   module Category
@@ -8255,12 +8077,11 @@ module Increase
                       override
                         .returns(
                           T::Array[
-                          Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                            Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                           ]
                         )
                     end
-                    def self.values
-                    end
+                    def self.values; end
                   end
                 end
               end
@@ -8328,12 +8149,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # Indicates whether this ticket is non-refundable.
@@ -8371,12 +8191,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # Indicates why a ticket was changed.
@@ -8421,12 +8240,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               class TripLeg < Increase::Internal::Type::BaseModel
@@ -8480,9 +8298,7 @@ module Increase
                   flight_number:,
                   service_class:,
                   stop_over_code:
-                )
-                end
-
+                ); end
                 sig do
                   override
                     .returns(
@@ -8498,8 +8314,7 @@ module Increase
                       }
                     )
                 end
-                def to_hash
-                end
+                def to_hash; end
 
                 # Indicates whether a stopover is allowed on this ticket.
                 module StopOverCode
@@ -8543,12 +8358,11 @@ module Increase
                     override
                       .returns(
                         T::Array[
-                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
+                          Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
                         ]
                       )
                   end
-                  def self.values
-                  end
+                  def self.values; end
                 end
               end
             end
@@ -8568,8 +8382,7 @@ module Increase
               T.let(:card_settlement, Increase::Models::CardPayment::Element::CardSettlement::Type::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardSettlement::Type::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -8745,9 +8558,7 @@ module Increase
             terminal_id:,
             type:,
             verification:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -8775,8 +8586,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
@@ -8799,8 +8609,7 @@ module Increase
             NETWORK = T.let(:network, Increase::Models::CardPayment::Element::CardValidation::Actioner::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardValidation::Actioner::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
@@ -8832,8 +8641,7 @@ module Increase
             USD = T.let(:USD, Increase::Models::CardPayment::Element::CardValidation::Currency::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardValidation::Currency::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
 
           class NetworkDetails < Increase::Internal::Type::BaseModel
@@ -8871,8 +8679,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(category:, visa:)
-            end
+            def self.new(category:, visa:); end
 
             sig do
               override
@@ -8883,8 +8690,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The payment network used to process this card authorization.
             module Category
@@ -8914,8 +8720,7 @@ module Increase
                     T::Array[Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Category::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class Visa < Increase::Internal::Type::BaseModel
@@ -8991,8 +8796,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
@@ -9073,12 +8877,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # The method used to enter the cardholder's primary account number and card
@@ -9173,12 +8976,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # Only present when `actioner: network`. Describes why a card authorization was
@@ -9252,12 +9054,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -9288,8 +9089,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(retrieval_reference_number:, trace_number:, transaction_id:)
-            end
+            def self.new(retrieval_reference_number:, trace_number:, transaction_id:); end
 
             sig do
               override
@@ -9301,8 +9101,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           # A constant representing the object's type. For this resource it will always be
@@ -9319,8 +9118,7 @@ module Increase
               T.let(:card_validation, Increase::Models::CardPayment::Element::CardValidation::Type::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::CardPayment::Element::CardValidation::Type::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
 
           class Verification < Increase::Internal::Type::BaseModel
@@ -9370,8 +9168,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(card_verification_code:, cardholder_address:)
-            end
+            def self.new(card_verification_code:, cardholder_address:); end
 
             sig do
               override
@@ -9382,8 +9179,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class CardVerificationCode < Increase::Internal::Type::BaseModel
               # The result of verifying the Card Verification Code.
@@ -9402,8 +9198,7 @@ module Increase
                 )
                   .returns(T.attached_class)
               end
-              def self.new(result:)
-              end
+              def self.new(result:); end
 
               sig do
                 override
@@ -9413,8 +9208,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The result of verifying the Card Verification Code.
               module Result
@@ -9458,12 +9252,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -9526,8 +9319,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The address verification result returned to the card network.
               module Result
@@ -9592,12 +9384,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -9650,8 +9441,7 @@ module Increase
           OTHER = T.let(:other, Increase::Models::CardPayment::Element::Category::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::CardPayment::Element::Category::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -9713,8 +9503,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -9728,8 +9517,7 @@ module Increase
         CARD_PAYMENT = T.let(:card_payment, Increase::Models::CardPayment::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::CardPayment::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

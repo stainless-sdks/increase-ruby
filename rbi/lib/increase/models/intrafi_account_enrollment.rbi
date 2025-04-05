@@ -56,8 +56,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, account_id:, created_at:, idempotency_key:, intrafi_id:, status:, type:)
-      end
+      def self.new(id:, account_id:, created_at:, idempotency_key:, intrafi_id:, status:, type:); end
 
       sig do
         override
@@ -73,8 +72,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The status of the account in the network. An account takes about one business
       #   day to go from `pending_enrolling` to `enrolled`.
@@ -104,8 +102,7 @@ module Increase
           T.let(:requires_attention, Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -121,8 +118,7 @@ module Increase
           T.let(:intrafi_account_enrollment, Increase::Models::IntrafiAccountEnrollment::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::IntrafiAccountEnrollment::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

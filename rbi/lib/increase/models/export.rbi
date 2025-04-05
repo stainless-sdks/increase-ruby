@@ -86,8 +86,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The category of the Export. We may add additional possible values for this enum
       #   over time; your application should be able to handle that gracefully.
@@ -120,8 +119,7 @@ module Increase
         DASHBOARD_TABLE_CSV = T.let(:dashboard_table_csv, Increase::Models::Export::Category::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Export::Category::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # The status of the Export.
@@ -141,8 +139,7 @@ module Increase
         FAILED = T.let(:failed, Increase::Models::Export::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Export::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -156,8 +153,7 @@ module Increase
         EXPORT = T.let(:export, Increase::Models::Export::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Export::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

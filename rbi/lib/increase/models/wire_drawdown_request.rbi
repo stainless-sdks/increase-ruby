@@ -154,9 +154,7 @@ module Increase
         status:,
         submission:,
         type:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -185,8 +183,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The lifecycle status of the drawdown request.
       module Status
@@ -210,8 +207,7 @@ module Increase
         REFUSED = T.let(:refused, Increase::Models::WireDrawdownRequest::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::WireDrawdownRequest::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class Submission < Increase::Internal::Type::BaseModel
@@ -223,12 +219,10 @@ module Increase
         # After the drawdown request is submitted to Fedwire, this will contain
         #   supplemental details.
         sig { params(input_message_accountability_data: String).returns(T.attached_class) }
-        def self.new(input_message_accountability_data:)
-        end
+        def self.new(input_message_accountability_data:); end
 
         sig { override.returns({input_message_accountability_data: String}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -244,8 +238,7 @@ module Increase
           T.let(:wire_drawdown_request, Increase::Models::WireDrawdownRequest::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::WireDrawdownRequest::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

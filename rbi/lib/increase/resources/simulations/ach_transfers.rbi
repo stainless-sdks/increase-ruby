@@ -21,9 +21,7 @@ module Increase
           # The identifier of the ACH Transfer you wish to become acknowledged.
           ach_transfer_id,
           request_options: {}
-        )
-        end
-
+        ); end
         # Simulates receiving a Notification of Change for an
         #   [ACH Transfer](#ach-transfers).
         sig do
@@ -44,9 +42,7 @@ module Increase
           # The corrected data for the notification of change (e.g., a new routing number).
           corrected_data:,
           request_options: {}
-        )
-        end
-
+        ); end
         # Simulates the return of an [ACH Transfer](#ach-transfers) by the Federal Reserve
         #   due to an error condition. This will also create a Transaction to account for
         #   the returned funds. This transfer must first have a `status` of `submitted`.
@@ -65,9 +61,7 @@ module Increase
           #   Defaults to `no_account`.
           reason: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # Simulates the settlement of an [ACH Transfer](#ach-transfers) by the Federal
         #   Reserve. This transfer must first have a `status` of `pending_submission` or
         #   `submitted`. For convenience, if the transfer is in `status`:
@@ -85,9 +79,7 @@ module Increase
           # The identifier of the ACH Transfer you wish to become settled.
           ach_transfer_id,
           request_options: {}
-        )
-        end
-
+        ); end
         # Simulates the submission of an [ACH Transfer](#ach-transfers) to the Federal
         #   Reserve. This transfer must first have a `status` of `pending_approval` or
         #   `pending_submission`. In production, Increase submits ACH Transfers to the
@@ -105,13 +97,10 @@ module Increase
           # The identifier of the ACH Transfer you wish to submit.
           ach_transfer_id,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: Increase::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

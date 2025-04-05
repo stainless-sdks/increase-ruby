@@ -44,8 +44,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(account_holder: nil, description: nil, funding: nil, status: nil, request_options: {})
-      end
+      def self.new(account_holder: nil, description: nil, funding: nil, status: nil, request_options: {}); end
 
       sig do
         override
@@ -59,8 +58,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The type of entity that owns the External Account.
       module AccountHolder
@@ -79,8 +77,7 @@ module Increase
           T.let(:individual, Increase::Models::ExternalAccountUpdateParams::AccountHolder::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ExternalAccountUpdateParams::AccountHolder::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # The funding type of the External Account.
@@ -101,8 +98,7 @@ module Increase
         OTHER = T.let(:other, Increase::Models::ExternalAccountUpdateParams::Funding::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ExternalAccountUpdateParams::Funding::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # The status of the External Account.
@@ -120,8 +116,7 @@ module Increase
         ARCHIVED = T.let(:archived, Increase::Models::ExternalAccountUpdateParams::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ExternalAccountUpdateParams::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

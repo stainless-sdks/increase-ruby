@@ -32,8 +32,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(file:, purpose:, description: nil, request_options: {})
-      end
+      def self.new(file:, purpose:, description: nil, request_options: {}); end
 
       sig do
         override
@@ -46,8 +45,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # What the File will be used for in Increase's systems.
       module Purpose
@@ -118,8 +116,7 @@ module Increase
           )
 
         sig { override.returns(T::Array[Increase::Models::FileCreateParams::Purpose::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end
