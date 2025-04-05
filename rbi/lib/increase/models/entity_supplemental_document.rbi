@@ -39,8 +39,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(created_at:, entity_id:, file_id:, idempotency_key:, type:)
-      end
+      def self.new(created_at:, entity_id:, file_id:, idempotency_key:, type:); end
 
       sig do
         override
@@ -54,8 +53,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # A constant representing the object's type. For this resource it will always be
       #   `entity_supplemental_document`.
@@ -70,8 +68,7 @@ module Increase
           T.let(:entity_supplemental_document, Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

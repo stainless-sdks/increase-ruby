@@ -15,9 +15,7 @@ module Increase
         # The identifier of the Inbound Real-Time Payments Transfer to get details for.
         inbound_real_time_payments_transfer_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # List Inbound Real-Time Payments Transfers
       sig do
         params(
@@ -44,13 +42,10 @@ module Increase
         #   objects.
         limit: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

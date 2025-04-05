@@ -37,9 +37,7 @@ module Increase
         # Options for the created export. Required if `category` is equal to `vendor_csv`.
         vendor_csv: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve an Export
       sig do
         params(
@@ -52,9 +50,7 @@ module Increase
         # The identifier of the Export to retrieve.
         export_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # List Exports
       sig do
         params(
@@ -83,13 +79,10 @@ module Increase
         limit: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

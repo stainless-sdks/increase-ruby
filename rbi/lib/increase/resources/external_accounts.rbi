@@ -28,9 +28,7 @@ module Increase
         # The type of the destination account. Defaults to `checking`.
         funding: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve an External Account
       sig do
         params(
@@ -43,9 +41,7 @@ module Increase
         # The identifier of the External Account.
         external_account_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Update an External Account
       sig do
         params(
@@ -70,9 +66,7 @@ module Increase
         # The status of the External Account.
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # List External Accounts
       sig do
         params(
@@ -100,13 +94,10 @@ module Increase
         routing_number: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

@@ -125,9 +125,7 @@ module Increase
         validated_account_ownership_via_credential:,
         validated_account_ownership_with_account_statement:,
         validated_account_ownership_with_microdeposit:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -153,8 +151,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Status of the proof of authorization request submission.
       module Status
@@ -185,8 +182,7 @@ module Increase
         SENT = T.let(:sent, Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -206,8 +202,7 @@ module Increase
           )
 
         sig { override.returns(T::Array[Increase::Models::ProofOfAuthorizationRequestSubmission::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

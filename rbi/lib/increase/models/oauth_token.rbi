@@ -28,8 +28,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(access_token:, token_type:, type:)
-      end
+      def self.new(access_token:, token_type:, type:); end
 
       sig do
         override
@@ -41,8 +40,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The type of OAuth token.
       module TokenType
@@ -54,8 +52,7 @@ module Increase
         BEARER = T.let(:bearer, Increase::Models::OAuthToken::TokenType::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::OAuthToken::TokenType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -69,8 +66,7 @@ module Increase
         OAUTH_TOKEN = T.let(:oauth_token, Increase::Models::OAuthToken::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::OAuthToken::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

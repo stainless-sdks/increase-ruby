@@ -76,9 +76,7 @@ module Increase
         idempotency_key: nil,
         limit: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -93,8 +91,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -132,12 +129,10 @@ module Increase
         sig do
           params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
         end
-        def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
-        end
+        def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil); end
 
         sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

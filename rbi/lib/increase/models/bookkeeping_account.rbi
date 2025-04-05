@@ -49,8 +49,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, account_id:, compliance_category:, entity_id:, idempotency_key:, name:, type:)
-      end
+      def self.new(id:, account_id:, compliance_category:, entity_id:, idempotency_key:, name:, type:); end
 
       sig do
         override
@@ -66,8 +65,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The compliance category of the account.
       module ComplianceCategory
@@ -86,8 +84,7 @@ module Increase
           T.let(:customer_balance, Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -103,8 +100,7 @@ module Increase
           T.let(:bookkeeping_account, Increase::Models::BookkeepingAccount::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::BookkeepingAccount::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

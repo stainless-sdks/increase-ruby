@@ -83,8 +83,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Status < Increase::Internal::Type::BaseModel
         # Filter IntraFi Account Enrollments for those with the specified status or
@@ -100,15 +99,13 @@ module Increase
           params(in_: T::Array[Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol])
             .returns(T.attached_class)
         end
-        def self.new(in_: nil)
-        end
+        def self.new(in_: nil); end
 
         sig do
           override
             .returns({in_: T::Array[Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol]})
         end
-        def to_hash
-        end
+        def to_hash; end
 
         module In
           extend Increase::Internal::Type::Enum
@@ -142,8 +139,7 @@ module Increase
             T.let(:requires_attention, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

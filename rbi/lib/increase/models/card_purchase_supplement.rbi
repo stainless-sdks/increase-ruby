@@ -51,8 +51,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, card_payment_id:, invoice:, line_items:, transaction_id:, type:)
-      end
+      def self.new(id:, card_payment_id:, invoice:, line_items:, transaction_id:, type:); end
 
       sig do
         override
@@ -67,8 +66,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Invoice < Increase::Internal::Type::BaseModel
         # Discount given to cardholder.
@@ -176,9 +174,7 @@ module Increase
           shipping_tax_rate:,
           tax_treatments:,
           unique_value_added_tax_invoice_reference:
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -202,8 +198,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # Indicates how the merchant applied the discount.
         module DiscountTreatmentCode
@@ -245,8 +240,7 @@ module Increase
             override
               .returns(T::Array[Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         # Indicates how the merchant applied taxes.
@@ -291,8 +285,7 @@ module Increase
             )
 
           sig { override.returns(T::Array[Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -411,9 +404,7 @@ module Increase
           unit_cost:,
           unit_cost_currency:,
           unit_of_measure_code:
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -438,8 +429,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # Indicates the type of line item.
         module DetailIndicator
@@ -466,8 +456,7 @@ module Increase
             override
               .returns(T::Array[Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         # Indicates how the merchant applied the discount for this specific line item.
@@ -510,8 +499,7 @@ module Increase
             override
               .returns(T::Array[Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -528,8 +516,7 @@ module Increase
           T.let(:card_purchase_supplement, Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

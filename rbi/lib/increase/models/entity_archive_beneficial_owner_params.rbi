@@ -18,12 +18,10 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(beneficial_owner_id:, request_options: {})
-      end
+      def self.new(beneficial_owner_id:, request_options: {}); end
 
       sig { override.returns({beneficial_owner_id: String, request_options: Increase::RequestOptions}) }
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

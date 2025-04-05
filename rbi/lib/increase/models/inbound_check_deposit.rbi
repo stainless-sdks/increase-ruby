@@ -153,9 +153,7 @@ module Increase
         status:,
         transaction_id:,
         type:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -183,8 +181,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Adjustment < Increase::Internal::Type::BaseModel
         # The time at which the return adjustment was received.
@@ -212,8 +209,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(adjusted_at:, amount:, reason:, transaction_id:)
-        end
+        def self.new(adjusted_at:, amount:, reason:, transaction_id:); end
 
         sig do
           override
@@ -226,8 +222,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The reason for the adjustment.
         module Reason
@@ -254,8 +249,7 @@ module Increase
             T.let(:non_conforming_item, Increase::Models::InboundCheckDeposit::Adjustment::Reason::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::InboundCheckDeposit::Adjustment::Reason::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -286,8 +280,7 @@ module Increase
         USD = T.let(:USD, Increase::Models::InboundCheckDeposit::Currency::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::InboundCheckDeposit::Currency::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class DepositReturn < Increase::Internal::Type::BaseModel
@@ -313,8 +306,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(reason:, returned_at:, transaction_id:)
-        end
+        def self.new(reason:, returned_at:, transaction_id:); end
 
         sig do
           override
@@ -326,8 +318,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The reason the deposit was returned.
         module Reason
@@ -359,8 +350,7 @@ module Increase
             T.let(:endorsement_irregular, Increase::Models::InboundCheckDeposit::DepositReturn::Reason::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::InboundCheckDeposit::DepositReturn::Reason::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -386,8 +376,7 @@ module Increase
           T.let(:not_evaluated, Increase::Models::InboundCheckDeposit::PayeeNameAnalysis::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::InboundCheckDeposit::PayeeNameAnalysis::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # The status of the Inbound Check Deposit.
@@ -415,8 +404,7 @@ module Increase
           T.let(:requires_attention, Increase::Models::InboundCheckDeposit::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::InboundCheckDeposit::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -432,8 +420,7 @@ module Increase
           T.let(:inbound_check_deposit, Increase::Models::InboundCheckDeposit::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::InboundCheckDeposit::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

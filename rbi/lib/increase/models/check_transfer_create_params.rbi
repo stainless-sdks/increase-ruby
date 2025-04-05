@@ -80,9 +80,7 @@ module Increase
         require_approval: nil,
         third_party: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -98,8 +96,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Whether Increase will print and mail the check or if you will do it yourself.
       module FulfillmentMethod
@@ -119,8 +116,7 @@ module Increase
           T.let(:third_party, Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class PhysicalCheck < Increase::Internal::Type::BaseModel
@@ -217,9 +213,7 @@ module Increase
           note: nil,
           return_address: nil,
           signature_text: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -234,8 +228,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class MailingAddress < Increase::Internal::Type::BaseModel
           # The city component of the check's destination address.
@@ -266,14 +259,12 @@ module Increase
             params(city: String, line1: String, postal_code: String, state: String, line2: String)
               .returns(T.attached_class)
           end
-          def self.new(city:, line1:, postal_code:, state:, line2: nil)
-          end
+          def self.new(city:, line1:, postal_code:, state:, line2: nil); end
 
           sig do
             override.returns({city: String, line1: String, postal_code: String, state: String, line2: String})
           end
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class ReturnAddress < Increase::Internal::Type::BaseModel
@@ -318,8 +309,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(city:, line1:, name:, postal_code:, state:, line2: nil)
-          end
+          def self.new(city:, line1:, name:, postal_code:, state:, line2: nil); end
 
           sig do
             override
@@ -332,8 +322,7 @@ module Increase
                          line2: String
                        })
           end
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -360,12 +349,10 @@ module Increase
         #   `fulfillment_method` is equal to `third_party`. It must not be included if any
         #   other `fulfillment_method` is provided.
         sig { params(check_number: String, recipient_name: String).returns(T.attached_class) }
-        def self.new(check_number: nil, recipient_name: nil)
-        end
+        def self.new(check_number: nil, recipient_name: nil); end
 
         sig { override.returns({check_number: String, recipient_name: String}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

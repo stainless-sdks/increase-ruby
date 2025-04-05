@@ -17,8 +17,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(reason:, request_options: {})
-      end
+      def self.new(reason:, request_options: {}); end
 
       sig do
         override
@@ -29,8 +28,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The reason to return the Inbound Check Deposit.
       module Reason
@@ -61,8 +59,7 @@ module Increase
           T.let(:endorsement_irregular, Increase::Models::InboundCheckDepositReturnParams::Reason::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::InboundCheckDepositReturnParams::Reason::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

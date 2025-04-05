@@ -78,9 +78,7 @@ module Increase
         shipment:,
         status:,
         type:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -97,8 +95,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Cardholder < Increase::Internal::Type::BaseModel
         # The cardholder's first name.
@@ -111,12 +108,10 @@ module Increase
 
         # Details about the cardholder, as it appears on the printed card.
         sig { params(first_name: String, last_name: String).returns(T.attached_class) }
-        def self.new(first_name:, last_name:)
-        end
+        def self.new(first_name:, last_name:); end
 
         sig { override.returns({first_name: String, last_name: String}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class Shipment < Increase::Internal::Type::BaseModel
@@ -124,7 +119,9 @@ module Increase
         sig { returns(Increase::Models::PhysicalCard::Shipment::Address) }
         attr_reader :address
 
-        sig { params(address: T.any(Increase::Models::PhysicalCard::Shipment::Address, Increase::Internal::AnyHash)).void }
+        sig do
+          params(address: T.any(Increase::Models::PhysicalCard::Shipment::Address, Increase::Internal::AnyHash)).void
+        end
         attr_writer :address
 
         # The shipping method.
@@ -157,8 +154,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(address:, method_:, status:, tracking:)
-        end
+        def self.new(address:, method_:, status:, tracking:); end
 
         sig do
           override
@@ -171,8 +167,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Address < Increase::Internal::Type::BaseModel
           # The city of the shipping address.
@@ -216,8 +211,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(city:, line1:, line2:, line3:, name:, postal_code:, state:)
-          end
+          def self.new(city:, line1:, line2:, line3:, name:, postal_code:, state:); end
 
           sig do
             override
@@ -233,8 +227,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
 
         # The shipping method.
@@ -256,8 +249,7 @@ module Increase
           FEDEX_2_DAY = T.let(:fedex_2_day, Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         # The status of this shipment.
@@ -290,8 +282,7 @@ module Increase
           RETURNED = T.let(:returned, Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class Tracking < Increase::Internal::Type::BaseModel
@@ -323,8 +314,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(number:, return_number:, return_reason:, shipped_at:)
-          end
+          def self.new(number:, return_number:, return_reason:, shipped_at:); end
 
           sig do
             override
@@ -337,8 +327,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -359,8 +348,7 @@ module Increase
         CANCELED = T.let(:canceled, Increase::Models::PhysicalCard::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::PhysicalCard::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -374,8 +362,7 @@ module Increase
         PHYSICAL_CARD = T.let(:physical_card, Increase::Models::PhysicalCard::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::PhysicalCard::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

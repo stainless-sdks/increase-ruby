@@ -123,9 +123,7 @@ module Increase
         third_party_verification: nil,
         trust: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -143,8 +141,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The type of Entity to create.
       module Structure
@@ -171,8 +168,7 @@ module Increase
           T.let(:government_authority, Increase::Models::EntityCreateParams::Structure::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::EntityCreateParams::Structure::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class Corporation < Increase::Internal::Type::BaseModel
@@ -249,9 +245,7 @@ module Increase
           incorporation_state: nil,
           industry_code: nil,
           website: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -266,8 +260,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Address < Increase::Internal::Type::BaseModel
           # The city of the address.
@@ -305,12 +298,10 @@ module Increase
               line2: String
             ).returns(T.attached_class)
           end
-          def self.new(city:, line1:, state:, zip:, line2: nil)
-          end
+          def self.new(city:, line1:, state:, zip:, line2: nil); end
 
           sig { override.returns({city: String, line1: String, state: String, zip: String, line2: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class BeneficialOwner < Increase::Internal::Type::BaseModel
@@ -353,8 +344,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(individual:, prongs:, company_title: nil)
-          end
+          def self.new(individual:, prongs:, company_title: nil); end
 
           sig do
             override
@@ -366,8 +356,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class Individual < Increase::Internal::Type::BaseModel
             # The individual's physical address. Mail receiving locations like PO Boxes and
@@ -436,8 +425,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
-            end
+            def self.new(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil); end
 
             sig do
               override
@@ -451,8 +439,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class Address < Increase::Internal::Type::BaseModel
               # The two-letter ISO 3166-1 alpha-2 code for the country of the address.
@@ -506,8 +493,7 @@ module Increase
                 )
                   .returns(T.attached_class)
               end
-              def self.new(country:, line1:, city: nil, line2: nil, state: nil, zip: nil)
-              end
+              def self.new(country:, line1:, city: nil, line2: nil, state: nil, zip: nil); end
 
               sig do
                 override.returns(
@@ -521,8 +507,7 @@ module Increase
                   }
                 )
               end
-              def to_hash
-              end
+              def to_hash; end
             end
 
             class Identification < Increase::Internal::Type::BaseModel
@@ -625,8 +610,7 @@ module Increase
                 )
                   .returns(T.attached_class)
               end
-              def self.new(method_:, number:, drivers_license: nil, other: nil, passport: nil)
-              end
+              def self.new(method_:, number:, drivers_license: nil, other: nil, passport: nil); end
 
               sig do
                 override
@@ -640,8 +624,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # A method that can be used to verify the individual's identity.
               module Method
@@ -699,12 +682,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
+                        Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               class DriversLicense < Increase::Internal::Type::BaseModel
@@ -733,8 +715,7 @@ module Increase
                   params(expiration_date: Date, file_id: String, state: String, back_file_id: String)
                     .returns(T.attached_class)
                 end
-                def self.new(expiration_date:, file_id:, state:, back_file_id: nil)
-                end
+                def self.new(expiration_date:, file_id:, state:, back_file_id: nil); end
 
                 sig do
                   override.returns(
@@ -746,8 +727,7 @@ module Increase
                     }
                   )
                 end
-                def to_hash
-                end
+                def to_hash; end
               end
 
               class Other < Increase::Internal::Type::BaseModel
@@ -791,8 +771,7 @@ module Increase
                   )
                     .returns(T.attached_class)
                 end
-                def self.new(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
-                end
+                def self.new(country:, description:, file_id:, back_file_id: nil, expiration_date: nil); end
 
                 sig do
                   override
@@ -806,8 +785,7 @@ module Increase
                       }
                     )
                 end
-                def to_hash
-                end
+                def to_hash; end
               end
 
               class Passport < Increase::Internal::Type::BaseModel
@@ -828,12 +806,10 @@ module Increase
                 sig do
                   params(country: String, expiration_date: Date, file_id: String).returns(T.attached_class)
                 end
-                def self.new(country:, expiration_date:, file_id:)
-                end
+                def self.new(country:, expiration_date:, file_id:); end
 
                 sig { override.returns({country: String, expiration_date: Date, file_id: String}) }
-                def to_hash
-                end
+                def to_hash; end
               end
             end
           end
@@ -864,8 +840,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
       end
@@ -913,10 +888,10 @@ module Increase
           params(
             address: T.any(Increase::Models::EntityCreateParams::GovernmentAuthority::Address, Increase::Internal::AnyHash),
             authorized_persons: T::Array[
-            T.any(
-              Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson,
-              Increase::Internal::AnyHash
-            )
+              T.any(
+                Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson,
+                Increase::Internal::AnyHash
+              )
             ],
             category: Increase::Models::EntityCreateParams::GovernmentAuthority::Category::OrSymbol,
             name: String,
@@ -925,8 +900,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(address:, authorized_persons:, category:, name:, tax_identifier:, website: nil)
-        end
+        def self.new(address:, authorized_persons:, category:, name:, tax_identifier:, website: nil); end
 
         sig do
           override
@@ -941,8 +915,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Address < Increase::Internal::Type::BaseModel
           # The city of the address.
@@ -980,12 +953,10 @@ module Increase
               line2: String
             ).returns(T.attached_class)
           end
-          def self.new(city:, line1:, state:, zip:, line2: nil)
-          end
+          def self.new(city:, line1:, state:, zip:, line2: nil); end
 
           sig { override.returns({city: String, line1: String, state: String, zip: String, line2: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class AuthorizedPerson < Increase::Internal::Type::BaseModel
@@ -994,12 +965,10 @@ module Increase
           attr_accessor :name
 
           sig { params(name: String).returns(T.attached_class) }
-          def self.new(name:)
-          end
+          def self.new(name:); end
 
           sig { override.returns({name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         # The category of the government authority.
@@ -1019,8 +988,7 @@ module Increase
             override
               .returns(T::Array[Increase::Models::EntityCreateParams::GovernmentAuthority::Category::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -1045,15 +1013,13 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(individuals:, name: nil)
-        end
+        def self.new(individuals:, name: nil); end
 
         sig do
           override
             .returns({individuals: T::Array[Increase::Models::EntityCreateParams::Joint::Individual], name: String})
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Individual < Increase::Internal::Type::BaseModel
           # The individual's physical address. Mail receiving locations like PO Boxes and
@@ -1115,8 +1081,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
-          end
+          def self.new(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil); end
 
           sig do
             override
@@ -1130,8 +1095,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class Address < Increase::Internal::Type::BaseModel
             # The city of the address.
@@ -1169,12 +1133,10 @@ module Increase
                 line2: String
               ).returns(T.attached_class)
             end
-            def self.new(city:, line1:, state:, zip:, line2: nil)
-            end
+            def self.new(city:, line1:, state:, zip:, line2: nil); end
 
             sig { override.returns({city: String, line1: String, state: String, zip: String, line2: String}) }
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class Identification < Increase::Internal::Type::BaseModel
@@ -1259,8 +1221,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(method_:, number:, drivers_license: nil, other: nil, passport: nil)
-            end
+            def self.new(method_:, number:, drivers_license: nil, other: nil, passport: nil); end
 
             sig do
               override
@@ -1274,8 +1235,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # A method that can be used to verify the individual's identity.
             module Method
@@ -1333,8 +1293,7 @@ module Increase
                     T::Array[Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class DriversLicense < Increase::Internal::Type::BaseModel
@@ -1363,8 +1322,7 @@ module Increase
                 params(expiration_date: Date, file_id: String, state: String, back_file_id: String)
                   .returns(T.attached_class)
               end
-              def self.new(expiration_date:, file_id:, state:, back_file_id: nil)
-              end
+              def self.new(expiration_date:, file_id:, state:, back_file_id: nil); end
 
               sig do
                 override.returns(
@@ -1376,8 +1334,7 @@ module Increase
                   }
                 )
               end
-              def to_hash
-              end
+              def to_hash; end
             end
 
             class Other < Increase::Internal::Type::BaseModel
@@ -1421,8 +1378,7 @@ module Increase
                 )
                   .returns(T.attached_class)
               end
-              def self.new(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
-              end
+              def self.new(country:, description:, file_id:, back_file_id: nil, expiration_date: nil); end
 
               sig do
                 override
@@ -1436,8 +1392,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
             end
 
             class Passport < Increase::Internal::Type::BaseModel
@@ -1458,12 +1413,10 @@ module Increase
               sig do
                 params(country: String, expiration_date: Date, file_id: String).returns(T.attached_class)
               end
-              def self.new(country:, expiration_date:, file_id:)
-              end
+              def self.new(country:, expiration_date:, file_id:); end
 
               sig { override.returns({country: String, expiration_date: Date, file_id: String}) }
-              def to_hash
-              end
+              def to_hash; end
             end
           end
         end
@@ -1527,8 +1480,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
-        end
+        def self.new(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil); end
 
         sig do
           override
@@ -1542,8 +1494,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Address < Increase::Internal::Type::BaseModel
           # The city of the address.
@@ -1581,12 +1532,10 @@ module Increase
               line2: String
             ).returns(T.attached_class)
           end
-          def self.new(city:, line1:, state:, zip:, line2: nil)
-          end
+          def self.new(city:, line1:, state:, zip:, line2: nil); end
 
           sig { override.returns({city: String, line1: String, state: String, zip: String, line2: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Identification < Increase::Internal::Type::BaseModel
@@ -1667,8 +1616,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(method_:, number:, drivers_license: nil, other: nil, passport: nil)
-          end
+          def self.new(method_:, number:, drivers_license: nil, other: nil, passport: nil); end
 
           sig do
             override
@@ -1682,8 +1630,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # A method that can be used to verify the individual's identity.
           module Method
@@ -1738,8 +1685,7 @@ module Increase
                   T::Array[Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           class DriversLicense < Increase::Internal::Type::BaseModel
@@ -1768,14 +1714,12 @@ module Increase
               params(expiration_date: Date, file_id: String, state: String, back_file_id: String)
                 .returns(T.attached_class)
             end
-            def self.new(expiration_date:, file_id:, state:, back_file_id: nil)
-            end
+            def self.new(expiration_date:, file_id:, state:, back_file_id: nil); end
 
             sig do
               override.returns({expiration_date: Date, file_id: String, state: String, back_file_id: String})
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class Other < Increase::Internal::Type::BaseModel
@@ -1819,8 +1763,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
-            end
+            def self.new(country:, description:, file_id:, back_file_id: nil, expiration_date: nil); end
 
             sig do
               override
@@ -1834,8 +1777,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class Passport < Increase::Internal::Type::BaseModel
@@ -1854,12 +1796,10 @@ module Increase
             # Information about the passport used for identification. Required if `method` is
             #   equal to `passport`.
             sig { params(country: String, expiration_date: Date, file_id: String).returns(T.attached_class) }
-            def self.new(country:, expiration_date:, file_id:)
-            end
+            def self.new(country:, expiration_date:, file_id:); end
 
             sig { override.returns({country: String, expiration_date: Date, file_id: String}) }
-            def to_hash
-            end
+            def to_hash; end
           end
         end
       end
@@ -1870,12 +1810,10 @@ module Increase
         attr_accessor :file_id
 
         sig { params(file_id: String).returns(T.attached_class) }
-        def self.new(file_id:)
-        end
+        def self.new(file_id:); end
 
         sig { override.returns({file_id: String}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class ThirdPartyVerification < Increase::Internal::Type::BaseModel
@@ -1896,8 +1834,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(reference:, vendor:)
-        end
+        def self.new(reference:, vendor:); end
 
         sig do
           override
@@ -1905,8 +1842,7 @@ module Increase
               {reference: String, vendor: Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::OrSymbol}
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The vendor that was used to perform the verification.
         module Vendor
@@ -1928,8 +1864,7 @@ module Increase
             override
               .returns(T::Array[Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -2016,9 +1951,7 @@ module Increase
           formation_state: nil,
           grantor: nil,
           tax_identifier: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -2034,8 +1967,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Address < Increase::Internal::Type::BaseModel
           # The city of the address.
@@ -2073,12 +2005,10 @@ module Increase
               line2: String
             ).returns(T.attached_class)
           end
-          def self.new(city:, line1:, state:, zip:, line2: nil)
-          end
+          def self.new(city:, line1:, state:, zip:, line2: nil); end
 
           sig { override.returns({city: String, line1: String, state: String, zip: String, line2: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         # Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require
@@ -2098,8 +2028,7 @@ module Increase
           IRREVOCABLE = T.let(:irrevocable, Increase::Models::EntityCreateParams::Trust::Category::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::EntityCreateParams::Trust::Category::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class Trustee < Increase::Internal::Type::BaseModel
@@ -2127,8 +2056,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(structure:, individual: nil)
-          end
+          def self.new(structure:, individual: nil); end
 
           sig do
             override
@@ -2139,8 +2067,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The structure of the trustee.
           module Structure
@@ -2156,8 +2083,7 @@ module Increase
               T.let(:individual, Increase::Models::EntityCreateParams::Trust::Trustee::Structure::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::EntityCreateParams::Trust::Trustee::Structure::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
 
           class Individual < Increase::Internal::Type::BaseModel
@@ -2228,8 +2154,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
-            end
+            def self.new(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil); end
 
             sig do
               override
@@ -2243,8 +2168,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class Address < Increase::Internal::Type::BaseModel
               # The city of the address.
@@ -2282,14 +2206,12 @@ module Increase
                   line2: String
                 ).returns(T.attached_class)
               end
-              def self.new(city:, line1:, state:, zip:, line2: nil)
-              end
+              def self.new(city:, line1:, state:, zip:, line2: nil); end
 
               sig do
                 override.returns({city: String, line1: String, state: String, zip: String, line2: String})
               end
-              def to_hash
-              end
+              def to_hash; end
             end
 
             class Identification < Increase::Internal::Type::BaseModel
@@ -2388,8 +2310,7 @@ module Increase
                 )
                   .returns(T.attached_class)
               end
-              def self.new(method_:, number:, drivers_license: nil, other: nil, passport: nil)
-              end
+              def self.new(method_:, number:, drivers_license: nil, other: nil, passport: nil); end
 
               sig do
                 override
@@ -2403,8 +2324,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # A method that can be used to verify the individual's identity.
               module Method
@@ -2462,8 +2382,7 @@ module Increase
                       T::Array[Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               class DriversLicense < Increase::Internal::Type::BaseModel
@@ -2492,8 +2411,7 @@ module Increase
                   params(expiration_date: Date, file_id: String, state: String, back_file_id: String)
                     .returns(T.attached_class)
                 end
-                def self.new(expiration_date:, file_id:, state:, back_file_id: nil)
-                end
+                def self.new(expiration_date:, file_id:, state:, back_file_id: nil); end
 
                 sig do
                   override.returns(
@@ -2505,8 +2423,7 @@ module Increase
                     }
                   )
                 end
-                def to_hash
-                end
+                def to_hash; end
               end
 
               class Other < Increase::Internal::Type::BaseModel
@@ -2550,8 +2467,7 @@ module Increase
                   )
                     .returns(T.attached_class)
                 end
-                def self.new(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
-                end
+                def self.new(country:, description:, file_id:, back_file_id: nil, expiration_date: nil); end
 
                 sig do
                   override
@@ -2565,8 +2481,7 @@ module Increase
                       }
                     )
                 end
-                def to_hash
-                end
+                def to_hash; end
               end
 
               class Passport < Increase::Internal::Type::BaseModel
@@ -2587,12 +2502,10 @@ module Increase
                 sig do
                   params(country: String, expiration_date: Date, file_id: String).returns(T.attached_class)
                 end
-                def self.new(country:, expiration_date:, file_id:)
-                end
+                def self.new(country:, expiration_date:, file_id:); end
 
                 sig { override.returns({country: String, expiration_date: Date, file_id: String}) }
-                def to_hash
-                end
+                def to_hash; end
               end
             end
           end
@@ -2653,8 +2566,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
-          end
+          def self.new(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil); end
 
           sig do
             override
@@ -2668,8 +2580,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class Address < Increase::Internal::Type::BaseModel
             # The city of the address.
@@ -2707,12 +2618,10 @@ module Increase
                 line2: String
               ).returns(T.attached_class)
             end
-            def self.new(city:, line1:, state:, zip:, line2: nil)
-            end
+            def self.new(city:, line1:, state:, zip:, line2: nil); end
 
             sig { override.returns({city: String, line1: String, state: String, zip: String, line2: String}) }
-            def to_hash
-            end
+            def to_hash; end
           end
 
           class Identification < Increase::Internal::Type::BaseModel
@@ -2793,8 +2702,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(method_:, number:, drivers_license: nil, other: nil, passport: nil)
-            end
+            def self.new(method_:, number:, drivers_license: nil, other: nil, passport: nil); end
 
             sig do
               override
@@ -2808,8 +2716,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # A method that can be used to verify the individual's identity.
             module Method
@@ -2864,8 +2771,7 @@ module Increase
                     T::Array[Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class DriversLicense < Increase::Internal::Type::BaseModel
@@ -2894,8 +2800,7 @@ module Increase
                 params(expiration_date: Date, file_id: String, state: String, back_file_id: String)
                   .returns(T.attached_class)
               end
-              def self.new(expiration_date:, file_id:, state:, back_file_id: nil)
-              end
+              def self.new(expiration_date:, file_id:, state:, back_file_id: nil); end
 
               sig do
                 override.returns(
@@ -2907,8 +2812,7 @@ module Increase
                   }
                 )
               end
-              def to_hash
-              end
+              def to_hash; end
             end
 
             class Other < Increase::Internal::Type::BaseModel
@@ -2952,8 +2856,7 @@ module Increase
                 )
                   .returns(T.attached_class)
               end
-              def self.new(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
-              end
+              def self.new(country:, description:, file_id:, back_file_id: nil, expiration_date: nil); end
 
               sig do
                 override
@@ -2967,8 +2870,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
             end
 
             class Passport < Increase::Internal::Type::BaseModel
@@ -2989,12 +2891,10 @@ module Increase
               sig do
                 params(country: String, expiration_date: Date, file_id: String).returns(T.attached_class)
               end
-              def self.new(country:, expiration_date:, file_id:)
-              end
+              def self.new(country:, expiration_date:, file_id:); end
 
               sig { override.returns({country: String, expiration_date: Date, file_id: String}) }
-              def to_hash
-              end
+              def to_hash; end
             end
           end
         end

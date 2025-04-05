@@ -47,9 +47,7 @@ module Increase
         #   `trust`.
         trust: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve an Entity
       sig do
         params(
@@ -62,9 +60,7 @@ module Increase
         # The identifier of the Entity to retrieve.
         entity_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # List Entities
       sig do
         params(
@@ -91,9 +87,7 @@ module Increase
         limit: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Archive an Entity
       sig do
         params(
@@ -107,9 +101,7 @@ module Increase
         #   must be closed before the entity can be archived.
         entity_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Archive a beneficial owner for a corporate Entity
       sig do
         params(
@@ -127,9 +119,7 @@ module Increase
         #   corporation.
         beneficial_owner_id:,
         request_options: {}
-      )
-      end
-
+      ); end
       # Depending on your program, you may be required to re-confirm an Entity's details
       #   on a recurring basis. After making any required updates, call this endpoint to
       #   record that your user confirmed their details.
@@ -148,9 +138,7 @@ module Increase
         #   will be used.
         confirmed_at: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Create a beneficial owner for a corporate Entity
       sig do
         params(
@@ -167,9 +155,7 @@ module Increase
         #   corporation.
         beneficial_owner:,
         request_options: {}
-      )
-      end
-
+      ); end
       # Update a Natural Person or Corporation's address
       sig do
         params(
@@ -186,9 +172,7 @@ module Increase
         #   are disallowed.
         address:,
         request_options: {}
-      )
-      end
-
+      ); end
       # Update the address for a beneficial owner belonging to a corporate Entity
       sig do
         params(
@@ -210,9 +194,7 @@ module Increase
         #   corporation.
         beneficial_owner_id:,
         request_options: {}
-      )
-      end
-
+      ); end
       # Update the industry code for a corporate Entity
       sig do
         params(
@@ -232,13 +214,10 @@ module Increase
         #   [here](https://increase.com/documentation/data-dictionary#north-american-industry-classification-system-codes).
         industry_code:,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

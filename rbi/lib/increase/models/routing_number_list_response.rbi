@@ -63,8 +63,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # This routing number's support for ACH Transfers.
       module ACHTransfers
@@ -82,8 +81,7 @@ module Increase
           T.let(:not_supported, Increase::Models::RoutingNumberListResponse::ACHTransfers::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::RoutingNumberListResponse::ACHTransfers::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # This routing number's support for Real-Time Payments Transfers.
@@ -116,8 +114,7 @@ module Increase
           override
             .returns(T::Array[Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers::TaggedSymbol])
         end
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -132,8 +129,7 @@ module Increase
         ROUTING_NUMBER = T.let(:routing_number, Increase::Models::RoutingNumberListResponse::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::RoutingNumberListResponse::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # This routing number's support for Wire Transfers.
@@ -152,8 +148,7 @@ module Increase
           T.let(:not_supported, Increase::Models::RoutingNumberListResponse::WireTransfers::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::RoutingNumberListResponse::WireTransfers::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

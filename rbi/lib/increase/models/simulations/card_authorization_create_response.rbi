@@ -46,8 +46,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(declined_transaction:, pending_transaction:, type:)
-        end
+        def self.new(declined_transaction:, pending_transaction:, type:); end
 
         sig do
           override
@@ -59,8 +58,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_card_authorization_simulation_result`.
@@ -82,8 +80,7 @@ module Increase
             override
               .returns(T::Array[Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

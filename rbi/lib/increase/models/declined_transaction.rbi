@@ -105,8 +105,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Declined
       #   Transaction's currency. This will match the currency on the Declined
@@ -137,8 +136,7 @@ module Increase
         USD = T.let(:USD, Increase::Models::DeclinedTransaction::Currency::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::DeclinedTransaction::Currency::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # The type of the route this Declined Transaction came through.
@@ -159,8 +157,7 @@ module Increase
         LOCKBOX = T.let(:lockbox, Increase::Models::DeclinedTransaction::RouteType::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::DeclinedTransaction::RouteType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class Source < Increase::Internal::Type::BaseModel
@@ -294,9 +291,7 @@ module Increase
           inbound_real_time_payments_transfer_decline:,
           other:,
           wire_decline:
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -312,8 +307,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class ACHDecline < Increase::Internal::Type::BaseModel
           # The ACH Decline's identifier.
@@ -397,9 +391,7 @@ module Increase
             receiver_name:,
             trace_number:,
             type:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -419,8 +411,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # Why the ACH transfer was declined.
           module Reason
@@ -535,8 +526,7 @@ module Increase
             sig do
               override.returns(T::Array[Increase::Models::DeclinedTransaction::Source::ACHDecline::Reason::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # A constant representing the object's type. For this resource it will always be
@@ -553,8 +543,7 @@ module Increase
               T.let(:ach_decline, Increase::Models::DeclinedTransaction::Source::ACHDecline::Type::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::DeclinedTransaction::Source::ACHDecline::Type::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -792,9 +781,7 @@ module Increase
             reason:,
             terminal_id:,
             verification:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -831,8 +818,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
@@ -859,8 +845,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Actioner::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
@@ -895,8 +880,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Currency::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # The direction describes the direction the funds will move, either from the
@@ -921,8 +905,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Direction::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           class NetworkDetails < Increase::Internal::Type::BaseModel
@@ -964,8 +947,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(category:, visa:)
-            end
+            def self.new(category:, visa:); end
 
             sig do
               override
@@ -976,8 +958,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The payment network used to process this card authorization.
             module Category
@@ -1007,8 +988,7 @@ module Increase
                     T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class Visa < Increase::Internal::Type::BaseModel
@@ -1084,8 +1064,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
@@ -1166,12 +1145,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                        Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # The method used to enter the cardholder's primary account number and card
@@ -1266,12 +1244,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                        Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # Only present when `actioner: network`. Describes why a card authorization was
@@ -1345,12 +1322,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                        Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -1381,8 +1357,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(retrieval_reference_number:, trace_number:, transaction_id:)
-            end
+            def self.new(retrieval_reference_number:, trace_number:, transaction_id:); end
 
             sig do
               override
@@ -1394,8 +1369,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           # The processing category describes the intent behind the authorization, such as
@@ -1462,8 +1436,7 @@ module Increase
                   T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::ProcessingCategory::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # This is present if a specific decline reason was given in the real-time
@@ -1530,8 +1503,7 @@ module Increase
                   T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::RealTimeDecisionReason::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # Why the transaction was declined.
@@ -1642,8 +1614,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Reason::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           class Verification < Increase::Internal::Type::BaseModel
@@ -1693,8 +1664,7 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(card_verification_code:, cardholder_address:)
-            end
+            def self.new(card_verification_code:, cardholder_address:); end
 
             sig do
               override
@@ -1705,8 +1675,7 @@ module Increase
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class CardVerificationCode < Increase::Internal::Type::BaseModel
               # The result of verifying the Card Verification Code.
@@ -1725,8 +1694,7 @@ module Increase
                 )
                   .returns(T.attached_class)
               end
-              def self.new(result:)
-              end
+              def self.new(result:); end
 
               sig do
                 override
@@ -1736,8 +1704,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The result of verifying the Card Verification Code.
               module Result
@@ -1781,12 +1748,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
+                        Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -1849,8 +1815,7 @@ module Increase
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The address verification result returned to the card network.
               module Result
@@ -1915,12 +1880,11 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                      Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
+                        Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -1965,8 +1929,7 @@ module Increase
           OTHER = T.let(:other, Increase::Models::DeclinedTransaction::Source::Category::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::DeclinedTransaction::Source::Category::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class CheckDecline < Increase::Internal::Type::BaseModel
@@ -2024,9 +1987,7 @@ module Increase
             front_image_file_id:,
             inbound_check_deposit_id:,
             reason:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -2041,8 +2002,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # Why the check was declined.
           module Reason
@@ -2155,8 +2115,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::DeclinedTransaction::Source::CheckDecline::Reason::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -2201,7 +2160,14 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(amount:, check_deposit_id:, currency:, declined_transaction_id:, reason:, rejected_at:)
+          def self.new(
+            amount:,
+            check_deposit_id:,
+            currency:,
+            declined_transaction_id:,
+            reason:,
+            rejected_at:
+          )
           end
 
           sig do
@@ -2217,8 +2183,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
           #   currency.
@@ -2266,8 +2231,7 @@ module Increase
                   T::Array[Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Currency::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # Why the check deposit was rejected.
@@ -2368,8 +2332,7 @@ module Increase
                   T::Array[Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Reason::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -2454,9 +2417,7 @@ module Increase
             remittance_information:,
             transaction_identification:,
             transfer_id:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -2474,8 +2435,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
           #   transfer's currency. This will always be "USD" for a Real-Time Payments
@@ -2542,12 +2502,11 @@ module Increase
               override
                 .returns(
                   T::Array[
-                  Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol
+                    Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol
                   ]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # Why the transfer was declined.
@@ -2613,12 +2572,11 @@ module Increase
               override
                 .returns(
                   T::Array[
-                  Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol
+                    Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol
                   ]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -2640,8 +2598,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(inbound_wire_transfer_id:, reason:)
-          end
+          def self.new(inbound_wire_transfer_id:, reason:); end
 
           sig do
             override
@@ -2652,8 +2609,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # Why the wire transfer was declined.
           module Reason
@@ -2707,8 +2663,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::DeclinedTransaction::Source::WireDecline::Reason::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
       end
@@ -2726,8 +2681,7 @@ module Increase
           T.let(:declined_transaction, Increase::Models::DeclinedTransaction::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::DeclinedTransaction::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

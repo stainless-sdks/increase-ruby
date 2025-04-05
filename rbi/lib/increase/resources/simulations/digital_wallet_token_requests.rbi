@@ -17,13 +17,10 @@ module Increase
           # The identifier of the Card to be authorized.
           card_id:,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: Increase::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

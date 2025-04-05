@@ -36,8 +36,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(description: nil, recipient_name: nil, status: nil, request_options: {})
-      end
+      def self.new(description: nil, recipient_name: nil, status: nil, request_options: {}); end
 
       sig do
         override
@@ -50,8 +49,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # This indicates if checks can be sent to the Lockbox.
       module Status
@@ -68,8 +66,7 @@ module Increase
         INACTIVE = T.let(:inactive, Increase::Models::LockboxUpdateParams::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::LockboxUpdateParams::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

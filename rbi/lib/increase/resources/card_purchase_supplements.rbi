@@ -15,9 +15,7 @@ module Increase
         # The identifier of the Card Purchase Supplement.
         card_purchase_supplement_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # List Card Purchase Supplements
       sig do
         params(
@@ -40,13 +38,10 @@ module Increase
         #   objects.
         limit: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

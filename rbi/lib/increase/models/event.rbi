@@ -44,8 +44,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, associated_object_id:, associated_object_type:, category:, created_at:, type:)
-      end
+      def self.new(id:, associated_object_id:, associated_object_type:, category:, created_at:, type:); end
 
       sig do
         override
@@ -60,8 +59,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The category of the Event. We may add additional possible values for this enum
       #   over time; your application should be able to handle such additions gracefully.
@@ -413,8 +411,7 @@ module Increase
         WIRE_TRANSFER_UPDATED = T.let(:"wire_transfer.updated", Increase::Models::Event::Category::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Event::Category::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -428,8 +425,7 @@ module Increase
         EVENT = T.let(:event, Increase::Models::Event::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Event::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end
