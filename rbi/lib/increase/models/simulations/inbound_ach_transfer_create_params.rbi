@@ -12,8 +12,8 @@ module Increase
         attr_accessor :account_number_id
 
         # The transfer amount in cents. A positive amount originates a credit transfer
-        #   pushing funds to the receiving account. A negative amount originates a debit
-        #   transfer pulling funds from the receiving account.
+        # pushing funds to the receiving account. A negative amount originates a debit
+        # transfer pulling funds from the receiving account.
         sig { returns(Integer) }
         attr_accessor :amount
 
@@ -67,7 +67,7 @@ module Increase
         attr_writer :receiver_name
 
         # The time at which the transfer should be resolved. If not provided will resolve
-        #   immediately.
+        # immediately.
         sig { returns(T.nilable(Time)) }
         attr_reader :resolve_at
 

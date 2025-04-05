@@ -12,38 +12,38 @@ module Increase
       attr_accessor :account_id
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the enrollment was created.
+      # the enrollment was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
       # The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # Increase and is used to ensure that a request is only processed once. Learn more
+      # about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
       # The identifier of the account in IntraFi's system. This identifier will be
-      #   printed on any IntraFi statements or documents.
+      # printed on any IntraFi statements or documents.
       sig { returns(String) }
       attr_accessor :intrafi_id
 
       # The status of the account in the network. An account takes about one business
-      #   day to go from `pending_enrolling` to `enrolled`.
+      # day to go from `pending_enrolling` to `enrolled`.
       sig { returns(Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol) }
       attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
-      #   `intrafi_account_enrollment`.
+      # `intrafi_account_enrollment`.
       sig { returns(Increase::Models::IntrafiAccountEnrollment::Type::TaggedSymbol) }
       attr_accessor :type
 
       # IntraFi is a
-      #   [network of financial institutions](https://www.intrafi.com/network-banks) that
-      #   allows Increase users to sweep funds to multiple banks, in addition to
-      #   Increase's main bank partners. This enables accounts to become eligible for
-      #   additional Federal Deposit Insurance Corporation (FDIC) insurance. An IntraFi
-      #   Account Enrollment object represents the status of an account in the network.
-      #   Sweeping an account to IntraFi doesn't affect funds availability.
+      # [network of financial institutions](https://www.intrafi.com/network-banks) that
+      # allows Increase users to sweep funds to multiple banks, in addition to
+      # Increase's main bank partners. This enables accounts to become eligible for
+      # additional Federal Deposit Insurance Corporation (FDIC) insurance. An IntraFi
+      # Account Enrollment object represents the status of an account in the network.
+      # Sweeping an account to IntraFi doesn't affect funds availability.
       sig do
         params(
           id: String,
@@ -75,7 +75,7 @@ module Increase
       def to_hash; end
 
       # The status of the account in the network. An account takes about one business
-      #   day to go from `pending_enrolling` to `enrolled`.
+      # day to go from `pending_enrolling` to `enrolled`.
       module Status
         extend Increase::Internal::Type::Enum
 
@@ -106,7 +106,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `intrafi_account_enrollment`.
+      # `intrafi_account_enrollment`.
       module Type
         extend Increase::Internal::Type::Enum
 

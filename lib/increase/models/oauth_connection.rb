@@ -12,14 +12,14 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-      #     Connection was created.
+      #   Connection was created.
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute deleted_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-      #     Connection was deleted.
+      #   Connection was deleted.
       #
       #   @return [Time, nil]
       required :deleted_at, Time, nil?: true
@@ -44,15 +44,15 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `oauth_connection`.
+      #   `oauth_connection`.
       #
       #   @return [Symbol, Increase::Models::OAuthConnection::Type]
       required :type, enum: -> { Increase::Models::OAuthConnection::Type }
 
       # @!parse
       #   # When a user authorizes your OAuth application, an OAuth Connection object is
-      #   #   created. Learn more about OAuth
-      #   #   [here](https://increase.com/documentation/oauth).
+      #   # created. Learn more about OAuth
+      #   # [here](https://increase.com/documentation/oauth).
       #   #
       #   # @param id [String]
       #   # @param created_at [Time]
@@ -86,7 +86,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `oauth_connection`.
+      # `oauth_connection`.
       #
       # @see Increase::Models::OAuthConnection#type
       module Type

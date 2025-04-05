@@ -66,8 +66,8 @@ module Increase
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
-      #     Increase and is used to ensure that a request is only processed once. Learn more
-      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -86,7 +86,7 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `proof_of_authorization_request_submission`.
+      #   `proof_of_authorization_request_submission`.
       #
       #   @return [Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Type]
       required :type, enum: -> { Increase::Models::ProofOfAuthorizationRequestSubmission::Type }
@@ -119,10 +119,10 @@ module Increase
 
       # @!parse
       #   # Information submitted in response to a proof of authorization request. Per
-      #   #   Nacha's guidance on proof of authorization, the originator must ensure that the
-      #   #   authorization complies with applicable legal requirements, is readily
-      #   #   identifiable as an authorization, and has clear and readily understandable
-      #   #   terms.
+      #   # Nacha's guidance on proof of authorization, the originator must ensure that the
+      #   # authorization complies with applicable legal requirements, is readily
+      #   # identifiable as an authorization, and has clear and readily understandable
+      #   # terms.
       #   #
       #   # @param id [String]
       #   # @param additional_evidence_file_id [String, nil]
@@ -198,7 +198,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `proof_of_authorization_request_submission`.
+      # `proof_of_authorization_request_submission`.
       #
       # @see Increase::Models::ProofOfAuthorizationRequestSubmission#type
       module Type

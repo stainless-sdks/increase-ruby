@@ -18,7 +18,7 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
-      #     Document was created.
+      #   Document was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -37,14 +37,14 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `document`.
+      #   `document`.
       #
       #   @return [Symbol, Increase::Models::Document::Type]
       required :type, enum: -> { Increase::Models::Document::Type }
 
       # @!parse
       #   # Increase generates certain documents / forms automatically for your application;
-      #   #   they can be listed here.
+      #   # they can be listed here.
       #   #
       #   # @param id [String]
       #   # @param category [Symbol, Increase::Models::Document::Category]
@@ -83,7 +83,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `document`.
+      # `document`.
       #
       # @see Increase::Models::Document#type
       module Type

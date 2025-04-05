@@ -28,15 +28,15 @@ module Increase
 
       # @!attribute source_account_number_id
       #   The identifier of the Account Number from which to send the transfer and print
-      #     on the check.
+      #   on the check.
       #
       #   @return [String]
       required :source_account_number_id, String
 
       # @!attribute [r] physical_check
       #   Details relating to the physical check that Increase will print and mail. This
-      #     is required if `fulfillment_method` is equal to `physical_check`. It must not be
-      #     included if any other `fulfillment_method` is provided.
+      #   is required if `fulfillment_method` is equal to `physical_check`. It must not be
+      #   included if any other `fulfillment_method` is provided.
       #
       #   @return [Increase::Models::CheckTransferCreateParams::PhysicalCheck, nil]
       optional :physical_check, -> { Increase::Models::CheckTransferCreateParams::PhysicalCheck }
@@ -57,8 +57,8 @@ module Increase
 
       # @!attribute [r] third_party
       #   Details relating to the custom fulfillment you will perform. This is required if
-      #     `fulfillment_method` is equal to `third_party`. It must not be included if any
-      #     other `fulfillment_method` is provided.
+      #   `fulfillment_method` is equal to `third_party`. It must not be included if any
+      #   other `fulfillment_method` is provided.
       #
       #   @return [Increase::Models::CheckTransferCreateParams::ThirdParty, nil]
       optional :third_party, -> { Increase::Models::CheckTransferCreateParams::ThirdParty }
@@ -132,8 +132,8 @@ module Increase
 
         # @!attribute [r] check_number
         #   The check number Increase should print on the check. This should not contain
-        #     leading zeroes and must be unique across the `source_account_number`. If this is
-        #     omitted, Increase will generate a check number for you.
+        #   leading zeroes and must be unique across the `source_account_number`. If this is
+        #   omitted, Increase will generate a check number for you.
         #
         #   @return [String, nil]
         optional :check_number, String
@@ -154,8 +154,8 @@ module Increase
 
         # @!attribute [r] return_address
         #   The return address to be printed on the check. If omitted this will default to
-        #     an Increase-owned address that will mark checks as delivery failed and shred
-        #     them.
+        #   an Increase-owned address that will mark checks as delivery failed and shred
+        #   them.
         #
         #   @return [Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress, nil]
         optional :return_address, -> { Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress }
@@ -166,7 +166,7 @@ module Increase
 
         # @!attribute [r] signature_text
         #   The text that will appear as the signature on the check in cursive font. If not
-        #     provided, the check will be printed with 'No signature required'.
+        #   provided, the check will be printed with 'No signature required'.
         #
         #   @return [String, nil]
         optional :signature_text, String
@@ -177,8 +177,8 @@ module Increase
 
         # @!parse
         #   # Details relating to the physical check that Increase will print and mail. This
-        #   #   is required if `fulfillment_method` is equal to `physical_check`. It must not be
-        #   #   included if any other `fulfillment_method` is provided.
+        #   # is required if `fulfillment_method` is equal to `physical_check`. It must not be
+        #   # included if any other `fulfillment_method` is provided.
         #   #
         #   # @param mailing_address [Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress]
         #   # @param memo [String]
@@ -297,8 +297,8 @@ module Increase
 
           # @!parse
           #   # The return address to be printed on the check. If omitted this will default to
-          #   #   an Increase-owned address that will mark checks as delivery failed and shred
-          #   #   them.
+          #   # an Increase-owned address that will mark checks as delivery failed and shred
+          #   # them.
           #   #
           #   # @param city [String]
           #   # @param line1 [String]
@@ -316,8 +316,8 @@ module Increase
       class ThirdParty < Increase::Internal::Type::BaseModel
         # @!attribute [r] check_number
         #   The check number you will print on the check. This should not contain leading
-        #     zeroes. If this is omitted, Increase will generate a check number for you; you
-        #     should inspect the response and use that check number.
+        #   zeroes. If this is omitted, Increase will generate a check number for you; you
+        #   should inspect the response and use that check number.
         #
         #   @return [String, nil]
         optional :check_number, String
@@ -328,8 +328,8 @@ module Increase
 
         # @!attribute [r] recipient_name
         #   The pay-to name you will print on the check. If provided, this is used for
-        #     [Positive Pay](/documentation/positive-pay). If this is omitted, Increase will
-        #     be unable to validate the payee name when the check is deposited.
+        #   [Positive Pay](/documentation/positive-pay). If this is omitted, Increase will
+        #   be unable to validate the payee name when the check is deposited.
         #
         #   @return [String, nil]
         optional :recipient_name, String
@@ -340,8 +340,8 @@ module Increase
 
         # @!parse
         #   # Details relating to the custom fulfillment you will perform. This is required if
-        #   #   `fulfillment_method` is equal to `third_party`. It must not be included if any
-        #   #   other `fulfillment_method` is provided.
+        #   # `fulfillment_method` is equal to `third_party`. It must not be included if any
+        #   # other `fulfillment_method` is provided.
         #   #
         #   # @param check_number [String]
         #   # @param recipient_name [String]

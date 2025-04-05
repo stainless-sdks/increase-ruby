@@ -48,7 +48,7 @@ module Increase
 
       # @!attribute [r] limit
       #   Limit the size of the list that is returned. The default (and maximum) is 100
-      #     objects.
+      #   objects.
       #
       #   @return [Integer, nil]
       optional :limit, Integer
@@ -94,7 +94,7 @@ module Increase
       class Category < Increase::Internal::Type::BaseModel
         # @!attribute [r] in_
         #   Return results whose value is in the provided list. For GET requests, this
-        #     should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+        #   should be encoded as a comma-delimited string, such as `?in=one,two,three`.
         #
         #   @return [Array<Symbol, Increase::Models::DeclinedTransactionListParams::Category::In>, nil]
         optional :in_,
@@ -147,7 +147,7 @@ module Increase
       class CreatedAt < Increase::Internal::Type::BaseModel
         # @!attribute [r] after
         #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        #     timestamp.
+        #   timestamp.
         #
         #   @return [Time, nil]
         optional :after, Time
@@ -158,7 +158,7 @@ module Increase
 
         # @!attribute [r] before
         #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        #     timestamp.
+        #   timestamp.
         #
         #   @return [Time, nil]
         optional :before, Time
@@ -169,7 +169,7 @@ module Increase
 
         # @!attribute [r] on_or_after
         #   Return results on or after this
-        #     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
         #   @return [Time, nil]
         optional :on_or_after, Time
@@ -180,7 +180,7 @@ module Increase
 
         # @!attribute [r] on_or_before
         #   Return results on or before this
-        #     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
         #   @return [Time, nil]
         optional :on_or_before, Time

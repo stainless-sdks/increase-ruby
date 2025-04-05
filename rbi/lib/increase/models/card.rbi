@@ -19,7 +19,7 @@ module Increase
       attr_writer :billing_address
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the Card was created.
+      # the Card was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -28,8 +28,8 @@ module Increase
       attr_accessor :description
 
       # The contact information used in the two-factor steps for digital wallet card
-      #   creation. At least one field must be present to complete the digital wallet
-      #   steps.
+      # creation. At least one field must be present to complete the digital wallet
+      # steps.
       sig { returns(T.nilable(Increase::Models::Card::DigitalWallet)) }
       attr_reader :digital_wallet
 
@@ -54,8 +54,8 @@ module Increase
       attr_accessor :expiration_year
 
       # The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # Increase and is used to ensure that a request is only processed once. Learn more
+      # about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
@@ -68,14 +68,14 @@ module Increase
       attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
-      #   `card`.
+      # `card`.
       sig { returns(Increase::Models::Card::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Cards are commercial credit cards. They'll immediately work for online purchases
-      #   after you create them. All cards maintain a credit limit of 100% of the
-      #   Account’s available balance at the time of transaction. Funds are deducted from
-      #   the Account upon transaction settlement.
+      # after you create them. All cards maintain a credit limit of 100% of the
+      # Account’s available balance at the time of transaction. Funds are deducted from
+      # the Account upon transaction settlement.
       sig do
         params(
           id: String,
@@ -182,23 +182,23 @@ module Increase
 
       class DigitalWallet < Increase::Internal::Type::BaseModel
         # The digital card profile assigned to this digital card. Card profiles may also
-        #   be assigned at the program level.
+        # be assigned at the program level.
         sig { returns(T.nilable(String)) }
         attr_accessor :digital_card_profile_id
 
         # An email address that can be used to verify the cardholder via one-time passcode
-        #   over email.
+        # over email.
         sig { returns(T.nilable(String)) }
         attr_accessor :email
 
         # A phone number that can be used to verify the cardholder via one-time passcode
-        #   over SMS.
+        # over SMS.
         sig { returns(T.nilable(String)) }
         attr_accessor :phone
 
         # The contact information used in the two-factor steps for digital wallet card
-        #   creation. At least one field must be present to complete the digital wallet
-        #   steps.
+        # creation. At least one field must be present to complete the digital wallet
+        # steps.
         sig do
           params(
             digital_card_profile_id: T.nilable(String),
@@ -241,7 +241,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `card`.
+      # `card`.
       module Type
         extend Increase::Internal::Type::Enum
 

@@ -12,14 +12,14 @@ module Increase
 
       # @!attribute balances
       #   Each entry represents a balance held at a different bank. IntraFi separates the
-      #     total balance across many participating banks in the network.
+      #   total balance across many participating banks in the network.
       #
       #   @return [Array<Increase::Models::IntrafiBalance::Balance>]
       required :balances, -> { Increase::Internal::Type::ArrayOf[Increase::Models::IntrafiBalance::Balance] }
 
       # @!attribute currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account
-      #     currency.
+      #   currency.
       #
       #   @return [Symbol, Increase::Models::IntrafiBalance::Currency]
       required :currency, enum: -> { Increase::Models::IntrafiBalance::Currency }
@@ -32,22 +32,22 @@ module Increase
 
       # @!attribute total_balance
       #   The total balance, in minor units of `currency`. Increase reports this balance
-      #     to IntraFi daily.
+      #   to IntraFi daily.
       #
       #   @return [Integer]
       required :total_balance, Integer
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #     `intrafi_balance`.
+      #   `intrafi_balance`.
       #
       #   @return [Symbol, Increase::Models::IntrafiBalance::Type]
       required :type, enum: -> { Increase::Models::IntrafiBalance::Type }
 
       # @!parse
       #   # When using IntraFi, each account's balance over the standard FDIC insurance
-      #   #   amount are swept to various other institutions. Funds are rebalanced across
-      #   #   banks as needed once per business day.
+      #   # amount are swept to various other institutions. Funds are rebalanced across
+      #   # banks as needed once per business day.
       #   #
       #   # @param id [String]
       #   # @param balances [Array<Increase::Models::IntrafiBalance::Balance>]
@@ -87,8 +87,8 @@ module Increase
 
         # @!attribute fdic_certificate_number
         #   The Federal Deposit Insurance Corporation (FDIC) certificate number of the bank.
-        #     Because many banks have the same or similar names, this can be used to uniquely
-        #     identify the institution.
+        #   Because many banks have the same or similar names, this can be used to uniquely
+        #   identify the institution.
         #
         #   @return [String]
         required :fdic_certificate_number, String
@@ -131,7 +131,7 @@ module Increase
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account
-      #   currency.
+      # currency.
       #
       # @see Increase::Models::IntrafiBalance#currency
       module Currency
@@ -163,7 +163,7 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      #   `intrafi_balance`.
+      # `intrafi_balance`.
       #
       # @see Increase::Models::IntrafiBalance#type
       module Type

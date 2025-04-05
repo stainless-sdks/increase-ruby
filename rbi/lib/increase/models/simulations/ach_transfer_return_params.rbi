@@ -8,7 +8,7 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         # The reason why the Federal Reserve or destination bank returned this transfer.
-        #   Defaults to `no_account`.
+        # Defaults to `no_account`.
         sig { returns(T.nilable(Increase::Models::Simulations::ACHTransferReturnParams::Reason::OrSymbol)) }
         attr_reader :reason
 
@@ -36,7 +36,7 @@ module Increase
         def to_hash; end
 
         # The reason why the Federal Reserve or destination bank returned this transfer.
-        #   Defaults to `no_account`.
+        # Defaults to `no_account`.
         module Reason
           extend Increase::Internal::Type::Enum
 

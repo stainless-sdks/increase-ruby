@@ -31,8 +31,8 @@ module Increase
       attr_accessor :recipient_routing_number
 
       # The drawdown request originator's address line 1. This is only necessary if
-      #   you're requesting a payment to a commingled account. Otherwise, we'll use the
-      #   associated entity's details.
+      # you're requesting a payment to a commingled account. Otherwise, we'll use the
+      # associated entity's details.
       sig { returns(T.nilable(String)) }
       attr_reader :originator_address_line1
 
@@ -40,8 +40,8 @@ module Increase
       attr_writer :originator_address_line1
 
       # The drawdown request originator's address line 2. This is only necessary if
-      #   you're requesting a payment to a commingled account. Otherwise, we'll use the
-      #   associated entity's details.
+      # you're requesting a payment to a commingled account. Otherwise, we'll use the
+      # associated entity's details.
       sig { returns(T.nilable(String)) }
       attr_reader :originator_address_line2
 
@@ -49,8 +49,8 @@ module Increase
       attr_writer :originator_address_line2
 
       # The drawdown request originator's address line 3. This is only necessary if
-      #   you're requesting a payment to a commingled account. Otherwise, we'll use the
-      #   associated entity's details.
+      # you're requesting a payment to a commingled account. Otherwise, we'll use the
+      # associated entity's details.
       sig { returns(T.nilable(String)) }
       attr_reader :originator_address_line3
 
@@ -58,8 +58,8 @@ module Increase
       attr_writer :originator_address_line3
 
       # The drawdown request originator's name. This is only necessary if you're
-      #   requesting a payment to a commingled account. Otherwise, we'll use the
-      #   associated entity's details.
+      # requesting a payment to a commingled account. Otherwise, we'll use the
+      # associated entity's details.
       sig { returns(T.nilable(String)) }
       attr_reader :originator_name
 

@@ -204,10 +204,10 @@ module Increase
       api_key: ENV["INCREASE_API_KEY"],
       # Specifies the environment to use for the API.
       #
-      #   Each environment maps to a different base URL:
+      # Each environment maps to a different base URL:
       #
-      #   - `production` corresponds to `https://api.increase.com`
-      #   - `sandbox` corresponds to `https://sandbox.increase.com`
+      # - `production` corresponds to `https://api.increase.com`
+      # - `sandbox` corresponds to `https://sandbox.increase.com`
       environment: nil,
       # Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
       base_url: nil,

@@ -11,7 +11,7 @@ module Increase
 
         # @!attribute amount
         #   The amount of the fuel_confirmation in minor units in the card authorization's
-        #     currency.
+        #   currency.
         #
         #   @return [Integer]
         required :amount, Integer

@@ -37,20 +37,20 @@ module Increase
         # The drawdown request's recipient's routing number.
         recipient_routing_number:,
         # The drawdown request originator's address line 1. This is only necessary if
-        #   you're requesting a payment to a commingled account. Otherwise, we'll use the
-        #   associated entity's details.
+        # you're requesting a payment to a commingled account. Otherwise, we'll use the
+        # associated entity's details.
         originator_address_line1: nil,
         # The drawdown request originator's address line 2. This is only necessary if
-        #   you're requesting a payment to a commingled account. Otherwise, we'll use the
-        #   associated entity's details.
+        # you're requesting a payment to a commingled account. Otherwise, we'll use the
+        # associated entity's details.
         originator_address_line2: nil,
         # The drawdown request originator's address line 3. This is only necessary if
-        #   you're requesting a payment to a commingled account. Otherwise, we'll use the
-        #   associated entity's details.
+        # you're requesting a payment to a commingled account. Otherwise, we'll use the
+        # associated entity's details.
         originator_address_line3: nil,
         # The drawdown request originator's name. This is only necessary if you're
-        #   requesting a payment to a commingled account. Otherwise, we'll use the
-        #   associated entity's details.
+        # requesting a payment to a commingled account. Otherwise, we'll use the
+        # associated entity's details.
         originator_name: nil,
         # Line 1 of the drawdown request's recipient's address.
         recipient_address_line1: nil,
@@ -88,12 +88,12 @@ module Increase
         # Return the page of entries after this one.
         cursor: nil,
         # Filter records to the one with the specified `idempotency_key` you chose for
-        #   that object. This value is unique across Increase and is used to ensure that a
-        #   request is only processed once. Learn more about
-        #   [idempotency](https://increase.com/documentation/idempotency-keys).
+        # that object. This value is unique across Increase and is used to ensure that a
+        # request is only processed once. Learn more about
+        # [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        #   objects.
+        # objects.
         limit: nil,
         status: nil,
         request_options: {}

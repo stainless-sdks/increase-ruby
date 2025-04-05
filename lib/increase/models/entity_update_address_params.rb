@@ -10,7 +10,7 @@ module Increase
 
       # @!attribute address
       #   The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-      #     are disallowed.
+      #   are disallowed.
       #
       #   @return [Increase::Models::EntityUpdateAddressParams::Address]
       required :address, -> { Increase::Models::EntityUpdateAddressParams::Address }
@@ -38,7 +38,7 @@ module Increase
 
         # @!attribute state
         #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-        #     the address.
+        #   the address.
         #
         #   @return [String]
         required :state, String
@@ -61,7 +61,7 @@ module Increase
 
         # @!parse
         #   # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-        #   #   are disallowed.
+        #   # are disallowed.
         #   #
         #   # @param city [String]
         #   # @param line1 [String]

@@ -50,7 +50,7 @@ module Increase
 
       # @!attribute [r] front_text
       #   Text printed on the front of the card. Reach out to
-      #     [support@increase.com](mailto:support@increase.com) for more information.
+      #   [support@increase.com](mailto:support@increase.com) for more information.
       #
       #   @return [Increase::Models::PhysicalCardProfileCloneParams::FrontText, nil]
       optional :front_text, -> { Increase::Models::PhysicalCardProfileCloneParams::FrontText }
@@ -90,8 +90,8 @@ module Increase
 
         # @!attribute [r] line2
         #   The second line of text on the front of the card. Providing a second line moves
-        #     the first line slightly higher and prints the second line in the spot where the
-        #     first line would have otherwise been printed.
+        #   the first line slightly higher and prints the second line in the spot where the
+        #   first line would have otherwise been printed.
         #
         #   @return [String, nil]
         optional :line2, String
@@ -102,7 +102,7 @@ module Increase
 
         # @!parse
         #   # Text printed on the front of the card. Reach out to
-        #   #   [support@increase.com](mailto:support@increase.com) for more information.
+        #   # [support@increase.com](mailto:support@increase.com) for more information.
         #   #
         #   # @param line1 [String]
         #   # @param line2 [String]
