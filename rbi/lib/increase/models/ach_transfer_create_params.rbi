@@ -213,9 +213,7 @@ module Increase
         standard_entry_class_code: nil,
         transaction_timing: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -243,8 +241,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Addenda < Increase::Internal::Type::BaseModel
         # The type of addenda to pass with the transfer.
@@ -292,8 +289,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(category:, freeform: nil, payment_order_remittance_advice: nil)
-        end
+        def self.new(category:, freeform: nil, payment_order_remittance_advice: nil); end
 
         sig do
           override
@@ -305,8 +301,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The type of addenda to pass with the transfer.
         module Category
@@ -328,8 +323,7 @@ module Increase
             )
 
           sig { override.returns(T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Category::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class Freeform < Increase::Internal::Type::BaseModel
@@ -346,12 +340,10 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(entries:)
-          end
+          def self.new(entries:); end
 
           sig { override.returns({entries: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry]}) }
-          def to_hash
-          end
+          def to_hash; end
 
           class Entry < Increase::Internal::Type::BaseModel
             # The payment related information passed in the addendum.
@@ -359,12 +351,10 @@ module Increase
             attr_accessor :payment_related_information
 
             sig { params(payment_related_information: String).returns(T.attached_class) }
-            def self.new(payment_related_information:)
-            end
+            def self.new(payment_related_information:); end
 
             sig { override.returns({payment_related_information: String}) }
-            def to_hash
-            end
+            def to_hash; end
           end
         end
 
@@ -382,16 +372,15 @@ module Increase
           sig do
             params(
               invoices: T::Array[
-              T.any(
-                Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice,
-                Increase::Internal::AnyHash
-              )
+                T.any(
+                  Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice,
+                  Increase::Internal::AnyHash
+                )
               ]
             )
               .returns(T.attached_class)
           end
-          def self.new(invoices:)
-          end
+          def self.new(invoices:); end
 
           sig do
             override
@@ -401,8 +390,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class Invoice < Increase::Internal::Type::BaseModel
             # The invoice number for this reference, determined in advance with the receiver.
@@ -415,12 +403,10 @@ module Increase
             attr_accessor :paid_amount
 
             sig { params(invoice_number: String, paid_amount: Integer).returns(T.attached_class) }
-            def self.new(invoice_number:, paid_amount:)
-            end
+            def self.new(invoice_number:, paid_amount:); end
 
             sig { override.returns({invoice_number: String, paid_amount: Integer}) }
-            def to_hash
-            end
+            def to_hash; end
           end
         end
       end
@@ -451,8 +437,7 @@ module Increase
           override
             .returns(T::Array[Increase::Models::ACHTransferCreateParams::DestinationAccountHolder::TaggedSymbol])
         end
-        def self.values
-        end
+        def self.values; end
       end
 
       # The type of the account to which the transfer will be sent.
@@ -470,8 +455,7 @@ module Increase
         SAVINGS = T.let(:savings, Increase::Models::ACHTransferCreateParams::Funding::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ACHTransferCreateParams::Funding::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class PreferredEffectiveDate < Increase::Internal::Type::BaseModel
@@ -510,8 +494,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(date: nil, settlement_schedule: nil)
-        end
+        def self.new(date: nil, settlement_schedule: nil); end
 
         sig do
           override
@@ -522,8 +505,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # A schedule by which Increase will choose an effective date for the transfer.
         module SettlementSchedule
@@ -560,8 +542,7 @@ module Increase
                 T::Array[Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol]
               )
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -605,8 +586,7 @@ module Increase
         sig do
           override.returns(T::Array[Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::TaggedSymbol])
         end
-        def self.values
-        end
+        def self.values; end
       end
 
       # The timing of the transaction.
@@ -627,8 +607,7 @@ module Increase
           T.let(:asynchronous, Increase::Models::ACHTransferCreateParams::TransactionTiming::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ACHTransferCreateParams::TransactionTiming::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

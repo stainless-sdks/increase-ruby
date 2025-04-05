@@ -79,8 +79,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # If the mail item has been rejected, why it was rejected.
       module RejectionReason
@@ -102,8 +101,7 @@ module Increase
           T.let(:lockbox_not_active, Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # If the mail item has been processed.
@@ -124,8 +122,7 @@ module Increase
         REJECTED = T.let(:rejected, Increase::Models::InboundMailItem::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::InboundMailItem::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -139,8 +136,7 @@ module Increase
         INBOUND_MAIL_ITEM = T.let(:inbound_mail_item, Increase::Models::InboundMailItem::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::InboundMailItem::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

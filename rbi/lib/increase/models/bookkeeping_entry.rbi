@@ -43,8 +43,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, account_id:, amount:, created_at:, entry_set_id:, type:)
-      end
+      def self.new(id:, account_id:, amount:, created_at:, entry_set_id:, type:); end
 
       sig do
         override
@@ -59,8 +58,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # A constant representing the object's type. For this resource it will always be
       #   `bookkeeping_entry`.
@@ -73,8 +71,7 @@ module Increase
         BOOKKEEPING_ENTRY = T.let(:bookkeeping_entry, Increase::Models::BookkeepingEntry::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::BookkeepingEntry::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

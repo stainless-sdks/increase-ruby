@@ -27,9 +27,7 @@ module Increase
         # The description you choose to give the Check Deposit, for display purposes only.
         description: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve a Check Deposit
       sig do
         params(
@@ -42,9 +40,7 @@ module Increase
         # The identifier of the Check Deposit to retrieve.
         check_deposit_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # List Check Deposits
       sig do
         params(
@@ -72,13 +68,10 @@ module Increase
         #   objects.
         limit: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

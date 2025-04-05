@@ -20,8 +20,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(status: nil, request_options: {})
-      end
+      def self.new(status: nil, request_options: {}); end
 
       sig do
         override
@@ -32,8 +31,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The status to update the Event Subscription with.
       module Status
@@ -53,8 +51,7 @@ module Increase
         DELETED = T.let(:deleted, Increase::Models::EventSubscriptionUpdateParams::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::EventSubscriptionUpdateParams::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

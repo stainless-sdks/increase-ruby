@@ -101,9 +101,7 @@ module Increase
         digital_wallet_authentication: nil,
         digital_wallet_token: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -117,8 +115,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class CardAuthentication < Increase::Internal::Type::BaseModel
         # Whether the card authentication attempt should be approved or declined.
@@ -131,8 +128,7 @@ module Increase
           params(decision: Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::OrSymbol)
             .returns(T.attached_class)
         end
-        def self.new(decision:)
-        end
+        def self.new(decision:); end
 
         sig do
           override
@@ -140,8 +136,7 @@ module Increase
               {decision: Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::OrSymbol}
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # Whether the card authentication attempt should be approved or declined.
         module Decision
@@ -182,8 +177,7 @@ module Increase
                 T::Array[Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::TaggedSymbol]
               )
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -201,8 +195,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(result:)
-        end
+        def self.new(result:); end
 
         sig do
           override
@@ -210,8 +203,7 @@ module Increase
               {result: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::OrSymbol}
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # Whether the card authentication challenge was successfully delivered to the
         #   cardholder.
@@ -249,8 +241,7 @@ module Increase
                 T::Array[Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::TaggedSymbol]
               )
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -285,8 +276,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(decision:, decline_reason: nil)
-        end
+        def self.new(decision:, decline_reason: nil); end
 
         sig do
           override
@@ -297,8 +287,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # Whether the card authorization should be approved or declined.
         module Decision
@@ -329,8 +318,7 @@ module Increase
                 T::Array[Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::TaggedSymbol]
               )
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         # The reason the card authorization was declined. This translates to a specific
@@ -397,8 +385,7 @@ module Increase
                 T::Array[Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol]
               )
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -433,8 +420,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(result:, success: nil)
-        end
+        def self.new(result:, success: nil); end
 
         sig do
           override
@@ -445,8 +431,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # Whether your application was able to deliver the one-time passcode.
         module Result
@@ -483,8 +468,7 @@ module Increase
                 T::Array[Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::TaggedSymbol]
               )
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         class Success < Increase::Internal::Type::BaseModel
@@ -504,12 +488,10 @@ module Increase
           attr_writer :phone
 
           sig { params(email: String, phone: String).returns(T.attached_class) }
-          def self.new(email: nil, phone: nil)
-          end
+          def self.new(email: nil, phone: nil); end
 
           sig { override.returns({email: String, phone: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -561,8 +543,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(approval: nil, decline: nil)
-        end
+        def self.new(approval: nil, decline: nil); end
 
         sig do
           override
@@ -573,8 +554,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Approval < Increase::Internal::Type::BaseModel
           # An email address that can be used to verify the cardholder via one-time
@@ -596,12 +576,10 @@ module Increase
           # If your application approves the provisioning attempt, this contains metadata
           #   about the digital wallet token that will be generated.
           sig { params(email: String, phone: String).returns(T.attached_class) }
-          def self.new(email: nil, phone: nil)
-          end
+          def self.new(email: nil, phone: nil); end
 
           sig { override.returns({email: String, phone: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class Decline < Increase::Internal::Type::BaseModel
@@ -616,12 +594,10 @@ module Increase
           # If your application declines the provisioning attempt, this contains details
           #   about the decline.
           sig { params(reason: String).returns(T.attached_class) }
-          def self.new(reason: nil)
-          end
+          def self.new(reason: nil); end
 
           sig { override.returns({reason: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
     end

@@ -225,9 +225,7 @@ module Increase
         submission:,
         third_party:,
         type:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -258,8 +256,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Approval < Increase::Internal::Type::BaseModel
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -275,12 +272,10 @@ module Increase
         # If your account requires approvals for transfers and the transfer was approved,
         #   this will contain details of the approval.
         sig { params(approved_at: Time, approved_by: T.nilable(String)).returns(T.attached_class) }
-        def self.new(approved_at:, approved_by:)
-        end
+        def self.new(approved_at:, approved_by:); end
 
         sig { override.returns({approved_at: Time, approved_by: T.nilable(String)}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class Cancellation < Increase::Internal::Type::BaseModel
@@ -297,12 +292,10 @@ module Increase
         # If your account requires approvals for transfers and the transfer was not
         #   approved, this will contain details of the cancellation.
         sig { params(canceled_at: Time, canceled_by: T.nilable(String)).returns(T.attached_class) }
-        def self.new(canceled_at:, canceled_by:)
-        end
+        def self.new(canceled_at:, canceled_by:); end
 
         sig { override.returns({canceled_at: Time, canceled_by: T.nilable(String)}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class CreatedBy < Increase::Internal::Type::BaseModel
@@ -360,8 +353,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(api_key:, category:, oauth_application:, user:)
-        end
+        def self.new(api_key:, category:, oauth_application:, user:); end
 
         sig do
           override
@@ -374,8 +366,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class APIKey < Increase::Internal::Type::BaseModel
           # The description set for the API key when it was created.
@@ -384,12 +375,10 @@ module Increase
 
           # If present, details about the API key that created the transfer.
           sig { params(description: T.nilable(String)).returns(T.attached_class) }
-          def self.new(description:)
-          end
+          def self.new(description:); end
 
           sig { override.returns({description: T.nilable(String)}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         # The type of object that created this transfer.
@@ -411,8 +400,7 @@ module Increase
           USER = T.let(:user, Increase::Models::CheckTransfer::CreatedBy::Category::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::CheckTransfer::CreatedBy::Category::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class OAuthApplication < Increase::Internal::Type::BaseModel
@@ -422,12 +410,10 @@ module Increase
 
           # If present, details about the OAuth Application that created the transfer.
           sig { params(name: String).returns(T.attached_class) }
-          def self.new(name:)
-          end
+          def self.new(name:); end
 
           sig { override.returns({name: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class User < Increase::Internal::Type::BaseModel
@@ -437,12 +423,10 @@ module Increase
 
           # If present, details about the User that created the transfer.
           sig { params(email: String).returns(T.attached_class) }
-          def self.new(email:)
-          end
+          def self.new(email:); end
 
           sig { override.returns({email: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -474,8 +458,7 @@ module Increase
         USD = T.let(:USD, Increase::Models::CheckTransfer::Currency::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::CheckTransfer::Currency::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Whether Increase will print and mail the check or if you will do it yourself.
@@ -493,8 +476,7 @@ module Increase
         THIRD_PARTY = T.let(:third_party, Increase::Models::CheckTransfer::FulfillmentMethod::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::CheckTransfer::FulfillmentMethod::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class Mailing < Increase::Internal::Type::BaseModel
@@ -518,14 +500,12 @@ module Increase
           params(image_id: T.nilable(String), mailed_at: Time, tracking_number: T.nilable(String))
             .returns(T.attached_class)
         end
-        def self.new(image_id:, mailed_at:, tracking_number:)
-        end
+        def self.new(image_id:, mailed_at:, tracking_number:); end
 
         sig do
           override.returns({image_id: T.nilable(String), mailed_at: Time, tracking_number: T.nilable(String)})
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class PhysicalCheck < Increase::Internal::Type::BaseModel
@@ -606,9 +586,7 @@ module Increase
           shipping_method:,
           signature_text:,
           tracking_updates:
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -624,8 +602,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class MailingAddress < Increase::Internal::Type::BaseModel
           # The city of the check's destination.
@@ -664,8 +641,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(city:, line1:, line2:, name:, postal_code:, state:)
-          end
+          def self.new(city:, line1:, line2:, name:, postal_code:, state:); end
 
           sig do
             override
@@ -680,8 +656,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class ReturnAddress < Increase::Internal::Type::BaseModel
@@ -721,8 +696,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(city:, line1:, line2:, name:, postal_code:, state:)
-          end
+          def self.new(city:, line1:, line2:, name:, postal_code:, state:); end
 
           sig do
             override
@@ -737,8 +711,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
 
         # The shipping method for the check.
@@ -759,8 +732,7 @@ module Increase
             T.let(:fedex_overnight, Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         class TrackingUpdate < Increase::Internal::Type::BaseModel
@@ -785,8 +757,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(category:, created_at:, postal_code:)
-          end
+          def self.new(category:, created_at:, postal_code:); end
 
           sig do
             override
@@ -798,8 +769,7 @@ module Increase
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The type of tracking event.
           module Category
@@ -842,8 +812,7 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
       end
@@ -886,8 +855,7 @@ module Increase
         RETURNED = T.let(:returned, Increase::Models::CheckTransfer::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::CheckTransfer::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class StopPaymentRequest < Increase::Internal::Type::BaseModel
@@ -919,8 +887,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(reason:, requested_at:, transfer_id:, type:)
-        end
+        def self.new(reason:, requested_at:, transfer_id:, type:); end
 
         sig do
           override
@@ -933,8 +900,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The reason why this transfer was stopped.
         module Reason
@@ -961,8 +927,7 @@ module Increase
           UNKNOWN = T.let(:unknown, Increase::Models::CheckTransfer::StopPaymentRequest::Reason::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::CheckTransfer::StopPaymentRequest::Reason::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
 
         # A constant representing the object's type. For this resource it will always be
@@ -981,8 +946,7 @@ module Increase
             )
 
           sig { override.returns(T::Array[Increase::Models::CheckTransfer::StopPaymentRequest::Type::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -993,12 +957,10 @@ module Increase
 
         # After the transfer is submitted, this will contain supplemental details.
         sig { params(submitted_at: Time).returns(T.attached_class) }
-        def self.new(submitted_at:)
-        end
+        def self.new(submitted_at:); end
 
         sig { override.returns({submitted_at: Time}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class ThirdParty < Increase::Internal::Type::BaseModel
@@ -1015,12 +977,10 @@ module Increase
         sig do
           params(check_number: T.nilable(String), recipient_name: T.nilable(String)).returns(T.attached_class)
         end
-        def self.new(check_number:, recipient_name:)
-        end
+        def self.new(check_number:, recipient_name:); end
 
         sig { override.returns({check_number: T.nilable(String), recipient_name: T.nilable(String)}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -1034,8 +994,7 @@ module Increase
         CHECK_TRANSFER = T.let(:check_transfer, Increase::Models::CheckTransfer::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::CheckTransfer::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

@@ -95,9 +95,7 @@ module Increase
         authorizer_company: nil,
         authorizer_ip_address: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -118,8 +116,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

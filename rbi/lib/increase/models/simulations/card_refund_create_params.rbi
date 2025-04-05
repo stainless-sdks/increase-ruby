@@ -19,12 +19,10 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(transaction_id:, request_options: {})
-        end
+        def self.new(transaction_id:, request_options: {}); end
 
         sig { override.returns({transaction_id: String, request_options: Increase::RequestOptions}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

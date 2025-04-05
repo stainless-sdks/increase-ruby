@@ -106,9 +106,7 @@ module Increase
         status:,
         text_color:,
         type:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -130,8 +128,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The status of the Card Profile.
       module Status
@@ -154,8 +151,7 @@ module Increase
         ARCHIVED = T.let(:archived, Increase::Models::DigitalCardProfile::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::DigitalCardProfile::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class TextColor < Increase::Internal::Type::BaseModel
@@ -173,12 +169,10 @@ module Increase
 
         # The Card's text color, specified as an RGB triple.
         sig { params(blue: Integer, green: Integer, red: Integer).returns(T.attached_class) }
-        def self.new(blue:, green:, red:)
-        end
+        def self.new(blue:, green:, red:); end
 
         sig { override.returns({blue: Integer, green: Integer, red: Integer}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -194,8 +188,7 @@ module Increase
           T.let(:digital_card_profile, Increase::Models::DigitalCardProfile::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::DigitalCardProfile::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

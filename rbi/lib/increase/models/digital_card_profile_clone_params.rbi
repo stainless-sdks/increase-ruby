@@ -100,9 +100,7 @@ module Increase
         issuer_name: nil,
         text_color: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -120,8 +118,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class TextColor < Increase::Internal::Type::BaseModel
         # The value of the blue channel in the RGB color.
@@ -138,12 +135,10 @@ module Increase
 
         # The Card's text color, specified as an RGB triple. The default is white.
         sig { params(blue: Integer, green: Integer, red: Integer).returns(T.attached_class) }
-        def self.new(blue:, green:, red:)
-        end
+        def self.new(blue:, green:, red:); end
 
         sig { override.returns({blue: Integer, green: Integer, red: Integer}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

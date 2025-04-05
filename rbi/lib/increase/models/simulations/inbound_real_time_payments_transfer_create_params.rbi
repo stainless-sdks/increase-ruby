@@ -73,9 +73,7 @@ module Increase
           remittance_information: nil,
           request_for_payment_id: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -91,8 +89,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

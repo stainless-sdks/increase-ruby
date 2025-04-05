@@ -70,8 +70,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # If specified, this subscription will only receive webhooks for Events with the
       #   specified `category`.
@@ -709,8 +708,7 @@ module Increase
           override
             .returns(T::Array[Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol])
         end
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

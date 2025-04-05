@@ -42,8 +42,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, category:, created_at:, entity_id:, file_id:, type:)
-      end
+      def self.new(id:, category:, created_at:, entity_id:, file_id:, type:); end
 
       sig do
         override
@@ -58,8 +57,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The type of document.
       module Category
@@ -82,8 +80,7 @@ module Increase
         COMPANY_INFORMATION = T.let(:company_information, Increase::Models::Document::Category::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Document::Category::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -97,8 +94,7 @@ module Increase
         DOCUMENT = T.let(:document, Increase::Models::Document::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Document::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

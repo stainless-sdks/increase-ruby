@@ -89,9 +89,7 @@ module Increase
         is_default:,
         status:,
         type:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -111,8 +109,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The creator of this Physical Card Profile.
       module Creator
@@ -129,8 +126,7 @@ module Increase
         USER = T.let(:user, Increase::Models::PhysicalCardProfile::Creator::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::PhysicalCardProfile::Creator::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # The status of the Physical Card Profile.
@@ -162,8 +158,7 @@ module Increase
         ARCHIVED = T.let(:archived, Increase::Models::PhysicalCardProfile::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::PhysicalCardProfile::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -179,8 +174,7 @@ module Increase
           T.let(:physical_card_profile, Increase::Models::PhysicalCardProfile::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::PhysicalCardProfile::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

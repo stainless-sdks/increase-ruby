@@ -21,9 +21,7 @@ module Increase
         # The name of the recipient that will receive mail at this location.
         recipient_name: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve a Lockbox
       sig do
         params(
@@ -36,9 +34,7 @@ module Increase
         # The identifier of the Lockbox to retrieve.
         lockbox_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Update a Lockbox
       sig do
         params(
@@ -60,9 +56,7 @@ module Increase
         # This indicates if checks can be sent to the Lockbox.
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # List Lockboxes
       sig do
         params(
@@ -90,13 +84,10 @@ module Increase
         #   objects.
         limit: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

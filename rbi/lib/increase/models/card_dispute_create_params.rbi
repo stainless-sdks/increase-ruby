@@ -34,8 +34,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(disputed_transaction_id:, explanation:, amount: nil, request_options: {})
-      end
+      def self.new(disputed_transaction_id:, explanation:, amount: nil, request_options: {}); end
 
       sig do
         override
@@ -48,8 +47,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

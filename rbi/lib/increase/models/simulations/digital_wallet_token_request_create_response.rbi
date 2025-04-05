@@ -34,8 +34,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(decline_reason:, digital_wallet_token_id:, type:)
-        end
+        def self.new(decline_reason:, digital_wallet_token_id:, type:); end
 
         sig do
           override
@@ -49,8 +48,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # If the simulated tokenization attempt was declined, this field contains details
         #   as to why.
@@ -102,8 +100,7 @@ module Increase
                 T::Array[Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason::TaggedSymbol]
               )
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         # A constant representing the object's type. For this resource it will always be
@@ -134,8 +131,7 @@ module Increase
                 T::Array[Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type::TaggedSymbol]
               )
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

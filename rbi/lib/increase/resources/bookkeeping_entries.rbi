@@ -15,9 +15,7 @@ module Increase
         # The identifier of the Bookkeeping Entry.
         bookkeeping_entry_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # List Bookkeeping Entries
       sig do
         params(
@@ -37,13 +35,10 @@ module Increase
         #   objects.
         limit: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

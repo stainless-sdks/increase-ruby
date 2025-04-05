@@ -24,9 +24,7 @@ module Increase
         # The identifier of the File containing the physical card's front image.
         front_image_file_id:,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve a Card Profile
       sig do
         params(
@@ -39,9 +37,7 @@ module Increase
         # The identifier of the Card Profile.
         physical_card_profile_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # List Physical Card Profiles
       sig do
         params(
@@ -66,9 +62,7 @@ module Increase
         limit: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Archive a Physical Card Profile
       sig do
         params(
@@ -81,9 +75,7 @@ module Increase
         # The identifier of the Physical Card Profile to archive.
         physical_card_profile_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Clone a Physical Card Profile
       sig do
         params(
@@ -112,13 +104,10 @@ module Increase
         #   [support@increase.com](mailto:support@increase.com) for more information.
         front_text: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

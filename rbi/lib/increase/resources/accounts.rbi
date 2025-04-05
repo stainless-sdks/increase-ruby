@@ -26,9 +26,7 @@ module Increase
         #   operate more than one Program.
         program_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve an Account
       sig do
         params(
@@ -41,9 +39,7 @@ module Increase
         # The identifier of the Account to retrieve.
         account_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Update an Account
       sig do
         params(
@@ -59,9 +55,7 @@ module Increase
         # The new name of the Account.
         name: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # List Accounts
       sig do
         params(
@@ -97,9 +91,7 @@ module Increase
         program_id: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve the current and available balances for an account in minor units of the
       #   account's currency. Learn more about [account balances](/documentation/balance).
       sig do
@@ -116,9 +108,7 @@ module Increase
         # The moment to query the balance at. If not set, returns the current balances.
         at_time: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Close an Account
       sig do
         params(
@@ -131,13 +121,10 @@ module Increase
         # The identifier of the Account to close. The account must have a zero balance.
         account_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

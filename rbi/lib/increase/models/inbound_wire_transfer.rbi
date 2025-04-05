@@ -166,9 +166,7 @@ module Increase
         sender_reference:,
         status:,
         type:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -201,8 +199,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The status of the transfer.
       module Status
@@ -225,8 +222,7 @@ module Increase
         REVERSED = T.let(:reversed, Increase::Models::InboundWireTransfer::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::InboundWireTransfer::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -242,8 +238,7 @@ module Increase
           T.let(:inbound_wire_transfer, Increase::Models::InboundWireTransfer::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::InboundWireTransfer::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

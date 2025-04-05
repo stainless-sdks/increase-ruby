@@ -33,8 +33,7 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(account_id:, available_balance:, current_balance:, type:)
-      end
+      def self.new(account_id:, available_balance:, current_balance:, type:); end
 
       sig do
         override
@@ -47,8 +46,7 @@ module Increase
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # A constant representing the object's type. For this resource it will always be
       #   `balance_lookup`.
@@ -61,8 +59,7 @@ module Increase
         BALANCE_LOOKUP = T.let(:balance_lookup, Increase::Models::BalanceLookup::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::BalanceLookup::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

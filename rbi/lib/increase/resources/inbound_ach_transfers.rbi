@@ -15,9 +15,7 @@ module Increase
         # The identifier of the Inbound ACH Transfer to get details for.
         inbound_ach_transfer_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # List Inbound ACH Transfers
       sig do
         params(
@@ -44,9 +42,7 @@ module Increase
         limit: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Create a notification of change for an Inbound ACH Transfer
       sig do
         params(
@@ -66,9 +62,7 @@ module Increase
         # The updated routing number to send in the notification of change.
         updated_routing_number: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Decline an Inbound ACH Transfer
       sig do
         params(
@@ -86,9 +80,7 @@ module Increase
         #   `credit_entry_refused_by_receiver` for credits.
         reason: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Return an Inbound ACH Transfer
       sig do
         params(
@@ -106,13 +98,10 @@ module Increase
         #   `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
         reason:,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

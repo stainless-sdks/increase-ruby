@@ -22,8 +22,7 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(reason: nil, request_options: {})
-        end
+        def self.new(reason: nil, request_options: {}); end
 
         sig do
           override
@@ -34,8 +33,7 @@ module Increase
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The reason why the Federal Reserve or destination bank returned this transfer.
         #   Defaults to `no_account`.
@@ -484,8 +482,7 @@ module Increase
             T.let(:untimely_return, Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end
