@@ -33,7 +33,7 @@ module Increase
       attr_writer :shipment
 
       # The physical card profile to use for this physical card. The latest default
-      # physical card profile will be used if not provided.
+      #   physical card profile will be used if not provided.
       sig { returns(T.nilable(String)) }
       attr_reader :physical_card_profile_id
 
@@ -50,7 +50,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(card_id:, cardholder:, shipment:, physical_card_profile_id: nil, request_options: {}); end
+      def self.new(card_id:, cardholder:, shipment:, physical_card_profile_id: nil, request_options: {})
+      end
 
       sig do
         override
@@ -64,7 +65,8 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Cardholder < Increase::Internal::Type::BaseModel
         # The cardholder's first name.
@@ -77,10 +79,12 @@ module Increase
 
         # Details about the cardholder, as it will appear on the physical card.
         sig { params(first_name: String, last_name: String).returns(T.attached_class) }
-        def self.new(first_name:, last_name:); end
+        def self.new(first_name:, last_name:)
+        end
 
         sig { override.returns({first_name: String, last_name: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class Shipment < Increase::Internal::Type::BaseModel
@@ -108,7 +112,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(address:, method_:); end
+        def self.new(address:, method_:)
+        end
 
         sig do
           override
@@ -119,7 +124,8 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class Address < Increase::Internal::Type::BaseModel
           # The city of the shipping address.
@@ -195,7 +201,8 @@ module Increase
                 }
               )
           end
-          def to_hash; end
+          def to_hash
+          end
         end
 
         # The shipping method to use.
@@ -222,7 +229,8 @@ module Increase
             T.let(:fedex_2_day, Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

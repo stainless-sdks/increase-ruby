@@ -28,7 +28,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(account_number_id:, amount:, check_number:, request_options: {}); end
+        def self.new(account_number_id:, amount:, check_number:, request_options: {})
+        end
 
         sig do
           override
@@ -41,7 +42,8 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

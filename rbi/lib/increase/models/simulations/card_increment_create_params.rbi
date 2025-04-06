@@ -16,9 +16,9 @@ module Increase
         attr_accessor :card_payment_id
 
         # The identifier of the Event Subscription to use. If provided, will override the
-        # default real time event subscription. Because you can only create one real time
-        # decision event subscription, you can use this field to route events to any
-        # specified event subscription for testing purposes.
+        #   default real time event subscription. Because you can only create one real time
+        #   decision event subscription, you can use this field to route events to any
+        #   specified event subscription for testing purposes.
         sig { returns(T.nilable(String)) }
         attr_reader :event_subscription_id
 
@@ -34,7 +34,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(amount:, card_payment_id:, event_subscription_id: nil, request_options: {}); end
+        def self.new(amount:, card_payment_id:, event_subscription_id: nil, request_options: {})
+        end
 
         sig do
           override
@@ -47,7 +48,8 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

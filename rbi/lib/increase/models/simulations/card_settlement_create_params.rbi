@@ -12,12 +12,12 @@ module Increase
         attr_accessor :card_id
 
         # The identifier of the Pending Transaction for the Card Authorization you wish to
-        # settle.
+        #   settle.
         sig { returns(String) }
         attr_accessor :pending_transaction_id
 
         # The amount to be settled. This defaults to the amount of the Pending Transaction
-        # being settled.
+        #   being settled.
         sig { returns(T.nilable(Integer)) }
         attr_reader :amount
 
@@ -33,7 +33,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(card_id:, pending_transaction_id:, amount: nil, request_options: {}); end
+        def self.new(card_id:, pending_transaction_id:, amount: nil, request_options: {})
+        end
 
         sig do
           override
@@ -46,7 +47,8 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

@@ -26,7 +26,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(status:, explanation: nil, request_options: {}); end
+        def self.new(status:, explanation: nil, request_options: {})
+        end
 
         sig do
           override
@@ -38,7 +39,8 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         # The status to move the dispute to.
         module Status
@@ -69,7 +71,8 @@ module Increase
           WON = T.let(:won, Increase::Models::Simulations::CardDisputeActionParams::Status::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::Simulations::CardDisputeActionParams::Status::TaggedSymbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

@@ -20,7 +20,7 @@ module Increase
       attr_accessor :amount
 
       # If your account requires approvals for transfers and the transfer was approved,
-      # this will contain details of the approval.
+      #   this will contain details of the approval.
       sig { returns(T.nilable(Increase::Models::CheckTransfer::Approval)) }
       attr_reader :approval
 
@@ -31,12 +31,12 @@ module Increase
       attr_writer :approval
 
       # If the Check Transfer was successfully deposited, this will contain the
-      # identifier of the Inbound Check Deposit object with details of the deposit.
+      #   identifier of the Inbound Check Deposit object with details of the deposit.
       sig { returns(T.nilable(String)) }
       attr_accessor :approved_inbound_check_deposit_id
 
       # If your account requires approvals for transfers and the transfer was not
-      # approved, this will contain details of the cancellation.
+      #   approved, this will contain details of the cancellation.
       sig { returns(T.nilable(Increase::Models::CheckTransfer::Cancellation)) }
       attr_reader :cancellation
 
@@ -53,7 +53,7 @@ module Increase
       attr_accessor :check_number
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      # the transfer was created.
+      #   the transfer was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -70,7 +70,7 @@ module Increase
       attr_writer :created_by
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-      # currency.
+      #   currency.
       sig { returns(Increase::Models::CheckTransfer::Currency::TaggedSymbol) }
       attr_accessor :currency
 
@@ -79,13 +79,13 @@ module Increase
       attr_accessor :fulfillment_method
 
       # The idempotency key you chose for this object. This value is unique across
-      # Increase and is used to ensure that a request is only processed once. Learn more
-      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
       # If the check has been mailed by Increase, this will contain details of the
-      # shipment.
+      #   shipment.
       sig { returns(T.nilable(Increase::Models::CheckTransfer::Mailing)) }
       attr_reader :mailing
 
@@ -96,14 +96,14 @@ module Increase
       attr_writer :mailing
 
       # The ID for the pending transaction representing the transfer. A pending
-      # transaction is created when the transfer
-      # [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
-      # by someone else in your organization.
+      #   transaction is created when the transfer
+      #   [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
+      #   by someone else in your organization.
       sig { returns(T.nilable(String)) }
       attr_accessor :pending_transaction_id
 
       # Details relating to the physical check that Increase will print and mail. Will
-      # be present if and only if `fulfillment_method` is equal to `physical_check`.
+      #   be present if and only if `fulfillment_method` is equal to `physical_check`.
       sig { returns(T.nilable(Increase::Models::CheckTransfer::PhysicalCheck)) }
       attr_reader :physical_check
 
@@ -120,7 +120,7 @@ module Increase
       attr_accessor :routing_number
 
       # The identifier of the Account Number from which to send the transfer and print
-      # on the check.
+      #   on the check.
       sig { returns(T.nilable(String)) }
       attr_accessor :source_account_number_id
 
@@ -129,7 +129,7 @@ module Increase
       attr_accessor :status
 
       # After a stop-payment is requested on the check, this will contain supplemental
-      # details.
+      #   details.
       sig { returns(T.nilable(Increase::Models::CheckTransfer::StopPaymentRequest)) }
       attr_reader :stop_payment_request
 
@@ -154,7 +154,7 @@ module Increase
       attr_writer :submission
 
       # Details relating to the custom fulfillment you will perform. Will be present if
-      # and only if `fulfillment_method` is equal to `third_party`.
+      #   and only if `fulfillment_method` is equal to `third_party`.
       sig { returns(T.nilable(Increase::Models::CheckTransfer::ThirdParty)) }
       attr_reader :third_party
 
@@ -167,12 +167,12 @@ module Increase
       attr_writer :third_party
 
       # A constant representing the object's type. For this resource it will always be
-      # `check_transfer`.
+      #   `check_transfer`.
       sig { returns(Increase::Models::CheckTransfer::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Check Transfers move funds from your Increase account by mailing a physical
-      # check.
+      #   check.
       sig do
         params(
           id: String,
@@ -225,7 +225,9 @@ module Increase
         submission:,
         third_party:,
         type:
-      ); end
+      )
+      end
+
       sig do
         override
           .returns(
@@ -256,46 +258,51 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Approval < Increase::Internal::Type::BaseModel
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the transfer was approved.
+        #   the transfer was approved.
         sig { returns(Time) }
         attr_accessor :approved_at
 
         # If the Transfer was approved by a user in the dashboard, the email address of
-        # that user.
+        #   that user.
         sig { returns(T.nilable(String)) }
         attr_accessor :approved_by
 
         # If your account requires approvals for transfers and the transfer was approved,
-        # this will contain details of the approval.
+        #   this will contain details of the approval.
         sig { params(approved_at: Time, approved_by: T.nilable(String)).returns(T.attached_class) }
-        def self.new(approved_at:, approved_by:); end
+        def self.new(approved_at:, approved_by:)
+        end
 
         sig { override.returns({approved_at: Time, approved_by: T.nilable(String)}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class Cancellation < Increase::Internal::Type::BaseModel
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the Transfer was canceled.
+        #   the Transfer was canceled.
         sig { returns(Time) }
         attr_accessor :canceled_at
 
         # If the Transfer was canceled by a user in the dashboard, the email address of
-        # that user.
+        #   that user.
         sig { returns(T.nilable(String)) }
         attr_accessor :canceled_by
 
         # If your account requires approvals for transfers and the transfer was not
-        # approved, this will contain details of the cancellation.
+        #   approved, this will contain details of the cancellation.
         sig { params(canceled_at: Time, canceled_by: T.nilable(String)).returns(T.attached_class) }
-        def self.new(canceled_at:, canceled_by:); end
+        def self.new(canceled_at:, canceled_by:)
+        end
 
         sig { override.returns({canceled_at: Time, canceled_by: T.nilable(String)}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class CreatedBy < Increase::Internal::Type::BaseModel
@@ -353,7 +360,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(api_key:, category:, oauth_application:, user:); end
+        def self.new(api_key:, category:, oauth_application:, user:)
+        end
 
         sig do
           override
@@ -366,7 +374,8 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class APIKey < Increase::Internal::Type::BaseModel
           # The description set for the API key when it was created.
@@ -375,10 +384,12 @@ module Increase
 
           # If present, details about the API key that created the transfer.
           sig { params(description: T.nilable(String)).returns(T.attached_class) }
-          def self.new(description:); end
+          def self.new(description:)
+          end
 
           sig { override.returns({description: T.nilable(String)}) }
-          def to_hash; end
+          def to_hash
+          end
         end
 
         # The type of object that created this transfer.
@@ -400,7 +411,8 @@ module Increase
           USER = T.let(:user, Increase::Models::CheckTransfer::CreatedBy::Category::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::CheckTransfer::CreatedBy::Category::TaggedSymbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
         class OAuthApplication < Increase::Internal::Type::BaseModel
@@ -410,10 +422,12 @@ module Increase
 
           # If present, details about the OAuth Application that created the transfer.
           sig { params(name: String).returns(T.attached_class) }
-          def self.new(name:); end
+          def self.new(name:)
+          end
 
           sig { override.returns({name: String}) }
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class User < Increase::Internal::Type::BaseModel
@@ -423,15 +437,17 @@ module Increase
 
           # If present, details about the User that created the transfer.
           sig { params(email: String).returns(T.attached_class) }
-          def self.new(email:); end
+          def self.new(email:)
+          end
 
           sig { override.returns({email: String}) }
-          def to_hash; end
+          def to_hash
+          end
         end
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-      # currency.
+      #   currency.
       module Currency
         extend Increase::Internal::Type::Enum
 
@@ -458,7 +474,8 @@ module Increase
         USD = T.let(:USD, Increase::Models::CheckTransfer::Currency::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::CheckTransfer::Currency::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # Whether Increase will print and mail the check or if you will do it yourself.
@@ -476,17 +493,18 @@ module Increase
         THIRD_PARTY = T.let(:third_party, Increase::Models::CheckTransfer::FulfillmentMethod::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::CheckTransfer::FulfillmentMethod::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       class Mailing < Increase::Internal::Type::BaseModel
         # The ID of the file corresponding to an image of the check that was mailed, if
-        # available.
+        #   available.
         sig { returns(T.nilable(String)) }
         attr_accessor :image_id
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the check was mailed.
+        #   the check was mailed.
         sig { returns(Time) }
         attr_accessor :mailed_at
 
@@ -495,17 +513,19 @@ module Increase
         attr_accessor :tracking_number
 
         # If the check has been mailed by Increase, this will contain details of the
-        # shipment.
+        #   shipment.
         sig do
           params(image_id: T.nilable(String), mailed_at: Time, tracking_number: T.nilable(String))
             .returns(T.attached_class)
         end
-        def self.new(image_id:, mailed_at:, tracking_number:); end
+        def self.new(image_id:, mailed_at:, tracking_number:)
+        end
 
         sig do
           override.returns({image_id: T.nilable(String), mailed_at: Time, tracking_number: T.nilable(String)})
         end
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class PhysicalCheck < Increase::Internal::Type::BaseModel
@@ -552,7 +572,7 @@ module Increase
         attr_accessor :shipping_method
 
         # The text that will appear as the signature on the check in cursive font. If
-        # blank, the check will be printed with 'No signature required'.
+        #   blank, the check will be printed with 'No signature required'.
         sig { returns(T.nilable(String)) }
         attr_accessor :signature_text
 
@@ -561,7 +581,7 @@ module Increase
         attr_accessor :tracking_updates
 
         # Details relating to the physical check that Increase will print and mail. Will
-        # be present if and only if `fulfillment_method` is equal to `physical_check`.
+        #   be present if and only if `fulfillment_method` is equal to `physical_check`.
         sig do
           params(
             mailing_address: T.any(Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress, Increase::Internal::AnyHash),
@@ -586,7 +606,9 @@ module Increase
           shipping_method:,
           signature_text:,
           tracking_updates:
-        ); end
+        )
+        end
+
         sig do
           override
             .returns(
@@ -602,7 +624,8 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class MailingAddress < Increase::Internal::Type::BaseModel
           # The city of the check's destination.
@@ -641,7 +664,8 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(city:, line1:, line2:, name:, postal_code:, state:); end
+          def self.new(city:, line1:, line2:, name:, postal_code:, state:)
+          end
 
           sig do
             override
@@ -656,7 +680,8 @@ module Increase
                 }
               )
           end
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class ReturnAddress < Increase::Internal::Type::BaseModel
@@ -696,7 +721,8 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(city:, line1:, line2:, name:, postal_code:, state:); end
+          def self.new(city:, line1:, line2:, name:, postal_code:, state:)
+          end
 
           sig do
             override
@@ -711,7 +737,8 @@ module Increase
                 }
               )
           end
-          def to_hash; end
+          def to_hash
+          end
         end
 
         # The shipping method for the check.
@@ -732,7 +759,8 @@ module Increase
             T.let(:fedex_overnight, Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod::TaggedSymbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
         class TrackingUpdate < Increase::Internal::Type::BaseModel
@@ -741,7 +769,7 @@ module Increase
           attr_accessor :category
 
           # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-          # the tracking event took place.
+          #   the tracking event took place.
           sig { returns(Time) }
           attr_accessor :created_at
 
@@ -757,7 +785,8 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(category:, created_at:, postal_code:); end
+          def self.new(category:, created_at:, postal_code:)
+          end
 
           sig do
             override
@@ -769,7 +798,8 @@ module Increase
                 }
               )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           # The type of tracking event.
           module Category
@@ -812,7 +842,8 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category::TaggedSymbol])
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
       end
@@ -855,7 +886,8 @@ module Increase
         RETURNED = T.let(:returned, Increase::Models::CheckTransfer::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::CheckTransfer::Status::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       class StopPaymentRequest < Increase::Internal::Type::BaseModel
@@ -872,12 +904,12 @@ module Increase
         attr_accessor :transfer_id
 
         # A constant representing the object's type. For this resource it will always be
-        # `check_transfer_stop_payment_request`.
+        #   `check_transfer_stop_payment_request`.
         sig { returns(Increase::Models::CheckTransfer::StopPaymentRequest::Type::TaggedSymbol) }
         attr_accessor :type
 
         # After a stop-payment is requested on the check, this will contain supplemental
-        # details.
+        #   details.
         sig do
           params(
             reason: Increase::Models::CheckTransfer::StopPaymentRequest::Reason::OrSymbol,
@@ -887,7 +919,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(reason:, requested_at:, transfer_id:, type:); end
+        def self.new(reason:, requested_at:, transfer_id:, type:)
+        end
 
         sig do
           override
@@ -900,7 +933,8 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         # The reason why this transfer was stopped.
         module Reason
@@ -927,11 +961,12 @@ module Increase
           UNKNOWN = T.let(:unknown, Increase::Models::CheckTransfer::StopPaymentRequest::Reason::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::CheckTransfer::StopPaymentRequest::Reason::TaggedSymbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
         # A constant representing the object's type. For this resource it will always be
-        # `check_transfer_stop_payment_request`.
+        #   `check_transfer_stop_payment_request`.
         module Type
           extend Increase::Internal::Type::Enum
 
@@ -946,7 +981,8 @@ module Increase
             )
 
           sig { override.returns(T::Array[Increase::Models::CheckTransfer::StopPaymentRequest::Type::TaggedSymbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
 
@@ -957,10 +993,12 @@ module Increase
 
         # After the transfer is submitted, this will contain supplemental details.
         sig { params(submitted_at: Time).returns(T.attached_class) }
-        def self.new(submitted_at:); end
+        def self.new(submitted_at:)
+        end
 
         sig { override.returns({submitted_at: Time}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class ThirdParty < Increase::Internal::Type::BaseModel
@@ -973,18 +1011,20 @@ module Increase
         attr_accessor :recipient_name
 
         # Details relating to the custom fulfillment you will perform. Will be present if
-        # and only if `fulfillment_method` is equal to `third_party`.
+        #   and only if `fulfillment_method` is equal to `third_party`.
         sig do
           params(check_number: T.nilable(String), recipient_name: T.nilable(String)).returns(T.attached_class)
         end
-        def self.new(check_number:, recipient_name:); end
+        def self.new(check_number:, recipient_name:)
+        end
 
         sig { override.returns({check_number: T.nilable(String), recipient_name: T.nilable(String)}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `check_transfer`.
+      #   `check_transfer`.
       module Type
         extend Increase::Internal::Type::Enum
 
@@ -994,7 +1034,8 @@ module Increase
         CHECK_TRANSFER = T.let(:check_transfer, Increase::Models::CheckTransfer::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::CheckTransfer::Type::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

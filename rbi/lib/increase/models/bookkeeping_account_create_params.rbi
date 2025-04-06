@@ -46,7 +46,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(name:, account_id: nil, compliance_category: nil, entity_id: nil, request_options: {}); end
+      def self.new(name:, account_id: nil, compliance_category: nil, entity_id: nil, request_options: {})
+      end
 
       sig do
         override
@@ -60,7 +61,8 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # The account compliance category.
       module ComplianceCategory
@@ -89,7 +91,8 @@ module Increase
           override
             .returns(T::Array[Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol])
         end
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

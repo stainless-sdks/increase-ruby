@@ -2,6 +2,8 @@
 
 module Increase
   module Internal
+    # rubocop:disable Metrics/ModuleLength
+
     # @api private
     module Util
       # @api private
@@ -152,7 +154,7 @@ module Increase
         # @api private
         #
         # Recursively merge one hash with another. If the values at a given key are not
-        # both hashes, just take the new value.
+        #   both hashes, just take the new value.
         #
         # @param values [Array<Object>]
         #
@@ -692,5 +694,7 @@ module Increase
         end
       end
     end
+
+    # rubocop:enable Metrics/ModuleLength
   end
 end

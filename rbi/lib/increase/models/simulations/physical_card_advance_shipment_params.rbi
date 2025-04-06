@@ -18,7 +18,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(shipment_status:, request_options: {}); end
+        def self.new(shipment_status:, request_options: {})
+        end
 
         sig do
           override
@@ -29,7 +30,8 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         # The shipment status to move the Physical Card to.
         module ShipmentStatus
@@ -101,7 +103,8 @@ module Increase
                 T::Array[Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::TaggedSymbol]
               )
           end
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

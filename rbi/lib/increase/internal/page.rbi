@@ -14,7 +14,8 @@ module Increase
       attr_accessor :next_cursor
 
       sig { returns(String) }
-      def inspect; end
+      def inspect
+      end
     end
   end
 end

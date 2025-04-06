@@ -33,7 +33,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(account_id:, description: nil, recipient_name: nil, request_options: {}); end
+      def self.new(account_id:, description: nil, recipient_name: nil, request_options: {})
+      end
 
       sig do
         override
@@ -46,7 +47,8 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

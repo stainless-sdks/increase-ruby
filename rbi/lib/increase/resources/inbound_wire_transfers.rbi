@@ -15,7 +15,9 @@ module Increase
         # The identifier of the Inbound Wire Transfer to get details for.
         inbound_wire_transfer_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # List Inbound Wire Transfers
       sig do
         params(
@@ -38,14 +40,17 @@ module Increase
         # Return the page of entries after this one.
         cursor: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        #   objects.
         limit: nil,
         status: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

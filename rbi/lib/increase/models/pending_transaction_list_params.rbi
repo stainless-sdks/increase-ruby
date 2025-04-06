@@ -43,7 +43,7 @@ module Increase
       attr_writer :cursor
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
-      # objects.
+      #   objects.
       sig { returns(T.nilable(Integer)) }
       attr_reader :limit
 
@@ -88,7 +88,9 @@ module Increase
         route_id: nil,
         status: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       sig do
         override
           .returns(
@@ -104,11 +106,12 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Category < Increase::Internal::Type::BaseModel
         # Return results whose value is in the provided list. For GET requests, this
-        # should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+        #   should be encoded as a comma-delimited string, such as `?in=one,two,three`.
         sig { returns(T.nilable(T::Array[Increase::Models::PendingTransactionListParams::Category::In::OrSymbol])) }
         attr_reader :in_
 
@@ -119,10 +122,12 @@ module Increase
           params(in_: T::Array[Increase::Models::PendingTransactionListParams::Category::In::OrSymbol])
             .returns(T.attached_class)
         end
-        def self.new(in_: nil); end
+        def self.new(in_: nil)
+        end
 
         sig { override.returns({in_: T::Array[Increase::Models::PendingTransactionListParams::Category::In::OrSymbol]}) }
-        def to_hash; end
+        def to_hash
+        end
 
         module In
           extend Increase::Internal::Type::Enum
@@ -193,13 +198,14 @@ module Increase
           OTHER = T.let(:other, Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        # timestamp.
+        #   timestamp.
         sig { returns(T.nilable(Time)) }
         attr_reader :after
 
@@ -207,7 +213,7 @@ module Increase
         attr_writer :after
 
         # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        # timestamp.
+        #   timestamp.
         sig { returns(T.nilable(Time)) }
         attr_reader :before
 
@@ -215,7 +221,7 @@ module Increase
         attr_writer :before
 
         # Return results on or after this
-        # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
         attr_reader :on_or_after
 
@@ -223,7 +229,7 @@ module Increase
         attr_writer :on_or_after
 
         # Return results on or before this
-        # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
         attr_reader :on_or_before
 
@@ -233,17 +239,19 @@ module Increase
         sig do
           params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
         end
-        def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil); end
+        def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
+        end
 
         sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class Status < Increase::Internal::Type::BaseModel
         # Filter Pending Transactions for those with the specified status. By default only
-        # Pending Transactions in with status `pending` will be returned. For GET
-        # requests, this should be encoded as a comma-delimited string, such as
-        # `?in=one,two,three`.
+        #   Pending Transactions in with status `pending` will be returned. For GET
+        #   requests, this should be encoded as a comma-delimited string, such as
+        #   `?in=one,two,three`.
         sig { returns(T.nilable(T::Array[Increase::Models::PendingTransactionListParams::Status::In::OrSymbol])) }
         attr_reader :in_
 
@@ -254,10 +262,12 @@ module Increase
           params(in_: T::Array[Increase::Models::PendingTransactionListParams::Status::In::OrSymbol])
             .returns(T.attached_class)
         end
-        def self.new(in_: nil); end
+        def self.new(in_: nil)
+        end
 
         sig { override.returns({in_: T::Array[Increase::Models::PendingTransactionListParams::Status::In::OrSymbol]}) }
-        def to_hash; end
+        def to_hash
+        end
 
         module In
           extend Increase::Internal::Type::Enum
@@ -273,7 +283,8 @@ module Increase
           COMPLETE = T.let(:complete, Increase::Models::PendingTransactionListParams::Status::In::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::PendingTransactionListParams::Status::In::TaggedSymbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

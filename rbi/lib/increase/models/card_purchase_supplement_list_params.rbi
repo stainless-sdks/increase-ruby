@@ -7,7 +7,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # Filter Card Purchase Supplements to ones belonging to the specified Card
-      # Payment.
+      #   Payment.
       sig { returns(T.nilable(String)) }
       attr_reader :card_payment_id
 
@@ -33,7 +33,7 @@ module Increase
       attr_writer :cursor
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
-      # objects.
+      #   objects.
       sig { returns(T.nilable(Integer)) }
       attr_reader :limit
 
@@ -50,7 +50,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(card_payment_id: nil, created_at: nil, cursor: nil, limit: nil, request_options: {}); end
+      def self.new(card_payment_id: nil, created_at: nil, cursor: nil, limit: nil, request_options: {})
+      end
 
       sig do
         override
@@ -64,11 +65,12 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        # timestamp.
+        #   timestamp.
         sig { returns(T.nilable(Time)) }
         attr_reader :after
 
@@ -76,7 +78,7 @@ module Increase
         attr_writer :after
 
         # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        # timestamp.
+        #   timestamp.
         sig { returns(T.nilable(Time)) }
         attr_reader :before
 
@@ -84,7 +86,7 @@ module Increase
         attr_writer :before
 
         # Return results on or after this
-        # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
         attr_reader :on_or_after
 
@@ -92,7 +94,7 @@ module Increase
         attr_writer :on_or_after
 
         # Return results on or before this
-        # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
         attr_reader :on_or_before
 
@@ -102,10 +104,12 @@ module Increase
         sig do
           params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
         end
-        def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil); end
+        def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
+        end
 
         sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

@@ -16,33 +16,35 @@ module Increase
           # @api private
           #
           # Assumes superclass fields are totally defined before fields are accessed /
-          # defined on subclasses.
+          #   defined on subclasses.
           sig do
             returns(
               T::Hash[
-                Symbol,
-                T.all(
-                  Increase::Internal::Type::BaseModel::KnownFieldShape,
-                  {type_fn: T.proc.returns(Increase::Internal::Type::Converter::Input)}
-                )
+              Symbol,
+              T.all(
+                Increase::Internal::Type::BaseModel::KnownFieldShape,
+                {type_fn: T.proc.returns(Increase::Internal::Type::Converter::Input)}
+              )
               ]
             )
           end
-          def known_fields; end
+          def known_fields
+          end
 
           # @api private
           sig do
             returns(
               T::Hash[
-                Symbol,
-                T.all(
-                  Increase::Internal::Type::BaseModel::KnownFieldShape,
-                  {type: Increase::Internal::Type::Converter::Input}
-                )
+              Symbol,
+              T.all(
+                Increase::Internal::Type::BaseModel::KnownFieldShape,
+                {type: Increase::Internal::Type::Converter::Input}
+              )
               ]
             )
           end
-          def fields; end
+          def fields
+          end
 
           # @api private
           sig do
@@ -64,7 +66,8 @@ module Increase
             )
               .void
           end
-          private def add_field(name_sym, required:, type_info:, spec:); end
+          private def add_field(name_sym, required:, type_info:, spec:)
+          end
 
           # @api private
           sig do
@@ -79,7 +82,8 @@ module Increase
             )
               .void
           end
-          def required(name_sym, type_info, spec = {}); end
+          def required(name_sym, type_info, spec = {})
+          end
 
           # @api private
           sig do
@@ -94,27 +98,32 @@ module Increase
             )
               .void
           end
-          def optional(name_sym, type_info, spec = {}); end
+          def optional(name_sym, type_info, spec = {})
+          end
 
           # @api private
           #
           # `request_only` attributes not excluded from `.#coerce` when receiving responses
-          # even if well behaved servers should not send them
+          #   even if well behaved servers should not send them
           sig { params(blk: T.proc.void).void }
-          private def request_only(&blk); end
+          private def request_only(&blk)
+          end
 
           # @api private
           #
           # `response_only` attributes are omitted from `.#dump` when making requests
           sig { params(blk: T.proc.void).void }
-          private def response_only(&blk); end
+          private def response_only(&blk)
+          end
 
           sig { params(other: T.anything).returns(T::Boolean) }
-          def ==(other); end
+          def ==(other)
+          end
         end
 
         sig { params(other: T.anything).returns(T::Boolean) }
-        def ==(other); end
+        def ==(other)
+        end
 
         class << self
           # @api private
@@ -130,7 +139,8 @@ module Increase
               )
               .returns(T.any(T.attached_class, T.anything))
           end
-          def coerce(value, state:); end
+          def coerce(value, state:)
+          end
 
           # @api private
           sig do
@@ -138,55 +148,64 @@ module Increase
               .params(value: T.any(T.attached_class, T.anything))
               .returns(T.any(T::Hash[T.anything, T.anything], T.anything))
           end
-          def dump(value); end
+          def dump(value)
+          end
         end
 
         # Returns the raw value associated with the given key, if found. Otherwise, nil is
-        # returned.
+        #   returned.
         #
-        # It is valid to lookup keys that are not in the API spec, for example to access
-        # undocumented features. This method does not parse response data into
-        # higher-level types. Lookup by anything other than a Symbol is an ArgumentError.
+        #   It is valid to lookup keys that are not in the API spec, for example to access
+        #   undocumented features. This method does not parse response data into
+        #   higher-level types. Lookup by anything other than a Symbol is an ArgumentError.
         sig { params(key: Symbol).returns(T.nilable(T.anything)) }
-        def [](key); end
+        def [](key)
+        end
 
         # Returns a Hash of the data underlying this object. O(1)
         #
-        # Keys are Symbols and values are the raw values from the response. The return
-        # value indicates which values were ever set on the object. i.e. there will be a
-        # key in this hash if they ever were, even if the set value was nil.
+        #   Keys are Symbols and values are the raw values from the response. The return
+        #   value indicates which values were ever set on the object. i.e. there will be a
+        #   key in this hash if they ever were, even if the set value was nil.
         #
-        # This method is not recursive. The returned value is shared by the object, so it
-        # should not be mutated.
+        #   This method is not recursive. The returned value is shared by the object, so it
+        #   should not be mutated.
         sig { overridable.returns(Increase::Internal::AnyHash) }
-        def to_h; end
+        def to_h
+        end
 
         # Returns a Hash of the data underlying this object. O(1)
         #
-        # Keys are Symbols and values are the raw values from the response. The return
-        # value indicates which values were ever set on the object. i.e. there will be a
-        # key in this hash if they ever were, even if the set value was nil.
+        #   Keys are Symbols and values are the raw values from the response. The return
+        #   value indicates which values were ever set on the object. i.e. there will be a
+        #   key in this hash if they ever were, even if the set value was nil.
         #
-        # This method is not recursive. The returned value is shared by the object, so it
-        # should not be mutated.
+        #   This method is not recursive. The returned value is shared by the object, so it
+        #   should not be mutated.
         sig { overridable.returns(Increase::Internal::AnyHash) }
-        def to_hash; end
+        def to_hash
+        end
 
         sig { params(keys: T.nilable(T::Array[Symbol])).returns(Increase::Internal::AnyHash) }
-        def deconstruct_keys(keys); end
+        def deconstruct_keys(keys)
+        end
 
         sig { params(a: T.anything).returns(String) }
-        def to_json(*a); end
+        def to_json(*a)
+        end
 
         sig { params(a: T.anything).returns(String) }
-        def to_yaml(*a); end
+        def to_yaml(*a)
+        end
 
         # Create a new instance of a model.
         sig { params(data: T.any(T::Hash[Symbol, T.anything], T.self_type)).returns(T.attached_class) }
-        def self.new(data = {}); end
+        def self.new(data = {})
+        end
 
         sig { returns(String) }
-        def inspect; end
+        def inspect
+        end
       end
     end
   end

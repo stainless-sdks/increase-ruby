@@ -16,19 +16,19 @@ module Increase
       attr_accessor :activation_status
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Group
-      # was created.
+      #   was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
       # A constant representing the object's type. For this resource it will always be
-      # `group`.
+      #   `group`.
       sig { returns(Increase::Models::Group::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Groups represent organizations using Increase. You can retrieve information
-      # about your own organization via the API. More commonly, OAuth platforms can
-      # retrieve information about the organizations that have granted them access.
-      # Learn more about OAuth [here](https://increase.com/documentation/oauth).
+      #   about your own organization via the API. More commonly, OAuth platforms can
+      #   retrieve information about the organizations that have granted them access.
+      #   Learn more about OAuth [here](https://increase.com/documentation/oauth).
       sig do
         params(
           id: String,
@@ -39,7 +39,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, ach_debit_status:, activation_status:, created_at:, type:); end
+      def self.new(id:, ach_debit_status:, activation_status:, created_at:, type:)
+      end
 
       sig do
         override
@@ -53,7 +54,8 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # If the Group is allowed to create ACH debits.
       module ACHDebitStatus
@@ -69,7 +71,8 @@ module Increase
         ENABLED = T.let(:enabled, Increase::Models::Group::ACHDebitStatus::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Group::ACHDebitStatus::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # If the Group is activated or not.
@@ -87,11 +90,12 @@ module Increase
         ACTIVATED = T.let(:activated, Increase::Models::Group::ActivationStatus::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Group::ActivationStatus::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `group`.
+      #   `group`.
       module Type
         extend Increase::Internal::Type::Enum
 
@@ -101,7 +105,8 @@ module Increase
         GROUP = T.let(:group, Increase::Models::Group::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Group::Type::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end
