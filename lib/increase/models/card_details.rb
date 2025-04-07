@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::Cards#details
-    class CardDetails < Increase::Internal::Type::BaseModel
+    class CardDetails < Increase::BaseModel
       # @!attribute card_id
       #   The identifier for the Card for which sensitive details have been returned.
       #
@@ -30,15 +30,15 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #   `card_details`.
+      #     `card_details`.
       #
       #   @return [Symbol, Increase::Models::CardDetails::Type]
       required :type, enum: -> { Increase::Models::CardDetails::Type }
 
       # @!attribute verification_code
       #   The three-digit verification code for the card. It's also known as the Card
-      #   Verification Code (CVC), the Card Verification Value (CVV), or the Card
-      #   Identification (CID).
+      #     Verification Code (CVC), the Card Verification Value (CVV), or the Card
+      #     Identification (CID).
       #
       #   @return [String]
       required :verification_code, String
@@ -55,14 +55,14 @@ module Increase
       #   #
       #   def initialize(card_id:, expiration_month:, expiration_year:, primary_account_number:, type:, verification_code:, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # A constant representing the object's type. For this resource it will always be
-      # `card_details`.
+      #   `card_details`.
       #
       # @see Increase::Models::CardDetails#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         CARD_DETAILS = :card_details
 

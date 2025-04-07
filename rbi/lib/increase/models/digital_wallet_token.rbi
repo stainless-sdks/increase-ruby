@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class DigitalWalletToken < Increase::Internal::Type::BaseModel
+    class DigitalWalletToken < Increase::BaseModel
       # The Digital Wallet Token identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -15,14 +15,11 @@ module Increase
       sig { returns(Increase::Models::DigitalWalletToken::Cardholder) }
       attr_reader :cardholder
 
-      sig do
-        params(cardholder: T.any(Increase::Models::DigitalWalletToken::Cardholder, Increase::Internal::AnyHash))
-          .void
-      end
+      sig { params(cardholder: T.any(Increase::Models::DigitalWalletToken::Cardholder, Increase::Util::AnyHash)).void }
       attr_writer :cardholder
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      # the Digital Wallet Token was created.
+      #   the Digital Wallet Token was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -30,7 +27,7 @@ module Increase
       sig { returns(Increase::Models::DigitalWalletToken::Device) }
       attr_reader :device
 
-      sig { params(device: T.any(Increase::Models::DigitalWalletToken::Device, Increase::Internal::AnyHash)).void }
+      sig { params(device: T.any(Increase::Models::DigitalWalletToken::Device, Increase::Util::AnyHash)).void }
       attr_writer :device
 
       # This indicates if payments can be made with the Digital Wallet Token.
@@ -42,7 +39,7 @@ module Increase
       attr_accessor :token_requestor
 
       # A constant representing the object's type. For this resource it will always be
-      # `digital_wallet_token`.
+      #   `digital_wallet_token`.
       sig { returns(Increase::Models::DigitalWalletToken::Type::TaggedSymbol) }
       attr_accessor :type
 
@@ -51,19 +48,19 @@ module Increase
       attr_accessor :updates
 
       # A Digital Wallet Token is created when a user adds a Card to their Apple Pay or
-      # Google Pay app. The Digital Wallet Token can be used for purchases just like a
-      # Card.
+      #   Google Pay app. The Digital Wallet Token can be used for purchases just like a
+      #   Card.
       sig do
         params(
           id: String,
           card_id: String,
-          cardholder: T.any(Increase::Models::DigitalWalletToken::Cardholder, Increase::Internal::AnyHash),
+          cardholder: T.any(Increase::Models::DigitalWalletToken::Cardholder, Increase::Util::AnyHash),
           created_at: Time,
-          device: T.any(Increase::Models::DigitalWalletToken::Device, Increase::Internal::AnyHash),
+          device: T.any(Increase::Models::DigitalWalletToken::Device, Increase::Util::AnyHash),
           status: Increase::Models::DigitalWalletToken::Status::OrSymbol,
           token_requestor: Increase::Models::DigitalWalletToken::TokenRequestor::OrSymbol,
           type: Increase::Models::DigitalWalletToken::Type::OrSymbol,
-          updates: T::Array[T.any(Increase::Models::DigitalWalletToken::Update, Increase::Internal::AnyHash)]
+          updates: T::Array[T.any(Increase::Models::DigitalWalletToken::Update, Increase::Util::AnyHash)]
         )
           .returns(T.attached_class)
       end
@@ -96,22 +93,25 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
-      class Cardholder < Increase::Internal::Type::BaseModel
+      class Cardholder < Increase::BaseModel
         # Name of the cardholder, for example "John Smith".
         sig { returns(T.nilable(String)) }
         attr_accessor :name
 
         # The cardholder information given when the Digital Wallet Token was created.
         sig { params(name: T.nilable(String)).returns(T.attached_class) }
-        def self.new(name:); end
+        def self.new(name:)
+        end
 
         sig { override.returns({name: T.nilable(String)}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
-      class Device < Increase::Internal::Type::BaseModel
+      class Device < Increase::BaseModel
         # Device type.
         sig { returns(T.nilable(Increase::Models::DigitalWalletToken::Device::DeviceType::TaggedSymbol)) }
         attr_accessor :device_type
@@ -138,7 +138,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(device_type:, identifier:, ip_address:, name:); end
+        def self.new(device_type:, identifier:, ip_address:, name:)
+        end
 
         sig do
           override
@@ -151,11 +152,12 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         # Device type.
         module DeviceType
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalWalletToken::Device::DeviceType) }
           OrSymbol =
@@ -194,13 +196,14 @@ module Increase
             T.let(:automobile_device, Increase::Models::DigitalWalletToken::Device::DeviceType::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::DigitalWalletToken::Device::DeviceType::TaggedSymbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
 
       # This indicates if payments can be made with the Digital Wallet Token.
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalWalletToken::Status) }
         OrSymbol =
@@ -219,12 +222,13 @@ module Increase
         DEACTIVATED = T.let(:deactivated, Increase::Models::DigitalWalletToken::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::DigitalWalletToken::Status::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # The digital wallet app being used.
       module TokenRequestor
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalWalletToken::TokenRequestor) }
         OrSymbol =
@@ -243,13 +247,14 @@ module Increase
         UNKNOWN = T.let(:unknown, Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `digital_wallet_token`.
+      #   `digital_wallet_token`.
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalWalletToken::Type) }
         OrSymbol =
@@ -259,16 +264,17 @@ module Increase
           T.let(:digital_wallet_token, Increase::Models::DigitalWalletToken::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::DigitalWalletToken::Type::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
-      class Update < Increase::Internal::Type::BaseModel
+      class Update < Increase::BaseModel
         # The status the update changed this Digital Wallet Token to.
         sig { returns(Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol) }
         attr_accessor :status
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the update happened.
+        #   the update happened.
         sig { returns(Time) }
         attr_accessor :timestamp
 
@@ -276,17 +282,19 @@ module Increase
           params(status: Increase::Models::DigitalWalletToken::Update::Status::OrSymbol, timestamp: Time)
             .returns(T.attached_class)
         end
-        def self.new(status:, timestamp:); end
+        def self.new(status:, timestamp:)
+        end
 
         sig do
           override
             .returns({status: Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol, timestamp: Time})
         end
-        def to_hash; end
+        def to_hash
+        end
 
         # The status the update changed this Digital Wallet Token to.
         module Status
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalWalletToken::Update::Status) }
           OrSymbol =
@@ -305,7 +313,8 @@ module Increase
           DEACTIVATED = T.let(:deactivated, Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

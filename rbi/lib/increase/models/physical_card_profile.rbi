@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class PhysicalCardProfile < Increase::Internal::Type::BaseModel
+    class PhysicalCardProfile < Increase::BaseModel
       # The Card Profile identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -20,7 +20,7 @@ module Increase
       attr_accessor :contact_phone
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      # the Card Dispute was created.
+      #   the Card Dispute was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -37,13 +37,13 @@ module Increase
       attr_accessor :front_image_file_id
 
       # The idempotency key you chose for this object. This value is unique across
-      # Increase and is used to ensure that a request is only processed once. Learn more
-      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
       # Whether this Physical Card Profile is the default for all cards in its Increase
-      # group.
+      #   group.
       sig { returns(T::Boolean) }
       attr_accessor :is_default
 
@@ -52,13 +52,13 @@ module Increase
       attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
-      # `physical_card_profile`.
+      #   `physical_card_profile`.
       sig { returns(Increase::Models::PhysicalCardProfile::Type::TaggedSymbol) }
       attr_accessor :type
 
       # This contains artwork and metadata relating to a Physical Card's appearance. For
-      # more information, see our guide on
-      # [physical card artwork](https://increase.com/documentation/card-art-physical-cards).
+      #   more information, see our guide on
+      #   [physical card artwork](https://increase.com/documentation/card-art-physical-cards).
       sig do
         params(
           id: String,
@@ -89,7 +89,9 @@ module Increase
         is_default:,
         status:,
         type:
-      ); end
+      )
+      end
+
       sig do
         override
           .returns(
@@ -109,11 +111,12 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # The creator of this Physical Card Profile.
       module Creator
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardProfile::Creator) }
         OrSymbol =
@@ -126,12 +129,13 @@ module Increase
         USER = T.let(:user, Increase::Models::PhysicalCardProfile::Creator::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::PhysicalCardProfile::Creator::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # The status of the Physical Card Profile.
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardProfile::Status) }
         OrSymbol =
@@ -158,13 +162,14 @@ module Increase
         ARCHIVED = T.let(:archived, Increase::Models::PhysicalCardProfile::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::PhysicalCardProfile::Status::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `physical_card_profile`.
+      #   `physical_card_profile`.
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardProfile::Type) }
         OrSymbol =
@@ -174,7 +179,8 @@ module Increase
           T.let(:physical_card_profile, Increase::Models::PhysicalCardProfile::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::PhysicalCardProfile::Type::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

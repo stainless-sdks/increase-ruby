@@ -2,29 +2,27 @@
 
 module Increase
   module Models
-    class EntityUpdateAddressParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class EntityUpdateAddressParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-      # are disallowed.
+      #   are disallowed.
       sig { returns(Increase::Models::EntityUpdateAddressParams::Address) }
       attr_reader :address
 
-      sig do
-        params(address: T.any(Increase::Models::EntityUpdateAddressParams::Address, Increase::Internal::AnyHash))
-          .void
-      end
+      sig { params(address: T.any(Increase::Models::EntityUpdateAddressParams::Address, Increase::Util::AnyHash)).void }
       attr_writer :address
 
       sig do
         params(
-          address: T.any(Increase::Models::EntityUpdateAddressParams::Address, Increase::Internal::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          address: T.any(Increase::Models::EntityUpdateAddressParams::Address, Increase::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
-      def self.new(address:, request_options: {}); end
+      def self.new(address:, request_options: {})
+      end
 
       sig do
         override
@@ -32,9 +30,10 @@ module Increase
             {address: Increase::Models::EntityUpdateAddressParams::Address, request_options: Increase::RequestOptions}
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
-      class Address < Increase::Internal::Type::BaseModel
+      class Address < Increase::BaseModel
         # The city of the address.
         sig { returns(String) }
         attr_accessor :city
@@ -44,7 +43,7 @@ module Increase
         attr_accessor :line1
 
         # The two-letter United States Postal Service (USPS) abbreviation for the state of
-        # the address.
+        #   the address.
         sig { returns(String) }
         attr_accessor :state
 
@@ -60,7 +59,7 @@ module Increase
         attr_writer :line2
 
         # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-        # are disallowed.
+        #   are disallowed.
         sig do
           params(
             city: String,
@@ -70,10 +69,12 @@ module Increase
             line2: String
           ).returns(T.attached_class)
         end
-        def self.new(city:, line1:, state:, zip:, line2: nil); end
+        def self.new(city:, line1:, state:, zip:, line2: nil)
+        end
 
         sig { override.returns({city: String, line1: String, state: String, zip: String, line2: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class CardDetails < Increase::Internal::Type::BaseModel
+    class CardDetails < Increase::BaseModel
       # The identifier for the Card for which sensitive details have been returned.
       sig { returns(String) }
       attr_accessor :card_id
@@ -20,13 +20,13 @@ module Increase
       attr_accessor :primary_account_number
 
       # A constant representing the object's type. For this resource it will always be
-      # `card_details`.
+      #   `card_details`.
       sig { returns(Increase::Models::CardDetails::Type::TaggedSymbol) }
       attr_accessor :type
 
       # The three-digit verification code for the card. It's also known as the Card
-      # Verification Code (CVC), the Card Verification Value (CVV), or the Card
-      # Identification (CID).
+      #   Verification Code (CVC), the Card Verification Value (CVV), or the Card
+      #   Identification (CID).
       sig { returns(String) }
       attr_accessor :verification_code
 
@@ -65,12 +65,13 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # A constant representing the object's type. For this resource it will always be
-      # `card_details`.
+      #   `card_details`.
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardDetails::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::CardDetails::Type::TaggedSymbol) }
@@ -78,7 +79,8 @@ module Increase
         CARD_DETAILS = T.let(:card_details, Increase::Models::CardDetails::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::CardDetails::Type::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

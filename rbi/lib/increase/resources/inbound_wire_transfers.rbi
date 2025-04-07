@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           inbound_wire_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::InboundWireTransfer)
       end
@@ -15,19 +15,21 @@ module Increase
         # The identifier of the Inbound Wire Transfer to get details for.
         inbound_wire_transfer_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # List Inbound Wire Transfers
       sig do
         params(
           account_id: String,
           account_number_id: String,
-          created_at: T.any(Increase::Models::InboundWireTransferListParams::CreatedAt, Increase::Internal::AnyHash),
+          created_at: T.any(Increase::Models::InboundWireTransferListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
-          status: T.any(Increase::Models::InboundWireTransferListParams::Status, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          status: T.any(Increase::Models::InboundWireTransferListParams::Status, Increase::Util::AnyHash),
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
-          .returns(Increase::Internal::Page[Increase::Models::InboundWireTransfer])
+          .returns(Increase::Page[Increase::Models::InboundWireTransfer])
       end
       def list(
         # Filter Inbound Wire Transfers to ones belonging to the specified Account.
@@ -38,14 +40,17 @@ module Increase
         # Return the page of entries after this one.
         cursor: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        #   objects.
         limit: nil,
         status: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

@@ -2,11 +2,11 @@ module Increase
   module Models
     type event_subscription_update_params =
       { status: Increase::Models::EventSubscriptionUpdateParams::status }
-      & Increase::Internal::Type::request_parameters
+      & Increase::request_parameters
 
-    class EventSubscriptionUpdateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class EventSubscriptionUpdateParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       attr_reader status: Increase::Models::EventSubscriptionUpdateParams::status?
 
@@ -24,7 +24,7 @@ module Increase
       type status = :active | :disabled | :deleted
 
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The subscription is active and Events will be delivered normally.
         ACTIVE: :active

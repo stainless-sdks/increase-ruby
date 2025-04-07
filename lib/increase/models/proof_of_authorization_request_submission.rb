@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::ProofOfAuthorizationRequestSubmissions#create
-    class ProofOfAuthorizationRequestSubmission < Increase::Internal::Type::BaseModel
+    class ProofOfAuthorizationRequestSubmission < Increase::BaseModel
       # @!attribute id
       #   The Proof of Authorization Request Submission identifier.
       #
@@ -62,12 +62,12 @@ module Increase
       #   Whether the customer has been offboarded.
       #
       #   @return [Boolean, nil]
-      required :customer_has_been_offboarded, Increase::Internal::Type::Boolean, nil?: true
+      required :customer_has_been_offboarded, Increase::BooleanModel, nil?: true
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #     Increase and is used to ensure that a request is only processed once. Learn more
+      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -86,7 +86,7 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #   `proof_of_authorization_request_submission`.
+      #     `proof_of_authorization_request_submission`.
       #
       #   @return [Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Type]
       required :type, enum: -> { Increase::Models::ProofOfAuthorizationRequestSubmission::Type }
@@ -101,28 +101,26 @@ module Increase
       #   Whether account ownership was validated via credential (for instance, Plaid).
       #
       #   @return [Boolean, nil]
-      required :validated_account_ownership_via_credential, Increase::Internal::Type::Boolean, nil?: true
+      required :validated_account_ownership_via_credential, Increase::BooleanModel, nil?: true
 
       # @!attribute validated_account_ownership_with_account_statement
       #   Whether account ownership was validated with an account statement.
       #
       #   @return [Boolean, nil]
-      required :validated_account_ownership_with_account_statement,
-               Increase::Internal::Type::Boolean,
-               nil?: true
+      required :validated_account_ownership_with_account_statement, Increase::BooleanModel, nil?: true
 
       # @!attribute validated_account_ownership_with_microdeposit
       #   Whether account ownership was validated with microdeposit.
       #
       #   @return [Boolean, nil]
-      required :validated_account_ownership_with_microdeposit, Increase::Internal::Type::Boolean, nil?: true
+      required :validated_account_ownership_with_microdeposit, Increase::BooleanModel, nil?: true
 
       # @!parse
       #   # Information submitted in response to a proof of authorization request. Per
-      #   # Nacha's guidance on proof of authorization, the originator must ensure that the
-      #   # authorization complies with applicable legal requirements, is readily
-      #   # identifiable as an authorization, and has clear and readily understandable
-      #   # terms.
+      #   #   Nacha's guidance on proof of authorization, the originator must ensure that the
+      #   #   authorization complies with applicable legal requirements, is readily
+      #   #   identifiable as an authorization, and has clear and readily understandable
+      #   #   terms.
       #   #
       #   # @param id [String]
       #   # @param additional_evidence_file_id [String, nil]
@@ -167,13 +165,13 @@ module Increase
       #     super
       #   end
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # Status of the proof of authorization request submission.
       #
       # @see Increase::Models::ProofOfAuthorizationRequestSubmission#status
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The proof of authorization request submission is pending review.
         PENDING_REVIEW = :pending_review
@@ -198,11 +196,11 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `proof_of_authorization_request_submission`.
+      #   `proof_of_authorization_request_submission`.
       #
       # @see Increase::Models::ProofOfAuthorizationRequestSubmission#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION = :proof_of_authorization_request_submission
 

@@ -32,7 +32,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: nil); end
+      def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: nil)
+      end
     end
 
     class APIConnectionError < Increase::Errors::APIError
@@ -88,7 +89,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.for(url:, status:, body:, request:, response:, message: nil); end
+      def self.for(url:, status:, body:, request:, response:, message: nil)
+      end
 
       sig { returns(Integer) }
       attr_accessor :status
@@ -105,7 +107,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(url:, status:, body:, request:, response:, message: nil); end
+      def self.new(url:, status:, body:, request:, response:, message: nil)
+      end
     end
 
     class BadRequestError < Increase::Errors::APIStatusError
@@ -184,4 +187,54 @@ module Increase
       TYPE = "internal_server_error"
     end
   end
+
+  Error = Increase::Errors::Error
+
+  ConversionError = Increase::Errors::ConversionError
+
+  APIError = Increase::Errors::APIError
+
+  APIStatusError = Increase::Errors::APIStatusError
+
+  APIConnectionError = Increase::Errors::APIConnectionError
+
+  APITimeoutError = Increase::Errors::APITimeoutError
+
+  BadRequestError = Increase::Errors::BadRequestError
+
+  AuthenticationError = Increase::Errors::AuthenticationError
+
+  PermissionDeniedError = Increase::Errors::PermissionDeniedError
+
+  NotFoundError = Increase::Errors::NotFoundError
+
+  ConflictError = Increase::Errors::ConflictError
+
+  UnprocessableEntityError = Increase::Errors::UnprocessableEntityError
+
+  RateLimitError = Increase::Errors::RateLimitError
+
+  InvalidParametersError = Increase::Errors::InvalidParametersError
+
+  MalformedRequestError = Increase::Errors::MalformedRequestError
+
+  InvalidAPIKeyError = Increase::Errors::InvalidAPIKeyError
+
+  EnvironmentMismatchError = Increase::Errors::EnvironmentMismatchError
+
+  InsufficientPermissionsError = Increase::Errors::InsufficientPermissionsError
+
+  PrivateFeatureError = Increase::Errors::PrivateFeatureError
+
+  APIMethodNotFoundError = Increase::Errors::APIMethodNotFoundError
+
+  ObjectNotFoundError = Increase::Errors::ObjectNotFoundError
+
+  IdempotencyKeyAlreadyUsedError = Increase::Errors::IdempotencyKeyAlreadyUsedError
+
+  InvalidOperationError = Increase::Errors::InvalidOperationError
+
+  RateLimitedError = Increase::Errors::RateLimitedError
+
+  InternalServerError = Increase::Errors::InternalServerError
 end

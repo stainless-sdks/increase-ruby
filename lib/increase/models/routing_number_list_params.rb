@@ -3,10 +3,10 @@
 module Increase
   module Models
     # @see Increase::Resources::RoutingNumbers#list
-    class RoutingNumberListParams < Increase::Internal::Type::BaseModel
+    class RoutingNumberListParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute routing_number
       #   Filter financial institutions by routing number.
@@ -26,7 +26,7 @@ module Increase
 
       # @!attribute [r] limit
       #   Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
+      #     objects.
       #
       #   @return [Integer, nil]
       optional :limit, Integer
@@ -43,7 +43,7 @@ module Increase
       #   #
       #   def initialize(routing_number:, cursor: nil, limit: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
     end
   end
 end

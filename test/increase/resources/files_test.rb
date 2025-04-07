@@ -51,7 +51,7 @@ class Increase::Test::Resources::FilesTest < Increase::Test::ResourceTest
     response = @increase.files.list
 
     assert_pattern do
-      response => Increase::Internal::Page
+      response => Increase::Page
     end
 
     row = response.to_enum.first

@@ -2,9 +2,9 @@
 
 module Increase
   module Models
-    class BookkeepingAccountCreateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class BookkeepingAccountCreateParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # The name you choose for the account.
       sig { returns(String) }
@@ -42,11 +42,12 @@ module Increase
           account_id: String,
           compliance_category: Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol,
           entity_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
-      def self.new(name:, account_id: nil, compliance_category: nil, entity_id: nil, request_options: {}); end
+      def self.new(name:, account_id: nil, compliance_category: nil, entity_id: nil, request_options: {})
+      end
 
       sig do
         override
@@ -60,11 +61,12 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # The account compliance category.
       module ComplianceCategory
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory) }
@@ -89,7 +91,8 @@ module Increase
           override
             .returns(T::Array[Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol])
         end
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

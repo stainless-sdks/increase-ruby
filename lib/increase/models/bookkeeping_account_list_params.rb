@@ -3,10 +3,10 @@
 module Increase
   module Models
     # @see Increase::Resources::BookkeepingAccounts#list
-    class BookkeepingAccountListParams < Increase::Internal::Type::BaseModel
+    class BookkeepingAccountListParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute [r] cursor
       #   Return the page of entries after this one.
@@ -20,9 +20,9 @@ module Increase
 
       # @!attribute [r] idempotency_key
       #   Filter records to the one with the specified `idempotency_key` you chose for
-      #   that object. This value is unique across Increase and is used to ensure that a
-      #   request is only processed once. Learn more about
-      #   [idempotency](https://increase.com/documentation/idempotency-keys).
+      #     that object. This value is unique across Increase and is used to ensure that a
+      #     request is only processed once. Learn more about
+      #     [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       optional :idempotency_key, String
@@ -33,7 +33,7 @@ module Increase
 
       # @!attribute [r] limit
       #   Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
+      #     objects.
       #
       #   @return [Integer, nil]
       optional :limit, Integer
@@ -50,7 +50,7 @@ module Increase
       #   #
       #   def initialize(cursor: nil, idempotency_key: nil, limit: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
     end
   end
 end

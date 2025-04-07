@@ -2,9 +2,9 @@
 
 module Increase
   module Models
-    class CheckDepositCreateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class CheckDepositCreateParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # The identifier for the Account to deposit the check in.
       sig { returns(String) }
@@ -36,7 +36,7 @@ module Increase
           back_image_file_id: String,
           front_image_file_id: String,
           description: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -63,7 +63,8 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

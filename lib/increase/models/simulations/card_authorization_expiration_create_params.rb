@@ -4,10 +4,10 @@ module Increase
   module Models
     module Simulations
       # @see Increase::Resources::Simulations::CardAuthorizationExpirations#create
-      class CardAuthorizationExpirationCreateParams < Increase::Internal::Type::BaseModel
+      class CardAuthorizationExpirationCreateParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+        #   extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # @!attribute card_payment_id
         #   The identifier of the Card Payment to expire.
@@ -21,7 +21,7 @@ module Increase
         #   #
         #   def initialize(card_payment_id:, request_options: {}, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
     end
   end

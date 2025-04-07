@@ -21,7 +21,7 @@ class Increase::Test::Resources::BookkeepingEntrySetsTest < Increase::Test::Reso
         id: String,
         created_at: Time,
         date: Time,
-        entries: ^(Increase::Internal::Type::ArrayOf[Increase::Models::BookkeepingEntrySet::Entry]),
+        entries: ^(Increase::ArrayOf[Increase::Models::BookkeepingEntrySet::Entry]),
         idempotency_key: String | nil,
         transaction_id: String | nil,
         type: Increase::Models::BookkeepingEntrySet::Type
@@ -41,7 +41,7 @@ class Increase::Test::Resources::BookkeepingEntrySetsTest < Increase::Test::Reso
         id: String,
         created_at: Time,
         date: Time,
-        entries: ^(Increase::Internal::Type::ArrayOf[Increase::Models::BookkeepingEntrySet::Entry]),
+        entries: ^(Increase::ArrayOf[Increase::Models::BookkeepingEntrySet::Entry]),
         idempotency_key: String | nil,
         transaction_id: String | nil,
         type: Increase::Models::BookkeepingEntrySet::Type
@@ -53,7 +53,7 @@ class Increase::Test::Resources::BookkeepingEntrySetsTest < Increase::Test::Reso
     response = @increase.bookkeeping_entry_sets.list
 
     assert_pattern do
-      response => Increase::Internal::Page
+      response => Increase::Page
     end
 
     row = response.to_enum.first
@@ -68,7 +68,7 @@ class Increase::Test::Resources::BookkeepingEntrySetsTest < Increase::Test::Reso
         id: String,
         created_at: Time,
         date: Time,
-        entries: ^(Increase::Internal::Type::ArrayOf[Increase::Models::BookkeepingEntrySet::Entry]),
+        entries: ^(Increase::ArrayOf[Increase::Models::BookkeepingEntrySet::Entry]),
         idempotency_key: String | nil,
         transaction_id: String | nil,
         type: Increase::Models::BookkeepingEntrySet::Type

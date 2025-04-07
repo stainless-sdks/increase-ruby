@@ -2,9 +2,9 @@
 
 module Increase
   module Models
-    class AccountNumberUpdateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class AccountNumberUpdateParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # Options related to how this Account Number handles inbound ACH transfers.
       sig { returns(T.nilable(Increase::Models::AccountNumberUpdateParams::InboundACH)) }
@@ -12,20 +12,20 @@ module Increase
 
       sig do
         params(
-          inbound_ach: T.any(Increase::Models::AccountNumberUpdateParams::InboundACH, Increase::Internal::AnyHash)
+          inbound_ach: T.any(Increase::Models::AccountNumberUpdateParams::InboundACH, Increase::Util::AnyHash)
         )
           .void
       end
       attr_writer :inbound_ach
 
       # Options related to how this Account Number should handle inbound check
-      # withdrawals.
+      #   withdrawals.
       sig { returns(T.nilable(Increase::Models::AccountNumberUpdateParams::InboundChecks)) }
       attr_reader :inbound_checks
 
       sig do
         params(
-          inbound_checks: T.any(Increase::Models::AccountNumberUpdateParams::InboundChecks, Increase::Internal::AnyHash)
+          inbound_checks: T.any(Increase::Models::AccountNumberUpdateParams::InboundChecks, Increase::Util::AnyHash)
         )
           .void
       end
@@ -47,15 +47,16 @@ module Increase
 
       sig do
         params(
-          inbound_ach: T.any(Increase::Models::AccountNumberUpdateParams::InboundACH, Increase::Internal::AnyHash),
-          inbound_checks: T.any(Increase::Models::AccountNumberUpdateParams::InboundChecks, Increase::Internal::AnyHash),
+          inbound_ach: T.any(Increase::Models::AccountNumberUpdateParams::InboundACH, Increase::Util::AnyHash),
+          inbound_checks: T.any(Increase::Models::AccountNumberUpdateParams::InboundChecks, Increase::Util::AnyHash),
           name: String,
           status: Increase::Models::AccountNumberUpdateParams::Status::OrSymbol,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
-      def self.new(inbound_ach: nil, inbound_checks: nil, name: nil, status: nil, request_options: {}); end
+      def self.new(inbound_ach: nil, inbound_checks: nil, name: nil, status: nil, request_options: {})
+      end
 
       sig do
         override
@@ -69,11 +70,12 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
-      class InboundACH < Increase::Internal::Type::BaseModel
+      class InboundACH < Increase::BaseModel
         # Whether ACH debits are allowed against this Account Number. Note that ACH debits
-        # will be declined if this is `allowed` but the Account Number is not active.
+        #   will be declined if this is `allowed` but the Account Number is not active.
         sig { returns(T.nilable(Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus::OrSymbol)) }
         attr_reader :debit_status
 
@@ -85,18 +87,20 @@ module Increase
           params(debit_status: Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus::OrSymbol)
             .returns(T.attached_class)
         end
-        def self.new(debit_status: nil); end
+        def self.new(debit_status: nil)
+        end
 
         sig do
           override
             .returns({debit_status: Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus::OrSymbol})
         end
-        def to_hash; end
+        def to_hash
+        end
 
         # Whether ACH debits are allowed against this Account Number. Note that ACH debits
-        # will be declined if this is `allowed` but the Account Number is not active.
+        #   will be declined if this is `allowed` but the Account Number is not active.
         module DebitStatus
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus) }
@@ -115,29 +119,32 @@ module Increase
             override
               .returns(T::Array[Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus::TaggedSymbol])
           end
-          def self.values; end
+          def self.values
+          end
         end
       end
 
-      class InboundChecks < Increase::Internal::Type::BaseModel
+      class InboundChecks < Increase::BaseModel
         # How Increase should process checks with this account number printed on them.
         sig { returns(Increase::Models::AccountNumberUpdateParams::InboundChecks::Status::OrSymbol) }
         attr_accessor :status
 
         # Options related to how this Account Number should handle inbound check
-        # withdrawals.
+        #   withdrawals.
         sig do
           params(status: Increase::Models::AccountNumberUpdateParams::InboundChecks::Status::OrSymbol)
             .returns(T.attached_class)
         end
-        def self.new(status:); end
+        def self.new(status:)
+        end
 
         sig { override.returns({status: Increase::Models::AccountNumberUpdateParams::InboundChecks::Status::OrSymbol}) }
-        def to_hash; end
+        def to_hash
+        end
 
         # How Increase should process checks with this account number printed on them.
         module Status
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::AccountNumberUpdateParams::InboundChecks::Status) }
@@ -159,13 +166,14 @@ module Increase
             override
               .returns(T::Array[Increase::Models::AccountNumberUpdateParams::InboundChecks::Status::TaggedSymbol])
           end
-          def self.values; end
+          def self.values
+          end
         end
       end
 
       # This indicates if transfers can be made to the Account Number.
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountNumberUpdateParams::Status) }
         OrSymbol =
@@ -181,7 +189,8 @@ module Increase
         CANCELED = T.let(:canceled, Increase::Models::AccountNumberUpdateParams::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::AccountNumberUpdateParams::Status::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

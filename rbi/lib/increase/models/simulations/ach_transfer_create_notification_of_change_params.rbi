@@ -3,9 +3,9 @@
 module Increase
   module Models
     module Simulations
-      class ACHTransferCreateNotificationOfChangeParams < Increase::Internal::Type::BaseModel
-        extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+      class ACHTransferCreateNotificationOfChangeParams < Increase::BaseModel
+        extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # The reason for the notification of change.
         sig { returns(Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol) }
@@ -19,11 +19,12 @@ module Increase
           params(
             change_code: Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol,
             corrected_data: String,
-            request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
-        def self.new(change_code:, corrected_data:, request_options: {}); end
+        def self.new(change_code:, corrected_data:, request_options: {})
+        end
 
         sig do
           override
@@ -35,11 +36,12 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         # The reason for the notification of change.
         module ChangeCode
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode) }
@@ -191,7 +193,8 @@ module Increase
                 T::Array[Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::TaggedSymbol]
               )
           end
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

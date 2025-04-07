@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::DigitalWalletTokens#retrieve
-    class DigitalWalletToken < Increase::Internal::Type::BaseModel
+    class DigitalWalletToken < Increase::BaseModel
       # @!attribute id
       #   The Digital Wallet Token identifier.
       #
@@ -24,7 +24,7 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the Digital Wallet Token was created.
+      #     the Digital Wallet Token was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -49,7 +49,7 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #   `digital_wallet_token`.
+      #     `digital_wallet_token`.
       #
       #   @return [Symbol, Increase::Models::DigitalWalletToken::Type]
       required :type, enum: -> { Increase::Models::DigitalWalletToken::Type }
@@ -58,12 +58,12 @@ module Increase
       #   Updates to the Digital Wallet Token.
       #
       #   @return [Array<Increase::Models::DigitalWalletToken::Update>]
-      required :updates, -> { Increase::Internal::Type::ArrayOf[Increase::Models::DigitalWalletToken::Update] }
+      required :updates, -> { Increase::ArrayOf[Increase::Models::DigitalWalletToken::Update] }
 
       # @!parse
       #   # A Digital Wallet Token is created when a user adds a Card to their Apple Pay or
-      #   # Google Pay app. The Digital Wallet Token can be used for purchases just like a
-      #   # Card.
+      #   #   Google Pay app. The Digital Wallet Token can be used for purchases just like a
+      #   #   Card.
       #   #
       #   # @param id [String]
       #   # @param card_id [String]
@@ -77,10 +77,10 @@ module Increase
       #   #
       #   def initialize(id:, card_id:, cardholder:, created_at:, device:, status:, token_requestor:, type:, updates:, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @see Increase::Models::DigitalWalletToken#cardholder
-      class Cardholder < Increase::Internal::Type::BaseModel
+      class Cardholder < Increase::BaseModel
         # @!attribute name
         #   Name of the cardholder, for example "John Smith".
         #
@@ -94,11 +94,11 @@ module Increase
         #   #
         #   def initialize(name:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # @see Increase::Models::DigitalWalletToken#device
-      class Device < Increase::Internal::Type::BaseModel
+      class Device < Increase::BaseModel
         # @!attribute device_type
         #   Device type.
         #
@@ -133,13 +133,13 @@ module Increase
         #   #
         #   def initialize(device_type:, identifier:, ip_address:, name:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # Device type.
         #
         # @see Increase::Models::DigitalWalletToken::Device#device_type
         module DeviceType
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # Unknown
           UNKNOWN = :unknown
@@ -180,7 +180,7 @@ module Increase
       #
       # @see Increase::Models::DigitalWalletToken#status
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The digital wallet token is active.
         ACTIVE = :active
@@ -205,7 +205,7 @@ module Increase
       #
       # @see Increase::Models::DigitalWalletToken#token_requestor
       module TokenRequestor
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # Apple Pay
         APPLE_PAY = :apple_pay
@@ -227,11 +227,11 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `digital_wallet_token`.
+      #   `digital_wallet_token`.
       #
       # @see Increase::Models::DigitalWalletToken#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         DIGITAL_WALLET_TOKEN = :digital_wallet_token
 
@@ -242,7 +242,7 @@ module Increase
         #   def self.values; end
       end
 
-      class Update < Increase::Internal::Type::BaseModel
+      class Update < Increase::BaseModel
         # @!attribute status
         #   The status the update changed this Digital Wallet Token to.
         #
@@ -251,7 +251,7 @@ module Increase
 
         # @!attribute timestamp
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the update happened.
+        #     the update happened.
         #
         #   @return [Time]
         required :timestamp, Time
@@ -262,13 +262,13 @@ module Increase
         #   #
         #   def initialize(status:, timestamp:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # The status the update changed this Digital Wallet Token to.
         #
         # @see Increase::Models::DigitalWalletToken::Update#status
         module Status
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # The digital wallet token is active.
           ACTIVE = :active

@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::OAuthApplications#retrieve
-    class OAuthApplication < Increase::Internal::Type::BaseModel
+    class OAuthApplication < Increase::BaseModel
       # @!attribute id
       #   The OAuth Application's identifier.
       #
@@ -12,21 +12,21 @@ module Increase
 
       # @!attribute client_id
       #   The OAuth Application's client_id. Use this to authenticate with the OAuth
-      #   Application.
+      #     Application.
       #
       #   @return [String]
       required :client_id, String
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-      #   Application was created.
+      #     Application was created.
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute deleted_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-      #   Application was deleted.
+      #     Application was deleted.
       #
       #   @return [Time, nil]
       required :deleted_at, Time, nil?: true
@@ -45,16 +45,16 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #   `oauth_application`.
+      #     `oauth_application`.
       #
       #   @return [Symbol, Increase::Models::OAuthApplication::Type]
       required :type, enum: -> { Increase::Models::OAuthApplication::Type }
 
       # @!parse
       #   # An OAuth Application lets you build an application for others to use with their
-      #   # Increase data. You can create an OAuth Application via the Dashboard and read
-      #   # information about it with the API. Learn more about OAuth
-      #   # [here](https://increase.com/documentation/oauth).
+      #   #   Increase data. You can create an OAuth Application via the Dashboard and read
+      #   #   information about it with the API. Learn more about OAuth
+      #   #   [here](https://increase.com/documentation/oauth).
       #   #
       #   # @param id [String]
       #   # @param client_id [String]
@@ -66,13 +66,13 @@ module Increase
       #   #
       #   def initialize(id:, client_id:, created_at:, deleted_at:, name:, status:, type:, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # Whether the application is active.
       #
       # @see Increase::Models::OAuthApplication#status
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The application is active and can be used by your users.
         ACTIVE = :active
@@ -88,11 +88,11 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `oauth_application`.
+      #   `oauth_application`.
       #
       # @see Increase::Models::OAuthApplication#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         OAUTH_APPLICATION = :oauth_application
 

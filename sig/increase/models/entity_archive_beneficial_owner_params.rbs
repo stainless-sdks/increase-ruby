@@ -1,12 +1,11 @@
 module Increase
   module Models
     type entity_archive_beneficial_owner_params =
-      { beneficial_owner_id: String }
-      & Increase::Internal::Type::request_parameters
+      { beneficial_owner_id: String } & Increase::request_parameters
 
-    class EntityArchiveBeneficialOwnerParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class EntityArchiveBeneficialOwnerParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       attr_accessor beneficial_owner_id: String
 

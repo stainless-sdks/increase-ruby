@@ -3,9 +3,9 @@
 module Increase
   module Models
     module Simulations
-      class RealTimePaymentsTransferCompleteParams < Increase::Internal::Type::BaseModel
-        extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+      class RealTimePaymentsTransferCompleteParams < Increase::BaseModel
+        extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # If set, the simulation will reject the transfer.
         sig { returns(T.nilable(Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection)) }
@@ -15,7 +15,7 @@ module Increase
           params(
             rejection: T.any(
               Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
-              Increase::Internal::AnyHash
+              Increase::Util::AnyHash
             )
           )
             .void
@@ -26,13 +26,14 @@ module Increase
           params(
             rejection: T.any(
               Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
-              Increase::Internal::AnyHash
+              Increase::Util::AnyHash
             ),
-            request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
-        def self.new(rejection: nil, request_options: {}); end
+        def self.new(rejection: nil, request_options: {})
+        end
 
         sig do
           override
@@ -43,9 +44,10 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
-        class Rejection < Increase::Internal::Type::BaseModel
+        class Rejection < Increase::BaseModel
           # The reason code that the simulated rejection will have.
           sig do
             returns(
@@ -61,7 +63,8 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(reject_reason_code:); end
+          def self.new(reject_reason_code:)
+          end
 
           sig do
             override
@@ -71,11 +74,12 @@ module Increase
                 }
               )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           # The reason code that the simulated rejection will have.
           module RejectReasonCode
-            extend Increase::Internal::Type::Enum
+            extend Increase::Enum
 
             TaggedSymbol =
               T.type_alias do
@@ -241,11 +245,12 @@ module Increase
               override
                 .returns(
                   T::Array[
-                    Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
+                  Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
                   ]
                 )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
       end

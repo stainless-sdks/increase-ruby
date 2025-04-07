@@ -6,11 +6,11 @@ module Increase
           change_code: Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::change_code,
           corrected_data: String
         }
-        & Increase::Internal::Type::request_parameters
+        & Increase::request_parameters
 
-      class ACHTransferCreateNotificationOfChangeParams < Increase::Internal::Type::BaseModel
-        extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+      class ACHTransferCreateNotificationOfChangeParams < Increase::BaseModel
+        extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         attr_accessor change_code: Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::change_code
 
@@ -46,7 +46,7 @@ module Increase
           | :incorrect_transaction_code_by_originating_depository_financial_institution
 
         module ChangeCode
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # The account number was incorrect.
           INCORRECT_ACCOUNT_NUMBER: :incorrect_account_number

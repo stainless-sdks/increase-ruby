@@ -2,11 +2,11 @@ module Increase
   module Models
     type inbound_ach_transfer_decline_params =
       { reason: Increase::Models::InboundACHTransferDeclineParams::reason }
-      & Increase::Internal::Type::request_parameters
+      & Increase::request_parameters
 
-    class InboundACHTransferDeclineParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class InboundACHTransferDeclineParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       attr_reader reason: Increase::Models::InboundACHTransferDeclineParams::reason?
 
@@ -34,7 +34,7 @@ module Increase
         | :corporate_customer_advised_not_authorized
 
       module Reason
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The customer's account has insufficient funds. This reason is only allowed for debits. The Nacha return code is R01.
         INSUFFICIENT_FUNDS: :insufficient_funds

@@ -10,11 +10,11 @@ module Increase
         limit: Integer,
         status: Increase::Models::RealTimePaymentsTransferListParams::Status
       }
-      & Increase::Internal::Type::request_parameters
+      & Increase::request_parameters
 
-    class RealTimePaymentsTransferListParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class RealTimePaymentsTransferListParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       attr_reader account_id: String?
 
@@ -64,7 +64,7 @@ module Increase
       type created_at =
         { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
 
-      class CreatedAt < Increase::Internal::Type::BaseModel
+      class CreatedAt < Increase::BaseModel
         attr_reader after: Time?
 
         def after=: (Time) -> Time
@@ -96,7 +96,7 @@ module Increase
           in_: ::Array[Increase::Models::RealTimePaymentsTransferListParams::Status::in_]
         }
 
-      class Status < Increase::Internal::Type::BaseModel
+      class Status < Increase::BaseModel
         attr_reader in_: ::Array[Increase::Models::RealTimePaymentsTransferListParams::Status::in_]?
 
         def in_=: (
@@ -120,7 +120,7 @@ module Increase
           | :complete
 
         module In
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # The transfer is pending approval.
           PENDING_APPROVAL: :pending_approval

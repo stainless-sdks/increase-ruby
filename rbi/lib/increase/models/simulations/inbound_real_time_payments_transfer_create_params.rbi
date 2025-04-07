@@ -3,12 +3,12 @@
 module Increase
   module Models
     module Simulations
-      class InboundRealTimePaymentsTransferCreateParams < Increase::Internal::Type::BaseModel
-        extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+      class InboundRealTimePaymentsTransferCreateParams < Increase::BaseModel
+        extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # The identifier of the Account Number the inbound Real-Time Payments Transfer is
-        # for.
+        #   for.
         sig { returns(String) }
         attr_accessor :account_number_id
 
@@ -60,7 +60,7 @@ module Increase
             debtor_routing_number: String,
             remittance_information: String,
             request_for_payment_id: String,
-            request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -73,7 +73,9 @@ module Increase
           remittance_information: nil,
           request_for_payment_id: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         sig do
           override
             .returns(
@@ -89,7 +91,8 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

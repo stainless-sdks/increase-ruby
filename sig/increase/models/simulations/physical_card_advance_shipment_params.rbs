@@ -5,11 +5,11 @@ module Increase
         {
           shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status
         }
-        & Increase::Internal::Type::request_parameters
+        & Increase::request_parameters
 
-      class PhysicalCardAdvanceShipmentParams < Increase::Internal::Type::BaseModel
-        extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+      class PhysicalCardAdvanceShipmentParams < Increase::BaseModel
+        extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         attr_accessor shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status
 
@@ -30,7 +30,7 @@ module Increase
           | :returned
 
         module ShipmentStatus
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # The physical card has not yet been shipped.
           PENDING: :pending

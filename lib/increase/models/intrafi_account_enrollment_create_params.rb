@@ -3,10 +3,10 @@
 module Increase
   module Models
     # @see Increase::Resources::IntrafiAccountEnrollments#create
-    class IntrafiAccountEnrollmentCreateParams < Increase::Internal::Type::BaseModel
+    class IntrafiAccountEnrollmentCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute account_id
       #   The identifier for the account to be added to IntraFi.
@@ -27,7 +27,7 @@ module Increase
       #   #
       #   def initialize(account_id:, email_address:, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
     end
   end
 end

@@ -2,9 +2,9 @@
 
 module Increase
   module Models
-    class RoutingNumberListParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class RoutingNumberListParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # Filter financial institutions by routing number.
       sig { returns(String) }
@@ -18,7 +18,7 @@ module Increase
       attr_writer :cursor
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
-      # objects.
+      #   objects.
       sig { returns(T.nilable(Integer)) }
       attr_reader :limit
 
@@ -30,11 +30,12 @@ module Increase
           routing_number: String,
           cursor: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
-      def self.new(routing_number:, cursor: nil, limit: nil, request_options: {}); end
+      def self.new(routing_number:, cursor: nil, limit: nil, request_options: {})
+      end
 
       sig do
         override
@@ -47,7 +48,8 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

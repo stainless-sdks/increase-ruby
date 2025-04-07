@@ -3,10 +3,10 @@
 module Increase
   module Models
     # @see Increase::Resources::InboundACHTransfers#create_notification_of_change
-    class InboundACHTransferCreateNotificationOfChangeParams < Increase::Internal::Type::BaseModel
+    class InboundACHTransferCreateNotificationOfChangeParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute [r] updated_account_number
       #   The updated account number to send in the notification of change.
@@ -35,7 +35,7 @@ module Increase
       #   #
       #   def initialize(updated_account_number: nil, updated_routing_number: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
     end
   end
 end

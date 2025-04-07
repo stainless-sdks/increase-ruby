@@ -3,16 +3,16 @@
 module Increase
   module Models
     module Simulations
-      class CardReversalCreateParams < Increase::Internal::Type::BaseModel
-        extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+      class CardReversalCreateParams < Increase::BaseModel
+        extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # The identifier of the Card Payment to create a reversal on.
         sig { returns(String) }
         attr_accessor :card_payment_id
 
         # The amount of the reversal in minor units in the card authorization's currency.
-        # This defaults to the authorization amount.
+        #   This defaults to the authorization amount.
         sig { returns(T.nilable(Integer)) }
         attr_reader :amount
 
@@ -23,11 +23,12 @@ module Increase
           params(
             card_payment_id: String,
             amount: Integer,
-            request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
-        def self.new(card_payment_id:, amount: nil, request_options: {}); end
+        def self.new(card_payment_id:, amount: nil, request_options: {})
+        end
 
         sig do
           override.returns(
@@ -38,7 +39,8 @@ module Increase
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

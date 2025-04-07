@@ -2,9 +2,9 @@
 
 module Increase
   module Models
-    class DigitalCardProfileCloneParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class DigitalCardProfileCloneParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # The identifier of the File containing the card's icon image.
       sig { returns(T.nilable(String)) }
@@ -68,7 +68,7 @@ module Increase
 
       sig do
         params(
-          text_color: T.any(Increase::Models::DigitalCardProfileCloneParams::TextColor, Increase::Internal::AnyHash)
+          text_color: T.any(Increase::Models::DigitalCardProfileCloneParams::TextColor, Increase::Util::AnyHash)
         )
           .void
       end
@@ -84,8 +84,8 @@ module Increase
           contact_website: String,
           description: String,
           issuer_name: String,
-          text_color: T.any(Increase::Models::DigitalCardProfileCloneParams::TextColor, Increase::Internal::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          text_color: T.any(Increase::Models::DigitalCardProfileCloneParams::TextColor, Increase::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -100,7 +100,9 @@ module Increase
         issuer_name: nil,
         text_color: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       sig do
         override
           .returns(
@@ -118,9 +120,10 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
-      class TextColor < Increase::Internal::Type::BaseModel
+      class TextColor < Increase::BaseModel
         # The value of the blue channel in the RGB color.
         sig { returns(Integer) }
         attr_accessor :blue
@@ -135,10 +138,12 @@ module Increase
 
         # The Card's text color, specified as an RGB triple. The default is white.
         sig { params(blue: Integer, green: Integer, red: Integer).returns(T.attached_class) }
-        def self.new(blue:, green:, red:); end
+        def self.new(blue:, green:, red:)
+        end
 
         sig { override.returns({blue: Integer, green: Integer, red: Integer}) }
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

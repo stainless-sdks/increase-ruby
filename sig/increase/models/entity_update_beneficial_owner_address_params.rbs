@@ -5,11 +5,11 @@ module Increase
         address: Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
         beneficial_owner_id: String
       }
-      & Increase::Internal::Type::request_parameters
+      & Increase::request_parameters
 
-    class EntityUpdateBeneficialOwnerAddressParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class EntityUpdateBeneficialOwnerAddressParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       attr_accessor address: Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address
 
@@ -33,7 +33,7 @@ module Increase
           zip: String
         }
 
-      class Address < Increase::Internal::Type::BaseModel
+      class Address < Increase::BaseModel
         attr_accessor country: String
 
         attr_accessor line1: String

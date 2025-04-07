@@ -4,10 +4,10 @@ module Increase
   module Models
     module Simulations
       # @see Increase::Resources::Simulations::InboundWireDrawdownRequests#create
-      class InboundWireDrawdownRequestCreateParams < Increase::Internal::Type::BaseModel
+      class InboundWireDrawdownRequestCreateParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+        #   extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # @!attribute amount
         #   The amount being requested in cents.
@@ -29,7 +29,7 @@ module Increase
 
         # @!attribute currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
-        #   requested. Will always be "USD".
+        #     requested. Will always be "USD".
         #
         #   @return [String]
         required :currency, String
@@ -54,7 +54,7 @@ module Increase
 
         # @!attribute recipient_account_number_id
         #   The Account Number to which the recipient of this request is being requested to
-        #   send funds from.
+        #     send funds from.
         #
         #   @return [String]
         required :recipient_account_number_id, String
@@ -141,7 +141,7 @@ module Increase
 
         # @!attribute [r] originator_to_beneficiary_information_line1
         #   Line 1 of the information conveyed from the originator of the message to the
-        #   beneficiary.
+        #     beneficiary.
         #
         #   @return [String, nil]
         optional :originator_to_beneficiary_information_line1, String
@@ -152,7 +152,7 @@ module Increase
 
         # @!attribute [r] originator_to_beneficiary_information_line2
         #   Line 2 of the information conveyed from the originator of the message to the
-        #   beneficiary.
+        #     beneficiary.
         #
         #   @return [String, nil]
         optional :originator_to_beneficiary_information_line2, String
@@ -163,7 +163,7 @@ module Increase
 
         # @!attribute [r] originator_to_beneficiary_information_line3
         #   Line 3 of the information conveyed from the originator of the message to the
-        #   beneficiary.
+        #     beneficiary.
         #
         #   @return [String, nil]
         optional :originator_to_beneficiary_information_line3, String
@@ -174,7 +174,7 @@ module Increase
 
         # @!attribute [r] originator_to_beneficiary_information_line4
         #   Line 4 of the information conveyed from the originator of the message to the
-        #   beneficiary.
+        #     beneficiary.
         #
         #   @return [String, nil]
         optional :originator_to_beneficiary_information_line4, String
@@ -233,7 +233,7 @@ module Increase
         #     super
         #   end
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
     end
   end

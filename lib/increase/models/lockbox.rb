@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::Lockboxes#create
-    class Lockbox < Increase::Internal::Type::BaseModel
+    class Lockbox < Increase::BaseModel
       # @!attribute id
       #   The Lockbox identifier.
       #
@@ -12,7 +12,7 @@ module Increase
 
       # @!attribute account_id
       #   The identifier for the Account checks sent to this lockbox will be deposited
-      #   into.
+      #     into.
       #
       #   @return [String]
       required :account_id, String
@@ -25,7 +25,7 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Lockbox
-      #   was created.
+      #     was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -38,8 +38,8 @@ module Increase
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #     Increase and is used to ensure that a request is only processed once. Learn more
+      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -58,14 +58,14 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #   `lockbox`.
+      #     `lockbox`.
       #
       #   @return [Symbol, Increase::Models::Lockbox::Type]
       required :type, enum: -> { Increase::Models::Lockbox::Type }
 
       # @!parse
       #   # Lockboxes are physical locations that can receive mail containing paper checks.
-      #   # Increase will automatically create a Check Deposit for checks received this way.
+      #   #   Increase will automatically create a Check Deposit for checks received this way.
       #   #
       #   # @param id [String]
       #   # @param account_id [String]
@@ -92,10 +92,10 @@ module Increase
       #     super
       #   end
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @see Increase::Models::Lockbox#address
-      class Address < Increase::Internal::Type::BaseModel
+      class Address < Increase::BaseModel
         # @!attribute city
         #   The city of the address.
         #
@@ -122,16 +122,16 @@ module Increase
 
         # @!attribute recipient
         #   The recipient line of the address. This will include the recipient name you
-        #   provide when creating the address, as well as an ATTN suffix to help route the
-        #   mail to your lockbox. Mail senders must include this ATTN line to receive mail
-        #   at this Lockbox.
+        #     provide when creating the address, as well as an ATTN suffix to help route the
+        #     mail to your lockbox. Mail senders must include this ATTN line to receive mail
+        #     at this Lockbox.
         #
         #   @return [String, nil]
         required :recipient, String, nil?: true
 
         # @!attribute state
         #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-        #   the address.
+        #     the address.
         #
         #   @return [String]
         required :state, String
@@ -148,14 +148,14 @@ module Increase
         #   #
         #   def initialize(city:, line1:, line2:, postal_code:, recipient:, state:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # This indicates if mail can be sent to this address.
       #
       # @see Increase::Models::Lockbox#status
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # This Lockbox is active. Checks mailed to it will be deposited automatically.
         ACTIVE = :active
@@ -171,11 +171,11 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `lockbox`.
+      #   `lockbox`.
       #
       # @see Increase::Models::Lockbox#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         LOCKBOX = :lockbox
 

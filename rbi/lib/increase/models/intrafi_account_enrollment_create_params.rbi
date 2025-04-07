@@ -2,9 +2,9 @@
 
 module Increase
   module Models
-    class IntrafiAccountEnrollmentCreateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class IntrafiAccountEnrollmentCreateParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # The identifier for the account to be added to IntraFi.
       sig { returns(String) }
@@ -18,11 +18,12 @@ module Increase
         params(
           account_id: String,
           email_address: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
-      def self.new(account_id:, email_address:, request_options: {}); end
+      def self.new(account_id:, email_address:, request_options: {})
+      end
 
       sig do
         override.returns(
@@ -33,7 +34,8 @@ module Increase
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

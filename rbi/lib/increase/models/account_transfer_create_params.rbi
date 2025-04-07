@@ -2,16 +2,16 @@
 
 module Increase
   module Models
-    class AccountTransferCreateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class AccountTransferCreateParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # The identifier for the account that will send the transfer.
       sig { returns(String) }
       attr_accessor :account_id
 
       # The transfer amount in the minor unit of the account currency. For dollars, for
-      # example, this is cents.
+      #   example, this is cents.
       sig { returns(Integer) }
       attr_accessor :amount
 
@@ -37,7 +37,7 @@ module Increase
           description: String,
           destination_account_id: String,
           require_approval: T::Boolean,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -64,7 +64,8 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

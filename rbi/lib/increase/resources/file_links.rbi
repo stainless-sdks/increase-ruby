@@ -8,7 +8,7 @@ module Increase
         params(
           file_id: String,
           expires_at: Time,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::FileLink)
       end
@@ -16,13 +16,16 @@ module Increase
         # The File to create a File Link for.
         file_id:,
         # The time at which the File Link will expire. The default is 1 hour from the time
-        # of the request. The maxiumum is 1 day from the time of the request.
+        #   of the request. The maxiumum is 1 day from the time of the request.
         expires_at: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

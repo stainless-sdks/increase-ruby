@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::InboundWireTransfers#retrieve
-    class InboundWireTransfer < Increase::Internal::Type::BaseModel
+    class InboundWireTransfer < Increase::BaseModel
       # @!attribute id
       #   The inbound wire transfer's identifier.
       #
@@ -60,7 +60,7 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the inbound wire transfer was created.
+      #     the inbound wire transfer was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -73,8 +73,8 @@ module Increase
 
       # @!attribute input_message_accountability_data
       #   A unique identifier available to the originating and receiving banks, commonly
-      #   abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
-      #   service and is helpful when debugging wires with the originating bank.
+      #     abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
+      #     service and is helpful when debugging wires with the originating bank.
       #
       #   @return [String, nil]
       required :input_message_accountability_data, String, nil?: true
@@ -105,7 +105,7 @@ module Increase
 
       # @!attribute originator_routing_number
       #   The American Banking Association (ABA) routing number of the bank originating
-      #   the transfer.
+      #     the transfer.
       #
       #   @return [String, nil]
       required :originator_routing_number, String, nil?: true
@@ -154,14 +154,14 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #   `inbound_wire_transfer`.
+      #     `inbound_wire_transfer`.
       #
       #   @return [Symbol, Increase::Models::InboundWireTransfer::Type]
       required :type, enum: -> { Increase::Models::InboundWireTransfer::Type }
 
       # @!parse
       #   # An Inbound Wire Transfer is a wire transfer initiated outside of Increase to
-      #   # your account.
+      #   #   your account.
       #   #
       #   # @param id [String]
       #   # @param account_id [String]
@@ -220,13 +220,13 @@ module Increase
       #     super
       #   end
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # The status of the transfer.
       #
       # @see Increase::Models::InboundWireTransfer#status
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The Inbound Wire Transfer is awaiting action, will transition automatically if no action is taken.
         PENDING = :pending
@@ -248,11 +248,11 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `inbound_wire_transfer`.
+      #   `inbound_wire_transfer`.
       #
       # @see Increase::Models::InboundWireTransfer#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         INBOUND_WIRE_TRANSFER = :inbound_wire_transfer
 

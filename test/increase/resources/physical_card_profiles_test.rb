@@ -27,7 +27,7 @@ class Increase::Test::Resources::PhysicalCardProfilesTest < Increase::Test::Reso
         description: String,
         front_image_file_id: String | nil,
         idempotency_key: String | nil,
-        is_default: Increase::Internal::Type::Boolean,
+        is_default: Increase::BooleanModel,
         status: Increase::Models::PhysicalCardProfile::Status,
         type: Increase::Models::PhysicalCardProfile::Type
       }
@@ -52,7 +52,7 @@ class Increase::Test::Resources::PhysicalCardProfilesTest < Increase::Test::Reso
         description: String,
         front_image_file_id: String | nil,
         idempotency_key: String | nil,
-        is_default: Increase::Internal::Type::Boolean,
+        is_default: Increase::BooleanModel,
         status: Increase::Models::PhysicalCardProfile::Status,
         type: Increase::Models::PhysicalCardProfile::Type
       }
@@ -63,7 +63,7 @@ class Increase::Test::Resources::PhysicalCardProfilesTest < Increase::Test::Reso
     response = @increase.physical_card_profiles.list
 
     assert_pattern do
-      response => Increase::Internal::Page
+      response => Increase::Page
     end
 
     row = response.to_enum.first
@@ -84,7 +84,7 @@ class Increase::Test::Resources::PhysicalCardProfilesTest < Increase::Test::Reso
         description: String,
         front_image_file_id: String | nil,
         idempotency_key: String | nil,
-        is_default: Increase::Internal::Type::Boolean,
+        is_default: Increase::BooleanModel,
         status: Increase::Models::PhysicalCardProfile::Status,
         type: Increase::Models::PhysicalCardProfile::Type
       }
@@ -109,7 +109,7 @@ class Increase::Test::Resources::PhysicalCardProfilesTest < Increase::Test::Reso
         description: String,
         front_image_file_id: String | nil,
         idempotency_key: String | nil,
-        is_default: Increase::Internal::Type::Boolean,
+        is_default: Increase::BooleanModel,
         status: Increase::Models::PhysicalCardProfile::Status,
         type: Increase::Models::PhysicalCardProfile::Type
       }
@@ -134,7 +134,7 @@ class Increase::Test::Resources::PhysicalCardProfilesTest < Increase::Test::Reso
         description: String,
         front_image_file_id: String | nil,
         idempotency_key: String | nil,
-        is_default: Increase::Internal::Type::Boolean,
+        is_default: Increase::BooleanModel,
         status: Increase::Models::PhysicalCardProfile::Status,
         type: Increase::Models::PhysicalCardProfile::Type
       }

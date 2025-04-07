@@ -3,10 +3,10 @@
 module Increase
   module Models
     # @see Increase::Resources::CheckDeposits#create
-    class CheckDepositCreateParams < Increase::Internal::Type::BaseModel
+    class CheckDepositCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute account_id
       #   The identifier for the Account to deposit the check in.
@@ -52,7 +52,7 @@ module Increase
       #   #
       #   def initialize(account_id:, amount:, back_image_file_id:, front_image_file_id:, description: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
     end
   end
 end

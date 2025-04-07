@@ -5,8 +5,8 @@ module Increase
     class Simulations
       class InboundRealTimePaymentsTransfers
         # Simulates an
-        # [Inbound Real-Time Payments Transfer](#inbound-real-time-payments-transfers) to
-        # your account. Real-Time Payments are a beta feature.
+        #   [Inbound Real-Time Payments Transfer](#inbound-real-time-payments-transfers) to
+        #   your account. Real-Time Payments are a beta feature.
         sig do
           params(
             account_number_id: String,
@@ -16,13 +16,13 @@ module Increase
             debtor_routing_number: String,
             remittance_information: String,
             request_for_payment_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
           )
             .returns(Increase::Models::InboundRealTimePaymentsTransfer)
         end
         def create(
           # The identifier of the Account Number the inbound Real-Time Payments Transfer is
-          # for.
+          #   for.
           account_number_id:,
           # The transfer amount in USD cents. Must be positive.
           amount:,
@@ -37,10 +37,13 @@ module Increase
           # The identifier of a pending Request for Payment that this transfer will fulfill.
           request_for_payment_id: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: Increase::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

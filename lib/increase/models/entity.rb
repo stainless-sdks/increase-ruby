@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::Entities#create
-    class Entity < Increase::Internal::Type::BaseModel
+    class Entity < Increase::BaseModel
       # @!attribute id
       #   The entity's identifier.
       #
@@ -12,14 +12,14 @@ module Increase
 
       # @!attribute corporation
       #   Details of the corporation entity. Will be present if `structure` is equal to
-      #   `corporation`.
+      #     `corporation`.
       #
       #   @return [Increase::Models::Entity::Corporation, nil]
       required :corporation, -> { Increase::Models::Entity::Corporation }, nil?: true
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Entity
-      #   was created.
+      #     was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -32,22 +32,22 @@ module Increase
 
       # @!attribute details_confirmed_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
-      #   Entity's details were most recently confirmed.
+      #     Entity's details were most recently confirmed.
       #
       #   @return [Time, nil]
       required :details_confirmed_at, Time, nil?: true
 
       # @!attribute government_authority
       #   Details of the government authority entity. Will be present if `structure` is
-      #   equal to `government_authority`.
+      #     equal to `government_authority`.
       #
       #   @return [Increase::Models::Entity::GovernmentAuthority, nil]
       required :government_authority, -> { Increase::Models::Entity::GovernmentAuthority }, nil?: true
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #     Increase and is used to ensure that a request is only processed once. Learn more
+      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -60,7 +60,7 @@ module Increase
 
       # @!attribute natural_person
       #   Details of the natural person entity. Will be present if `structure` is equal to
-      #   `natural_person`.
+      #     `natural_person`.
       #
       #   @return [Increase::Models::Entity::NaturalPerson, nil]
       required :natural_person, -> { Increase::Models::Entity::NaturalPerson }, nil?: true
@@ -79,16 +79,15 @@ module Increase
 
       # @!attribute supplemental_documents
       #   Additional documentation associated with the entity. This is limited to the
-      #   first 10 documents for an entity. If an entity has more than 10 documents, use
-      #   the GET /entity_supplemental_documents list endpoint to retrieve them.
+      #     first 10 documents for an entity. If an entity has more than 10 documents, use
+      #     the GET /entity_supplemental_documents list endpoint to retrieve them.
       #
       #   @return [Array<Increase::Models::EntitySupplementalDocument>]
-      required :supplemental_documents,
-               -> { Increase::Internal::Type::ArrayOf[Increase::Models::EntitySupplementalDocument] }
+      required :supplemental_documents, -> { Increase::ArrayOf[Increase::Models::EntitySupplementalDocument] }
 
       # @!attribute third_party_verification
       #   A reference to data stored in a third-party verification service. Your
-      #   integration may or may not use this field.
+      #     integration may or may not use this field.
       #
       #   @return [Increase::Models::Entity::ThirdPartyVerification, nil]
       required :third_party_verification, -> { Increase::Models::Entity::ThirdPartyVerification }, nil?: true
@@ -101,14 +100,14 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #   `entity`.
+      #     `entity`.
       #
       #   @return [Symbol, Increase::Models::Entity::Type]
       required :type, enum: -> { Increase::Models::Entity::Type }
 
       # @!parse
       #   # Entities are the legal entities that own accounts. They can be people,
-      #   # corporations, partnerships, government authorities, or trusts.
+      #   #   corporations, partnerships, government authorities, or trusts.
       #   #
       #   # @param id [String]
       #   # @param corporation [Increase::Models::Entity::Corporation, nil]
@@ -147,10 +146,10 @@ module Increase
       #     super
       #   end
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @see Increase::Models::Entity#corporation
-      class Corporation < Increase::Internal::Type::BaseModel
+      class Corporation < Increase::BaseModel
         # @!attribute address
         #   The corporation's address.
         #
@@ -159,22 +158,22 @@ module Increase
 
         # @!attribute beneficial_owners
         #   The identifying details of anyone controlling or owning 25% or more of the
-        #   corporation.
+        #     corporation.
         #
         #   @return [Array<Increase::Models::Entity::Corporation::BeneficialOwner>]
         required :beneficial_owners,
-                 -> { Increase::Internal::Type::ArrayOf[Increase::Models::Entity::Corporation::BeneficialOwner] }
+                 -> { Increase::ArrayOf[Increase::Models::Entity::Corporation::BeneficialOwner] }
 
         # @!attribute incorporation_state
         #   The two-letter United States Postal Service (USPS) abbreviation for the
-        #   corporation's state of incorporation.
+        #     corporation's state of incorporation.
         #
         #   @return [String, nil]
         required :incorporation_state, String, nil?: true
 
         # @!attribute industry_code
         #   The numeric North American Industry Classification System (NAICS) code submitted
-        #   for the corporation.
+        #     for the corporation.
         #
         #   @return [String, nil]
         required :industry_code, String, nil?: true
@@ -199,7 +198,7 @@ module Increase
 
         # @!parse
         #   # Details of the corporation entity. Will be present if `structure` is equal to
-        #   # `corporation`.
+        #   #   `corporation`.
         #   #
         #   # @param address [Increase::Models::Entity::Corporation::Address]
         #   # @param beneficial_owners [Array<Increase::Models::Entity::Corporation::BeneficialOwner>]
@@ -211,10 +210,10 @@ module Increase
         #   #
         #   def initialize(address:, beneficial_owners:, incorporation_state:, industry_code:, name:, tax_identifier:, website:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @see Increase::Models::Entity::Corporation#address
-        class Address < Increase::Internal::Type::BaseModel
+        class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the address.
           #
@@ -235,7 +234,7 @@ module Increase
 
           # @!attribute state
           #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   the address.
+          #     the address.
           #
           #   @return [String]
           required :state, String
@@ -257,10 +256,10 @@ module Increase
           #   #
           #   def initialize(city:, line1:, line2:, state:, zip:, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        class BeneficialOwner < Increase::Internal::Type::BaseModel
+        class BeneficialOwner < Increase::BaseModel
           # @!attribute beneficial_owner_id
           #   The identifier of this beneficial owner.
           #
@@ -293,10 +292,10 @@ module Increase
           #   #
           #   def initialize(beneficial_owner_id:, company_title:, individual:, prong:, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
 
           # @see Increase::Models::Entity::Corporation::BeneficialOwner#individual
-          class Individual < Increase::Internal::Type::BaseModel
+          class Individual < Increase::BaseModel
             # @!attribute address
             #   The person's address.
             #
@@ -332,10 +331,10 @@ module Increase
             #   #
             #   def initialize(address:, date_of_birth:, identification:, name:, **) = super
 
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # def initialize: (Hash | Increase::BaseModel) -> void
 
             # @see Increase::Models::Entity::Corporation::BeneficialOwner::Individual#address
-            class Address < Increase::Internal::Type::BaseModel
+            class Address < Increase::BaseModel
               # @!attribute city
               #   The city, district, town, or village of the address.
               #
@@ -362,7 +361,7 @@ module Increase
 
               # @!attribute state
               #   The two-letter United States Postal Service (USPS) abbreviation for the US
-              #   state, province, or region of the address.
+              #     state, province, or region of the address.
               #
               #   @return [String, nil]
               required :state, String, nil?: true
@@ -385,11 +384,11 @@ module Increase
               #   #
               #   def initialize(city:, country:, line1:, line2:, state:, zip:, **) = super
 
-              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+              # def initialize: (Hash | Increase::BaseModel) -> void
             end
 
             # @see Increase::Models::Entity::Corporation::BeneficialOwner::Individual#identification
-            class Identification < Increase::Internal::Type::BaseModel
+            class Identification < Increase::BaseModel
               # @!attribute method_
               #   A method that can be used to verify the individual's identity.
               #
@@ -400,7 +399,7 @@ module Increase
 
               # @!attribute number_last4
               #   The last 4 digits of the identification number that can be used to verify the
-              #   individual's identity.
+              #     individual's identity.
               #
               #   @return [String]
               required :number_last4, String
@@ -413,13 +412,13 @@ module Increase
               #   #
               #   def initialize(method_:, number_last4:, **) = super
 
-              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+              # def initialize: (Hash | Increase::BaseModel) -> void
 
               # A method that can be used to verify the individual's identity.
               #
               # @see Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification#method_
               module Method
-                extend Increase::Internal::Type::Enum
+                extend Increase::Enum
 
                 # A social security number.
                 SOCIAL_SECURITY_NUMBER = :social_security_number
@@ -449,7 +448,7 @@ module Increase
           #
           # @see Increase::Models::Entity::Corporation::BeneficialOwner#prong
           module Prong
-            extend Increase::Internal::Type::Enum
+            extend Increase::Enum
 
             # A person with 25% or greater direct or indirect ownership of the entity.
             OWNERSHIP = :ownership
@@ -467,7 +466,7 @@ module Increase
       end
 
       # @see Increase::Models::Entity#government_authority
-      class GovernmentAuthority < Increase::Internal::Type::BaseModel
+      class GovernmentAuthority < Increase::BaseModel
         # @!attribute address
         #   The government authority's address.
         #
@@ -479,7 +478,7 @@ module Increase
         #
         #   @return [Array<Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson>]
         required :authorized_persons,
-                 -> { Increase::Internal::Type::ArrayOf[Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson] }
+                 -> { Increase::ArrayOf[Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson] }
 
         # @!attribute category
         #   The category of the government authority.
@@ -507,7 +506,7 @@ module Increase
 
         # @!parse
         #   # Details of the government authority entity. Will be present if `structure` is
-        #   # equal to `government_authority`.
+        #   #   equal to `government_authority`.
         #   #
         #   # @param address [Increase::Models::Entity::GovernmentAuthority::Address]
         #   # @param authorized_persons [Array<Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson>]
@@ -518,10 +517,10 @@ module Increase
         #   #
         #   def initialize(address:, authorized_persons:, category:, name:, tax_identifier:, website:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @see Increase::Models::Entity::GovernmentAuthority#address
-        class Address < Increase::Internal::Type::BaseModel
+        class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the address.
           #
@@ -542,7 +541,7 @@ module Increase
 
           # @!attribute state
           #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   the address.
+          #     the address.
           #
           #   @return [String]
           required :state, String
@@ -564,10 +563,10 @@ module Increase
           #   #
           #   def initialize(city:, line1:, line2:, state:, zip:, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        class AuthorizedPerson < Increase::Internal::Type::BaseModel
+        class AuthorizedPerson < Increase::BaseModel
           # @!attribute authorized_person_id
           #   The identifier of this authorized person.
           #
@@ -586,14 +585,14 @@ module Increase
           #   #
           #   def initialize(authorized_person_id:, name:, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
         # The category of the government authority.
         #
         # @see Increase::Models::Entity::GovernmentAuthority#category
         module Category
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # The Public Entity is a Municipality.
           MUNICIPALITY = :municipality
@@ -607,13 +606,12 @@ module Increase
       end
 
       # @see Increase::Models::Entity#joint
-      class Joint < Increase::Internal::Type::BaseModel
+      class Joint < Increase::BaseModel
         # @!attribute individuals
         #   The two individuals that share control of the entity.
         #
         #   @return [Array<Increase::Models::Entity::Joint::Individual>]
-        required :individuals,
-                 -> { Increase::Internal::Type::ArrayOf[Increase::Models::Entity::Joint::Individual] }
+        required :individuals, -> { Increase::ArrayOf[Increase::Models::Entity::Joint::Individual] }
 
         # @!attribute name
         #   The entity's name.
@@ -629,9 +627,9 @@ module Increase
         #   #
         #   def initialize(individuals:, name:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
-        class Individual < Increase::Internal::Type::BaseModel
+        class Individual < Increase::BaseModel
           # @!attribute address
           #   The person's address.
           #
@@ -664,10 +662,10 @@ module Increase
           #   #
           #   def initialize(address:, date_of_birth:, identification:, name:, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
 
           # @see Increase::Models::Entity::Joint::Individual#address
-          class Address < Increase::Internal::Type::BaseModel
+          class Address < Increase::BaseModel
             # @!attribute city
             #   The city of the address.
             #
@@ -688,7 +686,7 @@ module Increase
 
             # @!attribute state
             #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-            #   the address.
+            #     the address.
             #
             #   @return [String]
             required :state, String
@@ -710,11 +708,11 @@ module Increase
             #   #
             #   def initialize(city:, line1:, line2:, state:, zip:, **) = super
 
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
           # @see Increase::Models::Entity::Joint::Individual#identification
-          class Identification < Increase::Internal::Type::BaseModel
+          class Identification < Increase::BaseModel
             # @!attribute method_
             #   A method that can be used to verify the individual's identity.
             #
@@ -725,7 +723,7 @@ module Increase
 
             # @!attribute number_last4
             #   The last 4 digits of the identification number that can be used to verify the
-            #   individual's identity.
+            #     individual's identity.
             #
             #   @return [String]
             required :number_last4, String
@@ -738,13 +736,13 @@ module Increase
             #   #
             #   def initialize(method_:, number_last4:, **) = super
 
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # def initialize: (Hash | Increase::BaseModel) -> void
 
             # A method that can be used to verify the individual's identity.
             #
             # @see Increase::Models::Entity::Joint::Individual::Identification#method_
             module Method
-              extend Increase::Internal::Type::Enum
+              extend Increase::Enum
 
               # A social security number.
               SOCIAL_SECURITY_NUMBER = :social_security_number
@@ -772,7 +770,7 @@ module Increase
       end
 
       # @see Increase::Models::Entity#natural_person
-      class NaturalPerson < Increase::Internal::Type::BaseModel
+      class NaturalPerson < Increase::BaseModel
         # @!attribute address
         #   The person's address.
         #
@@ -799,7 +797,7 @@ module Increase
 
         # @!parse
         #   # Details of the natural person entity. Will be present if `structure` is equal to
-        #   # `natural_person`.
+        #   #   `natural_person`.
         #   #
         #   # @param address [Increase::Models::Entity::NaturalPerson::Address]
         #   # @param date_of_birth [Date]
@@ -808,10 +806,10 @@ module Increase
         #   #
         #   def initialize(address:, date_of_birth:, identification:, name:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @see Increase::Models::Entity::NaturalPerson#address
-        class Address < Increase::Internal::Type::BaseModel
+        class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the address.
           #
@@ -832,7 +830,7 @@ module Increase
 
           # @!attribute state
           #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   the address.
+          #     the address.
           #
           #   @return [String]
           required :state, String
@@ -854,11 +852,11 @@ module Increase
           #   #
           #   def initialize(city:, line1:, line2:, state:, zip:, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
         # @see Increase::Models::Entity::NaturalPerson#identification
-        class Identification < Increase::Internal::Type::BaseModel
+        class Identification < Increase::BaseModel
           # @!attribute method_
           #   A method that can be used to verify the individual's identity.
           #
@@ -869,7 +867,7 @@ module Increase
 
           # @!attribute number_last4
           #   The last 4 digits of the identification number that can be used to verify the
-          #   individual's identity.
+          #     individual's identity.
           #
           #   @return [String]
           required :number_last4, String
@@ -882,13 +880,13 @@ module Increase
           #   #
           #   def initialize(method_:, number_last4:, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
 
           # A method that can be used to verify the individual's identity.
           #
           # @see Increase::Models::Entity::NaturalPerson::Identification#method_
           module Method
-            extend Increase::Internal::Type::Enum
+            extend Increase::Enum
 
             # A social security number.
             SOCIAL_SECURITY_NUMBER = :social_security_number
@@ -918,7 +916,7 @@ module Increase
       #
       # @see Increase::Models::Entity#status
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The entity is active.
         ACTIVE = :active
@@ -940,7 +938,7 @@ module Increase
       #
       # @see Increase::Models::Entity#structure
       module Structure
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # A corporation.
         CORPORATION = :corporation
@@ -965,7 +963,7 @@ module Increase
       end
 
       # @see Increase::Models::Entity#third_party_verification
-      class ThirdPartyVerification < Increase::Internal::Type::BaseModel
+      class ThirdPartyVerification < Increase::BaseModel
         # @!attribute reference
         #   The reference identifier for the third party verification.
         #
@@ -980,20 +978,20 @@ module Increase
 
         # @!parse
         #   # A reference to data stored in a third-party verification service. Your
-        #   # integration may or may not use this field.
+        #   #   integration may or may not use this field.
         #   #
         #   # @param reference [String]
         #   # @param vendor [Symbol, Increase::Models::Entity::ThirdPartyVerification::Vendor]
         #   #
         #   def initialize(reference:, vendor:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # The vendor that was used to perform the verification.
         #
         # @see Increase::Models::Entity::ThirdPartyVerification#vendor
         module Vendor
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # Alloy. See https://alloy.com for more information.
           ALLOY = :alloy
@@ -1010,7 +1008,7 @@ module Increase
       end
 
       # @see Increase::Models::Entity#trust
-      class Trust < Increase::Internal::Type::BaseModel
+      class Trust < Increase::BaseModel
         # @!attribute address
         #   The trust's address.
         #
@@ -1031,7 +1029,7 @@ module Increase
 
         # @!attribute formation_state
         #   The two-letter United States Postal Service (USPS) abbreviation for the state in
-        #   which the trust was formed.
+        #     which the trust was formed.
         #
         #   @return [String, nil]
         required :formation_state, String, nil?: true
@@ -1058,7 +1056,7 @@ module Increase
         #   The trustees of the trust.
         #
         #   @return [Array<Increase::Models::Entity::Trust::Trustee>]
-        required :trustees, -> { Increase::Internal::Type::ArrayOf[Increase::Models::Entity::Trust::Trustee] }
+        required :trustees, -> { Increase::ArrayOf[Increase::Models::Entity::Trust::Trustee] }
 
         # @!parse
         #   # Details of the trust entity. Will be present if `structure` is equal to `trust`.
@@ -1086,10 +1084,10 @@ module Increase
         #     super
         #   end
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @see Increase::Models::Entity::Trust#address
-        class Address < Increase::Internal::Type::BaseModel
+        class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the address.
           #
@@ -1110,7 +1108,7 @@ module Increase
 
           # @!attribute state
           #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   the address.
+          #     the address.
           #
           #   @return [String]
           required :state, String
@@ -1132,14 +1130,14 @@ module Increase
           #   #
           #   def initialize(city:, line1:, line2:, state:, zip:, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
         # Whether the trust is `revocable` or `irrevocable`.
         #
         # @see Increase::Models::Entity::Trust#category
         module Category
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # The trust is revocable by the grantor.
           REVOCABLE = :revocable
@@ -1155,7 +1153,7 @@ module Increase
         end
 
         # @see Increase::Models::Entity::Trust#grantor
-        class Grantor < Increase::Internal::Type::BaseModel
+        class Grantor < Increase::BaseModel
           # @!attribute address
           #   The person's address.
           #
@@ -1190,10 +1188,10 @@ module Increase
           #   #
           #   def initialize(address:, date_of_birth:, identification:, name:, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
 
           # @see Increase::Models::Entity::Trust::Grantor#address
-          class Address < Increase::Internal::Type::BaseModel
+          class Address < Increase::BaseModel
             # @!attribute city
             #   The city of the address.
             #
@@ -1214,7 +1212,7 @@ module Increase
 
             # @!attribute state
             #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-            #   the address.
+            #     the address.
             #
             #   @return [String]
             required :state, String
@@ -1236,11 +1234,11 @@ module Increase
             #   #
             #   def initialize(city:, line1:, line2:, state:, zip:, **) = super
 
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
           # @see Increase::Models::Entity::Trust::Grantor#identification
-          class Identification < Increase::Internal::Type::BaseModel
+          class Identification < Increase::BaseModel
             # @!attribute method_
             #   A method that can be used to verify the individual's identity.
             #
@@ -1251,7 +1249,7 @@ module Increase
 
             # @!attribute number_last4
             #   The last 4 digits of the identification number that can be used to verify the
-            #   individual's identity.
+            #     individual's identity.
             #
             #   @return [String]
             required :number_last4, String
@@ -1264,13 +1262,13 @@ module Increase
             #   #
             #   def initialize(method_:, number_last4:, **) = super
 
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # def initialize: (Hash | Increase::BaseModel) -> void
 
             # A method that can be used to verify the individual's identity.
             #
             # @see Increase::Models::Entity::Trust::Grantor::Identification#method_
             module Method
-              extend Increase::Internal::Type::Enum
+              extend Increase::Enum
 
               # A social security number.
               SOCIAL_SECURITY_NUMBER = :social_security_number
@@ -1296,10 +1294,10 @@ module Increase
           end
         end
 
-        class Trustee < Increase::Internal::Type::BaseModel
+        class Trustee < Increase::BaseModel
           # @!attribute individual
           #   The individual trustee of the trust. Will be present if the trustee's
-          #   `structure` is equal to `individual`.
+          #     `structure` is equal to `individual`.
           #
           #   @return [Increase::Models::Entity::Trust::Trustee::Individual, nil]
           required :individual, -> { Increase::Models::Entity::Trust::Trustee::Individual }, nil?: true
@@ -1316,10 +1314,10 @@ module Increase
           #   #
           #   def initialize(individual:, structure:, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
 
           # @see Increase::Models::Entity::Trust::Trustee#individual
-          class Individual < Increase::Internal::Type::BaseModel
+          class Individual < Increase::BaseModel
             # @!attribute address
             #   The person's address.
             #
@@ -1346,7 +1344,7 @@ module Increase
 
             # @!parse
             #   # The individual trustee of the trust. Will be present if the trustee's
-            #   # `structure` is equal to `individual`.
+            #   #   `structure` is equal to `individual`.
             #   #
             #   # @param address [Increase::Models::Entity::Trust::Trustee::Individual::Address]
             #   # @param date_of_birth [Date]
@@ -1355,10 +1353,10 @@ module Increase
             #   #
             #   def initialize(address:, date_of_birth:, identification:, name:, **) = super
 
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # def initialize: (Hash | Increase::BaseModel) -> void
 
             # @see Increase::Models::Entity::Trust::Trustee::Individual#address
-            class Address < Increase::Internal::Type::BaseModel
+            class Address < Increase::BaseModel
               # @!attribute city
               #   The city of the address.
               #
@@ -1379,7 +1377,7 @@ module Increase
 
               # @!attribute state
               #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-              #   the address.
+              #     the address.
               #
               #   @return [String]
               required :state, String
@@ -1401,11 +1399,11 @@ module Increase
               #   #
               #   def initialize(city:, line1:, line2:, state:, zip:, **) = super
 
-              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+              # def initialize: (Hash | Increase::BaseModel) -> void
             end
 
             # @see Increase::Models::Entity::Trust::Trustee::Individual#identification
-            class Identification < Increase::Internal::Type::BaseModel
+            class Identification < Increase::BaseModel
               # @!attribute method_
               #   A method that can be used to verify the individual's identity.
               #
@@ -1416,7 +1414,7 @@ module Increase
 
               # @!attribute number_last4
               #   The last 4 digits of the identification number that can be used to verify the
-              #   individual's identity.
+              #     individual's identity.
               #
               #   @return [String]
               required :number_last4, String
@@ -1429,13 +1427,13 @@ module Increase
               #   #
               #   def initialize(method_:, number_last4:, **) = super
 
-              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+              # def initialize: (Hash | Increase::BaseModel) -> void
 
               # A method that can be used to verify the individual's identity.
               #
               # @see Increase::Models::Entity::Trust::Trustee::Individual::Identification#method_
               module Method
-                extend Increase::Internal::Type::Enum
+                extend Increase::Enum
 
                 # A social security number.
                 SOCIAL_SECURITY_NUMBER = :social_security_number
@@ -1465,7 +1463,7 @@ module Increase
           #
           # @see Increase::Models::Entity::Trust::Trustee#structure
           module Structure
-            extend Increase::Internal::Type::Enum
+            extend Increase::Enum
 
             # The trustee is an individual.
             INDIVIDUAL = :individual
@@ -1480,11 +1478,11 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `entity`.
+      #   `entity`.
       #
       # @see Increase::Models::Entity#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         ENTITY = :entity
 

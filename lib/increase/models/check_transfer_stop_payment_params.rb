@@ -3,10 +3,10 @@
 module Increase
   module Models
     # @see Increase::Resources::CheckTransfers#stop_payment
-    class CheckTransferStopPaymentParams < Increase::Internal::Type::BaseModel
+    class CheckTransferStopPaymentParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute [r] reason
       #   The reason why this transfer should be stopped.
@@ -24,11 +24,11 @@ module Increase
       #   #
       #   def initialize(reason: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # The reason why this transfer should be stopped.
       module Reason
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The check could not be delivered.
         MAIL_DELIVERY_FAILED = :mail_delivery_failed

@@ -4,17 +4,17 @@ module Increase
   module Models
     module Simulations
       # @see Increase::Resources::Simulations::ACHTransfers#settle
-      class ACHTransferSettleParams < Increase::Internal::Type::BaseModel
+      class ACHTransferSettleParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+        #   extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # @!parse
         #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
         #   #
         #   def initialize(request_options: {}, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
     end
   end

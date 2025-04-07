@@ -8,11 +8,11 @@ module Increase
         idempotency_key: String,
         limit: Integer
       }
-      & Increase::Internal::Type::request_parameters
+      & Increase::request_parameters
 
-    class LockboxListParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class LockboxListParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       attr_reader account_id: String?
 
@@ -50,7 +50,7 @@ module Increase
       type created_at =
         { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
 
-      class CreatedAt < Increase::Internal::Type::BaseModel
+      class CreatedAt < Increase::BaseModel
         attr_reader after: Time?
 
         def after=: (Time) -> Time

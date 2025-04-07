@@ -3,12 +3,12 @@
 module Increase
   module Models
     module Simulations
-      class CardFuelConfirmationCreateParams < Increase::Internal::Type::BaseModel
-        extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+      class CardFuelConfirmationCreateParams < Increase::BaseModel
+        extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # The amount of the fuel_confirmation in minor units in the card authorization's
-        # currency.
+        #   currency.
         sig { returns(Integer) }
         attr_accessor :amount
 
@@ -20,11 +20,12 @@ module Increase
           params(
             amount: Integer,
             card_payment_id: String,
-            request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
-        def self.new(amount:, card_payment_id:, request_options: {}); end
+        def self.new(amount:, card_payment_id:, request_options: {})
+        end
 
         sig do
           override.returns(
@@ -35,7 +36,8 @@ module Increase
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

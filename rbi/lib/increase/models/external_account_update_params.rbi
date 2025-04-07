@@ -2,9 +2,9 @@
 
 module Increase
   module Models
-    class ExternalAccountUpdateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class ExternalAccountUpdateParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # The type of entity that owns the External Account.
       sig { returns(T.nilable(Increase::Models::ExternalAccountUpdateParams::AccountHolder::OrSymbol)) }
@@ -40,11 +40,12 @@ module Increase
           description: String,
           funding: Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol,
           status: Increase::Models::ExternalAccountUpdateParams::Status::OrSymbol,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
-      def self.new(account_holder: nil, description: nil, funding: nil, status: nil, request_options: {}); end
+      def self.new(account_holder: nil, description: nil, funding: nil, status: nil, request_options: {})
+      end
 
       sig do
         override
@@ -58,11 +59,12 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # The type of entity that owns the External Account.
       module AccountHolder
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountUpdateParams::AccountHolder) }
@@ -77,12 +79,13 @@ module Increase
           T.let(:individual, Increase::Models::ExternalAccountUpdateParams::AccountHolder::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ExternalAccountUpdateParams::AccountHolder::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # The funding type of the External Account.
       module Funding
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountUpdateParams::Funding) }
         OrSymbol =
@@ -98,12 +101,13 @@ module Increase
         OTHER = T.let(:other, Increase::Models::ExternalAccountUpdateParams::Funding::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ExternalAccountUpdateParams::Funding::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # The status of the External Account.
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountUpdateParams::Status) }
         OrSymbol =
@@ -116,7 +120,8 @@ module Increase
         ARCHIVED = T.let(:archived, Increase::Models::ExternalAccountUpdateParams::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ExternalAccountUpdateParams::Status::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

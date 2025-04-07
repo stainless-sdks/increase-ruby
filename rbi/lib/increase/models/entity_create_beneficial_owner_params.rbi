@@ -2,18 +2,18 @@
 
 module Increase
   module Models
-    class EntityCreateBeneficialOwnerParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class EntityCreateBeneficialOwnerParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # The identifying details of anyone controlling or owning 25% or more of the
-      # corporation.
+      #   corporation.
       sig { returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner) }
       attr_reader :beneficial_owner
 
       sig do
         params(
-          beneficial_owner: T.any(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner, Increase::Internal::AnyHash)
+          beneficial_owner: T.any(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner, Increase::Util::AnyHash)
         )
           .void
       end
@@ -21,12 +21,13 @@ module Increase
 
       sig do
         params(
-          beneficial_owner: T.any(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner, Increase::Internal::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          beneficial_owner: T.any(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner, Increase::Util::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
-      def self.new(beneficial_owner:, request_options: {}); end
+      def self.new(beneficial_owner:, request_options: {})
+      end
 
       sig do
         override
@@ -37,9 +38,10 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
-      class BeneficialOwner < Increase::Internal::Type::BaseModel
+      class BeneficialOwner < Increase::BaseModel
         # Personal details for the beneficial owner.
         sig { returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual) }
         attr_reader :individual
@@ -48,7 +50,7 @@ module Increase
           params(
             individual: T.any(
               Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual,
-              Increase::Internal::AnyHash
+              Increase::Util::AnyHash
             )
           )
             .void
@@ -56,8 +58,8 @@ module Increase
         attr_writer :individual
 
         # Why this person is considered a beneficial owner of the entity. At least one
-        # option is required, if a person is both a control person and owner, submit an
-        # array containing both.
+        #   option is required, if a person is both a control person and owner, submit an
+        #   array containing both.
         sig { returns(T::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol]) }
         attr_accessor :prongs
 
@@ -69,19 +71,20 @@ module Increase
         attr_writer :company_title
 
         # The identifying details of anyone controlling or owning 25% or more of the
-        # corporation.
+        #   corporation.
         sig do
           params(
             individual: T.any(
               Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual,
-              Increase::Internal::AnyHash
+              Increase::Util::AnyHash
             ),
             prongs: T::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol],
             company_title: String
           )
             .returns(T.attached_class)
         end
-        def self.new(individual:, prongs:, company_title: nil); end
+        def self.new(individual:, prongs:, company_title: nil)
+        end
 
         sig do
           override
@@ -93,11 +96,12 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
-        class Individual < Increase::Internal::Type::BaseModel
+        class Individual < Increase::BaseModel
           # The individual's physical address. Mail receiving locations like PO Boxes and
-          # PMB's are disallowed.
+          #   PMB's are disallowed.
           sig { returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address) }
           attr_reader :address
 
@@ -105,7 +109,7 @@ module Increase
             params(
               address: T.any(
                 Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address,
-                Increase::Internal::AnyHash
+                Increase::Util::AnyHash
               )
             )
               .void
@@ -124,7 +128,7 @@ module Increase
             params(
               identification: T.any(
                 Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification,
-                Increase::Internal::AnyHash
+                Increase::Util::AnyHash
               )
             )
               .void
@@ -136,9 +140,9 @@ module Increase
           attr_accessor :name
 
           # The identification method for an individual can only be a passport, driver's
-          # license, or other document if you've confirmed the individual does not have a US
-          # tax id (either a Social Security Number or Individual Taxpayer Identification
-          # Number).
+          #   license, or other document if you've confirmed the individual does not have a US
+          #   tax id (either a Social Security Number or Individual Taxpayer Identification
+          #   Number).
           sig { returns(T.nilable(T::Boolean)) }
           attr_reader :confirmed_no_us_tax_id
 
@@ -150,19 +154,20 @@ module Increase
             params(
               address: T.any(
                 Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address,
-                Increase::Internal::AnyHash
+                Increase::Util::AnyHash
               ),
               date_of_birth: Date,
               identification: T.any(
                 Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification,
-                Increase::Internal::AnyHash
+                Increase::Util::AnyHash
               ),
               name: String,
               confirmed_no_us_tax_id: T::Boolean
             )
               .returns(T.attached_class)
           end
-          def self.new(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil); end
+          def self.new(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
+          end
 
           sig do
             override
@@ -176,9 +181,10 @@ module Increase
                 }
               )
           end
-          def to_hash; end
+          def to_hash
+          end
 
-          class Address < Increase::Internal::Type::BaseModel
+          class Address < Increase::BaseModel
             # The two-letter ISO 3166-1 alpha-2 code for the country of the address.
             sig { returns(String) }
             attr_accessor :country
@@ -188,7 +194,7 @@ module Increase
             attr_accessor :line1
 
             # The city, district, town, or village of the address. Required in certain
-            # countries.
+            #   countries.
             sig { returns(T.nilable(String)) }
             attr_reader :city
 
@@ -203,7 +209,7 @@ module Increase
             attr_writer :line2
 
             # The two-letter United States Postal Service (USPS) abbreviation for the US
-            # state, province, or region of the address. Required in certain countries.
+            #   state, province, or region of the address. Required in certain countries.
             sig { returns(T.nilable(String)) }
             attr_reader :state
 
@@ -218,12 +224,13 @@ module Increase
             attr_writer :zip
 
             # The individual's physical address. Mail receiving locations like PO Boxes and
-            # PMB's are disallowed.
+            #   PMB's are disallowed.
             sig do
               params(country: String, line1: String, city: String, line2: String, state: String, zip: String)
                 .returns(T.attached_class)
             end
-            def self.new(country:, line1:, city: nil, line2: nil, state: nil, zip: nil); end
+            def self.new(country:, line1:, city: nil, line2: nil, state: nil, zip: nil)
+            end
 
             sig do
               override.returns(
@@ -237,10 +244,11 @@ module Increase
                 }
               )
             end
-            def to_hash; end
+            def to_hash
+            end
           end
 
-          class Identification < Increase::Internal::Type::BaseModel
+          class Identification < Increase::BaseModel
             # A method that can be used to verify the individual's identity.
             sig do
               returns(
@@ -250,12 +258,12 @@ module Increase
             attr_accessor :method_
 
             # An identification number that can be used to verify the individual's identity,
-            # such as a social security number.
+            #   such as a social security number.
             sig { returns(String) }
             attr_accessor :number
 
             # Information about the United States driver's license used for identification.
-            # Required if `method` is equal to `drivers_license`.
+            #   Required if `method` is equal to `drivers_license`.
             sig do
               returns(
                 T.nilable(
@@ -269,7 +277,7 @@ module Increase
               params(
                 drivers_license: T.any(
                   Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense,
-                  Increase::Internal::AnyHash
+                  Increase::Util::AnyHash
                 )
               )
                 .void
@@ -277,7 +285,7 @@ module Increase
             attr_writer :drivers_license
 
             # Information about the identification document provided. Required if `method` is
-            # equal to `other`.
+            #   equal to `other`.
             sig do
               returns(
                 T.nilable(
@@ -291,7 +299,7 @@ module Increase
               params(
                 other: T.any(
                   Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other,
-                  Increase::Internal::AnyHash
+                  Increase::Util::AnyHash
                 )
               )
                 .void
@@ -299,7 +307,7 @@ module Increase
             attr_writer :other
 
             # Information about the passport used for identification. Required if `method` is
-            # equal to `passport`.
+            #   equal to `passport`.
             sig do
               returns(
                 T.nilable(
@@ -313,7 +321,7 @@ module Increase
               params(
                 passport: T.any(
                   Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport,
-                  Increase::Internal::AnyHash
+                  Increase::Util::AnyHash
                 )
               )
                 .void
@@ -327,20 +335,21 @@ module Increase
                 number: String,
                 drivers_license: T.any(
                   Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense,
-                  Increase::Internal::AnyHash
+                  Increase::Util::AnyHash
                 ),
                 other: T.any(
                   Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other,
-                  Increase::Internal::AnyHash
+                  Increase::Util::AnyHash
                 ),
                 passport: T.any(
                   Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport,
-                  Increase::Internal::AnyHash
+                  Increase::Util::AnyHash
                 )
               )
                 .returns(T.attached_class)
             end
-            def self.new(method_:, number:, drivers_license: nil, other: nil, passport: nil); end
+            def self.new(method_:, number:, drivers_license: nil, other: nil, passport: nil)
+            end
 
             sig do
               override
@@ -354,11 +363,12 @@ module Increase
                   }
                 )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             # A method that can be used to verify the individual's identity.
             module Method
-              extend Increase::Internal::Type::Enum
+              extend Increase::Enum
 
               TaggedSymbol =
                 T.type_alias do
@@ -412,14 +422,15 @@ module Increase
                 override
                   .returns(
                     T::Array[
-                      Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
+                    Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                     ]
                   )
               end
-              def self.values; end
+              def self.values
+              end
             end
 
-            class DriversLicense < Increase::Internal::Type::BaseModel
+            class DriversLicense < Increase::BaseModel
               # The driver's license's expiration date in YYYY-MM-DD format.
               sig { returns(Date) }
               attr_accessor :expiration_date
@@ -440,12 +451,13 @@ module Increase
               attr_writer :back_file_id
 
               # Information about the United States driver's license used for identification.
-              # Required if `method` is equal to `drivers_license`.
+              #   Required if `method` is equal to `drivers_license`.
               sig do
                 params(expiration_date: Date, file_id: String, state: String, back_file_id: String)
                   .returns(T.attached_class)
               end
-              def self.new(expiration_date:, file_id:, state:, back_file_id: nil); end
+              def self.new(expiration_date:, file_id:, state:, back_file_id: nil)
+              end
 
               sig do
                 override.returns(
@@ -457,12 +469,13 @@ module Increase
                   }
                 )
               end
-              def to_hash; end
+              def to_hash
+              end
             end
 
-            class Other < Increase::Internal::Type::BaseModel
+            class Other < Increase::BaseModel
               # The two-character ISO 3166-1 code representing the country that issued the
-              # document.
+              #   document.
               sig { returns(String) }
               attr_accessor :country
 
@@ -475,7 +488,7 @@ module Increase
               attr_accessor :file_id
 
               # The identifier of the File containing the back of the document. Not every
-              # document has a reverse side.
+              #   document has a reverse side.
               sig { returns(T.nilable(String)) }
               attr_reader :back_file_id
 
@@ -490,7 +503,7 @@ module Increase
               attr_writer :expiration_date
 
               # Information about the identification document provided. Required if `method` is
-              # equal to `other`.
+              #   equal to `other`.
               sig do
                 params(
                   country: String,
@@ -501,7 +514,8 @@ module Increase
                 )
                   .returns(T.attached_class)
               end
-              def self.new(country:, description:, file_id:, back_file_id: nil, expiration_date: nil); end
+              def self.new(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
+              end
 
               sig do
                 override
@@ -515,10 +529,11 @@ module Increase
                     }
                   )
               end
-              def to_hash; end
+              def to_hash
+              end
             end
 
-            class Passport < Increase::Internal::Type::BaseModel
+            class Passport < Increase::BaseModel
               # The country that issued the passport.
               sig { returns(String) }
               attr_accessor :country
@@ -532,20 +547,22 @@ module Increase
               attr_accessor :file_id
 
               # Information about the passport used for identification. Required if `method` is
-              # equal to `passport`.
+              #   equal to `passport`.
               sig do
                 params(country: String, expiration_date: Date, file_id: String).returns(T.attached_class)
               end
-              def self.new(country:, expiration_date:, file_id:); end
+              def self.new(country:, expiration_date:, file_id:)
+              end
 
               sig { override.returns({country: String, expiration_date: Date, file_id: String}) }
-              def to_hash; end
+              def to_hash
+              end
             end
           end
         end
 
         module Prong
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong) }
@@ -575,7 +592,8 @@ module Increase
                 T::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::TaggedSymbol]
               )
           end
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

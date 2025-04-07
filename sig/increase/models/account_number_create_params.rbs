@@ -7,11 +7,11 @@ module Increase
         inbound_ach: Increase::Models::AccountNumberCreateParams::InboundACH,
         inbound_checks: Increase::Models::AccountNumberCreateParams::InboundChecks
       }
-      & Increase::Internal::Type::request_parameters
+      & Increase::request_parameters
 
-    class AccountNumberCreateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class AccountNumberCreateParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       attr_accessor account_id: String
 
@@ -44,7 +44,7 @@ module Increase
           debit_status: Increase::Models::AccountNumberCreateParams::InboundACH::debit_status
         }
 
-      class InboundACH < Increase::Internal::Type::BaseModel
+      class InboundACH < Increase::BaseModel
         attr_accessor debit_status: Increase::Models::AccountNumberCreateParams::InboundACH::debit_status
 
         def initialize: (
@@ -56,7 +56,7 @@ module Increase
         type debit_status = :allowed | :blocked
 
         module DebitStatus
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # ACH Debits are allowed.
           ALLOWED: :allowed
@@ -73,7 +73,7 @@ module Increase
           status: Increase::Models::AccountNumberCreateParams::InboundChecks::status
         }
 
-      class InboundChecks < Increase::Internal::Type::BaseModel
+      class InboundChecks < Increase::BaseModel
         attr_accessor status: Increase::Models::AccountNumberCreateParams::InboundChecks::status
 
         def initialize: (
@@ -85,7 +85,7 @@ module Increase
         type status = :allowed | :check_transfers_only
 
         module Status
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # Checks with this Account Number will be processed even if they are not associated with a Check Transfer.
           ALLOWED: :allowed

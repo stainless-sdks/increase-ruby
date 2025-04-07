@@ -3,10 +3,10 @@
 module Increase
   module Models
     # @see Increase::Resources::PhysicalCards#update
-    class PhysicalCardUpdateParams < Increase::Internal::Type::BaseModel
+    class PhysicalCardUpdateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute status
       #   The status to update the Physical Card to.
@@ -20,11 +20,11 @@ module Increase
       #   #
       #   def initialize(status:, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # The status to update the Physical Card to.
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The physical card is active.
         ACTIVE = :active

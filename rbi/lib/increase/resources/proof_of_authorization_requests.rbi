@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           proof_of_authorization_request_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::ProofOfAuthorizationRequest)
       end
@@ -15,29 +15,34 @@ module Increase
         # The identifier of the Proof of Authorization Request.
         proof_of_authorization_request_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # List Proof of Authorization Requests
       sig do
         params(
-          created_at: T.any(Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt, Increase::Internal::AnyHash),
+          created_at: T.any(Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
-          .returns(Increase::Internal::Page[Increase::Models::ProofOfAuthorizationRequest])
+          .returns(Increase::Page[Increase::Models::ProofOfAuthorizationRequest])
       end
       def list(
         created_at: nil,
         # Return the page of entries after this one.
         cursor: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        #   objects.
         limit: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

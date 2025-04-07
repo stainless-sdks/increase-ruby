@@ -3,10 +3,10 @@
 module Increase
   module Models
     # @see Increase::Resources::EventSubscriptions#create
-    class EventSubscriptionCreateParams < Increase::Internal::Type::BaseModel
+    class EventSubscriptionCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute url
       #   The URL you'd like us to send webhooks to.
@@ -16,7 +16,7 @@ module Increase
 
       # @!attribute [r] oauth_connection_id
       #   If specified, this subscription will only receive webhooks for Events associated
-      #   with the specified OAuth Connection.
+      #     with the specified OAuth Connection.
       #
       #   @return [String, nil]
       optional :oauth_connection_id, String
@@ -27,7 +27,7 @@ module Increase
 
       # @!attribute [r] selected_event_category
       #   If specified, this subscription will only receive webhooks for Events with the
-      #   specified `category`.
+      #     specified `category`.
       #
       #   @return [Symbol, Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory, nil]
       optional :selected_event_category,
@@ -39,7 +39,7 @@ module Increase
 
       # @!attribute [r] shared_secret
       #   The key that will be used to sign webhooks. If no value is passed, a random
-      #   string will be used as default.
+      #     string will be used as default.
       #
       #   @return [String, nil]
       optional :shared_secret, String
@@ -57,12 +57,12 @@ module Increase
       #   #
       #   def initialize(url:, oauth_connection_id: nil, selected_event_category: nil, shared_secret: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # If specified, this subscription will only receive webhooks for Events with the
-      # specified `category`.
+      #   specified `category`.
       module SelectedEventCategory
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # Occurs whenever an Account is created.
         ACCOUNT_CREATED = :"account.created"

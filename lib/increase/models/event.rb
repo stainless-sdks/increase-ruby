@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::Events#retrieve
-    class Event < Increase::Internal::Type::BaseModel
+    class Event < Increase::BaseModel
       # @!attribute id
       #   The Event identifier.
       #
@@ -24,7 +24,7 @@ module Increase
 
       # @!attribute category
       #   The category of the Event. We may add additional possible values for this enum
-      #   over time; your application should be able to handle such additions gracefully.
+      #     over time; your application should be able to handle such additions gracefully.
       #
       #   @return [Symbol, Increase::Models::Event::Category]
       required :category, enum: -> { Increase::Models::Event::Category }
@@ -37,16 +37,16 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #   `event`.
+      #     `event`.
       #
       #   @return [Symbol, Increase::Models::Event::Type]
       required :type, enum: -> { Increase::Models::Event::Type }
 
       # @!parse
       #   # Events are records of things that happened to objects at Increase. Events are
-      #   # accessible via the List Events endpoint and can be delivered to your application
-      #   # via webhooks. For more information, see our
-      #   # [webhooks guide](https://increase.com/documentation/webhooks).
+      #   #   accessible via the List Events endpoint and can be delivered to your application
+      #   #   via webhooks. For more information, see our
+      #   #   [webhooks guide](https://increase.com/documentation/webhooks).
       #   #
       #   # @param id [String]
       #   # @param associated_object_id [String]
@@ -57,14 +57,14 @@ module Increase
       #   #
       #   def initialize(id:, associated_object_id:, associated_object_type:, category:, created_at:, type:, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # The category of the Event. We may add additional possible values for this enum
-      # over time; your application should be able to handle such additions gracefully.
+      #   over time; your application should be able to handle such additions gracefully.
       #
       # @see Increase::Models::Event#category
       module Category
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # Occurs whenever an Account is created.
         ACCOUNT_CREATED = :"account.created"
@@ -340,11 +340,11 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `event`.
+      #   `event`.
       #
       # @see Increase::Models::Event#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         EVENT = :event
 

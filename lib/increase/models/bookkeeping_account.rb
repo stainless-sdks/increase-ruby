@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::BookkeepingAccounts#create
-    class BookkeepingAccount < Increase::Internal::Type::BaseModel
+    class BookkeepingAccount < Increase::BaseModel
       # @!attribute id
       #   The account identifier.
       #
@@ -32,8 +32,8 @@ module Increase
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #     Increase and is used to ensure that a request is only processed once. Learn more
+      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -46,15 +46,15 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #   `bookkeeping_account`.
+      #     `bookkeeping_account`.
       #
       #   @return [Symbol, Increase::Models::BookkeepingAccount::Type]
       required :type, enum: -> { Increase::Models::BookkeepingAccount::Type }
 
       # @!parse
       #   # Accounts are T-accounts. They can store accounting entries. Your compliance
-      #   # setup might require annotating money movements using this API. Learn more in our
-      #   # [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
+      #   #   setup might require annotating money movements using this API. Learn more in our
+      #   #   [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
       #   #
       #   # @param id [String]
       #   # @param account_id [String, nil]
@@ -66,13 +66,13 @@ module Increase
       #   #
       #   def initialize(id:, account_id:, compliance_category:, entity_id:, idempotency_key:, name:, type:, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # The compliance category of the account.
       #
       # @see Increase::Models::BookkeepingAccount#compliance_category
       module ComplianceCategory
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # A cash in an commingled Increase Account.
         COMMINGLED_CASH = :commingled_cash
@@ -88,11 +88,11 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `bookkeeping_account`.
+      #   `bookkeeping_account`.
       #
       # @see Increase::Models::BookkeepingAccount#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         BOOKKEEPING_ACCOUNT = :bookkeeping_account
 

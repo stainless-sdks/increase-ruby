@@ -2,9 +2,9 @@
 
 module Increase
   module Models
-    class CheckTransferStopPaymentParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class CheckTransferStopPaymentParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # The reason why this transfer should be stopped.
       sig { returns(T.nilable(Increase::Models::CheckTransferStopPaymentParams::Reason::OrSymbol)) }
@@ -16,11 +16,12 @@ module Increase
       sig do
         params(
           reason: Increase::Models::CheckTransferStopPaymentParams::Reason::OrSymbol,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
-      def self.new(reason: nil, request_options: {}); end
+      def self.new(reason: nil, request_options: {})
+      end
 
       sig do
         override
@@ -31,11 +32,12 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # The reason why this transfer should be stopped.
       module Reason
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason) }
         OrSymbol =
@@ -53,7 +55,8 @@ module Increase
         UNKNOWN = T.let(:unknown, Increase::Models::CheckTransferStopPaymentParams::Reason::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::CheckTransferStopPaymentParams::Reason::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

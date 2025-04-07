@@ -2,9 +2,9 @@
 
 module Increase
   module Models
-    class BookkeepingBalanceLookup < Increase::Internal::Type::BaseModel
+    class BookkeepingBalanceLookup < Increase::BaseModel
       # The Bookkeeping Account's current balance, representing the sum of all
-      # Bookkeeping Entries on the Bookkeeping Account.
+      #   Bookkeeping Entries on the Bookkeeping Account.
       sig { returns(Integer) }
       attr_accessor :balance
 
@@ -13,12 +13,12 @@ module Increase
       attr_accessor :bookkeeping_account_id
 
       # A constant representing the object's type. For this resource it will always be
-      # `bookkeeping_balance_lookup`.
+      #   `bookkeeping_balance_lookup`.
       sig { returns(Increase::Models::BookkeepingBalanceLookup::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Represents a request to lookup the balance of an Bookkeeping Account at a given
-      # point in time.
+      #   point in time.
       sig do
         params(
           balance: Integer,
@@ -27,7 +27,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(balance:, bookkeeping_account_id:, type:); end
+      def self.new(balance:, bookkeeping_account_id:, type:)
+      end
 
       sig do
         override
@@ -39,12 +40,13 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # A constant representing the object's type. For this resource it will always be
-      # `bookkeeping_balance_lookup`.
+      #   `bookkeeping_balance_lookup`.
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::BookkeepingBalanceLookup::Type) }
         OrSymbol =
@@ -54,7 +56,8 @@ module Increase
           T.let(:bookkeeping_balance_lookup, Increase::Models::BookkeepingBalanceLookup::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::BookkeepingBalanceLookup::Type::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

@@ -2,9 +2,9 @@
 
 module Increase
   module Models
-    class SupplementalDocumentCreateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class SupplementalDocumentCreateParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # The identifier of the Entity to associate with the supplemental document.
       sig { returns(String) }
@@ -18,16 +18,18 @@ module Increase
         params(
           entity_id: String,
           file_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
-      def self.new(entity_id:, file_id:, request_options: {}); end
+      def self.new(entity_id:, file_id:, request_options: {})
+      end
 
       sig do
         override.returns({entity_id: String, file_id: String, request_options: Increase::RequestOptions})
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

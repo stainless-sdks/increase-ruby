@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::WireDrawdownRequests#create
-    class WireDrawdownRequest < Increase::Internal::Type::BaseModel
+    class WireDrawdownRequest < Increase::BaseModel
       # @!attribute id
       #   The Wire drawdown request identifier.
       #
@@ -12,7 +12,7 @@ module Increase
 
       # @!attribute account_number_id
       #   The Account Number to which the recipient of this request is being requested to
-      #   send funds.
+      #     send funds.
       #
       #   @return [String]
       required :account_number_id, String
@@ -25,29 +25,29 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the wire drawdown request was created.
+      #     the wire drawdown request was created.
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
-      #   requested. Will always be "USD".
+      #     requested. Will always be "USD".
       #
       #   @return [String]
       required :currency, String
 
       # @!attribute fulfillment_inbound_wire_transfer_id
       #   If the recipient fulfills the drawdown request by sending funds, then this will
-      #   be the identifier of the corresponding Transaction.
+      #     be the identifier of the corresponding Transaction.
       #
       #   @return [String, nil]
       required :fulfillment_inbound_wire_transfer_id, String, nil?: true
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #     Increase and is used to ensure that a request is only processed once. Learn more
+      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -126,22 +126,22 @@ module Increase
 
       # @!attribute submission
       #   After the drawdown request is submitted to Fedwire, this will contain
-      #   supplemental details.
+      #     supplemental details.
       #
       #   @return [Increase::Models::WireDrawdownRequest::Submission, nil]
       required :submission, -> { Increase::Models::WireDrawdownRequest::Submission }, nil?: true
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #   `wire_drawdown_request`.
+      #     `wire_drawdown_request`.
       #
       #   @return [Symbol, Increase::Models::WireDrawdownRequest::Type]
       required :type, enum: -> { Increase::Models::WireDrawdownRequest::Type }
 
       # @!parse
       #   # Wire drawdown requests enable you to request that someone else send you a wire.
-      #   # This feature is in beta; reach out to
-      #   # [support@increase.com](mailto:support@increase.com) to learn more.
+      #   #   This feature is in beta; reach out to
+      #   #   [support@increase.com](mailto:support@increase.com) to learn more.
       #   #
       #   # @param id [String]
       #   # @param account_number_id [String]
@@ -192,13 +192,13 @@ module Increase
       #     super
       #   end
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # The lifecycle status of the drawdown request.
       #
       # @see Increase::Models::WireDrawdownRequest#status
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The drawdown request is queued to be submitted to Fedwire.
         PENDING_SUBMISSION = :pending_submission
@@ -220,31 +220,31 @@ module Increase
       end
 
       # @see Increase::Models::WireDrawdownRequest#submission
-      class Submission < Increase::Internal::Type::BaseModel
+      class Submission < Increase::BaseModel
         # @!attribute input_message_accountability_data
         #   The input message accountability data (IMAD) uniquely identifying the submission
-        #   with Fedwire.
+        #     with Fedwire.
         #
         #   @return [String]
         required :input_message_accountability_data, String
 
         # @!parse
         #   # After the drawdown request is submitted to Fedwire, this will contain
-        #   # supplemental details.
+        #   #   supplemental details.
         #   #
         #   # @param input_message_accountability_data [String]
         #   #
         #   def initialize(input_message_accountability_data:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `wire_drawdown_request`.
+      #   `wire_drawdown_request`.
       #
       # @see Increase::Models::WireDrawdownRequest#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         WIRE_DRAWDOWN_REQUEST = :wire_drawdown_request
 

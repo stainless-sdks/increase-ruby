@@ -4,10 +4,10 @@ module Increase
   module Models
     module Simulations
       # @see Increase::Resources::Simulations::CardSettlements#create
-      class CardSettlementCreateParams < Increase::Internal::Type::BaseModel
+      class CardSettlementCreateParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+        #   extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # @!attribute card_id
         #   The identifier of the Card to create a settlement on.
@@ -17,14 +17,14 @@ module Increase
 
         # @!attribute pending_transaction_id
         #   The identifier of the Pending Transaction for the Card Authorization you wish to
-        #   settle.
+        #     settle.
         #
         #   @return [String]
         required :pending_transaction_id, String
 
         # @!attribute [r] amount
         #   The amount to be settled. This defaults to the amount of the Pending Transaction
-        #   being settled.
+        #     being settled.
         #
         #   @return [Integer, nil]
         optional :amount, Integer
@@ -41,7 +41,7 @@ module Increase
         #   #
         #   def initialize(card_id:, pending_transaction_id:, amount: nil, request_options: {}, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
     end
   end

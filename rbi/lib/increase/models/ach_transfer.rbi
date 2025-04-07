@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class ACHTransfer < Increase::Internal::Type::BaseModel
+    class ACHTransfer < Increase::BaseModel
       # The ACH transfer's identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -16,14 +16,14 @@ module Increase
       attr_accessor :account_number
 
       # After the transfer is acknowledged by FedACH, this will contain supplemental
-      # details. The Federal Reserve sends an acknowledgement message for each file that
-      # Increase submits.
+      #   details. The Federal Reserve sends an acknowledgement message for each file that
+      #   Increase submits.
       sig { returns(T.nilable(Increase::Models::ACHTransfer::Acknowledgement)) }
       attr_reader :acknowledgement
 
       sig do
         params(
-          acknowledgement: T.nilable(T.any(Increase::Models::ACHTransfer::Acknowledgement, Increase::Internal::AnyHash))
+          acknowledgement: T.nilable(T.any(Increase::Models::ACHTransfer::Acknowledgement, Increase::Util::AnyHash))
         )
           .void
       end
@@ -33,36 +33,31 @@ module Increase
       sig { returns(T.nilable(Increase::Models::ACHTransfer::Addenda)) }
       attr_reader :addenda
 
-      sig do
-        params(addenda: T.nilable(T.any(Increase::Models::ACHTransfer::Addenda, Increase::Internal::AnyHash))).void
-      end
+      sig { params(addenda: T.nilable(T.any(Increase::Models::ACHTransfer::Addenda, Increase::Util::AnyHash))).void }
       attr_writer :addenda
 
       # The transfer amount in USD cents. A positive amount indicates a credit transfer
-      # pushing funds to the receiving account. A negative amount indicates a debit
-      # transfer pulling funds from the receiving account.
+      #   pushing funds to the receiving account. A negative amount indicates a debit
+      #   transfer pulling funds from the receiving account.
       sig { returns(Integer) }
       attr_accessor :amount
 
       # If your account requires approvals for transfers and the transfer was approved,
-      # this will contain details of the approval.
+      #   this will contain details of the approval.
       sig { returns(T.nilable(Increase::Models::ACHTransfer::Approval)) }
       attr_reader :approval
 
-      sig do
-        params(approval: T.nilable(T.any(Increase::Models::ACHTransfer::Approval, Increase::Internal::AnyHash)))
-          .void
-      end
+      sig { params(approval: T.nilable(T.any(Increase::Models::ACHTransfer::Approval, Increase::Util::AnyHash))).void }
       attr_writer :approval
 
       # If your account requires approvals for transfers and the transfer was not
-      # approved, this will contain details of the cancellation.
+      #   approved, this will contain details of the cancellation.
       sig { returns(T.nilable(Increase::Models::ACHTransfer::Cancellation)) }
       attr_reader :cancellation
 
       sig do
         params(
-          cancellation: T.nilable(T.any(Increase::Models::ACHTransfer::Cancellation, Increase::Internal::AnyHash))
+          cancellation: T.nilable(T.any(Increase::Models::ACHTransfer::Cancellation, Increase::Util::AnyHash))
         )
           .void
       end
@@ -85,7 +80,7 @@ module Increase
       attr_accessor :company_name
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      # the transfer was created.
+      #   the transfer was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -94,20 +89,18 @@ module Increase
       attr_reader :created_by
 
       sig do
-        params(
-          created_by: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy, Increase::Internal::AnyHash))
-        )
+        params(created_by: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy, Increase::Util::AnyHash)))
           .void
       end
       attr_writer :created_by
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-      # currency. For ACH transfers this is always equal to `usd`.
+      #   currency. For ACH transfers this is always equal to `usd`.
       sig { returns(Increase::Models::ACHTransfer::Currency::TaggedSymbol) }
       attr_accessor :currency
 
       # The type of entity that owns the account to which the ACH Transfer is being
-      # sent.
+      #   sent.
       sig { returns(Increase::Models::ACHTransfer::DestinationAccountHolder::TaggedSymbol) }
       attr_accessor :destination_account_holder
 
@@ -120,19 +113,19 @@ module Increase
       attr_accessor :funding
 
       # The idempotency key you chose for this object. This value is unique across
-      # Increase and is used to ensure that a request is only processed once. Learn more
-      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
       # Increase will sometimes hold the funds for ACH debit transfers. If funds are
-      # held, this sub-object will contain details of the hold.
+      #   held, this sub-object will contain details of the hold.
       sig { returns(T.nilable(Increase::Models::ACHTransfer::InboundFundsHold)) }
       attr_reader :inbound_funds_hold
 
       sig do
         params(
-          inbound_funds_hold: T.nilable(T.any(Increase::Models::ACHTransfer::InboundFundsHold, Increase::Internal::AnyHash))
+          inbound_funds_hold: T.nilable(T.any(Increase::Models::ACHTransfer::InboundFundsHold, Increase::Util::AnyHash))
         )
           .void
       end
@@ -143,7 +136,7 @@ module Increase
       attr_accessor :individual_id
 
       # The name of the transfer recipient. This value is information and not verified
-      # by the recipient's bank.
+      #   by the recipient's bank.
       sig { returns(T.nilable(String)) }
       attr_accessor :individual_name
 
@@ -152,27 +145,27 @@ module Increase
       attr_accessor :network
 
       # If the receiving bank accepts the transfer but notifies that future transfers
-      # should use different details, this will contain those details.
+      #   should use different details, this will contain those details.
       sig { returns(T::Array[Increase::Models::ACHTransfer::NotificationsOfChange]) }
       attr_accessor :notifications_of_change
 
       # The ID for the pending transaction representing the transfer. A pending
-      # transaction is created when the transfer
-      # [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
-      # by someone else in your organization.
+      #   transaction is created when the transfer
+      #   [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
+      #   by someone else in your organization.
       sig { returns(T.nilable(String)) }
       attr_accessor :pending_transaction_id
 
       # Configuration for how the effective date of the transfer will be set. This
-      # determines same-day vs future-dated settlement timing. If not set, defaults to a
-      # `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
-      # must be set.
+      #   determines same-day vs future-dated settlement timing. If not set, defaults to a
+      #   `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
+      #   must be set.
       sig { returns(Increase::Models::ACHTransfer::PreferredEffectiveDate) }
       attr_reader :preferred_effective_date
 
       sig do
         params(
-          preferred_effective_date: T.any(Increase::Models::ACHTransfer::PreferredEffectiveDate, Increase::Internal::AnyHash)
+          preferred_effective_date: T.any(Increase::Models::ACHTransfer::PreferredEffectiveDate, Increase::Util::AnyHash)
         )
           .void
       end
@@ -182,7 +175,7 @@ module Increase
       sig { returns(T.nilable(Increase::Models::ACHTransfer::Return)) }
       attr_reader :return_
 
-      sig { params(return_: T.nilable(T.any(Increase::Models::ACHTransfer::Return, Increase::Internal::AnyHash))).void }
+      sig { params(return_: T.nilable(T.any(Increase::Models::ACHTransfer::Return, Increase::Util::AnyHash))).void }
       attr_writer :return_
 
       # The American Bankers' Association (ABA) Routing Transit Number (RTN).
@@ -190,14 +183,12 @@ module Increase
       attr_accessor :routing_number
 
       # A subhash containing information about when and how the transfer settled at the
-      # Federal Reserve.
+      #   Federal Reserve.
       sig { returns(T.nilable(Increase::Models::ACHTransfer::Settlement)) }
       attr_reader :settlement
 
       sig do
-        params(
-          settlement: T.nilable(T.any(Increase::Models::ACHTransfer::Settlement, Increase::Internal::AnyHash))
-        )
+        params(settlement: T.nilable(T.any(Increase::Models::ACHTransfer::Settlement, Increase::Util::AnyHash)))
           .void
       end
       attr_writer :settlement
@@ -215,17 +206,15 @@ module Increase
       attr_accessor :status
 
       # After the transfer is submitted to FedACH, this will contain supplemental
-      # details. Increase batches transfers and submits a file to the Federal Reserve
-      # roughly every 30 minutes. The Federal Reserve processes ACH transfers during
-      # weekdays according to their
-      # [posted schedule](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
+      #   details. Increase batches transfers and submits a file to the Federal Reserve
+      #   roughly every 30 minutes. The Federal Reserve processes ACH transfers during
+      #   weekdays according to their
+      #   [posted schedule](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
       sig { returns(T.nilable(Increase::Models::ACHTransfer::Submission)) }
       attr_reader :submission
 
       sig do
-        params(
-          submission: T.nilable(T.any(Increase::Models::ACHTransfer::Submission, Increase::Internal::AnyHash))
-        )
+        params(submission: T.nilable(T.any(Increase::Models::ACHTransfer::Submission, Increase::Util::AnyHash)))
           .void
       end
       attr_writer :submission
@@ -235,47 +224,47 @@ module Increase
       attr_accessor :transaction_id
 
       # A constant representing the object's type. For this resource it will always be
-      # `ach_transfer`.
+      #   `ach_transfer`.
       sig { returns(Increase::Models::ACHTransfer::Type::TaggedSymbol) }
       attr_accessor :type
 
       # ACH transfers move funds between your Increase account and any other account
-      # accessible by the Automated Clearing House (ACH).
+      #   accessible by the Automated Clearing House (ACH).
       sig do
         params(
           id: String,
           account_id: String,
           account_number: String,
-          acknowledgement: T.nilable(T.any(Increase::Models::ACHTransfer::Acknowledgement, Increase::Internal::AnyHash)),
-          addenda: T.nilable(T.any(Increase::Models::ACHTransfer::Addenda, Increase::Internal::AnyHash)),
+          acknowledgement: T.nilable(T.any(Increase::Models::ACHTransfer::Acknowledgement, Increase::Util::AnyHash)),
+          addenda: T.nilable(T.any(Increase::Models::ACHTransfer::Addenda, Increase::Util::AnyHash)),
           amount: Integer,
-          approval: T.nilable(T.any(Increase::Models::ACHTransfer::Approval, Increase::Internal::AnyHash)),
-          cancellation: T.nilable(T.any(Increase::Models::ACHTransfer::Cancellation, Increase::Internal::AnyHash)),
+          approval: T.nilable(T.any(Increase::Models::ACHTransfer::Approval, Increase::Util::AnyHash)),
+          cancellation: T.nilable(T.any(Increase::Models::ACHTransfer::Cancellation, Increase::Util::AnyHash)),
           company_descriptive_date: T.nilable(String),
           company_discretionary_data: T.nilable(String),
           company_entry_description: T.nilable(String),
           company_name: T.nilable(String),
           created_at: Time,
-          created_by: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy, Increase::Internal::AnyHash)),
+          created_by: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy, Increase::Util::AnyHash)),
           currency: Increase::Models::ACHTransfer::Currency::OrSymbol,
           destination_account_holder: Increase::Models::ACHTransfer::DestinationAccountHolder::OrSymbol,
           external_account_id: T.nilable(String),
           funding: Increase::Models::ACHTransfer::Funding::OrSymbol,
           idempotency_key: T.nilable(String),
-          inbound_funds_hold: T.nilable(T.any(Increase::Models::ACHTransfer::InboundFundsHold, Increase::Internal::AnyHash)),
+          inbound_funds_hold: T.nilable(T.any(Increase::Models::ACHTransfer::InboundFundsHold, Increase::Util::AnyHash)),
           individual_id: T.nilable(String),
           individual_name: T.nilable(String),
           network: Increase::Models::ACHTransfer::Network::OrSymbol,
-          notifications_of_change: T::Array[T.any(Increase::Models::ACHTransfer::NotificationsOfChange, Increase::Internal::AnyHash)],
+          notifications_of_change: T::Array[T.any(Increase::Models::ACHTransfer::NotificationsOfChange, Increase::Util::AnyHash)],
           pending_transaction_id: T.nilable(String),
-          preferred_effective_date: T.any(Increase::Models::ACHTransfer::PreferredEffectiveDate, Increase::Internal::AnyHash),
-          return_: T.nilable(T.any(Increase::Models::ACHTransfer::Return, Increase::Internal::AnyHash)),
+          preferred_effective_date: T.any(Increase::Models::ACHTransfer::PreferredEffectiveDate, Increase::Util::AnyHash),
+          return_: T.nilable(T.any(Increase::Models::ACHTransfer::Return, Increase::Util::AnyHash)),
           routing_number: String,
-          settlement: T.nilable(T.any(Increase::Models::ACHTransfer::Settlement, Increase::Internal::AnyHash)),
+          settlement: T.nilable(T.any(Increase::Models::ACHTransfer::Settlement, Increase::Util::AnyHash)),
           standard_entry_class_code: Increase::Models::ACHTransfer::StandardEntryClassCode::OrSymbol,
           statement_descriptor: String,
           status: Increase::Models::ACHTransfer::Status::OrSymbol,
-          submission: T.nilable(T.any(Increase::Models::ACHTransfer::Submission, Increase::Internal::AnyHash)),
+          submission: T.nilable(T.any(Increase::Models::ACHTransfer::Submission, Increase::Util::AnyHash)),
           transaction_id: T.nilable(String),
           type: Increase::Models::ACHTransfer::Type::OrSymbol
         )
@@ -317,7 +306,9 @@ module Increase
         submission:,
         transaction_id:,
         type:
-      ); end
+      )
+      end
+
       sig do
         override
           .returns(
@@ -360,27 +351,30 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
-      class Acknowledgement < Increase::Internal::Type::BaseModel
+      class Acknowledgement < Increase::BaseModel
         # When the Federal Reserve acknowledged the submitted file containing this
-        # transfer.
+        #   transfer.
         sig { returns(String) }
         attr_accessor :acknowledged_at
 
         # After the transfer is acknowledged by FedACH, this will contain supplemental
-        # details. The Federal Reserve sends an acknowledgement message for each file that
-        # Increase submits.
+        #   details. The Federal Reserve sends an acknowledgement message for each file that
+        #   Increase submits.
         sig { params(acknowledged_at: String).returns(T.attached_class) }
-        def self.new(acknowledged_at:); end
+        def self.new(acknowledged_at:)
+        end
 
         sig { override.returns({acknowledged_at: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
-      class Addenda < Increase::Internal::Type::BaseModel
+      class Addenda < Increase::BaseModel
         # The type of the resource. We may add additional possible values for this enum
-        # over time; your application should be able to handle such additions gracefully.
+        #   over time; your application should be able to handle such additions gracefully.
         sig { returns(Increase::Models::ACHTransfer::Addenda::Category::TaggedSymbol) }
         attr_accessor :category
 
@@ -390,21 +384,21 @@ module Increase
 
         sig do
           params(
-            freeform: T.nilable(T.any(Increase::Models::ACHTransfer::Addenda::Freeform, Increase::Internal::AnyHash))
+            freeform: T.nilable(T.any(Increase::Models::ACHTransfer::Addenda::Freeform, Increase::Util::AnyHash))
           )
             .void
         end
         attr_writer :freeform
 
         # Structured ASC X12 820 remittance advice records. Please reach out to
-        # [support@increase.com](mailto:support@increase.com) for more information.
+        #   [support@increase.com](mailto:support@increase.com) for more information.
         sig { returns(T.nilable(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice)) }
         attr_reader :payment_order_remittance_advice
 
         sig do
           params(
             payment_order_remittance_advice: T.nilable(
-              T.any(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice, Increase::Internal::AnyHash)
+              T.any(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice, Increase::Util::AnyHash)
             )
           )
             .void
@@ -415,14 +409,15 @@ module Increase
         sig do
           params(
             category: Increase::Models::ACHTransfer::Addenda::Category::OrSymbol,
-            freeform: T.nilable(T.any(Increase::Models::ACHTransfer::Addenda::Freeform, Increase::Internal::AnyHash)),
+            freeform: T.nilable(T.any(Increase::Models::ACHTransfer::Addenda::Freeform, Increase::Util::AnyHash)),
             payment_order_remittance_advice: T.nilable(
-              T.any(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice, Increase::Internal::AnyHash)
+              T.any(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice, Increase::Util::AnyHash)
             )
           )
             .returns(T.attached_class)
         end
-        def self.new(category:, freeform:, payment_order_remittance_advice:); end
+        def self.new(category:, freeform:, payment_order_remittance_advice:)
+        end
 
         sig do
           override
@@ -434,12 +429,13 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         # The type of the resource. We may add additional possible values for this enum
-        # over time; your application should be able to handle such additions gracefully.
+        #   over time; your application should be able to handle such additions gracefully.
         module Category
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::Addenda::Category) }
           OrSymbol =
@@ -456,10 +452,11 @@ module Increase
           OTHER = T.let(:other, Increase::Models::ACHTransfer::Addenda::Category::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::ACHTransfer::Addenda::Category::TaggedSymbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
-        class Freeform < Increase::Internal::Type::BaseModel
+        class Freeform < Increase::BaseModel
           # Each entry represents an addendum sent with the transfer.
           sig { returns(T::Array[Increase::Models::ACHTransfer::Addenda::Freeform::Entry]) }
           attr_accessor :entries
@@ -467,47 +464,52 @@ module Increase
           # Unstructured `payment_related_information` passed through with the transfer.
           sig do
             params(
-              entries: T::Array[T.any(Increase::Models::ACHTransfer::Addenda::Freeform::Entry, Increase::Internal::AnyHash)]
+              entries: T::Array[T.any(Increase::Models::ACHTransfer::Addenda::Freeform::Entry, Increase::Util::AnyHash)]
             )
               .returns(T.attached_class)
           end
-          def self.new(entries:); end
+          def self.new(entries:)
+          end
 
           sig { override.returns({entries: T::Array[Increase::Models::ACHTransfer::Addenda::Freeform::Entry]}) }
-          def to_hash; end
+          def to_hash
+          end
 
-          class Entry < Increase::Internal::Type::BaseModel
+          class Entry < Increase::BaseModel
             # The payment related information passed in the addendum.
             sig { returns(String) }
             attr_accessor :payment_related_information
 
             sig { params(payment_related_information: String).returns(T.attached_class) }
-            def self.new(payment_related_information:); end
+            def self.new(payment_related_information:)
+            end
 
             sig { override.returns({payment_related_information: String}) }
-            def to_hash; end
+            def to_hash
+            end
           end
         end
 
-        class PaymentOrderRemittanceAdvice < Increase::Internal::Type::BaseModel
+        class PaymentOrderRemittanceAdvice < Increase::BaseModel
           # ASC X12 RMR records for this specific transfer.
           sig { returns(T::Array[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice]) }
           attr_accessor :invoices
 
           # Structured ASC X12 820 remittance advice records. Please reach out to
-          # [support@increase.com](mailto:support@increase.com) for more information.
+          #   [support@increase.com](mailto:support@increase.com) for more information.
           sig do
             params(
               invoices: T::Array[
-                T.any(
-                  Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice,
-                  Increase::Internal::AnyHash
-                )
+              T.any(
+                Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice,
+                Increase::Util::AnyHash
+              )
               ]
             )
               .returns(T.attached_class)
           end
-          def self.new(invoices:); end
+          def self.new(invoices:)
+          end
 
           sig do
             override
@@ -515,75 +517,82 @@ module Increase
                 {invoices: T::Array[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice]}
               )
           end
-          def to_hash; end
+          def to_hash
+          end
 
-          class Invoice < Increase::Internal::Type::BaseModel
+          class Invoice < Increase::BaseModel
             # The invoice number for this reference, determined in advance with the receiver.
             sig { returns(String) }
             attr_accessor :invoice_number
 
             # The amount that was paid for this invoice in the minor unit of its currency. For
-            # dollars, for example, this is cents.
+            #   dollars, for example, this is cents.
             sig { returns(Integer) }
             attr_accessor :paid_amount
 
             sig { params(invoice_number: String, paid_amount: Integer).returns(T.attached_class) }
-            def self.new(invoice_number:, paid_amount:); end
+            def self.new(invoice_number:, paid_amount:)
+            end
 
             sig { override.returns({invoice_number: String, paid_amount: Integer}) }
-            def to_hash; end
+            def to_hash
+            end
           end
         end
       end
 
-      class Approval < Increase::Internal::Type::BaseModel
+      class Approval < Increase::BaseModel
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the transfer was approved.
+        #   the transfer was approved.
         sig { returns(Time) }
         attr_accessor :approved_at
 
         # If the Transfer was approved by a user in the dashboard, the email address of
-        # that user.
+        #   that user.
         sig { returns(T.nilable(String)) }
         attr_accessor :approved_by
 
         # If your account requires approvals for transfers and the transfer was approved,
-        # this will contain details of the approval.
+        #   this will contain details of the approval.
         sig { params(approved_at: Time, approved_by: T.nilable(String)).returns(T.attached_class) }
-        def self.new(approved_at:, approved_by:); end
+        def self.new(approved_at:, approved_by:)
+        end
 
         sig { override.returns({approved_at: Time, approved_by: T.nilable(String)}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
-      class Cancellation < Increase::Internal::Type::BaseModel
+      class Cancellation < Increase::BaseModel
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the Transfer was canceled.
+        #   the Transfer was canceled.
         sig { returns(Time) }
         attr_accessor :canceled_at
 
         # If the Transfer was canceled by a user in the dashboard, the email address of
-        # that user.
+        #   that user.
         sig { returns(T.nilable(String)) }
         attr_accessor :canceled_by
 
         # If your account requires approvals for transfers and the transfer was not
-        # approved, this will contain details of the cancellation.
+        #   approved, this will contain details of the cancellation.
         sig { params(canceled_at: Time, canceled_by: T.nilable(String)).returns(T.attached_class) }
-        def self.new(canceled_at:, canceled_by:); end
+        def self.new(canceled_at:, canceled_by:)
+        end
 
         sig { override.returns({canceled_at: Time, canceled_by: T.nilable(String)}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
-      class CreatedBy < Increase::Internal::Type::BaseModel
+      class CreatedBy < Increase::BaseModel
         # If present, details about the API key that created the transfer.
         sig { returns(T.nilable(Increase::Models::ACHTransfer::CreatedBy::APIKey)) }
         attr_reader :api_key
 
         sig do
           params(
-            api_key: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy::APIKey, Increase::Internal::AnyHash))
+            api_key: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy::APIKey, Increase::Util::AnyHash))
           )
             .void
         end
@@ -599,7 +608,7 @@ module Increase
 
         sig do
           params(
-            oauth_application: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication, Increase::Internal::AnyHash))
+            oauth_application: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash))
           )
             .void
         end
@@ -610,9 +619,7 @@ module Increase
         attr_reader :user
 
         sig do
-          params(
-            user: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy::User, Increase::Internal::AnyHash))
-          )
+          params(user: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy::User, Increase::Util::AnyHash)))
             .void
         end
         attr_writer :user
@@ -620,14 +627,15 @@ module Increase
         # What object created the transfer, either via the API or the dashboard.
         sig do
           params(
-            api_key: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy::APIKey, Increase::Internal::AnyHash)),
+            api_key: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy::APIKey, Increase::Util::AnyHash)),
             category: Increase::Models::ACHTransfer::CreatedBy::Category::OrSymbol,
-            oauth_application: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication, Increase::Internal::AnyHash)),
-            user: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy::User, Increase::Internal::AnyHash))
+            oauth_application: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash)),
+            user: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy::User, Increase::Util::AnyHash))
           )
             .returns(T.attached_class)
         end
-        def self.new(api_key:, category:, oauth_application:, user:); end
+        def self.new(api_key:, category:, oauth_application:, user:)
+        end
 
         sig do
           override
@@ -640,24 +648,27 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
-        class APIKey < Increase::Internal::Type::BaseModel
+        class APIKey < Increase::BaseModel
           # The description set for the API key when it was created.
           sig { returns(T.nilable(String)) }
           attr_accessor :description
 
           # If present, details about the API key that created the transfer.
           sig { params(description: T.nilable(String)).returns(T.attached_class) }
-          def self.new(description:); end
+          def self.new(description:)
+          end
 
           sig { override.returns({description: T.nilable(String)}) }
-          def to_hash; end
+          def to_hash
+          end
         end
 
         # The type of object that created this transfer.
         module Category
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::CreatedBy::Category) }
           OrSymbol =
@@ -674,40 +685,45 @@ module Increase
           USER = T.let(:user, Increase::Models::ACHTransfer::CreatedBy::Category::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::ACHTransfer::CreatedBy::Category::TaggedSymbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
-        class OAuthApplication < Increase::Internal::Type::BaseModel
+        class OAuthApplication < Increase::BaseModel
           # The name of the OAuth Application.
           sig { returns(String) }
           attr_accessor :name
 
           # If present, details about the OAuth Application that created the transfer.
           sig { params(name: String).returns(T.attached_class) }
-          def self.new(name:); end
+          def self.new(name:)
+          end
 
           sig { override.returns({name: String}) }
-          def to_hash; end
+          def to_hash
+          end
         end
 
-        class User < Increase::Internal::Type::BaseModel
+        class User < Increase::BaseModel
           # The email address of the User.
           sig { returns(String) }
           attr_accessor :email
 
           # If present, details about the User that created the transfer.
           sig { params(email: String).returns(T.attached_class) }
-          def self.new(email:); end
+          def self.new(email:)
+          end
 
           sig { override.returns({email: String}) }
-          def to_hash; end
+          def to_hash
+          end
         end
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-      # currency. For ACH transfers this is always equal to `usd`.
+      #   currency. For ACH transfers this is always equal to `usd`.
       module Currency
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::Currency) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::ACHTransfer::Currency::TaggedSymbol) }
@@ -731,13 +747,14 @@ module Increase
         USD = T.let(:USD, Increase::Models::ACHTransfer::Currency::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ACHTransfer::Currency::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # The type of entity that owns the account to which the ACH Transfer is being
-      # sent.
+      #   sent.
       module DestinationAccountHolder
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::DestinationAccountHolder) }
         OrSymbol =
@@ -753,12 +770,13 @@ module Increase
         UNKNOWN = T.let(:unknown, Increase::Models::ACHTransfer::DestinationAccountHolder::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ACHTransfer::DestinationAccountHolder::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # The type of the account to which the transfer will be sent.
       module Funding
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::Funding) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::ACHTransfer::Funding::TaggedSymbol) }
@@ -770,31 +788,32 @@ module Increase
         SAVINGS = T.let(:savings, Increase::Models::ACHTransfer::Funding::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ACHTransfer::Funding::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
-      class InboundFundsHold < Increase::Internal::Type::BaseModel
+      class InboundFundsHold < Increase::BaseModel
         # The Inbound Funds Hold identifier.
         sig { returns(String) }
         attr_accessor :id
 
         # The held amount in the minor unit of the account's currency. For dollars, for
-        # example, this is cents.
+        #   example, this is cents.
         sig { returns(Integer) }
         attr_accessor :amount
 
         # When the hold will be released automatically. Certain conditions may cause it to
-        # be released before this time.
+        #   be released before this time.
         sig { returns(Time) }
         attr_accessor :automatically_releases_at
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
-        # was created.
+        #   was created.
         sig { returns(Time) }
         attr_accessor :created_at
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-        # currency.
+        #   currency.
         sig { returns(Increase::Models::ACHTransfer::InboundFundsHold::Currency::TaggedSymbol) }
         attr_accessor :currency
 
@@ -815,12 +834,12 @@ module Increase
         attr_accessor :status
 
         # A constant representing the object's type. For this resource it will always be
-        # `inbound_funds_hold`.
+        #   `inbound_funds_hold`.
         sig { returns(Increase::Models::ACHTransfer::InboundFundsHold::Type::TaggedSymbol) }
         attr_accessor :type
 
         # Increase will sometimes hold the funds for ACH debit transfers. If funds are
-        # held, this sub-object will contain details of the hold.
+        #   held, this sub-object will contain details of the hold.
         sig do
           params(
             id: String,
@@ -847,7 +866,9 @@ module Increase
           released_at:,
           status:,
           type:
-        ); end
+        )
+        end
+
         sig do
           override
             .returns(
@@ -865,12 +886,13 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-        # currency.
+        #   currency.
         module Currency
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::InboundFundsHold::Currency) }
           OrSymbol =
@@ -895,12 +917,13 @@ module Increase
           USD = T.let(:USD, Increase::Models::ACHTransfer::InboundFundsHold::Currency::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::ACHTransfer::InboundFundsHold::Currency::TaggedSymbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
         # The status of the hold.
         module Status
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::InboundFundsHold::Status) }
           OrSymbol =
@@ -913,13 +936,14 @@ module Increase
           COMPLETE = T.let(:complete, Increase::Models::ACHTransfer::InboundFundsHold::Status::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::ACHTransfer::InboundFundsHold::Status::TaggedSymbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
         # A constant representing the object's type. For this resource it will always be
-        # `inbound_funds_hold`.
+        #   `inbound_funds_hold`.
         module Type
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::InboundFundsHold::Type) }
           OrSymbol =
@@ -929,13 +953,14 @@ module Increase
             T.let(:inbound_funds_hold, Increase::Models::ACHTransfer::InboundFundsHold::Type::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::ACHTransfer::InboundFundsHold::Type::TaggedSymbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
 
       # The transfer's network.
       module Network
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::Network) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::ACHTransfer::Network::TaggedSymbol) }
@@ -943,25 +968,26 @@ module Increase
         ACH = T.let(:ach, Increase::Models::ACHTransfer::Network::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ACHTransfer::Network::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
-      class NotificationsOfChange < Increase::Internal::Type::BaseModel
+      class NotificationsOfChange < Increase::BaseModel
         # The required type of change that is being signaled by the receiving financial
-        # institution.
+        #   institution.
         sig { returns(Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol) }
         attr_accessor :change_code
 
         # The corrected data that should be used in future ACHs to this account. This may
-        # contain the suggested new account number or routing number. When the
-        # `change_code` is `incorrect_transaction_code`, this field contains an integer.
-        # Numbers starting with a 2 encourage changing the `funding` parameter to
-        # checking; numbers starting with a 3 encourage changing to savings.
+        #   contain the suggested new account number or routing number. When the
+        #   `change_code` is `incorrect_transaction_code`, this field contains an integer.
+        #   Numbers starting with a 2 encourage changing the `funding` parameter to
+        #   checking; numbers starting with a 3 encourage changing to savings.
         sig { returns(String) }
         attr_accessor :corrected_data
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the notification occurred.
+        #   the notification occurred.
         sig { returns(Time) }
         attr_accessor :created_at
 
@@ -973,7 +999,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(change_code:, corrected_data:, created_at:); end
+        def self.new(change_code:, corrected_data:, created_at:)
+        end
 
         sig do
           override
@@ -985,12 +1012,13 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         # The required type of change that is being signaled by the receiving financial
-        # institution.
+        #   institution.
         module ChangeCode
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode) }
@@ -1131,13 +1159,14 @@ module Increase
             )
 
           sig { override.returns(T::Array[Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
 
-      class PreferredEffectiveDate < Increase::Internal::Type::BaseModel
+      class PreferredEffectiveDate < Increase::BaseModel
         # A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to
-        # use as the effective date when submitting this transfer.
+        #   use as the effective date when submitting this transfer.
         sig { returns(T.nilable(Date)) }
         attr_accessor :date
 
@@ -1150,9 +1179,9 @@ module Increase
         attr_accessor :settlement_schedule
 
         # Configuration for how the effective date of the transfer will be set. This
-        # determines same-day vs future-dated settlement timing. If not set, defaults to a
-        # `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
-        # must be set.
+        #   determines same-day vs future-dated settlement timing. If not set, defaults to a
+        #   `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
+        #   must be set.
         sig do
           params(
             date: T.nilable(Date),
@@ -1160,7 +1189,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(date:, settlement_schedule:); end
+        def self.new(date:, settlement_schedule:)
+        end
 
         sig do
           override
@@ -1171,11 +1201,12 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         # A schedule by which Increase will choose an effective date for the transfer.
         module SettlementSchedule
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule) }
@@ -1206,13 +1237,14 @@ module Increase
             override
               .returns(T::Array[Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol])
           end
-          def self.values; end
+          def self.values
+          end
         end
       end
 
-      class Return < Increase::Internal::Type::BaseModel
+      class Return < Increase::BaseModel
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the transfer was created.
+        #   the transfer was created.
         sig { returns(Time) }
         attr_accessor :created_at
 
@@ -1221,14 +1253,14 @@ module Increase
         attr_accessor :raw_return_reason_code
 
         # Why the ACH Transfer was returned. This reason code is sent by the receiving
-        # bank back to Increase.
+        #   bank back to Increase.
         sig { returns(Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol) }
         attr_accessor :return_reason_code
 
         # A 15 digit number that was generated by the bank that initiated the return. The
-        # trace number of the return is different than that of the original transfer. ACH
-        # trace numbers are not unique, but along with the amount and date this number can
-        # be used to identify the ACH return at the bank that initiated it.
+        #   trace number of the return is different than that of the original transfer. ACH
+        #   trace numbers are not unique, but along with the amount and date this number can
+        #   be used to identify the ACH return at the bank that initiated it.
         sig { returns(String) }
         attr_accessor :trace_number
 
@@ -1275,12 +1307,13 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         # Why the ACH Transfer was returned. This reason code is sent by the receiving
-        # bank back to Increase.
+        #   bank back to Increase.
         module ReturnReasonCode
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::Return::ReturnReasonCode) }
           OrSymbol =
@@ -1673,28 +1706,31 @@ module Increase
             T.let(:untimely_return, Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
 
-      class Settlement < Increase::Internal::Type::BaseModel
+      class Settlement < Increase::BaseModel
         # When the funds for this transfer have settled at the destination bank at the
-        # Federal Reserve.
+        #   Federal Reserve.
         sig { returns(Time) }
         attr_accessor :settled_at
 
         # A subhash containing information about when and how the transfer settled at the
-        # Federal Reserve.
+        #   Federal Reserve.
         sig { params(settled_at: Time).returns(T.attached_class) }
-        def self.new(settled_at:); end
+        def self.new(settled_at:)
+        end
 
         sig { override.returns({settled_at: Time}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       # The Standard Entry Class (SEC) code to use for the transfer.
       module StandardEntryClassCode
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::StandardEntryClassCode) }
         OrSymbol =
@@ -1720,12 +1756,13 @@ module Increase
           T.let(:internet_initiated, Increase::Models::ACHTransfer::StandardEntryClassCode::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ACHTransfer::StandardEntryClassCode::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # The lifecycle status of the transfer.
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::ACHTransfer::Status::TaggedSymbol) }
@@ -1759,27 +1796,28 @@ module Increase
         RETURNED = T.let(:returned, Increase::Models::ACHTransfer::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ACHTransfer::Status::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
-      class Submission < Increase::Internal::Type::BaseModel
+      class Submission < Increase::BaseModel
         # The ACH transfer's effective date as sent to the Federal Reserve. If a specific
-        # date was configured using `preferred_effective_date`, this will match that
-        # value. Otherwise, it will be the date selected (following the specified
-        # settlement schedule) at the time the transfer was submitted.
+        #   date was configured using `preferred_effective_date`, this will match that
+        #   value. Otherwise, it will be the date selected (following the specified
+        #   settlement schedule) at the time the transfer was submitted.
         sig { returns(Date) }
         attr_accessor :effective_date
 
         # When the transfer is expected to settle in the recipient's account. Credits may
-        # be available sooner, at the receiving banks discretion. The FedACH schedule is
-        # published
-        # [here](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
+        #   be available sooner, at the receiving banks discretion. The FedACH schedule is
+        #   published
+        #   [here](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
         sig { returns(Time) }
         attr_accessor :expected_funds_settlement_at
 
         # The settlement schedule the transfer is expected to follow. This expectation
-        # takes into account the `effective_date`, `submitted_at`, and the amount of the
-        # transfer.
+        #   takes into account the `effective_date`, `submitted_at`, and the amount of the
+        #   transfer.
         sig { returns(Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule::TaggedSymbol) }
         attr_accessor :expected_settlement_schedule
 
@@ -1788,18 +1826,18 @@ module Increase
         attr_accessor :submitted_at
 
         # A 15 digit number recorded in the Nacha file and transmitted to the receiving
-        # bank. Along with the amount, date, and originating routing number, this can be
-        # used to identify the ACH transfer at the receiving bank. ACH trace numbers are
-        # not unique, but are
-        # [used to correlate returns](https://increase.com/documentation/ach-returns#ach-returns).
+        #   bank. Along with the amount, date, and originating routing number, this can be
+        #   used to identify the ACH transfer at the receiving bank. ACH trace numbers are
+        #   not unique, but are
+        #   [used to correlate returns](https://increase.com/documentation/ach-returns#ach-returns).
         sig { returns(String) }
         attr_accessor :trace_number
 
         # After the transfer is submitted to FedACH, this will contain supplemental
-        # details. Increase batches transfers and submits a file to the Federal Reserve
-        # roughly every 30 minutes. The Federal Reserve processes ACH transfers during
-        # weekdays according to their
-        # [posted schedule](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
+        #   details. Increase batches transfers and submits a file to the Federal Reserve
+        #   roughly every 30 minutes. The Federal Reserve processes ACH transfers during
+        #   weekdays according to their
+        #   [posted schedule](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
         sig do
           params(
             effective_date: Date,
@@ -1816,7 +1854,9 @@ module Increase
           expected_settlement_schedule:,
           submitted_at:,
           trace_number:
-        ); end
+        )
+        end
+
         sig do
           override
             .returns(
@@ -1829,13 +1869,14 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         # The settlement schedule the transfer is expected to follow. This expectation
-        # takes into account the `effective_date`, `submitted_at`, and the amount of the
-        # transfer.
+        #   takes into account the `effective_date`, `submitted_at`, and the amount of the
+        #   transfer.
         module ExpectedSettlementSchedule
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule) }
@@ -1854,14 +1895,15 @@ module Increase
             override
               .returns(T::Array[Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule::TaggedSymbol])
           end
-          def self.values; end
+          def self.values
+          end
         end
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `ach_transfer`.
+      #   `ach_transfer`.
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ACHTransfer::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::ACHTransfer::Type::TaggedSymbol) }
@@ -1869,7 +1911,8 @@ module Increase
         ACH_TRANSFER = T.let(:ach_transfer, Increase::Models::ACHTransfer::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ACHTransfer::Type::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

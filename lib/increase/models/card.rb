@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::Cards#create
-    class Card < Increase::Internal::Type::BaseModel
+    class Card < Increase::BaseModel
       # @!attribute id
       #   The card identifier.
       #
@@ -24,7 +24,7 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the Card was created.
+      #     the Card was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -37,8 +37,8 @@ module Increase
 
       # @!attribute digital_wallet
       #   The contact information used in the two-factor steps for digital wallet card
-      #   creation. At least one field must be present to complete the digital wallet
-      #   steps.
+      #     creation. At least one field must be present to complete the digital wallet
+      #     steps.
       #
       #   @return [Increase::Models::Card::DigitalWallet, nil]
       required :digital_wallet, -> { Increase::Models::Card::DigitalWallet }, nil?: true
@@ -63,8 +63,8 @@ module Increase
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #     Increase and is used to ensure that a request is only processed once. Learn more
+      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -83,16 +83,16 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #   `card`.
+      #     `card`.
       #
       #   @return [Symbol, Increase::Models::Card::Type]
       required :type, enum: -> { Increase::Models::Card::Type }
 
       # @!parse
       #   # Cards are commercial credit cards. They'll immediately work for online purchases
-      #   # after you create them. All cards maintain a credit limit of 100% of the
-      #   # Account’s available balance at the time of transaction. Funds are deducted from
-      #   # the Account upon transaction settlement.
+      #   #   after you create them. All cards maintain a credit limit of 100% of the
+      #   #   Account’s available balance at the time of transaction. Funds are deducted from
+      #   #   the Account upon transaction settlement.
       #   #
       #   # @param id [String]
       #   # @param account_id [String]
@@ -127,10 +127,10 @@ module Increase
       #     super
       #   end
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @see Increase::Models::Card#billing_address
-      class BillingAddress < Increase::Internal::Type::BaseModel
+      class BillingAddress < Increase::BaseModel
         # @!attribute city
         #   The city of the billing address.
         #
@@ -172,36 +172,36 @@ module Increase
         #   #
         #   def initialize(city:, line1:, line2:, postal_code:, state:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # @see Increase::Models::Card#digital_wallet
-      class DigitalWallet < Increase::Internal::Type::BaseModel
+      class DigitalWallet < Increase::BaseModel
         # @!attribute digital_card_profile_id
         #   The digital card profile assigned to this digital card. Card profiles may also
-        #   be assigned at the program level.
+        #     be assigned at the program level.
         #
         #   @return [String, nil]
         required :digital_card_profile_id, String, nil?: true
 
         # @!attribute email
         #   An email address that can be used to verify the cardholder via one-time passcode
-        #   over email.
+        #     over email.
         #
         #   @return [String, nil]
         required :email, String, nil?: true
 
         # @!attribute phone
         #   A phone number that can be used to verify the cardholder via one-time passcode
-        #   over SMS.
+        #     over SMS.
         #
         #   @return [String, nil]
         required :phone, String, nil?: true
 
         # @!parse
         #   # The contact information used in the two-factor steps for digital wallet card
-        #   # creation. At least one field must be present to complete the digital wallet
-        #   # steps.
+        #   #   creation. At least one field must be present to complete the digital wallet
+        #   #   steps.
         #   #
         #   # @param digital_card_profile_id [String, nil]
         #   # @param email [String, nil]
@@ -209,14 +209,14 @@ module Increase
         #   #
         #   def initialize(digital_card_profile_id:, email:, phone:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # This indicates if payments can be made with the card.
       #
       # @see Increase::Models::Card#status
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The card is active.
         ACTIVE = :active
@@ -235,11 +235,11 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `card`.
+      #   `card`.
       #
       # @see Increase::Models::Card#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         CARD = :card
 

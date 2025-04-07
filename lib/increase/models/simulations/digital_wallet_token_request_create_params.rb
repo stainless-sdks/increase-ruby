@@ -4,10 +4,10 @@ module Increase
   module Models
     module Simulations
       # @see Increase::Resources::Simulations::DigitalWalletTokenRequests#create
-      class DigitalWalletTokenRequestCreateParams < Increase::Internal::Type::BaseModel
+      class DigitalWalletTokenRequestCreateParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+        #   extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # @!attribute card_id
         #   The identifier of the Card to be authorized.
@@ -21,7 +21,7 @@ module Increase
         #   #
         #   def initialize(card_id:, request_options: {}, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
     end
   end

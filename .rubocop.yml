@@ -39,9 +39,7 @@ Layout/LineLength:
   AllowedPatterns:
     - "^\\s*#.*$"
     - ^require(_relative)?
-    - "Increase::Internal::Type::BaseModel$"
-    - "^\\s*[A-Z0-9_]+ = :"
-    - "Increase::(Models|Resources|Test)::"
+    - "Increase::(Models|Resources)::"
   Max: 110
 
 Layout/MultilineArrayLineBreaks:
@@ -111,7 +109,8 @@ Metrics/MethodLength:
   Enabled: false
 
 Metrics/ModuleLength:
-  Enabled: false
+  Exclude:
+    - "**/*.rbi"
 
 Metrics/ParameterLists:
   Enabled: false
@@ -123,9 +122,9 @@ Metrics/PerceivedComplexity:
 Naming/BlockForwarding:
   Enabled: false
 
-# Underscores are generally useful for disambiguation.
 Naming/ClassAndModuleCamelCase:
-  Enabled: false
+  Exclude:
+    - "**/*.rbi"
 
 Naming/MethodParameterName:
   Enabled: false
@@ -202,9 +201,6 @@ Style/MethodCallWithArgsParentheses:
   Enabled: true
   Exclude:
     - "**/*.gemspec"
-
-Style/MultilineBlockChain:
-  Enabled: false
 
 # Perfectly fine.
 Style/MultipleComparison:

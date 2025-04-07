@@ -4,10 +4,10 @@ module Increase
   module Models
     module Simulations
       # @see Increase::Resources::Simulations::InboundCheckDeposits#create
-      class InboundCheckDepositCreateParams < Increase::Internal::Type::BaseModel
+      class InboundCheckDepositCreateParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+        #   extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # @!attribute account_number_id
         #   The identifier of the Account Number the Inbound Check Deposit will be against.
@@ -35,7 +35,7 @@ module Increase
         #   #
         #   def initialize(account_number_id:, amount:, check_number:, request_options: {}, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
     end
   end

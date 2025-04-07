@@ -3,10 +3,10 @@
 module Increase
   module Models
     # @see Increase::Resources::Cards#update
-    class CardUpdateParams < Increase::Internal::Type::BaseModel
+    class CardUpdateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute [r] billing_address
       #   The card's updated billing address.
@@ -30,8 +30,8 @@ module Increase
 
       # @!attribute [r] digital_wallet
       #   The contact information used in the two-factor steps for digital wallet card
-      #   creation. At least one field must be present to complete the digital wallet
-      #   steps.
+      #     creation. At least one field must be present to complete the digital wallet
+      #     steps.
       #
       #   @return [Increase::Models::CardUpdateParams::DigitalWallet, nil]
       optional :digital_wallet, -> { Increase::Models::CardUpdateParams::DigitalWallet }
@@ -42,7 +42,7 @@ module Increase
 
       # @!attribute [r] entity_id
       #   The Entity the card belongs to. You only need to supply this in rare situations
-      #   when the card is not for the Account holder.
+      #     when the card is not for the Account holder.
       #
       #   @return [String, nil]
       optional :entity_id, String
@@ -81,9 +81,9 @@ module Increase
       #     super
       #   end
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
-      class BillingAddress < Increase::Internal::Type::BaseModel
+      class BillingAddress < Increase::BaseModel
         # @!attribute city
         #   The city of the billing address.
         #
@@ -129,10 +129,10 @@ module Increase
         #   #
         #   def initialize(city:, line1:, postal_code:, state:, line2: nil, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      class DigitalWallet < Increase::Internal::Type::BaseModel
+      class DigitalWallet < Increase::BaseModel
         # @!attribute [r] digital_card_profile_id
         #   The digital card profile assigned to this digital card.
         #
@@ -145,7 +145,7 @@ module Increase
 
         # @!attribute [r] email
         #   An email address that can be used to verify the cardholder via one-time passcode
-        #   over email.
+        #     over email.
         #
         #   @return [String, nil]
         optional :email, String
@@ -156,7 +156,7 @@ module Increase
 
         # @!attribute [r] phone
         #   A phone number that can be used to verify the cardholder via one-time passcode
-        #   over SMS.
+        #     over SMS.
         #
         #   @return [String, nil]
         optional :phone, String
@@ -167,8 +167,8 @@ module Increase
 
         # @!parse
         #   # The contact information used in the two-factor steps for digital wallet card
-        #   # creation. At least one field must be present to complete the digital wallet
-        #   # steps.
+        #   #   creation. At least one field must be present to complete the digital wallet
+        #   #   steps.
         #   #
         #   # @param digital_card_profile_id [String]
         #   # @param email [String]
@@ -176,12 +176,12 @@ module Increase
         #   #
         #   def initialize(digital_card_profile_id: nil, email: nil, phone: nil, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # The status to update the Card with.
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The card is active.
         ACTIVE = :active

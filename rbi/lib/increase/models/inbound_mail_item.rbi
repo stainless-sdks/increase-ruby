@@ -2,13 +2,13 @@
 
 module Increase
   module Models
-    class InboundMailItem < Increase::Internal::Type::BaseModel
+    class InboundMailItem < Increase::BaseModel
       # The Inbound Mail Item identifier.
       sig { returns(String) }
       attr_accessor :id
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Inbound
-      # Mail Item was created.
+      #   Mail Item was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -17,7 +17,7 @@ module Increase
       attr_accessor :file_id
 
       # The identifier for the Lockbox that received this mail item. For mail items that
-      # could not be processed due to an invalid address, this will be null.
+      #   could not be processed due to an invalid address, this will be null.
       sig { returns(T.nilable(String)) }
       attr_accessor :lockbox_id
 
@@ -34,7 +34,7 @@ module Increase
       attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
-      # `inbound_mail_item`.
+      #   `inbound_mail_item`.
       sig { returns(Increase::Models::InboundMailItem::Type::TaggedSymbol) }
       attr_accessor :type
 
@@ -79,11 +79,12 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # If the mail item has been rejected, why it was rejected.
       module RejectionReason
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundMailItem::RejectionReason) }
         OrSymbol =
@@ -101,12 +102,13 @@ module Increase
           T.let(:lockbox_not_active, Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # If the mail item has been processed.
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundMailItem::Status) }
         OrSymbol =
@@ -122,13 +124,14 @@ module Increase
         REJECTED = T.let(:rejected, Increase::Models::InboundMailItem::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::InboundMailItem::Status::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `inbound_mail_item`.
+      #   `inbound_mail_item`.
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundMailItem::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::InboundMailItem::Type::TaggedSymbol) }
@@ -136,7 +139,8 @@ module Increase
         INBOUND_MAIL_ITEM = T.let(:inbound_mail_item, Increase::Models::InboundMailItem::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::InboundMailItem::Type::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

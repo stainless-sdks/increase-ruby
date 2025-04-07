@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class DigitalCardProfile < Increase::Internal::Type::BaseModel
+    class DigitalCardProfile < Increase::BaseModel
       # The Card Profile identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -32,7 +32,7 @@ module Increase
       attr_accessor :contact_website
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      # the Card Dispute was created.
+      #   the Card Dispute was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -41,8 +41,8 @@ module Increase
       attr_accessor :description
 
       # The idempotency key you chose for this object. This value is unique across
-      # Increase and is used to ensure that a request is only processed once. Learn more
-      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
@@ -58,20 +58,17 @@ module Increase
       sig { returns(Increase::Models::DigitalCardProfile::TextColor) }
       attr_reader :text_color
 
-      sig do
-        params(text_color: T.any(Increase::Models::DigitalCardProfile::TextColor, Increase::Internal::AnyHash))
-          .void
-      end
+      sig { params(text_color: T.any(Increase::Models::DigitalCardProfile::TextColor, Increase::Util::AnyHash)).void }
       attr_writer :text_color
 
       # A constant representing the object's type. For this resource it will always be
-      # `digital_card_profile`.
+      #   `digital_card_profile`.
       sig { returns(Increase::Models::DigitalCardProfile::Type::TaggedSymbol) }
       attr_accessor :type
 
       # This contains artwork and metadata relating to a Card's appearance in digital
-      # wallet apps like Apple Pay and Google Pay. For more information, see our guide
-      # on [digital card artwork](https://increase.com/documentation/card-art).
+      #   wallet apps like Apple Pay and Google Pay. For more information, see our guide
+      #   on [digital card artwork](https://increase.com/documentation/card-art).
       sig do
         params(
           id: String,
@@ -86,7 +83,7 @@ module Increase
           idempotency_key: T.nilable(String),
           issuer_name: String,
           status: Increase::Models::DigitalCardProfile::Status::OrSymbol,
-          text_color: T.any(Increase::Models::DigitalCardProfile::TextColor, Increase::Internal::AnyHash),
+          text_color: T.any(Increase::Models::DigitalCardProfile::TextColor, Increase::Util::AnyHash),
           type: Increase::Models::DigitalCardProfile::Type::OrSymbol
         )
           .returns(T.attached_class)
@@ -106,7 +103,9 @@ module Increase
         status:,
         text_color:,
         type:
-      ); end
+      )
+      end
+
       sig do
         override
           .returns(
@@ -128,11 +127,12 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # The status of the Card Profile.
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalCardProfile::Status) }
         OrSymbol =
@@ -151,10 +151,11 @@ module Increase
         ARCHIVED = T.let(:archived, Increase::Models::DigitalCardProfile::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::DigitalCardProfile::Status::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
-      class TextColor < Increase::Internal::Type::BaseModel
+      class TextColor < Increase::BaseModel
         # The value of the blue channel in the RGB color.
         sig { returns(Integer) }
         attr_accessor :blue
@@ -169,16 +170,18 @@ module Increase
 
         # The Card's text color, specified as an RGB triple.
         sig { params(blue: Integer, green: Integer, red: Integer).returns(T.attached_class) }
-        def self.new(blue:, green:, red:); end
+        def self.new(blue:, green:, red:)
+        end
 
         sig { override.returns({blue: Integer, green: Integer, red: Integer}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `digital_card_profile`.
+      #   `digital_card_profile`.
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalCardProfile::Type) }
         OrSymbol =
@@ -188,7 +191,8 @@ module Increase
           T.let(:digital_card_profile, Increase::Models::DigitalCardProfile::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::DigitalCardProfile::Type::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

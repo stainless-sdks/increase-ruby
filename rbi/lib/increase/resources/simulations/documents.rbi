@@ -8,7 +8,7 @@ module Increase
         sig do
           params(
             account_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
           )
             .returns(Increase::Models::Document)
         end
@@ -16,10 +16,13 @@ module Increase
           # The identifier of the Account the tax document is for.
           account_id:,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: Increase::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

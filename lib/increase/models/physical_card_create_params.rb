@@ -3,10 +3,10 @@
 module Increase
   module Models
     # @see Increase::Resources::PhysicalCards#create
-    class PhysicalCardCreateParams < Increase::Internal::Type::BaseModel
+    class PhysicalCardCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute card_id
       #   The underlying card representing this physical card.
@@ -28,7 +28,7 @@ module Increase
 
       # @!attribute [r] physical_card_profile_id
       #   The physical card profile to use for this physical card. The latest default
-      #   physical card profile will be used if not provided.
+      #     physical card profile will be used if not provided.
       #
       #   @return [String, nil]
       optional :physical_card_profile_id, String
@@ -46,9 +46,9 @@ module Increase
       #   #
       #   def initialize(card_id:, cardholder:, shipment:, physical_card_profile_id: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
-      class Cardholder < Increase::Internal::Type::BaseModel
+      class Cardholder < Increase::BaseModel
         # @!attribute first_name
         #   The cardholder's first name.
         #
@@ -69,10 +69,10 @@ module Increase
         #   #
         #   def initialize(first_name:, last_name:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      class Shipment < Increase::Internal::Type::BaseModel
+      class Shipment < Increase::BaseModel
         # @!attribute address
         #   The address to where the card should be shipped.
         #
@@ -95,10 +95,10 @@ module Increase
         #   #
         #   def initialize(address:, method_:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @see Increase::Models::PhysicalCardCreateParams::Shipment#address
-        class Address < Increase::Internal::Type::BaseModel
+        class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the shipping address.
           #
@@ -173,14 +173,14 @@ module Increase
           #   #
           #   def initialize(city:, line1:, name:, postal_code:, state:, line2: nil, line3: nil, phone_number: nil, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
         # The shipping method to use.
         #
         # @see Increase::Models::PhysicalCardCreateParams::Shipment#method_
         module Method
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # USPS Post with tracking.
           USPS = :usps

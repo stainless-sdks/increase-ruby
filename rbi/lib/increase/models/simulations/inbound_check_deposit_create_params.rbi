@@ -3,9 +3,9 @@
 module Increase
   module Models
     module Simulations
-      class InboundCheckDepositCreateParams < Increase::Internal::Type::BaseModel
-        extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+      class InboundCheckDepositCreateParams < Increase::BaseModel
+        extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # The identifier of the Account Number the Inbound Check Deposit will be against.
         sig { returns(String) }
@@ -24,11 +24,12 @@ module Increase
             account_number_id: String,
             amount: Integer,
             check_number: String,
-            request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
-        def self.new(account_number_id:, amount:, check_number:, request_options: {}); end
+        def self.new(account_number_id:, amount:, check_number:, request_options: {})
+        end
 
         sig do
           override
@@ -41,7 +42,8 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

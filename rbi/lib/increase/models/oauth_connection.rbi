@@ -2,18 +2,18 @@
 
 module Increase
   module Models
-    class OAuthConnection < Increase::Internal::Type::BaseModel
+    class OAuthConnection < Increase::BaseModel
       # The OAuth Connection's identifier.
       sig { returns(String) }
       attr_accessor :id
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-      # Connection was created.
+      #   Connection was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-      # Connection was deleted.
+      #   Connection was deleted.
       sig { returns(T.nilable(Time)) }
       attr_accessor :deleted_at
 
@@ -30,13 +30,13 @@ module Increase
       attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
-      # `oauth_connection`.
+      #   `oauth_connection`.
       sig { returns(Increase::Models::OAuthConnection::Type::TaggedSymbol) }
       attr_accessor :type
 
       # When a user authorizes your OAuth application, an OAuth Connection object is
-      # created. Learn more about OAuth
-      # [here](https://increase.com/documentation/oauth).
+      #   created. Learn more about OAuth
+      #   [here](https://increase.com/documentation/oauth).
       sig do
         params(
           id: String,
@@ -49,7 +49,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, created_at:, deleted_at:, group_id:, oauth_application_id:, status:, type:); end
+      def self.new(id:, created_at:, deleted_at:, group_id:, oauth_application_id:, status:, type:)
+      end
 
       sig do
         override
@@ -65,11 +66,12 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # Whether the connection is active.
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthConnection::Status) }
         OrSymbol =
@@ -82,13 +84,14 @@ module Increase
         INACTIVE = T.let(:inactive, Increase::Models::OAuthConnection::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::OAuthConnection::Status::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `oauth_connection`.
+      #   `oauth_connection`.
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthConnection::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::OAuthConnection::Type::TaggedSymbol) }
@@ -96,7 +99,8 @@ module Increase
         OAUTH_CONNECTION = T.let(:oauth_connection, Increase::Models::OAuthConnection::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::OAuthConnection::Type::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

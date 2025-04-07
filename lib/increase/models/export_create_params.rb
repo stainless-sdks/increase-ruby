@@ -3,10 +3,10 @@
 module Increase
   module Models
     # @see Increase::Resources::Exports#create
-    class ExportCreateParams < Increase::Internal::Type::BaseModel
+    class ExportCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute category
       #   The type of Export to create.
@@ -16,7 +16,7 @@ module Increase
 
       # @!attribute [r] account_statement_ofx
       #   Options for the created export. Required if `category` is equal to
-      #   `account_statement_ofx`.
+      #     `account_statement_ofx`.
       #
       #   @return [Increase::Models::ExportCreateParams::AccountStatementOfx, nil]
       optional :account_statement_ofx, -> { Increase::Models::ExportCreateParams::AccountStatementOfx }
@@ -27,7 +27,7 @@ module Increase
 
       # @!attribute [r] balance_csv
       #   Options for the created export. Required if `category` is equal to
-      #   `balance_csv`.
+      #     `balance_csv`.
       #
       #   @return [Increase::Models::ExportCreateParams::BalanceCsv, nil]
       optional :balance_csv, -> { Increase::Models::ExportCreateParams::BalanceCsv }
@@ -38,7 +38,7 @@ module Increase
 
       # @!attribute [r] bookkeeping_account_balance_csv
       #   Options for the created export. Required if `category` is equal to
-      #   `bookkeeping_account_balance_csv`.
+      #     `bookkeeping_account_balance_csv`.
       #
       #   @return [Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv, nil]
       optional :bookkeeping_account_balance_csv,
@@ -60,7 +60,7 @@ module Increase
 
       # @!attribute [r] transaction_csv
       #   Options for the created export. Required if `category` is equal to
-      #   `transaction_csv`.
+      #     `transaction_csv`.
       #
       #   @return [Increase::Models::ExportCreateParams::TransactionCsv, nil]
       optional :transaction_csv, -> { Increase::Models::ExportCreateParams::TransactionCsv }
@@ -73,7 +73,7 @@ module Increase
       #   Options for the created export. Required if `category` is equal to `vendor_csv`.
       #
       #   @return [Object, nil]
-      optional :vendor_csv, Increase::Internal::Type::Unknown
+      optional :vendor_csv, Increase::Unknown
 
       # @!parse
       #   # @return [Object]
@@ -103,11 +103,11 @@ module Increase
       #     super
       #   end
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # The type of Export to create.
       module Category
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # Export an Open Financial Exchange (OFX) file of transactions and balances for a given time range and Account.
         ACCOUNT_STATEMENT_OFX = :account_statement_ofx
@@ -134,7 +134,7 @@ module Increase
         #   def self.values; end
       end
 
-      class AccountStatementOfx < Increase::Internal::Type::BaseModel
+      class AccountStatementOfx < Increase::BaseModel
         # @!attribute account_id
         #   The Account to create a statement for.
         #
@@ -153,20 +153,20 @@ module Increase
 
         # @!parse
         #   # Options for the created export. Required if `category` is equal to
-        #   # `account_statement_ofx`.
+        #   #   `account_statement_ofx`.
         #   #
         #   # @param account_id [String]
         #   # @param created_at [Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt]
         #   #
         #   def initialize(account_id:, created_at: nil, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @see Increase::Models::ExportCreateParams::AccountStatementOfx#created_at
-        class CreatedAt < Increase::Internal::Type::BaseModel
+        class CreatedAt < Increase::BaseModel
           # @!attribute [r] after
           #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          #   timestamp.
+          #     timestamp.
           #
           #   @return [Time, nil]
           optional :after, Time
@@ -177,7 +177,7 @@ module Increase
 
           # @!attribute [r] before
           #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          #   timestamp.
+          #     timestamp.
           #
           #   @return [Time, nil]
           optional :before, Time
@@ -188,7 +188,7 @@ module Increase
 
           # @!attribute [r] on_or_after
           #   Return results on or after this
-          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          #     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           #
           #   @return [Time, nil]
           optional :on_or_after, Time
@@ -199,7 +199,7 @@ module Increase
 
           # @!attribute [r] on_or_before
           #   Return results on or before this
-          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          #     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           #
           #   @return [Time, nil]
           optional :on_or_before, Time
@@ -218,11 +218,11 @@ module Increase
           #   #
           #   def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
         end
       end
 
-      class BalanceCsv < Increase::Internal::Type::BaseModel
+      class BalanceCsv < Increase::BaseModel
         # @!attribute [r] account_id
         #   Filter exported Transactions to the specified Account.
         #
@@ -255,7 +255,7 @@ module Increase
 
         # @!parse
         #   # Options for the created export. Required if `category` is equal to
-        #   # `balance_csv`.
+        #   #   `balance_csv`.
         #   #
         #   # @param account_id [String]
         #   # @param created_at [Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt]
@@ -263,13 +263,13 @@ module Increase
         #   #
         #   def initialize(account_id: nil, created_at: nil, program_id: nil, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @see Increase::Models::ExportCreateParams::BalanceCsv#created_at
-        class CreatedAt < Increase::Internal::Type::BaseModel
+        class CreatedAt < Increase::BaseModel
           # @!attribute [r] after
           #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          #   timestamp.
+          #     timestamp.
           #
           #   @return [Time, nil]
           optional :after, Time
@@ -280,7 +280,7 @@ module Increase
 
           # @!attribute [r] before
           #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          #   timestamp.
+          #     timestamp.
           #
           #   @return [Time, nil]
           optional :before, Time
@@ -291,7 +291,7 @@ module Increase
 
           # @!attribute [r] on_or_after
           #   Return results on or after this
-          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          #     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           #
           #   @return [Time, nil]
           optional :on_or_after, Time
@@ -302,7 +302,7 @@ module Increase
 
           # @!attribute [r] on_or_before
           #   Return results on or before this
-          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          #     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           #
           #   @return [Time, nil]
           optional :on_or_before, Time
@@ -321,11 +321,11 @@ module Increase
           #   #
           #   def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
         end
       end
 
-      class BookkeepingAccountBalanceCsv < Increase::Internal::Type::BaseModel
+      class BookkeepingAccountBalanceCsv < Increase::BaseModel
         # @!attribute [r] bookkeeping_account_id
         #   Filter exported Transactions to the specified Bookkeeping Account.
         #
@@ -348,20 +348,20 @@ module Increase
 
         # @!parse
         #   # Options for the created export. Required if `category` is equal to
-        #   # `bookkeeping_account_balance_csv`.
+        #   #   `bookkeeping_account_balance_csv`.
         #   #
         #   # @param bookkeeping_account_id [String]
         #   # @param created_at [Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt]
         #   #
         #   def initialize(bookkeeping_account_id: nil, created_at: nil, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @see Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv#created_at
-        class CreatedAt < Increase::Internal::Type::BaseModel
+        class CreatedAt < Increase::BaseModel
           # @!attribute [r] after
           #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          #   timestamp.
+          #     timestamp.
           #
           #   @return [Time, nil]
           optional :after, Time
@@ -372,7 +372,7 @@ module Increase
 
           # @!attribute [r] before
           #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          #   timestamp.
+          #     timestamp.
           #
           #   @return [Time, nil]
           optional :before, Time
@@ -383,7 +383,7 @@ module Increase
 
           # @!attribute [r] on_or_after
           #   Return results on or after this
-          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          #     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           #
           #   @return [Time, nil]
           optional :on_or_after, Time
@@ -394,7 +394,7 @@ module Increase
 
           # @!attribute [r] on_or_before
           #   Return results on or before this
-          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          #     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           #
           #   @return [Time, nil]
           optional :on_or_before, Time
@@ -413,11 +413,11 @@ module Increase
           #   #
           #   def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
         end
       end
 
-      class EntityCsv < Increase::Internal::Type::BaseModel
+      class EntityCsv < Increase::BaseModel
         # @!attribute [r] status
         #   Entity statuses to filter by.
         #
@@ -435,17 +435,17 @@ module Increase
         #   #
         #   def initialize(status: nil, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @see Increase::Models::ExportCreateParams::EntityCsv#status
-        class Status < Increase::Internal::Type::BaseModel
+        class Status < Increase::BaseModel
           # @!attribute in_
           #   Entity statuses to filter by. For GET requests, this should be encoded as a
-          #   comma-delimited string, such as `?in=one,two,three`.
+          #     comma-delimited string, such as `?in=one,two,three`.
           #
           #   @return [Array<Symbol, Increase::Models::ExportCreateParams::EntityCsv::Status::In>]
           required :in_,
-                   -> { Increase::Internal::Type::ArrayOf[enum: Increase::Models::ExportCreateParams::EntityCsv::Status::In] },
+                   -> { Increase::ArrayOf[enum: Increase::Models::ExportCreateParams::EntityCsv::Status::In] },
                    api_name: :in
 
           # @!parse
@@ -455,10 +455,10 @@ module Increase
           #   #
           #   def initialize(in_:, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
 
           module In
-            extend Increase::Internal::Type::Enum
+            extend Increase::Enum
 
             # The entity is active.
             ACTIVE = :active
@@ -478,7 +478,7 @@ module Increase
         end
       end
 
-      class TransactionCsv < Increase::Internal::Type::BaseModel
+      class TransactionCsv < Increase::BaseModel
         # @!attribute [r] account_id
         #   Filter exported Transactions to the specified Account.
         #
@@ -511,7 +511,7 @@ module Increase
 
         # @!parse
         #   # Options for the created export. Required if `category` is equal to
-        #   # `transaction_csv`.
+        #   #   `transaction_csv`.
         #   #
         #   # @param account_id [String]
         #   # @param created_at [Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt]
@@ -519,13 +519,13 @@ module Increase
         #   #
         #   def initialize(account_id: nil, created_at: nil, program_id: nil, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @see Increase::Models::ExportCreateParams::TransactionCsv#created_at
-        class CreatedAt < Increase::Internal::Type::BaseModel
+        class CreatedAt < Increase::BaseModel
           # @!attribute [r] after
           #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          #   timestamp.
+          #     timestamp.
           #
           #   @return [Time, nil]
           optional :after, Time
@@ -536,7 +536,7 @@ module Increase
 
           # @!attribute [r] before
           #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          #   timestamp.
+          #     timestamp.
           #
           #   @return [Time, nil]
           optional :before, Time
@@ -547,7 +547,7 @@ module Increase
 
           # @!attribute [r] on_or_after
           #   Return results on or after this
-          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          #     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           #
           #   @return [Time, nil]
           optional :on_or_after, Time
@@ -558,7 +558,7 @@ module Increase
 
           # @!attribute [r] on_or_before
           #   Return results on or before this
-          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          #     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           #
           #   @return [Time, nil]
           optional :on_or_before, Time
@@ -577,7 +577,7 @@ module Increase
           #   #
           #   def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
         end
       end
     end

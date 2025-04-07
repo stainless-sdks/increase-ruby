@@ -4,8 +4,8 @@ module Increase
   module Resources
     class Files
       # To upload a file to Increase, you'll need to send a request of Content-Type
-      # `multipart/form-data`. The request should contain the file you would like to
-      # upload, as well as the parameters for creating a file.
+      #   `multipart/form-data`. The request should contain the file you would like to
+      #   upload, as well as the parameters for creating a file.
       #
       # @overload create(file:, purpose:, description: nil, request_options: {})
       #
@@ -59,7 +59,7 @@ module Increase
       # @param purpose [Increase::Models::FileListParams::Purpose]
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Internal::Page<Increase::Models::File>]
+      # @return [Increase::Page<Increase::Models::File>]
       #
       # @see Increase::Models::FileListParams
       def list(params = {})
@@ -68,7 +68,7 @@ module Increase
           method: :get,
           path: "files",
           query: parsed,
-          page: Increase::Internal::Page,
+          page: Increase::Page,
           model: Increase::Models::File,
           options: options
         )

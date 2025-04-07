@@ -3,10 +3,10 @@
 module Increase
   module Models
     # @see Increase::Resources::Accounts#create
-    class AccountCreateParams < Increase::Internal::Type::BaseModel
+    class AccountCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute name
       #   The name you choose for the Account.
@@ -26,7 +26,7 @@ module Increase
 
       # @!attribute [r] informational_entity_id
       #   The identifier of an Entity that, while not owning the Account, is associated
-      #   with its activity. Its relationship to your group must be `informational`.
+      #     with its activity. Its relationship to your group must be `informational`.
       #
       #   @return [String, nil]
       optional :informational_entity_id, String
@@ -37,7 +37,7 @@ module Increase
 
       # @!attribute [r] program_id
       #   The identifier for the Program that this Account falls under. Required if you
-      #   operate more than one Program.
+      #     operate more than one Program.
       #
       #   @return [String, nil]
       optional :program_id, String
@@ -55,7 +55,7 @@ module Increase
       #   #
       #   def initialize(name:, entity_id: nil, informational_entity_id: nil, program_id: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
     end
   end
 end

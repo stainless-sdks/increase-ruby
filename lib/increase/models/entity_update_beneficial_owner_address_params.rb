@@ -3,21 +3,21 @@
 module Increase
   module Models
     # @see Increase::Resources::Entities#update_beneficial_owner_address
-    class EntityUpdateBeneficialOwnerAddressParams < Increase::Internal::Type::BaseModel
+    class EntityUpdateBeneficialOwnerAddressParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute address
       #   The individual's physical address. Mail receiving locations like PO Boxes and
-      #   PMB's are disallowed.
+      #     PMB's are disallowed.
       #
       #   @return [Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address]
       required :address, -> { Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address }
 
       # @!attribute beneficial_owner_id
       #   The identifying details of anyone controlling or owning 25% or more of the
-      #   corporation.
+      #     corporation.
       #
       #   @return [String]
       required :beneficial_owner_id, String
@@ -29,9 +29,9 @@ module Increase
       #   #
       #   def initialize(address:, beneficial_owner_id:, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
-      class Address < Increase::Internal::Type::BaseModel
+      class Address < Increase::BaseModel
         # @!attribute country
         #   The two-letter ISO 3166-1 alpha-2 code for the country of the address.
         #
@@ -46,7 +46,7 @@ module Increase
 
         # @!attribute [r] city
         #   The city, district, town, or village of the address. Required in certain
-        #   countries.
+        #     countries.
         #
         #   @return [String, nil]
         optional :city, String
@@ -67,7 +67,7 @@ module Increase
 
         # @!attribute [r] state
         #   The two-letter United States Postal Service (USPS) abbreviation for the US
-        #   state, province, or region of the address. Required in certain countries.
+        #     state, province, or region of the address. Required in certain countries.
         #
         #   @return [String, nil]
         optional :state, String
@@ -88,7 +88,7 @@ module Increase
 
         # @!parse
         #   # The individual's physical address. Mail receiving locations like PO Boxes and
-        #   # PMB's are disallowed.
+        #   #   PMB's are disallowed.
         #   #
         #   # @param country [String]
         #   # @param line1 [String]
@@ -99,7 +99,7 @@ module Increase
         #   #
         #   def initialize(country:, line1:, city: nil, line2: nil, state: nil, zip: nil, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
     end
   end

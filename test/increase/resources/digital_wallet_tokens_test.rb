@@ -20,7 +20,7 @@ class Increase::Test::Resources::DigitalWalletTokensTest < Increase::Test::Resou
         status: Increase::Models::DigitalWalletToken::Status,
         token_requestor: Increase::Models::DigitalWalletToken::TokenRequestor,
         type: Increase::Models::DigitalWalletToken::Type,
-        updates: ^(Increase::Internal::Type::ArrayOf[Increase::Models::DigitalWalletToken::Update])
+        updates: ^(Increase::ArrayOf[Increase::Models::DigitalWalletToken::Update])
       }
     end
   end
@@ -29,7 +29,7 @@ class Increase::Test::Resources::DigitalWalletTokensTest < Increase::Test::Resou
     response = @increase.digital_wallet_tokens.list
 
     assert_pattern do
-      response => Increase::Internal::Page
+      response => Increase::Page
     end
 
     row = response.to_enum.first
@@ -49,7 +49,7 @@ class Increase::Test::Resources::DigitalWalletTokensTest < Increase::Test::Resou
         status: Increase::Models::DigitalWalletToken::Status,
         token_requestor: Increase::Models::DigitalWalletToken::TokenRequestor,
         type: Increase::Models::DigitalWalletToken::Type,
-        updates: ^(Increase::Internal::Type::ArrayOf[Increase::Models::DigitalWalletToken::Update])
+        updates: ^(Increase::ArrayOf[Increase::Models::DigitalWalletToken::Update])
       }
     end
   end

@@ -2,9 +2,9 @@
 
 module Increase
   module Models
-    class EventSubscriptionUpdateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class EventSubscriptionUpdateParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # The status to update the Event Subscription with.
       sig { returns(T.nilable(Increase::Models::EventSubscriptionUpdateParams::Status::OrSymbol)) }
@@ -16,11 +16,12 @@ module Increase
       sig do
         params(
           status: Increase::Models::EventSubscriptionUpdateParams::Status::OrSymbol,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
-      def self.new(status: nil, request_options: {}); end
+      def self.new(status: nil, request_options: {})
+      end
 
       sig do
         override
@@ -31,11 +32,12 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # The status to update the Event Subscription with.
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EventSubscriptionUpdateParams::Status) }
         OrSymbol =
@@ -51,7 +53,8 @@ module Increase
         DELETED = T.let(:deleted, Increase::Models::EventSubscriptionUpdateParams::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::EventSubscriptionUpdateParams::Status::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

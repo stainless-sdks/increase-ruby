@@ -2,9 +2,9 @@
 
 module Increase
   module Models
-    class BookkeepingEntryListParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class BookkeepingEntryListParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # The identifier for the Bookkeeping Account to filter by.
       sig { returns(T.nilable(String)) }
@@ -21,7 +21,7 @@ module Increase
       attr_writer :cursor
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
-      # objects.
+      #   objects.
       sig { returns(T.nilable(Integer)) }
       attr_reader :limit
 
@@ -33,11 +33,12 @@ module Increase
           account_id: String,
           cursor: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
-      def self.new(account_id: nil, cursor: nil, limit: nil, request_options: {}); end
+      def self.new(account_id: nil, cursor: nil, limit: nil, request_options: {})
+      end
 
       sig do
         override
@@ -48,7 +49,8 @@ module Increase
                      request_options: Increase::RequestOptions
                    })
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

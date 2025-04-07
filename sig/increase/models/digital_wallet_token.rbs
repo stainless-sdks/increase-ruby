@@ -13,7 +13,7 @@ module Increase
         updates: ::Array[Increase::Models::DigitalWalletToken::Update]
       }
 
-    class DigitalWalletToken < Increase::Internal::Type::BaseModel
+    class DigitalWalletToken < Increase::BaseModel
       attr_accessor id: String
 
       attr_accessor card_id: String
@@ -48,7 +48,7 @@ module Increase
 
       type cardholder = { name: String? }
 
-      class Cardholder < Increase::Internal::Type::BaseModel
+      class Cardholder < Increase::BaseModel
         attr_accessor name: String?
 
         def initialize: (name: String?) -> void
@@ -64,7 +64,7 @@ module Increase
           name: String?
         }
 
-      class Device < Increase::Internal::Type::BaseModel
+      class Device < Increase::BaseModel
         attr_accessor device_type: Increase::Models::DigitalWalletToken::Device::device_type?
 
         attr_accessor identifier: String?
@@ -94,7 +94,7 @@ module Increase
           | :automobile_device
 
         module DeviceType
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # Unknown
           UNKNOWN: :unknown
@@ -130,7 +130,7 @@ module Increase
       type status = :active | :inactive | :suspended | :deactivated
 
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The digital wallet token is active.
         ACTIVE: :active
@@ -150,7 +150,7 @@ module Increase
       type token_requestor = :apple_pay | :google_pay | :samsung_pay | :unknown
 
       module TokenRequestor
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # Apple Pay
         APPLE_PAY: :apple_pay
@@ -170,7 +170,7 @@ module Increase
       type type_ = :digital_wallet_token
 
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         DIGITAL_WALLET_TOKEN: :digital_wallet_token
 
@@ -183,7 +183,7 @@ module Increase
           timestamp: Time
         }
 
-      class Update < Increase::Internal::Type::BaseModel
+      class Update < Increase::BaseModel
         attr_accessor status: Increase::Models::DigitalWalletToken::Update::status
 
         attr_accessor timestamp: Time
@@ -198,7 +198,7 @@ module Increase
         type status = :active | :inactive | :suspended | :deactivated
 
         module Status
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # The digital wallet token is active.
           ACTIVE: :active

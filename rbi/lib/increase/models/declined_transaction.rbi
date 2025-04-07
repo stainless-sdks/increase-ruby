@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class DeclinedTransaction < Increase::Internal::Type::BaseModel
+    class DeclinedTransaction < Increase::BaseModel
       # The Declined Transaction identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -12,18 +12,18 @@ module Increase
       attr_accessor :account_id
 
       # The Declined Transaction amount in the minor unit of its currency. For dollars,
-      # for example, this is cents.
+      #   for example, this is cents.
       sig { returns(Integer) }
       attr_accessor :amount
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the
-      # Transaction occurred.
+      #   Transaction occurred.
       sig { returns(Time) }
       attr_accessor :created_at
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Declined
-      # Transaction's currency. This will match the currency on the Declined
-      # Transaction's Account.
+      #   Transaction's currency. This will match the currency on the Declined
+      #   Transaction's Account.
       sig { returns(Increase::Models::DeclinedTransaction::Currency::TaggedSymbol) }
       attr_accessor :currency
 
@@ -32,7 +32,7 @@ module Increase
       attr_accessor :description
 
       # The identifier for the route this Declined Transaction came through. Routes are
-      # things like cards and ACH details.
+      #   things like cards and ACH details.
       sig { returns(T.nilable(String)) }
       attr_accessor :route_id
 
@@ -41,24 +41,24 @@ module Increase
       attr_accessor :route_type
 
       # This is an object giving more details on the network-level event that caused the
-      # Declined Transaction. For example, for a card transaction this lists the
-      # merchant's industry and location. Note that for backwards compatibility reasons,
-      # additional undocumented keys may appear in this object. These should be treated
-      # as deprecated and will be removed in the future.
+      #   Declined Transaction. For example, for a card transaction this lists the
+      #   merchant's industry and location. Note that for backwards compatibility reasons,
+      #   additional undocumented keys may appear in this object. These should be treated
+      #   as deprecated and will be removed in the future.
       sig { returns(Increase::Models::DeclinedTransaction::Source) }
       attr_reader :source
 
-      sig { params(source: T.any(Increase::Models::DeclinedTransaction::Source, Increase::Internal::AnyHash)).void }
+      sig { params(source: T.any(Increase::Models::DeclinedTransaction::Source, Increase::Util::AnyHash)).void }
       attr_writer :source
 
       # A constant representing the object's type. For this resource it will always be
-      # `declined_transaction`.
+      #   `declined_transaction`.
       sig { returns(Increase::Models::DeclinedTransaction::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Declined Transactions are refused additions and removals of money from your bank
-      # account. For example, Declined Transactions are caused when your Account has an
-      # insufficient balance or your Limits are triggered.
+      #   account. For example, Declined Transactions are caused when your Account has an
+      #   insufficient balance or your Limits are triggered.
       sig do
         params(
           id: String,
@@ -69,7 +69,7 @@ module Increase
           description: String,
           route_id: T.nilable(String),
           route_type: T.nilable(Increase::Models::DeclinedTransaction::RouteType::OrSymbol),
-          source: T.any(Increase::Models::DeclinedTransaction::Source, Increase::Internal::AnyHash),
+          source: T.any(Increase::Models::DeclinedTransaction::Source, Increase::Util::AnyHash),
           type: Increase::Models::DeclinedTransaction::Type::OrSymbol
         )
           .returns(T.attached_class)
@@ -105,13 +105,14 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Declined
-      # Transaction's currency. This will match the currency on the Declined
-      # Transaction's Account.
+      #   Transaction's currency. This will match the currency on the Declined
+      #   Transaction's Account.
       module Currency
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DeclinedTransaction::Currency) }
         OrSymbol =
@@ -136,12 +137,13 @@ module Increase
         USD = T.let(:USD, Increase::Models::DeclinedTransaction::Currency::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::DeclinedTransaction::Currency::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # The type of the route this Declined Transaction came through.
       module RouteType
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DeclinedTransaction::RouteType) }
         OrSymbol =
@@ -157,63 +159,64 @@ module Increase
         LOCKBOX = T.let(:lockbox, Increase::Models::DeclinedTransaction::RouteType::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::DeclinedTransaction::RouteType::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
-      class Source < Increase::Internal::Type::BaseModel
+      class Source < Increase::BaseModel
         # An ACH Decline object. This field will be present in the JSON response if and
-        # only if `category` is equal to `ach_decline`.
+        #   only if `category` is equal to `ach_decline`.
         sig { returns(T.nilable(Increase::Models::DeclinedTransaction::Source::ACHDecline)) }
         attr_reader :ach_decline
 
         sig do
           params(
-            ach_decline: T.nilable(T.any(Increase::Models::DeclinedTransaction::Source::ACHDecline, Increase::Internal::AnyHash))
+            ach_decline: T.nilable(T.any(Increase::Models::DeclinedTransaction::Source::ACHDecline, Increase::Util::AnyHash))
           )
             .void
         end
         attr_writer :ach_decline
 
         # A Card Decline object. This field will be present in the JSON response if and
-        # only if `category` is equal to `card_decline`.
+        #   only if `category` is equal to `card_decline`.
         sig { returns(T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline)) }
         attr_reader :card_decline
 
         sig do
           params(
-            card_decline: T.nilable(T.any(Increase::Models::DeclinedTransaction::Source::CardDecline, Increase::Internal::AnyHash))
+            card_decline: T.nilable(T.any(Increase::Models::DeclinedTransaction::Source::CardDecline, Increase::Util::AnyHash))
           )
             .void
         end
         attr_writer :card_decline
 
         # The type of the resource. We may add additional possible values for this enum
-        # over time; your application should be able to handle such additions gracefully.
+        #   over time; your application should be able to handle such additions gracefully.
         sig { returns(Increase::Models::DeclinedTransaction::Source::Category::TaggedSymbol) }
         attr_accessor :category
 
         # A Check Decline object. This field will be present in the JSON response if and
-        # only if `category` is equal to `check_decline`.
+        #   only if `category` is equal to `check_decline`.
         sig { returns(T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDecline)) }
         attr_reader :check_decline
 
         sig do
           params(
-            check_decline: T.nilable(T.any(Increase::Models::DeclinedTransaction::Source::CheckDecline, Increase::Internal::AnyHash))
+            check_decline: T.nilable(T.any(Increase::Models::DeclinedTransaction::Source::CheckDecline, Increase::Util::AnyHash))
           )
             .void
         end
         attr_writer :check_decline
 
         # A Check Deposit Rejection object. This field will be present in the JSON
-        # response if and only if `category` is equal to `check_deposit_rejection`.
+        #   response if and only if `category` is equal to `check_deposit_rejection`.
         sig { returns(T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDepositRejection)) }
         attr_reader :check_deposit_rejection
 
         sig do
           params(
             check_deposit_rejection: T.nilable(
-              T.any(Increase::Models::DeclinedTransaction::Source::CheckDepositRejection, Increase::Internal::AnyHash)
+              T.any(Increase::Models::DeclinedTransaction::Source::CheckDepositRejection, Increase::Util::AnyHash)
             )
           )
             .void
@@ -221,8 +224,8 @@ module Increase
         attr_writer :check_deposit_rejection
 
         # An Inbound Real-Time Payments Transfer Decline object. This field will be
-        # present in the JSON response if and only if `category` is equal to
-        # `inbound_real_time_payments_transfer_decline`.
+        #   present in the JSON response if and only if `category` is equal to
+        #   `inbound_real_time_payments_transfer_decline`.
         sig { returns(T.nilable(Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline)) }
         attr_reader :inbound_real_time_payments_transfer_decline
 
@@ -231,7 +234,7 @@ module Increase
             inbound_real_time_payments_transfer_decline: T.nilable(
               T.any(
                 Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline,
-                Increase::Internal::AnyHash
+                Increase::Util::AnyHash
               )
             )
           )
@@ -240,45 +243,45 @@ module Increase
         attr_writer :inbound_real_time_payments_transfer_decline
 
         # If the category of this Transaction source is equal to `other`, this field will
-        # contain an empty object, otherwise it will contain null.
+        #   contain an empty object, otherwise it will contain null.
         sig { returns(T.nilable(T.anything)) }
         attr_accessor :other
 
         # A Wire Decline object. This field will be present in the JSON response if and
-        # only if `category` is equal to `wire_decline`.
+        #   only if `category` is equal to `wire_decline`.
         sig { returns(T.nilable(Increase::Models::DeclinedTransaction::Source::WireDecline)) }
         attr_reader :wire_decline
 
         sig do
           params(
-            wire_decline: T.nilable(T.any(Increase::Models::DeclinedTransaction::Source::WireDecline, Increase::Internal::AnyHash))
+            wire_decline: T.nilable(T.any(Increase::Models::DeclinedTransaction::Source::WireDecline, Increase::Util::AnyHash))
           )
             .void
         end
         attr_writer :wire_decline
 
         # This is an object giving more details on the network-level event that caused the
-        # Declined Transaction. For example, for a card transaction this lists the
-        # merchant's industry and location. Note that for backwards compatibility reasons,
-        # additional undocumented keys may appear in this object. These should be treated
-        # as deprecated and will be removed in the future.
+        #   Declined Transaction. For example, for a card transaction this lists the
+        #   merchant's industry and location. Note that for backwards compatibility reasons,
+        #   additional undocumented keys may appear in this object. These should be treated
+        #   as deprecated and will be removed in the future.
         sig do
           params(
-            ach_decline: T.nilable(T.any(Increase::Models::DeclinedTransaction::Source::ACHDecline, Increase::Internal::AnyHash)),
-            card_decline: T.nilable(T.any(Increase::Models::DeclinedTransaction::Source::CardDecline, Increase::Internal::AnyHash)),
+            ach_decline: T.nilable(T.any(Increase::Models::DeclinedTransaction::Source::ACHDecline, Increase::Util::AnyHash)),
+            card_decline: T.nilable(T.any(Increase::Models::DeclinedTransaction::Source::CardDecline, Increase::Util::AnyHash)),
             category: Increase::Models::DeclinedTransaction::Source::Category::OrSymbol,
-            check_decline: T.nilable(T.any(Increase::Models::DeclinedTransaction::Source::CheckDecline, Increase::Internal::AnyHash)),
+            check_decline: T.nilable(T.any(Increase::Models::DeclinedTransaction::Source::CheckDecline, Increase::Util::AnyHash)),
             check_deposit_rejection: T.nilable(
-              T.any(Increase::Models::DeclinedTransaction::Source::CheckDepositRejection, Increase::Internal::AnyHash)
+              T.any(Increase::Models::DeclinedTransaction::Source::CheckDepositRejection, Increase::Util::AnyHash)
             ),
             inbound_real_time_payments_transfer_decline: T.nilable(
               T.any(
                 Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline,
-                Increase::Internal::AnyHash
+                Increase::Util::AnyHash
               )
             ),
             other: T.nilable(T.anything),
-            wire_decline: T.nilable(T.any(Increase::Models::DeclinedTransaction::Source::WireDecline, Increase::Internal::AnyHash))
+            wire_decline: T.nilable(T.any(Increase::Models::DeclinedTransaction::Source::WireDecline, Increase::Util::AnyHash))
           )
             .returns(T.attached_class)
         end
@@ -291,7 +294,9 @@ module Increase
           inbound_real_time_payments_transfer_decline:,
           other:,
           wire_decline:
-        ); end
+        )
+        end
+
         sig do
           override
             .returns(
@@ -307,9 +312,10 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
-        class ACHDecline < Increase::Internal::Type::BaseModel
+        class ACHDecline < Increase::BaseModel
           # The ACH Decline's identifier.
           sig { returns(String) }
           attr_accessor :id
@@ -355,12 +361,12 @@ module Increase
           attr_accessor :trace_number
 
           # A constant representing the object's type. For this resource it will always be
-          # `ach_decline`.
+          #   `ach_decline`.
           sig { returns(Increase::Models::DeclinedTransaction::Source::ACHDecline::Type::TaggedSymbol) }
           attr_accessor :type
 
           # An ACH Decline object. This field will be present in the JSON response if and
-          # only if `category` is equal to `ach_decline`.
+          #   only if `category` is equal to `ach_decline`.
           sig do
             params(
               id: String,
@@ -391,7 +397,9 @@ module Increase
             receiver_name:,
             trace_number:,
             type:
-          ); end
+          )
+          end
+
           sig do
             override
               .returns(
@@ -411,11 +419,12 @@ module Increase
                 }
               )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           # Why the ACH transfer was declined.
           module Reason
-            extend Increase::Internal::Type::Enum
+            extend Increase::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::DeclinedTransaction::Source::ACHDecline::Reason) }
@@ -526,13 +535,14 @@ module Increase
             sig do
               override.returns(T::Array[Increase::Models::DeclinedTransaction::Source::ACHDecline::Reason::TaggedSymbol])
             end
-            def self.values; end
+            def self.values
+            end
           end
 
           # A constant representing the object's type. For this resource it will always be
-          # `ach_decline`.
+          #   `ach_decline`.
           module Type
-            extend Increase::Internal::Type::Enum
+            extend Increase::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::DeclinedTransaction::Source::ACHDecline::Type) }
@@ -543,22 +553,23 @@ module Increase
               T.let(:ach_decline, Increase::Models::DeclinedTransaction::Source::ACHDecline::Type::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::DeclinedTransaction::Source::ACHDecline::Type::TaggedSymbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
 
-        class CardDecline < Increase::Internal::Type::BaseModel
+        class CardDecline < Increase::BaseModel
           # The Card Decline identifier.
           sig { returns(String) }
           attr_accessor :id
 
           # Whether this authorization was approved by Increase, the card network through
-          # stand-in processing, or the user through a real-time decision.
+          #   stand-in processing, or the user through a real-time decision.
           sig { returns(Increase::Models::DeclinedTransaction::Source::CardDecline::Actioner::TaggedSymbol) }
           attr_accessor :actioner
 
           # The declined amount in the minor unit of the destination account currency. For
-          # dollars, for example, this is cents.
+          #   dollars, for example, this is cents.
           sig { returns(Integer) }
           attr_accessor :amount
 
@@ -567,7 +578,7 @@ module Increase
           attr_accessor :card_payment_id
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-          # account currency.
+          #   account currency.
           sig { returns(Increase::Models::DeclinedTransaction::Source::CardDecline::Currency::TaggedSymbol) }
           attr_accessor :currency
 
@@ -576,22 +587,22 @@ module Increase
           attr_accessor :declined_transaction_id
 
           # If the authorization was made via a Digital Wallet Token (such as an Apple Pay
-          # purchase), the identifier of the token that was used.
+          #   purchase), the identifier of the token that was used.
           sig { returns(T.nilable(String)) }
           attr_accessor :digital_wallet_token_id
 
           # The direction describes the direction the funds will move, either from the
-          # cardholder to the merchant or from the merchant to the cardholder.
+          #   cardholder to the merchant or from the merchant to the cardholder.
           sig { returns(Increase::Models::DeclinedTransaction::Source::CardDecline::Direction::TaggedSymbol) }
           attr_accessor :direction
 
           # The merchant identifier (commonly abbreviated as MID) of the merchant the card
-          # is transacting with.
+          #   is transacting with.
           sig { returns(String) }
           attr_accessor :merchant_acceptor_id
 
           # The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
-          # card is transacting with.
+          #   card is transacting with.
           sig { returns(String) }
           attr_accessor :merchant_category_code
 
@@ -608,7 +619,7 @@ module Increase
           attr_accessor :merchant_descriptor
 
           # The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
-          # ZIP code, where the first 5 and last 4 are separated by a dash.
+          #   ZIP code, where the first 5 and last 4 are separated by a dash.
           sig { returns(T.nilable(String)) }
           attr_accessor :merchant_postal_code
 
@@ -622,10 +633,7 @@ module Increase
 
           sig do
             params(
-              network_details: T.any(
-                Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails,
-                Increase::Internal::AnyHash
-              )
+              network_details: T.any(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails, Increase::Util::AnyHash)
             )
               .void
           end
@@ -639,7 +647,7 @@ module Increase
             params(
               network_identifiers: T.any(
                 Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers,
-                Increase::Internal::AnyHash
+                Increase::Util::AnyHash
               )
             )
               .void
@@ -647,12 +655,12 @@ module Increase
           attr_writer :network_identifiers
 
           # The risk score generated by the card network. For Visa this is the Visa Advanced
-          # Authorization risk score, from 0 to 99, where 99 is the riskiest.
+          #   Authorization risk score, from 0 to 99, where 99 is the riskiest.
           sig { returns(T.nilable(Integer)) }
           attr_accessor :network_risk_score
 
           # If the authorization was made in-person with a physical card, the Physical Card
-          # that was used.
+          #   that was used.
           sig { returns(T.nilable(String)) }
           attr_accessor :physical_card_id
 
@@ -661,22 +669,22 @@ module Increase
           attr_accessor :presentment_amount
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's presentment currency.
+          #   transaction's presentment currency.
           sig { returns(String) }
           attr_accessor :presentment_currency
 
           # The processing category describes the intent behind the authorization, such as
-          # whether it was used for bill payments or an automatic fuel dispenser.
+          #   whether it was used for bill payments or an automatic fuel dispenser.
           sig { returns(Increase::Models::DeclinedTransaction::Source::CardDecline::ProcessingCategory::TaggedSymbol) }
           attr_accessor :processing_category
 
           # The identifier of the Real-Time Decision sent to approve or decline this
-          # transaction.
+          #   transaction.
           sig { returns(T.nilable(String)) }
           attr_accessor :real_time_decision_id
 
           # This is present if a specific decline reason was given in the real-time
-          # decision.
+          #   decision.
           sig do
             returns(
               T.nilable(
@@ -691,7 +699,7 @@ module Increase
           attr_accessor :reason
 
           # The terminal identifier (commonly abbreviated as TID) of the terminal the card
-          # is transacting with.
+          #   is transacting with.
           sig { returns(T.nilable(String)) }
           attr_accessor :terminal_id
 
@@ -701,17 +709,14 @@ module Increase
 
           sig do
             params(
-              verification: T.any(
-                Increase::Models::DeclinedTransaction::Source::CardDecline::Verification,
-                Increase::Internal::AnyHash
-              )
+              verification: T.any(Increase::Models::DeclinedTransaction::Source::CardDecline::Verification, Increase::Util::AnyHash)
             )
               .void
           end
           attr_writer :verification
 
           # A Card Decline object. This field will be present in the JSON response if and
-          # only if `category` is equal to `card_decline`.
+          #   only if `category` is equal to `card_decline`.
           sig do
             params(
               id: String,
@@ -729,13 +734,10 @@ module Increase
               merchant_descriptor: String,
               merchant_postal_code: T.nilable(String),
               merchant_state: T.nilable(String),
-              network_details: T.any(
-                Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails,
-                Increase::Internal::AnyHash
-              ),
+              network_details: T.any(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails, Increase::Util::AnyHash),
               network_identifiers: T.any(
                 Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers,
-                Increase::Internal::AnyHash
+                Increase::Util::AnyHash
               ),
               network_risk_score: T.nilable(Integer),
               physical_card_id: T.nilable(String),
@@ -746,10 +748,7 @@ module Increase
               real_time_decision_reason: T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline::RealTimeDecisionReason::OrSymbol),
               reason: Increase::Models::DeclinedTransaction::Source::CardDecline::Reason::OrSymbol,
               terminal_id: T.nilable(String),
-              verification: T.any(
-                Increase::Models::DeclinedTransaction::Source::CardDecline::Verification,
-                Increase::Internal::AnyHash
-              )
+              verification: T.any(Increase::Models::DeclinedTransaction::Source::CardDecline::Verification, Increase::Util::AnyHash)
             )
               .returns(T.attached_class)
           end
@@ -781,7 +780,9 @@ module Increase
             reason:,
             terminal_id:,
             verification:
-          ); end
+          )
+          end
+
           sig do
             override
               .returns(
@@ -818,12 +819,13 @@ module Increase
                 }
               )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           # Whether this authorization was approved by Increase, the card network through
-          # stand-in processing, or the user through a real-time decision.
+          #   stand-in processing, or the user through a real-time decision.
           module Actioner
-            extend Increase::Internal::Type::Enum
+            extend Increase::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Actioner) }
@@ -845,13 +847,14 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Actioner::TaggedSymbol])
             end
-            def self.values; end
+            def self.values
+            end
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-          # account currency.
+          #   account currency.
           module Currency
-            extend Increase::Internal::Type::Enum
+            extend Increase::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Currency) }
@@ -880,13 +883,14 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Currency::TaggedSymbol])
             end
-            def self.values; end
+            def self.values
+            end
           end
 
           # The direction describes the direction the funds will move, either from the
-          # cardholder to the merchant or from the merchant to the cardholder.
+          #   cardholder to the merchant or from the merchant to the cardholder.
           module Direction
-            extend Increase::Internal::Type::Enum
+            extend Increase::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Direction) }
@@ -905,10 +909,11 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Direction::TaggedSymbol])
             end
-            def self.values; end
+            def self.values
+            end
           end
 
-          class NetworkDetails < Increase::Internal::Type::BaseModel
+          class NetworkDetails < Increase::BaseModel
             # The payment network used to process this card authorization.
             sig do
               returns(
@@ -926,7 +931,7 @@ module Increase
                 visa: T.nilable(
                   T.any(
                     Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa,
-                    Increase::Internal::AnyHash
+                    Increase::Util::AnyHash
                   )
                 )
               )
@@ -941,13 +946,14 @@ module Increase
                 visa: T.nilable(
                   T.any(
                     Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa,
-                    Increase::Internal::AnyHash
+                    Increase::Util::AnyHash
                   )
                 )
               )
                 .returns(T.attached_class)
             end
-            def self.new(category:, visa:); end
+            def self.new(category:, visa:)
+            end
 
             sig do
               override
@@ -958,11 +964,12 @@ module Increase
                   }
                 )
             end
-            def to_hash; end
+            def to_hash
+            end
 
             # The payment network used to process this card authorization.
             module Category
-              extend Increase::Internal::Type::Enum
+              extend Increase::Enum
 
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category) }
@@ -988,13 +995,14 @@ module Increase
                     T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category::TaggedSymbol]
                   )
               end
-              def self.values; end
+              def self.values
+              end
             end
 
-            class Visa < Increase::Internal::Type::BaseModel
+            class Visa < Increase::BaseModel
               # For electronic commerce transactions, this identifies the level of security used
-              # in obtaining the customer's payment credential. For mail or telephone order
-              # transactions, identifies the type of mail or telephone order.
+              #   in obtaining the customer's payment credential. For mail or telephone order
+              #   transactions, identifies the type of mail or telephone order.
               sig do
                 returns(
                   T.nilable(
@@ -1005,7 +1013,7 @@ module Increase
               attr_accessor :electronic_commerce_indicator
 
               # The method used to enter the cardholder's primary account number and card
-              # expiration date.
+              #   expiration date.
               sig do
                 returns(
                   T.nilable(
@@ -1016,7 +1024,7 @@ module Increase
               attr_accessor :point_of_service_entry_mode
 
               # Only present when `actioner: network`. Describes why a card authorization was
-              # approved or declined by Visa through stand-in processing.
+              #   approved or declined by Visa through stand-in processing.
               sig do
                 returns(
                   T.nilable(
@@ -1064,13 +1072,14 @@ module Increase
                     }
                   )
               end
-              def to_hash; end
+              def to_hash
+              end
 
               # For electronic commerce transactions, this identifies the level of security used
-              # in obtaining the customer's payment credential. For mail or telephone order
-              # transactions, identifies the type of mail or telephone order.
+              #   in obtaining the customer's payment credential. For mail or telephone order
+              #   transactions, identifies the type of mail or telephone order.
               module ElectronicCommerceIndicator
-                extend Increase::Internal::Type::Enum
+                extend Increase::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -1145,17 +1154,18 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                        Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                      Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                       ]
                     )
                 end
-                def self.values; end
+                def self.values
+                end
               end
 
               # The method used to enter the cardholder's primary account number and card
-              # expiration date.
+              #   expiration date.
               module PointOfServiceEntryMode
-                extend Increase::Internal::Type::Enum
+                extend Increase::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -1244,17 +1254,18 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                        Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                      Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                       ]
                     )
                 end
-                def self.values; end
+                def self.values
+                end
               end
 
               # Only present when `actioner: network`. Describes why a card authorization was
-              # approved or declined by Visa through stand-in processing.
+              #   approved or declined by Visa through stand-in processing.
               module StandInProcessingReason
-                extend Increase::Internal::Type::Enum
+                extend Increase::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -1322,29 +1333,30 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                        Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                      Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                       ]
                     )
                 end
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
 
-          class NetworkIdentifiers < Increase::Internal::Type::BaseModel
+          class NetworkIdentifiers < Increase::BaseModel
             # A life-cycle identifier used across e.g., an authorization and a reversal.
-            # Expected to be unique per acquirer within a window of time. For some card
-            # networks the retrieval reference number includes the trace counter.
+            #   Expected to be unique per acquirer within a window of time. For some card
+            #   networks the retrieval reference number includes the trace counter.
             sig { returns(T.nilable(String)) }
             attr_accessor :retrieval_reference_number
 
             # A counter used to verify an individual authorization. Expected to be unique per
-            # acquirer within a window of time.
+            #   acquirer within a window of time.
             sig { returns(T.nilable(String)) }
             attr_accessor :trace_number
 
             # A globally unique transaction identifier provided by the card network, used
-            # across multiple life-cycle requests.
+            #   across multiple life-cycle requests.
             sig { returns(T.nilable(String)) }
             attr_accessor :transaction_id
 
@@ -1357,7 +1369,8 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(retrieval_reference_number:, trace_number:, transaction_id:); end
+            def self.new(retrieval_reference_number:, trace_number:, transaction_id:)
+            end
 
             sig do
               override
@@ -1369,13 +1382,14 @@ module Increase
                   }
                 )
             end
-            def to_hash; end
+            def to_hash
+            end
           end
 
           # The processing category describes the intent behind the authorization, such as
-          # whether it was used for bill payments or an automatic fuel dispenser.
+          #   whether it was used for bill payments or an automatic fuel dispenser.
           module ProcessingCategory
-            extend Increase::Internal::Type::Enum
+            extend Increase::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::ProcessingCategory) }
@@ -1436,13 +1450,14 @@ module Increase
                   T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::ProcessingCategory::TaggedSymbol]
                 )
             end
-            def self.values; end
+            def self.values
+            end
           end
 
           # This is present if a specific decline reason was given in the real-time
-          # decision.
+          #   decision.
           module RealTimeDecisionReason
-            extend Increase::Internal::Type::Enum
+            extend Increase::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::RealTimeDecisionReason) }
@@ -1503,12 +1518,13 @@ module Increase
                   T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::RealTimeDecisionReason::TaggedSymbol]
                 )
             end
-            def self.values; end
+            def self.values
+            end
           end
 
           # Why the transaction was declined.
           module Reason
-            extend Increase::Internal::Type::Enum
+            extend Increase::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Reason) }
@@ -1614,12 +1630,13 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Reason::TaggedSymbol])
             end
-            def self.values; end
+            def self.values
+            end
           end
 
-          class Verification < Increase::Internal::Type::BaseModel
+          class Verification < Increase::BaseModel
             # Fields related to verification of the Card Verification Code, a 3-digit code on
-            # the back of the card.
+            #   the back of the card.
             sig { returns(Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode) }
             attr_reader :card_verification_code
 
@@ -1627,7 +1644,7 @@ module Increase
               params(
                 card_verification_code: T.any(
                   Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode,
-                  Increase::Internal::AnyHash
+                  Increase::Util::AnyHash
                 )
               )
                 .void
@@ -1635,7 +1652,7 @@ module Increase
             attr_writer :card_verification_code
 
             # Cardholder address provided in the authorization request and the address on file
-            # we verified it against.
+            #   we verified it against.
             sig { returns(Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress) }
             attr_reader :cardholder_address
 
@@ -1643,7 +1660,7 @@ module Increase
               params(
                 cardholder_address: T.any(
                   Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress,
-                  Increase::Internal::AnyHash
+                  Increase::Util::AnyHash
                 )
               )
                 .void
@@ -1655,16 +1672,17 @@ module Increase
               params(
                 card_verification_code: T.any(
                   Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode,
-                  Increase::Internal::AnyHash
+                  Increase::Util::AnyHash
                 ),
                 cardholder_address: T.any(
                   Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress,
-                  Increase::Internal::AnyHash
+                  Increase::Util::AnyHash
                 )
               )
                 .returns(T.attached_class)
             end
-            def self.new(card_verification_code:, cardholder_address:); end
+            def self.new(card_verification_code:, cardholder_address:)
+            end
 
             sig do
               override
@@ -1675,9 +1693,10 @@ module Increase
                   }
                 )
             end
-            def to_hash; end
+            def to_hash
+            end
 
-            class CardVerificationCode < Increase::Internal::Type::BaseModel
+            class CardVerificationCode < Increase::BaseModel
               # The result of verifying the Card Verification Code.
               sig do
                 returns(
@@ -1687,14 +1706,15 @@ module Increase
               attr_accessor :result
 
               # Fields related to verification of the Card Verification Code, a 3-digit code on
-              # the back of the card.
+              #   the back of the card.
               sig do
                 params(
                   result: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result::OrSymbol
                 )
                   .returns(T.attached_class)
               end
-              def self.new(result:); end
+              def self.new(result:)
+              end
 
               sig do
                 override
@@ -1704,11 +1724,12 @@ module Increase
                     }
                   )
               end
-              def to_hash; end
+              def to_hash
+              end
 
               # The result of verifying the Card Verification Code.
               module Result
-                extend Increase::Internal::Type::Enum
+                extend Increase::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -1748,15 +1769,16 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                        Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
+                      Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
                       ]
                     )
                 end
-                def self.values; end
+                def self.values
+                end
               end
             end
 
-            class CardholderAddress < Increase::Internal::Type::BaseModel
+            class CardholderAddress < Increase::BaseModel
               # Line 1 of the address on file for the cardholder.
               sig { returns(T.nilable(String)) }
               attr_accessor :actual_line1
@@ -1766,7 +1788,7 @@ module Increase
               attr_accessor :actual_postal_code
 
               # The cardholder address line 1 provided for verification in the authorization
-              # request.
+              #   request.
               sig { returns(T.nilable(String)) }
               attr_accessor :provided_line1
 
@@ -1783,7 +1805,7 @@ module Increase
               attr_accessor :result
 
               # Cardholder address provided in the authorization request and the address on file
-              # we verified it against.
+              #   we verified it against.
               sig do
                 params(
                   actual_line1: T.nilable(String),
@@ -1815,11 +1837,12 @@ module Increase
                     }
                   )
               end
-              def to_hash; end
+              def to_hash
+              end
 
               # The address verification result returned to the card network.
               module Result
-                extend Increase::Internal::Type::Enum
+                extend Increase::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -1880,20 +1903,21 @@ module Increase
                   override
                     .returns(
                       T::Array[
-                        Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
+                      Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
                       ]
                     )
                 end
-                def self.values; end
+                def self.values
+                end
               end
             end
           end
         end
 
         # The type of the resource. We may add additional possible values for this enum
-        # over time; your application should be able to handle such additions gracefully.
+        #   over time; your application should be able to handle such additions gracefully.
         module Category
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DeclinedTransaction::Source::Category) }
           OrSymbol =
@@ -1929,22 +1953,23 @@ module Increase
           OTHER = T.let(:other, Increase::Models::DeclinedTransaction::Source::Category::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::DeclinedTransaction::Source::Category::TaggedSymbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
-        class CheckDecline < Increase::Internal::Type::BaseModel
+        class CheckDecline < Increase::BaseModel
           # The declined amount in USD cents.
           sig { returns(Integer) }
           attr_accessor :amount
 
           # A computer-readable number printed on the MICR line of business checks, usually
-          # the check number. This is useful for positive pay checks, but can be unreliably
-          # transmitted by the bank of first deposit.
+          #   the check number. This is useful for positive pay checks, but can be unreliably
+          #   transmitted by the bank of first deposit.
           sig { returns(T.nilable(String)) }
           attr_accessor :auxiliary_on_us
 
           # The identifier of the API File object containing an image of the back of the
-          # declined check.
+          #   declined check.
           sig { returns(T.nilable(String)) }
           attr_accessor :back_image_file_id
 
@@ -1953,7 +1978,7 @@ module Increase
           attr_accessor :check_transfer_id
 
           # The identifier of the API File object containing an image of the front of the
-          # declined check.
+          #   declined check.
           sig { returns(T.nilable(String)) }
           attr_accessor :front_image_file_id
 
@@ -1966,7 +1991,7 @@ module Increase
           attr_accessor :reason
 
           # A Check Decline object. This field will be present in the JSON response if and
-          # only if `category` is equal to `check_decline`.
+          #   only if `category` is equal to `check_decline`.
           sig do
             params(
               amount: Integer,
@@ -1987,7 +2012,9 @@ module Increase
             front_image_file_id:,
             inbound_check_deposit_id:,
             reason:
-          ); end
+          )
+          end
+
           sig do
             override
               .returns(
@@ -2002,11 +2029,12 @@ module Increase
                 }
               )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           # Why the check was declined.
           module Reason
-            extend Increase::Internal::Type::Enum
+            extend Increase::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::DeclinedTransaction::Source::CheckDecline::Reason) }
@@ -2115,13 +2143,14 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::DeclinedTransaction::Source::CheckDecline::Reason::TaggedSymbol])
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
-        class CheckDepositRejection < Increase::Internal::Type::BaseModel
+        class CheckDepositRejection < Increase::BaseModel
           # The rejected amount in the minor unit of check's currency. For dollars, for
-          # example, this is cents.
+          #   example, this is cents.
           sig { returns(Integer) }
           attr_accessor :amount
 
@@ -2130,7 +2159,7 @@ module Increase
           attr_accessor :check_deposit_id
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-          # currency.
+          #   currency.
           sig { returns(Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Currency::TaggedSymbol) }
           attr_accessor :currency
 
@@ -2143,12 +2172,12 @@ module Increase
           attr_accessor :reason
 
           # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-          # the check deposit was rejected.
+          #   the check deposit was rejected.
           sig { returns(Time) }
           attr_accessor :rejected_at
 
           # A Check Deposit Rejection object. This field will be present in the JSON
-          # response if and only if `category` is equal to `check_deposit_rejection`.
+          #   response if and only if `category` is equal to `check_deposit_rejection`.
           sig do
             params(
               amount: Integer,
@@ -2160,14 +2189,7 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(
-            amount:,
-            check_deposit_id:,
-            currency:,
-            declined_transaction_id:,
-            reason:,
-            rejected_at:
-          )
+          def self.new(amount:, check_deposit_id:, currency:, declined_transaction_id:, reason:, rejected_at:)
           end
 
           sig do
@@ -2183,12 +2205,13 @@ module Increase
                 }
               )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-          # currency.
+          #   currency.
           module Currency
-            extend Increase::Internal::Type::Enum
+            extend Increase::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Currency) }
@@ -2231,12 +2254,13 @@ module Increase
                   T::Array[Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Currency::TaggedSymbol]
                 )
             end
-            def self.values; end
+            def self.values
+            end
           end
 
           # Why the check deposit was rejected.
           module Reason
-            extend Increase::Internal::Type::Enum
+            extend Increase::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Reason) }
@@ -2332,13 +2356,14 @@ module Increase
                   T::Array[Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Reason::TaggedSymbol]
                 )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
-        class InboundRealTimePaymentsTransferDecline < Increase::Internal::Type::BaseModel
+        class InboundRealTimePaymentsTransferDecline < Increase::BaseModel
           # The declined amount in the minor unit of the destination account currency. For
-          # dollars, for example, this is cents.
+          #   dollars, for example, this is cents.
           sig { returns(Integer) }
           attr_accessor :amount
 
@@ -2347,8 +2372,8 @@ module Increase
           attr_accessor :creditor_name
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
-          # transfer's currency. This will always be "USD" for a Real-Time Payments
-          # transfer.
+          #   transfer's currency. This will always be "USD" for a Real-Time Payments
+          #   transfer.
           sig do
             returns(
               Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol
@@ -2389,8 +2414,8 @@ module Increase
           attr_accessor :transfer_id
 
           # An Inbound Real-Time Payments Transfer Decline object. This field will be
-          # present in the JSON response if and only if `category` is equal to
-          # `inbound_real_time_payments_transfer_decline`.
+          #   present in the JSON response if and only if `category` is equal to
+          #   `inbound_real_time_payments_transfer_decline`.
           sig do
             params(
               amount: Integer,
@@ -2417,7 +2442,9 @@ module Increase
             remittance_information:,
             transaction_identification:,
             transfer_id:
-          ); end
+          )
+          end
+
           sig do
             override
               .returns(
@@ -2435,13 +2462,14 @@ module Increase
                 }
               )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
-          # transfer's currency. This will always be "USD" for a Real-Time Payments
-          # transfer.
+          #   transfer's currency. This will always be "USD" for a Real-Time Payments
+          #   transfer.
           module Currency
-            extend Increase::Internal::Type::Enum
+            extend Increase::Enum
 
             TaggedSymbol =
               T.type_alias do
@@ -2502,16 +2530,17 @@ module Increase
               override
                 .returns(
                   T::Array[
-                    Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol
+                  Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol
                   ]
                 )
             end
-            def self.values; end
+            def self.values
+            end
           end
 
           # Why the transfer was declined.
           module Reason
-            extend Increase::Internal::Type::Enum
+            extend Increase::Enum
 
             TaggedSymbol =
               T.type_alias do
@@ -2572,15 +2601,16 @@ module Increase
               override
                 .returns(
                   T::Array[
-                    Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol
+                  Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Reason::TaggedSymbol
                   ]
                 )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
-        class WireDecline < Increase::Internal::Type::BaseModel
+        class WireDecline < Increase::BaseModel
           # The identifier of the Inbound Wire Transfer that was declined.
           sig { returns(String) }
           attr_accessor :inbound_wire_transfer_id
@@ -2590,7 +2620,7 @@ module Increase
           attr_accessor :reason
 
           # A Wire Decline object. This field will be present in the JSON response if and
-          # only if `category` is equal to `wire_decline`.
+          #   only if `category` is equal to `wire_decline`.
           sig do
             params(
               inbound_wire_transfer_id: String,
@@ -2598,7 +2628,8 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(inbound_wire_transfer_id:, reason:); end
+          def self.new(inbound_wire_transfer_id:, reason:)
+          end
 
           sig do
             override
@@ -2609,11 +2640,12 @@ module Increase
                 }
               )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           # Why the wire transfer was declined.
           module Reason
-            extend Increase::Internal::Type::Enum
+            extend Increase::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::DeclinedTransaction::Source::WireDecline::Reason) }
@@ -2663,15 +2695,16 @@ module Increase
               override
                 .returns(T::Array[Increase::Models::DeclinedTransaction::Source::WireDecline::Reason::TaggedSymbol])
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `declined_transaction`.
+      #   `declined_transaction`.
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DeclinedTransaction::Type) }
         OrSymbol =
@@ -2681,7 +2714,8 @@ module Increase
           T.let(:declined_transaction, Increase::Models::DeclinedTransaction::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::DeclinedTransaction::Type::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

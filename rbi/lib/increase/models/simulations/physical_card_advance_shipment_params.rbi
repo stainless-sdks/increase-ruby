@@ -3,9 +3,9 @@
 module Increase
   module Models
     module Simulations
-      class PhysicalCardAdvanceShipmentParams < Increase::Internal::Type::BaseModel
-        extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+      class PhysicalCardAdvanceShipmentParams < Increase::BaseModel
+        extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # The shipment status to move the Physical Card to.
         sig { returns(Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol) }
@@ -14,11 +14,12 @@ module Increase
         sig do
           params(
             shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol,
-            request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
-        def self.new(shipment_status:, request_options: {}); end
+        def self.new(shipment_status:, request_options: {})
+        end
 
         sig do
           override
@@ -29,11 +30,12 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         # The shipment status to move the Physical Card to.
         module ShipmentStatus
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus) }
@@ -101,7 +103,8 @@ module Increase
                 T::Array[Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::TaggedSymbol]
               )
           end
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

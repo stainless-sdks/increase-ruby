@@ -6,11 +6,11 @@ module Increase
           status: Increase::Models::Simulations::CardDisputeActionParams::status,
           explanation: String
         }
-        & Increase::Internal::Type::request_parameters
+        & Increase::request_parameters
 
-      class CardDisputeActionParams < Increase::Internal::Type::BaseModel
-        extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+      class CardDisputeActionParams < Increase::BaseModel
+        extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         attr_accessor status: Increase::Models::Simulations::CardDisputeActionParams::status
 
@@ -30,7 +30,7 @@ module Increase
           :pending_user_information | :accepted | :rejected | :lost | :won
 
         module Status
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # Increase has requested more information related to the Card Dispute from you.
           PENDING_USER_INFORMATION: :pending_user_information

@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::Documents#retrieve
-    class Document < Increase::Internal::Type::BaseModel
+    class Document < Increase::BaseModel
       # @!attribute id
       #   The Document identifier.
       #
@@ -18,7 +18,7 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
-      #   Document was created.
+      #     Document was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -37,14 +37,14 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #   `document`.
+      #     `document`.
       #
       #   @return [Symbol, Increase::Models::Document::Type]
       required :type, enum: -> { Increase::Models::Document::Type }
 
       # @!parse
       #   # Increase generates certain documents / forms automatically for your application;
-      #   # they can be listed here.
+      #   #   they can be listed here.
       #   #
       #   # @param id [String]
       #   # @param category [Symbol, Increase::Models::Document::Category]
@@ -55,13 +55,13 @@ module Increase
       #   #
       #   def initialize(id:, category:, created_at:, entity_id:, file_id:, type:, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # The type of document.
       #
       # @see Increase::Models::Document#category
       module Category
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # Internal Revenue Service Form 1099-INT.
         FORM_1099_INT = :form_1099_int
@@ -83,11 +83,11 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `document`.
+      #   `document`.
       #
       # @see Increase::Models::Document#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         DOCUMENT = :document
 

@@ -2,46 +2,43 @@
 
 module Increase
   module Models
-    class ExportCreateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class ExportCreateParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # The type of Export to create.
       sig { returns(Increase::Models::ExportCreateParams::Category::OrSymbol) }
       attr_accessor :category
 
       # Options for the created export. Required if `category` is equal to
-      # `account_statement_ofx`.
+      #   `account_statement_ofx`.
       sig { returns(T.nilable(Increase::Models::ExportCreateParams::AccountStatementOfx)) }
       attr_reader :account_statement_ofx
 
       sig do
         params(
-          account_statement_ofx: T.any(Increase::Models::ExportCreateParams::AccountStatementOfx, Increase::Internal::AnyHash)
+          account_statement_ofx: T.any(Increase::Models::ExportCreateParams::AccountStatementOfx, Increase::Util::AnyHash)
         )
           .void
       end
       attr_writer :account_statement_ofx
 
       # Options for the created export. Required if `category` is equal to
-      # `balance_csv`.
+      #   `balance_csv`.
       sig { returns(T.nilable(Increase::Models::ExportCreateParams::BalanceCsv)) }
       attr_reader :balance_csv
 
-      sig do
-        params(balance_csv: T.any(Increase::Models::ExportCreateParams::BalanceCsv, Increase::Internal::AnyHash))
-          .void
-      end
+      sig { params(balance_csv: T.any(Increase::Models::ExportCreateParams::BalanceCsv, Increase::Util::AnyHash)).void }
       attr_writer :balance_csv
 
       # Options for the created export. Required if `category` is equal to
-      # `bookkeeping_account_balance_csv`.
+      #   `bookkeeping_account_balance_csv`.
       sig { returns(T.nilable(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv)) }
       attr_reader :bookkeeping_account_balance_csv
 
       sig do
         params(
-          bookkeeping_account_balance_csv: T.any(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv, Increase::Internal::AnyHash)
+          bookkeeping_account_balance_csv: T.any(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv, Increase::Util::AnyHash)
         )
           .void
       end
@@ -51,20 +48,17 @@ module Increase
       sig { returns(T.nilable(Increase::Models::ExportCreateParams::EntityCsv)) }
       attr_reader :entity_csv
 
-      sig do
-        params(entity_csv: T.any(Increase::Models::ExportCreateParams::EntityCsv, Increase::Internal::AnyHash))
-          .void
-      end
+      sig { params(entity_csv: T.any(Increase::Models::ExportCreateParams::EntityCsv, Increase::Util::AnyHash)).void }
       attr_writer :entity_csv
 
       # Options for the created export. Required if `category` is equal to
-      # `transaction_csv`.
+      #   `transaction_csv`.
       sig { returns(T.nilable(Increase::Models::ExportCreateParams::TransactionCsv)) }
       attr_reader :transaction_csv
 
       sig do
         params(
-          transaction_csv: T.any(Increase::Models::ExportCreateParams::TransactionCsv, Increase::Internal::AnyHash)
+          transaction_csv: T.any(Increase::Models::ExportCreateParams::TransactionCsv, Increase::Util::AnyHash)
         )
           .void
       end
@@ -80,13 +74,13 @@ module Increase
       sig do
         params(
           category: Increase::Models::ExportCreateParams::Category::OrSymbol,
-          account_statement_ofx: T.any(Increase::Models::ExportCreateParams::AccountStatementOfx, Increase::Internal::AnyHash),
-          balance_csv: T.any(Increase::Models::ExportCreateParams::BalanceCsv, Increase::Internal::AnyHash),
-          bookkeeping_account_balance_csv: T.any(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv, Increase::Internal::AnyHash),
-          entity_csv: T.any(Increase::Models::ExportCreateParams::EntityCsv, Increase::Internal::AnyHash),
-          transaction_csv: T.any(Increase::Models::ExportCreateParams::TransactionCsv, Increase::Internal::AnyHash),
+          account_statement_ofx: T.any(Increase::Models::ExportCreateParams::AccountStatementOfx, Increase::Util::AnyHash),
+          balance_csv: T.any(Increase::Models::ExportCreateParams::BalanceCsv, Increase::Util::AnyHash),
+          bookkeeping_account_balance_csv: T.any(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv, Increase::Util::AnyHash),
+          entity_csv: T.any(Increase::Models::ExportCreateParams::EntityCsv, Increase::Util::AnyHash),
+          transaction_csv: T.any(Increase::Models::ExportCreateParams::TransactionCsv, Increase::Util::AnyHash),
           vendor_csv: T.anything,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -99,7 +93,9 @@ module Increase
         transaction_csv: nil,
         vendor_csv: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       sig do
         override
           .returns(
@@ -115,11 +111,12 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # The type of Export to create.
       module Category
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExportCreateParams::Category) }
         OrSymbol =
@@ -146,10 +143,11 @@ module Increase
         VENDOR_CSV = T.let(:vendor_csv, Increase::Models::ExportCreateParams::Category::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ExportCreateParams::Category::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
-      class AccountStatementOfx < Increase::Internal::Type::BaseModel
+      class AccountStatementOfx < Increase::BaseModel
         # The Account to create a statement for.
         sig { returns(String) }
         attr_accessor :account_id
@@ -160,22 +158,23 @@ module Increase
 
         sig do
           params(
-            created_at: T.any(Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt, Increase::Internal::AnyHash)
+            created_at: T.any(Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt, Increase::Util::AnyHash)
           )
             .void
         end
         attr_writer :created_at
 
         # Options for the created export. Required if `category` is equal to
-        # `account_statement_ofx`.
+        #   `account_statement_ofx`.
         sig do
           params(
             account_id: String,
-            created_at: T.any(Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt, Increase::Internal::AnyHash)
+            created_at: T.any(Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt, Increase::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
-        def self.new(account_id:, created_at: nil); end
+        def self.new(account_id:, created_at: nil)
+        end
 
         sig do
           override
@@ -183,11 +182,12 @@ module Increase
               {account_id: String, created_at: Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt}
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
-        class CreatedAt < Increase::Internal::Type::BaseModel
+        class CreatedAt < Increase::BaseModel
           # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          # timestamp.
+          #   timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :after
 
@@ -195,7 +195,7 @@ module Increase
           attr_writer :after
 
           # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          # timestamp.
+          #   timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :before
 
@@ -203,7 +203,7 @@ module Increase
           attr_writer :before
 
           # Return results on or after this
-          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :on_or_after
 
@@ -211,7 +211,7 @@ module Increase
           attr_writer :on_or_after
 
           # Return results on or before this
-          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :on_or_before
 
@@ -222,14 +222,16 @@ module Increase
           sig do
             params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
           end
-          def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil); end
+          def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
+          end
 
           sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
-          def to_hash; end
+          def to_hash
+          end
         end
       end
 
-      class BalanceCsv < Increase::Internal::Type::BaseModel
+      class BalanceCsv < Increase::BaseModel
         # Filter exported Transactions to the specified Account.
         sig { returns(T.nilable(String)) }
         attr_reader :account_id
@@ -243,7 +245,7 @@ module Increase
 
         sig do
           params(
-            created_at: T.any(Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt, Increase::Internal::AnyHash)
+            created_at: T.any(Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt, Increase::Util::AnyHash)
           )
             .void
         end
@@ -257,16 +259,17 @@ module Increase
         attr_writer :program_id
 
         # Options for the created export. Required if `category` is equal to
-        # `balance_csv`.
+        #   `balance_csv`.
         sig do
           params(
             account_id: String,
-            created_at: T.any(Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt, Increase::Internal::AnyHash),
+            created_at: T.any(Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt, Increase::Util::AnyHash),
             program_id: String
           )
             .returns(T.attached_class)
         end
-        def self.new(account_id: nil, created_at: nil, program_id: nil); end
+        def self.new(account_id: nil, created_at: nil, program_id: nil)
+        end
 
         sig do
           override
@@ -278,11 +281,12 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
-        class CreatedAt < Increase::Internal::Type::BaseModel
+        class CreatedAt < Increase::BaseModel
           # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          # timestamp.
+          #   timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :after
 
@@ -290,7 +294,7 @@ module Increase
           attr_writer :after
 
           # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          # timestamp.
+          #   timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :before
 
@@ -298,7 +302,7 @@ module Increase
           attr_writer :before
 
           # Return results on or after this
-          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :on_or_after
 
@@ -306,7 +310,7 @@ module Increase
           attr_writer :on_or_after
 
           # Return results on or before this
-          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :on_or_before
 
@@ -317,14 +321,16 @@ module Increase
           sig do
             params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
           end
-          def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil); end
+          def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
+          end
 
           sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
-          def to_hash; end
+          def to_hash
+          end
         end
       end
 
-      class BookkeepingAccountBalanceCsv < Increase::Internal::Type::BaseModel
+      class BookkeepingAccountBalanceCsv < Increase::BaseModel
         # Filter exported Transactions to the specified Bookkeeping Account.
         sig { returns(T.nilable(String)) }
         attr_reader :bookkeeping_account_id
@@ -340,7 +346,7 @@ module Increase
           params(
             created_at: T.any(
               Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt,
-              Increase::Internal::AnyHash
+              Increase::Util::AnyHash
             )
           )
             .void
@@ -348,18 +354,19 @@ module Increase
         attr_writer :created_at
 
         # Options for the created export. Required if `category` is equal to
-        # `bookkeeping_account_balance_csv`.
+        #   `bookkeeping_account_balance_csv`.
         sig do
           params(
             bookkeeping_account_id: String,
             created_at: T.any(
               Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt,
-              Increase::Internal::AnyHash
+              Increase::Util::AnyHash
             )
           )
             .returns(T.attached_class)
         end
-        def self.new(bookkeeping_account_id: nil, created_at: nil); end
+        def self.new(bookkeeping_account_id: nil, created_at: nil)
+        end
 
         sig do
           override
@@ -370,11 +377,12 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
-        class CreatedAt < Increase::Internal::Type::BaseModel
+        class CreatedAt < Increase::BaseModel
           # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          # timestamp.
+          #   timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :after
 
@@ -382,7 +390,7 @@ module Increase
           attr_writer :after
 
           # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          # timestamp.
+          #   timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :before
 
@@ -390,7 +398,7 @@ module Increase
           attr_writer :before
 
           # Return results on or after this
-          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :on_or_after
 
@@ -398,7 +406,7 @@ module Increase
           attr_writer :on_or_after
 
           # Return results on or before this
-          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :on_or_before
 
@@ -409,41 +417,41 @@ module Increase
           sig do
             params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
           end
-          def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil); end
+          def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
+          end
 
           sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
-          def to_hash; end
+          def to_hash
+          end
         end
       end
 
-      class EntityCsv < Increase::Internal::Type::BaseModel
+      class EntityCsv < Increase::BaseModel
         # Entity statuses to filter by.
         sig { returns(T.nilable(Increase::Models::ExportCreateParams::EntityCsv::Status)) }
         attr_reader :status
 
         sig do
-          params(
-            status: T.any(Increase::Models::ExportCreateParams::EntityCsv::Status, Increase::Internal::AnyHash)
-          )
+          params(status: T.any(Increase::Models::ExportCreateParams::EntityCsv::Status, Increase::Util::AnyHash))
             .void
         end
         attr_writer :status
 
         # Options for the created export. Required if `category` is equal to `entity_csv`.
         sig do
-          params(
-            status: T.any(Increase::Models::ExportCreateParams::EntityCsv::Status, Increase::Internal::AnyHash)
-          )
+          params(status: T.any(Increase::Models::ExportCreateParams::EntityCsv::Status, Increase::Util::AnyHash))
             .returns(T.attached_class)
         end
-        def self.new(status: nil); end
+        def self.new(status: nil)
+        end
 
         sig { override.returns({status: Increase::Models::ExportCreateParams::EntityCsv::Status}) }
-        def to_hash; end
+        def to_hash
+        end
 
-        class Status < Increase::Internal::Type::BaseModel
+        class Status < Increase::BaseModel
           # Entity statuses to filter by. For GET requests, this should be encoded as a
-          # comma-delimited string, such as `?in=one,two,three`.
+          #   comma-delimited string, such as `?in=one,two,three`.
           sig { returns(T::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::In::OrSymbol]) }
           attr_accessor :in_
 
@@ -452,13 +460,15 @@ module Increase
             params(in_: T::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::In::OrSymbol])
               .returns(T.attached_class)
           end
-          def self.new(in_:); end
+          def self.new(in_:)
+          end
 
           sig { override.returns({in_: T::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::In::OrSymbol]}) }
-          def to_hash; end
+          def to_hash
+          end
 
           module In
-            extend Increase::Internal::Type::Enum
+            extend Increase::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::ExportCreateParams::EntityCsv::Status::In) }
@@ -475,12 +485,13 @@ module Increase
             DISABLED = T.let(:disabled, Increase::Models::ExportCreateParams::EntityCsv::Status::In::TaggedSymbol)
 
             sig { override.returns(T::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::In::TaggedSymbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
       end
 
-      class TransactionCsv < Increase::Internal::Type::BaseModel
+      class TransactionCsv < Increase::BaseModel
         # Filter exported Transactions to the specified Account.
         sig { returns(T.nilable(String)) }
         attr_reader :account_id
@@ -494,7 +505,7 @@ module Increase
 
         sig do
           params(
-            created_at: T.any(Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt, Increase::Internal::AnyHash)
+            created_at: T.any(Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt, Increase::Util::AnyHash)
           )
             .void
         end
@@ -508,16 +519,17 @@ module Increase
         attr_writer :program_id
 
         # Options for the created export. Required if `category` is equal to
-        # `transaction_csv`.
+        #   `transaction_csv`.
         sig do
           params(
             account_id: String,
-            created_at: T.any(Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt, Increase::Internal::AnyHash),
+            created_at: T.any(Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt, Increase::Util::AnyHash),
             program_id: String
           )
             .returns(T.attached_class)
         end
-        def self.new(account_id: nil, created_at: nil, program_id: nil); end
+        def self.new(account_id: nil, created_at: nil, program_id: nil)
+        end
 
         sig do
           override
@@ -529,11 +541,12 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
-        class CreatedAt < Increase::Internal::Type::BaseModel
+        class CreatedAt < Increase::BaseModel
           # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          # timestamp.
+          #   timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :after
 
@@ -541,7 +554,7 @@ module Increase
           attr_writer :after
 
           # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          # timestamp.
+          #   timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :before
 
@@ -549,7 +562,7 @@ module Increase
           attr_writer :before
 
           # Return results on or after this
-          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :on_or_after
 
@@ -557,7 +570,7 @@ module Increase
           attr_writer :on_or_after
 
           # Return results on or before this
-          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           sig { returns(T.nilable(Time)) }
           attr_reader :on_or_before
 
@@ -568,10 +581,12 @@ module Increase
           sig do
             params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
           end
-          def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil); end
+          def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
+          end
 
           sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
-          def to_hash; end
+          def to_hash
+          end
         end
       end
     end

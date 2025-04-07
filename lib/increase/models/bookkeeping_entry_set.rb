@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::BookkeepingEntrySets#create
-    class BookkeepingEntrySet < Increase::Internal::Type::BaseModel
+    class BookkeepingEntrySet < Increase::BaseModel
       # @!attribute id
       #   The entry set identifier.
       #
@@ -26,12 +26,12 @@ module Increase
       #   The entries.
       #
       #   @return [Array<Increase::Models::BookkeepingEntrySet::Entry>]
-      required :entries, -> { Increase::Internal::Type::ArrayOf[Increase::Models::BookkeepingEntrySet::Entry] }
+      required :entries, -> { Increase::ArrayOf[Increase::Models::BookkeepingEntrySet::Entry] }
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #     Increase and is used to ensure that a request is only processed once. Learn more
+      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -44,16 +44,16 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #   `bookkeeping_entry_set`.
+      #     `bookkeeping_entry_set`.
       #
       #   @return [Symbol, Increase::Models::BookkeepingEntrySet::Type]
       required :type, enum: -> { Increase::Models::BookkeepingEntrySet::Type }
 
       # @!parse
       #   # Entry Sets are accounting entries that are transactionally applied. Your
-      #   # compliance setup might require annotating money movements using this API. Learn
-      #   # more in our
-      #   # [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
+      #   #   compliance setup might require annotating money movements using this API. Learn
+      #   #   more in our
+      #   #   [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
       #   #
       #   # @param id [String]
       #   # @param created_at [Time]
@@ -65,9 +65,9 @@ module Increase
       #   #
       #   def initialize(id:, created_at:, date:, entries:, idempotency_key:, transaction_id:, type:, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
-      class Entry < Increase::Internal::Type::BaseModel
+      class Entry < Increase::BaseModel
         # @!attribute id
         #   The entry identifier.
         #
@@ -93,15 +93,15 @@ module Increase
         #   #
         #   def initialize(id:, account_id:, amount:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `bookkeeping_entry_set`.
+      #   `bookkeeping_entry_set`.
       #
       # @see Increase::Models::BookkeepingEntrySet#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         BOOKKEEPING_ENTRY_SET = :bookkeeping_entry_set
 

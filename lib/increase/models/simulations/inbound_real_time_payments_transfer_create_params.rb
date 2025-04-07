@@ -4,14 +4,14 @@ module Increase
   module Models
     module Simulations
       # @see Increase::Resources::Simulations::InboundRealTimePaymentsTransfers#create
-      class InboundRealTimePaymentsTransferCreateParams < Increase::Internal::Type::BaseModel
+      class InboundRealTimePaymentsTransferCreateParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+        #   extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # @!attribute account_number_id
         #   The identifier of the Account Number the inbound Real-Time Payments Transfer is
-        #   for.
+        #     for.
         #
         #   @return [String]
         required :account_number_id, String
@@ -96,7 +96,7 @@ module Increase
         #     super
         #   end
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
     end
   end

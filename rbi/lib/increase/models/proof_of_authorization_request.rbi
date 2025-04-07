@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class ProofOfAuthorizationRequest < Increase::Internal::Type::BaseModel
+    class ProofOfAuthorizationRequest < Increase::BaseModel
       # The Proof of Authorization Request identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -20,7 +20,7 @@ module Increase
       attr_accessor :due_on
 
       # A constant representing the object's type. For this resource it will always be
-      # `proof_of_authorization_request`.
+      #   `proof_of_authorization_request`.
       sig { returns(Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol) }
       attr_accessor :type
 
@@ -32,7 +32,7 @@ module Increase
       sig do
         params(
           id: String,
-          ach_transfers: T::Array[T.any(Increase::Models::ProofOfAuthorizationRequest::ACHTransfer, Increase::Internal::AnyHash)],
+          ach_transfers: T::Array[T.any(Increase::Models::ProofOfAuthorizationRequest::ACHTransfer, Increase::Util::AnyHash)],
           created_at: Time,
           due_on: Time,
           type: Increase::Models::ProofOfAuthorizationRequest::Type::OrSymbol,
@@ -40,7 +40,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, ach_transfers:, created_at:, due_on:, type:, updated_at:); end
+      def self.new(id:, ach_transfers:, created_at:, due_on:, type:, updated_at:)
+      end
 
       sig do
         override
@@ -55,24 +56,27 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
-      class ACHTransfer < Increase::Internal::Type::BaseModel
+      class ACHTransfer < Increase::BaseModel
         # The ACH Transfer identifier.
         sig { returns(String) }
         attr_accessor :id
 
         sig { params(id: String).returns(T.attached_class) }
-        def self.new(id:); end
+        def self.new(id:)
+        end
 
         sig { override.returns({id: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `proof_of_authorization_request`.
+      #   `proof_of_authorization_request`.
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ProofOfAuthorizationRequest::Type) }
         OrSymbol =
@@ -82,7 +86,8 @@ module Increase
           T.let(:proof_of_authorization_request, Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

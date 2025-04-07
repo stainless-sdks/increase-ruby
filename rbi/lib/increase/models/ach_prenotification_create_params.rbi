@@ -2,9 +2,9 @@
 
 module Increase
   module Models
-    class ACHPrenotificationCreateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class ACHPrenotificationCreateParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # The Increase identifier for the account that will send the transfer.
       sig { returns(String) }
@@ -15,7 +15,7 @@ module Increase
       attr_accessor :account_number
 
       # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      # destination account.
+      #   destination account.
       sig { returns(String) }
       attr_accessor :routing_number
 
@@ -67,7 +67,7 @@ module Increase
       attr_writer :credit_debit_indicator
 
       # The transfer effective date in
-      # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+      #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
       sig { returns(T.nilable(Date)) }
       attr_reader :effective_date
 
@@ -82,7 +82,7 @@ module Increase
       attr_writer :individual_id
 
       # The name of the transfer recipient. This value is information and not verified
-      # by the recipient's bank.
+      #   by the recipient's bank.
       sig { returns(T.nilable(String)) }
       attr_reader :individual_name
 
@@ -116,7 +116,7 @@ module Increase
           individual_id: String,
           individual_name: String,
           standard_entry_class_code: Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -135,7 +135,9 @@ module Increase
         individual_name: nil,
         standard_entry_class_code: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       sig do
         override
           .returns(
@@ -157,11 +159,12 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # Whether the Prenotification is for a future debit or credit.
       module CreditDebitIndicator
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator) }
@@ -186,12 +189,13 @@ module Increase
           override
             .returns(T::Array[Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol])
         end
-        def self.values; end
+        def self.values
+        end
       end
 
       # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
       module StandardEntryClassCode
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode) }
@@ -236,7 +240,8 @@ module Increase
           override
             .returns(T::Array[Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol])
         end
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

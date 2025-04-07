@@ -2,9 +2,9 @@
 
 module Increase
   module Models
-    class ProofOfAuthorizationRequestSubmissionCreateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class ProofOfAuthorizationRequestSubmissionCreateParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # Terms of authorization.
       sig { returns(String) }
@@ -77,7 +77,7 @@ module Increase
           additional_evidence_file_id: String,
           authorizer_company: String,
           authorizer_ip_address: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -95,7 +95,9 @@ module Increase
         authorizer_company: nil,
         authorizer_ip_address: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       sig do
         override
           .returns(
@@ -116,7 +118,8 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

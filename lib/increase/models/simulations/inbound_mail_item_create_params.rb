@@ -4,10 +4,10 @@ module Increase
   module Models
     module Simulations
       # @see Increase::Resources::Simulations::InboundMailItems#create
-      class InboundMailItemCreateParams < Increase::Internal::Type::BaseModel
+      class InboundMailItemCreateParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+        #   extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # @!attribute amount
         #   The amount of the check to be simulated, in cents.
@@ -23,7 +23,7 @@ module Increase
 
         # @!attribute [r] contents_file_id
         #   The file containing the PDF contents. If not present, a default check image file
-        #   will be used.
+        #     will be used.
         #
         #   @return [String, nil]
         optional :contents_file_id, String
@@ -40,7 +40,7 @@ module Increase
         #   #
         #   def initialize(amount:, lockbox_id:, contents_file_id: nil, request_options: {}, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
     end
   end

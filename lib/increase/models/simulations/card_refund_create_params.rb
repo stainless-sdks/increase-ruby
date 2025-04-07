@@ -4,14 +4,14 @@ module Increase
   module Models
     module Simulations
       # @see Increase::Resources::Simulations::CardRefunds#create
-      class CardRefundCreateParams < Increase::Internal::Type::BaseModel
+      class CardRefundCreateParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+        #   extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # @!attribute transaction_id
         #   The identifier for the Transaction to refund. The Transaction's source must have
-        #   a category of card_settlement.
+        #     a category of card_settlement.
         #
         #   @return [String]
         required :transaction_id, String
@@ -22,7 +22,7 @@ module Increase
         #   #
         #   def initialize(transaction_id:, request_options: {}, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
     end
   end

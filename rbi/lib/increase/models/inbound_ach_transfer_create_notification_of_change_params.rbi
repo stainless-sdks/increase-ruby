@@ -2,9 +2,9 @@
 
 module Increase
   module Models
-    class InboundACHTransferCreateNotificationOfChangeParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class InboundACHTransferCreateNotificationOfChangeParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # The updated account number to send in the notification of change.
       sig { returns(T.nilable(String)) }
@@ -24,11 +24,12 @@ module Increase
         params(
           updated_account_number: String,
           updated_routing_number: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
-      def self.new(updated_account_number: nil, updated_routing_number: nil, request_options: {}); end
+      def self.new(updated_account_number: nil, updated_routing_number: nil, request_options: {})
+      end
 
       sig do
         override
@@ -40,7 +41,8 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class Document < Increase::Internal::Type::BaseModel
+    class Document < Increase::BaseModel
       # The Document identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -12,7 +12,7 @@ module Increase
       attr_accessor :category
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
-      # Document was created.
+      #   Document was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -25,12 +25,12 @@ module Increase
       attr_accessor :file_id
 
       # A constant representing the object's type. For this resource it will always be
-      # `document`.
+      #   `document`.
       sig { returns(Increase::Models::Document::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Increase generates certain documents / forms automatically for your application;
-      # they can be listed here.
+      #   they can be listed here.
       sig do
         params(
           id: String,
@@ -42,7 +42,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, category:, created_at:, entity_id:, file_id:, type:); end
+      def self.new(id:, category:, created_at:, entity_id:, file_id:, type:)
+      end
 
       sig do
         override
@@ -57,11 +58,12 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # The type of document.
       module Category
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Document::Category) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::Document::Category::TaggedSymbol) }
@@ -80,13 +82,14 @@ module Increase
         COMPANY_INFORMATION = T.let(:company_information, Increase::Models::Document::Category::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Document::Category::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `document`.
+      #   `document`.
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Document::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::Document::Type::TaggedSymbol) }
@@ -94,7 +97,8 @@ module Increase
         DOCUMENT = T.let(:document, Increase::Models::Document::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::Document::Type::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

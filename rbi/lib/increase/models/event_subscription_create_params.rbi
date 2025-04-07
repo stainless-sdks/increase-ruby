@@ -2,16 +2,16 @@
 
 module Increase
   module Models
-    class EventSubscriptionCreateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class EventSubscriptionCreateParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # The URL you'd like us to send webhooks to.
       sig { returns(String) }
       attr_accessor :url
 
       # If specified, this subscription will only receive webhooks for Events associated
-      # with the specified OAuth Connection.
+      #   with the specified OAuth Connection.
       sig { returns(T.nilable(String)) }
       attr_reader :oauth_connection_id
 
@@ -19,7 +19,7 @@ module Increase
       attr_writer :oauth_connection_id
 
       # If specified, this subscription will only receive webhooks for Events with the
-      # specified `category`.
+      #   specified `category`.
       sig { returns(T.nilable(Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol)) }
       attr_reader :selected_event_category
 
@@ -32,7 +32,7 @@ module Increase
       attr_writer :selected_event_category
 
       # The key that will be used to sign webhooks. If no value is passed, a random
-      # string will be used as default.
+      #   string will be used as default.
       sig { returns(T.nilable(String)) }
       attr_reader :shared_secret
 
@@ -45,7 +45,7 @@ module Increase
           oauth_connection_id: String,
           selected_event_category: Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol,
           shared_secret: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -70,12 +70,13 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # If specified, this subscription will only receive webhooks for Events with the
-      # specified `category`.
+      #   specified `category`.
       module SelectedEventCategory
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory) }
@@ -708,7 +709,8 @@ module Increase
           override
             .returns(T::Array[Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol])
         end
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

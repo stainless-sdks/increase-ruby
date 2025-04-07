@@ -85,7 +85,7 @@ class Increase::Test::Resources::CheckTransfersTest < Increase::Test::ResourceTe
     response = @increase.check_transfers.list
 
     assert_pattern do
-      response => Increase::Internal::Page
+      response => Increase::Page
     end
 
     row = response.to_enum.first

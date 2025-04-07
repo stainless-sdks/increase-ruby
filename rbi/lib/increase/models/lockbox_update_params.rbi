@@ -2,9 +2,9 @@
 
 module Increase
   module Models
-    class LockboxUpdateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class LockboxUpdateParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # The description you choose for the Lockbox.
       sig { returns(T.nilable(String)) }
@@ -32,11 +32,12 @@ module Increase
           description: String,
           recipient_name: String,
           status: Increase::Models::LockboxUpdateParams::Status::OrSymbol,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
-      def self.new(description: nil, recipient_name: nil, status: nil, request_options: {}); end
+      def self.new(description: nil, recipient_name: nil, status: nil, request_options: {})
+      end
 
       sig do
         override
@@ -49,11 +50,12 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # This indicates if checks can be sent to the Lockbox.
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::LockboxUpdateParams::Status) }
         OrSymbol =
@@ -66,7 +68,8 @@ module Increase
         INACTIVE = T.let(:inactive, Increase::Models::LockboxUpdateParams::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::LockboxUpdateParams::Status::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

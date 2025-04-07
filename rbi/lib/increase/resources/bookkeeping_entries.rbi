@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           bookkeeping_entry_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::BookkeepingEntry)
       end
@@ -15,16 +15,18 @@ module Increase
         # The identifier of the Bookkeeping Entry.
         bookkeeping_entry_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # List Bookkeeping Entries
       sig do
         params(
           account_id: String,
           cursor: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
-          .returns(Increase::Internal::Page[Increase::Models::BookkeepingEntry])
+          .returns(Increase::Page[Increase::Models::BookkeepingEntry])
       end
       def list(
         # The identifier for the Bookkeeping Account to filter by.
@@ -32,13 +34,16 @@ module Increase
         # Return the page of entries after this one.
         cursor: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        #   objects.
         limit: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

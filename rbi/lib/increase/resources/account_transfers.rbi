@@ -11,7 +11,7 @@ module Increase
           description: String,
           destination_account_id: String,
           require_approval: T::Boolean,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::AccountTransfer)
       end
@@ -19,7 +19,7 @@ module Increase
         # The identifier for the account that will send the transfer.
         account_id:,
         # The transfer amount in the minor unit of the account currency. For dollars, for
-        # example, this is cents.
+        #   example, this is cents.
         amount:,
         # The description you choose to give the transfer.
         description:,
@@ -28,12 +28,14 @@ module Increase
         # Whether the transfer requires explicit approval via the dashboard or API.
         require_approval: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Retrieve an Account Transfer
       sig do
         params(
           account_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::AccountTransfer)
       end
@@ -41,18 +43,20 @@ module Increase
         # The identifier of the Account Transfer.
         account_transfer_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # List Account Transfers
       sig do
         params(
           account_id: String,
-          created_at: T.any(Increase::Models::AccountTransferListParams::CreatedAt, Increase::Internal::AnyHash),
+          created_at: T.any(Increase::Models::AccountTransferListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
-          .returns(Increase::Internal::Page[Increase::Models::AccountTransfer])
+          .returns(Increase::Page[Increase::Models::AccountTransfer])
       end
       def list(
         # Filter Account Transfers to those that originated from the specified Account.
@@ -61,20 +65,22 @@ module Increase
         # Return the page of entries after this one.
         cursor: nil,
         # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        #   that object. This value is unique across Increase and is used to ensure that a
+        #   request is only processed once. Learn more about
+        #   [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        #   objects.
         limit: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Approve an Account Transfer
       sig do
         params(
           account_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::AccountTransfer)
       end
@@ -82,12 +88,14 @@ module Increase
         # The identifier of the Account Transfer to approve.
         account_transfer_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Cancel an Account Transfer
       sig do
         params(
           account_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::AccountTransfer)
       end
@@ -95,10 +103,13 @@ module Increase
         # The identifier of the pending Account Transfer to cancel.
         account_transfer_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

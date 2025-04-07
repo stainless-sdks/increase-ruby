@@ -2,13 +2,13 @@
 
 module Increase
   module Models
-    class FileCreateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class FileCreateParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # The file contents. This should follow the specifications of
-      # [RFC 7578](https://datatracker.ietf.org/doc/html/rfc7578) which defines file
-      # transfers for the multipart/form-data protocol.
+      #   [RFC 7578](https://datatracker.ietf.org/doc/html/rfc7578) which defines file
+      #   transfers for the multipart/form-data protocol.
       sig { returns(T.any(IO, StringIO)) }
       attr_accessor :file
 
@@ -28,11 +28,12 @@ module Increase
           file: T.any(IO, StringIO),
           purpose: Increase::Models::FileCreateParams::Purpose::OrSymbol,
           description: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
-      def self.new(file:, purpose:, description: nil, request_options: {}); end
+      def self.new(file:, purpose:, description: nil, request_options: {})
+      end
 
       sig do
         override
@@ -45,11 +46,12 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # What the File will be used for in Increase's systems.
       module Purpose
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::FileCreateParams::Purpose) }
         OrSymbol =
@@ -116,7 +118,8 @@ module Increase
           )
 
         sig { override.returns(T::Array[Increase::Models::FileCreateParams::Purpose::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

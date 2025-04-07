@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class AccountTransfer < Increase::Internal::Type::BaseModel
+    class AccountTransfer < Increase::BaseModel
       # The account transfer's identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -12,38 +12,36 @@ module Increase
       attr_accessor :account_id
 
       # The transfer amount in the minor unit of the destination account currency. For
-      # dollars, for example, this is cents.
+      #   dollars, for example, this is cents.
       sig { returns(Integer) }
       attr_accessor :amount
 
       # If your account requires approvals for transfers and the transfer was approved,
-      # this will contain details of the approval.
+      #   this will contain details of the approval.
       sig { returns(T.nilable(Increase::Models::AccountTransfer::Approval)) }
       attr_reader :approval
 
       sig do
-        params(
-          approval: T.nilable(T.any(Increase::Models::AccountTransfer::Approval, Increase::Internal::AnyHash))
-        )
+        params(approval: T.nilable(T.any(Increase::Models::AccountTransfer::Approval, Increase::Util::AnyHash)))
           .void
       end
       attr_writer :approval
 
       # If your account requires approvals for transfers and the transfer was not
-      # approved, this will contain details of the cancellation.
+      #   approved, this will contain details of the cancellation.
       sig { returns(T.nilable(Increase::Models::AccountTransfer::Cancellation)) }
       attr_reader :cancellation
 
       sig do
         params(
-          cancellation: T.nilable(T.any(Increase::Models::AccountTransfer::Cancellation, Increase::Internal::AnyHash))
+          cancellation: T.nilable(T.any(Increase::Models::AccountTransfer::Cancellation, Increase::Util::AnyHash))
         )
           .void
       end
       attr_writer :cancellation
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      # the transfer was created.
+      #   the transfer was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -53,14 +51,14 @@ module Increase
 
       sig do
         params(
-          created_by: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy, Increase::Internal::AnyHash))
+          created_by: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy, Increase::Util::AnyHash))
         )
           .void
       end
       attr_writer :created_by
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-      # account currency.
+      #   account currency.
       sig { returns(Increase::Models::AccountTransfer::Currency::TaggedSymbol) }
       attr_accessor :currency
 
@@ -77,8 +75,8 @@ module Increase
       attr_accessor :destination_transaction_id
 
       # The idempotency key you chose for this object. This value is unique across
-      # Increase and is used to ensure that a request is only processed once. Learn more
-      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
@@ -87,9 +85,9 @@ module Increase
       attr_accessor :network
 
       # The ID for the pending transaction representing the transfer. A pending
-      # transaction is created when the transfer
-      # [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
-      # by someone else in your organization.
+      #   transaction is created when the transfer
+      #   [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
+      #   by someone else in your organization.
       sig { returns(T.nilable(String)) }
       attr_accessor :pending_transaction_id
 
@@ -102,7 +100,7 @@ module Increase
       attr_accessor :transaction_id
 
       # A constant representing the object's type. For this resource it will always be
-      # `account_transfer`.
+      #   `account_transfer`.
       sig { returns(Increase::Models::AccountTransfer::Type::TaggedSymbol) }
       attr_accessor :type
 
@@ -112,10 +110,10 @@ module Increase
           id: String,
           account_id: String,
           amount: Integer,
-          approval: T.nilable(T.any(Increase::Models::AccountTransfer::Approval, Increase::Internal::AnyHash)),
-          cancellation: T.nilable(T.any(Increase::Models::AccountTransfer::Cancellation, Increase::Internal::AnyHash)),
+          approval: T.nilable(T.any(Increase::Models::AccountTransfer::Approval, Increase::Util::AnyHash)),
+          cancellation: T.nilable(T.any(Increase::Models::AccountTransfer::Cancellation, Increase::Util::AnyHash)),
           created_at: Time,
-          created_by: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy, Increase::Internal::AnyHash)),
+          created_by: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy, Increase::Util::AnyHash)),
           currency: Increase::Models::AccountTransfer::Currency::OrSymbol,
           description: String,
           destination_account_id: String,
@@ -147,7 +145,9 @@ module Increase
         status:,
         transaction_id:,
         type:
-      ); end
+      )
+      end
+
       sig do
         override
           .returns(
@@ -172,56 +172,61 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
-      class Approval < Increase::Internal::Type::BaseModel
+      class Approval < Increase::BaseModel
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the transfer was approved.
+        #   the transfer was approved.
         sig { returns(Time) }
         attr_accessor :approved_at
 
         # If the Transfer was approved by a user in the dashboard, the email address of
-        # that user.
+        #   that user.
         sig { returns(T.nilable(String)) }
         attr_accessor :approved_by
 
         # If your account requires approvals for transfers and the transfer was approved,
-        # this will contain details of the approval.
+        #   this will contain details of the approval.
         sig { params(approved_at: Time, approved_by: T.nilable(String)).returns(T.attached_class) }
-        def self.new(approved_at:, approved_by:); end
+        def self.new(approved_at:, approved_by:)
+        end
 
         sig { override.returns({approved_at: Time, approved_by: T.nilable(String)}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
-      class Cancellation < Increase::Internal::Type::BaseModel
+      class Cancellation < Increase::BaseModel
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the Transfer was canceled.
+        #   the Transfer was canceled.
         sig { returns(Time) }
         attr_accessor :canceled_at
 
         # If the Transfer was canceled by a user in the dashboard, the email address of
-        # that user.
+        #   that user.
         sig { returns(T.nilable(String)) }
         attr_accessor :canceled_by
 
         # If your account requires approvals for transfers and the transfer was not
-        # approved, this will contain details of the cancellation.
+        #   approved, this will contain details of the cancellation.
         sig { params(canceled_at: Time, canceled_by: T.nilable(String)).returns(T.attached_class) }
-        def self.new(canceled_at:, canceled_by:); end
+        def self.new(canceled_at:, canceled_by:)
+        end
 
         sig { override.returns({canceled_at: Time, canceled_by: T.nilable(String)}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
-      class CreatedBy < Increase::Internal::Type::BaseModel
+      class CreatedBy < Increase::BaseModel
         # If present, details about the API key that created the transfer.
         sig { returns(T.nilable(Increase::Models::AccountTransfer::CreatedBy::APIKey)) }
         attr_reader :api_key
 
         sig do
           params(
-            api_key: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::APIKey, Increase::Internal::AnyHash))
+            api_key: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::APIKey, Increase::Util::AnyHash))
           )
             .void
         end
@@ -237,9 +242,7 @@ module Increase
 
         sig do
           params(
-            oauth_application: T.nilable(
-              T.any(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication, Increase::Internal::AnyHash)
-            )
+            oauth_application: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash))
           )
             .void
         end
@@ -251,7 +254,7 @@ module Increase
 
         sig do
           params(
-            user: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::User, Increase::Internal::AnyHash))
+            user: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::User, Increase::Util::AnyHash))
           )
             .void
         end
@@ -260,16 +263,15 @@ module Increase
         # What object created the transfer, either via the API or the dashboard.
         sig do
           params(
-            api_key: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::APIKey, Increase::Internal::AnyHash)),
+            api_key: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::APIKey, Increase::Util::AnyHash)),
             category: Increase::Models::AccountTransfer::CreatedBy::Category::OrSymbol,
-            oauth_application: T.nilable(
-              T.any(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication, Increase::Internal::AnyHash)
-            ),
-            user: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::User, Increase::Internal::AnyHash))
+            oauth_application: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication, Increase::Util::AnyHash)),
+            user: T.nilable(T.any(Increase::Models::AccountTransfer::CreatedBy::User, Increase::Util::AnyHash))
           )
             .returns(T.attached_class)
         end
-        def self.new(api_key:, category:, oauth_application:, user:); end
+        def self.new(api_key:, category:, oauth_application:, user:)
+        end
 
         sig do
           override
@@ -282,24 +284,27 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
-        class APIKey < Increase::Internal::Type::BaseModel
+        class APIKey < Increase::BaseModel
           # The description set for the API key when it was created.
           sig { returns(T.nilable(String)) }
           attr_accessor :description
 
           # If present, details about the API key that created the transfer.
           sig { params(description: T.nilable(String)).returns(T.attached_class) }
-          def self.new(description:); end
+          def self.new(description:)
+          end
 
           sig { override.returns({description: T.nilable(String)}) }
-          def to_hash; end
+          def to_hash
+          end
         end
 
         # The type of object that created this transfer.
         module Category
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountTransfer::CreatedBy::Category) }
           OrSymbol =
@@ -316,40 +321,45 @@ module Increase
           USER = T.let(:user, Increase::Models::AccountTransfer::CreatedBy::Category::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::AccountTransfer::CreatedBy::Category::TaggedSymbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
-        class OAuthApplication < Increase::Internal::Type::BaseModel
+        class OAuthApplication < Increase::BaseModel
           # The name of the OAuth Application.
           sig { returns(String) }
           attr_accessor :name
 
           # If present, details about the OAuth Application that created the transfer.
           sig { params(name: String).returns(T.attached_class) }
-          def self.new(name:); end
+          def self.new(name:)
+          end
 
           sig { override.returns({name: String}) }
-          def to_hash; end
+          def to_hash
+          end
         end
 
-        class User < Increase::Internal::Type::BaseModel
+        class User < Increase::BaseModel
           # The email address of the User.
           sig { returns(String) }
           attr_accessor :email
 
           # If present, details about the User that created the transfer.
           sig { params(email: String).returns(T.attached_class) }
-          def self.new(email:); end
+          def self.new(email:)
+          end
 
           sig { override.returns({email: String}) }
-          def to_hash; end
+          def to_hash
+          end
         end
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-      # account currency.
+      #   account currency.
       module Currency
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountTransfer::Currency) }
         OrSymbol =
@@ -374,12 +384,13 @@ module Increase
         USD = T.let(:USD, Increase::Models::AccountTransfer::Currency::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::AccountTransfer::Currency::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # The transfer's network.
       module Network
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountTransfer::Network) }
         OrSymbol =
@@ -388,12 +399,13 @@ module Increase
         ACCOUNT = T.let(:account, Increase::Models::AccountTransfer::Network::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::AccountTransfer::Network::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # The lifecycle status of the transfer.
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountTransfer::Status) }
         OrSymbol =
@@ -409,13 +421,14 @@ module Increase
         COMPLETE = T.let(:complete, Increase::Models::AccountTransfer::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::AccountTransfer::Status::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `account_transfer`.
+      #   `account_transfer`.
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountTransfer::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::AccountTransfer::Type::TaggedSymbol) }
@@ -423,7 +436,8 @@ module Increase
         ACCOUNT_TRANSFER = T.let(:account_transfer, Increase::Models::AccountTransfer::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::AccountTransfer::Type::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

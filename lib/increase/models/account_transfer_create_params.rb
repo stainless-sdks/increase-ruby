@@ -3,10 +3,10 @@
 module Increase
   module Models
     # @see Increase::Resources::AccountTransfers#create
-    class AccountTransferCreateParams < Increase::Internal::Type::BaseModel
+    class AccountTransferCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute account_id
       #   The identifier for the account that will send the transfer.
@@ -16,7 +16,7 @@ module Increase
 
       # @!attribute amount
       #   The transfer amount in the minor unit of the account currency. For dollars, for
-      #   example, this is cents.
+      #     example, this is cents.
       #
       #   @return [Integer]
       required :amount, Integer
@@ -37,7 +37,7 @@ module Increase
       #   Whether the transfer requires explicit approval via the dashboard or API.
       #
       #   @return [Boolean, nil]
-      optional :require_approval, Increase::Internal::Type::Boolean
+      optional :require_approval, Increase::BooleanModel
 
       # @!parse
       #   # @return [Boolean]
@@ -63,7 +63,7 @@ module Increase
       #     super
       #   end
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
     end
   end
 end

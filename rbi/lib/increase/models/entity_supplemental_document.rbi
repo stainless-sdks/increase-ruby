@@ -2,9 +2,9 @@
 
 module Increase
   module Models
-    class EntitySupplementalDocument < Increase::Internal::Type::BaseModel
+    class EntitySupplementalDocument < Increase::BaseModel
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
-      # Supplemental Document was created.
+      #   Supplemental Document was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -17,18 +17,18 @@ module Increase
       attr_accessor :file_id
 
       # The idempotency key you chose for this object. This value is unique across
-      # Increase and is used to ensure that a request is only processed once. Learn more
-      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
       # A constant representing the object's type. For this resource it will always be
-      # `entity_supplemental_document`.
+      #   `entity_supplemental_document`.
       sig { returns(Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Supplemental Documents are uploaded files connected to an Entity during
-      # onboarding.
+      #   onboarding.
       sig do
         params(
           created_at: Time,
@@ -39,7 +39,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(created_at:, entity_id:, file_id:, idempotency_key:, type:); end
+      def self.new(created_at:, entity_id:, file_id:, idempotency_key:, type:)
+      end
 
       sig do
         override
@@ -53,12 +54,13 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # A constant representing the object's type. For this resource it will always be
-      # `entity_supplemental_document`.
+      #   `entity_supplemental_document`.
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EntitySupplementalDocument::Type) }
         OrSymbol =
@@ -68,7 +70,8 @@ module Increase
           T.let(:entity_supplemental_document, Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

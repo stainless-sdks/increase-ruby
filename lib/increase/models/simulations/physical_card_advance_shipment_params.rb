@@ -4,10 +4,10 @@ module Increase
   module Models
     module Simulations
       # @see Increase::Resources::Simulations::PhysicalCards#advance_shipment
-      class PhysicalCardAdvanceShipmentParams < Increase::Internal::Type::BaseModel
+      class PhysicalCardAdvanceShipmentParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+        #   extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # @!attribute shipment_status
         #   The shipment status to move the Physical Card to.
@@ -22,11 +22,11 @@ module Increase
         #   #
         #   def initialize(shipment_status:, request_options: {}, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # The shipment status to move the Physical Card to.
         module ShipmentStatus
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # The physical card has not yet been shipped.
           PENDING = :pending

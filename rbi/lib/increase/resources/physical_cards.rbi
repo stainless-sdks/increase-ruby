@@ -7,10 +7,10 @@ module Increase
       sig do
         params(
           card_id: String,
-          cardholder: T.any(Increase::Models::PhysicalCardCreateParams::Cardholder, Increase::Internal::AnyHash),
-          shipment: T.any(Increase::Models::PhysicalCardCreateParams::Shipment, Increase::Internal::AnyHash),
+          cardholder: T.any(Increase::Models::PhysicalCardCreateParams::Cardholder, Increase::Util::AnyHash),
+          shipment: T.any(Increase::Models::PhysicalCardCreateParams::Shipment, Increase::Util::AnyHash),
           physical_card_profile_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::PhysicalCard)
       end
@@ -22,15 +22,17 @@ module Increase
         # The details used to ship this physical card.
         shipment:,
         # The physical card profile to use for this physical card. The latest default
-        # physical card profile will be used if not provided.
+        #   physical card profile will be used if not provided.
         physical_card_profile_id: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Retrieve a Physical Card
       sig do
         params(
           physical_card_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::PhysicalCard)
       end
@@ -38,13 +40,15 @@ module Increase
         # The identifier of the Physical Card.
         physical_card_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Update a Physical Card
       sig do
         params(
           physical_card_id: String,
           status: Increase::Models::PhysicalCardUpdateParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::PhysicalCard)
       end
@@ -54,18 +58,20 @@ module Increase
         # The status to update the Physical Card to.
         status:,
         request_options: {}
-      ); end
+      )
+      end
+
       # List Physical Cards
       sig do
         params(
           card_id: String,
-          created_at: T.any(Increase::Models::PhysicalCardListParams::CreatedAt, Increase::Internal::AnyHash),
+          created_at: T.any(Increase::Models::PhysicalCardListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
-          .returns(Increase::Internal::Page[Increase::Models::PhysicalCard])
+          .returns(Increase::Page[Increase::Models::PhysicalCard])
       end
       def list(
         # Filter Physical Cards to ones belonging to the specified Card.
@@ -74,18 +80,21 @@ module Increase
         # Return the page of entries after this one.
         cursor: nil,
         # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        #   that object. This value is unique across Increase and is used to ensure that a
+        #   request is only processed once. Learn more about
+        #   [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        #   objects.
         limit: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

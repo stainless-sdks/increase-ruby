@@ -3,9 +3,9 @@
 module Increase
   module Models
     module Simulations
-      class InterestPaymentCreateParams < Increase::Internal::Type::BaseModel
-        extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+      class InterestPaymentCreateParams < Increase::BaseModel
+        extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # The identifier of the Account the Interest Payment should be paid to is for.
         sig { returns(String) }
@@ -43,7 +43,7 @@ module Increase
             accrued_on_account_id: String,
             period_end: Time,
             period_start: Time,
-            request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -70,7 +70,8 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

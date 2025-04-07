@@ -30,7 +30,7 @@ class Increase::Test::Resources::TransactionsTest < Increase::Test::ResourceTest
     response = @increase.transactions.list
 
     assert_pattern do
-      response => Increase::Internal::Page
+      response => Increase::Page
     end
 
     row = response.to_enum.first

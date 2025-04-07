@@ -3,10 +3,10 @@
 module Increase
   module Models
     # @see Increase::Resources::BookkeepingEntries#list
-    class BookkeepingEntryListParams < Increase::Internal::Type::BaseModel
+    class BookkeepingEntryListParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute [r] account_id
       #   The identifier for the Bookkeeping Account to filter by.
@@ -30,7 +30,7 @@ module Increase
 
       # @!attribute [r] limit
       #   Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
+      #     objects.
       #
       #   @return [Integer, nil]
       optional :limit, Integer
@@ -47,7 +47,7 @@ module Increase
       #   #
       #   def initialize(account_id: nil, cursor: nil, limit: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
     end
   end
 end

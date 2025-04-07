@@ -14,8 +14,8 @@ module Increase
           contact_email: String,
           contact_phone: String,
           contact_website: String,
-          text_color: T.any(Increase::Models::DigitalCardProfileCreateParams::TextColor, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          text_color: T.any(Increase::Models::DigitalCardProfileCreateParams::TextColor, Increase::Util::AnyHash),
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::DigitalCardProfile)
       end
@@ -39,12 +39,14 @@ module Increase
         # The Card's text color, specified as an RGB triple. The default is white.
         text_color: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Retrieve a Digital Card Profile
       sig do
         params(
           digital_card_profile_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::DigitalCardProfile)
       end
@@ -52,37 +54,41 @@ module Increase
         # The identifier of the Digital Card Profile.
         digital_card_profile_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # List Card Profiles
       sig do
         params(
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: T.any(Increase::Models::DigitalCardProfileListParams::Status, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          status: T.any(Increase::Models::DigitalCardProfileListParams::Status, Increase::Util::AnyHash),
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
-          .returns(Increase::Internal::Page[Increase::Models::DigitalCardProfile])
+          .returns(Increase::Page[Increase::Models::DigitalCardProfile])
       end
       def list(
         # Return the page of entries after this one.
         cursor: nil,
         # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        #   that object. This value is unique across Increase and is used to ensure that a
+        #   request is only processed once. Learn more about
+        #   [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        #   objects.
         limit: nil,
         status: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Archive a Digital Card Profile
       sig do
         params(
           digital_card_profile_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::DigitalCardProfile)
       end
@@ -90,7 +96,9 @@ module Increase
         # The identifier of the Digital Card Profile to archive.
         digital_card_profile_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Clones a Digital Card Profile
       sig do
         params(
@@ -103,8 +111,8 @@ module Increase
           contact_website: String,
           description: String,
           issuer_name: String,
-          text_color: T.any(Increase::Models::DigitalCardProfileCloneParams::TextColor, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          text_color: T.any(Increase::Models::DigitalCardProfileCloneParams::TextColor, Increase::Util::AnyHash),
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::DigitalCardProfile)
       end
@@ -130,10 +138,13 @@ module Increase
         # The Card's text color, specified as an RGB triple. The default is white.
         text_color: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

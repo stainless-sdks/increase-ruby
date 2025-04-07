@@ -3,10 +3,10 @@
 module Increase
   module Models
     # @see Increase::Resources::ACHPrenotifications#create
-    class ACHPrenotificationCreateParams < Increase::Internal::Type::BaseModel
+    class ACHPrenotificationCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute account_id
       #   The Increase identifier for the account that will send the transfer.
@@ -22,7 +22,7 @@ module Increase
 
       # @!attribute routing_number
       #   The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      #   destination account.
+      #     destination account.
       #
       #   @return [String]
       required :routing_number, String
@@ -90,7 +90,7 @@ module Increase
 
       # @!attribute [r] effective_date
       #   The transfer effective date in
-      #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+      #     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
       #
       #   @return [Date, nil]
       optional :effective_date, Date
@@ -111,7 +111,7 @@ module Increase
 
       # @!attribute [r] individual_name
       #   The name of the transfer recipient. This value is information and not verified
-      #   by the recipient's bank.
+      #     by the recipient's bank.
       #
       #   @return [String, nil]
       optional :individual_name, String
@@ -167,11 +167,11 @@ module Increase
       #     super
       #   end
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # Whether the Prenotification is for a future debit or credit.
       module CreditDebitIndicator
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The Prenotification is for an anticipated credit.
         CREDIT = :credit
@@ -188,7 +188,7 @@ module Increase
 
       # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
       module StandardEntryClassCode
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # Corporate Credit and Debit (CCD).
         CORPORATE_CREDIT_OR_DEBIT = :corporate_credit_or_debit

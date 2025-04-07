@@ -3,10 +3,10 @@
 module Increase
   module Models
     # @see Increase::Resources::InboundCheckDeposits#list
-    class InboundCheckDepositListParams < Increase::Internal::Type::BaseModel
+    class InboundCheckDepositListParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute [r] account_id
       #   Filter Inbound Check Deposits to those belonging to the specified Account.
@@ -20,7 +20,7 @@ module Increase
 
       # @!attribute [r] check_transfer_id
       #   Filter Inbound Check Deposits to those belonging to the specified Check
-      #   Transfer.
+      #     Transfer.
       #
       #   @return [String, nil]
       optional :check_transfer_id, String
@@ -50,7 +50,7 @@ module Increase
 
       # @!attribute [r] limit
       #   Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
+      #     objects.
       #
       #   @return [Integer, nil]
       optional :limit, Integer
@@ -69,12 +69,12 @@ module Increase
       #   #
       #   def initialize(account_id: nil, check_transfer_id: nil, created_at: nil, cursor: nil, limit: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
-      class CreatedAt < Increase::Internal::Type::BaseModel
+      class CreatedAt < Increase::BaseModel
         # @!attribute [r] after
         #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        #   timestamp.
+        #     timestamp.
         #
         #   @return [Time, nil]
         optional :after, Time
@@ -85,7 +85,7 @@ module Increase
 
         # @!attribute [r] before
         #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        #   timestamp.
+        #     timestamp.
         #
         #   @return [Time, nil]
         optional :before, Time
@@ -96,7 +96,7 @@ module Increase
 
         # @!attribute [r] on_or_after
         #   Return results on or after this
-        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        #     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
         #   @return [Time, nil]
         optional :on_or_after, Time
@@ -107,7 +107,7 @@ module Increase
 
         # @!attribute [r] on_or_before
         #   Return results on or before this
-        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        #     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
         #   @return [Time, nil]
         optional :on_or_before, Time
@@ -124,7 +124,7 @@ module Increase
         #   #
         #   def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
     end
   end

@@ -18,7 +18,7 @@ module Increase
           additional_evidence_file_id: String,
           authorizer_company: String,
           authorizer_ip_address: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::ProofOfAuthorizationRequestSubmission)
       end
@@ -48,12 +48,14 @@ module Increase
         # IP address of the authorizer.
         authorizer_ip_address: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Retrieve a Proof of Authorization Request Submission
       sig do
         params(
           proof_of_authorization_request_submission_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::ProofOfAuthorizationRequestSubmission)
       end
@@ -61,7 +63,9 @@ module Increase
         # The identifier of the Proof of Authorization Request Submission.
         proof_of_authorization_request_submission_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # List Proof of Authorization Request Submissions
       sig do
         params(
@@ -69,28 +73,31 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           proof_of_authorization_request_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
-          .returns(Increase::Internal::Page[Increase::Models::ProofOfAuthorizationRequestSubmission])
+          .returns(Increase::Page[Increase::Models::ProofOfAuthorizationRequestSubmission])
       end
       def list(
         # Return the page of entries after this one.
         cursor: nil,
         # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        #   that object. This value is unique across Increase and is used to ensure that a
+        #   request is only processed once. Learn more about
+        #   [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        #   objects.
         limit: nil,
         # ID of the proof of authorization request.
         proof_of_authorization_request_id: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

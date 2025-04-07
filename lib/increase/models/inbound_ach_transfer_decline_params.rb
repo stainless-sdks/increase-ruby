@@ -3,15 +3,15 @@
 module Increase
   module Models
     # @see Increase::Resources::InboundACHTransfers#decline
-    class InboundACHTransferDeclineParams < Increase::Internal::Type::BaseModel
+    class InboundACHTransferDeclineParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute [r] reason
       #   The reason why this transfer will be returned. If this parameter is unset, the
-      #   return codes will be `payment_stopped` for debits and
-      #   `credit_entry_refused_by_receiver` for credits.
+      #     return codes will be `payment_stopped` for debits and
+      #     `credit_entry_refused_by_receiver` for credits.
       #
       #   @return [Symbol, Increase::Models::InboundACHTransferDeclineParams::Reason, nil]
       optional :reason, enum: -> { Increase::Models::InboundACHTransferDeclineParams::Reason }
@@ -26,13 +26,13 @@ module Increase
       #   #
       #   def initialize(reason: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # The reason why this transfer will be returned. If this parameter is unset, the
-      # return codes will be `payment_stopped` for debits and
-      # `credit_entry_refused_by_receiver` for credits.
+      #   return codes will be `payment_stopped` for debits and
+      #   `credit_entry_refused_by_receiver` for credits.
       module Reason
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The customer's account has insufficient funds. This reason is only allowed for debits. The Nacha return code is R01.
         INSUFFICIENT_FUNDS = :insufficient_funds

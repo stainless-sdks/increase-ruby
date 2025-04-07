@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::ACHPrenotifications#create
-    class ACHPrenotification < Increase::Internal::Type::BaseModel
+    class ACHPrenotification < Increase::BaseModel
       # @!attribute id
       #   The ACH Prenotification's identifier.
       #
@@ -48,7 +48,7 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the prenotification was created.
+      #     the prenotification was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -69,19 +69,19 @@ module Increase
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #     Increase and is used to ensure that a request is only processed once. Learn more
+      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
 
       # @!attribute notifications_of_change
       #   If the receiving bank notifies that future transfers should use different
-      #   details, this will contain those details.
+      #     details, this will contain those details.
       #
       #   @return [Array<Increase::Models::ACHPrenotification::NotificationsOfChange>]
       required :notifications_of_change,
-               -> { Increase::Internal::Type::ArrayOf[Increase::Models::ACHPrenotification::NotificationsOfChange] }
+               -> { Increase::ArrayOf[Increase::Models::ACHPrenotification::NotificationsOfChange] }
 
       # @!attribute prenotification_return
       #   If your prenotification is returned, this will contain details of the return.
@@ -105,14 +105,14 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #   `ach_prenotification`.
+      #     `ach_prenotification`.
       #
       #   @return [Symbol, Increase::Models::ACHPrenotification::Type]
       required :type, enum: -> { Increase::Models::ACHPrenotification::Type }
 
       # @!parse
       #   # ACH Prenotifications are one way you can verify account and routing numbers by
-      #   # Automated Clearing House (ACH).
+      #   #   Automated Clearing House (ACH).
       #   #
       #   # @param id [String]
       #   # @param account_number [String]
@@ -153,13 +153,13 @@ module Increase
       #     super
       #   end
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # If the notification is for a future credit or debit.
       #
       # @see Increase::Models::ACHPrenotification#credit_debit_indicator
       module CreditDebitIndicator
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The Prenotification is for an anticipated credit.
         CREDIT = :credit
@@ -174,10 +174,10 @@ module Increase
         #   def self.values; end
       end
 
-      class NotificationsOfChange < Increase::Internal::Type::BaseModel
+      class NotificationsOfChange < Increase::BaseModel
         # @!attribute change_code
         #   The required type of change that is being signaled by the receiving financial
-        #   institution.
+        #     institution.
         #
         #   @return [Symbol, Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode]
         required :change_code,
@@ -185,17 +185,17 @@ module Increase
 
         # @!attribute corrected_data
         #   The corrected data that should be used in future ACHs to this account. This may
-        #   contain the suggested new account number or routing number. When the
-        #   `change_code` is `incorrect_transaction_code`, this field contains an integer.
-        #   Numbers starting with a 2 encourage changing the `funding` parameter to
-        #   checking; numbers starting with a 3 encourage changing to savings.
+        #     contain the suggested new account number or routing number. When the
+        #     `change_code` is `incorrect_transaction_code`, this field contains an integer.
+        #     Numbers starting with a 2 encourage changing the `funding` parameter to
+        #     checking; numbers starting with a 3 encourage changing to savings.
         #
         #   @return [String]
         required :corrected_data, String
 
         # @!attribute created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the notification occurred.
+        #     the notification occurred.
         #
         #   @return [Time]
         required :created_at, Time
@@ -207,14 +207,14 @@ module Increase
         #   #
         #   def initialize(change_code:, corrected_data:, created_at:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # The required type of change that is being signaled by the receiving financial
-        # institution.
+        #   institution.
         #
         # @see Increase::Models::ACHPrenotification::NotificationsOfChange#change_code
         module ChangeCode
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # The account number was incorrect.
           INCORRECT_ACCOUNT_NUMBER = :incorrect_account_number
@@ -288,10 +288,10 @@ module Increase
       end
 
       # @see Increase::Models::ACHPrenotification#prenotification_return
-      class PrenotificationReturn < Increase::Internal::Type::BaseModel
+      class PrenotificationReturn < Increase::BaseModel
         # @!attribute created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the Prenotification was returned.
+        #     the Prenotification was returned.
         #
         #   @return [Time]
         required :created_at, Time
@@ -311,13 +311,13 @@ module Increase
         #   #
         #   def initialize(created_at:, return_reason_code:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # Why the Prenotification was returned.
         #
         # @see Increase::Models::ACHPrenotification::PrenotificationReturn#return_reason_code
         module ReturnReasonCode
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
           INSUFFICIENT_FUND = :insufficient_fund
@@ -544,7 +544,7 @@ module Increase
       #
       # @see Increase::Models::ACHPrenotification#status
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The Prenotification is pending submission.
         PENDING_SUBMITTING = :pending_submitting
@@ -566,11 +566,11 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `ach_prenotification`.
+      #   `ach_prenotification`.
       #
       # @see Increase::Models::ACHPrenotification#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         ACH_PRENOTIFICATION = :ach_prenotification
 

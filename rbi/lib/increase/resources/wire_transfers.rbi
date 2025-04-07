@@ -22,7 +22,7 @@ module Increase
           require_approval: T::Boolean,
           routing_number: String,
           source_account_number_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::WireTransfer)
       end
@@ -44,34 +44,36 @@ module Increase
         # The beneficiary's address line 3.
         beneficiary_address_line3: nil,
         # The ID of an External Account to initiate a transfer to. If this parameter is
-        # provided, `account_number` and `routing_number` must be absent.
+        #   provided, `account_number` and `routing_number` must be absent.
         external_account_id: nil,
         # The originator's address line 1. This is only necessary if you're transferring
-        # from a commingled account. Otherwise, we'll use the associated entity's details.
+        #   from a commingled account. Otherwise, we'll use the associated entity's details.
         originator_address_line1: nil,
         # The originator's address line 2. This is only necessary if you're transferring
-        # from a commingled account. Otherwise, we'll use the associated entity's details.
+        #   from a commingled account. Otherwise, we'll use the associated entity's details.
         originator_address_line2: nil,
         # The originator's address line 3. This is only necessary if you're transferring
-        # from a commingled account. Otherwise, we'll use the associated entity's details.
+        #   from a commingled account. Otherwise, we'll use the associated entity's details.
         originator_address_line3: nil,
         # The originator's name. This is only necessary if you're transferring from a
-        # commingled account. Otherwise, we'll use the associated entity's details.
+        #   commingled account. Otherwise, we'll use the associated entity's details.
         originator_name: nil,
         # Whether the transfer requires explicit approval via the dashboard or API.
         require_approval: nil,
         # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-        # destination account.
+        #   destination account.
         routing_number: nil,
         # The ID of an Account Number that will be passed to the wire's recipient
         source_account_number_id: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Retrieve a Wire Transfer
       sig do
         params(
           wire_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::WireTransfer)
       end
@@ -79,19 +81,21 @@ module Increase
         # The identifier of the Wire Transfer.
         wire_transfer_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # List Wire Transfers
       sig do
         params(
           account_id: String,
-          created_at: T.any(Increase::Models::WireTransferListParams::CreatedAt, Increase::Internal::AnyHash),
+          created_at: T.any(Increase::Models::WireTransferListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           external_account_id: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
-          .returns(Increase::Internal::Page[Increase::Models::WireTransfer])
+          .returns(Increase::Page[Increase::Models::WireTransfer])
       end
       def list(
         # Filter Wire Transfers to those belonging to the specified Account.
@@ -102,20 +106,22 @@ module Increase
         # Filter Wire Transfers to those made to the specified External Account.
         external_account_id: nil,
         # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        #   that object. This value is unique across Increase and is used to ensure that a
+        #   request is only processed once. Learn more about
+        #   [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        #   objects.
         limit: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Approve a Wire Transfer
       sig do
         params(
           wire_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::WireTransfer)
       end
@@ -123,12 +129,14 @@ module Increase
         # The identifier of the Wire Transfer to approve.
         wire_transfer_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Cancel a pending Wire Transfer
       sig do
         params(
           wire_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::WireTransfer)
       end
@@ -136,10 +144,13 @@ module Increase
         # The identifier of the pending Wire Transfer to cancel.
         wire_transfer_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

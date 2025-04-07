@@ -2,23 +2,24 @@
 
 module Increase
   module Models
-    class InboundACHTransferTransferReturnParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class InboundACHTransferTransferReturnParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # The reason why this transfer will be returned. The most usual return codes are
-      # `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
+      #   `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
       sig { returns(Increase::Models::InboundACHTransferTransferReturnParams::Reason::OrSymbol) }
       attr_accessor :reason
 
       sig do
         params(
           reason: Increase::Models::InboundACHTransferTransferReturnParams::Reason::OrSymbol,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
-      def self.new(reason:, request_options: {}); end
+      def self.new(reason:, request_options: {})
+      end
 
       sig do
         override
@@ -29,12 +30,13 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # The reason why this transfer will be returned. The most usual return codes are
-      # `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
+      #   `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
       module Reason
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::InboundACHTransferTransferReturnParams::Reason) }
@@ -103,7 +105,8 @@ module Increase
           )
 
         sig { override.returns(T::Array[Increase::Models::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

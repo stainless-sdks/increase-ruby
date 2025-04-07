@@ -2,18 +2,24 @@
 
 module Increase
   module Models
-    class DigitalCardProfileRetrieveParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class DigitalCardProfileRetrieveParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       sig do
-        params(request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-          .returns(T.attached_class)
+        params(
+          request_options: T.any(
+            Increase::RequestOptions,
+            Increase::Util::AnyHash
+          )
+        ).returns(T.attached_class)
       end
-      def self.new(request_options: {}); end
+      def self.new(request_options: {})
+      end
 
       sig { override.returns({request_options: Increase::RequestOptions}) }
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

@@ -3,9 +3,9 @@
 module Increase
   module Models
     module Simulations
-      class InboundMailItemCreateParams < Increase::Internal::Type::BaseModel
-        extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+      class InboundMailItemCreateParams < Increase::BaseModel
+        extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # The amount of the check to be simulated, in cents.
         sig { returns(Integer) }
@@ -16,7 +16,7 @@ module Increase
         attr_accessor :lockbox_id
 
         # The file containing the PDF contents. If not present, a default check image file
-        # will be used.
+        #   will be used.
         sig { returns(T.nilable(String)) }
         attr_reader :contents_file_id
 
@@ -28,11 +28,12 @@ module Increase
             amount: Integer,
             lockbox_id: String,
             contents_file_id: String,
-            request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
-        def self.new(amount:, lockbox_id:, contents_file_id: nil, request_options: {}); end
+        def self.new(amount:, lockbox_id:, contents_file_id: nil, request_options: {})
+        end
 
         sig do
           override
@@ -45,7 +46,8 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

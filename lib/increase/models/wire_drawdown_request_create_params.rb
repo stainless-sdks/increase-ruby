@@ -3,10 +3,10 @@
 module Increase
   module Models
     # @see Increase::Resources::WireDrawdownRequests#create
-    class WireDrawdownRequestCreateParams < Increase::Internal::Type::BaseModel
+    class WireDrawdownRequestCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute account_number_id
       #   The Account Number to which the recipient should send funds.
@@ -46,8 +46,8 @@ module Increase
 
       # @!attribute [r] originator_address_line1
       #   The drawdown request originator's address line 1. This is only necessary if
-      #   you're requesting a payment to a commingled account. Otherwise, we'll use the
-      #   associated entity's details.
+      #     you're requesting a payment to a commingled account. Otherwise, we'll use the
+      #     associated entity's details.
       #
       #   @return [String, nil]
       optional :originator_address_line1, String
@@ -58,8 +58,8 @@ module Increase
 
       # @!attribute [r] originator_address_line2
       #   The drawdown request originator's address line 2. This is only necessary if
-      #   you're requesting a payment to a commingled account. Otherwise, we'll use the
-      #   associated entity's details.
+      #     you're requesting a payment to a commingled account. Otherwise, we'll use the
+      #     associated entity's details.
       #
       #   @return [String, nil]
       optional :originator_address_line2, String
@@ -70,8 +70,8 @@ module Increase
 
       # @!attribute [r] originator_address_line3
       #   The drawdown request originator's address line 3. This is only necessary if
-      #   you're requesting a payment to a commingled account. Otherwise, we'll use the
-      #   associated entity's details.
+      #     you're requesting a payment to a commingled account. Otherwise, we'll use the
+      #     associated entity's details.
       #
       #   @return [String, nil]
       optional :originator_address_line3, String
@@ -82,8 +82,8 @@ module Increase
 
       # @!attribute [r] originator_name
       #   The drawdown request originator's name. This is only necessary if you're
-      #   requesting a payment to a commingled account. Otherwise, we'll use the
-      #   associated entity's details.
+      #     requesting a payment to a commingled account. Otherwise, we'll use the
+      #     associated entity's details.
       #
       #   @return [String, nil]
       optional :originator_name, String
@@ -158,7 +158,7 @@ module Increase
       #     super
       #   end
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
     end
   end
 end

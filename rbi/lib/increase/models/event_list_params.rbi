@@ -2,9 +2,9 @@
 
 module Increase
   module Models
-    class EventListParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class EventListParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # Filter Events to those belonging to the object with the provided identifier.
       sig { returns(T.nilable(String)) }
@@ -16,13 +16,13 @@ module Increase
       sig { returns(T.nilable(Increase::Models::EventListParams::Category)) }
       attr_reader :category
 
-      sig { params(category: T.any(Increase::Models::EventListParams::Category, Increase::Internal::AnyHash)).void }
+      sig { params(category: T.any(Increase::Models::EventListParams::Category, Increase::Util::AnyHash)).void }
       attr_writer :category
 
       sig { returns(T.nilable(Increase::Models::EventListParams::CreatedAt)) }
       attr_reader :created_at
 
-      sig { params(created_at: T.any(Increase::Models::EventListParams::CreatedAt, Increase::Internal::AnyHash)).void }
+      sig { params(created_at: T.any(Increase::Models::EventListParams::CreatedAt, Increase::Util::AnyHash)).void }
       attr_writer :created_at
 
       # Return the page of entries after this one.
@@ -33,7 +33,7 @@ module Increase
       attr_writer :cursor
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
-      # objects.
+      #   objects.
       sig { returns(T.nilable(Integer)) }
       attr_reader :limit
 
@@ -43,11 +43,11 @@ module Increase
       sig do
         params(
           associated_object_id: String,
-          category: T.any(Increase::Models::EventListParams::Category, Increase::Internal::AnyHash),
-          created_at: T.any(Increase::Models::EventListParams::CreatedAt, Increase::Internal::AnyHash),
+          category: T.any(Increase::Models::EventListParams::Category, Increase::Util::AnyHash),
+          created_at: T.any(Increase::Models::EventListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -74,12 +74,13 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
-      class Category < Increase::Internal::Type::BaseModel
+      class Category < Increase::BaseModel
         # Filter Events for those with the specified category or categories. For GET
-        # requests, this should be encoded as a comma-delimited string, such as
-        # `?in=one,two,three`.
+        #   requests, this should be encoded as a comma-delimited string, such as
+        #   `?in=one,two,three`.
         sig { returns(T.nilable(T::Array[Increase::Models::EventListParams::Category::In::OrSymbol])) }
         attr_reader :in_
 
@@ -87,13 +88,15 @@ module Increase
         attr_writer :in_
 
         sig { params(in_: T::Array[Increase::Models::EventListParams::Category::In::OrSymbol]).returns(T.attached_class) }
-        def self.new(in_: nil); end
+        def self.new(in_: nil)
+        end
 
         sig { override.returns({in_: T::Array[Increase::Models::EventListParams::Category::In::OrSymbol]}) }
-        def to_hash; end
+        def to_hash
+        end
 
         module In
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EventListParams::Category::In) }
           OrSymbol =
@@ -504,13 +507,14 @@ module Increase
             T.let(:"wire_transfer.updated", Increase::Models::EventListParams::Category::In::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::EventListParams::Category::In::TaggedSymbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
 
-      class CreatedAt < Increase::Internal::Type::BaseModel
+      class CreatedAt < Increase::BaseModel
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        # timestamp.
+        #   timestamp.
         sig { returns(T.nilable(Time)) }
         attr_reader :after
 
@@ -518,7 +522,7 @@ module Increase
         attr_writer :after
 
         # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        # timestamp.
+        #   timestamp.
         sig { returns(T.nilable(Time)) }
         attr_reader :before
 
@@ -526,7 +530,7 @@ module Increase
         attr_writer :before
 
         # Return results on or after this
-        # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
         attr_reader :on_or_after
 
@@ -534,7 +538,7 @@ module Increase
         attr_writer :on_or_after
 
         # Return results on or before this
-        # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
         attr_reader :on_or_before
 
@@ -544,10 +548,12 @@ module Increase
         sig do
           params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
         end
-        def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil); end
+        def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
+        end
 
         sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

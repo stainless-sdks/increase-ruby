@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::BookkeepingEntries#retrieve
-    class BookkeepingEntry < Increase::Internal::Type::BaseModel
+    class BookkeepingEntry < Increase::BaseModel
       # @!attribute id
       #   The entry identifier.
       #
@@ -18,7 +18,7 @@ module Increase
 
       # @!attribute amount
       #   The Entry amount in the minor unit of its currency. For dollars, for example,
-      #   this is cents.
+      #     this is cents.
       #
       #   @return [Integer]
       required :amount, Integer
@@ -37,15 +37,15 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #   `bookkeeping_entry`.
+      #     `bookkeeping_entry`.
       #
       #   @return [Symbol, Increase::Models::BookkeepingEntry::Type]
       required :type, enum: -> { Increase::Models::BookkeepingEntry::Type }
 
       # @!parse
       #   # Entries are T-account entries recording debits and credits. Your compliance
-      #   # setup might require annotating money movements using this API. Learn more in our
-      #   # [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
+      #   #   setup might require annotating money movements using this API. Learn more in our
+      #   #   [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
       #   #
       #   # @param id [String]
       #   # @param account_id [String]
@@ -56,14 +56,14 @@ module Increase
       #   #
       #   def initialize(id:, account_id:, amount:, created_at:, entry_set_id:, type:, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # A constant representing the object's type. For this resource it will always be
-      # `bookkeeping_entry`.
+      #   `bookkeeping_entry`.
       #
       # @see Increase::Models::BookkeepingEntry#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         BOOKKEEPING_ENTRY = :bookkeeping_entry
 

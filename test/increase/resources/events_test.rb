@@ -26,7 +26,7 @@ class Increase::Test::Resources::EventsTest < Increase::Test::ResourceTest
     response = @increase.events.list
 
     assert_pattern do
-      response => Increase::Internal::Page
+      response => Increase::Page
     end
 
     row = response.to_enum.first

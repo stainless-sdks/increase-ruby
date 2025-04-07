@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class IntrafiExclusion < Increase::Internal::Type::BaseModel
+    class IntrafiExclusion < Increase::BaseModel
       # The identifier of this exclusion request.
       sig { returns(String) }
       attr_accessor :id
@@ -12,7 +12,7 @@ module Increase
       attr_accessor :bank_name
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      # the exclusion was created.
+      #   the exclusion was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -25,13 +25,13 @@ module Increase
       attr_accessor :excluded_at
 
       # The Federal Deposit Insurance Corporation's certificate number for the
-      # institution.
+      #   institution.
       sig { returns(T.nilable(String)) }
       attr_accessor :fdic_certificate_number
 
       # The idempotency key you chose for this object. This value is unique across
-      # Increase and is used to ensure that a request is only processed once. Learn more
-      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
@@ -44,14 +44,14 @@ module Increase
       attr_accessor :submitted_at
 
       # A constant representing the object's type. For this resource it will always be
-      # `intrafi_exclusion`.
+      #   `intrafi_exclusion`.
       sig { returns(Increase::Models::IntrafiExclusion::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Certain institutions may be excluded per Entity when sweeping funds into the
-      # IntraFi network. This is useful when an Entity already has deposits at a
-      # particular bank, and does not want to sweep additional funds to it. It may take
-      # 5 business days for an exclusion to be processed.
+      #   IntraFi network. This is useful when an Entity already has deposits at a
+      #   particular bank, and does not want to sweep additional funds to it. It may take
+      #   5 business days for an exclusion to be processed.
       sig do
         params(
           id: String,
@@ -78,7 +78,9 @@ module Increase
         status:,
         submitted_at:,
         type:
-      ); end
+      )
+      end
+
       sig do
         override
           .returns(
@@ -96,11 +98,12 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # The status of the exclusion request.
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiExclusion::Status) }
         OrSymbol =
@@ -116,13 +119,14 @@ module Increase
         ARCHIVED = T.let(:archived, Increase::Models::IntrafiExclusion::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::IntrafiExclusion::Status::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `intrafi_exclusion`.
+      #   `intrafi_exclusion`.
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiExclusion::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::IntrafiExclusion::Type::TaggedSymbol) }
@@ -130,7 +134,8 @@ module Increase
         INTRAFI_EXCLUSION = T.let(:intrafi_exclusion, Increase::Models::IntrafiExclusion::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::IntrafiExclusion::Type::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

@@ -3,14 +3,14 @@
 module Increase
   module Models
     # @see Increase::Resources::Entities#update_address
-    class EntityUpdateAddressParams < Increase::Internal::Type::BaseModel
+    class EntityUpdateAddressParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute address
       #   The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-      #   are disallowed.
+      #     are disallowed.
       #
       #   @return [Increase::Models::EntityUpdateAddressParams::Address]
       required :address, -> { Increase::Models::EntityUpdateAddressParams::Address }
@@ -21,9 +21,9 @@ module Increase
       #   #
       #   def initialize(address:, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
-      class Address < Increase::Internal::Type::BaseModel
+      class Address < Increase::BaseModel
         # @!attribute city
         #   The city of the address.
         #
@@ -38,7 +38,7 @@ module Increase
 
         # @!attribute state
         #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-        #   the address.
+        #     the address.
         #
         #   @return [String]
         required :state, String
@@ -61,7 +61,7 @@ module Increase
 
         # @!parse
         #   # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-        #   # are disallowed.
+        #   #   are disallowed.
         #   #
         #   # @param city [String]
         #   # @param line1 [String]
@@ -71,7 +71,7 @@ module Increase
         #   #
         #   def initialize(city:, line1:, state:, zip:, line2: nil, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
     end
   end

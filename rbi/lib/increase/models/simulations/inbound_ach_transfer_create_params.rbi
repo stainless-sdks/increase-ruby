@@ -3,17 +3,17 @@
 module Increase
   module Models
     module Simulations
-      class InboundACHTransferCreateParams < Increase::Internal::Type::BaseModel
-        extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+      class InboundACHTransferCreateParams < Increase::BaseModel
+        extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # The identifier of the Account Number the inbound ACH Transfer is for.
         sig { returns(String) }
         attr_accessor :account_number_id
 
         # The transfer amount in cents. A positive amount originates a credit transfer
-        # pushing funds to the receiving account. A negative amount originates a debit
-        # transfer pulling funds from the receiving account.
+        #   pushing funds to the receiving account. A negative amount originates a debit
+        #   transfer pulling funds from the receiving account.
         sig { returns(Integer) }
         attr_accessor :amount
 
@@ -67,7 +67,7 @@ module Increase
         attr_writer :receiver_name
 
         # The time at which the transfer should be resolved. If not provided will resolve
-        # immediately.
+        #   immediately.
         sig { returns(T.nilable(Time)) }
         attr_reader :resolve_at
 
@@ -103,7 +103,7 @@ module Increase
             receiver_name: String,
             resolve_at: Time,
             standard_entry_class_code: Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::OrSymbol,
-            request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -120,7 +120,9 @@ module Increase
           resolve_at: nil,
           standard_entry_class_code: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         sig do
           override
             .returns(
@@ -140,11 +142,12 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         # The standard entry class code for the transfer.
         module StandardEntryClassCode
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode) }
@@ -275,7 +278,8 @@ module Increase
                 T::Array[Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::TaggedSymbol]
               )
           end
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

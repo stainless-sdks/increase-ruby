@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::PhysicalCards#create
-    class PhysicalCard < Increase::Internal::Type::BaseModel
+    class PhysicalCard < Increase::BaseModel
       # @!attribute id
       #   The physical card identifier.
       #
@@ -24,15 +24,15 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the Physical Card was created.
+      #     the Physical Card was created.
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #     Increase and is used to ensure that a request is only processed once. Learn more
+      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -57,17 +57,17 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #   `physical_card`.
+      #     `physical_card`.
       #
       #   @return [Symbol, Increase::Models::PhysicalCard::Type]
       required :type, enum: -> { Increase::Models::PhysicalCard::Type }
 
       # @!parse
       #   # Custom physical Visa cards that are shipped to your customers. The artwork is
-      #   # configurable by a connected [Card Profile](/documentation/api#card-profiles).
-      #   # The same Card can be used for multiple Physical Cards. Printing cards incurs a
-      #   # fee. Please contact [support@increase.com](mailto:support@increase.com) for
-      #   # pricing!
+      #   #   configurable by a connected [Card Profile](/documentation/api#card-profiles).
+      #   #   The same Card can be used for multiple Physical Cards. Printing cards incurs a
+      #   #   fee. Please contact [support@increase.com](mailto:support@increase.com) for
+      #   #   pricing!
       #   #
       #   # @param id [String]
       #   # @param card_id [String]
@@ -94,10 +94,10 @@ module Increase
       #     super
       #   end
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @see Increase::Models::PhysicalCard#cardholder
-      class Cardholder < Increase::Internal::Type::BaseModel
+      class Cardholder < Increase::BaseModel
         # @!attribute first_name
         #   The cardholder's first name.
         #
@@ -118,11 +118,11 @@ module Increase
         #   #
         #   def initialize(first_name:, last_name:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # @see Increase::Models::PhysicalCard#shipment
-      class Shipment < Increase::Internal::Type::BaseModel
+      class Shipment < Increase::BaseModel
         # @!attribute address
         #   The location to where the card's packing label is addressed.
         #
@@ -157,10 +157,10 @@ module Increase
         #   #
         #   def initialize(address:, method_:, status:, tracking:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @see Increase::Models::PhysicalCard::Shipment#address
-        class Address < Increase::Internal::Type::BaseModel
+        class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the shipping address.
           #
@@ -216,14 +216,14 @@ module Increase
           #   #
           #   def initialize(city:, line1:, line2:, line3:, name:, postal_code:, state:, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
         # The shipping method.
         #
         # @see Increase::Models::PhysicalCard::Shipment#method_
         module Method
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # USPS Post with tracking.
           USPS = :usps
@@ -245,7 +245,7 @@ module Increase
         #
         # @see Increase::Models::PhysicalCard::Shipment#status
         module Status
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # The physical card has not yet been shipped.
           PENDING = :pending
@@ -276,7 +276,7 @@ module Increase
         end
 
         # @see Increase::Models::PhysicalCard::Shipment#tracking
-        class Tracking < Increase::Internal::Type::BaseModel
+        class Tracking < Increase::BaseModel
           # @!attribute number
           #   The tracking number.
           #
@@ -297,8 +297,8 @@ module Increase
 
           # @!attribute shipped_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-          #   the fulfillment provider marked the card as ready for pick-up by the shipment
-          #   carrier.
+          #     the fulfillment provider marked the card as ready for pick-up by the shipment
+          #     carrier.
           #
           #   @return [Time]
           required :shipped_at, Time
@@ -313,7 +313,7 @@ module Increase
           #   #
           #   def initialize(number:, return_number:, return_reason:, shipped_at:, **) = super
 
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # def initialize: (Hash | Increase::BaseModel) -> void
         end
       end
 
@@ -321,7 +321,7 @@ module Increase
       #
       # @see Increase::Models::PhysicalCard#status
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The physical card is active.
         ACTIVE = :active
@@ -340,11 +340,11 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `physical_card`.
+      #   `physical_card`.
       #
       # @see Increase::Models::PhysicalCard#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         PHYSICAL_CARD = :physical_card
 

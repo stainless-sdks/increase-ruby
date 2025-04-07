@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           document_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::Document)
       end
@@ -15,18 +15,20 @@ module Increase
         # The identifier of the Document to retrieve.
         document_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # List Documents
       sig do
         params(
-          category: T.any(Increase::Models::DocumentListParams::Category, Increase::Internal::AnyHash),
-          created_at: T.any(Increase::Models::DocumentListParams::CreatedAt, Increase::Internal::AnyHash),
+          category: T.any(Increase::Models::DocumentListParams::Category, Increase::Util::AnyHash),
+          created_at: T.any(Increase::Models::DocumentListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           entity_id: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
-          .returns(Increase::Internal::Page[Increase::Models::Document])
+          .returns(Increase::Page[Increase::Models::Document])
       end
       def list(
         category: nil,
@@ -36,13 +38,16 @@ module Increase
         # Filter Documents to ones belonging to the specified Entity.
         entity_id: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        #   objects.
         limit: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

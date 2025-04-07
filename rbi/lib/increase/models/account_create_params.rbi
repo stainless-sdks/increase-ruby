@@ -2,9 +2,9 @@
 
 module Increase
   module Models
-    class AccountCreateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class AccountCreateParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # The name you choose for the Account.
       sig { returns(String) }
@@ -18,7 +18,7 @@ module Increase
       attr_writer :entity_id
 
       # The identifier of an Entity that, while not owning the Account, is associated
-      # with its activity. Its relationship to your group must be `informational`.
+      #   with its activity. Its relationship to your group must be `informational`.
       sig { returns(T.nilable(String)) }
       attr_reader :informational_entity_id
 
@@ -26,7 +26,7 @@ module Increase
       attr_writer :informational_entity_id
 
       # The identifier for the Program that this Account falls under. Required if you
-      # operate more than one Program.
+      #   operate more than one Program.
       sig { returns(T.nilable(String)) }
       attr_reader :program_id
 
@@ -39,7 +39,7 @@ module Increase
           entity_id: String,
           informational_entity_id: String,
           program_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -58,7 +58,8 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

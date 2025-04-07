@@ -3,17 +3,17 @@
 module Increase
   module Models
     # @see Increase::Resources::InboundCheckDeposits#retrieve
-    class InboundCheckDepositRetrieveParams < Increase::Internal::Type::BaseModel
+    class InboundCheckDepositRetrieveParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!parse
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
     end
   end
 end

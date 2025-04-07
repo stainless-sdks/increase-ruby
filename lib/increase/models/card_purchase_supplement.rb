@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::CardPurchaseSupplements#retrieve
-    class CardPurchaseSupplement < Increase::Internal::Type::BaseModel
+    class CardPurchaseSupplement < Increase::BaseModel
       # @!attribute id
       #   The Card Purchase Supplement identifier.
       #
@@ -27,7 +27,7 @@ module Increase
       #
       #   @return [Array<Increase::Models::CardPurchaseSupplement::LineItem>, nil]
       required :line_items,
-               -> { Increase::Internal::Type::ArrayOf[Increase::Models::CardPurchaseSupplement::LineItem] },
+               -> { Increase::ArrayOf[Increase::Models::CardPurchaseSupplement::LineItem] },
                nil?: true
 
       # @!attribute transaction_id
@@ -38,14 +38,14 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #   `card_purchase_supplement`.
+      #     `card_purchase_supplement`.
       #
       #   @return [Symbol, Increase::Models::CardPurchaseSupplement::Type]
       required :type, enum: -> { Increase::Models::CardPurchaseSupplement::Type }
 
       # @!parse
       #   # Additional information about a card purchase (e.g., settlement or refund), such
-      #   # as level 3 line item data.
+      #   #   as level 3 line item data.
       #   #
       #   # @param id [String]
       #   # @param card_payment_id [String, nil]
@@ -56,10 +56,10 @@ module Increase
       #   #
       #   def initialize(id:, card_payment_id:, invoice:, line_items:, transaction_id:, type:, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @see Increase::Models::CardPurchaseSupplement#invoice
-      class Invoice < Increase::Internal::Type::BaseModel
+      class Invoice < Increase::BaseModel
         # @!attribute discount_amount
         #   Discount given to cardholder.
         #
@@ -106,7 +106,7 @@ module Increase
 
         # @!attribute shipping_currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping
-        #   cost.
+        #     cost.
         #
         #   @return [String, nil]
         required :shipping_currency, String, nil?: true
@@ -137,7 +137,7 @@ module Increase
 
         # @!attribute shipping_tax_currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping
-        #   tax.
+        #     tax.
         #
         #   @return [String, nil]
         required :shipping_tax_currency, String, nil?: true
@@ -204,13 +204,13 @@ module Increase
         #     super
         #   end
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # Indicates how the merchant applied the discount.
         #
         # @see Increase::Models::CardPurchaseSupplement::Invoice#discount_treatment_code
         module DiscountTreatmentCode
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # No invoice level discount provided
           NO_INVOICE_LEVEL_DISCOUNT_PROVIDED = :no_invoice_level_discount_provided
@@ -232,7 +232,7 @@ module Increase
         #
         # @see Increase::Models::CardPurchaseSupplement::Invoice#tax_treatments
         module TaxTreatments
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # No tax applies
           NO_TAX_APPLIES = :no_tax_applies
@@ -257,7 +257,7 @@ module Increase
         end
       end
 
-      class LineItem < Increase::Internal::Type::BaseModel
+      class LineItem < Increase::BaseModel
         # @!attribute id
         #   The Card Purchase Supplement Line Item identifier.
         #
@@ -324,7 +324,7 @@ module Increase
 
         # @!attribute sales_tax_currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the sales tax
-        #   assessed.
+        #     assessed.
         #
         #   @return [String, nil]
         required :sales_tax_currency, String, nil?: true
@@ -343,7 +343,7 @@ module Increase
 
         # @!attribute total_amount_currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total
-        #   amount.
+        #     amount.
         #
         #   @return [String, nil]
         required :total_amount_currency, String, nil?: true
@@ -408,13 +408,13 @@ module Increase
         #     super
         #   end
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # Indicates the type of line item.
         #
         # @see Increase::Models::CardPurchaseSupplement::LineItem#detail_indicator
         module DetailIndicator
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # Normal
           NORMAL = :normal
@@ -436,7 +436,7 @@ module Increase
         #
         # @see Increase::Models::CardPurchaseSupplement::LineItem#discount_treatment_code
         module DiscountTreatmentCode
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # No line item level discount provided
           NO_LINE_ITEM_LEVEL_DISCOUNT_PROVIDED = :no_line_item_level_discount_provided
@@ -456,11 +456,11 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `card_purchase_supplement`.
+      #   `card_purchase_supplement`.
       #
       # @see Increase::Models::CardPurchaseSupplement#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         CARD_PURCHASE_SUPPLEMENT = :card_purchase_supplement
 

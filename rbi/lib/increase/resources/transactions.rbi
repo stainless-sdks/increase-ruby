@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           transaction_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::Transaction)
       end
@@ -15,19 +15,21 @@ module Increase
         # The identifier of the Transaction to retrieve.
         transaction_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # List Transactions
       sig do
         params(
           account_id: String,
-          category: T.any(Increase::Models::TransactionListParams::Category, Increase::Internal::AnyHash),
-          created_at: T.any(Increase::Models::TransactionListParams::CreatedAt, Increase::Internal::AnyHash),
+          category: T.any(Increase::Models::TransactionListParams::Category, Increase::Util::AnyHash),
+          created_at: T.any(Increase::Models::TransactionListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
           route_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
-          .returns(Increase::Internal::Page[Increase::Models::Transaction])
+          .returns(Increase::Page[Increase::Models::Transaction])
       end
       def list(
         # Filter Transactions for those belonging to the specified Account.
@@ -37,16 +39,19 @@ module Increase
         # Return the page of entries after this one.
         cursor: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        #   objects.
         limit: nil,
         # Filter Transactions for those belonging to the specified route. This could be a
-        # Card ID or an Account Number ID.
+        #   Card ID or an Account Number ID.
         route_id: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

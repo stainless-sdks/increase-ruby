@@ -1,6 +1,6 @@
 # Increase Ruby API library
 
-The Increase Ruby library provides convenient access to the Increase REST API from any Ruby 3.1.0+ application.
+The Increase Ruby library provides convenient access to the Increase REST API from any Ruby 3.0.0+ application.
 
 ## Documentation
 
@@ -12,13 +12,9 @@ The underlying REST API documentation can be found on [increase.com](https://inc
 
 To use this gem, install via Bundler by adding the following to your application's `Gemfile`:
 
-<!-- x-release-please-start-version -->
-
 ```ruby
-gem "increase", "~> 0.1.0.pre.alpha.5"
+gem "increase", "~> 0.0.1.pre.alpha.0"
 ```
-
-<!-- x-release-please-end -->
 
 To fetch an initial copy of the gem:
 
@@ -138,25 +134,9 @@ increase.accounts.create(
 )
 ```
 
-## LSP Support
+## Sorbet Support
 
-### Solargraph
-
-This library includes [Solargraph](https://solargraph.org) support for both auto completion and go to definition.
-
-```ruby
-gem "solargraph", group: :development
-```
-
-After Solargraph is installed, **you must populate its index** either via the provided editor command, or by running the following in your terminal:
-
-```sh
-bundle exec solargraph gems
-```
-
-Otherwise Solargraph will not be able to provide type information or auto-completion for any non-indexed libraries.
-
-### Sorbet
+**This library emits an intentional warning under the [`tapioca` toolchain](https://github.com/Shopify/tapioca)**. This is normal, and does not impact functionality.
 
 This library is written with [Sorbet type definitions](https://sorbet.org/docs/rbi). However, there is no runtime dependency on the `sorbet-runtime`.
 
@@ -167,47 +147,16 @@ Due to limitations with the Sorbet type system, where a method otherwise can tak
 Please follow Sorbet's [setup guides](https://sorbet.org/docs/adopting) for best experience.
 
 ```ruby
-params = Increase::Models::AccountCreateParams.new(
+model = Increase::Models::AccountCreateParams.new(
   name: "New Account!",
   entity_id: "entity_n8y8tnk2p9339ti393yi",
   program_id: "program_i2v2os4mwza1oetokh9i"
 )
 
-increase.accounts.create(**params)
+increase.accounts.create(**model)
 ```
-
-Note: **This library emits an intentional warning under the [`tapioca` toolchain](https://github.com/Shopify/tapioca)**. This is normal, and does not impact functionality.
-
-### Ruby LSP
-
-The Ruby LSP has [best effort support](https://shopify.github.io/ruby-lsp/#guessed-types) for inferring type information from Ruby code, and as such it may not always be able to provide accurate type information.
 
 ## Advanced
-
-### Making custom/undocumented requests
-
-This library is typed for convenient access to the documented API.
-
-If you need to access undocumented endpoints, params, or response properties, the library can still be used.
-
-#### Undocumented request params
-
-If you want to explicitly send an extra param, you can do so with the `extra_query`, `extra_body`, and `extra_headers` under the `request_options:` parameter when making a requests as seen in examples above.
-
-#### Undocumented endpoints
-
-To make requests to undocumented endpoints, you can make requests using `client.request`. Options on the client will be respected (such as retries) when making this request.
-
-```ruby
-response =
-  client.request(
-    method: :post,
-    path: '/undocumented/endpoint',
-    query: {"dog": "woof"},
-    headers: {"useful-header": "interesting-value"},
-    body: {"he": "llo"},
-  )
-```
 
 ### Concurrency & Connection Pooling
 
@@ -227,4 +176,4 @@ This package considers improvements to the (non-runtime) `*.rbi` and `*.rbs` typ
 
 ## Requirements
 
-Ruby 3.1.0 or higher.
+Ruby 3.0.0 or higher.

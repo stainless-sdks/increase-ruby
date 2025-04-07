@@ -4,10 +4,10 @@ module Increase
   module Models
     module Simulations
       # @see Increase::Resources::Simulations::InboundACHTransfers#create
-      class InboundACHTransferCreateParams < Increase::Internal::Type::BaseModel
+      class InboundACHTransferCreateParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+        #   extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # @!attribute account_number_id
         #   The identifier of the Account Number the inbound ACH Transfer is for.
@@ -17,8 +17,8 @@ module Increase
 
         # @!attribute amount
         #   The transfer amount in cents. A positive amount originates a credit transfer
-        #   pushing funds to the receiving account. A negative amount originates a debit
-        #   transfer pulling funds from the receiving account.
+        #     pushing funds to the receiving account. A negative amount originates a debit
+        #     transfer pulling funds from the receiving account.
         #
         #   @return [Integer]
         required :amount, Integer
@@ -95,7 +95,7 @@ module Increase
 
         # @!attribute [r] resolve_at
         #   The time at which the transfer should be resolved. If not provided will resolve
-        #   immediately.
+        #     immediately.
         #
         #   @return [Time, nil]
         optional :resolve_at, Time
@@ -147,11 +147,11 @@ module Increase
         #     super
         #   end
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # The standard entry class code for the transfer.
         module StandardEntryClassCode
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # Corporate Credit and Debit (CCD).
           CORPORATE_CREDIT_OR_DEBIT = :corporate_credit_or_debit

@@ -2,16 +2,16 @@
 
 module Increase
   module Models
-    class BookkeepingEntrySetCreateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class BookkeepingEntrySetCreateParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # The bookkeeping entries.
       sig { returns(T::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry]) }
       attr_accessor :entries
 
       # The date of the transaction. Optional if `transaction_id` is provided, in which
-      # case we use the `date` of that transaction. Required otherwise.
+      #   case we use the `date` of that transaction. Required otherwise.
       sig { returns(T.nilable(Time)) }
       attr_reader :date
 
@@ -27,14 +27,15 @@ module Increase
 
       sig do
         params(
-          entries: T::Array[T.any(Increase::Models::BookkeepingEntrySetCreateParams::Entry, Increase::Internal::AnyHash)],
+          entries: T::Array[T.any(Increase::Models::BookkeepingEntrySetCreateParams::Entry, Increase::Util::AnyHash)],
           date: Time,
           transaction_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
-      def self.new(entries:, date: nil, transaction_id: nil, request_options: {}); end
+      def self.new(entries:, date: nil, transaction_id: nil, request_options: {})
+      end
 
       sig do
         override
@@ -47,24 +48,27 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
-      class Entry < Increase::Internal::Type::BaseModel
+      class Entry < Increase::BaseModel
         # The identifier for the Bookkeeping Account impacted by this entry.
         sig { returns(String) }
         attr_accessor :account_id
 
         # The entry amount in the minor unit of the account currency. For dollars, for
-        # example, this is cents. Debit entries have positive amounts; credit entries have
-        # negative amounts.
+        #   example, this is cents. Debit entries have positive amounts; credit entries have
+        #   negative amounts.
         sig { returns(Integer) }
         attr_accessor :amount
 
         sig { params(account_id: String, amount: Integer).returns(T.attached_class) }
-        def self.new(account_id:, amount:); end
+        def self.new(account_id:, amount:)
+        end
 
         sig { override.returns({account_id: String, amount: Integer}) }
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

@@ -5,15 +5,15 @@ module Increase
     class Simulations
       class CardDisputes
         # After a [Card Dispute](#card-disputes) is created in production, the dispute
-        # will be reviewed. Since no review happens in sandbox, this endpoint simulates
-        # moving a Card Dispute into a rejected or accepted state. A Card Dispute can only
-        # be actioned one time and must have a status of `pending_reviewing`.
+        #   will be reviewed. Since no review happens in sandbox, this endpoint simulates
+        #   moving a Card Dispute into a rejected or accepted state. A Card Dispute can only
+        #   be actioned one time and must have a status of `pending_reviewing`.
         sig do
           params(
             card_dispute_id: String,
             status: Increase::Models::Simulations::CardDisputeActionParams::Status::OrSymbol,
             explanation: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
           )
             .returns(Increase::Models::CardDispute)
         end
@@ -25,10 +25,13 @@ module Increase
           # Why the dispute was rejected. Not required for accepting disputes.
           explanation: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: Increase::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

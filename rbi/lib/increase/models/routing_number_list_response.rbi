@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class RoutingNumberListResponse < Increase::Internal::Type::BaseModel
+    class RoutingNumberListResponse < Increase::BaseModel
       # This routing number's support for ACH Transfers.
       sig { returns(Increase::Models::RoutingNumberListResponse::ACHTransfers::TaggedSymbol) }
       attr_accessor :ach_transfers
@@ -20,7 +20,7 @@ module Increase
       attr_accessor :routing_number
 
       # A constant representing the object's type. For this resource it will always be
-      # `routing_number`.
+      #   `routing_number`.
       sig { returns(Increase::Models::RoutingNumberListResponse::Type::TaggedSymbol) }
       attr_accessor :type
 
@@ -63,11 +63,12 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # This routing number's support for ACH Transfers.
       module ACHTransfers
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RoutingNumberListResponse::ACHTransfers) }
         OrSymbol =
@@ -81,12 +82,13 @@ module Increase
           T.let(:not_supported, Increase::Models::RoutingNumberListResponse::ACHTransfers::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::RoutingNumberListResponse::ACHTransfers::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # This routing number's support for Real-Time Payments Transfers.
       module RealTimePaymentsTransfers
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers) }
@@ -114,13 +116,14 @@ module Increase
           override
             .returns(T::Array[Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers::TaggedSymbol])
         end
-        def self.values; end
+        def self.values
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `routing_number`.
+      #   `routing_number`.
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RoutingNumberListResponse::Type) }
         OrSymbol =
@@ -129,12 +132,13 @@ module Increase
         ROUTING_NUMBER = T.let(:routing_number, Increase::Models::RoutingNumberListResponse::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::RoutingNumberListResponse::Type::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # This routing number's support for Wire Transfers.
       module WireTransfers
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RoutingNumberListResponse::WireTransfers) }
         OrSymbol =
@@ -148,7 +152,8 @@ module Increase
           T.let(:not_supported, Increase::Models::RoutingNumberListResponse::WireTransfers::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::RoutingNumberListResponse::WireTransfers::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

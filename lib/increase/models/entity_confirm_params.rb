@@ -3,14 +3,14 @@
 module Increase
   module Models
     # @see Increase::Resources::Entities#confirm
-    class EntityConfirmParams < Increase::Internal::Type::BaseModel
+    class EntityConfirmParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute [r] confirmed_at
       #   When your user confirmed the Entity's details. If not provided, the current time
-      #   will be used.
+      #     will be used.
       #
       #   @return [Time, nil]
       optional :confirmed_at, Time
@@ -25,7 +25,7 @@ module Increase
       #   #
       #   def initialize(confirmed_at: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
     end
   end
 end

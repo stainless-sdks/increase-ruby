@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::ExternalAccounts#create
-    class ExternalAccount < Increase::Internal::Type::BaseModel
+    class ExternalAccount < Increase::BaseModel
       # @!attribute id
       #   The External Account's identifier.
       #
@@ -24,7 +24,7 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the External Account was created.
+      #     the External Account was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -43,8 +43,8 @@ module Increase
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #     Increase and is used to ensure that a request is only processed once. Learn more
+      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -63,7 +63,7 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #   `external_account`.
+      #     `external_account`.
       #
       #   @return [Symbol, Increase::Models::ExternalAccount::Type]
       required :type, enum: -> { Increase::Models::ExternalAccount::Type }
@@ -76,7 +76,7 @@ module Increase
 
       # @!parse
       #   # External Accounts represent accounts at financial institutions other than
-      #   # Increase. You can use this API to store their details for reuse.
+      #   #   Increase. You can use this API to store their details for reuse.
       #   #
       #   # @param id [String]
       #   # @param account_holder [Symbol, Increase::Models::ExternalAccount::AccountHolder]
@@ -107,13 +107,13 @@ module Increase
       #     super
       #   end
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # The type of entity that owns the External Account.
       #
       # @see Increase::Models::ExternalAccount#account_holder
       module AccountHolder
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The External Account is owned by a business.
         BUSINESS = :business
@@ -135,7 +135,7 @@ module Increase
       #
       # @see Increase::Models::ExternalAccount#funding
       module Funding
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # A checking account.
         CHECKING = :checking
@@ -157,7 +157,7 @@ module Increase
       #
       # @see Increase::Models::ExternalAccount#status
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The External Account is active.
         ACTIVE = :active
@@ -173,11 +173,11 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `external_account`.
+      #   `external_account`.
       #
       # @see Increase::Models::ExternalAccount#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         EXTERNAL_ACCOUNT = :external_account
 
@@ -192,7 +192,7 @@ module Increase
       #
       # @see Increase::Models::ExternalAccount#verification_status
       module VerificationStatus
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The External Account has not been verified.
         UNVERIFIED = :unverified

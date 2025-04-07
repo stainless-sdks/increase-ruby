@@ -8,11 +8,11 @@ module Increase
         account_holder: Increase::Models::ExternalAccountCreateParams::account_holder,
         funding: Increase::Models::ExternalAccountCreateParams::funding
       }
-      & Increase::Internal::Type::request_parameters
+      & Increase::request_parameters
 
-    class ExternalAccountCreateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class ExternalAccountCreateParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       attr_accessor account_number: String
 
@@ -46,7 +46,7 @@ module Increase
       type account_holder = :business | :individual | :unknown
 
       module AccountHolder
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The External Account is owned by a business.
         BUSINESS: :business
@@ -63,7 +63,7 @@ module Increase
       type funding = :checking | :savings | :other
 
       module Funding
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # A checking account.
         CHECKING: :checking

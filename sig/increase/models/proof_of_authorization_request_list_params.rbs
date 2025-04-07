@@ -6,11 +6,11 @@ module Increase
         cursor: String,
         limit: Integer
       }
-      & Increase::Internal::Type::request_parameters
+      & Increase::request_parameters
 
-    class ProofOfAuthorizationRequestListParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class ProofOfAuthorizationRequestListParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       attr_reader created_at: Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt?
 
@@ -38,7 +38,7 @@ module Increase
       type created_at =
         { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
 
-      class CreatedAt < Increase::Internal::Type::BaseModel
+      class CreatedAt < Increase::BaseModel
         attr_reader after: Time?
 
         def after=: (Time) -> Time

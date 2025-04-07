@@ -82,7 +82,7 @@ module Increase
       # @param status [Increase::Models::AccountListParams::Status]
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Internal::Page<Increase::Models::Account>]
+      # @return [Increase::Page<Increase::Models::Account>]
       #
       # @see Increase::Models::AccountListParams
       def list(params = {})
@@ -91,14 +91,14 @@ module Increase
           method: :get,
           path: "accounts",
           query: parsed,
-          page: Increase::Internal::Page,
+          page: Increase::Page,
           model: Increase::Models::Account,
           options: options
         )
       end
 
       # Retrieve the current and available balances for an account in minor units of the
-      # account's currency. Learn more about [account balances](/documentation/balance).
+      #   account's currency. Learn more about [account balances](/documentation/balance).
       #
       # @overload balance(account_id, at_time: nil, request_options: {})
       #

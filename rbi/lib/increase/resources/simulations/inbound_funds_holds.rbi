@@ -5,11 +5,11 @@ module Increase
     class Simulations
       class InboundFundsHolds
         # This endpoint simulates immediately releasing an Inbound Funds Hold, which might
-        # be created as a result of e.g., an ACH debit.
+        #   be created as a result of e.g., an ACH debit.
         sig do
           params(
             inbound_funds_hold_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
           )
             .returns(Increase::Models::Simulations::InboundFundsHoldReleaseResponse)
         end
@@ -17,10 +17,13 @@ module Increase
           # The inbound funds hold to release.
           inbound_funds_hold_id,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: Increase::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

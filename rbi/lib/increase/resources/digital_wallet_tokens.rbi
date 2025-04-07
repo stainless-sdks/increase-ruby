@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           digital_wallet_token_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::DigitalWalletToken)
       end
@@ -15,17 +15,19 @@ module Increase
         # The identifier of the Digital Wallet Token.
         digital_wallet_token_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # List Digital Wallet Tokens
       sig do
         params(
           card_id: String,
-          created_at: T.any(Increase::Models::DigitalWalletTokenListParams::CreatedAt, Increase::Internal::AnyHash),
+          created_at: T.any(Increase::Models::DigitalWalletTokenListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
-          .returns(Increase::Internal::Page[Increase::Models::DigitalWalletToken])
+          .returns(Increase::Page[Increase::Models::DigitalWalletToken])
       end
       def list(
         # Filter Digital Wallet Tokens to ones belonging to the specified Card.
@@ -34,13 +36,16 @@ module Increase
         # Return the page of entries after this one.
         cursor: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        #   objects.
         limit: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

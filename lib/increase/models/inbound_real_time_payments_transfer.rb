@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::InboundRealTimePaymentsTransfers#retrieve
-    class InboundRealTimePaymentsTransfer < Increase::Internal::Type::BaseModel
+    class InboundRealTimePaymentsTransfer < Increase::BaseModel
       # @!attribute id
       #   The inbound Real-Time Payments transfer's identifier.
       #
@@ -36,7 +36,7 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the transfer was created.
+      #     the transfer was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -49,7 +49,7 @@ module Increase
 
       # @!attribute currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
-      #   currency. This will always be "USD" for a Real-Time Payments transfer.
+      #     currency. This will always be "USD" for a Real-Time Payments transfer.
       #
       #   @return [Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Currency]
       required :currency, enum: -> { Increase::Models::InboundRealTimePaymentsTransfer::Currency }
@@ -98,14 +98,14 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #   `inbound_real_time_payments_transfer`.
+      #     `inbound_real_time_payments_transfer`.
       #
       #   @return [Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Type]
       required :type, enum: -> { Increase::Models::InboundRealTimePaymentsTransfer::Type }
 
       # @!parse
       #   # An Inbound Real-Time Payments Transfer is a Real-Time Payments transfer
-      #   # initiated outside of Increase to your account.
+      #   #   initiated outside of Increase to your account.
       #   #
       #   # @param id [String]
       #   # @param account_id [String]
@@ -146,10 +146,10 @@ module Increase
       #     super
       #   end
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @see Increase::Models::InboundRealTimePaymentsTransfer#confirmation
-      class Confirmation < Increase::Internal::Type::BaseModel
+      class Confirmation < Increase::BaseModel
         # @!attribute confirmed_at
         #   The time at which the transfer was confirmed.
         #
@@ -170,15 +170,15 @@ module Increase
         #   #
         #   def initialize(confirmed_at:, transaction_id:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
-      # currency. This will always be "USD" for a Real-Time Payments transfer.
+      #   currency. This will always be "USD" for a Real-Time Payments transfer.
       #
       # @see Increase::Models::InboundRealTimePaymentsTransfer#currency
       module Currency
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # Canadian Dollar (CAD)
         CAD = :CAD
@@ -206,7 +206,7 @@ module Increase
       end
 
       # @see Increase::Models::InboundRealTimePaymentsTransfer#decline
-      class Decline < Increase::Internal::Type::BaseModel
+      class Decline < Increase::BaseModel
         # @!attribute declined_at
         #   The time at which the transfer was declined.
         #
@@ -234,13 +234,13 @@ module Increase
         #   #
         #   def initialize(declined_at:, declined_transaction_id:, reason:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # The reason for the transfer decline.
         #
         # @see Increase::Models::InboundRealTimePaymentsTransfer::Decline#reason
         module Reason
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # The account number is canceled.
           ACCOUNT_NUMBER_CANCELED = :account_number_canceled
@@ -272,7 +272,7 @@ module Increase
       #
       # @see Increase::Models::InboundRealTimePaymentsTransfer#status
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The transfer is pending confirmation.
         PENDING_CONFIRMING = :pending_confirming
@@ -294,11 +294,11 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `inbound_real_time_payments_transfer`.
+      #   `inbound_real_time_payments_transfer`.
       #
       # @see Increase::Models::InboundRealTimePaymentsTransfer#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         INBOUND_REAL_TIME_PAYMENTS_TRANSFER = :inbound_real_time_payments_transfer
 

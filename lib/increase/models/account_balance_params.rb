@@ -3,10 +3,10 @@
 module Increase
   module Models
     # @see Increase::Resources::Accounts#balance
-    class AccountBalanceParams < Increase::Internal::Type::BaseModel
+    class AccountBalanceParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute [r] at_time
       #   The moment to query the balance at. If not set, returns the current balances.
@@ -24,7 +24,7 @@ module Increase
       #   #
       #   def initialize(at_time: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
     end
   end
 end

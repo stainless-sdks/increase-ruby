@@ -3,10 +3,10 @@
 module Increase
   module Models
     # @see Increase::Resources::FileLinks#create
-    class FileLinkCreateParams < Increase::Internal::Type::BaseModel
+    class FileLinkCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute file_id
       #   The File to create a File Link for.
@@ -16,7 +16,7 @@ module Increase
 
       # @!attribute [r] expires_at
       #   The time at which the File Link will expire. The default is 1 hour from the time
-      #   of the request. The maxiumum is 1 day from the time of the request.
+      #     of the request. The maxiumum is 1 day from the time of the request.
       #
       #   @return [Time, nil]
       optional :expires_at, Time
@@ -32,7 +32,7 @@ module Increase
       #   #
       #   def initialize(file_id:, expires_at: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
     end
   end
 end

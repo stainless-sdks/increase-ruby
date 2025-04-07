@@ -15,7 +15,7 @@ module Increase
           type: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::type_
         }
 
-      class InboundFundsHoldReleaseResponse < Increase::Internal::Type::BaseModel
+      class InboundFundsHoldReleaseResponse < Increase::BaseModel
         attr_accessor id: String
 
         attr_accessor amount: Integer
@@ -54,7 +54,7 @@ module Increase
         type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
         module Currency
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # Canadian Dollar (CAD)
           CAD: :CAD
@@ -80,7 +80,7 @@ module Increase
         type status = :held | :complete
 
         module Status
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # Funds are still being held.
           HELD: :held
@@ -94,7 +94,7 @@ module Increase
         type type_ = :inbound_funds_hold
 
         module Type
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           INBOUND_FUNDS_HOLD: :inbound_funds_hold
 

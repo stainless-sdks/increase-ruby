@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class InboundWireDrawdownRequest < Increase::Internal::Type::BaseModel
+    class InboundWireDrawdownRequest < Increase::BaseModel
       # The Wire drawdown request identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -36,12 +36,12 @@ module Increase
       attr_accessor :beneficiary_routing_number
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      # the inbound wire drawdown requested was created.
+      #   the inbound wire drawdown requested was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
-      # requested. Will always be "USD".
+      #   requested. Will always be "USD".
       sig { returns(String) }
       attr_accessor :currency
 
@@ -74,38 +74,38 @@ module Increase
       attr_accessor :originator_routing_number
 
       # Line 1 of the information conveyed from the originator of the message to the
-      # beneficiary.
+      #   beneficiary.
       sig { returns(T.nilable(String)) }
       attr_accessor :originator_to_beneficiary_information_line1
 
       # Line 2 of the information conveyed from the originator of the message to the
-      # beneficiary.
+      #   beneficiary.
       sig { returns(T.nilable(String)) }
       attr_accessor :originator_to_beneficiary_information_line2
 
       # Line 3 of the information conveyed from the originator of the message to the
-      # beneficiary.
+      #   beneficiary.
       sig { returns(T.nilable(String)) }
       attr_accessor :originator_to_beneficiary_information_line3
 
       # Line 4 of the information conveyed from the originator of the message to the
-      # beneficiary.
+      #   beneficiary.
       sig { returns(T.nilable(String)) }
       attr_accessor :originator_to_beneficiary_information_line4
 
       # The Account Number from which the recipient of this request is being requested
-      # to send funds.
+      #   to send funds.
       sig { returns(String) }
       attr_accessor :recipient_account_number_id
 
       # A constant representing the object's type. For this resource it will always be
-      # `inbound_wire_drawdown_request`.
+      #   `inbound_wire_drawdown_request`.
       sig { returns(Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Inbound wire drawdown requests are requests from someone else to send them a
-      # wire. This feature is in beta; reach out to
-      # [support@increase.com](mailto:support@increase.com) to learn more.
+      #   wire. This feature is in beta; reach out to
+      #   [support@increase.com](mailto:support@increase.com) to learn more.
       sig do
         params(
           id: String,
@@ -158,7 +158,9 @@ module Increase
         originator_to_beneficiary_information_line4:,
         recipient_account_number_id:,
         type:
-      ); end
+      )
+      end
+
       sig do
         override
           .returns(
@@ -189,12 +191,13 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # A constant representing the object's type. For this resource it will always be
-      # `inbound_wire_drawdown_request`.
+      #   `inbound_wire_drawdown_request`.
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundWireDrawdownRequest::Type) }
         OrSymbol =
@@ -204,7 +207,8 @@ module Increase
           T.let(:inbound_wire_drawdown_request, Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::OAuthConnections#retrieve
-    class OAuthConnection < Increase::Internal::Type::BaseModel
+    class OAuthConnection < Increase::BaseModel
       # @!attribute id
       #   The OAuth Connection's identifier.
       #
@@ -12,14 +12,14 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-      #   Connection was created.
+      #     Connection was created.
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute deleted_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-      #   Connection was deleted.
+      #     Connection was deleted.
       #
       #   @return [Time, nil]
       required :deleted_at, Time, nil?: true
@@ -44,15 +44,15 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #   `oauth_connection`.
+      #     `oauth_connection`.
       #
       #   @return [Symbol, Increase::Models::OAuthConnection::Type]
       required :type, enum: -> { Increase::Models::OAuthConnection::Type }
 
       # @!parse
       #   # When a user authorizes your OAuth application, an OAuth Connection object is
-      #   # created. Learn more about OAuth
-      #   # [here](https://increase.com/documentation/oauth).
+      #   #   created. Learn more about OAuth
+      #   #   [here](https://increase.com/documentation/oauth).
       #   #
       #   # @param id [String]
       #   # @param created_at [Time]
@@ -64,13 +64,13 @@ module Increase
       #   #
       #   def initialize(id:, created_at:, deleted_at:, group_id:, oauth_application_id:, status:, type:, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # Whether the connection is active.
       #
       # @see Increase::Models::OAuthConnection#status
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The OAuth connection is active.
         ACTIVE = :active
@@ -86,11 +86,11 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `oauth_connection`.
+      #   `oauth_connection`.
       #
       # @see Increase::Models::OAuthConnection#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         OAUTH_CONNECTION = :oauth_connection
 

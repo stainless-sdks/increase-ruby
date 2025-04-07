@@ -2,9 +2,9 @@
 
 module Increase
   module Models
-    class WireDrawdownRequestCreateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class WireDrawdownRequestCreateParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # The Account Number to which the recipient should send funds.
       sig { returns(String) }
@@ -31,8 +31,8 @@ module Increase
       attr_accessor :recipient_routing_number
 
       # The drawdown request originator's address line 1. This is only necessary if
-      # you're requesting a payment to a commingled account. Otherwise, we'll use the
-      # associated entity's details.
+      #   you're requesting a payment to a commingled account. Otherwise, we'll use the
+      #   associated entity's details.
       sig { returns(T.nilable(String)) }
       attr_reader :originator_address_line1
 
@@ -40,8 +40,8 @@ module Increase
       attr_writer :originator_address_line1
 
       # The drawdown request originator's address line 2. This is only necessary if
-      # you're requesting a payment to a commingled account. Otherwise, we'll use the
-      # associated entity's details.
+      #   you're requesting a payment to a commingled account. Otherwise, we'll use the
+      #   associated entity's details.
       sig { returns(T.nilable(String)) }
       attr_reader :originator_address_line2
 
@@ -49,8 +49,8 @@ module Increase
       attr_writer :originator_address_line2
 
       # The drawdown request originator's address line 3. This is only necessary if
-      # you're requesting a payment to a commingled account. Otherwise, we'll use the
-      # associated entity's details.
+      #   you're requesting a payment to a commingled account. Otherwise, we'll use the
+      #   associated entity's details.
       sig { returns(T.nilable(String)) }
       attr_reader :originator_address_line3
 
@@ -58,8 +58,8 @@ module Increase
       attr_writer :originator_address_line3
 
       # The drawdown request originator's name. This is only necessary if you're
-      # requesting a payment to a commingled account. Otherwise, we'll use the
-      # associated entity's details.
+      #   requesting a payment to a commingled account. Otherwise, we'll use the
+      #   associated entity's details.
       sig { returns(T.nilable(String)) }
       attr_reader :originator_name
 
@@ -102,7 +102,7 @@ module Increase
           recipient_address_line1: String,
           recipient_address_line2: String,
           recipient_address_line3: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -121,7 +121,9 @@ module Increase
         recipient_address_line2: nil,
         recipient_address_line3: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       sig do
         override
           .returns(
@@ -143,7 +145,8 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

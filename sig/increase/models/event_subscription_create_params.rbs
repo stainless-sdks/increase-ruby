@@ -7,11 +7,11 @@ module Increase
         selected_event_category: Increase::Models::EventSubscriptionCreateParams::selected_event_category,
         shared_secret: String
       }
-      & Increase::Internal::Type::request_parameters
+      & Increase::request_parameters
 
-    class EventSubscriptionCreateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class EventSubscriptionCreateParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       attr_accessor url: String
 
@@ -130,7 +130,7 @@ module Increase
         | :"wire_transfer.updated"
 
       module SelectedEventCategory
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # Occurs whenever an Account is created.
         ACCOUNT_CREATED: :"account.created"

@@ -3,10 +3,10 @@
 module Increase
   module Models
     # @see Increase::Resources::InboundWireDrawdownRequests#list
-    class InboundWireDrawdownRequestListParams < Increase::Internal::Type::BaseModel
+    class InboundWireDrawdownRequestListParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute [r] cursor
       #   Return the page of entries after this one.
@@ -20,7 +20,7 @@ module Increase
 
       # @!attribute [r] limit
       #   Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
+      #     objects.
       #
       #   @return [Integer, nil]
       optional :limit, Integer
@@ -36,7 +36,7 @@ module Increase
       #   #
       #   def initialize(cursor: nil, limit: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
     end
   end
 end

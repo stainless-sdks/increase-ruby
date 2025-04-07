@@ -4,10 +4,10 @@ module Increase
   module Models
     module Simulations
       # @see Increase::Resources::Simulations::DigitalWalletTokenRequests#create
-      class DigitalWalletTokenRequestCreateResponse < Increase::Internal::Type::BaseModel
+      class DigitalWalletTokenRequestCreateResponse < Increase::BaseModel
         # @!attribute decline_reason
         #   If the simulated tokenization attempt was declined, this field contains details
-        #   as to why.
+        #     as to why.
         #
         #   @return [Symbol, Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason, nil]
         required :decline_reason,
@@ -16,14 +16,14 @@ module Increase
 
         # @!attribute digital_wallet_token_id
         #   If the simulated tokenization attempt was accepted, this field contains the id
-        #   of the Digital Wallet Token that was created.
+        #     of the Digital Wallet Token that was created.
         #
         #   @return [String, nil]
         required :digital_wallet_token_id, String, nil?: true
 
         # @!attribute type
         #   A constant representing the object's type. For this resource it will always be
-        #   `inbound_digital_wallet_token_request_simulation_result`.
+        #     `inbound_digital_wallet_token_request_simulation_result`.
         #
         #   @return [Symbol, Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type]
         required :type, enum: -> { Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type }
@@ -37,14 +37,14 @@ module Increase
         #   #
         #   def initialize(decline_reason:, digital_wallet_token_id:, type:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # If the simulated tokenization attempt was declined, this field contains details
-        # as to why.
+        #   as to why.
         #
         # @see Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse#decline_reason
         module DeclineReason
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # The card is not active.
           CARD_NOT_ACTIVE = :card_not_active
@@ -66,11 +66,11 @@ module Increase
         end
 
         # A constant representing the object's type. For this resource it will always be
-        # `inbound_digital_wallet_token_request_simulation_result`.
+        #   `inbound_digital_wallet_token_request_simulation_result`.
         #
         # @see Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse#type
         module Type
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           INBOUND_DIGITAL_WALLET_TOKEN_REQUEST_SIMULATION_RESULT =
             :inbound_digital_wallet_token_request_simulation_result

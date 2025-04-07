@@ -3,10 +3,10 @@
 module Increase
   module Models
     # @see Increase::Resources::AccountNumbers#update
-    class AccountNumberUpdateParams < Increase::Internal::Type::BaseModel
+    class AccountNumberUpdateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute [r] inbound_ach
       #   Options related to how this Account Number handles inbound ACH transfers.
@@ -20,7 +20,7 @@ module Increase
 
       # @!attribute [r] inbound_checks
       #   Options related to how this Account Number should handle inbound check
-      #   withdrawals.
+      #     withdrawals.
       #
       #   @return [Increase::Models::AccountNumberUpdateParams::InboundChecks, nil]
       optional :inbound_checks, -> { Increase::Models::AccountNumberUpdateParams::InboundChecks }
@@ -58,12 +58,12 @@ module Increase
       #   #
       #   def initialize(inbound_ach: nil, inbound_checks: nil, name: nil, status: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
-      class InboundACH < Increase::Internal::Type::BaseModel
+      class InboundACH < Increase::BaseModel
         # @!attribute [r] debit_status
         #   Whether ACH debits are allowed against this Account Number. Note that ACH debits
-        #   will be declined if this is `allowed` but the Account Number is not active.
+        #     will be declined if this is `allowed` but the Account Number is not active.
         #
         #   @return [Symbol, Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus, nil]
         optional :debit_status, enum: -> { Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus }
@@ -79,14 +79,14 @@ module Increase
         #   #
         #   def initialize(debit_status: nil, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # Whether ACH debits are allowed against this Account Number. Note that ACH debits
-        # will be declined if this is `allowed` but the Account Number is not active.
+        #   will be declined if this is `allowed` but the Account Number is not active.
         #
         # @see Increase::Models::AccountNumberUpdateParams::InboundACH#debit_status
         module DebitStatus
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # ACH Debits are allowed.
           ALLOWED = :allowed
@@ -102,7 +102,7 @@ module Increase
         end
       end
 
-      class InboundChecks < Increase::Internal::Type::BaseModel
+      class InboundChecks < Increase::BaseModel
         # @!attribute status
         #   How Increase should process checks with this account number printed on them.
         #
@@ -111,19 +111,19 @@ module Increase
 
         # @!parse
         #   # Options related to how this Account Number should handle inbound check
-        #   # withdrawals.
+        #   #   withdrawals.
         #   #
         #   # @param status [Symbol, Increase::Models::AccountNumberUpdateParams::InboundChecks::Status]
         #   #
         #   def initialize(status:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
 
         # How Increase should process checks with this account number printed on them.
         #
         # @see Increase::Models::AccountNumberUpdateParams::InboundChecks#status
         module Status
-          extend Increase::Internal::Type::Enum
+          extend Increase::Enum
 
           # Checks with this Account Number will be processed even if they are not associated with a Check Transfer.
           ALLOWED = :allowed
@@ -141,7 +141,7 @@ module Increase
 
       # This indicates if transfers can be made to the Account Number.
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The account number is active.
         ACTIVE = :active

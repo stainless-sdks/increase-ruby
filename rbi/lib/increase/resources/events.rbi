@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           event_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
           .returns(Increase::Models::Event)
       end
@@ -15,18 +15,20 @@ module Increase
         # The identifier of the Event.
         event_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # List Events
       sig do
         params(
           associated_object_id: String,
-          category: T.any(Increase::Models::EventListParams::Category, Increase::Internal::AnyHash),
-          created_at: T.any(Increase::Models::EventListParams::CreatedAt, Increase::Internal::AnyHash),
+          category: T.any(Increase::Models::EventListParams::Category, Increase::Util::AnyHash),
+          created_at: T.any(Increase::Models::EventListParams::CreatedAt, Increase::Util::AnyHash),
           cursor: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Util::AnyHash))
         )
-          .returns(Increase::Internal::Page[Increase::Models::Event])
+          .returns(Increase::Page[Increase::Models::Event])
       end
       def list(
         # Filter Events to those belonging to the object with the provided identifier.
@@ -36,13 +38,16 @@ module Increase
         # Return the page of entries after this one.
         cursor: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        #   objects.
         limit: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

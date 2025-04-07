@@ -3,10 +3,10 @@
 module Increase
   module Models
     # @see Increase::Resources::BookkeepingAccounts#balance
-    class BookkeepingBalanceLookup < Increase::Internal::Type::BaseModel
+    class BookkeepingBalanceLookup < Increase::BaseModel
       # @!attribute balance
       #   The Bookkeeping Account's current balance, representing the sum of all
-      #   Bookkeeping Entries on the Bookkeeping Account.
+      #     Bookkeeping Entries on the Bookkeeping Account.
       #
       #   @return [Integer]
       required :balance, Integer
@@ -19,14 +19,14 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #   `bookkeeping_balance_lookup`.
+      #     `bookkeeping_balance_lookup`.
       #
       #   @return [Symbol, Increase::Models::BookkeepingBalanceLookup::Type]
       required :type, enum: -> { Increase::Models::BookkeepingBalanceLookup::Type }
 
       # @!parse
       #   # Represents a request to lookup the balance of an Bookkeeping Account at a given
-      #   # point in time.
+      #   #   point in time.
       #   #
       #   # @param balance [Integer]
       #   # @param bookkeeping_account_id [String]
@@ -34,14 +34,14 @@ module Increase
       #   #
       #   def initialize(balance:, bookkeeping_account_id:, type:, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # A constant representing the object's type. For this resource it will always be
-      # `bookkeeping_balance_lookup`.
+      #   `bookkeeping_balance_lookup`.
       #
       # @see Increase::Models::BookkeepingBalanceLookup#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         BOOKKEEPING_BALANCE_LOOKUP = :bookkeeping_balance_lookup
 

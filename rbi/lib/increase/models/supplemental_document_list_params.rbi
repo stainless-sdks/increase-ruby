@@ -2,9 +2,9 @@
 
 module Increase
   module Models
-    class SupplementalDocumentListParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class SupplementalDocumentListParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # The identifier of the Entity to list supplemental documents for.
       sig { returns(String) }
@@ -18,9 +18,9 @@ module Increase
       attr_writer :cursor
 
       # Filter records to the one with the specified `idempotency_key` you chose for
-      # that object. This value is unique across Increase and is used to ensure that a
-      # request is only processed once. Learn more about
-      # [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   that object. This value is unique across Increase and is used to ensure that a
+      #   request is only processed once. Learn more about
+      #   [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_reader :idempotency_key
 
@@ -28,7 +28,7 @@ module Increase
       attr_writer :idempotency_key
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
-      # objects.
+      #   objects.
       sig { returns(T.nilable(Integer)) }
       attr_reader :limit
 
@@ -41,11 +41,12 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
-      def self.new(entity_id:, cursor: nil, idempotency_key: nil, limit: nil, request_options: {}); end
+      def self.new(entity_id:, cursor: nil, idempotency_key: nil, limit: nil, request_options: {})
+      end
 
       sig do
         override
@@ -59,7 +60,8 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

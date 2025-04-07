@@ -7,11 +7,11 @@ module Increase
         limit: Integer,
         statement_period_start: Increase::Models::AccountStatementListParams::StatementPeriodStart
       }
-      & Increase::Internal::Type::request_parameters
+      & Increase::request_parameters
 
-    class AccountStatementListParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class AccountStatementListParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       attr_reader account_id: String?
 
@@ -44,7 +44,7 @@ module Increase
       type statement_period_start =
         { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
 
-      class StatementPeriodStart < Increase::Internal::Type::BaseModel
+      class StatementPeriodStart < Increase::BaseModel
         attr_reader after: Time?
 
         def after=: (Time) -> Time

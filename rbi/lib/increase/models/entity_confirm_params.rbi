@@ -2,12 +2,12 @@
 
 module Increase
   module Models
-    class EntityConfirmParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class EntityConfirmParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # When your user confirmed the Entity's details. If not provided, the current time
-      # will be used.
+      #   will be used.
       sig { returns(T.nilable(Time)) }
       attr_reader :confirmed_at
 
@@ -15,16 +15,15 @@ module Increase
       attr_writer :confirmed_at
 
       sig do
-        params(
-          confirmed_at: Time,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
-        )
+        params(confirmed_at: Time, request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash))
           .returns(T.attached_class)
       end
-      def self.new(confirmed_at: nil, request_options: {}); end
+      def self.new(confirmed_at: nil, request_options: {})
+      end
 
       sig { override.returns({confirmed_at: Time, request_options: Increase::RequestOptions}) }
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

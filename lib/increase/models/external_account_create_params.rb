@@ -3,10 +3,10 @@
 module Increase
   module Models
     # @see Increase::Resources::ExternalAccounts#create
-    class ExternalAccountCreateParams < Increase::Internal::Type::BaseModel
+    class ExternalAccountCreateParams < Increase::BaseModel
       # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+      #   extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       # @!attribute account_number
       #   The account number for the destination account.
@@ -22,7 +22,7 @@ module Increase
 
       # @!attribute routing_number
       #   The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      #   destination account.
+      #     destination account.
       #
       #   @return [String]
       required :routing_number, String
@@ -57,11 +57,11 @@ module Increase
       #   #
       #   def initialize(account_number:, description:, routing_number:, account_holder: nil, funding: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # The type of entity that owns the External Account.
       module AccountHolder
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The External Account is owned by a business.
         BUSINESS = :business
@@ -81,7 +81,7 @@ module Increase
 
       # The type of the destination account. Defaults to `checking`.
       module Funding
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # A checking account.
         CHECKING = :checking

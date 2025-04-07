@@ -4,10 +4,10 @@ module Increase
   module Models
     module Simulations
       # @see Increase::Resources::Simulations::CardIncrements#create
-      class CardIncrementCreateParams < Increase::Internal::Type::BaseModel
+      class CardIncrementCreateParams < Increase::BaseModel
         # @!parse
-        #   extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+        #   extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # @!attribute amount
         #   The amount of the increment in minor units in the card authorization's currency.
@@ -23,9 +23,9 @@ module Increase
 
         # @!attribute [r] event_subscription_id
         #   The identifier of the Event Subscription to use. If provided, will override the
-        #   default real time event subscription. Because you can only create one real time
-        #   decision event subscription, you can use this field to route events to any
-        #   specified event subscription for testing purposes.
+        #     default real time event subscription. Because you can only create one real time
+        #     decision event subscription, you can use this field to route events to any
+        #     specified event subscription for testing purposes.
         #
         #   @return [String, nil]
         optional :event_subscription_id, String
@@ -42,7 +42,7 @@ module Increase
         #   #
         #   def initialize(amount:, card_payment_id:, event_subscription_id: nil, request_options: {}, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
     end
   end

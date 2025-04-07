@@ -16,7 +16,7 @@ class Increase::Test::Resources::InboundCheckDepositsTest < Increase::Test::Reso
         accepted_at: Time | nil,
         account_id: String,
         account_number_id: String | nil,
-        adjustments: ^(Increase::Internal::Type::ArrayOf[Increase::Models::InboundCheckDeposit::Adjustment]),
+        adjustments: ^(Increase::ArrayOf[Increase::Models::InboundCheckDeposit::Adjustment]),
         amount: Integer,
         back_image_file_id: String | nil,
         bank_of_first_deposit_routing_number: String | nil,
@@ -40,7 +40,7 @@ class Increase::Test::Resources::InboundCheckDepositsTest < Increase::Test::Reso
     response = @increase.inbound_check_deposits.list
 
     assert_pattern do
-      response => Increase::Internal::Page
+      response => Increase::Page
     end
 
     row = response.to_enum.first
@@ -56,7 +56,7 @@ class Increase::Test::Resources::InboundCheckDepositsTest < Increase::Test::Reso
         accepted_at: Time | nil,
         account_id: String,
         account_number_id: String | nil,
-        adjustments: ^(Increase::Internal::Type::ArrayOf[Increase::Models::InboundCheckDeposit::Adjustment]),
+        adjustments: ^(Increase::ArrayOf[Increase::Models::InboundCheckDeposit::Adjustment]),
         amount: Integer,
         back_image_file_id: String | nil,
         bank_of_first_deposit_routing_number: String | nil,
@@ -89,7 +89,7 @@ class Increase::Test::Resources::InboundCheckDepositsTest < Increase::Test::Reso
         accepted_at: Time | nil,
         account_id: String,
         account_number_id: String | nil,
-        adjustments: ^(Increase::Internal::Type::ArrayOf[Increase::Models::InboundCheckDeposit::Adjustment]),
+        adjustments: ^(Increase::ArrayOf[Increase::Models::InboundCheckDeposit::Adjustment]),
         amount: Integer,
         back_image_file_id: String | nil,
         bank_of_first_deposit_routing_number: String | nil,
@@ -123,7 +123,7 @@ class Increase::Test::Resources::InboundCheckDepositsTest < Increase::Test::Reso
         accepted_at: Time | nil,
         account_id: String,
         account_number_id: String | nil,
-        adjustments: ^(Increase::Internal::Type::ArrayOf[Increase::Models::InboundCheckDeposit::Adjustment]),
+        adjustments: ^(Increase::ArrayOf[Increase::Models::InboundCheckDeposit::Adjustment]),
         amount: Integer,
         back_image_file_id: String | nil,
         bank_of_first_deposit_routing_number: String | nil,

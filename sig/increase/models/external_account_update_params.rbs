@@ -7,11 +7,11 @@ module Increase
         funding: Increase::Models::ExternalAccountUpdateParams::funding,
         status: Increase::Models::ExternalAccountUpdateParams::status
       }
-      & Increase::Internal::Type::request_parameters
+      & Increase::request_parameters
 
-    class ExternalAccountUpdateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class ExternalAccountUpdateParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       attr_reader account_holder: Increase::Models::ExternalAccountUpdateParams::account_holder?
 
@@ -48,7 +48,7 @@ module Increase
       type account_holder = :business | :individual
 
       module AccountHolder
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The External Account is owned by a business.
         BUSINESS: :business
@@ -62,7 +62,7 @@ module Increase
       type funding = :checking | :savings | :other
 
       module Funding
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # A checking account.
         CHECKING: :checking
@@ -79,7 +79,7 @@ module Increase
       type status = :active | :archived
 
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The External Account is active.
         ACTIVE: :active

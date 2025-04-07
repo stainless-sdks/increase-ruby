@@ -3,7 +3,7 @@
 module Increase
   module Models
     # @see Increase::Resources::CardDisputes#create
-    class CardDispute < Increase::Internal::Type::BaseModel
+    class CardDispute < Increase::BaseModel
       # @!attribute id
       #   The Card Dispute identifier.
       #
@@ -12,7 +12,7 @@ module Increase
 
       # @!attribute acceptance
       #   If the Card Dispute's status is `accepted`, this will contain details of the
-      #   successful dispute.
+      #     successful dispute.
       #
       #   @return [Increase::Models::CardDispute::Acceptance, nil]
       required :acceptance, -> { Increase::Models::CardDispute::Acceptance }, nil?: true
@@ -25,7 +25,7 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the Card Dispute was created.
+      #     the Card Dispute was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -44,22 +44,22 @@ module Increase
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #     Increase and is used to ensure that a request is only processed once. Learn more
+      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
 
       # @!attribute loss
       #   If the Card Dispute's status is `lost`, this will contain details of the lost
-      #   dispute.
+      #     dispute.
       #
       #   @return [Increase::Models::CardDispute::Loss, nil]
       required :loss, -> { Increase::Models::CardDispute::Loss }, nil?: true
 
       # @!attribute rejection
       #   If the Card Dispute's status is `rejected`, this will contain details of the
-      #   unsuccessful dispute.
+      #     unsuccessful dispute.
       #
       #   @return [Increase::Models::CardDispute::Rejection, nil]
       required :rejection, -> { Increase::Models::CardDispute::Rejection }, nil?: true
@@ -72,21 +72,21 @@ module Increase
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
-      #   `card_dispute`.
+      #     `card_dispute`.
       #
       #   @return [Symbol, Increase::Models::CardDispute::Type]
       required :type, enum: -> { Increase::Models::CardDispute::Type }
 
       # @!attribute win
       #   If the Card Dispute's status is `won`, this will contain details of the won
-      #   dispute.
+      #     dispute.
       #
       #   @return [Increase::Models::CardDispute::Win, nil]
       required :win, -> { Increase::Models::CardDispute::Win }, nil?: true
 
       # @!parse
       #   # If unauthorized activity occurs on a card, you can create a Card Dispute and
-      #   # we'll return the funds if appropriate.
+      #   #   we'll return the funds if appropriate.
       #   #
       #   # @param id [String]
       #   # @param acceptance [Increase::Models::CardDispute::Acceptance, nil]
@@ -119,13 +119,13 @@ module Increase
       #     super
       #   end
 
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @see Increase::Models::CardDispute#acceptance
-      class Acceptance < Increase::Internal::Type::BaseModel
+      class Acceptance < Increase::BaseModel
         # @!attribute accepted_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the Card Dispute was accepted.
+        #     the Card Dispute was accepted.
         #
         #   @return [Time]
         required :accepted_at, Time
@@ -138,14 +138,14 @@ module Increase
 
         # @!attribute transaction_id
         #   The identifier of the Transaction that was created to return the disputed funds
-        #   to your account.
+        #     to your account.
         #
         #   @return [String]
         required :transaction_id, String
 
         # @!parse
         #   # If the Card Dispute's status is `accepted`, this will contain details of the
-        #   # successful dispute.
+        #   #   successful dispute.
         #   #
         #   # @param accepted_at [Time]
         #   # @param card_dispute_id [String]
@@ -153,11 +153,11 @@ module Increase
         #   #
         #   def initialize(accepted_at:, card_dispute_id:, transaction_id:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # @see Increase::Models::CardDispute#loss
-      class Loss < Increase::Internal::Type::BaseModel
+      class Loss < Increase::BaseModel
         # @!attribute card_dispute_id
         #   The identifier of the Card Dispute that was lost.
         #
@@ -172,21 +172,21 @@ module Increase
 
         # @!attribute lost_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the Card Dispute was lost.
+        #     the Card Dispute was lost.
         #
         #   @return [Time]
         required :lost_at, Time
 
         # @!attribute transaction_id
         #   The identifier of the Transaction that was created to debit the disputed funds
-        #   from your account.
+        #     from your account.
         #
         #   @return [String]
         required :transaction_id, String
 
         # @!parse
         #   # If the Card Dispute's status is `lost`, this will contain details of the lost
-        #   # dispute.
+        #   #   dispute.
         #   #
         #   # @param card_dispute_id [String]
         #   # @param explanation [String]
@@ -195,11 +195,11 @@ module Increase
         #   #
         #   def initialize(card_dispute_id:, explanation:, lost_at:, transaction_id:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # @see Increase::Models::CardDispute#rejection
-      class Rejection < Increase::Internal::Type::BaseModel
+      class Rejection < Increase::BaseModel
         # @!attribute card_dispute_id
         #   The identifier of the Card Dispute that was rejected.
         #
@@ -214,14 +214,14 @@ module Increase
 
         # @!attribute rejected_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the Card Dispute was rejected.
+        #     the Card Dispute was rejected.
         #
         #   @return [Time]
         required :rejected_at, Time
 
         # @!parse
         #   # If the Card Dispute's status is `rejected`, this will contain details of the
-        #   # unsuccessful dispute.
+        #   #   unsuccessful dispute.
         #   #
         #   # @param card_dispute_id [String]
         #   # @param explanation [String]
@@ -229,14 +229,14 @@ module Increase
         #   #
         #   def initialize(card_dispute_id:, explanation:, rejected_at:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # The results of the Dispute investigation.
       #
       # @see Increase::Models::CardDispute#status
       module Status
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         # The Card Dispute is pending review.
         PENDING_REVIEWING = :pending_reviewing
@@ -264,11 +264,11 @@ module Increase
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `card_dispute`.
+      #   `card_dispute`.
       #
       # @see Increase::Models::CardDispute#type
       module Type
-        extend Increase::Internal::Type::Enum
+        extend Increase::Enum
 
         CARD_DISPUTE = :card_dispute
 
@@ -280,7 +280,7 @@ module Increase
       end
 
       # @see Increase::Models::CardDispute#win
-      class Win < Increase::Internal::Type::BaseModel
+      class Win < Increase::BaseModel
         # @!attribute card_dispute_id
         #   The identifier of the Card Dispute that was won.
         #
@@ -289,21 +289,21 @@ module Increase
 
         # @!attribute won_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the Card Dispute was won.
+        #     the Card Dispute was won.
         #
         #   @return [Time]
         required :won_at, Time
 
         # @!parse
         #   # If the Card Dispute's status is `won`, this will contain details of the won
-        #   # dispute.
+        #   #   dispute.
         #   #
         #   # @param card_dispute_id [String]
         #   # @param won_at [Time]
         #   #
         #   def initialize(card_dispute_id:, won_at:, **) = super
 
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
     end
   end

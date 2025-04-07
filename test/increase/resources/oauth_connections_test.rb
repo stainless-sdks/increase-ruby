@@ -27,7 +27,7 @@ class Increase::Test::Resources::OAuthConnectionsTest < Increase::Test::Resource
     response = @increase.oauth_connections.list
 
     assert_pattern do
-      response => Increase::Internal::Page
+      response => Increase::Page
     end
 
     row = response.to_enum.first

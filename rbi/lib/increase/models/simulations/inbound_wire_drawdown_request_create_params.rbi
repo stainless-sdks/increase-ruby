@@ -3,9 +3,9 @@
 module Increase
   module Models
     module Simulations
-      class InboundWireDrawdownRequestCreateParams < Increase::Internal::Type::BaseModel
-        extend Increase::Internal::Type::RequestParameters::Converter
-        include Increase::Internal::Type::RequestParameters
+      class InboundWireDrawdownRequestCreateParams < Increase::BaseModel
+        extend Increase::Type::RequestParameters::Converter
+        include Increase::RequestParameters
 
         # The amount being requested in cents.
         sig { returns(Integer) }
@@ -20,7 +20,7 @@ module Increase
         attr_accessor :beneficiary_routing_number
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
-        # requested. Will always be "USD".
+        #   requested. Will always be "USD".
         sig { returns(String) }
         attr_accessor :currency
 
@@ -37,7 +37,7 @@ module Increase
         attr_accessor :originator_routing_number
 
         # The Account Number to which the recipient of this request is being requested to
-        # send funds from.
+        #   send funds from.
         sig { returns(String) }
         attr_accessor :recipient_account_number_id
 
@@ -98,7 +98,7 @@ module Increase
         attr_writer :originator_name
 
         # Line 1 of the information conveyed from the originator of the message to the
-        # beneficiary.
+        #   beneficiary.
         sig { returns(T.nilable(String)) }
         attr_reader :originator_to_beneficiary_information_line1
 
@@ -106,7 +106,7 @@ module Increase
         attr_writer :originator_to_beneficiary_information_line1
 
         # Line 2 of the information conveyed from the originator of the message to the
-        # beneficiary.
+        #   beneficiary.
         sig { returns(T.nilable(String)) }
         attr_reader :originator_to_beneficiary_information_line2
 
@@ -114,7 +114,7 @@ module Increase
         attr_writer :originator_to_beneficiary_information_line2
 
         # Line 3 of the information conveyed from the originator of the message to the
-        # beneficiary.
+        #   beneficiary.
         sig { returns(T.nilable(String)) }
         attr_reader :originator_to_beneficiary_information_line3
 
@@ -122,7 +122,7 @@ module Increase
         attr_writer :originator_to_beneficiary_information_line3
 
         # Line 4 of the information conveyed from the originator of the message to the
-        # beneficiary.
+        #   beneficiary.
         sig { returns(T.nilable(String)) }
         attr_reader :originator_to_beneficiary_information_line4
 
@@ -151,7 +151,7 @@ module Increase
             originator_to_beneficiary_information_line2: String,
             originator_to_beneficiary_information_line3: String,
             originator_to_beneficiary_information_line4: String,
-            request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+            request_options: T.any(Increase::RequestOptions, Increase::Util::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -177,7 +177,9 @@ module Increase
           originator_to_beneficiary_information_line3: nil,
           originator_to_beneficiary_information_line4: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         sig do
           override
             .returns(
@@ -206,7 +208,8 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

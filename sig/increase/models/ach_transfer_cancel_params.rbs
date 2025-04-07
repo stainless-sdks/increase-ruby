@@ -1,11 +1,10 @@
 module Increase
   module Models
-    type ach_transfer_cancel_params =
-      {  } & Increase::Internal::Type::request_parameters
+    type ach_transfer_cancel_params = {  } & Increase::request_parameters
 
-    class ACHTransferCancelParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
-      include Increase::Internal::Type::RequestParameters
+    class ACHTransferCancelParams < Increase::BaseModel
+      extend Increase::Type::RequestParameters::Converter
+      include Increase::RequestParameters
 
       def initialize: (?request_options: Increase::request_opts) -> void
 
