@@ -13,10 +13,12 @@ module Increase
         final!
 
         sig(:final) { params(other: T.anything).returns(T::Boolean) }
-        def self.===(other); end
+        def self.===(other)
+        end
 
         sig(:final) { params(other: T.anything).returns(T::Boolean) }
-        def self.==(other); end
+        def self.==(other)
+        end
 
         class << self
           # @api private
@@ -26,11 +28,13 @@ module Increase
               state: Increase::Internal::Type::Converter::State
             ).returns(T.anything)
           end
-          def coerce(value, state:); end
+          def coerce(value, state:)
+          end
 
           # @api private
           sig(:final) { override.params(value: T.anything).returns(T.anything) }
-          def dump(value); end
+          def dump(value)
+          end
         end
       end
     end

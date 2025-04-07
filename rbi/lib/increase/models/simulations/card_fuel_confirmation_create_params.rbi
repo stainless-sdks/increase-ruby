@@ -8,7 +8,7 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         # The amount of the fuel_confirmation in minor units in the card authorization's
-        # currency.
+        #   currency.
         sig { returns(Integer) }
         attr_accessor :amount
 
@@ -24,7 +24,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(amount:, card_payment_id:, request_options: {}); end
+        def self.new(amount:, card_payment_id:, request_options: {})
+        end
 
         sig do
           override.returns(
@@ -35,7 +36,8 @@ module Increase
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

@@ -2,6 +2,8 @@
 
 module Increase
   module Internal
+    # rubocop:disable Metrics/ModuleLength
+
     # @api private
     module Util
       # @api private
@@ -59,7 +61,7 @@ module Increase
         # @return [Boolean]
         def primitive?(input)
           case input
-          in true | false | Numeric | Symbol | String
+          in true | false | Integer | Float | Symbol | String
             true
           else
             false
@@ -152,7 +154,7 @@ module Increase
         # @api private
         #
         # Recursively merge one hash with another. If the values at a given key are not
-        # both hashes, just take the new value.
+        #   both hashes, just take the new value.
         #
         # @param values [Array<Object>]
         #
@@ -502,7 +504,7 @@ module Increase
         def encode_content(headers, body)
           content_type = headers["content-type"]
           case [content_type, body]
-          in [%r{^application/(?:vnd\.api\+)?json}, _] unless body.nil?
+          in [%r{^application/(?:vnd\.api\+)?json}, Hash | Array]
             [headers, JSON.fast_generate(body)]
           in [%r{^application/(?:x-)?jsonl}, Enumerable]
             [headers, body.lazy.map { JSON.fast_generate(_1) }]
@@ -514,8 +516,6 @@ module Increase
             [headers, body.tap(&:rewind)]
           in [_, StringIO]
             [headers, body.string]
-          in [_, Symbol | Numeric]
-            [headers, body.to_s]
           else
             [headers, body]
           end
@@ -692,5 +692,7 @@ module Increase
         end
       end
     end
+
+    # rubocop:enable Metrics/ModuleLength
   end
 end

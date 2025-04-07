@@ -23,16 +23,18 @@ module Increase
         # The description you choose to give the card.
         description: nil,
         # The contact information used in the two-factor steps for digital wallet card
-        # creation. To add the card to a digital wallet, you may supply an email or phone
-        # number with this request. Otherwise, subscribe and then action a Real Time
-        # Decision with the category `digital_wallet_token_requested` or
-        # `digital_wallet_authentication_requested`.
+        #   creation. To add the card to a digital wallet, you may supply an email or phone
+        #   number with this request. Otherwise, subscribe and then action a Real Time
+        #   Decision with the category `digital_wallet_token_requested` or
+        #   `digital_wallet_authentication_requested`.
         digital_wallet: nil,
         # The Entity the card belongs to. You only need to supply this in rare situations
-        # when the card is not for the Account holder.
+        #   when the card is not for the Account holder.
         entity_id: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Retrieve a Card
       sig do
         params(
@@ -45,7 +47,9 @@ module Increase
         # The identifier of the Card.
         card_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Update a Card
       sig do
         params(
@@ -67,16 +71,18 @@ module Increase
         # The description you choose to give the card.
         description: nil,
         # The contact information used in the two-factor steps for digital wallet card
-        # creation. At least one field must be present to complete the digital wallet
-        # steps.
+        #   creation. At least one field must be present to complete the digital wallet
+        #   steps.
         digital_wallet: nil,
         # The Entity the card belongs to. You only need to supply this in rare situations
-        # when the card is not for the Account holder.
+        #   when the card is not for the Account holder.
         entity_id: nil,
         # The status to update the Card with.
         status: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # List Cards
       sig do
         params(
@@ -97,16 +103,18 @@ module Increase
         # Return the page of entries after this one.
         cursor: nil,
         # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        #   that object. This value is unique across Increase and is used to ensure that a
+        #   request is only processed once. Learn more about
+        #   [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        #   objects.
         limit: nil,
         status: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Retrieve sensitive details for a Card
       sig do
         params(
@@ -119,10 +127,13 @@ module Increase
         # The identifier of the Card to retrieve details for.
         card_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

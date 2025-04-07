@@ -19,13 +19,13 @@ module Increase
       attr_accessor :fulfillment_method
 
       # The identifier of the Account Number from which to send the transfer and print
-      # on the check.
+      #   on the check.
       sig { returns(String) }
       attr_accessor :source_account_number_id
 
       # Details relating to the physical check that Increase will print and mail. This
-      # is required if `fulfillment_method` is equal to `physical_check`. It must not be
-      # included if any other `fulfillment_method` is provided.
+      #   is required if `fulfillment_method` is equal to `physical_check`. It must not be
+      #   included if any other `fulfillment_method` is provided.
       sig { returns(T.nilable(Increase::Models::CheckTransferCreateParams::PhysicalCheck)) }
       attr_reader :physical_check
 
@@ -45,8 +45,8 @@ module Increase
       attr_writer :require_approval
 
       # Details relating to the custom fulfillment you will perform. This is required if
-      # `fulfillment_method` is equal to `third_party`. It must not be included if any
-      # other `fulfillment_method` is provided.
+      #   `fulfillment_method` is equal to `third_party`. It must not be included if any
+      #   other `fulfillment_method` is provided.
       sig { returns(T.nilable(Increase::Models::CheckTransferCreateParams::ThirdParty)) }
       attr_reader :third_party
 
@@ -80,7 +80,9 @@ module Increase
         require_approval: nil,
         third_party: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       sig do
         override
           .returns(
@@ -96,7 +98,8 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # Whether Increase will print and mail the check or if you will do it yourself.
       module FulfillmentMethod
@@ -116,7 +119,8 @@ module Increase
           T.let(:third_party, Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       class PhysicalCheck < Increase::Internal::Type::BaseModel
@@ -144,8 +148,8 @@ module Increase
         attr_accessor :recipient_name
 
         # The check number Increase should print on the check. This should not contain
-        # leading zeroes and must be unique across the `source_account_number`. If this is
-        # omitted, Increase will generate a check number for you.
+        #   leading zeroes and must be unique across the `source_account_number`. If this is
+        #   omitted, Increase will generate a check number for you.
         sig { returns(T.nilable(String)) }
         attr_reader :check_number
 
@@ -160,8 +164,8 @@ module Increase
         attr_writer :note
 
         # The return address to be printed on the check. If omitted this will default to
-        # an Increase-owned address that will mark checks as delivery failed and shred
-        # them.
+        #   an Increase-owned address that will mark checks as delivery failed and shred
+        #   them.
         sig { returns(T.nilable(Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress)) }
         attr_reader :return_address
 
@@ -177,7 +181,7 @@ module Increase
         attr_writer :return_address
 
         # The text that will appear as the signature on the check in cursive font. If not
-        # provided, the check will be printed with 'No signature required'.
+        #   provided, the check will be printed with 'No signature required'.
         sig { returns(T.nilable(String)) }
         attr_reader :signature_text
 
@@ -185,8 +189,8 @@ module Increase
         attr_writer :signature_text
 
         # Details relating to the physical check that Increase will print and mail. This
-        # is required if `fulfillment_method` is equal to `physical_check`. It must not be
-        # included if any other `fulfillment_method` is provided.
+        #   is required if `fulfillment_method` is equal to `physical_check`. It must not be
+        #   included if any other `fulfillment_method` is provided.
         sig do
           params(
             mailing_address: T.any(
@@ -213,7 +217,9 @@ module Increase
           note: nil,
           return_address: nil,
           signature_text: nil
-        ); end
+        )
+        end
+
         sig do
           override
             .returns(
@@ -228,7 +234,8 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class MailingAddress < Increase::Internal::Type::BaseModel
           # The city component of the check's destination address.
@@ -259,12 +266,14 @@ module Increase
             params(city: String, line1: String, postal_code: String, state: String, line2: String)
               .returns(T.attached_class)
           end
-          def self.new(city:, line1:, postal_code:, state:, line2: nil); end
+          def self.new(city:, line1:, postal_code:, state:, line2: nil)
+          end
 
           sig do
             override.returns({city: String, line1: String, postal_code: String, state: String, line2: String})
           end
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class ReturnAddress < Increase::Internal::Type::BaseModel
@@ -296,8 +305,8 @@ module Increase
           attr_writer :line2
 
           # The return address to be printed on the check. If omitted this will default to
-          # an Increase-owned address that will mark checks as delivery failed and shred
-          # them.
+          #   an Increase-owned address that will mark checks as delivery failed and shred
+          #   them.
           sig do
             params(
               city: String,
@@ -309,7 +318,8 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(city:, line1:, name:, postal_code:, state:, line2: nil); end
+          def self.new(city:, line1:, name:, postal_code:, state:, line2: nil)
+          end
 
           sig do
             override
@@ -322,14 +332,15 @@ module Increase
                          line2: String
                        })
           end
-          def to_hash; end
+          def to_hash
+          end
         end
       end
 
       class ThirdParty < Increase::Internal::Type::BaseModel
         # The check number you will print on the check. This should not contain leading
-        # zeroes. If this is omitted, Increase will generate a check number for you; you
-        # should inspect the response and use that check number.
+        #   zeroes. If this is omitted, Increase will generate a check number for you; you
+        #   should inspect the response and use that check number.
         sig { returns(T.nilable(String)) }
         attr_reader :check_number
 
@@ -337,8 +348,8 @@ module Increase
         attr_writer :check_number
 
         # The pay-to name you will print on the check. If provided, this is used for
-        # [Positive Pay](/documentation/positive-pay). If this is omitted, Increase will
-        # be unable to validate the payee name when the check is deposited.
+        #   [Positive Pay](/documentation/positive-pay). If this is omitted, Increase will
+        #   be unable to validate the payee name when the check is deposited.
         sig { returns(T.nilable(String)) }
         attr_reader :recipient_name
 
@@ -346,13 +357,15 @@ module Increase
         attr_writer :recipient_name
 
         # Details relating to the custom fulfillment you will perform. This is required if
-        # `fulfillment_method` is equal to `third_party`. It must not be included if any
-        # other `fulfillment_method` is provided.
+        #   `fulfillment_method` is equal to `third_party`. It must not be included if any
+        #   other `fulfillment_method` is provided.
         sig { params(check_number: String, recipient_name: String).returns(T.attached_class) }
-        def self.new(check_number: nil, recipient_name: nil); end
+        def self.new(check_number: nil, recipient_name: nil)
+        end
 
         sig { override.returns({check_number: String, recipient_name: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

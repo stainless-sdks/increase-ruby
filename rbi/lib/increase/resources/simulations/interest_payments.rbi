@@ -5,7 +5,7 @@ module Increase
     class Simulations
       class InterestPayments
         # Simulates an interest payment to your account. In production, this happens
-        # automatically on the first of each month.
+        #   automatically on the first of each month.
         sig do
           params(
             account_id: String,
@@ -29,10 +29,13 @@ module Increase
           # The start of the interest period. If not provided, defaults to the current time.
           period_start: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: Increase::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

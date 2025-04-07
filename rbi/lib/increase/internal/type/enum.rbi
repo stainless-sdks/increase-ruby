@@ -6,38 +6,42 @@ module Increase
       # @api private
       #
       # A value from among a specified list of options. OpenAPI enum values map to Ruby
-      # values in the SDK as follows:
+      #   values in the SDK as follows:
       #
-      # 1. boolean => true | false
-      # 2. integer => Integer
-      # 3. float => Float
-      # 4. string => Symbol
+      #   1. boolean => true | false
+      #   2. integer => Integer
+      #   3. float => Float
+      #   4. string => Symbol
       #
-      # We can therefore convert string values to Symbols, but can't convert other
-      # values safely.
+      #   We can therefore convert string values to Symbols, but can't convert other
+      #   values safely.
       module Enum
         include Increase::Internal::Type::Converter
 
         # All of the valid Symbol values for this enum.
         sig { overridable.returns(T::Array[T.any(NilClass, T::Boolean, Integer, Float, Symbol)]) }
-        def values; end
+        def values
+        end
 
         # @api private
         #
         # Guard against thread safety issues by instantiating `@values`.
         sig { void }
-        private def finalize!; end
+        private def finalize!
+        end
 
         sig { params(other: T.anything).returns(T::Boolean) }
-        def ===(other); end
+        def ===(other)
+        end
 
         sig { params(other: T.anything).returns(T::Boolean) }
-        def ==(other); end
+        def ==(other)
+        end
 
         # @api private
         #
         # Unlike with primitives, `Enum` additionally validates that the value is a member
-        # of the enum.
+        #   of the enum.
         sig do
           override
             .params(value: T.any(
@@ -48,11 +52,13 @@ module Increase
                     state: Increase::Internal::Type::Converter::State)
             .returns(T.any(Symbol, T.anything))
         end
-        def coerce(value, state:); end
+        def coerce(value, state:)
+        end
 
         # @api private
         sig { override.params(value: T.any(Symbol, T.anything)).returns(T.any(Symbol, T.anything)) }
-        def dump(value); end
+        def dump(value)
+        end
       end
     end
   end

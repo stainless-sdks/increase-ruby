@@ -44,8 +44,8 @@ module Increase
       attr_accessor :customer_has_been_offboarded
 
       # The idempotency key you chose for this object. This value is unique across
-      # Increase and is used to ensure that a request is only processed once. Learn more
-      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
@@ -58,7 +58,7 @@ module Increase
       attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
-      # `proof_of_authorization_request_submission`.
+      #   `proof_of_authorization_request_submission`.
       sig { returns(Increase::Models::ProofOfAuthorizationRequestSubmission::Type::TaggedSymbol) }
       attr_accessor :type
 
@@ -79,10 +79,10 @@ module Increase
       attr_accessor :validated_account_ownership_with_microdeposit
 
       # Information submitted in response to a proof of authorization request. Per
-      # Nacha's guidance on proof of authorization, the originator must ensure that the
-      # authorization complies with applicable legal requirements, is readily
-      # identifiable as an authorization, and has clear and readily understandable
-      # terms.
+      #   Nacha's guidance on proof of authorization, the originator must ensure that the
+      #   authorization complies with applicable legal requirements, is readily
+      #   identifiable as an authorization, and has clear and readily understandable
+      #   terms.
       sig do
         params(
           id: String,
@@ -125,7 +125,9 @@ module Increase
         validated_account_ownership_via_credential:,
         validated_account_ownership_with_account_statement:,
         validated_account_ownership_with_microdeposit:
-      ); end
+      )
+      end
+
       sig do
         override
           .returns(
@@ -151,7 +153,8 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # Status of the proof of authorization request submission.
       module Status
@@ -182,11 +185,12 @@ module Increase
         SENT = T.let(:sent, Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `proof_of_authorization_request_submission`.
+      #   `proof_of_authorization_request_submission`.
       module Type
         extend Increase::Internal::Type::Enum
 
@@ -202,7 +206,8 @@ module Increase
           )
 
         sig { override.returns(T::Array[Increase::Models::ProofOfAuthorizationRequestSubmission::Type::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

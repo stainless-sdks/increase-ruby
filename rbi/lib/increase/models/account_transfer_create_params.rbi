@@ -11,7 +11,7 @@ module Increase
       attr_accessor :account_id
 
       # The transfer amount in the minor unit of the account currency. For dollars, for
-      # example, this is cents.
+      #   example, this is cents.
       sig { returns(Integer) }
       attr_accessor :amount
 
@@ -64,7 +64,8 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

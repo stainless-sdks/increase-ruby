@@ -30,10 +30,10 @@ module Increase
       attr_writer :description
 
       # The contact information used in the two-factor steps for digital wallet card
-      # creation. To add the card to a digital wallet, you may supply an email or phone
-      # number with this request. Otherwise, subscribe and then action a Real Time
-      # Decision with the category `digital_wallet_token_requested` or
-      # `digital_wallet_authentication_requested`.
+      #   creation. To add the card to a digital wallet, you may supply an email or phone
+      #   number with this request. Otherwise, subscribe and then action a Real Time
+      #   Decision with the category `digital_wallet_token_requested` or
+      #   `digital_wallet_authentication_requested`.
       sig { returns(T.nilable(Increase::Models::CardCreateParams::DigitalWallet)) }
       attr_reader :digital_wallet
 
@@ -46,7 +46,7 @@ module Increase
       attr_writer :digital_wallet
 
       # The Entity the card belongs to. You only need to supply this in rare situations
-      # when the card is not for the Account holder.
+      #   when the card is not for the Account holder.
       sig { returns(T.nilable(String)) }
       attr_reader :entity_id
 
@@ -71,7 +71,9 @@ module Increase
         digital_wallet: nil,
         entity_id: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       sig do
         override
           .returns(
@@ -85,7 +87,8 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class BillingAddress < Increase::Internal::Type::BaseModel
         # The city of the billing address.
@@ -116,12 +119,14 @@ module Increase
           params(city: String, line1: String, postal_code: String, state: String, line2: String)
             .returns(T.attached_class)
         end
-        def self.new(city:, line1:, postal_code:, state:, line2: nil); end
+        def self.new(city:, line1:, postal_code:, state:, line2: nil)
+        end
 
         sig do
           override.returns({city: String, line1: String, postal_code: String, state: String, line2: String})
         end
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class DigitalWallet < Increase::Internal::Type::BaseModel
@@ -133,7 +138,7 @@ module Increase
         attr_writer :digital_card_profile_id
 
         # An email address that can be used to contact and verify the cardholder via
-        # one-time passcode over email.
+        #   one-time passcode over email.
         sig { returns(T.nilable(String)) }
         attr_reader :email
 
@@ -141,7 +146,7 @@ module Increase
         attr_writer :email
 
         # A phone number that can be used to contact and verify the cardholder via
-        # one-time passcode over SMS.
+        #   one-time passcode over SMS.
         sig { returns(T.nilable(String)) }
         attr_reader :phone
 
@@ -149,17 +154,19 @@ module Increase
         attr_writer :phone
 
         # The contact information used in the two-factor steps for digital wallet card
-        # creation. To add the card to a digital wallet, you may supply an email or phone
-        # number with this request. Otherwise, subscribe and then action a Real Time
-        # Decision with the category `digital_wallet_token_requested` or
-        # `digital_wallet_authentication_requested`.
+        #   creation. To add the card to a digital wallet, you may supply an email or phone
+        #   number with this request. Otherwise, subscribe and then action a Real Time
+        #   Decision with the category `digital_wallet_token_requested` or
+        #   `digital_wallet_authentication_requested`.
         sig do
           params(digital_card_profile_id: String, email: String, phone: String).returns(T.attached_class)
         end
-        def self.new(digital_card_profile_id: nil, email: nil, phone: nil); end
+        def self.new(digital_card_profile_id: nil, email: nil, phone: nil)
+        end
 
         sig { override.returns({digital_card_profile_id: String, email: String, phone: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

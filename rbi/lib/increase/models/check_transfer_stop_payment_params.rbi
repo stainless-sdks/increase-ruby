@@ -20,7 +20,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(reason: nil, request_options: {}); end
+      def self.new(reason: nil, request_options: {})
+      end
 
       sig do
         override
@@ -31,7 +32,8 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # The reason why this transfer should be stopped.
       module Reason
@@ -53,7 +55,8 @@ module Increase
         UNKNOWN = T.let(:unknown, Increase::Models::CheckTransferStopPaymentParams::Reason::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::CheckTransferStopPaymentParams::Reason::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

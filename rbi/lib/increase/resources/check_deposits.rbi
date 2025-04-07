@@ -27,7 +27,9 @@ module Increase
         # The description you choose to give the Check Deposit, for display purposes only.
         description: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Retrieve a Check Deposit
       sig do
         params(
@@ -40,7 +42,9 @@ module Increase
         # The identifier of the Check Deposit to retrieve.
         check_deposit_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # List Check Deposits
       sig do
         params(
@@ -60,18 +64,21 @@ module Increase
         # Return the page of entries after this one.
         cursor: nil,
         # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        #   that object. This value is unique across Increase and is used to ensure that a
+        #   request is only processed once. Learn more about
+        #   [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        #   objects.
         limit: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

@@ -15,7 +15,7 @@ module Increase
       attr_accessor :description
 
       # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      # destination account.
+      #   destination account.
       sig { returns(String) }
       attr_accessor :routing_number
 
@@ -67,7 +67,8 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # The type of entity that owns the External Account.
       module AccountHolder
@@ -89,7 +90,8 @@ module Increase
         UNKNOWN = T.let(:unknown, Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # The type of the destination account. Defaults to `checking`.
@@ -110,7 +112,8 @@ module Increase
         OTHER = T.let(:other, Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

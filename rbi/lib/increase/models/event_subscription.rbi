@@ -12,18 +12,18 @@ module Increase
       attr_accessor :created_at
 
       # The idempotency key you chose for this object. This value is unique across
-      # Increase and is used to ensure that a request is only processed once. Learn more
-      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
       # If specified, this subscription will only receive webhooks for Events associated
-      # with this OAuth Connection.
+      #   with this OAuth Connection.
       sig { returns(T.nilable(String)) }
       attr_accessor :oauth_connection_id
 
       # If specified, this subscription will only receive webhooks for Events with the
-      # specified `category`.
+      #   specified `category`.
       sig { returns(T.nilable(Increase::Models::EventSubscription::SelectedEventCategory::TaggedSymbol)) }
       attr_accessor :selected_event_category
 
@@ -32,7 +32,7 @@ module Increase
       attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
-      # `event_subscription`.
+      #   `event_subscription`.
       sig { returns(Increase::Models::EventSubscription::Type::TaggedSymbol) }
       attr_accessor :type
 
@@ -41,11 +41,11 @@ module Increase
       attr_accessor :url
 
       # Webhooks are event notifications we send to you by HTTPS POST requests. Event
-      # Subscriptions are how you configure your application to listen for them. You can
-      # create an Event Subscription through your
-      # [developer dashboard](https://dashboard.increase.com/developers/webhooks) or the
-      # API. For more information, see our
-      # [webhooks guide](https://increase.com/documentation/webhooks).
+      #   Subscriptions are how you configure your application to listen for them. You can
+      #   create an Event Subscription through your
+      #   [developer dashboard](https://dashboard.increase.com/developers/webhooks) or the
+      #   API. For more information, see our
+      #   [webhooks guide](https://increase.com/documentation/webhooks).
       sig do
         params(
           id: String,
@@ -86,10 +86,11 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # If specified, this subscription will only receive webhooks for Events with the
-      # specified `category`.
+      #   specified `category`.
       module SelectedEventCategory
         extend Increase::Internal::Type::Enum
 
@@ -615,7 +616,8 @@ module Increase
           T.let(:"wire_transfer.updated", Increase::Models::EventSubscription::SelectedEventCategory::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::EventSubscription::SelectedEventCategory::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # This indicates if we'll send notifications to this subscription.
@@ -640,11 +642,12 @@ module Increase
           T.let(:requires_attention, Increase::Models::EventSubscription::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::EventSubscription::Status::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `event_subscription`.
+      #   `event_subscription`.
       module Type
         extend Increase::Internal::Type::Enum
 
@@ -655,7 +658,8 @@ module Increase
         EVENT_SUBSCRIPTION = T.let(:event_subscription, Increase::Models::EventSubscription::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::EventSubscription::Type::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

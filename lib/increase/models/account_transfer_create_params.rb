@@ -16,7 +16,7 @@ module Increase
 
       # @!attribute amount
       #   The transfer amount in the minor unit of the account currency. For dollars, for
-      #   example, this is cents.
+      #     example, this is cents.
       #
       #   @return [Integer]
       required :amount, Integer
@@ -37,7 +37,7 @@ module Increase
       #   Whether the transfer requires explicit approval via the dashboard or API.
       #
       #   @return [Boolean, nil]
-      optional :require_approval, Increase::Internal::Type::Boolean
+      optional :require_approval, Increase::Internal::Type::BooleanModel
 
       # @!parse
       #   # @return [Boolean]

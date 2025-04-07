@@ -7,7 +7,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # When your user confirmed the Entity's details. If not provided, the current time
-      # will be used.
+      #   will be used.
       sig { returns(T.nilable(Time)) }
       attr_reader :confirmed_at
 
@@ -21,10 +21,12 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(confirmed_at: nil, request_options: {}); end
+      def self.new(confirmed_at: nil, request_options: {})
+      end
 
       sig { override.returns({confirmed_at: Time, request_options: Increase::RequestOptions}) }
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end
