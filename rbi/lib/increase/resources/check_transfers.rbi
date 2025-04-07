@@ -25,20 +25,22 @@ module Increase
         # Whether Increase will print and mail the check or if you will do it yourself.
         fulfillment_method:,
         # The identifier of the Account Number from which to send the transfer and print
-        # on the check.
+        #   on the check.
         source_account_number_id:,
         # Details relating to the physical check that Increase will print and mail. This
-        # is required if `fulfillment_method` is equal to `physical_check`. It must not be
-        # included if any other `fulfillment_method` is provided.
+        #   is required if `fulfillment_method` is equal to `physical_check`. It must not be
+        #   included if any other `fulfillment_method` is provided.
         physical_check: nil,
         # Whether the transfer requires explicit approval via the dashboard or API.
         require_approval: nil,
         # Details relating to the custom fulfillment you will perform. This is required if
-        # `fulfillment_method` is equal to `third_party`. It must not be included if any
-        # other `fulfillment_method` is provided.
+        #   `fulfillment_method` is equal to `third_party`. It must not be included if any
+        #   other `fulfillment_method` is provided.
         third_party: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Retrieve a Check Transfer
       sig do
         params(
@@ -51,7 +53,9 @@ module Increase
         # The identifier of the Check Transfer.
         check_transfer_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # List Check Transfers
       sig do
         params(
@@ -72,16 +76,18 @@ module Increase
         # Return the page of entries after this one.
         cursor: nil,
         # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        #   that object. This value is unique across Increase and is used to ensure that a
+        #   request is only processed once. Learn more about
+        #   [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        #   objects.
         limit: nil,
         status: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Approve a Check Transfer
       sig do
         params(
@@ -94,7 +100,9 @@ module Increase
         # The identifier of the Check Transfer to approve.
         check_transfer_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Cancel a pending Check Transfer
       sig do
         params(
@@ -107,7 +115,9 @@ module Increase
         # The identifier of the pending Check Transfer to cancel.
         check_transfer_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Request a stop payment on a Check Transfer
       sig do
         params(
@@ -123,10 +133,13 @@ module Increase
         # The reason why this transfer should be stopped.
         reason: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

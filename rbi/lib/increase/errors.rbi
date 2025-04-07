@@ -32,7 +32,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: nil); end
+      def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: nil)
+      end
     end
 
     class APIConnectionError < Increase::Errors::APIError
@@ -88,7 +89,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.for(url:, status:, body:, request:, response:, message: nil); end
+      def self.for(url:, status:, body:, request:, response:, message: nil)
+      end
 
       sig { returns(Integer) }
       attr_accessor :status
@@ -105,7 +107,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(url:, status:, body:, request:, response:, message: nil); end
+      def self.new(url:, status:, body:, request:, response:, message: nil)
+      end
     end
 
     class BadRequestError < Increase::Errors::APIStatusError

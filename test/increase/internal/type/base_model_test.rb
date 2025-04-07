@@ -22,7 +22,7 @@ class Increase::Test::PrimitiveModelTest < Minitest::Test
   def test_typing
     converters = [
       Increase::Internal::Type::Unknown,
-      Increase::Internal::Type::Boolean,
+      Increase::Internal::Type::BooleanModel,
       A,
       H,
       E,
@@ -42,8 +42,8 @@ class Increase::Test::PrimitiveModelTest < Minitest::Test
       [Increase::Internal::Type::Unknown, :a] => [{yes: 1}, :a],
       [NilClass, :a] => [{maybe: 1}, nil],
       [NilClass, nil] => [{yes: 1}, nil],
-      [Increase::Internal::Type::Boolean, true] => [{yes: 1}, true],
-      [Increase::Internal::Type::Boolean, "true"] => [{no: 1}, "true"],
+      [Increase::Internal::Type::BooleanModel, true] => [{yes: 1}, true],
+      [Increase::Internal::Type::BooleanModel, "true"] => [{no: 1}, "true"],
       [Integer, 1] => [{yes: 1}, 1],
       [Integer, 1.0] => [{maybe: 1}, 1],
       [Integer, "1"] => [{maybe: 1}, 1],
@@ -85,8 +85,8 @@ class Increase::Test::PrimitiveModelTest < Minitest::Test
       [String, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
       [:b, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
       [nil, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
-      [Increase::Internal::Type::Boolean, true] => true,
-      [Increase::Internal::Type::Boolean, "true"] => "true",
+      [Increase::Internal::Type::BooleanModel, true] => true,
+      [Increase::Internal::Type::BooleanModel, "true"] => "true",
       [Integer, "1"] => "1",
       [Float, 1] => 1,
       [String, "one"] => "one",
@@ -154,11 +154,11 @@ class Increase::Test::EnumModelTest < Minitest::Test
 
   def test_coerce
     cases = {
-      # rubocop:disable Lint/BooleanSymbol
+      # rubocop:disable Style/BooleanSymbol
       [E1, true] => [{yes: 1}, true],
       [E1, false] => [{no: 1}, false],
       [E1, :true] => [{no: 1}, :true],
-      # rubocop:enable Lint/BooleanSymbol
+      # rubocop:enable Style/BooleanSymbol
 
       [E2, 1] => [{yes: 1}, 1],
       [E2, 1.0] => [{yes: 1}, 1],
@@ -560,8 +560,8 @@ class Increase::Test::BaseModelQoLTest < Minitest::Test
   def test_equality
     cases = {
       [Increase::Internal::Type::Unknown, Increase::Internal::Type::Unknown] => true,
-      [Increase::Internal::Type::Boolean, Increase::Internal::Type::Boolean] => true,
-      [Increase::Internal::Type::Unknown, Increase::Internal::Type::Boolean] => false,
+      [Increase::Internal::Type::BooleanModel, Increase::Internal::Type::BooleanModel] => true,
+      [Increase::Internal::Type::Unknown, Increase::Internal::Type::BooleanModel] => false,
       [E1, E2] => true,
       [E1, E3] => false,
       [M1, M2] => false,

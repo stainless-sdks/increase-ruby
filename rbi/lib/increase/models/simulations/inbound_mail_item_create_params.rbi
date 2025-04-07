@@ -16,7 +16,7 @@ module Increase
         attr_accessor :lockbox_id
 
         # The file containing the PDF contents. If not present, a default check image file
-        # will be used.
+        #   will be used.
         sig { returns(T.nilable(String)) }
         attr_reader :contents_file_id
 
@@ -32,7 +32,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(amount:, lockbox_id:, contents_file_id: nil, request_options: {}); end
+        def self.new(amount:, lockbox_id:, contents_file_id: nil, request_options: {})
+        end
 
         sig do
           override
@@ -45,7 +46,8 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

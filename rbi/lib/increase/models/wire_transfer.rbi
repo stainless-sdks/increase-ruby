@@ -20,7 +20,7 @@ module Increase
       attr_accessor :amount
 
       # If your account requires approvals for transfers and the transfer was approved,
-      # this will contain details of the approval.
+      #   this will contain details of the approval.
       sig { returns(T.nilable(Increase::Models::WireTransfer::Approval)) }
       attr_reader :approval
 
@@ -47,7 +47,7 @@ module Increase
       attr_accessor :beneficiary_name
 
       # If your account requires approvals for transfers and the transfer was not
-      # approved, this will contain details of the cancellation.
+      #   approved, this will contain details of the cancellation.
       sig { returns(T.nilable(Increase::Models::WireTransfer::Cancellation)) }
       attr_reader :cancellation
 
@@ -60,7 +60,7 @@ module Increase
       attr_writer :cancellation
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      # the transfer was created.
+      #   the transfer was created.
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -77,7 +77,7 @@ module Increase
       attr_writer :created_by
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-      # currency. For wire transfers this is always equal to `usd`.
+      #   currency. For wire transfers this is always equal to `usd`.
       sig { returns(Increase::Models::WireTransfer::Currency::TaggedSymbol) }
       attr_accessor :currency
 
@@ -86,8 +86,8 @@ module Increase
       attr_accessor :external_account_id
 
       # The idempotency key you chose for this object. This value is unique across
-      # Increase and is used to ensure that a request is only processed once. Learn more
-      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
@@ -116,9 +116,9 @@ module Increase
       attr_accessor :originator_name
 
       # The ID for the pending transaction representing the transfer. A pending
-      # transaction is created when the transfer
-      # [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
-      # by someone else in your organization.
+      #   transaction is created when the transfer
+      #   [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
+      #   by someone else in your organization.
       sig { returns(T.nilable(String)) }
       attr_accessor :pending_transaction_id
 
@@ -145,7 +145,7 @@ module Increase
       attr_accessor :status
 
       # After the transfer is submitted to Fedwire, this will contain supplemental
-      # details.
+      #   details.
       sig { returns(T.nilable(Increase::Models::WireTransfer::Submission)) }
       attr_reader :submission
 
@@ -162,12 +162,12 @@ module Increase
       attr_accessor :transaction_id
 
       # A constant representing the object's type. For this resource it will always be
-      # `wire_transfer`.
+      #   `wire_transfer`.
       sig { returns(Increase::Models::WireTransfer::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Wire transfers move funds between your Increase account and any other account
-      # accessible by Fedwire.
+      #   accessible by Fedwire.
       sig do
         params(
           id: String,
@@ -232,7 +232,9 @@ module Increase
         submission:,
         transaction_id:,
         type:
-      ); end
+      )
+      end
+
       sig do
         override
           .returns(
@@ -269,46 +271,51 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Approval < Increase::Internal::Type::BaseModel
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the transfer was approved.
+        #   the transfer was approved.
         sig { returns(Time) }
         attr_accessor :approved_at
 
         # If the Transfer was approved by a user in the dashboard, the email address of
-        # that user.
+        #   that user.
         sig { returns(T.nilable(String)) }
         attr_accessor :approved_by
 
         # If your account requires approvals for transfers and the transfer was approved,
-        # this will contain details of the approval.
+        #   this will contain details of the approval.
         sig { params(approved_at: Time, approved_by: T.nilable(String)).returns(T.attached_class) }
-        def self.new(approved_at:, approved_by:); end
+        def self.new(approved_at:, approved_by:)
+        end
 
         sig { override.returns({approved_at: Time, approved_by: T.nilable(String)}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class Cancellation < Increase::Internal::Type::BaseModel
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the Transfer was canceled.
+        #   the Transfer was canceled.
         sig { returns(Time) }
         attr_accessor :canceled_at
 
         # If the Transfer was canceled by a user in the dashboard, the email address of
-        # that user.
+        #   that user.
         sig { returns(T.nilable(String)) }
         attr_accessor :canceled_by
 
         # If your account requires approvals for transfers and the transfer was not
-        # approved, this will contain details of the cancellation.
+        #   approved, this will contain details of the cancellation.
         sig { params(canceled_at: Time, canceled_by: T.nilable(String)).returns(T.attached_class) }
-        def self.new(canceled_at:, canceled_by:); end
+        def self.new(canceled_at:, canceled_by:)
+        end
 
         sig { override.returns({canceled_at: Time, canceled_by: T.nilable(String)}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class CreatedBy < Increase::Internal::Type::BaseModel
@@ -362,7 +369,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(api_key:, category:, oauth_application:, user:); end
+        def self.new(api_key:, category:, oauth_application:, user:)
+        end
 
         sig do
           override
@@ -375,7 +383,8 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class APIKey < Increase::Internal::Type::BaseModel
           # The description set for the API key when it was created.
@@ -384,10 +393,12 @@ module Increase
 
           # If present, details about the API key that created the transfer.
           sig { params(description: T.nilable(String)).returns(T.attached_class) }
-          def self.new(description:); end
+          def self.new(description:)
+          end
 
           sig { override.returns({description: T.nilable(String)}) }
-          def to_hash; end
+          def to_hash
+          end
         end
 
         # The type of object that created this transfer.
@@ -409,7 +420,8 @@ module Increase
           USER = T.let(:user, Increase::Models::WireTransfer::CreatedBy::Category::TaggedSymbol)
 
           sig { override.returns(T::Array[Increase::Models::WireTransfer::CreatedBy::Category::TaggedSymbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
         class OAuthApplication < Increase::Internal::Type::BaseModel
@@ -419,10 +431,12 @@ module Increase
 
           # If present, details about the OAuth Application that created the transfer.
           sig { params(name: String).returns(T.attached_class) }
-          def self.new(name:); end
+          def self.new(name:)
+          end
 
           sig { override.returns({name: String}) }
-          def to_hash; end
+          def to_hash
+          end
         end
 
         class User < Increase::Internal::Type::BaseModel
@@ -432,15 +446,17 @@ module Increase
 
           # If present, details about the User that created the transfer.
           sig { params(email: String).returns(T.attached_class) }
-          def self.new(email:); end
+          def self.new(email:)
+          end
 
           sig { override.returns({email: String}) }
-          def to_hash; end
+          def to_hash
+          end
         end
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-      # currency. For wire transfers this is always equal to `usd`.
+      #   currency. For wire transfers this is always equal to `usd`.
       module Currency
         extend Increase::Internal::Type::Enum
 
@@ -466,7 +482,8 @@ module Increase
         USD = T.let(:USD, Increase::Models::WireTransfer::Currency::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::WireTransfer::Currency::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       # The transfer's network.
@@ -479,7 +496,8 @@ module Increase
         WIRE = T.let(:wire, Increase::Models::WireTransfer::Network::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::WireTransfer::Network::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       class Reversal < Increase::Internal::Type::BaseModel
@@ -488,7 +506,7 @@ module Increase
         attr_accessor :amount
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the reversal was created.
+        #   the reversal was created.
         sig { returns(Time) }
         attr_accessor :created_at
 
@@ -501,7 +519,7 @@ module Increase
         attr_accessor :financial_institution_to_financial_institution_information
 
         # The Fedwire cycle date for the wire reversal. The "Fedwire day" begins at 9:00
-        # PM Eastern Time on the evening before the `cycle date`.
+        #   PM Eastern Time on the evening before the `cycle date`.
         sig { returns(Date) }
         attr_accessor :input_cycle_date
 
@@ -518,12 +536,12 @@ module Increase
         attr_accessor :input_source
 
         # The American Banking Association (ABA) routing number of the bank originating
-        # the transfer.
+        #   the transfer.
         sig { returns(T.nilable(String)) }
         attr_accessor :originator_routing_number
 
         # The Fedwire cycle date for the wire transfer that is being reversed by this
-        # message.
+        #   message.
         sig { returns(Date) }
         attr_accessor :previous_message_input_cycle_date
 
@@ -540,7 +558,7 @@ module Increase
         attr_accessor :previous_message_input_source
 
         # Information included in the wire reversal for the receiving financial
-        # institution.
+        #   institution.
         sig { returns(T.nilable(String)) }
         attr_accessor :receiver_financial_institution_information
 
@@ -597,7 +615,9 @@ module Increase
           sender_reference:,
           transaction_id:,
           wire_transfer_id:
-        ); end
+        )
+        end
+
         sig do
           override
             .returns(
@@ -622,7 +642,8 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
 
       # The lifecycle status of the transfer.
@@ -660,7 +681,8 @@ module Increase
         COMPLETE = T.let(:complete, Increase::Models::WireTransfer::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::WireTransfer::Status::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       class Submission < Increase::Internal::Type::BaseModel
@@ -673,18 +695,20 @@ module Increase
         attr_accessor :submitted_at
 
         # After the transfer is submitted to Fedwire, this will contain supplemental
-        # details.
+        #   details.
         sig do
           params(input_message_accountability_data: String, submitted_at: Time).returns(T.attached_class)
         end
-        def self.new(input_message_accountability_data:, submitted_at:); end
+        def self.new(input_message_accountability_data:, submitted_at:)
+        end
 
         sig { override.returns({input_message_accountability_data: String, submitted_at: Time}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
-      # `wire_transfer`.
+      #   `wire_transfer`.
       module Type
         extend Increase::Internal::Type::Enum
 
@@ -694,7 +718,8 @@ module Increase
         WIRE_TRANSFER = T.let(:wire_transfer, Increase::Models::WireTransfer::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::WireTransfer::Type::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

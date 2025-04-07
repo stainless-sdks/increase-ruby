@@ -11,17 +11,17 @@ module Increase
       attr_accessor :account_id
 
       # The transfer amount in USD cents. A positive amount originates a credit transfer
-      # pushing funds to the receiving account. A negative amount originates a debit
-      # transfer pulling funds from the receiving account.
+      #   pushing funds to the receiving account. A negative amount originates a debit
+      #   transfer pulling funds from the receiving account.
       sig { returns(Integer) }
       attr_accessor :amount
 
       # A description you choose to give the transfer. This will be saved with the
-      # transfer details, displayed in the dashboard, and returned by the API. If
-      # `individual_name` and `company_name` are not explicitly set by this API, the
-      # `statement_descriptor` will be sent in those fields to the receiving bank to
-      # help the customer recognize the transfer. You are highly encouraged to pass
-      # `individual_name` and `company_name` instead of relying on this fallback.
+      #   transfer details, displayed in the dashboard, and returned by the API. If
+      #   `individual_name` and `company_name` are not explicitly set by this API, the
+      #   `statement_descriptor` will be sent in those fields to the receiving bank to
+      #   help the customer recognize the transfer. You are highly encouraged to pass
+      #   `individual_name` and `company_name` instead of relying on this fallback.
       sig { returns(String) }
       attr_accessor :statement_descriptor
 
@@ -33,7 +33,7 @@ module Increase
       attr_writer :account_number
 
       # Additional information that will be sent to the recipient. This is included in
-      # the transfer data sent to the receiving bank.
+      #   the transfer data sent to the receiving bank.
       sig { returns(T.nilable(Increase::Models::ACHTransferCreateParams::Addenda)) }
       attr_reader :addenda
 
@@ -44,7 +44,7 @@ module Increase
       attr_writer :addenda
 
       # The description of the date of the transfer, usually in the format `YYMMDD`.
-      # This is included in the transfer data sent to the receiving bank.
+      #   This is included in the transfer data sent to the receiving bank.
       sig { returns(T.nilable(String)) }
       attr_reader :company_descriptive_date
 
@@ -52,7 +52,7 @@ module Increase
       attr_writer :company_descriptive_date
 
       # The data you choose to associate with the transfer. This is included in the
-      # transfer data sent to the receiving bank.
+      #   transfer data sent to the receiving bank.
       sig { returns(T.nilable(String)) }
       attr_reader :company_discretionary_data
 
@@ -60,7 +60,7 @@ module Increase
       attr_writer :company_discretionary_data
 
       # A description of the transfer. This is included in the transfer data sent to the
-      # receiving bank.
+      #   receiving bank.
       sig { returns(T.nilable(String)) }
       attr_reader :company_entry_description
 
@@ -68,7 +68,7 @@ module Increase
       attr_writer :company_entry_description
 
       # The name by which the recipient knows you. This is included in the transfer data
-      # sent to the receiving bank.
+      #   sent to the receiving bank.
       sig { returns(T.nilable(String)) }
       attr_reader :company_name
 
@@ -76,7 +76,7 @@ module Increase
       attr_writer :company_name
 
       # The type of entity that owns the account to which the ACH Transfer is being
-      # sent.
+      #   sent.
       sig { returns(T.nilable(Increase::Models::ACHTransferCreateParams::DestinationAccountHolder::OrSymbol)) }
       attr_reader :destination_account_holder
 
@@ -89,7 +89,7 @@ module Increase
       attr_writer :destination_account_holder
 
       # The ID of an External Account to initiate a transfer to. If this parameter is
-      # provided, `account_number`, `routing_number`, and `funding` must be absent.
+      #   provided, `account_number`, `routing_number`, and `funding` must be absent.
       sig { returns(T.nilable(String)) }
       attr_reader :external_account_id
 
@@ -111,7 +111,7 @@ module Increase
       attr_writer :individual_id
 
       # The name of the transfer recipient. This value is informational and not verified
-      # by the recipient's bank.
+      #   by the recipient's bank.
       sig { returns(T.nilable(String)) }
       attr_reader :individual_name
 
@@ -119,9 +119,9 @@ module Increase
       attr_writer :individual_name
 
       # Configuration for how the effective date of the transfer will be set. This
-      # determines same-day vs future-dated settlement timing. If not set, defaults to a
-      # `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
-      # must be set.
+      #   determines same-day vs future-dated settlement timing. If not set, defaults to a
+      #   `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
+      #   must be set.
       sig { returns(T.nilable(Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate)) }
       attr_reader :preferred_effective_date
 
@@ -141,7 +141,7 @@ module Increase
       attr_writer :require_approval
 
       # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      # destination account.
+      #   destination account.
       sig { returns(T.nilable(String)) }
       attr_reader :routing_number
 
@@ -213,7 +213,9 @@ module Increase
         standard_entry_class_code: nil,
         transaction_timing: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       sig do
         override
           .returns(
@@ -241,7 +243,8 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Addenda < Increase::Internal::Type::BaseModel
         # The type of addenda to pass with the transfer.
@@ -261,7 +264,7 @@ module Increase
         attr_writer :freeform
 
         # Structured ASC X12 820 remittance advice records. Please reach out to
-        # [support@increase.com](mailto:support@increase.com) for more information.
+        #   [support@increase.com](mailto:support@increase.com) for more information.
         sig { returns(T.nilable(Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice)) }
         attr_reader :payment_order_remittance_advice
 
@@ -277,7 +280,7 @@ module Increase
         attr_writer :payment_order_remittance_advice
 
         # Additional information that will be sent to the recipient. This is included in
-        # the transfer data sent to the receiving bank.
+        #   the transfer data sent to the receiving bank.
         sig do
           params(
             category: Increase::Models::ACHTransferCreateParams::Addenda::Category::OrSymbol,
@@ -289,7 +292,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(category:, freeform: nil, payment_order_remittance_advice: nil); end
+        def self.new(category:, freeform: nil, payment_order_remittance_advice: nil)
+        end
 
         sig do
           override
@@ -301,7 +305,8 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         # The type of addenda to pass with the transfer.
         module Category
@@ -323,13 +328,14 @@ module Increase
             )
 
           sig { override.returns(T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Category::TaggedSymbol]) }
-          def self.values; end
+          def self.values
+          end
         end
 
         class Freeform < Increase::Internal::Type::BaseModel
           # Each entry represents an addendum sent with the transfer. Please reach out to
-          # [support@increase.com](mailto:support@increase.com) to send more than one
-          # addendum.
+          #   [support@increase.com](mailto:support@increase.com) to send more than one
+          #   addendum.
           sig { returns(T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry]) }
           attr_accessor :entries
 
@@ -340,10 +346,12 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(entries:); end
+          def self.new(entries:)
+          end
 
           sig { override.returns({entries: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry]}) }
-          def to_hash; end
+          def to_hash
+          end
 
           class Entry < Increase::Internal::Type::BaseModel
             # The payment related information passed in the addendum.
@@ -351,10 +359,12 @@ module Increase
             attr_accessor :payment_related_information
 
             sig { params(payment_related_information: String).returns(T.attached_class) }
-            def self.new(payment_related_information:); end
+            def self.new(payment_related_information:)
+            end
 
             sig { override.returns({payment_related_information: String}) }
-            def to_hash; end
+            def to_hash
+            end
           end
         end
 
@@ -368,19 +378,20 @@ module Increase
           attr_accessor :invoices
 
           # Structured ASC X12 820 remittance advice records. Please reach out to
-          # [support@increase.com](mailto:support@increase.com) for more information.
+          #   [support@increase.com](mailto:support@increase.com) for more information.
           sig do
             params(
               invoices: T::Array[
-                T.any(
-                  Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice,
-                  Increase::Internal::AnyHash
-                )
+              T.any(
+                Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice,
+                Increase::Internal::AnyHash
+              )
               ]
             )
               .returns(T.attached_class)
           end
-          def self.new(invoices:); end
+          def self.new(invoices:)
+          end
 
           sig do
             override
@@ -390,7 +401,8 @@ module Increase
                 }
               )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           class Invoice < Increase::Internal::Type::BaseModel
             # The invoice number for this reference, determined in advance with the receiver.
@@ -398,21 +410,23 @@ module Increase
             attr_accessor :invoice_number
 
             # The amount that was paid for this invoice in the minor unit of its currency. For
-            # dollars, for example, this is cents.
+            #   dollars, for example, this is cents.
             sig { returns(Integer) }
             attr_accessor :paid_amount
 
             sig { params(invoice_number: String, paid_amount: Integer).returns(T.attached_class) }
-            def self.new(invoice_number:, paid_amount:); end
+            def self.new(invoice_number:, paid_amount:)
+            end
 
             sig { override.returns({invoice_number: String, paid_amount: Integer}) }
-            def to_hash; end
+            def to_hash
+            end
           end
         end
       end
 
       # The type of entity that owns the account to which the ACH Transfer is being
-      # sent.
+      #   sent.
       module DestinationAccountHolder
         extend Increase::Internal::Type::Enum
 
@@ -437,7 +451,8 @@ module Increase
           override
             .returns(T::Array[Increase::Models::ACHTransferCreateParams::DestinationAccountHolder::TaggedSymbol])
         end
-        def self.values; end
+        def self.values
+        end
       end
 
       # The type of the account to which the transfer will be sent.
@@ -455,12 +470,13 @@ module Increase
         SAVINGS = T.let(:savings, Increase::Models::ACHTransferCreateParams::Funding::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ACHTransferCreateParams::Funding::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       class PreferredEffectiveDate < Increase::Internal::Type::BaseModel
         # A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to
-        # use as the effective date when submitting this transfer.
+        #   use as the effective date when submitting this transfer.
         sig { returns(T.nilable(Date)) }
         attr_reader :date
 
@@ -484,9 +500,9 @@ module Increase
         attr_writer :settlement_schedule
 
         # Configuration for how the effective date of the transfer will be set. This
-        # determines same-day vs future-dated settlement timing. If not set, defaults to a
-        # `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
-        # must be set.
+        #   determines same-day vs future-dated settlement timing. If not set, defaults to a
+        #   `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
+        #   must be set.
         sig do
           params(
             date: Date,
@@ -494,7 +510,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(date: nil, settlement_schedule: nil); end
+        def self.new(date: nil, settlement_schedule: nil)
+        end
 
         sig do
           override
@@ -505,7 +522,8 @@ module Increase
               }
             )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         # A schedule by which Increase will choose an effective date for the transfer.
         module SettlementSchedule
@@ -542,7 +560,8 @@ module Increase
                 T::Array[Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule::TaggedSymbol]
               )
           end
-          def self.values; end
+          def self.values
+          end
         end
       end
 
@@ -586,7 +605,8 @@ module Increase
         sig do
           override.returns(T::Array[Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::TaggedSymbol])
         end
-        def self.values; end
+        def self.values
+        end
       end
 
       # The timing of the transaction.
@@ -607,7 +627,8 @@ module Increase
           T.let(:asynchronous, Increase::Models::ACHTransferCreateParams::TransactionTiming::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::ACHTransferCreateParams::TransactionTiming::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

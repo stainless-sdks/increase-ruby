@@ -18,7 +18,7 @@ module Increase
       attr_writer :cursor
 
       # Limit the size of the list that is returned. The default (and maximum) is 100
-      # objects.
+      #   objects.
       sig { returns(T.nilable(Integer)) }
       attr_reader :limit
 
@@ -34,7 +34,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(routing_number:, cursor: nil, limit: nil, request_options: {}); end
+      def self.new(routing_number:, cursor: nil, limit: nil, request_options: {})
+      end
 
       sig do
         override
@@ -47,7 +48,8 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

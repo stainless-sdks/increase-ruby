@@ -21,14 +21,16 @@ module Increase
         # The name you choose for the Account.
         description:,
         # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-        # destination account.
+        #   destination account.
         routing_number:,
         # The type of entity that owns the External Account.
         account_holder: nil,
         # The type of the destination account. Defaults to `checking`.
         funding: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Retrieve an External Account
       sig do
         params(
@@ -41,7 +43,9 @@ module Increase
         # The identifier of the External Account.
         external_account_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Update an External Account
       sig do
         params(
@@ -66,7 +70,9 @@ module Increase
         # The status of the External Account.
         status: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # List External Accounts
       sig do
         params(
@@ -83,21 +89,24 @@ module Increase
         # Return the page of entries after this one.
         cursor: nil,
         # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        #   that object. This value is unique across Increase and is used to ensure that a
+        #   request is only processed once. Learn more about
+        #   [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        #   objects.
         limit: nil,
         # Filter External Accounts to those with the specified Routing Number.
         routing_number: nil,
         status: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

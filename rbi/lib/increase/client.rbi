@@ -183,7 +183,8 @@ module Increase
 
     # @api private
     sig { override.returns(T::Hash[String, String]) }
-    private def auth_headers; end
+    private def auth_headers
+    end
 
     # Creates and returns a new client for interacting with the API.
     sig do
@@ -204,10 +205,10 @@ module Increase
       api_key: ENV["INCREASE_API_KEY"],
       # Specifies the environment to use for the API.
       #
-      # Each environment maps to a different base URL:
+      #   Each environment maps to a different base URL:
       #
-      # - `production` corresponds to `https://api.increase.com`
-      # - `sandbox` corresponds to `https://sandbox.increase.com`
+      #   - `production` corresponds to `https://api.increase.com`
+      #   - `sandbox` corresponds to `https://sandbox.increase.com`
       environment: nil,
       # Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
       base_url: nil,
@@ -217,6 +218,7 @@ module Increase
       initial_retry_delay: DEFAULT_INITIAL_RETRY_DELAY,
       max_retry_delay: DEFAULT_MAX_RETRY_DELAY,
       idempotency_header: "Idempotency-Key"
-    ); end
+    )
+    end
   end
 end

@@ -12,7 +12,7 @@ module Increase
       attr_accessor :account_id
 
       # The Entry amount in the minor unit of its currency. For dollars, for example,
-      # this is cents.
+      #   this is cents.
       sig { returns(Integer) }
       attr_accessor :amount
 
@@ -25,13 +25,13 @@ module Increase
       attr_accessor :entry_set_id
 
       # A constant representing the object's type. For this resource it will always be
-      # `bookkeeping_entry`.
+      #   `bookkeeping_entry`.
       sig { returns(Increase::Models::BookkeepingEntry::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Entries are T-account entries recording debits and credits. Your compliance
-      # setup might require annotating money movements using this API. Learn more in our
-      # [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
+      #   setup might require annotating money movements using this API. Learn more in our
+      #   [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
       sig do
         params(
           id: String,
@@ -43,7 +43,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, account_id:, amount:, created_at:, entry_set_id:, type:); end
+      def self.new(id:, account_id:, amount:, created_at:, entry_set_id:, type:)
+      end
 
       sig do
         override
@@ -58,10 +59,11 @@ module Increase
             }
           )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       # A constant representing the object's type. For this resource it will always be
-      # `bookkeeping_entry`.
+      #   `bookkeeping_entry`.
       module Type
         extend Increase::Internal::Type::Enum
 
@@ -71,7 +73,8 @@ module Increase
         BOOKKEEPING_ENTRY = T.let(:bookkeeping_entry, Increase::Models::BookkeepingEntry::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Models::BookkeepingEntry::Type::TaggedSymbol]) }
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

@@ -15,7 +15,9 @@ module Increase
         # The identifier of the Inbound Check Deposit to get details for.
         inbound_check_deposit_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # List Inbound Check Deposits
       sig do
         params(
@@ -32,16 +34,18 @@ module Increase
         # Filter Inbound Check Deposits to those belonging to the specified Account.
         account_id: nil,
         # Filter Inbound Check Deposits to those belonging to the specified Check
-        # Transfer.
+        #   Transfer.
         check_transfer_id: nil,
         created_at: nil,
         # Return the page of entries after this one.
         cursor: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        #   objects.
         limit: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Decline an Inbound Check Deposit
       sig do
         params(
@@ -54,7 +58,9 @@ module Increase
         # The identifier of the Inbound Check Deposit to decline.
         inbound_check_deposit_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Return an Inbound Check Deposit
       sig do
         params(
@@ -70,10 +76,13 @@ module Increase
         # The reason to return the Inbound Check Deposit.
         reason:,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

@@ -12,7 +12,7 @@ module Increase
         attr_accessor :card_payment_id
 
         # The amount of the reversal in minor units in the card authorization's currency.
-        # This defaults to the authorization amount.
+        #   This defaults to the authorization amount.
         sig { returns(T.nilable(Integer)) }
         attr_reader :amount
 
@@ -27,7 +27,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(card_payment_id:, amount: nil, request_options: {}); end
+        def self.new(card_payment_id:, amount: nil, request_options: {})
+        end
 
         sig do
           override.returns(
@@ -38,7 +39,8 @@ module Increase
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

@@ -18,16 +18,18 @@ module Increase
         # The URL you'd like us to send webhooks to.
         url:,
         # If specified, this subscription will only receive webhooks for Events associated
-        # with the specified OAuth Connection.
+        #   with the specified OAuth Connection.
         oauth_connection_id: nil,
         # If specified, this subscription will only receive webhooks for Events with the
-        # specified `category`.
+        #   specified `category`.
         selected_event_category: nil,
         # The key that will be used to sign webhooks. If no value is passed, a random
-        # string will be used as default.
+        #   string will be used as default.
         shared_secret: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Retrieve an Event Subscription
       sig do
         params(
@@ -40,7 +42,9 @@ module Increase
         # The identifier of the Event Subscription.
         event_subscription_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Update an Event Subscription
       sig do
         params(
@@ -56,7 +60,9 @@ module Increase
         # The status to update the Event Subscription with.
         status: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # List Event Subscriptions
       sig do
         params(
@@ -71,18 +77,21 @@ module Increase
         # Return the page of entries after this one.
         cursor: nil,
         # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        #   that object. This value is unique across Increase and is used to ensure that a
+        #   request is only processed once. Learn more about
+        #   [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        #   objects.
         limit: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end
