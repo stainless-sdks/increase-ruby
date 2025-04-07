@@ -62,7 +62,7 @@ class Increase::Test::Resources::PhysicalCardsTest < Increase::Test::ResourceTes
   end
 
   def test_update_required_params
-    response = @increase.physical_cards.update("physical_card_id", status: :active)
+    response = @increase.physical_cards.update("physical_card_id", status: :disabled)
 
     assert_pattern do
       response => Increase::Models::PhysicalCard
