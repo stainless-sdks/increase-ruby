@@ -193,7 +193,7 @@ class Increase::Test::Resources::EntitiesTest < Increase::Test::ResourceTest
             identification: {method: :social_security_number, number: "078051120"},
             name: "Ian Crease"
           },
-          prongs: [:ownership]
+          prongs: [:control]
         }
       )
 

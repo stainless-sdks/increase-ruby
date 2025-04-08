@@ -55,7 +55,7 @@ class Increase::Test::Resources::Simulations::ACHTransfersTest < Increase::Test:
     response =
       @increase.simulations.ach_transfers.create_notification_of_change(
         "ach_transfer_id",
-        change_code: :incorrect_account_number,
+        change_code: :incorrect_routing_number,
         corrected_data: "123456789"
       )
 
