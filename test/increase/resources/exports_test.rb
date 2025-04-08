@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::ExportsTest < Increase::Test::ResourceTest
   def test_create_required_params
-    response = @increase.exports.create(category: :account_statement_ofx)
+    response = @increase.exports.create(category: :transaction_csv)
 
     assert_pattern do
       response => Increase::Models::Export
