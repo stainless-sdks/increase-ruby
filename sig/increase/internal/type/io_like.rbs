@@ -10,11 +10,12 @@ module Increase
 
         def self.coerce: (
           StringIO | String | top value,
-          state: Increase::Internal::Type::Converter::state
+          state: Increase::Internal::Type::Converter::coerce_state
         ) -> (StringIO | top)
 
         def self.dump: (
-          Pathname | StringIO | IO | String | top value
+          Pathname | StringIO | IO | String | top value,
+          state: Increase::Internal::Type::Converter::dump_state
         ) -> (Pathname | StringIO | IO | String | top)
       end
     end

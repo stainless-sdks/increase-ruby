@@ -52,6 +52,7 @@ module Increase
               exactness[:yes] += 1
               value
             else
+              exactness[:no] += 1
               value
             end
           end
@@ -61,8 +62,12 @@ module Increase
           #   #
           #   # @param value [Pathname, StringIO, IO, String, Object]
           #   #
+          #   # @param state [Hash{Symbol=>Object}] .
+          #   #
+          #   #   @option state [Boolean] :can_retry
+          #   #
           #   # @return [Pathname, StringIO, IO, String, Object]
-          #   def dump(value) = super
+          #   def dump(value, state:) = super
         end
       end
     end

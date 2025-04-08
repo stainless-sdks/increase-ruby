@@ -122,7 +122,7 @@ module Increase
         # @return [Hash{Object=>Object}, Object]
         def coerce_hash(input)
           case input
-          in NilClass | Array | Set | Enumerator
+          in NilClass | Array | Set | Enumerator | StringIO | IO
             input
           else
             input.respond_to?(:to_h) ? input.to_h : input
@@ -350,22 +350,22 @@ module Increase
 
       # @api private
       class SerializationAdapter
-        # @return [Pathname]
+        # @return [Pathname, IO]
         attr_reader :inner
 
         # @param a [Object]
         #
         # @return [String]
-        def to_json(*a) = inner.read(binmode: true).to_json(*a)
+        def to_json(*a) = (inner.is_a?(IO) ? inner.read : inner.read(binmode: true)).to_json(*a)
 
         # @param a [Object]
         #
         # @return [String]
-        def to_yaml(*a) = inner.read(binmode: true).to_yaml(*a)
+        def to_yaml(*a) = (inner.is_a?(IO) ? inner.read : inner.read(binmode: true)).to_yaml(*a)
 
         # @api private
         #
-        # @param inner [Pathname]
+        # @param inner [Pathname, IO]
         def initialize(inner) = @inner = inner
       end
 
@@ -560,19 +560,21 @@ module Increase
         # @return [Object]
         def encode_content(headers, body)
           content_type = headers["content-type"]
+          body = body.inner if body.is_a?(Increase::Internal::Util::SerializationAdapter)
+
           case [content_type, body]
-          in [%r{^application/(?:vnd\.api\+)?json}, _] unless body.nil?
+          in [%r{^application/(?:vnd\.api\+)?json}, Hash | Array | -> { primitive?(_1) }]
             [headers, JSON.fast_generate(body)]
-          in [%r{^application/(?:x-)?jsonl}, Enumerable]
+          in [%r{^application/(?:x-)?jsonl}, Enumerable] unless body.is_a?(StringIO) || body.is_a?(IO)
             [headers, body.lazy.map { JSON.fast_generate(_1) }]
           in [%r{^multipart/form-data}, Hash | Pathname | StringIO | IO]
             boundary, strio = encode_multipart_streaming(body)
             headers = {**headers, "content-type" => "#{content_type}; boundary=#{boundary}"}
             [headers, strio]
-          in [_, StringIO]
-            [headers, body.string]
           in [_, Symbol | Numeric]
             [headers, body.to_s]
+          in [_, StringIO]
+            [headers, body.string]
           else
             [headers, body]
           end

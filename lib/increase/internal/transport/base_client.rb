@@ -363,10 +363,7 @@ module Increase
             )
           in Increase::Errors::APIConnectionError if retry_count >= max_retries
             raise status
-          in (400..) if retry_count >= max_retries || !self.class.should_retry?(
-            status,
-            headers: response
-          ) || request.fetch(:body).is_a?(IO)
+          in (400..) if retry_count >= max_retries || !self.class.should_retry?(status, headers: response)
             decoded = Kernel.then do
               Increase::Internal::Util.decode_content(response, stream: stream, suppress_error: true)
             ensure

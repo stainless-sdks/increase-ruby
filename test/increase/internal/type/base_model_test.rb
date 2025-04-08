@@ -124,6 +124,34 @@ class Increase::Test::PrimitiveModelTest < Minitest::Test
       end
     end
   end
+
+  def test_dump_retry
+    types = [
+      Increase::Internal::Type::Unknown,
+      Increase::Internal::Type::Boolean,
+      A,
+      H,
+      E,
+      U,
+      B
+    ]
+    Pathname(__FILE__).open do |fd|
+      cases = [
+        fd,
+        [fd],
+        {a: fd},
+        {a: {b: fd}}
+      ]
+      types.product(cases).each do |target, input|
+        state = {can_retry: true}
+        Increase::Internal::Type::Converter.dump(target, input, state: state)
+
+        assert_pattern do
+          state => {can_retry: false}
+        end
+      end
+    end
+  end
 end
 
 class Increase::Test::EnumModelTest < Minitest::Test

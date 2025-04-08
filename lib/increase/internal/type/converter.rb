@@ -26,15 +26,24 @@ module Increase
         #
         # @param value [Object]
         #
+        # @param state [Hash{Symbol=>Object}] .
+        #
+        #   @option state [Boolean] :can_retry
+        #
         # @return [Object]
-        def dump(value)
+        def dump(value, state:)
           case value
           in Array
-            value.map { Increase::Internal::Type::Unknown.dump(_1) }
+            value.map { Increase::Internal::Type::Unknown.dump(_1, state: state) }
           in Hash
-            value.transform_values { Increase::Internal::Type::Unknown.dump(_1) }
+            value.transform_values { Increase::Internal::Type::Unknown.dump(_1, state: state) }
           in Increase::Internal::Type::BaseModel
-            value.class.dump(value)
+            value.class.dump(value, state: state)
+          in StringIO
+            value.string
+          in Pathname | IO
+            state[:can_retry] = false if value.is_a?(IO)
+            Increase::Internal::Util::SerializationAdapter.new(value)
           else
             value
           end
@@ -207,24 +216,20 @@ module Increase
           # @api private
           #
           # @param target [Increase::Internal::Type::Converter, Class]
+          #
           # @param value [Object]
           #
+          # @param state [Hash{Symbol=>Object}] .
+          #
+          #   @option state [Boolean] :can_retry
+          #
           # @return [Object]
-          def dump(target, value)
+          def dump(target, value, state: {can_retry: true})
             case target
             in Increase::Internal::Type::Converter
-              target.dump(value)
-            in Class if target <= String
-              case value
-              in Pathname
-                Increase::Internal::Util::SerializationAdapter.new(value)
-              in StringIO
-                value.string
-              else
-                Increase::Internal::Type::Unknown.dump(value)
-              end
+              target.dump(value, state: state)
             else
-              Increase::Internal::Type::Unknown.dump(value)
+              Increase::Internal::Type::Unknown.dump(value, state: state)
             end
           end
         end

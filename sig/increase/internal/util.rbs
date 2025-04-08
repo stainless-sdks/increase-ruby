@@ -74,13 +74,13 @@ module Increase
       ) -> ::Hash[String, String]
 
       class SerializationAdapter
-        attr_reader inner: Pathname
+        attr_reader inner: Pathname | IO
 
         def to_json: (*top a) -> String
 
         def to_yaml: (*top a) -> String
 
-        def initialize: (Pathname inner) -> void
+        def initialize: (Pathname | IO inner) -> void
       end
 
       class ReadIOAdapter

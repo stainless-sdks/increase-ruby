@@ -142,7 +142,7 @@ module Increase
 
       # @api private
       class SerializationAdapter
-        sig { returns(Pathname) }
+        sig { returns(T.any(Pathname, IO)) }
         attr_reader :inner
 
         sig { params(a: T.anything).returns(String) }
@@ -152,7 +152,7 @@ module Increase
         def to_yaml(*a); end
 
         # @api private
-        sig { params(inner: Pathname).returns(T.attached_class) }
+        sig { params(inner: T.any(Pathname, IO)).returns(T.attached_class) }
         def self.new(inner); end
       end
 
