@@ -1,0 +1,46 @@
+# typed: strong
+
+module Increase
+  module Internal
+    module Type
+      # @api private
+      #
+      # Either `Pathname` or `StringIO`.
+      class IOLike
+        extend Increase::Internal::Type::Converter
+
+        abstract!
+        final!
+
+        sig(:final) { params(other: T.anything).returns(T::Boolean) }
+        def self.===(other); end
+
+        sig(:final) { params(other: T.anything).returns(T::Boolean) }
+        def self.==(other); end
+
+        class << self
+          # @api private
+          sig(:final) do
+            override
+              .params(value: T.any(
+                StringIO,
+                String,
+                T.anything
+              ),
+                      state: Increase::Internal::Type::Converter::State)
+              .returns(T.any(StringIO, T.anything))
+          end
+          def coerce(value, state:); end
+
+          # @api private
+          sig(:final) do
+            override
+              .params(value: T.any(Pathname, StringIO, IO, String, T.anything))
+              .returns(T.any(Pathname, StringIO, IO, String, T.anything))
+          end
+          def dump(value); end
+        end
+      end
+    end
+  end
+end

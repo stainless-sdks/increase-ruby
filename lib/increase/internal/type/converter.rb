@@ -182,7 +182,7 @@ module Increase
                 rescue ArgumentError, TypeError => e
                   raise e if strictness == :strong
                 end
-              in -> { _1 <= IO } if value.is_a?(String)
+              in -> { _1 <= StringIO } if value.is_a?(String)
                 exactness[:yes] += 1
                 return StringIO.new(value.b)
               else
@@ -211,9 +211,21 @@ module Increase
           #
           # @return [Object]
           def dump(target, value)
-            # rubocop:disable Layout/LineLength
-            target.is_a?(Increase::Internal::Type::Converter) ? target.dump(value) : Increase::Internal::Type::Unknown.dump(value)
-            # rubocop:enable Layout/LineLength
+            case target
+            in Increase::Internal::Type::Converter
+              target.dump(value)
+            in Class if target <= String
+              case value
+              in Pathname
+                Increase::Internal::Util::SerializationAdapter.new(value)
+              in StringIO
+                value.string
+              else
+                Increase::Internal::Type::Unknown.dump(value)
+              end
+            else
+              Increase::Internal::Type::Unknown.dump(value)
+            end
           end
         end
       end

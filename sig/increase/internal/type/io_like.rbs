@@ -1,0 +1,22 @@
+module Increase
+  module Internal
+    module Type
+      class IOLike
+        extend Increase::Internal::Type::Converter
+
+        def self.===: (top other) -> bool
+
+        def self.==: (top other) -> bool
+
+        def self.coerce: (
+          StringIO | String | top value,
+          state: Increase::Internal::Type::Converter::state
+        ) -> (StringIO | top)
+
+        def self.dump: (
+          Pathname | StringIO | IO | String | top value
+        ) -> (Pathname | StringIO | IO | String | top)
+      end
+    end
+  end
+end

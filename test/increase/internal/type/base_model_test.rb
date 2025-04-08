@@ -92,7 +92,9 @@ class Increase::Test::PrimitiveModelTest < Minitest::Test
       [String, "one"] => "one",
       [String, :one] => :one,
       [:a, :b] => :b,
-      [:a, "a"] => "a"
+      [:a, "a"] => "a",
+      [String, StringIO.new("one")] => "one",
+      [String, Pathname(__FILE__)] => Increase::Internal::Util::SerializationAdapter
     }
 
     cases.each do
