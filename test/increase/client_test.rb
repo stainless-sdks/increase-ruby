@@ -166,10 +166,7 @@ class IncreaseTest < Minitest::Test
       increase.accounts.create(name: "New Account!")
     end
 
-    retry_count_headers = requester.attempts.map do
-      _1.fetch(:headers).fetch("x-stainless-retry-count")
-    end
-
+    retry_count_headers = requester.attempts.map { _1[:headers]["x-stainless-retry-count"] }
     assert_equal(%w[0 1 2], retry_count_headers)
   end
 
@@ -185,10 +182,7 @@ class IncreaseTest < Minitest::Test
       )
     end
 
-    retry_count_headers = requester.attempts.map do
-      _1.fetch(:headers).fetch("x-stainless-retry-count", nil)
-    end
-
+    retry_count_headers = requester.attempts.map { _1[:headers]["x-stainless-retry-count"] }
     assert_equal([nil, nil, nil], retry_count_headers)
   end
 
@@ -204,10 +198,7 @@ class IncreaseTest < Minitest::Test
       )
     end
 
-    retry_count_headers = requester.attempts.map do
-      _1.fetch(:headers).fetch("x-stainless-retry-count")
-    end
-
+    retry_count_headers = requester.attempts.map { _1[:headers]["x-stainless-retry-count"] }
     assert_equal(%w[42 42 42], retry_count_headers)
   end
 
@@ -220,12 +211,12 @@ class IncreaseTest < Minitest::Test
       increase.accounts.create(name: "New Account!", request_options: {extra_headers: {}})
     end
 
-    assert_equal("/redirected", requester.attempts.last.fetch(:url).path)
-    assert_equal(requester.attempts.first.fetch(:method), requester.attempts.last.fetch(:method))
-    assert_equal(requester.attempts.first.fetch(:body), requester.attempts.last.fetch(:body))
+    assert_equal("/redirected", requester.attempts.last[:url].path)
+    assert_equal(requester.attempts.first[:method], requester.attempts.last[:method])
+    assert_equal(requester.attempts.first[:body], requester.attempts.last[:body])
     assert_equal(
-      requester.attempts.first.fetch(:headers)["content-type"],
-      requester.attempts.last.fetch(:headers)["content-type"]
+      requester.attempts.first[:headers]["content-type"],
+      requester.attempts.last[:headers]["content-type"]
     )
   end
 
@@ -238,10 +229,10 @@ class IncreaseTest < Minitest::Test
       increase.accounts.create(name: "New Account!", request_options: {extra_headers: {}})
     end
 
-    assert_equal("/redirected", requester.attempts.last.fetch(:url).path)
-    assert_equal(:get, requester.attempts.last.fetch(:method))
-    assert_nil(requester.attempts.last.fetch(:body))
-    assert_nil(requester.attempts.last.fetch(:headers)["content-type"])
+    assert_equal("/redirected", requester.attempts.last[:url].path)
+    assert_equal(:get, requester.attempts.last[:method])
+    assert_nil(requester.attempts.last[:body])
+    assert_nil(requester.attempts.last[:headers]["Content-Type"])
   end
 
   def test_client_redirect_auth_keep_same_origin
@@ -252,13 +243,13 @@ class IncreaseTest < Minitest::Test
     assert_raises(Increase::Errors::APIConnectionError) do
       increase.accounts.create(
         name: "New Account!",
-        request_options: {extra_headers: {"authorization" => "Bearer xyz"}}
+        request_options: {extra_headers: {"Authorization" => "Bearer xyz"}}
       )
     end
 
     assert_equal(
-      requester.attempts.first.fetch(:headers)["authorization"],
-      requester.attempts.last.fetch(:headers)["authorization"]
+      requester.attempts.first[:headers]["authorization"],
+      requester.attempts.last[:headers]["authorization"]
     )
   end
 
@@ -270,11 +261,11 @@ class IncreaseTest < Minitest::Test
     assert_raises(Increase::Errors::APIConnectionError) do
       increase.accounts.create(
         name: "New Account!",
-        request_options: {extra_headers: {"authorization" => "Bearer xyz"}}
+        request_options: {extra_headers: {"Authorization" => "Bearer xyz"}}
       )
     end
 
-    assert_nil(requester.attempts.last.fetch(:headers)["authorization"])
+    assert_nil(requester.attempts.last[:headers]["Authorization"])
   end
 
   def test_client_default_idempotency_key_on_writes
@@ -286,9 +277,7 @@ class IncreaseTest < Minitest::Test
       increase.accounts.create(name: "New Account!", request_options: {max_retries: 1})
     end
 
-    idempotency_headers = requester.attempts.map do
-      _1.fetch(:headers).fetch("idempotency-key")
-    end
+    idempotency_headers = requester.attempts.map { _1[:headers]["Idempotency-Key".downcase] }
 
     assert_kind_of(String, idempotency_headers.first)
     refute_empty(idempotency_headers.first)
@@ -307,9 +296,7 @@ class IncreaseTest < Minitest::Test
       )
     end
 
-    requester.attempts.each do
-      assert_equal("user-supplied-key", _1.fetch(:headers).fetch("idempotency-key"))
-    end
+    requester.attempts.each { assert_equal("user-supplied-key", _1[:headers]["Idempotency-Key".downcase]) }
   end
 
   def test_default_headers
@@ -317,7 +304,7 @@ class IncreaseTest < Minitest::Test
     requester = MockRequester.new(200, {}, {})
     increase.requester = requester
     increase.accounts.create(name: "New Account!")
-    headers = requester.attempts.first.fetch(:headers)
+    headers = requester.attempts.first[:headers]
 
     refute_empty(headers["accept"])
     refute_empty(headers["content-type"])
