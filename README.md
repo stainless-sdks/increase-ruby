@@ -12,13 +12,9 @@ The underlying REST API documentation can be found on [increase.com](https://inc
 
 To use this gem, install via Bundler by adding the following to your application's `Gemfile`:
 
-<!-- x-release-please-start-version -->
-
 ```ruby
-gem "increase", "~> 0.1.0.pre.alpha.8"
+gem "increase", "~> 0.0.1.pre.alpha.0"
 ```
-
-<!-- x-release-please-end -->
 
 To fetch an initial copy of the gem:
 
@@ -66,7 +62,7 @@ page.auto_paging_each do |account|
 end
 ```
 
-### File uploads
+## File uploads
 
 Request parameters that correspond to file uploads can be passed as `StringIO`, or a [`Pathname`](https://rubyapi.org/3.1/o/pathname) instance.
 
