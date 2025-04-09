@@ -60,5 +60,8 @@
     }
   ],
   "release-type": "ruby",
-  "version-file": "lib/increase/version.rb"
+  "version-file": "lib/increase/version.rb",
+  "extra-files": [
+    "README.md"
+  ]
 }
