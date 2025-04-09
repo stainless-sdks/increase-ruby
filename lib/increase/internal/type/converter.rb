@@ -149,9 +149,9 @@ module Increase
                 if value.is_a?(Integer)
                   exactness[:yes] += 1
                   return value
-                elsif strictness == :strong && Integer(value, exception: false) != value
+                elsif strictness == :strong
                   message = "no implicit conversion of #{value.class} into #{target.inspect}"
-                  raise value.is_a?(Numeric) ? ArgumentError.new(message) : TypeError.new(message)
+                  raise TypeError.new(message)
                 else
                   Kernel.then do
                     return Integer(value).tap { exactness[:maybe] += 1 }
@@ -197,20 +197,12 @@ module Increase
               else
               end
             in Symbol
-              case value
-              in Symbol | String
-                if value.to_sym == target
-                  exactness[:yes] += 1
-                  return target
-                else
-                  exactness[:maybe] += 1
-                  return value
-                end
-              else
-                if strictness == :strong
-                  message = "cannot convert non-matching #{value.class} into #{target.inspect}"
-                  raise ArgumentError.new(message)
-                end
+              if (value.is_a?(Symbol) || value.is_a?(String)) && value.to_sym == target
+                exactness[:yes] += 1
+                return target
+              elsif strictness == :strong
+                message = "cannot convert non-matching #{value.class} into #{target.inspect}"
+                raise ArgumentError.new(message)
               end
             else
             end
