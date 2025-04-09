@@ -49,19 +49,16 @@ module Increase
 
         # @api private
         sig do
-          override
-            .params(value: T.anything, state: Increase::Internal::Type::Converter::CoerceState)
-            .returns(T.anything)
+          override.params(
+            value: T.anything,
+            state: Increase::Internal::Type::Converter::State
+          ).returns(T.anything)
         end
         def coerce(value, state:); end
 
         # @api private
-        sig do
-          override
-            .params(value: T.anything, state: Increase::Internal::Type::Converter::DumpState)
-            .returns(T.anything)
-        end
-        def dump(value, state:); end
+        sig { override.params(value: T.anything).returns(T.anything) }
+        def dump(value); end
       end
     end
   end

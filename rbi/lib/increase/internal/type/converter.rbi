@@ -7,7 +7,7 @@ module Increase
       module Converter
         Input = T.type_alias { T.any(Increase::Internal::Type::Converter, T::Class[T.anything]) }
 
-        CoerceState =
+        State =
           T.type_alias do
             {
               strictness: T.any(T::Boolean, Symbol),
@@ -16,23 +16,18 @@ module Increase
             }
           end
 
-        DumpState = T.type_alias { {can_retry: T::Boolean} }
-
         # @api private
         sig do
-          overridable
-            .params(value: T.anything, state: Increase::Internal::Type::Converter::CoerceState)
-            .returns(T.anything)
+          overridable.params(
+            value: T.anything,
+            state: Increase::Internal::Type::Converter::State
+          ).returns(T.anything)
         end
         def coerce(value, state:); end
 
         # @api private
-        sig do
-          overridable
-            .params(value: T.anything, state: Increase::Internal::Type::Converter::DumpState)
-            .returns(T.anything)
-        end
-        def dump(value, state:); end
+        sig { overridable.params(value: T.anything).returns(T.anything) }
+        def dump(value); end
 
         class << self
           # @api private
@@ -67,7 +62,7 @@ module Increase
             params(
               target: Increase::Internal::Type::Converter::Input,
               value: T.anything,
-              state: Increase::Internal::Type::Converter::CoerceState
+              state: Increase::Internal::Type::Converter::State
             )
               .returns(T.anything)
           end
@@ -97,14 +92,9 @@ module Increase
           ); end
           # @api private
           sig do
-            params(
-              target: Increase::Internal::Type::Converter::Input,
-              value: T.anything,
-              state: Increase::Internal::Type::Converter::DumpState
-            )
-              .returns(T.anything)
+            params(target: Increase::Internal::Type::Converter::Input, value: T.anything).returns(T.anything)
           end
-          def self.dump(target, value, state: {can_retry: true}); end
+          def self.dump(target, value); end
         end
       end
     end

@@ -76,12 +76,8 @@ module Increase
         #   #
         #   # @param value [Symbol, Object]
         #   #
-        #   # @param state [Hash{Symbol=>Object}] .
-        #   #
-        #   #   @option state [Boolean] :can_retry
-        #   #
         #   # @return [Symbol, Object]
-        #   def dump(value, state:) = super
+        #   def dump(value) = super
       end
     end
   end

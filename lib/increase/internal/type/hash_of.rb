@@ -99,16 +99,12 @@ module Increase
         #
         # @param value [Hash{Object=>Object}, Object]
         #
-        # @param state [Hash{Symbol=>Object}] .
-        #
-        #   @option state [Boolean] :can_retry
-        #
         # @return [Hash{Symbol=>Object}, Object]
-        def dump(value, state:)
+        def dump(value)
           target = item_type
           if value.is_a?(Hash)
             value.transform_values do
-              Increase::Internal::Type::Converter.dump(target, _1, state: state)
+              Increase::Internal::Type::Converter.dump(target, _1)
             end
           else
             super

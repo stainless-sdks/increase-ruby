@@ -165,19 +165,15 @@ module Increase
         #
         # @param value [Object]
         #
-        # @param state [Hash{Symbol=>Object}] .
-        #
-        #   @option state [Boolean] :can_retry
-        #
         # @return [Object]
-        def dump(value, state:)
+        def dump(value)
           if (target = resolve_variant(value))
-            return Increase::Internal::Type::Converter.dump(target, value, state: state)
+            return Increase::Internal::Type::Converter.dump(target, value)
           end
 
           known_variants.each do
             target = _2.call
-            return Increase::Internal::Type::Converter.dump(target, value, state: state) if target === value
+            return Increase::Internal::Type::Converter.dump(target, value) if target === value
           end
 
           super

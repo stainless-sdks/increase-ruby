@@ -122,7 +122,7 @@ module Increase
         # @return [Hash{Object=>Object}, Object]
         def coerce_hash(input)
           case input
-          in NilClass | Array | Set | Enumerator | StringIO | IO
+          in NilClass | Array | Set | Enumerator
             input
           else
             input.respond_to?(:to_h) ? input.to_h : input
@@ -349,46 +349,9 @@ module Increase
       end
 
       # @api private
-      class SerializationAdapter
-        # @return [Pathname, IO]
-        attr_reader :inner
-
-        # @param a [Object]
-        #
-        # @return [String]
-        def to_json(*a) = (inner.is_a?(IO) ? inner.read : inner.read(binmode: true)).to_json(*a)
-
-        # @param a [Object]
-        #
-        # @return [String]
-        def to_yaml(*a) = (inner.is_a?(IO) ? inner.read : inner.read(binmode: true)).to_yaml(*a)
-
-        # @api private
-        #
-        # @param inner [Pathname, IO]
-        def initialize(inner) = @inner = inner
-      end
-
-      # @api private
       #
       # An adapter that satisfies the IO interface required by `::IO.copy_stream`
       class ReadIOAdapter
-        # @api private
-        #
-        # @return [Boolean, nil]
-        def close? = @closing
-
-        # @api private
-        def close
-          case @stream
-          in Enumerator
-            Increase::Internal::Util.close_fused!(@stream)
-          in IO if close?
-            @stream.close
-          else
-          end
-        end
-
         # @api private
         #
         # @param max_len [Integer, nil]
@@ -433,21 +396,12 @@ module Increase
 
         # @api private
         #
-        # @param src [String, Pathname, StringIO, Enumerable<String>]
+        # @param stream [String, IO, StringIO, Enumerable<String>]
         # @param blk [Proc]
         #
         # @yieldparam [String]
-        def initialize(src, &blk)
-          @stream =
-            case src
-            in String
-              StringIO.new(src)
-            in Pathname
-              @closing = true
-              src.open(binmode: true)
-            else
-              src
-            end
+        def initialize(stream, &blk)
+          @stream = stream.is_a?(String) ? StringIO.new(stream) : stream
           @buf = String.new.b
           @blk = blk
         end
@@ -460,10 +414,9 @@ module Increase
         # @return [Enumerable<String>]
         def writable_enum(&blk)
           Enumerator.new do |y|
-            buf = String.new.b
             y.define_singleton_method(:write) do
-              self << buf.replace(_1)
-              buf.bytesize
+              self << _1.clone
+              _1.bytesize
             end
 
             blk.call(y)
@@ -478,39 +431,29 @@ module Increase
         # @param boundary [String]
         # @param key [Symbol, String]
         # @param val [Object]
-        # @param closing [Array<Proc>]
-        private def write_multipart_chunk(y, boundary:, key:, val:, closing:)
-          val = val.inner if val.is_a?(Increase::Internal::Util::SerializationAdapter)
-
+        private def write_multipart_chunk(y, boundary:, key:, val:)
           y << "--#{boundary}\r\n"
           y << "Content-Disposition: form-data"
           unless key.nil?
             name = ERB::Util.url_encode(key.to_s)
             y << "; name=\"#{name}\""
           end
-          case val
-          in Pathname | IO
+          if val.is_a?(IO)
             filename = ERB::Util.url_encode(File.basename(val.to_path))
             y << "; filename=\"#{filename}\""
-          else
           end
           y << "\r\n"
           case val
-          in Pathname
-            y << "Content-Type: application/octet-stream\r\n\r\n"
-            io = val.open(binmode: true)
-            closing << io.method(:close)
-            IO.copy_stream(io, y)
           in IO
             y << "Content-Type: application/octet-stream\r\n\r\n"
-            IO.copy_stream(val, y)
+            IO.copy_stream(val.tap(&:rewind), y)
           in StringIO
             y << "Content-Type: application/octet-stream\r\n\r\n"
             y << val.string
           in String
             y << "Content-Type: application/octet-stream\r\n\r\n"
             y << val.to_s
-          in _ if primitive?(val)
+          in true | false | Integer | Float | Symbol
             y << "Content-Type: text/plain\r\n\r\n"
             y << val.to_s
           else
@@ -528,7 +471,6 @@ module Increase
         private def encode_multipart_streaming(body)
           boundary = SecureRandom.urlsafe_base64(60)
 
-          closing = []
           strio = writable_enum do |y|
             case body
             in Hash
@@ -536,20 +478,19 @@ module Increase
                 case val
                 in Array if val.all? { primitive?(_1) }
                   val.each do |v|
-                    write_multipart_chunk(y, boundary: boundary, key: key, val: v, closing: closing)
+                    write_multipart_chunk(y, boundary: boundary, key: key, val: v)
                   end
                 else
-                  write_multipart_chunk(y, boundary: boundary, key: key, val: val, closing: closing)
+                  write_multipart_chunk(y, boundary: boundary, key: key, val: val)
                 end
               end
             else
-              write_multipart_chunk(y, boundary: boundary, key: nil, val: body, closing: closing)
+              write_multipart_chunk(y, boundary: boundary, key: nil, val: body)
             end
             y << "--#{boundary}--\r\n"
           end
 
-          fused_io = fused_enum(strio) { closing.each(&:call) }
-          [boundary, fused_io]
+          [boundary, strio]
         end
 
         # @api private
@@ -560,21 +501,21 @@ module Increase
         # @return [Object]
         def encode_content(headers, body)
           content_type = headers["content-type"]
-          body = body.inner if body.is_a?(Increase::Internal::Util::SerializationAdapter)
-
           case [content_type, body]
-          in [%r{^application/(?:vnd\.api\+)?json}, Hash | Array | -> { primitive?(_1) }]
+          in [%r{^application/(?:vnd\.api\+)?json}, _] unless body.nil?
             [headers, JSON.fast_generate(body)]
-          in [%r{^application/(?:x-)?jsonl}, Enumerable] unless body.is_a?(StringIO) || body.is_a?(IO)
+          in [%r{^application/(?:x-)?jsonl}, Enumerable]
             [headers, body.lazy.map { JSON.fast_generate(_1) }]
-          in [%r{^multipart/form-data}, Hash | Pathname | StringIO | IO]
+          in [%r{^multipart/form-data}, Hash | IO | StringIO]
             boundary, strio = encode_multipart_streaming(body)
             headers = {**headers, "content-type" => "#{content_type}; boundary=#{boundary}"}
             [headers, strio]
-          in [_, Symbol | Numeric]
-            [headers, body.to_s]
+          in [_, IO]
+            [headers, body.tap(&:rewind)]
           in [_, StringIO]
             [headers, body.string]
+          in [_, Symbol | Numeric]
+            [headers, body.to_s]
           else
             [headers, body]
           end

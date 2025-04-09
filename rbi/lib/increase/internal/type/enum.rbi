@@ -45,18 +45,14 @@ module Increase
               Symbol,
               T.anything
             ),
-                    state: Increase::Internal::Type::Converter::CoerceState)
+                    state: Increase::Internal::Type::Converter::State)
             .returns(T.any(Symbol, T.anything))
         end
         def coerce(value, state:); end
 
         # @api private
-        sig do
-          override
-            .params(value: T.any(Symbol, T.anything), state: Increase::Internal::Type::Converter::DumpState)
-            .returns(T.any(Symbol, T.anything))
-        end
-        def dump(value, state:); end
+        sig { override.params(value: T.any(Symbol, T.anything)).returns(T.any(Symbol, T.anything)) }
+        def dump(value); end
       end
     end
   end
