@@ -26,18 +26,9 @@ module Increase
           #
           # @return [Array(Object, Hash{Symbol=>Object})]
           def dump_request(params)
-            state = {can_retry: true}
-            case (dumped = dump(params, state: state))
+            case (dumped = dump(params))
             in Hash
-              options = Increase::Internal::Util.coerce_hash(dumped[:request_options])
-              request_options =
-                case [options, state.fetch(:can_retry)]
-                in [Hash | nil, false]
-                  {**options.to_h, max_retries: 0}
-                else
-                  options
-                end
-              [dumped.except(:request_options), request_options]
+              [dumped.except(:request_options), dumped[:request_options]]
             else
               [dumped, nil]
             end

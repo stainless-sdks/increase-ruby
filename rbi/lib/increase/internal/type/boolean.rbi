@@ -22,26 +22,16 @@ module Increase
           # @api private
           sig(:final) do
             override
-              .params(value: T.any(
-                T::Boolean,
-                T.anything
-              ),
-                      state: Increase::Internal::Type::Converter::CoerceState)
+              .params(value: T.any(T::Boolean, T.anything), state: Increase::Internal::Type::Converter::State)
               .returns(T.any(T::Boolean, T.anything))
           end
           def coerce(value, state:); end
 
           # @api private
           sig(:final) do
-            override
-              .params(value: T.any(
-                T::Boolean,
-                T.anything
-              ),
-                      state: Increase::Internal::Type::Converter::DumpState)
-              .returns(T.any(T::Boolean, T.anything))
+            override.params(value: T.any(T::Boolean, T.anything)).returns(T.any(T::Boolean, T.anything))
           end
-          def dump(value, state:); end
+          def dump(value); end
         end
       end
     end

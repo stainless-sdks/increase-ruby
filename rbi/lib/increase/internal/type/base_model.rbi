@@ -126,7 +126,7 @@ module Increase
                   T::Hash[T.anything, T.anything],
                   T.anything
                 ),
-                state: Increase::Internal::Type::Converter::CoerceState
+                state: Increase::Internal::Type::Converter::State
               )
               .returns(T.any(T.attached_class, T.anything))
           end
@@ -135,14 +135,10 @@ module Increase
           # @api private
           sig do
             override
-              .params(value: T.any(
-                T.attached_class,
-                T.anything
-              ),
-                      state: Increase::Internal::Type::Converter::DumpState)
+              .params(value: T.any(T.attached_class, T.anything))
               .returns(T.any(T::Hash[T.anything, T.anything], T.anything))
           end
-          def dump(value, state:); end
+          def dump(value); end
         end
 
         # Returns the raw value associated with the given key, if found. Otherwise, nil is

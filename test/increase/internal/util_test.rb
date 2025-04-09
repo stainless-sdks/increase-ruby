@@ -160,12 +160,11 @@ end
 class Increase::Test::UtilFormDataEncodingTest < Minitest::Test
   class FakeCGI < CGI
     def initialize(headers, io)
-      encoded = io.to_a
       @ctype = headers["content-type"]
       # rubocop:disable Lint/EmptyBlock
-      @io = Increase::Internal::Util::ReadIOAdapter.new(encoded.to_enum) {}
+      @io = Increase::Internal::Util::ReadIOAdapter.new(io) {}
       # rubocop:enable Lint/EmptyBlock
-      @c_len = encoded.join.bytesize.to_s
+      @c_len = io.to_a.join.bytesize.to_s
       super()
     end
 
@@ -181,17 +180,15 @@ class Increase::Test::UtilFormDataEncodingTest < Minitest::Test
   end
 
   def test_file_encode
-    file = Pathname(__FILE__)
     headers = {"content-type" => "multipart/form-data"}
     cases = {
-      StringIO.new("abc") => "abc",
-      file => /^class Increase/
+      StringIO.new("abc") => "abc"
     }
     cases.each do |body, val|
       encoded = Increase::Internal::Util.encode_content(headers, body)
       cgi = FakeCGI.new(*encoded)
       assert_pattern do
-        cgi[""].read => ^val
+        cgi[""] => ^val
       end
     end
   end
@@ -202,16 +199,13 @@ class Increase::Test::UtilFormDataEncodingTest < Minitest::Test
       {a: 2, b: 3} => {"a" => "2", "b" => "3"},
       {a: 2, b: nil} => {"a" => "2", "b" => "null"},
       {a: 2, b: [1, 2, 3]} => {"a" => "2", "b" => "1"},
-      {strio: StringIO.new("a")} => {"strio" => "a"},
-      {pathname: Pathname(__FILE__)} => {"pathname" => -> { _1.read in /^class Increase/ }}
+      {file: StringIO.new("a")} => {"file" => "a"}
     }
     cases.each do |body, testcase|
       encoded = Increase::Internal::Util.encode_content(headers, body)
       cgi = FakeCGI.new(*encoded)
       testcase.each do |key, val|
-        assert_pattern do
-          cgi[key] => ^val
-        end
+        assert_equal(val, cgi[key])
       end
     end
   end

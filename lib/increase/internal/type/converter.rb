@@ -26,24 +26,15 @@ module Increase
         #
         # @param value [Object]
         #
-        # @param state [Hash{Symbol=>Object}] .
-        #
-        #   @option state [Boolean] :can_retry
-        #
         # @return [Object]
-        def dump(value, state:)
+        def dump(value)
           case value
           in Array
-            value.map { Increase::Internal::Type::Unknown.dump(_1, state: state) }
+            value.map { Increase::Internal::Type::Unknown.dump(_1) }
           in Hash
-            value.transform_values { Increase::Internal::Type::Unknown.dump(_1, state: state) }
+            value.transform_values { Increase::Internal::Type::Unknown.dump(_1) }
           in Increase::Internal::Type::BaseModel
-            value.class.dump(value, state: state)
-          in StringIO
-            value.string
-          in Pathname | IO
-            state[:can_retry] = false if value.is_a?(IO)
-            Increase::Internal::Util::SerializationAdapter.new(value)
+            value.class.dump(value)
           else
             value
           end
@@ -149,9 +140,9 @@ module Increase
                 if value.is_a?(Integer)
                   exactness[:yes] += 1
                   return value
-                elsif strictness == :strong && Integer(value, exception: false) != value
+                elsif strictness == :strong
                   message = "no implicit conversion of #{value.class} into #{target.inspect}"
-                  raise value.is_a?(Numeric) ? ArgumentError.new(message) : TypeError.new(message)
+                  raise TypeError.new(message)
                 else
                   Kernel.then do
                     return Integer(value).tap { exactness[:maybe] += 1 }
@@ -191,26 +182,18 @@ module Increase
                 rescue ArgumentError, TypeError => e
                   raise e if strictness == :strong
                 end
-              in -> { _1 <= StringIO } if value.is_a?(String)
+              in -> { _1 <= IO } if value.is_a?(String)
                 exactness[:yes] += 1
                 return StringIO.new(value.b)
               else
               end
             in Symbol
-              case value
-              in Symbol | String
-                if value.to_sym == target
-                  exactness[:yes] += 1
-                  return target
-                else
-                  exactness[:maybe] += 1
-                  return value
-                end
-              else
-                if strictness == :strong
-                  message = "cannot convert non-matching #{value.class} into #{target.inspect}"
-                  raise ArgumentError.new(message)
-                end
+              if (value.is_a?(Symbol) || value.is_a?(String)) && value.to_sym == target
+                exactness[:yes] += 1
+                return target
+              elsif strictness == :strong
+                message = "cannot convert non-matching #{value.class} into #{target.inspect}"
+                raise ArgumentError.new(message)
               end
             else
             end
@@ -224,21 +207,13 @@ module Increase
           # @api private
           #
           # @param target [Increase::Internal::Type::Converter, Class]
-          #
           # @param value [Object]
           #
-          # @param state [Hash{Symbol=>Object}] .
-          #
-          #   @option state [Boolean] :can_retry
-          #
           # @return [Object]
-          def dump(target, value, state: {can_retry: true})
-            case target
-            in Increase::Internal::Type::Converter
-              target.dump(value, state: state)
-            else
-              Increase::Internal::Type::Unknown.dump(value, state: state)
-            end
+          def dump(target, value)
+            # rubocop:disable Layout/LineLength
+            target.is_a?(Increase::Internal::Type::Converter) ? target.dump(value) : Increase::Internal::Type::Unknown.dump(value)
+            # rubocop:enable Layout/LineLength
           end
         end
       end

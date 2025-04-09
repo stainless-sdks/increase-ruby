@@ -54,7 +54,7 @@ module Increase
           # @param blk [Proc]
           #
           # @yieldparam [String]
-          # @return [Array(Net::HTTPGenericRequest, Proc)]
+          # @return [Net::HTTPGenericRequest]
           def build_request(request, &blk)
             method, url, headers, body = request.fetch_values(:method, :url, :headers, :body)
             req = Net::HTTPGenericRequest.new(
@@ -75,12 +75,12 @@ module Increase
             in StringIO
               req["content-length"] ||= body.size.to_s unless req["transfer-encoding"]
               req.body_stream = Increase::Internal::Util::ReadIOAdapter.new(body, &blk)
-            in Pathname | IO | Enumerator
+            in IO | Enumerator
               req["transfer-encoding"] ||= "chunked" unless req["content-length"]
               req.body_stream = Increase::Internal::Util::ReadIOAdapter.new(body, &blk)
             end
 
-            [req, req.body_stream&.method(:close)]
+            req
           end
         end
 
@@ -123,17 +123,13 @@ module Increase
         def execute(request)
           url, deadline = request.fetch_values(:url, :deadline)
 
-          req = nil
           eof = false
           finished = false
-          closing = nil
-
-          # rubocop:disable Metrics/BlockLength
           enum = Enumerator.new do |y|
             with_pool(url, deadline: deadline) do |conn|
               next if finished
 
-              req, closing = self.class.build_request(request) do
+              req = self.class.build_request(request) do
                 self.class.calibrate_socket_timeout(conn, deadline)
               end
 
@@ -158,11 +154,8 @@ module Increase
               end
             end
           rescue Timeout::Error
-            raise Increase::Errors::APITimeoutError.new(url: url, request: req)
-          rescue StandardError
-            raise Increase::Errors::APIConnectionError.new(url: url, request: req)
+            raise Increase::Errors::APITimeoutError
           end
-          # rubocop:enable Metrics/BlockLength
 
           conn, _, response = enum.next
           body = Increase::Internal::Util.fused_enum(enum, external: true) do
@@ -172,9 +165,7 @@ module Increase
             rescue StopIteration
               nil
             end
-          ensure
             conn.finish if !eof && conn&.started?
-            closing&.call
           end
           [Integer(response.code), response, (response.body = body)]
         end

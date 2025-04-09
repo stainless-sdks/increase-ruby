@@ -12,13 +12,9 @@ The underlying REST API documentation can be found on [increase.com](https://inc
 
 To use this gem, install via Bundler by adding the following to your application's `Gemfile`:
 
-<!-- x-release-please-start-version -->
-
 ```ruby
-gem "increase", "~> 0.1.0.pre.alpha.8"
+gem "increase", "~> 0.0.1.pre.alpha.0"
 ```
-
-<!-- x-release-please-end -->
 
 To fetch an initial copy of the gem:
 
@@ -64,23 +60,6 @@ puts(account.id)
 page.auto_paging_each do |account|
   puts(account.id)
 end
-```
-
-## File uploads
-
-Request parameters that correspond to file uploads can be passed as `StringIO`, or a [`Pathname`](https://rubyapi.org/3.1/o/pathname) instance.
-
-```ruby
-require "pathname"
-
-# using `Pathname`, the file will be lazily read, without reading everything in to memory
-file = increase.files.create(file: Pathname("my/file.txt"), purpose: "check_image_front")
-
-file = File.read("my/file.txt")
-# using `StringIO`, useful if you already have the data in memory
-file = increase.files.create(file: StringIO.new(file), purpose: "check_image_front")
-
-puts(file.id)
 ```
 
 ### Errors
@@ -170,13 +149,6 @@ After Solargraph is installed, **you must populate its index** either via the pr
 
 ```sh
 bundle exec solargraph gems
-```
-
-Note: if you had installed the gem either using a `git:` or `github:` URL, or had vendored the gem using bundler, you will need to set up your [`.solargraph.yml`](https://solargraph.org/guides/configuration) to include the path to the gem's `lib` directory.
-
-```yaml
-include:
-  - 'vendor/bundle/ruby/*/gems/increase-*/lib/**/*.rb'
 ```
 
 Otherwise Solargraph will not be able to provide type information or auto-completion for any non-indexed libraries.

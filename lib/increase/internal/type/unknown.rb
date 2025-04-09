@@ -47,12 +47,8 @@ module Increase
           #   #
           #   # @param value [Object]
           #   #
-          #   # @param state [Hash{Symbol=>Object}] .
-          #   #
-          #   #   @option state [Boolean] :can_retry
-          #   #
           #   # @return [Object]
-          #   def dump(value, state:) = super
+          #   def dump(value) = super
         end
 
         # rubocop:enable Lint/UnusedMethodArgument
